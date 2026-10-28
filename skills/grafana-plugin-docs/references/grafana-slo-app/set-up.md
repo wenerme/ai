@@ -9,8 +9,9 @@ description: "Additional configuration"
 
 The following topics provide you with additional configuration options for Grafana SLO:
 
-- [Configure burn-rate notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications/)
-- [Configure RBAC permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/rbac/)
-- [Provision SLO resources using Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/terraform/)
-- [Provision SLO resources using the HTTP API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/api/)
-- [Configure additional data sources for SLOs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources/)
+- [Configure burn-rate notifications](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications/)
+- [Configure RBAC permissions](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/rbac/)
+- [Provision SLO resources using Terraform](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform/)
+- [Provision SLO resources using the HTTP API](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api/)
+- [Configure additional data sources for SLOs](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/troubleshooting/)

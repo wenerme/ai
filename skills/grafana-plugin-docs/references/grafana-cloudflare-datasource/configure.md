@@ -13,9 +13,9 @@ This document explains how to configure the Cloudflare data source in Grafana.
 
 Before you configure the data source, ensure you have:
 
-- **Cloudflare data source plugin installed:** For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues)
+- **Cloudflare data source plugin installed:** For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues)
 - **Grafana permissions:** Organization administrator role
-- **Cloudflare API token:** A user token or an account-owned token with the required permissions (refer to [Required permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions))
+- **Cloudflare API token:** A user token or an account-owned token with the required permissions (refer to [Required permissions](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions))
 
 ## Required permissions
 
@@ -50,7 +50,7 @@ To create an API token in Cloudflare:
 1. Go to the [Cloudflare API Tokens page](https://dash.cloudflare.com/profile/api-tokens).
 2. Click **Create Token**.
 3. Select **Create Custom Token**.
-4. Add the required permissions (refer to [Required permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions)).
+4. Add the required permissions (refer to [Required permissions](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions)).
 5. Click **Continue to summary**, then **Create Token**.
 6. Copy the token and paste it into the **Token** field in Grafana.
 
@@ -59,7 +59,7 @@ For detailed instructions, refer to the [Cloudflare documentation](https://devel
 The Cloudflare data source supports both token types:
 
 - **User tokens** are verified against your Cloudflare user profile. No additional configuration is needed.
-- **Account-owned tokens** (`cfat_` prefix) are scoped to a Cloudflare account rather than a user, and are verified against that account. If you use an account-owned token, set **Token type** to **Account-owned token** in the data source configuration and enter the matching **Account ID** (refer to [Configure settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/#configure-settings)).
+- **Account-owned tokens** (`cfat_` prefix) are scoped to a Cloudflare account rather than a user, and are verified against that account. If you use an account-owned token, set **Token type** to **Account-owned token** in the data source configuration and enter the matching **Account ID** (refer to [Configure settings](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/#configure-settings)).
 
 ## Add the data source
 
@@ -98,7 +98,7 @@ Expand table
 >
 > Private data source connect is available only in Grafana Cloud. It isn’t available in self-managed Grafana.
 
-Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. Refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for more information on how PDC works and [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
+Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. Refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for more information on how PDC works and [Configure Grafana private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
 
 - **Private data source connect:** Click in the box to set the default PDC connection from the drop-down menu or create a new connection.
 
@@ -108,9 +108,9 @@ Click **Save &amp; test** to verify the connection. Grafana verifies a user toke
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -131,7 +131,7 @@ Replace `<YOUR_CLOUDFLARE_API_TOKEN>` with your Cloudflare API token. Provisioni
 
 You can provision the data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "cloudflare" {

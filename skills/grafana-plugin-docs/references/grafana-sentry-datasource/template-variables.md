@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards that let you switc
 
 ## Before you begin
 
-- [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -49,7 +49,7 @@ For example, if you create a variable named `project` that lists Sentry projects
 
 ## Global variables
 
-Grafana’s [global variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables) work in every field the plugin interpolates: the query, projects, and environments fields of Issues, Events, Events Stats, and Metrics queries, and the projects and interval fields of Stats queries. For example, you can use `${__from:date:iso}` in an Issues query to filter by the dashboard time range, such as `firstSeen:>${__from:date:iso}`.
+Grafana’s [global variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables) work in every field the plugin interpolates: the query, projects, and environments fields of Issues, Events, Events Stats, and Metrics queries, and the projects and interval fields of Stats queries. For example, you can use `${__from:date:iso}` in an Issues query to filter by the dashboard time range, such as `firstSeen:>${__from:date:iso}`.
 
 The **Interval** field of a Stats query supports the `$__interval` variable. Sentry statistics queries only accept intervals between one minute and one day that divide a day evenly, and reject queries that would return more than 1000 data points, so the plugin snaps the resolved interval up to the nearest value Sentry accepts.
 
@@ -83,4 +83,4 @@ Create a variable scoped to a specific team’s projects:
 3. In the `project` variable configuration, select `var: ${team}` in the **Team slug** selector.
 4. When a user selects a team, only that team’s projects appear in the project variable.
 
-For more information about using variables in queries, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more information about using variables in queries, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).

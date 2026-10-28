@@ -9,17 +9,17 @@ description: "Grafana Metrics Drilldown lets you browse Prometheus-compatible me
 
 Grafana Metrics Drilldown is a queryless experience for browsing Prometheus-compatible metrics. Quickly find related metrics in a few clicks, without needing to write a PromQL query.
 
-![Grafana Learning Journeys](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/learning-journey/map.svg)
+![Grafana Learning Journeys](https://grafana.com/media/docs/learning-journey/map.svg)
 
 Start your learning experience with Grafana Learning Paths
 
-Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore data using Metrics Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/learning-journeys/drilldown-metrics/).
+Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore data using Metrics Drilldown](https://grafana.com/docs/learning-journeys/drilldown-metrics/).
 
 [Start learning→](https://grafana.com/docs/learning-journeys/drilldown-metrics/)
 
 > Note
 >
-> The Grafana Explore apps have changed to Grafana Drilldown apps. For example, Explore Logs is now Logs Drilldown. To learn more, read [Grafana Drilldown apps: the improved queryless experience formerly known as the Explore apps](http://grafana-com-website.grafana-com.svc.cluster.local.:80/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
+> The Grafana Explore apps have changed to Grafana Drilldown apps. For example, Explore Logs is now Logs Drilldown. To learn more, read [Grafana Drilldown apps: the improved queryless experience formerly known as the Explore apps](https://grafana.com/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
 
 With Metrics Drilldown, you can:
 
@@ -38,12 +38,12 @@ With Grafana Play, you can explore and see how it works, learning from practical
 
 [About metrics and telemetry
 \
-Learn about metrics and the role they serve in analyzing telemetry data.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-metricsdrilldown-app/latest/about-metrics/)
+Learn about metrics and the role they serve in analyzing telemetry data.](https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/about-metrics/)
 
 [Get started
 \
-Get started analyzing your metrics with Grafana Metrics Drilldown.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-metricsdrilldown-app/latest/get-started/)
+Get started analyzing your metrics with Grafana Metrics Drilldown.](https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/get-started/)
 
 [Drill down your metrics
 \
-Drill down into your metrics without writing a PromQL query.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics/)
+Drill down into your metrics without writing a PromQL query.](https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics/)

@@ -7,11 +7,11 @@ description: "Use template variables with the Vercel data source to build dynami
 
 # Vercel template variables
 
-Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a team or time range into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+Template variables let you build dynamic, reusable dashboards. Instead of hard-coding values such as a team or time range into queries, you use variables that update from a drop-down at the top of the dashboard. For general information, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-Before you use template variables, ensure you have [configured the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/).
+Before you use template variables, ensure you have [configured the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/).
 
 ## Supported variable types
 
@@ -25,7 +25,7 @@ Expand table
 | Custom        | Yes       | Uses a fixed, comma-separated list of values that you define.                                    |
 | Text box      | Yes       | Accepts a free-form value that you enter on the dashboard.                                       |
 
-Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
+Other standard Grafana variable types, such as **Constant** and **Data source**, also work with the data source. For more information, refer to [Add and manage variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Team ID variable
 
@@ -69,7 +69,7 @@ Expand table
 | `${__timeFrom}` | The start of the dashboard time range, used as the default `since` parameter. |
 | `${__timeTo}`   | The end of the dashboard time range, used as the default `until` parameter.   |
 
-For more information about built-in variables, refer to [Built-in variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
+For more information about built-in variables, refer to [Built-in variables](https://grafana.com/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
 
 ## Use variables in queries
 

@@ -47,7 +47,7 @@ Expand table
 
 Given an API that returns:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -88,7 +88,7 @@ Expand table
 
 Use UQL to transform and rename fields:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -100,7 +100,7 @@ parse-json
 
 For CSV log data:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 time,message,level
@@ -146,7 +146,7 @@ Expand table
 
 Use time macros to filter logs to the dashboard time range:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://api.example.com/logs?from=${__timeFrom}&to=${__timeTo}
@@ -154,7 +154,7 @@ https://api.example.com/logs?from=${__timeFrom}&to=${__timeTo}
 
 Or filter in UQL:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json

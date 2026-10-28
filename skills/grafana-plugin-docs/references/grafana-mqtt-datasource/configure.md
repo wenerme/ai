@@ -76,7 +76,7 @@ Expand table
 
 *Only for Grafana Cloud users.* Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. This is useful when your MQTT broker isn’t reachable from Grafana Cloud directly. Click the drop-down to locate the URL for PDC.
 
-When PDC is enabled in your Grafana instance, a **Secure SOCKS Proxy** configuration section appears on the data source settings page. For more information, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+When PDC is enabled in your Grafana instance, a **Secure SOCKS Proxy** configuration section appears on the data source settings page. For more information, refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Verify the connection
 
@@ -87,9 +87,9 @@ After you configure the data source, click **Save &amp; test** to verify the con
 
 ## Provision the data source
 
-You can define and configure the MQTT data source using YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the MQTT data source using YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -115,9 +115,9 @@ Replace the `<PLACEHOLDER>` values with your broker-specific settings. Omit any 
 
 ## Provision the data source with Terraform
 
-You can manage the MQTT data source as code using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to the [Grafana Terraform provider documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/as-code/infrastructure-as-code/terraform/).
+You can manage the MQTT data source as code using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to the [Grafana Terraform provider documentation](https://grafana.com/docs/grafana/latest/as-code/infrastructure-as-code/terraform/).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "mqtt" {
@@ -146,6 +146,6 @@ Replace the `<PLACEHOLDER>` values with your broker-specific settings. Omit any 
 
 ## Next steps
 
-- [MQTT query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/query-editor/) – Subscribe to topics and understand how data is formatted.
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/template-variables/) – Create dynamic dashboards with variable-driven topics.
-- [Troubleshoot MQTT data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/troubleshooting/) – Resolve common connection, authentication, and query problems.
+- [MQTT query editor](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/query-editor/) – Subscribe to topics and understand how data is formatted.
+- [Template variables](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/template-variables/) – Create dynamic dashboards with variable-driven topics.
+- [Troubleshoot MQTT data source issues](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/troubleshooting/) – Resolve common connection, authentication, and query problems.

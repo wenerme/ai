@@ -9,7 +9,7 @@ description: "Use template variables with the GitLab data source in Grafana"
 
 Use template variables to create dynamic, reusable dashboards. Instead of hard-coding project IDs or other values, you can create variables that let you switch between different projects, labels, or releases from a drop-down at the top of the dashboard.
 
-For general information about template variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For general information about template variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -66,4 +66,4 @@ To use this variable in a query, enter `$project` in the **Project Id** field of
 
 After creating a variable, reference it in query fields using the `$variable_name` syntax. For example, if you created a variable named `project`, enter `$project` in the **Project Id** field.
 
-You can use variables in any text input field in the query editor. For more information about variable syntax, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+You can use variables in any text input field in the query editor. For more information about variable syntax, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).

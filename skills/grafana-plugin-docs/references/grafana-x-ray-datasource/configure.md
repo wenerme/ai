@@ -15,7 +15,7 @@ Before you configure the data source, ensure you have:
 
 - **Grafana permissions:** The `Organization Administrator` role in your Grafana organization so you can add and edit data sources. For provisioning, you need access to the Grafana configuration directory on the host.
 - **AWS account:** Access to an AWS account with [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) and/or [AWS Application Signals](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html) enabled.
-- **IAM credentials:** An IAM identity (user or role) with read access to X-Ray and Application Signals. See [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
+- **IAM credentials:** An IAM identity (user or role) with read access to X-Ray and Application Signals. See [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
 - **Grafana version:** Grafana `10.4.0` or later.
 
 ## Key concepts
@@ -91,8 +91,8 @@ Grafana Assume Role lets Grafana use its own IAM identity to assume a role you c
 
 To use Grafana Assume Role:
 
-1. In your AWS account, create an IAM role with the [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy) attached.
-2. Add a trust policy to the role that allows Grafana’s IAM identity to assume it. Refer to the [Grafana Assume Role documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-source-management/aws-iam-role/) for the exact trust policy.
+1. In your AWS account, create an IAM role with the [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy) attached.
+2. Add a trust policy to the role that allows Grafana’s IAM identity to assume it. Refer to the [Grafana Assume Role documentation](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-source-management/aws-iam-role/) for the exact trust policy.
 3. In the Grafana data source settings, select **Grafana Assume Role** as the authentication provider.
 4. Enter the **Assume Role ARN** and, if used, the **External ID**.
 
@@ -102,7 +102,7 @@ Grafana automatically refreshes the temporary session credentials returned by `s
 
 To authenticate with a credentials file, create a file at `~/.aws/credentials` under the `HOME` path of the user running `grafana-server`:
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [default]
@@ -137,7 +137,7 @@ The IAM identity Grafana uses must have permission to read X-Ray data, Applicati
 
 The following policy grants the minimum permissions needed by the plugin:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -199,35 +199,35 @@ AWS Application Signals supports cross-account observability through [CloudWatch
 To enable cross-account observability in Grafana:
 
 1. In AWS, configure a CloudWatch cross-account observability **sink** in your monitoring account and **links** from the source accounts. Refer to the [AWS cross-account observability documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html).
-2. Attach the `oam:ListSinks` and `oam:ListAttachedLinks` permissions to the Grafana IAM identity. Refer to [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
+2. Attach the `oam:ListSinks` and `oam:ListAttachedLinks` permissions to the Grafana IAM identity. Refer to [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
 3. Configure the Grafana data source in the monitoring account.
 
 After configuration, Service Map queries and Service queries include an account-ID drop-down you can use to filter across accounts.
 
-For more details about how cross-account filtering appears in the query editor, refer to [Filter by account ID](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/#filter-by-account-id).
+For more details about how cross-account filtering appears in the query editor, refer to [Filter by account ID](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/#filter-by-account-id).
 
 ## Private Data source Connect
 
-This data source supports [Private Data source Connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) on Grafana `10.0.0` and later. Use PDC to reach AWS endpoints that aren’t exposed to the public internet, such as VPC endpoints for X-Ray.
+This data source supports [Private Data source Connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) on Grafana `10.0.0` and later. Use PDC to reach AWS endpoints that aren’t exposed to the public internet, such as VPC endpoints for X-Ray.
 
 To enable PDC:
 
-1. Set up a PDC agent in your private network. Refer to the [PDC setup documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+1. Set up a PDC agent in your private network. Refer to the [PDC setup documentation](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 2. In the data source settings, scroll to the **Secure Socks Proxy** section and select your PDC network.
 
 ## Verify the connection
 
 Click **Save &amp; test** at the bottom of the configuration page. On success, Grafana displays the message **Data source is working**.
 
-If the test fails, refer to [Troubleshoot AWS Application Signals data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/).
+If the test fails, refer to [Troubleshoot AWS Application Signals data source issues](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the AWS Application Signals data source in YAML as part of [Grafana’s provisioning system](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources). Provisioning lets you manage data source configuration in version control.
+You can define the AWS Application Signals data source in YAML as part of [Grafana’s provisioning system](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources). Provisioning lets you manage data source configuration in version control.
 
 ### Access and secret key
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -246,7 +246,7 @@ datasources:
 
 ### Credentials file
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -265,7 +265,7 @@ datasources:
 
 Use this when Grafana runs on an EC2 instance or in another AWS environment that provides credentials automatically:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -281,7 +281,7 @@ datasources:
 
 ### Grafana Assume Role
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -301,7 +301,7 @@ datasources:
 
 You can add a custom **endpoint** to any of the examples above, for example to use a VPC endpoint or AWS GovCloud:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 jsonData:
@@ -318,13 +318,13 @@ You can configure the AWS Application Signals data source using the [Grafana Ter
 
 - [Terraform](https://www.terraform.io/downloads) installed.
 - The Grafana Terraform provider configured with appropriate credentials.
-- For Grafana Cloud: A [Cloud Access Policy token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/account-management/authentication-and-permissions/access-policies/) with data source permissions.
+- For Grafana Cloud: A [Cloud Access Policy token](https://grafana.com/docs/grafana-cloud/account-management/authentication-and-permissions/access-policies/) with data source permissions.
 
 ### Provider configuration
 
 Configure the Grafana provider to connect to your Grafana instance:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 terraform {
@@ -348,7 +348,7 @@ The following examples show how to configure the AWS Application Signals data so
 
 **Access and secret key:**
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "application_signals" {
@@ -369,7 +369,7 @@ resource "grafana_data_source" "application_signals" {
 
 **Default AWS SDK credential chain:**
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "application_signals" {
@@ -385,7 +385,7 @@ resource "grafana_data_source" "application_signals" {
 
 **Grafana Assume Role with external ID:**
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "application_signals" {
@@ -405,7 +405,7 @@ resource "grafana_data_source" "application_signals" {
 
 Add `endpoint` to `json_data_encoded` for any of the preceding examples:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "application_signals" {
@@ -429,7 +429,7 @@ For more information about the Grafana Terraform provider, refer to the [provide
 
 ## Next steps
 
-- [Query AWS Application Signals](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
-- [Build alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
-- [Troubleshoot issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)
+- [Query AWS Application Signals](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
+- [Build alert rules](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
+- [Troubleshoot issues](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)

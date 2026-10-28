@@ -16,7 +16,7 @@ You can install the Infinity data source plugin using several methods, depending
 
 ## Grafana Cloud
 
-The Infinity data source plugin is pre-installed on Grafana Cloud instances. Updates are managed automatically by Grafana, so no installation or upgrade steps are needed. You can proceed directly to [configuring the data source](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/).
+The Infinity data source plugin is pre-installed on Grafana Cloud instances. Updates are managed automatically by Grafana, so no installation or upgrade steps are needed. You can proceed directly to [configuring the data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/).
 
 ## Self-managed Grafana
 
@@ -24,19 +24,19 @@ For self-managed Grafana installations, use one of the following methods to inst
 
 ### Install from the Grafana plugin catalog
 
-The simplest way to install the plugin is from the [Grafana plugin catalog](/grafana/plugins/yesoreyeram-infinity-datasource/):
+The simplest way to install the plugin is from the [Grafana plugin catalog](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/):
 
 1. In Grafana, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for “Infinity”.
 3. Click **Install**.
 
-Alternatively, visit the [plugin page](/grafana/plugins/yesoreyeram-infinity-datasource/?tab=installation) and follow the installation instructions.
+Alternatively, visit the [plugin page](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/?tab=installation) and follow the installation instructions.
 
 ### Install using Grafana CLI
 
 Use the Grafana CLI to install the latest version:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 grafana cli plugins install yesoreyeram-infinity-datasource
@@ -44,7 +44,7 @@ grafana cli plugins install yesoreyeram-infinity-datasource
 
 To install a specific version, provide the plugin URL:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 grafana cli --pluginUrl https://github.com/grafana/grafana-infinity-datasource/releases/download/v2.4.0/yesoreyeram-infinity-datasource-2.4.0.zip plugins install yesoreyeram-infinity-datasource
@@ -64,7 +64,7 @@ To install manually:
 
 Use the `GF_INSTALL_PLUGINS` environment variable to install the plugin when starting the container:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 docker run -p 3000:3000 -e "GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource" grafana/grafana-enterprise:latest
@@ -72,7 +72,7 @@ docker run -p 3000:3000 -e "GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource" 
 
 To install a specific version:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 docker run -p 3000:3000 -e "GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource;https://github.com/grafana/grafana-infinity-datasource/releases/download/v2.4.0/yesoreyeram-infinity-datasource-2.4.0.zip" grafana/grafana-enterprise:latest
@@ -82,7 +82,7 @@ docker run -p 3000:3000 -e "GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource;h
 
 If you deploy Grafana using the [Grafana Helm chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana), add the plugin to your `values.yaml`:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -91,7 +91,7 @@ plugins:
 
 To install a specific version:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -118,7 +118,7 @@ Keep the Infinity data source plugin up to date to access new features, performa
 
 #### Grafana CLI
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 grafana cli plugins update yesoreyeram-infinity-datasource
@@ -132,5 +132,5 @@ For containerized deployments, update the version in your configuration and rede
 
 ## Next steps
 
-- [Configure the Infinity data source](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/)
-- [Create your first query](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/)
+- [Configure the Infinity data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/)
+- [Create your first query](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/)

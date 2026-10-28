@@ -16,9 +16,7 @@ Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The runtime powers your agent — state, communication, execution, and operations.
 
-- [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 - [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/)
-- [Communication](https://developers.cloudflare.com/agents/runtime/communication/)
 - [Execution](https://developers.cloudflare.com/agents/runtime/execution/)
 - [Operations](https://developers.cloudflare.com/agents/runtime/operations/)
 

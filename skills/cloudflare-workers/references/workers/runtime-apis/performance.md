@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/performance/og.png
 
 # Performance and timers
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/performance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -48,6 +48,8 @@ By wrapping a subrequest in calls to `performance.now()` or `Date.now()` APIs, y
 
 In local development, however, timers will increment regardless of whether I/O happens or not. This means that if you need to measure timing of a piece of code that is CPU intensive, that does not involve I/O, you can run your Worker locally, via [Wrangler](https://developers.cloudflare.com/workers/wrangler/), which uses the open-source Workers runtime, [workerd ↗︎](https://github.com/cloudflare/workerd) — the same runtime that your Worker runs in when deployed to Cloudflare.
 
+If instead you need to measure the CPU time of a Worker that is already deployed to Cloudflare, use [Profiling in production](https://developers.cloudflare.com/workers/observability/profiling-in-production/) to capture a CPU profile of a deployed Worker or Durable Object, rather than relying on the timer APIs described above.
+
 ### `performance.timeOrigin`
 
 The [`performance.timeOrigin` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timeOrigin) API is a read-only property that returns a baseline timestamp to base other measurements off of.
@@ -63,5 +65,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/performance/#page","headline":"Performance and timers","description":"Measure timing, performance, and timing of subrequests and other operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/performance/og.png?v=6a3c5d8a6a2b52bf","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/performance/#page","headline":"Performance and timers","description":"Measure timing, performance, and timing of subrequests and other operations.","url":"https://developers.cloudflare.com/workers/runtime-apis/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/performance/og.png?v=6a3c5d8a6a2b52bf","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

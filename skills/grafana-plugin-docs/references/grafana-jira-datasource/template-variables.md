@@ -9,7 +9,7 @@ description: "Learn how to use template variables with the Jira data source"
 
 Template variables allow you to create dynamic, reusable dashboards. Instead of hard-coding values like project keys, assignees, or sprint names in your queries, you can use variables that appear as drop-down selectors at the top of your dashboard.
 
-For general information about template variables in Grafana, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For general information about template variables in Grafana, refer to [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Add a query variable
 
@@ -43,7 +43,7 @@ To create a variable of project keys:
 
 Use the variable in panel JQL:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project'
@@ -59,7 +59,7 @@ To list assignees in the selected project:
 
 Use the variable in panel JQL:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND assignee = '$assignee'
@@ -75,7 +75,7 @@ To list sprint names:
 
 Use the variable in panel JQL:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND sprint = '$sprint'
@@ -91,7 +91,7 @@ To list statuses:
 
 Use the variable in panel JQL:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND status = '$status'
@@ -101,7 +101,7 @@ project = '$project' AND status = '$status'
 
 Multi-value variables allow users to select more than one option. In JQL, use the `IN` operator and do **not** wrap the variable in extra quotes. The plugin formats each selected value in single quotes:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 assignee IN ($assignee)
@@ -109,7 +109,7 @@ assignee IN ($assignee)
 
 If a user selects Alice and Bob, that query becomes:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 assignee IN ('Alice','Bob')
@@ -117,7 +117,7 @@ assignee IN ('Alice','Bob')
 
 The same pattern works for project keys:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project IN ($project)
@@ -148,7 +148,7 @@ These are the only Jira-specific macros. There is no `$__timeFilter` helper.
 
 To show issues created within the dashboard time range:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND created >= $__timeFrom AND created <= $__timeTo
@@ -158,7 +158,7 @@ project = '$project' AND created >= $__timeFrom AND created <= $__timeTo
 
 To show issues resolved within the dashboard time range:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND resolved >= $__timeFrom AND resolved <= $__timeTo
@@ -166,7 +166,7 @@ project = '$project' AND resolved >= $__timeFrom AND resolved <= $__timeTo
 
 ### Example: Combine a variable with the time range
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 project = '$project' AND sprint = '$sprint' AND updated >= $__timeFrom AND updated <= $__timeTo
@@ -183,8 +183,8 @@ Expand table
 | `$varname`   | Simple variable reference. Prefer this with `IN` for multi-value variables. |
 | `${varname}` | Variable reference with explicit boundaries                                 |
 
-For more information about variable syntax, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more information about variable syntax, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ## Ad hoc filters
 
-You can also add an **Ad hoc filters** variable and select the Jira data source. Dashboard users then pick field, operator, and value at the top of the dashboard. Grafana appends those filters to Jira queries with `AND`. For setup steps, refer to [Use Ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/query-editor/#use-ad-hoc-filters).
+You can also add an **Ad hoc filters** variable and select the Jira data source. Dashboard users then pick field, operator, and value at the top of the dashboard. Grafana appends those filters to Jira queries with `AND`. For setup steps, refer to [Use Ad hoc filters](https://grafana.com/docs/plugins/grafana-jira-datasource/latest/query-editor/#use-ad-hoc-filters).

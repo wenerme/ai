@@ -45,7 +45,7 @@ Use GraphQL queries to retrieve GitHub data. The GitHub GraphQL endpoint is `htt
 
 **GraphQL query:**
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 {
@@ -83,7 +83,7 @@ Expand table
 
 Query multiple repositories in an organization:
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 {
@@ -119,7 +119,7 @@ Expand table
 
 ### Pull request metrics
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 {
@@ -145,7 +145,7 @@ graphql [Copy code to clipboard] Copy
 
 Replace hardcoded values with Grafana template variables:
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 {
@@ -169,7 +169,7 @@ Create dashboard variables for `GithubOrg` and `GithubRepo` to make the dashboar
 
 Configure GitHub authentication through provisioning:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -199,7 +199,7 @@ Expand table
 
 - Queries are not automatically paginated. For large result sets, use cursor-based pagination in your GraphQL query.
 - GitHub API rate limits apply (5,000 requests per hour for authenticated requests).
-- For comprehensive GitHub analytics with built-in pagination, consider the [GitHub data source](/grafana/plugins/grafana-github-datasource).
+- For comprehensive GitHub analytics with built-in pagination, consider the [GitHub data source](https://grafana.com/grafana/plugins/grafana-github-datasource).
 
 ## Additional resources
 

@@ -13,11 +13,11 @@ The plugin provides an annotation editor with presets for common patterns. You c
 
 The generated SQL is always visible and editable, so you can start from a preset and adjust it, or select **Custom SQL** and write the query yourself. Annotation queries do not use the full ClickHouse query builder available in panels.
 
-For an overview of annotations in Grafana, see [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For an overview of annotations in Grafana, see [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
+- [Configure the ClickHouse data source](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
 - Ensure your ClickHouse user has read access to the tables you use in your annotation query.
 
 ## Create an annotation query
@@ -30,7 +30,7 @@ To add a ClickHouse annotation to a dashboard:
 4. Click **Add annotation query**.
 5. Enter a **Name** for the annotation (for example, “Deployments”, “Errors”).
 6. In the **Data source** drop-down, select your ClickHouse data source.
-7. Choose an **Annotation Type**. Select **Custom SQL** to write your own query, or the **Change Detection** preset to generate one. See [Annotation presets](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/annotations/#annotation-presets) and [Query requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/annotations/#query-requirements).
+7. Choose an **Annotation Type**. Select **Custom SQL** to write your own query, or the **Change Detection** preset to generate one. See [Annotation presets](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations/#annotation-presets) and [Query requirements](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations/#query-requirements).
 8. Use the **Column mappings** section to map your query columns to **Time**, **Text**, and optionally **Tags** (if your column names differ from Grafana’s defaults).
 9. Click **Apply** to save.
 
@@ -53,7 +53,7 @@ Detect when a column value changes over time, such as a deployment (`service.ver
 
 The generated query buckets rows into 30-second intervals, takes the dominant value in each bucket, and uses `lagInFrame()` to compare each bucket with the previous one per group. Taking the dominant value keeps a service that runs two versions at once, during a rolling deploy or canary, from flapping between them. It emits one annotation per transition, so a rollback (`v1.0` to `v1.1` and back to `v1.0`) produces a separate annotation for the return to `v1.0`, which a simple `DISTINCT` on version would hide:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -94,7 +94,7 @@ Expand table
 | **Text**    | Yes      | The annotation text shown when you hover over or click the marker.                                                                                                                     |
 | **Tags**    | Optional | Additional columns become annotation tags. Use them to filter or group annotations.                                                                                                    |
 
-Always restrict the query to the dashboard time range so annotations load quickly. Use the **$\_\_timeFilter(column)** macro in your WHERE clause. If your time column is `DateTime64` and you need sub-second precision, use **$\_\_timeFilter\_ms(column)** instead. See the [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) Macros section for the full list of available macros.
+Always restrict the query to the dashboard time range so annotations load quickly. Use the **$\_\_timeFilter(column)** macro in your WHERE clause. If your time column is `DateTime64` and you need sub-second precision, use **$\_\_timeFilter\_ms(column)** instead. See the [ClickHouse query editor](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) Macros section for the full list of available macros.
 
 ## Filter annotations by a dashboard variable
 
@@ -102,7 +102,7 @@ To scope an annotation to the value currently selected in a dashboard variable, 
 
 For a single-value variable:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 WHERE $__timeFilter(Timestamp)
@@ -111,7 +111,7 @@ WHERE $__timeFilter(Timestamp)
 
 For a multi-value variable with an **All** option, wrap the filter in **$\_\_conditionalAll** so the annotation shows every value when **All** is selected and narrows to the chosen values otherwise:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 WHERE $__timeFilter(Timestamp)
@@ -126,7 +126,7 @@ The following examples show common patterns. Replace the table and column names 
 
 **OpenTelemetry log errors (mark error and fatal log lines from the standard OTel schema):**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -142,7 +142,7 @@ LIMIT 100
 
 **Application events (for example, deployments or status changes):**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -158,7 +158,7 @@ LIMIT 100
 
 **Query log events (for example, long-running or failed queries from ClickHouse system tables):**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -174,7 +174,7 @@ LIMIT 100
 
 **Errors or alerts from a custom table:**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -189,7 +189,7 @@ LIMIT 100
 
 **Multiple tags (filter annotations by environment, service, or region):**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -208,7 +208,7 @@ Map each tag column in the **Column mappings** section. In the dashboard, users 
 
 **Region annotation (maintenance windows or time ranges):**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -226,7 +226,7 @@ Map the `timeEnd` column in the **Column mappings** section. Grafana draws a sha
 
 ## Ad hoc filter interaction
 
-If the dashboard has [ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#ad-hoc-filters) enabled for the ClickHouse data source, those filters are also applied to annotation queries. This means annotation results change as users adjust ad hoc filter values.
+If the dashboard has [ad hoc filters](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#ad-hoc-filters) enabled for the ClickHouse data source, those filters are also applied to annotation queries. This means annotation results change as users adjust ad hoc filter values.
 
 If this is not the desired behavior and you want the annotation to always show all events regardless of ad hoc filters, place the `$__adHocFilters` macro in a `SETTINGS` clause that targets a different table, or use a separate ClickHouse data source instance without ad hoc filters configured for your annotation queries.
 
@@ -240,6 +240,6 @@ If this is not the desired behavior and you want the annotation to always show a
 
 ## Next steps
 
-- [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros such as `$__timeFilter` and building queries.
-- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/): Grafana annotation options (colors, which panels show annotations, filters).
-- [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.
+- [ClickHouse query editor](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros such as `$__timeFilter` and building queries.
+- [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/): Grafana annotation options (colors, which panels show annotations, filters).
+- [Troubleshoot ClickHouse data source issues](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.

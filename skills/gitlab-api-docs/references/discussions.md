@@ -65,6 +65,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `notes[].noteable_type` | string  | The type of the noteable object. |
 | `notes[].project_id`    | integer | The ID of the project. |
 | `notes[].resolvable`    | boolean | If `true`, the note can be resolved. |
+{.sortable}
 
 Example request:
 
@@ -229,6 +230,7 @@ Supported attributes:
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `issue_iid`     | integer           | Yes      | The IID of an issue. |
 | `created_at`    | string            | No       | Date time string, ISO 8601 formatted, such as `2016-03-11T03:45:40Z`. Requires administrator or project/group owner rights. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created note object.
 
@@ -257,6 +259,7 @@ Supported attributes:
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `issue_iid`     | integer           | Yes      | The IID of an issue. |
 | `note_id`       | integer           | Yes      | The ID of a thread note. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the updated note object.
 
@@ -475,6 +478,7 @@ Supported attributes:
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `snippet_id`    | integer           | Yes      | The ID of a snippet. |
 | `created_at`    | string            | No       | Date time string, ISO 8601 formatted, such as `2016-03-11T03:45:40Z`. Requires administrator or project/group owner rights. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created note object.
 
@@ -503,6 +507,7 @@ Supported attributes:
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `note_id`       | integer        | Yes      | The ID of a thread note. |
 | `snippet_id`    | integer        | Yes      | The ID of a snippet. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the updated note object.
 
@@ -738,6 +743,7 @@ Supported attributes:
 | `epic_id`       | integer           | Yes      | The ID of an epic. |
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group. |
 | `created_at`    | string            | No       | Date time string, ISO 8601 formatted, such as `2016-03-11T03:45:40Z`. Requires administrator or project/group owner rights. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created note object.
 
@@ -766,6 +772,7 @@ Supported attributes:
 | `epic_id`       | integer           | Yes      | The ID of an epic. |
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group. |
 | `note_id`       | integer           | Yes      | The ID of a thread note. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the updated note object.
 
@@ -844,6 +851,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `notes[].resolved_at`   | string  | When the note was resolved (ISO 8601 format). |
 | `notes[].position`      | object  | Position information for diff notes. |
 | `notes[].suggestions`   | array   | Array of suggestion objects for the note. |
+{.sortable}
 
 Diff comments also contain position information:
 
@@ -1078,6 +1086,7 @@ Supported attributes for all comments:
 | `position[height]`        | integer           | No                                   | For `image` diff notes, height of the image. |
 | `position[x]`             | float             | No                                   | For `image` diff notes, X coordinate. |
 | `position[y]`             | float             | No                                   | For `image` diff notes, Y coordinate. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created discussion object.
 
@@ -1163,6 +1172,7 @@ Supported attributes for multiline comments only:
 | `position[line_range][start][new_line]`  | integer | No       | New line number of the start line. |
 | `position[line_range][end]`              | hash    | No       | Multiline note ending line. |
 | `position[line_range][start]`            | hash    | No       | Multiline note starting line. |
+{.sortable}
 
 The `old_line` and `new_line` parameters inside the `line_range` attribute display the range for
 multi-line comments. For example, "Comment on lines +296 to +297".
@@ -1250,6 +1260,7 @@ Supported attributes:
 | `id`                | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `merge_request_iid` | integer           | Yes      | The IID of a merge request. |
 | `created_at`        | string            | No       | Date time string, ISO 8601 formatted, such as `2016-03-11T03:45:40Z`. Requires administrator or project/group owner rights. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created note object.
 
@@ -1279,6 +1290,7 @@ Supported attributes:
 | `note_id`           | integer           | Yes      | The ID of a thread note. |
 | `body`              | string            | No       | The content of the note or reply. Exactly one of `body` or `resolved` must be set. |
 | `resolved`          | boolean           | No       | Resolve or reopen the note. Exactly one of `body` or `resolved` must be set. If `resolved` is sent with an empty value, the note is returned unchanged. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the updated note object.
 
@@ -1536,6 +1548,7 @@ Supported attributes:
 | `position[width]`         | integer           | No                               | For `image` diff notes, image width. |
 | `position[x]`             | integer           | No                               | For `image` diff notes, X coordinate. |
 | `position[y]`             | integer           | No                               | For `image` diff notes, Y coordinate. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created discussion object.
 
@@ -1572,6 +1585,7 @@ Supported attributes:
 | `discussion_id` | string            | Yes      | The ID of a thread. |
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `created_at`    | string            | No       | Date time string, ISO 8601 formatted, such as `2016-03-11T03:45:40Z`. Requires administrator or project/group owner rights. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created note object.
 
@@ -1600,6 +1614,7 @@ Supported attributes:
 | `discussion_id` | string            | Yes      | The ID of a thread. |
 | `id`            | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `note_id`       | integer           | Yes      | The ID of a thread note. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the updated note object.
 

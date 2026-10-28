@@ -29,14 +29,13 @@ This table lists the default model for each feature in the Agent Platform.
 | GitLab Duo Agentic Chat | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Code Review Flow[^earlier-code-review] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
-| Business Logic Security Scan[^bl-security-beta] | Claude Sonnet 5 Gemini Enterprise Agent Platform |
+| Business Logic Security Scan | Claude Sonnet 5 Gemini Enterprise Agent Platform |
 | Recommend Reviewers Flow | Claude Haiku 5.5 Gemini Enterprise Agent Platform |
 | GitLab Duo Developer | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | All other agents | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 
 [^earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
     set for GitLab Duo Code Review, the non-agentic version.
-[^bl-security-beta]: [Business Logic Security Scan](../application_security/business_logic_scanning/_index.md) is in [beta](../../policy/development_stages_support.md#beta). It's available only when the `bl_security_analyzer` feature flag is enabled and [experiment and beta features](../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features) are turned on.
 
 ## Supported models
 
@@ -52,6 +51,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model for GitLab Duo Agentic Chat and all other agents on October 7, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) as a supported model for Recommend Reviewers Flow on October 8, 2026.
 - Gemini 4 Argon [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7445) as a supported model for GitLab Duo Agentic Chat and all other agents on October 13, 2026.
+- GPT-6.1 Terra [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7672) as a supported model for GitLab Duo Agentic Chat and all other agents on October 26, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -60,7 +60,7 @@ Model availability can vary by subscription and trial status.
 For information about model availability during trials, see
 [GitLab Duo Agent Platform trials](../../subscriptions/free_trials.md#gitlab-duo-agent-platform-trials).
 
-| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | Business Logic Security Scan[^bl-security-beta] | Recommend Reviewers Flow | All other agents |
+| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | Business Logic Security Scan | Recommend Reviewers Flow | All other agents |
 |-----------------------------|-------------------------|------------------|----------------------|------------------------------|--------------------------|------------------|
 | Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
@@ -99,6 +99,7 @@ For information about model availability during trials, see
 | GPT-6 Sol[^model-subject-limited]      | Yes             | No       | No           | No                   | No               | Yes      |
 | GPT-6 Luna[^model-subject-limited]     | Yes             | No       | No           | No                   | Yes              | Yes      |
 | GPT-6.1 Sol[^model-subject-limited]    | Yes             | No       | No           | No                   | No               | Yes      |
+| GPT-6.1 Terra[^model-subject-limited]  | Yes             | No       | No           | No                   | No               | Yes      |
 | Kimi K3                     | Yes             | No       | No           | No                   | No               | Yes      |
 | MiniMax M3                  | Yes             | No       | No           | No                   | No               | Yes      |
 
@@ -121,7 +122,7 @@ For information about model availability during trials, see
 - [Separate model setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236876) for Code Review Flow introduced in GitLab 19.1, using the **Agentic Code Review** setting.
 - Ability to restrict GitLab Duo Agentic Chat to specific models [added](https://gitlab.com/groups/gitlab-org/-/work_items/22028) in GitLab 19.1.
 - Security Review Flow [added](https://gitlab.com/gitlab-org/gitlab/-/issues/603981) to model selection in GitLab 19.2.
-- Business Logic Security Scan [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257092) to model selection in GitLab 19.5 as an [experiment](../../policy/development_stages_support.md#experiment) with a [flag](../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
+- Business Logic Security Scan [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257092) to model selection in GitLab 19.5.
 
 You can select a model to be the default model for a feature in a top-level group.
 The model that you select applies to that feature for all child groups and projects.

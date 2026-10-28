@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?
 
 # Durable recovery
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Think always wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks. It persists partial output and schedules a continuation or retry.
+Think always wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks. It persists partial output and schedules a continuation or retry.
 
 Note
 
@@ -143,7 +143,7 @@ onChatRecovery(ctx: ChatRecoveryContext): ChatRecoveryOptions {
 
 Use `ctx.createdAt` to skip stale recoveries. For example, if the interrupted turn is older than a few minutes, return `{ continue: false }` so the partial response is preserved without starting an old continuation.
 
-Durable bookkeeping remains active when automatic continuation is not appropriate. Return `{ continue: false }` to prevent another model call. For cancellation, side-effect, and cost controls, refer to [Control automatic continuation](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#control-automatic-continuation).
+Durable bookkeeping remains active when automatic continuation is not appropriate. Return `{ continue: false }` to prevent another model call. For cancellation, side-effect, and cost controls, refer to [Control automatic continuation](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#control-automatic-continuation).
 
 ### Recovery budgets and limits
 
@@ -204,7 +204,7 @@ export class MyAgent extends Think<Env> {
 | `terminalMessage` | generic message | Message shown to the user when recovery is given up on. |
 | `onExhausted` | — | Called once when recovery is given up on. Inspect `ctx.reason`. |
 
-`ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `interrupted_attempts_exceeded` (the turn's attempts kept dying, for example in memory-limit resets), `out_of_memory` (sealed by the alarm memory-limit circuit breaker), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference. Think and `@cloudflare/ai-chat` use the same recovery configuration.
+`ctx.reason` on the exhausted hook is one of: `no_progress_timeout` (stuck), `max_attempts_exceeded` (no-progress alarm loop), `work_budget_exceeded` (runaway), `interrupted_attempts_exceeded` (the turn's attempts kept dying, for example in memory-limit resets), `out_of_memory` (sealed by the alarm memory-limit circuit breaker), `recovery_aborted` (your `shouldKeepRecovering` returned `false`), or `stable_timeout` (extreme churn). Refer to [Stream recovery](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#stream-recovery) for the full shared reference. Think and `@cloudflare/ai-chat` use the same recovery configuration.
 
 ## Repairing interrupted tool calls
 
@@ -369,5 +369,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?v=3f08719de29187b8","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/recovery/og.png?v=3f08719de29187b8","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

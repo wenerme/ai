@@ -7,7 +7,7 @@ description: "Install, upgrade, and verify the Azure Data Explorer data source p
 
 # Install and upgrade the Azure Data Explorer data source plugin
 
-This document covers how to install, upgrade, and verify the Azure Data Explorer data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Azure Data Explorer data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -28,14 +28,14 @@ The Azure Data Explorer data source is a Grafana Enterprise plugin. Before you c
 
 ### Grafana Cloud
 
-1. Sign in to [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+1. Sign in to [Grafana Cloud](https://grafana.com/orgs).
 2. Select your organization and open the **Plugins** tab to verify the plugin is activated.
 3. If it isn’t listed, confirm your Cloud plan is Pro or Advanced, and contact your Grafana account team to add it.
 
 ### Self-managed Grafana Enterprise
 
 1. Confirm your Grafana Enterprise license includes the plugin.
-2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a path to a license file. Refer to [Activate an Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 3. Restart Grafana and confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
 ## Install the plugin
@@ -51,7 +51,7 @@ Choose the installation method that matches your Grafana deployment.
 
 Install the plugin with the Grafana command line tool:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-azure-data-explorer-datasource
@@ -63,7 +63,7 @@ Restart Grafana after installation.
 
 Set the `GF_INSTALL_PLUGINS` environment variable to install the plugin at container startup, and provide the Enterprise license with `GF_ENTERPRISE_LICENSE_TEXT`:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 docker run -d \
@@ -79,7 +79,7 @@ Add the plugin to your Helm values or the `GF_INSTALL_PLUGINS` environment varia
 
 ### Air-gapped (offline) installation
 
-1. On a machine with internet access, download the plugin ZIP from the [plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-azure-data-explorer-datasource/).
+1. On a machine with internet access, download the plugin ZIP from the [plugin catalog](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/).
 2. Transfer the ZIP to the Grafana server and extract it into the Grafana plugins directory, such as `/var/lib/grafana/plugins`.
 3. Set ownership of the extracted files to the Grafana user and restart Grafana.
 4. If Grafana reports an unsigned plugin error, allow the plugin with `allow_loading_unsigned_plugins` in `grafana.ini`.
@@ -99,27 +99,27 @@ To upgrade the plugin on self-managed Grafana:
 
 1. Update to the latest version with the Grafana command line tool:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-azure-data-explorer-datasource
    ```
 2. To install a specific version, append the version to the command:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins install grafana-azure-data-explorer-datasource <version>
    ```
 3. Restart Grafana to load the new version.
 
-To roll back to a previous version on self-managed Grafana, install the specific earlier version and restart Grafana. For upgrade and version troubleshooting, refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+To roll back to a previous version on self-managed Grafana, install the specific earlier version and restart Grafana. For upgrade and version troubleshooting, refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Uninstall the plugin
 
 To remove the plugin on self-managed Grafana, use the Grafana command line tool and restart Grafana:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-azure-data-explorer-datasource
@@ -135,11 +135,11 @@ For Docker and Kubernetes deployments, remove the plugin from the `GF_INSTALL_PL
 
 Expand table
 
-| Issue                                | Solution                                                                                                                                                                                                                                                          |
-|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Plugin doesn’t appear in the catalog | Confirm the plugin is activated for your environment. Refer to [Activate the Enterprise plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/#activate-the-enterprise-plugin). |
-| **Install** button is missing        | Verify you have the `Organization administrator` role and that your license includes the plugin.                                                                                                                                                                  |
-| License key errors                   | Confirm the license text or path is correct and that the license is active under **Administration** &gt; **General** &gt; **Stats and license**.                                                                                                                  |
-| Unsigned plugin error (air-gapped)   | Add the plugin ID to `allow_loading_unsigned_plugins` in `grafana.ini` and restart Grafana.                                                                                                                                                                       |
+| Issue                                | Solution                                                                                                                                                                                                                 |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plugin doesn’t appear in the catalog | Confirm the plugin is activated for your environment. Refer to [Activate the Enterprise plugin](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/#activate-the-enterprise-plugin). |
+| **Install** button is missing        | Verify you have the `Organization administrator` role and that your license includes the plugin.                                                                                                                         |
+| License key errors                   | Confirm the license text or path is correct and that the license is active under **Administration** &gt; **General** &gt; **Stats and license**.                                                                         |
+| Unsigned plugin error (air-gapped)   | Add the plugin ID to `allow_loading_unsigned_plugins` in `grafana.ini` and restart Grafana.                                                                                                                              |
 
-For more solutions, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/).
+For more solutions, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/).

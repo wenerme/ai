@@ -60,4 +60,4 @@ Open the plugin and check the two halves independently:
 
 A data source that can’t be read doesn’t hide the others. The **Rules** page shows **Cannot load rules for this data source** next to the failing source and still lists everything that loaded.
 
-If either half is empty, refer to [Troubleshooting](/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/).
+If either half is empty, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/).

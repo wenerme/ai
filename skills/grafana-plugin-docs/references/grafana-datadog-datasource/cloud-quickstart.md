@@ -13,19 +13,19 @@ This guide walks you through connecting Datadog to Grafana Cloud and visualizing
 
 Before you begin, ensure you have:
 
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan, or a self-managed Grafana Enterprise instance with an activated license.
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan, or a self-managed Grafana Enterprise instance with an activated license.
 - The **Admin** role in Grafana, which is required to add a data source.
-- A Datadog API key and application key with permission to run the queries you need. To create them, refer to [Get an API key and application key from Datadog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
+- A Datadog API key and application key with permission to run the queries you need. To create them, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
 - Your Datadog region, such as **US1 / Default** or **EU**. The region determines the API endpoint that the data source connects to.
 
 ## Step 1: Install the plugin
 
-1. Verify the Datadog plugin is enabled for your organization at the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
+1. Verify the Datadog plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs). If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
 2. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 3. Search for **Datadog**.
 4. Click **Install**.
 
-The plugin is ready to use immediately after installation. For detailed installation instructions or troubleshooting, refer to [Install the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/install/).
+The plugin is ready to use immediately after installation. For detailed installation instructions or troubleshooting, refer to [Install the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/install/).
 
 ## Step 2: Configure the data source
 
@@ -37,11 +37,11 @@ The plugin is ready to use immediately after installation. For detailed installa
 6. Enter your Datadog **API key** and **Application key**.
 7. Click **Save &amp; test**.
 
-On success, you see a green message confirming that Grafana connected to Datadog. If the connection fails, refer to [Troubleshoot the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/).
+On success, you see a green message confirming that Grafana connected to Datadog. If the connection fails, refer to [Troubleshoot the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/).
 
 > Note
 >
-> **Save &amp; test** verifies the API key and basic metric access. It doesn’t verify the application key permissions for every query type. For the permissions each query type requires, refer to [API key and application key permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/#api-key-and-application-key-permissions).
+> **Save &amp; test** verifies the API key and basic metric access. It doesn’t verify the application key permissions for every query type. For the permissions each query type requires, refer to [API key and application key permissions](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#api-key-and-application-key-permissions).
 
 ## Step 3: Write your first query
 
@@ -52,7 +52,7 @@ On success, you see a green message confirming that Grafana connected to Datadog
 5. Select an **Aggregate** function, such as `avg`.
 6. Click **Run query**. You should see a time-series graph showing your Datadog metric.
 
-To write the query as a Datadog expression instead, change the query type to **Raw query** and enter an expression, such as `avg:system.cpu.user{*}`. For all query types and options, refer to [Datadog query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/).
+To write the query as a Datadog expression instead, change the query type to **Raw query** and enter an expression, such as `avg:system.cpu.user{*}`. For all query types and options, refer to [Datadog query editor](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/).
 
 ## Step 4: Build a dashboard
 
@@ -75,12 +75,12 @@ Expand table
 | Disk in use            | `avg:system.disk.in_use{*} by {host}`    |
 | Network bytes received | `sum:system.net.bytes_rcvd{*} by {host}` |
 
-Alternatively, import one of the pre-built dashboards that ship with the plugin, such as **System metrics** or **Docker**. For instructions, refer to [Import a dashboard for Datadog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/#import-a-dashboard-for-datadog).
+Alternatively, import one of the pre-built dashboards that ship with the plugin, such as **System metrics** or **Docker**. For instructions, refer to [Import a dashboard for Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#import-a-dashboard-for-datadog).
 
 ## Next steps
 
-- [Datadog query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/): Query types, aggregation, and advanced options.
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/annotations/): Overlay Datadog events on your panels.
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/alerting/): Monitor your Datadog data with Grafana-managed alert rules.
-- [Configure the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/): Advanced settings, authentication, and provisioning.
+- [Datadog query editor](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/): Query types, aggregation, and advanced options.
+- [Template variables](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/template-variables/): Create dynamic dashboards with drop-down filters.
+- [Annotations](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/annotations/): Overlay Datadog events on your panels.
+- [Alerting](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting/): Monitor your Datadog data with Grafana-managed alert rules.
+- [Configure the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/): Advanced settings, authentication, and provisioning.

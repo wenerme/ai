@@ -7,18 +7,18 @@ description: "Provides a guided tour of the features in Grafana Logs Drilldown."
 
 # Get started with Grafana Logs Drilldown
 
-The best way to see what Grafana Logs Drilldown can do for you is to use it to explore your own log data. If you have a Grafana Cloud account, you can access Logs Drilldown by selecting **Drilldown** &gt; **Logs**, or you can [install Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/) in your own Grafana instance.
+The best way to see what Grafana Logs Drilldown can do for you is to use it to explore your own log data. If you have a Grafana Cloud account, you can access Logs Drilldown by selecting **Drilldown** &gt; **Logs**, or you can [install Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/) in your own Grafana instance.
 
 ## Guided tour
 
 While you are browsing your log data in Logs Drilldown, watch for any unexpected spikes in your logs. Or perhaps one of your services is down and has stopped logging. Maybe you’re seeing an increase in errors after a recent release.
 
-[Overview page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-overview.png)
+[Overview page](https://grafana.com/media/docs/explore-logs/v2/logs-drilldown-overview.png)
 
 To take a tour of Logs Drilldown, follow these steps:
 
 01. Open your Grafana stack in a web browser.
-02. From the Grafana main menu, select **Drilldown** &gt; **Logs**. This opens the **Overview page** showing time series and log visualizations for all services in your selected Loki instance. ([No services?](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-services))
+02. From the Grafana main menu, select **Drilldown** &gt; **Logs**. This opens the **Overview page** showing time series and log visualizations for all services in your selected Loki instance. ([No services?](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-services))
 03. If you have multiple Loki data sources, you can change your **Data source** from the menu in the top toolbar. Logs Drilldown only supports Loki data sources.
 04. Select a recent time range. You can modify your time range in two ways:
 
@@ -36,23 +36,23 @@ To take a tour of Logs Drilldown, follow these steps:
 
     > Tip
     >
-    > Administrators can configure default fields to display in log visualizations. Refer to [Configure Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/configure/) for details.
+    > Administrators can configure default fields to display in log visualizations. Refer to [Configure Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/configure/) for details.
 
     > Tip
     >
-    > Administrators can configure which labels appear by default on the landing page. Refer to [Configure Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/configure/) for details.
+    > Administrators can configure which labels appear by default on the landing page. Refer to [Configure Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/configure/) for details.
 08. To explore logs for a service, click **Show logs** on the service panel. Grafana opens the service details page on the **Logs** tab.
 09. On the Logs tab, you can:
 
-    - Use the log controls (which can be expanded using the expand/collapse button on the right) to adjust sort order, filter by string or level, change display options, and more. For details, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/).
+    - Use the log controls (which can be expanded using the expand/collapse button on the right) to adjust sort order, filter by string or level, change display options, and more. For details, refer to [View logs](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/).
     - Click individual log lines to view detailed information including fields and links in the Log Details panel.
     - Scroll to the bottom to load more log entries with infinite scroll.
     - Use line wrapping controls to adapt the log display for easier reading, choosing between disabled, enabled, and enabled with JSON formatting.
-10. On the service details page, click the **Labels** tab to see visualizations of log volume for each label. ([No labels?](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-labels))
-11. On the **Labels** tab, to select a label to see the log volume for each value of that label, click the **Select** button. Logs Drilldown shows you the volume of logs with specific labels and fields. Refer to [Labels and Fields](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields/).
+10. On the service details page, click the **Labels** tab to see visualizations of log volume for each label. ([No labels?](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-labels))
+11. On the **Labels** tab, to select a label to see the log volume for each value of that label, click the **Select** button. Logs Drilldown shows you the volume of logs with specific labels and fields. Refer to [Labels and Fields](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields/).
 12. Select the **Fields** tab to see visualizations of log volume for each field. To drill down into details the same way as labels, click **Select** for a field.
-13. Click the **Patterns** tab to see log volume for each automatically detected pattern. Log patterns let you work with groups of similar log lines. You can hide log patterns that are noisy, or focus only on the patterns that are most useful. Refer to [Log Patterns](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/patterns/).
-14. Click the **Logs** tab. Click the menu icon (three vertical dots) on either panel to open the panel menu, then select **Explore**. Grafana displays the Explore page, with a query based on the selections you made in Logs Drilldown. The panel menu also includes options such as **Add to Dashboard** and **Create alert**. For details, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#panel-menu).
+13. Click the **Patterns** tab to see log volume for each automatically detected pattern. Log patterns let you work with groups of similar log lines. You can hide log patterns that are noisy, or focus only on the patterns that are most useful. Refer to [Log Patterns](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/patterns/).
+14. Click the **Logs** tab. Click the menu icon (three vertical dots) on either panel to open the panel menu, then select **Explore**. Grafana displays the Explore page, with a query based on the selections you made in Logs Drilldown. The panel menu also includes options such as **Add to Dashboard** and **Create alert**. For details, refer to [View logs](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#panel-menu).
 
 ## Further resources
 

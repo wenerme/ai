@@ -202,7 +202,7 @@ By default, the GitLab package registry either allows or prevents duplicates bas
 | [Helm](../helm_repository/_index.md)                   | Yes                  |
 | [Debian](../debian_repository/_index.md)               | Yes                  |
 | [Go](../go_proxy/_index.md)                            | No                   |
-| [Ruby gems](../rubygems_registry/_index.md)            | Yes                  |
+| [Ruby gems](../rubygems_registry/_index.md)            | No (configurable)    |
 
 ## Authenticate with the registry
 

@@ -161,7 +161,7 @@ Syntax errors prevent the query from executing.
 
 Example of correct filter syntax:
 
-signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+signalflow ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 data('cpu.utilization', filter=filter('host', 'server1')).publish()
@@ -252,7 +252,7 @@ When an alerts annotation query returns no results, no alerts appear on your das
 2. Expand the time range to include periods when alerts were triggered.
 3. Verify the query syntax:
 
-signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+signalflow ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 alerts(detector_name='YourDetectorName').publish()
@@ -274,7 +274,7 @@ When an events annotation query returns no results, no events appear on your das
 2. Expand the time range to include periods when events occurred.
 3. Verify the query syntax:
 
-signalflow ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+signalflow ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```signalflow
 events(eventType='YourEventType').publish()
@@ -286,7 +286,7 @@ If you continue to experience issues:
 
 - Check the [Grafana community forums](https://community.grafana.com/) for similar issues and solutions.
 - Review the [Splunk Infrastructure Monitoring documentation](https://help.splunk.com/en/splunk-observability-cloud/monitor-infrastructure/key-concepts) for API-specific issues.
-- Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you have a Grafana Enterprise license or a Grafana Cloud Pro or Advanced plan.
+- Contact [Grafana Support](https://grafana.com/support/) if you have a Grafana Enterprise license or a Grafana Cloud Pro or Advanced plan.
 
 When you report issues, include the following information:
 

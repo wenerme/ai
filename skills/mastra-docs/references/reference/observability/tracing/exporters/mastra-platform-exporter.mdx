@@ -13,6 +13,10 @@ Sends tracing spans, logs, metrics, scores, and feedback to the Mastra platform 
 
 > **note**: `MastraPlatformExporter` was previously called `CloudExporter`. The original `CloudExporter` class is still exported from `@mastra/observability` so existing imports keep working, but it's deprecated and will be removed in a future major version. New code should use `MastraPlatformExporter`.
 
+## Span previews
+
+`MastraPlatformExporter` automatically generates short, readable `inputPreview`, `outputPreview`, and `errorPreview` summaries based on the span type. Each preview contains up to 100 characters plus an ellipsis when truncated. Full payloads remain available separately.
+
 ## Constructor
 
 ```typescript oxfmt:false

@@ -11,13 +11,13 @@ Streaming allows real-time data updates using streaming data sources and Grafana
 
 ## Grafana Live
 
-Grafana Live is a real-time messaging engine introduced in Grafana v8.0. With [Grafana Live](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/set-up-grafana-live/), you can push event data to the application frontend upon an event occurrence.
+Grafana Live is a real-time messaging engine introduced in Grafana v8.0. With [Grafana Live](https://grafana.com/docs/grafana/latest/setup-grafana/set-up-grafana-live/), you can push event data to the application frontend upon an event occurrence.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/live.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/live.png)
 
 ### Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const series = context.panel.data.series.map((s) => {
@@ -70,15 +70,15 @@ return {
 
 ## WebSocket API
 
-To stream real-time data, the [WebSocket Data Source for Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/golioth-websocket-datasource/) was used.
+To stream real-time data, the [WebSocket Data Source for Grafana](https://grafana.com/grafana/plugins/golioth-websocket-datasource/) was used.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/websocket.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/websocket.png)
 
 ### Server
 
 Example of Node.js WebSocket Server implementation.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const ws = require("ws");
@@ -121,7 +121,7 @@ server.on("connection", (socket) => {
 
 WebSocket API Data Source can be provisioned using configuration files or in Grafana UI.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -140,7 +140,7 @@ datasources:
 
 ### Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const values = {};
@@ -179,11 +179,11 @@ return {
 
 Another example of displaying Grafana live data using Gauge.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/gauge.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/gauge.png)
 
 ### Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let sData = [];

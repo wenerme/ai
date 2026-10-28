@@ -7,11 +7,11 @@ description: "Use template variables to build dynamic dashboards with the Wavefr
 
 # Wavefront template variables
 
-Use template variables to build dynamic, reusable dashboards with the Wavefront data source. For general information about template variables in Grafana, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+Use template variables to build dynamic, reusable dashboards with the Wavefront data source. For general information about template variables in Grafana, refer to [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/).
+- [Configure the Wavefront data source](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/configure/).
 - Create a dashboard where you want to use variables.
 
 ## Supported variable types
@@ -28,7 +28,7 @@ Expand table
 | Interval       | Yes       |
 | Ad hoc filters | Yes       |
 
-For ad hoc filter setup, refer to [Ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/#ad-hoc-filters) on the query editor page.
+For ad hoc filter setup, refer to [Ad hoc filters](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/query-editor/#ad-hoc-filters) on the query editor page.
 
 ## Query variable types
 
@@ -60,7 +60,7 @@ The field’s placeholder, `~sample.cpu.*`, is a safe default because it targets
 
 You can reference other dashboard variables in the **Query** and **Tag** fields. The data source interpolates them before calling the Wavefront API, which makes it easy to build dependent variables:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 ~kubernetes.$cluster.pod.cpu.usage_rate
@@ -146,7 +146,7 @@ List the services reporting HTTP request metrics:
 
 ## Use variables in queries
 
-Reference variables in queries using `$variable` or `${variable}` syntax. For details, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+Reference variables in queries using `$variable` or `${variable}` syntax. For details, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ### In Query Builder
 
@@ -160,13 +160,13 @@ Interpolate variables directly into WQL or PromQL expressions.
 
 WQL:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 avg(ts("sample.cpu.loadavg.1m", env="$environment"))
 ```
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 mavg(5m, sum(rate(ts("http.requests.total", service="$service"))))
@@ -174,7 +174,7 @@ mavg(5m, sum(rate(ts("http.requests.total", service="$service"))))
 
 PromQL:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 rate(http_requests_total{env="$environment"}[5m])
@@ -187,7 +187,7 @@ The Wavefront data source handles multi-value and **Include All** variables auto
 - **In Query Builder:** When a filter value is `$variable` and the variable has multiple values selected, the data source expands it into `(v1 or v2 or v3)` and sends the resulting WQL to Wavefront. Use multi-value variables in filters without additional configuration.
 - **In Raw Query (WQL):** When a query contains `key=$variable` and the variable has multiple values selected, the data source expands the variable value into `(v1 or v2 or v3)`. For example, with a multi-value variable `$namespace`:
 
-  SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sql
   avg(ts("kubernetes.pod.cpu.usage_rate", cluster="grafana" and namespace_name=$namespace))
@@ -195,14 +195,14 @@ The Wavefront data source handles multi-value and **Include All** variables auto
 
   expands to:
 
-  SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sql
   avg(ts("kubernetes.pod.cpu.usage_rate", cluster="grafana" and namespace_name=(prod or stage)))
   ```
-- **In Raw Query (PromQL):** PromQL uses regular-expression matching. Use the `regex` [format option](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) to expand a multi-value variable into a regex:
+- **In Raw Query (PromQL):** PromQL uses regular-expression matching. Use the `regex` [format option](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) to expand a multi-value variable into a regex:
 
-  SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sql
   rate(http_requests_total{service=~"${service:regex}"}[5m])
@@ -212,6 +212,6 @@ To inspect the final expanded query, open the panel’s query inspector and revi
 
 ## Next steps
 
-- [Build queries with the Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
-- [Create alert rules from Wavefront queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/).
-- [Annotate panels with Wavefront events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/).
+- [Build queries with the Wavefront query editor](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
+- [Create alert rules from Wavefront queries](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/alerting/).
+- [Annotate panels with Wavefront events](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/annotations/).

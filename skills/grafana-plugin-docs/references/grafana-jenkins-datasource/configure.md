@@ -7,14 +7,14 @@ description: "Configure the Jenkins data source in Grafana"
 
 # Configure the Jenkins data source
 
-This document explains how to configure the Jenkins data source. For query instructions, refer to the [Jenkins query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/query-editor/).
+This document explains how to configure the Jenkins data source. For query instructions, refer to the [Jenkins query editor](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/query-editor/).
 
 ## Before you begin
 
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** The `Organization administrator` role.
-- **Installed plugin:** The Jenkins data source plugin is installed. Refer to [Install and upgrade the Jenkins data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/install/).
+- **Installed plugin:** The Jenkins data source plugin is installed. Refer to [Install and upgrade the Jenkins data source plugin](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install/).
 - **Jenkins prerequisites:** A Jenkins instance with the [Remote Access API](https://www.jenkins.io/doc/book/using/remote-access-api/) enabled, and credentials if the instance requires authentication.
 
 ## Add the data source
@@ -53,7 +53,7 @@ To read more about the Jenkins Remote Access API, refer to the [Jenkins document
 
 ## Private data source connect
 
-The Jenkins data source supports [Private Data Source Connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query a Jenkins instance on a private network.
+The Jenkins data source supports [Private Data Source Connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/), which lets Grafana Cloud query a Jenkins instance on a private network.
 
 When the Secure Socks Proxy feature is enabled in your Grafana environment, an **Enable Secure Socks Proxy** toggle appears in the data source configuration. Enable it to route the data source connection through the proxy to your private network.
 
@@ -65,11 +65,11 @@ To make Jenkins the default data source for new panels and queries, click **Make
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Here’s a provisioning example for this data source:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -86,7 +86,7 @@ datasources:
 
 You can also provision the data source with [Terraform](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the `grafana_data_source` resource:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "jenkins" {
@@ -108,5 +108,5 @@ The Jenkins data source reads the instance URL from `jsonData.url`, so set the U
 
 ## Next steps
 
-- [Use the Jenkins query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
-- [Troubleshoot the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
+- [Use the Jenkins query editor](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
+- [Troubleshoot the Jenkins data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)

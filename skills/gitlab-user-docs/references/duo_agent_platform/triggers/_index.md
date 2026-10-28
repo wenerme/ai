@@ -226,7 +226,7 @@ The following table shows example instructions.
 
 ## Change the work item when the session finishes
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633112) in GitLab 19.6 [with flags](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633112) in GitLab 19.6 [with flags](../../../administration/feature_flags/_index.md) named `dap_software_factory` and `ai_flow_trigger_chaining`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by feature flags.

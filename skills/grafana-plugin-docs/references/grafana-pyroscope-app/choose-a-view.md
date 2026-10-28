@@ -9,9 +9,9 @@ description: "Choose a view that best suits what you need to investigate."
 
 The available views in Grafana Profiles Drilldown correspond to how you move through your data: from broader to more specific. For example, you can start with **All services** and then move to **Profile types** or **Labels** for more specific views into your data.
 
-This matches the hierarchy of the [profiling data](../concepts/).
+This matches the hierarchy of the [profiling data](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/).
 
-After you choose a view, you can [Investigate trends and spikes](../investigate/).
+After you choose a view, you can [Investigate trends and spikes](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/).
 
 ## Select a view
 
@@ -45,7 +45,7 @@ Flame graphSingle service flame graph
 - Analyze the flame graph of a particular service, profile type, and label selection.
 - Use tools like **Analyze with Assistant** (Grafana Cloud) or **Explain Flame Graph** (Grafana open source), GitHub code view, and function details to get deeper insights into performance.
 - Enable **Exemplars** to see individual profile markers on the timeseries and click one to inspect a single individual profile.
-- Use the [Span heatmap](#span-heatmap-profiles-to-traces) to investigate resource usage per span and open associated traces.
+- Use the [Span heatmap](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view/#span-heatmap-profiles-to-traces) to investigate resource usage per span and open associated traces.
 
 Diff flame graphCompare the differences between two flame graphs
 
@@ -75,9 +75,9 @@ The Labels view lets you navigate and analyze performance data through labels. T
 
 The Flame graph view visualizes profiling data of a single service in a flame graph format, helping you identify resource-intensive functions.
 
-On views with a flame graph, you can use **Analyze with Assistant** (Grafana Cloud) or **Explain Flame Graph** (Grafana open source) to get an AI-generated analysis of bottlenecks, likely root causes, and recommended fixes. For more information, refer to [Flame graph AI](../investigate/flame-graph-ai/).
+On views with a flame graph, you can use **Analyze with Assistant** (Grafana Cloud) or **Explain Flame Graph** (Grafana open source) to get an AI-generated analysis of bottlenecks, likely root causes, and recommended fixes. For more information, refer to [Flame graph AI](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/flame-graph-ai/).
 
-You can also use line-level insights from the [GitHub integration](/docs/grafana-cloud/monitor-applications/profiles/pyroscope-github-integration/).
+You can also use line-level insights from the [GitHub integration](https://grafana.com/docs/grafana-cloud/monitor-applications/profiles/pyroscope-github-integration/).
 
 In this view, you can also:
 
@@ -102,7 +102,7 @@ Use the span heatmap to spot changes in resource usage across trace spans and fi
 
 The span heatmap is a visualization within the **Flame graph** view, not a separate **Exploration** tab. It requires span profiles in Pyroscope; viewing associated traces also requires matching trace data in Tempo.
 
-For the complete walkthrough and troubleshooting guidance, refer to [Move from profiles to traces](../investigate/#move-from-profiles-to-traces).
+For the complete walkthrough and troubleshooting guidance, refer to [Move from profiles to traces](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/#move-from-profiles-to-traces).
 
 ### Diff flame graph
 
@@ -116,7 +116,7 @@ To configure comparisons more quickly, you can use:
 - **Comparison presets** to apply saved or predefined comparisons.
 - **Sync time ranges** to keep baseline and comparison windows aligned.
 
-To export a diff flame graph, refer to [Export profile data](#export-profile-data).
+To export a diff flame graph, refer to [Export profile data](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view/#export-profile-data).
 
 ### Favorites
 

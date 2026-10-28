@@ -16,6 +16,7 @@ Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 - [Pricing](https://developers.cloudflare.com/workflows/reference/pricing/)
 - [Limits](https://developers.cloudflare.com/workflows/reference/limits/)
+- [Data location](https://developers.cloudflare.com/workflows/reference/data-location/)
 - [Event subscriptions](https://developers.cloudflare.com/workflows/reference/event-subscriptions/)
 - [Glossary](https://developers.cloudflare.com/workflows/reference/glossary/)
 - [Wrangler commands](https://developers.cloudflare.com/workflows/reference/wrangler-commands/)

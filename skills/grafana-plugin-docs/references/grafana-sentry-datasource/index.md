@@ -13,7 +13,7 @@ The Sentry data source plugin lets you query and visualize [Sentry](https://sent
 
 - Grafana version 10.4.0 or later.
 - A Sentry account (hosted at [sentry.io](https://sentry.io/) or self-hosted).
-- A Sentry internal integration authentication token with **Read** access to **Project**, **Issue &amp; Event**, and **Organization**. Refer to [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/) for setup instructions.
+- A Sentry internal integration authentication token with **Read** access to **Project**, **Issue &amp; Event**, and **Organization**. Refer to [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/) for setup instructions.
 
 ## Supported features
 
@@ -27,7 +27,7 @@ Expand table
 
 ## Supported query types
 
-The Sentry data source supports the following query types. For detailed field descriptions and examples, refer to the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/query-editor/) documentation.
+The Sentry data source supports the following query types. For detailed field descriptions and examples, refer to the [query editor](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/query-editor/) documentation.
 
 Expand table
 
@@ -45,22 +45,22 @@ Expand table
 
 The following documents help you set up and use the Sentry data source:
 
-- [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/)
-- [Sentry query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/troubleshooting/)
+- [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/)
+- [Sentry query editor](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Sentry data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Create [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/template-variables/) for dynamic, reusable dashboards.
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/annotations/) to overlay Sentry issues on graphs.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/alerting/) rules based on Sentry data.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query Sentry data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Create [Template variables](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/template-variables/) for dynamic, reusable dashboards.
+- Add [Annotations](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/annotations/) to overlay Sentry issues on graphs.
+- Set up [Alerting](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/alerting/) rules based on Sentry data.
 
 ## Plugin updates
 

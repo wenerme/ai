@@ -9,7 +9,7 @@ description: "Troubleshoot common issues with the Amazon Redshift data source in
 
 This document provides solutions to common issues you might encounter when installing, configuring, or using the Amazon Redshift data source. Sections are organized in the order you’re likely to encounter issues, from installation through querying and alerting.
 
-For configuration instructions, refer to [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/).
+For configuration instructions, refer to [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/).
 
 ## Plugin installation errors
 
@@ -25,10 +25,10 @@ These errors occur when installing or updating the Redshift data source plugin.
 **Solutions:**
 
 1. Verify that you downloaded the correct archive for your operating system and architecture. The plugin is distributed as platform-specific archives (for example, `grafana-redshift-datasource-<version>.linux_amd64.zip`). A Linux archive won’t work on Windows or macOS.
-2. Download the plugin directly from the [Grafana plugin catalog](/grafana/plugins/grafana-redshift-datasource/) to ensure you have the correct file.
+2. Download the plugin directly from the [Grafana plugin catalog](https://grafana.com/grafana/plugins/grafana-redshift-datasource/) to ensure you have the correct file.
 3. For self-managed Grafana, use the Grafana CLI to install the plugin instead of downloading manually:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins install grafana-redshift-datasource
@@ -46,7 +46,7 @@ These errors occur when installing or updating the Redshift data source plugin.
 1. Update the plugin to the latest version. Older plugin versions may not support all authentication methods (such as **AWS SDK Default**).
 2. For self-managed Grafana, update using the CLI:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-redshift-datasource
@@ -66,14 +66,14 @@ These errors occur when installing or updating the Redshift data source plugin.
 2. Verify plugin compatibility with your Grafana version. The Redshift data source requires **Grafana 10.4.0 or later**.
 3. Check the Grafana server logs for detailed error messages:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grep "redshift" /var/log/grafana/grafana.log
    ```
 4. If the error persists after updating, remove and reinstall the plugin:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins remove grafana-redshift-datasource
@@ -97,13 +97,13 @@ These errors occur when AWS credentials are invalid, missing, or don’t have th
 
 Expand table
 
-| Cause                         | Solution                                                                                                                                                              |
-|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing IAM permissions       | Verify that your IAM identity has all the permissions listed in the [IAM policies](/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section. |
-| Invalid credentials           | Verify credentials in the AWS console. Regenerate the access key and secret key if necessary.                                                                         |
-| Expired credentials           | Create new credentials and update the data source configuration.                                                                                                      |
-| Wrong region                  | Verify that the **Default Region** setting matches the region where your Redshift cluster or workgroup is deployed.                                                   |
-| Wrong authentication provider | Ensure the selected **Authentication Provider** matches how your credentials are configured (SDK default, credentials file, or access and secret key).                |
+| Cause                         | Solution                                                                                                                                                                                 |
+|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing IAM permissions       | Verify that your IAM identity has all the permissions listed in the [IAM policies](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section. |
+| Invalid credentials           | Verify credentials in the AWS console. Regenerate the access key and secret key if necessary.                                                                                            |
+| Expired credentials           | Create new credentials and update the data source configuration.                                                                                                                         |
+| Wrong region                  | Verify that the **Default Region** setting matches the region where your Redshift cluster or workgroup is deployed.                                                                      |
+| Wrong authentication provider | Ensure the selected **Authentication Provider** matches how your credentials are configured (SDK default, credentials file, or access and secret key).                                   |
 
 ### “GetClusterCredentials” or “GetCredentials” errors
 
@@ -133,7 +133,7 @@ These errors occur when using the **Assume Role ARN** option to authenticate wit
 
 1. Verify that the IAM role’s trust policy allows the Grafana identity to assume the role. For Grafana Cloud, the trust policy must include the Grafana Cloud AWS account ID and your **External ID**:
 
-   JSON [Copy code to clipboard] Copy
+   JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    {
@@ -170,7 +170,7 @@ These errors occur when using the **Assume Role ARN** option to authenticate wit
 1. If you haven’t changed any credentials or configuration, this error can be a transient issue. Wait a few minutes and try again.
 2. Verify that your access key and secret key are valid in the AWS console. Regenerate them if necessary.
 3. If using Assume Role, confirm the trust policy and External ID are configured correctly.
-4. For Grafana Cloud, if the issue persists after verifying credentials, contact [Grafana Support](/support/) as it may require a service-side restart.
+4. For Grafana Cloud, if the issue persists after verifying credentials, contact [Grafana Support](https://grafana.com/support/) as it may require a service-side restart.
 
 #### Intermittent IAM token expiry
 
@@ -183,7 +183,7 @@ These errors occur when using the **Assume Role ARN** option to authenticate wit
 
 1. This can occur when cached IAM tokens expire and aren’t refreshed properly. Re-save the data source configuration by clicking **Save &amp; test** to force a credential refresh.
 2. If the issue recurs frequently, consider switching from Assume Role to direct **Access &amp; secret key** authentication as a workaround.
-3. Contact [Grafana Support](/support/) if you have a support contract, as this may indicate a connection pool issue requiring engineering attention.
+3. Contact [Grafana Support](https://grafana.com/support/) if you have a support contract, as this may indicate a connection pool issue requiring engineering attention.
 
 ## Connection errors
 
@@ -202,7 +202,7 @@ These errors occur when Grafana can’t reach your Redshift environment.
 1. Verify network connectivity from the Grafana server to the Redshift Data API endpoints.
 2. Check that firewall rules allow outbound HTTPS (port 443) to `redshift-data.<region>.amazonaws.com`.
 3. If your Redshift cluster is in a private VPC, ensure the Grafana server has network access through VPC peering, a VPN, or AWS PrivateLink.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Custom endpoint issues
 
@@ -251,7 +251,7 @@ Expand table
 1. Check the VPC endpoint policy for your Redshift Data API endpoint. Restrictive policies may block required API actions like `redshift-data:ExecuteStatement` or `redshift-data:ListSchemas`.
 2. Update the endpoint policy to allow all actions needed by the data source, or use a permissive policy during initial testing:
 
-   JSON [Copy code to clipboard] Copy
+   JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    {
@@ -265,7 +265,7 @@ Expand table
      ]
    }
    ```
-3. After confirming connectivity, restrict the policy to only the actions listed in the [IAM policies](/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section.
+3. After confirming connectivity, restrict the policy to only the actions listed in the [IAM policies](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section.
 
 #### FedRAMP and restricted environments
 
@@ -274,11 +274,11 @@ In FedRAMP or other restricted AWS environments, additional constraints may appl
 1. Verify that the Grafana Cloud AWS account is allowlisted in your organization’s service control policies (SCPs).
 2. Ensure VPC endpoint policies permit traffic from the Grafana identity.
 3. Confirm that the AWS region you’re using is enabled in your account. Opt-in regions (such as `me-central-1`) require explicit enablement and may fail STS requests if not activated.
-4. For Grafana Cloud in restricted environments, contact [Grafana Support](/support/) for guidance on network configuration.
+4. For Grafana Cloud in restricted environments, contact [Grafana Support](https://grafana.com/support/) for guidance on network configuration.
 
 ### Troubleshoot PDC connections with Redshift
 
-These issues are specific to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) deployments where Grafana Cloud connects to a Redshift cluster in a private VPC. The PDC agent requires outbound access on both **port 443** (HTTPS to the Redshift Data API) and **port 22** (SSH to Grafana Cloud endpoints).
+These issues are specific to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) deployments where Grafana Cloud connects to a Redshift cluster in a private VPC. The PDC agent requires outbound access on both **port 443** (HTTPS to the Redshift Data API) and **port 22** (SSH to Grafana Cloud endpoints).
 
 #### “Host unreachable” through PDC
 
@@ -291,7 +291,7 @@ These issues are specific to [Private data source connect (PDC)](/docs/grafana-c
 
 1. Verify that the PDC agent host can reach the Redshift Data API endpoint. Run the following from the agent host:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    curl -v https://redshift-data.<region>.amazonaws.com
@@ -388,12 +388,12 @@ These errors occur when running queries against Redshift.
 
 Expand table
 
-| Cause                           | Solution                                                                                                                                           |
-|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| Time range doesn’t contain data | Expand the dashboard time range or verify that data exists for the selected period in Redshift.                                                    |
-| Wrong schema, table, or column  | Verify the resource selectors or SQL references match actual objects in your Redshift database.                                                    |
-| Permissions issue               | Verify that the database user has `SELECT` permissions on the referenced tables.                                                                   |
-| Macro expansion issue           | Use the [Query Inspector](/docs/plugins/grafana-redshift-datasource/latest/query-editor/#inspect-the-query) to check the fully rendered SQL query. |
+| Cause                           | Solution                                                                                                                                                              |
+|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Time range doesn’t contain data | Expand the dashboard time range or verify that data exists for the selected period in Redshift.                                                                       |
+| Wrong schema, table, or column  | Verify the resource selectors or SQL references match actual objects in your Redshift database.                                                                       |
+| Permissions issue               | Verify that the database user has `SELECT` permissions on the referenced tables.                                                                                      |
+| Macro expansion issue           | Use the [Query Inspector](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/query-editor/#inspect-the-query) to check the fully rendered SQL query. |
 
 ### Syntax errors
 
@@ -403,7 +403,7 @@ Expand table
 
 **Solutions:**
 
-1. Use the [Query Inspector](/docs/plugins/grafana-redshift-datasource/latest/query-editor/#inspect-the-query) to view the fully interpolated SQL and check for macro expansion issues.
+1. Use the [Query Inspector](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/query-editor/#inspect-the-query) to view the fully interpolated SQL and check for macro expansion issues.
 2. Copy the rendered query and run it directly in a Redshift SQL client to isolate the problem.
 3. Verify that macro syntax is correct (for example, `$__timeFilter(column)` requires exactly one argument).
 
@@ -439,7 +439,7 @@ Expand table
    - Use `LIMIT` to cap the number of returned rows.
    - Add appropriate sort keys and distribution keys in Redshift.
    - Break complex queries into smaller, focused queries.
-2. Use [recording rules](/docs/grafana/latest/administration/recorded-queries/) to pre-aggregate expensive queries and serve results from a faster cache.
+2. Use [recording rules](https://grafana.com/docs/grafana/latest/administration/recorded-queries/) to pre-aggregate expensive queries and serve results from a faster cache.
 3. If queries consistently fail at exactly 60 seconds, check whether any intermediate network proxies (for example, Zscaler or corporate firewall rules) impose their own timeout limits.
 
 #### “Context deadline exceeded” on alert queries
@@ -534,7 +534,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in your Grafana configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -582,7 +582,7 @@ If you encounter unexpected bugs (such as data source credential fields not savi
 
 1. Navigate to your Grafana Cloud portal.
 2. Check the current release channel under your stack settings.
-3. If you’re on the **fast** channel and experiencing issues, contact [Grafana Support](/support/) to switch to the **steady** channel.
+3. If you’re on the **fast** channel and experiencing issues, contact [Grafana Support](https://grafana.com/support/) to switch to the **steady** channel.
 
 ## Get additional help
 
@@ -592,7 +592,7 @@ If you’ve tried the solutions on this page and still encounter issues:
 2. Search the [Grafana community forums](https://community.grafana.com/) for similar issues and solutions.
 3. Review the [Redshift data source GitHub issues](https://github.com/grafana/redshift-datasource/issues) for known bugs and feature requests.
 4. Consult the [Amazon Redshift documentation](https://docs.aws.amazon.com/redshift/) for service-specific guidance.
-5. Contact [Grafana Support](/support/) if you have a support contract.
+5. Contact [Grafana Support](https://grafana.com/support/) if you have a support contract.
 6. When reporting issues, include:
 
    - Grafana version and plugin version.

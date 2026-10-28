@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/
 
 # Custom fields
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The HTTP requests dataset includes most standard log information by default. However, if you need to capture additional request or response headers or cookies, you can use custom fields to tailor the logs to your specific needs
 
-Custom fields are configured per zone and, once set up, are enabled for all Logpush jobs in that zone that use the HTTP requests dataset and include the request headers, response headers, or cookie fields. You can log these fields in their raw form or as transformed values.
+Custom fields are configured per zone. They apply to all HTTP requests Logpush jobs that process the zone, including account-scoped jobs. The job must include the request headers, response headers, or cookie fields. You can log these fields in their raw form or as transformed values.
+
+Account-scoped jobs honor the custom fields configuration for each zone. You cannot configure custom fields once for every zone in an account.
 
 By default:
 
@@ -29,7 +31,7 @@ Custom fields can be enabled via API or the Cloudflare dashboard.
 
 Note
 
-Custom fields are only available for the [HTTP requests dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/).
+Custom fields are only available for the HTTP requests dataset. They apply to [account-scoped](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/http_requests/) and [zone-scoped](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) jobs.
 
 Note
 
@@ -349,5 +351,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/#page","headline":"Custom fields","description":"Log custom request and response headers.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/og.png?v=31e39d506bfd36ef","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/#page","headline":"Custom fields","description":"Log custom request and response headers.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-job/custom-fields/og.png?v=31e39d506bfd36ef","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

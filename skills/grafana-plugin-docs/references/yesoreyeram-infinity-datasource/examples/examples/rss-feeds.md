@@ -92,7 +92,7 @@ Expand table
 
 For more control over data transformation, use UQL:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-xml
@@ -119,7 +119,7 @@ Use RSS feeds to add context to your dashboards by displaying events as annotati
 
 **RSS format:**
 
-xml [Copy code to clipboard] Copy
+xml ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```xml
 <item>
@@ -133,7 +133,7 @@ xml [Copy code to clipboard] Copy
 
 **Atom format:**
 
-xml [Copy code to clipboard] Copy
+xml ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```xml
 <entry>

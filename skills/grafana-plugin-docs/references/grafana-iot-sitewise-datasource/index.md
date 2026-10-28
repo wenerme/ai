@@ -40,21 +40,21 @@ To use the AWS IoT SiteWise data source, you need:
 
 The following pages help you get started with the AWS IoT SiteWise data source.
 
-- [Configure the AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/)
-- [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)
+- [Configure the AWS IoT SiteWise data source](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/)
+- [AWS IoT SiteWise query editor](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can use the following Grafana features.
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules to get notified when data changes.
-- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/) to build dynamic dashboards.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/grafana/latest/alerting/) rules to get notified when data changes.
+- Configure and use [Template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/) to build dynamic dashboards.
 
 ## Plugin updates
 

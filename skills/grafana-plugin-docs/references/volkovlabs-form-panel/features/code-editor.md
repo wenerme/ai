@@ -15,11 +15,11 @@ description: "Learn how to use the code editor toolbar features including expand
 
 To improve your experience, you can expand the editor area.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/button.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/button.png)
 
 This button is located in the top-left corner of any JavaScript code parameter.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/window.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/window.png)
 
 ## Additional buttons
 
@@ -28,4 +28,4 @@ This button is located in the top-left corner of any JavaScript code parameter.
 - **Wrap code on new lines**: Wraps text to fit the visible area.
 - **Show/Hide mini map**: Shows or hides the minimap on the right side of the editor.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/more-buttons.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/more-buttons.png)

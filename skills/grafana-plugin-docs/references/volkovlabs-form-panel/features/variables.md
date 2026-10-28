@@ -17,13 +17,13 @@ Business Forms automatically replaces dashboard and global variables in the foll
 - Form element labels (starting from version 4.9.0)
 - Button text (starting from version 4.9.0)
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/var-sections-labels-buttons.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/var-sections-labels-buttons.png)
 
-Variable types are thoroughly explained in the [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/exploring-variables/).
+Variable types are thoroughly explained in the [Grafana Crash Course](https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/exploring-variables/).
 
 ## JavaScript code
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const formIcon = context.panel.elements.find(

@@ -245,6 +245,7 @@ PUT /projects/:id/boards/:board_id
 | `milestone_id`               | integer        | no       | The milestone the board should be scoped to. Premium and Ultimate only. |
 | `labels`                     | string         | no       | Comma-separated list of label names which the board should be scoped to. Premium and Ultimate only. |
 | `weight`                     | integer        | no       | The weight range from 0 to 9, to which the board should be scoped. Premium and Ultimate only. |
+{.sortable}
 
 ```shell
 curl --request PUT \
@@ -451,6 +452,7 @@ POST /projects/:id/boards/:board_id/lists
 | `milestone_id` | integer | no | The ID of a milestone. Premium and Ultimate only. |
 | `iteration_id` | integer | no | The ID of an iteration. Premium and Ultimate only. |
 | `status_id` | integer | no | The ID of a status. If the top-level group uses custom statuses, use the ID of a custom status. Premium and Ultimate only. |
+{.sortable}
 
 > [!note]
 > Label, assignee, milestone, iteration, and status arguments are mutually exclusive,

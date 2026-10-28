@@ -5,7 +5,7 @@ description: "Browse 302.AI model IDs, capabilities, context windows, and pricin
 
 # [302.AI logo]302.AI
 
-Access 125 302.AI models through Mastra's model router. Authentication is handled automatically using the `302AI_API_KEY` environment variable.
+Access 126 302.AI models through Mastra's model router. Authentication is handled automatically using the `302AI_API_KEY` environment variable.
 
 Learn more in the [302.AI documentation](https://doc.302.ai).
 
@@ -1250,6 +1250,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "302ai/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 2.4,
+    "outputCost": 12
   },
   {
     "model": "302ai/MiniMax-M1",

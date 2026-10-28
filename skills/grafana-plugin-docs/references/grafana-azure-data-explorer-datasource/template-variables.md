@@ -13,8 +13,8 @@ Use template variables to create dynamic, reusable dashboards. Instead of hard-c
 
 Before you create template variables, ensure you have the following:
 
-- A [configured Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
-- An understanding of [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- A [configured Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
+- An understanding of [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Create a query variable
 
@@ -46,7 +46,7 @@ The **Name** field sets the variable name. Use the **Label** field to set a frie
 
 Reference a variable in a query with the `$` prefix. For example, if the variable is named `level`:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 MyLogs
@@ -55,7 +55,7 @@ MyLogs
 
 For variables that allow multiple values, use the `in` operator:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 MyLogs
@@ -68,7 +68,7 @@ To populate a variable with the databases in a cluster, select the **Databases**
 
 Alternatively, select the **Kusto Query** type and use the `databases()` function, which returns the list of databases:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 databases()

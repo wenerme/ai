@@ -12,14 +12,72 @@ The `model` field selects the model. The `access_programs.cyber` field selects a
 
 
 
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col">Approval required</th>
+        <th scope="col">
+          API value: `access_programs.cyber`
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GPT-6 Sol</td>
+        <td>Blue or Red</td>
+        <td>
+          `daybreak_blue`
+        </td>
+      </tr>
+      <tr>
+        <td className="align-top">
+          
 
-| Model option                             | Model ID                       | Access program  | When to use                                                                                                                   |
-| ---------------------------------------- | ------------------------------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Mainline model with standard safeguards  | `gpt-6-sol`                    | `standard`      | General-purpose or security tasks with standard safeguards, even if you have Daybreak access.                                 |
-| Mainline model with Daybreak Blue        | `gpt-6-sol`                    | `daybreak_blue` | Approved defensive security work with a specific mainline model.                                                              |
-| GPT-6.1 Sol or GPT-6 Astra with Daybreak | `gpt-6.1-sol` or `gpt-6-astra` | `daybreak_blue` | Reduced refusals with either model. Requires Daybreak Red approval for your organization and access enabled for your project. |
-| Cyber model with Daybreak Red            | `gpt-5.6-cyber`                | `daybreak_red`  | Advanced, authorized security work with a specific cyber model. Requires Daybreak Red approval.                               |
+            
+GPT-6.1 Sol
 
+            
+GPT-6 Astra
+
+            
+GPT-5.5-Cyber
+
+          
+
+        </td>
+        <td className="align-top">Red</td>
+        <td className="align-top">
+          
+
+            
+
+              `daybreak_blue`
+            
+
+            
+
+              `daybreak_blue`
+            
+
+            
+
+              `daybreak_red`
+            
+
+          
+
+        </td>
+      </tr>
+      <tr>
+        <td>GPT-5.6-Cyber</td>
+        <td>Red + additional model approval</td>
+        <td>
+          `daybreak_red`
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
 
@@ -77,7 +135,7 @@ For the models listed below, omitting `access_programs.cyber` uses the following
 - **Red models such as `gpt-5.6-cyber`:** The API selects `daybreak_red`. The request fails if the required access is missing.
 - **`gpt-6-astra` and `gpt-6.1-sol`:** Reduced refusals for eligible callers with Daybreak Red access enabled for their project; otherwise, standard safeguards.
 
-Model permissions still apply. To explicitly request standard safeguards on a compatible model, send `standard`. An explicit Daybreak selection fails if it's incompatible with the model or you don't have the required access.
+Model permissions still apply. To turn Daybreak off and request standard safeguards on a compatible model, set `access_programs.cyber` to `standard`, even if you have Daybreak access. An explicit Daybreak selection fails if it's incompatible with the model or you don't have the required access.
 
 ## Check the response
 

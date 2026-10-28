@@ -11,7 +11,7 @@ This document explains how to use the Drone query editor to build queries agains
 
 ## Before you begin
 
-- Ensure you’ve [configured the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/).
+- Ensure you’ve [configured the Drone data source](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/configure/).
 - Verify your Drone API token has access to the repositories you want to query.
 
 ## Query actions
@@ -166,7 +166,7 @@ This query returns up to the 100 most recent builds with their `status` and `sta
 To see how many builds succeed compared to those that fail:
 
 1. Create a `Build List` query for a repository, as shown in the previous example.
-2. Add a [Group by](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) transformation on the `status` field and calculate a count.
+2. Add a [Group by](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) transformation on the `status` field and calculate a count.
 3. Visualize the result in a **Pie chart** or **Bar chart** panel.
 
 ### Example: Calculate build duration
@@ -174,7 +174,7 @@ To see how many builds succeed compared to those that fail:
 To measure how long builds take:
 
 1. Create a `Build List` query for a repository.
-2. Add an [Add field from calculation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) transformation that subtracts `started` from `finished`.
+2. Add an [Add field from calculation](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#add-field-from-calculation) transformation that subtracts `started` from `finished`.
 3. Visualize the result in a **Time series** or **Table** panel.
 
 ### Example: Inspect a single build
@@ -202,7 +202,7 @@ Build a dashboard that surfaces the state of a repository’s pipeline:
 
 ### Correlate builds with other signals
 
-Use [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/annotations/) to overlay Drone build events on panels from other data sources. This helps you correlate deployments and CI activity with changes in application metrics, such as error rates or latency.
+Use [annotations](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/annotations/) to overlay Drone build events on panels from other data sources. This helps you correlate deployments and CI activity with changes in application metrics, such as error rates or latency.
 
 ## Known limitations
 

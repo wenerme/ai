@@ -13,13 +13,6 @@ image: https://developers.cloudflare.com/agents/runtime/execution/og.png?v=cea2c
 
 Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-- [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)
-- [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
-- [Durable execution with fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
-- [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
-- [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/)
-- [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
-- [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)
 - [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)
 
 Was this helpful?

@@ -143,6 +143,31 @@ To insert a diagram:
 
 [A mermaid diagram preview in rich text editor with LR syntax creating a left to right flowchart]
 
+## Embed external content
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231412) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+[Embedded content](markdown.md#embedded-content) from an allowed embed provider renders in the
+rich text editor.
+
+To embed content, paste the image Markdown or the `<iframe>` embed code from the provider.
+
+To resize embedded content, select it, then drag one of its corners.
+
+To change the URL or title of embedded content:
+
+1. Select the embedded content.
+1. Select  ().
+1. Edit the  or .
+1. Select .
+
 ## Related topics
 
 - [Set the default text editor](profile/preferences.md#set-the-default-text-editor)

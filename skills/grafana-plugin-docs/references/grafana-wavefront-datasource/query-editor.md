@@ -11,7 +11,7 @@ This document explains how to use the Wavefront query editor to retrieve metrics
 
 ## Before you begin
 
-- [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/).
+- [Configure the Wavefront data source](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/configure/).
 - Verify that your Wavefront API token has permission to read the metrics and events you want to query.
 
 ## Key concepts
@@ -104,7 +104,7 @@ The following builder selections:
 
 Send a Wavefront query similar to:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 mavg('5m',ts(sample.cpu.loadavg.1m,env=prod))
@@ -112,7 +112,7 @@ mavg('5m',ts(sample.cpu.loadavg.1m,env=prod))
 
 The selected aggregate is sent separately as the request’s summarization value:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 summarization=mean
@@ -152,7 +152,7 @@ The **Query Type** selector is clearable. When it’s cleared, the data source s
 
 Average CPU load across production hosts:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 avg(ts("sample.cpu.loadavg.1m", env="prod"))
@@ -160,7 +160,7 @@ avg(ts("sample.cpu.loadavg.1m", env="prod"))
 
 Sum of requests per namespace using a group-by aggregation:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 sum(ts("http.requests.count"), namespace)
@@ -168,7 +168,7 @@ sum(ts("http.requests.count"), namespace)
 
 Five-minute moving average, grouped by host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 mavg(5m, avg(ts("sample.cpu.usage"), sources))
@@ -176,7 +176,7 @@ mavg(5m, avg(ts("sample.cpu.usage"), sources))
 
 Per-second rate from a counter metric:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 rate(ts("sample.requests.total"))
@@ -184,7 +184,7 @@ rate(ts("sample.requests.total"))
 
 Align samples to a one-minute bucket before aggregating:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 align(1m, mean, ts("sample.memory.used"))
@@ -192,7 +192,7 @@ align(1m, mean, ts("sample.memory.used"))
 
 Ratio of two series for a success rate:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 100 * sum(ts("http.requests.success")) / sum(ts("http.requests.total"))
@@ -200,7 +200,7 @@ SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 Reference a dashboard variable inside a query:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 avg(ts("sample.cpu.loadavg.1m", env="$environment"))
@@ -210,7 +210,7 @@ avg(ts("sample.cpu.loadavg.1m", env="$environment"))
 
 Request rate over the last five minutes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 rate(http_requests_total{env="prod"}[5m])
@@ -218,7 +218,7 @@ rate(http_requests_total{env="prod"}[5m])
 
 95th percentile latency across services:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 histogram_quantile(0.95, sum by (le, service) (rate(http_request_duration_seconds_bucket[5m])))
@@ -228,7 +228,7 @@ histogram_quantile(0.95, sum by (le, service) (rate(http_request_duration_second
 
 Let Wavefront pick the interpreter. Useful when you’re pasting queries from different sources:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 sum(rate(http_requests_total[1m]))
@@ -242,13 +242,13 @@ The response contains one row per event with fields for the event name, start an
 
 Events mode is useful for:
 
-- Plotting deploy markers, alert transitions, or other operational events as [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/).
+- Plotting deploy markers, alert transitions, or other operational events as [annotations](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/annotations/).
 - Building event tables next to metric panels for incident investigation.
 - Counting events in a stat panel to quickly see how many alerts or deploys happened in a time range.
 
 ## Ad hoc filters
 
-The Wavefront data source supports [ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) for **Query Builder** queries. Ad hoc filters apply to every metric query on the dashboard without editing the queries themselves.
+The Wavefront data source supports [ad hoc filters](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) for **Query Builder** queries. Ad hoc filters apply to every metric query on the dashboard without editing the queries themselves.
 
 To use ad hoc filters, create two template variables:
 
@@ -274,10 +274,10 @@ The following scenarios are common starting points for Wavefront queries:
 
 The Wavefront data source uses Grafana’s standard **Display name** field option to rewrite legend keys. Use **Display name** when you want to rename or shorten a series based on its name, labels, or values.
 
-For details, refer to [Standard field options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/configure-standard-options/#display-name).
+For details, refer to [Standard field options](https://grafana.com/docs/grafana/latest/panels-visualizations/configure-standard-options/#display-name).
 
 ## Next steps
 
-- Build dynamic dashboards with [Wavefront template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/).
-- Annotate panels with [Wavefront events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/).
-- Create alert rules from Wavefront queries with [Alerting with the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/).
+- Build dynamic dashboards with [Wavefront template variables](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/template-variables/).
+- Annotate panels with [Wavefront events](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/annotations/).
+- Create alert rules from Wavefront queries with [Alerting with the Wavefront data source](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/alerting/).

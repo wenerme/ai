@@ -38,11 +38,11 @@ Expand table
 
 Using the JSONata parser enables the following Grafana features:
 
-- [Alerting](/docs/grafana/latest/alerting/)
-- [Shared dashboards](/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
-- [SQL expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
-- [Query caching](/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
-- [Recorded queries](/docs/grafana/latest/administration/recorded-queries/)
+- [Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Shared dashboards](https://grafana.com/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
+- [SQL expressions](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
+- [Query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
+- [Recorded queries](https://grafana.com/docs/grafana/latest/administration/recorded-queries/)
 
 ## Root selector
 

@@ -352,6 +352,7 @@ PUT /groups/:id/epics/:epic_iid/issues/:epic_issue_id
 | `epic_issue_id`     | integer or string   | yes        | The ID of the epic-issue association.     |
 | `move_before_id`    | integer or string   | no         | The ID of the epic-issue association that should be placed before the link in the question.     |
 | `move_after_id`     | integer or string   | no         | The ID of the epic-issue association that should be placed after the link in the question.     |
+{.sortable}
 
 ```shell
 curl --request PUT \

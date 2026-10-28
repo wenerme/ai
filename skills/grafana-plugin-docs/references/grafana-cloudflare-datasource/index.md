@@ -11,18 +11,18 @@ The Cloudflare data source allows you to query and visualize data from Cloudflar
 
 > Note
 >
-> Cloudflare data source plugin is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Cloudflare data source plugin is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 > Note
 >
-> The Cloudflare data source is an Enterprise plugin. It’s available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues).
+> The Cloudflare data source is an Enterprise plugin. It’s available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues).
 
 ## Requirements
 
 To use this data source, you need:
 
 - A Cloudflare account with an API token (either a user-owned token or an account-owned token)
-- A [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) account or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/)
+- A [Grafana Cloud](https://grafana.com/pricing/) account or an [activated Grafana Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/)
 
 ## Version compatibility
 
@@ -48,20 +48,20 @@ Expand table
 
 The following documents help you set up and use the Cloudflare data source:
 
-- [Configure the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/)
-- [Cloudflare query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
-- [Cloudflare template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/)
+- [Configure the Cloudflare data source](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/)
+- [Cloudflare query editor](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
+- [Cloudflare template variables](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Create [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/annotations/) to mark events on your graphs
-- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/alerting/) to get notified about Cloudflare data
-- Build dynamic, reusable dashboards with [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results
+- Create [annotations](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/annotations/) to mark events on your graphs
+- Set up [alerting](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting/) to get notified about Cloudflare data
+- Build dynamic, reusable dashboards with [template variables](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results
 
 ## Additional resources
 

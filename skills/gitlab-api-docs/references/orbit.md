@@ -578,22 +578,6 @@ programmatic consumers. A named query's structure lives on the server, so it
 cannot drift from the query language or ontology.
 Named query requests send their parameters in a JSON request body.
 
-## Query templates
-
-The named query templates listed at `GET /api/v4/orbit/query/templates`
-include `raw_query` rendered for the authenticated user:
-
-- `raw_query` is a GQL string.
-- Identity values, like the ID of the authenticated user, are resolved
-  server-side from the request credentials. The same request returns
-  different `raw_query` values for different users. Do not cache or share
-  templates across users.
-- Invoke parameterized queries by name with their arguments, as the catalog excludes them.
-
-Prefer executing named queries directly over using templates. Use templates
-only where displaying the query text is the goal, such as populating a
-query editor or explorer with the text of a preset.
-
 ## Query examples
 
 The following examples show a GQL query for each query type. All
@@ -767,20 +751,5 @@ Example response:
   },
   "query_type": "path_finding",
   "row_count": 1
-}
-```
-
-## Access and cluster health
-
-`GET /api/v4/orbit/status` always returns [`200 OK`](rest/troubleshooting.md#status-codes),
-regardless of access or service health. When the user has no access, `system`
-is `null`:
-
-```json
-{
-  "user": {
-    "available": false
-  },
-  "system": null
 }
 ```

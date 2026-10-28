@@ -25,7 +25,7 @@ Expand table
 
 When using the Frontend parser, timestamp fields are parsed using JavaScript’s built-in `Date` constructor. The following formats are automatically recognized:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 2017
@@ -86,7 +86,7 @@ Expand table
 
 You can enter a custom format pattern using Go’s reference time layout. The reference time is:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 Mon Jan 2 15:04:05 MST 2006
@@ -122,7 +122,7 @@ For data that uses Unix epoch timestamps, select the appropriate column type:
 
 For timestamps in milliseconds since January 1, 1970:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 timestamp,value
@@ -136,7 +136,7 @@ Select **Time (UNIX ms)** as the column type.
 
 For timestamps in seconds since January 1, 1970:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 timestamp,value

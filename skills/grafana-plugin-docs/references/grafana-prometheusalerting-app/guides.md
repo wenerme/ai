@@ -7,5 +7,5 @@ description: "Best practices for keeping a data source-managed alerting setup ma
 
 # Guides
 
-- [Best practices](/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/): keeping an alerting setup maintainable.
-- [Troubleshooting](/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/): diagnosing common problems.
+- [Best practices](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/): keeping an alerting setup maintainable.
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/): diagnosing common problems.

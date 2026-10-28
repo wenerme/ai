@@ -7,11 +7,11 @@ description: "Learn how to use annotations with the MongoDB data source in Grafa
 
 # MongoDB annotations
 
-Annotations allow you to overlay event data on your time series graphs, making it easier to correlate metrics with specific events like deployments, errors, or configuration changes. For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations allow you to overlay event data on your time series graphs, making it easier to correlate metrics with specific events like deployments, errors, or configuration changes. For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- Ensure you have [configured the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/).
+- Ensure you have [configured the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/).
 - Your dashboard must already be saved before creating annotations.
 - Annotations display on time-based visualizations, such as time series, state timeline, and candlestick.
 
@@ -52,7 +52,7 @@ The following examples show common annotation patterns for MongoDB.
 
 Show when deployments occurred to correlate with metric changes:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 ops_db.deployments.aggregate([
@@ -77,7 +77,7 @@ ops_db.deployments.aggregate([
 
 Annotate time periods when error counts exceeded a threshold:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 logs_db.errors.aggregate([
@@ -114,7 +114,7 @@ logs_db.errors.aggregate([
 
 Use `time` and `timeEnd` to highlight maintenance periods:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 ops_db.maintenance_windows.aggregate([
@@ -141,7 +141,7 @@ ops_db.maintenance_windows.aggregate([
 
 Annotate when configuration changes were applied:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 admin_db.audit_log.aggregate([
@@ -165,5 +165,5 @@ admin_db.audit_log.aggregate([
 
 ## Next steps
 
-- Refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/template-variables/) to make your annotations dynamic.
-- Refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.
+- Refer to [Template variables](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/template-variables/) to make your annotations dynamic.
+- Refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.

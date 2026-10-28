@@ -13,7 +13,7 @@ The sections follow the order you typically encounter issues: first licensing an
 
 ## License and setup errors
 
-The Databricks data source is a Grafana Enterprise plugin. It requires an active Grafana Enterprise or Grafana Cloud license that includes the plugin, and only account administrators can install it. Most setup failures are caused by a licensing or permissions issue rather than a connection problem. Refer to [Requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/) and [Before you begin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#before-you-begin) for prerequisites.
+The Databricks data source is a Grafana Enterprise plugin. It requires an active Grafana Enterprise or Grafana Cloud license that includes the plugin, and only account administrators can install it. Most setup failures are caused by a licensing or permissions issue rather than a connection problem. Refer to [Requirements](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/) and [Before you begin](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#before-you-begin) for prerequisites.
 
 ### Plugin health check failed
 
@@ -23,11 +23,11 @@ When you click **Save &amp; test**, the data source returns a generic `Plugin he
 
 Expand table
 
-| Cause                                                                                            | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-|--------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The Databricks plugin isn’t included in your Grafana Enterprise license.                         | Confirm that Databricks is part of your plan. Contact your Grafana account team to add the Enterprise plugin to your license.                                                                                                                                                                                                                                                                                                                                   |
-| Your Grafana Enterprise license has expired. The data source worked previously and then stopped. | Renew your Grafana Enterprise license. Refer to [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/introduction/grafana-enterprise/) for license management.                                                                                                                                                                                                                                                 |
-| The host, HTTP path, or credentials are incorrect.                                               | Verify your connection and authentication settings, then review the [Connection and network errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#connection-and-network-errors) and [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#authentication-errors) sections. |
+| Cause                                                                                            | Solution                                                                                                                                                                                                                                                                                                                                                                      |
+|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The Databricks plugin isn’t included in your Grafana Enterprise license.                         | Confirm that Databricks is part of your plan. Contact your Grafana account team to add the Enterprise plugin to your license.                                                                                                                                                                                                                                                 |
+| Your Grafana Enterprise license has expired. The data source worked previously and then stopped. | Renew your Grafana Enterprise license. Refer to [Grafana Enterprise](https://grafana.com/docs/grafana/latest/introduction/grafana-enterprise/) for license management.                                                                                                                                                                                                        |
+| The host, HTTP path, or credentials are incorrect.                                               | Verify your connection and authentication settings, then review the [Connection and network errors](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#connection-and-network-errors) and [Authentication errors](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#authentication-errors) sections. |
 
 ### Databricks plugin isn’t available to install
 
@@ -35,7 +35,7 @@ The plugin is signed as part of your license, but no install or configure button
 
 **Cause:** Installing an Enterprise plugin requires administrator authorization. A user without the required role can see the plugin but can’t install it.
 
-**Solution:** Ask an account or organization administrator to install the plugin. The user must have the `Organization administrator` role to install the plugin and configure the data source. Refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/) for details.
+**Solution:** Ask an account or organization administrator to install the plugin. The user must have the `Organization administrator` role to install the plugin and configure the data source. Refer to [Plugin management](https://grafana.com/docs/grafana/latest/administration/plugin-management/) for details.
 
 ## Version and upgrade guidance
 
@@ -54,7 +54,7 @@ To check your version and update the plugin:
 3. Review the installed version and the latest available version.
 4. If an update is available, click **Update** to install the latest version.
 
-For more information, refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
+For more information, refer to [Plugin management](https://grafana.com/docs/grafana/latest/administration/plugin-management/).
 
 ### Symptoms of an outdated plugin version
 
@@ -203,7 +203,7 @@ You configured Azure On-Behalf-Of (OBO) authentication with a valid client ID an
 - Enable **ID tokens** under **App registrations** &gt; **Authentication**.
 - Grant **Admin consent** for the tenant so users aren’t prompted individually.
 - Confirm the `[auth.azuread]` `scopes` include `.default openid email profile offline_access`. Setting the authentication type to **Azure (On-Behalf-Of)** forwards the user’s OAuth identity automatically.
-- Follow the full setup in [Azure (On-Behalf-Of) authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#azure-on-behalf-of-authentication).
+- Follow the full setup in [Azure (On-Behalf-Of) authentication](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#azure-on-behalf-of-authentication).
 
 ### `invalid_client` / Client authentication failed
 
@@ -306,7 +306,7 @@ Can’t resolve a function or routine in your query.
 
 **Example error:**
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 [UNRESOLVED_ROUTINE] Cannot resolve routine `my_custom_function` on search path. Verify the spelling of `my_custom_function`, check that the routine exists, and confirm you have `USE` privilege on the catalog and schema, and EXECUTE on the routine. SQLSTATE: 42883
@@ -326,7 +326,7 @@ A value can’t be converted to the requested data type.
 
 **Example error:**
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 [CAST_INVALID_INPUT] The value '12.34.56' of the type "STRING" cannot be cast to "BIGINT" because it is malformed. SQLSTATE: 22018
@@ -367,9 +367,9 @@ A query took longer than the allowed time to return results, usually because it 
 **Solutions:**
 
 - Add `WHERE` clauses to narrow the result set.
-- Use the `$__timeFilter(column)` macro to restrict results to the dashboard time range. Refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros).
+- Use the `$__timeFilter(column)` macro to restrict results to the dashboard time range. Refer to [Macros](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros).
 - Add a `LIMIT` clause or lower the **Max rows** setting.
-- Increase the **Timeout** setting if the query is necessarily large. Refer to [Additional configuration options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
+- Increase the **Timeout** setting if the query is necessarily large. Refer to [Additional configuration options](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
 - Use a larger or serverless SQL warehouse for heavy workloads.
 
 ### Grafana runs out of memory or crashes
@@ -380,8 +380,8 @@ The Databricks plugin consumes excessive memory, for example several GB, and can
 
 **Solutions:**
 
-- Review and fix or pause alert rules that fail repeatedly. Refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/alerting/).
-- Lower the **Retries** count and set a **Retry timeout** so failing queries don’t pile up. Refer to [Query retries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#query-retries).
+- Review and fix or pause alert rules that fail repeatedly. Refer to [Alerting](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/alerting/).
+- Lower the **Retries** count and set a **Retry timeout** so failing queries don’t pile up. Refer to [Query retries](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#query-retries).
 - Filter queries and lower **Max rows** to limit result set size.
 - For self-managed deployments, monitor the plugin’s memory use and size the host appropriately.
 
@@ -393,8 +393,8 @@ Queries that process very large datasets, for example terabytes of data, time ou
 
 **Solutions:**
 
-- Increase the data source **Timeout** setting. Refer to [Additional configuration options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
-- Increase the Grafana `dataproxy` timeout for long-running queries. Refer to [Configure Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#dataproxy).
+- Increase the data source **Timeout** setting. Refer to [Additional configuration options](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
+- Increase the Grafana `dataproxy` timeout for long-running queries. Refer to [Configure Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#dataproxy).
 - Optimize queries by filtering, aggregating in Databricks, and avoiding `SELECT *`.
 - Use a serverless or larger SQL warehouse.
 
@@ -405,7 +405,7 @@ Follow these practices to keep Databricks queries fast and reliable:
 - **Filter large tables.** Always apply `WHERE` clauses and the `$__timeFilter(column)` macro so queries scan only the data you need.
 - **Limit result size.** Use `LIMIT` and the **Max rows** setting to cap how many rows are returned to Grafana.
 - **Aggregate in Databricks.** Push aggregation and grouping into your SQL so Databricks returns summarized data rather than raw rows.
-- **Use alerting carefully.** A failing alert rule can generate repeated, retried queries. Monitor alert rules and avoid configuring alerts on user-context authentication methods. Refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/alerting/).
+- **Use alerting carefully.** A failing alert rule can generate repeated, retried queries. Monitor alert rules and avoid configuring alerts on user-context authentication methods. Refer to [Alerting](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/alerting/).
 - **Tune timeouts.** Set the data source **Timeout** and the Grafana `dataproxy` timeout to match your slowest expected query.
 - **Plan for memory in self-managed deployments.** Large result sets and query storms increase plugin memory use, so monitor memory and size your host for peak load.
 - **Right-size your SQL warehouse.** Use a larger or serverless SQL warehouse for heavy or concurrent workloads, and keep warehouses warm to avoid cold-start latency.
@@ -492,7 +492,7 @@ Alert rules can’t run when the data source uses an authentication method that 
 
 **Cause:** The data source is configured with **OAuth Passthrough** or **Azure (On-Behalf-Of)** authentication. Alert rules run in the background with no user present, so no credentials are available for the query.
 
-**Solution:** Reconfigure the data source with **Personal Access Token**, **OAuth M2M**, or **Azure Entra ID M2M** authentication. Refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/alerting/) for the list of supported methods.
+**Solution:** Reconfigure the data source with **Personal Access Token**, **OAuth M2M**, or **Azure Entra ID M2M** authentication. Refer to [Alerting](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/alerting/) for the list of supported methods.
 
 ### Alert evaluation times out while the SQL warehouse starts
 
@@ -518,8 +518,8 @@ A query that uses a macro such as `$__timeFilter(time)` fails, and it can look l
 
 - Review your firewall and network rules to confirm the Grafana server can reach your Databricks workspace on port 443.
 - Verify the credentials used by the data source have permission to run the query against the target catalog, schema, and table.
-- Test the same query without the macro, substituting a fixed time range, to confirm whether the failure is related to connectivity rather than the macro. Refer to [Connection and network errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#connection-and-network-errors) and [403 Forbidden](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#403-forbidden).
-- For the list of supported macros, refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros).
+- Test the same query without the macro, substituting a fixed time range, to confirm whether the failure is related to connectivity rather than the macro. Refer to [Connection and network errors](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#connection-and-network-errors) and [403 Forbidden](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#403-forbidden).
+- For the list of supported macros, refer to [Macros](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros).
 
 ### No data after upgrading the plugin
 
@@ -530,9 +530,9 @@ After upgrading across major plugin versions, for example from v1.6.2 to v1.12.6
 **Solutions:**
 
 - Review queries that use variables and confirm the interpolated value matches the column’s data type. Quote string values, for example `'${var}'`, and leave numeric values unquoted.
-- For multi-value variables, use the appropriate [variable format](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/), such as `${var:singlequote}` or `${var:csv}`, so the generated SQL is valid.
+- For multi-value variables, use the appropriate [variable format](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/), such as `${var:singlequote}` or `${var:csv}`, so the generated SQL is valid.
 - Check data links that include variables for URL encoding issues, and re-create them if the encoding changed.
-- Refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/template-variables/) for how interpolation works in queries.
+- Refer to [Template variables](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/template-variables/) for how interpolation works in queries.
 
 ## Query retries
 
@@ -551,7 +551,7 @@ By default, queries are retried up to 5 times. You can configure the number of r
 To capture detailed information about connections and queries, enable debug logging:
 
 1. Edit the Databricks data source configuration.
-2. Under [Additional configuration options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options), check **Debug**.
+2. Under [Additional configuration options](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options), check **Debug**.
 3. Click **Save &amp; test**.
 4. Reproduce the issue and check the Grafana server logs for detailed output.
 
@@ -567,7 +567,7 @@ If you continue to experience issues:
 2. Enable debug logging in the data source configuration for more verbose output.
 3. Verify your configuration in the Databricks SQL editor first.
 4. Check the [Databricks documentation](https://docs.databricks.com/) for platform-specific guidance.
-5. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/contact/) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user. When reporting issues, include:
+5. Contact [Grafana Support](https://grafana.com/contact/) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user. When reporting issues, include:
 
 - Grafana version
 - Databricks version and deployment type (Databricks on AWS, Azure, or Google Cloud)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/rules/snippets/create-api/og.png?v=ff96
 
 # Configure Snippets via API
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create Snippets using the [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -83,8 +83,8 @@ The name of a snippet can only contain the characters `a-z`, `0-9`, and `_` (und
 
 The required body parameters are:
 
-- `files`: The file with your JavaScript code.
-- `metadata`: Object containing `main_module`, which must match the filename of the uploaded file.
+- `files`: One or more JavaScript files. Every file is treated as a JavaScript ES module. The main module must `export default` an object with a `fetch` handler. Additional files can be imported from the main module by relative path (for example, `import { helper } from "./helper.js"`). Unlike Workers, Snippets do not support non-ESM files such as JSON, text, binary, or WebAssembly files, and reject them when you upload them.
+- `metadata`: Object containing `main_module`, which must match the filename of the uploaded file that contains the default export.
 
 To make this example work, save your JavaScript code in a file named `example.js`, and then execute `curl` command with a `PUT` request from the folder where `example.js` is located.
 
@@ -154,5 +154,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-api/#page","headline":"Configure Snippets via API","description":"Create Snippets using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/snippets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/snippets/create-api/og.png?v=ff96430f0fcf8454","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/create-api/#page","headline":"Configure Snippets via API","description":"Create Snippets using the Cloudflare API.","url":"https://developers.cloudflare.com/rules/snippets/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/snippets/create-api/og.png?v=ff96430f0fcf8454","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

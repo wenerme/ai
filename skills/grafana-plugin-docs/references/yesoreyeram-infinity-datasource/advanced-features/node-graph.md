@@ -9,7 +9,7 @@ description: "Configure data for Node Graph visualization with the Infinity data
 
 The Node Graph visualization displays relationships between entities as an interactive graph. Use the Infinity data source to transform your API data into the format required by the Node Graph panel.
 
-For general information about the Node Graph panel, refer to [Node graph](/docs/grafana/latest/panels-visualizations/visualizations/node-graph/).
+For general information about the Node Graph panel, refer to [Node graph](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/node-graph/).
 
 ## Before you begin
 
@@ -109,7 +109,7 @@ The following example creates a simple network visualization with four servers.
 
 ### Nodes data (CSV)
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 id,title,subTitle,mainStat,secondaryStat,arc__cpu,arc__memory,arc__cpu_color,arc__memory_color,detail__role
@@ -121,7 +121,7 @@ D,Server D,Middleware Server,47,98,0.9,0.1,blue,red,Cache
 
 ### Edges data (CSV)
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 id,source,target,mainStat,secondaryStat,detail__protocol
@@ -168,7 +168,7 @@ For JSON data, configure the root selector to extract the array of nodes or edge
 
 **Nodes query:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -183,7 +183,7 @@ Set the root selector to `nodes` and the format to **Nodes - Node Graph**.
 
 **Edges query:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {

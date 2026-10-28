@@ -13,29 +13,29 @@ This document walks through every query mode, shows the exact fields each one ex
 
 ## Before you begin
 
-- [Configure the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/).
-- Verify that your IAM identity has read access to X-Ray and Application Signals. See the [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
+- [Configure the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/).
+- Verify that your IAM identity has read access to X-Ray and Application Signals. See the [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy).
 - Make sure your dashboard time range contains trace data.
 
 ## Key concepts
 
 Expand table
 
-| Term                   | Description                                                                                                                                                                                                                                                                                                                                             |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Trace**              | The end-to-end record of a request as it passes through services and resources in your application.                                                                                                                                                                                                                                                     |
-| **Trace ID**           | A unique identifier for a trace. Pasting a trace ID into the query field opens that trace directly.                                                                                                                                                                                                                                                     |
-| **Segment**            | A unit of work within a trace. Each service a request touches creates one or more segments.                                                                                                                                                                                                                                                             |
-| **Annotation** (X-Ray) | A key-value pair attached to a trace segment by the AWS X-Ray SDK that you can filter on with X-Ray filter expressions. Not the same as [Grafana dashboard annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/), which this data source doesn’t support. |
-| **Filter expression**  | A query language used by X-Ray to narrow down which traces are returned. Refer to the [AWS X-Ray filter expressions documentation](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).                                                                                                                                         |
-| **Group**              | A named, reusable filter expression defined in X-Ray that narrows the scope of Trace queries.                                                                                                                                                                                                                                                           |
-| **Service map**        | A visual representation of how services and resources in your application interact, including latency and error rates.                                                                                                                                                                                                                                  |
-| **Insight**            | A correlated set of anomalies in trace data that X-Ray surfaces automatically.                                                                                                                                                                                                                                                                          |
-| **Service**            | An Application Signals entity that represents a monitored component of your application.                                                                                                                                                                                                                                                                |
-| **Service operation**  | An individual operation exposed by a service, such as an HTTP endpoint.                                                                                                                                                                                                                                                                                 |
-| **Service dependency** | Another service that a service calls downstream.                                                                                                                                                                                                                                                                                                        |
-| **SLO**                | A service-level objective defined in Application Signals that tracks performance against a target.                                                                                                                                                                                                                                                      |
-| **Account ID**         | The AWS account ID that owns a given trace or resource. Used for cross-account filtering.                                                                                                                                                                                                                                                               |
+| Term                   | Description                                                                                                                                                                                                                                                                                                    |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Trace**              | The end-to-end record of a request as it passes through services and resources in your application.                                                                                                                                                                                                            |
+| **Trace ID**           | A unique identifier for a trace. Pasting a trace ID into the query field opens that trace directly.                                                                                                                                                                                                            |
+| **Segment**            | A unit of work within a trace. Each service a request touches creates one or more segments.                                                                                                                                                                                                                    |
+| **Annotation** (X-Ray) | A key-value pair attached to a trace segment by the AWS X-Ray SDK that you can filter on with X-Ray filter expressions. Not the same as [Grafana dashboard annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/), which this data source doesn’t support. |
+| **Filter expression**  | A query language used by X-Ray to narrow down which traces are returned. Refer to the [AWS X-Ray filter expressions documentation](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).                                                                                                |
+| **Group**              | A named, reusable filter expression defined in X-Ray that narrows the scope of Trace queries.                                                                                                                                                                                                                  |
+| **Service map**        | A visual representation of how services and resources in your application interact, including latency and error rates.                                                                                                                                                                                         |
+| **Insight**            | A correlated set of anomalies in trace data that X-Ray surfaces automatically.                                                                                                                                                                                                                                 |
+| **Service**            | An Application Signals entity that represents a monitored component of your application.                                                                                                                                                                                                                       |
+| **Service operation**  | An individual operation exposed by a service, such as an HTTP endpoint.                                                                                                                                                                                                                                        |
+| **Service dependency** | Another service that a service calls downstream.                                                                                                                                                                                                                                                               |
+| **SLO**                | A service-level objective defined in Application Signals that tracks performance against a target.                                                                                                                                                                                                             |
+| **Account ID**         | The AWS account ID that owns a given trace or resource. Used for cross-account filtering.                                                                                                                                                                                                                      |
 
 ## Query modes
 
@@ -147,7 +147,7 @@ Service map returns a graph of services and resources in your application, inclu
 
 To display the service map:
 
-- Use the [Node graph](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel for the visual graph.
+- Use the [Node graph](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel for the visual graph.
 - Use a table panel if the Node graph isn’t available in your Grafana version.
 
 Each service appears as a circle. The numbers inside show average latency per transaction and transactions per minute. The colored outer ring represents the mix of response types:
@@ -167,10 +167,10 @@ The following fields are available:
 
 Expand table
 
-| Field         | Description                                                                                                                                                                                                                                                                                                                                 |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Group**     | An optional X-Ray group whose filter expression narrows the graph.                                                                                                                                                                                                                                                                          |
-| **AccountId** | A multi-select of linked account IDs to include in the graph. Only shown when [cross-account observability](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/#filter-by-account-id) is configured and the `cloudWatchCrossAccountQuerying` feature toggle is enabled. |
+| Field         | Description                                                                                                                                                                                                                                                                                        |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Group**     | An optional X-Ray group whose filter expression narrows the graph.                                                                                                                                                                                                                                 |
+| **AccountId** | A multi-select of linked account IDs to include in the graph. Only shown when [cross-account observability](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/#filter-by-account-id) is configured and the `cloudWatchCrossAccountQuerying` feature toggle is enabled. |
 
 For more information, refer to the [AWS X-Ray service map documentation](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html).
 
@@ -253,49 +253,49 @@ The following expressions match the examples in the in-product cheat sheet. You 
 
 - Traces whose response time was more than 5 seconds:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   responsetime > 5
   ```
 - Traces whose total duration was between 5 and 8 seconds:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   duration > 5 AND duration < 8
   ```
 - Traces that called `api.example.com` and carry an annotation named `account` with the value `12345`:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   service("api.example.com") AND annotation.account = "12345"
   ```
 - Traces where `api.example.com` made a call to `backend.example.com` that failed with a fault:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   edge("api.example.com", "backend.example.com")
   ```
 - Traces whose URL starts with `http://api.example.com/` and contains `/v2/`, but didn’t reach a service named `api.example.com`:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   http.url BEGINSWITH "http://api.example.com/" AND http.url CONTAINS "/v2/" AND !service("api.example.com")
   ```
 - Traces that completed successfully in under 3 seconds, including all downstream calls:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   ok !partial duration < 3
   ```
 - When two services share the same name but have different types, you can disambiguate them with the `id` function:
 
-  text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```text
   service(id(name: "api.example.com", type: "AWS::EC2::Instance"))
@@ -307,7 +307,7 @@ The following examples show how to wire up common query types end to end.
 
 **Trace list — open a single trace by ID.** Paste a trace ID into the **Query** field; no other configuration is needed:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 1-5f160a8b-83190adad07f429219c0e259
@@ -315,7 +315,7 @@ text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 **Trace list — all faulting requests hitting a service in the last 6 hours.** Set the dashboard time range to `now-6h`, choose **Trace List**, and enter:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("checkout-api") { fault = true }
@@ -323,15 +323,15 @@ service("checkout-api") { fault = true }
 
 **Trace statistics — fault rate on a specific endpoint.** Choose **Trace Statistics**, set **Resolution** to `60s`, leave **Columns** empty, and enter:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 http.url CONTAINS "/v2/checkout" AND fault = true
 ```
 
-Use the resulting **Fault Count** series in a time-series panel, or build an alert on it (refer to [Alerting with the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/)).
+Use the resulting **Fault Count** series in a time-series panel, or build an alert on it (refer to [Alerting with the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/)).
 
-**Service map — scoped to a group and linked accounts.** Choose **Service Map**, select the **checkout** group from the **Group** drop-down, and in the **AccountId** multi-select pick the linked accounts you want to include. Visualize the results with the [Node graph](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel.
+**Service map — scoped to a group and linked accounts.** Choose **Service Map**, select the **checkout** group from the **Group** drop-down, and in the **AccountId** multi-select pick the linked accounts you want to include. Visualize the results with the [Node graph](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel.
 
 **Services — list operations for a specific service.** Switch the mode to **Services**, pick **List service operations** from the **Query Type** drop-down, and select the service you want from the **Service** drop-down.
 
@@ -339,7 +339,7 @@ Use the resulting **Fault Count** series in a time-series panel, or build an ale
 
 ## Filter by account ID
 
-When [cross-account observability](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability) is configured on the monitoring account and the Grafana `cloudWatchCrossAccountQuerying` feature toggle is enabled, the query editor exposes account-ID controls:
+When [cross-account observability](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability) is configured on the monitoring account and the Grafana `cloudWatchCrossAccountQuerying` feature toggle is enabled, the query editor exposes account-ID controls:
 
 - **Service Map (Traces mode):** An **AccountId** multi-select filters the returned graph to the selected accounts. The drop-down populates with account IDs discovered from traces in the current time range.
 - **List services and List Service Level Objectives (SLO):** An **Include Linked Accounts** toggle combined with an **AccountId** drop-down filters results to the chosen linked account. For **List services**, the **AccountId** drop-down is always active when visible. For **List Service Level Objectives (SLO)**, the **AccountId** drop-down is disabled until **Include Linked Accounts** is turned on. The drop-down isn’t shown for **List service operations** or **List service dependencies** because those APIs don’t accept an account filter.
@@ -348,7 +348,7 @@ If a query was previously saved with an `accountId` set, the controls remain vis
 
 You can also reference an account ID directly in a Trace list filter expression, for example:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("frontend") AND service(id(account.id: "123456789012"))
@@ -364,13 +364,13 @@ The query editor interpolates Grafana template variables before queries are sent
 - **Service** (Services mode)
 - **Operation** (Services mode)
 
-Reference variables with the standard Grafana syntax, for example `$region`, `${service}`, or `[[accountId]]`. For more information, refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/).
+Reference variables with the standard Grafana syntax, for example `$region`, `${service}`, or `[[accountId]]`. For more information, refer to [Template variables](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/).
 
 ## Alerting
 
 Trace Statistics queries return numeric time-series data, so you can build Grafana alert rules on top of them to notify on fault rates, error counts, throttled responses, and latency trends.
 
-For step-by-step examples — including fault-rate, throttling, and cross-account alerts — refer to [Alerting with the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/).
+For step-by-step examples — including fault-rate, throttling, and cross-account alerts — refer to [Alerting with the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/).
 
 ## Use cases
 
@@ -383,6 +383,6 @@ The following use cases show how Grafana users combine the query types above in 
 
 ## Next steps
 
-- [Build alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
-- [Troubleshoot query issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)
+- [Build alert rules](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
+- [Troubleshoot query issues](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)

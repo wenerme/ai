@@ -39,6 +39,7 @@ GET /projects/:id/iterations?updated_after=2013-10-02T09%3A24%3A18Z
 | `include_descendants` | boolean  | no       | Include iterations for parent group and its descendants. Defaults to `false`. |
 | `updated_before`      | datetime | no       | Return only iterations updated before the given datetime. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `updated_after`       | datetime | no       | Return only iterations updated after the given datetime. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+{.sortable}
 
 Example request:
 

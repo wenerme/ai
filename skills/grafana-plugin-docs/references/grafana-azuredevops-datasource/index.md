@@ -11,7 +11,7 @@ The Azure DevOps data source lets you query and visualize data from [Azure DevOp
 
 > Note
 >
-> The Azure DevOps data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Azure DevOps data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -53,19 +53,19 @@ Expand table
 
 The following pages help you set up and use the Azure DevOps data source:
 
-- [Configure the Azure DevOps data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/)
-- [Azure DevOps query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/annotations/)
-- [Troubleshoot Azure DevOps data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/)
+- [Configure the Azure DevOps data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/)
+- [Azure DevOps query editor](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/annotations/)
+- [Troubleshoot Azure DevOps data source issues](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run ad-hoc queries without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Use [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/annotations/) to overlay Azure DevOps events on your dashboards.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run ad-hoc queries without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Use [Annotations](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/annotations/) to overlay Azure DevOps events on your dashboards.
 
 ## Pre-built dashboards
 

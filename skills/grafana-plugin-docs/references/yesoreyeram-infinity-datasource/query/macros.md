@@ -44,7 +44,7 @@ The `$__customInterval()` macro returns different values based on the dashboard 
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 $__customInterval(duration1,value1,duration2,value2,...,defaultValue)
@@ -63,7 +63,7 @@ The number of arguments must be odd (3, 5, 7, 9, …).
 
 **Example:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 $__customInterval(5m,foo,1d,bar,10d,baz,fuzz)
@@ -90,7 +90,7 @@ The `$__combineValues()` macro combines multiple values with a prefix, suffix, a
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 $__combineValues(prefix,suffix,separator,value1,value2,value3,...)
@@ -100,7 +100,7 @@ Each value gets wrapped with the prefix and suffix, then all results are joined 
 
 **Example:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 $__combineValues(key=,, OR ,value1,value2,value3)
@@ -183,7 +183,7 @@ The same format options apply to `${__timeTo}`.
 
 Use `${__timeFrom}` and `${__timeTo}` instead of Grafana’s built-in `${__from}` and `${__to}` variables when making API calls. The Infinity macros are interpolated on the backend, ensuring the time values are correctly passed to external APIs. Grafana’s built-in time variables are interpolated on the frontend, which can cause issues with backend data source requests.
 
-For more information about Grafana’s built-in time variables, refer to [Built-in variables](/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/#__from-and-__to).
+For more information about Grafana’s built-in time variables, refer to [Built-in variables](https://grafana.com/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/#__from-and-__to).
 
 ## Grafana metadata macros
 
@@ -206,4 +206,4 @@ Expand table
 >
 > User macros like `${__user.login}` are not available in contexts without a user session, such as alerts, recorded queries, and public dashboards.
 
-For more information about URL configuration and allowed hosts, refer to [URL configuration](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url/).
+For more information about URL configuration and allowed hosts, refer to [URL configuration](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url/).

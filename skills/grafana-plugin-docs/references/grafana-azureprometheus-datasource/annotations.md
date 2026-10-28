@@ -9,13 +9,13 @@ description: "Use the Azure Monitor Managed Service for Prometheus data source t
 
 Annotations overlay event markers on dashboard graphs so you can correlate metrics with events such as deployments, alerts, or threshold crossings. The Azure Monitor Managed Service for Prometheus data source supports annotations driven by PromQL queries, the same as the core Grafana Prometheus data source.
 
-For general information about annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
 Before you add annotations, ensure you have:
 
-- [Configured the Azure Monitor Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+- [Configured the Azure Monitor Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
 - A metric in your workspace that represents the events you want to annotate, such as the built-in `ALERTS` metric or a custom event metric.
 
 ## Create an annotation query
@@ -70,7 +70,7 @@ The following examples show common annotation patterns. Replace the metric and l
 
 The most reliable way to create annotations is the built-in `ALERTS` metric, which Prometheus generates for all configured alerting rules:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 ALERTS{alertstate="firing"}
@@ -80,7 +80,7 @@ This creates an annotation at every step interval where an alert is firing. The 
 
 To limit annotations to specific alerts or severity levels:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 ALERTS{alertname="HighErrorRate", severity="critical"}
@@ -95,7 +95,7 @@ Configure the field mappings:
 
 Annotate when a process restarts. The `changes()` function detects when a value changes, and `> 0` ensures annotations appear only at the moment of change:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 changes(process_start_time_seconds{job="checkout"}[5m]) > 0
@@ -105,7 +105,7 @@ changes(process_start_time_seconds{job="checkout"}[5m]) > 0
 
 If you track deployments by pushing a timestamp metric through a `Pushgateway` or a recording rule, annotate when the value changes:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 changes(deployment_timestamp_seconds{environment="production"}[10m]) > 0
@@ -120,7 +120,7 @@ Configure the field mappings:
 
 Annotate when available node memory drops below 10 percent:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.1
@@ -134,7 +134,7 @@ node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.1
 
 Annotate when the number of running pods changes:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 changes(kube_deployment_status_replicas{deployment="my-app"}[5m]) > 0
@@ -144,7 +144,7 @@ changes(kube_deployment_status_replicas{deployment="my-app"}[5m]) > 0
 
 Annotate when the HTTP 5xx error ratio exceeds five percent:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum by (job) (rate(http_requests_total{status=~"5.."}[5m]))
@@ -165,9 +165,9 @@ If a dashboard shows too many annotation markers, increase the **Min step** or a
 
 ## Use template variables in annotations
 
-You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) in annotation queries to filter annotations based on dashboard variable selections:
+You can use [template variables](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables/) in annotation queries to filter annotations based on dashboard variable selections:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 ALERTS{alertstate="firing", instance=~"$instance"}
@@ -177,5 +177,5 @@ Grafana resolves template variables in annotations at query time using the curre
 
 ## Next steps
 
-- If annotations don’t appear or you encounter errors, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/).
-- [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)
+- If annotations don’t appear or you encounter errors, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/).
+- [Query editor](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/)

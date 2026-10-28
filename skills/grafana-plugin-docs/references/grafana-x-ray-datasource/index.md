@@ -28,7 +28,7 @@ Expand table
 
 > Note
 >
-> **Annotations** in the table refers to [Grafana dashboard annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/), which are event markers overlaid on panels. This data source doesn’t support them.
+> **Annotations** in the table refers to [Grafana dashboard annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/), which are event markers overlaid on panels. This data source doesn’t support them.
 >
 > It’s different from **X-Ray trace annotations**, which are key-value pairs attached to trace segments by the AWS X-Ray SDK and used in filter expressions (for example, `annotation.account = "12345"`). X-Ray trace annotations are fully supported in Trace queries.
 
@@ -36,20 +36,20 @@ Expand table
 
 The following documents help you get started:
 
-- [Configure the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/)
-- [AWS Application Signals query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
-- [Alerting with the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
-- [Troubleshoot AWS Application Signals data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)
+- [Configure the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/)
+- [AWS Application Signals query editor](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
+- [Alerting with the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
+- [Troubleshoot AWS Application Signals data source issues](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Apply [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- [Build alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/) on numeric Trace Statistics queries.
-- Visualize service maps in the [Node graph](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Apply [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- [Build alert rules](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/) on numeric Trace Statistics queries.
+- Visualize service maps in the [Node graph](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel.
 
 ## Pre-built dashboards
 

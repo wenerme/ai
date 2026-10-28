@@ -37,10 +37,10 @@ For example, you might be interested in comparing system I/O performance as the 
 
 A chart showing resource use over time is an example of a visualization. Comparing time-stamped metrics in visualizations helps you spot system changes as they happen.
 
-Grafana and Grafana Cloud offer a variety of visualizations to suit different use cases. For more information, refer to the Grafana documentation on [visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/).
+Grafana and Grafana Cloud offer a variety of visualizations to suit different use cases. For more information, refer to the Grafana documentation on [visualizations](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/).
 
 ### Use metrics with other telemetry data
 
 If you also have other telemetry data, like logs or traces, you can use the telemetry signals together.
 
-Refer to [Use signals together](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.
+Refer to [Use signals together](https://grafana.com/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.

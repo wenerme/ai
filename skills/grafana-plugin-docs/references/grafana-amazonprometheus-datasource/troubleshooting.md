@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Amazon Managed Service for Prometheu
 
 # Troubleshoot Amazon Managed Service for Prometheus issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Amazon Managed Service for Prometheus data source. For configuration instructions, refer to [Configure the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Amazon Managed Service for Prometheus data source. For configuration instructions, refer to [Configure the Amazon Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
 
 ## Plugin and interface errors
 
@@ -28,10 +28,10 @@ An outdated plugin version is a common cause of interface errors and missing set
 1. Check the installed plugin version. Navigate to **Plugins and data** &gt; **Plugins** and select **Amazon Managed Service for Prometheus**.
 2. If an update is available, click **Update** to install the latest version. In Grafana Cloud, plugins update automatically.
 3. After updating, reload the data source configuration page.
-4. Confirm your Grafana version meets the plugin’s minimum requirement. For the supported versions, refer to [Requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/#requirements).
+4. Confirm your Grafana version meets the plugin’s minimum requirement. For the supported versions, refer to [Requirements](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/#requirements).
 5. If the errors persist, restart Grafana and clear your browser cache.
 
-For install, upgrade, and catalog issues, refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/install/#troubleshoot-installation-issues).
+For install, upgrade, and catalog issues, refer to [Troubleshoot installation issues](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Authentication errors
 
@@ -49,7 +49,7 @@ In some Grafana Cloud instances, the SigV4 authentication option isn’t enabled
 
 **Solution:**
 
-If the SigV4 option is missing from the authentication drop-down in Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable SigV4 authentication for your instance. After Support enables it and the instance restarts, the **SigV4 auth** option appears in the authentication drop-down.
+If the SigV4 option is missing from the authentication drop-down in Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable SigV4 authentication for your instance. After Support enables it and the instance restarts, the **SigV4 auth** option appears in the authentication drop-down.
 
 ### “Access denied” or “Authorization failed”
 
@@ -88,7 +88,7 @@ Expand table
 
 **Example IAM policy:**
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -133,7 +133,7 @@ When you use an assume-role configuration, the role’s trust policy must allow 
 
 **Example trust policy:**
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -203,7 +203,7 @@ These errors indicate a network or endpoint problem rather than an authenticatio
 1. Verify the **Prometheus server URL** is the correct workspace query endpoint and includes the workspace path.
 2. Verify network connectivity from the Grafana server to the workspace endpoint.
 3. Check that firewall rules allow outbound HTTPS on port 443.
-4. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### VPC endpoint and PrivateLink access denied
 
@@ -325,13 +325,13 @@ This error appears when Grafana can’t retrieve the alerting and recording rule
 
 Expand table
 
-| Cause                         | Solution                                                                                                                                                                                                                                                            |
-|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Rule management not enabled   | Enable **Manage alerts via Alerting UI** on the data source [configuration page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).                                                  |
-| Missing rule read permissions | Grant `aps:ListRules`, `aps:ListRuleGroupsNamespaces`, and `aps:DescribeRuleGroupsNamespace` to the identity.                                                                                                                                                       |
-| No rule groups namespace      | Create a rule groups namespace in the workspace. The ruler returns an error until at least one namespace exists.                                                                                                                                                    |
-| Incorrect workspace URL       | Verify the **Prometheus server URL** is correct. The data source serves the ruler from the `/rules` and `/config/v1/rules` paths under this URL, so no separate ruler URL is required.                                                                              |
-| Platform-side issue           | If your configuration and permissions are correct, this error can be a Grafana Cloud platform issue, such as a data proxy problem on a specific cluster. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to escalate. |
+| Cause                         | Solution                                                                                                                                                                                                                   |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Rule management not enabled   | Enable **Manage alerts via Alerting UI** on the data source [configuration page](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).                                                  |
+| Missing rule read permissions | Grant `aps:ListRules`, `aps:ListRuleGroupsNamespaces`, and `aps:DescribeRuleGroupsNamespace` to the identity.                                                                                                              |
+| No rule groups namespace      | Create a rule groups namespace in the workspace. The ruler returns an error until at least one namespace exists.                                                                                                           |
+| Incorrect workspace URL       | Verify the **Prometheus server URL** is correct. The data source serves the ruler from the `/rules` and `/config/v1/rules` paths under this URL, so no separate ruler URL is required.                                     |
+| Platform-side issue           | If your configuration and permissions are correct, this error can be a Grafana Cloud platform issue, such as a data proxy problem on a specific cluster. Contact [Grafana Support](https://grafana.com/help/) to escalate. |
 
 > Note
 >
@@ -343,7 +343,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

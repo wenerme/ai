@@ -50,6 +50,7 @@ GET /projects/:id/repository/commits
 | `trailers`     | boolean        | No       | If `true`, parses and includes [Git trailers](https://git-scm.com/docs/git-interpret-trailers) for every commit. |
 | `until`        | string         | No       | Only commits before or on this date are returned in ISO 8601 format `YYYY-MM-DDTHH:MM:SSZ`. |
 | `with_stats`   | boolean        | No       | If `true`, retrieve stats about each commit. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -70,6 +71,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `title`             | string | Title of the commit message. |
 | `trailers`          | object | Git trailers parsed from the commit message. |
 | `web_url`           | string | Web URL of the commit. |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -154,6 +156,7 @@ POST /projects/:id/repository/commits
 | `start_project`  | integer or string | No       | The project ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) to use as the source for `start_branch` or `start_sha`. Defaults to the value of `id`. |
 | `start_sha`      | string            | No       | SHA of the commit to use as the parent for the new commit. Must be a full 40-character SHA. Mutually exclusive with `start_branch`.[^force-true-provide] |
 | `stats`          | boolean           | No       | Include commit stats. Default is `true`. |
+{.sortable}
 
 [^force-true-provide]: When `force` is `true`, provide `start_branch` or `start_sha` to specify a
     different parent commit.
@@ -173,6 +176,7 @@ POST /projects/:id/repository/commits
 | `execute_filemode`    | boolean | No       | If `true`, enables the execute flag on the file. If `false`, disables it. Only considered for `chmod` action. |
 | `last_commit_id`      | string  | No       | Last known file commit ID. Only considered in update, move, and delete actions. |
 | `previous_path`       | string  | No       | Original full path to the file being moved. For example `lib/class1.rb`. Only considered for `move` action. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -193,6 +197,7 @@ If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and
 | `status`          | string | Status of the commit. |
 | `title`           | string | Title of the commit message. |
 | `web_url`         | string | Web URL of the commit. |
+{.sortable}
 
 ```shell
 PAYLOAD=$(cat << 'JSON'
@@ -326,6 +331,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `status`          | string | Status of the commit. |
 | `title`           | string | Title of the commit message. |
 | `web_url`         | string | Web URL of the commit. |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -476,6 +482,7 @@ Parameters:
 | `sha`     | string         | Yes      | The commit hash. |
 | `dry_run` | boolean        | No       | If `true`, does not commit any changes. Default is `false`. |
 | `message` | string         | No       | A custom commit message to use for the new commit. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -494,6 +501,7 @@ If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and
 | `short_id`        | string | Short SHA of the cherry-picked commit. |
 | `title`           | string | Title of the commit message. |
 | `web_url`         | string | Web URL of the cherry-picked commit. |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -586,6 +594,7 @@ If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and
 | `short_id`        | string | Short SHA of the revert commit. |
 | `title`           | string | Title of the revert commit message. |
 | `web_url`         | string | Web URL of the revert commit. |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -681,6 +690,7 @@ response attributes:
 | `old_path`     | string  | Old path of the file. |
 | `renamed_file` | boolean | File has been renamed. |
 | `too_large`    | boolean | File diffs are excluded and cannot be retrieved. |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -788,6 +798,7 @@ POST /projects/:id/repository/commits/:sha/comments
 | `line`      | integer        | No       | The line number where the comment should be placed. |
 | `line_type` | string         | No       | The line type. Takes `new` or `old` as arguments. |
 | `path`      | string         | No       | The file path relative to the repository. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -920,6 +931,7 @@ GET /projects/:id/repository/commits/:sha/statuses
 | `ref`         | string            | No       | Name of the branch or tag. Default is the default branch. |
 | `sort`        | string            | No       | Sort statuses in ascending or descending order. Valid values are `asc` and `desc`. Default is `asc`. |
 | `stage`       | string            | No       | Filter statuses by [build stage](../ci/yaml/_index.md#stages). For example, `test`. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -937,6 +949,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `started_at`    | string  | Date when the status was started. |
 | `status`        | string  | Status of the commit. |
 | `target_url`    | string  | Target URL associated with the status. |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -1033,6 +1046,7 @@ POST /projects/:id/statuses/:sha
 | `pipeline_id`       | integer           | No       | The ID of the pipeline to set status. Use in case of several pipelines on the same SHA. |
 | `ref`               | string            | No       | The `ref` (branch or tag) to which the status refers. Must be 255 characters or fewer. |
 | `target_url`        | string            | No       | The target URL to associate with this status. Must be 255 characters or fewer. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -1051,6 +1065,7 @@ If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and
 | `started_at`    | string  | Date when the status was started. |
 | `status`        | string  | Status of the commit. |
 | `target_url`    | string  | Target URL associated with the status. |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -1136,6 +1151,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `user_notes_count`             | integer | Number of user notes. |
 | `web_url`                      | string  | Web URL of the merge request. |
 | `work_in_progress`             | boolean | If `true`, the merge request is set as work in progress. |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -1224,6 +1240,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `signature_type`        | string  | Type of signature (`PGP`, `SSH`, or `X509`). |
 | `verification_status`   | string  | Verification status of the signature. |
 | `x509_certificate`      | object  | X.509 certificate information (for X.509 signatures). |
+{.sortable}
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \

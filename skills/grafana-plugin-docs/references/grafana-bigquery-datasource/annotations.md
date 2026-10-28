@@ -13,8 +13,8 @@ Annotations let you mark points in time on your graphs with rich events from Big
 
 Before using annotations:
 
-- [Configure the Google BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/)
-- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Configure the Google BigQuery data source](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/)
+- Understand [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
 
 ## Create an annotation query
 
@@ -60,7 +60,7 @@ The following examples demonstrate common annotation patterns.
 
 Mark deployment events on your graphs:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -76,7 +76,7 @@ ORDER BY deploy_time
 
 Show time ranges (like maintenance windows or incidents) as shaded regions:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -94,7 +94,7 @@ ORDER BY start_time
 
 Add tags to filter annotations by category:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -113,7 +113,7 @@ You can then filter annotations by tag using the annotation toggle in the dashbo
 
 Combine different event types using `UNION ALL`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -159,5 +159,5 @@ Follow these recommendations for effective annotations:
 
 ## Related resources
 
-- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- [Query annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/#query-annotations)
+- [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Query annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/#query-annotations)

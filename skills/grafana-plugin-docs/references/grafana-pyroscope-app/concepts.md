@@ -41,7 +41,7 @@ Each service has multiple profile types, such as CPU, memory, exceptions, and lo
 
 Profile types refer to different dimensions of application performance analysis, focusing on specific aspects like CPU usage, memory allocation, or thread synchronization.
 
-For more information, refer to [Understand profiling types](/docs/grafana-cloud/monitor-applications/profiles/introduction/profiling-types/).
+For more information, refer to [Understand profiling types](https://grafana.com/docs/grafana-cloud/monitor-applications/profiles/introduction/profiling-types/).
 
 Expand table
 
@@ -69,7 +69,7 @@ You can use a flame graph visualization if you need to:
 - Diagnose the root cause of any performance degradation.
 - Analyze the behavior of complex systems, including distributed systems or microservices architectures.
 
-To learn more, refer to the [Flame graph documentation](/docs/grafana-cloud/monitor-applications/profiles/flamegraphs/). To learn more about the flame graph user interface, refer to [Flame graph visualization panel](/404/).
+To learn more, refer to the [Flame graph documentation](https://grafana.com/docs/grafana-cloud/monitor-applications/profiles/flamegraphs/). To learn more about the flame graph user interface, refer to [Flame graph visualization panel](https://grafana.com/404/).
 
 ## Exemplars
 
@@ -77,4 +77,4 @@ Exemplars are individual profiles that appear as diamond-shaped markers on times
 
 Each exemplar includes a profile ID, a sample value, and associated labels that provide additional context such as pod, namespace, or cluster.
 
-To learn more about using exemplars, refer to [Drill down to an individual profile](../investigate/#drill-down-to-an-individual-profile).
+To learn more about using exemplars, refer to [Drill down to an individual profile](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/#drill-down-to-an-individual-profile).

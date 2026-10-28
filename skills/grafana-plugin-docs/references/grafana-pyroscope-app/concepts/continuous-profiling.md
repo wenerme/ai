@@ -11,7 +11,7 @@ Continuous profiling is a systematic method of collecting and analyzing performa
 
 Traditionally, profiling is used to debug applications on an as-needed basis. For example, you can run a benchmark tool locally and get a `pprof` file in Go or connect to a misbehaving prod instance and pull a flame graph from a `JFR` file in Java. This method is good for debugging, but not robust enough for production.
 
-Refer to [Flame graphs](/404/) to learn more.
+Refer to [Flame graphs](https://grafana.com/404/) to learn more.
 
 Continuous profiling is a modern approach which is safer and more scalable for production environments. It uses low-overhead sampling to collect profiles from production systems and stores the profiles in a database for later analysis. Using continuous profiling gives you a more holistic view of your application and how it behaves in production.
 
@@ -37,7 +37,7 @@ Adopting continuous profiling with tools like Grafana Pyroscope and Profiles Dri
 
 By providing in-depth insights into application performance, profiling empowers teams to identify and eliminate inefficiencies, leading to significant savings in areas like observability, incident management, messaging/queuing, deployment tools, and infrastructure.
 
-By using sampling profilers, Pyroscope and Cloud Profiles can collect data with minimal overhead (~2-5% depending on a few factors). The [custom storage engine](/docs/pyroscope/latest/reference-pyroscope-architecture/about-grafana-pyroscope-architecture/) compresses and stores the data efficiently. Some advantages of this are:
+By using sampling profilers, Pyroscope and Cloud Profiles can collect data with minimal overhead (~2-5% depending on a few factors). The [custom storage engine](https://grafana.com/docs/pyroscope/latest/reference-pyroscope-architecture/about-grafana-pyroscope-architecture/) compresses and stores the data efficiently. Some advantages of this are:
 
 - Low CPU overhead thanks to sampling profiler technology
 

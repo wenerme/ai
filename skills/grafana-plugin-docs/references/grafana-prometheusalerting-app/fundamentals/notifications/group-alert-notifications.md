@@ -68,4 +68,4 @@ Expand table
 
 All four settings live on routes, and child routes inherit them from their parent. Setting them on the default route establishes the baseline; override them on a child route where a particular class of alert needs different behavior.
 
-In the plugin they appear on the route edit form as **Group by**, **Group wait**, **Group interval**, and **Repeat interval**. Refer to [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
+In the plugin they appear on the route edit form as **Group by**, **Group wait**, **Group interval**, and **Repeat interval**. Refer to [Configure routes](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).

@@ -11,7 +11,7 @@ The Amazon Redshift query editor lets you write SQL queries to retrieve and visu
 
 ## Before you begin
 
-- [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/).
+- [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/).
 - Verify that your IAM identity has the required permissions to query the target database.
 - Familiarize yourself with [Amazon Redshift SQL](https://docs.aws.amazon.com/redshift/latest/dg/c_redshift-sql.html) syntax and supported functions.
 
@@ -93,7 +93,7 @@ The following examples demonstrate common query patterns.
 
 This query retrieves columns from a table and is best suited for the **Table** visualization:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT column_1, column_2 FROM my_schema.my_table LIMIT 100;
@@ -101,7 +101,7 @@ SELECT column_1, column_2 FROM my_schema.my_table LIMIT 100;
 
 You can also use resource selectors with macros:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM $__schema.$__table LIMIT 100;
@@ -111,7 +111,7 @@ SELECT * FROM $__schema.$__table LIMIT 100;
 
 This query calculates total sales commission grouped by time and is suited for time-series visualizations:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -133,7 +133,7 @@ ORDER BY
 
 To track Redshift query execution time over time:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -154,7 +154,7 @@ ORDER BY
 
 To monitor table sizes within a schema:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

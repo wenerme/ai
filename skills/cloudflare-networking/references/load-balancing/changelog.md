@@ -49,6 +49,19 @@ Use pool sets for active-active traffic distribution, location-specific failover
 
 For configuration details and more examples, refer to [Pool sets](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/).
 
+## 2026-08-28
+
+
+**Load Balancing now supports regional health**
+
+Cloudflare Load Balancing now supports regional health. Each Cloudflare region can make an independent health decision for a pool. When pool reachability differs by region, traffic can avoid an unreachable pool without removing it from service elsewhere.
+
+Configure regional health with the `health_sources` field on a pool. Set it to `["regional", "global"]` to prefer regional health and use global health when no regional decision is available. Pools without `health_sources` retain their existing health behavior.
+
+Regional health is useful for multi-region deployments and failures that affect specific network paths.
+
+For more information, refer to [Regional health](https://developers.cloudflare.com/load-balancing/understand-basics/regional-health/).
+
 ## 2026-08-17
 
 

@@ -28,7 +28,7 @@ In Grafana, SLIs are defined using data source queries that measure the success 
 
 SLI query results must return a value between `0` and `1` for each evaluation period, where `1` represents **100% success** and `0` represents **0% success**.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-sli-query.png)
+[](https://grafana.com/media/docs/grafana-cloud/slo/screenshot-sli-query.png)
 
 Grafana SLO continuously evaluates the SLI query. Each SLI is calculated over a specific time range defined in the query, typically `$__interval` or `$__rate_interval`.
 
@@ -53,7 +53,7 @@ There are two common ways to express this, depending on the metric type:
 
 1. **Using rates of events**
 
-   ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    Success ratio = rate of successful events (over a period)
@@ -62,7 +62,7 @@ There are two common ways to express this, depending on the metric type:
    ```
 2. **Using count of events**
 
-   ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    Success ratio = number of successful events (over a period)
@@ -74,15 +74,15 @@ Both approaches measure the ratio of successful events, and the choice depends o
 
 The following examples illustrate how to define event-based SLIs for different metric types:
 
-- [SLI example for availability](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/)
-- [SLI example for latency](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/)
-- [Multidimensional SLI example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)
+- [SLI example for availability](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/)
+- [SLI example for latency](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/)
+- [Multidimensional SLI example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)
 
 > Note
 >
 > Event-based SLIs ensure **each event contributes equally to the SLO and error budget**.
 >
-> Grafana expects SLIs to parse as a **ratio-like query**: `numerator / denominator`. SLIs that don’t parse as ratios are considered [time-based SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/#time-based-slis).
+> Grafana expects SLIs to parse as a **ratio-like query**: `numerator / denominator`. SLIs that don’t parse as ratios are considered [time-based SLIs](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/#time-based-slis).
 >
 > If your data doesn’t expose both success and total events, define recording rules or update your service instrumentation rather than relying on complex SLI workarounds.
 
@@ -109,4 +109,4 @@ The time interval (or time slice) is the range selector used in the SLI query. F
 >
 > **Event-based SLIs better represent the end-user experience** and are the recommended approach in most cases.
 >
-> **Use time-based SLIs only when your objective must strictly be defined in time intervals**. To learn about the implementation details and limitations, refer to the [time-based SLI examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/time-based/).
+> **Use time-based SLIs only when your objective must strictly be defined in time intervals**. To learn about the implementation details and limitations, refer to the [time-based SLI examples](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/time-based/).

@@ -13,7 +13,7 @@ Grafana supports managing data sources by adding one or more YAML config files i
 
 Example of provisioning the Static Data Source.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 datasources:
@@ -32,4 +32,4 @@ datasources:
 
 After you provision the data source, it appears in the data sources list.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/datasource.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/datasource.png)

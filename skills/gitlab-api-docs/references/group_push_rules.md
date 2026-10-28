@@ -46,6 +46,7 @@ response attributes:
 | `prevent_secrets`                 | boolean | If `true`, rejects files that are likely to contain secrets. |
 | `reject_non_dco_commits`          | boolean | If `true`, rejects a commit when it's not DCO certified. |
 | `reject_unsigned_commits`         | boolean | If `true`, rejects a commit when it's not signed. |
+{.sortable}
 
 Example request:
 
@@ -120,6 +121,7 @@ Supported attributes:
 | `prevent_secrets`                 | boolean        | No       | If `true`, rejects files that are likely to [contain secrets](https://gitlab.com/gitlab-org/gitlab/-/blob/master/ee/lib/gitlab/checks/files_denylist.yml). |
 | `reject_non_dco_commits`          | boolean        | No       | If `true`, rejects a commit when it's not DCO certified. |
 | `reject_unsigned_commits`         | boolean        | No       | If `true`, rejects a commit when it's not signed. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -141,6 +143,7 @@ response attributes:
 | `prevent_secrets`                 | boolean | If `true`, rejects files that are likely to contain secrets. |
 | `reject_non_dco_commits`          | boolean | If `true`, rejects a commit when it's not DCO certified. |
 | `reject_unsigned_commits`         | boolean | If `true`, rejects a commit when it's not signed. |
+{.sortable}
 
 Example request:
 
@@ -198,6 +201,7 @@ Supported attributes:
 | `prevent_secrets`                 | boolean        | No       | If `true`, rejects files that are likely to [contain secrets](https://gitlab.com/gitlab-org/gitlab/-/blob/master/ee/lib/gitlab/checks/files_denylist.yml). |
 | `reject_non_dco_commits`          | boolean        | No       | If `true`, rejects a commit when it's not DCO certified. |
 | `reject_unsigned_commits`         | boolean        | No       | If `true`, rejects a commit when it's not signed. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -219,6 +223,7 @@ response attributes:
 | `prevent_secrets`                 | boolean | If `true`, rejects files that are likely to contain secrets. |
 | `reject_non_dco_commits`          | boolean | If `true`, rejects a commit when it's not DCO certified. |
 | `reject_unsigned_commits`         | boolean | If `true`, rejects a commit when it's not signed. |
+{.sortable}
 
 Example request:
 

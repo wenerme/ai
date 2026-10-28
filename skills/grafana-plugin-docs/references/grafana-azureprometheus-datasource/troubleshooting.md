@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Azure Monitor Managed Service for Pr
 
 # Troubleshoot Azure Monitor Managed Service for Prometheus issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Azure Monitor Managed Service for Prometheus data source. For configuration instructions, refer to [Configure the Azure Monitor Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Azure Monitor Managed Service for Prometheus data source. For configuration instructions, refer to [Configure the Azure Monitor Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/).
 
 ## Plugin and interface errors
 
@@ -28,10 +28,10 @@ An outdated plugin version is a common cause of interface errors and missing set
 1. Check the installed plugin version. Navigate to **Plugins and data** &gt; **Plugins** and select **Azure Monitor Managed Service for Prometheus**.
 2. If an update is available, click **Update** to install the latest version. In Grafana Cloud, plugins update automatically.
 3. After updating, reload the data source configuration page.
-4. Confirm your Grafana version meets the plugin’s minimum requirement. For the supported versions, refer to [Requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/#requirements).
+4. Confirm your Grafana version meets the plugin’s minimum requirement. For the supported versions, refer to [Requirements](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/#requirements).
 5. If the errors persist, restart Grafana and clear your browser cache.
 
-For install, upgrade, and catalog issues, refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/install/#troubleshoot-installation-issues).
+For install, upgrade, and catalog issues, refer to [Troubleshoot installation issues](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Authentication errors
 
@@ -49,13 +49,13 @@ The plugin backend attaches Azure tokens only when Azure authentication is enabl
 
 > Note
 >
-> On Grafana Cloud, Azure authentication isn’t enabled by default, and you can’t enable it yourself. If your credentials are valid but **Save &amp; test** returns `401 Unauthorized`, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable Azure authentication for your instance.
+> On Grafana Cloud, Azure authentication isn’t enabled by default, and you can’t enable it yourself. If your credentials are valid but **Save &amp; test** returns `401 Unauthorized`, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication for your instance.
 
 **Solutions:**
 
 1. On self-managed Grafana, set `azure_auth_enabled = true` under `[auth]` in the Grafana configuration file and restart Grafana.
 2. If you’ve customized `forward_settings_to_plugins` under `[azure]`, include `grafana-azureprometheus-datasource`.
-3. On Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable Azure authentication for your instance. This isn’t a self-service setting.
+3. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication for your instance. This isn’t a self-service setting.
 
 ### “401 Unauthorized” after migration
 
@@ -70,11 +70,11 @@ Migrating a data source doesn’t enable or carry over the server-side Azure aut
 
 1. On self-managed Grafana, verify that `grafana-azureprometheus-datasource` is included in `forward_settings_to_plugins` under `[azure]`. Grafana includes this plugin ID by default.
 2. Verify `[auth] azure_auth_enabled = true`.
-3. On Grafana Cloud, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to enable Azure authentication, because it isn’t a self-service setting.
+3. On Grafana Cloud, contact [Grafana Support](https://grafana.com/help/) to enable Azure authentication, because it isn’t a self-service setting.
 
-If these steps don’t resolve the error, refer to [Azure authentication isn’t applied](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/#azure-authentication-isnt-applied), which covers the same setting in more detail.
+If these steps don’t resolve the error, refer to [Azure authentication isn’t applied](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/#azure-authentication-isnt-applied), which covers the same setting in more detail.
 
-For migration status and rollback, refer to [Migrate from Prometheus Azure AD to Azure Monitor Managed Service for Prometheus](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
+For migration status and rollback, refer to [Migrate from Prometheus Azure AD to Azure Monitor Managed Service for Prometheus](https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/azure-authentication/).
 
 ### “Access denied” or “Authorization failed”
 
@@ -90,14 +90,14 @@ These errors indicate that the identity Grafana uses can’t query the workspace
 
 Expand table
 
-| Cause                         | Solution                                                                                                                                                                                                                                                                                                                                                               |
-|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing permissions           | Assign **Monitoring Data Reader** on the Azure Monitor workspace to the identity. Refer to the [Azure Monitor Prometheus Grafana documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-grafana).                                                                                                                                     |
-| Invalid credentials           | Verify the tenant ID, client ID, and client secret in the Azure portal. Regenerate the secret if necessary.                                                                                                                                                                                                                                                            |
-| Expired client secret         | Create a new client secret and update the data source configuration. For a data source that previously worked, refer to [Data source stops working after previously working](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/#data-source-stops-working-after-previously-working). |
-| Wrong Azure Cloud             | Verify **Azure Cloud** matches the cloud that hosts the workspace, such as public, US Government, or China.                                                                                                                                                                                                                                                            |
-| Managed Identity not enabled  | Set `managed_identity_enabled = true` under `[azure]` and restart Grafana.                                                                                                                                                                                                                                                                                             |
-| Workload Identity not enabled | Set `workload_identity_enabled = true` under `[azure]` and restart Grafana.                                                                                                                                                                                                                                                                                            |
+| Cause                         | Solution                                                                                                                                                                                                                                                                                                                      |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing permissions           | Assign **Monitoring Data Reader** on the Azure Monitor workspace to the identity. Refer to the [Azure Monitor Prometheus Grafana documentation](https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-grafana).                                                                                            |
+| Invalid credentials           | Verify the tenant ID, client ID, and client secret in the Azure portal. Regenerate the secret if necessary.                                                                                                                                                                                                                   |
+| Expired client secret         | Create a new client secret and update the data source configuration. For a data source that previously worked, refer to [Data source stops working after previously working](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting/#data-source-stops-working-after-previously-working). |
+| Wrong Azure Cloud             | Verify **Azure Cloud** matches the cloud that hosts the workspace, such as public, US Government, or China.                                                                                                                                                                                                                   |
+| Managed Identity not enabled  | Set `managed_identity_enabled = true` under `[azure]` and restart Grafana.                                                                                                                                                                                                                                                    |
+| Workload Identity not enabled | Set `workload_identity_enabled = true` under `[azure]` and restart Grafana.                                                                                                                                                                                                                                                   |
 
 ### Data source stops working after previously working
 
@@ -166,7 +166,7 @@ These errors indicate a network or endpoint problem rather than an authenticatio
 1. Verify the **Prometheus server URL** is the query endpoint from the Azure Monitor workspace **Overview** page.
 2. Verify network connectivity from the Grafana server to the workspace endpoint.
 3. Check that firewall rules allow outbound HTTPS on port 443.
-4. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing a private endpoint, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Browser access mode error
 
@@ -240,7 +240,7 @@ Expand table
 
 1. Match the dashboard time range to the portal, and set a fixed **Min step** that matches the portal’s time grain.
 2. Use the same aggregation and rate window in both tools.
-3. Use the [query inspector](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/#use-the-query-inspector) to confirm the evaluated query, step, and time range.
+3. Use the [query inspector](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor/#use-the-query-inspector) to confirm the evaluated query, step, and time range.
 4. Compare a single series with explicit label filters instead of an aggregate.
 
 ## Template variable errors
@@ -305,12 +305,12 @@ This error appears when Grafana can’t retrieve the alerting and recording rule
 
 Expand table
 
-| Cause                         | Solution                                                                                                                                                                                                          |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Rule management not enabled   | Enable **Manage alerts via Alerting UI** on the data source [configuration page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/). |
-| Missing rule permissions      | Grant the identity permission to read Prometheus rule groups on the Azure Monitor workspace.                                                                                                                      |
-| Incorrect workspace URL       | Verify the **Prometheus server URL** is the query endpoint. The data source serves the ruler from the `/rules` and `/config/v1/rules` paths under this URL.                                                       |
-| Current User without fallback | Configure [fallback service credentials](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azureprometheus-datasource/latest/configure/#current-user).                            |
+| Cause                         | Solution                                                                                                                                                                 |
+|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Rule management not enabled   | Enable **Manage alerts via Alerting UI** on the data source [configuration page](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/). |
+| Missing rule permissions      | Grant the identity permission to read Prometheus rule groups on the Azure Monitor workspace.                                                                             |
+| Incorrect workspace URL       | Verify the **Prometheus server URL** is the query endpoint. The data source serves the ruler from the `/rules` and `/config/v1/rules` paths under this URL.              |
+| Current User without fallback | Configure [fallback service credentials](https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure/#current-user).                            |
 
 ## Enable debug logging
 
@@ -318,7 +318,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

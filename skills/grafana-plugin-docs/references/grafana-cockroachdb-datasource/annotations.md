@@ -11,8 +11,8 @@ Annotations let you overlay event data from CockroachDB on your Grafana dashboar
 
 ## Before you begin
 
-- [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
-- Familiarize yourself with [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the CockroachDB data source](https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
+- Familiarize yourself with [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Create an annotation query
 
@@ -22,7 +22,7 @@ To add a CockroachDB annotation query to a dashboard:
 2. Click **Add annotation query**.
 3. Give the annotation a descriptive name (for example, “Deployments” or “Incidents”).
 4. Select the CockroachDB data source.
-5. Enter a SQL query that returns the required columns (refer to [Annotation query format](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/annotations/#annotation-query-format)).
+5. Enter a SQL query that returns the required columns (refer to [Annotation query format](https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/annotations/#annotation-query-format)).
 6. Optionally, set a color to distinguish this annotation from others.
 7. Click **Apply**.
 
@@ -53,7 +53,7 @@ The following examples show common annotation patterns for CockroachDB dashboard
 
 Mark application deployments on your dashboards:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -69,7 +69,7 @@ ORDER BY deployed_at ASC
 
 Overlay incident windows as shaded regions showing start and end times:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -86,7 +86,7 @@ ORDER BY started_at ASC
 
 Track database schema changes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ ORDER BY completed_at ASC
 
 Annotate when application or cluster configuration was modified:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -118,7 +118,7 @@ ORDER BY changed_at ASC
 
 Use CockroachDB’s internal event log to annotate cluster-level events like node joins, restarts, and zone config changes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

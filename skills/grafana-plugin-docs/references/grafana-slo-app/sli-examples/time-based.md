@@ -13,15 +13,15 @@ To begin, it’s helpful to understand how the different SLI types work.
 
 **Time-based SLIs** calculate the error budget by measuring the value of successful time slices over the total number of time slices:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 successful time-slices / total time-slices
 ```
 
-In contrast, [event-based SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#time-based-slis) calculate the error budget as:
+In contrast, [event-based SLIs](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#time-based-slis) calculate the error budget as:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 successful events / total events
@@ -67,17 +67,17 @@ The SLI values over the time window are:
 
 Grafana SLO doesn’t fully support time-based SLIs yet:
 
-- [Multidimensional SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/) are not supported.
-- [SLO reports](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/reports/) are not supported.
+- [Multidimensional SLIs](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/) are not supported.
+- [SLO reports](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/reports/) are not supported.
 - **SLO alerts** are not supported for time-based SLIs using strict interval conditions.
 
 ## How to define a time-based SLI
 
-To create a time-based SLI, use the **Advanced SLI** query option to [create a SLO](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/create/).
+To create a time-based SLI, use the **Advanced SLI** query option to [create a SLO](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/create/).
 
 Any SLI query that **cannot be parsed as a ratio-like query (`numerator / denominator`)** is treated as a time-based SLO.
 
-The time interval (or time slice) is the range selector used in the SLI query. For Prometheus, this must be either `$__interval` or [`$__rate_interval`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/prometheus/template-variables/#use-__rate_interval).
+The time interval (or time slice) is the range selector used in the SLI query. For Prometheus, this must be either `$__interval` or [`$__rate_interval`](https://grafana.com/docs/grafana/latest/datasources/prometheus/template-variables/#use-__rate_interval).
 
 You can identify a time-based SLO by its dashboard: it does not display the **Event Rate** panel.
 
@@ -92,7 +92,7 @@ For time-based SLIs, we recommend designing queries that avoid fractional result
 
 This makes the objective clearer to communicate and ensures consistency across different SLOs.
 
-To illustrate this, consider the [event-based SLI latency example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/) was defined as:
+To illustrate this, consider the [event-based SLI latency example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/) was defined as:
 
 - *99% (SLO target) of requests must respond within 2 seconds.*
 
@@ -128,7 +128,7 @@ The following examples show how to implement the time-based SLIs described above
 
 ### Strict interval condition (using Gauges)
 
-The [probe latency example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/) defines an event-based SLI using the `probe_duration_seconds` metric, a Prometheus Gauge that measures how long a probe takes to complete (in seconds).
+The [probe latency example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/) defines an event-based SLI using the `probe_duration_seconds` metric, a Prometheus Gauge that measures how long a probe takes to complete (in seconds).
 
 This example uses the same metric to define a strict time-based SLI:
 
@@ -139,9 +139,9 @@ For each evaluation interval, the SLI query must return:
 - `1` (100% success) if **all** requests in the time interval are `< 2s`
 - `0` (0% success) if **any** request in the time interval is `≥ 2s`
 
-You can configure time-based SLIs only using the **Advanced** option in the Grafana SLO wizard (refer to [how to define a time-based SLI](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#how-to-define-a-time-based-sli)). The SLI query looks like this:
+You can configure time-based SLIs only using the **Advanced** option in the Grafana SLO wizard (refer to [how to define a time-based SLI](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#how-to-define-a-time-based-sli)). The SLI query looks like this:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 min (
@@ -191,7 +191,7 @@ For each evaluation interval, the SLI query must return:
 
 With gauge metrics, you can use `quantile_over_time` to calculate percentiles from intervals:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # Using gauges. Returns one result per series (dimension).
@@ -207,7 +207,7 @@ However, **`quantile_over_time()` cannot compute a global percentile**.
 
 To calculate `p95` across all dimensions, **use a histogram metric and [`histogram_quantile()`](https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile)**. This example uses OpenTelemetry metric [http.client.request.duration](https://opentelemetry.io/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestduration), stored either as a classic or native histogram.
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # using classic histogram
@@ -218,7 +218,7 @@ histogram_quantile(0.95,
 ) < bool 2
 ```
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # using native histogram
@@ -254,7 +254,7 @@ For strict conditions (*“all requests must be &lt; 2s”*), you can use `histo
 
 ## Time-based SLI example for availability
 
-For comparison, this section replicates the [event-based SLI availability example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/):
+For comparison, this section replicates the [event-based SLI availability example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/):
 
 - *99% (SLO target) of requests must not return system errors.*
 
@@ -290,7 +290,7 @@ For each evaluation interval, the SLI query must return:
 
 The SLI query is:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 (
@@ -331,9 +331,9 @@ For each evaluation interval, the SLI query must return:
 - `1` (100% success) if more than **95%** requests are successful
 - `0` (0% success) if **5% or more** requests are failing
 
-You can configure time-based SLIs only using the **Advanced** option in the Grafana SLO wizard (refer to [how to define a time-based SLI](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#how-to-define-a-time-based-sli)). The SLI query looks like this:
+You can configure time-based SLIs only using the **Advanced** option in the Grafana SLO wizard (refer to [how to define a time-based SLI](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#how-to-define-a-time-based-sli)). The SLI query looks like this:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 (
@@ -348,7 +348,7 @@ promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.clus
 # `bool` converts the comparison result into a binary series
 ```
 
-- This query reuses the standard [event-based SLI ratio](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-summary) to compute the success ratio for each interval.
+- This query reuses the standard [event-based SLI ratio](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-summary) to compute the success ratio for each interval.
 - `> bool 0.95`
 
   Compares the success ratio for each interval to convert it into a binary result:
@@ -370,7 +370,7 @@ When designing SLOs or implementing time-based SLIs, keep the following in mind:
    If your SLI query does not follow a ratio-like structure (`numerator / denominator`), Grafana SLO treats it as a time-based SLI and evaluates the error budget per time interval.
 3. **Time-based SLIs don’t support all SLO features**
 
-   Refer to [time-based SLI limitations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#time-based-sli-limitations) for details.
+   Refer to [time-based SLI limitations](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/time-based/#time-based-sli-limitations) for details.
 4. **It’s preferred that time-based SLIs return only binary results**
 
    Returning `1` for good intervals and `0` for bad intervals makes the SLO easier to define, and compare across different SLOs.

@@ -11,7 +11,7 @@ This document explains how to use the Catchpoint query editor to build queries a
 
 ## Before you begin
 
-- Ensure you’ve [configured the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
+- Ensure you’ve [configured the Catchpoint data source](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
 - Verify your Catchpoint REST API v2 key has access to the tests, sites, and SLOs you want to query.
 
 ## Key concepts
@@ -186,7 +186,7 @@ Due to a limitation of the Catchpoint API, you can’t filter by specific dimens
 
 ## Next steps
 
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/alerting/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/template-variables/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/alerting/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)

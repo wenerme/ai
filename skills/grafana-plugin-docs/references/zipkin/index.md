@@ -9,11 +9,11 @@ description: "Guide for using Zipkin in Grafana"
 
 Grafana ships with built-in support for Zipkin, an open source, distributed tracing system. This topic explains configuration and queries specific to the Zipkin data source.
 
-For instructions on how to add a data source to Grafana, refer to the [administration documentation](/404/). Only users with the organization administrator role can add data sources. Administrators can also [configure the data source via YAML](#provision-the-data-source) with Grafana’s provisioning system.
+For instructions on how to add a data source to Grafana, refer to the [administration documentation](https://grafana.com/404/). Only users with the organization administrator role can add data sources. Administrators can also [configure the data source via YAML](https://grafana.com/docs/plugins/zipkin/latest/#provision-the-data-source) with Grafana’s provisioning system.
 
-Once you’ve added the Zipkin data source, you can [configure it](#configure-the-data-source) so that your Grafana instance’s users can create queries in its [query editor](#query-the-data-source) when they [build dashboards](/404/) and use [Explore](/404/).
+Once you’ve added the Zipkin data source, you can [configure it](https://grafana.com/docs/plugins/zipkin/latest/#configure-the-data-source) so that your Grafana instance’s users can create queries in its [query editor](https://grafana.com/docs/plugins/zipkin/latest/#query-the-data-source) when they [build dashboards](https://grafana.com/404/) and use [Explore](https://grafana.com/404/).
 
-You can also [upload a JSON trace file](#upload-a-json-trace-file), [link to a trace ID from logs](#link-to-a-trace-id-from-logs), and [link to a trace ID from metrics](#link-to-a-trace-id-from-metrics).
+You can also [upload a JSON trace file](https://grafana.com/docs/plugins/zipkin/latest/#upload-a-json-trace-file), [link to a trace ID from logs](https://grafana.com/docs/plugins/zipkin/latest/#link-to-a-trace-id-from-logs), and [link to a trace ID from metrics](https://grafana.com/docs/plugins/zipkin/latest/#link-to-a-trace-id-from-metrics).
 
 ## Configure the data source
 
@@ -42,14 +42,14 @@ To configure basic settings for the data source, complete the following steps:
 
 > Note
 >
-> If you use Grafana Cloud, open a [support ticket in the Cloud Portal](/profile/org#support) to access this feature.
+> If you use Grafana Cloud, open a [support ticket in the Cloud Portal](https://grafana.com/profile/org#support) to access this feature.
 
-The **Trace to logs** setting configures the [trace to logs feature](/404/) that is available when you integrate Grafana with Zipkin.
+The **Trace to logs** setting configures the [trace to logs feature](https://grafana.com/404/) that is available when you integrate Grafana with Zipkin.
 
 There are two ways to configure the trace to logs feature:
 
 - Use a simplified configuration with default query, or
-- Configure a custom query where you can use a [template language](/404/) to interpolate variables from the trace or span.
+- Configure a custom query where you can use a [template language](https://grafana.com/404/) to interpolate variables from the trace or span.
 
 #### Use a simple configuration
 
@@ -106,7 +106,7 @@ Expand table
 
 ### Trace to metrics
 
-The **Trace to metrics** setting configures the [trace to metrics feature](/blog/2022/08/18/new-in-grafana-9.1-trace-to-metrics-allows-users-to-navigate-from-a-trace-span-to-a-selected-data-source/) available when integrating Grafana with Zipkin.
+The **Trace to metrics** setting configures the [trace to metrics feature](https://grafana.com/blog/2022/08/18/new-in-grafana-9.1-trace-to-metrics-allows-users-to-navigate-from-a-trace-span-to-a-selected-data-source/) available when integrating Grafana with Zipkin.
 
 To configure trace to metrics:
 
@@ -129,7 +129,7 @@ Each linked query consists of:
 
 ### Node Graph
 
-The **Node Graph** setting enables the [Node Graph visualization](/404/), which is disabled by default.
+The **Node Graph** setting enables the [Node Graph visualization](https://grafana.com/404/), which is disabled by default.
 
 Once enabled, Grafana displays the Node Graph after loading the trace view.
 
@@ -149,11 +149,11 @@ Expand table
 
 ### Provision the data source
 
-You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning and available configuration options, refer to [Provisioning Grafana](/404/).
+You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning and available configuration options, refer to [Provisioning Grafana](https://grafana.com/404/).
 
 #### Provisioning example
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -202,9 +202,9 @@ datasources:
 
 ## Query the data source
 
-You can query and display traces from Zipkin via [Explore](/404/)
+You can query and display traces from Zipkin via [Explore](https://grafana.com/404/)
 
-This topic explains configuration and queries specific to the Zipkin data source. For general documentation on querying data sources in Grafana, see [Query and transform data](/404/).
+This topic explains configuration and queries specific to the Zipkin data source. For general documentation on querying data sources in Grafana, see [Query and transform data](https://grafana.com/404/).
 
 ### Query by trace ID
 
@@ -213,7 +213,7 @@ To query a particular trace:
 1. Select the **TraceID** query type.
 2. Enter the trace’s ID into the **Trace ID** field.
 
-[Screenshot of the Zipkin query editor](/static/img/docs/v70/zipkin-query-editor.png)
+[Screenshot of the Zipkin query editor](https://grafana.com/static/img/docs/v70/zipkin-query-editor.png)
 
 ### Query by trace selector
 
@@ -223,7 +223,7 @@ To select a particular trace from all traces logged in the time range you have s
 - Particular operation, part of the selected service
 - Specific trace in which the selected operation occurred, represented by the root operation name and trace duration
 
-[Screenshot of the Zipkin query editor with trace selector expanded](/static/img/docs/v70/zipkin-query-editor-open.png)
+[Screenshot of the Zipkin query editor with trace selector expanded](https://grafana.com/static/img/docs/v70/zipkin-query-editor-open.png)
 
 ## View data mapping in the trace UI
 
@@ -233,11 +233,11 @@ You can view Zipkin annotations in the trace view as logs with annotation value 
 
 You can upload a JSON file that contains a single trace and visualize it. If the file has multiple traces, Grafana visualizes its first trace.
 
-[Screenshot of the Zipkin data source in explore with upload selected](/static/img/docs/explore/zipkin-upload-json.png)
+[Screenshot of the Zipkin data source in explore with upload selected](https://grafana.com/static/img/docs/explore/zipkin-upload-json.png)
 
 ### Trace JSON example
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -278,10 +278,10 @@ To only show the spans you have matched, you can press the `Show matches only` t
 
 You can link to Zipkin traces from logs in Loki, Elasticsearch, Splunk, and other logs data sources by configuring an internal link.
 
-To configure this feature, see the [Derived fields](../loki/#configure-derived-fields) section of the Loki data source docs or the [Data links](../elasticsearch/#data-links) section of the Elasticsearch or Splunk data source docs.
+To configure this feature, see the [Derived fields](https://grafana.com/docs/plugins/zipkin/loki/#configure-derived-fields) section of the Loki data source docs or the [Data links](https://grafana.com/docs/plugins/zipkin/elasticsearch/#data-links) section of the Elasticsearch or Splunk data source docs.
 
 ## Link to a trace ID from metrics
 
 You can link to Zipkin traces from metrics in Prometheus data sources by configuring an exemplar.
 
-To configure this feature, see the [introduction to exemplars](../../fundamentals/exemplars/) documentation.
+To configure this feature, see the [introduction to exemplars](https://grafana.com/docs/plugins/fundamentals/exemplars/) documentation.

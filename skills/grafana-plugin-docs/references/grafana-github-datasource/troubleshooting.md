@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the GitHub data source plugin for 
 
 # Troubleshoot GitHub data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the GitHub data source. For configuration instructions, refer to [Configure the GitHub data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the GitHub data source. For configuration instructions, refer to [Configure the GitHub data source](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -25,12 +25,12 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 Expand table
 
-| Cause                                                 | Solution                                                                                                                                                                                                  |
-|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing or incorrect token scopes                     | Verify the token includes all [required scopes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions). |
-| Expired or revoked token                              | Generate a new token in GitHub and update the data source configuration.                                                                                                                                  |
-| Extra whitespace or line breaks in token              | Paste the token directly, avoiding extra spaces or line breaks.                                                                                                                                           |
-| Token doesn’t have access to the queried repositories | Ensure the token has access to the repositories and organizations you’re querying. For private repositories, the `repo` scope is required.                                                                |
+| Cause                                                 | Solution                                                                                                                                                         |
+|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing or incorrect token scopes                     | Verify the token includes all [required scopes](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions). |
+| Expired or revoked token                              | Generate a new token in GitHub and update the data source configuration.                                                                                         |
+| Extra whitespace or line breaks in token              | Paste the token directly, avoiding extra spaces or line breaks.                                                                                                  |
+| Token doesn’t have access to the queried repositories | Ensure the token has access to the repositories and organizations you’re querying. For private repositories, the `repo` scope is required.                       |
 
 ### GitHub App authentication fails
 
@@ -43,13 +43,13 @@ Expand table
 
 Expand table
 
-| Cause                                        | Solution                                                                                                                                                                                     |
-|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Incorrect App ID                             | Verify the App ID matches the ID shown on your GitHub App’s settings page.                                                                                                                   |
-| Wrong Installation ID                        | Verify the installation ID. Navigate to **Settings** &gt; **Installed GitHub Apps** &gt; **Configure** and check the number at the end of the URL.                                           |
-| Expired or invalid private key               | Generate a new private key from your GitHub App settings and update the data source configuration.                                                                                           |
-| App not installed on the target organization | [Install the GitHub App](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app) on the organization or user account you want to query.                            |
-| Insufficient app permissions                 | Verify the app has the [required permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#github-app-permissions). |
+| Cause                                        | Solution                                                                                                                                                          |
+|----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Incorrect App ID                             | Verify the App ID matches the ID shown on your GitHub App’s settings page.                                                                                        |
+| Wrong Installation ID                        | Verify the installation ID. Navigate to **Settings** &gt; **Installed GitHub Apps** &gt; **Configure** and check the number at the end of the URL.                |
+| Expired or invalid private key               | Generate a new private key from your GitHub App settings and update the data source configuration.                                                                |
+| App not installed on the target organization | [Install the GitHub App](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app) on the organization or user account you want to query. |
+| Insufficient app permissions                 | Verify the app has the [required permissions](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#github-app-permissions).               |
 
 ### Can’t access private repositories or organizations
 
@@ -92,7 +92,7 @@ These errors occur when Grafana can’t reach the GitHub API endpoints.
 1. Verify network connectivity from the Grafana server to the GitHub Enterprise Server.
 2. Check that firewall rules allow outbound HTTPS (port 443) traffic to the GitHub endpoint.
 3. Verify proxy settings if your Grafana server uses a proxy for outbound requests.
-4. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your GitHub Enterprise Server is in a private network.
+4. For Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your GitHub Enterprise Server is in a private network.
 
 ## Query errors
 
@@ -145,7 +145,7 @@ The plugin caches all API responses for up to five minutes to reduce the number 
 1. Reduce the frequency of dashboard auto-refresh.
 2. Use more specific queries to reduce the number of API calls.
 3. If using a personal access token, consider switching to a GitHub App, which has higher rate limits.
-4. For Grafana Enterprise or Grafana Cloud, enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching) for additional caching control beyond the built-in cache.
+4. For Grafana Enterprise or Grafana Cloud, enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching) for additional caching control beyond the built-in cache.
 
 ## Code scanning errors
 
@@ -157,7 +157,7 @@ The plugin caches all API responses for up to five minutes to reduce the number 
 
 **Solutions:**
 
-1. Verify the token or GitHub App has the [code scanning permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#code-scanning-permissions): `code scanning alerts: read-only` and `security_events: read-only`.
+1. Verify the token or GitHub App has the [code scanning permissions](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#code-scanning-permissions): `code scanning alerts: read-only` and `security_events: read-only`.
 2. Verify code scanning is enabled on the repository.
 3. If querying at the organization level, leave the **Repository** field empty.
 
@@ -167,7 +167,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -185,7 +185,7 @@ If you’ve tried the solutions in this document and still have issues:
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review the [GitHub data source plugin issues](https://github.com/grafana/github-datasource/issues) for known bugs.
 3. Consult the [GitHub API documentation](https://docs.github.com/en/rest) for service-specific guidance.
-4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re a Grafana Cloud Pro, Cloud Advanced, or Enterprise customer.
+4. Contact [Grafana Support](https://grafana.com/support/) if you’re a Grafana Cloud Pro, Cloud Advanced, or Enterprise customer.
 5. When reporting issues, include:
 
    - Grafana version and plugin version.

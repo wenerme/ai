@@ -7,14 +7,14 @@ description: "Add annotations from AWS IoT SiteWise data in Grafana."
 
 # AWS IoT SiteWise annotations
 
-[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you overlay event information on top of graphs. You can add annotations from AWS IoT SiteWise data through **Dashboard settings** &gt; **Annotations**.
+[Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you overlay event information on top of graphs. You can add annotations from AWS IoT SiteWise data through **Dashboard settings** &gt; **Annotations**.
 
 ## Before you begin
 
 Before you create an annotation query, ensure you have:
 
-- Configured the [AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
-- Reviewed the [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/), because annotation queries use the same query editor.
+- Configured the [AWS IoT SiteWise data source](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
+- Reviewed the [AWS IoT SiteWise query editor](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/), because annotation queries use the same query editor.
 
 ## Create an annotation query
 
@@ -44,7 +44,7 @@ Expand table
 
 The following SQL query creates an annotation for each property value that exceeds a threshold. It aliases `event_timestamp` as `time`, uses the property alias as the annotation text, and uses the value quality as a tag:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select
@@ -60,5 +60,5 @@ You can also use a visual query, such as **Get property value history**, to retu
 
 ## Next steps
 
-- [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
-- [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [AWS IoT SiteWise query editor](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
+- [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)

@@ -9,12 +9,12 @@ description: "Use the Drone data source to add annotations to Grafana dashboards
 
 The Drone data source supports annotations, which let you overlay Drone events, such as builds, onto your dashboard panels. Annotations mark points in time so you can correlate Drone activity with other metrics on your dashboards.
 
-The data source doesn’t define a dedicated annotation query type, so annotations use the standard query actions described in the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/).
+The data source doesn’t define a dedicated annotation query type, so annotations use the standard query actions described in the [query editor](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/query-editor/).
 
 ## Before you begin
 
-- [Configure the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/configure/).
-- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the Drone data source](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/configure/).
+- Understand [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add an annotation query
 
@@ -23,7 +23,7 @@ To add an annotation query that uses Drone data:
 1. Navigate to **Dashboard settings** &gt; **Annotations**.
 2. Click **Add annotation query**.
 3. Select the **Drone** data source.
-4. Build a query with the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/) that returns the time-based events you want to mark, such as builds from a `Build List` query.
+4. Build a query with the [query editor](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/query-editor/) that returns the time-based events you want to mark, such as builds from a `Build List` query.
 5. Map the returned fields to the annotation time, text, and tags fields.
 6. Save the dashboard.
 
@@ -69,5 +69,5 @@ Grafana renders each build as a shaded region from its start to its finish time,
 
 ## Next steps
 
-- [Drone query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/query-editor/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)
+- [Drone query editor](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/query-editor/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)

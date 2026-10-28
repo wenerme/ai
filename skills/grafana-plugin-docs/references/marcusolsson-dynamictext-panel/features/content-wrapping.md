@@ -14,15 +14,15 @@ The **Content &gt; Wrap automatically in paragraphs** option:
 
 The following example shows **Content** that does not contain any spaces. In this case, the **Content &gt; Wrap automatically in paragraphs** parameter is irrelevant. Both **Enabled** and **Disabled** modes generate the same output.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/no-empty-lines.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/no-empty-lines.png)
 
 The following example shows **Content** that contains one empty line and how the form is interpreted with **Enabled** and **Disabled** modes.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/yes-empty-lines.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/yes-empty-lines.png)
 
 The code used in the examples above:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <figure>

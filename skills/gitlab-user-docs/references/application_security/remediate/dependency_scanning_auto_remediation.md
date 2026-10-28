@@ -31,6 +31,10 @@ Automatically open merge requests to fix vulnerable dependencies.
 - Feature flag `enable_dependency_bump_breaking_changes`
   [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/604558) in GitLab 19.4.
 - Runner tags for auto-remediation jobs [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627504) in GitLab 19.6.
+- Conventional Commits format for merge request titles and commit messages
+  [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631539) in GitLab 19.6
+  [with a feature flag](../../../administration/feature_flags/_index.md) named
+  `dependency_management_conventional_commits`. Disabled by default.
 
 Dependency scanning auto-remediation opens a merge request to bump a vulnerable dependency
 to a non-vulnerable version when one is available. A service account creates the
@@ -99,6 +103,54 @@ eligible vulnerability:
 
 During beta, GitLab processes three vulnerabilities at a time, starting
 with the highest severity finding.
+
+### Merge request titles and commit messages
+
+> [!flag]
+> The availability of the Conventional Commits format is controlled by a feature flag.
+> For more information, see the history.
+
+By default, an auto-remediation merge request has a title like
+`Security: Update rack from 2.0.9 to 2.2.0`.
+The commit subject is `Update rack`.
+
+If the default branch follows [Conventional Commits](https://www.conventionalcommits.org/),
+GitLab uses that format for both the merge request title and the commit subject.
+For example:
+
+```plaintext
+build(deps): [security] update rack from 2.0.9 to 2.2.0
+```
+
+GitLab samples up to 20 of the most recent non-merge commits on the default branch,
+skipping commits by the auto-remediation service account.
+GitLab searches no further back than 50 non-merge commits.
+The project counts as using Conventional Commits when at least 30% of these commits start
+with one of these types, with any capitalization:
+`build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `style`, or `test`.
+The type can have an optional scope and an optional `!` breaking-change marker.
+
+Otherwise, GitLab uses the default format.
+For example, projects that use emoji or a custom prefix such as `deps:` get the default format.
+
+For projects that use Conventional Commits, GitLab copies the style of the matching commits:
+
+- The type is `chore` if the matching commits use `chore` and never `build`.
+  Otherwise, the type is `build`.
+- The type is capitalized, as in `Build(deps):`, if most of the matching commits capitalize
+  the type.
+- The scope is always `deps`.
+- The text after `(deps):` reads `[Security] Update` if most of the matching commits start
+  the subject with a capital letter, and `[security] update` otherwise.
+
+If a Conventional Commits title is longer than 100 characters, GitLab leaves out the old
+version from the title and commit subject, as in
+`build(deps): [security] update rack to 2.2.0`.
+
+When GitLab updates an open merge request, it keeps the Conventional Commits style the
+merge request was created with, even if the default branch history changes.
+A merge request with the default format switches to Conventional Commits the next time
+GitLab updates it, if the default branch then follows the convention.
 
 ## Enable agentic breaking-change resolution
 

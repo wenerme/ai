@@ -19,6 +19,7 @@ Review the following topics to learn more about the basic concepts and component
 - [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/)
 - [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/)
 - [How endpoints and pools become unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/)
+- [Regional health](https://developers.cloudflare.com/load-balancing/understand-basics/regional-health/)
 - [Proxy status](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/)
 - [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/)
 - [Adaptive routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/)

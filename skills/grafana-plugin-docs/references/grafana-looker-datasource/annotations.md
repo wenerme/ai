@@ -7,13 +7,13 @@ description: "Use annotations with the Looker data source in Grafana"
 
 # Looker annotations
 
-Annotations overlay event data on your time series graphs, which makes it easier to correlate metrics with specific events such as deployments, releases, or incidents. The Looker data source supports annotations through the standard Looker query editor, so you can turn any LookML query or saved Look that returns a time field into annotation markers. For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations overlay event data on your time series graphs, which makes it easier to correlate metrics with specific events such as deployments, releases, or incidents. The Looker data source supports annotations through the standard Looker query editor, so you can turn any LookML query or saved Look that returns a time field into annotation markers. For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
 Before you create an annotation query, ensure you have:
 
-- [Configured the Looker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/).
+- [Configured the Looker data source](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/configure/).
 - A saved dashboard. You must save the dashboard before you can add an annotation query.
 - A LookML query or saved Look that returns a time field, plus optional fields for the annotation title, description, and tags.
 
@@ -37,7 +37,7 @@ Use the `$__timeFilter(<field>)` macro in your annotation query so it returns on
 
 > Note
 >
-> The `$__timeFilter()`, `$__timeFrom()`, and `$__timeTo()` macros are applied differently depending on the query mode. In **LookML JSON** mode, you can use a macro anywhere in the query body. In **LookML Builder** mode, you can use macros only in the **Filter Expression** field. The **Run Look** query type doesn’t support macros, so scope the saved Look in Looker instead. For macro details, refer to the [Looker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/#macros).
+> The `$__timeFilter()`, `$__timeFrom()`, and `$__timeTo()` macros are applied differently depending on the query mode. In **LookML JSON** mode, you can use a macro anywhere in the query body. In **LookML Builder** mode, you can use macros only in the **Filter Expression** field. The **Run Look** query type doesn’t support macros, so scope the saved Look in Looker instead. For macro details, refer to the [Looker query editor](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/query-editor/#macros).
 
 ## Create an annotation query
 
@@ -61,7 +61,7 @@ The following examples show common annotation patterns for Looker.
 
 Build a LookML query that returns an event timestamp with a label, and bound it to the dashboard time range with `$__timeFilter()`. In **LookML JSON** mode, the query body resembles the following:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -91,5 +91,5 @@ If you already have a Look that returns events with a timestamp, select the **Ru
 
 ## Next steps
 
-- Refer to the [Looker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/) for more on building LookML and Run Look queries.
-- Refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.
+- Refer to the [Looker query editor](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/query-editor/) for more on building LookML and Run Look queries.
+- Refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.

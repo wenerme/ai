@@ -15,15 +15,15 @@ To build a query, select a query type from the **Query type** selector, then com
 
 The query editor supports the following query types:
 
-- [Query](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#query)
-- [Raw query](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#raw-query)
-- [Arithmetic](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#arithmetic)
-- [RUM (Real User Monitoring)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#real-user-monitoring)
-- [Logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#logs)
-- [APM Spans](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#apm-spans)
-- [Monitor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#monitor)
-- [Events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#events)
-- [SLO (Service Level Objective)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#service-level-objective)
+- [Query](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#query)
+- [Raw query](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#raw-query)
+- [Arithmetic](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#arithmetic)
+- [RUM (Real User Monitoring)](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#real-user-monitoring)
+- [Logs](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#logs)
+- [APM Spans](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#apm-spans)
+- [Monitor](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#monitor)
+- [Events](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#events)
+- [SLO (Service Level Objective)](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#service-level-objective)
 
 ### Query
 
@@ -258,7 +258,7 @@ Use the **Logs** type in **Aggregate** mode to chart log counts over time:
 4. Under **Compute**, set **Aggregation** to `count`, **Metric** to `*`, and **Type** to `Time Series`.
 5. Under **Group by**, set **Facet** to `service` and **Limit** to `10`.
 
-The panel displays a time series of error counts for each service. This format also works for [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/alerting/).
+The panel displays a time series of error counts for each service. This format also works for [Alerting](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/alerting/).
 
 ### Count of monitors in an alert state
 
@@ -269,7 +269,7 @@ Use the **Monitor** type to count monitors by status:
 3. Set **Result type** to **Count by Status**.
 4. *Optional.* In **Query**, enter `status:alert` to count only the monitors that are currently alerting.
 
-The panel displays the monitor count, and each value links back to the monitor manager in Datadog. For more information, refer to [Data links](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
+The panel displays the monitor count, and each value links back to the monitor manager in Datadog. For more information, refer to [Data links](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
 
 ### Metric query with a custom rollup
 
@@ -278,7 +278,7 @@ Use the **Raw query** type to request a specific time granularity:
 1. Set **Query type** to **Raw query**.
 2. In the query text box, enter `avg:system.cpu.user{*}.rollup(avg, 60)`.
 
-Datadog returns the metric at a 60-second rollup with the average aggregation. For more information, refer to [Time granularity and data rollup](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity-and-data-rollup).
+Datadog returns the metric at a 60-second rollup with the average aggregation. For more information, refer to [Time granularity and data rollup](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#time-granularity-and-data-rollup).
 
 ## Data links
 
@@ -287,7 +287,7 @@ The Datadog data source adds data links to **Monitor** query results. A data lin
 - For the **Count by Status**, **Count by Type**, **Count by Tag**, and **Count by Mute status** result types, the link opens the monitor manager in Datadog, filtered by the selected status, type, tag, or mute state.
 - For the **Monitors list** result type, the link opens the individual monitor by ID.
 
-To follow a data link, click a value in a Monitor query result and select **Open in DataDog**. To turn off data links for all query results, enable **Disable data links** in the data source configuration. For more information, refer to [Configure the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/).
+To follow a data link, click a value in a Monitor query result and select **Open in DataDog**. To turn off data links for all query results, enable **Disable data links** in the data source configuration. For more information, refer to [Configure the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/).
 
 ## Known limitations
 

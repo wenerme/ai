@@ -9,7 +9,7 @@ description: "Learn how to apply utility-first CSS styling using the Tailwind CS
 
 Thank you to [Raghavendra Samant](https://github.com/samant-rags) for exploring the utility-first framework [Tailwind CSS](https://tailwindcss.com)! Using Tailwind in the Business Text panel differs slightly from previous examples.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/tailwind-panel.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/tailwind-panel.png)
 
 To prevent CORS issues, add the Tailwind script to Grafana’s public folder `/usr/share/grafana/public/yourFileName.js`.
 
@@ -19,11 +19,11 @@ The file can contain the import function and use Tailwind, or it can load code f
 
 Create a `tailwind.js` file with the code from `cdn.tailwindcss.com` and upload it to `/usr/share/grafana/public/` in the Docker container. The following example uses the latest version: `https://cdn.tailwindcss.com/3.4.4`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/tailwind-file-example.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/tailwind-file-example.png)
 
 ### Content
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div class="bg-gray-100 min-h-64 flex items-center justify-center">
@@ -45,19 +45,19 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("/public/tailwind.js");
 ```
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/tailwind-panel-edit-mode.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/tailwind-panel-edit-mode.png)
 
 ## Load Tailwind from CDN
 
 Create a `loadTailwindFromCDN.js` file with the following code and upload it to the same location in the Docker container.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 function loadTailwindFromCDN() {
@@ -76,7 +76,7 @@ export default loadTailwindFromCDN;
 
 ### Content
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div class="bg-gray-100 min-h-64 flex items-center justify-center">
@@ -98,7 +98,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("/public/loadTailwindFromCDN.js").then(

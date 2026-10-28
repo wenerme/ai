@@ -994,6 +994,28 @@ Analyzer types that can appear in project and group analyzer statuses.
 | `SECRET_DETECTION_SECRET_PUSH_PROTECTION` | Secret push protection. Managed via project security settings. |
 | `SKILLGUARD` | Skillguard analyzer. |
 
+## `AnthropicComplianceIntegrationDisabledReason`
+
+Reason GitLab disabled an Anthropic Compliance integration.
+
+| Value | Description |
+| ----- | ----------- |
+| `INVALID_KEY` | Anthropic rejected the Compliance Access Key. |
+| `LOCAL_SESSIONS_UNAVAILABLE` | Local sessions are turned off for the Claude organization. |
+| `REPEATED_FAILURES` | Ingestion failed too many times in a row. |
+
+## `AnthropicComplianceIntegrationErrorReason`
+
+Reason an Anthropic Compliance integration mutation failed.
+
+| Value | Description |
+| ----- | ----------- |
+| `BLANK_KEY` | Compliance Access Key is blank. |
+| `INVALID_INTEGRATION` | Integration failed validation, for example because one already exists. |
+| `INVALID_KEY` | Anthropic rejected the Compliance Access Key. |
+| `RATE_LIMITED` | GitLab or Anthropic rate limited the request. Try again later. |
+| `VERIFICATION_FAILED` | GitLab could not reach Anthropic to verify the Compliance Access Key. |
+
 ## `ApiFuzzingScanMode`
 
 All possible ways to specify the API surface for an API fuzzing scan.
@@ -1011,6 +1033,16 @@ All possible ways to specify the API surface for an API fuzzing scan.
 | `ANY_MERGE_REQUEST` | Represents report_type for any_merge_request related approval rules. |
 | `LICENSE_SCANNING` | Represents report_type for license scanning related approval rules. |
 | `SCAN_FINDING` | Represents report_type for vulnerability check related approval rules. |
+
+## `ApprovalRuleBlockageReasonKind`
+
+Kind of reason why an approval rule blocks a merge request.
+
+| Value | Description |
+| ----- | ----------- |
+| `BELOW_THRESHOLD` | Coverage is below the minimum coverage threshold of the rule. |
+| `DECREASED` | Coverage decreased compared to the base pipeline. |
+| `MISSING_BASE_COVERAGE` | Base pipeline has no coverage to compare against. |
 
 ## `ApprovalRuleType`
 
@@ -2453,7 +2485,6 @@ Type of a dependency firewall policy rule.
 | `MALICIOUS` | Rule matching on packages flagged as malicious. |
 | `PACKAGE_VERSION` | Rule matching on an exact package name and version. |
 | `RISK_SEVERITY` | Rule matching on vulnerability counts per severity level. |
-| `VULNERABILITY` | Rule matching on package vulnerabilities. |
 
 ## `DependencyProxyManifestStatus`
 
@@ -5482,7 +5513,10 @@ Attach mode for security scan profiles.
 | Value | Description |
 | ----- | ----------- |
 | `APPEND` | Adds the profile alongside existing profiles of the same type. |
-| `REPLACE` | Replaces existing profiles of the same type on the target projects. |
+| `FILL_PROFILE_GAPS` | Attaches the profile only to projects that have no profile of the same type. |
+| `FILL_SCAN_GAPS` | Attaches the profile only to projects that have no profile of the same type and no scan coverage for that type. |
+| `REPLACE` | Replaces existing profiles of the same type, only on projects that already have one. |
+| `SET` | Attaches the profile to all target projects and removes other profiles of the same type. |
 
 ## `SecurityScanProfileDependencyResolutionJob`
 
@@ -6044,6 +6078,7 @@ Name of the feature that the callout is for.
 | `ULTIMATE_TRIAL` | Callout feature name for ultimate_trial. |
 | `UNFINISHED_TAG_CLEANUP_CALLOUT` | Callout feature name for unfinished_tag_cleanup_callout. |
 | `USER_REACHED_LIMIT_FREE_PLAN_ALERT` | Callout feature name for user_reached_limit_free_plan_alert. |
+| `USE_GITLAB_LOCALLY_HOMEPAGE_WIDGET` | Callout feature name for use_gitlab_locally_homepage_widget. |
 | `VERIFICATION_REMINDER` | Callout feature name for verification_reminder. |
 | `VIRTUAL_REGISTRY_PERMISSION_CHANGE_ALERT` | Callout feature name for virtual_registry_permission_change_alert. |
 | `VULNERABILITY_ARCHIVAL` | Callout feature name for vulnerability_archival. |

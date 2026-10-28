@@ -48,7 +48,7 @@ Expand table
 
 To filter based on a single-value template variable:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 region == '${region}'
@@ -60,7 +60,7 @@ This filters rows where the `region` field matches the selected variable value.
 
 To filter based on a multi-value template variable, use the `IN` operator with the `singlequote` format:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 region IN (${region:singlequote})
@@ -72,7 +72,7 @@ This filters rows where the `region` field matches any of the selected values.
 
 To exclude multiple values, wrap the condition with `!()`:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 !(region IN (${region:singlequote}))
@@ -82,7 +82,7 @@ text [Copy code to clipboard] Copy
 
 You can combine conditions using `&&` (AND) and `||` (OR):
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 region == 'US' && status == 'active'
@@ -134,7 +134,7 @@ When using UQL (Unified Query Language), use the `where` clause to filter data.
 
 ### Basic UQL filter
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -144,7 +144,7 @@ parse-json
 
 ### UQL with single-value variable
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -154,7 +154,7 @@ parse-json
 
 ### UQL with multi-value variable
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -164,7 +164,7 @@ parse-json
 
 ### UQL exclude values (NOT IN)
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -176,7 +176,7 @@ parse-json
 
 You can also use JSONata syntax within UQL for more complex filtering:
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -186,7 +186,7 @@ parse-json
 
 For multi-value variables with JSONata:
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -196,7 +196,7 @@ parse-json
 
 To exclude values with JSONata:
 
-uql [Copy code to clipboard] Copy
+uql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```uql
 parse-json
@@ -220,4 +220,4 @@ Expand table
 | Double quote | `${var:doublequote}` | `"value1","value2"` |
 | Raw          | `${var:raw}`         | `value1,value2`     |
 
-For more information about variable formatting, refer to [Advanced variable format options](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
+For more information about variable formatting, refer to [Advanced variable format options](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).

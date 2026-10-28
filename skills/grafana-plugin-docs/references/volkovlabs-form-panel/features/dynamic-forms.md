@@ -13,7 +13,7 @@ You can use custom code to update form elements, values, and options from any da
 
 The following example defines options for the `icon` element from the `icons` series using the `icon_id` and `title` columns:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const icons = context.panel.data.series.find(
@@ -45,9 +45,9 @@ context.panel.onOptionsChange(options);
 >
 > The `context.panel.onOptionsChange()` handler refreshes the panel. If you use this handler in the initial request, disable the **Synchronize with data** option. Using both the **Synchronize with data** option and `context.panel.onOptionsChange()` in the initial request causes the panel to reload continuously.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/infinity-reload.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/infinity-reload.png)
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const feedback = context.panel.data.series.find(
@@ -112,19 +112,19 @@ You can create Business Forms dynamically by using code-specified configuration.
 >
 > Starting from version 4.9.0, you can create **Sections** dynamically.
 
-In addition to simple forms, you can create [sections](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/form-elements/#sections) dynamically.
+In addition to simple forms, you can create [sections](https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/form-elements/#sections) dynamically.
 
-In the following example, the data about required sections comes from the data source. The example uses the [Business Input](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-static-datasource/latest/) data source to create a basic data frame that contains section information, such as ID and name.
+In the following example, the data about required sections comes from the data source. The example uses the [Business Input](https://grafana.com/docs/plugins/marcusolsson-static-datasource/latest/) data source to create a basic data frame that contains section information, such as ID and name.
 
 The **Sections** and **Form Elements** categories display as not configured.
 
 In the **Initial Request** category, the **Initial Action** is set to **Code**.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/dyn-sec-how.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/dyn-sec-how.png)
 
 The JavaScript from the example above:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const ids = context.panel.data.series[0].fields[0].values
@@ -140,4 +140,4 @@ context.panel.sectionsUtils.add({ name: sections[1].name, id: sections[1].id, el
 context.panel.sectionsUtils.add({ name: sections[2].name, id: sections[2].id, elements: [] })
 ```
 
-For more available commands and code snippets, refer to the [Context parameters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-form-panel/latest/custom-code/context-parameters/) section.
+For more available commands and code snippets, refer to the [Context parameters](https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/custom-code/context-parameters/) section.

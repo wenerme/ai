@@ -13,29 +13,29 @@ This document describes the query types and response fields available in the Git
 
 Select a query type from the **Query Type** drop-down in the query editor:
 
-- [**Branches**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#branches): List branches for a repository, with optional name filtering.
-- [**Check runs**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#check-runs): List check runs for a commit, branch, or tag, including status, conclusion, and duration.
-- [**Code scanning**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#code-scanning): Query code scanning alerts for a repository or organization.
-- [**Commit files**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#commit-files): List files changed in a specific commit.
-- [**Commits**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#commits): Retrieve a list of commits for a branch or ref within a repository, including commit message, author, and timestamp.
-- [**Contributors**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#contributors): Get a list of contributors to a repository.
-- [**Deployments**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#deployments): List deployments for a repository, including environment, ref, and task information.
-- [**Issues**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#issues): List issues in a repository, using the GitHub query syntax to filter the response.
-- [**Labels**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#labels): List labels defined in a repository.
-- [**Milestones**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#milestones): Retrieve milestones for a repository, which can be used to group issues and pull requests.
-- [**Packages**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#packages): List packages published from a repository in an organization.
-- [**Projects**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#projects): List projects associated with a user or organization.
-- [**Pull request files**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-files): List files changed in a specific pull request.
-- [**Pull requests**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-requests): List pull requests for a repository, using the GitHub query syntax to filter the response.
-- [**Pull request reviews**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-reviews): List reviews for pull requests in a repository.
-- [**Releases**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#releases): List created releases for a repository.
-- [**Repositories**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#repositories): List repositories for a user or organization.
-- [**Stargazers**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#stargazers): Get a list of users who have starred a repository, including the ability to plot a total count over time.
-- [**Tags**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#tags): List created tags for a repository.
-- [**Vulnerabilities**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#vulnerabilities): Query security vulnerabilities detected in a repository.
-- [**Workflows**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows): List GitHub Actions workflows defined in a repository.
-- [**Workflow runs**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-runs): List runs for a specific workflow, including status, conclusion, and timing information.
-- [**Workflow usage**](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-usage): Retrieve usage statistics for a workflow, such as run counts and durations.
+- [**Branches**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#branches): List branches for a repository, with optional name filtering.
+- [**Check runs**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#check-runs): List check runs for a commit, branch, or tag, including status, conclusion, and duration.
+- [**Code scanning**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#code-scanning): Query code scanning alerts for a repository or organization.
+- [**Commit files**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#commit-files): List files changed in a specific commit.
+- [**Commits**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#commits): Retrieve a list of commits for a branch or ref within a repository, including commit message, author, and timestamp.
+- [**Contributors**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#contributors): Get a list of contributors to a repository.
+- [**Deployments**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#deployments): List deployments for a repository, including environment, ref, and task information.
+- [**Issues**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#issues): List issues in a repository, using the GitHub query syntax to filter the response.
+- [**Labels**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#labels): List labels defined in a repository.
+- [**Milestones**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#milestones): Retrieve milestones for a repository, which can be used to group issues and pull requests.
+- [**Packages**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#packages): List packages published from a repository in an organization.
+- [**Projects**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#projects): List projects associated with a user or organization.
+- [**Pull request files**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-files): List files changed in a specific pull request.
+- [**Pull requests**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-requests): List pull requests for a repository, using the GitHub query syntax to filter the response.
+- [**Pull request reviews**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-reviews): List reviews for pull requests in a repository.
+- [**Releases**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#releases): List created releases for a repository.
+- [**Repositories**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#repositories): List repositories for a user or organization.
+- [**Stargazers**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#stargazers): Get a list of users who have starred a repository, including the ability to plot a total count over time.
+- [**Tags**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#tags): List created tags for a repository.
+- [**Vulnerabilities**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#vulnerabilities): Query security vulnerabilities detected in a repository.
+- [**Workflows**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows): List GitHub Actions workflows defined in a repository.
+- [**Workflow runs**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-runs): List runs for a specific workflow, including status, conclusion, and timing information.
+- [**Workflow usage**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflow-usage): Retrieve usage statistics for a workflow, such as run counts and durations.
 
 ### Code scanning
 
@@ -43,7 +43,7 @@ Query code scanning alerts for a repository or organization. Useful for tracking
 
 > Note
 >
-> Code scanning requires additional permissions. Refer to [Code scanning permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#code-scanning-permissions).
+> Code scanning requires additional permissions. Refer to [Code scanning permissions](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#code-scanning-permissions).
 
 #### Query options
 
@@ -104,12 +104,12 @@ Retrieve a list of commits for a branch or ref within a repository, including co
 
 Expand table
 
-| Name             | Description                                                                                                                                                                                                                                                                   | Required |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Owner            | The GitHub user or organization that owns the repository                                                                                                                                                                                                                      | Yes      |
-| Repository       | The name of the repository                                                                                                                                                                                                                                                    | Yes      |
-| Ref (Branch/Tag) | The branch or tag to list commits against                                                                                                                                                                                                                                     | Yes      |
-| Include files    | Include file-level change details for each commit. For details, refer to [Response with Include files enabled](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#response-with-include-files-enabled). | No       |
+| Name             | Description                                                                                                                                                                                                                          | Required |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Owner            | The GitHub user or organization that owns the repository                                                                                                                                                                             | Yes      |
+| Repository       | The name of the repository                                                                                                                                                                                                           | Yes      |
+| Ref (Branch/Tag) | The branch or tag to list commits against                                                                                                                                                                                            | Yes      |
+| Include files    | Include file-level change details for each commit. For details, refer to [Response with Include files enabled](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#response-with-include-files-enabled). | No       |
 
 ##### Sample queries
 
@@ -478,7 +478,7 @@ Expand table
 
 > Note
 >
-> Milestone titles can be anything and are therefore parsed as a string. This means sorting by title may appear incorrect if you have numeric milestones, for example: `12.0.0`. [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) can be used to change the data type in this scenario.
+> Milestone titles can be anything and are therefore parsed as a string. This means sorting by title may appear incorrect if you have numeric milestones, for example: `12.0.0`. [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) can be used to change the data type in this scenario.
 
 ### Packages
 
@@ -1036,12 +1036,12 @@ List runs for a specific workflow, including status, conclusion, and timing info
 
 Expand table
 
-| Name       | Description                                                                                                                                                                                                                      | Required |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Owner      | GitHub user or organization that owns the repository                                                                                                                                                                             | Yes      |
-| Repository | Name of the repository                                                                                                                                                                                                           | Yes      |
-| Workflow   | The workflow ID or file name. Use `id` or the filename from `path` from [Workflows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows) queries. | Yes      |
-| Branch     | The head branch to filter on                                                                                                                                                                                                     | No       |
+| Name       | Description                                                                                                                                                                             | Required |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Owner      | GitHub user or organization that owns the repository                                                                                                                                    | Yes      |
+| Repository | Name of the repository                                                                                                                                                                  | Yes      |
+| Workflow   | The workflow ID or file name. Use `id` or the filename from `path` from [Workflows](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows) queries. | Yes      |
+| Branch     | The head branch to filter on                                                                                                                                                            | No       |
 
 ##### Sample queries
 
@@ -1087,11 +1087,11 @@ Retrieve usage statistics for a workflow, such as run counts and durations.
 
 Expand table
 
-| Name       | Description                                                                                                                                                                                                                      | Required |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| Owner      | GitHub user or organization that owns the repository                                                                                                                                                                             | Yes      |
-| Repository | Name of the repository                                                                                                                                                                                                           | Yes      |
-| Workflow   | The workflow ID or file name. Use `id` or the filename from `path` from [Workflows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows) queries. | Yes      |
+| Name       | Description                                                                                                                                                                             | Required |
+|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Owner      | GitHub user or organization that owns the repository                                                                                                                                    | Yes      |
+| Repository | Name of the repository                                                                                                                                                                  | Yes      |
+| Workflow   | The workflow ID or file name. Use `id` or the filename from `path` from [Workflows](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#workflows) queries. | Yes      |
 
 ##### Sample queries
 

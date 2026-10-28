@@ -85,6 +85,7 @@ from .utils import (
     quantize_ooxml_alpha,
     project_definition_index,
     svg_hidden_reason,
+    is_stroked_zero_axis_shape,
     matrix_multiply, parse_transform_matrix, parse_transform_operations,
     transform_point, _xml_escape,
 )
@@ -807,6 +808,7 @@ _PPTX_GUIDE_NAME_RE = re.compile(r'[A-Za-z_][A-Za-z0-9_.-]{0,63}')
 _PPTX_VAL_FORMULA_RE = re.compile(r'val[\t ]+([+-]?\d+)')
 def _parse_preset_geometry_metadata(
     elem: ET.Element,
+    ctx: ConvertContext | None = None,
 ) -> tuple[str | None, list[tuple[str, str]], tuple[float, float, float, float] | None]:
     """Parse and validate rendering-neutral preset geometry metadata."""
     status = (elem.get('data-pptx-geometry-status') or '').strip()
@@ -948,10 +950,15 @@ def _parse_preset_geometry_metadata(
             elem.get('data-pptx-object') == 'connector'
             or prst in CONNECTOR_PRESET_TYPES
         )
-        if is_connector:
+        is_native_group = (
+            elem.tag.rsplit('}', 1)[-1] == 'g'
+            and elem.get('data-pptx-object') == 'group'
+        )
+        if is_connector or is_native_group or is_stroked_zero_axis_shape(elem, ctx):
             if frame[2] < 0 or frame[3] < 0 or (frame[2] == 0 and frame[3] == 0):
+                kind = 'Connector' if is_connector else 'Group'
                 raise ValueError(
-                    'Connector data-pptx-frame dimensions must be non-negative '
+                    f'{kind} data-pptx-frame dimensions must be non-negative '
                     f'and not both zero, got {raw_frame!r}'
                 )
         elif frame[2] <= 0 or frame[3] <= 0:
@@ -968,11 +975,14 @@ def _parse_preset_geometry_metadata(
     return prst, guides, frame
 
 
-def validate_preset_geometry_metadata(elem: ET.Element) -> list[str]:
+def validate_preset_geometry_metadata(
+    elem: ET.Element,
+    ctx: ConvertContext | None = None,
+) -> list[str]:
     """Return native shape metadata errors for authoring-time validation."""
     errors: list[str] = []
     try:
-        _parse_preset_geometry_metadata(elem)
+        _parse_preset_geometry_metadata(elem, ctx)
     except ValueError as exc:
         errors.append(str(exc))
     if elem.get('data-pptx-custgeom') is not None:
@@ -1035,9 +1045,9 @@ def complete_preset_adjustments(
     ]
 
 
-def _build_preset_geom_from_meta(elem: ET.Element) -> str | None:
+def _build_preset_geom_from_meta(elem: ET.Element, ctx: ConvertContext) -> str | None:
     """Build validated native DrawingML preset geometry from SVG metadata."""
-    prst, guides, _frame = _parse_preset_geometry_metadata(elem)
+    prst, guides, _frame = _parse_preset_geometry_metadata(elem, ctx)
     if prst is None:
         return None
     if not guides:
@@ -1094,7 +1104,7 @@ def _shape_xfrm_from_preset_frame(
     transform: str | None,
 ) -> tuple[str, int, int, int, int, tuple[int, int, int, int]]:
     """Use the preserved logical frame for native preset size when present."""
-    prst, _guides, frame = _parse_preset_geometry_metadata(elem)
+    prst, _guides, frame = _parse_preset_geometry_metadata(elem, ctx)
     if frame is None:
         raw_x, raw_y, raw_w, raw_h = fallback_raw_rect
         x, y, w, h = fallback_resolved_rect
@@ -1107,6 +1117,7 @@ def _shape_xfrm_from_preset_frame(
     preserves_zero_axis = (
         elem.get('data-pptx-object') == 'connector'
         or prst in CONNECTOR_PRESET_TYPES
+        or is_stroked_zero_axis_shape(elem, ctx)
     )
     xfrm_attr, off_x, off_y, ext_cx, ext_cy, bounds_emu = _shape_xfrm_from_svg_rect(
         ctx,
@@ -1143,7 +1154,7 @@ def _pathlike_preset_xfrm(
     height: float,
 ) -> tuple[str, int, int, int, int, tuple[int, int, int, int]]:
     """Resolve a path-like preset xfrm from its logical frame or visual bounds."""
-    _prst, _guides, frame = _parse_preset_geometry_metadata(elem)
+    _prst, _guides, frame = _parse_preset_geometry_metadata(elem, ctx)
     if frame is None:
         if _uses_full_transform(ctx, transform):
             tag = elem.tag.rsplit('}', 1)[-1]
@@ -1282,9 +1293,11 @@ def convert_rect(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     y = ctx_y(raw_y, ctx)
     w = ctx_w(raw_w, ctx)
     h = ctx_h(raw_h, ctx)
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
 
-    if w <= 0 or h <= 0:
+    if (w <= 0 or h <= 0) and not (
+        preset_geom is not None and is_stroked_zero_axis_shape(elem, ctx)
+    ):
         return None
 
     # SVG spec: when only one of rx/ry is specified, the other inherits its
@@ -1429,7 +1442,7 @@ def _build_arc_ring_path(
     width = max_x - min_x
     height = max_y - min_y
 
-    if width < 0.5 or height < 0.5:
+    if width <= 0 or height <= 0:
         return '', 0, 0, 0, 0
 
     w_emu = px_to_emu(width)
@@ -1472,7 +1485,7 @@ def convert_circle(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     cx_ = svg_length_x(elem.get('cx'), ctx)
     cy_ = svg_length_y(elem.get('cy'), ctx)
     r = svg_length_size(elem.get('r'), ctx)
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
 
     if r <= 0:
         return None
@@ -1636,7 +1649,7 @@ def convert_line(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     heads (headEnd / tailEnd) correctly.  Plain lines (no markers) continue to
     use custom geometry which is sufficient and avoids flipH/flipV complexity.
     """
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
     transform = elem.get('transform')
     raw_x1 = svg_length_x(elem.get('x1'), ctx)
     raw_y1 = svg_length_y(elem.get('y1'), ctx)
@@ -1797,7 +1810,7 @@ def convert_line(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_path(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <path> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
     preserved_custom_geom = _build_preserved_custom_geom(elem)
     native_geom = preset_geom or preserved_custom_geom
     d = elem.get('d', '')
@@ -1885,7 +1898,7 @@ def convert_path(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_polygon(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <polygon> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
     points = parse_svg_points(elem.get('points', ''), min_points=3)
 
     commands = [PathCommand('M', [points[0][0], points[0][1]])]
@@ -1962,7 +1975,7 @@ def convert_polygon(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None
 
 def convert_polyline(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <polyline> to DrawingML custom geometry shape."""
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
     points = parse_svg_points(elem.get('points', ''), min_points=2)
 
     commands = [PathCommand('M', [points[0][0], points[0][1]])]
@@ -5109,7 +5122,7 @@ def convert_image(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
 
 def convert_ellipse(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert SVG <ellipse> to DrawingML ellipse shape."""
-    preset_geom = _build_preset_geom_from_meta(elem)
+    preset_geom = _build_preset_geom_from_meta(elem, ctx)
     raw_cx = svg_length_x(elem.get('cx'), ctx)
     raw_cy = svg_length_y(elem.get('cy'), ctx)
     rx_attr = elem.get('rx')
@@ -5125,7 +5138,9 @@ def convert_ellipse(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None
     rx = raw_rx * ctx.scale_x
     ry = raw_ry * ctx.scale_y
 
-    if rx <= 0 or ry <= 0:
+    if (rx <= 0 or ry <= 0) and not (
+        preset_geom is not None and is_stroked_zero_axis_shape(elem, ctx)
+    ):
         return None
 
     x = cx_ - rx

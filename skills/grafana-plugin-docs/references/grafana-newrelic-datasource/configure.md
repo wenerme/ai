@@ -46,15 +46,15 @@ Expand table
 
 Click **Save &amp; test** to verify the connection. A successful test displays the message **Plugin health check OK**.
 
-If the test fails, refer to [Troubleshoot New Relic data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/) for guidance on common configuration errors.
+If the test fails, refer to [Troubleshoot New Relic data source issues](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/) for guidance on common configuration errors.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions the New Relic data source:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -85,11 +85,11 @@ Expand table
 
 ## Provision the data source with Terraform
 
-You can provision the New Relic data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information about Terraform provisioning, refer to [Provision Grafana with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/terraform/).
+You can provision the New Relic data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information about Terraform provisioning, refer to [Provision Grafana with Terraform](https://grafana.com/docs/grafana/latest/administration/provisioning/terraform/).
 
 The following example creates a New Relic data source:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "newrelic" {

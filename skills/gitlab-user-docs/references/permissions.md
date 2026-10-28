@@ -133,8 +133,8 @@ Group permissions for [Application Security](application_security/secure_your_ap
 | View [dependency list](application_security/dependency_list/_index.md)           |       |         |          |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [vulnerability report](application_security/vulnerability_report/_index.md) |       |         |          |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [security dashboard](application_security/security_dashboard/_index.md)     |       |         |          |        ✓         |     ✓     |     ✓      |   ✓   |
-| Create [security policy project](application_security/policies/_index.md)        |       |         |          |           ✓       |           |            |   ✓   |
-| Assign [security policy project](application_security/policies/_index.md)        |       |         |          |          ✓        |           |            |   ✓   |
+| Create [security policy project](application_security/policies/_index.md)        |       |         |          |                  |           |            |   ✓   |
+| Assign [security policy project](application_security/policies/_index.md)        |       |         |          |                  |           |            |   ✓   |
 
 ### Group CI/CD
 

@@ -32,7 +32,7 @@ For more information, refer to [Use your own player](https://developers.cloudfla
 
 Stream Live WHIP/WHEP will be progressively migrated to a new implementation powered by Cloudflare Realtime (Calls) starting Thursday 2025-03-13. No API or integration changes will be required as part of this upgrade. Customers can expect an improved playback experience. Otherwise, this should be a transparent change, although some error handling cases and status reporting may have changed.
 
-For more information review the [Stream Live WebRTC beta](https://developers.cloudflare.com/stream/webrtc-beta/) documentation.
+For more information review the [Stream Live WebRTC beta](https://developers.cloudflare.com/stream/webrtc/) documentation.
 
 ## 2025-02-10
 
@@ -181,7 +181,7 @@ To request an invite to the beta, refer to [this post](https://community.cloudfl
 
 **VP9 support for WebRTC live streams (beta)**
 
-Cloudflare Stream now supports [VP9](https://developers.google.com/media/vp9) when streaming using [WebRTC (WHIP)](https://developers.cloudflare.com/stream/webrtc-beta/), currently in beta.
+Cloudflare Stream now supports [VP9](https://developers.google.com/media/vp9) when streaming using [WebRTC (WHIP)](https://developers.cloudflare.com/stream/webrtc/), currently in beta.
 
 ## 2022-11-08
 
@@ -189,7 +189,7 @@ Cloudflare Stream now supports [VP9](https://developers.google.com/media/vp9) wh
 
 Cloudflare Stream's [WHIP](https://datatracker.ietf.org/doc/draft-ietf-wish-whip/) and [WHEP](https://www.ietf.org/archive/id/draft-murillo-whep-01.html) implementations now support [Trickle ICE](https://datatracker.ietf.org/doc/rfc8838/), reducing the time it takes to initialize WebRTC connections, and increasing compatibility with WHIP and WHEP clients.
 
-For more, refer to [the docs](https://developers.cloudflare.com/stream/webrtc-beta/).
+For more, refer to [the docs](https://developers.cloudflare.com/stream/webrtc/).
 
 ## 2022-11-07
 

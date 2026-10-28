@@ -11,11 +11,11 @@ The Infinity data source is a universal plugin for pulling data from various sys
 
 The following resources will help you get started with the Infinity data source:
 
-- [Configure the Infinity data source](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/)
-- [Infinity query editor](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/)
-- [Template variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/)
-- [Annotations](/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations/)
-- [Examples](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/)
+- [Configure the Infinity data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/)
+- [Infinity query editor](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/)
+- [Template variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/)
+- [Annotations](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations/)
+- [Examples](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/)
 
 ## Key capabilities
 
@@ -39,10 +39,10 @@ Before you configure the Infinity data source, you need:
 
 This data source supports the following formats:
 
-- [JSON](/docs/plugins/yesoreyeram-infinity-datasource/latest/json/) - Query JSON APIs
-- [CSV / TSV](/docs/plugins/yesoreyeram-infinity-datasource/latest/csv/) - Query CSV, TSV, or any delimited content
-- [XML / HTML](/docs/plugins/yesoreyeram-infinity-datasource/latest/xml/) - Query XML and HTML endpoints
-- [GraphQL](/docs/plugins/yesoreyeram-infinity-datasource/latest/graphql/) - Query GraphQL APIs
+- [JSON](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/json/) - Query JSON APIs
+- [CSV / TSV](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/csv/) - Query CSV, TSV, or any delimited content
+- [XML / HTML](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/xml/) - Query XML and HTML endpoints
+- [GraphQL](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/graphql/) - Query GraphQL APIs
 
 ## Known limitations
 
@@ -54,19 +54,19 @@ This data source supports the following formats:
 
 Once you have configured the Infinity data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to run ad-hoc queries.
-- Configure and use [template variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/) for dynamic dashboards.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to process query results.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run ad-hoc queries.
+- Configure and use [template variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/) for dynamic dashboards.
+- Add [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to process query results.
 
 ## Query with the Grafana CLI
 
 You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
 
-`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](https://grafana.com/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
 
 For example, to query a pre-configured Infinity data source, use `gcx datasources infinity query`:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 gcx datasources infinity query -d <DATASOURCE_UID> '$.items' -o json

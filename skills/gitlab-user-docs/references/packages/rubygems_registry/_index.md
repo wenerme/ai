@@ -112,10 +112,24 @@ Pushing gem to https://gitlab.example.com/api/v4/projects/1/packages/rubygems...
 The gem is published to your package registry, and is shown on the **Packages and registries** page.
 It can take up to 10 minutes before GitLab processes and displays your gem.
 
-### Pushing gems with the same name or version
+### Duplicate gems
 
-You can push a gem if a package of the same name and version already exists.
-Both are visible and accessible in the UI.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/323796) to prevent duplicate gems by default in GitLab 19.6.
+
+By default, you can't push a gem if a gem with the same name and version already exists in the project.
+The `gem push` command still returns `201 Created`, because GitLab processes gems after upload.
+GitLab then marks the new package with an error: `Gem '<name>' with version '<version>' already exists`.
+
+To change this behavior for a group, use the
+[`updateNamespacePackageSettings`](../../../api/graphql/reference/mutations.md#updatenamespacepackagesettings) GraphQL mutation:
+
+- To allow duplicate gems, set `rubygemsDuplicatesAllowed` to `true`.
+- To make exceptions, set `rubygemsDuplicateExceptionRegex` to a regular expression.
+  The regex is matched against the gem name and version.
+  - When duplicates are not allowed, gems that match the regex can be duplicated.
+  - When duplicates are allowed, gems that match the regex can't be duplicated.
+
+The setting applies to projects that belong directly to the group.
 
 ## Delete a Ruby gem
 

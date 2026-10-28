@@ -7,15 +7,15 @@ description: "Build Grafana alert rules on AWS Application Signals and AWS X-Ray
 
 # Alerting with the AWS Application Signals data source
 
-Use [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) with the AWS Application Signals data source to notify your team about fault rates, latency regressions, throttling, and error spikes before they become incidents.
+Use [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/) with the AWS Application Signals data source to notify your team about fault rates, latency regressions, throttling, and error spikes before they become incidents.
 
 The primary alerting target is the **Trace Statistics** query type, which returns per-bucket counts for errors, faults, throttled responses, successes, and totals, plus a computed **Average Response Time**. This page covers which query types can drive alerts, copy-paste-ready recipes for the four most common patterns (fault rate, error-and-fault count, throttling, latency), how to scope alerts to a linked AWS account, and the gotchas to watch for when you put rules into production.
 
 ## Before you begin
 
-- [Configure the AWS Application Signals data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/).
-- Read the [AWS Application Signals query editor documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/) and confirm Trace Statistics queries return the data you expect.
-- Understand the fundamentals of [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) and [how to create an alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+- [Configure the AWS Application Signals data source](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/).
+- Read the [AWS Application Signals query editor documentation](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/) and confirm Trace Statistics queries return the data you expect.
+- Understand the fundamentals of [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/) and [how to create an alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alerting-compatible query types
 
@@ -23,14 +23,14 @@ Not every query type returns data Grafana can alert on. Use this table to choose
 
 Expand table
 
-| Query type                                           | Returns numeric time series | Supports alerting | Notes                                                                                                                                                                                                                                                                                                                                                                                                             |
-|------------------------------------------------------|-----------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Trace Statistics**                                 | Yes                         | Yes               | Primary alerting target. Returns **Throttle Count**, **Error Count**, **Fault Count**, **Success Count**, **Total Count**, and **Average Response Time** per time bucket.                                                                                                                                                                                                                                         |
-| **Trace List**                                       | No                          | No                | Returns a trace table, not numeric series. Use a Trace Statistics query with the same filter expression instead.                                                                                                                                                                                                                                                                                                  |
-| **Trace analytics**                                  | No                          | No                | Returns root-cause summary tables. Use a Trace Statistics query if you want to alert on the same trace population.                                                                                                                                                                                                                                                                                                |
-| **Insights**                                         | No                          | No                | Returns an insight summary table. Insights are correlated anomalies, not metrics — there’s no equivalent Trace Statistics conversion. To be notified when X-Ray detects new insights, configure an [X-Ray insights notification](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-insights.html) in AWS instead.                                                                                     |
-| **Service Map**                                      | No                          | No                | Returns a graph visualization.                                                                                                                                                                                                                                                                                                                                                                                    |
-| **List services / operations / dependencies / SLOs** | No                          | No                | These queries return CloudWatch metric **references** (metric name, namespace, dimensions), not metric values. To alert on the underlying numbers, use the [CloudWatch data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/) to query each metric reference, or set up native CloudWatch alarms on the Application Signals metrics directly. |
+| Query type                                           | Returns numeric time series | Supports alerting | Notes                                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------------------------------|-----------------------------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Trace Statistics**                                 | Yes                         | Yes               | Primary alerting target. Returns **Throttle Count**, **Error Count**, **Fault Count**, **Success Count**, **Total Count**, and **Average Response Time** per time bucket.                                                                                                                                                                                                |
+| **Trace List**                                       | No                          | No                | Returns a trace table, not numeric series. Use a Trace Statistics query with the same filter expression instead.                                                                                                                                                                                                                                                         |
+| **Trace analytics**                                  | No                          | No                | Returns root-cause summary tables. Use a Trace Statistics query if you want to alert on the same trace population.                                                                                                                                                                                                                                                       |
+| **Insights**                                         | No                          | No                | Returns an insight summary table. Insights are correlated anomalies, not metrics — there’s no equivalent Trace Statistics conversion. To be notified when X-Ray detects new insights, configure an [X-Ray insights notification](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-insights.html) in AWS instead.                                            |
+| **Service Map**                                      | No                          | No                | Returns a graph visualization.                                                                                                                                                                                                                                                                                                                                           |
+| **List services / operations / dependencies / SLOs** | No                          | No                | These queries return CloudWatch metric **references** (metric name, namespace, dimensions), not metric values. To alert on the underlying numbers, use the [CloudWatch data source](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/) to query each metric reference, or set up native CloudWatch alarms on the Application Signals metrics directly. |
 
 ## Build an alert rule on Trace Statistics
 
@@ -133,7 +133,7 @@ Expand table
 | Input     | `E`             |
 | Condition | `IS ABOVE 0.01` |
 
-Set the **Evaluation interval** to `1m` and the **Pending period** to `5m` so the rule fires after five consecutive minutes above the 1% threshold. Without the divide-by-zero guard, quiet traffic windows can put the rule into **Error** state. Refer to [Fault-rate alert fires when there’s no traffic](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#fault-rate-alert-fires-when-theres-no-traffic) for background.
+Set the **Evaluation interval** to `1m` and the **Pending period** to `5m` so the rule fires after five consecutive minutes above the 1% threshold. Without the divide-by-zero guard, quiet traffic windows can put the rule into **Error** state. Refer to [Fault-rate alert fires when there’s no traffic](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#fault-rate-alert-fires-when-theres-no-traffic) for background.
 
 ## Example: error-and-fault count alert
 
@@ -259,11 +259,11 @@ Expand table
 | Resolution | `60s`            |
 | Columns    | **Total Count**  |
 
-Then reduce each query and divide them exactly as in the [fault rate example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/#example-fault-rate-alert-on-a-service).
+Then reduce each query and divide them exactly as in the [fault rate example](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/#example-fault-rate-alert-on-a-service).
 
 ## Example: cross-account fault rate
 
-When [cross-account observability](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability) is configured, scope an alert to a specific linked account with the `id(account.id: "...")` selector.
+When [cross-account observability](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#cross-account-observability) is configured, scope an alert to a specific linked account with the `id(account.id: "...")` selector.
 
 **Query A — fault count in a linked account**
 
@@ -289,7 +289,7 @@ Expand table
 | Resolution | `60s`                                                 |
 | Columns    | **Total Count**                                       |
 
-Then reduce each series and divide them exactly as in the [fault rate example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/#example-fault-rate-alert-on-a-service). To get one alert rule per linked account without duplicating rules, add labels such as `account_id="123456789012"` to the rule and route through a notification policy that matches on `account_id`.
+Then reduce each series and divide them exactly as in the [fault rate example](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/#example-fault-rate-alert-on-a-service). To get one alert rule per linked account without duplicating rules, add labels such as `account_id="123456789012"` to the rule and route through a notification policy that matches on `account_id`.
 
 ## Use template variables in alert queries
 
@@ -319,11 +319,11 @@ The plugin’s **List Service Level Objectives (SLO)** query returns SLO metadat
 For production SLO alerting, use one of these options instead:
 
 - **Native CloudWatch alarms on the SLO metrics Application Signals publishes.** Configure the alarms in AWS (in the Application Signals or CloudWatch console) and let them fire into your existing incident pipeline. This is the tightest integration with the AWS SLO dashboards.
-- **Grafana alerts on the CloudWatch SLO metrics.** Query the same metrics through the [CloudWatch data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/) and build Grafana-managed alert rules on them — useful when you want SLO alerts to route through the same notification policies as the rest of your Grafana alerting stack.
+- **Grafana alerts on the CloudWatch SLO metrics.** Query the same metrics through the [CloudWatch data source](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/) and build Grafana-managed alert rules on them — useful when you want SLO alerts to route through the same notification policies as the rest of your Grafana alerting stack.
 - **Burn-rate proxies from Trace Statistics.** If you can’t query the CloudWatch SLO metrics, approximate the same signal with a Trace Statistics fault-rate alert on the service + operation the SLO covers. This won’t match AWS’s SLO evaluation exactly but catches the same underlying failures.
 
 ## Next steps
 
-- [Query AWS Application Signals](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
-- [Troubleshoot AWS Application Signals issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)
+- [Query AWS Application Signals](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/query-editor/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/)
+- [Troubleshoot AWS Application Signals issues](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/)

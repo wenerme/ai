@@ -40,7 +40,7 @@ Expand table
 
 Multiple matchers on one route are combined with AND. Every one has to match.
 
-Matchers only see labels. Annotations play no part in routing, which is why anything that needs to affect where an alert goes has to be a label. Refer to [Labels and annotations](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
+Matchers only see labels. Annotations play no part in routing, which is why anything that needs to affect where an alert goes has to be a label. Refer to [Labels and annotations](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
 
 ## Continue
 

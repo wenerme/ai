@@ -514,6 +514,9 @@ To prevent group members and users from publishing duplicate NuGet packages, tur
 1. In the **NuGet** row of the **Duplicate packages** table, turn off the **Allow duplicates** toggle.
 1. Optional. In the **Exceptions** text box, enter a regular expression that matches the names and versions of packages to allow.
 
+> [!note]
+> If **Allow duplicates** is turned on, you can specify package names and versions that should not have duplicates in the **Exceptions** text box.
+
 You can also turn off duplicate NuGet packages with the
 `nuget_duplicates_allowed` setting in the [GraphQL API](../../../api/graphql/reference/objects.md#packagesettings).
 

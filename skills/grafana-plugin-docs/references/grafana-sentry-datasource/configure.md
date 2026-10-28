@@ -14,7 +14,7 @@ This document explains how to configure the Sentry data source in Grafana.
 Before configuring the data source, ensure you have:
 
 - **Grafana version:** Grafana 10.4.0 or later.
-- **Grafana permissions:** Organization administrator role. Refer to [Permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/) for more information.
+- **Grafana permissions:** Organization administrator role. Refer to [Permissions](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/) for more information.
 - **Sentry account:** An active Sentry account.
 - **Sentry role:** The Admin, Manager, or Owner role in Sentry, required to create an internal integration token.
 
@@ -75,19 +75,19 @@ Expand table
 >
 > Only for Grafana Cloud users.
 
-Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for instructions on setting up a PDC connection.
+Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC, refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for instructions on setting up a PDC connection.
 
 Click **Manage private data source connect** to open your PDC connection page and view your configuration details.
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. A successful test displays the message: **plugin health check successful. N projects found.**, where *N* is the number of projects accessible with the configured credentials. If the test fails, refer to [Troubleshoot Sentry data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/troubleshooting/) for common solutions.
+Click **Save &amp; test** to verify the connection. A successful test displays the message: **plugin health check successful. N projects found.**, where *N* is the number of projects accessible with the configured credentials. If the test fails, refer to [Troubleshoot Sentry data source issues](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/troubleshooting/) for common solutions.
 
 ## Provision the data source
 
-You can define the Sentry data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the Sentry data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -121,7 +121,7 @@ You can provision the Sentry data source using the [Grafana Terraform provider](
 
 ### Basic Terraform provisioning
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "sentry" {
@@ -143,7 +143,7 @@ resource "grafana_data_source" "sentry" {
 
 The following example configures the data source for a self-hosted Sentry instance with TLS verification disabled:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "sentry" {

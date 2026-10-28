@@ -9,11 +9,11 @@ description: "Add annotations to Grafana dashboards using the Amazon Redshift da
 
 Annotations let you overlay event information on top of graphs. You can use SQL queries against your Redshift data to mark important events, deployments, incidents, or other time-based occurrences directly on your dashboard panels.
 
-For general information about annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/).
+- [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/).
 - Verify that your Redshift database contains the event data you want to annotate.
 
 ## Add an annotation query
@@ -30,7 +30,7 @@ To add an annotation query to a dashboard:
 
 ## Column conventions
 
-Your annotation query must return specific columns for Grafana to render annotations correctly. The annotation query editor provides the same SQL editor, resource selectors, and macro support as the standard [query editor](/docs/plugins/grafana-redshift-datasource/latest/query-editor/).
+Your annotation query must return specific columns for Grafana to render annotations correctly. The annotation query editor provides the same SQL editor, resource selectors, and macro support as the standard [query editor](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/query-editor/).
 
 Expand table
 
@@ -45,7 +45,7 @@ Expand table
 
 The following query creates annotations for high-humidity events:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -69,7 +69,7 @@ This query:
 
 To create annotations that span a time range (region annotations), include both a `time` and `timeend` column:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -91,9 +91,9 @@ Region annotations display as shaded areas on graphs, useful for marking mainten
 
 ## Use template variables in annotations
 
-You can reference [template variables](/docs/plugins/grafana-redshift-datasource/latest/template-variables/) in your annotation queries to make them dynamic:
+You can reference [template variables](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/template-variables/) in your annotation queries to make them dynamic:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

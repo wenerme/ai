@@ -7,7 +7,7 @@ description: "This document describes Databricks annotations."
 
 # Databricks annotations
 
-Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events like deployments, incidents, or data pipeline runs. For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events like deployments, incidents, or data pipeline runs. For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 To create an annotation, your dashboard must already be saved. Annotations only work with the following supported visualization types: time series, state timeline, and candlestick.
 
@@ -31,7 +31,7 @@ A query must return at least a `time` and a `text` column.
 
 Show data quality issues detected in your pipelines:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -49,7 +49,7 @@ ORDER BY check_timestamp
 
 Track when Databricks jobs complete to correlate with performance metrics:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -66,7 +66,7 @@ ORDER BY end_time
 
 Track cluster lifecycle events to understand resource usage:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -83,7 +83,7 @@ ORDER BY event_time
 
 Show maintenance windows as time regions by adding a `timeEnd` column:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

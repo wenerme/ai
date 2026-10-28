@@ -11,9 +11,9 @@ The Catchpoint data source supports Grafana alerting, so you can create alert ru
 
 ## Before you begin
 
-- [Configure the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
-- Verify your queries return data in a panel or in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/).
-- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- [Configure the Catchpoint data source](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
+- Verify your queries return data in a panel or in [Explore](https://grafana.com/docs/grafana/latest/explore/).
+- Understand [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Create an alert rule
 
@@ -22,7 +22,7 @@ To create an alert rule that uses Catchpoint data:
 1. Navigate to **Alerting** &gt; **Alert rules**.
 2. Click **New alert rule**.
 3. Select the **Catchpoint** data source for the query.
-4. Build a query with the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/), such as a Tests query that returns availability.
+4. Build a query with the [query editor](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/), such as a Tests query that returns availability.
 5. Add an expression to reduce the query to a single value, then set the alert condition and threshold.
 6. Set the evaluation behavior, labels, and notifications, then save the rule.
 
@@ -70,5 +70,5 @@ The following scenarios show common ways to alert on Catchpoint data:
 
 ## Next steps
 
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/annotations/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)

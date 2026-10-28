@@ -9,4 +9,4 @@ description: "Learn about updates, new features, enhancements, and fixes for the
 
 Stay informed about the Business Calendar panel’s updates with these release notes, summarizing new features, enhancements, and fixes across all versions.
 
-All notable changes to the Business Calendar panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-calendar-panel/?tab=changelog) in the plugins catalog.
+All notable changes to the Business Calendar panel are documented in the [changelog](https://grafana.com/grafana/plugins/marcusolsson-calendar-panel/?tab=changelog) in the plugins catalog.

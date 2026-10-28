@@ -9,13 +9,13 @@ description: "Set up Grafana alerting with the Sumo Logic data source."
 
 Grafana alerting lets you define rules that continuously evaluate your Sumo Logic data and send notifications when conditions are met. For example, you can create a rule that fires when CPU usage exceeds a threshold or when error rates spike beyond normal levels. The Sumo Logic data source supports alerting through its backend query implementation, which allows Grafana to evaluate queries server-side on a schedule.
 
-For general information about Grafana alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For general information about Grafana alerting, refer to [Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/).
-- Familiarize yourself with [Grafana alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/).
-- Ensure you have configured at least one [contact point](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) for notifications.
+- [Configure the Sumo Logic data source](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/).
+- Familiarize yourself with [Grafana alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/).
+- Ensure you have configured at least one [contact point](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) for notifications.
 
 ## Supported query types
 
@@ -39,7 +39,7 @@ To create an alert rule using the Sumo Logic data source:
 8. Configure notification policies and contact points as needed.
 9. Click **Save rule**.
 
-For more details on configuring alert rules, refer to [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For more details on configuring alert rules, refer to [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alert rule query examples
 
@@ -49,7 +49,7 @@ The following examples show queries suitable for alert rules.
 
 Alert when average CPU idle time drops below a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | avg by host
@@ -57,7 +57,7 @@ metric=cpu_idle | avg by host
 
 Monitor memory usage across hosts:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=mem_used_percent | max by host
@@ -65,7 +65,7 @@ metric=mem_used_percent | max by host
 
 Track the rate of HTTP errors:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_errors | rate increasing | sum
@@ -73,7 +73,7 @@ metric=http_errors | rate increasing | sum
 
 Monitor disk usage:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=disk_used_percent mount_point=/ | max by host
@@ -81,7 +81,7 @@ metric=disk_used_percent mount_point=/ | max by host
 
 Detect network latency spikes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_response_time | avg by service | where _value > 500
@@ -91,7 +91,7 @@ metric=http_response_time | avg by service | where _value > 500
 
 Alert when error count exceeds a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app "ERROR" | count
@@ -99,7 +99,7 @@ _sourceCategory=prod/app "ERROR" | count
 
 Monitor failed login attempts:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=auth action=login status=failure | count by _sourceHost
@@ -107,7 +107,7 @@ _sourceCategory=auth action=login status=failure | count by _sourceHost
 
 Track 5xx HTTP response rates:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/web status_code >= 500 | count
@@ -115,7 +115,7 @@ _sourceCategory=prod/web status_code >= 500 | count
 
 Alert on high average response times from parsed log fields:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/api | parse "duration=*ms" as duration | avg(duration)
@@ -123,7 +123,7 @@ _sourceCategory=prod/api | parse "duration=*ms" as duration | avg(duration)
 
 Monitor queue depth from application logs:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/worker | parse "queue_size=*" as queue_size | max(queue_size) by queue_name
@@ -131,7 +131,7 @@ _sourceCategory=prod/worker | parse "queue_size=*" as queue_size | max(queue_siz
 
 Detect unusual volumes of specific log patterns:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app "OutOfMemoryError" | count by _sourceHost

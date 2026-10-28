@@ -15,13 +15,13 @@ To use utility variables, create a new variable in your dashboard and select **I
 
 Expand table
 
-| Function                              | Purpose                                                 |
-|---------------------------------------|---------------------------------------------------------|
-| [Collection](#collection)             | Create a drop-down with static key-value pairs          |
-| [CollectionLookup](#collectionlookup) | Return a value based on another variable (like VLOOKUP) |
-| [Join](#join)                         | Concatenate multiple strings or variables               |
-| [Random](#random)                     | Return a randomly selected value from a list            |
-| [UnixTimeStamp](#unixtimestamp)       | Generate Unix timestamps with optional time shifts      |
+| Function                                                                                                                                  | Purpose                                                 |
+|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| [Collection](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/#collection)             | Create a drop-down with static key-value pairs          |
+| [CollectionLookup](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/#collectionlookup) | Return a value based on another variable (like VLOOKUP) |
+| [Join](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/#join)                         | Concatenate multiple strings or variables               |
+| [Random](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/#random)                     | Return a randomly selected value from a list            |
+| [UnixTimeStamp](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/#unixtimestamp)       | Generate Unix timestamps with optional time shifts      |
 
 ## Collection
 
@@ -29,7 +29,7 @@ Use `Collection()` to create a variable with predefined key-value pairs. This is
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Collection(DisplayText1,value1,DisplayText2,value2,...)
@@ -39,7 +39,7 @@ Collection(DisplayText1,value1,DisplayText2,value2,...)
 
 The following query creates a drop-down with four environment options:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Collection(Prod,pd,Non Prod,np,Development,dev,SIT,sit)
@@ -68,7 +68,7 @@ Use `CollectionLookup()` to return a value based on another variable, similar to
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 CollectionLookup(key1,value1,key2,value2,...,keyN,valueN,$VariableToLookup)
@@ -80,7 +80,7 @@ The last parameter must be the variable to look up. The function returns the val
 
 The following query returns a server name based on the value of the `$Environment` variable:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 CollectionLookup(pd,prod-server,np,nonprod-server,dev,dev-server,$Environment)
@@ -104,7 +104,7 @@ Use `Join()` to concatenate multiple strings or variables into a single value.
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Join(string1,string2,...,stringN)
@@ -114,7 +114,7 @@ Join(string1,string2,...,stringN)
 
 The following query combines an environment variable, a separator, and a server name variable:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Join($Environment,-hello-,$ServerName)
@@ -128,7 +128,7 @@ Use `Random()` to return a randomly selected value from a list. This is useful f
 
 **Syntax:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Random(value1,value2,...,valueN)
@@ -138,7 +138,7 @@ Random(value1,value2,...,valueN)
 
 The following query randomly returns one of three values:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Random(A,B,C)
@@ -181,7 +181,7 @@ Expand table
 
 You can add or subtract time from the current timestamp using the following format:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 UnixTimeStamp(offset,format)

@@ -34,7 +34,7 @@ The following example queries a countries API to retrieve country names and cont
 
 **GraphQL query**:
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 {
@@ -62,7 +62,7 @@ Expand table
 
 You can include variables in your GraphQL queries. Enter variables as JSON in the variables field:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -72,7 +72,7 @@ JSON [Copy code to clipboard] Copy
 
 Then reference them in your query:
 
-graphql [Copy code to clipboard] Copy
+graphql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```graphql
 query($code: ID!) {
@@ -91,4 +91,4 @@ GraphQL responses are JSON, so all JSON parser options are available:
 - **JQ parser**: For data transformations, alerting, and recorded queries
 - **UQL parser**: For advanced in-memory transformations
 
-Refer to [JSON](/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/json/) for details on parser options.
+Refer to [JSON](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/json/) for details on parser options.

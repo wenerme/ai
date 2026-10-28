@@ -11,7 +11,7 @@ Annotations allow you to overlay event data on your graphs. The Cloudflare data 
 
 ## Before you begin
 
-Ensure you have [configured the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
+Ensure you have [configured the Cloudflare data source](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
 
 ## Supported annotation queries
 
@@ -94,5 +94,5 @@ Keep the following in mind when you use Cloudflare annotations:
 
 ## Related documentation
 
-- [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
 - [Cloudflare Radar documentation](https://developers.cloudflare.com/radar/)

@@ -7,12 +7,12 @@ description: "Create alert rules using the GitHub data source plugin for Grafana
 
 # GitHub alerting
 
-The GitHub data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/). You can create alert rules that evaluate queries against GitHub data and send notifications when conditions are met.
+The GitHub data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/). You can create alert rules that evaluate queries against GitHub data and send notifications when conditions are met.
 
 ## Before you begin
 
-- [Configure the GitHub data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/).
-- Familiarize yourself with [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/alert-rules/) and how to [create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+- [Configure the GitHub data source](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/).
+- Familiarize yourself with [alert rules](https://grafana.com/docs/grafana/latest/alerting/fundamentals/alert-rules/) and how to [create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Supported query types
 
@@ -29,7 +29,7 @@ Expand table
 | Vulnerabilities | Alert when open vulnerability count exceeds a threshold                 |
 | Commits         | Alert when commit activity drops below expected levels                  |
 
-For a complete list of query types and their time field options, refer to the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/).
+For a complete list of query types and their time field options, refer to the [query editor](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/).
 
 ## Create an alert rule
 
@@ -44,7 +44,7 @@ To create an alert rule using the GitHub data source:
 7. Configure notification settings and labels.
 8. Click **Save rule**.
 
-For detailed step-by-step guidance, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed step-by-step guidance, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example alert rules
 
@@ -90,4 +90,4 @@ Detect pull requests that have been open for an extended period:
 
 ## Template annotations and labels
 
-You can use [template annotations and labels](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/templates/) to include query results or metadata in alert notifications.
+You can use [template annotations and labels](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/templates/) to include query results or metadata in alert notifications.

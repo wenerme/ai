@@ -7,11 +7,11 @@ description: "Use the Vercel data source to add annotations to Grafana dashboard
 
 # Vercel annotations
 
-[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) overlay event markers on your graphs, so you can correlate Vercel activity, such as deployments, with the rest of your dashboard. The Vercel data source supports annotations, which means you can drive these markers from a Vercel query.
+[Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) overlay event markers on your graphs, so you can correlate Vercel activity, such as deployments, with the rest of your dashboard. The Vercel data source supports annotations, which means you can drive these markers from a Vercel query.
 
 ## Before you begin
 
-Before you add an annotation query, ensure you have [configured the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/) and are familiar with the [Vercel query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/query-editor/).
+Before you add an annotation query, ensure you have [configured the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/) and are familiar with the [Vercel query editor](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/query-editor/).
 
 ## How annotations work
 

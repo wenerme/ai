@@ -9,11 +9,11 @@ description: "Learn how to get started with Traces Drilldown"
 
 You can use traces to identify errors in your apps and services and then to optimize and streamline them.
 
-When working with traces, start with the big picture. Investigate using primary signals, RED metrics, filters, and structural or trace list tabs to explore your data. To learn more, refer to [Concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/).
+When working with traces, start with the big picture. Investigate using primary signals, RED metrics, filters, and structural or trace list tabs to explore your data. To learn more, refer to [Concepts](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/).
 
 > Note
 >
-> Expand your observability journey and learn about [the Drilldown apps suite](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/).
+> Expand your observability journey and learn about [the Drilldown apps suite](https://grafana.com/docs/plugins/grafana-exploretraces-app/).
 
 ## Before you begin
 
@@ -28,7 +28,7 @@ To use Traces Drilldown with self-managed Grafana, you need:
 - Your own Grafana instance with a configured Tempo data source
 - Grafana 13.2.0 and later includes all Grafana Drilldown apps by default.
 
-For more details, refer to [Access Traces Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/access/).
+For more details, refer to [Access Traces Drilldown](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/access/).
 
 ## Explore your tracing data
 
@@ -45,13 +45,13 @@ With Grafana Play, you can explore and see how it works, learning from practical
 
 [Try it](https://play.grafana.org/a/grafana-exploretraces-app/explore)
 
-Prefer a step-by-step walkthrough? Refer to the [Investigation walkthrough](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/) to follow along on play.grafana.org.
+Prefer a step-by-step walkthrough? Refer to the [Investigation walkthrough](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/) to follow along on play.grafana.org.
 
 ## Example: Investigate source of errors
 
 This example demonstrates investigation techniques and patterns you can use when investigating errors. It shows how to use advanced features like the **Comparison** tab and **Inspect** to find root causes.
 
-For a hands-on walkthrough you can follow step-by-step, refer to the [Investigation walkthrough](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/).
+For a hands-on walkthrough you can follow step-by-step, refer to the [Investigation walkthrough](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/).
 
 For example, you want to uncover the source of errors in your spans. You need to compare the errors in the traces to locate the problem trace. Here’s how this works.
 
@@ -118,4 +118,4 @@ This example demonstrated how to:
 - Use **Inspect** to drill into attribute distributions
 - Use **Root cause errors** to see error chain structures
 
-For a step-by-step walkthrough you can follow along, refer to the [Investigation walkthrough](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/).
+For a step-by-step walkthrough you can follow along, refer to the [Investigation walkthrough](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation/).

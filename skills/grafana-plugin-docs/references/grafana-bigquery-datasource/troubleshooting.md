@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Google BigQuery data source in
 
 # Troubleshoot Google BigQuery data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Google BigQuery data source. For configuration instructions, refer to [Configure the BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Google BigQuery data source. For configuration instructions, refer to [Configure the BigQuery data source](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/).
 
 ## Version and upgrade guidance
 
@@ -33,7 +33,7 @@ These symptoms often appear after a Grafana or platform upgrade:
 3. Review the installed version and the latest available version.
 4. If an update is available and you’re on self-managed Grafana, click **Update**. You can also install or upgrade from the command line:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins install grafana-bigquery-datasource
@@ -52,10 +52,10 @@ Plugin version 3.x requires Grafana 11.6.11 or later. On Grafana 12.x, the plugi
 
 **Solutions:**
 
-1. Update the BigQuery plugin to the latest version using the steps in [Check and update the plugin version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#check-and-update-the-plugin-version).
+1. Update the BigQuery plugin to the latest version using the steps in [Check and update the plugin version](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#check-and-update-the-plugin-version).
 2. Restart Grafana. An update that looks successful in the UI can still run the previous version until the instance restarts.
 3. Verify the plugin version is compatible with your Grafana version.
-4. If the error continues after update and restart, follow [Plugin not registered or plugin not found](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#plugin-not-registered-or-plugin-not-found).
+4. If the error continues after update and restart, follow [Plugin not registered or plugin not found](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#plugin-not-registered-or-plugin-not-found).
 
 ### “Plugin not registered” or “plugin not found”
 
@@ -71,9 +71,9 @@ Plugin version 3.x requires Grafana 11.6.11 or later. On Grafana 12.x, the plugi
 
 1. Open **Administration** &gt; **Plugins and data** &gt; **Plugins**, search for **Google BigQuery**, and check its status. If it isn’t installed or shows an error, install or reinstall it (uninstall, then install again).
 2. Restart Grafana after reinstalling. After a platform update or Pod restart, the plugin sometimes doesn’t re-register until you reinstall and restart.
-3. On self-managed Grafana, review the Grafana server logs for `grafana-bigquery-datasource` or `gpx_bigquery` errors. Refer to [Enable debug logging](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#enable-debug-logging).
-4. On Grafana Cloud, you can’t access backend plugin logs directly. If a reinstall doesn’t restore the data source, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) and ask them to review the plugin logs.
-5. If the issue persists after reinstalling, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
+3. On self-managed Grafana, review the Grafana server logs for `grafana-bigquery-datasource` or `gpx_bigquery` errors. Refer to [Enable debug logging](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#enable-debug-logging).
+4. On Grafana Cloud, you can’t access backend plugin logs directly. If a reinstall doesn’t restore the data source, contact [Grafana Support](https://grafana.com/support/) and ask them to review the plugin logs.
+5. If the issue persists after reinstalling, contact [Grafana Support](https://grafana.com/support/).
 
 ## Authentication errors
 
@@ -91,19 +91,19 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 Expand table
 
-| Cause                                  | Solution                                                                                                                                                                                                                                                                                                                                                                       |
-|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing BigQuery roles                 | Assign the **BigQuery Data Viewer** and **BigQuery Job User** roles to the service account on each project it queries.                                                                                                                                                                                                                                                         |
-| Service account key expired or revoked | Create a new key in the Google Cloud Console and update the data source configuration.                                                                                                                                                                                                                                                                                         |
-| Wrong project selected                 | Verify the default project matches where your data is located.                                                                                                                                                                                                                                                                                                                 |
-| API not enabled                        | Enable the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery.googleapis.com) in your project.                                                                                                                                                                                                                                                              |
-| Dataset or table-level restrictions    | Grant the service account access to the specific datasets or tables, not just the project.                                                                                                                                                                                                                                                                                     |
-| Empty project drop-down                | That’s a Cloud Resource Manager permission issue, not a query 403. Refer to [Project drop-down not populating](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#project-drop-down-not-populating).                                                                                                |
-| Empty dataset drop-down                | Project-level Data Viewer and Job User aren’t enough if access is only on specific datasets. Grant dataset READER (or `bigquery.datasets.get`) on those datasets. Refer to [Dataset drop-down not populating](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#dataset-drop-down-not-populating). |
+| Cause                                  | Solution                                                                                                                                                                                                                                                                                                                              |
+|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing BigQuery roles                 | Assign the **BigQuery Data Viewer** and **BigQuery Job User** roles to the service account on each project it queries.                                                                                                                                                                                                                |
+| Service account key expired or revoked | Create a new key in the Google Cloud Console and update the data source configuration.                                                                                                                                                                                                                                                |
+| Wrong project selected                 | Verify the default project matches where your data is located.                                                                                                                                                                                                                                                                        |
+| API not enabled                        | Enable the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery.googleapis.com) in your project.                                                                                                                                                                                                                     |
+| Dataset or table-level restrictions    | Grant the service account access to the specific datasets or tables, not just the project.                                                                                                                                                                                                                                            |
+| Empty project drop-down                | That’s a Cloud Resource Manager permission issue, not a query 403. Refer to [Project drop-down not populating](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#project-drop-down-not-populating).                                                                                                |
+| Empty dataset drop-down                | Project-level Data Viewer and Job User aren’t enough if access is only on specific datasets. Grant dataset READER (or `bigquery.datasets.get`) on those datasets. Refer to [Dataset drop-down not populating](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#dataset-drop-down-not-populating). |
 
 To isolate whether the failure is in Grafana or GCP, run the same query as the service account outside Grafana. In the [Google Cloud Console](https://console.cloud.google.com/bigquery) query editor, or with the [`bq` CLI](https://cloud.google.com/bigquery/docs/bq-command-line-tool) after activating the key:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 gcloud auth activate-service-account --key-file=<KEY_FILE>
@@ -124,7 +124,7 @@ If that query fails, fix IAM or APIs in GCP before changing the data source. If 
 1. The service account has project-level access but is missing dataset or table-level permissions. In the BigQuery Console, verify the service account has read access to the specific datasets being queried.
 2. If you use one service account across several GCP projects, grant **BigQuery Data Viewer** and **BigQuery Job User** on every project the queries touch, not only the default project.
 3. Ensure the [BigQuery API](https://console.cloud.google.com/apis/library/bigquery.googleapis.com) is enabled in each target project, not just the default project.
-4. Confirm the same query succeeds outside Grafana using the `bq` CLI or Cloud Console steps in [“Access denied” or “Permission denied”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#access-denied-or-permission-denied).
+4. Confirm the same query succeeds outside Grafana using the `bq` CLI or Cloud Console steps in [“Access denied” or “Permission denied”](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#access-denied-or-permission-denied).
 
 ### Project drop-down not populating
 
@@ -173,9 +173,9 @@ The query editor lists datasets with BigQuery [`datasets.list`](https://cloud.go
 
 For policies that limit long-lived keys:
 
-- **Service account impersonation** still stores a JWT, but that key only needs permission to mint tokens. The impersonated account holds BigQuery access. Refer to [Service account impersonation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#service-account-impersonation).
+- **Service account impersonation** still stores a JWT, but that key only needs permission to mint tokens. The impersonated account holds BigQuery access. Refer to [Service account impersonation](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#service-account-impersonation).
 - **GCE Default Service Account** stores no key. Use it when Grafana runs on a GCE VM.
-- **Workload Identity Federation** stores no key, but it’s Grafana Cloud only and doesn’t support alerting. Refer to [Workload Identity Federation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#workload-identity-federation).
+- **Workload Identity Federation** stores no key, but it’s Grafana Cloud only and doesn’t support alerting. Refer to [Workload Identity Federation](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#workload-identity-federation).
 
 ### “Service account impersonation failed”
 
@@ -192,7 +192,7 @@ For policies that limit long-lived keys:
 3. Ensure the impersonated service account has the required BigQuery roles (**BigQuery Data Viewer** and **BigQuery Job User**).
 4. Check that the impersonated service account email is the full email address (for example, `my-sa@my-project.iam.gserviceaccount.com`).
 
-For detailed setup instructions including `gcloud` commands, refer to [Service account impersonation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#service-account-impersonation).
+For detailed setup instructions including `gcloud` commands, refer to [Service account impersonation](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#service-account-impersonation).
 
 ### Workload Identity Federation authentication failing
 
@@ -206,7 +206,7 @@ For detailed setup instructions including `gcloud` commands, refer to [Service a
 **Solutions:**
 
 1. Confirm you’re on Grafana Cloud. Workload Identity Federation is available on Grafana Cloud only, because Grafana Cloud exchanges the signed-in user’s OIDC ID token for a short-lived Google Cloud access token before the request reaches the plugin.
-2. Confirm Grafana Cloud SSO uses the same OIDC provider as the workload identity pool. WIF exchanges that user’s OIDC ID token. If users sign in with Google OAuth and you want to query BigQuery as that Google user, use [Forward OAuth Identity](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) instead.
+2. Confirm Grafana Cloud SSO uses the same OIDC provider as the workload identity pool. WIF exchanges that user’s OIDC ID token. If users sign in with Google OAuth and you want to query BigQuery as that Google user, use [Forward OAuth Identity](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) instead.
 3. Verify the **Workload Identity Pool Provider** resource path is correct and uses the format `projects/<project-number>/locations/global/workloadIdentityPools/<pool-id>/providers/<provider-id>`. Use the project **number** (a numeric ID such as `123456789`), not the project ID (such as `my-project`).
 4. Check the provider’s attribute mappings in Google Cloud. The `google.subject` attribute must map to the correct claim from your identity provider (for example, `assertion.sub`; the exact mapping depends on your provider’s claim format).
 5. Verify the BigQuery permissions are granted to the correct principal:
@@ -219,7 +219,7 @@ For detailed setup instructions including `gcloud` commands, refer to [Service a
 >
 > Credentials from Workload Identity Federation are tied to the signed-in user’s active session. There is no long-lived credential available to the Grafana backend, so features that run without a user present don’t work, including alerting, scheduled reports, and public dashboards. If you rely on these features, use a service account key (JWT) instead.
 
-For detailed setup instructions, refer to [Workload Identity Federation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#workload-identity-federation).
+For detailed setup instructions, refer to [Workload Identity Federation](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#workload-identity-federation).
 
 ### Forward OAuth Identity not working
 
@@ -257,7 +257,7 @@ These errors occur when Grafana cannot reach Google BigQuery endpoints.
 1. Verify network connectivity from the Grafana server to Google Cloud endpoints.
 2. Check firewall rules allow outbound HTTPS (port 443) to `*.googleapis.com`.
 3. If using a proxy, ensure it’s configured correctly in the Grafana settings.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### “Could not resolve host”
 
@@ -285,12 +285,12 @@ These errors occur when Grafana cannot reach Google BigQuery endpoints.
 
 1. Verify the PDC agent is running and connected. Check the agent logs and the PDC status in your Grafana Cloud instance under **Administration** &gt; **Private data source connect**. `network unreachable` usually means Grafana Cloud has no connected agent to route through.
 2. Restart the PDC agent if it has disconnected.
-3. Run more than one PDC agent with the same configuration. A single agent is a single point of failure. For production, Grafana recommends at least three agents so PDC can load-balance and fail over. Refer to [Configure PDC](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
-4. If the SSH tunnel opens but immediately closes, this can indicate a plugin installation error rather than a network problem. Verify the BigQuery plugin is correctly installed and not in an error state. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+3. Run more than one PDC agent with the same configuration. A single agent is a single point of failure. For production, Grafana recommends at least three agents so PDC can load-balance and fail over. Refer to [Configure PDC](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+4. If the SSH tunnel opens but immediately closes, this can indicate a plugin installation error rather than a network problem. Verify the BigQuery plugin is correctly installed and not in an error state. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 5. Ensure the PDC agent’s network allows outbound HTTPS (port 443) to `*.googleapis.com`.
-6. For intermittent failures, high latency, or agent overload, follow [Troubleshoot PDC issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/troubleshooting/) rather than switching agent install methods. The Docker image includes a supported OpenSSH; the binary requires OpenSSH 9.2 or later (or `-use-gossh`).
+6. For intermittent failures, high latency, or agent overload, follow [Troubleshoot PDC issues](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/troubleshooting/) rather than switching agent install methods. The Docker image includes a supported OpenSSH; the binary requires OpenSSH 9.2 or later (or `-use-gossh`).
 
-For general PDC setup, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For general PDC setup, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Configuration errors
 
@@ -325,7 +325,7 @@ These errors occur during data source setup or provisioning.
 
 **Example with a multi-line private key:**
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -424,11 +424,11 @@ Expand table
 1. Optimize the query first. Increasing a timeout doesn’t help a scan of terabytes. Filter on the partition column with `$__timeFilter`, use clustered tables, and select only the columns you need.
 2. On self-managed Grafana, you can raise the Grafana timeouts if the query is already efficient:
 
-   - Dashboards: `[dataproxy] timeout` in `grafana.ini` (default `30`). Refer to [timeout](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#timeout).
-   - Alerting: `[unified_alerting] evaluation_timeout` (default `30s`). Refer to the [`evaluation_timeout`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#evaluation_timeout) setting.
+   - Dashboards: `[dataproxy] timeout` in `grafana.ini` (default `30`). Refer to [timeout](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#timeout).
+   - Alerting: `[unified_alerting] evaluation_timeout` (default `30s`). Refer to the [`evaluation_timeout`](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#evaluation_timeout) setting.
 3. Restart Grafana after changing `grafana.ini`.
 4. On Grafana Cloud, you typically can’t raise these timeouts. Reduce bytes scanned, or pre-aggregate data in BigQuery.
-5. For alerting, split heavy rules into separate evaluation groups so they don’t all query BigQuery at the same time. Refer to [Performance considerations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/alerting/#performance-considerations).
+5. For alerting, split heavy rules into separate evaluation groups so they don’t all query BigQuery at the same time. Refer to [Performance considerations](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/alerting/#performance-considerations).
 6. Add a `LIMIT` clause while developing queries.
 
 > Note
@@ -519,7 +519,7 @@ These errors occur when using template variables with the data source.
 **Solutions:**
 
 1. Scheduled reports can cache variable values at the time the report is created. If the underlying BigQuery data changes, the report continues using the original values.
-2. To force a dynamic refresh at runtime, use the [Grafana Reporting API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/developers/http_api/reporting/) to clear the report’s saved variable configuration. Remove the `templateVars` field from the report definition so variables are evaluated fresh at each scheduled run.
+2. To force a dynamic refresh at runtime, use the [Grafana Reporting API](https://grafana.com/docs/grafana/latest/developers/http_api/reporting/) to clear the report’s saved variable configuration. Remove the `templateVars` field from the report definition so variables are evaluated fresh at each scheduled run.
 3. Alternatively, recreate the report after updating variable queries to pick up the latest values.
 
 ## Performance issues
@@ -583,7 +583,7 @@ If you are migrating from self-managed Grafana to Grafana Cloud, be aware of the
 
 ### Dataset and table browsing
 
-On self-managed Grafana, the BigQuery plugin connects directly to Google Cloud APIs. On Grafana Cloud, the connection may route through [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your BigQuery resources are not publicly accessible. This routing can affect the speed at which datasets and tables load in the query editor drop-downs.
+On self-managed Grafana, the BigQuery plugin connects directly to Google Cloud APIs. On Grafana Cloud, the connection may route through [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if your BigQuery resources are not publicly accessible. This routing can affect the speed at which datasets and tables load in the query editor drop-downs.
 
 Whether all projects are visible in the project selector depends on service account permissions rather than PDC. Ensure the service account has `resourcemanager.projects.get` on each project you expect to see listed.
 
@@ -601,7 +601,7 @@ Template variable substitution behavior is consistent between self-managed Grafa
 
 To track which Grafana users are running BigQuery queries:
 
-- **Grafana audit logging** (available in Grafana Enterprise and Grafana Cloud) can identify the user and data source associated with a query request, but does not log the specific SQL query text or which BigQuery tables were accessed. For details, refer to [Auditing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/audit-grafana/).
+- **Grafana audit logging** (available in Grafana Enterprise and Grafana Cloud) can identify the user and data source associated with a query request, but does not log the specific SQL query text or which BigQuery tables were accessed. For details, refer to [Auditing](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/audit-grafana/).
 - **BigQuery audit logs** in GCP provide full query-level detail, including the SQL text, tables accessed, bytes scanned, and job metadata. Enable [Cloud Audit Logs for BigQuery](https://cloud.google.com/bigquery/docs/reference/auditlogs) to capture this information.
 
 For complete query-level auditing, use BigQuery’s audit logs. You can correlate them with Grafana audit logs by matching timestamps and the service account identity.
@@ -621,7 +621,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -649,7 +649,7 @@ If you’ve tried the solutions above and still encounter issues:
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review the [BigQuery plugin GitHub issues](https://github.com/grafana/google-bigquery-datasource/issues) for known bugs.
 3. Consult the [Google BigQuery documentation](https://cloud.google.com/bigquery/docs) for BigQuery-specific guidance.
-4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re a Grafana Cloud or Enterprise customer.
+4. Contact [Grafana Support](https://grafana.com/support/) if you’re a Grafana Cloud or Enterprise customer.
 
 When reporting issues, include:
 

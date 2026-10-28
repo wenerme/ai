@@ -9,13 +9,13 @@ description: "Create Grafana alert rules using the Amazon Redshift data source."
 
 You can use the Amazon Redshift data source to create Grafana alert rules that evaluate SQL queries and trigger notifications when conditions are met. This lets you monitor your Redshift data for anomalies, thresholds, or specific conditions without manually watching dashboards.
 
-For general information about Grafana alerting, refer to [Grafana alerting](/docs/grafana/latest/alerting/).
+For general information about Grafana alerting, refer to [Grafana alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/).
+- [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/).
 - Verify that your IAM identity has the required permissions for async query execution, including `redshift-data:ListStatements` and `redshift-data:CancelStatement`.
-- Familiarize yourself with [Grafana alert rules](/docs/grafana/latest/alerting/alerting-rules/).
+- Familiarize yourself with [Grafana alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/).
 
 ## Create an alert rule
 
@@ -44,7 +44,7 @@ Alert queries must meet the following requirements:
 
 The following query returns the average query duration over the evaluation period:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -61,7 +61,7 @@ You can apply a threshold condition (for example, alert when `avg_duration_secon
 
 To receive separate alerts per category, include a grouping column:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -82,7 +82,7 @@ ORDER BY
 
 To alert when the number of failed transactions exceeds a threshold:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -100,6 +100,6 @@ Set a threshold condition to fire when `failed_transactions` exceeds your accept
 Keep the following in mind when using Redshift queries in alert rules:
 
 - **Async execution:** Redshift queries run asynchronously through the Data API. This can add latency to alert evaluations compared to real-time data sources.
-- **Query caching:** If you have [async query caching](/docs/plugins/grafana-redshift-datasource/latest/#async-query-cache) enabled, cached results may be used during alert evaluation. Ensure your cache TTL is appropriate for your alerting requirements.
+- **Query caching:** If you have [async query caching](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/#async-query-cache) enabled, cached results may be used during alert evaluation. Ensure your cache TTL is appropriate for your alerting requirements.
 - **Cost:** Each alert evaluation runs a query against Redshift. Set evaluation intervals that balance responsiveness with query costs.
 - **Permissions:** The IAM identity used by the data source must have permissions for all tables and schemas referenced in alert queries.

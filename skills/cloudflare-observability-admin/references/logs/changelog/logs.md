@@ -16,6 +16,19 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/logs.xml)
 
+## 2026-10-21
+
+
+**Account-scoped HTTP request logs in Logpush**
+
+Cloudflare Logpush now supports HTTP request logs as an [account-scoped dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/http_requests/). Use one job to deliver logs for every zone in an account instead of maintaining a separate job for each zone.
+
+Create the job at the account level in the Cloudflare dashboard or through the Logpush API. The `ZoneName` field identifies the source zone in each log entry.
+
+Custom fields remain configured per zone. An account-scoped job honors the custom fields configuration for each zone but does not support account-wide custom fields configuration.
+
+For setup details, refer to [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/).
+
 ## 2026-09-18
 
 

@@ -22,7 +22,7 @@ With Grafana Play, you can explore and see how it works, learning from practical
 When you use Profiles Drilldown, your investigations usually follow these steps.
 
 1. Verify your data source in the **Data source** drop-down.
-2. Choose an **Exploration** tab. **All services** is selected by default. Learn about the [available views](../choose-a-view/).
+2. Choose an **Exploration** tab. **All services** is selected by default. Learn about the [available views](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view/).
 3. Look for spikes or trends in services to identify where to investigate. Use the **Profile type** drop-down to change profile metrics.
 4. After you identify the service to explore, you can change views:
 

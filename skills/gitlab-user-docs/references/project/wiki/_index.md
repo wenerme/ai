@@ -298,6 +298,9 @@ In GitLab 17.1 and later, when you move or rename a page, a redirect is
 automatically set up from the old page to the new page. A list of redirects
 is stored in the `.gitlab/redirects.yml` file in the wiki repository.
 
+For more information about the page history after a move, see
+[history of moved or renamed pages](#history-of-moved-or-renamed-pages).
+
 Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role.
@@ -453,7 +456,28 @@ To view the changes for a wiki page:
 1. Go to the page you want to view history for.
 1. Select **Wiki actions** (), then **Page history**.
 
+### History of moved or renamed pages
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/25083) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `wiki_page_history_follow_renames`. Disabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/632767) in GitLab 19.6. Feature flag `wiki_page_history_follow_renames` removed.
+
+When you move or rename a wiki page, the page history includes the versions
+from before the move. You can view, compare, and restore these versions
+like any other version. When you restore a version from before the move, GitLab saves the
+restored content at the current path of the page.
+
+The history follows a move or rename when either:
+
+- You move or rename the page in GitLab.
+- You move or rename the page locally with Git, and Git detects the change as a rename.
+  Git might not detect a rename if the same commit also changes most of the page content.
+
+If a page has more than 1,000 versions, the history shows only the versions of the page
+at its current path.
+
 ### View changes between page versions
+
+- Moves and renames shown in diffs [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260204) in GitLab 19.6.
 
 You can see the changes made in a version of a wiki page, similar to versioned diff file views:
 
@@ -462,6 +486,9 @@ You can see the changes made in a version of a wiki page, similar to versioned d
 1. Go to the wiki page you're interested in.
 1. Select **Wiki actions** (), then **Page history** to see all page versions.
 1. Select the commit message in the **Diff** column for the version you're interested in.
+
+If a version includes a move or rename, the diff shows the change from the previous path
+to the new path.
 
 ### Restore a wiki page to a previous version
 

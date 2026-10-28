@@ -14,9 +14,9 @@ This document explains how to configure the Azure DevOps data source in Grafana.
 Before you configure the data source, ensure you have:
 
 - **Grafana permissions:** `Organization administrator` role.
-- **Grafana plan:** A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+- **Grafana plan:** A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated on-prem Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 - **Azure DevOps account:** An Azure DevOps organization (cloud) or Azure DevOps Server instance (on-prem).
-- **Personal access token (PAT):** A PAT with the required scopes. Refer to [Create a personal access token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token).
+- **Personal access token (PAT):** A PAT with the required scopes. Refer to [Create a personal access token](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token).
 
 ## Add the data source
 
@@ -36,10 +36,10 @@ The Azure DevOps data source has required and optional settings.
 
 Expand table
 
-| Setting | Description                                                                                                                                                                                                                                                                                                                                                |
-|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **URL** | The URL of your Azure DevOps organization. For Azure DevOps Services, use `https://dev.azure.com/<ORGANIZATION>`. For Azure DevOps Server (on-prem), use the URL of your server instance.                                                                                                                                                                  |
-| **PAT** | The personal access token used to authenticate with Azure DevOps. Refer to [Create a personal access token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token). Once saved, the field displays “Configured”. Click **Reset** to enter a new token. |
+| Setting | Description                                                                                                                                                                                                                                                                                                       |
+|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **URL** | The URL of your Azure DevOps organization. For Azure DevOps Services, use `https://dev.azure.com/<ORGANIZATION>`. For Azure DevOps Server (on-prem), use the URL of your server instance.                                                                                                                         |
+| **PAT** | The personal access token used to authenticate with Azure DevOps. Refer to [Create a personal access token](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token). Once saved, the field displays “Configured”. Click **Reset** to enter a new token. |
 
 ### Optional settings
 
@@ -47,11 +47,11 @@ These settings appear under the **Optional Configuration** section.
 
 Expand table
 
-| Setting                | Description                                                                                                                                                                                                                                                                                                                                                                                                            |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Projects limit**     | The maximum number of projects to retrieve. Default: `100`. This value applies to the project picker in the query editor, template variable queries, and the health check. Increase this value if your organization has more than 100 projects.                                                                                                                                                                        |
-| **Username**           | The username of the PAT owner. This may be needed for some versions of Azure DevOps Server (on-prem).                                                                                                                                                                                                                                                                                                                  |
-| **Secure Socks Proxy** | Enable proxying the data source connection through the secure socks proxy to a different network. This toggle is only visible when the `secureSocksDSProxyEnabled` feature toggle is enabled in Grafana 10 or later. Refer to [Configure a datasource connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) for more information. |
+| Setting                | Description                                                                                                                                                                                                                                                                                                                                                                   |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Projects limit**     | The maximum number of projects to retrieve. Default: `100`. This value applies to the project picker in the query editor, template variable queries, and the health check. Increase this value if your organization has more than 100 projects.                                                                                                                               |
+| **Username**           | The username of the PAT owner. This may be needed for some versions of Azure DevOps Server (on-prem).                                                                                                                                                                                                                                                                         |
+| **Secure Socks Proxy** | Enable proxying the data source connection through the secure socks proxy to a different network. This toggle is only visible when the `secureSocksDSProxyEnabled` feature toggle is enabled in Grafana 10 or later. Refer to [Configure a datasource connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) for more information. |
 
 ## Create a personal access token
 
@@ -92,7 +92,7 @@ You can omit scopes for features you don’t use.
 
 Click **Save &amp; test** to verify the connection. A successful connection displays one of the following messages:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 healthcheck successful. N projects found
@@ -100,19 +100,19 @@ healthcheck successful. N projects found
 
 or, when the **Secure Socks Proxy** toggle is enabled:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Successfully connected to Azure DevOps. Found N projects.
 ```
 
-In both cases, `N` is the number of projects accessible with your PAT. If the connection test fails, refer to [Troubleshoot Azure DevOps data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/).
+In both cases, `N` is the number of projects accessible with your PAT. If the connection test fails, refer to [Troubleshoot Azure DevOps data source issues](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -144,9 +144,9 @@ Expand table
 
 ## Provision the data source with Terraform
 
-You can provision the Azure DevOps data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to [Provision Grafana with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/terraform/).
+You can provision the Azure DevOps data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to [Provision Grafana with Terraform](https://grafana.com/docs/grafana/latest/administration/provisioning/terraform/).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "azure_devops" {

@@ -177,6 +177,7 @@ curl --request POST \
 | `merge_access_level`                         | integer        | no  | Access levels allowed to merge. Defaults: `40`, Maintainer role. Does not support custom roles. Use `allowed_to_merge` with `member_role_id` instead. |
 | `push_access_level`                          | integer        | no  | Access levels allowed to push. Defaults: `40`, Maintainer role. Does not support custom roles. Use `allowed_to_push` with `member_role_id` instead. |
 | `unprotect_access_level`                     | integer        | no  | Access levels allowed to unprotect. Defaults: `40`, Maintainer role. Does not support custom roles. Use `allowed_to_unprotect` with `member_role_id` instead. |
+{.sortable}
 
 Example response:
 
@@ -393,6 +394,7 @@ curl --request PATCH \
 | `allowed_to_merge`                           | array          | no       | Array of merge access levels, with each described by a hash.                                                                         |
 | `allowed_to_unprotect`                       | array          | no       | Array of unprotect access levels, with each described by a hash.                                                                     |
 | `code_owner_approval_required`               | boolean        | no       | Prevent pushes to this branch if it matches an item in the [`CODEOWNERS` file](../user/project/codeowners/_index.md). Default: `false`. |
+{.sortable}
 
 Elements in the `allowed_to_push`, `allowed_to_merge`, and `allowed_to_unprotect` arrays should take the form
 `{access_level: integer}` or, on GitLab Ultimate, `{member_role_id: integer}` to allow a

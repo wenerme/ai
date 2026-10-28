@@ -15,7 +15,7 @@ Use template variables to populate variable options from external data sources l
 
 Template variables work like any other Grafana data source query - you define a query that returns data, and Grafana uses the results to populate the variable options.
 
-[Learn more about template variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/template-variables/)
+[Learn more about template variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/template-variables/)
 
 ## Utility variables (legacy)
 
@@ -27,4 +27,4 @@ Use utility variables for string manipulation, lookups, and other helper functio
 - **Random()** - Select random values from a list
 - **UnixTimeStamp()** - Generate Unix timestamps
 
-[Learn more about utility variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/)
+[Learn more about utility variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/utility-variables/)

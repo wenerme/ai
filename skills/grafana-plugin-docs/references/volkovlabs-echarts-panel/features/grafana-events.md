@@ -11,17 +11,17 @@ Grafana uses an event bus to publish application events and notify different par
 
 > Note
 >
-> Business Charts 5.0.0 lets you unsubscribe from events to avoid memory leaks by returning an [extended result object](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/features/extended-result/).
+> Business Charts 5.0.0 lets you unsubscribe from events to avoid memory leaks by returning an [extended result object](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/extended-result/).
 
 ## Predefined events
 
-A full list of events is available in the [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/exploring-eventbus/).
+A full list of events is available in the [Grafana Crash Course](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-eventbus/).
 
 ## Subscribe to events
 
 To subscribe and unsubscribe from events, create an extended result object.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 const subscription = context.grafana.eventBus.subscribe({ type: 'data-hover' }, () => {

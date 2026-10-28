@@ -18,6 +18,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [App Launcher customization](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/app-launcher-customization/)
 - [Access login page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-login-page/)
 - [Access custom block pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-block-page/)
+- [Access custom pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-custom-pages/)
 
 Was this helpful?
 

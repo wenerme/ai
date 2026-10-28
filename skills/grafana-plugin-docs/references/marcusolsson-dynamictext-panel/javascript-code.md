@@ -19,33 +19,33 @@ Starting from version 4.3.0, you can access the panel data (`panelData`) and sel
 
 Start typing `context` in the **Before Content Rendering** or **After Content Ready** boxes to see the latest list of all available features.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/context.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/context.png)
 
 Expand table
 
-| Parameter                                                                                                                                                                                                                                        | Description                                                                                                                                                                                                                                          | Before Render | After Render |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|--------------|
-| [`context.data`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextdata)                                                                | Data from data sources. The display of one or multiple data rows from the selected data frame or from all data frames is determined by the **Render template** option. It can be one of three values: **Every Row**, **All Rows**, and **All data**. | Yes           | Yes          |
-| [`context.dataFrame`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextdataframe)                                                      | Selected Data Frame for **Every Row**, **All Rows** templates.                                                                                                                                                                                       | Yes           | Yes          |
-| [`context.element`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextelement)                                                          | Current html element.                                                                                                                                                                                                                                |               | Yes          |
-| [`context.grafana.eventBus`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanaeventbus)                                                | Publish and subscribe to application events.                                                                                                                                                                                                         | Yes           | Yes          |
-| [`context.grafana.getLocale()`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanagetlocale)                                            | Returns the user’s locale: ’en’, ‘fr’, ’es’, and so on.                                                                                                                                                                                              | Yes           | Yes          |
-| [`context.grafana.locationService`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanalocationservice)                                  | The `locationService` works with the browser location and history.                                                                                                                                                                                   | Yes           | Yes          |
-| [`context.grafana.notifyError(['Header', 'Message'])`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafananotifyerrorheader-message)     | Displays an error.                                                                                                                                                                                                                                   | Yes           | Yes          |
-| [`context.grafana.notifySuccess(['Header', 'Message'])`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafananotifysuccessheader-message) | Displays a success notification.                                                                                                                                                                                                                     | Yes           | Yes          |
-| [`context.grafana.refresh()`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanarefresh)                                                | Function to refresh dashboard panels using application events.                                                                                                                                                                                       | Yes           | Yes          |
-| [`context.grafana.replaceVariables()`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanareplacevariables)                              | The `replaceVariables()` function to interpolate variables.                                                                                                                                                                                          | Yes           | Yes          |
-| [`context.grafana.theme`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatheme)                                                      | Contains grafana theme object.                                                                                                                                                                                                                       | Yes           | Yes          |
-| [`context.grafana.timeRange`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatimerange)                                              | Time range of the current dashboard.                                                                                                                                                                                                                 | Yes           | Yes          |
-| [`context.grafana.timeZone`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatimezone)                                                | Time zone of the current dashboard.                                                                                                                                                                                                                  | Yes           | Yes          |
-| [`context.panel.handlebars`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#panelhandlebars)                                                | Handlebars library.                                                                                                                                                                                                                                  | Yes           | Yes          |
-| [`context.panel.panelData`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#panelpaneldata)                                                  | Panel data.                                                                                                                                                                                                                                          | Yes           | Yes          |
+| Parameter                                                                                                                                                                                               | Description                                                                                                                                                                                                                                          | Before Render | After Render |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|--------------|
+| [`context.data`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextdata)                                                                | Data from data sources. The display of one or multiple data rows from the selected data frame or from all data frames is determined by the **Render template** option. It can be one of three values: **Every Row**, **All Rows**, and **All data**. | Yes           | Yes          |
+| [`context.dataFrame`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextdataframe)                                                      | Selected Data Frame for **Every Row**, **All Rows** templates.                                                                                                                                                                                       | Yes           | Yes          |
+| [`context.element`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#contextelement)                                                          | Current html element.                                                                                                                                                                                                                                |               | Yes          |
+| [`context.grafana.eventBus`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanaeventbus)                                                | Publish and subscribe to application events.                                                                                                                                                                                                         | Yes           | Yes          |
+| [`context.grafana.getLocale()`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanagetlocale)                                            | Returns the user’s locale: ’en’, ‘fr’, ’es’, and so on.                                                                                                                                                                                              | Yes           | Yes          |
+| [`context.grafana.locationService`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanalocationservice)                                  | The `locationService` works with the browser location and history.                                                                                                                                                                                   | Yes           | Yes          |
+| [`context.grafana.notifyError(['Header', 'Message'])`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafananotifyerrorheader-message)     | Displays an error.                                                                                                                                                                                                                                   | Yes           | Yes          |
+| [`context.grafana.notifySuccess(['Header', 'Message'])`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafananotifysuccessheader-message) | Displays a success notification.                                                                                                                                                                                                                     | Yes           | Yes          |
+| [`context.grafana.refresh()`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanarefresh)                                                | Function to refresh dashboard panels using application events.                                                                                                                                                                                       | Yes           | Yes          |
+| [`context.grafana.replaceVariables()`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanareplacevariables)                              | The `replaceVariables()` function to interpolate variables.                                                                                                                                                                                          | Yes           | Yes          |
+| [`context.grafana.theme`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatheme)                                                      | Contains grafana theme object.                                                                                                                                                                                                                       | Yes           | Yes          |
+| [`context.grafana.timeRange`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatimerange)                                              | Time range of the current dashboard.                                                                                                                                                                                                                 | Yes           | Yes          |
+| [`context.grafana.timeZone`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#grafanatimezone)                                                | Time zone of the current dashboard.                                                                                                                                                                                                                  | Yes           | Yes          |
+| [`context.panel.handlebars`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#panelhandlebars)                                                | Handlebars library.                                                                                                                                                                                                                                  | Yes           | Yes          |
+| [`context.panel.panelData`](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/javascript-code/context-parameters/#panelpaneldata)                                                  | Panel data.                                                                                                                                                                                                                                          | Yes           | Yes          |
 
 ## Custom Handlebars helper
 
 You can add a custom Handlebars helper to replace the field’s value according to some pattern.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{replace Test "Pattern" "Replaced"}}
@@ -69,7 +69,7 @@ This code snippet registers a function with the `replace` helper that accepts th
 
 This code calls the function and passes the `pattern` and `replacement` arguments to it.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.handlebars.registerHelper("replace", (context, pattern, replacement) =>
@@ -77,13 +77,13 @@ context.handlebars.registerHelper("replace", (context, pattern, replacement) =>
 );
 ```
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/replace.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/replace.png)
 
 ## Event handler
 
 To respond to a button click, you can add a custom event handler.
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <button onclick="myFunc()">{{test}}</button>
@@ -93,7 +93,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 This code snippet defines a function called `myFunc`. The function accepts no arguments and returns no value. The function body calls the `alert()` function to display “Bonjour!” in a dialog box.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 myFunc = () => {
@@ -101,7 +101,7 @@ myFunc = () => {
 };
 ```
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/event-handler.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/event-handler.png)
 
 ## Internationalization
 
@@ -113,7 +113,7 @@ You can use the `getLocale()` method to get a value for the chosen locale and di
 
 This code snippet uses the `translate` helper to translate the text “Hello” to the current language. Text translation occurs if the `translate` helper is defined. Otherwise, the text “Hello” displays.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{translate "Hello"}}
@@ -123,7 +123,7 @@ handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.
 
 This code snippet uses the `translate` helper to show the translation of a default message if the query does not return any results.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{translate "Default"}}
@@ -131,7 +131,7 @@ handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.
 
 ### JavaScript code
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const messages = {
@@ -159,13 +159,13 @@ context.handlebars.registerHelper(
 
 You can display the selected dashboard time zone, browser’s time zone, and time ranges in Grafana.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/time.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/time.png)
 
 ### Content
 
 Use the following for the **Content**
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ````html
 <h1>Dashboard {{tz}}</h1>
@@ -180,7 +180,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; Before Content Rendering**
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const dashboardTimeZone = context.panelData.timeZone
@@ -199,7 +199,7 @@ If the table does not fit in the allocated panel area, you can add automatic scr
 
 Use the following for the **Content**:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <table id="dataTable">
@@ -222,7 +222,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; Before Content Rendering**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const scrollWindow = () => {
@@ -285,7 +285,7 @@ You can sort out unique values from the `data` object using the `unique` helper 
 
 Use the following for the **Content**:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div>{{#each (unique data "hostname.keyword")}}{{this}}; {{/each}}</div>
@@ -295,7 +295,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; Before Content Rendering**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.handlebars.registerHelper("unique", (context, key) => {
@@ -307,7 +307,7 @@ context.handlebars.registerHelper("unique", (context, key) => {
 
 You can use the `context.grafana.replaceVariables` function to replace dashboard variables in the JavaScript code.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const bonjour = context.grafana.replaceVariables("${variable}");
@@ -318,13 +318,13 @@ console.log(bonjour.toUpperCase())
 
 The Business Text plugin submits REST API requests.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/rest.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/rest.png)
 
 ### Content
 
 Into the **Content**:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <form id="myForm">
@@ -339,7 +339,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Into the **JavaScript &gt; After Content Ready**
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**
@@ -384,17 +384,17 @@ return () => {
 
 The community member [havedill](https://github.com/havedill) [asked](https://github.com/VolkovLabs/business-text/issues/255) how to parse a JSON data format in the case when the transformation **Convert field type** is not available.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/json-parsing.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/json-parsing.png)
 
 ### JSON example
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 { "title": { "text": "Area Chart", "size": 45, "font": "Arial" } }
 ```
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 { "title": { "text": "Bar Chart", "color": "black" } }
@@ -402,7 +402,7 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 ### Content
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {{{json (parse JSON)}}}
@@ -410,7 +410,7 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 ### JavaScript
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.handlebars.registerHelper("parse", (context) => JSON.parse(context));

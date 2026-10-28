@@ -13,10 +13,10 @@ Tracing is best used for analyzing the performance of your system, identifying b
 
 To use the Grafana Traces Drilldown app, you should understand these concepts:
 
-- [Concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#concepts)
+- [Concepts](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/#concepts)
 
-  - [Rate, error, and duration metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#rate-error-and-duration-metrics)
-  - [Traces and spans](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#traces-and-spans)
+  - [Rate, error, and duration metrics](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/#rate-error-and-duration-metrics)
+  - [Traces and spans](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/#traces-and-spans)
 
 ## Rate, error, and duration metrics
 
@@ -30,7 +30,7 @@ Expand table
 | Overall issues in your tracing ecosystem | Errors   | Number of those requests that are failing                     |
 | Response times and latency issues        | Duration | Amount of time those requests take, represented as a heat map |
 
-For more information about the RED method, refer to [The RED Method: how to instrument your services](http://grafana-com-website.grafana-com.svc.cluster.local.:80/blog/2018/08/02/the-red-method-how-to-instrument-your-services/).
+For more information about the RED method, refer to [The RED Method: how to instrument your services](https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/).
 
 ## Traces and spans
 
@@ -38,4 +38,4 @@ A trace represents the journey of a request or an action as it moves through all
 
 Traces are composed of one or more spans. A span is a unit of work within a trace that has a start time relative to the beginning of the trace, a duration, and an operation name for the unit of work. It usually has a reference to a parent span in a trace, unless it’s the first span, also known as the root span. It frequently includes key/value attributes that are relevant to the span itself, for example, the HTTP method used in the request, as well as other metadata such as the service name, sub-span events, or links to other spans.
 
-For more information, refer to [Understand your data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/).
+For more information, refer to [Understand your data](https://grafana.com/docs/grafana-cloud/telemetry-signals/).

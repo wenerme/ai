@@ -14,8 +14,8 @@ You can adjust the display settings as follows:
 - **Type**: Display both alerts and annotations, alerts only, or annotations only.
 - **Max limit**: Set the maximum number of annotations to display, from 100 to 2,000.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/annotations.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-calendar/annotations.png)
 
 ## Business Satellite
 
-The [Business Satellite](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-grapi-datasource/) data source can be used as an alternative to display annotations.
+The [Business Satellite](https://grafana.com/grafana/plugins/volkovlabs-grapi-datasource/) data source can be used as an alternative to display annotations.

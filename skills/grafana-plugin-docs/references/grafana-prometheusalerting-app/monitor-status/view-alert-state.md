@@ -41,7 +41,7 @@ An instance that disappears from the list has gone inactive: the expression stop
 
 A firing instance on this page means the ruler is sending the alert. It doesn’t mean anyone was told. Between here and a notification sit routing, silences, inhibition rules, and time intervals.
 
-To find out what happened, look at the alert on the **Alerts** page, where the drawer names the receiver it was routed to and any suppression that applied. Refer to [View active notifications](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
+To find out what happened, look at the alert on the **Alerts** page, where the drawer names the receiver it was routed to and any suppression that applied. Refer to [View active notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
 
 ## No instances at all
 

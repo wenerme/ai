@@ -18,9 +18,9 @@ Your use case determines what’s most important. For example, in use case 1, if
 
 For either use case, the first step is to identify areas of interest by reviewing profiles or a single service. Selecting different profile types lets you focus on memory allocation, CPU processes, allocation sizes, blocks, or lock contention.
 
-The available profile types depend on how you have instrumented your app to generate profiling data. For more information, refer to [Profiling types](../concepts/#profile-types) for help selecting a profile type to match your use case. Refer to [Understand profile types](/docs/pyroscope/latest/view-and-analyze-profile-data/profiling-types/) to learn about profile types and instrumentation methods.
+The available profile types depend on how you have instrumented your app to generate profiling data. For more information, refer to [Profiling types](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/#profile-types) for help selecting a profile type to match your use case. Refer to [Understand profile types](https://grafana.com/docs/pyroscope/latest/view-and-analyze-profile-data/profiling-types/) to learn about profile types and instrumentation methods.
 
-After you identify the problem process or service, you can filter and explore using labels and flame graphs to investigate at lower levels. With capabilities like the [Flame graph AI](../investigate/flame-graph-ai/) interpreter or the [GitHub integration](/docs/grafana-cloud/monitor-applications/profiles/pyroscope-github-integration/), Profiles Drilldown helps you locate the root cause and how to address it.
+After you identify the problem process or service, you can filter and explore using labels and flame graphs to investigate at lower levels. With capabilities like the [Flame graph AI](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/flame-graph-ai/) interpreter or the [GitHub integration](https://grafana.com/docs/grafana-cloud/monitor-applications/profiles/pyroscope-github-integration/), Profiles Drilldown helps you locate the root cause and how to address it.
 
 ## Use case 1: Investigate an issue
 
@@ -42,4 +42,4 @@ After you locate the profile with a spike, select either **Profile types** view 
 
 Illuminate performance issues across a number of dimensions when you are doing a proactive analysis. This could be a cost-cutting exercise or attempt to improve latency or memory usage in a non-incident scenario. This exercise could be across multiple services or within a service across profile types, labels, or a combination of the two.
 
-**Next step: [Investigate and identify issues](../investigate/)**
+**Next step: [Investigate and identify issues](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/)**

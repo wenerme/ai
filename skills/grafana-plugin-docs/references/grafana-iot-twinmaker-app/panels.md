@@ -117,7 +117,7 @@ The Alarm Configuration panel displays the **Alarm ID**, **Threshold**, and **No
 
 To use the panel:
 
-1. Configure a write role on the data source. On the data source configuration page, switch on **Define write permissions for Alarm Configuration Panel** and provide an **Assume Role ARN Write**. Refer to [Configure TwinMaker settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/configure/#configure-twinmaker-settings).
+1. Configure a write role on the data source. On the data source configuration page, switch on **Define write permissions for Alarm Configuration Panel** and provide an **Assume Role ARN Write**. Refer to [Configure TwinMaker settings](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/configure/#configure-twinmaker-settings).
 2. Create a new panel, then search for and select **AWS IoT TwinMaker Alarm Configuration** in the visualization list.
 3. Select your TwinMaker data source in the **Workspace** panel option.
 4. Add a query that returns the alarm properties for the selected entity and component, typically using template variables set by an alarm list table or the Scene Viewer.
@@ -136,5 +136,5 @@ To use the panel:
 
 ## Next steps
 
-- [Set template variables from panel selections](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/)
-- [Import the pre-built dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/)
+- [Set template variables from panel selections](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/)
+- [Import the pre-built dashboards](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/)

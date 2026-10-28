@@ -22,11 +22,11 @@ The Business Charts plugin lets you add interactive and customizable charts to y
 
 ## Getting started
 
-Install the Business Charts panel from the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-echarts-panel/) or use the Grafana command line tool.
+Install the Business Charts panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/volkovlabs-echarts-panel/) or use the Grafana command line tool.
 
 To install using the command line, run:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install volkovlabs-echarts-panel
@@ -41,7 +41,7 @@ grafana cli plugins install volkovlabs-echarts-panel
   - Customizing theme configurations.
 - Supports Code Editor suggestions for parameters and variables.
 - Supports SVG and Canvas renderers.
-- Supports variables and [locationService](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/developers/plugins/create-a-grafana-plugin/extend-a-plugin/add-support-for-variables/#set-a-variable-from-your-plugin) to make charts interactive.
+- Supports variables and [locationService](https://grafana.com/docs/grafana/latest/developers/plugins/create-a-grafana-plugin/extend-a-plugin/add-support-for-variables/#set-a-variable-from-your-plugin) to make charts interactive.
 - Includes USA and World GeoJSON maps. Additional maps can be loaded dynamically.
 - Supports Baidu, Gaode, and Google Maps using API with required provision of the access key.
 - Includes [ECharts-GL](https://github.com/ecomfe/echarts-gl) proving 3D plots, globe visualization, and WebGL acceleration.
@@ -53,20 +53,20 @@ grafana cli plugins install volkovlabs-echarts-panel
 - Provides 100+ ready-to-use examples at [echarts.volkovlabs.io](https://echarts.volkovlabs.io).
 - Supports the [Wordcloud extension](https://github.com/ecomfe/echarts-wordcloud).
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/business-charts.gif)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/business-charts.gif)
 
 ## Documentation
 
 Expand table
 
-| Section                                                                                                                                       | Description                                                              |
-|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [Charts function](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/) | Explains how to configure the main Apache ECharts library function.      |
-| [Visual editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/)     | Explains how to work with the Visual Editor.                             |
-| [Examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/examples/)               | Explains how to get started with the Apache ECharts Examples in Grafana. |
-| [Features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/features/)               | Demonstrates the Business Charts panel features.                         |
-| [Maps](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/maps/)                       | Demonstrates how to work with different maps.                            |
-| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/release/)           | Stay up to date with the latest features and updates.                    |
+| Section                                                                                              | Description                                                              |
+|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [Charts function](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/) | Explains how to configure the main Apache ECharts library function.      |
+| [Visual editor](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/visual-editor/)     | Explains how to work with the Visual Editor.                             |
+| [Examples](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/examples/)               | Explains how to get started with the Apache ECharts Examples in Grafana. |
+| [Features](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/)               | Demonstrates the Business Charts panel features.                         |
+| [Maps](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/maps/)                       | Demonstrates how to work with different maps.                            |
+| [Release notes](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/release/)           | Stay up to date with the latest features and updates.                    |
 
 ## Acknowledgment
 

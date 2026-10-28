@@ -58,6 +58,7 @@ The following configuration options can be included in the YAML:
 | `limit`   | integer | No       | Maximum number of results to return. Must be between 1 and 100. Default: `100`. |
 | `project` | string  | No       | Scope the query to a specific project. Format: `group/project`. If `project` is also specified in the query, the query value takes precedence. |
 | `sort`    | string  | No       | Sort order for results. Format: `field direction` (for example, `created asc` or `created desc`). |
+{.sortable}
 
 ### Available fields
 
@@ -91,6 +92,7 @@ response attributes:
 | `fields[].parameters`           | object  | Resolved parameter metadata for parameterized fields. Absent when the field has no parameters. Values are strings, or arrays of strings for list parameters. For example, `{"granularity": "weekly"}`, `{"quantile": "0.5"}`, or `{"thresholds": ["4", "25", "100"]}`. |
 | `fields[].type`                 | string  | Field classification: `dimension` or `metric` for analytics mode fields. Absent for standard fields. |
 | `success`                       | boolean | Indicates if the query was successful. |
+{.sortable}
 
 ### Example: Basic query
 

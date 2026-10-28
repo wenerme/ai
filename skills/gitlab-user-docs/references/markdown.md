@@ -1267,6 +1267,7 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/204952) in GitLab 18.5 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Embed providers [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599713) in GitLab 19.5. Embed providers replace the allowlist of domains.
+- Option to load external content on request [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254949) in GitLab 19.5.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -1274,30 +1275,48 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 > This feature is available for testing, but not ready for production use.
 
 Image tags that link to content from an allowed embed provider render as embedded content.
-The content loads in a sandboxed frame, with a label that shows where it loads from.
-For some providers, you must select **Load external content** before the content loads.
-If a URL doesn't match an allowed provider, it renders as a standard image.
+The content loads in a browser sandbox, below a banner that shows the host the content loads from.
+To open the original URL in a new tab, in the banner, select .
+When the content loads, the provider receives your IP address and browser information.
 
-GitLab defines the available embed providers. Administrators choose which providers to allow:
+Some providers do not load content automatically.
+For these providers, a placeholder shows the provider and host instead.
+To load the content, select .
 
-- In the **Admin** area, in **Settings** > **General**, in the **Embedded content** section.
-- With the [application settings API](../api/settings.md#available-settings), by using the
-  `iframe_rendering_enabled` and `iframe_rendering_allowlist` attributes.
+If a URL does not match an allowed provider, does not use HTTPS, or is inside a link, it renders as
+a standard image.
+Where embedded content cannot load, like in email notifications, it displays as a link to the
+original URL.
+
+GitLab defines the available embed providers.
+Administrators [choose which embed providers to allow](../administration/settings/embedded-content.md).
 
 The following embed providers are available:
 
-| Provider | ID        | Accepted URLs |
-|----------|-----------|---------------|
-| YouTube  | `youtube` | `https://www.youtube.com/watch?v=<id>`, `https://youtu.be/<id>`, or `https://www.youtube.com/embed/<id>` |
-| Figma    | `figma`   | `https://www.figma.com/<type>/<id>` or `https://embed.figma.com/<type>/<id>`, where `<type>` is `proto`, `design`, `board`, `file`, or `slides` |
+| Provider | ID        | Loads automatically | Accepted URLs |
+|----------|-----------|---------------------|---------------|
+| YouTube  | `youtube` | Yes                 | `https://www.youtube.com/watch?v=<id>`, `https://youtu.be/<id>`, or `https://www.youtube.com/embed/<id>` |
+| Figma    | `figma`   | No                  | `https://www.figma.com/<type>/<id>` or `https://embed.figma.com/<type>/<id>`, where `<type>` is `proto`, `design`, `board`, `file`, or `slides` |
 
-You can also paste the `<iframe>` embed code from the provider.
+On GitLab.com, all of these embed providers are allowed.
 
 For example, if the YouTube provider is allowed:
 
 ```markdown
 ![Demo: JSON Tables in Markdown](https://www.youtube.com/watch?v=12yWKw1AdKY)
 ```
+
+You can also paste the `<iframe>` embed code from the provider.
+GitLab uses only the `src`, `width`, and `height` attributes of the embed code.
+For example:
+
+```html
+<iframe width="560" height="315" src="https://www.youtube.com/embed/12yWKw1AdKY"></iframe>
+```
+
+To change the size of embedded content, use the same syntax as for
+[images and videos](#change-image-or-video-dimensions), and set both the width and the height.
+If you set neither, embedded content is 560 pixels wide and 315 pixels high.
 
 ## Blockquotes
 

@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards. Instead of hard-c
 
 ## Before you begin
 
-- [Configure the New Relic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/configure/).
-- Familiarize yourself with [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the New Relic data source](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/configure/).
+- Familiarize yourself with [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable query types
 
@@ -49,7 +49,7 @@ Use a NRQL query to populate variable values. This is the default query type.
 
 The default query returns a list of unique application names:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT uniques(appName) FROM Transaction
@@ -59,7 +59,7 @@ Other examples:
 
 List unique hostnames:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT uniques(host) FROM SystemSample
@@ -67,7 +67,7 @@ SELECT uniques(host) FROM SystemSample
 
 List unique container names:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT uniques(containerName) FROM ProcessSample
@@ -75,7 +75,7 @@ SELECT uniques(containerName) FROM ProcessSample
 
 List transaction names for a specific application:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT uniques(name) FROM Transaction WHERE appName = 'my-app'
@@ -83,7 +83,7 @@ SELECT uniques(name) FROM Transaction WHERE appName = 'my-app'
 
 List event types that have data in the current time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT uniques(eventType) FROM NrdbQuery $__timeFilter
@@ -117,13 +117,13 @@ You can use another variable as the application selection, enabling cascading va
 
 ## Use variables in queries
 
-After creating a variable, reference it in your queries using standard Grafana [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+After creating a variable, reference it in your queries using standard Grafana [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ### Single-value variables
 
 Use `${variable}` or `$variable` syntax. Wrap in single quotes when used in string comparisons:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction WHERE appName = '${app}' $__timeFilter TIMESERIES
@@ -133,7 +133,7 @@ SELECT average(duration) FROM Transaction WHERE appName = '${app}' $__timeFilter
 
 The New Relic data source supports multi-value variables. When a variable allows multiple selections, the plugin automatically formats the values for use in NRQL `IN` clauses:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction WHERE appName IN (${app}) $__timeFilter TIMESERIES
@@ -141,7 +141,7 @@ SELECT average(duration) FROM Transaction WHERE appName IN (${app}) $__timeFilte
 
 For quoted contexts, use the `:singlequote` formatting option:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM Transaction WHERE appName IN (${app:singlequote}) $__timeFilter
@@ -151,7 +151,7 @@ SELECT count(*) FROM Transaction WHERE appName IN (${app:singlequote}) $__timeFi
 
 Filter by application and host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction WHERE appName = '${app}' AND host = '${host}' $__timeFilter TIMESERIES
@@ -159,10 +159,10 @@ SELECT average(duration) FROM Transaction WHERE appName = '${app}' AND host = '$
 
 Use a variable as an event type in Data Explorer’s **Where** field:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 appName = '${app}' AND serverName IN (${servers:singlequote})
 ```
 
-For more information about variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information about variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).

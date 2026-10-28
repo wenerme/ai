@@ -58,6 +58,7 @@ GET /issues_statistics?confidential=true
 | `updated_after`     | datetime         | no         | Return issues updated on or after the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `updated_before`    | datetime         | no         | Return issues updated on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `confidential`      | boolean          | no         | Filter confidential or public issues.                                                                                                               |
+{.sortable}
 
 ```shell
 curl --request GET \
@@ -116,6 +117,7 @@ GET /groups/:id/issues_statistics?confidential=true
 | `updated_after`     | datetime         | no         | Return issues updated on or after the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `updated_before`    | datetime         | no         | Return issues updated on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `confidential`      | boolean          | no         | Filter confidential or public issues.                                                                                         |
+{.sortable}
 
 ```shell
 curl --request GET \
@@ -174,6 +176,7 @@ GET /projects/:id/issues_statistics?confidential=true
 | `updated_after`     | datetime         | no         | Return issues updated on or after the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `updated_before`    | datetime         | no         | Return issues updated on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `confidential`      | boolean          | no         | Filter confidential or public issues.                                                                                         |
+{.sortable}
 
 ```shell
 curl --request GET \

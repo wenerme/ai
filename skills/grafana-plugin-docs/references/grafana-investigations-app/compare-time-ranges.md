@@ -9,7 +9,7 @@ description: "Overview of the Time Range Compare feature in the Investigations a
 
 The Time Range Compare feature lets you look at the same investigation items, but time-shifted to other periods—such as now, recently, or any custom time window. This makes it easy to compare how the same set of signals or events behaved at different times, helping you spot patterns, regressions, or opportunities for improvements.
 
-[Compare time ranges to find patterns at different times.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-compare-time-ranges.png)
+[Compare time ranges to find patterns at different times.](https://grafana.com/media/docs/investigations/screenshot-compare-time-ranges.png)
 
 This feature is especially useful when you treat investigations as templates for common things you usually check together. Instead of recreating your investigation from scratch, you can quickly reuse it to compare the current situation with previous incidents, deployments, or baseline periods.
 
@@ -17,4 +17,4 @@ Comments and other context are preserved, so you can easily tell the complete st
 
 # What next?
 
-Learn about the [Timeline view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/timeline) or learn about the [sidebar](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/sidebar).
+Learn about the [Timeline view](https://grafana.com/docs/plugins/grafana-investigations-app/latest/timeline) or learn about the [sidebar](https://grafana.com/docs/plugins/grafana-investigations-app/latest/sidebar).

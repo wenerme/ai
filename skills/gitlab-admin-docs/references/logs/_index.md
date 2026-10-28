@@ -1253,6 +1253,14 @@ Calls to tools that run one of several underlying tools, such as `search` or `sa
 also include a `dispatched_tool_name` field. It records which underlying tool handled the call,
 for example `gitlab_search_in_project`.
 
+When a tool runs database queries, the `tool_call` line includes database fields that count only
+the queries the tool ran. Queries for authentication and tool lookup are not included.
+The fields have the same names as in `api_json.log`, for example `db_count`, `db_main_count`, and
+`db_main_duration_s`. `db_duration_s` is the total query time across all databases.
+Fields whose value did not change are left out. The `*_txn_max_duration_s` fields are always
+left out, because they hold the longest transaction in the whole request. Calls to unknown tools
+and calls denied by tool rules have no database fields.
+
 For tool calls from a GitLab Duo Agent Platform session, the `tool_call` line has a `meta.duo_workflow_id`
 field with the session ID. Workhorse reports this value, and GitLab does not verify it.
 

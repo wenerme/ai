@@ -46,13 +46,13 @@ Pages a user can’t read are hidden from the plugin navigation rather than show
 An action can be missing for two quite different reasons, and it’s worth telling them apart before granting anyone more access:
 
 - **Insufficient permissions.** The user’s role doesn’t include the required permission. Granting the permission fixes it.
-- **Not supported.** The data source itself can’t do it, most commonly a vanilla Prometheus rules source with no writable ruler API. No amount of permission changes this; refer to [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
+- **Not supported.** The data source itself can’t do it, most commonly a vanilla Prometheus rules source with no writable ruler API. No amount of permission changes this; refer to [Configure data sources](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
 
 ## Assign permissions
 
 These permissions are included in the built-in Grafana alerting roles. To grant them individually, create a custom role and assign it to a user, team, or service account.
 
-For the full procedure, refer to [Manage RBAC roles](/docs/grafana/latest/administration/roles-and-permissions/access-control/manage-rbac-roles/).
+For the full procedure, refer to [Manage RBAC roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/manage-rbac-roles/).
 
 > Note
 >

@@ -7,9 +7,9 @@ description: "Troubleshooting guide for the Looker data source in Grafana"
 
 # Troubleshoot Looker data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Looker data source. For configuration instructions, refer to [Configure the Looker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Looker data source. For configuration instructions, refer to [Configure the Looker data source](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/configure/).
 
-Most issues surface when you select **Save &amp; test** in the data source settings, so start with the [License and setup errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#license-and-setup-errors) section below. If many data sources or dashboards fail at once, first rule out a platform incident by checking the [service status pages](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#check-service-status).
+Most issues surface when you select **Save &amp; test** in the data source settings, so start with the [License and setup errors](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#license-and-setup-errors) section below. If many data sources or dashboards fail at once, first rule out a platform incident by checking the [service status pages](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#check-service-status).
 
 ## License and setup errors
 
@@ -26,14 +26,14 @@ This error usually has a setup cause rather than a Looker credential problem. Wo
 
 Expand table
 
-| Step                     | Check                                                                                                                                                                                                                                                                                                                                |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1\. Outage               | If several data sources or dashboards fail at the same time, rule out a platform incident before anything else. Refer to [Check service status](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#check-service-status).                                   |
-| 2\. Plugin version       | Confirm you’re on the latest plugin version. An outdated version is the most frequent cause. Refer to [Try this first: update the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#try-this-first-update-the-plugin).                             |
-| 3\. Restart after update | If the error appears right after an update, restart the Grafana instance so every node runs the same plugin version.                                                                                                                                                                                                                 |
-| 4\. License and plan     | Confirm your Grafana Enterprise license or Grafana Cloud plan includes Enterprise plugins and that Looker is activated. Refer to [Enterprise license and activation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#enterprise-license-and-activation). |
-| 5\. Organization         | Confirm you’re working in the correct Grafana organization. Refer to [Confirm the correct organization](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#confirm-the-correct-organization).                                                               |
-| 6\. Configuration        | If the message includes `invalid config`, complete the required fields. Refer to [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#configuration-errors).                                                                           |
+| Step                     | Check                                                                                                                                                                                                                                                                                       |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1\. Outage               | If several data sources or dashboards fail at the same time, rule out a platform incident before anything else. Refer to [Check service status](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#check-service-status).                                   |
+| 2\. Plugin version       | Confirm you’re on the latest plugin version. An outdated version is the most frequent cause. Refer to [Try this first: update the plugin](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#try-this-first-update-the-plugin).                             |
+| 3\. Restart after update | If the error appears right after an update, restart the Grafana instance so every node runs the same plugin version.                                                                                                                                                                        |
+| 4\. License and plan     | Confirm your Grafana Enterprise license or Grafana Cloud plan includes Enterprise plugins and that Looker is activated. Refer to [Enterprise license and activation](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#enterprise-license-and-activation). |
+| 5\. Organization         | Confirm you’re working in the correct Grafana organization. Refer to [Confirm the correct organization](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#confirm-the-correct-organization).                                                               |
+| 6\. Configuration        | If the message includes `invalid config`, complete the required fields. Refer to [Configuration errors](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/#configuration-errors).                                                                           |
 
 ### Enterprise license and activation
 
@@ -42,7 +42,7 @@ The Looker data source is a Grafana Enterprise plugin and requires a license ent
 **Solutions:**
 
 1. Confirm your Grafana Cloud plan is Pro or Advanced, or that your self-managed Grafana Enterprise license includes `grafana-looker-datasource`. Free and Starter plans don’t include Enterprise plugins.
-2. Verify the plugin is activated for your organization. If it isn’t, the **Install** button doesn’t appear. Refer to [Activate the Enterprise plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/install/#activate-the-enterprise-plugin).
+2. Verify the plugin is activated for your organization. If it isn’t, the **Install** button doesn’t appear. Refer to [Activate the Enterprise plugin](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/install/#activate-the-enterprise-plugin).
 3. Check that you’re within any plugin limits for your plan. Some plans cap the number of active plugins. Remove unused plugins or contact your Grafana account team to raise the limit.
 4. On self-managed Grafana, confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
@@ -129,7 +129,7 @@ If your Looker instance is on a private network or behind a firewall, Grafana Cl
 
 **Solutions:**
 
-1. On Grafana Cloud, use [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to route the connection through your own network.
+1. On Grafana Cloud, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to route the connection through your own network.
 2. On self-managed Grafana, confirm the Grafana server has network access to the Looker host, including any required firewall or VPN rules.
 
 ### TLS certificate errors
@@ -166,7 +166,7 @@ If you believe the credentials are correct but Grafana still can’t connect, va
 
 First, request an API token. Replace the placeholders with your instance URL, client ID, and client secret:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl --location 'https://xxxxxx.looker.app/api/4.0/login' \
@@ -177,7 +177,7 @@ curl --location 'https://xxxxxx.looker.app/api/4.0/login' \
 
 A successful response returns an API token. If it fails, your API credentials are incorrect or lack permissions. After you have a token, confirm it can read models:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl --location 'https://xxxxxx.looker.app/api/4.0/lookml_models' \
@@ -235,7 +235,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

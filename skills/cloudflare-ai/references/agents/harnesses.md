@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/agents/harnesses/og.png?v=778bde13a1780
 
 # Harnesses
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A harness is the loop that makes an agent behave like an agent instead of a single model call.
 
 It is responsible for the turn-by-turn work around the model: building the prompt, loading memory, selecting tools, handling tool results, streaming responses, persisting messages, and deciding whether the agent should continue or stop.
 
-To build a new agent, start with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), which runs Pi Durable in a Durable Object. You can also run [OpenCode](https://developers.cloudflare.com/agents/harnesses/opencode/), or build the loop yourself on top of the [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/).
+To build a new agent, start with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), which runs Pi Durable in a Durable Object. You can also run [OpenCode](https://developers.cloudflare.com/agents/harnesses/opencode/), or build the loop yourself on top of the [Agents SDK runtime](https://developers.cloudflare.com/agents/agent-class/).
 
 ## How harnesses fit
 
 Harnesses sit on top of the Agents SDK runtime:
 
-- **The runtime** gives the agent durable infrastructure: the [`Agent` class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
+- **The runtime** gives the agent durable infrastructure: the [`Agent` class](https://developers.cloudflare.com/agents/agent-class/internals/), [state](https://developers.cloudflare.com/agents/agent-class/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/agent-class/routing/), [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/), [scheduling](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
 - **The harness** gives the agent behavior: model calls, prompt construction, tool selection, stream handling, memory strategy, and lifecycle hooks.
 
 The runtime answers “where does this agent live and how does it stay durable?” The harness answers “what does this agent do on each turn?”
@@ -60,7 +60,7 @@ A harness usually owns:
 
 ## Related resources
 
-### [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents SDK runtime](https://developers.cloudflare.com/agents/agent-class/)
 
 Build your own harness directly on the Agent class.
 
@@ -68,7 +68,7 @@ Build your own harness directly on the Agent class.
 
 Store conversation context and memory across turns.
 
-### [Durable execution with fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
+### [Durable execution with fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/)
 
 Recover long-running agent work after Durable Object eviction.
 
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/#page","headline":"Harnesses","description":"Understand agent harnesses — the loop that controls planning, tool use, and response flow.","url":"https://developers.cloudflare.com/agents/harnesses/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/og.png?v=778bde13a1780844","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/#page","headline":"Harnesses","description":"Understand agent harnesses — the loop that controls planning, tool use, and response flow.","url":"https://developers.cloudflare.com/agents/harnesses/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/og.png?v=778bde13a1780844","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

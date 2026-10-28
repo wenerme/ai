@@ -15,4 +15,4 @@ You can use the Static data source to test panels for logs.
 - Use the String field `message` for the text message.
 - Use the String field `level` to define the log level: `info`, `error`, and so on.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/logs.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/logs.png)

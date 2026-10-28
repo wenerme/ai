@@ -7,7 +7,7 @@ description: "Install and upgrade the Datadog data source plugin for Grafana."
 
 # Install and upgrade the Datadog data source plugin
 
-This document covers how to install, upgrade, and verify the Datadog data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Datadog data source plugin across different Grafana deployment environments. After you install the plugin, refer to [Configure the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -15,12 +15,12 @@ Verify the following requirements before you install:
 
 Expand table
 
-| Requirement         | Details                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **License**         | A Grafana Enterprise license that includes `grafana-datadog-datasource`, or a Grafana Cloud account with Enterprise plugins enabled. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/). |
-| **Grafana version** | `11.6.11` or later.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Network access**  | Grafana Cloud instances download the plugin from the catalog and require internet access. Self-managed installations need access to `grafana.com` or a local plugin ZIP file.                                                                                                                                                                                                                                                   |
-| **Datadog access**  | A Datadog account with an API key and an application key. For instructions, refer to [Get an API key and application key from Datadog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).                                                                                                                           |
+| Requirement         | Details                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **License**         | A Grafana Enterprise license that includes `grafana-datadog-datasource`, or a Grafana Cloud account with Enterprise plugins enabled. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/). |
+| **Grafana version** | `11.6.11` or later.                                                                                                                                                                                                                                                                                                                                                                    |
+| **Network access**  | Grafana Cloud instances download the plugin from the catalog and require internet access. Self-managed installations need access to `grafana.com` or a local plugin ZIP file.                                                                                                                                                                                                          |
+| **Datadog access**  | A Datadog account with an API key and an application key. For instructions, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).                                                                                                                           |
 
 ## Install the plugin
 
@@ -30,7 +30,7 @@ Choose the installation method that matches your Grafana deployment.
 
 Enterprise plugins must be enabled for your organization before they appear as installable in the plugin catalog.
 
-1. Go to the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in with your Grafana Cloud account.
+1. Go to the [Grafana account portal](https://grafana.com/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
 3. Navigate to the **Plugins** tab and verify that the Datadog plugin is enabled. If it isn’t listed, confirm that your Cloud plan includes Enterprise plugins.
 4. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
@@ -38,11 +38,11 @@ Enterprise plugins must be enabled for your organization before they appear as i
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is enabled for your organization at the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and that your Cloud plan includes Enterprise plugins.
+> If the **Install** button doesn’t appear, verify that the plugin is enabled for your organization at the [Grafana account portal](https://grafana.com/orgs) and that your Cloud plan includes Enterprise plugins.
 
 ### Self-managed Grafana (CLI)
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-datadog-datasource
@@ -50,7 +50,7 @@ grafana cli plugins install grafana-datadog-datasource
 
 Restart Grafana after installation:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -60,7 +60,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -72,7 +72,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -83,7 +83,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -100,7 +100,7 @@ env:
 
 If you don’t control the Helm chart, for example on a shared platform cluster, use an init container to download the plugin before Grafana starts:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -124,18 +124,18 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP file from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
+1. Download the plugin ZIP file from your [Grafana account portal](https://grafana.com/orgs) on a machine with internet access.
 2. Transfer the ZIP file to the Grafana server.
 3. Extract it to the plugins directory:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-datadog-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-datadog-datasource
@@ -144,7 +144,7 @@ For environments without internet access:
 
 If Grafana reports an “unsigned plugin” error, add the following to `grafana.ini`:
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugins]
@@ -162,7 +162,7 @@ After you install the plugin, confirm that it loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Datadog** and verify that the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **Datadog** to confirm that it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/install/#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -170,13 +170,13 @@ Upgrade steps depend on your Grafana deployment environment.
 
 ### Grafana Cloud
 
-Plugins update automatically on Grafana Cloud, and no manual action is required. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
+Plugins update automatically on Grafana Cloud, and no manual action is required. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/support/).
 
 ### Self-managed Grafana
 
 1. Update the plugin:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-datadog-datasource
@@ -186,7 +186,7 @@ Plugins update automatically on Grafana Cloud, and no manual action is required.
 
 To install a specific version:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-datadog-datasource <version>
@@ -194,7 +194,7 @@ grafana cli plugins install grafana-datadog-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -205,7 +205,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-datadog-datasource <version>
@@ -215,13 +215,13 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
+> Rollback isn’t available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/support/).
 
 ## Uninstall the plugin
 
 To remove the Datadog plugin from a self-managed Grafana instance:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-datadog-datasource
@@ -241,10 +241,10 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Go to the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+1. Go to the [Grafana account portal](https://grafana.com/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the Datadog plugin is listed and enabled.
-4. Confirm that your Cloud plan includes Enterprise plugins. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+4. Confirm that your Cloud plan includes Enterprise plugins. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 
 ### Install button missing or “Plugin not found”
 
@@ -252,8 +252,8 @@ The following sections address common installation problems.
 
 **Solution:**
 
-- **Grafana Cloud:** Verify that the plugin is enabled at the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
-- **Self-managed:** Verify that your Grafana Enterprise license is active. Set the license with the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+- **Grafana Cloud:** Verify that the plugin is enabled at the [Grafana account portal](https://grafana.com/orgs).
+- **Self-managed:** Verify that your Grafana Enterprise license is active. Set the license with the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Grafana Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### License errors (self-managed)
 
@@ -263,8 +263,8 @@ The following sections address common installation problems.
 
 1. Verify that the license key doesn’t contain extra whitespace, line breaks, or truncated characters.
 2. Confirm that the key is for the correct Grafana instance URL.
-3. Check that the license hasn’t expired at the [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
-4. For more details about license errors, refer to [License issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#license-issues).
+3. Check that the license hasn’t expired at the [Grafana account portal](https://grafana.com/orgs).
+4. For more details about license errors, refer to [License issues](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#license-issues).
 
 ### “Unsigned plugin” error (air-gapped installs)
 
@@ -272,6 +272,6 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Make sure you downloaded the ZIP file from the official [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). Official downloads are signed.
+1. Make sure you downloaded the ZIP file from the official [Grafana account portal](https://grafana.com/orgs). Official downloads are signed.
 2. If the error persists, add `allow_loading_unsigned_plugins = grafana-datadog-datasource` to `grafana.ini` under `[plugins]`.
 3. Restart Grafana.

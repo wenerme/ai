@@ -11,8 +11,8 @@ The Business Calendar includes the following features.
 
 Expand table
 
-| Section                                                                                                                                                             | Description                                                    |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [Coloring events](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/features/color/)                     | Use colors to improve the visual perception of calendar layout |
-| [Dashboard time zones](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/features/dashboard-timezones/)  | Set up the plugin time zone                                    |
-| [Internationalization](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-calendar-panel/latest/features/internationalization/) | Internationalization support                                   |
+| Section                                                                                                                    | Description                                                    |
+|----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [Coloring events](https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/color/)                     | Use colors to improve the visual perception of calendar layout |
+| [Dashboard time zones](https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/dashboard-timezones/)  | Set up the plugin time zone                                    |
+| [Internationalization](https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/features/internationalization/) | Internationalization support                                   |

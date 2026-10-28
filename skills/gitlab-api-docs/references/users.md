@@ -1023,8 +1023,10 @@ Prerequisites:
   - `.gif`
   - `.ico`
   - `.jpeg`
+  - `.jpg`
   - `.png`
   - `.tiff`
+  - `.webp`
 
 ```plaintext
 PUT /user/avatar

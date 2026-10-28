@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the MQTT data source in Grafana."
 
 # Troubleshoot MQTT data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the MQTT data source. For configuration instructions, refer to [Configure the MQTT data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the MQTT data source. For configuration instructions, refer to [Configure the MQTT data source](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure/).
 
 ## Connection errors
 
@@ -150,7 +150,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -168,7 +168,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues and discussions.
 2. Review the [MQTT datasource GitHub issues](https://github.com/grafana/mqtt-datasource/issues) for known bugs and feature requests.
 3. Consult the [MQTT v3.1.1 specification](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) for protocol-level guidance.
-4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re a Cloud Pro, Cloud Advanced, or Enterprise customer.
+4. Contact [Grafana Support](https://grafana.com/support/) if you’re a Cloud Pro, Cloud Advanced, or Enterprise customer.
 5. When reporting issues, include:
 
    - Grafana version and plugin version

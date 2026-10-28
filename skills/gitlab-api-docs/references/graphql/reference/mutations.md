@@ -1025,8 +1025,8 @@ Updates or creates settings for AI features.
 | `filter` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.Filter conditions for the AI flow trigger. |
 | `goals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the AI flow trigger, keyed by event type. |
 | `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the AI flow trigger is associated with. |
-| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
-| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `dap_software_factory` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `dap_software_factory` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | `userId` | [`UserID`](scalars.md#userid) | Service account for the AI flow trigger. |
 
 ### `aiFlowTriggerCreate` fields {.no_toc}
@@ -1076,8 +1076,8 @@ Updates or creates settings for AI features.
 | `filter` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Filter conditions for the AI flow trigger. |
 | `goals` | [`JSON`](scalars.md#json) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Goals for the AI flow trigger, keyed by event type. |
 | `id` | [`AiFlowTriggerID!`](scalars.md#aiflowtriggerid) | ID of the flow trigger to update. |
-| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
-| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `ai_flow_trigger_status_on_finish` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `readyMergeRequestsOnFinish` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates whether merge requests created by a session that a work item event of the AI flow trigger started are marked as ready when the session finishes. Applies only when the `dap_software_factory` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
+| `statusOnFinish` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Name of the work item status to set when a session that a work item event of the AI flow trigger started finishes. Applies only when the `dap_software_factory` and `ai_flow_trigger_chaining` feature flags are enabled, and only to work items in a project. Requires the `work_item` event type. The work item filter must match all its rules, and have one top-level `action` rule `in` `["status_changed"]` and one top-level `status.name` rule `in` a list of status names. |
 | `userId` | [`UserID`](scalars.md#userid) | Service account for the AI flow trigger. |
 
 ### `aiFlowTriggerUpdate` fields {.no_toc}
@@ -1287,6 +1287,31 @@ Updates a self-hosted model.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `issue` | [`Issue`](objects.md#issue) | Issue created after mutation. |
 | `todo` | [`Todo`](objects.md#todo) | To-do item after mutation. |
+
+## `anthropicComplianceIntegrationCreate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Verifies a Compliance Access Key with Anthropic, then stores it as the Anthropic Compliance integration of a top-level group.
+
+**Input type:** `AnthropicComplianceIntegrationCreateInput`
+
+### `anthropicComplianceIntegrationCreate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `apiKey` | [`String!`](scalars.md#string) | Anthropic Compliance Access Key with the `read:compliance_user_data` scope. Write-only: GitLab never returns it. |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group. |
+
+### `anthropicComplianceIntegrationCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `anthropicComplianceIntegration` | [`AnthropicComplianceIntegration`](objects.md#anthropiccomplianceintegration) | Integration after the mutation. |
+| `errorReason` | [`AnthropicComplianceIntegrationErrorReason`](enums.md#anthropiccomplianceintegrationerrorreason) | Machine-readable reason for the mutation error. |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `approvalProjectRuleDelete`
 
@@ -8403,10 +8428,6 @@ Destroys an instance-level custom admin role LDAP link.
 
 ## `linkProjectComplianceViolationIssue`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
-
 **Input type:** `LinkProjectComplianceViolationIssueInput`
 
 ### `linkProjectComplianceViolationIssue` arguments {.no_toc}
@@ -12383,7 +12404,7 @@ Attaches a security scan profile to projects and groups. All projects and groups
 | Name | Type | Description | Default |
 | ---- | ---- | ----------- | ------- |
 | `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to attach the profile to. Applies the profile to all subgroups and projects in the specified group. Errors for these projects are not returned. | `[]` |
-| `mode` | [`SecurityScanProfileAttachMode`](enums.md#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. Defaults to `REPLACE`. | `REPLACE` |
+| `mode` | [`SecurityScanProfileAttachMode`](enums.md#securityscanprofileattachmode) | How to attach the profile relative to existing profiles of the same scan type. Defaults to `SET`. | `SET` |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to attach the profile to. | `[]` |
 | `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to attach. For a default profile, use its identifier. For example, `gid://gitlab/Security::ScanProfile/sast`. |  |
 
@@ -13337,10 +13358,6 @@ Restores a soft-deleted Terraform state. The state is not restored when terrafor
 
 ## `unlinkProjectComplianceViolationIssue`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
-
 **Input type:** `UnlinkProjectComplianceViolationIssueInput`
 
 ### `unlinkProjectComplianceViolationIssue` arguments {.no_toc}
@@ -13934,6 +13951,8 @@ These settings can be adjusted only by the group Owner.
 | `nugetDuplicatesAllowed` | [`Boolean`](scalars.md#boolean) | Indicates whether duplicate NuGet packages are allowed for the namespace. |
 | `nugetSymbolServerEnabled` | [`Boolean`](scalars.md#boolean) | Indicates whether the NuGet symbol server is enabled for the namespace. |
 | `pypiPackageRequestsForwarding` | [`Boolean`](scalars.md#boolean) | Indicates whether PyPI package forwarding is allowed for the namespace. |
+| `rubygemsDuplicateExceptionRegex` | [`UntrustedRegexp`](scalars.md#untrustedregexp) | When rubygems_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When rubygems_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
+| `rubygemsDuplicatesAllowed` | [`Boolean`](scalars.md#boolean) | Indicates whether duplicate RubyGems packages are allowed for the namespace. |
 | `rubygemsPackageRequestsForwarding` | [`Boolean`](scalars.md#boolean) | Indicates whether RubyGems package forwarding is allowed for the namespace. |
 | `terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](scalars.md#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. When terraform_module_duplicates_allowed is true, duplicate packages with names that match this regex are rejected. |
 | `terraformModuleDuplicatesAllowed` | [`Boolean`](scalars.md#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
@@ -14011,10 +14030,6 @@ Updates a package protection rule to restrict access to project packages. You ca
 | `packageProtectionRule` | [`PackagesProtectionRule`](objects.md#packagesprotectionrule) | Packages protection rule after mutation. |
 
 ## `updateProjectComplianceViolation`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.
 
 **Input type:** `UpdateProjectComplianceViolationInput`
 

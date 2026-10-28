@@ -13,11 +13,11 @@ This document explains how to install the SolarWinds data source plugin. The Sol
 
 Before you install the plugin, ensure you have:
 
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated Grafana Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 - Grafana 11.6.7 or later.
 - Administrator access to your Grafana instance to install plugins.
 
-For general guidance on Enterprise plugins, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+For general guidance on Enterprise plugins, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 > Note
 >
@@ -55,7 +55,7 @@ If your Grafana instance can reach the internet, install the plugin from the cat
 
 If your Grafana server can reach the internet, use Grafana CLI to install the plugin from the command line:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana-cli plugins install grafana-solarwinds-datasource
@@ -67,7 +67,7 @@ Restart Grafana after the installation completes.
 
 If your Grafana server can’t reach the internet, install the plugin manually from a downloaded archive:
 
-1. On a machine with internet access, download the plugin archive from the [SolarWinds data source plugin page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-solarwinds-datasource/?tab=installation). Use a plugin version that’s compatible with your Grafana version.
+1. On a machine with internet access, download the plugin archive from the [SolarWinds data source plugin page](https://grafana.com/grafana/plugins/grafana-solarwinds-datasource/?tab=installation). Use a plugin version that’s compatible with your Grafana version.
 2. Copy the archive to your Grafana server.
 3. Extract the archive into your Grafana plugins directory, which defaults to `/var/lib/grafana/plugins`.
 4. Confirm the extracted directory is named `grafana-solarwinds-datasource`.
@@ -79,7 +79,7 @@ If your Grafana server can’t reach the internet, install the plugin manually f
 
 ### Provision the data source
 
-After the plugin is installed, you can configure the data source with provisioning files. Provisioning configures the data source connection; it doesn’t install the plugin. For an example, refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/#provision-the-data-source).
+After the plugin is installed, you can configure the data source with provisioning files. Provisioning configures the data source connection; it doesn’t install the plugin. For an example, refer to [Provision the data source](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/configure/#provision-the-data-source).
 
 ## Verify the installation
 
@@ -95,4 +95,4 @@ If **SolarWinds** doesn’t appear or you can’t select it, check that your Gra
 
 ## Next steps
 
-- [Configure the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/)
+- [Configure the SolarWinds data source](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/configure/)

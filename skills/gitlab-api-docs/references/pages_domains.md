@@ -41,6 +41,7 @@ response attributes:
 | `certificate_expiration` | object | Information about the SSL certificate expiration. |
 | `certificate_expiration.expired` | boolean | Indicates whether the SSL certificate has expired. |
 | `certificate_expiration.expiration` | date | The expiration date and time of the SSL certificate. |
+{.sortable}
 
 Example request:
 
@@ -100,6 +101,7 @@ response attributes:
 | `certificate.expired` | date | Indicates whether the SSL certificate has expired (true) or is still valid (false). |
 | `certificate.certificate` | string | The full SSL certificate in PEM format. |
 | `certificate.certificate_text` | date | A human-readable text representation of the SSL certificate, including details such as issuer, validity period, subject, and other certificate information.  |
+{.sortable}
 
 Example request:
 
@@ -170,6 +172,7 @@ response attributes:
 | `certificate.expired` | date | Indicates whether the SSL certificate has expired (true) or is still valid (false). |
 | `certificate.certificate` | string | The full SSL certificate in PEM format. |
 | `certificate.certificate_text` | date | A human-readable text representation of the SSL certificate, including details such as issuer, validity period, subject, and other certificate information.  |
+{.sortable}
 
 Example request:
 
@@ -216,6 +219,7 @@ Supported attributes:
 | `auto_ssl_enabled` | boolean        | no       | Enables [automatic generation](../user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.md) of SSL certificates issued by Let's Encrypt for custom domains. |
 | `certificate`      | file/string    | no       | The certificate in PEM format with intermediates following in most specific to least specific order.|
 | `key`              | file/string    | no       | The certificate key in PEM format.       |
+{.sortable}
 
 If successful, returns [`201`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -233,6 +237,7 @@ response attributes:
 | `certificate.expired` | date | Indicates whether the SSL certificate has expired (true) or is still valid (false). |
 | `certificate.certificate` | string | The full SSL certificate in PEM format. |
 | `certificate.certificate_text` | date | A human-readable text representation of the SSL certificate, including details such as issuer, validity period, subject, and other certificate information.  |
+{.sortable}
 
 Example requests:
 
@@ -302,6 +307,7 @@ Supported attributes:
 | `auto_ssl_enabled` | boolean        | no       | Enables [automatic generation](../user/project/pages/custom_domains_ssl_tls_certification/lets_encrypt_integration.md) of SSL certificates issued by Let's Encrypt for custom domains. |
 | `certificate`      | file/string    | no       | The certificate in PEM format with intermediates following in most specific to least specific order.|
 | `key`              | file/string    | no       | The certificate key in PEM format.       |
+{.sortable}
 
 If successful, returns [`200`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -319,6 +325,7 @@ response attributes:
 | `certificate.expired` | date | Indicates whether the SSL certificate has expired (true) or is still valid (false). |
 | `certificate.certificate` | string | The full SSL certificate in PEM format. |
 | `certificate.certificate_text` | date | A human-readable text representation of the SSL certificate, including details such as issuer, validity period, subject, and other certificate information.  |
+{.sortable}
 
 ### Adding certificate
 
@@ -433,6 +440,7 @@ response attributes:
 | `certificate.expired` | date | Indicates whether the SSL certificate has expired (true) or is still valid (false). |
 | `certificate.certificate` | string | The full SSL certificate in PEM format. |
 | `certificate.certificate_text` | date | A human-readable text representation of the SSL certificate, including details such as issuer, validity period, subject, and other certificate information.  |
+{.sortable}
 
 Example request:
 

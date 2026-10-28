@@ -13,7 +13,7 @@ This page includes helpful snippets for usage in your templates.
 
 Displays the initial context in which the template executes.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ````handlebars
 ```json
@@ -27,7 +27,7 @@ For more information, refer to the [Handlebars variables documentation](https://
 
 Set the **Render template** toggle to `All rows` in the plugin options.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{#each data}}
@@ -39,7 +39,7 @@ handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.
 
 This snippet shows how to display different content based on specific conditions.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{#if (eq app "auth")}}
@@ -53,7 +53,7 @@ handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.
 
 To reference a specific row in the returned dataset, set the **Render template** toggle to `All rows`.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{data.4.title}}
@@ -63,7 +63,7 @@ handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.
 
 This snippet demonstrates how to iterate through an array of data and display the title of the third item using the `@index` variable.
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 {{#each data}}

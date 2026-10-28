@@ -17,7 +17,7 @@ The extended result object lets you return:
 - Options
 - Unsubscribe function
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 return {
@@ -69,10 +69,10 @@ Expand table
 
 ## Option
 
-The option is the chart configuration in the JSON format described in the [Charts Functions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/).
+The option is the chart configuration in the JSON format described in the [Charts Functions](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/charts-function/).
 
 ## Unsubscribe
 
 The unsubscribe section allows the addition of JavaScript code which is executed before the object is destroyed.
 
-One of the use cases relates to unsubscription from [Grafana events using an event bus](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/features/grafana-events/).
+One of the use cases relates to unsubscription from [Grafana events using an event bus](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/grafana-events/).

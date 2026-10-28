@@ -11,7 +11,7 @@ The Infinity query editor allows you to retrieve data from HTTP endpoints and tr
 
 ## Before you begin
 
-- You must have a configured Infinity data source. Refer to [Configure the Infinity data source](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/) for instructions.
+- You must have a configured Infinity data source. Refer to [Configure the Infinity data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/) for instructions.
 - Familiarize yourself with the data format you want to query (JSON, CSV, XML, GraphQL, or HTML).
 
 ## Query editor overview
@@ -53,23 +53,23 @@ When using URL as the source:
 
 Expand table
 
-| Setting                     | Description                                                                                                                                                                                                               |
-|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Method**                  | HTTP method: GET or POST. PUT, PATCH, and DELETE are available only when **Allow dangerous HTTP methods** is enabled in the [data source configuration](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/). |
-| **URL**                     | The endpoint URL                                                                                                                                                                                                          |
-| **Headers, Request params** | Click to configure additional headers and query parameters                                                                                                                                                                |
+| Setting                     | Description                                                                                                                                                                                                                                  |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Method**                  | HTTP method: GET or POST. PUT, PATCH, and DELETE are available only when **Allow dangerous HTTP methods** is enabled in the [data source configuration](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/). |
+| **URL**                     | The endpoint URL                                                                                                                                                                                                                             |
+| **Headers, Request params** | Click to configure additional headers and query parameters                                                                                                                                                                                   |
 
 ### Use variables in URLs
 
 You can use Grafana variables and time macros in URLs:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://api.example.com/data?from=${__timeFrom}&to=${__timeTo}
 ```
 
-For more information about URL configuration, refer to [URL configuration](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url/).
+For more information about URL configuration, refer to [URL configuration](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/url/).
 
 ## Parsing options
 
@@ -108,7 +108,7 @@ Expand table
 | **Summarize By**     | Group aggregations by a field                                    |
 | **Summarize Alias**  | Name for the summarized result                                   |
 
-For detailed information about expressions and operators, refer to [JSONata backend parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
+For detailed information about expressions and operators, refer to [JSONata backend parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
 
 ## Parser options
 
@@ -125,10 +125,10 @@ Expand table
 
 For detailed parser documentation:
 
-- [JSONata parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/)
-- [JQ parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/)
-- [UQL parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/)
-- [GROQ parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/groq/)
+- [JSONata parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/)
+- [JQ parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/)
+- [UQL parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/)
+- [GROQ parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/groq/)
 
 ## Output formats
 
@@ -147,9 +147,9 @@ Expand table
 
 For specialized formats, refer to:
 
-- [Logs format](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/logs/)
-- [Tracing format](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/tracing/)
-- [Node graph format](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/node-graph/)
+- [Logs format](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/logs/)
+- [Tracing format](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/tracing/)
+- [Node graph format](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/node-graph/)
 
 ## Use queries for alerting
 
@@ -157,10 +157,10 @@ To use Infinity queries with Grafana Alerting, you must use a **backend parser**
 
 Backend parsers also enable:
 
-- [Recorded queries](/docs/grafana/latest/administration/recorded-queries/)
-- [Query caching](/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
-- [Shared dashboards](/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
-- [SQL expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
+- [Recorded queries](https://grafana.com/docs/grafana/latest/administration/recorded-queries/)
+- [Query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
+- [Shared dashboards](https://grafana.com/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
+- [SQL expressions](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
 
 ## Use the parsing assistant
 
@@ -176,6 +176,6 @@ Click **Use Assistant to parse data** to open the AI-powered parsing assistant. 
 
 ## Next steps
 
-- Learn about [data formats](/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/) supported by Infinity
-- Explore [macros](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/) for dynamic queries
-- Set up [template variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/template-variables/) for interactive dashboards
+- Learn about [data formats](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/) supported by Infinity
+- Explore [macros](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/) for dynamic queries
+- Set up [template variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/template-variables/) for interactive dashboards

@@ -78,7 +78,7 @@ Use Grafana variables in your URL to create dynamic queries. This includes globa
 
 **Example:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://api.example.com/data?from=${__from:date:YYYY-MM-DD}&to=${__to:date:YYYY-MM-DD}
@@ -86,13 +86,13 @@ https://api.example.com/data?from=${__from:date:YYYY-MM-DD}&to=${__to:date:YYYY-
 
 **Result:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://api.example.com/data?from=2024-01-01&to=2024-01-31
 ```
 
-For more information about available variables, refer to [Macros](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/).
+For more information about available variables, refer to [Macros](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/).
 
 ## Secure keys in URLs
 

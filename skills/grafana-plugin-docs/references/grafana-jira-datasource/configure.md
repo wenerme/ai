@@ -7,15 +7,15 @@ description: "This document describes configuration options for the Jira data so
 
 # Configure the Jira data source
 
-Grafana provides a number of configuration options for the Jira data source. For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+Grafana provides a number of configuration options for the Jira data source. For general information on adding a data source, refer to [Add a data source](https://grafana.com/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 ## Before you begin
 
 Before you configure the Jira data source, complete the following steps:
 
-1. Install the Jira data source plugin. To install the plugin, refer to [Install Grafana plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins).
+1. Install the Jira data source plugin. To install the plugin, refer to [Install Grafana plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-plugins).
 2. Verify you have access to the Jira projects you want to query. The Jira account needs **Browse Projects** on those projects. Jira site administrator access is not required for this data source.
-3. Ensure you can add data sources in Grafana. Organization administrator access is enough, or a custom RBAC role with `datasources:create`. Refer to [Role-based access control](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/access-control/).
+3. Ensure you can add data sources in Grafana. Organization administrator access is enough, or a custom RBAC role with `datasources:create`. Refer to [Role-based access control](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/).
 4. Gather credentials for the authentication method you plan to use:
 
    - **Basic Auth:** a Jira API token. To create a token, refer to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/). For Jira Data Center or Jira Server, you can use a Personal Access Token (PAT) instead.
@@ -62,7 +62,7 @@ OAuth 2.0 is available only for Jira Cloud, and only as **client credentials** f
 Use **Basic Auth** with an email address and API token, or with a Personal Access Token (PAT) on Jira Data Center or Jira Server.
 
 - **User email** (optional) - The email address for the user or service account. Required for Jira Cloud.
-- **API Token** - The API token associated with the user. To create an API token, refer to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/). To replace a token, create the new token first, update this field, click **Save &amp; test**, then revoke the old token. For the full procedure, refer to [Rotate an API token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#rotate-an-api-token). If you are using an API token with scopes enabled, the token must include the following permissions: `read:jira-user` and `read:jira-work`. Ensure these permissions are granted to support the required APIs, including [Issue Search](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get) and [Myself](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-myself/#api-rest-api-3-myself-get). You may use Granular scopes instead of Classic scopes, however Classic scopes are recommended.
+- **API Token** - The API token associated with the user. To create an API token, refer to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/). To replace a token, create the new token first, update this field, click **Save &amp; test**, then revoke the old token. For the full procedure, refer to [Rotate an API token](https://grafana.com/docs/plugins/grafana-jira-datasource/latest/troubleshooting/#rotate-an-api-token). If you are using an API token with scopes enabled, the token must include the following permissions: `read:jira-user` and `read:jira-work`. Ensure these permissions are granted to support the required APIs, including [Issue Search](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issue-search/#api-rest-api-3-search-jql-get) and [Myself](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-myself/#api-rest-api-3-myself-get). You may use Granular scopes instead of Classic scopes, however Classic scopes are recommended.
 - **Scoped Token** - Toggle on if the API token is configured with scopes. When this switch is on, the **Jira App Cloud Id** field appears.
 - **Jira App Cloud Id** - The Cloud ID of the Jira Cloud app. Required when **Scoped Token** is enabled. With a scoped token, the plugin sends API requests to `https://api.atlassian.com/ex/jira/{cloudId}` instead of the **URL** you entered.
 
@@ -110,7 +110,7 @@ Additional settings are optional and provide more control over your data source.
 >
 > **Secure Socks Proxy** is visible only when the `secureSocksDSProxyEnabled` feature toggle is enabled in your Grafana configuration.
 
-- **Enable Secure Socks Proxy** - Toggle to enable proxying the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+- **Enable Secure Socks Proxy** - Toggle to enable proxying the data source connection through a secure socks proxy to a different network. For more information, refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
 ### Private data source connect (PDC)
 
@@ -118,7 +118,7 @@ Additional settings are optional and provide more control over your data source.
 >
 > Private data source connect (PDC) is only available for Grafana Cloud users.
 
-Use PDC to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. For more information on how PDC works, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). For setup instructions, refer to [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+Use PDC to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. For more information on how PDC works, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). For setup instructions, refer to [Configure Grafana private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 - **Private data source connect** - Select the PDC connection from the drop-down menu or create a new connection.
 
@@ -128,17 +128,17 @@ After you have configured your Jira data source options, click **Save &amp; test
 
 **Plugin health check successful**
 
-If the connection fails, expand **Show details** in the error alert and refer to [Troubleshoot Jira data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jira-datasource/latest/troubleshooting/). You can also remove a connection by clicking **Delete**.
+If the connection fails, expand **Show details** in the error alert and refer to [Troubleshoot Jira data source issues](https://grafana.com/docs/plugins/grafana-jira-datasource/latest/troubleshooting/). You can also remove a connection by clicking **Delete**.
 
 ## Provision the Jira data source
 
-You can provision the Jira data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can provision the Jira data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Basic Auth
 
 Use the following YAML to provision Basic Auth with an email address and API token:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -175,7 +175,7 @@ Expand table
 
 Use the following YAML when the API token includes scopes. Set `scopedToken` to `true` and provide `cloudId`:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -200,7 +200,7 @@ datasources:
 
 Use the following YAML to provision OAuth 2.0 for a Jira Cloud service account:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -242,7 +242,7 @@ You can provision the Jira data source using the [Grafana Terraform provider](ht
 
 Use the following Terraform resource for Basic Auth:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "jira" {
@@ -265,7 +265,7 @@ resource "grafana_data_source" "jira" {
 
 Use the following Terraform resource for OAuth 2.0:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "jira" {

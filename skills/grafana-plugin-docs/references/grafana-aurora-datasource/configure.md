@@ -16,14 +16,14 @@ Before you configure the data source, ensure you have:
 - **Grafana permissions:** Organization administrator role.
 - **An Aurora cluster with IAM database authentication enabled:** Refer to the [AWS IAM database authentication documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html).
 - **A database user configured for IAM authentication:** Refer to the [AWS guide to creating a database account using IAM authentication](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.DBAccounts.html).
-- **AWS credentials with the `rds-db:connect` permission:** Refer to the following [example IAM permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/#example-iam-permissions).
-- **Network access:** Grafana must be able to reach your cluster endpoint. For private clusters in Grafana Cloud, use [private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). For MySQL-compatible engines, Grafana also needs outbound HTTPS access to `s3.amazonaws.com` to download the RDS certificate bundle when it opens a connection.
+- **AWS credentials with the `rds-db:connect` permission:** Refer to the following [example IAM permissions](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/configure/#example-iam-permissions).
+- **Network access:** Grafana must be able to reach your cluster endpoint. For private clusters in Grafana Cloud, use [private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). For MySQL-compatible engines, Grafana also needs outbound HTTPS access to `s3.amazonaws.com` to download the RDS certificate bundle when it opens a connection.
 
 ### Example IAM permissions
 
 The AWS user or role that Grafana uses to query Aurora must have the `rds-db:connect` permission for your cluster and database user. For example:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -72,12 +72,12 @@ The plugin uses the AWS SDK for Go to obtain AWS credentials, then exchanges the
 
 Expand table
 
-| Setting                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Authentication Provider**  | Which AWS credentials chain Grafana uses. Options include **Access &amp; secret key**, **Credentials file**, and **AWS SDK Default**, which supports service-based IAM roles. Administrators can restrict the available providers with the `allowed_auth_providers` server setting. Refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#select-an-authentication-method) for details on each provider. |
-| **Access Key ID**            | The AWS access key ID, when using the **Access &amp; secret key** provider. Stored encrypted.                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **Secret Access Key**        | The AWS secret access key, when using the **Access &amp; secret key** provider. Stored encrypted.                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **Credentials Profile Name** | The profile to use from your AWS credentials file, when using the **Credentials file** provider.                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Setting                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Authentication Provider**  | Which AWS credentials chain Grafana uses. Options include **Access &amp; secret key**, **Credentials file**, and **AWS SDK Default**, which supports service-based IAM roles. Administrators can restrict the available providers with the `allowed_auth_providers` server setting. Refer to [AWS authentication](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#select-an-authentication-method) for details on each provider. |
+| **Access Key ID**            | The AWS access key ID, when using the **Access &amp; secret key** provider. Stored encrypted.                                                                                                                                                                                                                                                                                                                                                                           |
+| **Secret Access Key**        | The AWS secret access key, when using the **Access &amp; secret key** provider. Stored encrypted.                                                                                                                                                                                                                                                                                                                                                                       |
+| **Credentials Profile Name** | The profile to use from your AWS credentials file, when using the **Credentials file** provider.                                                                                                                                                                                                                                                                                                                                                                        |
 
 > Note
 >
@@ -141,11 +141,11 @@ Private data source connect (PDC) lets Grafana Cloud reach Aurora clusters that 
 
 > Note
 >
-> PDC is available only on Grafana Cloud. If you run self-managed Grafana, this section doesn’t apply. To reach private networks from a self-managed instance, use the [secure SOCKS proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) instead.
+> PDC is available only on Grafana Cloud. If you run self-managed Grafana, this section doesn’t apply. To reach private networks from a self-managed instance, use the [secure SOCKS proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) instead.
 
 To use PDC:
 
-1. Configure a PDC agent in your network. Refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+1. Configure a PDC agent in your network. Refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 2. In the data source settings, under **Private data source connect**, select your network in the **Private data source connect network** drop-down. The drop-down shows how many agents are connected for each network.
 3. To set up or manage networks, click **Manage private data source connect networks**.
 
@@ -161,11 +161,11 @@ Click **Save &amp; test** to verify the connection. When the connection test pas
 
 To reduce the load on your Aurora cluster and speed up repeated queries, you can enable query caching for the data source. Query caching is available in Grafana Cloud and Grafana Enterprise, and is turned off by default for each data source.
 
-To enable it, open the data source settings, go to the **Cache** tab, and click **Enable**. You can optionally set custom TTLs for cached queries. For details, refer to [Query and resource caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching).
+To enable it, open the data source settings, go to the **Cache** tab, and click **Enable**. You can optionally set custom TTLs for cached queries. For details, refer to [Query and resource caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following provisioning properties are available:
 
@@ -195,7 +195,7 @@ Expand table
 
 The following example provisions the data source with access and secret keys:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -220,7 +220,7 @@ datasources:
 
 The following example uses the AWS SDK default credentials chain, which supports service-based IAM roles:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -242,7 +242,7 @@ datasources:
 
 The following example configures a cluster behind a load balancer, with a separate host and port for generating the authentication token:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -271,7 +271,7 @@ datasources:
 
 You can also provision the data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs) using the `grafana_data_source` resource. The `json_data_encoded` and `secure_json_data_encoded` arguments accept the same keys as the YAML `jsonData` and `secureJsonData` properties.
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 terraform {
@@ -307,6 +307,6 @@ Store secrets such as AWS keys in Terraform variables or a secrets manager inste
 
 ## Next steps
 
-- [Amazon Aurora query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/template-variables/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)
+- [Amazon Aurora query editor](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/template-variables/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-r
 
 # Long-running agents
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.
 
@@ -128,7 +128,7 @@ A hibernated agent can be woken by any of these sources:
 | --- | --- | --- |
 | **HTTP request** | Any request to the agent's URL triggers `onRequest()` | A webhook from GitHub |
 | **WebSocket connection** | A client connects, triggering `onConnect()` | A team member opens the dashboard |
-| **RPC call** | Another Worker or agent calls a method via [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) or [`@callable`](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) | A coordinator agent delegates a task |
+| **RPC call** | Another Worker or agent calls a method via [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) or [`@callable`](https://developers.cloudflare.com/agents/agent-class/callable-methods/) | A coordinator agent delegates a task |
 | **Scheduled alarm** | A stored schedule fires, triggering your callback | Daily standup reminder at 9am |
 | **Email** | An inbound email triggers `onEmail()` | A team member replies to a status email |
 
@@ -224,16 +224,16 @@ try {
 | Seconds | Normal request handling |
 | Minutes | `keepAlive()` / `keepAliveWhile()` |
 | Minutes | `startFiber()` when retryable acceptance matters |
-| Minutes to hours | [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |
+| Minutes to hours | [Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/) |
 | Hours to days | Async pattern: start job, hibernate, wake on completion |
 
 ## Surviving crashes: fibers and recovery
 
 An agent can be evicted at any time — a deploy, a platform restart, or hitting resource limits. If the agent was mid-task, that work is lost unless it was checkpointed.
 
-[`runFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) provides crash-recoverable execution. It persists a row in SQLite for the duration of the work, and lets you `stash()` intermediate state. If the agent is evicted, the fiber row survives, and `onFiberRecovered()` is called on the next activation.
+[`runFiber()`](https://developers.cloudflare.com/agents/agent-class/durable-execution/) provides crash-recoverable execution. It persists a row in SQLite for the duration of the work, and lets you `stash()` intermediate state. If the agent is evicted, the fiber row survives, and `onFiberRecovered()` is called on the next activation.
 
-Use [`startFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) when the important boundary is durable acceptance. It adds an idempotency key, retained status records, inspection, cancellation, and cleanup on top of the same fiber machinery. By default it returns after acceptance; pass `waitForCompletion: true` when the request should stay open until the accepted job reaches a terminal status. This is a good fit for webhooks where the provider may retry delivery and the agent must avoid starting duplicate visible side effects.
+Use [`startFiber()`](https://developers.cloudflare.com/agents/agent-class/durable-execution/#startfiber) when the important boundary is durable acceptance. It adds an idempotency key, retained status records, inspection, cancellation, and cleanup on top of the same fiber machinery. By default it returns after acceptance. Pass `waitForCompletion: true` when the request should stay open until the accepted job reaches a terminal status. This is a good fit for webhooks where the provider may retry delivery and the agent must avoid starting duplicate visible side effects.
 
 ```ts
 export class ProjectManager extends Agent<Env, ProjectState> {
@@ -272,7 +272,7 @@ Testing recovery locally
 
 In `wrangler dev`, fiber recovery works identically to production. Kill the wrangler process (Ctrl-C or SIGKILL), restart it, and recovery fires automatically. SQLite and alarm state persist to disk between restarts.
 
-For the full API reference — `FiberContext`, `FiberRecoveryContext`, concurrent fibers, inline vs fire-and-forget patterns — refer to [Durable Execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/).
+For the full API reference — `FiberContext`, `FiberRecoveryContext`, concurrent fibers, inline vs fire-and-forget patterns — refer to [Durable Execution](https://developers.cloudflare.com/agents/agent-class/durable-execution/).
 
 ## Handling long async operations
 
@@ -364,7 +364,7 @@ export class ProjectManager extends Agent<Env, ProjectState> {
 
 ### Pattern: workflow delegation
 
-A production deployment involves multiple steps that must each retry independently — build, test, stage, promote. The project manager should not manage these steps internally; it delegates to a [Workflow](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) that handles retries and step sequencing:
+A production deployment involves multiple steps that must each retry independently — build, test, stage, promote. The project manager should not manage these steps internally; it delegates to a [Workflow](https://developers.cloudflare.com/agents/agent-class/run-workflows/) that handles retries and step sequencing:
 
 ```ts
 export class ProjectManager extends Agent<Env, ProjectState> {
@@ -537,7 +537,7 @@ Sub-agents have their own state, schedules, durable fibers, and lifecycle. They 
 
 Because facets do not have independent alarm slots, the top-level parent owns the physical Durable Object alarm. The Agents SDK records which sub-agent owns each schedule or fiber recovery lease, wakes the parent, and routes the callback back into the child. The parent does not need to stay active while the sub-agent works — it can start the work, hibernate, and be woken by the child-owned schedule or recovery check.
 
-For the full `subAgent()` API — typed RPC stubs, client routing, access control, storage isolation, and alarm-backed APIs — refer to [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/). For AI-specific sub-agent streaming (running full LLM turns through a child agent), refer to [Think: Sub-agent RPC](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/).
+For the full `subAgent()` API — typed RPC stubs, client routing, access control, storage isolation, and alarm-backed APIs — refer to [Sub-agents](https://developers.cloudflare.com/agents/agent-class/sub-agents/). For AI-specific sub-agent streaming (running full LLM turns through a child agent), refer to [Think: Sub-agent RPC](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/).
 
 ## Recovering interrupted LLM streams
 
@@ -698,15 +698,15 @@ The agent does not need to run continuously to do any of this. It just needs to 
 
 ## Related
 
-- [Durable Execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) — `runFiber()`, `startFiber()`, `stash()`, and crash recovery
-- [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — delayed, cron, and interval tasks
-- [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) — retry options and patterns
-- [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step processing
-- [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` and persistence
-- [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/) — lifecycle hooks and hibernation
-- [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) — RPC via `@callable` and service bindings
-- [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) — receiving inbound email
-- [Webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/) — receiving external events
+- [Durable Execution](https://developers.cloudflare.com/agents/agent-class/durable-execution/) — `runFiber()`, `startFiber()`, `stash()`, and crash recovery
+- [Schedule tasks](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/) — delayed, cron, and interval tasks
+- [Retries](https://developers.cloudflare.com/agents/agent-class/retries/) — retry options and patterns
+- [Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/) — durable multi-step processing
+- [Store and sync state](https://developers.cloudflare.com/agents/agent-class/state/) — `setState()` and persistence
+- [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/) — lifecycle hooks and hibernation
+- [Callable methods](https://developers.cloudflare.com/agents/agent-class/callable-methods/) — RPC via `@callable` and service bindings
+- [Email routing](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/) — receiving inbound email
+- [Webhooks](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/) — receiving external events
 - [Human in the loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — approval flows
 
 Was this helpful?
@@ -718,5 +718,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/#page","headline":"Long-running agents","description":"Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/og.png?v=276b7d8e629b5bd0","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/#page","headline":"Long-running agents","description":"Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.","url":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/og.png?v=276b7d8e629b5bd0","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

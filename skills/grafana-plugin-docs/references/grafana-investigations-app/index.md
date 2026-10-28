@@ -13,13 +13,13 @@ Investigations let you curate interesting signals from the Drilldown apps.
 
 > Note
 >
-> Investigations is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Investigations is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 ## Overview
 
 The Investigations app lets you collect interesting signals from around the Drilldown apps into easy-to-manage lists.
 
-[Investigations app lets you collect lists of interesting signals.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/investigations/screenshot-investigations-app.png)
+[Investigations app lets you collect lists of interesting signals.](https://grafana.com/media/docs/investigations/screenshot-investigations-app.png)
 
 With Investigations you can:
 
@@ -34,7 +34,7 @@ To enable comprehensive investigations, start by using the Drilldown apps, which
 
 However, you can add any URL to an investigation using the **Add this page** button in the investigation sidebar. A link is added to the investigation items, and you can add comments like any other item.
 
-To learn more about the app, start with the [Sidebar](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/sidebar) - it’s where the app lives, and the place you’ll interact with it the most.
+To learn more about the app, start with the [Sidebar](https://grafana.com/docs/plugins/grafana-investigations-app/latest/sidebar) - it’s where the app lives, and the place you’ll interact with it the most.
 
 ## Your feedback is welcome
 
@@ -44,12 +44,12 @@ We are keen to hear about your experience - [please complete this form](https://
 
 [Sidebar
 \
-The sidebar is the main way to interact with investigations. It shows your investigations and lets you create new ones.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/sidebar)
+The sidebar is the main way to interact with investigations. It shows your investigations and lets you create new ones.](https://grafana.com/docs/plugins/grafana-investigations-app/latest/sidebar)
 
 [Timeline view
 \
-The Timeline view shows investigation items on a true time scale, making it easy to see when events occurred and how they relate.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/timeline)
+The Timeline view shows investigation items on a true time scale, making it easy to see when events occurred and how they relate.](https://grafana.com/docs/plugins/grafana-investigations-app/latest/timeline)
 
 [Compare time ranges
 \
-The Compare time ranges tool lets you look at the same investigation items across different periods, making it easy to spot patterns and changes.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-investigations-app/latest/compare-time-ranges)
+The Compare time ranges tool lets you look at the same investigation items across different periods, making it easy to spot patterns and changes.](https://grafana.com/docs/plugins/grafana-investigations-app/latest/compare-time-ranges)

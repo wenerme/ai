@@ -11,7 +11,7 @@ The MongoDB data source plugin lets you query, visualize, and alert on data stor
 
 > Note
 >
-> The MongoDB data source is an Enterprise plugin. On Grafana Cloud, it’s included with the Advanced plan or available on the Pro plan with the Enterprise Plugins add-on. On self-managed Grafana, it requires a Grafana Enterprise license that includes the plugin. For installation instructions, refer to [Install and upgrade the MongoDB data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/).
+> The MongoDB data source is an Enterprise plugin. On Grafana Cloud, it’s included with the Advanced plan or available on the Pro plan with the Enterprise Plugins add-on. On self-managed Grafana, it requires a Grafana Enterprise license that includes the plugin. For installation instructions, refer to [Install and upgrade the MongoDB data source plugin](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/).
 
 ## Supported features
 
@@ -30,12 +30,12 @@ Expand table
 The MongoDB data source has the following requirements:
 
 - Grafana version 11.6.7 or later.
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated self-managed Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 - A MongoDB 5.0+ instance with at least one user. Supported deployments include:
 
   - MongoDB Atlas (shared and dedicated tiers)
   - Self-managed MongoDB (standalone, replica set, or sharded cluster)
-  - AWS DocumentDB (with [TLS configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#connect-to-aws-documentdb-with-tls) and `retryWrites=false`)
+  - AWS DocumentDB (with [TLS configuration](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#connect-to-aws-documentdb-with-tls) and `retryWrites=false`)
 - Port 27017 (or your configured MongoDB port) accessible from the Grafana server.
 
 ## Known limitations
@@ -43,32 +43,32 @@ The MongoDB data source has the following requirements:
 The following are current known limitations:
 
 - Only `find` and `aggregate` read commands are supported.
-- Refer to [Diagnostics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/query-editor/#diagnostics) for a list of currently supported diagnostics commands.
+- Refer to [Diagnostics](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/query-editor/#diagnostics) for a list of currently supported diagnostics commands.
 - Regex flags `g` and `s` are not supported.
 
 ## Get started
 
 The following documents help you get started:
 
-- [Install and upgrade the MongoDB data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/)
-- [Configure the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/)
-- [MongoDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/query-editor/)
-- [MongoDB templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/template-variables/)
-- [MongoDB annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/annotations/)
-- [MongoDB alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/alerting/)
-- [Troubleshoot issues with the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/)
+- [Install and upgrade the MongoDB data source plugin](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/)
+- [Configure the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/)
+- [MongoDB query editor](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/query-editor/)
+- [MongoDB templates and variables](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/template-variables/)
+- [MongoDB annotations](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/annotations/)
+- [MongoDB alerting](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/alerting/)
+- [Troubleshoot issues with the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use the **Grafana Assistant** button in the query editor to generate MongoDB queries from natural language prompts. Refer to [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/).
-- Create [time series](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/time-series/), [table](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/table/), [stat](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/stat/), and other [visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/).
-- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/annotations/) to overlay deployment or error events on graphs.
-- Configure [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/template-variables/) to build dynamic, reusable dashboards.
-- Apply [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape query results.
-- Set up [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/alerting/) to monitor collection metrics.
-- Route traffic through a secure proxy. Refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) for configuration instructions.
+- Use the **Grafana Assistant** button in the query editor to generate MongoDB queries from natural language prompts. Refer to [Grafana Assistant](https://grafana.com/docs/grafana/latest/ai/assistant/).
+- Create [time series](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/time-series/), [table](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/table/), [stat](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/stat/), and other [visualizations](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/).
+- Add [annotations](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/annotations/) to overlay deployment or error events on graphs.
+- Configure [template variables](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/template-variables/) to build dynamic, reusable dashboards.
+- Apply [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape query results.
+- Set up [alert rules](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/alerting/) to monitor collection metrics.
+- Route traffic through a secure proxy. Refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) for configuration instructions.
 
 > Note
 >
@@ -80,10 +80,10 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the MongoDB plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the MongoDB plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 
-- [MongoDB visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/solutions/mongodb/visualize/)
+- [MongoDB visualizations](https://grafana.com/solutions/mongodb/visualize/)
 - [Official MongoDB documentation](https://www.mongodb.com/docs/)
 - [Grafana community forum](https://community.grafana.com/)

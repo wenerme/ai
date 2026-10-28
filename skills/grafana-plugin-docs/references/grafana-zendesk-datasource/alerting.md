@@ -7,13 +7,13 @@ description: "Set up Grafana alert rules that use the Zendesk data source."
 
 # Zendesk data source alerting
 
-You can use the Zendesk data source in [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) to trigger alerts based on your Zendesk data. The Zendesk data source doesn’t have an alerting-specific query type. Instead, you build a query with the [Zendesk query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/query-editor/) and use its result as the input to an alert rule.
+You can use the Zendesk data source in [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/) to trigger alerts based on your Zendesk data. The Zendesk data source doesn’t have an alerting-specific query type. Instead, you build a query with the [Zendesk query editor](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/query-editor/) and use its result as the input to an alert rule.
 
 ## Before you begin
 
 Before you create an alert rule, ensure you have:
 
-- Configured the [Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/).
+- Configured the [Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configure/).
 - A query that returns a numeric value. Alert rules evaluate to a number, so the query must reduce to a single numeric value. The `Count tickets` query type is a good fit because it returns an approximate ticket count.
 
 ## Choose a query for alerting
@@ -36,7 +36,7 @@ To create an alert rule that uses the Zendesk data source:
 7. Set the evaluation behavior, including how often the rule is evaluated and for how long the condition must be true before it fires.
 8. Click **Save rule and exit**.
 
-For detailed instructions on building alert rules, refer to [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions on building alert rules, refer to [Configure Grafana-managed alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Alert on open ticket volume
 
@@ -62,5 +62,5 @@ Keep the following in mind when you alert on Zendesk data:
 
 ## Next steps
 
-- Learn more about [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
-- Configure [contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) to route notifications.
+- Learn more about [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
+- Configure [contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) to route notifications.

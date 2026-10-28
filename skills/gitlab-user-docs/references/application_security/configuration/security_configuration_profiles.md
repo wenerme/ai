@@ -230,14 +230,7 @@ Each preset configures the flows as follows:
 
 ### Business logic profile
 
-- Status: Beta
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the
-> history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5.
 
 The business logic profile uses an AI agent to find business logic vulnerabilities, like missing
 authorization, broken object-level access, and mass assignment. When you apply the profile to a project,

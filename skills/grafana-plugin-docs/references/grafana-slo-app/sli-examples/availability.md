@@ -13,13 +13,13 @@ This guide provides examples to show how to define **availability SLIs** based o
 
 Before detailing SLI query examples, it’s important to understand what Grafana SLO expects from an SLI:
 
-1. Grafana recommends using [event-based SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis), which measure the **ratio of successful events to total events**.
+1. Grafana recommends using [event-based SLIs](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis), which measure the **ratio of successful events to total events**.
 2. The **SLI query result must return a ratio between 0 and 1**, where `1` means `100%` of events were successful.
 3. Grafana expects SLIs to be expressed as a ratio-like query: `numerator / denominator`.
 
 Depending on the type of metric, you can calculate the ratio of successful events using counts or rates:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = number of successful events (over a period)
@@ -27,7 +27,7 @@ Success ratio = number of successful events (over a period)
                 total number of events (over a period)
 ```
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = rate of successful events (over a period)
@@ -37,7 +37,7 @@ Success ratio = rate of successful events (over a period)
 
 Both formulas produce the ratio of successful events, a value between `0` and `1`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-sli-ratio-example.png)
+[](https://grafana.com/media/docs/grafana-cloud/slo/screenshot-sli-ratio-example.png)
 
 In the Grafana SLO wizard, you can create these SLIs using two methods:
 
@@ -52,7 +52,7 @@ Availability is often described in two ways: whether a service successfully hand
 
 **Service-side availability** measures whether the service has successfully handled requests.
 
-**Client-side availability** measures whether a service can be accessed from one or more external locations, including factors such as network paths, DNS resolution, and edge infrastructure. These SLIs are commonly based on [synthetic checks](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/), representing availability from the client side.
+**Client-side availability** measures whether a service can be accessed from one or more external locations, including factors such as network paths, DNS resolution, and edge infrastructure. These SLIs are commonly based on [synthetic checks](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/), representing availability from the client side.
 
 Both approaches define valid availability SLIs, but they answer different questions. Many teams use both to ensure reliability from multiple perspectives.
 
@@ -69,15 +69,15 @@ You can get both the number of successful events and the total number of events 
 
 Expand table
 
-| Ratio query builder | Value                                | Description                                                                                                                                                                                                             |
-|---------------------|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Success metric      | `http_requests_total{status!~"5.."}` | Metric for success requests                                                                                                                                                                                             |
-| Total metric        | `http_requests_total`                | Metric for total requests                                                                                                                                                                                               |
-| Grouping            | *(leave empty)*                      | Creates a single SLI dimension*See the [multidimensional SLI example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)* |
+| Ratio query builder | Value                                | Description                                                                                                                                                                    |
+|---------------------|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Success metric      | `http_requests_total{status!~"5.."}` | Metric for success requests                                                                                                                                                    |
+| Total metric        | `http_requests_total`                | Metric for total requests                                                                                                                                                      |
+| Grouping            | *(leave empty)*                      | Creates a single SLI dimension*See the [multidimensional SLI example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)* |
 
 Click **Run queries** to generate the final SLI ratio query:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # rate of successful events
@@ -92,7 +92,7 @@ sum(rate(http_requests_total[$__rate_interval] offset 2m))
 
 The auto-generated SLI query includes several common elements for building reliable SLIs and uses the **ratio of successful event rates** formula:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = rate of successful events (over a period)
@@ -102,7 +102,7 @@ Success ratio = rate of successful events (over a period)
 
 **Numerator: rate of successful events**
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # rate of successful events over the rate interval
@@ -120,7 +120,7 @@ promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.clus
 
 **Denominator: rate of total events**
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # rate of total events over the rate interval
@@ -131,15 +131,9 @@ The denominator calculates the rate of all events. It applies the same rate func
 
 The final SLI query returns a ratio between `0` and `1`, representing the proportion of successful requests. The Grafana SLO wizard displays the final SLI query and a graph of its results:
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-http-availability-sli.png)
+[](https://grafana.com/media/docs/grafana-cloud/slo/screenshot-http-availability-sli.png)
 
 Note that you can also use the **Advanced** option to create the same SLI query directly.
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-39tkwyyuw3lb3sa4bwkam?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-http-availability-counter).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
 
 ## HTTP availability (native histogram)
 
@@ -149,7 +143,7 @@ This example uses `http_server_request_duration`, a **Prometheus native histogra
 
 With native histograms, you can use [`histogram_count()`](https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_count-and-histogram_sum) to return the number of successful requests (non-5xx responses) and the total number of requests. The SLI query should follow the **ratio of successful events** formula:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = number of successful events (over a period)
@@ -159,7 +153,7 @@ Success ratio = number of successful events (over a period)
 
 Because native histograms don’t expose counter metrics, you must use the **Advanced** option in the Grafana SLO wizard to define the SLI query:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # number of successful events over the rate interval
@@ -190,17 +184,11 @@ Here’s the **numerator** breakdown:
 
 The **denominator** returns the total number of events by querying the same metric without filtering on status and applying the same `rate`, `histogram_count`, and `sum` functions.
 
-The final query returns a ratio between `0` and `1`, where `1` means `100%` of requests were successful. It follows the ratio-style format (`numerator` / `denominator`) required for event-based SLIs ([SLI query requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/availability/#sli-query-requirements)).
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-j2aqkww6ah8o33fujvs63?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-http-availability-native-histogram).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
+The final query returns a ratio between `0` and `1`, where `1` means `100%` of requests were successful. It follows the ratio-style format (`numerator` / `denominator`) required for event-based SLIs ([SLI query requirements](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/availability/#sli-query-requirements)).
 
 ## Probe availability (summary)
 
-This example uses **Synthetic Monitoring probes**, such as local probes or [Grafana Cloud probes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/public-probes/), to verify service availability.
+This example uses **Synthetic Monitoring probes**, such as local probes or [Grafana Cloud probes](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/public-probes/), to verify service availability.
 
 The process is as follows:
 
@@ -211,7 +199,7 @@ The process is as follows:
 
    Grafana SLO then evaluates the SLI query and reports the SLO compliance.
 
-This example uses [`probe_all_success`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/#common-check-metrics), a **Prometheus summary metric** that tracks whether the probe succeeded.
+This example uses [`probe_all_success`](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/#common-check-metrics), a **Prometheus summary metric** that tracks whether the probe succeeded.
 
 Prometheus summary metrics expose additional `*_sum` and `*_count` series. The `*_count` series tracks the total number of events, and the `*_sum` series can be used to calculate the number of successful events for binary summaries.
 
@@ -219,15 +207,15 @@ In this case, you can define the SLI using the **Ratio** option in the Grafana S
 
 Expand table
 
-| Ratio query builder | Value                                       | Description                                                                                                                                                                                                             |
-|---------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Success metric      | `probe_all_success_sum{job="<JOB_NAME>"}`   | Number of successful probes                                                                                                                                                                                             |
-| Total metric        | `probe_all_success_count{job="<JOB_NAME>"}` | Total number of probe executions                                                                                                                                                                                        |
-| Grouping            | *(leave empty)*                             | Creates a single SLI dimension*See the [multidimensional SLI example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)* |
+| Ratio query builder | Value                                       | Description                                                                                                                                                                    |
+|---------------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Success metric      | `probe_all_success_sum{job="<JOB_NAME>"}`   | Number of successful probes                                                                                                                                                    |
+| Total metric        | `probe_all_success_count{job="<JOB_NAME>"}` | Total number of probe executions                                                                                                                                               |
+| Grouping            | *(leave empty)*                             | Creates a single SLI dimension*See the [multidimensional SLI example](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/)* |
 
 Click **Run queries** to generate the final SLI ratio query:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 (
@@ -240,17 +228,11 @@ sum(rate(probe_all_success_count{job="<JOB_NAME>"}[$__rate_interval] offset 2m))
 
 The SLI query returns the success ratio, a value between `0` and `1`, where `1` means `100%` of probe executions were successful.
 
-To learn why the SLI is formed this way and how it works, refer to the [HTTP availability (counter) example](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/availability/#http-availability-counter), which uses the same auto-generated SLI query structure.
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-rlunhe4nr27czbhprxepv?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-http-availability-summary).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
+To learn why the SLI is formed this way and how it works, refer to the [HTTP availability (counter) example](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/availability/#http-availability-counter), which uses the same auto-generated SLI query structure.
 
 ## Probe availability (gauge)
 
-Sometimes, a **Prometheus gauge metric** is used to track successes, such as [`probe_success`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/#common-check-metrics), which behaves as a binary metric:
+Sometimes, a **Prometheus gauge metric** is used to track successes, such as [`probe_success`](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/create-checks/checks/#common-check-metrics), which behaves as a binary metric:
 
 - `probe_success` is `1` on success.
 - `probe_success` is `0` on failure.
@@ -259,7 +241,7 @@ In the SLO wizard, the **Ratio** option expects a counter metric and cannot gene
 
 Define an SLI that returns the ratio of successes, represented as a value between 0 and 1, as in the previous examples. You can use the **ratio of successful events formula** for this SLI:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = number of successful events (over a period)
@@ -269,7 +251,7 @@ Success ratio = number of successful events (over a period)
 
 The SLI can then be defined as follows:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # `sum_over_time` sums the 1s to calculate the number of successful probes
@@ -288,13 +270,7 @@ Like the other SLI examples, this SLI returns a value between `0` and `1`, repre
 
 > Note
 >
-> [`$__rate_interval`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/template-variables/#use-__rate_interval) is recommended for calculating `rate()` in other examples. When you use other `_over_time()` functions that don’t require at least two data points, it’s better to use `$__interval` to achieve finer error budget resolution by evaluating SLIs at smaller time intervals.
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-1ylxu3k3ixhsyovvghf7t?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-probe-availability-gauge).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
+> [`$__rate_interval`](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/template-variables/#use-__rate_interval) is recommended for calculating `rate()` in other examples. When you use other `_over_time()` functions that don’t require at least two data points, it’s better to use `$__interval` to achieve finer error budget resolution by evaluating SLIs at smaller time intervals.
 
 ## Availability using failure metric
 
@@ -307,7 +283,7 @@ For example, you may only have the following counters:
 
 In this case, you can calculate availability by subtracting failures from the total:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = (total events - failed events)
@@ -319,7 +295,7 @@ Avoid using `1 - (<failure rate> / <total rate>)` because the SLI can’t be par
 
 In the Grafana SLO wizard, use the **Advanced** option:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # rate of successful events

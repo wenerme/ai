@@ -85,7 +85,7 @@ Expand table
 
 The Sheet ID is the long string in your Google Sheets URL:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 https://docs.google.com/spreadsheets/d/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/edit
@@ -109,7 +109,7 @@ The first row of your range is used as column headers.
 
 You can use Grafana template variables in all Google Sheets query fields:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 Sheet ID: ${spreadsheet_id}

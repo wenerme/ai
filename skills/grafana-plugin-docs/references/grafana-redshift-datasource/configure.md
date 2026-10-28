@@ -15,7 +15,7 @@ Before you configure the data source, ensure you have the following:
 
 - **Grafana permissions:** An organization administrator role in Grafana.
 - **AWS account:** An AWS account with either a Redshift provisioned cluster or a Redshift Serverless workgroup.
-- **IAM permissions:** An IAM identity (user or role) with the required Redshift Data API permissions. Refer to [IAM policies](/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) for the minimum required permissions.
+- **IAM permissions:** An IAM identity (user or role) with the required Redshift Data API permissions. Refer to [IAM policies](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) for the minimum required permissions.
 - **Database credentials:** Either temporary credentials through IAM or a managed secret stored in AWS Secrets Manager.
 
 ## Key concepts
@@ -46,7 +46,7 @@ To add the Amazon Redshift data source to Grafana:
 
 ## Configure connection settings
 
-The connection section configures how Grafana authenticates with AWS. For detailed information about AWS authentication options, refer to [AWS authentication](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+The connection section configures how Grafana authenticates with AWS. For detailed information about AWS authentication options, refer to [AWS authentication](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 Expand table
 
@@ -93,7 +93,7 @@ Expand table
 
 ## Private data source connect (Grafana Cloud only)
 
-If you use Grafana Cloud and your Redshift cluster is in a private VPC that isn’t directly accessible, you can use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect Grafana Cloud to your data source without opening your network to inbound traffic.
+If you use Grafana Cloud and your Redshift cluster is in a private VPC that isn’t directly accessible, you can use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect Grafana Cloud to your data source without opening your network to inbound traffic.
 
 When PDC is enabled for your Grafana Cloud instance, a **Private data source connect** section appears below the Redshift Details configuration. Select the **Private data source connect network** where your Redshift cluster is available. Click **Manage private data source connect networks** to configure networks.
 
@@ -101,7 +101,7 @@ When PDC is enabled for your Grafana Cloud instance, a **Private data source con
 >
 > Private data source connect is available exclusively in Grafana Cloud. For self-managed Grafana instances, use VPC peering, a VPN, or AWS PrivateLink to connect to private Redshift clusters.
 
-For setup instructions, refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For setup instructions, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## IAM policies
 
@@ -109,7 +109,7 @@ Grafana needs IAM permissions to query Redshift through the Data API. You can at
 
 The following policy provides the minimum permissions required:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -162,13 +162,13 @@ Click **Save &amp; test** to verify that the data source is configured correctly
 
 ## Provision the data source
 
-You can define and configure the Redshift data source using YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the Redshift data source using YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following examples show common provisioning configurations.
 
 ### AWS SDK default
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -186,7 +186,7 @@ datasources:
 
 ### Credentials profile
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -205,7 +205,7 @@ datasources:
 
 ### Access &amp; secret key
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -226,7 +226,7 @@ datasources:
 
 To use temporary AWS credentials from STS, add a `sessionToken` to `secureJsonData`:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
     secureJsonData:
@@ -237,7 +237,7 @@ YAML [Copy code to clipboard] Copy
 
 ### Assume role
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -256,7 +256,7 @@ datasources:
 
 ### Redshift Serverless
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -274,7 +274,7 @@ datasources:
 
 ### Private data source connect
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -297,7 +297,7 @@ You can use the [Grafana Terraform provider](https://registry.terraform.io/provi
 
 ### Access &amp; secret key with Terraform
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "redshift" {
@@ -321,7 +321,7 @@ resource "grafana_data_source" "redshift" {
 
 To use temporary AWS credentials from STS, add `sessionToken` to `secure_json_data_encoded`:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
   secure_json_data_encoded = jsonencode({
@@ -333,7 +333,7 @@ hcl [Copy code to clipboard] Copy
 
 ### Assume role with Terraform
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "redshift" {
@@ -353,7 +353,7 @@ resource "grafana_data_source" "redshift" {
 
 ### Redshift Serverless with Terraform
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "redshift_serverless" {

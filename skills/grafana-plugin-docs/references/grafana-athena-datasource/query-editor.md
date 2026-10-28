@@ -13,7 +13,7 @@ This document explains how to use the Amazon Athena query editor to build and ru
 
 Before you use the query editor, ensure you have the following prerequisites.
 
-- [Configure the Amazon Athena data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/configure/).
+- [Configure the Amazon Athena data source](https://grafana.com/docs/plugins/grafana-athena-datasource/latest/configure/).
 - Verify your IAM credentials have the required Athena, Glue, and S3 permissions.
 
 ## Key concepts
@@ -66,7 +66,7 @@ The query editor provides a SQL code editor with context-aware autocompletion fo
 
 Most Amazon Athena queries are best represented by a table visualization.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT column_1, column_2 FROM my_table;
@@ -76,7 +76,7 @@ SELECT column_1, column_2 FROM my_table;
 
 For time series and graph visualizations, select a column with a `date` or `datetime` type in ascending order and at least one numeric column.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -120,11 +120,11 @@ Async query data support is enabled by default in all Amazon Athena data sources
 
 ### Async query caching
 
-To enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) for async queries, you must meet the following requirements:
+To enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) for async queries, you must meet the following requirements:
 
 - Run Grafana version 10.1 or later.
 - Set the feature toggles `useCachingService` and `awsAsyncQueryCaching` to `true`.
-- [Configure query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) for the Amazon Athena data source.
+- [Configure query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) for the Amazon Athena data source.
 
 ## Query result reuse
 
@@ -138,5 +138,5 @@ For more information, refer to the [Amazon Athena documentation on reusing query
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/template-variables/)
-- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/annotations/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-athena-datasource/latest/template-variables/)
+- [Add annotations](https://grafana.com/docs/plugins/grafana-athena-datasource/latest/annotations/)

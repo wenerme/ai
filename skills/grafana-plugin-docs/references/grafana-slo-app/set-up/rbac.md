@@ -7,7 +7,7 @@ description: "Configure RBAC permissions"
 
 # Configure RBAC permissions
 
-SLO creation and management permissions are configurable through the [Role-based access control (RBAC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/access-control/plan-rbac-rollout-strategy/) function in Grafana Cloud. This page tells you how to configure SLO access on an organizational level, or on a user level with folder permissions.
+SLO creation and management permissions are configurable through the [Role-based access control (RBAC)](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/plan-rbac-rollout-strategy/) function in Grafana Cloud. This page tells you how to configure SLO access on an organizational level, or on a user level with folder permissions.
 
 ## RBAC user-based roles
 
@@ -15,7 +15,7 @@ You can use RBAC permissions to control which users can view, create, edit, and 
 
 ### Basic organizational roles
 
-The following [basic roles](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/#organization-roles) provide access to SLO functionality:
+The following [basic roles](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles) provide access to SLO functionality:
 
 Expand table
 
@@ -60,7 +60,7 @@ You can manage access to individual SLOs using folder-level permissions.
 
 To allow a user to view, create, update, or delete SLOs within a specific folder, assign appropriate roles and configure the folder’s permissions.
 
-You can customize access for users, service accounts, teams, and roles. For more information, see the [Grant folder permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/user-management/manage-dashboard-permissions/#grant-folder-permissions) in the Grafana administration documentation.
+You can customize access for users, service accounts, teams, and roles. For more information, see the [Grant folder permissions](https://grafana.com/docs/grafana/latest/administration/user-management/manage-dashboard-permissions/#grant-folder-permissions) in the Grafana administration documentation.
 
 > Note
 >

@@ -9,7 +9,7 @@ description: "Use Salesforce data as annotations in Grafana."
 
 Annotations allow you to overlay event data on your graphs. You can use Salesforce data to create annotations that mark important events such as opportunity close dates, task due dates, or case creation times directly on your time-series visualizations.
 
-For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Supported visualizations
 
@@ -57,7 +57,7 @@ Alias your SOQL fields to these names for automatic mapping. You can also map an
 
 Mark when opportunities are scheduled to close to correlate with sales metrics:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -75,7 +75,7 @@ ORDER BY CloseDate
 
 Display task deadlines on your dashboards:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -94,7 +94,7 @@ ORDER BY ActivityDate
 
 Track when cases are created to identify support volume patterns:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -112,7 +112,7 @@ ORDER BY CreatedDate
 
 Monitor login activity by overlaying login events on your metrics:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -130,7 +130,7 @@ ORDER BY LoginTime
 
 Display Salesforce Events (meetings, calls) as annotations:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -147,9 +147,9 @@ ORDER BY StartDateTime
 
 ## Use template variables in annotations
 
-You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations. For example, filter opportunities by a selected owner:
+You can use [template variables](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations. For example, filter opportunities by a selected owner:
 
-soql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```soql
 SELECT
@@ -173,4 +173,4 @@ When configuring annotations, you can customize how they appear:
 
 ## Additional resources
 
-For more information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations in Grafana, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).

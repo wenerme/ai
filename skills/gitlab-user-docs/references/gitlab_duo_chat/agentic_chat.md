@@ -374,7 +374,20 @@ Because of LLM context window limits, conversations are truncated to 200,000 tok
 1. In the GitLab UI or your IDE, select the [chat history](#view-the-chat-history).
 1. In the history, select **Delete this chat** ().
 
-Individual conversations expire and are automatically deleted after 30 days of inactivity.
+## Archived conversations
+
+GitLab archives Agentic Chat conversations 30 days after you create them, even if you used them
+more recently. You cannot restore an archived conversation.
+
+In the GitLab UI, when a conversation is archived:
+
+- It still appears in your chat history, with dimmed text and an archive icon.
+- When you select it, Agentic Chat shows **This conversation has been archived**.
+- You cannot send new messages to it.
+- You cannot view its messages.
+- You can delete it in your chat history.
+
+To ask more questions, start a new conversation.
 
 ## Customize GitLab Duo Chat in your local environment
 
@@ -698,6 +711,7 @@ All approvals reset when you start a new conversation.
 | Analyze pipeline logs                          | Yes. Requires GitLab Duo Enterprise add-on.                              | Yes                                                                                                               |
 | Restart a conversation                         | Yes. Use `/new` or `/reset`.                                             | Yes. Use `/new` or, if in the UI, `/reset`.                                                                       |
 | Delete a conversation                          | Yes, in the chat history.                                                | Yes, in the chat history                                                                                          |
+| Expire a conversation                          | Yes. By default, after 30 days of inactivity.[^expiration]               | Yes. Archived 30 days after you create it, regardless of use.                                                     |
 | Create issues and MRs                          | No                                                                       | Yes                                                                                                               |
 | Use Git read-only commands                     | No                                                                       | Yes                                                                                                               |
 | Use Git write commands                         | No                                                                       | Yes, UI only                                                                                                      |
@@ -706,6 +720,7 @@ All approvals reset when you start a new conversation.
 | Approve tools for a session                    | No                                                                       | Yes, IDEs only                                                                                                    |
 
 [^not-in-ide-chat]: Not available when using GitLab Duo Non-Agentic Chat in the Web IDE.
+[^expiration]: Administrators can [change how long Non-Agentic Chat conversations last before they expire](_index.md#configure-chat-conversation-expiration).
 
 ## Related topics
 

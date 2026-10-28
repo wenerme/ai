@@ -7,13 +7,13 @@ description: "This document outlines configuration instructions and options for 
 
 # Configure the MongoDB data source
 
-This document provides instructions for configuring the MongoDB data source and explains the available configuration options. For general information on adding data sources in Grafana, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+This document provides instructions for configuring the MongoDB data source and explains the available configuration options. For general information on adding data sources in Grafana, refer to [Add a data source](https://grafana.com/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 ## Before you begin
 
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
-- You must have the Organization administrator role to add a data source. Administrators can also configure a data source via [YAML with the Grafana provisioning system](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-the-mongodb-data-source).
-- You must install the MongoDB plugin prior to adding the MongoDB data source. Refer to [Install and upgrade the MongoDB data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/) for instructions.
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated self-managed Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
+- You must have the Organization administrator role to add a data source. Administrators can also configure a data source via [YAML with the Grafana provisioning system](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-the-mongodb-data-source).
+- You must install the MongoDB plugin prior to adding the MongoDB data source. Refer to [Install and upgrade the MongoDB data source plugin](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/) for instructions.
 
 - A MongoDB 5.0+ instance with credentials (username and password) or Kerberos principal information for authentication.
 
@@ -66,7 +66,7 @@ Expand table
   - **User** - The username assigned to the MongoDB account.
   - **Password** - The password assigned to the MongoDB account.
 
-- **Kerberos** - Kerberos requires a custom build with [manual installation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-plugin-on-local-grafana). Access the custom build [here](https://storage.googleapis.com/integration-artifacts/grafana-mongodb-datasource-kerberos/release/latest/linux/grafana-mongodb-datasource-latest.linux_amd64.zip).
+- **Kerberos** - Kerberos requires a custom build with [manual installation](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-plugin-on-local-grafana). Access the custom build [here](https://storage.googleapis.com/integration-artifacts/grafana-mongodb-datasource-kerberos/release/latest/linux/grafana-mongodb-datasource-latest.linux_amd64.zip).
 
   > Note
   >
@@ -80,7 +80,7 @@ Expand table
 
 To run this on Linux, you must install the `libkrb5` library:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 apt-get install -y libkrb5-dev
@@ -122,7 +122,7 @@ Additional settings for the MongoDB data source are optional configurations that
 
 **Private data source connect:**
 
-- **Private data source connect** - *Only for Grafana Cloud users.* Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information about Grafana PDC, refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
+- **Private data source connect** - *Only for Grafana Cloud users.* Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information about Grafana PDC, refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
 
 Click **Manage private data source connect** to be taken to your PDC connection page, where you find your PDC configuration details.
 
@@ -134,9 +134,9 @@ You can also remove a connection by clicking **Delete**.
 
 ## Provision the MongoDB data source
 
-You can define and configure the MongoDB data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
+You can define and configure the MongoDB data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -160,7 +160,7 @@ Legacy provisioned data sources that store the username in `jsonData.user` and t
 
 You can provision the MongoDB data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). The following example creates a MongoDB data source with credentials authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "mongodb" {
@@ -182,7 +182,7 @@ resource "grafana_data_source" "mongodb" {
 
 For a connection with TLS client authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "mongodb_tls" {
@@ -212,4 +212,4 @@ For more information, refer to the [Grafana Terraform provider documentation](ht
 
 ## Troubleshoot
 
-For help with connection issues, authentication errors, query problems, and other common issues, refer to [Troubleshoot the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/).
+For help with connection issues, authentication errors, query problems, and other common issues, refer to [Troubleshoot the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/).

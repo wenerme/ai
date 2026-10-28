@@ -13,4 +13,4 @@ description: "Learn how to visualize tag cloud presentations on a two-dimensiona
 
 The Wordcloud extension renders a tag cloud presentation on a two-dimensional canvas.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/wordcloud.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/wordcloud.png)

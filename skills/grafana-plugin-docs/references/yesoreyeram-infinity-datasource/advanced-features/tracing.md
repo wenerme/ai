@@ -9,7 +9,7 @@ description: "Configure data for trace visualization with the Infinity data sour
 
 The Traces format transforms your API data into a format compatible with the Traces panel in Grafana. Use this feature to visualize distributed tracing data from any API that returns span information.
 
-For general information about the Traces panel, refer to [Traces](/docs/grafana/latest/panels-visualizations/visualizations/traces/).
+For general information about the Traces panel, refer to [Traces](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/traces/).
 
 ## Before you begin
 
@@ -65,7 +65,7 @@ Expand table
 
 **Data:**
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 spanID,parentSpanID,traceID,startTime,duration,serviceName,operationName
@@ -81,7 +81,7 @@ s6,s3,t1,1704067200300,2200,database,SELECT query
 
 If your `startTime` is in Unix seconds rather than milliseconds, use UQL to convert:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-csv
@@ -90,7 +90,7 @@ parse-csv
 
 ### JSON example
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {

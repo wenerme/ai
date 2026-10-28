@@ -81,6 +81,7 @@ GET /projects/:id/issues/:issue_iid/notes?activity_filter=only_comments
 | `activity_filter` | string      | no       | Filter notes by activity type. Valid values: `all_notes`, `only_comments`, `only_activity`. Default is `all_notes` |
 | `sort`      | string            | no       | Return issue notes sorted in `asc` or `desc` order. Default is `desc` |
 | `order_by`  | string            | no       | Return issue notes ordered by `created_at` or `updated_at` fields. Default is `created_at` |
+{.sortable}
 
 ```json
 [
@@ -179,6 +180,7 @@ Parameters:
 | `confidential` | boolean           | no       | **Deprecated**: Renamed to `internal`. The confidential flag of a note. Default is false. |
 | `internal`     | boolean           | no       | The internal flag of a note. Overrides `confidential` when both parameters are submitted. Default is false. |
 | `created_at`   | string            | no       | Date time string, ISO 8601 formatted. It must be after 1970-01-01. Example: `2016-03-11T03:45:40Z` (requires administrator or project/group owner rights) |
+{.sortable}
 
 ```shell
 curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -202,6 +204,7 @@ Parameters:
 | `note_id`      | integer           | yes      | The ID of a note. |
 | `body`         | string            | no       | The content of a note. Limited to 1,000,000 characters. |
 | `confidential` | boolean           | no       | **Deprecated**. The confidential flag of a note. Default is false. |
+{.sortable}
 
 ```shell
 curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -461,6 +464,7 @@ Parameters:
 | `created_at`                  | string            | no       | Date time string, ISO 8601 formatted. Example: `2016-03-11T03:45:40Z` (requires administrator or project/group owner rights) |
 | `internal`                    | boolean           | no       | The internal flag of a note. Default is false. |
 | `merge_request_diff_head_sha` | string            | no       | Required for the [`/merge`](../user/project/quick_actions.md#merge) quick action. The SHA of the head commit, which ensures the merge request wasn't updated after the API request was sent. |
+{.sortable}
 
 ```shell
 curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -484,6 +488,7 @@ Parameters:
 | `note_id`           | integer           | no       | The ID of a note |
 | `body`              | string            | yes      | The content of a note. Limited to 1,000,000 characters. |
 | `confidential`      | boolean           | no       | **Deprecated**. The confidential flag of a note. Default is false. |
+{.sortable}
 
 ```shell
 curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -615,6 +620,7 @@ Parameters:
 | `id`           | integer or string | yes      | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group |
 | `confidential` | boolean           | no       | **Deprecated**: Renamed to `internal`. The confidential flag of a note. Default is `false`. |
 | `internal`     | boolean           | no       | The internal flag of a note. Overrides `confidential` when both parameters are submitted. Default is `false`. |
+{.sortable}
 
 ```shell
 curl --request POST --header "PRIVATE-TOKEN: <your_access_token>" \
@@ -638,6 +644,7 @@ Parameters:
 | `note_id`      | integer           | yes      | The ID of a note |
 | `body`         | string            | yes      | The content of a note. Limited to 1,000,000 characters. |
 | `confidential` | boolean           | no       | **Deprecated**. The confidential flag of a note. Default is false. |
+{.sortable}
 
 ```shell
 curl --request PUT --header "PRIVATE-TOKEN: <your_access_token>" \

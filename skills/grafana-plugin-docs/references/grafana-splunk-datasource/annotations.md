@@ -11,8 +11,8 @@ Annotations let you overlay Splunk events or fired alerts on Grafana graphs, pro
 
 ## Before you begin
 
-- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/).
-- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/).
+- [Configure the Splunk data source](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure/).
+- Understand [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/annotations/).
 
 ## Annotation sources
 
@@ -83,7 +83,7 @@ When using Search mode, the SPL query runs directly. If the search field is empt
 
 **Mark deployment events on a graph:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main sourcetype=deployment | fields _time, environment, version
@@ -91,7 +91,7 @@ index=main sourcetype=deployment | fields _time, environment, version
 
 **Annotate error spikes:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main log_level=ERROR | timechart span=5m count | where count > 100
@@ -99,7 +99,7 @@ index=main log_level=ERROR | timechart span=5m count | where count > 100
 
 **Show configuration changes:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=_audit action=edit | fields _time, user, info
@@ -107,7 +107,7 @@ index=_audit action=edit | fields _time, user, info
 
 **Annotate Splunk system warnings:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=_internal log_level=WARN component=SearchScheduler | fields _time, message
@@ -148,4 +148,4 @@ After creating the annotation query, you can customize how annotations appear on
 2. Choose a **Color** to distinguish different annotation types.
 3. Toggle **Enabled** to show or hide the annotation.
 
-For more information on configuring annotation display options, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/).
+For more information on configuring annotation display options, refer to [Annotations](https://grafana.com/docs/grafana/latest/dashboards/annotations/).

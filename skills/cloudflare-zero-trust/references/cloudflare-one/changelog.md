@@ -16,6 +16,21 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-27
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Fully customize user-facing Access pages**
+
+Cloudflare Access now supports HTML and Liquid templates for login, identity-denied, forbidden, and command-line approval pages. Custom templates allow you to control the branding and appearance of each supported page. Liquid variables allow you to provide custom instructions to users or provide a clear reason why they were blocked.
+
+Create templates in the Cloudflare One dashboard, validate them in the editor, and assign them to applications or set account defaults.
+
+![Custom Access denial page showing failed policy checks and explanations for why access was denied](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png)
+
+For supported page types, template examples, and setup instructions, refer to [Access custom pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-custom-pages/).
+
 ## 2026-10-22
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)

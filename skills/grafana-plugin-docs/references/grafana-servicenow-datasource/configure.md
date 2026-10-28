@@ -16,7 +16,7 @@ Before configuring the data source, ensure you have:
 - **Grafana permissions:** Organization administrator role.
 - **Grafana version:** 11.6.11 or later.
 - **ServiceNow account:** A user account with access to the tables you want to query. Grafana recommends creating a dedicated user or using a service account.
-- **Grafana license:** Grafana Cloud Pro, Advanced, or a Pro trial, or Grafana Enterprise with an [activated license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+- **Grafana license:** Grafana Cloud Pro, Advanced, or a Pro trial, or Grafana Enterprise with an [activated license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 
 ## Add the data source
 
@@ -64,10 +64,10 @@ The data source provides the following additional settings:
 
 Expand table
 
-| Setting             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Use Sys Tables?** | When enabled, the plugin queries ServiceNow system tables (`sys_db_object`, `sys_dictionary`, `sys_choice`, `sys_glide_object`) to retrieve table and field metadata. This populates drop-downs in the query editor with available tables and fields. When disabled, the plugin uses the Schema API and Metadata API instead. Enabling this option requires additional ServiceNow permissions. Refer to the [Configure ServiceNow permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#configure-servicenow-permissions) section. |
-| **Query Timeout**   | Maximum time in seconds for queries to complete. Increase this value for slow ServiceNow instances or large tables. Default: `30`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Setting             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Use Sys Tables?** | When enabled, the plugin queries ServiceNow system tables (`sys_db_object`, `sys_dictionary`, `sys_choice`, `sys_glide_object`) to retrieve table and field metadata. This populates drop-downs in the query editor with available tables and fields. When disabled, the plugin uses the Schema API and Metadata API instead. Enabling this option requires additional ServiceNow permissions. Refer to the [Configure ServiceNow permissions](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/configure/#configure-servicenow-permissions) section. |
+| **Query Timeout**   | Maximum time in seconds for queries to complete. Increase this value for slow ServiceNow instances or large tables. Default: `30`.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 ### Custom headers
 
@@ -86,13 +86,13 @@ When routing Grafana traffic through an HTTP proxy, set one of the following env
 
 ### TLS and certificates
 
-The data source doesn’t provide TLS options such as a custom certificate authority or an option to skip certificate verification. Your ServiceNow instance must present a certificate that Grafana trusts. If your instance uses a self-signed or privately signed certificate, refer to [Self-signed or private certificate errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#self-signed-or-private-certificate-errors).
+The data source doesn’t provide TLS options such as a custom certificate authority or an option to skip certificate verification. Your ServiceNow instance must present a certificate that Grafana trusts. If your instance uses a self-signed or privately signed certificate, refer to [Self-signed or private certificate errors](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/#self-signed-or-private-certificate-errors).
 
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. A successful connection displays **Plugin health check successful**.
 
-When **Use Sys Tables?** is enabled, the health check verifies access to each required system table and provides specific error messages if any permissions are missing. Refer to [Troubleshoot ServiceNow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/) for solutions to common health check errors.
+When **Use Sys Tables?** is enabled, the health check verifies access to each required system table and provides specific error messages if any permissions are missing. Refer to [Troubleshoot ServiceNow](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/troubleshooting/) for solutions to common health check errors.
 
 ## Configure ServiceNow permissions
 
@@ -165,13 +165,13 @@ To create a ServiceNow developer instance for testing, go to the [ServiceNow Dev
 
 ## Provision the data source
 
-You can define the data source using YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source using YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Basic authentication example
 
-Refer to the [Provisioning configuration reference](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#provisioning-configuration-reference) for all available keys.
+Refer to the [Provisioning configuration reference](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/configure/#provisioning-configuration-reference) for all available keys.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -192,7 +192,7 @@ datasources:
 
 ### OAuth authentication example
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -217,7 +217,7 @@ datasources:
 
 You can provision the ServiceNow data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). The following example configures the data source with OAuth authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "servicenow" {
@@ -269,9 +269,9 @@ Expand table
 | `basicAuthPassword` | string | ServiceNow password. |
 | `oauthClientSecret` | string | OAuth Client Secret. |
 
-To provision the custom HTTP headers described in the [Custom headers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/#custom-headers) section, use the standard Grafana header keys. Set each header name as `httpHeaderName<N>` in `jsonData` and its value as `httpHeaderValue<N>` in `secureJsonData`, where `<N>` is a 1-based index:
+To provision the custom HTTP headers described in the [Custom headers](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/configure/#custom-headers) section, use the standard Grafana header keys. Set each header name as `httpHeaderName<N>` in `jsonData` and its value as `httpHeaderValue<N>` in `secureJsonData`, where `<N>` is a 1-based index:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 jsonData:

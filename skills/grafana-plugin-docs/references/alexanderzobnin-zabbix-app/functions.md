@@ -13,7 +13,7 @@ Functions let you transform, aggregate, and manipulate time series data returned
 
 You can add several functions to a query. They’re applied in order, top to bottom, with each function receiving the output of the one before it. For example, the following pipeline first aligns points to 1-minute intervals, then keeps only the five highest series:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 groupBy(1m, avg)
@@ -24,7 +24,7 @@ Reorder functions in the editor by dragging them. Remove a function by clicking 
 
 ## Where functions run
 
-Most functions are evaluated in the plugin backend, which means they also work in Grafana alert rules. The alias functions (`setAlias`, `setAliasByRegex`, `replaceAlias`) and `consolidateBy` are resolved by the frontend or the Direct DB Connection path, so they don’t affect alert evaluation. For details on using functions in alerts, refer to [Functions in alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/#functions-in-alert-rules).
+Most functions are evaluated in the plugin backend, which means they also work in Grafana alert rules. The alias functions (`setAlias`, `setAliasByRegex`, `replaceAlias`) and `consolidateBy` are resolved by the frontend or the Direct DB Connection path, so they don’t affect alert evaluation. For details on using functions in alerts, refer to [Functions in alert rules](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/#functions-in-alert-rules).
 
 ## Built-in variables
 
@@ -39,7 +39,7 @@ Expand table
 | `$__range`        | Panel time range as a string (`30s`, `1m`, `1h`). |
 | `$__range_series` | Invokes the function over all series values.      |
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 groupBy($__range, avg)
@@ -52,7 +52,7 @@ Transform functions operate on each individual time series.
 
 ### groupBy
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 groupBy(interval, function)
@@ -60,7 +60,7 @@ groupBy(interval, function)
 
 Consolidates points within each `interval` into a single point using the specified `function`. Supported functions: `avg`, `min`, `max`, `sum`, `count`, `median`, `first`, `last`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 groupBy(10m, avg)
@@ -69,7 +69,7 @@ groupBy(1h, median)
 
 ### scale
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 scale(factor)
@@ -77,7 +77,7 @@ scale(factor)
 
 Multiplies each data point by `factor`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 scale(100)
@@ -86,7 +86,7 @@ scale(0.01)
 
 ### offset
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 offset(value)
@@ -96,7 +96,7 @@ Adds `value` to each data point.
 
 ### delta
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 delta()
@@ -106,7 +106,7 @@ Calculates the difference between consecutive values. For per-second rate calcul
 
 ### rate
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 rate()
@@ -116,7 +116,7 @@ Calculates the per-second rate of increase. Resistant to counter resets, making 
 
 ### movingAverage
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 movingAverage(windowSize)
@@ -124,7 +124,7 @@ movingAverage(windowSize)
 
 Calculates a moving average over a fixed number of past points specified by `windowSize`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 movingAverage(60)
@@ -134,7 +134,7 @@ If the metric has 1-second resolution, a window size of 60 corresponds to a 1-mi
 
 ### exponentialMovingAverage
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 exponentialMovingAverage(windowSize)
@@ -152,7 +152,7 @@ If `windowSize` is less than 1 (for example, `0.1`), the constant is set directl
 >
 > The first N points (where N equals the window size) use an approximation. The plugin assumes previous N points have the same average as the first N points rather than fetching additional historical data. Don’t rely on the accuracy of the first N data points.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 exponentialMovingAverage(60)
@@ -160,7 +160,7 @@ exponentialMovingAverage(60)
 
 ### percentile
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 percentile(interval, N)
@@ -168,7 +168,7 @@ percentile(interval, N)
 
 Consolidates points within each `interval` into a single point at the Nth percentile.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 percentile(1h, 99)
@@ -177,7 +177,7 @@ percentile($__range_series, 95)
 
 ### removeAboveValue
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 removeAboveValue(N)
@@ -185,7 +185,7 @@ removeAboveValue(N)
 
 Replaces data points with `null` if the value is greater than `N`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 removeAboveValue(100)
@@ -193,7 +193,7 @@ removeAboveValue(100)
 
 ### removeBelowValue
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 removeBelowValue(N)
@@ -201,7 +201,7 @@ removeBelowValue(N)
 
 Replaces data points with `null` if the value is less than `N`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 removeBelowValue(0)
@@ -209,7 +209,7 @@ removeBelowValue(0)
 
 ### transformNull
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 transformNull(N)
@@ -217,7 +217,7 @@ transformNull(N)
 
 Replaces `null` values with `N`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 transformNull(0)
@@ -229,7 +229,7 @@ Aggregate functions combine multiple time series into one.
 
 ### aggregateBy
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 aggregateBy(interval, function)
@@ -237,7 +237,7 @@ aggregateBy(interval, function)
 
 Combines all time series by consolidating points within each `interval` using the specified `function`. Supported functions: `avg`, `min`, `max`, `sum`, `count`, `median`, `first`, `last`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 aggregateBy(10m, avg)
@@ -246,7 +246,7 @@ aggregateBy(1h, median)
 
 ### sumSeries
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 sumSeries()
@@ -256,7 +256,7 @@ Adds all time series together, returning the sum at each data point. This functi
 
 ### percentileAgg
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 percentileAgg(interval, N)
@@ -264,7 +264,7 @@ percentileAgg(interval, N)
 
 Combines all time series by consolidating points within each `interval` at the Nth percentile.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 percentileAgg(1h, 99)
@@ -273,7 +273,7 @@ percentileAgg($__range_series, 95)
 
 ### average (deprecated)
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 average(interval)
@@ -285,7 +285,7 @@ average(interval)
 
 ### min (deprecated)
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 min(interval)
@@ -297,7 +297,7 @@ min(interval)
 
 ### max (deprecated)
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 max(interval)
@@ -313,7 +313,7 @@ Filter functions reduce the number of time series returned.
 
 ### top
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 top(N, value)
@@ -321,7 +321,7 @@ top(N, value)
 
 Returns the top N series sorted by `value`. Supported values: `avg`, `min`, `max`, `sum`, `count`, `median`, `first`, `last`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 top(10, avg)
@@ -330,7 +330,7 @@ top(5, max)
 
 ### bottom
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 bottom(N, value)
@@ -338,7 +338,7 @@ bottom(N, value)
 
 Returns the bottom N series sorted by `value`. Supported values: `avg`, `min`, `max`, `sum`, `count`, `median`, `first`, `last`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 bottom(5, avg)
@@ -346,7 +346,7 @@ bottom(5, avg)
 
 ### sortSeries
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 sortSeries(direction)
@@ -354,7 +354,7 @@ sortSeries(direction)
 
 Sorts multiple time series by name in the specified `direction`. Supported values: `asc`, `desc`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 sortSeries(asc)
@@ -367,7 +367,7 @@ Trend functions control how trend data is returned.
 
 ### trendValue
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 trendValue(valueType)
@@ -381,7 +381,7 @@ Time functions shift data along the time axis.
 
 ### timeShift
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 timeShift(interval)
@@ -389,7 +389,7 @@ timeShift(interval)
 
 Shifts the time series by the specified `interval`. Without a sign or with a minus sign, the data shifts backward in time. With a plus sign, it shifts forward.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 timeShift(24h)   -- shift back 24 hours
@@ -413,7 +413,7 @@ Expand table
 | `$__zbx_host_id`                  | ID of the host.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `$__zbx_item_tag_<name>`          | Value of the item tag with the given name. Tag names are sanitized to alphanumeric characters and underscores (for example, `App Name` becomes `$__zbx_item_tag_App_Name`, and `!!!` becomes `$__zbx_item_tag___`). Empty tag names are skipped. A tag that exists but has no value resolves to an empty string; a tag that is not present on the item is left unresolved (the literal token remains in the output). When multiple values exist for the same tag name, they are joined with `,`. Requires Zabbix 5.4 or later. |
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAlias($__zbx_host_name: $__zbx_item)       -- backend01: CPU user time
@@ -423,7 +423,7 @@ setAlias($__zbx_item_tag_service)              -- checkout (from item tag "servi
 
 ### setAlias
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAlias(alias)
@@ -431,7 +431,7 @@ setAlias(alias)
 
 Replaces the metric name with the given `alias`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAlias(load)
@@ -439,7 +439,7 @@ setAlias(load)
 
 ### setAliasByRegex
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAliasByRegex(regex)
@@ -447,7 +447,7 @@ setAliasByRegex(regex)
 
 Returns the part of the metric name that matches the `regex`.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 setAliasByRegex(Zabbix busy [a-zA-Z]+)
@@ -455,7 +455,7 @@ setAliasByRegex(Zabbix busy [a-zA-Z]+)
 
 ### replaceAlias
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 replaceAlias(pattern, newAlias)
@@ -475,7 +475,7 @@ Expand table
 
 For more details, refer to [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace).
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 -- Given: "CPU system time"
@@ -489,13 +489,13 @@ replaceAlias(/(.*): CPU (.*) time/, $1 - $2)         -- backend01 - system
 
 > Note
 >
-> Grafana dashboard transforms such as “Join by label” are applied to raw query data and override alias functions. If this causes issues, use [Rename by regex](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#rename-by-regex) or [Value mappings with regex](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/configure-value-mappings/#regex) instead.
+> Grafana dashboard transforms such as “Join by label” are applied to raw query data and override alias functions. If this causes issues, use [Rename by regex](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#rename-by-regex) or [Value mappings with regex](https://grafana.com/docs/grafana/latest/panels-visualizations/configure-value-mappings/#regex) instead.
 
 ## Special functions
 
 ### consolidateBy
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 consolidateBy(consolidationFunc)
@@ -503,9 +503,9 @@ consolidateBy(consolidationFunc)
 
 Changes the consolidation function used when the number of data points exceeds the graph width in pixels. By default, the plugin uses `avg`. Valid values: `sum`, `avg`, `min`, `max`, `count`.
 
-When using [Direct DB Connection](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection), this function directly controls the SQL aggregation function. Pair it with `groupBy` for accurate results:
+When using [Direct DB Connection](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/#configure-direct-db-connection), this function directly controls the SQL aggregation function. Pair it with `groupBy` for accurate results:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 consolidateBy(max) | groupBy(1h, max)

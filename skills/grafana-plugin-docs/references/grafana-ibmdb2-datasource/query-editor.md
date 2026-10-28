@@ -11,7 +11,7 @@ The IBM Db2 data source provides a SQL query editor that supports full SQL synta
 
 ## Before you begin
 
-Before using the query editor, ensure you have [configured the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
+Before using the query editor, ensure you have [configured the IBM Db2 data source](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
 
 ## Query editor interface
 
@@ -46,7 +46,7 @@ Use the Table format to display query results as rows and columns. This is the d
 
 ### Example: Count tables
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(*) FROM SYSCAT.TABLES FETCH FIRST 1 ROW ONLY
@@ -56,7 +56,7 @@ SELECT COUNT(*) FROM SYSCAT.TABLES FETCH FIRST 1 ROW ONLY
 
 This example queries the `EMPLOYEE` table from the Db2 SAMPLE database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT EMPNO, FIRSTNME, LASTNAME, JOB, SALARY
@@ -67,7 +67,7 @@ FETCH FIRST 10 ROWS ONLY
 
 ### Example: Count tables and views
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT 'TABLE' AS OBJECT_TYPE, COUNT(NAME) AS COUNT
@@ -84,7 +84,7 @@ ORDER BY 1
 
 The `SYSCAT.TABLES` catalog view exposes the `TABSCHEMA` and `TABNAME` columns:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -103,13 +103,13 @@ Use the Time series format to visualize data over time in graphs. When **Format 
 - A `TIMESTAMP` column aliased as `time`
 - One or more numeric columns for the values to plot. Each numeric column becomes a separate series.
 
-Order the results by the time column so points render in chronological order. The plugin runs your SQL as written and returns the raw result set. It doesn’t validate column names or types, so a query that doesn’t meet these requirements still runs but fails to render in the panel. For information about data type conversions, refer to [Troubleshoot IBM Db2 data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/).
+Order the results by the time column so points render in chronological order. The plugin runs your SQL as written and returns the raw result set. It doesn’t validate column names or types, so a query that doesn’t meet these requirements still runs but fails to render in the panel. For information about data type conversions, refer to [Troubleshoot IBM Db2 data source issues](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/troubleshooting/).
 
 ### Example: Time series from a table
 
 Plot a numeric column over time from your own table. The following examples use placeholder table names. Replace them with your own schema:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -124,7 +124,7 @@ ORDER BY reading_time
 
 Group rows into hourly buckets and count them. `DATE_TRUNC` requires IBM Db2 11.1 or later:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -140,7 +140,7 @@ ORDER BY time
 
 Use this query to test time series rendering without a table. It generates three points from `SYSIBM.SYSDUMMY1`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 WITH time_series AS (
@@ -165,12 +165,12 @@ ORDER BY time
 
 ## SQL macros
 
-The IBM Db2 data source doesn’t support Grafana SQL macros such as `$__timeFilter` or `$__timeGroup`. Write time filters and grouping with standard Db2 SQL. To make queries dynamic, use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/).
+The IBM Db2 data source doesn’t support Grafana SQL macros such as `$__timeFilter` or `$__timeGroup`. Write time filters and grouping with standard Db2 SQL. To make queries dynamic, use [template variables](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/template-variables/).
 
 ## Annotations
 
-You can use IBM Db2 queries to create annotations on your dashboards. For more information, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/annotations/).
+You can use IBM Db2 queries to create annotations on your dashboards. For more information, refer to [Annotations](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/annotations/).
 
 ## Alerting
 
-The IBM Db2 data source supports Grafana Alerting. For more information, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/alerting/).
+The IBM Db2 data source supports Grafana Alerting. For more information, refer to [Alerting](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/alerting/).

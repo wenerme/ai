@@ -11,8 +11,8 @@ The Splunk data source supports Grafana Alerting, which lets you define alert ru
 
 ## Before you begin
 
-- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/).
-- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- [Configure the Splunk data source](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure/).
+- Understand [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Create an alert rule
 
@@ -23,7 +23,7 @@ To create an alert rule based on a Splunk query:
 3. Select the Splunk data source.
 4. Enter a raw SPL query that returns numeric time-series data. For example:
 
-   spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```spl
    index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as cpu_usage
@@ -33,7 +33,7 @@ To create an alert rule based on a Splunk query:
 7. Configure a contact point and notification policy.
 8. Click **Save rule and exit**.
 
-For detailed instructions, refer to [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Query requirements
 
@@ -52,7 +52,7 @@ The following examples demonstrate common alerting use cases with the Splunk dat
 
 Alert when the error rate exceeds a threshold:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main log_level=ERROR | timechart span=5m count as error_count
@@ -64,7 +64,7 @@ Set the condition to trigger when `error_count` exceeds your threshold.
 
 Alert on high CPU usage:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=cpu | timechart span=1m avg(pctSystem) as system_cpu
@@ -76,7 +76,7 @@ Set the condition to trigger when `system_cpu` exceeds 90.
 
 Alert when disk space drops below a threshold:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=df | timechart span=5m avg(PercentUsedSpace) by mount | where mount="/data"
@@ -86,7 +86,7 @@ index=os sourcetype=df | timechart span=5m avg(PercentUsedSpace) by mount | wher
 
 Alert when Splunk search jobs fail:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=_internal sourcetype=scheduler status=failed | timechart span=5m count as failed_jobs
@@ -96,7 +96,7 @@ index=_internal sourcetype=scheduler status=failed | timechart span=5m count as 
 
 Create per-host alerts by splitting on a field:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype=cpu | timechart span=5m avg(pctSystem) as cpu_usage by host
@@ -145,4 +145,4 @@ Frequent evaluations with complex SPL queries can increase load on your Splunk i
 
 Grafana substitutes template variables before sending queries to the backend for alert evaluation. However, alert rules that depend on dashboard-scoped variables may not behave as expected because alerts evaluate outside the dashboard context. Use static values or Grafana Alerting-compatible variable substitution in alert queries.
 
-For more information on Grafana Alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For more information on Grafana Alerting, refer to [Alerting](https://grafana.com/docs/grafana/latest/alerting/).

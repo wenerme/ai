@@ -11,8 +11,8 @@ Template variables let you create dynamic, reusable dashboards by replacing hard
 
 ## Before you begin
 
-- [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the Splunk data source](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -26,7 +26,7 @@ Expand table
 
 ## Create a query variable
 
-To add a new Splunk query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select the Splunk data source as your data source.
+To add a new Splunk query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select the Splunk data source as your data source.
 
 The variable query editor provides the following fields:
 
@@ -41,7 +41,7 @@ Expand table
 
 Query with SPL to return a list of values. For example, use the `stats` command:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os sourcetype="iostat" | stats values(Device)
@@ -59,7 +59,7 @@ A key/value variable returns two columns named `_text` and `_value`. The `_text`
 
 This search returns a table with the columns `Name` (Docker container name) and `Id` (container id):
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_inspect | stats count latest(Name) as Name by Id | table Name, Id
@@ -67,7 +67,7 @@ source=docker_inspect | stats count latest(Name) as Name by Id | table Name, Id
 
 To use the container name as the visible value and the ID as its real value, modify the query:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_inspect | stats count latest(Name) as Name by Id | table Name, Id | rename Name as "_text", Id as "_value"
@@ -77,7 +77,7 @@ source=docker_inspect | stats count latest(Name) as Name by Id | table Name, Id 
 
 **List all indexes:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 | eventcount summarize=false index=* | dedup index | fields index
@@ -85,7 +85,7 @@ spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 **List all source types in an index:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main | stats count by sourcetype | fields sourcetype
@@ -93,7 +93,7 @@ index=main | stats count by sourcetype | fields sourcetype
 
 **List all hosts reporting to a specific index:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=os | stats count by host | fields host
@@ -101,7 +101,7 @@ index=os | stats count by host | fields host
 
 **List Kubernetes namespaces:**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=em_metrics | stats count by namespace | fields namespace
@@ -109,7 +109,7 @@ index=em_metrics | stats count by namespace | fields namespace
 
 **Create a cascading variable (source types filtered by a selected index):**
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=$index_variable | stats count by sourcetype | fields sourcetype
@@ -121,7 +121,7 @@ You can use multi-value variables in queries. The Splunk plugin interpolates var
 
 - Basic filter for `search` command
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_stats $container
@@ -131,7 +131,7 @@ source=docker_stats (foo OR bar)
 
 - Field-value filter
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_stats container_name=$container
@@ -141,7 +141,7 @@ source=docker_stats (container_name=foo OR container_name=bar)
 
 - Field-value filter with the `IN` operator
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_stats container_name IN ($container)
@@ -161,7 +161,7 @@ source=docker_stats container_name IN (foo, bar)
 
 If a variable is wrapped in quotes (either double or single), its values are also quoted:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 source=docker_stats container_name="$container"
@@ -175,6 +175,6 @@ source=docker_stats (container_name='foo' OR container_name='bar')
 
 ## Use variables in queries
 
-After creating a variable, you can use it in your Splunk queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+After creating a variable, you can use it in your Splunk queries using [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
-For more information on working with variables in Grafana, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information on working with variables in Grafana, refer to [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).

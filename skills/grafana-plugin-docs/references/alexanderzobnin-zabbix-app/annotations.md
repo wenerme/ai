@@ -11,8 +11,8 @@ Annotations overlay event markers on graph panels, letting you correlate Zabbix 
 
 ## Before you begin
 
-- [Configure the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
-- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the Zabbix data source](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/configure/).
+- Understand [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add an annotation query
 
@@ -97,5 +97,5 @@ Reduce noise by hiding problems that an operator has already acknowledged in Zab
 
 ## Next steps
 
-- [Build queries with the Zabbix query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
-- [Set up alerting rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
+- [Build queries with the Zabbix query editor](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Set up alerting rules](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)

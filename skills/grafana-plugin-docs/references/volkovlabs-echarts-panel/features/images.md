@@ -35,7 +35,7 @@ You can enhance all of the mentioned visual components with your images. You can
 
 You can copy the following code and run it in your instance of the Business Charts panel on your Grafana dashboard.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 return {
@@ -85,4 +85,4 @@ return {
 
 You should see the following visualization.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/image-types.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/image-types.png)

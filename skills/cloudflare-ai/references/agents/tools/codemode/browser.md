@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/codemode/browser/og.png?v=
 
 # Browser integration
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `@cloudflare/codemode/browser` when your browser owns the tools that the model must orchestrate. For example, these tools might read page state, access browser APIs, or update data held by your application.
 
@@ -354,7 +354,7 @@ The timeout cannot interrupt a tight synchronous loop such as `while (true) {}`.
 
 `createBrowserCodeTool()` excludes any tool whose `needsApproval` value is `true` or a function. Code Mode does not pause iframe execution to request approval for those tools.
 
-Keep approval-gated actions outside the Code Mode descriptor. Register them as standard tools and use the [`useAgentChat()` approval flow](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#tool-approval-human-in-the-loop) instead.
+Keep approval-gated actions outside the Code Mode descriptor. Register them as standard tools and use the [`useAgentChat()` approval flow](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#tool-approval-human-in-the-loop) instead.
 
 Was this helpful?
 
@@ -365,5 +365,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/browser/#page","headline":"Browser integration","description":"Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.","url":"https://developers.cloudflare.com/agents/tools/codemode/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/browser/og.png?v=19a85b03212792d4","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/browser/#page","headline":"Browser integration","description":"Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.","url":"https://developers.cloudflare.com/agents/tools/codemode/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/codemode/browser/og.png?v=19a85b03212792d4","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

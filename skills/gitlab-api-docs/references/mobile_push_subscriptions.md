@@ -44,6 +44,7 @@ Supported attributes:
 | `app_version`      | string | No       | The installed application version. |
 | `locale`           | string | No       | The device locale. |
 | `payload_mode`     | string | No       | `full` sends notification content in the push payload. `id_only` sends only record identifiers, for content-free payloads. New registrations default to `full`. |
+{.sortable}
 
 Example request:
 

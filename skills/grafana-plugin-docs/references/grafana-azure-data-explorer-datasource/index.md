@@ -11,7 +11,7 @@ The Azure Data Explorer data source allows you to query and visualize data from 
 
 > Note
 >
-> The Azure Data Explorer data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Azure Data Explorer data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -31,28 +31,28 @@ Expand table
 Before you use the Azure Data Explorer data source, verify that you meet the following requirements:
 
 - Grafana 11.6.11 or later.
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated self-managed Grafana Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 - An Azure Data Explorer cluster and database, and a Microsoft Entra identity with viewer access to that database.
 
 ## Get started
 
 The following documents help you get started with the Azure Data Explorer data source:
 
-- [Install and upgrade the Azure Data Explorer data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/) - Install, license, and upgrade the Enterprise plugin.
-- [Configure the Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/) - Set up the connection and authentication.
-- [Azure Data Explorer query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/query-editor/) - Build queries with the visual builder, KQL, or the OpenAI query generator.
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/template-variables/) - Create dynamic dashboards with Azure Data Explorer variables.
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/annotations/) - Overlay Azure Data Explorer events on your graphs.
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/alerting/) - Create alert rules from Azure Data Explorer queries.
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/) - Solve common connection, authentication, and query errors.
+- [Install and upgrade the Azure Data Explorer data source plugin](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/) - Install, license, and upgrade the Enterprise plugin.
+- [Configure the Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/) - Set up the connection and authentication.
+- [Azure Data Explorer query editor](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/query-editor/) - Build queries with the visual builder, KQL, or the OpenAI query generator.
+- [Template variables](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/template-variables/) - Create dynamic dashboards with Azure Data Explorer variables.
+- [Annotations](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/annotations/) - Overlay Azure Data Explorer events on your graphs.
+- [Alerting](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/alerting/) - Create alert rules from Azure Data Explorer queries.
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/) - Solve common connection, authentication, and query errors.
 
 ## Additional features
 
 After you configure the Azure Data Explorer data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules based on your Azure Data Explorer data.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/grafana/latest/alerting/) rules based on your Azure Data Explorer data.
 
 ## Plugin updates
 
@@ -60,7 +60,7 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the Azure Data Explorer plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the Azure Data Explorer plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 

@@ -11,7 +11,7 @@ Use the AppDynamics **Events** query type to overlay Controller events on time-s
 
 To mark health-rule policy activity, use Events with `POLICY_*` values in **event-types**. The **Health** query type returns a table of health rule violations. It isn’t an annotation query.
 
-For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Create an annotation
 
@@ -118,7 +118,7 @@ Mark error and slow transaction events on response time graphs:
 
 ## Use template variables in annotations
 
-You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) in annotation queries. The **application\_id** drop-down lists applications, not dashboard variables. Type `${application}` as a custom value rather than selecting a numeric application ID.
+You can use [template variables](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) in annotation queries. The **application\_id** drop-down lists applications, not dashboard variables. Type `${application}` as a custom value rather than selecting a numeric application ID.
 
 ## Annotation display options
 
@@ -130,6 +130,6 @@ Grafana annotation queries also include display settings:
 
 ## Additional resources
 
-- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
 - [AppDynamics Events API](https://docs.appdynamics.com/appd/24.x/latest/en/extend-splunk-appdynamics/splunk-appdynamics-apis/alert-and-respond-api/events-api)
-- [AppDynamics query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)
+- [AppDynamics query editor](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)

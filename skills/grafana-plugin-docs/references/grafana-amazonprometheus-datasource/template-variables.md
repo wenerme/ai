@@ -13,8 +13,8 @@ Use template variables to create dynamic, reusable dashboards that let you chang
 
 Before you create template variables, ensure you have:
 
-- [Configured the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
-- A basic understanding of [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configured the Amazon Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+- A basic understanding of [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -63,7 +63,7 @@ The following examples show how to use each function in a query variable.
 
 Return every label name in the workspace:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 label_names()
@@ -71,7 +71,7 @@ label_names()
 
 Return all values of the `job` label:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 label_values(job)
@@ -79,7 +79,7 @@ label_values(job)
 
 Return the `instance` values that exist on the `node_cpu_seconds_total` metric:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 label_values(node_cpu_seconds_total, instance)
@@ -87,7 +87,7 @@ label_values(node_cpu_seconds_total, instance)
 
 Return all metrics whose names contain `node`:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 metrics(node)
@@ -95,7 +95,7 @@ metrics(node)
 
 Use `query_result` to list the instances with high memory usage:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 query_result(topk(5, sum by (instance) (node_memory_MemTotal_bytes)))
@@ -105,7 +105,7 @@ query_result(topk(5, sum by (instance) (node_memory_MemTotal_bytes)))
 
 You can reference one variable in another variable’s query to create dependent, or cascading, variables. For example, if you have a `job` variable, create an `instance` variable whose values depend on the selected job:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 label_values(up{job="$job"}, instance)
@@ -117,7 +117,7 @@ When you change the `job` variable, Grafana refreshes the `instance` variable to
 
 Reference a variable in a query with the `$variable_name` or `${variable_name}` syntax. For example, if you have a variable named `instance`, filter a query by the selected instance:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(node_cpu_seconds_total{instance="$instance"}[$__rate_interval])
@@ -125,7 +125,7 @@ rate(node_cpu_seconds_total{instance="$instance"}[$__rate_interval])
 
 When a variable allows multiple values, use the regex match operator so the query matches any selected value:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])

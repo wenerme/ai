@@ -46,18 +46,18 @@ The GitHub data source is used to build dashboards and alerts for a variety of e
 - **Open source community health:** Monitor stargazer growth, contributor activity, and issue response times to gauge community engagement.
 - **Sprint and milestone tracking:** Combine milestone and issue queries to visualize progress toward project milestones and identify at-risk deliverables.
 
-Use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/template-variables/) to make these dashboards dynamic across repositories and organizations.
+Use [template variables](https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables/) to make these dashboards dynamic across repositories and organizations.
 
 ## Get started
 
 The following pages help you set up and use the GitHub data source:
 
-- [Configure the GitHub data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/)
-- [GitHub query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/troubleshooting/)
+- [Configure the GitHub data source](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/)
+- [GitHub query editor](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-github-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-github-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-github-datasource/latest/troubleshooting/)
 
 ## Pre-built dashboards
 
@@ -78,7 +78,7 @@ To import the dashboard from within Grafana:
 4. Click the **Dashboards** tab.
 5. Click **Import** next to **GitHub Default**.
 
-You can also import the [GitHub Default dashboard from grafana.com](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/dashboards/14000) (dashboard ID `14000`). For instructions, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+You can also import the [GitHub Default dashboard from grafana.com](https://grafana.com/grafana/dashboards/14000) (dashboard ID `14000`). For instructions, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Caching
 

@@ -31,7 +31,7 @@ Expand table
 
 **XML data**:
 
-xml [Copy code to clipboard] Copy
+xml ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```xml
 <users>

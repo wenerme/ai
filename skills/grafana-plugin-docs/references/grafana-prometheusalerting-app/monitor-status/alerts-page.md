@@ -59,4 +59,4 @@ If the alert is suppressed, the drawer names the cause: which silence silenced i
 
 If no alerts are listed, the plugin says none were found in the Alertmanager. That’s expected when nothing is wrong, but it’s also what a misconfiguration looks like.
 
-To tell them apart, check the **Rules** page. Rules firing there but no alerts here means the ruler is sending to a different Alertmanager than the one selected. Refer to [Troubleshooting](/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/).
+To tell them apart, check the **Rules** page. Rules firing there but no alerts here means the ruler is sending to a different Alertmanager than the one selected. Refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/).

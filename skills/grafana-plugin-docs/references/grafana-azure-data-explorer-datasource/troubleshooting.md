@@ -7,17 +7,17 @@ description: "Troubleshooting guide for the Azure Data Explorer data source in G
 
 # Troubleshoot Azure Data Explorer data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the Azure Data Explorer data source. For configuration instructions, refer to [Configure the Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the Azure Data Explorer data source. For configuration instructions, refer to [Configure the Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
 
 ## First troubleshooting steps
 
 If the data source doesn’t work and you’re not sure where to start, or the error message isn’t specific, work through this checklist before deeper troubleshooting:
 
-1. Confirm you’re on the latest plugin version and it’s compatible with your Grafana version. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+1. Confirm you’re on the latest plugin version and it’s compatible with your Grafana version. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 2. Verify the **Default cluster URL** is correct and reachable from the Grafana server.
-3. Confirm the selected authentication method is fully configured, and that the identity has viewer access to the database. Refer to [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-errors).
+3. Confirm the selected authentication method is fully configured, and that the identity has viewer access to the database. Refer to [Authentication errors](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-errors).
 4. Click **Save &amp; test** and note the exact message. Use it to find the matching section in this guide.
-5. Review the Grafana server logs and the browser developer console for plugin errors. Refer to [Enable debug logging](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#enable-debug-logging).
+5. Review the Grafana server logs and the browser developer console for plugin errors. Refer to [Enable debug logging](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#enable-debug-logging).
 6. Confirm the problem isn’t on the Azure side, such as a paused cluster, changed permissions, or a networking change.
 
 ## Version and upgrade guidance
@@ -41,7 +41,7 @@ Expand table
 | 12.1                | 12.1.7                 |
 | 12.2 and later      | 12.2.5                 |
 
-Grafana versions earlier than 11.6.11 aren’t supported. Compatibility requirements can change between plugin releases. To confirm the requirement for a specific plugin version, check the **Dependencies** section on the [plugin catalog page](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-azure-data-explorer-datasource/), or the `grafanaDependency` field in that version’s `plugin.json`.
+Grafana versions earlier than 11.6.11 aren’t supported. Compatibility requirements can change between plugin releases. To confirm the requirement for a specific plugin version, check the **Dependencies** section on the [plugin catalog page](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/), or the `grafanaDependency` field in that version’s `plugin.json`.
 
 ### Check and update the plugin version
 
@@ -66,10 +66,10 @@ Grafana versions earlier than 11.6.11 aren’t supported. Compatibility requirem
 
 **Solutions:**
 
-1. Check for a version mismatch. Confirm your Grafana version meets the minimum patch in [Supported Grafana versions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#supported-grafana-versions).
+1. Check for a version mismatch. Confirm your Grafana version meets the minimum patch in [Supported Grafana versions](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#supported-grafana-versions).
 2. Clear your browser cache and reload. Stale frontend assets left over from an upgrade can cause loading failures and freezes.
 3. Review the Grafana server logs for plugin load errors, and the browser developer console for frontend errors.
-4. If the problem started immediately after a plugin update, roll back to the last version that worked, then upgrade again once a fixed release is available. For install and rollback commands, refer to [Upgrade the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/#upgrade-the-plugin).
+4. If the problem started immediately after a plugin update, roll back to the last version that worked, then upgrade again once a fixed release is available. For install and rollback commands, refer to [Upgrade the plugin](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/#upgrade-the-plugin).
 
 > Note
 >
@@ -121,7 +121,7 @@ Expand table
 
 1. Confirm `managed_identity_enabled` is still set in the `[azure]` section of your Grafana configuration.
 2. Verify the managed identity still has viewer access to the database.
-3. If the failure began right after an upgrade, treat it as a version regression. Refer to [Authentication regressions after a Grafana upgrade](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-regressions-after-a-grafana-upgrade).
+3. If the failure began right after an upgrade, treat it as a version regression. Refer to [Authentication regressions after a Grafana upgrade](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-regressions-after-a-grafana-upgrade).
 
 ### On-Behalf-Of authorization failures
 
@@ -139,7 +139,7 @@ Expand table
 
 > Note
 >
-> The On-Behalf-Of Beta notice shown in the data source configuration is an advisory message, not an error. It doesn’t indicate a failed connection. On-Behalf-Of authentication can break on specific plugin and Grafana version combinations, so confirm you’re on compatible versions. Refer to [Authentication regressions after a Grafana upgrade](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-regressions-after-a-grafana-upgrade).
+> The On-Behalf-Of Beta notice shown in the data source configuration is an advisory message, not an error. It doesn’t indicate a failed connection. On-Behalf-Of authentication can break on specific plugin and Grafana version combinations, so confirm you’re on compatible versions. Refer to [Authentication regressions after a Grafana upgrade](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/troubleshooting/#authentication-regressions-after-a-grafana-upgrade).
 
 > Note
 >
@@ -160,8 +160,8 @@ These errors occur when Grafana can’t reach the Azure Data Explorer cluster.
 
 1. Verify network connectivity from the Grafana server to the cluster URL.
 2. Check that firewall rules allow outbound HTTPS on port 443.
-3. If you enforce trusted endpoints, verify the cluster URL matches an allowed endpoint. Refer to [Enforce trusted endpoints](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#enforce-trusted-endpoints).
-4. For private networks in Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+3. If you enforce trusted endpoints, verify the cluster URL matches an allowed endpoint. Refer to [Enforce trusted endpoints](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#enforce-trusted-endpoints).
+4. For private networks in Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Connected to the cluster but can’t list clusters
 
@@ -172,7 +172,7 @@ These errors occur when Grafana can’t reach the Azure Data Explorer cluster.
 
 **Solutions:**
 
-The data source connected to your cluster, but it couldn’t query Azure Resource Graph to enumerate clusters. Azure Resource Graph requires the identity to have Reader access at the subscription level. Grant the identity the `Reader` role, or enter the cluster URL manually in the query header. For role assignment steps, refer to [Configure the Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#app-registration).
+The data source connected to your cluster, but it couldn’t query Azure Resource Graph to enumerate clusters. Azure Resource Graph requires the identity to have Reader access at the subscription level. Grant the identity the `Reader` role, or enter the cluster URL manually in the query header. For role assignment steps, refer to [Configure the Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#app-registration).
 
 ### Private Data Source Connect issues
 
@@ -190,7 +190,7 @@ Private Data Source Connect (PDC) is a Grafana Cloud feature that connects to cl
 3. Confirm the data source is assigned to the correct PDC connection in its settings.
 4. To isolate whether an issue is specific to PDC, temporarily test with a direct connection if your network allows it.
 
-For setup details, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#private-data-source-connect).
+For setup details, refer to [Private data source connect](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#private-data-source-connect).
 
 ### Intermittent connection failures
 
@@ -250,7 +250,7 @@ Expand table
 
 **Solutions:**
 
-1. Enable [fallback service credentials](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#fallback-service-credentials).
+1. Enable [fallback service credentials](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#fallback-service-credentials).
 2. Enable the `idForwarding` feature toggle so Grafana can distinguish background requests from user requests.
 3. Confirm the fallback identity has viewer access to the database.
 
@@ -293,7 +293,7 @@ These errors occur when you provision the data source with Terraform, YAML files
 
 **Solutions:**
 
-Manage each data source with a single provisioning method. If you provision the same data source with both YAML files and Terraform, the two methods can overwrite each other. Refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#provision-the-data-source).
+Manage each data source with a single provisioning method. If you provision the same data source with both YAML files and Terraform, the two methods can overwrite each other. Refer to [Provision the data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/#provision-the-data-source).
 
 ## Enable debug logging
 
@@ -301,7 +301,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

@@ -45,6 +45,7 @@ following response attributes:
 | `title`             | string  | Title of the snippet. |
 | `updated_at`        | string  | Date and time when the snippet was last updated in ISO 8601 format. |
 | `web_url`           | string  | URL to view the snippet in the GitLab web interface. |
+{.sortable}
 
 Example request:
 
@@ -145,6 +146,7 @@ following response attributes:
 | `title`             | string  | Title of the snippet. |
 | `updated_at`        | string  | Date and time when the snippet was last updated in ISO 8601 format. |
 | `web_url`           | string  | URL to view the snippet in the GitLab web interface. |
+{.sortable}
 
 Example request:
 
@@ -207,6 +209,7 @@ Supported attributes:
 | `description`     | string            | No       | Description of a snippet. |
 | `file_name`       | string            | No       | Deprecated: Use `files` instead. Name of a snippet file. |
 | `visibility`      | string            | No       | Visibility level for the snippet. Possible values: `public`, `private`, and `internal`. On GitLab.com, the `internal` value is not available. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -232,6 +235,7 @@ following response attributes:
 | `title`             | string  | Title of the snippet. |
 | `updated_at`        | string  | Date and time when the snippet was last updated in ISO 8601 format. |
 | `web_url`           | string  | URL to view the snippet in the GitLab web interface. |
+{.sortable}
 
 Example request:
 
@@ -297,6 +301,7 @@ Supported attributes:
 | `files:previous_path` | string            | No            | Previous path of the snippet file. |
 | `title`               | string            | No            | Title of a snippet. |
 | `visibility`      | string            | No       | Visibility level for the snippet. Possible values: `public`, `private`, and `internal`. On GitLab.com, the `internal` value is not available. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -322,6 +327,7 @@ following response attributes:
 | `title`             | string  | Title of the snippet. |
 | `updated_at`        | string  | Date and time when the snippet was last updated in ISO 8601 format. |
 | `web_url`           | string  | URL to view the snippet in the GitLab web interface. |
+{.sortable}
 
 Example request:
 

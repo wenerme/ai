@@ -9,11 +9,11 @@ description: "Learn how to get started with Profiles Drilldown"
 
 Profiles can help you identify errors in your apps and services. Using this information, you can optimize and streamline your apps.
 
-Your investigation begins with the big picture and then drills down using profile types, labels, and flame graphs to explore your data. To learn more, refer to [Concepts](../concepts/).
+Your investigation begins with the big picture and then drills down using profile types, labels, and flame graphs to explore your data. To learn more, refer to [Concepts](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/).
 
 > Note
 >
-> Expand your observability journey and learn about [Traces Drilldown](/docs/grafana-cloud/visualizations/simplified-exploration/traces/).
+> Expand your observability journey and learn about [Traces Drilldown](https://grafana.com/docs/grafana-cloud/visualizations/simplified-exploration/traces/).
 
 ## Before you begin
 
@@ -33,9 +33,9 @@ To use Profiles Drilldown with Grafana open source, you need:
 
 Most investigations follow four general steps:
 
-1. [Determine your use case](../determine-use-case/).
-2. [Choose a view](../choose-a-view/).
-3. [Investigate trends and spikes](../investigate/).
+1. [Determine your use case](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/determine-use-case/).
+2. [Choose a view](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view/).
+3. [Investigate trends and spikes](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/).
 4. Identify issues as a result of your investigation.
 
 Give it a try using Grafana Play

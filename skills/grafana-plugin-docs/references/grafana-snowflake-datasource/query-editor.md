@@ -11,7 +11,7 @@ This document explains how to use the Snowflake query editor in Grafana.
 
 ## Before you begin
 
-- Ensure you have [configured the Snowflake data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/configure/).
+- Ensure you have [configured the Snowflake data source](https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/configure/).
 - Verify your Snowflake user has appropriate permissions to query the tables you need.
 
 ## Access the query editor
@@ -25,7 +25,7 @@ The query editor opens, where you can write SQL queries against your Snowflake d
 
 > Tip
 >
-> You can also use [Grafana Assistant](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/ai/assistant/) to build and run Snowflake SQL queries from natural language. Mention your Snowflake data source with the `@` symbol in your prompt to get started.
+> You can also use [Grafana Assistant](https://grafana.com/docs/grafana/latest/ai/assistant/) to build and run Snowflake SQL queries from natural language. Mention your Snowflake data source with the `@` symbol in your prompt to get started.
 
 You can also access the query editor when building a dashboard:
 
@@ -40,13 +40,13 @@ The Snowflake query editor uses standard SQL syntax. Enter your SQL query in the
 
 For basic queries, use standard SQL:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT column1, column2 FROM your_table LIMIT 100;
 ```
 
-For time-based visualizations, use Grafana macros such as `$__timeFilter` and `$__timeGroup` to make your queries respond to the dashboard time range. Refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/query-editor/#macros) for the full reference.
+For time-based visualizations, use Grafana macros such as `$__timeFilter` and `$__timeGroup` to make your queries respond to the dashboard time range. Refer to [Macros](https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/query-editor/#macros) for the full reference.
 
 > Tip
 >
@@ -70,7 +70,7 @@ Most queries in Snowflake are best represented by a table visualization. Any que
 
 This example returns results for a table visualization:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT query_type, warehouse_name, total_elapsed_time
@@ -90,7 +90,7 @@ To create a useful graph, use the `$__timeFilter` and `$__timeGroup` macros.
 
 **Example time series query:**
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -113,7 +113,7 @@ The `snowflake.account_usage` examples require the `ACCOUNTADMIN` role, or a rol
 
 When your time column stores a timezone (`TIMESTAMP_TZ` or `TIMESTAMP_LTZ`), use `$__timeTzFilter` instead of `$__timeFilter`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -131,9 +131,9 @@ ORDER BY
 
 ### Filter with a template variable
 
-Use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) to make queries respond to dashboard drop-downs. This example filters by a `warehouse` variable:
+Use [template variables](https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) to make queries respond to dashboard drop-downs. This example filters by a `warehouse` variable:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -191,13 +191,13 @@ When querying with **Logs** format, your query should have:
 - At least one string/content column
 - Optionally, a third column called **level** to set the log level
 
-Supported log levels and their keywords can be found in the [Grafana logs integration documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/logs-integration/).
+Supported log levels and their keywords can be found in the [Grafana logs integration documentation](https://grafana.com/docs/grafana/latest/explore/logs-integration/).
 
 If the query returns additional columns, they’re treated as additional detected fields in the logs.
 
 ### Log query example
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -233,4 +233,4 @@ SELECT
 
 ## Next steps
 
-- Learn how to use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) in your queries.
+- Learn how to use [Template variables](https://grafana.com/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) in your queries.

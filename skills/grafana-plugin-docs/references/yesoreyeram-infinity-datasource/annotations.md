@@ -11,7 +11,7 @@ Annotations allow you to mark points on a graph with events from external data s
 
 ## Before you begin
 
-- You must have a configured Infinity data source. Refer to [Configure the Infinity data source](/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/) for instructions.
+- You must have a configured Infinity data source. Refer to [Configure the Infinity data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/) for instructions.
 - You need Editor or Admin permissions in Grafana to create annotations.
 
 ## Create an annotation query
@@ -61,13 +61,13 @@ Use time macros to filter your API data to the dashboard’s time range. This im
 
 Include `${__timeFrom}` and `${__timeTo}` in your URL or query parameters:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 https://api.example.com/events?start=${__timeFrom}&end=${__timeTo}
 ```
 
-For more information about time macros and formatting options, refer to [Macros](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/).
+For more information about time macros and formatting options, refer to [Macros](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/).
 
 ## Annotation query examples
 
@@ -113,7 +113,7 @@ Create static annotations using inline data:
 
 **Data**:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [

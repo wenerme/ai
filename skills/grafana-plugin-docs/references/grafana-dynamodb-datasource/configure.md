@@ -11,14 +11,14 @@ This document explains how to configure the DynamoDB data source in Grafana. Dyn
 
 > Note
 >
-> The DynamoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The DynamoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Before you begin
 
 Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
-- **A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan** or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+- **A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan** or an [activated on-prem Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 - **AWS credentials:** An IAM user with an access key and secret key, a shared credentials file configured on the Grafana server, an EC2 instance role, or an IAM role to assume.
 - **DynamoDB permissions:** The IAM identity must have `dynamodb:PartiQLSelect` permission on the tables you want to query. For write operations, additional PartiQL permissions may be needed.
 
@@ -67,9 +67,9 @@ The DynamoDB data source supports the standard AWS authentication methods provid
 
 > Note
 >
-> Some authentication methods, and the ability to assume a role, may be restricted by your Grafana administrator through the `allowed_auth_providers` and `assume_role_enabled` settings in `grafana.ini`. If a method you expect to see is missing or returns an error, ask your Grafana administrator to check these settings. Refer to [Troubleshooting authentication method not allowed](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
+> Some authentication methods, and the ability to assume a role, may be restricted by your Grafana administrator through the `allowed_auth_providers` and `assume_role_enabled` settings in `grafana.ini`. If a method you expect to see is missing or returns an error, ask your Grafana administrator to check these settings. Refer to [Troubleshooting authentication method not allowed](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
 
-For more information about authentication options and configuration, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+For more information about authentication options and configuration, refer to [AWS authentication](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### Access keys
 
@@ -153,17 +153,17 @@ To configure an assumed role:
 
 > Note
 >
-> To assume a role, your Grafana administrator must set `assume_role_enabled` to true in the \[aws] section of `grafana.ini`. If assume role is disabled, Save &amp; test fails. Refer to [Authentication method not allowed](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
+> To assume a role, your Grafana administrator must set `assume_role_enabled` to true in the \[aws] section of `grafana.ini`. If assume role is disabled, Save &amp; test fails. Refer to [Authentication method not allowed](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
 
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. A **Data source is working** message confirms that Grafana can connect to your DynamoDB instance.
 
-If the test fails, refer to [Troubleshoot DynamoDB data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/) for common errors and solutions.
+If the test fails, refer to [Troubleshoot DynamoDB data source issues](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/) for common errors and solutions.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Advanced settings
 
@@ -181,7 +181,7 @@ Include these in `jsonData` to override the defaults.
 
 ### Access key provisioning
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -200,7 +200,7 @@ datasources:
 
 To include a session token for temporary credentials, add `sessionToken` to `secureJsonData`:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -220,7 +220,7 @@ datasources:
 
 ### Credentials file provisioning
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -239,7 +239,7 @@ datasources:
 
 Add `assumeRoleARN` (and optionally `externalId`) to `jsonData` on top of any base authentication method. For example, with access keys:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -262,7 +262,7 @@ datasources:
 
 You can provision the DynamoDB data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "dynamodb" {
@@ -284,7 +284,7 @@ resource "grafana_data_source" "dynamodb" {
 
 For credentials file authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "dynamodb" {

@@ -7,12 +7,12 @@ description: "Learn how to create data for the Business Charts panel using manua
 
 # Business Charts
 
-You can use the Business Input data source to test the [Business Charts panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/). The following examples show how to create values:
+You can use the Business Input data source to test the [Business Charts panel](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/). The following examples show how to create values:
 
 - Manually
 - By using the **JavaScript Values Editor**
 
-Both examples use the Business Charts [Visual Editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/visualeditor/) to read the data frame values and pass them to the Business Charts.
+Both examples use the Business Charts [Visual Editor](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/visualeditor/) to read the data frame values and pass them to the Business Charts.
 
 > Note
 >
@@ -22,17 +22,17 @@ Both examples use the Business Charts [Visual Editor](http://grafana-com-website
 
 You can use the Business Input data source to add files and values manually.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/bi-charts-pie-manual-editor.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/bi-charts-pie-manual-editor.png)
 
 ## JavaScript Values Editor
 
 You can use the JavaScript **Values Editor** to generate data frame values.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/bi-charts-pie-code-editor.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/bi-charts-pie-code-editor.png)
 
 The following JavaScript code creates values for the Business Input data source:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const values = [
@@ -53,7 +53,7 @@ return Promise.resolve(result);
 
 The Business Charts function.
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 return {

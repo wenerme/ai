@@ -9,7 +9,7 @@ description: "This document describes how to use Grafana alerting with the Datad
 
 The Datadog data source supports Grafana-managed alert rules. You can create alert rules from Datadog queries and have Grafana evaluate them on a schedule, independently of Datadog monitors.
 
-For an introduction to Grafana alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For an introduction to Grafana alerting, refer to [Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Supported query types
 
@@ -59,7 +59,7 @@ To create an alert rule from a Datadog query, complete the following steps:
 8. Set the evaluation behavior, including the evaluation group and pending period.
 9. Add labels and notifications, then click **Save rule and exit**.
 
-For detailed instructions, refer to [Configure Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Configure Grafana-managed alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example alerts
 
@@ -96,8 +96,8 @@ Use this pattern to alert when the number of matching logs crosses a threshold. 
 
 Grafana alerting handles notifications through contact points and notification policies, independently of the Datadog data source. Datadog-based alerts route to the same destinations as any other Grafana alert.
 
-- To configure where alerts are sent, refer to [Configure contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) and [Configure notification policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/create-notification-policy/).
-- To route alerts to on-call responders and integrate with tools such as ServiceNow, refer to [Grafana IRM](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/irm/). You can also send notifications to ServiceNow through a [webhook contact point](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/webhook-notifier/).
+- To configure where alerts are sent, refer to [Configure contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) and [Configure notification policies](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/create-notification-policy/).
+- To route alerts to on-call responders and integrate with tools such as ServiceNow, refer to [Grafana IRM](https://grafana.com/docs/grafana-cloud/alerting-and-irm/irm/). You can also send notifications to ServiceNow through a [webhook contact point](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/integrations/webhook-notifier/).
 
 ## Rate limits and alert evaluations
 
@@ -106,7 +106,7 @@ Each alert rule evaluation sends one or more requests to the Datadog API. Freque
 To reduce the risk of hitting rate limits during alert evaluations:
 
 - Increase the evaluation interval for alert rules that don’t require frequent checks.
-- Enable the **API rate limit threshold** in the data source configuration to block requests before reaching the hard limit. For more information, refer to [Configure the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/).
+- Enable the **API rate limit threshold** in the data source configuration to block requests before reaching the hard limit. For more information, refer to [Configure the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/).
 - Reduce the number of rules that query the same metrics.
 
-If alert evaluations fail with a `429 Too Many Requests` error, you’re hitting Datadog API rate limits. For more information, refer to [Troubleshoot the Datadog data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/).
+If alert evaluations fail with a `429 Too Many Requests` error, you’re hitting Datadog API rate limits. For more information, refer to [Troubleshoot the Datadog data source](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/).

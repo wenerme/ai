@@ -5,15 +5,15 @@ description: "This document explains the process of setting up variables using J
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-[Documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [Plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [JSON API data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/)![breadcrumb arrow](http://grafana-com-website.grafana-com.svc.cluster.local.:80/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) Variables
+[Documentation](https://grafana.com/docs/)![breadcrumb arrow](https://grafana.com/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [Plugins](https://grafana.com/docs/plugins/)![breadcrumb arrow](https://grafana.com/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) [JSON API data source](https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/)![breadcrumb arrow](https://grafana.com/static/assets/img/icons/grafana-icon-breadcrumb-arrow-gray.svg) Variables
 
 Open source Grafana Cloud
 
-[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/) let you extract data from a data source and use it to annotate a dashboard.
+[Annotations](https://grafana.com/docs/grafana/latest/dashboards/annotations/) let you extract data from a data source and use it to annotate a dashboard.
 
 > **Info:** Annotations support was added in **v1.0.1**. If you can’t select the JSON API data source from the list of data sources, try updating to a more recent version.
 
-To use the JSON API data source for annotations, follow the instructions on [Querying other data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/annotations/#querying-other-data-sources). Make sure to select the JSON API from the list of data sources.
+To use the JSON API data source for annotations, follow the instructions on [Querying other data sources](https://grafana.com/docs/grafana/latest/dashboards/annotations/#querying-other-data-sources). Make sure to select the JSON API from the list of data sources.
 
 Configure a query with *at least* two fields:
 
@@ -22,4 +22,4 @@ Configure a query with *at least* two fields:
 
 If you want to add titles or tags to the annotations, you can add additional **Fields** with the appropriate types.
 
-For more information on how to configure a query, refer to [Query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-json-datasource/latest/annotations/query-editor.md).
+For more information on how to configure a query, refer to [Query editor](https://grafana.com/docs/plugins/marcusolsson-json-datasource/latest/annotations/query-editor.md).

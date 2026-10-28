@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/stream/pricing/og.png?v=a9edeaebfd18bcc
 
 # Pricing
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live WebRTC is now GA:
 
@@ -67,7 +67,7 @@ Delivery is a post-paid, usage-based pricing dimension billed at $1 per 1,000 mi
 Delivery is counted for the following uses:
 
 - Playback using [Stream's built-in player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) or the [HLS or DASH manifests](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)
-- [WebRTC (WHEP)](https://developers.cloudflare.com/stream/webrtc-beta/) playback
+- [WebRTC (WHEP)](https://developers.cloudflare.com/stream/webrtc/) playback
 - MP4 Downloads
 - Simulcasting via SRT or RTMP live outputs
 
@@ -133,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/pricing/og.png?v=a9edeaebfd18bcc5","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/pricing/og.png?v=a9edeaebfd18bcc5","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
