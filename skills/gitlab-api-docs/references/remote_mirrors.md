@@ -47,6 +47,7 @@ following response attributes:
 | `only_protected_branches`   | boolean | If `true`, only protected branches are mirrored. |
 | `update_status`             | string  | Status of the mirror update. Possible values: `none`, `scheduled`, `started`, `finished`, `failed`. |
 | `url`                       | string  | Mirror URL with credentials scrubbed for security. |
+{.sortable}
 
 Example request:
 
@@ -114,6 +115,7 @@ following response attributes:
 | `only_protected_branches`   | boolean | If `true`, only protected branches are mirrored. |
 | `update_status`             | string  | Status of the mirror update. Possible values: `none`, `scheduled`, `started`, `finished`, `failed`. |
 | `url`                       | string  | Mirror URL with credentials scrubbed for security. |
+{.sortable}
 
 Example request:
 
@@ -216,6 +218,7 @@ Supported attributes:
 | `keep_divergent_refs`     | boolean           | No       | If `true`, divergent refs are kept when mirroring. |
 | `mirror_branch_regex`     | string            | No       | Regular expression for branch names to mirror. Only branches with names matching the regex are mirrored. Requires `only_protected_branches` to be disabled. Premium and Ultimate only. |
 | `only_protected_branches` | boolean           | No       | If `true`, only protected branches are mirrored. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -234,6 +237,7 @@ following response attributes:
 | `only_protected_branches`   | boolean | If `true`, only protected branches are mirrored. |
 | `update_status`             | string  | Status of the mirror update. Possible values: `none`, `scheduled`, `started`, `finished`, `failed`. |
 | `url`                       | string  | Mirror URL with credentials scrubbed for security. |
+{.sortable}
 
 Example request:
 
@@ -289,6 +293,7 @@ Supported attributes:
 | `keep_divergent_refs`     | boolean           | No       | If `true`, divergent refs are kept when mirroring. |
 | `mirror_branch_regex`     | string            | No       | Regular expression for branch names to mirror. Only branches with names matching the regex are mirrored. Does not work with `only_protected_branches` enabled. Premium and Ultimate only. |
 | `only_protected_branches` | boolean           | No       | If `true`, only protected branches are mirrored. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -307,6 +312,7 @@ following response attributes:
 | `only_protected_branches`   | boolean | If `true`, only protected branches are mirrored. |
 | `update_status`             | string  | Status of the mirror update. Possible values: `none`, `scheduled`, `started`, `finished`, `failed`. |
 | `url`                       | string  | Mirror URL with credentials scrubbed for security. |
+{.sortable}
 
 Example request:
 

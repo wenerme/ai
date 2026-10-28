@@ -185,14 +185,14 @@ Your starting point depends on what you already know:
 
 ## Related concepts
 
-- [RED metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#rate-error-and-duration-metrics) - Understanding Rate, Errors, and Duration metrics
-- [Traces and spans](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/#traces-and-spans) - How traces and spans work in distributed systems
+- [RED metrics](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/#rate-error-and-duration-metrics) - Understanding Rate, Errors, and Duration metrics
+- [Traces and spans](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/#traces-and-spans) - How traces and spans work in distributed systems
 
 ## Related tasks
 
 After you’ve determined your use case:
 
-- [Choose a RED metric](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric/) to match your investigation goal.
-- [Choose root or full span data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) based on the depth you need.
-- [Analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) using the appropriate tabs for your metric type.
-- [Add filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters/) to refine your investigation as you discover patterns.
+- [Choose a RED metric](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric/) to match your investigation goal.
+- [Choose root or full span data](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data/) based on the depth you need.
+- [Analyze tracing data](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) using the appropriate tabs for your metric type.
+- [Add filters](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters/) to refine your investigation as you discover patterns.

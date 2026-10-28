@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Sumo Logic data source in Grafana."
 
 # Troubleshoot Sumo Logic data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Sumo Logic data source. For configuration instructions, refer to [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Sumo Logic data source. For configuration instructions, refer to [Configure the Sumo Logic data source](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -63,11 +63,11 @@ Expand table
 
 Expand table
 
-| Cause                    | Solution                                                                                                                                                                                                                                        |
-|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Invalid credentials      | Verify the access ID and access key are correct and active in the Sumo Logic console.                                                                                                                                                           |
-| Wrong API region         | Verify the **API region / URL** matches your Sumo Logic deployment. Refer to [Configure settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/#configure-settings). |
-| Insufficient permissions | Ensure the access key has permissions to query metrics and logs in your Sumo Logic account.                                                                                                                                                     |
+| Cause                    | Solution                                                                                                                                                                                               |
+|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Invalid credentials      | Verify the access ID and access key are correct and active in the Sumo Logic console.                                                                                                                  |
+| Wrong API region         | Verify the **API region / URL** matches your Sumo Logic deployment. Refer to [Configure settings](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/#configure-settings). |
+| Insufficient permissions | Ensure the access key has permissions to query metrics and logs in your Sumo Logic account.                                                                                                            |
 
 ## Connection errors
 
@@ -86,7 +86,7 @@ These errors occur when Grafana can’t reach the Sumo Logic API.
 2. Check that firewall rules allow outbound HTTPS (port 443) to the Sumo Logic API.
 3. Verify the **API region / URL** is correct for your Sumo Logic deployment.
 4. Increase the **Timeout** value in the data source configuration if your queries require more time.
-5. For Grafana Cloud accessing private resources, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+5. For Grafana Cloud accessing private resources, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### HTTP status errors (400, 403, 500)
 
@@ -98,11 +98,11 @@ These errors occur when Grafana can’t reach the Sumo Logic API.
 
 Expand table
 
-| Cause                       | Solution                                                                                                                                                                                         |
-|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `400 Bad Request`           | Review the query syntax. Refer to the [query editor documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/query-editor/). |
-| `403 Forbidden`             | Verify the access key has the required permissions in Sumo Logic.                                                                                                                                |
-| `500 Internal Server Error` | This is a Sumo Logic server error. Retry the query or check the [Sumo Logic status page](https://status.sumologic.com/).                                                                         |
+| Cause                       | Solution                                                                                                                                                |
+|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `400 Bad Request`           | Review the query syntax. Refer to the [query editor documentation](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/query-editor/). |
+| `403 Forbidden`             | Verify the access key has the required permissions in Sumo Logic.                                                                                       |
+| `500 Internal Server Error` | This is a Sumo Logic server error. Retry the query or check the [Sumo Logic status page](https://status.sumologic.com/).                                |
 
 ### “invalid API URL”
 
@@ -131,7 +131,7 @@ These errors occur when the data source configuration is invalid or can’t be l
 
 1. If provisioning, verify the YAML or Terraform configuration has valid JSON structure in the `jsonData` section.
 2. Check for syntax errors such as missing commas, unclosed brackets, or invalid field names.
-3. Refer to the [provisioning examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/#provision-the-data-source) for the correct configuration format.
+3. Refer to the [provisioning examples](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/#provision-the-data-source) for the correct configuration format.
 
 ## Query errors
 
@@ -339,7 +339,7 @@ These errors indicate internal plugin issues.
 1. This is an internal plugin error. Retry the query.
 2. If the error persists, simplify the query to identify what triggers the issue.
 3. Check the Grafana server logs for the full stack trace, which provides more detail for bug reports.
-4. Report the issue to [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) with the stack trace and query details.
+4. Report the issue to [Grafana Support](https://grafana.com/profile/org#support) with the stack trace and query details.
 
 ## Enable debug logging
 
@@ -347,7 +347,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -363,7 +363,7 @@ If you’ve tried these solutions and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review the [Sumo Logic documentation](https://help.sumologic.com/) for service-specific guidance.
-3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user.
+3. Contact [Grafana Support](https://grafana.com/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user.
 4. When reporting issues, include:
 
    - Grafana version and plugin version

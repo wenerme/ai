@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/speed/troubleshooting/slow-website/og.p
 
 # Troubleshooting a slow website
 
-Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/troubleshooting/slow-website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/troubleshooting/slow-website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you identify and resolve performance issues affecting your website. It starts with basic diagnostics and progresses to advanced troubleshooting techniques.
 
@@ -363,13 +363,13 @@ curl https://www.example.com/cdn-cgi/trace
 Invoke-RestMethod -Uri "https://www.example.com/cdn-cgi/trace"
 ```
 
-The `colo` field shows the three-letter airport code of the serving data center (for example, `colo=SJC` for San Jose). You can find the full list of Cloudflare data centers and their codes on the [Cloudflare status page ↗︎](https://www.cloudflarestatus.com/).
+The `colo` field shows the three-letter airport code of the serving data center (for example, `colo=SJC` for San Jose). You can also check the [`cf-ray`](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ray) response header. The three-letter code at the end of the value identifies the data center that processed the request. You can find the full list of Cloudflare data centers and their codes on the [Cloudflare status page ↗︎](https://www.cloudflarestatus.com/).
 
 ### Why routing matters
 
 When a request reaches Cloudflare:
 
-1. The request is routed to a nearby Cloudflare data center based on anycast [routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/).
+1. The request is routed to a Cloudflare data center based on anycast [routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/). This is not always the data center closest geographically.
 2. If the content is cached, it is served immediately.
 3. If not cached, Cloudflare fetches from your origin server.
 
@@ -377,9 +377,13 @@ If your origin server is geographically distant from the Cloudflare data center 
 
 ### Troubleshoot unexpected routing
 
-If requests are being routed to a data center that seems far from the user, this may be due to Cloudflare's automated traffic engineering or a user’s ISP routing traffic.
+Requests may be sent to data centers that are not the closest geographically. Cloudflare continuously adds capacity to its global network and improves its automated traffic engineering systems to manage congestion and other network events. Cloudflare aims to serve traffic from the closest location for the best performance, but reliability takes priority.
 
-While Cloudflare always strives to provide the best possible performance by serving traffic from the closest location, reliability is the top priority. In instances where performance and reliability are in conflict, Cloudflare's systems are designed to prioritize a stable connection over a local one.
+When performance and reliability conflict, Cloudflare's systems prioritize a stable connection over a local one.
+
+Cloudflare does not pick a data center for each visitor. The visitor's Internet service provider (ISP) decides which Cloudflare data center receives the request, based on its own routing and peering policies. These policies do not always favor the geographically closest location. For example, an ISP may send traffic to a distant city where it has a direct connection with Cloudflare instead of a nearby one where it does not.
+
+Cloudflare's traffic engineering can influence these paths across the network as a whole, but it cannot direct individual visitors to a specific data center. Data center selection cannot be configured per zone, per account, or by support request.
 
 For more details, refer to [Cloudflare traffic not being sent to the geographically closest data center](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/).
 
@@ -388,6 +392,7 @@ Common causes of unexpected routing:
 | Symptom | Explanation |
 | --- | --- |
 | Requests route to a distant data center | Cloudflare traffic engineering for reliability, or ISP routing decisions |
+| `cf-ray` shows a different location than a traceroute | Traffic can enter Cloudflare's network at one location and be processed at another |
 | Routing changes between requests | Normal behavior - routing adapts to network conditions or ISP load balancing |
 | Consistent routing to a distant region | ISP peering location or Cloudflare capacity management |
 | High latency despite nearby data center | Network congestion on the path |
@@ -458,5 +463,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/og.png?v=cfe21a7978e4e2ad","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/og.png?v=cfe21a7978e4e2ad","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

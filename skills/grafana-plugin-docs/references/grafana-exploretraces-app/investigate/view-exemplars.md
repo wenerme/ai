@@ -15,7 +15,7 @@ Use exemplars to help isolate problems within your data distribution by pinpoint
 
 Think of exemplars as “bookmarks” in your metric data that point to actual traces. When you see a spike in error rates or latency in your metrics, exemplars let you click directly on a specific data point and jump to the actual trace that contributed to that metric.
 
-For more information, refer to [Introduction to exemplars](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/fundamentals/exemplars/).
+For more information, refer to [Introduction to exemplars](https://grafana.com/docs/grafana/latest/fundamentals/exemplars/).
 
 ## Exemplars in Traces Drilldown
 
@@ -33,7 +33,7 @@ When you hover your cursor over a diamond, a tooltip appears showing:
 
 > Tip
 >
-> Not seeing exemplars? Refer to [Exemplars in Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/send-data/traces/exemplars/#exemplars-in-grafana-cloud) for information about how to enable them.
+> Not seeing exemplars? Refer to [Exemplars in Grafana Cloud](https://grafana.com/docs/grafana-cloud/send-data/traces/exemplars/#exemplars-in-grafana-cloud) for information about how to enable them.
 
 Select **View trace** to open a slide-out trace panel that displays:
 

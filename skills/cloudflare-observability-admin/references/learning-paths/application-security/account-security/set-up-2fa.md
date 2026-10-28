@@ -38,6 +38,10 @@ We recommend that all Cloudflare user account holders enable two-factor authenti
 
 2FA can only be enabled successfully on an account with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/). If you do not verify your email address first, you may lock yourself out of your account.
 
+Note
+
+If you signed up using a social login provider (such as Google or Apple), your account does not have a Cloudflare password. Before you can enroll in 2FA, you must set a password by going through the [password reset process](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-password). Once your password is set, you can enable 2FA as normal.
+
 Caution
 
 Super Administrators can turn on **2FA Enforcement** to require all members to enable 2FA. If you are not a Super Administrator, you will be forced to turn on 2FA prior to accepting the invitation to join a Cloudflare account as a member.

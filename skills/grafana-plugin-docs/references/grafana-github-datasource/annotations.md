@@ -7,7 +7,7 @@ description: "Use annotations to overlay GitHub events on Grafana dashboard pane
 
 # GitHub annotations
 
-[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you extract data from the GitHub data source and overlay events on dashboard panels.
+[Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you extract data from the GitHub data source and overlay events on dashboard panels.
 
 ## Required fields
 
@@ -38,7 +38,7 @@ To configure an annotation query:
 4. Select the query type and configure the query options.
 5. Select the field to display on the annotation and the field that represents the time the event occurred.
 
-For more information on annotation configuration, refer to [Built-in query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/#built-in-query).
+For more information on annotation configuration, refer to [Built-in query editor](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/#built-in-query).
 
 ## Pull request and issue annotation times
 

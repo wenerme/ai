@@ -11,7 +11,7 @@ Select **CSV** as the query type to retrieve data from CSV files or endpoints. Y
 
 > Tip
 >
-> For a quick start, refer to [How to Visualize CSV Data with Grafana](/blog/how-to-visualize-csv-data-with-grafana/) or the [Visualize CSV data using the Infinity data source](/docs/learning-journeys/infinity-csv/) learning journey.
+> For a quick start, refer to [How to Visualize CSV Data with Grafana](https://grafana.com/blog/how-to-visualize-csv-data-with-grafana/) or the [Visualize CSV data using the Infinity data source](https://grafana.com/docs/learning-journeys/infinity-csv/) learning journey.
 
 Give it a try using Grafana Play
 
@@ -27,7 +27,7 @@ Enter the CSV URL in the query editor. By default, CSV data should have column h
 
 **Sample data**:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 created_at,entry_id,field1,field2
@@ -56,7 +56,7 @@ For data without timestamps, set the **Format** to **Timeseries** to add a simul
 
 **Example data**:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 Country,Population
@@ -77,7 +77,7 @@ Instead of querying a URL, you can provide CSV data directly:
 
 **Example inline data**:
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 country,population,capital
@@ -128,9 +128,9 @@ Expand table
 
 ## Advanced transformations
 
-For advanced operations like grouping, ordering, and field manipulation, use the [UQL parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/):
+For advanced operations like grouping, ordering, and field manipulation, use the [UQL parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-csv

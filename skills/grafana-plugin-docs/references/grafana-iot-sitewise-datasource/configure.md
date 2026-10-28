@@ -19,7 +19,7 @@ Before you configure the data source, ensure you have:
 
 Attach the following example policy to the IAM identity. Omit `iotsitewise:ExecuteQuery` if you don’t use the SQL query editor.
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -141,7 +141,7 @@ AWS IoT SiteWise is usually reachable over public AWS endpoints. If you need to 
 
 ### Private data source connect (Grafana Cloud)
 
-If you use Grafana Cloud, use [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect Grafana Cloud to a private network without opening the network to inbound traffic. PDC establishes an outbound connection from an agent that runs inside your network.
+If you use Grafana Cloud, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect Grafana Cloud to a private network without opening the network to inbound traffic. PDC establishes an outbound connection from an agent that runs inside your network.
 
 When PDC is enabled for your Grafana Cloud instance, a **Private data source connect** section appears in the data source settings, which lets you query data that lives within a secured network without opening the network to inbound traffic from Grafana Cloud. Select the **Private data source connect network** where your endpoint is available.
 
@@ -149,11 +149,11 @@ When PDC is enabled for your Grafana Cloud instance, a **Private data source con
 >
 > Private data source connect is available exclusively in Grafana Cloud. On self-managed Grafana, use the secure Socks proxy, a VPN, or AWS PrivateLink to reach private endpoints.
 
-For setup instructions, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For setup instructions, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Secure Socks proxy (self-managed Grafana)
 
-On self-managed Grafana, if your administrator enables the secure Socks proxy, a **Secure Socks Proxy** section appears in the data source configuration so you can route requests through the proxy. This option requires Grafana version 10.0.0 or later. To enable it, configure the `[secure_socks_datasource_proxy]` section in the Grafana configuration file. For more information, refer to [Configure Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#secure_socks_datasource_proxy).
+On self-managed Grafana, if your administrator enables the secure Socks proxy, a **Secure Socks Proxy** section appears in the data source configuration so you can route requests through the proxy. This option requires Grafana version 10.0.0 or later. To enable it, configure the `[secure_socks_datasource_proxy]` section in the Grafana configuration file. For more information, refer to [Configure Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#secure_socks_datasource_proxy).
 
 ## Configure SiteWise Edge
 
@@ -192,15 +192,15 @@ Expand table
 
 Click **Save &amp; test** to verify the configuration. On success, Grafana returns `OK`. The data source runs a `ListAssetModels` request against AWS IoT SiteWise to confirm that the credentials and Region are valid.
 
-If the test fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/).
+If the test fails, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Access and secret key
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -218,7 +218,7 @@ datasources:
 
 ### Credentials file
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -234,7 +234,7 @@ datasources:
 
 ### Assume role
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -254,7 +254,7 @@ datasources:
 
 ### Edge gateway
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -300,7 +300,7 @@ Expand table
 
 To route a provisioned data source through the secure Socks proxy, set `enableSecureSocksProxy` to `true`.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -323,7 +323,7 @@ You can use the [Grafana Terraform provider](https://registry.terraform.io/provi
 
 ### Access and secret key with Terraform
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "sitewise" {
@@ -344,7 +344,7 @@ resource "grafana_data_source" "sitewise" {
 
 To use temporary AWS credentials from STS, add `sessionToken` to `secure_json_data_encoded`:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
   secure_json_data_encoded = jsonencode({
@@ -356,7 +356,7 @@ hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 ### Assume role with Terraform
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "sitewise" {
@@ -376,5 +376,5 @@ For more information, refer to the [`grafana_data_source` resource](https://regi
 
 ## Next steps
 
-- [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
+- [AWS IoT SiteWise query editor](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)

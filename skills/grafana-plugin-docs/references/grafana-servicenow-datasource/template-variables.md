@@ -9,7 +9,7 @@ description: "Use template variables with the ServiceNow data source to create d
 
 Use template variables to create dynamic, reusable dashboards. Instead of hard-coding values like table names or filter criteria, you can use variables that appear as drop-down selectors at the top of your dashboard.
 
-For general information about template variables, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For general information about template variables, refer to [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Create a query variable
 
@@ -109,7 +109,7 @@ Expand table
 
 The `${varname}` syntax is useful when the variable name is adjacent to other text (for example, `${table}_extended`).
 
-For more information about variable syntax and advanced usage, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more information about variable syntax and advanced usage, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ## Use variables in queries
 

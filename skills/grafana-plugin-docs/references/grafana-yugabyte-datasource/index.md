@@ -40,27 +40,27 @@ Because YugabyteDB is PostgreSQL-compatible, you can query it with the PostgreSQ
 
 The following pages help you get started with the Yugabyte data source:
 
-- [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/)
-- [Yugabyte query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/troubleshooting/)
+- [Configure the Yugabyte data source](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/configure/)
+- [Yugabyte query editor](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query your data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) rules on your YugabyteDB data.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query your data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) rules on your YugabyteDB data.
 
 ## Known limitations
 
 The Yugabyte data source has the following known limitations:
 
 - Grafana ad hoc filters aren’t supported.
-- The `$__timeGroup` macro isn’t compatible with YugabyteDB. To group results into time buckets, use a native function such as `date_trunc()`. Refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/#macros) for details.
+- The `$__timeGroup` macro isn’t compatible with YugabyteDB. To group results into time buckets, use a native function such as `date_trunc()`. Refer to [Macros](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/#macros) for details.
 - The data source doesn’t provide TLS/SSL configuration options in the UI. It connects with the `libpq` setting `sslmode=allow`, which uses TLS when the server requires it but doesn’t verify the server certificate.
 
 ## Plugin updates

@@ -7,14 +7,14 @@ description: "Set up alerts using AppDynamics data in Grafana."
 
 # AppDynamics alerting
 
-The AppDynamics data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on AppDynamics metrics. You can monitor your application environment and receive notifications when specific conditions are met, such as when response times exceed a threshold, error rates spike, or calls per minute drop unexpectedly.
+The AppDynamics data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), allowing you to create alert rules based on AppDynamics metrics. You can monitor your application environment and receive notifications when specific conditions are met, such as when response times exceed a threshold, error rates spike, or calls per minute drop unexpectedly.
 
 ## Before you begin
 
 - Ensure you have permission to create alert rules in Grafana.
 - Verify your AppDynamics data source is configured and **Save &amp; test** succeeds.
-- For Analytics alerts, configure the Analytics API URL, Global Account Name, and Analytics API key. Refer to [Configure the AppDynamics data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/).
-- Review [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- For Analytics alerts, configure the Analytics API URL, Global Account Name, and Analytics API key. Refer to [Configure the AppDynamics data source](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/).
+- Review [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Supported query types for alerting
 
@@ -42,13 +42,13 @@ Dashboard queries interpolate Grafana time macros in the browser. Alert rules ru
 
 Use the macros in ADQL when you filter on `eventTimestamp` in the query text:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM transactions WHERE eventTimestamp >= $__from AND eventTimestamp <= $__to AND responseTime > 5000
 ```
 
-For the full macro list, refer to [AppDynamics query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
+For the full macro list, refer to [AppDynamics query editor](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
 
 ## Create an alert rule
 
@@ -73,7 +73,7 @@ To create an alert rule using AppDynamics data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Application response time alert
 
@@ -149,7 +149,7 @@ This example uses ADQL to alert when many slow transactions occur in the evaluat
 2. Select **Analytics**.
 3. Enter the following ADQL query:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT count(*) FROM transactions WHERE eventTimestamp >= $__from AND eventTimestamp <= $__to AND responseTime > 5000
@@ -169,7 +169,7 @@ This example alerts on error user experience in the evaluation window:
 2. Select **Analytics**.
 3. Enter the following ADQL query:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT count(*) FROM transactions WHERE eventTimestamp >= $__from AND eventTimestamp <= $__to AND userExperience = 'ERROR'
@@ -224,7 +224,7 @@ Alert rules don’t support template variables. Ensure your alert queries use st
 
 ## Troubleshoot alerting issues
 
-For common alerting issues with the AppDynamics data source, refer to the [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/) guide.
+For common alerting issues with the AppDynamics data source, refer to the [Troubleshooting](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/) guide.
 
 Common issues include:
 
@@ -235,6 +235,6 @@ Common issues include:
 
 ## Additional resources
 
-- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)

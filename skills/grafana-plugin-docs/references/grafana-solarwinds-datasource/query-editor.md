@@ -7,13 +7,13 @@ description: "Learn how to use the SolarWinds query editor to query data with So
 
 # SolarWinds query editor
 
-Grafana provides a query editor for the SolarWinds data source. The editor is available on the [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) page and from dashboard panels. To open the query editor from a panel, click the ellipsis in the upper right of the panel and select **Edit**.
+Grafana provides a query editor for the SolarWinds data source. The editor is available on the [Explore](https://grafana.com/docs/grafana/latest/explore/) page and from dashboard panels. To open the query editor from a panel, click the ellipsis in the upper right of the panel and select **Edit**.
 
 The SolarWinds data source supports SolarWinds Query Language (SWQL) queries through a text interface, which lets you use the full power of the SolarWinds API directly within Grafana.
 
 ## Before you begin
 
-Ensure you have [configured the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
+Ensure you have [configured the SolarWinds data source](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
 
 ## Key concepts
 
@@ -47,7 +47,7 @@ The following examples show common SWQL queries.
 
 This query returns the nodes with the highest CPU load:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT TOP 10 Caption, CPULoad FROM Orion.Nodes ORDER BY CPULoad DESC
@@ -57,7 +57,7 @@ SELECT TOP 10 Caption, CPULoad FROM Orion.Nodes ORDER BY CPULoad DESC
 
 This query returns the nodes with the highest percentage of memory used:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT TOP 10 Caption, PercentMemoryUsed FROM Orion.Nodes ORDER BY PercentMemoryUsed DESC
@@ -67,7 +67,7 @@ SELECT TOP 10 Caption, PercentMemoryUsed FROM Orion.Nodes ORDER BY PercentMemory
 
 Severity isn’t stored on `Orion.AlertActive` directly. Join the active alerts to their alert objects and configurations to group by `ac.Severity`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT ac.Severity, COUNT(aa.AlertActiveID) AS AlertCount
@@ -83,7 +83,7 @@ GROUP BY ac.Severity
 
 To surface SolarWinds alerts in Grafana, join the active alerts to their configuration to return the alert name and trigger time. Adjust the entity and column names to match your SolarWinds environment:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT ac.Name, aa.TriggeredDateTime
@@ -97,7 +97,7 @@ ORDER BY aa.TriggeredDateTime DESC
 
 This query returns the volumes with the highest percentage of space used:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT TOP 10 Caption, VolumePercentUsed FROM Orion.Volumes ORDER BY VolumePercentUsed DESC
@@ -130,9 +130,9 @@ Identify volumes that are running low on space to plan capacity.
 
 ## Next steps
 
-- [Use SolarWinds template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/template-variables/)
-- [Set up SolarWinds alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/alerting/)
-- [Troubleshoot the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/)
+- [Use SolarWinds template variables](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/template-variables/)
+- [Set up SolarWinds alerting](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/alerting/)
+- [Troubleshoot the SolarWinds data source](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/troubleshooting/)
 
 ## Additional resources
 

@@ -9,7 +9,7 @@ description: "Guide for using the Jenkins data source in Grafana"
 
 > Note
 >
-> Jenkins data source is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Jenkins data source is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 [Jenkins](https://www.jenkins.io/) is an open source automation server used to build and deploy projects as part of Continuous Integration (CI) and Continuous Deployment (CD) pipelines.
 
@@ -17,7 +17,7 @@ The Jenkins data source plugin allows you to query and visualize metrics such as
 
 > Note
 >
-> The Jenkins data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install and upgrade the Jenkins data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/install/).
+> The Jenkins data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install and upgrade the Jenkins data source plugin](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install/).
 
 ## Supported features
 
@@ -33,7 +33,7 @@ Expand table
 | Nodes          | The nodes, or agents, connected to your Jenkins server. |
 | Node labels    | The labels used to organize your Jenkins nodes.         |
 
-For details on each query type and the fields it returns, refer to the [Jenkins query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/query-editor/).
+For details on each query type and the fields it returns, refer to the [Jenkins query editor](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/query-editor/).
 
 The data source also supports the following Grafana capabilities:
 
@@ -49,7 +49,7 @@ Expand table
 
 This plugin has the following requirements:
 
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated on-prem Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated on-prem Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 - Grafana version 10.4.8 or later.
 - A Jenkins instance with the [Remote Access API](https://www.jenkins.io/doc/book/using/remote-access-api/) enabled.
 
@@ -57,24 +57,24 @@ This plugin has the following requirements:
 
 The plugin currently does not support:
 
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Externally shared dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/#externally-shared-dashboards)
+- [Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Externally shared dashboards](https://grafana.com/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/#externally-shared-dashboards)
 
 ## Get started
 
 The following documents help you get started with the Jenkins data source:
 
-- [Install and upgrade the Jenkins data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/install/)
-- [Configure the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/configure/)
-- [Use the Jenkins query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
-- [Use template variables with the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/template-variables/)
-- [Troubleshoot the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
+- [Install and upgrade the Jenkins data source plugin](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install/)
+- [Configure the Jenkins data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/configure/)
+- [Use the Jenkins query editor](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/query-editor/)
+- [Use template variables with the Jenkins data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/template-variables/)
+- [Troubleshoot the Jenkins data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/)
 
 ## Import a dashboard for Jenkins
 
 This plugin includes two built-in dashboards to help you quickly get started visualizing Jenkins data.
 
-To import the dashboards, you must first [install the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/install/) and [configure a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/configure/).
+To import the dashboards, you must first [install the plugin](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install/) and [configure a data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/configure/).
 
 From the data source configuration page, navigate to the **Dashboards** tab where you see a list of available dashboards.
 
@@ -94,11 +94,11 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the Jenkins plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the Jenkins plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Learn more
 
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
-- Configure and use [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- Configure and use [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard.

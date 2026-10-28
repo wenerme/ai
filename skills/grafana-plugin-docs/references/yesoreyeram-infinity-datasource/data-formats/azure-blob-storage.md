@@ -70,4 +70,4 @@ Expand table
 | TSV    | Backend, UQL       |
 | XML    | Backend, UQL       |
 
-Refer to the individual [data format](/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/) documentation for details on configuring columns and selectors.
+Refer to the individual [data format](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/) documentation for details on configuring columns and selectors.

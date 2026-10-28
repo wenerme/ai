@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Vercel data source in Grafana.
 
 # Troubleshoot the Vercel data source
 
-This document provides solutions to common issues you might encounter when you configure or use the Vercel data source. The sections follow the order you typically move through when you set up the plugin: enabling and licensing it, keeping it up to date, authenticating, and running queries. For configuration instructions, refer to [Configure the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when you configure or use the Vercel data source. The sections follow the order you typically move through when you set up the plugin: enabling and licensing it, keeping it up to date, authenticating, and running queries. For configuration instructions, refer to [Configure the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/).
 
 ## License and setup errors
 
@@ -25,12 +25,12 @@ The Vercel data source is a Grafana Enterprise plugin in public preview. Most se
 
 Expand table
 
-| Cause                                                   | Solution                                                                                                                                                                                                                                                                              |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Enterprise plugins aren’t enabled for the account       | On Grafana Cloud, sign in to [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/), then open **My Account** &gt; **Manage Plan** and enable Enterprise plugins.                                                                                             |
-| The plan doesn’t include the entitlement                | Confirm your plan includes Enterprise plugins. They’re available on the Grafana Cloud Free plan, which allows up to three active users, as well as the Pro and Advanced plans, and on self-managed Grafana Enterprise.                                                                |
-| A contracted account is missing an explicit entitlement | Contracted Cloud customers might need the Enterprise plugin entitlement added to their account. Contact your Grafana account team or Grafana Support.                                                                                                                                 |
-| A self-managed license doesn’t include the plugin       | Verify your Grafana Enterprise license includes `grafana-vercel-datasource`, and that you’ve activated the license. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). |
+| Cause                                                   | Solution                                                                                                                                                                                                                                     |
+|---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Enterprise plugins aren’t enabled for the account       | On Grafana Cloud, sign in to [Grafana Cloud](https://grafana.com/), then open **My Account** &gt; **Manage Plan** and enable Enterprise plugins.                                                                                             |
+| The plan doesn’t include the entitlement                | Confirm your plan includes Enterprise plugins. They’re available on the Grafana Cloud Free plan, which allows up to three active users, as well as the Pro and Advanced plans, and on self-managed Grafana Enterprise.                       |
+| A contracted account is missing an explicit entitlement | Contracted Cloud customers might need the Enterprise plugin entitlement added to their account. Contact your Grafana account team or Grafana Support.                                                                                        |
+| A self-managed license doesn’t include the plugin       | Verify your Grafana Enterprise license includes `grafana-vercel-datasource`, and that you’ve activated the license. Refer to [Activate an Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/). |
 
 ## Version and upgrade guidance
 
@@ -80,7 +80,7 @@ Expand table
 2. If the token is team-scoped, enter the matching team in the **Team ID** field.
 3. Verify the Team ID matches the scope of the token, then select **Save &amp; test**.
 
-If **Save &amp; test** succeeds but queries still return nothing, refer to [Query errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#query-errors).
+If **Save &amp; test** succeeds but queries still return nothing, refer to [Query errors](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#query-errors).
 
 ## Query errors
 
@@ -117,7 +117,7 @@ The Vercel data source queries the Vercel REST API, which exposes deployment, bu
 
 **Solution:**
 
-To bring runtime logs into Grafana, configure a [Vercel log drain](https://vercel.com/docs/drains) to forward logs to [Loki](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/), then query them with a Loki data source. This is a separate setup from the Vercel data source.
+To bring runtime logs into Grafana, configure a [Vercel log drain](https://vercel.com/docs/drains) to forward logs to [Loki](https://grafana.com/docs/loki/latest/), then query them with a Loki data source. This is a separate setup from the Vercel data source.
 
 ## Enable debug logging
 
@@ -125,7 +125,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

@@ -11,8 +11,8 @@ The ServiceNow data source supports the Grafana unified alerting system. You can
 
 ## Before you begin
 
-- [Configure the ServiceNow data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/configure/).
-- Familiarize yourself with [Grafana alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- [Configure the ServiceNow data source](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/configure/).
+- Familiarize yourself with [Grafana alerting](https://grafana.com/docs/grafana/latest/alerting/).
 - Ensure the ServiceNow user has read access to the tables you want to alert on.
 
 ## Create an alert rule
@@ -42,7 +42,7 @@ To create an alert rule using the ServiceNow data source:
 >
 > An alert query must return a single numeric value. Use a Stats query with one field and one aggregation, such as **count**, so the threshold condition has a numeric value to evaluate. A query that returns non-numeric data causes the alert rule to error.
 >
-> Grouped Stats queries that use **Group By** aren’t reliable in alert rules. To alert per category, create a separate alert rule for each value using a filter instead of **Group By**. Refer to [Alert on unresolved incidents in a category](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-servicenow-datasource/latest/alerting/#alert-on-unresolved-incidents-in-a-category).
+> Grouped Stats queries that use **Group By** aren’t reliable in alert rules. To alert per category, create a separate alert rule for each value using a filter instead of **Group By**. Refer to [Alert on unresolved incidents in a category](https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/alerting/#alert-on-unresolved-incidents-in-a-category).
 
 ## Understand time field behavior
 
@@ -142,7 +142,7 @@ This alert counts incidents created within each 10-minute evaluation window. If 
 
 This page covers using ServiceNow as a data source for alert rules. Sending Grafana alert notifications to ServiceNow, such as creating incidents, is a separate feature that you configure through a Grafana contact point, not through the data source.
 
-If ServiceNow rejects a notification because mandatory fields are missing, customize the notification payload in the contact point so the required ServiceNow fields are populated. For more information, refer to [Configure contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/).
+If ServiceNow rejects a notification because mandatory fields are missing, customize the notification payload in the contact point so the required ServiceNow fields are populated. For more information, refer to [Configure contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/).
 
 ## Considerations
 

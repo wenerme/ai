@@ -25,7 +25,7 @@ The following example demonstrates how UQL transforms nested JSON data into a fl
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -46,7 +46,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -70,7 +70,7 @@ Expand table
 
 Select specific columns to include in the output. Use dot notation to access nested properties. To rename a column, use the syntax `"new_name"="source_field"`.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -83,7 +83,7 @@ This selects `id`, the nested `name.firstName` field, and renames `dob` to `date
 
 Remove specific columns from the output. This command only accepts top-level field names — dot notation and aliases are not supported.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -94,7 +94,7 @@ parse-json
 
 Sort results by a column in ascending (`asc`) or descending (`desc`) order.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -105,7 +105,7 @@ parse-json
 
 Filter rows based on a condition. Only rows where the condition evaluates to `true` are included.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -114,7 +114,7 @@ parse-json
 
 Combine conditions with `and` or `or`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -123,7 +123,7 @@ parse-json
 
 Use `in` to match against multiple values:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -132,7 +132,7 @@ parse-json
 
 Use `!in` to exclude values:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -145,7 +145,7 @@ parse-json
 
 Add new columns or transform existing columns using functions. Use the syntax `"column_name"=function("source_field")`.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -257,7 +257,7 @@ Expand table
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [{ "a": 12, "b": 20 }, { "a": 6, "b": 32 }]
@@ -265,7 +265,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -285,7 +285,7 @@ Expand table
 
 To apply multiple transformations to the same field, repeat the field name in the `extend` command:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -300,7 +300,7 @@ This applies `tolower` first, then `trim` to the `name` field.
 
 Convert key-value pairs into an object.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 extend "foo"=pack('key1',"value1",'key2',"value2")
@@ -312,7 +312,7 @@ extend "foo"=pack('key1',"value1",'key2',"value2")
 
 Build an array of objects from a list of values.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 extend "foo"=array_from_entries('timestamp',[2010,2020,2030])
@@ -324,7 +324,7 @@ extend "foo"=array_from_entries('timestamp',[2010,2020,2030])
 
 Convert an array to an object with named keys.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 extend "foo"=array_to_map(['chennai','india'],'city','country')
@@ -362,7 +362,7 @@ Expand table
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -376,7 +376,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -407,7 +407,7 @@ Transform rows into columns. The `pivot` command accepts three arguments:
 
 **Input data (CSV):**
 
-csv [Copy code to clipboard] Copy
+csv ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```csv
 name,age,country,occupation,salary
@@ -421,7 +421,7 @@ Chelsey Dietrich,32,USA,Software Engineer,3500
 
 **UQL query (pivot):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-csv
@@ -441,7 +441,7 @@ Expand table
 
 **Compare with summarize:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-csv
@@ -480,7 +480,7 @@ Expand table
 
 Return the total number of rows.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -491,7 +491,7 @@ parse-json
 
 Restrict the number of rows returned.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -504,7 +504,7 @@ Set the document root to a nested property. Useful when your data is wrapped in 
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -516,7 +516,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -531,7 +531,7 @@ Expand multi-value arrays into separate rows. Use the syntax `mv-expand "new_col
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -542,7 +542,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -551,7 +551,7 @@ parse-json
 
 **Output:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -567,7 +567,7 @@ Convert an object into key-value pair rows.
 
 **Input data:**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 { "a": {"name":"a1"}, "b": {"name":"b1"}, "c": {"name":"c1"} }
@@ -575,7 +575,7 @@ JSON [Copy code to clipboard] Copy
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -594,7 +594,7 @@ Expand table
 
 To access a nested object, pass the property name as an argument:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -611,7 +611,7 @@ Run a [JSONata](https://jsonata.org/) expression on the data. The JSONata query 
 
 **Basic example:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -620,7 +620,7 @@ parse-json
 
 **Complex example with chained commands:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -639,7 +639,7 @@ The `jsonata` command can be combined with other UQL commands in a pipeline. Use
 
 Lines starting with `#` are treated as comments and ignored during execution.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json

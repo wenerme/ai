@@ -11,7 +11,7 @@ The Amazon Timestream query editor lets you write SQL queries against your Times
 
 ## Before you begin
 
-- [Configure the Amazon Timestream data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/).
+- [Configure the Amazon Timestream data source](https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/configure/).
 - Verify that your IAM identity has permissions to query the target database and table.
 
 ## Key concepts
@@ -33,14 +33,14 @@ The query editor provides the following fields and controls.
 
 Expand table
 
-| Field                    | Description                                                                                                                                                                                                                                      |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Database**             | The Timestream database to query. Populates the `$__database` macro. Falls back to the default database set in the data source configuration.                                                                                                    |
-| **Table**                | The table within the selected database. Populates the `$__table` macro. The table list updates when you change the database.                                                                                                                     |
-| **Measure**              | The measure within the selected table. Populates the `$__measure` macro. The measure list updates when you change the database or table.                                                                                                         |
-| **Wait for all queries** | When enabled, the plugin fetches all paginated result pages before returning data. Enable this for [alerting queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/alerting/). |
-| **Format as**            | Controls the output format: **Table** (default) or **Time Series**. Time-series queries must return times in ascending order using `ORDER BY time ASC`.                                                                                          |
-| **Sample queries**       | A drop-down of pre-built queries to help you get started. Selecting a sample replaces the current query.                                                                                                                                         |
+| Field                    | Description                                                                                                                                                                                             |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Database**             | The Timestream database to query. Populates the `$__database` macro. Falls back to the default database set in the data source configuration.                                                           |
+| **Table**                | The table within the selected database. Populates the `$__table` macro. The table list updates when you change the database.                                                                            |
+| **Measure**              | The measure within the selected table. Populates the `$__measure` macro. The measure list updates when you change the database or table.                                                                |
+| **Wait for all queries** | When enabled, the plugin fetches all paginated result pages before returning data. Enable this for [alerting queries](https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/alerting/). |
+| **Format as**            | Controls the output format: **Table** (default) or **Time Series**. Time-series queries must return times in ascending order using `ORDER BY time ASC`.                                                 |
+| **Sample queries**       | A drop-down of pre-built queries to help you get started. Selecting a sample replaces the current query.                                                                                                |
 
 ## Write a query
 
@@ -52,7 +52,7 @@ To run a query, press `Ctrl+Enter` or click **Run query**.
 
 The following query selects all records from the configured database and table within the dashboard time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -86,7 +86,7 @@ Expand table
 
 The following query combines several macros to aggregate data into dashboard-appropriate intervals:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -108,7 +108,7 @@ Use `$__refId` to name a column after the query itself, so that renaming the que
 
 Quote the macro when the query name contains spaces or other characters that aren’t valid in an unquoted identifier:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -126,7 +126,7 @@ The macros listed in the table (such as `$__timeFrom` and `$__timeTo`) are **plu
 
 Grafana also provides **global variables** (`$__from`, `$__to`) that support custom formatting. These are expanded by the frontend before the query reaches the backend. You can use them in Timestream queries when you need a specific time format:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -149,7 +149,7 @@ Expand table
 >
 > Use `$__timeFilter` instead of manually constructing time range filters when possible. It handles the time range conversion correctly and is less error-prone than formatting time variables yourself.
 
-For the full list of global variable formats, refer to [Global variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
+For the full list of global variable formats, refer to [Global variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables).
 
 ## Sample queries
 
@@ -173,7 +173,7 @@ The following examples demonstrate common query patterns for Timestream data.
 
 Use `bin()` with `$__interval_ms` to group data into intervals that match the panel resolution. This is the most common pattern for time-series visualizations.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -191,7 +191,7 @@ ORDER BY binned_time ASC
 
 Group by a dimension column to compare values across hosts, regions, or other attributes in a single panel.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -210,13 +210,13 @@ ORDER BY binned_time ASC
 
 Use Timestream’s metadata queries to discover available data before building visualizations.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SHOW MEASURES FROM $__database.$__table
 ```
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 DESCRIBE $__database.$__table
@@ -226,7 +226,7 @@ DESCRIBE $__database.$__table
 
 Use `$__now_ms` and `$__timeFrom` to build custom time-range logic, for example, to find the most recent reading per sensor.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -245,7 +245,7 @@ LIMIT 10
 
 Query multiple measure values from multi-measure records in a single query.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -267,7 +267,7 @@ Amazon Timestream charges based on the amount of data scanned by queries. Poorly
 
 Always include a `measure_name` filter in the `WHERE` clause. Timestream partitions data by measure name, so filtering on it dramatically reduces the volume of data scanned.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Costly: scans all measures in the table
@@ -289,7 +289,7 @@ Use the shortest time range that meets your needs. Timestream separates data int
 
 Aggregate data with `bin()` and `$__interval_ms` instead of returning raw data points. This reduces the number of rows returned and aligns data to the panel resolution.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Returns potentially millions of raw rows
@@ -312,8 +312,8 @@ Each dashboard refresh re-executes all panel queries. Set the auto-refresh inter
 If multiple panels display different aspects of the same data, query the data once and reuse the results:
 
 - **Dashboard data source:** Use the built-in **Dashboard** data source to reference results from another panel, avoiding duplicate queries to Timestream.
-- **Transformations:** Apply [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape a single query’s results for different visualizations.
+- **Transformations:** Apply [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to reshape a single query’s results for different visualizations.
 
 ### Enable query caching
 
-In Grafana Enterprise and Grafana Cloud, enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) to avoid re-running identical queries within a configurable time window.
+In Grafana Enterprise and Grafana Cloud, enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) to avoid re-running identical queries within a configurable time window.

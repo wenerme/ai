@@ -891,7 +891,7 @@ class MultiApprovalAgent extends Agent<Env, State> {
 
 ## Next steps
 
-### [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/)
 
 Complete waitForApproval() API reference.
 

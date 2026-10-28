@@ -124,7 +124,7 @@ These issues are specific to running the Infinity data source on Grafana Cloud o
    - JSON: `https://grafana.com/api/hosted-grafana/source-ips`
    - Text: `https://grafana.com/api/hosted-grafana/source-ips.txt`
    - DNS: `src-ips.hosted-grafana.grafana.net`
-2. For the full reference, refer to [List of source IP addresses to add to your allowlist](/docs/grafana-cloud/reference/allow-list/).
+2. For the full reference, refer to [List of source IP addresses to add to your allowlist](https://grafana.com/docs/grafana-cloud/reference/allow-list/).
 3. If your API is on a private network that you can’t expose to the public internet, use private data source connect instead. Refer to the next entry.
 
 ### Private data source connect works locally but fails from Grafana Cloud
@@ -135,11 +135,11 @@ These issues are specific to running the Infinity data source on Grafana Cloud o
 
 **Solution:**
 
-1. Confirm the PDC agent has outbound egress to the cluster-specific PDC endpoints. Refer to [Configure private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+1. Confirm the PDC agent has outbound egress to the cluster-specific PDC endpoints. Refer to [Configure private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 2. Verify the agent can resolve and reach the target host from its own network, for example with `nslookup` and `curl` run from the agent host.
 3. In the data source, enter the internal hostname and port exactly as you would from inside your private network.
 4. Confirm the data source is assigned to the correct PDC connection.
-5. For how PDC works, refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+5. For how PDC works, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Private S3 bucket returns a 403 error
 
@@ -153,7 +153,7 @@ These issues are specific to running the Infinity data source on Grafana Cloud o
 2. Set **Service** to `s3` and **Region** to the bucket’s region.
 3. Enter your **Access Key** and **Secret Key**, and confirm the IAM identity has read access to the bucket.
 4. Add the S3 endpoint to **Allowed hosts**, for example `https://s3.<region>.amazonaws.com`.
-5. For a complete AWS example, refer to [AWS API](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/).
+5. For a complete AWS example, refer to [AWS API](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/).
 
 ## Authentication errors
 
@@ -185,8 +185,8 @@ These errors relate to authentication configuration issues.
 **Solutions:**
 
 1. If the API expects a prefix other than `Bearer`, such as `Token` or `ApiKey`, use **API key** authentication with the **Key** set to `Authorization` and the **Value** set to the full header value, for example `Token <token>`.
-2. Compare the headers your other client sends with the headers Infinity sends, then add any missing headers in the query or data source configuration. Refer to [API returns a 406 error](#api-returns-a-406-error) for the default `Accept` header behavior.
-3. Confirm the host is in the **Allowed hosts** list. Refer to [URL not allowed](#url-not-allowed).
+2. Compare the headers your other client sends with the headers Infinity sends, then add any missing headers in the query or data source configuration. Refer to [API returns a 406 error](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting/#api-returns-a-406-error) for the default `Accept` header behavior.
+3. Confirm the host is in the **Allowed hosts** list. Refer to [URL not allowed](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting/#url-not-allowed).
 4. Verify the token hasn’t expired.
 
 ### API returns a 406 error
@@ -225,7 +225,7 @@ Some servers reject these values and expect a specific media type, such as `appl
 4. For Azure, verify the `resource` endpoint parameter is set correctly.
 5. Check if the OAuth2 provider requires additional endpoint parameters.
 
-For custom token configurations, refer to [OAuth2 token customization](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/).
+For custom token configurations, refer to [OAuth2 token customization](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/).
 
 ### OAuth2 client credentials fail with Microsoft Entra ID
 
@@ -238,9 +238,9 @@ For custom token configurations, refer to [OAuth2 token customization](/docs/plu
 1. Set the **Token URL** to your tenant endpoint, for example `https://login.microsoftonline.com/<tenant-id>/oauth2/v2.0/token`.
 2. Set **Scopes** to the resource scope. For client credentials, this is typically `https://<resource>/.default`.
 3. Add both hosts to **Allowed hosts**: the token endpoint host, for example `https://login.microsoftonline.com`, and the data endpoint host, for example `https://management.azure.com`.
-4. If your token endpoint requires custom headers, add them as token request headers. Multiple token request headers are supported in version 3.8.0 and later. Refer to [OAuth2 token customization](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/).
+4. If your token endpoint requires custom headers, add them as token request headers. Multiple token request headers are supported in version 3.8.0 and later. Refer to [OAuth2 token customization](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/).
 
-For a complete Azure example, refer to [Azure API](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/).
+For a complete Azure example, refer to [Azure API](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/).
 
 ### Forward OAuth fails for template variable queries
 
@@ -297,7 +297,7 @@ These issues relate to how the data source is provisioned and named.
 1. Edit the data source’s provisioning file instead of the UI.
 2. Reload provisioning or restart Grafana to apply the changes.
 3. To manage the data source from the UI instead, remove it from provisioning and recreate it manually.
-4. For details, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/).
+4. For details, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/).
 
 ### Data source disappears shortly after creation
 
@@ -325,7 +325,7 @@ These errors occur when processing the query or parsing the response.
 1. Use **Format as** &gt; **As Is** to see the raw response structure.
 2. Verify the root selector path matches your data. For example, if your JSON is:
 
-   JSON [Copy code to clipboard] Copy
+   JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    { "data": { "items": [...] } }
@@ -384,7 +384,7 @@ These errors occur when processing the query or parsing the response.
 2. Set the time column to the correct type: **Time**, **Time (UNIX ms)**, or **Time (UNIX s)**.
 3. For custom time formats with the backend parser, specify the format in the column configuration.
 4. Verify the time values are in a supported format (ISO 8601, Unix timestamp, or a recognized date string).
-5. Refer to [Time formats](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/time-formats/) for supported formats.
+5. Refer to [Time formats](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/time-formats/) for supported formats.
 
 ### UQL syntax errors
 
@@ -396,7 +396,7 @@ These errors occur when processing the query or parsing the response.
 2. Verify column names are quoted: `"column_name"`.
 3. Ensure string values use single quotes: `'value'`.
 4. Start with a parse command: `parse-json`, `parse-csv`, or `parse-xml`.
-5. Refer to [UQL parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/) for syntax reference.
+5. Refer to [UQL parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/) for syntax reference.
 
 ### Summarize returns an error for an empty result set
 
@@ -420,7 +420,7 @@ These errors occur when processing the query or parsing the response.
 
 1. Select a query **Type** that supports the parser you need.
 2. For transformations that must run on the backend, such as those used in alerting, recorded queries, or shared dashboards, select **Backend** parsing with JSONata or JQ.
-3. Refer to [Query editor](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/) for parser options.
+3. Refer to [Query editor](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/) for parser options.
 
 ### Macro expansion errors
 
@@ -435,7 +435,7 @@ These errors occur when processing the query or parsing the response.
 
 1. For `$__combineValues()`, ensure you have at least 4 arguments: prefix, suffix, separator, and at least one value.
 2. For `$__customInterval()`, use valid duration syntax (for example, `1m`, `1h`, `1d`) and ensure the argument count is odd.
-3. Refer to [Macros](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/) for correct syntax.
+3. Refer to [Macros](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/macros/) for correct syntax.
 
 ### Reference data not found
 
@@ -536,8 +536,8 @@ These issues relate to using Infinity queries with Grafana Alerting.
 
 **Solution:**
 
-1. Use a backend parser. Refer to [Alert rule shows “no data” or doesn’t fire](#alert-rule-shows-no-data-or-doesnt-fire).
-2. Set the time column to an explicit time type and confirm the value format. Refer to [Time column not recognized or panel shows no data](#time-column-not-recognized-or-panel-shows-no-data).
+1. Use a backend parser. Refer to [Alert rule shows “no data” or doesn’t fire](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting/#alert-rule-shows-no-data-or-doesnt-fire).
+2. Set the time column to an explicit time type and confirm the value format. Refer to [Time column not recognized or panel shows no data](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting/#time-column-not-recognized-or-panel-shows-no-data).
 3. Make sure the query returns at least one numeric field for the alert condition to evaluate.
 4. Reduce the result to the rows and columns the alert needs, so the condition has a clear series to evaluate.
 5. If the rule still fails after the query works in Explore, recreate the alert rule so it picks up the current query configuration.
@@ -595,7 +595,7 @@ These issues relate to using Infinity queries as template variable sources and t
 **Solution:**
 
 1. Enable **Include All** on the variable to pass the complete set of values when needed.
-2. Confirm the downstream query formats the values correctly. Refer to [Template variables](/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/) for multi-value formatting options such as `${var:csv}` and `${var:pipe}`.
+2. Confirm the downstream query formats the values correctly. Refer to [Template variables](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/variables/) for multi-value formatting options such as `${var:csv}` and `${var:pipe}`.
 
 ### Request fails with “URL too large” when many values are selected
 
@@ -623,7 +623,7 @@ These issues relate to using Infinity queries as template variable sources and t
 
 ### Forward OAuth not applied to variable queries
 
-Panel queries authenticate but variable queries fail with authentication errors. Refer to [Forward OAuth fails for template variable queries](#forward-oauth-fails-for-template-variable-queries) in the authentication section.
+Panel queries authenticate but variable queries fail with authentication errors. Refer to [Forward OAuth fails for template variable queries](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/troubleshooting/#forward-oauth-fails-for-template-variable-queries) in the authentication section.
 
 ## Other common issues
 
@@ -638,7 +638,7 @@ The following issues don’t produce specific error messages but are commonly en
 1. Verify the query returns the required columns: `time` (or `timeEnd`), `title`, and `text`.
 2. Ensure the time column contains valid timestamps within the dashboard time range.
 3. Use time filter macros (`${__timeFrom}`, `${__timeTo}`) to filter annotations by time range.
-4. Refer to [Annotations](/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations/) for configuration details.
+4. Refer to [Annotations](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/annotations/) for configuration details.
 
 ### Data appears incorrect or misaligned
 

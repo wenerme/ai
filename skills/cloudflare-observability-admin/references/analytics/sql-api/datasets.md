@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/sql-api/datasets/og.png?v=496
 
 # Datasets
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sql-api/datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sql-api/datasets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each SQL API dataset has a schema-qualified name. The prefix identifies what one row represents and how you should interpret the data:
 
@@ -96,7 +96,7 @@ This interface uses the Analytics SQL API endpoint and SQL dialect. It is separa
 
 Workers Analytics Engine datasets are adaptively sampled. The SQL API applies sample weights to supported aggregates. To preserve compatibility with existing Workers Analytics Engine queries, these datasets also support aggregate `DISTINCT`, `argMax`, and `argMin`. They permit `ORDER BY` without `LIMIT` and `OFFSET` without `LIMIT`. These compatibility exceptions do not apply to other adaptively sampled datasets.
 
-[Introspection](#discover-datasets) discovers Workers Analytics Engine dataset names from the account's own data, up to a limit of 1,000 distinct names by default (truncated silently beyond that, with no time bound: a dataset remains listed for as long as any of its data is retained). This differs from `include_custom_attributes`, which only looks at the preceding seven days. Passing the bare `events.analyticsEngine` namespace as `dataset_name`, with no `<DATASET_NAME>` suffix, returns every Workers Analytics Engine dataset the account has, rather than being rejected as an unknown name.
+[Introspection](#discover-datasets) discovers Workers Analytics Engine dataset names from the account's own data, up to a limit of 1,000 distinct names by default (truncated silently beyond that, with no time bound: a dataset remains listed for as long as any of its data is retained). This differs from `include_attributes`, which only looks at the preceding seven days. Passing the bare `events.analyticsEngine` namespace as `dataset_name`, with no `<DATASET_NAME>` suffix, returns every Workers Analytics Engine dataset the account has, rather than being rejected as an unknown name.
 
 ## Discover datasets
 
@@ -143,7 +143,8 @@ The endpoint accepts the following query parameters:
 | `account_tag` | string | Yes | Account identifier. Requires Account Analytics Read permission. |
 | `dataset_name` | string | No | Exact, case-sensitive schema-qualified dataset name to return. |
 | `include_columns` | boolean | No | Set to `true` to include column names, descriptions, and data types. Defaults to `false`. |
-| `include_custom_attributes` | boolean | No | Set to `true` to discover custom attribute names and types from account data. Requires a nonempty `dataset_name`. |
+| `include_attributes` | boolean | No | Set to `true` to discover the keys of the dataset's `attributes` field, and their types, from account data. Requires a nonempty `dataset_name`. |
+| `include_custom_attributes` | boolean | No | Deprecated. Use `include_attributes` instead. |
 | `include_wae` | boolean | No | Set to `false` to omit Workers Analytics Engine datasets, which are discovered from the account's own data. Defaults to `true`. |
 | `include_lex` | boolean | No | Set to `false` to omit Log Explorer datasets, which are listed only for accounts that have them. Defaults to `true`. |
 
@@ -191,14 +192,20 @@ curl --get "https://api.cloudflare.com/client/v4/analytics/sql/introspection" \
 
 A column's `data_type` is one of `String`, `UInt8`, `UInt16`, `UInt32`, `UInt64`, `Int64`, `Float64`, `Date`, `DateTime`, `DateTime64(3)`, `Array(<scalar type>)` (for example `Array(String)`), or `Json`.
 
-### Custom attributes
+### Attributes
 
-Introspection normally returns static catalog metadata without querying the underlying data store. Setting `include_custom_attributes=true` queries the preceding seven days of the selected dataset within the specified account:
+Some datasets store additional key-value data in a JSON column named `attributes`. You query a key in this column with an exact-key lookup, such as `attributes['http.method']`. For more information, refer to [JSON fields](https://developers.cloudflare.com/analytics/sql-api/sql-reference/data-types/#json-fields).
 
-- Each custom-attribute type is capped at the service's configured attribute limit (1,000 by default), so the response might not include every historical custom attribute.
+Introspection normally returns static catalog metadata without querying the underlying data store. Setting `include_attributes=true` queries the preceding seven days of the selected dataset within the specified account and returns the discovered keys in the dataset's `attributes` response field:
+
+- Each attribute type is capped at the service's configured attribute limit (1,000 by default), so the response might not include every historical attribute.
 - Truncation is silent: the response gives no indication that the limit was reached.
-- A custom attribute's `data_type` is one of `String`, `Float64`, or `Bool`, a smaller set than the column `data_type` values.
-- `custom_attributes` is omitted, not returned as an empty array, for a dataset that has no custom attributes to discover.
+- An attribute's `data_type` is one of `String`, `Float64`, or `Bool`, a smaller set than the column `data_type` values.
+- `attributes` is omitted, not returned as an empty array, for a dataset that has no attributes to discover.
+
+Deprecated fields
+
+The `include_custom_attributes` query parameter and the `custom_attributes` response field are deprecated. Use `include_attributes` and `attributes` instead. The new names make it clearer that each returned name is a key you access through the `attributes` column, for example `attributes['<NAME>']`.
 
 ### Log Explorer availability
 
@@ -220,7 +227,7 @@ Log Explorer datasets include an `availability` field alongside `kind`, listing 
 Introspection uses the same [HTTP status codes as the rest of the SQL API](https://developers.cloudflare.com/analytics/sql-api/errors/). The following `422` causes are specific to introspection:
 
 - `account_tag` is invalid or unknown.
-- `include_custom_attributes=true` was set without a nonempty `dataset_name`.
+- `include_attributes=true` (or the deprecated `include_custom_attributes=true`) was set without a nonempty `dataset_name`.
 - `dataset_name` identifies a Workers Analytics Engine dataset while `include_wae=false`.
 - A Workers Analytics Engine dataset name used for direct lookup is malformed or contains unsupported characters.
 - The supplied criteria, such as `dataset_name`, match no dataset. A dataset that exists but is not describable in this deployment returns the identical error, with a message naming the criteria that matched nothing, so the two cases cannot be told apart.
@@ -236,5 +243,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/sql-api/datasets/#page","headline":"Datasets","description":"Understand SQL API dataset types and discover available datasets and columns.","url":"https://developers.cloudflare.com/analytics/sql-api/datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/sql-api/datasets/og.png?v=4961a8dc07d46080","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/sql-api/datasets/#page","headline":"Datasets","description":"Understand SQL API dataset types and discover available datasets and columns.","url":"https://developers.cloudflare.com/analytics/sql-api/datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/sql-api/datasets/og.png?v=4961a8dc07d46080","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -9,11 +9,11 @@ description: "Learn about the new experience for browsing your Loki logs without
 
 Welcome to our new experience for Loki. Grafana Logs Drilldown lets you automatically visualize and explore your logs without having to write queries.
 
-![Grafana Learning Journeys](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/learning-journey/map.svg)
+![Grafana Learning Journeys](https://grafana.com/media/docs/learning-journey/map.svg)
 
 Start your learning experience with Grafana Learning Paths
 
-Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore logs using Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/learning-journeys/drilldown-logs/).
+Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore logs using Logs Drilldown](https://grafana.com/docs/learning-journeys/drilldown-logs/).
 
 [Start learning→](https://grafana.com/docs/learning-journeys/drilldown-logs/)
 
@@ -45,31 +45,31 @@ With Logs Drilldown, you get the same powerful insights, by just viewing and cli
 
 [Get access or install
 \
-Get access to Grafana Logs Drilldown in Grafana Cloud or in your own stack.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/)
+Get access to Grafana Logs Drilldown in Grafana Cloud or in your own stack.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/)
 
 [Configure Logs Drilldown
 \
-Configure default data source, time range, and display fields for your Logs Drilldown instance.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/configure/)
+Configure default data source, time range, and display fields for your Logs Drilldown instance.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/configure/)
 
 [Get started
 \
-Install Grafana Logs Drilldown and take a tour of Logs Drilldown using your own data.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/get-started/)
+Install Grafana Logs Drilldown and take a tour of Logs Drilldown using your own data.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/get-started/)
 
 [Learn about Labels and Fields
 \
-Learn how Grafana Logs Drilldown uses labels and Fields to help you explore your Loki logs.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields/)
+Learn how Grafana Logs Drilldown uses labels and Fields to help you explore your Loki logs.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields/)
 
 [Learn about Log patterns
 \
-Learn how you can use automatic log grouping to remove noise and find hard to locate logs.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/patterns/)
+Learn how you can use automatic log grouping to remove noise and find hard to locate logs.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/patterns/)
 
 [Troubleshooting
 \
-Find solutions to common issues you might encounter when using Grafana Logs Drilldown.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/)
+Find solutions to common issues you might encounter when using Grafana Logs Drilldown.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/)
 
 [Engage with your JSON log lines
 \
-Drill down into your JSON log lines to better understand your log line data.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/)
+Drill down into your JSON log lines to better understand your log line data.](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/)
 
 [Give feedback
 \
@@ -83,4 +83,4 @@ You can also fill out [this Google form](https://forms.gle/1sYWCTPvD72T1dPH9) to
 
 ## What’s next?
 
-Dive into [Get started with Grafana Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/get-started/) to learn how to set up Logs Drilldown and take a tour of the feature using your own data.
+Dive into [Get started with Grafana Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/get-started/) to learn how to set up Logs Drilldown and take a tour of the feature using your own data.

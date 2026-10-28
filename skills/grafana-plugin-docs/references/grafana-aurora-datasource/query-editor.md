@@ -11,7 +11,7 @@ This document explains how to use the Amazon Aurora query editor to query your A
 
 ## Before you begin
 
-- Ensure you have [configured the Amazon Aurora data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/).
+- Ensure you have [configured the Amazon Aurora data source](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/configure/).
 - Verify your database user has read access to the tables you want to query.
 
 ## Write a query
@@ -20,7 +20,7 @@ The query editor provides an SQL code editor with syntax highlighting. Write sta
 
 New queries start with the following default query, which you can replace with your own:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select now() as time, 1 as testvalue
@@ -40,7 +40,7 @@ With **Time Series**, the plugin turns each string column into a label and rende
 
 When you use Explore, Grafana automatically renders your data with the appropriate table or time series visualization when you change the format. In dashboards, you control the visualization for each panel.
 
-To learn more, refer to the [Grafana documentation on time series formats](http://grafana-com-website.grafana-com.svc.cluster.local.:80/developers/dataplane/timeseries).
+To learn more, refer to the [Grafana documentation on time series formats](https://grafana.com/developers/dataplane/timeseries).
 
 ## Macros
 
@@ -58,7 +58,7 @@ Expand table
 
 For example, the following query returns only rows within the dashboard time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select * from test_table where $__timeFilter(recorded_at)
@@ -66,7 +66,7 @@ select * from test_table where $__timeFilter(recorded_at)
 
 You can also combine macros:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select * from test_table where $__timeFrom(recorded_at) and $__timeTo(recorded_at)
@@ -82,7 +82,7 @@ The following examples use a `weather_readings` table with `recorded_at`, `city`
 
 To graph a time series, return a time column and one or more numeric columns, scoped to the dashboard time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select recorded_at as time, temperature
@@ -95,7 +95,7 @@ order by recorded_at
 
 The plugin doesn’t provide a time-grouping macro, so use your engine’s date functions to bucket rows into intervals. On PostgreSQL-compatible clusters, use `date_trunc`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select
@@ -110,7 +110,7 @@ order by 1
 
 On MySQL-compatible clusters, round the Unix timestamp instead:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select
@@ -129,7 +129,7 @@ With **Format data frames as** set to **Time Series**, these queries render one 
 
 To show recent raw data in a table panel, sort by time and limit the result set:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select recorded_at, city, neighborhood, temperature
@@ -143,14 +143,14 @@ Set **Format data frames as** to **Table** for this query.
 
 ## Query caching
 
-If an administrator has enabled [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/#query-caching) for the data source, Grafana serves repeated queries from the cache instead of running them against your cluster. You can override the cache duration for an individual panel: in the panel editor, expand **Query options** and enter a **Cache TTL** in milliseconds.
+If an administrator has enabled [query caching](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/configure/#query-caching) for the data source, Grafana serves repeated queries from the cache instead of running them against your cluster. You can override the cache duration for an individual panel: in the panel editor, expand **Query options** and enter a **Cache TTL** in milliseconds.
 
 ## Alerting
 
-The Amazon Aurora data source supports Grafana Alerting. You can create alert rules based on any Aurora query, but template variables don’t work in alert rule queries. Refer to [Amazon Aurora alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/alerting/) for details.
+The Amazon Aurora data source supports Grafana Alerting. You can create alert rules based on any Aurora query, but template variables don’t work in alert rule queries. Refer to [Amazon Aurora alerting](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/alerting/) for details.
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/template-variables/)
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/template-variables/)
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)

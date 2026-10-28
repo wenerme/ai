@@ -16,17 +16,17 @@ You can use Profiles Drilldown in Grafana Cloud or in your own Grafana instance.
 To use Profiles Drilldown with Grafana Cloud, you need:
 
 - A Grafana Cloud account
-- A Grafana stack in Grafana Cloud with a configured Hosted profiles or [Pyroscope data source](/404/)
+- A Grafana stack in Grafana Cloud with a configured Hosted profiles or [Pyroscope data source](https://grafana.com/404/)
 
 To use Profiles Drilldown with Grafana open source or Grafana Enterprise, you need:
 
 - Grafana 13.1.0 or later
 - Your own Grafana instance
-- A configured [Pyroscope data source](/404/)
+- A configured [Pyroscope data source](https://grafana.com/404/)
 
 ## Install the Profiles Drilldown plugin
 
-Profiles Drilldown is distributed as a Grafana Plugin. You can find it in the official [Grafana Plugin Directory](/grafana/plugins/grafana-pyroscope-app/).
+Profiles Drilldown is distributed as a Grafana Plugin. You can find it in the official [Grafana Plugin Directory](https://grafana.com/grafana/plugins/grafana-pyroscope-app/).
 
 > Note
 >

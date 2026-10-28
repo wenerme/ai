@@ -11,12 +11,12 @@ Connect AI tools to your GitLab instance with the GitLab MCP server.
 - Support for `2025-03-26` and `2025-06-18` MCP protocol specifications [added](https://gitlab.com/gitlab-org/gitlab/-/issues/581459) in GitLab 18.7.
 - Support for the `2025-11-25` MCP protocol specification [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216219) in GitLab 18.7.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/590729) to a separate setting and [moved](https://gitlab.com/groups/gitlab-org/-/work_items/21183) from GitLab Premium to GitLab Free in GitLab 19.2.
-- `orbit` toolset [added](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1294) in GitLab 19.4.
 - Toolset selection [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/607755) in GitLab 19.5.
 - `duo_agent_platform` toolset [included by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/630992) in GitLab 19.5.
 - Changed from [beta](../../policy/development_stages_support.md#beta) to [generally available](../../policy/development_stages_support.md#generally-available) in GitLab 19.5.
 - `duo_agent_platform` toolset [listed only](https://gitlab.com/gitlab-org/gitlab/-/work_items/631747) when GitLab Duo Agent Platform is available for the user in GitLab 19.5.
 - `code_security` tools [listed only](https://gitlab.com/gitlab-org/gitlab/-/work_items/629267) when the licensed feature behind each tool is available for the user in GitLab 19.5.
+- `orbit` toolset [added](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1294) in GitLab 19.6.
 
 > [!warning]
 > To provide feedback on this feature, leave a comment on [issue 630189](https://gitlab.com/gitlab-org/gitlab/-/issues/630189).
@@ -175,6 +175,7 @@ on the Ultimate plan, including Ultimate trials. Access to a project in that gro
 On GitLab Self-Managed and GitLab Dedicated, the tools are listed if the instance license includes the feature.
 
 The `orbit` toolset has one tool for each Orbit command, for example `query_graph`.
+For more information, see [Orbit tools](mcp_server_tools.md#orbit-tools).
 The Orbit server sets the tool names, descriptions, and input schemas.
 The tools are listed and run only when you meet the [Orbit requirements](https://docs.gitlab.com/orbit/).
 

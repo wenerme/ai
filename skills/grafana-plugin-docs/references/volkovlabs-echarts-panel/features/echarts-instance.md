@@ -21,7 +21,7 @@ For more details, see the documentation for [echartsInstance](https://echarts.ap
 
 To scale the content for fitting the resized panel, you need to use the instance methods to retrieve the width and height of the panel.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
   graphic: {
@@ -42,9 +42,9 @@ You can add elements (buttons, checkboxes, dropdown boxes, etc.) to the DOM (Doc
 
 You can add a button with an on-click event handler on top of the Business Charts panel.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/dom.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/dom.png)
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const myFunction = () => {
@@ -84,9 +84,9 @@ if (nodeList.length < 2) {
 
 Add a select box with an on-change event handler.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/select.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/select.png)
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 //Get the DOM for the panel

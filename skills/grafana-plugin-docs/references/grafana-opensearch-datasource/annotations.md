@@ -13,7 +13,7 @@ Annotations let you overlay event information on top of graphs. You can query an
 >
 > Annotations only support Lucene queries. PPL queries are not available in the annotation editor.
 
-For more information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations in Grafana, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Create an annotation
 
@@ -54,7 +54,7 @@ The following examples show common annotation query patterns.
 
 Use a Lucene query to filter for documents that match multiple tags:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 tags:error AND tags:security
@@ -66,7 +66,7 @@ This creates annotation markers for any events tagged with both `error` and `sec
 
 Filter for documents where a numeric field exceeds a threshold:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 taxful_total_price:>250
@@ -76,7 +76,7 @@ taxful_total_price:>250
 
 Use a template variable to show annotations only for the selected environment:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 environment:$environment AND event_type:deployment
@@ -84,7 +84,7 @@ environment:$environment AND event_type:deployment
 
 ### Mark events from a specific host
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 hostname:$hostname AND level:error
@@ -92,4 +92,4 @@ hostname:$hostname AND level:error
 
 ## Use template variables in annotations
 
-You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections. When the **Multi-value** or **Include all value** options are enabled, variable values are converted into a Lucene-compatible condition.
+You can use [template variables](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections. When the **Multi-value** or **Include all value** options are enabled, variable values are converted into a Lucene-compatible condition.

@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Adobe Analytics data source in Grafa
 
 # Troubleshoot Adobe Analytics data source issues
 
-This document lists common issues you may encounter when configuring or using the Adobe Analytics data source in Grafana, along with suggested solutions. For configuration instructions, refer to [Configure the Adobe Analytics data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-adobeanalytics-datasource/latest/#configure-the-data-source).
+This document lists common issues you may encounter when configuring or using the Adobe Analytics data source in Grafana, along with suggested solutions. For configuration instructions, refer to [Configure the Adobe Analytics data source](https://grafana.com/docs/plugins/grafana-adobeanalytics-datasource/latest/#configure-the-data-source).
 
 ## Authentication errors
 
@@ -88,7 +88,7 @@ These errors occur when Grafana can’t reach Adobe IMS or the Adobe Analytics A
    - `https://ims-na1.adobelogin.com` for token requests
    - `https://analytics.adobe.io` for API requests
 2. Confirm firewall and proxy rules allow outbound HTTPS on port `443` to these hosts.
-3. If you’re running on Grafana Cloud and Adobe Analytics is only reachable from a private network, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+3. If you’re running on Grafana Cloud and Adobe Analytics is only reachable from a private network, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### 404 or “resource not found” from the Adobe Analytics API
 
@@ -210,7 +210,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -226,7 +226,7 @@ If the solutions in this document don’t resolve your issue:
 
 1. Check the [Grafana community forum](https://community.grafana.com/) for similar issues.
 2. Consult the [Adobe Analytics 2.0 API documentation](https://developer.adobe.com/analytics-apis/docs/2.0/) for service-specific guidance.
-3. Open a support ticket through your [Grafana Enterprise support channel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) or Grafana Cloud support portal. Because this plugin is an Enterprise plugin, the support channel is the preferred way to report bugs and request features.
+3. Open a support ticket through your [Grafana Enterprise support channel](https://grafana.com/profile/org#support) or Grafana Cloud support portal. Because this plugin is an Enterprise plugin, the support channel is the preferred way to report bugs and request features.
 4. When reporting issues, include:
 
    - Grafana version and Adobe Analytics data source plugin version.

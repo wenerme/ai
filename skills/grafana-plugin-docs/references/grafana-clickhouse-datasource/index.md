@@ -42,20 +42,20 @@ Expand table
 
 Start by configuring a connection to your ClickHouse server, then use the query editor to build queries for dashboards and alerts.
 
-1. [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Set up the connection, authentication, TLS, and optional features like logs and traces.
-2. [ClickHouse query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Write SQL queries or use the visual query builder. Includes macros, query types, and examples.
-3. [ClickHouse template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Create dynamic dashboards with variables and ad hoc filters.
-4. [ClickHouse annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/annotations/): Overlay event markers on dashboard panels from ClickHouse data.
-5. [ClickHouse alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/alerting/): Create alert rules and recording rules from ClickHouse queries.
-6. [Troubleshoot ClickHouse data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Solutions for common connection, query, and configuration errors.
+1. [Configure the ClickHouse data source](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Set up the connection, authentication, TLS, and optional features like logs and traces.
+2. [ClickHouse query editor](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Write SQL queries or use the visual query builder. Includes macros, query types, and examples.
+3. [ClickHouse template variables](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Create dynamic dashboards with variables and ad hoc filters.
+4. [ClickHouse annotations](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations/): Overlay event markers on dashboard panels from ClickHouse data.
+5. [ClickHouse alerting](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/alerting/): Create alert rules and recording rules from ClickHouse queries.
+6. [Troubleshoot ClickHouse data source issues](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Solutions for common connection, query, and configuration errors.
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query data without building a dashboard
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/) to manipulate query results
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query data without building a dashboard
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels/transformations/) to manipulate query results
+- Set up [Alerting](https://grafana.com/docs/grafana/latest/alerting/) rules
 
 ## Pre-built dashboards
 
@@ -64,7 +64,7 @@ The plugin includes the following pre-built dashboards:
 - **Query Analysis**: Query performance, time distribution, top users, and memory usage.
 - **Data Analysis**: Disk usage, table and database summary, parts over time, and dictionaries.
 - **Cluster Analysis**: Cluster overview, merges, mutations, and replicated table delay.
-- **OpenTelemetry Logs Explorer**: stacked log volume, services, and per-service samples for OpenTelemetry data exported to `otel_logs`. See the [OpenTelemetry dashboards guide](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/dashboards/).
+- **OpenTelemetry Logs Explorer**: stacked log volume, services, and per-service samples for OpenTelemetry data exported to `otel_logs`. See the [OpenTelemetry dashboards guide](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/dashboards/).
 - **OpenTelemetry Traces Explorer**: service map, trace search, and per-service performance for OpenTelemetry data exported to `otel_traces`.
 - **OpenTelemetry Service Dashboard**: single-service deep dive with RED metrics, top errors, slowest operations, related logs, and trace detail.
 - **ClickHouse System Dashboards**: System metrics (CPU, queries/sec, IO, memory) similar to ClickHouse built-in monitoring.
@@ -88,11 +88,11 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
 
-`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](https://grafana.com/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
 
 For example, to query your ClickHouse data source, use `gcx datasources clickhouse`:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 # Run a SQL query

@@ -7,7 +7,7 @@ description: "Install and upgrade the Jenkins data source plugin across Grafana 
 
 # Install and upgrade the Jenkins data source plugin
 
-This document covers how to install, upgrade, and verify the Jenkins data source plugin across different Grafana deployment environments. After the plugin is installed, refer to the [Jenkins data source overview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/) to configure a connection.
+This document covers how to install, upgrade, and verify the Jenkins data source plugin across different Grafana deployment environments. After the plugin is installed, refer to the [Jenkins data source overview](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/) to configure a connection.
 
 ## Before you begin
 
@@ -30,7 +30,7 @@ The Jenkins data source is a Grafana Enterprise plugin. Before you can install i
 
 To activate the plugin on Grafana Cloud:
 
-1. Go to [grafana.com/orgs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in.
+1. Go to [grafana.com/orgs](https://grafana.com/orgs) and sign in.
 2. Select your organization and open the **Plugins** tab to verify the plugin is activated.
 3. If it isn’t listed, confirm your Cloud plan is Pro or Advanced, and contact your Grafana account team to add it.
 
@@ -39,7 +39,7 @@ To activate the plugin on Grafana Cloud:
 To activate the plugin on self-managed Grafana Enterprise:
 
 1. Confirm your Grafana Enterprise license includes the plugin.
-2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+2. Provide the license using the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or a license file path. Refer to [Activate an Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 3. Restart Grafana and confirm the license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 
 ## Install the plugin
@@ -57,7 +57,7 @@ To install the plugin on Grafana Cloud:
 
 Use the Grafana CLI to install the plugin, then restart Grafana:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-jenkins-datasource
@@ -67,7 +67,7 @@ grafana cli plugins install grafana-jenkins-datasource
 
 Set the `GF_INSTALL_PLUGINS` environment variable and provide the Enterprise license with `GF_ENTERPRISE_LICENSE_TEXT`:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 docker run -d \
@@ -85,7 +85,7 @@ Add the plugin to your Helm values or the `GF_INSTALL_PLUGINS` environment varia
 
 To install the plugin without internet access on the Grafana server:
 
-1. Download the plugin ZIP on a machine with internet access from the [plugin catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-jenkins-datasource/?tab=installation).
+1. Download the plugin ZIP on a machine with internet access from the [plugin catalog](https://grafana.com/grafana/plugins/grafana-jenkins-datasource/?tab=installation).
 2. Transfer the ZIP to the Grafana server and extract it into the plugins directory.
 3. Set ownership of the extracted files to the Grafana service account and restart Grafana.
 4. If Grafana reports an unsigned plugin error, allow it with `allow_loading_unsigned_plugins` in `grafana.ini`.
@@ -107,7 +107,7 @@ Keep the plugin up-to-date to get the latest features and fixes.
 
 To upgrade on self-managed Grafana, use the Grafana CLI and restart Grafana:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins update grafana-jenkins-datasource
@@ -115,7 +115,7 @@ grafana cli plugins update grafana-jenkins-datasource
 
 To install a specific version, append the version to the plugin ID:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-jenkins-datasource <VERSION>
@@ -127,7 +127,7 @@ To roll back on self-managed Grafana, install the previous known-good version us
 
 To remove the plugin on self-managed Grafana, use the Grafana CLI and restart Grafana:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-jenkins-datasource
@@ -148,4 +148,4 @@ Expand table
 | License key errors                   | Verify the license text or file is valid and active under **Administration** &gt; **General** &gt; **Stats and license**.                                       |
 | Unsigned plugin error (air-gapped)   | Add the plugin ID to `allow_loading_unsigned_plugins` in `grafana.ini` and restart Grafana.                                                                     |
 
-For more troubleshooting guidance, refer to [Troubleshoot the Jenkins data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/).
+For more troubleshooting guidance, refer to [Troubleshoot the Jenkins data source](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/).

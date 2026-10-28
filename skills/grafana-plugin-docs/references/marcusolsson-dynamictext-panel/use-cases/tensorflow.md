@@ -17,7 +17,7 @@ description: "Learn how to integrate TensorFlow.js for machine learning capabili
 
 Use the following for the **JavaScript &gt; Before Content Rendering**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 console.log('Loading TensorFlow...');

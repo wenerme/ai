@@ -9,12 +9,12 @@ description: "Set up Grafana alerting with the OpenSearch data source."
 
 The OpenSearch data source supports Grafana’s unified alerting system. You can create alert rules that query OpenSearch data and trigger notifications when specified conditions are met. Alert queries are executed on the Grafana server through the backend plugin, not in the browser.
 
-For more information about Grafana alerting, refer to the [Grafana alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For more information about Grafana alerting, refer to the [Grafana alerting documentation](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the OpenSearch data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/).
-- Familiarize yourself with [Grafana alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the OpenSearch data source](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+- Familiarize yourself with [Grafana alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Supported query types
 
@@ -49,7 +49,7 @@ To create an alert rule using OpenSearch data:
 6. Configure notification settings.
 7. Click **Save rule and exit**.
 
-For detailed instructions, refer to [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alert query examples
 
@@ -70,7 +70,7 @@ This produces a time series of average values that can be evaluated against a th
 
 To alert using a PPL query, set the **Format** to **Time series** and write a query that returns exactly two columns – a timestamp and a numeric value:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 source = my_index | eval dateValue = timestamp(timestamp) | stats count(response) by dateValue

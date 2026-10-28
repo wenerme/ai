@@ -16,8 +16,8 @@ To configure the data source, you need:
 - **Grafana permissions:** Organization administrator role.
 - **GitHub credentials** (one of the following):
 
-  - A personal access token (classic or fine-grained) with the [required scopes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions).
-  - A registered GitHub App with the **App ID**, **Installation ID**, and **private key**. Refer to [Register and configure a GitHub App](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#register-and-configure-a-github-app) for setup steps.
+  - A personal access token (classic or fine-grained) with the [required scopes](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions).
+  - A registered GitHub App with the **App ID**, **Installation ID**, and **private key**. Refer to [Register and configure a GitHub App](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#register-and-configure-a-github-app) for setup steps.
 - **GitHub Enterprise Server URL** (if applicable): The URL of your GitHub Enterprise Server instance.
 
 ### Security best practices
@@ -62,7 +62,7 @@ Private data source connect (PDC) establishes a private, secured connection betw
 
 Click **Manage private data source connect** to go to your PDC connection page, where you can find your PDC configuration details.
 
-For setup instructions, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For setup instructions, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Authentication
 
@@ -77,7 +77,7 @@ You can authenticate with either a classic personal access token or a fine-grain
 1. Sign in to your GitHub account.
 2. Navigate to [Personal access tokens](https://github.com/settings/tokens) and click **Generate new token**.
 3. Select **personal access token (classic)**.
-4. Assign the [required permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions).
+4. Assign the [required permissions](https://grafana.com/docs/plugins/grafana-github-datasource/latest/configure/#personal-access-token-permissions).
 5. Click **Generate Token**.
 6. Copy the token and paste it into the **Personal Access Token** field in the data source settings.
 
@@ -166,19 +166,19 @@ If the connection fails, check the following error messages:
 
 Expand table
 
-| Error message                                                              | Solution                                                                                                                                                                                                                                                            |
-|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| “401 Unauthorized. Check your API key/Access token”                        | Verify your access token is correct and hasn’t expired. Ensure it has the required scopes.                                                                                                                                                                          |
-| “404 Not Found. Check the Github Enterprise Server URL”                    | Verify the GitHub Enterprise Server URL is correct.                                                                                                                                                                                                                 |
-| “Unable to reach the Github Enterprise Server URL from the Grafana server” | Check network connectivity, firewall rules, and proxy settings. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
+| Error message                                                              | Solution                                                                                                                                                                                                                   |
+|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| “401 Unauthorized. Check your API key/Access token”                        | Verify your access token is correct and hasn’t expired. Ensure it has the required scopes.                                                                                                                                 |
+| “404 Not Found. Check the Github Enterprise Server URL”                    | Verify the GitHub Enterprise Server URL is correct.                                                                                                                                                                        |
+| “Unable to reach the Github Enterprise Server URL from the Grafana server” | Check network connectivity, firewall rules, and proxy settings. For Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Personal access token example
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -194,7 +194,7 @@ datasources:
 
 ### GitHub App example
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -212,7 +212,7 @@ datasources:
 
 ### GitHub Enterprise Server example
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -230,11 +230,11 @@ datasources:
 
 ## Provision with Terraform
 
-You can provision the GitHub data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to [Provision Grafana with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/infrastructure-as-code/terraform/).
+You can provision the GitHub data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). For more information, refer to [Provision Grafana with Terraform](https://grafana.com/docs/grafana/latest/administration/infrastructure-as-code/terraform/).
 
 ### Personal access token example
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "github" {
@@ -253,7 +253,7 @@ resource "grafana_data_source" "github" {
 
 ### GitHub App example
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "github" {

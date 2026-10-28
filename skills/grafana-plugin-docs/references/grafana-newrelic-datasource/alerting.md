@@ -7,13 +7,13 @@ description: "Set up Grafana Alerting with the New Relic data source."
 
 # New Relic alerting
 
-The New Relic data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on New Relic data. You can monitor your applications, infrastructure, and custom metrics and receive notifications when specific conditions are met.
+The New Relic data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), allowing you to create alert rules based on New Relic data. You can monitor your applications, infrastructure, and custom metrics and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
 - Verify your New Relic data source is configured and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- Familiarize yourself with [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Supported query types for alerting
 
@@ -55,7 +55,7 @@ To create an alert rule using New Relic data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alert examples
 
@@ -68,7 +68,7 @@ Alert when the application error rate exceeds 5%:
 1. Create a new alert rule.
 2. Select the **NRQL Editor** query type, set **Format** to `Table`, and enter:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT percentage(count(*), WHERE error IS true) FROM Transaction WHERE appName = 'my-app' $__timeFilter
@@ -81,7 +81,7 @@ Alert when the application error rate exceeds 5%:
 
 Alert when average response time exceeds 2 seconds:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction WHERE appName = 'my-app' $__timeFilter
@@ -93,7 +93,7 @@ Set **Format** to `Table`. Set the alert condition threshold to **Is above 2**.
 
 Alert when request throughput drops below a minimum threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT rate(count(*), 1 minute) FROM Transaction WHERE appName = 'my-app' $__timeFilter
@@ -105,7 +105,7 @@ Set **Format** to `Table`. Set the alert condition threshold to **Is below 100**
 
 Alert when the Apdex score falls below an acceptable level:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT apdex(duration, 0.5) FROM Transaction WHERE appName = 'my-app' $__timeFilter
@@ -122,7 +122,7 @@ Alert when the number of reported data points exceeds a threshold. This example 
 3. In **Select**, set the attribute to `*` and the aggregation to **Count**.
 4. Set **Format** to `TABLE` so the query omits the `TIMESERIES` keyword. Data Explorer generates:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT count(*) FROM Metric $__timeFilter
@@ -146,7 +146,7 @@ Follow these recommendations to create reliable alerts with New Relic data.
 
 Always include `$__timeFilter` in NRQL alert queries so the query evaluates data within the alert evaluation window:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT average(duration) FROM Transaction WHERE appName = 'my-app' $__timeFilter
@@ -191,10 +191,10 @@ Configure what happens when no data is returned or when a query error occurs:
 
 ## Troubleshoot alerting issues
 
-For common alerting issues with the New Relic data source, refer to [Alerting issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#alerting-issues) in the troubleshooting guide.
+For common alerting issues with the New Relic data source, refer to [Alerting issues](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/#alerting-issues) in the troubleshooting guide.
 
 ## Additional resources
 
-- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)

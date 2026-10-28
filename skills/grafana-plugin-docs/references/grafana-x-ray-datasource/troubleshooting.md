@@ -36,13 +36,13 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 Expand table
 
-| Cause                                                       | Solution                                                                                                                                                                                                                                                                                                             |
-|-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| IAM identity is missing required actions                    | Apply the [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy). Include `xray:*` read actions, `application-signals:List*`, `ec2:DescribeRegions`, and the OAM actions for cross-account.                                   |
-| Wrong authentication method selected                        | Confirm the method matches where Grafana runs. Use **EC2 IAM role** on EC2, and **AWS SDK Default** on Amazon Managed Grafana or anywhere the SDK credential chain is already set up (environment variables, container role, instance profile, or workspace role).                                                   |
-| Invalid access key or secret key                            | Verify the keys in the AWS IAM console. Rotate them if necessary and update the data source.                                                                                                                                                                                                                         |
-| Assume Role trust policy doesn’t allow the Grafana identity | Update the target role’s trust policy to allow `sts:AssumeRole` from your Grafana IAM identity. For Grafana Cloud, refer to the [Grafana Assume Role documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-source-management/aws-iam-role/). |
-| External ID mismatch                                        | Make sure the **External ID** in the data source matches the `sts:ExternalId` condition on the target role’s trust policy.                                                                                                                                                                                           |
+| Cause                                                       | Solution                                                                                                                                                                                                                                                                    |
+|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IAM identity is missing required actions                    | Apply the [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy). Include `xray:*` read actions, `application-signals:List*`, `ec2:DescribeRegions`, and the OAM actions for cross-account.                                   |
+| Wrong authentication method selected                        | Confirm the method matches where Grafana runs. Use **EC2 IAM role** on EC2, and **AWS SDK Default** on Amazon Managed Grafana or anywhere the SDK credential chain is already set up (environment variables, container role, instance profile, or workspace role).          |
+| Invalid access key or secret key                            | Verify the keys in the AWS IAM console. Rotate them if necessary and update the data source.                                                                                                                                                                                |
+| Assume Role trust policy doesn’t allow the Grafana identity | Update the target role’s trust policy to allow `sts:AssumeRole` from your Grafana IAM identity. For Grafana Cloud, refer to the [Grafana Assume Role documentation](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-source-management/aws-iam-role/). |
+| External ID mismatch                                        | Make sure the **External ID** in the data source matches the `sts:ExternalId` condition on the target role’s trust policy.                                                                                                                                                  |
 
 ### “Could not load credentials” or “no valid providers in chain”
 
@@ -88,7 +88,7 @@ These errors occur when Grafana can’t reach the AWS X-Ray or Application Signa
 1. Verify outbound HTTPS (port 443) is allowed from the Grafana host to the AWS X-Ray and Application Signals endpoints.
 2. Confirm the **Default region** is set to a region where your resources exist.
 3. If you use a custom **Endpoint**, confirm the URL is correct and reachable from Grafana.
-4. For private AWS networks or VPC endpoints in Grafana Cloud, configure [Private Data source Connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select a PDC network in the data source settings.
+4. For private AWS networks or VPC endpoints in Grafana Cloud, configure [Private Data source Connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and select a PDC network in the data source settings.
 
 ### Endpoint or region mismatch
 
@@ -117,13 +117,13 @@ These errors surface in the query editor when executing queries against the data
 
 Expand table
 
-| Cause                                                 | Solution                                                                                                                                                                                                                                |
-|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Time range doesn’t contain trace data                 | Expand the dashboard time range and confirm traces exist in X-Ray or Application Signals for that range.                                                                                                                                |
-| Wrong region                                          | Change the **Region** in the query header to where your application is instrumented.                                                                                                                                                    |
-| Overly restrictive filter expression                  | Simplify the filter expression or remove it entirely to confirm traces are returned.                                                                                                                                                    |
-| Trace not yet indexed by X-Ray                        | X-Ray can take up to one minute to index new traces. Retry after a short wait.                                                                                                                                                          |
-| IAM identity lacks read access on the target resource | Confirm the IAM identity has `xray:BatchGetTraces` and `xray:GetTraceSummaries`. See the [IAM policy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy). |
+| Cause                                                 | Solution                                                                                                                                                                                       |
+|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Time range doesn’t contain trace data                 | Expand the dashboard time range and confirm traces exist in X-Ray or Application Signals for that range.                                                                                       |
+| Wrong region                                          | Change the **Region** in the query header to where your application is instrumented.                                                                                                           |
+| Overly restrictive filter expression                  | Simplify the filter expression or remove it entirely to confirm traces are returned.                                                                                                           |
+| Trace not yet indexed by X-Ray                        | X-Ray can take up to one minute to index new traces. Retry after a short wait.                                                                                                                 |
+| IAM identity lacks read access on the target resource | Confirm the IAM identity has `xray:BatchGetTraces` and `xray:GetTraceSummaries`. See the [IAM policy](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/configure/#iam-policy). |
 
 ### “Trace not found”
 
@@ -196,7 +196,7 @@ Expand table
 
 1. Confirm the dashboard time range covers a window in which traces were captured.
 2. If cross-account observability is configured, check the **AccountId** multi-select. Leaving it empty returns only the data source’s own account; selecting linked accounts widens the map.
-3. Use a [Node graph](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel — the service map data isn’t designed for table or time-series visualizations.
+3. Use a [Node graph](https://grafana.com/docs/grafana/latest/panels-visualizations/visualizations/node-graph/) panel — the service map data isn’t designed for table or time-series visualizations.
 4. Confirm the IAM identity has `xray:GetServiceGraph`.
 
 ### Service variable produces broken filter expressions
@@ -214,17 +214,17 @@ The **Service** template variable’s value is a JSON blob (that’s what the Ap
 
 Use the `:text` format modifier to emit the display name:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 service("${service:text}")
 ```
 
-Refer to [Template variables — The Service variable’s value is a JSON blob](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/#the-service-variables-value-is-a-json-blob).
+Refer to [Template variables — The Service variable’s value is a JSON blob](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/#the-service-variables-value-is-a-json-blob).
 
 ## Alerting errors
 
-These issues surface when building or evaluating [Grafana alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/) on AWS Application Signals or X-Ray data.
+These issues surface when building or evaluating [Grafana alert rules](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/) on AWS Application Signals or X-Ray data.
 
 ### Alert rule can’t be created on a query
 
@@ -239,7 +239,7 @@ Grafana Alerting only evaluates queries that return numeric time series. Query t
 
 **Solution:**
 
-Rewrite the query as a **Trace Statistics** query with the same filter expression. Refer to the [alerting-compatible query types table](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/#alerting-compatible-query-types).
+Rewrite the query as a **Trace Statistics** query with the same filter expression. Refer to the [alerting-compatible query types table](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/#alerting-compatible-query-types).
 
 ### Alert evaluates as “No Data”
 
@@ -252,12 +252,12 @@ Rewrite the query as a **Trace Statistics** query with the same filter expressio
 
 Expand table
 
-| Cause                                                                               | Solution                                                                                                                                                                                                                                                                                                                                                             |
-|-------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Alert evaluation interval starts before the first Trace Statistics bucket is filled | Set the **Pending period** to at least two evaluation intervals so partial buckets don’t cause transient **No Data** states.                                                                                                                                                                                                                                         |
-| The filter expression references a dashboard template variable                      | Alert rules evaluate without dashboard context. Use a **Constant** or **Text box** variable, or hard-code the value in the alert filter expression. Refer to [Use template variables in alert queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/#use-template-variables-in-alert-queries). |
-| Resolution doesn’t align with evaluation interval                                   | Set **Resolution** to a value that divides evenly into the evaluation interval (for example, `60s` for a `1m` interval).                                                                                                                                                                                                                                             |
-| Selected **Columns** don’t include the metric the alert reduces                     | Add the required column — for example, an alert on fault ratio needs both **Fault Count** and **Total Count**.                                                                                                                                                                                                                                                       |
+| Cause                                                                               | Solution                                                                                                                                                                                                                                                                                                                    |
+|-------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Alert evaluation interval starts before the first Trace Statistics bucket is filled | Set the **Pending period** to at least two evaluation intervals so partial buckets don’t cause transient **No Data** states.                                                                                                                                                                                                |
+| The filter expression references a dashboard template variable                      | Alert rules evaluate without dashboard context. Use a **Constant** or **Text box** variable, or hard-code the value in the alert filter expression. Refer to [Use template variables in alert queries](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/#use-template-variables-in-alert-queries). |
+| Resolution doesn’t align with evaluation interval                                   | Set **Resolution** to a value that divides evenly into the evaluation interval (for example, `60s` for a `1m` interval).                                                                                                                                                                                                    |
+| Selected **Columns** don’t include the metric the alert reduces                     | Add the required column — for example, an alert on fault ratio needs both **Fault Count** and **Total Count**.                                                                                                                                                                                                              |
 
 ### Fault-rate alert fires when there’s no traffic
 
@@ -274,7 +274,7 @@ Dividing by a zero **Total Count** produces `NaN` or infinity, which can either 
 
 Add a guard expression before the threshold. Grafana Math expressions don’t support `if`/`else` or the ternary operator (`?:`), so use the boolean-multiplication trick. Relational operators return `1` for true and `0` for false, so adding `($TotalCount == 0)` to the denominator makes it `1` instead of `0` in quiet windows:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 $FaultCount / ($TotalCount + ($TotalCount == 0))
@@ -309,7 +309,7 @@ Trace Statistics queries return one series per non-empty column and per group di
 
 **Solution:**
 
-Refer to [X-Ray API throttling or “Rate exceeded”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#x-ray-api-throttling-or-rate-exceeded). For alert-specific mitigation:
+Refer to [X-Ray API throttling or “Rate exceeded”](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/troubleshooting/#x-ray-api-throttling-or-rate-exceeded). For alert-specific mitigation:
 
 1. Increase **Resolution** from `60s` to `300s` to reduce `GetTimeSeriesServiceStatistics` call volume.
 2. Consolidate multiple per-service alerts into one alert with a broader filter expression and label-based routing.
@@ -327,7 +327,7 @@ The plugin’s SLO query returns the current SLO snapshot at query time, not the
 
 **Solution:**
 
-For production SLO alerting, prefer native CloudWatch alarms on the SLO metrics Application Signals publishes. Refer to [Alerting on Application Signals SLOs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/alerting/#alerting-on-application-signals-slos).
+For production SLO alerting, prefer native CloudWatch alarms on the SLO metrics Application Signals publishes. Refer to [Alerting on Application Signals SLOs](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/alerting/#alerting-on-application-signals-slos).
 
 ## Template variable errors
 
@@ -339,13 +339,13 @@ These errors occur when using template variables with the data source.
 
 Expand table
 
-| Cause                                      | Solution                                                                                                                                                                                                                                                                                                                                     |
-|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cross-account observability not configured | The **Accounts** query type requires cross-account observability to be enabled in AWS and the `oam:ListSinks` / `oam:ListAttachedLinks` permissions on the Grafana IAM identity.                                                                                                                                                             |
-| Parent variable not resolved               | For cascading variables (for example, **Operations** depending on **Service**), confirm parent variables have valid values. Set **Refresh** to **On time range change** on dependent variables.                                                                                                                                              |
-| Required field empty                       | Every non-**Regions** query type requires **Region**. **Operations** additionally requires **Service**. **Services** doesn’t strictly require **AccountId** — leave it blank to query the data source’s own account.                                                                                                                         |
-| IAM permissions missing                    | Confirm the identity has `application-signals:ListServices` and related `List*` actions.                                                                                                                                                                                                                                                     |
-| Service variable value is JSON             | If another plugin or panel expects a plain service name, switch to `${service:text}`. Refer to [Template variables — The Service variable’s value is a JSON blob](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-x-ray-datasource/latest/template-variables/#the-service-variables-value-is-a-json-blob). |
+| Cause                                      | Solution                                                                                                                                                                                                                                                                                            |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Cross-account observability not configured | The **Accounts** query type requires cross-account observability to be enabled in AWS and the `oam:ListSinks` / `oam:ListAttachedLinks` permissions on the Grafana IAM identity.                                                                                                                    |
+| Parent variable not resolved               | For cascading variables (for example, **Operations** depending on **Service**), confirm parent variables have valid values. Set **Refresh** to **On time range change** on dependent variables.                                                                                                     |
+| Required field empty                       | Every non-**Regions** query type requires **Region**. **Operations** additionally requires **Service**. **Services** doesn’t strictly require **AccountId** — leave it blank to query the data source’s own account.                                                                                |
+| IAM permissions missing                    | Confirm the identity has `application-signals:ListServices` and related `List*` actions.                                                                                                                                                                                                            |
+| Service variable value is JSON             | If another plugin or panel expects a plain service name, switch to `${service:text}`. Refer to [Template variables — The Service variable’s value is a JSON blob](https://grafana.com/docs/plugins/grafana-x-ray-datasource/latest/template-variables/#the-service-variables-value-is-a-json-blob). |
 
 ### Variables are slow to load
 
@@ -371,7 +371,7 @@ These issues relate to slow queries or AWS API limits.
 1. Reduce the dashboard refresh interval.
 2. Increase **Resolution** on Trace statistics queries (for example, from **60s** to **300s**) to reduce the number of API calls.
 3. Combine multiple narrow panels into a single broader query where possible.
-4. Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana Cloud or Grafana Enterprise.
+4. Enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) in Grafana Cloud or Grafana Enterprise.
 5. Request a quota increase from AWS if you have a high-traffic monitoring account.
 
 ### Slow service map or trace list queries
@@ -388,7 +388,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the Grafana configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -410,7 +410,7 @@ If you’ve tried the solutions above and still encounter issues:
 1. Search the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review or open an issue on the [AWS Application Signals plugin GitHub repository](https://github.com/grafana/x-ray-datasource/issues).
 3. Consult the [AWS X-Ray documentation](https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html) and [AWS Application Signals documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html) for service-specific guidance.
-4. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) if you’re a Grafana Cloud or Grafana Enterprise customer.
+4. Contact [Grafana Support](https://grafana.com/support/) if you’re a Grafana Cloud or Grafana Enterprise customer.
 5. When reporting issues, include:
 
    - Grafana version.

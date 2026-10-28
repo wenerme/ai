@@ -7,13 +7,13 @@ description: "Set up alerts using Salesforce data in Grafana."
 
 # Salesforce alerting
 
-The Salesforce data source supports [Grafana Alerting](/docs/grafana/latest/alerting/), allowing you to create alert rules based on Salesforce data. You can monitor your Salesforce environment and receive notifications when specific conditions are met, such as when opportunity values drop, case counts spike, or tasks become overdue.
+The Salesforce data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), allowing you to create alert rules based on Salesforce data. You can monitor your Salesforce environment and receive notifications when specific conditions are met, such as when opportunity values drop, case counts spike, or tasks become overdue.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
 - Verify your Salesforce data source is configured and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
+- Familiarize yourself with [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -55,7 +55,7 @@ To create an alert rule using Salesforce data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Open case count alert
 
@@ -64,7 +64,7 @@ This example creates an alert that fires when the number of open high-priority c
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT COUNT() FROM Case
@@ -85,7 +85,7 @@ This example alerts when the total value of opportunities closing this month dro
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT SUM(Amount) FROM Opportunity
@@ -106,7 +106,7 @@ This example alerts when there are overdue tasks:
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT COUNT() FROM Task
@@ -127,7 +127,7 @@ This example alerts when the number of converted leads drops below an acceptable
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT COUNT() FROM Lead
@@ -148,7 +148,7 @@ This example alerts when the average value of open opportunities in the current 
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT AVG(Amount) FROM Opportunity
@@ -169,7 +169,7 @@ This example uses the `$__timeFrom` and `$__timeTo` macros to alert on cases cre
 1. Create a new alert rule.
 2. Configure the query:
 
-   soql [Copy code to clipboard] Copy
+   soql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```soql
    SELECT COUNT() FROM Case
@@ -184,7 +184,7 @@ This example uses the `$__timeFrom` and `$__timeTo` macros to alert on cases cre
 5. Set evaluation to run every 5 minutes.
 6. Save the rule.
 
-For more information about the available macros, refer to [Salesforce query editor](/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
+For more information about the available macros, refer to [Salesforce query editor](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
 
 ## Best practices
 
@@ -214,7 +214,7 @@ SOQL provides [date literals](https://developer.salesforce.com/docs/atlas.en-us.
 
 ### Use time macros for rolling windows
 
-The Salesforce data source supports the `$__timeFrom` and `$__timeTo` macros, which resolve to the start and end of the alert query’s time range. Use them when you want the alert to evaluate a rolling window that follows the evaluation period, rather than a fixed date literal. The `$__quarterStart` and `$__quarterEnd` macros resolve to the fiscal quarter derived from your Salesforce fiscal year settings. For more information, refer to [Salesforce query editor](/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
+The Salesforce data source supports the `$__timeFrom` and `$__timeTo` macros, which resolve to the start and end of the alert query’s time range. Use them when you want the alert to evaluate a rolling window that follows the evaluation period, rather than a fixed date literal. The `$__quarterStart` and `$__quarterEnd` macros resolve to the fiscal quarter derived from your Salesforce fiscal year settings. For more information, refer to [Salesforce query editor](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
 
 ### Handle no data conditions
 
@@ -238,7 +238,7 @@ Always verify your query returns expected data before creating an alert:
 
 ## Troubleshoot alerting issues
 
-For common alerting issues with the Salesforce data source, refer to the [Troubleshooting](/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/) guide.
+For common alerting issues with the Salesforce data source, refer to the [Troubleshooting](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/) guide.
 
 Common issues include:
 
@@ -248,7 +248,7 @@ Common issues include:
 
 ## Additional resources
 
-- [Grafana Alerting documentation](/docs/grafana/latest/alerting/)
-- [Create alert rules](/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)
 - [SOQL aggregate functions](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm)

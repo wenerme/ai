@@ -57,9 +57,9 @@ Execution location describes where a tool implementation runs. It is independent
 
 | Location | Use when | Start here |
 | --- | --- | --- |
-| Worker | The tool calls an API, queries SQL, or uses server-side bindings and secrets. | [Server-side tools](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#server-side-tools) |
-| Browser | The tool needs geolocation, clipboard, local storage, or other browser APIs. | [Client-side tools](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#client-side-tools) |
-| Another Agent | A chat-capable Agent should execute as a retained, streaming tool. | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) |
+| Worker | The tool calls an API, queries SQL, or uses server-side bindings and secrets. | [Server-side tools](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#server-side-tools) |
+| Browser | The tool needs geolocation, clipboard, local storage, or other browser APIs. | [Client-side tools](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#client-side-tools) |
+| Another Agent | A chat-capable Agent should execute as a retained, streaming tool. | [Agents as tools](https://developers.cloudflare.com/agents/agent-class/agent-tools/) |
 
 With direct tool calls, the model calls the tool and the framework routes execution to the configured location.
 

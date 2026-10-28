@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Sentry data source in Grafana."
 
 # Troubleshoot Sentry data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Sentry data source. For configuration instructions, refer to [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Sentry data source. For configuration instructions, refer to [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -60,12 +60,12 @@ These errors occur when Grafana can’t reach the Sentry API.
 
 Expand table
 
-| Cause                            | Solution                                                                                                                                                                                                                                |
-|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Incorrect Sentry URL             | Verify the **Sentry URL** field. For hosted Sentry, leave blank or use `https://sentry.io`. For self-hosted instances, enter your Sentry server URL.                                                                                    |
-| Firewall blocking outbound HTTPS | Ensure firewall rules allow outbound HTTPS (port 443) from the Grafana server to the Sentry API endpoint.                                                                                                                               |
-| Self-hosted TLS issues           | For self-hosted Sentry with self-signed certificates, enable **Skip TLS Verify** in the data source’s additional settings.                                                                                                              |
-| Network isolation                | For Grafana Cloud accessing a private Sentry instance, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
+| Cause                            | Solution                                                                                                                                                                                       |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Incorrect Sentry URL             | Verify the **Sentry URL** field. For hosted Sentry, leave blank or use `https://sentry.io`. For self-hosted instances, enter your Sentry server URL.                                           |
+| Firewall blocking outbound HTTPS | Ensure firewall rules allow outbound HTTPS (port 443) from the Grafana server to the Sentry API endpoint.                                                                                      |
+| Self-hosted TLS issues           | For self-hosted Sentry with self-signed certificates, enable **Skip TLS Verify** in the data source’s additional settings.                                                                     |
+| Network isolation                | For Grafana Cloud accessing a private Sentry instance, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
 
 ## Query errors
 
@@ -123,7 +123,7 @@ Expand table
 
 **Solutions:**
 
-1. Verify the **Sentry Org** field is set in the data source configuration. Refer to [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
+1. Verify the **Sentry Org** field is set in the data source configuration. Refer to [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/).
 2. Check that the slug doesn’t contain extra spaces or the full URL — only enter the slug portion.
 
 ### “404” errors on span queries
@@ -200,12 +200,12 @@ These errors occur when using Grafana alerting with the Sentry data source.
 
 Expand table
 
-| Cause                        | Solution                                                                                                                                                                                                                           |
-|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Sentry API rate limits       | Increase the evaluation interval to reduce the frequency of API calls. Avoid evaluating more frequently than every 5 minutes.                                                                                                      |
-| Authentication token expired | Generate a new token and update the data source configuration. Refer to [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/). |
-| Query returns no data        | Verify the query returns data by running it in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) before creating an alert rule.                                                 |
-| Missing Reduce expression    | Issues, Events, and Spans queries return tabular data. Add a **Reduce** expression (for example, **Count**) to produce a numeric value for the alert condition.                                                                    |
+| Cause                        | Solution                                                                                                                                                                                  |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Sentry API rate limits       | Increase the evaluation interval to reduce the frequency of API calls. Avoid evaluating more frequently than every 5 minutes.                                                             |
+| Authentication token expired | Generate a new token and update the data source configuration. Refer to [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/). |
+| Query returns no data        | Verify the query returns data by running it in [Explore](https://grafana.com/docs/grafana/latest/explore/) before creating an alert rule.                                                 |
+| Missing Reduce expression    | Issues, Events, and Spans queries return tabular data. Add a **Reduce** expression (for example, **Count**) to produce a numeric value for the alert condition.                           |
 
 ### Alert condition not met despite matching data
 
@@ -264,7 +264,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

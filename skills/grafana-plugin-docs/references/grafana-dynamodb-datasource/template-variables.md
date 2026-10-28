@@ -7,12 +7,12 @@ description: "Use template variables with the DynamoDB data source in Grafana"
 
 # DynamoDB template variables
 
-Use template variables to create dynamic, reusable dashboards that let you change query parameters without editing individual panels. For general information about template variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+Use template variables to create dynamic, reusable dashboards that let you change query parameters without editing individual panels. For general information about template variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the DynamoDB data source](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -58,7 +58,7 @@ Expand table
 
 This query returns a list of unique customer IDs for use as variable values:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT customerId FROM "orders"
@@ -70,7 +70,7 @@ Each `customerId` value becomes both the display text and the substituted value.
 
 This query returns an ID and a human-readable name:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT sensorId, sensorName FROM "sensors"
@@ -82,7 +82,7 @@ The variable drop-down displays `sensorName` values, but the selected `sensorId`
 
 Reference template variables in your PartiQL queries using the `$variable` or `${variable}` syntax. Single-value variables are substituted as-is, so you must include quotes around string values in your query:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders" WHERE customerId = '$customer'
@@ -90,7 +90,7 @@ SELECT * FROM "orders" WHERE customerId = '$customer'
 
 Or with the braced syntax:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, metric_value
@@ -101,7 +101,7 @@ ORDER BY timestamp
 
 For numeric values, omit the quotes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders" WHERE orderTotal > $threshold
@@ -113,7 +113,7 @@ When a variable allows multiple selections, the DynamoDB data source formats the
 
 Use multi-value variables with the `IN` operator:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders" WHERE status IN ($status)
@@ -121,7 +121,7 @@ SELECT * FROM "orders" WHERE status IN ($status)
 
 If the user selects `pending` and `shipped`, this expands to:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "orders" WHERE status IN ('pending','shipped')
@@ -129,5 +129,5 @@ SELECT * FROM "orders" WHERE status IN ('pending','shipped')
 
 ## Next steps
 
-- Learn how to write queries in the [DynamoDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.
+- Learn how to write queries in the [DynamoDB query editor](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/alerting/) based on DynamoDB data.

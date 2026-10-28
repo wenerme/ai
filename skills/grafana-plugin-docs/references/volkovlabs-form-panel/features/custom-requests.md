@@ -19,9 +19,9 @@ To create a custom initial request, select `Code` and then define your custom co
 >
 > If you use this handler in the initial request, disable the **Synchronize with data** option. Using both the **Synchronize with data** option and `context.panel.onOptionsChange()` in the initial request causes the panel to reload continuously.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/infinity-reload.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/infinity-reload.png)
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const bucketsSelect = context.panel.elements.find(
@@ -61,7 +61,7 @@ const resp = fetch(url, {
 
 To support the `Highlight changed values` and `Require Confirmation` features, you need to use the `setInitial({})` function within your custom code to update initial values:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.panel.setInitial({ value: 99, name: "Test" });
@@ -71,7 +71,7 @@ context.panel.setInitial({ value: 99, name: "Test" });
 
 To create a custom update request, select `Code` and then define your custom code. Depending on the payload option you select, the request includes either all values or only the updated values.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**

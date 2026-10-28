@@ -13,10 +13,10 @@ The Business Input Data Source supports LLM models (OpenAI, custom) using LLM Ap
 
 To get started:
 
-1. Add the [LLM App](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-llm-app/) plugin.
+1. Add the [LLM App](https://grafana.com/grafana/plugins/grafana-llm-app/) plugin.
 2. Set up your `OpenAI API Key` and `OpenAI API Organization ID`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/llm-app.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/llm-app.png)
 
 After you configure the LLM App, a text area appears in the `Code` editor mode of the Business Input data source.
 
@@ -26,13 +26,13 @@ After you configure the LLM App, a text area appears in the `Code` editor mode o
 
 This text area lets you use the response from the LLM App with OpenAI. The system stores the result in `context.llmResult`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/llm-app-message-box.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/llm-app-message-box.png)
 
 ## Example with BTC price
 
 ### Message
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 Please return JSON with 2 arrays: datetime and price which contain BTC price
@@ -41,7 +41,7 @@ from ${__from:date} to ${__to:date} for every hour
 
 ### JavaScript code editor
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 console.log("result", context.llmResult);
@@ -72,4 +72,4 @@ return Promise.resolve(result);
 
 You can display the data frame with any panel plugin.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-input/llm-result.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-input/llm-result.png)

@@ -11,9 +11,9 @@ The CockroachDB data source supports Grafana alerting, which lets you define ale
 
 ## Before you begin
 
-- [Configure the CockroachDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
-- Familiarize yourself with [Grafana alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
-- Set up at least one [contact point](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) to receive notifications.
+- [Configure the CockroachDB data source](https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/configure/).
+- Familiarize yourself with [Grafana alerting](https://grafana.com/docs/grafana/latest/alerting/).
+- Set up at least one [contact point](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) to receive notifications.
 
 ## Create an alert rule
 
@@ -23,14 +23,14 @@ To create an alert rule using a CockroachDB query:
 02. Click **New alert rule**.
 03. Give the rule a descriptive name.
 04. Select the CockroachDB data source.
-05. Write a query that returns numeric data (refer to [Query requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cockroachdb-datasource/latest/alerting/#query-requirements)).
+05. Write a query that returns numeric data (refer to [Query requirements](https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/alerting/#query-requirements)).
 06. Add a **Reduce** expression to aggregate the query results (for example, **Last** or **Mean**).
 07. Add a **Threshold** expression to define the alert condition (for example, “is above 500”).
 08. Set the evaluation interval and pending period under **Set evaluation behavior**.
 09. Configure labels, notification policies, and contact points.
 10. Click **Save rule and exit**.
 
-For detailed instructions, refer to [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Query requirements
 
@@ -49,7 +49,7 @@ The following examples show common alert query patterns for CockroachDB.
 
 Alert when the average response time exceeds a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -67,7 +67,7 @@ Use a **Reduce** expression set to **Last** and a **Threshold** expression set t
 
 Alert when the percentage of failed requests exceeds a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -85,7 +85,7 @@ Use a **Threshold** expression set to “is above” your acceptable error rate 
 
 Alert when a table’s row count exceeds a capacity threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -101,7 +101,7 @@ Use a **Threshold** expression set to “is above” your maximum row count.
 
 Alert when there are active queries running longer than a specified duration:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -118,7 +118,7 @@ Use a **Threshold** expression set to “is above 0” to alert whenever any slo
 
 Alert when the number of active connections approaches the configured maximum:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -132,4 +132,4 @@ FROM crdb_internal.node_sessions_summary
 - **Keep queries lightweight.** Alert queries run on a schedule (for example, every 60 seconds). Avoid expensive joins or full table scans that could impact cluster performance.
 - **Use appropriate evaluation intervals.** Match the evaluation interval to your use case. Real-time alerting might use 30-second intervals, while capacity alerts can check every 5-10 minutes.
 - **Set a pending period.** Use the **Pending period** setting to avoid false positives from brief spikes. For example, setting a 5-minute pending period means the condition must be true for 5 consecutive evaluations before the alert fires.
-- **Test queries in Explore first.** Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to verify your query returns the expected format and values before creating an alert rule.
+- **Test queries in Explore first.** Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to verify your query returns the expected format and values before creating an alert rule.

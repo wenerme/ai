@@ -33,7 +33,7 @@ Expand table
 
 ## Add the data source
 
-To install the plugin, refer to [Install the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/install/). For general information on adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+To install the plugin, refer to [Install the Splunk data source](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/install/). For general information on adding a data source, refer to [Add a data source](https://grafana.com/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 To add the Splunk data source, complete the following steps:
 
@@ -191,7 +191,7 @@ The Splunk plugin creates a search job and then issues follow-up requests to pol
 
 ### Provisioning example
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -216,7 +216,7 @@ If you run multiple Grafana instances (for example, in a Kubernetes deployment),
 
 > Note
 >
-> During a rolling restart of the Search Head Cluster, some search heads enter Detention mode and reject new search jobs. This is expected and temporary. If you encounter “Detention mode” errors, refer to [Troubleshoot Splunk data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#this-instance-is-currently-in-detention-mode-and-does-not-allow-running-new-search-jobs).
+> During a rolling restart of the Search Head Cluster, some search heads enter Detention mode and reject new search jobs. This is expected and temporary. If you encounter “Detention mode” errors, refer to [Troubleshoot Splunk data source issues](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#this-instance-is-currently-in-detention-mode-and-does-not-allow-running-new-search-jobs).
 
 ## Data links
 
@@ -242,15 +242,15 @@ Click **Save &amp; test** to verify the connection. On success, you see a messag
 
 **Connected to Splunk version: “9.1.3” build: “d95b3bc7f6d0”**
 
-If the connection fails, refer to [Troubleshoot Splunk data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/).
+If the connection fails, refer to [Troubleshoot Splunk data source issues](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define and configure the Splunk data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the Splunk data source in YAML files as part of the Grafana provisioning system. For more information about provisioning, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 **Basic authentication example:**
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -275,7 +275,7 @@ datasources:
 
 **Token authentication example:**
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

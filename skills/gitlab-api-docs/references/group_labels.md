@@ -29,6 +29,7 @@ GET /groups/:id/labels
 | `only_group_labels` | boolean | no | Toggle to include only group labels or also project labels. Defaults to `true`. |
 | `search` | string | no | Keyword to filter labels by. |
 | `archived` | boolean | no | If `true`, returns only archived labels. If unset, returns all labels. |
+{.sortable}
 
 ```shell
 curl \
@@ -84,6 +85,7 @@ GET /groups/:id/labels/:label_id
 | `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
 | `include_descendant_groups` | boolean | no | Include descendant groups. Defaults to `false`. |
 | `only_group_labels` | boolean | no | Toggle to include only group labels or also project labels. Defaults to `true`. |
+{.sortable}
 
 ```shell
 curl \
@@ -124,6 +126,7 @@ POST /groups/:id/labels
 | `color`       | string  | yes      | The color of the label given in 6-digit hex notation with leading '#' sign (for example, #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) |
 | `description` | string  | no       | The description of the label. |
 | `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -171,6 +174,7 @@ PUT /groups/:id/labels/:label_id
 | `color`       | string  | no      | The color of the label given in 6-digit hex notation with leading '#' sign (for example, #FFAABB) or one of the [CSS color names](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords) |
 | `description` | string  | no       | The description of the label. |
 | `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+{.sortable}
 
 ```shell
 curl --request PUT \

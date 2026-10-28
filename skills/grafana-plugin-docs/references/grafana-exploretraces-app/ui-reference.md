@@ -7,7 +7,7 @@ description: "Learn about the user interface for Traces Drilldown."
 
 # Traces Drilldown UI reference
 
-Grafana Traces Drilldown helps you focus your tracing data exploration. Some sections change based on the metric you choose. For details on workflows, refer to [Analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/).
+Grafana Traces Drilldown helps you focus your tracing data exploration. Some sections change based on the metric you choose. For details on workflows, refer to [Analyze tracing data](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/).
 
 1. **Data source selection**: At the top left, you select the data source for your traces, either a Grafana Cloud Traces or Tempo data source.
 2. **Filters**: The filter bar helps you refine the data displayed. You can select the primary signal (**Root spans** or **All spans**, plus **Server spans**, **Consumer spans**, or **Database calls** from the adjacent drop-down). You can also add specific label values to narrow the scope of your investigation.
@@ -22,11 +22,11 @@ Grafana Traces Drilldown helps you focus your tracing data exploration. Some sec
    - **Exceptions** (**Errors** only): Group exception messages with counts, trend sparkline, emitting service, and last-seen.
    - Percentiles (Duration only): Choose `p50`, `p75`, `p90`, `p95`, `p99` for Duration views. Default: `p90`. If you clear all, `p90` applies automatically.
 2. **Include and Exclude**: Each attribute group includes **Include** and **Exclude** buttons. Select **Include** to add a matching filter (`=`) or **Exclude** to add a negating filter (`!=`) to your current investigation.
-3. **Time range selector**: At the top right, you can adjust the time range for displayed data using the time picker. In this example, the time range is set to the last 1 hour. Refer to [Set dashboard time range](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/use-dashboards/#set-dashboard-time-range) for more information.
+3. **Time range selector**: At the top right, you can adjust the time range for displayed data using the time picker. In this example, the time range is set to the last 1 hour. Refer to [Set dashboard time range](https://grafana.com/docs/grafana/latest/dashboards/use-dashboards/#set-dashboard-time-range) for more information.
 
-   You can also open a specific trace by ID by entering the trace ID into the **Trace ID** input and pressing Enter. Refer to [Open a trace by ID](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/#open-a-trace-by-id) for more information.
+   You can also open a specific trace by ID by entering the trace ID into the **Trace ID** input and pressing Enter. Refer to [Open a trace by ID](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/#open-a-trace-by-id) for more information.
 
-   Use the **Save** (save icon) and **Load** (folder-open icon) buttons in the header to save your current filters as a named query or load a previously saved one. The **Save** button appears when at least one filter is applied. Refer to [Save and load queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/save-load-queries/) for more information.
+   Use the **Save** (save icon) and **Load** (folder-open icon) buttons in the header to save your current filters as a named query or load a previously saved one. The **Save** button appears when at least one filter is applied. Refer to [Save and load queries](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/save-load-queries/) for more information.
 4. **Attributes sidebar**: Use the **Attributes** sidebar to select and manage attributes across views. Search attributes with regular expressions. Press **Escape** or click **Clear** to reset the search.
 
    Click the star icon to add or remove a favorite. Drag and drop favorites to reorder them. Switch between scopes: **Favorites**, **All**, **Resource**, **Span**. A filter icon marks attributes already applied in the **Filters** bar.

@@ -9,7 +9,7 @@ description: "Investigate trends and spikes to identify issues."
 
 Use filters to focus your investigation on specific data.
 
-Filters are available on the **Breakdown** and **Comparison** views. Refer to [Analyze tracing data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) to learn how to use these views.
+Filters are available on the **Breakdown** and **Comparison** views. Refer to [Analyze tracing data](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data/) to learn how to use these views.
 
 ## Add filters
 
@@ -21,7 +21,7 @@ Each time you add a filter, the condition appears in the list of filters at the 
 
    - Select **Include** to add a matching filter (`=`) or **Exclude** to add a negating filter (`!=`).
    - Use the **Filters** bar near the top.
-   - Attributes shown with a filter icon in the **Attributes** sidebar are already applied in your current **Filters**. The **Attributes** sidebar helps you pick and favorite attributes used for grouping, comparison, and trace list columns. Refer to the [UI reference](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/ui-reference/).
+   - Attributes shown with a filter icon in the **Attributes** sidebar are already applied in your current **Filters**. The **Attributes** sidebar helps you pick and favorite attributes used for grouping, comparison, and trace list columns. Refer to the [UI reference](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/ui-reference/).
 
 ### Example
 
@@ -53,4 +53,4 @@ Use the time picker at the top right to modify the data shown in Traces Drilldow
 
 The time range you can query depends on your Tempo data source configuration, including your trace retention period and the range allowed for TraceQL metrics. Longer time ranges scan more data and can take longer to return results.
 
-For more information about the time range picker, refer to [Use dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/404/).
+For more information about the time range picker, refer to [Use dashboards](https://grafana.com/404/).

@@ -17,7 +17,7 @@ Before investigating specific errors, verify that the data source health check p
 2. Click **Save &amp; test**.
 3. Confirm you see a success message.
 
-If the health check fails, start with the [Configuration errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#configuration-errors) or [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#connection-errors) sections.
+If the health check fails, start with the [Configuration errors](https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#configuration-errors) or [Connection errors](https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/troubleshooting/#connection-errors) sections.
 
 > Note
 >
@@ -77,7 +77,7 @@ To find the correct port, run one of these queries:
 
 From the tenant database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT
@@ -87,7 +87,7 @@ WHERE ((SERVICE_NAME='indexserver' and COORDINATOR_TYPE='MASTER') or (SERVICE_NA
 
 From the system database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DATABASE_NAME, SERVICE_NAME, PORT, SQL_PORT, (PORT + 2) HTTP_PORT
@@ -112,7 +112,7 @@ For detailed guidance, refer to the [SAP HANA documentation](https://help.sap.co
 2. Check firewall rules allow outbound connections to the SAP HANA port.
 3. Verify the server address is correct and doesn’t include http/https prefixes.
 4. For private networks, ensure VPN or private connectivity is configured.
-5. For Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
+5. For Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
 
 ### TLS verification failures
 
@@ -241,7 +241,7 @@ To capture detailed error information for troubleshooting:
 
 1. Update your Grafana configuration file (`grafana.ini`):
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

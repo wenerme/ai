@@ -62,7 +62,7 @@ To use TLS client authentication:
 
 To sign requests to Amazon OpenSearch Service using AWS Signature Version 4:
 
-1. Enable SigV4 in your Grafana [configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#sigv4_auth_enabled).
+1. Enable SigV4 in your Grafana [configuration](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#sigv4_auth_enabled).
 2. In the data source settings, enable **SigV4 auth**.
 3. Configure the authentication provider:
 
@@ -79,7 +79,7 @@ Expand table
 | **Assume Role ARN**         | Optional ARN of an IAM role to assume.                  |
 | **External ID**             | Optional external ID for cross-account role assumption. |
 
-For more information about AWS authentication options, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+For more information about AWS authentication options, refer to [AWS authentication](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### OAuth pass-through
 
@@ -123,7 +123,7 @@ Expand table
 
 ### Log settings
 
-These optional settings control how log data is displayed in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/).
+These optional settings control how log data is displayed in [Explore](https://grafana.com/docs/grafana/latest/explore/).
 
 Expand table
 
@@ -151,7 +151,7 @@ Expand table
 
 ## Private data source connect (PDC)
 
-Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. For more information, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure PDC](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. For more information, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure PDC](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 If you use PDC with SigV4, the PDC agent must allow internet egress to `sts.<region>.amazonaws.com:443`.
 
@@ -159,7 +159,7 @@ To configure PDC, click in the **Private data source connect** box to select an 
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. If you encounter errors, refer to [Troubleshoot OpenSearch data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting/).
+Click **Save &amp; test** to verify the connection. If you encounter errors, refer to [Troubleshoot OpenSearch data source issues](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting/).
 
 On success, the data source returns one of the following messages:
 
@@ -190,7 +190,7 @@ The following is an example of a minimal policy for querying OpenSearch Service:
 >
 > Update the ARN to match your OpenSearch Service domain.
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -219,7 +219,7 @@ The following example shows a policy that allows querying a collection and index
 >
 > Replace the placeholder values for collection name, index name, and Principal with your values.
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -254,11 +254,11 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 ## Provision the data source
 
-You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions an OpenSearch data source with basic authentication:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -316,7 +316,7 @@ Expand table
 
 You can provision the data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). The following example creates an OpenSearch data source with basic authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "opensearch" {

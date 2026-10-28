@@ -13,7 +13,7 @@ The **Alerts** page is also the tool for answering routing and suppression quest
 
 The **Receiver** column shows the receiver each alert group was sent to.
 
-Use it after any change to the routing tree. Reading a tree and predicting which route matches is error-prone—sibling ordering and inherited settings both catch people out—while this column reports what actually happened. Refer to [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
+Use it after any change to the routing tree. Reading a tree and predicting which route matches is error-prone—sibling ordering and inherited settings both catch people out—while this column reports what actually happened. Refer to [Configure routes](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
 
 You can also filter by receiver, which answers the opposite question: what is this receiver currently being sent?
 
@@ -23,11 +23,11 @@ Alerts in the **Suppressed** state are firing but not notifying. Open the alert 
 
 Expand table
 
-| The drawer shows           | Meaning                         | Where to fix it                                                                                                             |
-|----------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| Silenced by a silence      | A silence matches this alert    | [Create a silence](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/)             |
-| Inhibited by an inhibition | Another alert is suppressing it | [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/) |
-| Muted by a time interval   | A route is muted right now      | [Configure time intervals](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals/)     |
+| The drawer shows           | Meaning                         | Where to fix it                                                                                                                                |
+|----------------------------|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Silenced by a silence      | A silence matches this alert    | [Create a silence](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/)             |
+| Inhibited by an inhibition | Another alert is suppressing it | [Configure inhibition rules](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/) |
+| Muted by a time interval   | A route is muted right now      | [Configure time intervals](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals/)     |
 
 The drawer names the specific silence, inhibition, or interval, so you can go and change the right one rather than guessing.
 

@@ -38,7 +38,7 @@ GROQ queries start with `*` which represents all documents in the dataset. You c
 
 To return all data without transformation:
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *
@@ -48,7 +48,7 @@ groq [Copy code to clipboard] Copy
 
 Use square brackets to filter data:
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[age >= 20]
@@ -60,7 +60,7 @@ This returns only items where `age` is 20 or greater.
 
 Use curly braces to select specific fields:
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *{name, email}
@@ -72,7 +72,7 @@ This returns only the `name` and `email` fields from each item.
 
 You can chain filtering and projection:
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[age >= 20]{name}
@@ -84,7 +84,7 @@ This filters items where `age` is 20 or greater, then returns only the `name` fi
 
 ### Filter by string value
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[status == "active"]
@@ -92,7 +92,7 @@ groq [Copy code to clipboard] Copy
 
 ### Filter by multiple conditions
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[age >= 18 && country == "US"]
@@ -100,7 +100,7 @@ groq [Copy code to clipboard] Copy
 
 ### Select nested fields
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *{name, address{city, country}}
@@ -108,7 +108,7 @@ groq [Copy code to clipboard] Copy
 
 ### Order results
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[_type == "user"] | order(name asc)
@@ -116,7 +116,7 @@ groq [Copy code to clipboard] Copy
 
 ### Limit results
 
-groq [Copy code to clipboard] Copy
+groq ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```groq
 *[0...10]

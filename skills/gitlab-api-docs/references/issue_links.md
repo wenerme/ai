@@ -181,6 +181,7 @@ POST /projects/:id/issues/:issue_iid/links
 | `target_project_id` | integer or string | yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) of a target project  |
 | `target_issue_iid`  | integer or string | yes      | The internal ID of a target project's issue |
 | `link_type`         | string         | no       | The type of the relation (`relates_to`, `blocks`, `is_blocked_by`), defaults to `relates_to`). |
+{.sortable}
 
 ```shell
 curl --request POST \

@@ -13,17 +13,17 @@ Annotations is a general term for several Grafana artifacts:
 - Alerts
 - Annotation queries
 
-The differences between annotation types are explained in the [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/exploring-annotations/).
+The differences between annotation types are explained in the [Grafana Crash Course](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-annotations/).
 
 ## Mark lines
 
 The Business Charts panel displays annotations with mark lines. Data for mark lines comes from the `context.panel.data.annotations` object.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/annotations.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/annotations.png)
 
 ## Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const annotations = [];

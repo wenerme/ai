@@ -9,7 +9,7 @@ description: "Learn how to create annotations from Jira issue data"
 
 Annotations allow you to overlay Jira issue events on time series visualizations. Use annotations to correlate issue creation, resolution, or status changes with metrics from other data sources.
 
-For general information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations in Grafana, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add a Jira annotation query
 
@@ -83,7 +83,7 @@ Annotations are automatically filtered by the dashboard time range. To ensure re
 1. Use relative time filters in your JQL (for example, `created >= -30d`).
 2. Alternatively, use the time range macros `$__timeFrom` and `$__timeTo`:
 
-jql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+jql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```jql
 created >= $__timeFrom AND created <= $__timeTo

@@ -38,7 +38,7 @@ pnpm add agents @modelcontextprotocol/server@2.3.1 zod
 bun add agents @modelcontextprotocol/server@2.3.1 zod
 ```
 
-Use the exact `@modelcontextprotocol/server` version required by your installed Agents release.
+`@modelcontextprotocol/server` is an optional peer dependency of `agents`, so your package manager does not install it for you. Use the exact version required by your installed Agents release.
 
 ## `createMcpHandler`
 

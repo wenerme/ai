@@ -13,7 +13,7 @@ description: "Learn how to use the status field to dynamically set background or
 
 Use the `statusColor` variable to set a background or foreground color for any HTML element.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/status.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/status.png)
 
 ## Threshold
 
@@ -21,7 +21,7 @@ Colors are defined based on threshold ranges for the selected status field.
 
 ## Example
 
-handlebars ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+handlebars ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```handlebars
 <div style="background-color: {{statusColor}}">

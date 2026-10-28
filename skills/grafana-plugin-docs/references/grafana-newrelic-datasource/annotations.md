@@ -11,8 +11,8 @@ Annotations overlay event markers on your Grafana dashboard graphs, helping you 
 
 ## Before you begin
 
-- [Configure the New Relic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/configure/).
-- Familiarize yourself with [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the New Relic data source](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/configure/).
+- Familiarize yourself with [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Create an annotation query
 
@@ -60,7 +60,7 @@ Enter your NRQL query in the query editor. The `$__timeFilter` macro is supporte
 
 Mark a deployment event:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp, description FROM NrAuditEvent WHERE actionIdentifier = 'dashboard.update' $__timeFilter
@@ -68,7 +68,7 @@ SELECT timestamp, description FROM NrAuditEvent WHERE actionIdentifier = 'dashbo
 
 Annotate application error spikes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT count(*) FROM TransactionError WHERE appName = 'my-app' $__timeFilter TIMESERIES
@@ -76,7 +76,7 @@ SELECT count(*) FROM TransactionError WHERE appName = 'my-app' $__timeFilter TIM
 
 Show Synthetics monitor failures:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp, monitorName, result FROM SyntheticCheck WHERE result = 'FAILED' $__timeFilter
@@ -84,7 +84,7 @@ SELECT timestamp, monitorName, result FROM SyntheticCheck WHERE result = 'FAILED
 
 Display configuration changes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp, actionIdentifier, actorEmail FROM NrAuditEvent $__timeFilter
@@ -92,5 +92,5 @@ SELECT timestamp, actionIdentifier, actorEmail FROM NrAuditEvent $__timeFilter
 
 ## Next steps
 
-- [New Relic query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/template-variables/)
+- [New Relic query editor](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/template-variables/)

@@ -56,6 +56,7 @@ response attributes:
 | `last_commit_id`   | string  | SHA of the last commit that modified this file. |
 | `ref`              | string  | Name of the branch, tag, or commit used. |
 | `size`             | integer | Size of the raw Git blob in bytes. |
+{.sortable}
 
 > [!note]
 > For text files not stored as valid UTF-8 in Git (such as UTF-16 or `ISO-8859-1`),
@@ -163,6 +164,7 @@ Supported attributes:
 | `range`        | hash              | No       | Blame range. |
 | `range[end]`   | integer           | No       | Last line of the range to blame. |
 | `range[start]` | integer           | No       | First line of the range to blame. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -325,6 +327,7 @@ Supported attributes:
 | `encoding`         | string            | No       | Change encoding to `base64`. Default is `text`. |
 | `execute_filemode` | boolean           | No       | If `true`, enables the `execute` flag on the file. If `false`, disables the `execute` flag on the file. |
 | `start_branch`     | string            | No       | Name of the base branch to create the branch from. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -381,6 +384,7 @@ Supported attributes:
 | `execute_filemode` | boolean         | No       | If `true`, enables the `execute` flag on the file. If `false`, disables the `execute` flag on the file. |
 | `last_commit_id` | string            | No       | Last known file commit ID. |
 | `start_branch`   | string            | No       | Name of the base branch to create the branch from. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -438,6 +442,7 @@ Supported attributes:
 | `author_name`    | string            | No       | Commit author's name. |
 | `last_commit_id` | string            | No       | Last known file commit ID. |
 | `start_branch`   | string            | No       | Name of the base branch to create the branch from. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes).
 

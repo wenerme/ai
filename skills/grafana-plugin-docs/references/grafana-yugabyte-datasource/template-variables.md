@@ -7,12 +7,12 @@ description: "Use template variables with the Yugabyte data source in Grafana"
 
 # Yugabyte template variables
 
-Use template variables to create dynamic, reusable dashboards that let you change query parameters without editing individual panels. For general information about template variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+Use template variables to create dynamic, reusable dashboards that let you change query parameters without editing individual panels. For general information about template variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the Yugabyte data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the Yugabyte data source](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -57,7 +57,7 @@ Grafana matches the `text` and `value` columns by name, and both must be string 
 
 This query returns a list of distinct regions for use as variable values:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM sales ORDER BY region
@@ -67,7 +67,7 @@ SELECT DISTINCT region FROM sales ORDER BY region
 
 This query displays a human-readable name while substituting an ID into queries:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT name AS text, id::text AS value FROM customers ORDER BY name
@@ -79,7 +79,7 @@ The variable drop-down displays `name` values, but the selected `id` is substitu
 
 Reference template variables in your SQL queries using the `$variable` or `${variable}` syntax. Grafana substitutes single-value string variables as-is, so include quotes around string values in your query:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT created_at AS time, count(*) AS orders
@@ -91,7 +91,7 @@ ORDER BY time
 
 For numeric values, omit the quotes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM orders WHERE total > $threshold
@@ -103,7 +103,7 @@ You can build chained, or dependent, variables where one variable’s query filt
 
 For example, if you have a `region` variable, create a dependent `city` variable that only lists cities in the selected region:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT city FROM stores WHERE region = '$region' ORDER BY city
@@ -117,7 +117,7 @@ When a variable allows multiple selections, the Yugabyte data source formats the
 
 Use multi-value variables with the `IN` operator, and don’t add quotes around the variable:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM orders WHERE status IN ($status)
@@ -125,7 +125,7 @@ SELECT * FROM orders WHERE status IN ($status)
 
 If you select `pending` and `shipped`, this expands to:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM orders WHERE status IN ('pending','shipped')
@@ -135,5 +135,5 @@ Because the values are always single-quoted, this format is intended for string 
 
 ## Next steps
 
-- Learn how to write queries in the [Yugabyte query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) on your YugabyteDB data.
+- Learn how to write queries in the [Yugabyte query editor](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/query-editor/).
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/alerting/) on your YugabyteDB data.

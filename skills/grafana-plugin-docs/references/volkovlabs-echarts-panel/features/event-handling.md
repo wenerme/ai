@@ -15,7 +15,7 @@ For more examples and details, see the Apache ECharts documentation on [Events a
 
 To prevent the event handling multiple times, all previous event handlers may be disabled.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**
@@ -28,7 +28,7 @@ context.panel.chart.on("click", (params) => {
 });
 ```
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**
@@ -46,11 +46,11 @@ The Data Zoom feature allows you to select a time period on the chart for zoomin
 
 Once the time range is selected, the event can trigger the update of the dashboard’s time range using the `context.grafana.locationService` parameter similar to the functionality in native Time Series panel.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/data-zoom.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/data-zoom.png)
 
 ### Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const series = context.panel.data.series.map((s) => {

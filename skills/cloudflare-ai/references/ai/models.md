@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 262 modelsClear filters
+We found 265 modelsClear filters
 
 ## Compare models
 
@@ -581,6 +581,12 @@ Compare
 
 Compare
 
+[![Kling AI logo](https://developers.cloudflare.com/_astro/kling.CbZKRtvH.svg)<h3>kling-v4</h3>Kling AIText-to-Video Kling 4.0 is Kling AI's video generation model for text-to-video and multi-keyframe image-to-video, producing up to 30 seconds of 720p or 1080p video from prompts of up to 26,000 characters and up to 10 keyframes.](https://developers.cloudflare.com/ai/models/klingai/kling-v4/)
+
+- Third-party
+
+Compare
+
 [k<h3>krea-2-large</h3>kreaText-to-Image More than 2x the size of Medium, with softer post-training. Outputs are rawer, more textured, and more flexible — at its best, Large produces results Medium can't match. Strongest on photorealism, raw looks (motion blur, grain, low dynamic range), and expressive and artistic styles.](https://developers.cloudflare.com/ai/models/krea/krea-2-large/)
 
 - Third-party
@@ -681,6 +687,12 @@ Compare
 
 Compare
 
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>m3.1-flash</h3>MiniMaxText Generation MiniMax M3.1 Flash is a fast, cost-efficient multimodal model for agentic tasks, coding, and computer use. It accepts text, image, and video input, always reasons before answering with adjustable effort, and has a 1M-token context window.](https://developers.cloudflare.com/ai/models/minimax/m3.1-flash/)
+
+- Third-party
+
+Compare
+
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>music-2.6</h3>MiniMaxMusic Generation MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.](https://developers.cloudflare.com/ai/models/minimax/music-2.6/)
 
 - Third-party
@@ -703,6 +715,12 @@ Compare
 Compare
 
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k3</h3>Moonshot AIText Generation Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.](https://developers.cloudflare.com/ai/models/moonshotai/kimi-k3/)
+
+- Third-party
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>decisions</h3>OpenAIText Generation Decisions uses GPT-6 Luna to evaluate shared text or image evidence against typed questions. It returns probabilities, fixed choices, or rubric scores for low-latency classification, routing, and prioritization workflows.](https://developers.cloudflare.com/ai/models/openai/decisions/)
 
 - Third-party
 

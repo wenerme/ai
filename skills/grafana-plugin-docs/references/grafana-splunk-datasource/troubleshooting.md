@@ -7,11 +7,11 @@ description: "Troubleshoot common issues with the Splunk data source in Grafana.
 
 # Troubleshoot Splunk data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Splunk data source. For configuration instructions, refer to [Configure the Splunk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Splunk data source. For configuration instructions, refer to [Configure the Splunk data source](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/configure/).
 
 > Tip
 >
-> The most common setup issue is using the wrong Splunk URL. The data source requires the Splunk **REST API** endpoint (port 8089), not the web UI. If you see `invalid character '<'` errors, your URL likely points to the Splunk web interface instead. Refer to [“invalid character ‘&lt;’” or HTML in response](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#invalid-character--or-html-in-response) for details.
+> The most common setup issue is using the wrong Splunk URL. The data source requires the Splunk **REST API** endpoint (port 8089), not the web UI. If you see `invalid character '<'` errors, your URL likely points to the Splunk web interface instead. Refer to [“invalid character ‘&lt;’” or HTML in response](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#invalid-character--or-html-in-response) for details.
 
 ## Connection errors
 
@@ -52,8 +52,8 @@ Expand table
 
 **Solution:**
 
-1. Update your firewall rules to allow the current Grafana Cloud outbound IP addresses. Refer to [Grafana Cloud outbound IP addresses](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/account-management/allow-list/) for the full list.
-2. If your organization’s security policy doesn’t permit allowlisting dynamic IP addresses, set up [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to create a stable, secure tunnel between Grafana Cloud and your private network.
+1. Update your firewall rules to allow the current Grafana Cloud outbound IP addresses. Refer to [Grafana Cloud outbound IP addresses](https://grafana.com/docs/grafana-cloud/account-management/allow-list/) for the full list.
+2. If your organization’s security policy doesn’t permit allowlisting dynamic IP addresses, set up [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to create a stable, secure tunnel between Grafana Cloud and your private network.
 
 ### Connection timeouts
 
@@ -62,7 +62,7 @@ Expand table
 **Solution:**
 
 1. Confirm port 8089 is open and reachable from the Grafana server: `nc -zv <splunk-host> 8089`.
-2. If your Splunk instance is on a private network, set up [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+2. If your Splunk instance is on a private network, set up [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 3. Check for VPN requirements that might prevent Grafana from reaching your Splunk instance.
 4. Increase the **Timeout** value in the data source configuration under **Additional settings** &gt; **Advanced options**.
 5. If using Splunk Cloud, verify that [port 8089 is enabled](https://docs.splunk.com/Documentation/SplunkCloud/latest/Config/ConfigureOutboundPorts) in your Splunk Cloud configuration.
@@ -237,7 +237,7 @@ This error is especially common on **larger time ranges** (3+ hours) where the s
 **Solution:**
 
 1. Check the Grafana server logs or browser developer console for underlying errors such as `context canceled` or `request timeout`.
-2. Follow the steps in [“request canceled” or “context canceled”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#request-canceled-or-context-canceled) to increase timeout values.
+2. Follow the steps in [“request canceled” or “context canceled”](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#request-canceled-or-context-canceled) to increase timeout values.
 3. Use `timechart` with a wider `span` value for larger time ranges to reduce the number of data points Splunk must calculate. For example, use `span=1h` instead of `span=1m` for multi-day queries.
 4. Add `| fields` to your query to return only the fields you need, reducing data transfer time.
 
@@ -289,7 +289,7 @@ These issues occur when Grafana displays different results than the same query r
 
 Use `dedup` or `mvjoin` in your SPL query to deduplicate results before they reach Grafana:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main sourcetype=access_combined | dedup _raw | stats count by status
@@ -297,7 +297,7 @@ index=main sourcetype=access_combined | dedup _raw | stats count by status
 
 For multi-value fields that produce duplicates, use `mvjoin` to collapse them into a single value:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main | stats values(host) as hosts by sourcetype | eval hosts=mvjoin(hosts, ", ")
@@ -313,7 +313,7 @@ SPL functions like `eval`, `if`, and `coalesce` don’t execute on empty result 
 
 Rewrite the SPL query to always return at least one row, even when no events match. Use `appendpipe` to add a default row when the result set is empty:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main log_level=ERROR | timechart span=5m count as error_count
@@ -322,7 +322,7 @@ index=main log_level=ERROR | timechart span=5m count as error_count
 
 Alternatively, use `fillnull` after `timechart` to ensure all time buckets have a value:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main log_level=ERROR | timechart span=5m count as error_count | fillnull value=0
@@ -370,7 +370,7 @@ These issues relate to slow queries, streaming behavior, or resource consumption
 
 1. Adjust the **Min** and **Max** poll interval values under **Additional settings** &gt; **Advanced options**. A longer max interval reduces polling overhead but increases perceived delay.
 2. If you don’t need incremental results, disable **Preview mode** and **Async queries** so queries run synchronously and return all results at once.
-3. Optimize the SPL query to complete faster (refer to [Optimize long-running queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#optimize-long-running-queries)).
+3. Optimize the SPL query to complete faster (refer to [Optimize long-running queries](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#optimize-long-running-queries)).
 4. If individual panels are slow but others are fine, check whether those panels use broader time ranges or more complex queries.
 
 ### Slow query performance
@@ -379,7 +379,7 @@ These issues relate to slow queries, streaming behavior, or resource consumption
 
 **Solution:**
 
-1. Optimize your SPL queries (refer to [Optimize long-running queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#optimize-long-running-queries)).
+1. Optimize your SPL queries (refer to [Optimize long-running queries](https://grafana.com/docs/plugins/grafana-splunk-datasource/latest/troubleshooting/#optimize-long-running-queries)).
 2. Enable **Preview mode** to see partial results as they become available.
 3. Reduce the **Results limit** value to return fewer rows.
 4. Check Splunk server performance and resource utilization.
@@ -450,7 +450,7 @@ Grafana does **not** deduplicate identical Splunk queries across users or browse
 
 **Solutions:**
 
-1. **Enable query caching (Grafana Enterprise and Cloud Pro/Advanced).** Query caching stores results for a configurable duration so that identical queries from different users are served from cache instead of hitting Splunk again. Refer to [Query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) for setup instructions.
+1. **Enable query caching (Grafana Enterprise and Cloud Pro/Advanced).** Query caching stores results for a configurable duration so that identical queries from different users are served from cache instead of hitting Splunk again. Refer to [Query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) for setup instructions.
 2. **Design dashboards for efficiency.** Reduce the total number of distinct queries:
 
    - Combine related metrics into a single `timechart ... by <field>` query instead of separate panels.
@@ -472,13 +472,13 @@ The following are known issues in the current version of the Splunk plugin. Work
 
 Add `| dedup _raw _time` to your SPL query to remove duplicate events:
 
-spl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+spl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```spl
 index=main sourcetype=access_combined | dedup _raw _time | stats count by status
 ```
 
-If you continue to see unexpected duplicates after applying `dedup`, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/) and reference this known issue.
+If you continue to see unexpected duplicates after applying `dedup`, contact [Grafana Support](https://grafana.com/support/) and reference this known issue.
 
 ### Row and result limits
 
@@ -505,7 +505,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

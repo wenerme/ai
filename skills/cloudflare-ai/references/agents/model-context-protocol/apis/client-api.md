@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/clie
 
 Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. Agents SDK v0.20.0 uses `@modelcontextprotocol/client` and negotiates stateless or legacy behavior automatically.
+Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. Agents SDK v0.20.0 uses `@modelcontextprotocol/client` and negotiates stateless or legacy behavior automatically. The MCP client does not need `@modelcontextprotocol/sdk` or `@modelcontextprotocol/server`.
 
 Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for package, type, OAuth provider, and rollout changes.
 
@@ -83,7 +83,7 @@ export class MyAgent extends Agent {
 }
 ```
 
-Connections persist in the agent's [SQL storage](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), and when an agent connects to an MCP server, all tools from that server become available automatically.
+Connections persist in the agent's [SQL storage](https://developers.cloudflare.com/agents/agent-class/state/), and when an agent connects to an MCP server, all tools from that server become available automatically.
 
 ## Adding MCP servers
 
@@ -194,6 +194,7 @@ export class MyAgent extends Agent<Env> {
 - **No authentication.** The RPC transport has no OAuth flow. Pass user context in `props`. The `McpAgent` reads it as `this.props`.
 - **Restored after hibernation.** The binding name and props are stored, so the connection comes back without extra code.
 - **Deduplicated by name.** Calling `addMcpServer()` again with a name that already has an active RPC connection returns the existing connection, so it is safe to call in `onStart()`.
+- **No MCP SDK v1 on the Agent side.** Connecting does not need `@modelcontextprotocol/sdk`. Import `RPCClientTransport` and `RPC_DO_PREFIX` from `agents/mcp/client`, not `agents/mcp`, which loads the v1 SDK.
 
 For the server side, including bindings and the tool timeout, refer to [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#rpc-transport) in the `McpAgent` reference.
 
@@ -1020,7 +1021,7 @@ async addMcpServer(
   - `transport` — Transport layer configuration:
     - `headers` — Custom HTTP headers for authentication
     - `type` — Transport type: `"auto"` (default), `"streamable-http"`, or `"sse"`
-  - `retry` — Retry options for connection and reconnection attempts. Persisted and used when restoring connections after hibernation or after OAuth completion. Default: 3 attempts, 500ms base delay, 5s max delay. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details on `RetryOptions`.
+  - `retry` — Retry options for connection and reconnection attempts. Persisted and used when restoring connections after hibernation or after OAuth completion. Default: 3 attempts, 500ms base delay, 5s max delay. Refer to [Retries](https://developers.cloudflare.com/agents/agent-class/retries/) for details on `RetryOptions`.
 
 #### Parameters (RPC transport)
 
@@ -1466,7 +1467,7 @@ const disposable = this.mcp.onServerStateChanged(() => {
 
 Note
 
-MCP server list broadcasts (`cf_agent_mcp_servers`) are automatically filtered to exclude connections where [`shouldSendProtocolMessages`](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`.
+MCP server list broadcasts (`cf_agent_mcp_servers`) are automatically filtered to exclude connections where [`shouldSendProtocolMessages`](https://developers.cloudflare.com/agents/agent-class/protocol-messages/) returned `false`.
 
 ### Lifecycle methods
 
@@ -1531,7 +1532,7 @@ await this.mcp.waitForConnections({ timeout: 10_000 });
 
 Note
 
-`AIChatAgent` calls this automatically via its [`waitForMcpConnections`](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#waitformcpconnections) property (defaults to `{ timeout: 10_000 }`). You only need `waitForConnections()` directly when using `Agent` with MCP, or when you want finer control inside `onChatMessage`.
+`AIChatAgent` calls this automatically via its [`waitForMcpConnections`](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/chat-agents/#waitformcpconnections) property (defaults to `{ timeout: 10_000 }`). You only need `waitForConnections()` directly when using `Agent` with MCP, or when you want finer control inside `onChatMessage`.
 
 #### `this.mcp.closeConnection()`
 
@@ -1663,11 +1664,11 @@ export class MyAgent extends Agent {
 
 Build your own MCP server with createMcpHandler.
 
-### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/client-sdk/)
 
 Connect from browsers with onMcpUpdate.
 
-### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/agent-class/state/)
 
 Learn about agent persistence.
 

@@ -21,6 +21,7 @@ PUT /projects/:id/repository/submodules/:submodule
 | `branch` | string | yes | Name of the branch to commit into |
 | `commit_sha` | string | yes | Full commit SHA to update the submodule to |
 | `commit_message` | string | no | Commit message. If no message is provided, a default is set |
+{.sortable}
 
 ```shell
 curl --request PUT \

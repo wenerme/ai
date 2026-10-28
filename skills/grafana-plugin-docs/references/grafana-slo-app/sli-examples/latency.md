@@ -15,7 +15,7 @@ Before you begin, you should decide which latency you want to measure.
 
 Latency can represent different parts of a request’s lifecycle, and the metric you query in your SLI determines what you are measuring and what your SLO represents.
 
-[The timeline of a typical HTTP request](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/client-server-side-latency-diagram.png)
+[The timeline of a typical HTTP request](https://grafana.com/media/docs/grafana-cloud/slo/client-server-side-latency-diagram.png)
 
 In practice, latency metrics typically fall into two categories: **client latency** and **server latency**.
 
@@ -25,7 +25,7 @@ Client-perceived latency measures total request duration, including network tran
 
 SLOs are intended to measure user experience. For latency, this usually means measuring end-to-end request duration, using metrics such as:
 
-- Synthetic monitoring probe metrics (for example, [`probe_all_duration_seconds`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/testing/synthetic-monitoring/analyze-results/check-metrics/))
+- Synthetic monitoring probe metrics (for example, [`probe_all_duration_seconds`](https://grafana.com/docs/grafana-cloud/testing/synthetic-monitoring/analyze-results/check-metrics/))
 - Real user monitoring metrics
 
 However, client-side latency can be noisy. If you don’t operate the network, DNS, or edge infrastructure, it may be more effective to focus latency SLOs on server-side components.
@@ -62,13 +62,13 @@ Avoiding percentiles in SLIs helps maintain simplicity and consistency across SL
 
 Before detailing SLI query examples, it’s important to understand what Grafana SLO expects from an SLI:
 
-1. Grafana recommends using [event-based SLIs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis), which measure the **ratio of successful events to total events**.
+1. Grafana recommends using [event-based SLIs](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#event-based-slis), which measure the **ratio of successful events to total events**.
 2. The **SLI query result must return a ratio between 0 and 1**, where `1` means `100%` of events were successful.
 3. Grafana expects SLIs to be expressed as a ratio-like query: `numerator / denominator`.
 
 Depending on the type of metric, you can calculate the ratio of successful events using counts or rates:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = number of successful events (over a period)
@@ -76,7 +76,7 @@ Success ratio = number of successful events (over a period)
                 total number of events (over a period)
 ```
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = rate of successful events (over a period)
@@ -86,7 +86,7 @@ Success ratio = rate of successful events (over a period)
 
 Both formulas produce the ratio of successful events, a value between `0` and `1`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-sli-ratio-example.png)
+[](https://grafana.com/media/docs/grafana-cloud/slo/screenshot-sli-ratio-example.png)
 
 ## Prometheus native histogram example
 
@@ -98,7 +98,7 @@ You can use [`histogram_fraction()`](https://prometheus.io/docs/prometheus/lates
 
 With native histograms, the SLI query should follow the **ratio of successful event rates** formula:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 # ratio of successful event rates formula
@@ -109,7 +109,7 @@ Success ratio = rate of successful events (over a period)
 
 Choose the **Advanced** option to create the SLI query. The complete SLI query is:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 (
@@ -132,18 +132,12 @@ histogram_count(sum(rate(http_server_request_duration[$__rate_interval])))
   Using `< +Inf` avoids this issue by returning `absent` instead of `NaN`. An `absent` numerator is interpreted as `0%` success, calculating the SLI correctly.
 - `histogram_count(...)` returns the total request rate for the interval.
 
-The query follows the ratio-style format (`numerator / denominator`) for event-based SLIs ([SLI query requirements](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/latency/#sli-query-requirements)):
+The query follows the ratio-style format (`numerator / denominator`) for event-based SLIs ([SLI query requirements](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/latency/#sli-query-requirements)):
 
 - **Numerator**: `(histogram_fraction(...) < +Inf) * histogram_count(...)`, rate of successful events (over a period).
 - **Denominator**: `histogram_count(...)`, rate of total events (over a period).
 - **SLI result**: A ratio between `0` and `1`, where `1` means `100%` of requests were under `2` seconds.
 - *This example uses `histogram_count(sum())` for consistency. `sum(histogram_count())` returns the same query result and is often more efficient.*
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-kiibpwv2keyack6hldyw4?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-latency-native-histogram).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
 
 ## Prometheus classic histogram example
 
@@ -152,7 +146,7 @@ Classic histogram metrics in Prometheus store samples based on their value (*lat
 - `*_count`: Returns the total number of observations across all latencies.
 - `*_bucket`: Returns observations grouped into predefined buckets. For the metric below, the buckets are `0`, `0.005`, `0.01`, `0.025`, `0.05`, `0.1`, `0.25`, `0.5`, `1`, `2.5`, `5`, `10`, and `+Inf`.
 
-  [](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/screenshot-http-duration-classic-histogram.png)
+  [](https://grafana.com/media/docs/grafana-cloud/slo/screenshot-http-duration-classic-histogram.png)
 
 Classic histograms can return the number of observations that fall within a specific, preconfigured bucket. For example, when an SLO requires request latency to remain below a fixed threshold, you can build the SLI query using the additional `_bucket` and `count` series:
 
@@ -167,11 +161,11 @@ Classic histograms can return the number of observations that fall within a spec
 >
 > Classic histograms cannot accurately estimate observations for thresholds that are not configured as preconfigured buckets.
 >
-> If your latency threshold is not available as one of the histogram buckets, refer to [handle a threshold not available as a bucket](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/sli-examples/latency/#handle-a-threshold-not-available-as-a-bucket) for alternative approaches.
+> If your latency threshold is not available as one of the histogram buckets, refer to [handle a threshold not available as a bucket](https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/latency/#handle-a-threshold-not-available-as-a-bucket) for alternative approaches.
 
 With classic histograms, the SLI query should also follow the **ratio of successful event rates formula**:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = rate of successful events (over a period)
@@ -181,7 +175,7 @@ Success ratio = rate of successful events (over a period)
 
 This example uses a different threshold (`2.5s`) for demonstration purposes. Choose the **Advanced** option to create the SLI query, which looks like this:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum(rate(request_duration_seconds_bucket{le="2.5"}[$__rate_interval]))
@@ -198,12 +192,6 @@ sum(rate(request_duration_seconds_count[$__rate_interval]))
   - `rate(request_duration_seconds_count[$__rate_interval])` calculates the total per-second rate of latency observations (all requests).
   - `sum (...)` aggregates across all dimensions (all label combinations returned by the metric).
 - **SLI result**: A ratio between `0` and `1`, where `1` means `100%` of requests were under `2.5` seconds.
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-ptdv7ou33se88f511y4qf?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-latency-classic-histogram).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.
 
 ### Handle a threshold not available as a bucket
 
@@ -226,7 +214,7 @@ However, in some cases, latency may be available only as a gauge metric, for exa
 
 When working with gauge metrics, define the SLI using the **ratio of successful events formula**:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 Success ratio = number of successful events (over a period)
@@ -236,7 +224,7 @@ Success ratio = number of successful events (over a period)
 
 This examples uses a latency threshold of `2` and `request_duration_seconds` is a gauge metric. The complete SLI query is:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # number of successful requests over the interval
@@ -256,7 +244,7 @@ sum(
 
 Here’s the breakdown of the numerator query:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # number of successful requests over the interval
@@ -280,7 +268,7 @@ sum(
 
 The numerator is then divided by the total number of requests over the same interval using a similar query:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 /
@@ -294,13 +282,13 @@ sum(
 
 > Note
 >
-> [`$__rate_interval`](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/template-variables/#use-__rate_interval) is recommended for calculating `rate()` in other examples. When you use other `_over_time()` functions that don’t require at least two data points, it’s better to use `$__interval` to achieve finer error budget resolution by evaluating SLIs at smaller time intervals.
+> [`$__rate_interval`](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/prometheus/template-variables/#use-__rate_interval) is recommended for calculating `rate()` in other examples. When you use other `_over_time()` functions that don’t require at least two data points, it’s better to use `$__interval` to achieve finer error budget resolution by evaluating SLIs at smaller time intervals.
 
 Alternative SLI query
 
 Alternatively, the numerator can use `bool` and `sum_over_time`:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # number of successful requests over the interval
@@ -318,9 +306,3 @@ sum(
   )
 )
 ```
-
-> Tip
->
-> You can explore an [**SLO based on this SLI example in Grafana Play**](https://play.grafana.org/d/grafana_slo_app-poscxclohk4ar07vu2zhg?tech=docs&pg=slo-examples&plcmt=callout-tip&cta=slo-latency-gauge).
->
-> Use the SLO dashboard to observe the error budget state and SLI value in real time, then click **Explore SLI Query** to inspect the underlying query.

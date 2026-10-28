@@ -7,13 +7,13 @@ description: "Set up alerts using MongoDB data in Grafana."
 
 # MongoDB alerting
 
-The MongoDB data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), allowing you to create alert rules based on MongoDB data. You can monitor your collections and receive notifications when specific conditions are met.
+The MongoDB data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), allowing you to create alert rules based on MongoDB data. You can monitor your collections and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 - Ensure you have the appropriate permissions to create alert rules in Grafana.
-- Verify your MongoDB data source is [configured](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/) and working correctly.
-- Familiarize yourself with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- Verify your MongoDB data source is [configured](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/) and working correctly.
+- Familiarize yourself with [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -50,7 +50,7 @@ To create an alert rule using MongoDB data:
 6. Add labels and annotations to provide context for notifications.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Document count threshold alert
 
@@ -59,7 +59,7 @@ This example creates an alert that fires when a collection grows beyond a thresh
 1. Create a new alert rule.
 2. Configure the query:
 
-   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    monitoring_db.collection_stats.aggregate([
@@ -91,7 +91,7 @@ This example alerts when average response time from a metrics collection exceeds
 1. Create a new alert rule.
 2. Configure the query:
 
-   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    app_db.request_metrics.aggregate([
@@ -131,7 +131,7 @@ This example alerts when data hasn’t been updated within the expected time fra
 1. Create a new alert rule.
 2. Configure the query:
 
-   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    app_db.ingestion_status.aggregate([
@@ -170,7 +170,7 @@ This example alerts when error counts exceed a threshold within a time window:
 1. Create a new alert rule.
 2. Configure the query:
 
-   JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```javascript
    logs_db.application_logs.aggregate([
@@ -263,10 +263,10 @@ If your alerts are not working as expected:
 - **Unexpected values**: Check that your query returns the correct data type (numeric for thresholds) with a `time` field.
 - **Alert never fires**: Ensure the **Reduce** expression is configured correctly for your data shape.
 
-For additional troubleshooting, refer to [Troubleshoot the MongoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/).
+For additional troubleshooting, refer to [Troubleshoot the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/).
 
 ## Additional resources
 
-- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)

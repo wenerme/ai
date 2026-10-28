@@ -13,7 +13,7 @@ Automate incident response and operational tasks with event-driven workflows in 
 
 > Note
 >
-> Grafana Workflows is currently in [private preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers support on a best-effort basis, and breaking changes might occur prior to the feature being made generally available.
+> Grafana Workflows is currently in [private preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers support on a best-effort basis, and breaking changes might occur prior to the feature being made generally available.
 
 ## Overview
 
@@ -25,20 +25,20 @@ Workflows connect to the tools you already use in Grafana Cloud. For example, wh
 
 [Get started
 \
-Create your first workflow with a step-by-step walkthrough.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/workflows/get-started/)
+Create your first workflow with a step-by-step walkthrough.](https://grafana.com/docs/grafana-cloud/alerting-and-irm/workflows/get-started/)
 
 [Create workflows
 \
-Build workflows using the visual editor or YAML definitions.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/workflows/create-workflows/)
+Build workflows using the visual editor or YAML definitions.](https://grafana.com/docs/grafana-cloud/alerting-and-irm/workflows/create-workflows/)
 
 [Configure triggers
 \
-Start workflows from events, schedules, or manual execution.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/workflows/configure-triggers/)
+Start workflows from events, schedules, or manual execution.](https://grafana.com/docs/grafana-cloud/alerting-and-irm/workflows/configure-triggers/)
 
 [Use CEL expressions
 \
-Connect steps with dynamic values, conditions, and data transformations.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/workflows/use-expressions/)
+Connect steps with dynamic values, conditions, and data transformations.](https://grafana.com/docs/grafana-cloud/alerting-and-irm/workflows/use-expressions/)
 
 [Step and trigger types reference
 \
-Explore available step and trigger types with their inputs and outputs.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/workflows/reference/)
+Explore available step and trigger types with their inputs and outputs.](https://grafana.com/docs/grafana-cloud/alerting-and-irm/workflows/reference/)

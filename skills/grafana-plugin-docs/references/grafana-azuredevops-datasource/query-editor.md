@@ -11,8 +11,8 @@ This document explains how to use the Azure DevOps query editor to retrieve and 
 
 ## Before you begin
 
-- [Configure the Azure DevOps data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
-- Verify your personal access token has the required [PAT scopes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#required-pat-scopes).
+- [Configure the Azure DevOps data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
+- Verify your personal access token has the required [PAT scopes](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#required-pat-scopes).
 
 ## Key concepts
 
@@ -251,7 +251,7 @@ To track how long pipeline runs take over time:
 2. Select your project from the **Project** drop-down.
 3. Select the pipeline from the **Pipeline** drop-down.
 
-Use [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to calculate durations from the returned start and finish timestamps.
+Use [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to calculate durations from the returned start and finish timestamps.
 
 ### View repository inventory
 
@@ -286,9 +286,9 @@ To narrow results further, set **Status** to `active` or use **tagFilter** to fi
 
 ## Use template variables in queries
 
-The **Project** and **Repository** drop-downs in the query editor include dashboard template variables as selectable options. This lets you create dynamic dashboards where the project or repository is controlled by a variable selector. For more information, refer to [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/).
+The **Project** and **Repository** drop-downs in the query editor include dashboard template variables as selectable options. This lets you create dynamic dashboards where the project or repository is controlled by a variable selector. For more information, refer to [Template variables](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/).
 
 ## Next steps
 
-- [Use annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/annotations/) to overlay Azure DevOps events on dashboard panels.
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/) to create dynamic, reusable dashboards.
+- [Use annotations](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/annotations/) to overlay Azure DevOps events on dashboard panels.
+- [Use template variables](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/) to create dynamic, reusable dashboards.

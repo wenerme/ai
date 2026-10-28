@@ -13,7 +13,7 @@ This document explains how to use the Amazon Managed Service for Prometheus quer
 
 Before you write queries, ensure you have:
 
-- [Configured the Amazon Managed Service for Prometheus data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
+- [Configured the Amazon Managed Service for Prometheus data source](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/configure/).
 - Verified that your AWS credentials have permission to query the workspace.
 
 ## Key concepts
@@ -93,7 +93,7 @@ Use the `rate` function with `$__rate_interval` to chart per-second rates from c
 
 Calculate the per-second rate of HTTP requests:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(http_requests_total[$__rate_interval])
@@ -101,7 +101,7 @@ rate(http_requests_total[$__rate_interval])
 
 Calculate total requests per second across all instances of a service:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum(rate(http_requests_total{job="api"}[$__rate_interval]))
@@ -113,7 +113,7 @@ Use aggregation operators such as `sum`, `avg`, and `max` with `by` to group res
 
 Aggregate CPU usage by instance:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[$__rate_interval]))
@@ -121,7 +121,7 @@ sum by (instance) (rate(node_cpu_seconds_total{mode!="idle"}[$__rate_interval]))
 
 Find the top five pods by memory usage:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 topk(5, sum by (pod) (container_memory_working_set_bytes))
@@ -133,7 +133,7 @@ Divide a filtered rate by a total rate to compute an error percentage.
 
 Calculate the percentage of HTTP 5xx responses:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 sum(rate(http_requests_total{status=~"5.."}[$__rate_interval]))
@@ -148,7 +148,7 @@ Use `histogram_quantile` with a `_bucket` metric to chart latency percentiles.
 
 Calculate the 95th percentile request latency:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[$__rate_interval])))
@@ -160,7 +160,7 @@ Combine metrics to express utilization as a percentage.
 
 Calculate memory utilization per node as a percentage:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 100 * (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)
@@ -168,7 +168,7 @@ promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.clus
 
 Show which targets are currently down:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 up == 0
@@ -176,9 +176,9 @@ up == 0
 
 ### Use a template variable in a query
 
-Reference a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/) to make a query interactive. For example, filter by a selected `instance` value:
+Reference a [template variable](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/) to make a query interactive. For example, filter by a selected `instance` value:
 
-promql ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(node_cpu_seconds_total{instance=~"$instance"}[$__rate_interval])
@@ -194,6 +194,6 @@ Use cases help you understand what’s possible and provide starting points for 
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/)
-- [Add annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/annotations/)
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-amazonprometheus-datasource/latest/alerting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/template-variables/)
+- [Add annotations](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/annotations/)
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/alerting/)

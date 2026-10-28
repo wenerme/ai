@@ -9,20 +9,20 @@ description: "The Zendesk data source lets you query and visualize Zendesk ticke
 
 > Note
 >
-> Grafana **Zendesk** data source plugin is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Grafana **Zendesk** data source plugin is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 The Zendesk data source plugin lets you query and visualize data from your Zendesk account in Grafana. Use it to bring ticket, user, and organization data from the Zendesk API into dashboards, alerts, and Explore.
 
 > Note
 >
-> The Zendesk data source is an Enterprise plugin. You can use it in Grafana Cloud with a Pro or Advanced plan, or in self-managed Grafana with an activated Grafana Enterprise license. For installation instructions, refer to [Install the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/install/).
+> The Zendesk data source is an Enterprise plugin. You can use it in Grafana Cloud with a Pro or Advanced plan, or in self-managed Grafana with an activated Grafana Enterprise license. For installation instructions, refer to [Install the Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/install/).
 
 ## Requirements
 
 The Zendesk data source has the following requirements:
 
 - A Zendesk account with an API token.
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated self-managed Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
 - Grafana version 11.6.7 or later.
 
 ## Supported features
@@ -45,21 +45,21 @@ Alerting works with queries that return numeric values, such as `Count tickets`.
 
 The following documents help you get started with the Zendesk data source:
 
-- [Install the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/install/)
-- [Configure the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/)
-- [Zendesk query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/query-editor/)
-- [Zendesk template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/template-variables/)
-- [Zendesk annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/annotations/)
-- [Zendesk data source alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/alerting/)
-- [Troubleshoot the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/troubleshooting/)
+- [Install the Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/install/)
+- [Configure the Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configure/)
+- [Zendesk query editor](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/query-editor/)
+- [Zendesk template variables](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/template-variables/)
+- [Zendesk annotations](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/annotations/)
+- [Zendesk data source alerting](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/alerting/)
+- [Troubleshoot the Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Zendesk data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/alerting/) rules on numeric queries, such as ticket counts.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query Zendesk data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/alerting/) rules on numeric queries, such as ticket counts.
 
 ## Pre-built dashboards
 
@@ -75,7 +75,7 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, the Zendesk plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, the Zendesk plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 

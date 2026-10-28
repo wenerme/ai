@@ -53,4 +53,4 @@ The plugin guards the related case: deleting a receiver still used by routes war
 
 ## Where notification content comes from
 
-Receivers decide where a notification goes. What it looks like comes from templates. Refer to [Notification templates](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/).
+Receivers decide where a notification goes. What it looks like comes from templates. Refer to [Notification templates](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/).

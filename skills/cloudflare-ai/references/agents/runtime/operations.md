@@ -15,7 +15,6 @@ Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 - [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
 - [Cross-domain authentication](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
-- [Using AI Models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
 - [Observability](https://developers.cloudflare.com/agents/runtime/operations/observability/)
 
 Was this helpful?

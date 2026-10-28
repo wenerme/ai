@@ -9,12 +9,12 @@ description: "Use Grafana template variables to create dynamic MQTT topic subscr
 
 Use template variables to create dynamic dashboards where the MQTT topic changes based on user selections. Instead of hard-coding topic paths, you can use variables to let users switch between devices, rooms, or sensors from a drop-down at the top of the dashboard.
 
-For general information about template variables in Grafana, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For general information about template variables in Grafana, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- Ensure you have [configured the MQTT data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/configure/).
-- Familiarize yourself with [Grafana variable types](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/).
+- Ensure you have [configured the MQTT data source](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure/).
+- Familiarize yourself with [Grafana variable types](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Supported variable types
 
@@ -35,7 +35,7 @@ Reference variables in the **Topic** field of the query editor using `$variable`
 
 For example, if you create a **Custom** variable named `room` with the values `bedroom`, `kitchen`, and `living_room`, you can set the topic to:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 home/$room/temperature
@@ -60,7 +60,7 @@ To create a variable that controls which topic the panel subscribes to:
 
 You can use more than one variable in a single topic to build fully dynamic paths. For example, with variables `location` and `metric`:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 sites/${location}/sensors/${metric}

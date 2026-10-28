@@ -13,7 +13,7 @@ Loki automatically extracts patterns when your logs are ingested. Patterns are e
 
 The Grafana Logs Drilldown app shows you the patterns alongside their log volumes. From this view, you can investigate spikes and include or exclude specific log lines from your view.
 
-Patterns can change over time as your logging evolves. To see patterns on the **Patterns** tab, you must have the [pattern ingester enabled](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/configure/#supported-contents-and-default-values-of-lokiyaml) in your Loki configuration file. If you don’t see any patterns, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-patterns).
+Patterns can change over time as your logging evolves. To see patterns on the **Patterns** tab, you must have the [pattern ingester enabled](https://grafana.com/docs/loki/latest/configure/#supported-contents-and-default-values-of-lokiyaml) in your Loki configuration file. If you don’t see any patterns, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/#there-are-no-patterns).
 
 ## Pattern extraction
 
@@ -21,7 +21,7 @@ Loki extracts patterns from a stream of log lines.
 
 For example, if your service logs lines like this:
 
-console ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+console ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```console
 duration=255ms trace_id=abc001 GET /path/to/endpoint/2
@@ -46,7 +46,7 @@ Pattern 2: `user loaded: <_>`
 
 > Note
 >
-> Since Loki 3.0, you can make queries using this simplified [pattern match filter operator](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/query/#pattern-match-filter-operators) which is much faster than using regex.
+> Since Loki 3.0, you can make queries using this simplified [pattern match filter operator](https://grafana.com/docs/loki/latest/query/#pattern-match-filter-operators) which is much faster than using regex.
 
 ## Pattern use cases
 
@@ -66,7 +66,7 @@ Let’s take a closer look at what you can do on the Patterns tab.
 
 The top navigation bar is common across the Grafana interface. The next section is common across all the Logs Drilldown pages.
 
-[Patterns tab](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-patterns.png)
+[Patterns tab](https://grafana.com/media/docs/explore-logs/v2/logs-drilldown-patterns.png)
 
 Patterns tab user interface:
 
@@ -77,7 +77,7 @@ Patterns tab user interface:
 
 When you expand a pattern row to view log lines with that pattern, each row has a menu with the following options:
 
-- **Show/Hide log details**: Select from the menu for the individual log line to view the log line, index labels, parsed fields, and structured metadata. For more information, refer to [View logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details).
+- **Show/Hide log details**: Select from the menu for the individual log line to view the log line, index labels, parsed fields, and structured metadata. For more information, refer to [View logs](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details).
 - **Show context**: Select from the menu to view the log line in the context of the logs that occurred before and after that specific log.
 - **Copy log line**: Select from the menu to copy individual log lines to the clipboard.
 

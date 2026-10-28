@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the Cloudflare data source in Grafana."
 
 # Troubleshoot Cloudflare data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the Cloudflare data source. For configuration instructions, refer to [Configure the Cloudflare data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the Cloudflare data source. For configuration instructions, refer to [Configure the Cloudflare data source](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
 
 ## Installation and access issues
 
@@ -28,8 +28,8 @@ The Cloudflare data source is a Grafana Enterprise plugin. It requires the appro
 
 1. Confirm your plan tier includes Enterprise plugins. The Cloudflare data source is available on Grafana Cloud Free, Pro, and Advanced tiers and on Grafana Enterprise.
 2. Verify that the Enterprise plugins entitlement is enabled for your account or stack.
-3. On self-managed Grafana Enterprise, make sure the plugin is installed and your license is active. Refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
-4. If you believe you’re entitled to the plugin but it still doesn’t appear, contact your Grafana account team or [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support).
+3. On self-managed Grafana Enterprise, make sure the plugin is installed and your license is active. Refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+4. If you believe you’re entitled to the plugin but it still doesn’t appear, contact your Grafana account team or [Grafana Support](https://grafana.com/profile/org#support).
 
 ### Configuration page fails to load or errors on save
 
@@ -44,8 +44,8 @@ A backend provisioning or entitlement issue is preventing the plugin from runnin
 
 **Solutions:**
 
-1. First confirm the plugin entitlement is in place. Refer to [Can’t find or install the Cloudflare plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#cant-find-or-install-the-cloudflare-plugin).
-2. If you’re entitled and the configuration page still fails to load or save, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support). A backend fix might be required.
+1. First confirm the plugin entitlement is in place. Refer to [Can’t find or install the Cloudflare plugin](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#cant-find-or-install-the-cloudflare-plugin).
+2. If you’re entitled and the configuration page still fails to load or save, contact [Grafana Support](https://grafana.com/profile/org#support). A backend fix might be required.
 
 ## Authentication errors
 
@@ -91,7 +91,7 @@ Expand table
 
 **Solutions:**
 
-1. Verify your API token has the required permissions. Refer to [Required permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions).
+1. Verify your API token has the required permissions. Refer to [Required permissions](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure/#required-permissions).
 2. Check that the token has access to the specific zones or accounts you’re querying.
 3. Create a new token with the correct permissions:
 
@@ -101,7 +101,7 @@ Expand table
    - **Zone &gt; Load Balancers &gt; Read** for load balancer queries
    - **Account &gt; API Tokens &gt; Read** for token queries
 
-If only the zone or account drop-downs are empty, refer to [Zone or account drop-downs are empty](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#zone-or-account-drop-downs-are-empty).
+If only the zone or account drop-downs are empty, refer to [Zone or account drop-downs are empty](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#zone-or-account-drop-downs-are-empty).
 
 ## Connection errors
 
@@ -119,7 +119,7 @@ These errors occur when Grafana can’t reach Cloudflare’s API endpoints.
 
 1. Verify network connectivity from the Grafana server to `api.cloudflare.com`.
 2. Check that firewall rules allow outbound HTTPS (port 443) to Cloudflare.
-3. For Grafana Cloud with private networks, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+3. For Grafana Cloud with private networks, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 4. Check Cloudflare’s [system status](https://www.cloudflarestatus.com/) for any ongoing incidents.
 
 ## Query errors
@@ -173,7 +173,7 @@ Expand table
 3. Check that the token scope includes the zones/accounts you expect to see.
 4. Test the token directly with the Cloudflare API to verify access.
 
-If queries also fail with permission errors, refer to [“Access denied” or “Authorization failed”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#access-denied-or-authorization-failed).
+If queries also fail with permission errors, refer to [“Access denied” or “Authorization failed”](https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#access-denied-or-authorization-failed).
 
 ## Radar query issues
 
@@ -213,7 +213,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -229,7 +229,7 @@ If you’ve tried these solutions and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review the [Cloudflare API documentation](https://developers.cloudflare.com/api/) for API-specific errors.
-3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re a Grafana Cloud or Enterprise customer.
+3. Contact [Grafana Support](https://grafana.com/profile/org#support) if you’re a Grafana Cloud or Enterprise customer.
 
 When reporting issues, include:
 

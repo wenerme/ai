@@ -30,25 +30,25 @@ To import a dashboard:
 3. Click the **Dashboards** tab.
 4. Click **Import** next to the dashboard you want to use.
 
-For more information about importing dashboards, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+For more information about importing dashboards, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Get started
 
 The following documents will help you get started with the Salesforce data source:
 
-- [Configure the Salesforce data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/configure/)
-- [Salesforce query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/template-variables/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/)
+- [Configure the Salesforce data source](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/configure/)
+- [Salesforce query editor](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/template-variables/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 Once you have configured the data source, you can:
 
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/annotations/) to overlay Salesforce events on your graphs.
-- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/).
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-salesforce-datasource/latest/alerting/) to monitor your Salesforce data.
+- Add [Annotations](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/annotations/) to overlay Salesforce events on your graphs.
+- Configure and use [Template variables](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels/transformations/).
+- Set up [Alerting](https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/alerting/) to monitor your Salesforce data.
 
 ## Known limitations
 

@@ -136,6 +136,7 @@ PUT /groups/:id/wikis/:slug
 | `title`   | string         | Yes, if `content` is not provided | The title of the wiki page. |
 | `format`  | string         | No                                 | The format of the wiki page. Available formats are `markdown` (default), `rdoc`, `asciidoc`, and `org`. |
 | `slug`    | string         | Yes                                | URL encoded slug (a unique string) of the wiki page. For example: `dir%2Fpage_name`. |
+{.sortable}
 
 ```shell
 curl --request PUT \

@@ -42,6 +42,7 @@ Supported attributes:
 | `recursive`  | boolean           | No       | If `true`, get a recursive tree. Default is `false`. |
 | `ref`        | string            | No       | Name of a repository branch or tag. If not specified, uses the default branch. |
 | `with_last_commit` | boolean     | No       | If `true`, include the last commit for each tree entry. Cannot be combined with `recursive`. Default is `false`. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and an array of tree objects.
 When `with_last_commit` is `true`, each tree object includes a `last_commit` object with
@@ -337,6 +338,7 @@ Supported attributes:
 | `path`              | string            | No       | Subpath of the repository to download. If an empty string, defaults to the whole repository. |
 | `sha`               | string            | No       | Commit SHA to download. Accepts a tag, branch reference, or SHA. If not specified, defaults to the tip of the default branch. |
 | `ref_type`          | string            | No       | Type of ref in `sha`. Use to select the correct ref when a branch and tag share a name. |
+{.sortable}
 
 Example request:
 
@@ -375,6 +377,7 @@ Supported attributes:
 | `from_project_id` | integer           | No       | ID to compare from. |
 | `straight`        | boolean           | No       | If `true`, comparison method is direct comparison between `from` and `to` (`from`..`to`). If `false`, compare using merge base (`from`...`to`). Default is `false`. |
 | `unidiff`         | boolean           | No       | If `true`, present diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is `false`. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -403,6 +406,7 @@ response attributes:
 | `diffs[].renamed_file`   | boolean      | If `true`, file has been renamed. |
 | `diffs[].too_large`      | boolean      | If `true`, file diffs are excluded and cannot be retrieved. |
 | `web_url`                | string       | Web URL for viewing the comparison. |
+{.sortable}
 
 Example request:
 
@@ -542,6 +546,7 @@ response attributes:
 | `title`             | string   | Commit title. |
 | `trailers`          | object   | Git trailers parsed from the commit message. |
 | `web_url`           | string   | URL to view the commit in the GitLab web interface. |
+{.sortable}
 
 Example request, with the refs truncated for readability:
 
@@ -811,6 +816,7 @@ Supported attributes:
 | `from`            | string   | No       | Start of the range of commits (as a SHA) to use for generating the changelog. This commit itself isn't included in the list. |
 | `to`              | string   | No       | End of the range of commits (as a SHA) to use for the changelog. This commit is included in the list. Defaults to the HEAD of the default project branch. |
 | `trailer`         | string   | No       | Git trailer to use for including commits. Defaults to `Changelog`. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -895,6 +901,7 @@ Changelogs support the following attributes:
 | `message`              | string   | No       | Commit message to use when committing the changes. Defaults to `Add changelog for version X`, where `X` is the value of the `version` argument. |
 | `to`                   | string   | No       | SHA of the commit that marks the end of the range of commits to include in the changelog. This commit is included in the changelog. Defaults to the branch specified in the `branch` attribute. Limited to 15000 commits. |
 | `trailer`              | string   | No       | Git trailer to use for including commits. Defaults to `Changelog`. Case-sensitive: `Example` does not match `example` or `eXaMpLE`. |
+{.sortable}
 
 [^version-attribute-include]: The `version` attribute can include or omit the `v` prefix. Both `1.0.0` and `v1.0.0` produce identical results.
     [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/437616) in GitLab 17.0.

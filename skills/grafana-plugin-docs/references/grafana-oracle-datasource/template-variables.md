@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards. Instead of hard-c
 
 ## Before you begin
 
-- [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/).
-- Understand [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -35,7 +35,7 @@ To create a query variable:
 4. Select the Oracle data source.
 5. Enter a SQL query that returns the values you want as variable options.
 
-For detailed instructions, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
+For detailed instructions, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
 
 ## Query examples
 
@@ -45,7 +45,7 @@ An Oracle variable query returns column values that populate the variable drop-d
 
 Return all values from a single column:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname FROM host
@@ -55,7 +55,7 @@ SELECT hostname FROM host
 
 A query can return multiple columns. Grafana creates a combined list from all returned columns:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT host.hostname, other_host.hostname2
@@ -67,7 +67,7 @@ JOIN other_host ON host.city = other_host.city
 
 Return two columns named `__text` and `__value` to create a variable where the display name differs from the stored value. The `__text` column values must be unique:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname AS __text, id AS __value
@@ -78,7 +78,7 @@ FROM host
 
 To use time range macros like `$__timeFilter(column)` in your variable query, set the variable refresh to **On Time Range Change**:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT event_name
@@ -90,7 +90,7 @@ WHERE $__timeFilter(time_column)
 
 Create nested variables by referencing one variable inside another. For example, create a `region` variable, then use it to filter a `hosts` variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname
@@ -106,7 +106,7 @@ Reference variables in your Oracle queries using the `$variable` or `${variable}
 
 If a variable allows multiple selections, use the `IN` operator instead of `=`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -120,7 +120,7 @@ Grafana interpolates multi-value variables as single-quoted, comma-separated val
 
 Use an interval variable to let users control the time-grouping granularity of a query. Reference the variable inside a time-grouping macro:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -136,4 +136,4 @@ Grafana’s built-in `$__interval` variable works the same way and adjusts the g
 
 ### Variable syntax reference
 
-For the full variable syntax including advanced formatting options, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For the full variable syntax including advanced formatting options, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).

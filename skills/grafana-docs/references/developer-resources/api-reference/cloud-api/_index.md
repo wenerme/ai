@@ -500,7 +500,7 @@ Example response:
   "lastUsedAt": "2022-06-08T22:05:46.959Z",
   "createdAt": "2022-06-08T22:05:46.959Z",
   "updatedAt": "2022-06-08T22:05:46.959Z",
-  "token": "glc_EXAMPLE_GRAFANA_API_KEY"
+  "token": "glc_<redacted-example-token>"
 }
 ```
 

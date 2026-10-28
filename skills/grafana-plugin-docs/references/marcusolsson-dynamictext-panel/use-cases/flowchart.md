@@ -15,11 +15,11 @@ Import two external libraries and then write your code to address the Flowchart 
 
 ## Example
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/flow.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/flow.png)
 
 Use the following external library
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 https://esm.sh/flowchart.js
@@ -28,7 +28,7 @@ https://esm.sh/raphael
 
 ## Content to copy
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <div id="flowchart" />
@@ -42,7 +42,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/flowchart.js").then(async (flowchart) => {

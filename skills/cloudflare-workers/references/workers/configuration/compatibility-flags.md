@@ -137,6 +137,29 @@ When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
 
+### Name WebAssembly modules after their module in stack traces
+
+| **Default as of** | 2026-12-01 |
+| --- | --- |
+| **Flag to enable** | `wasm_source_url_support` |
+| **Flag to disable** | `no_wasm_source_url_support` |
+
+When you enable the `wasm_source_url_support` compatibility flag, stack traces name each [WebAssembly](https://developers.cloudflare.com/workers/runtime-apis/webassembly/) module in your Worker after its module name. For example, a frame in a module named `index_bg.wasm` reads:
+
+```txt
+at index_bg.wasm:wasm-function[42]:0x1a2b
+```
+
+Without this flag, the runtime names each WebAssembly module after a hash of its bytes, so you cannot tell which module a frame comes from:
+
+```txt
+at wasm://wasm/0543fef2:wasm-function[42]:0x1a2b
+```
+
+If you parse stack traces, for example in a [Tail Worker](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) or an error-tracking integration, update any patterns that match `wasm://wasm/`.
+
+WebAssembly that your code compiles from bytes, for example with `new WebAssembly.Module(bytes)`, keeps the hash name, as do WebAssembly bindings in Workers that use the service worker syntax.
+
 ### `cache` option does not override the origin's `Cache-Control`
 
 | **Default as of** | 2026-11-17 |

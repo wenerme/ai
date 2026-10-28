@@ -13,8 +13,8 @@ Template variables let you create dynamic, reusable dashboards. Instead of hard-
 
 Before using template variables:
 
-- [Configure the Google BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/)
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
+- [Configure the Google BigQuery data source](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/)
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
 
 ## Supported variable types
 
@@ -51,7 +51,7 @@ The following examples show common queries for populating variable options.
 
 ### List datasets in a project
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT schema_name
@@ -61,7 +61,7 @@ ORDER BY schema_name
 
 ### List tables in a dataset
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name
@@ -71,7 +71,7 @@ ORDER BY table_name
 
 ### List distinct values from a column
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region
@@ -81,7 +81,7 @@ ORDER BY region
 
 ### List columns from a table
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT column_name
@@ -94,7 +94,7 @@ ORDER BY ordinal_position
 
 Return two columns to use different values for the display name and the actual value:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -110,7 +110,7 @@ The `__text` column appears in the drop-down, and `__value` is used in queries.
 
 Use macros to filter variable options based on the dashboard time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT category
@@ -127,7 +127,7 @@ After creating variables, reference them in your queries using the `$variable_na
 
 Variables inside backticks (for table references) don’t need quotes because they’re part of BigQuery identifiers:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -141,7 +141,7 @@ WHERE $__timeFilter(timestamp)
 
 For single-select variables, add quotes around the variable:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -156,7 +156,7 @@ WHERE $__timeFilter(timestamp)
 
 For variables that allow multiple selections, use the `IN` operator without adding quotes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -191,7 +191,7 @@ Expand table
 
 Use variables for search patterns:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -207,7 +207,7 @@ WHERE $__timeFilter(timestamp)
 
 For variables containing numbers (such as a limit or threshold), don’t use quotes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -227,7 +227,7 @@ You can create cascading variables where one variable’s options depend on anot
 
 1. Create a `dataset` variable:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT schema_name
@@ -236,7 +236,7 @@ You can create cascading variables where one variable’s options depend on anot
    ```
 2. Create a `table` variable that references `$dataset`:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT table_name
@@ -253,7 +253,7 @@ Create a variable that lists columns from the currently selected table:
 1. Ensure you have `dataset` and `table` variables.
 2. Create a `column` variable:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT column_name
@@ -287,7 +287,7 @@ Expand table
 | `singlequote` | Single-quoted, comma-separated | `['us-east1', 'us-west1']` | `'us-east1','us-west1'` |
 | `doublequote` | Double-quoted, comma-separated | `['us-east1', 'us-west1']` | `"us-east1","us-west1"` |
 
-For more formatting options, refer to [Advanced variable format options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
+For more formatting options, refer to [Advanced variable format options](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
 
 ## Best practices
 
@@ -301,6 +301,6 @@ Follow these recommendations for effective template variable usage:
 
 ## Related resources
 
-- [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/)
-- [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable)
+- [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/)
+- [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable)

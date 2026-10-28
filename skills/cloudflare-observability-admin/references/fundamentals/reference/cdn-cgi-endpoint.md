@@ -12,11 +12,15 @@ image: https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint
 
 # /cdn-cgi/ endpoint
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you [add a domain to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/), Cloudflare adds a `/cdn-cgi/` endpoint (`www.example.com/cdn-cgi/`) to that domain.
 
 This endpoint is managed and served by Cloudflare. It cannot be modified or customized. The endpoint is not used by every Cloudflare product, but you may find some products use the endpoint in its URL.
+
+Note
+
+Traffic to `/cdn-cgi/` endpoints is classified as **Served by Cloudflare** in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/#request-activity).
 
 A few examples include (but are not limited to):
 
@@ -65,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/#page","headline":"/cdn-cgi/ endpoint","description":"Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.","url":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/#page","headline":"/cdn-cgi/ endpoint","description":"Understand the Cloudflare-managed /cdn-cgi/ endpoint added to proxied domains and how various products use it.","url":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/og.png?v=6580e7700cc99bf3","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

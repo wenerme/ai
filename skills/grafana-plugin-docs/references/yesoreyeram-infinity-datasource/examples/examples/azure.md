@@ -60,7 +60,7 @@ Connect the Infinity data source to Azure management APIs to query subscriptions
 
 **URL:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://management.azure.com/subscriptions?api-version=2020-01-01
@@ -76,7 +76,7 @@ https://management.azure.com/subscriptions?api-version=2020-01-01
 
 **URL:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups?api-version=2021-04-01
@@ -84,7 +84,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups?api-v
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -96,7 +96,7 @@ parse-json
 
 **URL:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines?api-version=2023-03-01
@@ -104,7 +104,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -116,7 +116,7 @@ parse-json
 
 **URL:**
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/query?api-version=2023-03-01
@@ -126,7 +126,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 **Body (JSON):**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -148,7 +148,7 @@ JSON [Copy code to clipboard] Copy
 
 Configure Azure OAuth2 authentication through provisioning:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

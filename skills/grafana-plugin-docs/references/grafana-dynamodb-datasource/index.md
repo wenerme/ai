@@ -11,7 +11,7 @@ The DynamoDB data source plugin lets you connect directly to Amazon DynamoDB to 
 
 > Note
 >
-> The DynamoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The DynamoDB data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -31,21 +31,21 @@ Expand table
 
 The following documents help you set up and use the DynamoDB data source:
 
-- [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/)
-- [DynamoDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/)
-- [DynamoDB template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/)
-- [DynamoDB annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/annotations/)
-- [DynamoDB alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/alerting/)
-- [Troubleshoot DynamoDB data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/)
+- [Configure the DynamoDB data source](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/)
+- [DynamoDB query editor](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/)
+- [DynamoDB template variables](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/)
+- [DynamoDB annotations](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/annotations/)
+- [DynamoDB alerting](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/alerting/)
+- [Troubleshoot DynamoDB data source issues](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run PartiQL queries without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules based on DynamoDB data.
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to mark events on your dashboards.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run PartiQL queries without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/grafana/latest/alerting/) rules based on DynamoDB data.
+- Add [Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) to mark events on your dashboards.
 
 ## Known limitations
 

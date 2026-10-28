@@ -297,8 +297,10 @@ Prerequisites:
   - `.gif`
   - `.ico`
   - `.jpeg`
+  - `.jpg`
   - `.png`
   - `.tiff`
+  - `.webp`
 
 To upload an avatar in your project settings:
 

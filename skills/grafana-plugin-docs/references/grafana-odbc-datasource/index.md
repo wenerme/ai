@@ -15,7 +15,7 @@ The Grafana Sqlyze Data Source plugin is a versatile plugin that allows you to c
 
 The Sqlyze plugin leverages the ODBC (Open Database Connectivity) interface to connect to various databases. ODBC is a standard API for accessing database management systems (DBMS). The following diagram illustrates how the plugin interacts with the different components in the data connection stack:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 +-----------------------------------+
@@ -67,7 +67,7 @@ The plugin requires two essential fields to be configured: **Driver** and **Time
 
 ODBC uses a connection string under the hood to connect to the DBMS. This connection string is built from a concatenation of the driver path, timeout, and any other key value combinations provided in the Driver Settings sections of the settings UI. Here is an example connection string for an IBM DB2 database:
 
-plaintext ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+plaintext ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```plaintext
 Driver=/home/ibm/db2/V11.5/lib64/libdb2o.so;Timeout=0;Hostname=db2.server.com;Port=50000;Uid=testUserUID;Pwd=Testing123;DB=testdb
@@ -77,7 +77,7 @@ The connection string format may vary depending on the database you’re connect
 
 The `Driver` field can also contain a reference to the driver in configuration in the `odbc.ini` file, instead of referring to the driver directly. e.g.:
 
-plaintext ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+plaintext ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```plaintext
 `Driver={MyDB2Database};Timeout=0;Hostname=db2.server.com;Port=50000;Uid=testUserUID;Pwd=Testing123;DB=testdb
@@ -91,7 +91,7 @@ Proper setup of ODBC connections is critical for ensuring that your database com
 
 The CLI tools mentioned below are likely not installed on your system and you will most likely need to install `unixodbc` and / or `unixodbc-dev`, ( if you are using ubuntu ) using the command below.
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 apt-get install unixodbc unixodbc-dev
@@ -103,7 +103,7 @@ apt-get install unixodbc unixodbc-dev
 
 The odbcinst -j command is used to display the locations of important ODBC configuration files. This can help verify that your system is set up correctly.
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 $ odbcinst -j
@@ -117,7 +117,7 @@ USER DATA SOURCES..: /home/username/.odbc.ini
 
 The `odbc.ini` file is used to define DSNs (Data Source Names), which represent individual database connections. Each DSN specifies the connection parameters for a particular database.
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [ODBC Data Sources]
@@ -141,7 +141,7 @@ TraceFile=/tmp/sql.log
 
 The odbcinst.ini file is used to define the ODBC drivers installed on your system. Each section represents a different driver.
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [Db2]
@@ -155,7 +155,7 @@ dontdlclose=1
 
 `odbc_cli` is a utility for checking your ODBC configuration files, such as ensuring the correct driver paths and DSN configurations.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 $ odbc_cli verify
@@ -168,7 +168,7 @@ Configuration file(s) verified:
 
 The isql tool is an interactive SQL shell that can be used to test the connection to your database via ODBC. It’s particularly useful for diagnosing issues with your ODBC configuration before using the Grafana plugin. It is installed with the `unixodbc`/`unixodbc-dev` packages.
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 $ isql MyDB2Database
@@ -187,7 +187,7 @@ To format your SQL queries for time series data in Grafana, use the alias **as t
 
 Example query:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select date_start as time, foo, avg(bar) as bar
@@ -255,9 +255,9 @@ This error can occur when the driver file (in this example `libdb2.so`) is missi
 
 ## Provisioning
 
-You can define and configure the ODBC data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
+You can define and configure the ODBC data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

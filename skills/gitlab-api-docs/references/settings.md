@@ -466,7 +466,7 @@ Example responses:
 - `require_personal_access_token_expiry` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/470192) in GitLab 17.3.
 - `receptive_cluster_agents_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463427) in GitLab 17.4.
 - `allow_all_integrations` and `allowed_integrations` [added](https://gitlab.com/gitlab-org/gitlab/-/issues/500610) in GitLab 17.6.
-- `iframe_rendering_enabled`, `iframe_rendering_allowlist`, and `iframe_rendering_allowlist_raw` introduced in GitLab 18.6.
+- `iframe_rendering_enabled`, `iframe_rendering_allowlist`, and `iframe_rendering_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200864) in GitLab 18.7.
 - `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
 - `email_otp_enabled` introduced in GitLab 19.1.
 - `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed.
@@ -492,6 +492,7 @@ Example responses:
 - `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_cancel`. Disabled by default.
 - `duo_token_usage_tracking_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259436) in GitLab 19.6.
 - `default_remove_source_branch_after_merge` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260680) in GitLab 19.6.
+- `iframe_rendering_allowlist` and `iframe_rendering_allowlist_raw` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254945) to accept embed provider IDs instead of domains in GitLab 19.5.
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -506,7 +507,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `email_restrictions_enabled`             | boolean          | no                                   | Prevent new users from creating an account by email. |
 | `email_restrictions`                     | string           | required by: `email_restrictions_enabled` | Regular expression that is checked against the email used during registration. |
 | `after_sign_up_text`                     | string           | no                                   | Text shown to the user after signing up. |
-| `ai_action_api_rate_limit`               | integer          | no                                   | Maximum number of requests allowed to the `aiAction` GraphQL mutation per user per eight hours. Default: `160`. Set to `0` to disable the rate limit. |
+| `ai_action_api_rate_limit`               | integer          | no                                   | Maximum number of requests allowed to the `aiAction` GraphQL mutation per user per eight hours. Default: `160`. Must be greater than `0`. |
 | `akismet_api_key`                        | string           | required by: `akismet_enabled`       | API key for Akismet spam protection. |
 | `akismet_enabled`                        | boolean          | no                                   | (**If enabled, requires**: `akismet_api_key`) Enable or disable Akismet spam protection. |
 | `allow_all_integrations`                 | boolean          | no                                   | When `false`, only integrations in `allowed_integrations` are allowed on the instance. Ultimate only. |

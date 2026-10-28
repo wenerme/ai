@@ -11,7 +11,7 @@ Use Wavefront events to add annotations to Grafana dashboards. Annotations appea
 
 ## Before you begin
 
-- [Configure the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/).
+- [Configure the Wavefront data source](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/configure/).
 - Make sure your Wavefront API token has permission to read events.
 - Open the dashboard where you want to add annotations.
 
@@ -59,10 +59,10 @@ To add a Wavefront annotation:
 06. Set **Limit** to the maximum number of events to return per refresh.
 07. (Optional) Configure a **Color** to distinguish this annotation from others on the dashboard.
 08. (Optional) Toggle **Hidden** to hide the annotation by default; users can still toggle it on from the dashboard.
-09. (Optional) Use the **Fields** section to map response fields to the annotation **Title**, **Text**, and **Tags**, as described in [Map response fields to annotation properties](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/annotations/#map-response-fields-to-annotation-properties).
+09. (Optional) Use the **Fields** section to map response fields to the annotation **Title**, **Text**, and **Tags**, as described in [Map response fields to annotation properties](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/annotations/#map-response-fields-to-annotation-properties).
 10. Click **Apply** to save the annotation, then save the dashboard.
 
-For general annotation configuration options, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general annotation configuration options, refer to [Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ### Map response fields to annotation properties
 
@@ -116,6 +116,6 @@ Common uses of Wavefront event annotations include:
 
 ## Next steps
 
-- Review metrics with the [Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
-- Use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/) to build reusable dashboards.
-- Create [alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/alerting/) from Wavefront queries.
+- Review metrics with the [Wavefront query editor](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
+- Use [template variables](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/template-variables/) to build reusable dashboards.
+- Create [alert rules](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/alerting/) from Wavefront queries.

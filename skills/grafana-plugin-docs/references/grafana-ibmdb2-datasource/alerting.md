@@ -13,7 +13,7 @@ The IBM Db2 data source supports Grafana Alerting. You can create alert rules th
 
 Before you create alert rules, ensure you have:
 
-- [Configured the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
+- [Configured the IBM Db2 data source](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/configure/)
 - A query that returns a numeric value you can evaluate against a threshold
 
 ## Create an alert rule
@@ -29,7 +29,7 @@ To create an alert rule from an IBM Db2 query:
 7. Add an expression to reduce the query result to a single value and define the alert condition.
 8. Set the evaluation behavior, labels, and notifications, then save the rule.
 
-For a full walkthrough, refer to [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For a full walkthrough, refer to [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Example alert queries
 
@@ -43,7 +43,7 @@ An alert query typically returns a single numeric value that Grafana reduces and
 
 Alert when the number of failed orders is too high. In the alert rule, add a **Threshold** condition such as `IS ABOVE 100`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(*) AS value
@@ -55,7 +55,7 @@ WHERE status = 'FAILED'
 
 Alert when the deepest job queue grows too large:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT MAX(queue_depth) AS value
@@ -66,7 +66,7 @@ FROM job_queue
 
 Alert when too few rows arrive in a recent window. This query counts rows created in the last 15 minutes, so you can add a **Threshold** condition such as `IS BELOW 1` to detect a stalled pipeline:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(*) AS value
@@ -78,7 +78,7 @@ WHERE created_at >= CURRENT_TIMESTAMP - 15 MINUTES
 
 Alert when a table hasn’t received new rows recently. This query returns the approximate number of minutes since the most recent row, so a **Threshold** of `IS ABOVE 15` fires when no new rows have arrived in the last 15 minutes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT TIMESTAMPDIFF(4, CHAR(CURRENT_TIMESTAMP - MAX(created_at))) AS value
@@ -106,9 +106,9 @@ Alert rules run on their own evaluation schedule, independent of dashboard usage
 - **Query Timeout:** Long-running alert queries are canceled when they exceed the query timeout. If alert evaluations fail with timeout errors, increase the **Query Timeout** in the data source configuration or optimize the query so it completes within the limit.
 - **Connection pool size:** Alert evaluations borrow connections from the same connection pool as dashboard queries, one pool per data source. If you run many alert rules against the same data source, size the **Connection pool size** to accommodate the combined concurrency of alerting and dashboards.
 
-For more information about both settings, refer to [Configure the IBM Db2 data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
+For more information about both settings, refer to [Configure the IBM Db2 data source](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/configure/).
 
 ## Related resources
 
-- [IBM Db2 query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-ibmdb2-datasource/latest/query-editor/)
-- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [IBM Db2 query editor](https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/query-editor/)
+- [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)

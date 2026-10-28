@@ -13,7 +13,7 @@ This document explains how to configure the Drone data source in Grafana.
 
 Before you configure the data source, ensure you have:
 
-- **Drone data source plugin installed:** For installation instructions, refer to [Install the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/install/).
+- **Drone data source plugin installed:** For installation instructions, refer to [Install the Drone data source](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/install/).
 - **Grafana permissions:** Organization administrator role.
 - **A Drone API token:** Find your token on the `<YOUR_DRONE_URL>/account` page of your Drone instance.
 - **Network access:** Outbound connectivity from Grafana to your Drone instance over HTTPS.
@@ -61,13 +61,13 @@ The token is stored securely and isn’t shown after you save the data source.
 
 Click **Save &amp; test** to verify the connection. Grafana runs a health check that requests the list of repositories from your Drone instance. When the connection succeeds, Grafana displays a success message.
 
-If the test fails, refer to [Troubleshoot the Drone data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-drone-datasource/latest/troubleshooting/) for solutions to common connection and authentication errors.
+If the test fails, refer to [Troubleshoot the Drone data source](https://grafana.com/docs/plugins/grafana-drone-datasource/latest/troubleshooting/) for solutions to common connection and authentication errors.
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -87,7 +87,7 @@ Replace `<YOUR_DRONE_URL>` with the URL of your Drone instance and `<YOUR_API_TO
 
 You can provision the data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "drone" {

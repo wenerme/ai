@@ -17,10 +17,10 @@ Select **HTML** as the query type to extract data from HTML pages.
 
 When querying HTML data, use the **JSONata** or **JQ** backend parsers. These parsers convert HTML into a structured format similar to XML, allowing you to use the same selector syntax.
 
-- **JSONata parser**: Use JSONata expressions to navigate and transform the parsed HTML structure. For more information, refer to [JSONata parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
-- **JQ parser**: Use JQ expressions to navigate and transform the parsed HTML structure. For more information, refer to [JQ parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/).
+- **JSONata parser**: Use JSONata expressions to navigate and transform the parsed HTML structure. For more information, refer to [JSONata parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
+- **JQ parser**: Use JQ expressions to navigate and transform the parsed HTML structure. For more information, refer to [JQ parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/).
 
-For selector syntax and examples, refer to [XML](/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/xml/), as HTML is parsed using the same approach.
+For selector syntax and examples, refer to [XML](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/data-formats/xml/), as HTML is parsed using the same approach.
 
 ## Configure an HTML query
 

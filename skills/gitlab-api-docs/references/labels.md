@@ -29,6 +29,7 @@ GET /projects/:id/labels
 | `include_ancestor_groups` | boolean | no | Include ancestor groups. Defaults to `true`. |
 | `search` | string | no | Keyword to filter labels by. |
 | `archived` | boolean | no | If `true`, returns only archived labels. If unset, returns all labels. |
+{.sortable}
 
 ```shell
 curl --request GET \
@@ -174,6 +175,7 @@ POST /projects/:id/labels
 | `description` | string  | no       | The description of the label |
 | `priority`    | integer | no       | The priority of the label. Must be greater or equal than zero or `null` to remove the priority. |
 | `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -241,6 +243,7 @@ PUT /projects/:id/labels/:label_id
 | `description`   | string  | no                                | The new description of the label |
 | `priority`    | integer | no       | The new priority of the label. Must be greater or equal than zero or `null` to remove the priority. |
 | `archived`    | boolean | no       | If `true`, marks the label as archived. Default value: `false`. |
+{.sortable}
 
 ```shell
 curl --request PUT \

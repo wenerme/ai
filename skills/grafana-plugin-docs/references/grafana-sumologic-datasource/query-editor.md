@@ -7,11 +7,11 @@ description: "Use the Sumo Logic query editor to build metrics and logs queries 
 
 # Sumo Logic query editor
 
-The Sumo Logic query editor lets you build and run metrics and logs queries against your Sumo Logic data. You can access the query editor from a dashboard panel by editing or adding a panel and selecting a Sumo Logic data source, or from the [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) page for ad-hoc queries. For metrics, the editor offers both a visual Builder mode and a raw Code mode. For logs, you write queries using the Sumo Logic [Search Query Language](https://help.sumologic.com/docs/search/search-query-language/).
+The Sumo Logic query editor lets you build and run metrics and logs queries against your Sumo Logic data. You can access the query editor from a dashboard panel by editing or adding a panel and selecting a Sumo Logic data source, or from the [Explore](https://grafana.com/docs/grafana/latest/explore/) page for ad-hoc queries. For metrics, the editor offers both a visual Builder mode and a raw Code mode. For logs, you write queries using the Sumo Logic [Search Query Language](https://help.sumologic.com/docs/search/search-query-language/).
 
 ## Before you begin
 
-- [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/).
+- [Configure the Sumo Logic data source](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/).
 - Verify your access credentials have permissions to query your Sumo Logic data.
 
 ## Query types
@@ -96,7 +96,7 @@ In Code mode, the editor displays a raw text area where you write Sumo Logic met
 
 Metrics queries use a pipe-delimited syntax where you specify a metric selector, then chain operators:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle department=sales | avg by host
@@ -112,7 +112,7 @@ The following examples demonstrate common query patterns. You can use these in e
 
 Average CPU idle time grouped by host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | avg by host
@@ -120,7 +120,7 @@ metric=cpu_idle | avg by host
 
 Total request count across all services:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_requests | sum by service
@@ -128,7 +128,7 @@ metric=http_requests | sum by service
 
 Maximum memory usage per host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=mem_used_percent | max by host
@@ -136,7 +136,7 @@ metric=mem_used_percent | max by host
 
 Standard deviation of response times to detect variability:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_response_time | stddev by service
@@ -146,7 +146,7 @@ metric=http_response_time | stddev by service
 
 Filter by a specific department:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle department=sales | avg by host
@@ -154,7 +154,7 @@ metric=cpu_idle department=sales | avg by host
 
 Filter by multiple hosts using the `in` operator:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle host=(web-01,web-02,web-03) | avg
@@ -164,7 +164,7 @@ metric=cpu_idle host=(web-01,web-02,web-03) | avg
 
 Return the top 5 hosts by memory usage:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=mem_used | topk(5, avg) by host
@@ -172,7 +172,7 @@ metric=mem_used | topk(5, avg) by host
 
 Return the 3 least active services:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_requests | bottomk(3, sum) by service
@@ -182,7 +182,7 @@ metric=http_requests | bottomk(3, sum) by service
 
 Calculate the per-second rate of incoming bytes:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=net_bytes_recv | rate increasing
@@ -190,7 +190,7 @@ metric=net_bytes_recv | rate increasing
 
 Calculate the change in disk usage between consecutive data points:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=disk_used | delta
@@ -200,7 +200,7 @@ metric=disk_used | delta
 
 Fill missing data points with the last known value:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | avg by host | fillmissing last
@@ -208,7 +208,7 @@ metric=cpu_idle | avg by host | fillmissing last
 
 Apply exponentially weighted moving average to smooth noisy data:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_response_time | avg by service | ewma span 10
@@ -218,7 +218,7 @@ metric=http_response_time | avg by service | ewma span 10
 
 Calculate the 95th percentile of request latency:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_request_duration | pct(95) by service
@@ -228,7 +228,7 @@ metric=http_request_duration | pct(95) by service
 
 Compare current values to the same time yesterday:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | avg by host | timeshift 1d
@@ -236,7 +236,7 @@ metric=cpu_idle | avg by host | timeshift 1d
 
 Forecast future values using a linear model:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=disk_used_percent | avg by host | predict linear 24h
@@ -246,7 +246,7 @@ metric=disk_used_percent | avg by host | predict linear 24h
 
 Keep only time series where the average value exceeds a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=cpu_idle | filter avg > 90
@@ -254,7 +254,7 @@ metric=cpu_idle | filter avg > 90
 
 Filter using the current value:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_response_time | avg by service | where _value > 500
@@ -264,7 +264,7 @@ metric=http_response_time | avg by service | where _value > 500
 
 Chain multiple operators for complex analysis. Calculate the rate of errors, fill gaps, then smooth with EWMA:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_errors | rate increasing | fillmissing 0 | ewma span 5
@@ -272,7 +272,7 @@ metric=http_errors | rate increasing | fillmissing 0 | ewma span 5
 
 Aggregate by host, calculate the running cumulative sum:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 metric=http_requests | sum by host | accum
@@ -292,7 +292,7 @@ Enable the **Fetch histogram data** toggle to retrieve histogram bucket data sho
 
 Search all logs in a specific index:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _index=my_index
@@ -300,7 +300,7 @@ _index=my_index
 
 Search for error messages from a specific source:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app "ERROR"
@@ -308,7 +308,7 @@ _sourceCategory=prod/app "ERROR"
 
 Search across all sources for a specific error message:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 "OutOfMemoryError" OR "heap space"
@@ -318,7 +318,7 @@ SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 Count errors by source host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app error | count by _sourceHost
@@ -326,7 +326,7 @@ _sourceCategory=prod/app error | count by _sourceHost
 
 Count 5xx HTTP errors by status code and host:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/web status_code >= 500 | count by status_code, _sourceHost
@@ -334,7 +334,7 @@ _sourceCategory=prod/web status_code >= 500 | count by status_code, _sourceHost
 
 Calculate average response time from parsed fields:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/api | parse "duration=*ms" as duration | avg(duration) by _sourceHost
@@ -342,7 +342,7 @@ _sourceCategory=prod/api | parse "duration=*ms" as duration | avg(duration) by _
 
 Find the minimum and maximum response times:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/api | parse "duration=*ms" as duration | min(duration), max(duration) by endpoint
@@ -350,7 +350,7 @@ _sourceCategory=prod/api | parse "duration=*ms" as duration | min(duration), max
 
 Sum total bytes transferred:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/web | parse "bytes=*" as bytes | sum(bytes) by _sourceHost
@@ -360,7 +360,7 @@ _sourceCategory=prod/web | parse "bytes=*" as bytes | sum(bytes) by _sourceHost
 
 Parse structured log fields and count:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/api | parse "method=* url=* status=*" as method, url, status | count by method, status
@@ -368,7 +368,7 @@ _sourceCategory=prod/api | parse "method=* url=* status=*" as method, url, statu
 
 Find the top 10 slowest API endpoints:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/api | parse "duration=*ms" as duration | top 10 url by avg(duration)
@@ -378,7 +378,7 @@ _sourceCategory=prod/api | parse "duration=*ms" as duration | top 10 url by avg(
 
 Use `timeslice` to create time-bucketed aggregations for time-series visualization:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app error | timeslice 5m | count by _timeslice
@@ -386,7 +386,7 @@ _sourceCategory=prod/app error | timeslice 5m | count by _timeslice
 
 Track error rate over time by severity:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app | parse "level=*" as level | where level in ("ERROR", "FATAL") | timeslice 1m | count by _timeslice, level
@@ -396,7 +396,7 @@ _sourceCategory=prod/app | parse "level=*" as level | where level in ("ERROR", "
 
 Sort results by count in descending order:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 _sourceCategory=prod/app error | count by _sourceHost | sort by _count desc
@@ -406,6 +406,6 @@ For complete query syntax documentation, refer to the [Sumo Logic Search Query L
 
 ## Use Explore
 
-You can use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run ad-hoc metrics and logs queries without creating a dashboard. Explore is useful for debugging queries, investigating issues, and exploring your data.
+You can use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run ad-hoc metrics and logs queries without creating a dashboard. Explore is useful for debugging queries, investigating issues, and exploring your data.
 
-For more information about working with logs in Explore, refer to [Explore logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/logs-integration/).
+For more information about working with logs in Explore, refer to [Explore logs](https://grafana.com/docs/grafana/latest/explore/logs-integration/).

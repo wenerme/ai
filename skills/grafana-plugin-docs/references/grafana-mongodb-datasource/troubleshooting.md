@@ -11,11 +11,11 @@ This document provides solutions to common issues you may encounter when install
 
 > Note
 >
-> The MongoDB data source is an Enterprise plugin. It requires a Grafana Enterprise license or the Enterprise Plugins add-on for Grafana Cloud Pro or Advanced plans. If the plugin fails to install or you see a license error, verify your entitlement with your account team before troubleshooting further. For details, refer to [License and installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#license-and-installation-issues).
+> The MongoDB data source is an Enterprise plugin. It requires a Grafana Enterprise license or the Enterprise Plugins add-on for Grafana Cloud Pro or Advanced plans. If the plugin fails to install or you see a license error, verify your entitlement with your account team before troubleshooting further. For details, refer to [License and installation issues](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#license-and-installation-issues).
 
 ## License and installation issues
 
-The MongoDB data source is an Enterprise plugin that requires a valid license. These issues prevent the plugin from working at all. For installation, upgrade, and rollback steps, refer to [Install and upgrade the MongoDB data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/).
+The MongoDB data source is an Enterprise plugin that requires a valid license. These issues prevent the plugin from working at all. For installation, upgrade, and rollback steps, refer to [Install and upgrade the MongoDB data source plugin](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/).
 
 ### “Plugin health check failed” after installation
 
@@ -29,8 +29,8 @@ Expand table
 |-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Grafana Cloud Free plan                         | The MongoDB plugin is not available on the Free tier. Upgrade to a Pro (with Enterprise Plugins add-on) or Advanced plan.                                                                                                          |
 | Pro plan without add-on                         | Upgrading from Free to Pro does not automatically include Enterprise plugins. You must purchase the Enterprise Plugins add-on separately. Contact Grafana Sales or check your plan details in **grafana.com** &gt; **My Account**. |
-| Self-managed Grafana without Enterprise license | Activate a valid [Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).                                                              |
-| License not provisioned after contract change   | Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to verify your license entitlements are correctly provisioned.                                                                       |
+| Self-managed Grafana without Enterprise license | Activate a valid [Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).                                                                                                       |
+| License not provisioned after contract change   | Contact [Grafana Support](https://grafana.com/help/) to verify your license entitlements are correctly provisioned.                                                                                                                |
 
 ### Plugin stops working after a contract change
 
@@ -39,7 +39,7 @@ If the plugin was working but stops after a contract modification (for example, 
 **Solutions:**
 
 1. Verify your current entitlements in the Grafana Cloud portal under your organization settings.
-2. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) to confirm the new license includes the MongoDB data source plugin.
+2. Contact [Grafana Support](https://grafana.com/help/) to confirm the new license includes the MongoDB data source plugin.
 3. For self-managed Grafana, re-download and apply the updated license file.
 
 ### Cannot reinstall after uninstalling
@@ -50,7 +50,7 @@ If the plugin was working but stops after a contract modification (for example, 
 
 If you have uninstalled the MongoDB plugin and need to reinstall it:
 
-1. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) and request that the plugin be reinstalled.
+1. Contact [Grafana Support](https://grafana.com/help/) and request that the plugin be reinstalled.
 2. Provide your organization name and Grafana instance URL.
 
 ## Version and upgrade guidance
@@ -70,11 +70,11 @@ The following steps apply to self-managed Grafana. On Grafana Cloud, the plugin 
 3. Review the installed version and the latest available version.
 4. If an update is available and you’re on self-managed Grafana, click **Update**, or use `grafana cli plugins update grafana-mongodb-datasource` and restart Grafana.
 
-For full upgrade and rollback steps, refer to [Upgrade the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/#upgrade-the-plugin).
+For full upgrade and rollback steps, refer to [Upgrade the plugin](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/#upgrade-the-plugin).
 
 ### After upgrading the plugin
 
-After you upgrade, verify your dashboards and alerts, because some releases change query behavior. For example, plugin version 2.0.0 enforces `maxTimeMS` as a client-side deadline, so a query that previously returned partial results now fails with a timeout. If an upgrade introduces errors such as “context deadline exceeded”, you can [roll back to the previous version](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/install/#roll-back-to-a-previous-version) on self-managed Grafana while you investigate.
+After you upgrade, verify your dashboards and alerts, because some releases change query behavior. For example, plugin version 2.0.0 enforces `maxTimeMS` as a client-side deadline, so a query that previously returned partial results now fails with a timeout. If an upgrade introduces errors such as “context deadline exceeded”, you can [roll back to the previous version](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/install/#roll-back-to-a-previous-version) on self-managed Grafana while you investigate.
 
 ### Symptoms of an outdated plugin version
 
@@ -92,7 +92,7 @@ Connection issues are typically indicated by the error message: “The connectio
 
 If you have `mongosh` installed on your local machine ([refer to the MongoDB documentation](https://www.mongodb.com/docs/mongodb-shell/)), test connectivity by running:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 mongosh "<CONNECTION_STRING>" --eval "db.adminCommand('ping')"
@@ -100,7 +100,7 @@ mongosh "<CONNECTION_STRING>" --eval "db.adminCommand('ping')"
 
 For example:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 mongosh "mongodb://username:password@127.0.0.1:27017/?authSource=admin" --eval "db.adminCommand('ping')"
@@ -112,7 +112,7 @@ The ping should succeed within a few seconds. If it doesn’t, your MongoDB inst
 
 Ensure your connection string follows the correct MongoDB URI format:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 mongodb://[username:password@]host[:port][/database][?options]
@@ -120,7 +120,7 @@ mongodb://[username:password@]host[:port][/database][?options]
 
 Or for SRV connections:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 mongodb+srv://[username:password@]host[/database][?options]
@@ -141,7 +141,7 @@ If your username or password contains special characters such as `@`, `:`, `/`, 
 
 If you must include credentials in the connection string, percent-encode all special characters:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 mongodb://user:p%40ssw0rd@localhost:27017
@@ -173,7 +173,7 @@ After saving the data source configuration, the password field displays **Config
 
 1. Click the **Reset** button next to the password field to clear the stored value, then enter the new password.
 2. If the Reset button is not available, delete the data source and recreate it with the correct credentials.
-3. For automated credential updates, use the [Grafana HTTP API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/developers/http_api/data_source/) or [Terraform provisioning](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-with-terraform) to update the data source configuration programmatically. Authenticate these requests with a [service account token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/service-accounts/).
+3. For automated credential updates, use the [Grafana HTTP API](https://grafana.com/docs/grafana/latest/developers/http_api/data_source/) or [Terraform provisioning](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/#provision-with-terraform) to update the data source configuration programmatically. Authenticate these requests with a [service account token](https://grafana.com/docs/grafana/latest/administration/service-accounts/).
 
 ### Connection string format differences across plugin versions
 
@@ -188,7 +188,7 @@ Connection string parsing has improved across plugin versions. A connection stri
 
 1. Always use the latest plugin version to benefit from improved connection string handling.
 2. If you must use an older plugin version, simplify your connection string by moving credentials to the separate authentication fields.
-3. Refer to the [CHANGELOG](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for connection-string-related fixes in specific versions.
+3. Refer to the [CHANGELOG](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for connection-string-related fixes in specific versions.
 
 ### Network requirements for Grafana Cloud
 
@@ -196,19 +196,19 @@ If you’re connecting from Grafana Cloud to a MongoDB instance that requires IP
 
 To get the current list of Grafana Cloud source IP addresses:
 
-1. Download the IP list from [https://grafana.com/api/hosted-grafana/source-ips.txt](http://grafana-com-website.grafana-com.svc.cluster.local.:80/api/hosted-grafana/source-ips.txt).
+1. Download the IP list from [https://grafana.com/api/hosted-grafana/source-ips.txt](https://grafana.com/api/hosted-grafana/source-ips.txt).
 2. Add all listed IP ranges to your MongoDB instance’s network access list (for example, in MongoDB Atlas under **Network Access** &gt; **IP Access List**).
 3. Re-check the list periodically, as IP addresses may be added over time.
 
 > Note
 >
-> If IP allowlisting is impractical due to the number of addresses, consider using [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead for a private, secured connection.
+> If IP allowlisting is impractical due to the number of addresses, consider using [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead for a private, secured connection.
 
 ### Private data source connect for private networks
 
-If your MongoDB instance is on a private network that isn’t reachable from the public internet, use [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead of IP allowlisting.
+If your MongoDB instance is on a private network that isn’t reachable from the public internet, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead of IP allowlisting.
 
-For production deployments, run more than one PDC agent. A single agent is a single point of failure: if it restarts during a maintenance window or becomes unavailable, queries fail with connection or “server selection timeout” errors. Running multiple agents provides high availability and distributes connection load. Refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for setup and high-availability guidance.
+For production deployments, run more than one PDC agent. A single agent is a single point of failure: if it restarts during a maintenance window or becomes unavailable, queries fail with connection or “server selection timeout” errors. Running multiple agents provides high availability and distributes connection load. Refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for setup and high-availability guidance.
 
 ### Connection failures at scale
 
@@ -225,14 +225,14 @@ If you see a “server selection timeout” or “ReplicaSetNoPrimary” error, 
 
 Expand table
 
-| Cause                                         | Solution                                                                                                                                                                                                                |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| MongoDB server is not running                 | Verify the server is running and accessible. Test with `mongosh`.                                                                                                                                                       |
-| Firewall blocking port 27017                  | Add the Grafana IP addresses to your allowlist. For Grafana Cloud, use the [full IP range](http://grafana-com-website.grafana-com.svc.cluster.local.:80/api/hosted-grafana/source-ips.txt).                             |
-| DNS resolution failure                        | Verify the hostname resolves correctly from the Grafana server. For SRV records (`mongodb+srv://`), ensure the DNS TXT and SRV records are accessible.                                                                  |
-| Replica set member not reachable              | Ensure all replica set members (not just the primary) are accessible from Grafana. MongoDB drivers connect to secondaries for discovery.                                                                                |
-| PDC tunnel not configured                     | For private networks on Grafana Cloud, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/). |
-| MongoDB Atlas tier upgrade or topology change | After upgrading Atlas tiers (for example, M0 to M10) or changing replica set configuration, hostnames and DNS records may change. Re-validate your connection string and update the allowlist if needed.                |
+| Cause                                         | Solution                                                                                                                                                                                                 |
+|-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| MongoDB server is not running                 | Verify the server is running and accessible. Test with `mongosh`.                                                                                                                                        |
+| Firewall blocking port 27017                  | Add the Grafana IP addresses to your allowlist. For Grafana Cloud, use the [full IP range](https://grafana.com/api/hosted-grafana/source-ips.txt).                                                       |
+| DNS resolution failure                        | Verify the hostname resolves correctly from the Grafana server. For SRV records (`mongodb+srv://`), ensure the DNS TXT and SRV records are accessible.                                                   |
+| Replica set member not reachable              | Ensure all replica set members (not just the primary) are accessible from Grafana. MongoDB drivers connect to secondaries for discovery.                                                                 |
+| PDC tunnel not configured                     | For private networks on Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).                           |
+| MongoDB Atlas tier upgrade or topology change | After upgrading Atlas tiers (for example, M0 to M10) or changing replica set configuration, hostnames and DNS records may change. Re-validate your connection string and update the allowlist if needed. |
 
 **Steps to diagnose:**
 
@@ -297,7 +297,7 @@ If Kerberos authentication fails with “The Kerberos credentials cannot be veri
 
 - On Linux, the `libkrb5` library is installed:
 
-  sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```sh
   apt-get install -y libkrb5-dev
@@ -346,7 +346,7 @@ To resolve this:
 >
 > Skipping TLS validation reduces connection security. Use this workaround only when the CA certificate can’t be validated through the PDC tunnel, and ensure your PDC connection itself is secured.
 
-For AWS DocumentDB specifically, refer to [Connect to AWS DocumentDB with TLS](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#connect-to-aws-documentdb-with-tls).
+For AWS DocumentDB specifically, refer to [Connect to AWS DocumentDB with TLS](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting/#connect-to-aws-documentdb-with-tls).
 
 ### Connect to AWS DocumentDB with TLS
 
@@ -375,7 +375,7 @@ If you see “x509: certificate signed by unknown authority” when using PDC wi
 
 **DocumentDB connection string example:**
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 mongodb://<USERNAME>:<PASSWORD>@docdb-cluster.cluster-xxxx.us-east-1.docdb.amazonaws.com:27017/?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false
@@ -433,7 +433,7 @@ To troubleshoot query syntax:
 
 Instead of:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.find({"released": { $gte: new Date(new Date().setMonth(new Date().getMonth() - 3)) }})
@@ -441,7 +441,7 @@ sample_mflix.movies.find({"released": { $gte: new Date(new Date().setMonth(new D
 
 Use MongoDB 5.0+ date operators like `$dateSubtract`:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 sample_mflix.movies.aggregate([
@@ -472,7 +472,7 @@ The regular expression flags `g` (global) and `s` (`dotAll`) are not supported. 
 
 To query collections that contain a dot (`.`) in their name, use `getCollection()`:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 my_db.getCollection("my.collection").find({})
@@ -482,7 +482,7 @@ my_db.getCollection("my.collection").find({})
 
 The `allowDiskUse` option allows MongoDB to use disk storage for aggregation pipeline stages that exceed the 100 MB per-stage memory limit. Pass it as the second argument to the `aggregate` method:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 my_db.my_collection.aggregate([
@@ -500,7 +500,7 @@ my_db.my_collection.aggregate([
 
 Pass options as a second argument to `aggregate`, after the pipeline array:
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 my_db.my_collection.aggregate([
@@ -570,7 +570,7 @@ If queries fail with “context deadline exceeded” errors, the query is taking
    - Use `$project` to limit the fields returned.
    - Reduce the time range or add a `$limit` stage.
 2. Check MongoDB server-side timeouts. If your MongoDB instance has a `maxTimeMS` limit, complex aggregations may exceed it.
-3. If timeouts started after a plugin upgrade, review the [CHANGELOG](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for changes to timeout handling. As a temporary workaround, roll back to the previous plugin version while optimizing queries.
+3. If timeouts started after a plugin upgrade, review the [CHANGELOG](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/?tab=changelog) for changes to timeout handling. As a temporary workaround, roll back to the previous plugin version while optimizing queries.
 
 ### Limit time ranges to prevent query overload
 
@@ -582,7 +582,7 @@ Large time ranges can cause excessive query load on your MongoDB server, especia
 - Use the `$__timeFrom` and `$__timeTo` macros in all queries to scope results to the visible time range.
 - Add `$limit` stages to aggregation pipelines as a safety net.
 - For alerting queries, use the shortest evaluation interval that meets your alerting needs.
-- Consider enabling [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) (available in Grafana Enterprise and Grafana Cloud) to reduce repeated queries.
+- Consider enabling [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) (available in Grafana Enterprise and Grafana Cloud) to reduce repeated queries.
 
 ### Query results truncated
 
@@ -621,7 +621,7 @@ For ad hoc filters to work, you must create a helper variable:
 3. Name the constant variable `mongo_adhoc_query`.
 4. Set its value to a valid MongoDB query that returns the filter options.
 
-For more information, refer to [Use ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#use-ad-hoc-filters).
+For more information, refer to [Use ad hoc filters](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/template-variables/#use-ad-hoc-filters).
 
 ### Ad hoc filters with dot notation paths
 
@@ -642,7 +642,7 @@ To enable debug logging for response sizes (not available in Grafana Cloud):
 
 1. Set the plugin logger level in your `grafana.ini` file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [plugin.grafana-mongodb-datasource]
@@ -657,8 +657,8 @@ If you continue to experience issues:
 
 - Update the plugin to the latest version: **Plugins and data** &gt; **Plugins** &gt; **MongoDB**.
 - Check the [Grafana community forums](https://community.grafana.com/) for similar issues and solutions.
-- Review the [MongoDB data source documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mongodb-datasource/latest/) for additional configuration options.
-- Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/help/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
+- Review the [MongoDB data source documentation](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/) for additional configuration options.
+- Contact [Grafana Support](https://grafana.com/help/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
 
 When reporting issues, include the following information:
 

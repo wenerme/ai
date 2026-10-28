@@ -21,7 +21,7 @@ Grafana Cloud keeps the plugin up to date automatically.
 
 Install the plugin with Grafana CLI:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-prometheusalerting-app
@@ -29,7 +29,7 @@ grafana cli plugins install grafana-prometheusalerting-app
 
 Restart the Grafana server after the install finishes.
 
-You can also install from the catalog in the UI, at **Plugins and data** &gt; **Plugins**. This requires the Grafana server to have network access to `grafana.com`. For air-gapped installs, refer to [Install a plugin in air-gapped environment](/docs/grafana/latest/administration/plugin-management/plugin-install/#install-a-plugin-in-air-gapped-environment).
+You can also install from the catalog in the UI, at **Plugins and data** &gt; **Plugins**. This requires the Grafana server to have network access to `grafana.com`. For air-gapped installs, refer to [Install a plugin in air-gapped environment](https://grafana.com/docs/grafana/latest/administration/plugin-management/plugin-install/#install-a-plugin-in-air-gapped-environment).
 
 ## Enable the plugin
 
@@ -47,9 +47,9 @@ The plugin then appears in the main menu. Which page opens first depends on what
 
 > Note
 >
-> Enabling the plugin requires the Grafana **Admin** role. Using it afterwards doesn’t. Access to each page is controlled separately. Refer to [Configure access control](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
+> Enabling the plugin requires the Grafana **Admin** role. Using it afterwards doesn’t. Access to each page is controlled separately. Refer to [Configure access control](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
 
 ## Next steps
 
-- [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/)
-- [Configure access control](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/)
+- [Configure data sources](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/)
+- [Configure access control](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/)

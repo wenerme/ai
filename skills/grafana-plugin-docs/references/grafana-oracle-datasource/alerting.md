@@ -9,11 +9,11 @@ description: "Set up Grafana Alerting with Oracle data source queries."
 
 The Oracle data source supports Grafana Alerting. You can create alert rules that evaluate SQL queries on a schedule and trigger notifications when conditions are met.
 
-For general information on Grafana Alerting, refer to [Alerting](/docs/grafana/latest/alerting/).
+For general information on Grafana Alerting, refer to [Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/).
+- [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/).
 - Verify your Oracle user has `SELECT` permissions on the tables used in alert queries.
 - Ensure the **Dataproxy Timeout** setting is high enough for your alert queries to complete within the evaluation interval.
 
@@ -38,7 +38,7 @@ Alert queries must return time-series format data. The following patterns work w
 
 Monitor a single numeric metric and alert when it crosses a threshold:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -54,7 +54,7 @@ ORDER BY time
 
 Use the `metric` column to evaluate multiple series independently:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -71,7 +71,7 @@ ORDER BY time
 
 Alert when expected data stops arriving by using a count query with a zero fill:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -87,7 +87,7 @@ ORDER BY time
 
 Use `$__timeGroupTZ` and `$__timeFilterTZ` when your Oracle server stores timestamps in a non-UTC timezone:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -109,11 +109,11 @@ Grafana evaluates alert queries on the server side, not in the browser. The Graf
 
 ## Recording rules
 
-You can precompute and store the result of an Oracle query as a metric using Grafana-managed recording rules. Create these through the recording rule flow in Grafana Alerting, not through a data source query selector. Refer to [Grafana Alerting rules](/docs/grafana/latest/alerting/alerting-rules/).
+You can precompute and store the result of an Oracle query as a metric using Grafana-managed recording rules. Create these through the recording rule flow in Grafana Alerting, not through a data source query selector. Refer to [Grafana Alerting rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/).
 
 ## Limitations
 
-- **Grafana Cloud:** TNSNames and Kerberos authentication are not supported. Use TCP connection with basic authentication and [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for private databases.
+- **Grafana Cloud:** TNSNames and Kerberos authentication are not supported. Use TCP connection with basic authentication and [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for private databases.
 - **Query timeout:** Alert evaluations must complete within the configured **Dataproxy Timeout** (default 120 seconds). If alert queries are timing out, increase this value in the data source configuration.
 - **Table format:** Alert rules require time-series format queries. Table format queries don’t work with alert conditions.
 - **Row limit:** The **Row Limit** setting (default 1,000,000) applies to alert queries. Ensure your alert queries return fewer rows than the configured limit.
@@ -127,4 +127,4 @@ If alert rules aren’t evaluating as expected:
 3. **Permission errors:** Confirm the Oracle user has `SELECT` permissions on all tables referenced in the alert query.
 4. **Format errors:** Ensure the query uses time-series format with a valid `time` column and numeric value column.
 
-For additional troubleshooting, refer to [Troubleshoot Oracle data source issues](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/).
+For additional troubleshooting, refer to [Troubleshoot Oracle data source issues](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/).

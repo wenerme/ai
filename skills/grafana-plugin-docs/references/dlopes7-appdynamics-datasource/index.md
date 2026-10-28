@@ -11,7 +11,7 @@ The AppDynamics data source allows you to query and visualize AppDynamics metric
 
 > Note
 >
-> The AppDynamics data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The AppDynamics data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -29,21 +29,21 @@ Expand table
 
 The following documents help you get started with the AppDynamics data source:
 
-- [Configure the AppDynamics data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/)
-- [AppDynamics query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/)
+- [Configure the AppDynamics data source](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/configure/)
+- [AppDynamics query editor](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you have configured the data source, you can:
 
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting/) to monitor your AppDynamics metrics.
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations/) to overlay AppDynamics events on your visualizations.
-- Configure and use [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for dynamic dashboards.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+- Set up [Alerting](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/alerting/) to monitor your AppDynamics metrics.
+- Add [Annotations](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/annotations/) to overlay AppDynamics events on your visualizations.
+- Configure and use [Template variables](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/) for dynamic dashboards.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 
 ## Import a dashboard
 
@@ -58,11 +58,11 @@ To import the dashboard:
 3. Click the **Dashboards** tab.
 4. Click **Import** next to **AppDynamics Overview**.
 
-For more information about importing dashboards, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+For more information about importing dashboards, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Known limitations
 
-- A metric path can’t contain the delimiter that you select. For more information, refer to [AppDynamics query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
+- A metric path can’t contain the delimiter that you select. For more information, refer to [AppDynamics query editor](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/query-editor/).
 - Multi-value variables aren’t supported in Metrics queries. If multi-value variables are found in a metric path, they’re replaced with `*`.
 
 ## Plugin updates

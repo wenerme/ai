@@ -78,8 +78,8 @@ When configuring annotations, you can customize how they appear:
 
 ## Using template variables in annotations
 
-You can use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections. For example, filter problems by a selected management zone variable.
+You can use [template variables](https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/template-variables/) in your annotation queries to create dynamic annotations that respond to dashboard variable selections. For example, filter problems by a selected management zone variable.
 
 ## Additional resources
 
-For more information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations in Grafana, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).

@@ -7,15 +7,15 @@ description: "Set up Grafana Alerting with the AWS IoT SiteWise data source."
 
 # AWS IoT SiteWise alerting
 
-Use [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) with the AWS IoT SiteWise data source to receive notifications when your industrial data meets specific conditions. For example, you can create alerts that trigger when a temperature exceeds a threshold or when an equipment anomaly score rises.
+Use [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/) with the AWS IoT SiteWise data source to receive notifications when your industrial data meets specific conditions. For example, you can create alerts that trigger when a temperature exceeds a threshold or when an equipment anomaly score rises.
 
 ## Before you begin
 
 Before you set up alerting, ensure you have the following prerequisites.
 
-- [Configure the AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
-- Understand how to use the [AWS IoT SiteWise query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/).
-- Understand [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the AWS IoT SiteWise data source](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
+- Understand how to use the [AWS IoT SiteWise query editor](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/).
+- Understand [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 > Note
 >
@@ -57,7 +57,7 @@ To evaluate an asset property against a threshold with the visual builder:
 
 The following query returns the hourly average value for a specific property from precomputed aggregates, which you can evaluate against a threshold. Filter to a single property so the alert evaluates one series:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select event_timestamp, average_value
@@ -75,11 +75,11 @@ Keep the following considerations in mind when you configure alert rules for AWS
 - **Evaluation interval:** Set an evaluation interval that accounts for query time and the resolution of your data.
 - **No pagination for alert queries:** When a property value history or aggregate query runs for an alert rule, it fetches all results without pagination so the rule can evaluate synchronously. A wide time range or a fine resolution can pull a large volume of data. Use a fixed, coarse resolution and a bounded evaluation window to limit the data returned.
 - **API limits:** Each evaluation runs a query against AWS IoT SiteWise. Frequent evaluations across many assets can lead to API throttling. Widen the evaluation interval or increase the aggregate resolution to reduce API calls.
-- **Query caching:** Enable [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of queries sent to AWS IoT SiteWise. Query caching is available in Grafana Enterprise and Grafana Cloud.
+- **Query caching:** Enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) to reduce the number of queries sent to AWS IoT SiteWise. Query caching is available in Grafana Enterprise and Grafana Cloud.
 - **Notification timestamps:** Alert notifications show the time Grafana evaluated the rule, not the timestamp of the data point that crossed the threshold. This is standard Grafana Alerting behavior.
 
 ## Next steps
 
-- [Configure notification policies](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
-- [Create contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
-- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Configure notification policies](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)
+- [Create contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)

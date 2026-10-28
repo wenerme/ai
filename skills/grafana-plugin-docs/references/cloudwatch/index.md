@@ -13,10 +13,10 @@ Grafana includes native support for the Amazon CloudWatch plugin, so there’s n
 
 The following documents will help you get started working with the CloudWatch data source:
 
-- [Configure the CloudWatch data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/configure/)
-- [CloudWatch query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/query-editor/)
-- [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/template-variables/)
-- [Configure AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/)
+- [Configure the CloudWatch data source](https://grafana.com/docs/plugins/grafana-cloudwatch-datasource/latest/configure/)
+- [CloudWatch query editor](https://grafana.com/docs/plugins/grafana-cloudwatch-datasource/latest/query-editor/)
+- [Templates and variables](https://grafana.com/docs/plugins/grafana-cloudwatch-datasource/latest/template-variables/)
+- [Configure AWS authentication](https://grafana.com/docs/plugins/grafana-cloudwatch-datasource/latest/aws-authentication/)
 
 ## Import pre-configured dashboards
 
@@ -44,12 +44,12 @@ To customize one of these dashboards, Grafana recommends saving it under a diffe
 
 After installing and configuring the Amazon CloudWatch data source, you can:
 
-- Create a wide variety of [visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- Configure and use [templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
-- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- Optimize performance with [query caching](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
+- Create a wide variety of [visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- Configure and use [templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- Add [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
+- Add [annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- Set up [alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- Optimize performance with [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
 
 ## Control pricing
 

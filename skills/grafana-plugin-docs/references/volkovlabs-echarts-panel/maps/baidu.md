@@ -23,11 +23,11 @@ Try the panel with [Baidu Maps in the edit mode](https://echarts.volkovlabs.io/d
 - The `bmapReady` callback function is executed during the loading. You can update the name in the panel options.
 - During the loading, you can show an animation using the code below.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/baidu.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/baidu.png)
 
 ## Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**

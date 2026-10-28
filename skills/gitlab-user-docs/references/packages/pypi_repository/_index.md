@@ -459,9 +459,7 @@ For more details about the regex, see the [Python documentation](https://www.pyt
 ## Package index response formats
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/586978) in GitLab 18.10 [with a feature flag](../../../administration/feature_flags/_index.md) named `pypi_pep_691_json`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/592164) in GitLab 19.6. Feature flag `pypi_pep_691_json` removed.
 
 The PyPI package registry can return its package index in two formats:
 

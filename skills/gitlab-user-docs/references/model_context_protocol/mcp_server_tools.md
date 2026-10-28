@@ -746,6 +746,39 @@ Example:
 What is my GitLab user ID?
 ```
 
+## `list_todos`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/598281) in GitLab 19.6.
+
+Lists your [to-do items](../todos.md), such as review requests, assignments, and mentions.
+Returns pending to-do items unless you set `state` to `done`.
+
+| Parameter    | Type    | Required | Description |
+|--------------|---------|----------|-------------|
+| `state`      | string  | No       | Filter by state: `pending` or `done`. Default is `pending`. |
+| `action`     | string  | No       | Filter by the action that created the to-do item, for example `review_requested`, `assigned`, or `mentioned`. |
+| `type`       | string  | No       | Filter by the type of the to-do item target, for example `MERGEREQUEST`, `ISSUE`, or `WORKITEM`. |
+| `author_id`  | integer | No       | Filter by the numeric ID of the user who created the to-do item. To look up a user ID, use [`get_user`](#get_user). |
+| `project_id` | string  | No       | Filter by project. ID or full path of the project. |
+| `group_id`   | string  | No       | Filter by group. ID or full path of the group. |
+| `first`      | integer | No       | Number of to-do items to return for forward pagination. Default is 20, maximum is 100. |
+| `after`      | string  | No       | Cursor for forward pagination. Use `pageInfo.endCursor` from a previous response. |
+
+Each to-do item includes the following information:
+
+- Numeric `id`, `action`, `state`, `body`, `targetType`, `targetUrl`, and `createdAt`
+- `name` and `iid` of its target in `targetEntity`
+- Author
+- Project or group it belongs to
+
+To-do item, author, project, and group IDs are returned as numbers (unwrapped from GraphQL global IDs) so they can be passed back into other tools.
+
+Example:
+
+```plaintext
+Which merge requests am I asked to review?
+```
+
 ## `accept_merge_request`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617968) in GitLab 19.4.
@@ -1188,6 +1221,47 @@ Examples:
   ```plaintext
   Find the JUnit report in the artifacts of job 88 in gitlab-org/gitlab and summarize the failures
   ```
+
+## `get_pages_content`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617718) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `mcp_get_pages_content`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Reads the content published at a GitLab Pages URL as text. The tool resolves the URL against the
+Pages sites of your GitLab instance and reads the file from the current deployment, so you get what
+visitors see rather than the repository source. You can read private Pages sites that you have
+permission to view.
+
+| Parameter     | Type    | Required | Description |
+|---------------|---------|----------|-------------|
+| `url`         | string  | Yes      | GitLab Pages URL to read, for example `https://mygroup.gitlab.io/myproject/docs/`. |
+| `byte_offset` | integer | No       | Byte offset to start reading the file from. Default is `0`. Maximum is `20971520` (20 MB). |
+| `byte_limit`  | integer | No       | Maximum number of bytes to return. Default and maximum is `1048576` (1 MB). |
+
+The URL must point to a site served by GitLab Pages on your instance: a namespace domain, a unique
+domain, or a verified custom domain. Other hosts are not fetched.
+
+A URL that ends in `/` reads the `index.html` file of that directory.
+When no directory has that name, it reads the `.html` file of the same name.
+
+A URL without a file extension reads the `index.html` file of the directory with that name if the
+directory exists, and otherwise falls back to the `.html` file of the same name, matching how
+GitLab Pages serves the site.
+
+The response carries the `path` of the file inside the deployment, its `content_type`, and the
+`project_id` of the project that publishes the site, only when you can view the project.
+When the file is longer than `byte_limit`, the
+response reports the total size and tells you the `byte_offset` to use for the next window. Binary
+files, such as images, are not returned.
+
+Example:
+
+```plaintext
+Read https://mygroup.gitlab.io/myproject/docs/api/ and summarize the authentication section
+```
 
 ## `list_pipelines`
 
@@ -1836,4 +1910,25 @@ Example:
 
 ```plaintext
 Attach `gid://gitlab/Security::ScanProfile/1` to all projects under `gid://gitlab/Group/1`.
+```
+
+## Orbit tools
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261207) in GitLab 19.6.
+
+The `orbit` toolset has one tool for each GitLab Orbit command, for example `query_graph`.
+The Orbit server sets the tool names, descriptions, and input schemas.
+Your MCP client gets the current list of tools from the GitLab MCP server.
+For the commands and what they do, see [GitLab Orbit endpoint tools](https://docs.gitlab.com/orbit/agents/mcp/#endpoint-tools).
+
+These tools are listed only when you request the `orbit` toolset and meet the [Orbit requirements](https://docs.gitlab.com/orbit/).
+For more information, see [select tool groups](mcp_server.md#select-tool-groups-toolsets).
+
+Example:
+
+```plaintext
+Use GitLab Orbit to list the 5 most recently updated projects in my group.
 ```

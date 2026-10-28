@@ -11,7 +11,7 @@ The MQTT data source plugin connects Grafana to an [MQTT](https://mqtt.org/) bro
 
 > Note
 >
-> This plugin streams live data only. It doesn’t store messages or provide access to historical data. If you need to query past events, use a storage backend such as [Loki](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/) or [InfluxDB](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/influxdb/) to persist messages received from MQTT.
+> This plugin streams live data only. It doesn’t store messages or provide access to historical data. If you need to query past events, use a storage backend such as [Loki](https://grafana.com/docs/loki/latest/) or [InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/) to persist messages received from MQTT.
 
 ## Supported features
 
@@ -34,16 +34,16 @@ Before you set up the MQTT data source, you need:
 
 - **Grafana version:** Grafana 11.0.0 or later.
 - **MQTT broker:** A running MQTT v3.1.x broker accessible from the Grafana server.
-- **Grafana permissions:** Organization administrator role. Refer to [Permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/roles-and-permissions/) for details.
+- **Grafana permissions:** Organization administrator role. Refer to [Permissions](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/) for details.
 
 ## Get started
 
 The following pages help you set up and use the MQTT data source:
 
-- [Configure the MQTT data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/configure/) – Set up the connection, authentication, and TLS.
-- [MQTT query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/query-editor/) – Subscribe to topics and understand how data is formatted.
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/template-variables/) – Create dynamic dashboards with variable-driven topics.
-- [Troubleshoot MQTT data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/troubleshooting/) – Resolve common connection, authentication, and query problems.
+- [Configure the MQTT data source](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure/) – Set up the connection, authentication, and TLS.
+- [MQTT query editor](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/query-editor/) – Subscribe to topics and understand how data is formatted.
+- [Template variables](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/template-variables/) – Create dynamic dashboards with variable-driven topics.
+- [Troubleshoot MQTT data source issues](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/troubleshooting/) – Resolve common connection, authentication, and query problems.
 
 ## Known limitations
 

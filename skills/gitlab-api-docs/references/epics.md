@@ -76,6 +76,7 @@ GET /groups/:id/epics?state=opened
 | `include_descendant_groups` | boolean  | no         | Include epics from the requested group's descendants. Default is `true`                                                     |
 | `my_reaction_emoji` | string           | no         | Return epics reacted by the authenticated user by the given emoji. `None` returns epics not given a reaction. `Any` returns epics given at least one reaction. |
 | `not` | Hash | no | Return epics that do not match the parameters supplied. Accepts: `author_id`, `author_username` and `labels`. |
+{.sortable}
 
 ```shell
 curl --request GET \
@@ -297,6 +298,7 @@ POST /groups/:id/epics
 | `due_date_is_fixed` | boolean          | no         | Whether due date should be sourced from `due_date_fixed` or from milestones |
 | `due_date_fixed`    | string           | no         | The fixed due date of an epic |
 | `parent_id`         | integer or string   | no         | The ID of a parent epic |
+{.sortable}
 
 ```shell
 curl --request POST \
@@ -388,6 +390,7 @@ PUT /groups/:id/epics/:epic_iid
 | `title`             | string           | no         | The title of an epic |
 | `updated_at`        | string           | no         | When the epic was updated. Date time string, ISO 8601 formatted, for example `2016-03-11T03:45:40Z` . Requires administrator or project/group owner privileges |
 | `color`             | string           | no         | The color of the epic. Behind a feature flag named `epic_highlight_color` (disabled by default) |
+{.sortable}
 
 ```shell
 curl --request PUT \

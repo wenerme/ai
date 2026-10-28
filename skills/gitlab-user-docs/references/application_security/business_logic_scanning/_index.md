@@ -4,14 +4,8 @@ Business logic scanning uses an AI agent to find authorization and access contro
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
-- Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 [with feature flags](../../../administration/feature_flags/_index.md) named `bl_security_analyzer` (`experiment` type) and `agentic_analyzer_security_ingestion` (`gitlab_com_derisk` type). Disabled by default.
-- Starting a scan from GitLab Duo Chat also requires the [feature flag](../../../administration/feature_flags/_index.md) named `duo_chat_flow_commands` (`wip` type). Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the
-> history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5.
 
 Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find
 vulnerabilities in how your application enforces its own rules. Pattern-based analyzers like
@@ -47,20 +41,11 @@ A scan starts in one of these ways:
 
 ## Turn on business logic scanning
 
-Business logic scanning is in a closed beta. On GitLab.com, GitLab enables the feature flags for
-participating top-level groups. To request access, contact your account team.
-
 Prerequisites:
 
 - A GitLab Ultimate subscription.
 - [GitLab Duo Agent Platform turned on](../../duo_agent_platform/turn_on_off.md) for the
   top-level group.
-- [Experiment and beta features turned on](../../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
-  in the GitLab Duo settings of the top-level group.
-- The `bl_security_analyzer` and `agentic_analyzer_security_ingestion` feature flags enabled for
-  the top-level group. Without `agentic_analyzer_security_ingestion`, scan results do not appear
-  in the vulnerability report.
-  On GitLab Self-Managed, an administrator must enable these feature flags.
 
 To turn on business logic scanning:
 
@@ -68,8 +53,8 @@ To turn on business logic scanning:
    [turn on foundational flows](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off),
    including the **Business Logic Security Scan** flow.
 1. [Attach the business logic scan profile](../configuration/security_configuration_profiles.md#business-logic-profile)
-   to each project you want to scan. Until the scan profile UI is available,
-   [attach the profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api).
+   to each project you want to scan, by
+   [applying the profile with the GraphQL API](../configuration/security_configuration_profiles.md#apply-profiles-with-the-graphql-api).
 
 ## Automatic merge request scans
 
@@ -111,9 +96,8 @@ Prerequisites:
 
 - You must have at least the Developer role for the project.
 - You must meet the [GitLab Duo Agent Platform prerequisites](../../duo_agent_platform/_index.md#prerequisites).
-- The `bl_security_analyzer`, `agentic_analyzer_security_ingestion`, and `duo_chat_flow_commands`
-  feature flags must be enabled, and the **Business Logic Security Scan** flow must be turned on.
-  The project does not need the business logic scan profile.
+- The **Business Logic Security Scan** flow must be turned on. The project does not need the
+  business logic scan profile.
 
 To start a scan:
 
@@ -143,25 +127,23 @@ Prerequisites:
 
 - You must have at least the Developer role for the project.
 - You must have a personal access token with the `api` scope.
-- The `bl_security_analyzer` and `agentic_analyzer_security_ingestion` feature flags must be enabled,
-  and the **Business Logic Security Scan** flow must be turned on. The project does not need the
+- The **Business Logic Security Scan** flow must be turned on. The project does not need the
   business logic scan profile.
 
-To start a scan, send a request:
+To start a scan, pass `ai_catalog_item_consumer_id` with the ID of the project's
+**Business Logic Security Scan** flow consumer. To get the ID, use the GraphQL
+`aiCatalogConfiguredItems` query, as described in
+[look up the consumer ID](../../../api/duo_agent_platform_flows.md#look-up-the-consumer-id).
+Then send a request:
 
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --data "project_id=<project_id>" \
-  --data "workflow_definition=bl_security/experimental" \
+  --data "ai_catalog_item_consumer_id=<consumer_id>" \
   --data "start_workflow=true" \
   --url "https://gitlab.example.com/api/v4/ai/duo_workflows/workflows"
 ```
-
-Instead of `workflow_definition`, you can pass `ai_catalog_item_consumer_id` with the ID of the
-project's **Business Logic Security Scan** flow consumer. To get the ID, use the GraphQL
-`aiCatalogConfiguredItems` query, as described in
-[look up the consumer ID](../../../api/duo_agent_platform_flows.md#look-up-the-consumer-id).
 
 To scan only the files a merge request changes, pass the merge request IID as the `goal`, and
 the merge request's source branch as the `source_branch`. The merge request must not come from a
@@ -204,8 +186,8 @@ Business logic scanning has the following known issues:
 - A scan analyzes up to a fixed amount of code. A scan that reaches this limit still counts as a
   full scan. Vulnerabilities in code that the scan skipped can be marked as no longer detected,
   and reappear in a later scan.
-- Scans run only when the feature flags in the prerequisites are enabled. Automatic scans run only
-  for the users described in [automatic merge request scans](#automatic-merge-request-scans).
+- Automatic scans run only for the users described in
+  [automatic merge request scans](#automatic-merge-request-scans).
 - Scheduled scans are not available yet. For details, see
   [scheduled default-branch scans](#scheduled-default-branch-scans).
 - A scan from GitLab Duo Chat always runs on the default branch. If you add a merge request

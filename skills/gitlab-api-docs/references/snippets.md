@@ -44,6 +44,7 @@ response attributes:
 | `updated_at`    | string  | Date and time when snippet was last updated. |
 | `visibility`    | string  | Visibility level of snippet. |
 | `web_url`       | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -142,6 +143,7 @@ response attributes:
 | `updated_at`       | string  | Date and time when snippet was last updated. |
 | `visibility`       | string  | Visibility level of snippet. |
 | `web_url`          | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -268,6 +270,7 @@ Supported attributes:
 | `file_name`       | string          | No       | Deprecated: Use `files` instead. Name of a snippet file. |
 | `files`           | array of hashes | No       | An array of snippet files. |
 | `visibility`      | string          | No       | Visibility level for the snippet. Possible values: `public`, `private`, and `internal`. On GitLab.com, the `internal` value is not available. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -291,6 +294,7 @@ response attributes:
 | `updated_at`       | string  | Date and time when snippet was last updated. |
 | `visibility`       | string  | Visibility level of snippet. |
 | `web_url`          | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -380,6 +384,7 @@ Supported attributes:
 | `files:previous_path` | string          | No            | Previous path of snippet file. |
 | `title`               | string          | No            | Title of a snippet. |
 | `visibility`          | string          | No            | Visibility level for the snippet. Possible values: `public`, `private`, and `internal`. On GitLab.com, the `internal` value is not available. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -403,6 +408,7 @@ response attributes:
 | `updated_at`       | string  | Date and time when snippet was last updated. |
 | `visibility`       | string  | Visibility level of snippet. |
 | `web_url`          | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -531,6 +537,7 @@ response attributes:
 | `updated_at`  | string  | Date and time when snippet was last updated. |
 | `visibility`  | string  | Visibility level of snippet. |
 | `web_url`     | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -610,6 +617,7 @@ Supported attributes:
 | `page`               | integer  | No       | Page to retrieve. |
 | `per_page`           | integer  | No       | Number of snippets to return per page. |
 | `repository_storage` | string   | No       | Filter by repository storage used by snippet _(administrators only)_. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -633,6 +641,7 @@ response attributes:
 | `updated_at`         | string  | Date and time when snippet was last updated. |
 | `visibility`         | string  | Visibility level of snippet. |
 | `web_url`            | string  | URL to snippet in GitLab UI. |
+{.sortable}
 
 Example request:
 

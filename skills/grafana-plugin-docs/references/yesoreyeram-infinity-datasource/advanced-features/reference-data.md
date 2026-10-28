@@ -56,7 +56,7 @@ You can add multiple reference data entries to a single data source instance.
 
 You can configure reference data through provisioning:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

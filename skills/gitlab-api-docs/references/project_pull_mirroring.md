@@ -40,6 +40,7 @@ following response attributes:
 | `only_mirror_protected_branches`      | boolean or null | If `true`, only protected branches are mirrored. If not set, the value is `null`. |
 | `update_status`                       | string          | Status of the mirror update process. Possible values: `none`, `scheduled`, `started`, `finished`, `failed`, or `canceled`. |
 | `url`                                 | string          | URL of the mirrored repository. |
+{.sortable}
 
 Example request:
 
@@ -91,6 +92,7 @@ Supported attributes:
 | `mirror_trigger_builds`               | boolean           | No       | If `true`, triggers pipelines for mirror updates. |
 | `only_mirror_protected_branches`      | boolean           | No       | If `true`, limits mirroring to only protected branches. Omit `mirror_branch_regex` when using this attribute. Sending both returns `400 Bad Request`. |
 | `url`                                 | string            | No       | URL of remote repository being mirrored. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 updated pull mirror configuration.
@@ -164,6 +166,7 @@ Supported attributes:
 | `mirror_branch_regex`            | string  | No       | Contains a regular expression. Only branches with names matching the regex are mirrored. Requires `only_mirror_protected_branches` to be disabled. |
 | `mirror_trigger_builds`          | boolean | No       | If `true`, triggers pipelines for mirror updates. |
 | `only_mirror_protected_branches` | boolean | No       | If `true`, limits mirroring to only protected branches. |
+{.sortable}
 
 Example creating a project with pull mirroring:
 

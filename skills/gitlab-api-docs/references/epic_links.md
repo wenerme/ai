@@ -184,6 +184,7 @@ PUT /groups/:id/epics/:epic_iid/epics/:child_epic_id
 | `child_epic_id`  | integer        | yes      | The global ID of the child epic. Internal ID can't be used because it can conflict with epics from other groups. |
 | `move_before_id` | integer        | no       | The global ID of a sibling epic that should be placed before the child epic.                                       |
 | `move_after_id`  | integer        | no       | The global ID of a sibling epic that should be placed after the child epic.                                        |
+{.sortable}
 
 ```shell
 curl --request PUT \

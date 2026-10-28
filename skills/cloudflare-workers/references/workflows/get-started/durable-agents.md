@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/get-started/durable-agents/og
 
 # Build a Durable AI Agent
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like "Compare open-source LLM projects" and it will:
 
@@ -445,7 +445,7 @@ export class ResearchAgent extends Agent<Env, State> {
    	"main": "src/index.ts",
        "upload_source_maps": true,
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-10-27",
    	"observability": {
    		"enabled": true
    	},
@@ -479,7 +479,7 @@ export class ResearchAgent extends Agent<Env, State> {
    main = "src/index.ts"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-10-27"
 
    [observability]
    enabled = true
@@ -681,7 +681,7 @@ Agent class names are automatically converted to kebab-case for URLs (`ResearchA
 
 ## Learn more
 
-### [Agents SDK Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Agents SDK Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/)
 
 Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication.
 
@@ -710,5 +710,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/get-started/durable-agents/og.png?v=174bc75a15bd8094","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/get-started/durable-agents/og.png?v=174bc75a15bd8094","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

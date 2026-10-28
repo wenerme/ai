@@ -122,6 +122,7 @@ Supported attributes:
 | `fullname`                   | string            | No       | Full name of the copyright holder to use when expanding placeholders in the template. Affects only licenses. |
 | `project`                    | string            | No       | Project name to use when expanding placeholders in the template. Affects only licenses. |
 | `source_template_project_id` | integer           | No       | Project ID where a given template is being stored. Helpful when multiple templates from different projects have the same name. If multiple templates have the same name, the match from closest ancestor is returned if `source_template_project_id` is not specified. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -139,6 +140,7 @@ following response attributes:
 | `permissions` | array    | Array of license permissions. Available for licenses only.   |
 | `popular`     | boolean  | If `true`, indicates this is a popular license. Available for licenses only. |
 | `source_url`  | string   | URL to the license source. Available for licenses only.      |
+{.sortable}
 
 Example request:
 

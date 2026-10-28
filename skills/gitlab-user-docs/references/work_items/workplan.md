@@ -32,17 +32,17 @@ specification-driven development workflow.
 
 You can add a workplan to issues and tasks.
 
-After you turn on planning for a work item, the **Workplan**
+After you turn on planning for a work item, the
 widget appears and shows the workplan status:
 
-- **Not yet created**: The work item has no workplan, and you can create one.
-- **No workplan**: The work item has no workplan, and you do not have permission to create one.
-- **Ready for review**: The work item has a workplan.
+- : The work item has no workplan, and you can create one.
+- : The work item has no workplan, and you do not have permission to create one.
+- : The work item has a workplan.
 
 ## Set up workplan generation
 
 Before you can [generate a workplan with GitLab Duo](#generate-a-workplan-with-gitlab-duo),
-your project and top-level group must be set up to run the **Generate Workplan** flow.
+your project and top-level group must be set up to run the  flow.
 
 Prerequisites:
 
@@ -50,9 +50,9 @@ Prerequisites:
   for a work item in a group.
 - [GitLab Duo turned on](../duo_agent_platform/turn_on_off.md#turn-gitlab-duo-on-or-off).
 - Flow execution and foundational flows turned on for the top-level group, with the
-  **Generate Workplan** flow selected. On GitLab Self-Managed, flow execution and
+   flow selected. On GitLab Self-Managed, flow execution and
   foundational flows must also be turned on for the instance.
-- The **Allow flow execution** and **Allow foundational flows** settings turned on
+- The  and  settings turned on
   for the project.
 
 For the steps to change these settings, see
@@ -78,7 +78,7 @@ This separation gives you three benefits:
 
 ## When to use a workplan
 
-Use a workplan when you plan to give work to an agent, either by selecting **Implement**
+Use a workplan when you plan to give work to an agent, either by selecting
 or by providing the plan to a coding agent yourself. A workplan adds the most value when an agent runs
 the work.
 
@@ -88,7 +88,7 @@ You do not need a workplan for small or well-understood changes, where planning 
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250010) in GitLab 19.4.
 
-By default, the **Workplan** widget and the readiness level are hidden on a work item.
+By default, the  widget and the readiness level are hidden on a work item.
 To show them, turn on planning for that work item.
 
 Prerequisites:
@@ -98,9 +98,9 @@ Prerequisites:
 
 To turn on planning:
 
-- On the work item, in the upper-right corner, select **Plan**.
+- On the work item, in the upper-right corner, select .
 
-The **Workplan** widget appears on the work item, and the **Plan** button no longer appears.
+The  widget appears on the work item, and the  button no longer appears.
 After you turn on planning for a work item, you cannot turn it off.
 
 ## Create a workplan
@@ -119,7 +119,7 @@ You can generate a workplan with GitLab Duo or write one manually.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248543) in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workplan_async_flow`. Disabled by default.
 - Generating a workplan in GitLab Duo Chat [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260695) in GitLab 19.6. Feature flag `duo_workplan_async_flow` removed.
 
-GitLab Duo generates the workplan with the **Generate Workplan** flow, which runs in the background.
+GitLab Duo generates the workplan with the  flow, which runs in the background.
 When you [turn on planning](#turn-on-planning-for-a-work-item) for a work item,
 GitLab Duo starts to generate a workplan.
 
@@ -129,27 +129,27 @@ Prerequisites:
 
 To generate a workplan with GitLab Duo:
 
-1. On the work item, in the **Workplan** widget, select **Generate**.
+1. On the work item, in the  widget, select .
 1. If GitLab Duo asks questions, answer them in the comment threads on the work item.
-   Then, in the **Workplan** widget, select **Continue**.
+   Then, in the  widget, select .
 
-GitLab Duo writes the workplan to the **Workplan** widget, and the status changes to
-**Ready for review**.
+GitLab Duo writes the workplan to the  widget, and the status changes to
+.
 
 The flow runs in the background, so you can leave the page while GitLab Duo works.
 When GitLab Duo needs your input, you receive a to-do item and an email.
 
-If the generation fails, in the **Workplan** widget, select **Try again**.
+If the generation fails, in the  widget, select .
 
 ### Create a workplan manually
 
 To create a workplan manually:
 
-1. On the work item, in the **Workplan** widget, select **More options** > **Create manually**.
+1. On the work item, in the  widget, select  > .
 1. Optional. From the template dropdown list, select a workplan template.
-1. Enter the workplan content. To switch between editors, select **Switch to rich text editing**
-   or **Switch to plain text editing**.
-1. Select **Save changes**.
+1. Enter the workplan content. To switch between editors, select
+   or .
+1. Select .
 
 Workplan templates are [description templates](../project/description_templates.md) with filenames
 that end in `.plan`.
@@ -159,7 +159,7 @@ that end in `.plan`.
 To view a workplan:
 
 1. Go to the work item.
-1. In the **Workplan** widget, select **View**.
+1. In the  widget, select .
 
 The workplan opens in a panel and shows the rendered content.
 
@@ -171,12 +171,12 @@ Prerequisites:
 
 To edit a workplan:
 
-1. On the work item, in the **Workplan** widget, select **View**.
-1. In the panel, select **Edit**.
+1. On the work item, in the  widget, select .
+1. In the panel, select .
 1. Make your changes.
-1. Select **Save changes**.
+1. Select .
 
-To discard your changes, select **Cancel**.
+To discard your changes, select .
 
 ## Regenerate a workplan
 
@@ -189,10 +189,10 @@ Prerequisites:
 
 To regenerate a workplan:
 
-1. On the work item, in the **Workplan** widget, select **View**.
-1. In the panel, select **More actions** () > **Regenerate workplan**.
+1. On the work item, in the  widget, select .
+1. In the panel, select  () > .
 1. If GitLab Duo asks questions, answer them in the comment threads on the work item.
-   Then, in the **Workplan** widget, select **Continue**.
+   Then, in the  widget, select .
 
 GitLab Duo replaces the existing workplan with the new version.
 
@@ -204,9 +204,9 @@ Prerequisites:
 
 To delete a workplan:
 
-1. On the work item, in the **Workplan** widget, select **View**.
-1. In the panel, select **More actions** () > **Delete workplan**.
-1. In the confirmation dialog, select **Delete**.
+1. On the work item, in the  widget, select .
+1. In the panel, select  () > .
+1. In the confirmation dialog, select .
 
 This action cannot be undone.
 
@@ -229,15 +229,15 @@ Prerequisites:
 
 - Planning turned on for the work item.
 
-In the **Workplan** widget on the work item, the readiness level appears as
-**Low**, **Medium**, or **High**.
+In the  widget on the work item, the readiness level appears as
+, , or .
 The readiness level appears only after GitLab Duo generates a workplan and
 evaluates the work item.
 
-To view feedback on how to improve readiness, select **Readiness details**
+To view feedback on how to improve readiness, select
 () next to the readiness level.
 The feedback opens in a drawer and shows any suggested changes to the work item or its workplan.
-To close the drawer, select **Readiness details** again.
+To close the drawer, select  again.
 
 To improve readiness, make the suggested changes.
 For example, add requirements, acceptance criteria, and constraints to the work item
@@ -267,7 +267,7 @@ Prerequisites:
 
 To open the decision log:
 
-- On the work item, in the header, select **Decision log** ().
+- On the work item, in the header, select  ().
 
 The button shows a count of the decisions on the work item.
 
@@ -277,13 +277,13 @@ The button shows a count of the decisions on the work item.
 
 To record a decision manually:
 
-1. On the work item, in the header, select **Decision log** ().
-1. In the panel, select **New decision**.
-1. Complete the fields. The required fields are **Decision**, **Decided by**, and **Context**.
-1. Optional. In **Why**, explain why you chose this option over other options.
-1. Optional. In **Source link**, add a link to where the discussion happened, such as Slack,
+1. On the work item, in the header, select  ().
+1. In the panel, select .
+1. Complete the fields. The required fields are , , and .
+1. Optional. In , explain why you chose this option over other options.
+1. Optional. In , add a link to where the discussion happened, such as Slack,
    Google Docs, or GitLab.
-1. Select **Create decision**.
+1. Select .
 
 ## Implement a workplan with GitLab Duo
 
@@ -300,10 +300,10 @@ Prerequisites:
 
 To implement a workplan with GitLab Duo, use one of the following methods:
 
-- On the work item, in the **Workplan** widget, select **Implement**.
+- On the work item, in the  widget, select .
 - Open the workplan, then implement it from the panel:
-  1. On the work item, in the **Workplan** widget, select **View**.
-  1. In the panel, select **Implement**.
+  1. On the work item, in the  widget, select .
+  1. In the panel, select .
 
 ## Related topics
 

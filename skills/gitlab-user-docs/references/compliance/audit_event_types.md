@@ -96,6 +96,7 @@ Audit event types belong to the following product categories.
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`ai_governance_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262303) | The umbrella setting for AI Governance features is changed on a group or project | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/632724) | Group, Project |
+| [`anthropic_compliance_integration_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264339) | An Anthropic Compliance integration is created for a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 
 ### Audit events
 

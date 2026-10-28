@@ -31,6 +31,7 @@ Supported attributes:
 | `page_token` | string            | No       | Name of tag to start the pagination from. Used for keyset pagination. |
 | `search`     | string            | No       | Return a list of tags matching the search criteria. You can use `^term` and `term$` to find tags that begin and end with `term`. No other regular expressions are supported. |
 | `sort`       | string            | No       | Return tags sorted in `asc` or `desc` order. Default is `desc`. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -57,6 +58,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `release.description`    | string  | Description of the release. |
 | `release.tag_name`       | string  | Tag name of the release. |
 | `target`                 | string  | SHA that the tag points to. |
+{.sortable}
 
 Example request:
 
@@ -138,6 +140,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `protected`              | boolean | If `true`, the tag is protected. |
 | `release`                | object  | Release information associated with the tag. |
 | `target`                 | string  | SHA that the tag points to. |
+{.sortable}
 
 Example request:
 
@@ -226,6 +229,7 @@ If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and
 | `protected`              | boolean | If `true`, the tag is protected. |
 | `release`                | object  | Release information associated with the tag. |
 | `target`                 | string  | SHA that the tag points to. |
+{.sortable}
 
 Example request:
 
@@ -326,6 +330,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `x509_certificate.x509_issuer.id`                     | integer | ID of the issuer. |
 | `x509_certificate.x509_issuer.subject`                | string  | Subject of the issuer. |
 | `x509_certificate.x509_issuer.subject_key_identifier` | string  | Subject key identifier of the issuer. |
+{.sortable}
 
 Example request:
 

@@ -11,11 +11,11 @@ This document describes configuration options for the Databricks data source in 
 
 ## Before you begin
 
-- You must have an active Grafana Enterprise or Grafana Cloud license that includes the Databricks plugin. The Databricks data source is a Grafana Enterprise plugin, so it doesn’t work without a valid license that covers it. If your license doesn’t include the plugin or has expired, **Save &amp; test** returns a generic `Plugin health check failed` error. Refer to [License and setup errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#license-and-setup-errors) for help.
-- You must have the `Organization administrator` role. Only account administrators can install the Databricks plugin and configure the data source. Organization administrators can also [configure the data source with YAML](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#provision-the-data-source) using the Grafana provisioning system.
-- You must install the Databricks plugin before adding the data source. Refer to [Install and upgrade the Databricks data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/install/) for installation methods across Grafana Cloud, Docker, and Kubernetes. Grafana recommends keeping your plugin up-to-date to access all current features.
+- You must have an active Grafana Enterprise or Grafana Cloud license that includes the Databricks plugin. The Databricks data source is a Grafana Enterprise plugin, so it doesn’t work without a valid license that covers it. If your license doesn’t include the plugin or has expired, **Save &amp; test** returns a generic `Plugin health check failed` error. Refer to [License and setup errors](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#license-and-setup-errors) for help.
+- You must have the `Organization administrator` role. Only account administrators can install the Databricks plugin and configure the data source. Organization administrators can also [configure the data source with YAML](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#provision-the-data-source) using the Grafana provisioning system.
+- You must install the Databricks plugin before adding the data source. Refer to [Install and upgrade the Databricks data source plugin](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/install/) for installation methods across Grafana Cloud, Docker, and Kubernetes. Grafana recommends keeping your plugin up-to-date to access all current features.
 - Familiarize yourself with your Databricks security configuration and gather any necessary security certificates and client keys. You need this information to set up your connection.
-- Decide which [authentication method](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#authentication-methods) best fits your deployment. Grafana recommends Personal Access Token or OAuth M2M for most installations.
+- Decide which [authentication method](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#authentication-methods) best fits your deployment. Grafana recommends Personal Access Token or OAuth M2M for most installations.
 
 > Note
 >
@@ -32,7 +32,7 @@ To add the Databricks data source, complete the following steps:
 5. Select **Databricks** under the **Data Source** section.
 6. Click **Add new data source** in the upper right.
 
-You are taken to the **Settings** tab where you set up your Databricks configuration. Configuration happens in three parts: [connection settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#connection-settings), an [authentication method](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#authentication-methods), and optional [additional configuration options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
+You are taken to the **Settings** tab where you set up your Databricks configuration. Configuration happens in three parts: [connection settings](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#connection-settings), an [authentication method](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#authentication-methods), and optional [additional configuration options](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#additional-configuration-options).
 
 ## Connection settings
 
@@ -65,7 +65,7 @@ Expand table
 
 > Note
 >
-> Methods that require a user context, such as **OAuth Passthrough** and **Azure (On-Behalf-Of)**, can’t run alert rules because no user is present during alert evaluation. For alerting, use **Personal Access Token**, **OAuth M2M**, or **Azure Entra ID M2M**. Refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/alerting/) for details.
+> Methods that require a user context, such as **OAuth Passthrough** and **Azure (On-Behalf-Of)**, can’t run alert rules because no user is present during alert evaluation. For alerting, use **Personal Access Token**, **OAuth M2M**, or **Azure Entra ID M2M**. Refer to [Alerting](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/alerting/) for details.
 
 > Caution
 >
@@ -101,7 +101,7 @@ Expand table
 
 > Note
 >
-> **OAuth M2M** authenticates against a *Databricks-managed* service principal. It doesn’t accept Azure Entra ID (Microsoft Entra ID) credentials. If you use an Azure AD service principal and select **OAuth M2M**, authentication fails with `invalid_client` or `Client authentication failed`. For Azure AD service principals, use [Azure Entra ID M2M authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/configure/#azure-entra-id-m2m-authentication) instead.
+> **OAuth M2M** authenticates against a *Databricks-managed* service principal. It doesn’t accept Azure Entra ID (Microsoft Entra ID) credentials. If you use an Azure AD service principal and select **OAuth M2M**, authentication fails with `invalid_client` or `Client authentication failed`. For Azure AD service principals, use [Azure Entra ID M2M authentication](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/configure/#azure-entra-id-m2m-authentication) instead.
 
 ### OAuth Passthrough authentication
 
@@ -121,7 +121,7 @@ If you are using OAuth Passthrough with Microsoft Entra ID (formerly Azure Activ
 08. Set **Identifier (Entity ID)** to the **Databricks SAML URL** you copied earlier. For **Reply URLs**, enter both:
 
     - The same **Databricks SAML URL**, and
-    - The [Grafana redirect URLs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/#create-the-azure-ad-application).
+    - The [Grafana redirect URLs](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/#create-the-azure-ad-application).
 09. Under **SAML Signing Certificate**, click **Edit**. Set **Sign-in option** to **Sign SAML response and assertion**, then click **Save**.
 10. Under **Attributes &amp; Claims**, click **Edit**. Set the **Unique User Identifier (Name ID)** field to `user.mail`.
 11. Under **SAML Certificates**, next to **Certificate (Base64)**, click **Download**. This downloads a `.cer` file. Copy its contents for later use in Databricks.
@@ -161,8 +161,8 @@ To enable secure access control and manage which users can query Databricks data
 3. Go to **Users and groups**.
 4. Click **Add user/group** to assign users or groups to the Grafana roles.
 5. Return to **Microsoft Entra ID**, then navigate to **App registrations**. Search for your application and select it.
-6. Go to **App roles** and configure the roles as described in [Configure application roles for Grafana in the Azure portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
-7. Configure Azure AD OAuth in the Grafana configuration file as described in [Configure Azure AD authentication using the Grafana configuration file](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/#configure-azure-ad-authentication-client-using-the-grafana-configuration-file).
+6. Go to **App roles** and configure the roles as described in [Configure application roles for Grafana in the Azure portal](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
+7. Configure Azure AD OAuth in the Grafana configuration file as described in [Configure Azure AD authentication using the Grafana configuration file](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/#configure-azure-ad-authentication-client-using-the-grafana-configuration-file).
 
 #### Forward token to users
 
@@ -170,7 +170,7 @@ To ensure user authentication tokens are securely forwarded to the Databricks da
 
 In your `grafana.ini` file, add or update the following setting:
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [azure]
@@ -202,7 +202,7 @@ On-behalf-of authentication isn’t currently supported for private clouds (Azur
 
 To configure on-behalf-of authentication, complete the following steps:
 
-1. Configure Grafana to use OAuth2 with Microsoft Entra ID as [documented](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/). Ensure that the `[auth.azuread]` `scopes` (or `$GF_AUTH_AZUREAD_SCOPES`) includes `.default openid email profile offline_access`.
+1. Configure Grafana to use OAuth2 with Microsoft Entra ID as [documented](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/). Ensure that the `[auth.azuread]` `scopes` (or `$GF_AUTH_AZUREAD_SCOPES`) includes `.default openid email profile offline_access`.
 2. In the [Azure Portal](https://portal.azure.com/), go to **App registrations** &gt; your application &gt; **Manage** &gt; **Authentication**. Enable **ID tokens** by selecting the corresponding checkbox.
 3. In the [Azure Portal](https://portal.azure.com/), navigate to **App registrations** &gt; your application &gt; **Manage** &gt; **API permissions**. Add the following permissions:
 
@@ -243,25 +243,25 @@ These options are optional and appear after the authentication fields in the dat
 
 Expand table
 
-| Field                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Retries**               | Number of times Grafana automatically retries a failed query. The default is `5`.                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Pause**                 | The delay, in seconds, between retry attempts. Setting this to `0` means no pause between retries. Increase this if Databricks is temporarily overloaded and needs time between requests. The default is `0`.                                                                                                                                                                                                                                                                                 |
-| **Timeout**               | Maximum time, in seconds, Grafana waits for a query response from Databricks before timing out. If your queries are complex and take longer than 60 seconds, increase this value. The default is `60`.                                                                                                                                                                                                                                                                                        |
-| **Max rows**              | Maximum number of rows returned from any single query. This prevents accidentally pulling massive datasets that could overwhelm Grafana. The default is `10000`. If you need more than 10,000 rows, increase this limit.                                                                                                                                                                                                                                                                      |
-| **Retry timeout**         | Total time, in seconds, Grafana spends on all retry attempts combined. If left empty, it defaults to `60`.                                                                                                                                                                                                                                                                                                                                                                                    |
-| **Debug**                 | Check to enable debugging. When enabled, this adds detailed logging information about the connection and queries to the Grafana server logs. This is useful for troubleshooting connection or query issues.                                                                                                                                                                                                                                                                                   |
-| **Unity Catalog support** | Check to enable support for the Databricks Unity Catalog three-level namespace (`catalog.schema.table`). Refer to [Unity Catalog support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#unity-catalog-support).                                                                                                                                                                                                |
-| **Default query format**  | Sets the default format for how query results are returned. Options are `table` or `timeseries`.                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Secure Socks Proxy**    | Toggle to route the data source connection through the Grafana secure SOCKS proxy to reach a different network. This field appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and Grafana is version 10.0.0 or later. Refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-database-encryption/#configure-a-datasource-connection-proxy). |
+| Field                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Retries**               | Number of times Grafana automatically retries a failed query. The default is `5`.                                                                                                                                                                                                                                                                                                                                                                    |
+| **Pause**                 | The delay, in seconds, between retry attempts. Setting this to `0` means no pause between retries. Increase this if Databricks is temporarily overloaded and needs time between requests. The default is `0`.                                                                                                                                                                                                                                        |
+| **Timeout**               | Maximum time, in seconds, Grafana waits for a query response from Databricks before timing out. If your queries are complex and take longer than 60 seconds, increase this value. The default is `60`.                                                                                                                                                                                                                                               |
+| **Max rows**              | Maximum number of rows returned from any single query. This prevents accidentally pulling massive datasets that could overwhelm Grafana. The default is `10000`. If you need more than 10,000 rows, increase this limit.                                                                                                                                                                                                                             |
+| **Retry timeout**         | Total time, in seconds, Grafana spends on all retry attempts combined. If left empty, it defaults to `60`.                                                                                                                                                                                                                                                                                                                                           |
+| **Debug**                 | Check to enable debugging. When enabled, this adds detailed logging information about the connection and queries to the Grafana server logs. This is useful for troubleshooting connection or query issues.                                                                                                                                                                                                                                          |
+| **Unity Catalog support** | Check to enable support for the Databricks Unity Catalog three-level namespace (`catalog.schema.table`). Refer to [Unity Catalog support](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor/#unity-catalog-support).                                                                                                                                                                                                |
+| **Default query format**  | Sets the default format for how query results are returned. Options are `table` or `timeseries`.                                                                                                                                                                                                                                                                                                                                                     |
+| **Secure Socks Proxy**    | Toggle to route the data source connection through the Grafana secure SOCKS proxy to reach a different network. This field appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and Grafana is version 10.0.0 or later. Refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-database-encryption/#configure-a-datasource-connection-proxy). |
 
 ## Provision the data source
 
-You can define and configure the data source in YAML files as part of the Grafana provisioning system. For general information about provisioning in Grafana, refer to [Provision data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the data source in YAML files as part of the Grafana provisioning system. For general information about provisioning in Grafana, refer to [Provision data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Following is a provisioning example for the Databricks data source using Personal Access Token authentication:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -280,7 +280,7 @@ datasources:
 
 You can automate the configuration of the Databricks data source in Grafana using Terraform.
 
-terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+terraform ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {
@@ -356,7 +356,7 @@ output "datasource_uid" {
 
 To deploy this configuration, create a `terraform.tfvars` file with your specific values:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 grafana_url          = "https://your-grafana.com"
@@ -368,7 +368,7 @@ databricks_http_path = "/sql/1.0/warehouses/your-warehouse-id"
 
 Initialize and apply the configuration:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 terraform init

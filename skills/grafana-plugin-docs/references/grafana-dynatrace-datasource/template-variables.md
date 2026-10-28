@@ -22,11 +22,11 @@ Expand table
 
 > Note
 >
-> You can also use Grafana’s built-in variable types (Custom, Text box, Constant, Interval) with Dynatrace queries. These variables are defined manually and are not populated from Dynatrace. For more information, refer to [Variable types](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#variable-types).
+> You can also use Grafana’s built-in variable types (Custom, Text box, Constant, Interval) with Dynatrace queries. These variables are defined manually and are not populated from Dynatrace. For more information, refer to [Variable types](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#variable-types).
 
 ## Query variables
 
-Query variables dynamically fetch values from your Dynatrace environment. To add a new Dynatrace query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
+Query variables dynamically fetch values from your Dynatrace environment. To add a new Dynatrace query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
 
 When creating a query variable, select your Dynatrace data source and choose from the following query types:
 
@@ -103,4 +103,4 @@ Now the second variable’s options dynamically update based on the first variab
 
 ## Additional resources
 
-For more information about variables in Grafana, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information about variables in Grafana, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).

@@ -5,7 +5,7 @@ description: "Browse EmpirioLabs AI model IDs, capabilities, context windows, an
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 63 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 62 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "empiriolabs/deepseek-v4-1-flash"
+  model: "empiriolabs/deepseek-v4-1-flash-1017"
 });
 
 // Generate a response
@@ -752,7 +752,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.empiriolabs.ai/v1",
-    id: "empiriolabs/deepseek-v4-1-flash",
+    id: "empiriolabs/deepseek-v4-1-flash-1017",
     apiKey: process.env.EMPIRIOLABS_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -773,7 +773,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "empiriolabs/step-5-preview"
-      : "empiriolabs/deepseek-v4-1-flash";
+      : "empiriolabs/deepseek-v4-1-flash-1017";
   }
 });
 ```

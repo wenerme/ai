@@ -42,7 +42,7 @@ To install the AWS IoT TwinMaker app:
 
 The app is enabled automatically after installation, which registers the data source, the four panels, and the transformation. On self-managed Grafana, you can also install the plugin with the CLI:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-iot-twinmaker-app
@@ -62,7 +62,7 @@ To add the AWS IoT TwinMaker data source:
 
 ## Configure connection details
 
-The **Connection Details** section uses the standard Grafana AWS authentication settings. For details about each authentication provider, refer to [AWS authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
+The **Connection Details** section uses the standard Grafana AWS authentication settings. For details about each authentication provider, refer to [AWS authentication](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 Expand table
 
@@ -104,7 +104,7 @@ To configure the workspace:
 
 ## Verify the connection
 
-When the connection succeeds, **Save &amp; test** returns the message `TwinMaker datasource successfully configured` followed by your workspace name. If the health check fails, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/troubleshooting/) for common errors such as `Assume Role ARN is required`.
+When the connection succeeds, **Save &amp; test** returns the message `TwinMaker datasource successfully configured` followed by your workspace name. If the health check fails, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/troubleshooting/) for common errors such as `Assume Role ARN is required`.
 
 ## Private data source connect
 
@@ -112,13 +112,13 @@ Private data source connect (PDC) lets Grafana Cloud reach AWS endpoints in a pr
 
 When PDC is enabled for your Grafana instance, the configuration page shows a **Secure Socks Proxy** section. Toggle **Enable Secure Socks Proxy** to route data source traffic through the PDC agent.
 
-For setup instructions, refer to [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+For setup instructions, refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -139,7 +139,7 @@ datasources:
 
 To provision static credentials instead of the default SDK credential chain, set `authType: keys` and provide the keys in `secureJsonData`:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
     secureJsonData:
@@ -155,7 +155,7 @@ You can use the [Grafana Terraform provider](https://registry.terraform.io/provi
 
 This example uses the default SDK credential chain and assumes the IAM role you created for your TwinMaker workspace.
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "twinmaker" {
@@ -173,7 +173,7 @@ resource "grafana_data_source" "twinmaker" {
 
 To enable writes for the Alarm Configuration panel or route traffic through private data source connect, add the optional keys to `json_data_encoded`:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
   json_data_encoded = jsonencode({
@@ -191,7 +191,7 @@ hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 This example uses static credentials, which Grafana stores encrypted in secure JSON data.
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "twinmaker" {
@@ -216,6 +216,6 @@ For more information, refer to the [`grafana_data_source` resource](https://regi
 
 ## Next steps
 
-- [Build queries with the query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/)
-- [Set up the Scene Viewer and other panels](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/panels/)
-- [Import the pre-built dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/)
+- [Build queries with the query editor](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor/)
+- [Set up the Scene Viewer and other panels](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/panels/)
+- [Import the pre-built dashboards](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards/)

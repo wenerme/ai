@@ -45,6 +45,7 @@ response attributes:
 | `project_id`                    | integer | ID of the project. |
 | `reject_non_dco_commits`        | boolean | If `true`, rejects commits when not DCO certified. |
 | `reject_unsigned_commits`       | boolean | If `true`, rejects commits when not signed. |
+{.sortable}
 
 If push rules were never configured for the project, returns HTTP `200 OK` with the literal string
 `"null"` as the response body.
@@ -128,6 +129,7 @@ Supported attributes:
 | `prevent_secrets`               | boolean           | No       | If `true`, GitLab rejects any files that are likely to contain secrets. |
 | `reject_non_dco_commits`        | boolean           | No       | If `true`, rejects commits when not DCO certified. |
 | `reject_unsigned_commits`       | boolean           | No       | If `true`, rejects commits when not signed. |
+{.sortable}
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -150,6 +152,7 @@ response attributes:
 | `project_id`                    | integer | ID of the project. |
 | `reject_non_dco_commits`        | boolean | If `true`, rejects commits when not DCO certified. |
 | `reject_unsigned_commits`       | boolean | If `true`, rejects commits when not signed. |
+{.sortable}
 
 Example request:
 
@@ -210,6 +213,7 @@ Supported attributes:
 | `prevent_secrets`               | boolean           | No       | If `true`, GitLab rejects any files that are likely to contain secrets. |
 | `reject_non_dco_commits`        | boolean           | No       | If `true`, rejects commits when not DCO certified. |
 | `reject_unsigned_commits`       | boolean           | No       | If `true`, rejects commits when not signed. |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following
 response attributes:
@@ -232,6 +236,7 @@ response attributes:
 | `project_id`                    | integer | ID of the project. |
 | `reject_non_dco_commits`        | boolean | If `true`, rejects commits when not DCO certified. |
 | `reject_unsigned_commits`       | boolean | If `true`, rejects commits when not signed. |
+{.sortable}
 
 Example request:
 

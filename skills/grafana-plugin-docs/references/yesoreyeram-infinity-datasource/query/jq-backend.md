@@ -15,11 +15,11 @@ To use JQ, select **Backend → JQ** as the parser type in the query editor.
 
 Using the JQ parser enables the following Grafana features:
 
-- [Alerting](/docs/grafana/latest/alerting/)
-- [Shared dashboards](/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
-- [SQL expressions](/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
-- [Query caching](/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
-- [Recorded queries](/docs/grafana/latest/administration/recorded-queries/)
+- [Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Shared dashboards](https://grafana.com/docs/grafana/latest/dashboards/share-dashboards-panels/shared-dashboards/)
+- [SQL expressions](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/sql-expressions/)
+- [Query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-and-resource-caching)
+- [Recorded queries](https://grafana.com/docs/grafana/latest/administration/recorded-queries/)
 
 ## Supported data formats
 
@@ -59,7 +59,7 @@ Expand table
 
 For JSON data:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -83,7 +83,7 @@ Expand table
 
 For JSON data:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -140,7 +140,7 @@ This flattens nested arrays into a single result set.
 
 Computed columns, filter, and summarize are shared backend parser features that work the same way in both the JQ and JSONata parsers.
 
-For the full reference on these features, including available operators, expression syntax, filter examples, aggregation functions, and group-by options, refer to [Computed columns, filter, and summarize](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/#computed-columns-filter-and-summarize) in the JSONata parser documentation.
+For the full reference on these features, including available operators, expression syntax, filter examples, aggregation functions, and group-by options, refer to [Computed columns, filter, and summarize](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/#computed-columns-filter-and-summarize) in the JSONata parser documentation.
 
 ## JQ vs JSONata
 

@@ -13,8 +13,8 @@ You can use the SolarWinds data source with Grafana Alerting to create alert rul
 
 Ensure you have:
 
-- [Configured the SolarWinds data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
-- Familiarity with [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- [Configured the SolarWinds data source](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/configure/).
+- Familiarity with [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Write SWQL queries for alerting
 
@@ -41,7 +41,7 @@ To create an alert rule that uses the SolarWinds data source:
 7. Configure the evaluation behavior, labels, and notifications.
 8. Click **Save rule**.
 
-For detailed instructions, refer to [Create Grafana-managed alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create Grafana-managed alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Alert examples
 
@@ -54,7 +54,7 @@ To receive an alert when the number of active alerts in SolarWinds exceeds a thr
 1. Create a new alert rule and select the SolarWinds data source.
 2. Enter the following query:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT COUNT(AlertActiveID) AS ActiveAlerts FROM Orion.AlertActive
@@ -70,7 +70,7 @@ To receive an alert when a node’s CPU load is too high:
 1. Create a new alert rule and select the SolarWinds data source.
 2. Enter the following query, replacing the caption with your node:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT CPULoad FROM Orion.Nodes WHERE Caption = '<NODE_CAPTION>'
@@ -86,7 +86,7 @@ To receive an alert when a volume is running low on free space:
 1. Create a new alert rule and select the SolarWinds data source.
 2. Enter the following query, replacing the caption with your volume:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT VolumePercentUsed FROM Orion.Volumes WHERE Caption = '<VOLUME_CAPTION>'
@@ -97,6 +97,6 @@ To receive an alert when a volume is running low on free space:
 
 ## Related documentation
 
-- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
-- [SolarWinds query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-solarwinds-datasource/latest/query-editor/)
+- [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [SolarWinds query editor](https://grafana.com/docs/plugins/grafana-solarwinds-datasource/latest/query-editor/)

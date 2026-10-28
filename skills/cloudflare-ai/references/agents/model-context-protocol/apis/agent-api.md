@@ -26,6 +26,26 @@ Keep importing the legacy server `McpServer` from `@modelcontextprotocol/sdk`. A
 
 Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the feature mapping and dual-era rollout.
 
+`McpAgent` requires `@modelcontextprotocol/sdk`, which is an optional peer dependency of `agents`. Install the exact version used by your Agents release:
+
+npmyarnpnpmbun
+
+```
+npm i agents @modelcontextprotocol/sdk@1.32.1 zod
+```
+
+```
+yarn add agents @modelcontextprotocol/sdk@1.32.1 zod
+```
+
+```
+pnpm add agents @modelcontextprotocol/sdk@1.32.1 zod
+```
+
+```
+bun add agents @modelcontextprotocol/sdk@1.32.1 zod
+```
+
 ```js
 import { McpAgent } from "agents/mcp";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -68,7 +88,7 @@ export class MyMCP extends McpAgent {
 }
 ```
 
-This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/runtime/lifecycle/state/).
+This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/agent-class/state/).
 
 A stateless server can define [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) with `@modelcontextprotocol/server` and serve them through `createMcpHandler`.
 
@@ -247,6 +267,8 @@ const eventStore = new DurableObjectEventStore(this.ctx.storage);
 ## RPC transport
 
 An Agent can connect to an `McpAgent` through its Durable Object binding instead of over HTTP. The Agent side, `addMcpServer(name, binding, options)`, is documented in [RPC transport](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#rpc-transport) on the MCP Client page. This section covers the `McpAgent` side.
+
+Only the Worker that defines the `McpAgent` needs `@modelcontextprotocol/sdk`. The Agent that connects to it does not.
 
 Move to Streamable HTTP
 
@@ -445,13 +467,13 @@ For a stateless server, read the same props with `getMcpAuthContext()`. Refer to
 
 ## State synchronization APIs
 
-The `McpAgent` class provides full access to the [Agent state APIs](https://developers.cloudflare.com/agents/runtime/lifecycle/state/):
+The `McpAgent` class provides full access to the [Agent state APIs](https://developers.cloudflare.com/agents/agent-class/state/):
 
-- [`state`](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — Current persisted state
-- [`initialState`](https://developers.cloudflare.com/agents/runtime/lifecycle/state/#set-the-initial-state-for-an-agent) — Default state when instance starts
-- [`setState`](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — Update and persist state
-- [`onStateChanged`](https://developers.cloudflare.com/agents/runtime/lifecycle/state/#synchronizing-state) — React to state changes
-- [`sql`](https://developers.cloudflare.com/agents/runtime/agents-api/#sql-api) — Execute SQL queries on embedded database
+- [`state`](https://developers.cloudflare.com/agents/agent-class/state/) — Current persisted state
+- [`initialState`](https://developers.cloudflare.com/agents/agent-class/state/#set-the-initial-state-for-an-agent) — Default state when instance starts
+- [`setState`](https://developers.cloudflare.com/agents/agent-class/state/) — Update and persist state
+- [`onStateChanged`](https://developers.cloudflare.com/agents/agent-class/state/#synchronizing-state) — React to state changes
+- [`sql`](https://developers.cloudflare.com/agents/agent-class/#sql-api) — Execute SQL queries on embedded database
 
 State resets after the session ends
 

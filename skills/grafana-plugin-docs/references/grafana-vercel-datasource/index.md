@@ -9,13 +9,13 @@ description: "Query and visualize Vercel data in Grafana with the Vercel data so
 
 > Note
 >
-> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/) for more information. If you find any issues or have a feature request, create a support ticket through your Grafana Enterprise support channel.
+> This plugin is in public preview. Refer to the [Grafana Labs release life cycle documentation](https://grafana.com/docs/release-life-cycle/) for more information. If you find any issues or have a feature request, create a support ticket through your Grafana Enterprise support channel.
 
 The Vercel data source plugin lets you query and visualize data from the [Vercel REST API](https://vercel.com/docs/rest-api) in Grafana. Use it to build dashboards for deployments, projects, domains, log drains, security firewall activity, and other Vercel resources.
 
 > Note
 >
-> The Vercel data source is a Grafana Enterprise plugin. It’s available on Grafana Cloud, including the Free plan, which allows up to three active users, and on self-managed Grafana Enterprise. You must enable Enterprise plugins for your account before you install the plugin. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Vercel data source is a Grafana Enterprise plugin. It’s available on Grafana Cloud, including the Free plan, which allows up to three active users, and on self-managed Grafana Enterprise. You must enable Enterprise plugins for your account before you install the plugin. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -45,7 +45,7 @@ The Vercel data source queries the [Vercel REST API](https://vercel.com/docs/res
 
 > Note
 >
-> The Vercel data source doesn’t provide Vercel runtime or application logs. It surfaces deployment and build data from the REST API, not streamed request logs, and the log drain actions return log drain configurations rather than log content. To bring runtime logs into Grafana, configure a [Vercel log drain](https://vercel.com/docs/drains) to forward logs to [Loki](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/) and query them with a Loki data source. This is a separate setup from the Vercel data source.
+> The Vercel data source doesn’t provide Vercel runtime or application logs. It surfaces deployment and build data from the REST API, not streamed request logs, and the log drain actions return log drain configurations rather than log content. To bring runtime logs into Grafana, configure a [Vercel log drain](https://vercel.com/docs/drains) to forward logs to [Loki](https://grafana.com/docs/loki/latest/) and query them with a Loki data source. This is a separate setup from the Vercel data source.
 
 ## Requirements
 
@@ -54,29 +54,29 @@ Before you use the Vercel data source, ensure you have the following:
 - A Vercel access token. For more information, refer to [Creating an access token](https://vercel.com/docs/rest-api#creating-an-access-token) in the Vercel documentation.
 - Access to Grafana Enterprise plugins, through one of the following:
 
-  - A Grafana Cloud plan. Enterprise plugins are available on the [Free plan](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/), which allows up to three active users, as well as the Pro and Advanced plans.
-  - A self-managed Grafana Enterprise instance with an [activated license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+  - A Grafana Cloud plan. Enterprise plugins are available on the [Free plan](https://grafana.com/pricing/), which allows up to three active users, as well as the Pro and Advanced plans.
+  - A self-managed Grafana Enterprise instance with an [activated license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 
-You must enable Enterprise plugins for your account. To enable them on Grafana Cloud, sign in to [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/), then open **My Account** &gt; **Manage Plan**. Contracted Cloud customers might need the Enterprise plugin entitlement added to their account. If the plugin isn’t available after you enable it, refer to [License and setup errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#license-and-setup-errors).
+You must enable Enterprise plugins for your account. To enable them on Grafana Cloud, sign in to [Grafana Cloud](https://grafana.com/), then open **My Account** &gt; **Manage Plan**. Contracted Cloud customers might need the Enterprise plugin entitlement added to their account. If the plugin isn’t available after you enable it, refer to [License and setup errors](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#license-and-setup-errors).
 
 ## Get started
 
 The following pages help you get started with the Vercel data source:
 
-- [Configure the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/)
-- [Vercel query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/)
+- [Configure the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/)
+- [Vercel query editor](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Vercel data without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) rules on Vercel queries.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query Vercel data without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/grafana/latest/alerting/) rules on Vercel queries.
 
 ## Pre-built dashboards
 
@@ -103,7 +103,7 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 > Note
 >
-> On Grafana Cloud, Grafana manages the Vercel plugin, and it updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> On Grafana Cloud, Grafana manages the Vercel plugin, and it updates automatically. On self-managed Grafana, you must update Enterprise plugins manually. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ## Related resources
 

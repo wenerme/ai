@@ -13,19 +13,19 @@ When data loading takes time, the Business Forms panel displays loading indicato
 
 A moving blue line displays at the top of the form.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/status-initial.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/status-initial.png)
 
 ## Update request
 
 All buttons are disabled and moving circular dots display in place of the Submit button icon.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/status-update.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/status-update.png)
 
 ## Custom code
 
 Custom code can be asynchronous. For that, the custom code should return the `Promise`.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const getInitialData = async () => {

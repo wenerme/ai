@@ -12,7 +12,7 @@ This document explains how to use the OpenSearch query editor to build queries f
 The query editor supports two query languages:
 
 - **Lucene:** The default query language with support for metric aggregations, bucket aggregations, logs, raw data, and trace analytics.
-- **PPL (Piped Processing Language):** An alternative query language that uses a pipe syntax for data exploration. PPL must be [enabled in the data source configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+- **PPL (Piped Processing Language):** An alternative query language that uses a pipe syntax for data exploration. PPL must be [enabled in the data source configuration](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 
 Select the query language from the **Query type** drop-down at the top of the query editor.
 
@@ -109,7 +109,7 @@ Expand table
 
 Select **Logs** as the Lucene query type to query log data. Enter a Lucene query to filter log messages.
 
-The fields used for log messages and log levels are configured in the [data source settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+The fields used for log messages and log levels are configured in the [data source settings](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 
 When using Explore, Grafana automatically generates a logs volume histogram alongside log results, showing the distribution of log entries over time.
 
@@ -202,7 +202,7 @@ You can view the service map for all traces in the current time range or for a s
 
 [Piped Processing Language (PPL)](https://opensearch.org/docs/latest/search-plugins/sql/ppl/index/) is an alternative query language that uses a pipe (`|`) syntax to chain commands for data exploration and transformation.
 
-To use PPL, ensure it’s [enabled in the data source configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+To use PPL, ensure it’s [enabled in the data source configuration](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 
 ### Write PPL queries
 
@@ -212,7 +212,7 @@ The PPL query editor provides:
 - Press **Shift+Enter** to run the query
 - Click **Kickstart your query** to open a modal with sample queries you can use as starting points
 
-To narrow down field suggestions, specify an index name in the [data source settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+To narrow down field suggestions, specify an index name in the [data source settings](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 
 ### PPL format options
 
@@ -232,7 +232,7 @@ The following examples show common PPL query patterns:
 
 Filter logs by a field value:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 source = opensearch_dashboards_sample_data_logs | where geo.src = "US"
@@ -240,7 +240,7 @@ source = opensearch_dashboards_sample_data_logs | where geo.src = "US"
 
 Search flights with conditions:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 search source=opensearch_dashboards_sample_data_flights | where AvgTicketPrice > 1150 | where FlightDelay = true
@@ -248,7 +248,7 @@ search source=opensearch_dashboards_sample_data_flights | where AvgTicketPrice >
 
 Find documents where a field contains a specific word:
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 SOURCE = my_index | WHERE LIKE(title, '%wind%') | HEAD 10
@@ -256,7 +256,7 @@ SOURCE = my_index | WHERE LIKE(title, '%wind%') | HEAD 10
 
 Aggregate data for time-series visualization (use with **Time series** format):
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 source = my_index | eval dateValue = timestamp(timestamp) | stats count(response) by dateValue
@@ -268,7 +268,7 @@ For more information about PPL syntax and supported commands, refer to the [Open
 
 The OpenSearch data source supports ad hoc filters for both Lucene and PPL queries. Ad hoc filters let you add key-value filters from the dashboard without modifying the query. Add an ad hoc filter variable to your dashboard, select the OpenSearch data source, and use it to dynamically filter query results.
 
-For more information about ad hoc filters, refer to the [Grafana ad hoc filters documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters).
+For more information about ad hoc filters, refer to the [Grafana ad hoc filters documentation](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters).
 
 ## Query language references
 

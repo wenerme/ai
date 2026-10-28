@@ -577,7 +577,7 @@ const agentResponse = await routeAgentRequest(request, env, {
 });
 ```
 
-Refer to [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) for more options including CORS, custom instance naming, and location hints.
+Refer to [Routing](https://developers.cloudflare.com/agents/agent-class/routing/) for more options including CORS, custom instance naming, and location hints.
 
 ### Accessing agents from server code
 
@@ -854,35 +854,35 @@ Now that you have a working agent, explore these topics:
 
 | Learn how to | Refer to |
 | --- | --- |
-| Add AI/LLM capabilities | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
+| Add AI/LLM capabilities | [Using AI models](https://developers.cloudflare.com/agents/agent-class/using-ai-models/) |
 | Expose tools via MCP | [MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) |
-| Run background tasks | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) |
-| Handle emails | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) |
-| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |
+| Run background tasks | [Schedule tasks](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/) |
+| Handle emails | [Email routing](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/) |
+| Use Cloudflare Workflows | [Run Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/) |
 
 ### Explore more
 
-### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/agent-class/state/)
 
 Deep dive into setState(), initialState, and onStateChanged().
 
-### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/client-sdk/)
 
 Full useAgent and AgentClient API reference.
 
-### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/agent-class/callable-methods/)
 
 Expose methods to clients with @callable().
 
-### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/)
 
 Run tasks on a delay, schedule, or cron.
 
-### [Agent class internals](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/)
+### [Agent class internals](https://developers.cloudflare.com/agents/agent-class/internals/)
 
 Full lifecycle and methods reference.
 
-### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/agent-class/)
 
 Complete API reference for the Agents SDK.
 

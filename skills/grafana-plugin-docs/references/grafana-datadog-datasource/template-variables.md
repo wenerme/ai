@@ -11,12 +11,12 @@ Instead of hard-coding details such as server, application, and sensor names in 
 
 For an introduction to templates and variables, refer to the following topics:
 
-- [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- [Templates](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/#templates)
-- [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/)
-- [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/)
+- [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- [Templates](https://grafana.com/docs/grafana/latest/dashboards/variables/#templates)
+- [Add and manage variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/)
+- [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/)
 
-To add a new Datadog query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/variable-types/add-query-variable/). Use your Datadog data source as your data source. The following queries are available:
+To add a new Datadog query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/). Use your Datadog data source as your data source. The following queries are available:
 
 Expand table
 
@@ -33,7 +33,7 @@ Expand table
 
 For custom tag groups, enter the tag group name in the **Query** field. For example, if your custom tag group name is `subscription_name`, enter `subscription_name`.
 
-After you create a variable, you can add it to your Datadog queries. For more information, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/syntax/).
+After you create a variable, you can add it to your Datadog queries. For more information, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/variables/syntax/).
 
 ## Examples
 
@@ -62,13 +62,13 @@ The variable’s drop-down lists the tag values reported for that metric, which 
 
 ## Ad hoc filters
 
-The [ad hoc filters](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) variable ships with Grafana and can be used with metric Datadog queries. Ad hoc filters let you retrieve all key-value pairs from tags, such as `region:east` or `region:west`, and use them as query tags. To create this variable, complete the following steps:
+The [ad hoc filters](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-ad-hoc-filters) variable ships with Grafana and can be used with metric Datadog queries. Ad hoc filters let you retrieve all key-value pairs from tags, such as `region:east` or `region:west`, and use them as query tags. To create this variable, complete the following steps:
 
 1. Open your dashboard and go to **Dashboard settings**.
 2. Click **Variables** under **Settings** in the sidebar menu.
 3. Click **Add variable**.
 4. Select the **Ad hoc filters** variable type from the drop-down menu.
-5. Enter [general options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#enter-general-options).
+5. Enter [general options](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#enter-general-options).
 6. Select `Datadog` as the data source.
 
 > Note

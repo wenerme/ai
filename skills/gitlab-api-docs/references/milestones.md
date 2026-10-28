@@ -48,6 +48,7 @@ Parameters:
 | `start_date`                      | datetime | no | Return only milestones where `due_date >=` the provided `start_date`. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). Note: only valid if `end_date` is also provided. |
 | `end_date`                        | datetime | no | Return only milestones where `start_date <=` the provided `end_date`. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). Note: only valid if `start_date` is also provided. |
 | `sort`                            | string | no | Return milestones sorted in the given order. Possible values: `due_date_asc`, `due_date_desc`, `start_date_asc`, `start_date_desc`, `name_asc`, `name_desc`, `created_asc`, `created_desc`, `updated_asc`, `updated_desc`. Default is `due_date_asc`. |
+{.sortable}
 
 ```shell
 curl --request GET \
@@ -107,6 +108,7 @@ Parameters:
 | `description` | string         | no       | The description of the milestone                                                                                |
 | `due_date`    | string         | no       | The due date of the milestone (`YYYY-MM-DD`)                                                                    |
 | `start_date`  | string         | no       | The start date of the milestone (`YYYY-MM-DD`)                                                                  |
+{.sortable}
 
 ## Update a milestone
 
@@ -127,6 +129,7 @@ Parameters:
 | `due_date`     | string         | no       | The due date of the milestone (`YYYY-MM-DD`)                                                                    |
 | `start_date`   | string         | no       | The start date of the milestone (`YYYY-MM-DD`)                                                                  |
 | `state_event`  | string         | no       | The state event of the milestone (close or activate)                                                            |
+{.sortable}
 
 ## Delete a milestone
 

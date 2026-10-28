@@ -19,14 +19,14 @@ With Grafana Play, you can explore and see how it works, learning from practical
 
 Expand table
 
-| Example                                                                                       | Description                                                              |
-|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| [AWS API](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/)                 | Connect to AWS management APIs for metrics, cost data, and more          |
-| [Azure API](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/)             | Query Azure management APIs for subscriptions, resources, and monitoring |
-| [GitHub GraphQL](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/github/)       | Query GitHub repositories, issues, and pull requests using GraphQL       |
-| [Google Sheets](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/google-sheets/) | Query data directly from Google Sheets spreadsheets                      |
-| [RSS feeds](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/rss-feeds/)         | Visualize RSS and Atom feeds, including status pages                     |
-| [ThingSpeak](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/thingspeak/)       | Connect to ThingSpeak IoT platform for sensor data                       |
+| Example                                                                                                          | Description                                                              |
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| [AWS API](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/)                 | Connect to AWS management APIs for metrics, cost data, and more          |
+| [Azure API](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/)             | Query Azure management APIs for subscriptions, resources, and monitoring |
+| [GitHub GraphQL](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/github/)       | Query GitHub repositories, issues, and pull requests using GraphQL       |
+| [Google Sheets](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/google-sheets/) | Query data directly from Google Sheets spreadsheets                      |
+| [RSS feeds](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/rss-feeds/)         | Visualize RSS and Atom feeds, including status pages                     |
+| [ThingSpeak](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/thingspeak/)       | Connect to ThingSpeak IoT platform for sensor data                       |
 
 ## Community examples
 

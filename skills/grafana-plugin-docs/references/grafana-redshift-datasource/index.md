@@ -29,35 +29,35 @@ Queries run asynchronously through the [Amazon Redshift Data API](https://docs.a
 
 The following pages help you set up and use the Amazon Redshift data source:
 
-- [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/) to connect Grafana to your Redshift cluster or serverless workgroup.
-- [Amazon Redshift query editor](/docs/plugins/grafana-redshift-datasource/latest/query-editor/) to learn how to build SQL queries and use macros.
-- [Template variables](/docs/plugins/grafana-redshift-datasource/latest/template-variables/) to create dynamic, reusable dashboards.
-- [Annotations](/docs/plugins/grafana-redshift-datasource/latest/annotations/) to overlay event data on your graphs.
-- [Alerting](/docs/plugins/grafana-redshift-datasource/latest/alerting/) to create alert rules from Redshift queries.
-- [Troubleshooting](/docs/plugins/grafana-redshift-datasource/latest/troubleshooting/) for solutions to common issues.
+- [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/) to connect Grafana to your Redshift cluster or serverless workgroup.
+- [Amazon Redshift query editor](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/query-editor/) to learn how to build SQL queries and use macros.
+- [Template variables](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/template-variables/) to create dynamic, reusable dashboards.
+- [Annotations](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/annotations/) to overlay event data on your graphs.
+- [Alerting](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/alerting/) to create alert rules from Redshift queries.
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/troubleshooting/) for solutions to common issues.
 
 ## Additional features
 
 After you configure the data source, you can:
 
-- Use [Explore](/docs/grafana/latest/explore/) to run free-form queries without building a dashboard.
-- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](/docs/grafana/latest/alerting/) rules based on Redshift queries.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run free-form queries without building a dashboard.
+- Add [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](https://grafana.com/docs/grafana/latest/alerting/) rules based on Redshift queries.
 
 ## Async query data support
 
 The Redshift data source uses an asynchronous query handling flow by default. Queries are handled over multiple requests – starting the query, checking its status, and fetching the results – instead of resolving over a single request. This is useful for queries that can potentially run for a long time and time out.
 
-Your IAM policy must include the `redshift-data:ListStatements` and `redshift-data:CancelStatement` actions for async queries to work. Refer to the [IAM policies](/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section for details.
+Your IAM policy must include the `redshift-data:ListStatements` and `redshift-data:CancelStatement` actions for async queries to work. Refer to the [IAM policies](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/#iam-policies) section for details.
 
 ### Async query cache
 
-To enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) for async queries, you need Grafana version 10.1 or later and the following feature toggles set to `true`:
+To enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) for async queries, you need Grafana version 10.1 or later and the following feature toggles set to `true`:
 
 - `useCachingService`
 - `awsAsyncQueryCaching`
 
-You also need to [configure query caching](/docs/grafana/latest/administration/data-source-management/#enable-and-configure-query-caching) for the specific Redshift data source instance.
+You also need to [configure query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#enable-and-configure-query-caching) for the specific Redshift data source instance.
 
 ## Pre-built dashboards
 
@@ -75,7 +75,7 @@ To import a pre-built dashboard:
 2. Select the **Dashboards** tab.
 3. Click **Import** next to the dashboard you want to use.
 
-For more information, refer to [Import a dashboard](/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+For more information, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Plugin updates
 

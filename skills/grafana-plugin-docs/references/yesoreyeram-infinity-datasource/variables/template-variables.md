@@ -9,9 +9,9 @@ description: "Use template variables to create dynamic dashboards with the Infin
 
 Instead of hard-coding values such as server names, API endpoints, or filter values in your queries, you can use variables. Grafana displays these variables in drop-down select boxes at the top of the dashboard to help you change the data displayed in your dashboard. Grafana refers to such variables as **template variables**.
 
-For general information on using variables in Grafana, refer to [Add variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For general information on using variables in Grafana, refer to [Add variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
-For an introduction to templating and template variables, refer to [Templating](/docs/grafana/latest/dashboards/variables/) and [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For an introduction to templating and template variables, refer to [Templating](https://grafana.com/docs/grafana/latest/dashboards/variables/) and [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ## Query variable
 
@@ -45,7 +45,7 @@ Configure your Infinity query to fetch data from an API endpoint:
 
 If the API returns:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 ["server01", "server02", "server03"]
@@ -72,7 +72,7 @@ In the **Custom field mapping** section of the variable editor:
 
 If your API returns:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -97,13 +97,13 @@ The drop-down displays “Production Server”, “Staging Server”, etc., but 
 
 The Infinity data source supports **multi-property variables**. Use them when the same logical concept has different identifiers in different contexts (for example, an environment called `dev` in one system and `development` in another). Instead of maintaining several variables in sync, you can map all of those values to one variable and reference the property you need in each panel or query.
 
-[](/media/docs/infinity/infinity-multi-prop-variable-v12.3.png)
+[](https://grafana.com/media/docs/infinity/infinity-multi-prop-variable-v12.3.png)
 
 To create a multi-property variable with the Infinity data source, use **Type: Query**. Configure an Infinity query that returns multiple columns. In the variable editor, expand **Custom field mapping** and set **Value field** and **Text field** to the columns that supply the value and the label for the drop-down. Each additional column in the result becomes a property you can reference. In panels and queries, reference a property with `${varName.columnName}`.
 
 **Example (Type: Query):** A variable named `env` that lists environments with different identifiers per cloud provider. The API returns:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -134,7 +134,7 @@ Expand table
 
 For example, you might use `${env.aws_id}` in an AWS-related query URL and `${env.azure_id}` in an Azure-related query URL, while both panels respond to the same variable drop-down.
 
-For more on the concept, refer to [Configure multi-property variables](/docs/grafana/latest/dashboards/variables/add-template-variables/#configure-multi-property-variables) in [Add and manage variables](/docs/grafana/latest/dashboards/variables/add-template-variables/).
+For more on the concept, refer to [Configure multi-property variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#configure-multi-property-variables) in [Add and manage variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/).
 
 ## Use variables in queries
 
@@ -146,13 +146,13 @@ You can use template variables in your Infinity queries to create dynamic dashbo
 - **Headers:** Include variables in custom headers
 - **Root selector:** Use variables in the root selector where you enter your JSONata, JQ, or UQL query
 
-For the full list of supported variable syntaxes (`$varname`, `${varname}`, `[[varname]]`) and formatting options, refer to [Variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/) in the Grafana documentation.
+For the full list of supported variable syntaxes (`$varname`, `${varname}`, `[[varname]]`) and formatting options, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/) in the Grafana documentation.
 
 ## Multi-value variables
 
 When you enable **Multi-value** for a variable, users can select multiple values from the drop-down. The selected values are formatted as a comma-separated list by default.
 
-To control how multi-value variables are formatted, use the [advanced variable format options](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
+To control how multi-value variables are formatted, use the [advanced variable format options](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
 
 **Example:**
 
@@ -175,14 +175,14 @@ To create chained variables:
 
 1. Create a parent variable. For example, a variable named `region` that queries an API for a list of regions:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    https://api.example.com/regions
    ```
 2. Create a dependent variable. For example, a variable named `server` that references the parent variable in the query URL:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    https://api.example.com/servers?region=$region
@@ -190,4 +190,4 @@ To create chained variables:
 
 When a user selects a different value in the `region` drop-down, the Infinity data source re-runs the `server` query with the updated region value. The `server` drop-down then displays only the servers that belong to the selected region.
 
-For more information about chaining variables, refer to [Chained variables](/docs/grafana/latest/dashboards/variables/add-template-variables/#chained-variables) in the Grafana documentation.
+For more information about chaining variables, refer to [Chained variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#chained-variables) in the Grafana documentation.

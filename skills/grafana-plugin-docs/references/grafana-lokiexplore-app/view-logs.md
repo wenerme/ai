@@ -15,9 +15,9 @@ A line filter search field appears at the top of the page. Enter text to filter 
 
 On the **Logs** tab, use the radio buttons in the panel header to switch how Logs Drilldown displays your logs:
 
-- **Logs**: The default log line list, with the [log controls](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-controls), the [log line menu](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-line-menu), and [log details](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details), described on this page.
-- **Table**: Displays logs in a table with a column for each displayed field. You can add or remove columns, sort by a column, resize columns, and wrap text. For more information, refer to [Logs Drilldown table view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/table/).
-- **JSON**: Opens the dedicated JSON viewer for logs formatted as JSON. For more information, refer to [Logs Drilldown JSON viewer](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/).
+- **Logs**: The default log line list, with the [log controls](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-controls), the [log line menu](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-line-menu), and [log details](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details), described on this page.
+- **Table**: Displays logs in a table with a column for each displayed field. You can add or remove columns, sort by a column, resize columns, and wrap text. For more information, refer to [Logs Drilldown table view](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/table/).
+- **JSON**: Opens the dedicated JSON viewer for logs formatted as JSON. For more information, refer to [Logs Drilldown JSON viewer](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/).
 
 ## Log controls
 
@@ -50,7 +50,7 @@ From top to bottom, the log controls include:
 
 > Note
 >
-> When you’re in [JSON view](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/), these controls aren’t available: client-side string search, deduplication, filter by log level, timestamp format, font size control, and download logs. JSON view includes additional toggles for showing structured metadata and labels.
+> When you’re in [JSON view](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json/), these controls aren’t available: client-side string search, deduplication, filter by log level, timestamp format, font size control, and download logs. JSON view includes additional toggles for showing structured metadata and labels.
 
 ## Panel menu
 
@@ -68,12 +68,12 @@ Some options, such as **Add to Dashboard**, **Create alert**, and **Explain in A
 
 Click the menu icon (three vertical dots) at the start of a log line to open the log line menu.
 
-[The log line menu](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-logs-ellipsis-menu.png)
+[The log line menu](https://grafana.com/media/docs/explore-logs/v2/logs-drilldown-logs-ellipsis-menu.png)
 
 The menu includes the following options:
 
-- **Show log details**: Opens [log details](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details) for the log line. When details are already open, the option reads **Hide log details**.
-- **Show context**: Displays the log lines that arrived before and after the selected line. Refer to [Log context](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-context) for more information.
+- **Show log details**: Opens [log details](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-details) for the log line. When details are already open, the option reads **Hide log details**.
+- **Show context**: Displays the log lines that arrived before and after the selected line. Refer to [Log context](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/#log-context) for more information.
 - **Pin log**: Keeps the log line pinned in the log list. To remove the pin, select **Unpin log**.
 - **Copy log line message**: Copies the log line text to your clipboard.
 - **Copy log line contents as JSON**: Copies the log line, including its fields, as a JSON object.
@@ -86,7 +86,7 @@ Log details show all the information attached to a single log line.
 
 To open log details, click a log line or select **Show log details** from the log line menu.
 
-[Log details in sidebar mode](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/explore-logs/v2/logs-drilldown-logs-details-copy-menu.png)
+[Log details in sidebar mode](https://grafana.com/media/docs/explore-logs/v2/logs-drilldown-logs-details-copy-menu.png)
 
 At the top of log details, use the **Search field names and values** field to narrow down what’s displayed. The copy icon opens a menu with **Copy log line message** and **Copy log contents as JSON** options.
 

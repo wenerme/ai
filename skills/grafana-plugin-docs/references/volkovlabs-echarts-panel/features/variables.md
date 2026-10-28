@@ -9,23 +9,23 @@ description: "Learn how to replace dashboard and global variables in business ch
 
 Use the `context.grafana.replaceVariables()` function to replace dashboard and global variables in Business Charts.
 
-JavaScript ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JavaScript ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```javascript
 const email = context.grafana.replaceVariables("${__user.email}");
 ```
 
-You can get familiar with three types of variables in the [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/exploring-variables/).
+You can get familiar with three types of variables in the [Grafana Crash Course](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/exploring-variables/).
 
 ## Replace variables
 
 In the following example, we replaced the series’s name with a value from the variable.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/variables.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/variables.png)
 
 ### Example
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 let names = [];
@@ -63,12 +63,12 @@ return {
 
 ## Update variables
 
-You can update dashboard variables with [event handlers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/features/event-handling/), where
+You can update dashboard variables with [event handlers](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/event-handling/), where
 
 - `name` is the name of the variable. Add `var-` to update the variable value in the URL.
 - `value` is the updated value.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 context.panel.chart.on("click", (params) => {

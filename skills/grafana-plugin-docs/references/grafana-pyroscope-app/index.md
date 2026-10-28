@@ -11,7 +11,7 @@ Profiling is a technique used in software development to measure and analyze the
 
 > Note
 >
-> The Grafana Explore apps have changed to Grafana Drilldown apps. For example, Explore Logs is now Logs Drilldown. To learn more, read [Grafana Drilldown apps: the improved queryless experience formerly known as the Explore apps](/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
+> The Grafana Explore apps have changed to Grafana Drilldown apps. For example, Explore Logs is now Logs Drilldown. To learn more, read [Grafana Drilldown apps: the improved queryless experience formerly known as the Explore apps](https://grafana.com/blog/2025/02/20/grafana-drilldown-apps-the-improved-queryless-experience-formerly-known-as-the-explore-apps/).
 
 Grafana Profiles Drilldown provides an intuitive interface for exploring your profile data. Using Profiles Drilldown, you can:
 
@@ -19,27 +19,33 @@ Grafana Profiles Drilldown provides an intuitive interface for exploring your pr
 - Optimize processes: Identify processes or services that you can optimize for better performance
 - Diagnose issues: Determine the root cause of an issue
 
+Give it a try using Grafana Play
+
+With Grafana Play, you can explore and see how it works, learning from practical examples to accelerate your development. This feature can be seen on [Profiles Drilldown](https://play.grafana.org/a/grafana-pyroscope-app/explore).
+
+[Try it](https://play.grafana.org/a/grafana-pyroscope-app/explore)
+
 ## Explore
 
 [Concepts
 \
-Learn the concepts you need to use profiling.](./concepts/)
+Learn the concepts you need to use profiling.](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts/)
 
 [Get started
 \
-How do you use profiling data to investigate an issue? Start here.](./get-started/)
+How do you use profiling data to investigate an issue? Start here.](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/get-started/)
 
 [Determine your use case
 \
-Choose one of the two most common use cases to guide your exploration.](./determine-use-case/)
+Choose one of the two most common use cases to guide your exploration.](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/determine-use-case/)
 
 [Choose a view
 \
-Which exploration type view best fits the issue you are investigating?](./choose-a-view/)
+Which exploration type view best fits the issue you are investigating?](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view/)
 
 [Investigate trends and spikes
 \
-Use your profiling data to identify issues and determine the root cause.](./investigate/)
+Use your profiling data to identify issues and determine the root cause.](https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/)
 
 [Changelog
 \

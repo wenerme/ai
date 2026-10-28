@@ -11,7 +11,7 @@ This document explains how to use the MQTT query editor to subscribe to topics a
 
 ## Before you begin
 
-- Ensure you have [configured the MQTT data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-mqtt-datasource/latest/configure/).
+- Ensure you have [configured the MQTT data source](https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure/).
 - Verify the connection is working by checking that **Save &amp; test** shows **MQTT Connected**.
 
 ## Key concepts
@@ -77,7 +77,7 @@ To extract values from nested JSON structures, use the **Extract fields** transf
 3. Select **Extract fields**.
 4. Choose the JSON field you want to extract values from.
 
-For more information, refer to [Transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
+For more information, refer to [Transform data](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/).
 
 ## Understand timestamps
 
@@ -91,11 +91,11 @@ If your message payloads include a timestamp field, use the **Convert field type
 4. Choose the field that contains the timestamp.
 5. Set the target type to **Time**.
 
-For more information, refer to [Convert field type](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#convert-field-type).
+For more information, refer to [Convert field type](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#convert-field-type).
 
 ## Streaming behavior
 
-The MQTT data source uses the [Grafana Live](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/set-up-grafana-live/) streaming API to push data to panels in real time.
+The MQTT data source uses the [Grafana Live](https://grafana.com/docs/grafana/latest/setup-grafana/set-up-grafana-live/) streaming API to push data to panels in real time.
 
 The data flow works as follows:
 

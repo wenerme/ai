@@ -93,7 +93,7 @@ Expand table
 
 By default, ThingSpeak returns recent data regardless of your Grafana time range. To filter by the dashboard time range, add time parameters to the URL:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://thingspeak.com/channels/38629/feed.json?start=${__from:date:YYYY-MM-DD HH:NN:SS}&end=${__to:date:YYYY-MM-DD HH:NN:SS}
@@ -105,7 +105,7 @@ This uses Grafana’s time variables to pass the selected time range to the API.
 
 For time ranges longer than 2 hours, ThingSpeak requires data aggregation. Add an aggregation parameter:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://thingspeak.com/channels/38629/feed.json?start=${__from:date:YYYY-MM-DD HH:NN:SS}&end=${__to:date:YYYY-MM-DD HH:NN:SS}&average=60

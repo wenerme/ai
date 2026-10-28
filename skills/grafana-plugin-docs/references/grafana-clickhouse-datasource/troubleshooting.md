@@ -71,9 +71,9 @@ These errors occur when the plugin cannot establish or maintain a connection to 
 
 Work through the following checks in order. Most cases are resolved by one of the first four items.
 
-1. **Clear the Default database field.** This is one of the most common fixes. If you are connecting to **ClickHouse Cloud**, leave it blank. Setting an explicit database name that does not match the service’s configured database causes this error. For details, refer to [Default database guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#default-database-guidance).
+1. **Clear the Default database field.** This is one of the most common fixes. If you are connecting to **ClickHouse Cloud**, leave it blank. Setting an explicit database name that does not match the service’s configured database causes this error. For details, refer to [Default database guidance](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/#default-database-guidance).
 2. **Verify credentials.** Confirm that the username and password are correct for the ClickHouse server. A typo or stale password is a frequent cause.
-3. **Check ClickHouse user permissions.** The connection test may pass, but queries can still fail if the user lacks permission to modify settings such as `max_execution_time`. Refer to [Required SETTINGS permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#required-settings-permissions).
+3. **Check ClickHouse user permissions.** The connection test may pass, but queries can still fail if the user lacks permission to modify settings such as `max_execution_time`. Refer to [Required SETTINGS permissions](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/#required-settings-permissions).
 4. **Confirm network connectivity.** Verify that the ClickHouse server is running and reachable from the Grafana server on the configured port. Ensure no firewall rules or security groups are blocking the connection.
 5. **Review the hostname and port.** Check for leading/trailing spaces and confirm the port matches the protocol (Native: 9000/9440, HTTP: 8123/8443).
 6. **Verify TLS configuration.** If using TLS/SSL, confirm that certificates are correctly configured and the port supports TLS.
@@ -115,7 +115,7 @@ Work through the following checks in order. Most cases are resolved by one of th
 
 **Solution:**
 
-1. [Open a support ticket](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) and request that your instance be moved to the **Steady** release channel.
+1. [Open a support ticket](https://grafana.com/profile/org#support) and request that your instance be moved to the **Steady** release channel.
 2. After the channel change takes effect, reinstall or re-add the ClickHouse data source.
 3. Once the plugin is working, you can discuss with support whether switching back to the Fast channel is safe for your use case.
 
@@ -292,7 +292,7 @@ These errors occur when the connection succeeds but the ClickHouse user lacks pe
 
 1. Create a settings profile or constraint that allows `max_execution_time` to be changed in read-only mode:
 
-   SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    ALTER SETTINGS PROFILE grafana_reader
@@ -302,7 +302,7 @@ These errors occur when the connection succeeds but the ClickHouse user lacks pe
 2. Assign this profile to the Grafana ClickHouse user.
 3. Verify the fix by running `SELECT 1 SETTINGS max_execution_time = 30` as the Grafana user in `clickhouse-client`.
 
-For more details on configuring permissions, refer to [ClickHouse user and permissions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#clickhouse-user-and-permissions).
+For more details on configuring permissions, refer to [ClickHouse user and permissions](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/#clickhouse-user-and-permissions).
 
 ## Query builder issues
 
@@ -449,7 +449,7 @@ These errors relate to the ad hoc filter variable type, which injects filters in
 
    - Column names with dots are now handled correctly ([#1481](https://github.com/grafana/clickhouse-datasource/pull/1481)).
    - You can now manually control where ad hoc filters are placed in a query, which prevents silent injection failures in complex `WHERE` clauses ([#1488](https://github.com/grafana/clickhouse-datasource/pull/1488)).
-2. **Manual filter placement (v4.12.0+):** If you have a complex query where automatic filter injection fails, use the `$__adHocFilters('table_name')` macro to explicitly specify where filters are applied. Place it in the `SETTINGS` clause. For details and examples, refer to [Apply ad hoc filters manually](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#apply-ad-hoc-filters-manually-with-__adhocfilters).
+2. **Manual filter placement (v4.12.0+):** If you have a complex query where automatic filter injection fails, use the `$__adHocFilters('table_name')` macro to explicitly specify where filters are applied. Place it in the `SETTINGS` clause. For details and examples, refer to [Apply ad hoc filters manually](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/#apply-ad-hoc-filters-manually-with-__adhocfilters).
 3. **Older plugin versions:** If you cannot upgrade, avoid column names with dots in ad hoc filters (use a ClickHouse [alias](https://clickhouse.com/docs/en/sql-reference/statements/create/table#alias) to flatten nested paths), and simplify complex `WHERE` clauses or move them into a subquery.
 
 #### Invalid ad hoc filter
@@ -552,7 +552,7 @@ These errors relate to Private Data Connect, which tunnels connections from Graf
 1. Restart the PDC agent pod to force a fresh token handshake.
 2. If using Kubernetes, delete the pod and let the deployment recreate it:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    kubectl delete pod <pdc-agent-pod-name> -n <namespace>
@@ -571,7 +571,7 @@ These errors relate to Private Data Connect, which tunnels connections from Graf
 
 1. Ensure you are using the **Grafana ClickHouse plugin** (`grafana-clickhouse-datasource`), not a community or third-party ClickHouse plugin. The Grafana plugin has better PDC compatibility for backend operations like alerting.
 2. Upgrade to the latest plugin version. PDC-related alerting fixes have been included in recent releases.
-3. Verify the PDC agent is healthy and not silently disconnected (refer to [PDC connection fails with no agent logs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/#pdc-connection-fails-with-no-agent-logs) above).
+3. Verify the PDC agent is healthy and not silently disconnected (refer to [PDC connection fails with no agent logs](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/#pdc-connection-fails-with-no-agent-logs) above).
 4. Check the Grafana alerting logs for detailed timeout or connection errors by filtering for the data source name or UID.
 
 #### Stale PDC token: metrics suddenly lost
@@ -584,7 +584,7 @@ These errors relate to Private Data Connect, which tunnels connections from Graf
 
 1. Restart the PDC agent pod to trigger a fresh token handshake:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    kubectl delete pod <pdc-agent-pod-name> -n <namespace>
@@ -633,14 +633,14 @@ These issues affect how query results are rendered in Grafana panels rather than
 
 **Workaround for dashboards:**
 
-1. Add a [Convert field type](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#convert-field-type) transformation to the panel.
+1. Add a [Convert field type](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#convert-field-type) transformation to the panel.
 2. Set the time column’s format to a pattern that includes milliseconds, for example `YYYY-MM-DD HH:mm:ss.SSS`.
 
 **Workaround for Explore:**
 
 There is currently no transformation support in Explore. As an alternative, you can cast the timestamp to a string with millisecond precision directly in the SQL query:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -711,7 +711,7 @@ On **Grafana 12.4.0 or later** a declined query falls back to Grafana’s row-ba
 1. Reduce the number of concurrent queries by consolidating dashboard panels or staggering alert evaluation groups.
 2. Increase the connection pool limits by adding custom settings in the data source provisioning configuration:
 
-   YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```yaml
    jsonData:

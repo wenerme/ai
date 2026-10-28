@@ -9,14 +9,14 @@ description: "Learn about the query editor for the Google Sheets data source plu
 
 The Google Sheets data source query editor configures the Google Sheets API query. Use it when building panels in a dashboard or in Explore.
 
-This document walks you through key concepts and a summary of the fields, then how to create a query, then each field in detail, and finally [example use cases](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#example-use-cases) for common scenarios.
+This document walks you through key concepts and a summary of the fields, then how to create a query, then each field in detail, and finally [example use cases](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#example-use-cases) for common scenarios.
 
 ## Before you begin
 
-- Ensure you have [configured the Google Sheets data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and that **Save &amp; test** shows **Success**.
+- Ensure you have [configured the Google Sheets data source](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure/) and that **Save &amp; test** shows **Success**.
 - Your credentials must have access to the spreadsheets you want to query.
 
-[The Google Sheets data source query editor configured to query a Google Sheet](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/plugins/google-sheets-query-editor-1.png)
+[The Google Sheets data source query editor configured to query a Google Sheet](https://grafana.com/media/docs/plugins/google-sheets-query-editor-1.png)
 
 ## Key concepts
 
@@ -45,7 +45,7 @@ The sections below describe each field in detail.
 
 To create a query:
 
-1. Select the **Google Sheets** data source for the panel (or open [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) and select it there).
+1. Select the **Google Sheets** data source for the panel (or open [Explore](https://grafana.com/docs/grafana/latest/explore/) and select it there).
 2. In **Spreadsheet ID**, enter the spreadsheet ID or URL, or choose a spreadsheet from the list if you use JWT authentication.
 3. Optionally, enter a **Range** in A1 notation (for example, `Sheet1!A2:E`). Leave it empty to use the entire first sheet.
 4. Set **Cache Time** if you want something other than the default (5 minutes). Use `0s` to disable caching.
@@ -58,7 +58,7 @@ The **Spreadsheet ID** field controls which spreadsheet to query.
 
 > Tip
 >
-> If you’ve configured a default spreadsheet ID in the data source settings, it’s automatically pre-filled when you create a new query. Refer to [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#default-spreadsheet-id) for more information.
+> If you’ve configured a default spreadsheet ID in the data source settings, it’s automatically pre-filled when you create a new query. Refer to [Configure the data source](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure/#default-spreadsheet-id) for more information.
 
 You can:
 
@@ -75,12 +75,12 @@ The query editor automatically extracts the spreadsheet ID from the URL.
   2. Select the cells that you want to include.
   3. Right-click one of the cells and choose **Get link to this range**. The link is copied to your clipboard.
 
-     [Google Sheets spreadsheet with selected cells and the right click menu open](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/plugins/google-sheets-query-editor-3.png)
+     [Google Sheets spreadsheet with selected cells and the right click menu open](https://grafana.com/media/docs/plugins/google-sheets-query-editor-3.png)
 - Select a spreadsheet from the drop-down menu.
 
   The drop-down menu is only populated if you are using Google JWT authentication. You can only view spreadsheets shared with the service account associated with the token.
 
-  To configure a service account with JWT authentication, refer to [Authenticate with a service account JWT](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-a-service-account-jwt).
+  To configure a service account with JWT authentication, refer to [Authenticate with a service account JWT](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure/#authenticate-with-a-service-account-jwt).
 
 Next to the **Spreadsheet ID** field there’s an external link icon. Click that icon to open the spreadsheet in Google Sheets in a new tab.
 
@@ -160,15 +160,15 @@ Use a small range (for example, one row or a few cells, such as `Summary!B2:B5`)
 
 **Annotations from a sheet**
 
-Use a Google Sheet as an annotation source to overlay events on panels. Refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/annotations/) for sheet layout (time, text, tags), steps to add an annotation query, and **Use Time Filter**.
+Use a Google Sheet as an annotation source to overlay events on panels. Refer to [Annotations](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/annotations/) for sheet layout (time, text, tags), steps to add an annotation query, and **Use Time Filter**.
 
 **Same spreadsheet, different panels**
 
-Use one **Spreadsheet ID** across multiple panels and set a different **Range** in each (for example, `Sales!A1:E100`, `Inventory!A1:C50`). To save time, set a default spreadsheet in the [data source configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/#default-spreadsheet-id) so new queries are pre-filled.
+Use one **Spreadsheet ID** across multiple panels and set a different **Range** in each (for example, `Sales!A1:E100`, `Inventory!A1:C50`). To save time, set a default spreadsheet in the [data source configuration](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure/#default-spreadsheet-id) so new queries are pre-filled.
 
 **Dynamic spreadsheet or range with template variables**
 
-Use [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) in **Spreadsheet ID** or **Range** (for example, `$spreadsheet` or `Sheet1!A1:$region`) so users can switch sheets or ranges from the dashboard. The query runs with the selected variable values.
+Use [template variables](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) in **Spreadsheet ID** or **Range** (for example, `$spreadsheet` or `Sheet1!A1:$region`) so users can switch sheets or ranges from the dashboard. The query runs with the selected variable values.
 
 **Frequently updated vs. static data**
 
@@ -180,15 +180,15 @@ In Google Sheets, select the cells you need, right-click and choose **Get link t
 
 ## Use SQL expressions with Google Sheets data
 
-You can use the [SQL expression](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/expression-queries/) transformation to filter or aggregate Google Sheets data. However, there are limitations to be aware of:
+You can use the [SQL expression](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/expression-queries/) transformation to filter or aggregate Google Sheets data. However, there are limitations to be aware of:
 
 - The Google Sheets plugin returns data in **wide format** (one column per field, with the first row as headers). SQL expressions expect this format by default.
 - If your sheet layout produces data that Grafana interprets as long format (for example, a single value column with a label column), the SQL expression may fail with errors such as `[sse.readDataError] input data must be a wide series but got type not`.
 - To avoid these errors, ensure your sheet has distinct column headers and that each column contains a consistent data type. If a column has mixed types, the plugin treats it as a string, which may cause type mismatches in SQL expressions.
-- For complex transformations, consider using the built-in [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) (such as **Convert field type**, **Filter by value**, or **Group by**) instead of SQL expressions, as these handle Google Sheets data more reliably.
+- For complex transformations, consider using the built-in [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) (such as **Convert field type**, **Filter by value**, or **Group by**) instead of SQL expressions, as these handle Google Sheets data more reliably.
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) to make dashboards dynamic.
-- [Quick start: create a sample dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/#quick-start-create-a-sample-dashboard) to try the data source with sample data.
-- [Configure the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-googlesheets-datasource/latest/configure/) to change authentication or default spreadsheet.
+- [Use template variables](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) to make dashboards dynamic.
+- [Quick start: create a sample dashboard](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/#quick-start-create-a-sample-dashboard) to try the data source with sample data.
+- [Configure the data source](https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure/) to change authentication or default spreadsheet.

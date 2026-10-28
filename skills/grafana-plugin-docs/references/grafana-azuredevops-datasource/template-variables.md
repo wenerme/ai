@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards that let you switc
 
 ## Before you begin
 
-- [Configure the Azure DevOps data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the Azure DevOps data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 

@@ -9,11 +9,11 @@ description: "Use annotations with the Amazon Timestream data source to mark eve
 
 Annotations allow you to overlay event information on graphs, providing context for metric changes. The Amazon Timestream data source supports annotation queries that pull event data directly from your Timestream tables.
 
-For general information about annotations in Grafana, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information about annotations in Grafana, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the Amazon Timestream data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-timestream-datasource/latest/configure/).
+- [Configure the Amazon Timestream data source](https://grafana.com/docs/plugins/grafana-timestream-datasource/latest/configure/).
 - Verify that your Timestream table contains event data with a timestamp column.
 
 ## Create an annotation query
@@ -49,7 +49,7 @@ The following examples demonstrate common annotation query patterns. Annotation 
 
 The following query retrieves deployment events and displays them as point annotations:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -65,7 +65,7 @@ ORDER BY time ASC
 
 Add a `tags` column to categorize annotations and filter them in the dashboard:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -82,7 +82,7 @@ ORDER BY time ASC
 
 Use `timeEnd` to create range annotations that highlight a span of time, such as a maintenance window:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT

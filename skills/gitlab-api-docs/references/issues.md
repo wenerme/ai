@@ -86,6 +86,7 @@ Supported attributes:
 | `updated_before`                | datetime      | No         | Return issues updated on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`).                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `weight`                        | integer       | No         | Return issues with the specified `weight`. `None` returns issues with no weight assigned. `Any` returns issues with a weight assigned. Premium and Ultimate only.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `with_labels_details`           | boolean       | No         | If `true`, the response returns more details for each label in the labels field: `:name`, `:color`, `:description`, `:description_html`, `:text_color`. Default is `false`.                                                                                                                                                                                                                                                                                                                                                                                                |
+{.sortable}
 
 Example request:
 
@@ -317,6 +318,7 @@ Supported attributes:
 | `updated_before`    | datetime         | No         | Return issues updated on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `weight` | integer       | No         | Return issues with the specified `weight`. `None` returns issues with no weight assigned. `Any` returns issues with a weight assigned. Premium and Ultimate only. |
 | `with_labels_details` | boolean        | No         | If `true`, the response returns more details for each label in the labels field: `:name`, `:color`, `:description`, `:description_html`, `:text_color`. Default is `false`. |
+{.sortable}
 
 Example request:
 
@@ -525,6 +527,7 @@ Supported attributes:
 | `weight`              | integer        | No       | Return issues with the specified `weight`. `None` returns issues with no weight assigned. `Any` returns issues with a weight assigned. Premium and Ultimate only. |
 | `with_labels_details` | boolean        | No       | If `true`, the response returns more details for each label in the labels field: `:name`, `:color`, `:description`, `:description_html`, `:text_color`. Default is `false`. |
 | `cursor`              | string         | No       | Parameter used in keyset pagination. |
+{.sortable}
 
 This endpoint supports both offset-based and [keyset-based](rest/_index.md#keyset-based-pagination) pagination. You should use keyset-based
 pagination when requesting consecutive pages of results.
@@ -1054,6 +1057,7 @@ Supported attributes:
 | `start_date`                              | string         | No       | The start date. Date time string in the format `YYYY-MM-DD`, for example `2016-03-11`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238041) in GitLab 19.1. |
 | `title`                                   | string         | Yes      | The title of an issue. |
 | `weight`                                  | integer        | No       | The weight of the issue. Valid values are greater than or equal to 0. Premium and Ultimate only. |
+{.sortable}
 
 Example request:
 
@@ -1240,6 +1244,7 @@ Supported attributes:
 | `title`        | string  | No       | The title of an issue.                                                                                      |
 | `updated_at`   | string  | No       | When the issue was updated. Date time string, ISO 8601 formatted, for example `2016-03-11T03:45:40Z` (requires administrator or project owner rights). Empty string or null values are not accepted.|
 | `weight`       | integer | No       | The weight of the issue. Valid values are greater than or equal to 0. Premium and Ultimate only.           |
+{.sortable}
 
 Example request:
 
@@ -2650,6 +2655,7 @@ Supported attributes:
 | `file` | file | Yes      | The image file to be uploaded. |
 | `url` | string | No      | The URL to view more metric information. |
 | `url_text` | string | No      | A description of the image or URL. |
+{.sortable}
 
 Example request:
 
@@ -2738,6 +2744,7 @@ Supported attributes:
 | `image_id` | integer | Yes      | The ID of the image. |
 | `url` | string | No      | The URL to view more metric information. |
 | `url_text` | string | No      | A description of the image or URL. |
+{.sortable}
 
 Example request:
 

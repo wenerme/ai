@@ -23,7 +23,7 @@ Zabbix is an app plugin, so you must install it and then enable it before the da
 
 1. Click **Administration** &gt; **Plugins and data** &gt; **Plugins** in the left-side menu.
 2. Type `Zabbix` in the search bar and select the **Zabbix** plugin.
-3. If the plugin isn’t already installed, click **Install**. For other installation methods, refer to [Install Grafana plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/).
+3. If the plugin isn’t already installed, click **Install**. For other installation methods, refer to [Install Grafana plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/).
 4. On the plugin page, click **Enable**. The data source isn’t available to add until you enable the plugin.
 
 > Note
@@ -154,7 +154,7 @@ To add a database data source:
 4. Configure the connection to your Zabbix database. The database name is typically `zabbix`.
 5. Click **Save &amp; test**.
 
-For detailed configuration, refer to the [MySQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/mysql/), [PostgreSQL](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/postgres/), or [InfluxDB](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/influxdb/) data source documentation.
+For detailed configuration, refer to the [MySQL](https://grafana.com/docs/grafana/latest/datasources/mysql/), [PostgreSQL](https://grafana.com/docs/grafana/latest/datasources/postgres/), or [InfluxDB](https://grafana.com/docs/grafana/latest/datasources/influxdb/) data source documentation.
 
 ### Database security
 
@@ -162,7 +162,7 @@ The plugin needs only read access to the `history`, `history_uint`, `trends`, an
 
 MySQL example:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 GRANT SELECT ON zabbix.history TO 'grafana'@'<GRAFANA_HOST>' IDENTIFIED BY '<PASSWORD>';
@@ -173,7 +173,7 @@ GRANT SELECT ON zabbix.trends_uint TO 'grafana'@'<GRAFANA_HOST>' IDENTIFIED BY '
 
 If you also want to use this data source for other queries, you can grant `SELECT` privileges to the entire Zabbix database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 GRANT SELECT ON zabbix.* TO 'grafana'@'<GRAFANA_HOST>' IDENTIFIED BY '<PASSWORD>';
@@ -213,7 +213,7 @@ Grafana and the Zabbix backend plugin exchange data over gRPC. To bound the plug
 
 If your environment needs larger messages, raise the limits in the `[plugin.alexanderzobnin-zabbix-datasource]` section of the Grafana configuration file. Grafana forwards the settings to the plugin when it starts. These are instance-level settings, so they aren’t available in the data source configuration page or in data source provisioning.
 
-ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugin.alexanderzobnin-zabbix-datasource]
@@ -232,13 +232,13 @@ Both settings accept whole numbers from `1` to `512`. Values above `512` are cla
 
 Larger messages mean higher memory usage in both Grafana and the plugin. Before you raise the limits, consider reducing the size of the result instead: enable trends, use Direct DB Connection for server-side aggregation, apply a **Limit** to Problems queries, or narrow the query with more specific filters.
 
-For more information about the `[plugin.plugin_id]` section and about overriding configuration with environment variables, refer to [Configure Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/#pluginplugin_id).
+For more information about the `[plugin.plugin_id]` section and about overriding configuration with environment variables, refer to [Configure Grafana](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#pluginplugin_id).
 
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. A successful test displays the message “**Zabbix API version**” followed by the detected version number. If Direct DB Connection is enabled, the message also includes the database connector type.
 
-If the test fails, refer to the [troubleshooting guide](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/) for common connection issues and solutions.
+If the test fails, refer to the [troubleshooting guide](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/) for common connection issues and solutions.
 
 ## Connect through Private Data Source Connect
 
@@ -246,7 +246,7 @@ If your Zabbix server isn’t directly reachable from Grafana, for example a Gra
 
 To use PDC:
 
-1. Set up a PDC connection for your Grafana Cloud stack. Refer to [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+1. Set up a PDC connection for your Grafana Cloud stack. Refer to [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 2. Edit the Zabbix data source and select your PDC connection in the **Private data source connect** settings.
 3. Click **Save &amp; test**.
 
@@ -254,11 +254,11 @@ PDC requires Grafana 10.0 or later. In self-managed Grafana, an administrator mu
 
 ## Provision the data source
 
-You can define and configure the Zabbix data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define and configure the Zabbix data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 The following example provisions a Zabbix data source with Direct DB Connection using a MySQL database:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -331,13 +331,13 @@ Expand table
 | `perUserAuthExcludeUsers`     | `jsonData`       | List of Grafana users that always use the global Zabbix credentials. Default: `["admin"]`.                                                                                                   |
 | `enableSecureSocksProxy`      | `jsonData`       | Route the connection through the Grafana secure SOCKS proxy for Private Data Source Connect (PDC). Default: `false`.                                                                         |
 
-For detailed MySQL and PostgreSQL provisioning options, refer to the [MySQL provisioning](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/mysql/#provision-the-data-source) and [PostgreSQL provisioning](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/datasources/postgres/#provision-the-data-source) documentation.
+For detailed MySQL and PostgreSQL provisioning options, refer to the [MySQL provisioning](https://grafana.com/docs/grafana/latest/datasources/mysql/#provision-the-data-source) and [PostgreSQL provisioning](https://grafana.com/docs/grafana/latest/datasources/postgres/#provision-the-data-source) documentation.
 
 ### Provision with Terraform
 
 You can provision the Zabbix data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). The following example creates a Zabbix data source with user and password authentication:
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "zabbix" {
@@ -365,7 +365,7 @@ For more information about the Grafana Terraform provider, refer to the [Grafana
 
 ## Next steps
 
-- [Build queries with the Zabbix query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
-- [Use template variables for dynamic dashboards](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables/)
-- [Set up alerting rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
-- [Troubleshoot the Zabbix data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)
+- [Build queries with the Zabbix query editor](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor/)
+- [Use template variables for dynamic dashboards](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables/)
+- [Set up alerting rules](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/alerting/)
+- [Troubleshoot the Zabbix data source](https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/troubleshooting/)

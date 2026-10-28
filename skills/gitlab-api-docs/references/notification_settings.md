@@ -47,6 +47,7 @@ These events are recognized:
 | `reopen_issue`                 | When an issue is reopened |
 | `reopen_merge_request`         | When a merge request is reopened |
 | `success_pipeline`             | When a pipeline completes successfully |
+{.sortable}
 
 ## Retrieve global notification settings
 
@@ -123,6 +124,7 @@ Supported attributes:
 | `reopen_issue`                 | boolean | No       | Turn on notifications when an issue is reopened |
 | `reopen_merge_request`         | boolean | No       | Turn on notifications when a merge request is reopened |
 | `success_pipeline`             | boolean | No       | Turn on notifications when a pipeline completes successfully |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
 
@@ -272,6 +274,7 @@ Supported attributes:
 | `reopen_issue`                 | boolean           | No       | Turn on notifications when an issue is reopened |
 | `reopen_merge_request`         | boolean           | No       | Turn on notifications when a merge request is reopened |
 | `success_pipeline`             | boolean           | No       | Turn on notifications when a pipeline completes successfully |
+{.sortable}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and one of the following response formats.
 

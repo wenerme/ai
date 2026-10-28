@@ -53,6 +53,7 @@ following response attributes:
 | `user.username`     | string  | Username of the user. |
 | `user.web_url`      | string  | URL of the user's profile. |
 | `user.website_url`  | string  | Website URL of the user. |
+{.sortable}
 
 Example request:
 
@@ -164,6 +165,7 @@ following response attributes:
 | `user.username`           | string  | Username of the user. |
 | `user.web_url`            | string  | URL of the user's profile. |
 | `user.website_url`        | string  | Website URL of the user. |
+{.sortable}
 
 Example request:
 
@@ -284,6 +286,7 @@ following response attributes:
 | `user.username`                           | string  | Username of the user. |
 | `user.web_url`                            | string  | URL of the user's profile. |
 | `user.website_url`                        | string  | Website URL of the user. |
+{.sortable}
 
 Example request with MD5 fingerprint:
 

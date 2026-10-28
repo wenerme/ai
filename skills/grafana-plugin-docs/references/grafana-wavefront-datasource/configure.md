@@ -15,7 +15,7 @@ Before you configure the data source, make sure you have:
 
 - **Grafana permissions:** An administrator role for the Grafana organization.
 - **Wavefront tenant URL:** For example, `https://myenvironment.wavefront.com`.
-- **Wavefront API token:** Generated from a user account or a service account. For details, refer to [Generate a Wavefront API token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/configure/#generate-a-wavefront-api-token).
+- **Wavefront API token:** Generated from a user account or a service account. For details, refer to [Generate a Wavefront API token](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/configure/#generate-a-wavefront-api-token).
 
 ## Generate a Wavefront API token
 
@@ -79,10 +79,10 @@ Expand table
 
 Expand table
 
-| Setting                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Request timeout in seconds** | Timeout for Wavefront API requests. Defaults to `30` seconds if left blank.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| **Enable Secure Socks Proxy**  | Route the Wavefront connection through Grafana’s [SOCKS5 connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) to reach a tenant on a different network. The switch only appears when the `secureSocksDSProxyEnabled` feature toggle is on and Grafana is v10.0.0 or later. This switch is also how you enable [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for the Wavefront data source in Grafana Cloud. |
+| Setting                        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Request timeout in seconds** | Timeout for Wavefront API requests. Defaults to `30` seconds if left blank.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Enable Secure Socks Proxy**  | Route the Wavefront connection through Grafana’s [SOCKS5 connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/) to reach a tenant on a different network. The switch only appears when the `secureSocksDSProxyEnabled` feature toggle is on and Grafana is v10.0.0 or later. This switch is also how you enable [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for the Wavefront data source in Grafana Cloud. |
 
 ## Verify the connection
 
@@ -99,7 +99,7 @@ Expand table
 | `Could not connect to Wavefront. This usually happens when the URL is incorrect.` | Wavefront returned a `400 Bad Request`. Check the **API URL**. |
 | `The credentials are incorrect. Check that the token is correct.`                 | Wavefront returned a `401 Unauthorized`. Check the **Token**.  |
 
-For more error scenarios, refer to [Troubleshoot the Wavefront data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/).
+For more error scenarios, refer to [Troubleshoot the Wavefront data source](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
@@ -107,9 +107,9 @@ You can provision the Wavefront data source with either a Grafana provisioning Y
 
 ### Provision the data source with YAML
 
-Define the data source in a YAML file under Grafana’s provisioning directory. For more information, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+Define the data source in a YAML file under Grafana’s provisioning directory. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -138,7 +138,7 @@ Set `enableSecureSocksProxy` to `true` only when you need to route the connectio
 
 You can provision the Wavefront data source with the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "wavefront" {
@@ -167,5 +167,5 @@ Set the `url` attribute on the resource and the `url` key inside `json_data_enco
 
 ## Next steps
 
-- Learn how to [build queries with the Wavefront query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
-- Create dynamic dashboards with [Wavefront template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-wavefront-datasource/latest/template-variables/).
+- Learn how to [build queries with the Wavefront query editor](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/query-editor/).
+- Create dynamic dashboards with [Wavefront template variables](https://grafana.com/docs/plugins/grafana-wavefront-datasource/latest/template-variables/).

@@ -17,15 +17,15 @@ Grafana Traces Drilldown helps you visualize insights from your Tempo traces dat
 - Save and load filter configurations to quickly return to previous investigations
 - Do all of this without writing TraceQL queries
 
-![Grafana Learning Journeys](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/learning-journey/map.svg)
+![Grafana Learning Journeys](https://grafana.com/media/docs/learning-journey/map.svg)
 
 Start your learning experience with Grafana Learning Paths
 
-Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore traces using Traces Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/learning-journeys/drilldown-traces/).
+Grafana Learning Paths provide a clear, structured path that leads you from beginner concepts to advanced use cases. Learn about this Grafana feature on [Explore traces using Traces Drilldown](https://grafana.com/docs/learning-journeys/drilldown-traces/).
 
 [Start learning→](https://grafana.com/docs/learning-journeys/drilldown-traces/)
 
-You can use the Drilldown apps to explore your telemetry data. Refer to [Telemetry signal workflows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
+You can use the Drilldown apps to explore your telemetry data. Refer to [Telemetry signal workflows](https://grafana.com/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
 
 ## Who is Traces Drilldown for?
 
@@ -39,19 +39,19 @@ With Traces Drilldown, you get the same powerful insights, by viewing and clicki
 
 [Get started
 \
-How do you use tracing data to investigate an issue? Start here.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/get-started/)
+How do you use tracing data to investigate an issue? Start here.](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/)
 
 [Access or install
 \
-Access or install Traces Drilldown.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/access/)
+Access or install Traces Drilldown.](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/access/)
 
 [Concepts
 \
-Learn the concepts you need to use tracing.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/concepts/)
+Learn the concepts you need to use tracing.](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts/)
 
 [Investigate trends and spikes
 \
-Use your tracing data to identify issues and determine the root cause.](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-exploretraces-app/latest/investigate/)
+Use your tracing data to identify issues and determine the root cause.](https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/)
 
 [Changelog
 \

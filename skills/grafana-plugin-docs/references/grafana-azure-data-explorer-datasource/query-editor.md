@@ -13,7 +13,7 @@ This document explains how to use the Azure Data Explorer query editor to build 
 
 Before you build queries, ensure you have the following:
 
-- A [configured Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
+- A [configured Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
 - An identity with viewer access to the databases you query.
 
 ## Key concepts
@@ -35,7 +35,7 @@ Before you write a query, select the cluster, database, and format in the query 
 
 ### Cluster
 
-Select a cluster to query. If a default cluster is set in the data source settings, it auto-populates the cluster selection. If no clusters are available, refer to [Configure the Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
+Select a cluster to query. If a default cluster is set in the data source settings, it auto-populates the cluster selection. If no clusters are available, refer to [Configure the Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
 
 ### Database
 
@@ -47,7 +47,7 @@ Use the **Format as** drop-down to format query results. The **Table**, **Time s
 
 - **Table** queries are mainly used in the table panel as a list of columns and rows. The following query returns rows with six columns:
 
-  kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```kusto
   AzureActivity
@@ -57,7 +57,7 @@ Use the **Format as** drop-down to format query results. The **Table**, **Time s
   ```
 - **Time series** queries are for the graph panel and similar panels. The query must contain exactly one `datetime` column, one or more numeric columns, and optionally one or more string columns as labels. The time column should be in ascending order. The following query returns the aggregated count grouped by the `Category` column and by hour:
 
-  kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```kusto
   AzureActivity
@@ -67,7 +67,7 @@ Use the **Format as** drop-down to format query results. The **Table**, **Time s
   ```
 
   Numeric columns are treated as metrics, and optional string columns are treated as tags. A time series is returned for each value column combined with a unique set of string column values.
-- **Trace** format displays data in the built-in trace visualization. The data must follow the [trace data frame structure](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/trace-integration/). The schema contains the `logs`, `serviceTags`, and `tags` fields, which are expected to be JSON objects:
+- **Trace** format displays data in the built-in trace visualization. The data must follow the [trace data frame structure](https://grafana.com/docs/grafana/latest/explore/trace-integration/). The schema contains the `logs`, `serviceTags`, and `tags` fields, which are expected to be JSON objects:
 
   - `logs` is an array of JSON objects, each with a `timestamp` field that has a numeric value and a `fields` field that is a key-value object.
   - `serviceTags` and `tags` are key-value JSON objects without nested objects.
@@ -75,7 +75,7 @@ Use the **Format as** drop-down to format query results. The **Table**, **Time s
   Values for keys are expected to be primitive types. When empty, pass `null`, an empty JSON object for `serviceTags` and `tags`, or an empty array for `logs`.
 - **Logs** formats query results for the logs panel and the **Logs** view in Explore. Include a `datetime` column for the log timestamp and a string column for the log message. The following query returns log rows within the dashboard time range:
 
-  kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```kusto
   MyLogTable
@@ -85,7 +85,7 @@ Use the **Format as** drop-down to format query results. The **Table**, **Time s
   ```
 - **ADX Time series** is available in **KQL** mode for queries that use the Kusto `make-series` operator. The query must have exactly one `datetime` column named `Timestamp` and at least one value column. Optionally, string columns are treated as labels:
 
-  kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+  kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
   ```kusto
   let T = range Timestamp from $__timeFrom to ($__timeTo + -30m) step 1m
@@ -114,14 +114,14 @@ Select **Builder** mode to build a query without writing KQL. The builder constr
 
 Expand table
 
-| Field         | Description                                                                                                                                                                                                                                                                                                                                                             |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Table**     | Select a table.                                                                                                                                                                                                                                                                                                                                                         |
-| **Columns**   | Select a subset of columns for faster results. Time series requires both time and numeric values; other columns are rendered as dimensions. Leave the field empty to select all columns. For more information, refer to [Time series dimensions](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/fundamentals/timeseries-dimensions/). |
-| **Filters**   | Add filters for the selected columns. Filter values are restricted to the column’s data type.                                                                                                                                                                                                                                                                           |
-| **Aggregate** | Add aggregations for the selected columns. Select an aggregation type and a column to aggregate.                                                                                                                                                                                                                                                                        |
-| **Group by**  | Add group-by clauses for the selected columns. For time group-bys, select a time range bucket.                                                                                                                                                                                                                                                                          |
-| **Timeshift** | Optionally shift the query time range to compare with an earlier period. Select **Hour before**, **Day before**, **Week before**, or enter a custom value such as `2h`.                                                                                                                                                                                                 |
+| Field         | Description                                                                                                                                                                                                                                                                                                                    |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Table**     | Select a table.                                                                                                                                                                                                                                                                                                                |
+| **Columns**   | Select a subset of columns for faster results. Time series requires both time and numeric values; other columns are rendered as dimensions. Leave the field empty to select all columns. For more information, refer to [Time series dimensions](https://grafana.com/docs/grafana/latest/fundamentals/timeseries-dimensions/). |
+| **Filters**   | Add filters for the selected columns. Filter values are restricted to the column’s data type.                                                                                                                                                                                                                                  |
+| **Aggregate** | Add aggregations for the selected columns. Select an aggregation type and a column to aggregate.                                                                                                                                                                                                                               |
+| **Group by**  | Add group-by clauses for the selected columns. For time group-bys, select a time range bucket.                                                                                                                                                                                                                                 |
+| **Timeshift** | Optionally shift the query time range to compare with an earlier period. Select **Hour before**, **Day before**, **Week before**, or enter a custom value such as `2h`.                                                                                                                                                        |
 
 The visual query builder supports `dynamic` columns, including arrays, JSON objects, and nested objects within arrays. Only the first 50,000 rows are queried, so only properties in the first 50,000 rows appear as options in the builder selectors. You can manually enter additional values that don’t appear by default. Because these queries use `mv-expand`, they can become resource intensive.
 
@@ -133,7 +133,7 @@ Select **KQL** mode to write queries in Kusto Query Language. The editor provide
 
 The following query returns the count of events per interval within the dashboard time range:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 MyTable
@@ -150,7 +150,7 @@ When the LLM plugin is enabled, click **Explain KQL** to generate a plain-langua
 >
 > You must install and enable the LLM plugin to use this feature.
 
-Select **OpenAI** mode to generate KQL from a natural language prompt. Install the [LLM app](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-llm-app/), then enable it.
+Select **OpenAI** mode to generate KQL from a natural language prompt. Install the [LLM app](https://grafana.com/grafana/plugins/grafana-llm-app/), then enable it.
 
 To use the query generator:
 
@@ -175,5 +175,5 @@ Expand table
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/template-variables/)
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/alerting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/template-variables/)
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/alerting/)

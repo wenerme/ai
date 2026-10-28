@@ -2270,78 +2270,6 @@ paths:
               "$ref": "#/components/schemas/postApiV4OrbitContextRequest"
       x-gitlab-tier: premium
       x-gitlab-lifecycle: experiment
-  "/api/v4/orbit/query/templates":
-    get:
-      operationId: getApiV4OrbitQueryTemplates
-      summary: List named query templates
-      description: Lists the server-defined named queries with their GQL text rendered
-        for the current user.
-      tags:
-      - Orbit
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
-      x-gitlab-tier: premium
-      x-gitlab-lifecycle: beta
-  "/api/v4/orbit/schema":
-    get:
-      operationId: getApiV4OrbitSchema
-      summary: Retrieve the schema
-      description: Retrieves the Orbit schema.
-      tags:
-      - Orbit
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
-      parameters:
-      - name: expand
-        required: false
-        description: Comma-separated node names to expand
-        schema:
-          type: string
-          nullable: true
-        in: query
-      - name: response_format
-        required: false
-        description: 'Response format: raw or llm'
-        schema:
-          type: string
-          enum:
-          - raw
-          - llm
-          default: raw
-        in: query
-      x-gitlab-tier: premium
-      x-gitlab-lifecycle: experiment
-  "/api/v4/orbit/status":
-    get:
-      operationId: getApiV4OrbitStatus
-      summary: Retrieve access and cluster health
-      description: Returns whether the user can access Orbit, plus cluster health.
-        Always returns 200, regardless of access.
-      tags:
-      - Orbit
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
-      parameters:
-      - name: response_format
-        required: false
-        description: 'Response format: raw or llm'
-        schema:
-          type: string
-          enum:
-          - raw
-          - llm
-          default: raw
-        in: query
-      x-gitlab-lifecycle: beta
   "/api/v4/orbit/skills":
     get:
       operationId: getApiV4OrbitSkills
@@ -15833,39 +15761,6 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4InternalOrgMoverExitMaintenanceRequest"
-  "/api/v4/internal/gitaly/object_pool_members":
-    get:
-      operationId: getApiV4InternalGitalyObjectPoolMembers
-      summary: List Gitaly object pool members
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
-      parameters:
-      - name: disk_paths
-        required: true
-        description: On-disk paths of the pool repositories. Limited to 500.
-        schema:
-          type: array
-          items:
-            type: string
-          nullable: true
-        in: query
-      - name: storage
-        required: true
-        description: Name of the storage shard.
-        schema:
-          type: string
-          nullable: true
-        in: query
-      - name: upstream_only
-        required: false
-        description: If `true`, returns only the upstream repository.
-        schema:
-          type: boolean
-          default: false
-        in: query
   "/api/v4/projects/{id}/ml/mlflow/api/2.0/mlflow-artifacts/artifacts":
     get:
       operationId: getApiV4ProjectsIdMlMlflowApi20MlflowArtifactsArtifacts
@@ -36443,6 +36338,22 @@ paths:
           type: boolean
           default: false
         in: query
+      - name: with_custom_attributes
+        required: false
+        description: If `true`, includes [custom attributes](https://docs.gitlab.com/api/custom_attributes/)
+          in the response. Administrators only.
+        schema:
+          type: boolean
+          default: false
+        in: query
+      - name: custom_attributes
+        required: false
+        description: Filter by [custom attributes](https://docs.gitlab.com/api/custom_attributes/)
+          that match all of the specified key and value pairs. Administrators only.
+        schema:
+          type: object
+          nullable: true
+        in: query
   "/api/v4/projects/{id}/custom_attributes":
     get:
       operationId: getApiV4ProjectsIdCustomAttributes
@@ -37520,6 +37431,14 @@ paths:
         required: false
         description: If `true`, returns only limited fields for each project. Without
           authentication, only limited fields are returned regardless of this setting.
+        schema:
+          type: boolean
+          default: false
+        in: query
+      - name: statistics
+        required: false
+        description: If `true`, includes project statistics. Available only to users
+          with the Reporter, Developer, Maintainer, or Owner role.
         schema:
           type: boolean
           default: false
@@ -111870,6 +111789,7 @@ components:
           nullable: true
         ai_action_api_rate_limit:
           type: integer
+          minimum: 1
           description: Maximum requests a user can make per 8 hours to aiAction endpoint
           nullable: true
         code_suggestions_api_rate_limit:

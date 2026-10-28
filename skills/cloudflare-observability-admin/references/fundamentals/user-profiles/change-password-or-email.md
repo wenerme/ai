@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/change-passw
 
 # Email address and password
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Change email address
 
@@ -33,7 +33,7 @@ To change the email address associated with your Cloudflare account:
 
 Billing and notification email addresses must be updated separately
 
-The process above will update your user profile email, but you may have specified separate emails to receive [billing invoices](https://developers.cloudflare.com/billing/manage/invoices/#turn-on-invoice-emails-from-cloudflare) and other types of [notifications](https://developers.cloudflare.com/notifications/get-started/#edit-a-notification). You will also need to update those email addresses if you want to receive those emails at your new address.
+Changing your email address updates your user profile email, but you may have specified separate emails to receive [billing invoices](https://developers.cloudflare.com/billing/manage/invoices/#turn-on-invoice-emails-from-cloudflare) and other types of [notifications](https://developers.cloudflare.com/notifications/get-started/#manage-alerts). You will also need to update those email addresses if you want to receive those emails at your new address.
 
 ## Change password
 
@@ -65,9 +65,11 @@ If you forget the email address associated with your application:
 
 ## Forgot your password
 
+Note
+
 You must be logged out of the Cloudflare dashboard to view the **Forgot your password?** option.
 
-If you forget the password associated with your email address:
+If you forget the password associated with your email address, or if you initially signed up for Cloudflare using social login (for example Google, Apple), you can use this process to set a new password.
 
 1. Go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select **Forgot your password?**.
 2. Enter your email address.
@@ -90,5 +92,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#page","headline":"Email address and password","description":"Learn how to change your email address or password associated with your account.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/og.png?v=50335e1cf071167b","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#page","headline":"Email address and password","description":"Learn how to change your email address or password associated with your account.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/og.png?v=50335e1cf071167b","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

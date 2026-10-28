@@ -13,8 +13,8 @@ Use template variables to create dynamic, reusable dashboards with the Looker da
 
 Before you create a variable, ensure you have:
 
-- [Configured the Looker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/).
-- A basic understanding of [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configured the Looker data source](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/configure/).
+- A basic understanding of [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -93,9 +93,9 @@ You can still use Looker variables in the standard Grafana ways:
 - Repeat a panel or row for each selected value.
 - Reference the values in panel titles, text panels, or queries to other data sources.
 
-For more information, refer to [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information, refer to [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Next steps
 
-- [Use the Looker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/)
-- [Troubleshoot Looker data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/)
+- [Use the Looker query editor](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/query-editor/)
+- [Troubleshoot Looker data source issues](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/)

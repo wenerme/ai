@@ -27,13 +27,13 @@ Routing, grouping, silencing, and inhibition all work on labels, and all of them
 
 Agree on a small set every rule carries—typically `severity` and a team or service label—and use the same values everywhere. A routing tree can only send critical alerts to on-call if every rule agrees on what `severity: critical` means and spells it identically.
 
-Refer to [Labels and annotations](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
+Refer to [Labels and annotations](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
 
 ## Set pending periods deliberately
 
 A pending period that’s too short produces alerts that fire and resolve on their own. Too long, and you learn about problems late.
 
-Match it to how long the condition has to hold before it’s genuinely worth interrupting someone. Then check the group’s evaluation interval is well below it. A pending period shorter than the interval doesn’t do what it looks like it does. Refer to [Rule groups and evaluation](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
+Match it to how long the condition has to hold before it’s genuinely worth interrupting someone. Then check the group’s evaluation interval is well below it. A pending period shorter than the interval doesn’t do what it looks like it does. Refer to [Rule groups and evaluation](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
 
 ## Write annotations for whoever gets paged
 
@@ -49,13 +49,13 @@ An alert saying only `HighErrorRate` sends someone hunting. One saying which ser
 
 Grouping is the main defense against a broad outage flooding a channel. Group by the labels that describe the scope of an incident, commonly `alertname` and a cluster or environment label.
 
-Keep the repeat interval long. A short one is a reliable way to make people mute the channel. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+Keep the repeat interval long. A short one is a reliable way to make people mute the channel. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
 
 ## Use inhibition for known cause-and-effect
 
 When one failure reliably produces a cascade of others, encode that as an inhibition rule rather than expecting people to work it out mid-incident.
 
-Always set equal labels, so the suppression is scoped. Refer to [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
+Always set equal labels, so the suppression is scoped. Refer to [Configure inhibition rules](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
 
 ## Keep silences short and explained
 
@@ -67,11 +67,11 @@ Review inactive silences periodically. A silence that keeps being recreated is t
 
 A rule failing to evaluate produces no alerts, which looks exactly like everything being fine.
 
-Check rule health periodically, and consider alerting on it. Most Prometheus-compatible backends expose rule evaluation failures as metrics, so you can write a rule that watches your other rules. Refer to [Alert rule state and health](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/).
+Check rule health periodically, and consider alerting on it. Most Prometheus-compatible backends expose rule evaluation failures as metrics, so you can write a rule that watches your other rules. Refer to [Alert rule state and health](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/).
 
 ## Test routing changes against real alerts
 
-After changing the routing tree, check the **Receiver** column on the **Alerts** page for an alert that’s currently firing. Predicting which route matches is easy to get wrong; reading what actually happened isn’t. Refer to [View active notifications](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
+After changing the routing tree, check the **Receiver** column on the **Alerts** page for an alert that’s currently firing. Predicting which route matches is easy to get wrong; reading what actually happened isn’t. Refer to [View active notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
 
 ## Keep rule groups small enough to finish
 

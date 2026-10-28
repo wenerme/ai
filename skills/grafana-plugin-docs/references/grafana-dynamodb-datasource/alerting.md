@@ -7,12 +7,12 @@ description: "Set up Grafana Alerting with the DynamoDB data source"
 
 # DynamoDB alerting
 
-The DynamoDB data source supports Grafana Alerting, which lets you define alert rules that evaluate PartiQL queries and trigger notifications when conditions are met. For general information about Grafana Alerting, refer to [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+The DynamoDB data source supports Grafana Alerting, which lets you define alert rules that evaluate PartiQL queries and trigger notifications when conditions are met. For general information about Grafana Alerting, refer to [Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Before you begin
 
-- [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
-- Understand [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- [Configure the DynamoDB data source](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
+- Understand [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -21,7 +21,7 @@ Alert rules evaluate query results to determine whether a condition is met. Dyna
 - **Numeric results:** The query must return at least one numeric column for Grafana to evaluate against a threshold or condition.
 - **Time-series format:** For time-based alert conditions, alias a datetime column `AS time` so the plugin formats the result as a time series.
 
-You can combine multiple queries (A, B, C) with Reduce and Math expressions to build complex alert conditions. Refer to [Expression queries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/alert-rules/queries-conditions/) for details.
+You can combine multiple queries (A, B, C) with Reduce and Math expressions to build complex alert conditions. Refer to [Expression queries](https://grafana.com/docs/grafana/latest/alerting/fundamentals/alert-rules/queries-conditions/) for details.
 
 > Caution
 >
@@ -29,7 +29,7 @@ You can combine multiple queries (A, B, C) with Reduce and Math expressions to b
 
 > Note
 >
-> The DynamoDB data source doesn’t support time-range macros such as `$__timeFilter`. Alert queries must include explicit time filters or rely on DynamoDB’s data model to return only recent data. For details on timestamp formats and workarounds, refer to [Dynamic time filtering doesn’t work](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work).
+> The DynamoDB data source doesn’t support time-range macros such as `$__timeFilter`. Alert queries must include explicit time filters or rely on DynamoDB’s data model to return only recent data. For details on timestamp formats and workarounds, refer to [Dynamic time filtering doesn’t work](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#dynamic-time-filtering-doesnt-work).
 
 ## Create an alert rule
 
@@ -53,7 +53,7 @@ The following examples show PartiQL queries suitable for alert rules.
 
 This query returns error counts over time for a specific application:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, errorCount
@@ -68,7 +68,7 @@ Configure a **Reduce** expression with **Last** to get the most recent value, th
 
 This query returns average response time, useful for detecting latency degradation:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, avg(responseTime) AS avg_response_time
@@ -84,7 +84,7 @@ Configure a **Reduce** expression with **Mean**, then add a **Threshold** expres
 
 This query checks for products with stock below a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT productId, stockCount
@@ -100,7 +100,7 @@ You can use multiple queries to compare values. For example, to alert when error
 
 **Query A** – error count:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, errorCount
@@ -111,7 +111,7 @@ ORDER BY timestamp DESC
 
 **Query B** – total request count:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT timestamp AS time, requestCount
@@ -124,6 +124,6 @@ Add **Reduce** expressions for each query using **Last**, then add a **Math** ex
 
 ## Next steps
 
-- Refer to the full [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/) for details on alert conditions, notification policies, and contact points.
-- Learn how to write queries in the [DynamoDB query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
-- [Troubleshoot DynamoDB data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/) if alerts aren’t firing as expected.
+- Refer to the full [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/) for details on alert conditions, notification policies, and contact points.
+- Learn how to write queries in the [DynamoDB query editor](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/query-editor/).
+- [Troubleshoot DynamoDB data source issues](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/) if alerts aren’t firing as expected.

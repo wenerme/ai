@@ -15,7 +15,7 @@ Looker data is modeled in LookML, the Looker modeling language, which defines mo
 
 Before you build a query, ensure you have:
 
-- [Configured the Looker data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/).
+- [Configured the Looker data source](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/configure/).
 - Credentials with permission to read the models, explores, and Looks you want to query.
 
 ## Key concepts
@@ -71,7 +71,7 @@ Expand table
 
 Use **JSON** mode to provide the raw LookML query body when the builder doesn’t cover your use case. Enter a JSON object that matches the Looker `run_inline_query` request body, for example:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -116,7 +116,7 @@ The following LookML query bodies show common starting points. Each uses JSON mo
 
 To plot a measure over time, select a date dimension and a measure, and bound the result to the dashboard time range:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -130,7 +130,7 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 To break a measure down by category, pivot a dimension into columns. Include the pivot field in both `fields` and `pivots`:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -145,7 +145,7 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 To show a top-N list, sort by a measure in descending order and set a low row limit:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -171,7 +171,7 @@ Expand table
 
 Macros apply only to **LookML** queries. The **Run Look** query type runs a saved Look as-is and doesn’t interpolate macros, so scope the Look’s time range in Looker instead.
 
-In builder mode, add the time filter in the **Filter Expression** field, for example `$__timeFilter(orders.created_date)`. In JSON mode, set it as the `filter_expression` value, as shown in [Query examples](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/#query-examples).
+In builder mode, add the time filter in the **Filter Expression** field, for example `$__timeFilter(orders.created_date)`. In JSON mode, set it as the `filter_expression` value, as shown in [Query examples](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/query-editor/#query-examples).
 
 ## Use cases
 
@@ -183,5 +183,5 @@ The following are common ways to use Looker queries in Grafana:
 
 ## Next steps
 
-- [Configure template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/template-variables/)
-- [Troubleshoot Looker data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/)
+- [Configure template variables](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/template-variables/)
+- [Troubleshoot Looker data source issues](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/)

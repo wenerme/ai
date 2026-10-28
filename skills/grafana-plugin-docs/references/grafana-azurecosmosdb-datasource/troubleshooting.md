@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Azure Cosmos DB data source in
 
 # Troubleshoot the Azure Cosmos DB data source
 
-This document provides solutions to common issues you might encounter when you configure or use the Azure Cosmos DB data source. For configuration instructions, refer to [Configure the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when you configure or use the Azure Cosmos DB data source. For configuration instructions, refer to [Configure the Azure Cosmos DB data source](https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure/).
 
 ## License and setup errors
 
@@ -33,7 +33,7 @@ Expand table
 
 **Solutions:**
 
-1. Confirm the plugin is licensed and activated for your environment. Refer to [Install and upgrade the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/install/).
+1. Confirm the plugin is licensed and activated for your environment. Refer to [Install and upgrade the Azure Cosmos DB data source](https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/install/).
 2. On self-managed Grafana, verify the Enterprise license is active under **Administration** &gt; **General** &gt; **Stats and license**.
 3. Verify you have the organization administrator role.
 
@@ -52,7 +52,7 @@ To check and update the plugin version:
 3. Review the installed version and the latest available version.
 4. If an update is available and you’re on self-managed Grafana, click **Update**.
 
-For upgrade steps across environments, refer to [Install and upgrade the Azure Cosmos DB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/install/).
+For upgrade steps across environments, refer to [Install and upgrade the Azure Cosmos DB data source](https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/install/).
 
 ## Authentication errors
 
@@ -96,13 +96,13 @@ This error appears when the account key isn’t a valid key, so Grafana can’t 
 
 Expand table
 
-| Cause                            | Solution                                                                                                                                                                                                                                                       |
-|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Wrong account endpoint           | Verify the endpoint is the full `.documents.azure.com` URI from the Azure portal, including the `https://` scheme and port. A shortened or incorrect host causes the connection to fail.                                                                       |
-| Wrong or rotated account key     | Copy a current primary or secondary key from the Azure portal and update the **Account Key** field. Verify the key directly against the account, for example with the Azure portal or a `curl` request, before retrying.                                       |
-| Insufficient key permissions     | Use an account key that grants read access to the databases and containers you query.                                                                                                                                                                          |
-| Firewall or network restrictions | If the account uses IP firewall rules or virtual network restrictions, allow your Grafana instance’s outbound addresses. For Grafana Cloud, allow its outbound IP addresses or use PDC. Refer to the connection errors that follow.                            |
-| Plugin not licensed              | Confirm your plan or license includes the Enterprise plugin. Refer to [License and setup errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/#license-and-setup-errors). |
+| Cause                            | Solution                                                                                                                                                                                                                            |
+|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wrong account endpoint           | Verify the endpoint is the full `.documents.azure.com` URI from the Azure portal, including the `https://` scheme and port. A shortened or incorrect host causes the connection to fail.                                            |
+| Wrong or rotated account key     | Copy a current primary or secondary key from the Azure portal and update the **Account Key** field. Verify the key directly against the account, for example with the Azure portal or a `curl` request, before retrying.            |
+| Insufficient key permissions     | Use an account key that grants read access to the databases and containers you query.                                                                                                                                               |
+| Firewall or network restrictions | If the account uses IP firewall rules or virtual network restrictions, allow your Grafana instance’s outbound addresses. For Grafana Cloud, allow its outbound IP addresses or use PDC. Refer to the connection errors that follow. |
+| Plugin not licensed              | Confirm your plan or license includes the Enterprise plugin. Refer to [License and setup errors](https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/#license-and-setup-errors).               |
 
 ## Connection errors
 
@@ -117,7 +117,7 @@ The data source test times out or queries fail with network errors.
 1. Verify network connectivity from the Grafana server to your Azure Cosmos DB endpoint.
 2. Check that firewall rules allow outbound HTTPS on port 443.
 3. Verify that the Azure Cosmos DB account firewall allows requests from your Grafana instance. If the account uses IP firewall rules or virtual network restrictions, add your Grafana instance’s outbound addresses to the allowlist.
-4. For Grafana Cloud, configure [Private data source connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if you’re accessing an Azure Cosmos DB account on a private network.
+4. For Grafana Cloud, configure [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if you’re accessing an Azure Cosmos DB account on a private network.
 
 ## Query errors
 
@@ -148,7 +148,7 @@ When the **PartitionKey** field is empty, the query runs across all partitions. 
 
 This most commonly affects aggregate queries, including alert queries such as the following:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(1) FROM c WHERE c.level = "error"
@@ -164,7 +164,7 @@ To run this kind of query, scope it to a single partition.
 
 > Note
 >
-> Older plugin versions had a bug where the `x-ms-documentdb-query-enablecrosspartition` header was set incorrectly, which caused Azure Cosmos DB to reject some queries. This is fixed in current versions. If you see cross-partition header errors, update the plugin. Refer to [Version and upgrade guidance](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
+> Older plugin versions had a bug where the `x-ms-documentdb-query-enablecrosspartition` header was set incorrectly, which caused Azure Cosmos DB to reject some queries. This is fixed in current versions. If you see cross-partition header errors, update the plugin. Refer to [Version and upgrade guidance](https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
 ### No data or empty results
 
@@ -216,7 +216,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

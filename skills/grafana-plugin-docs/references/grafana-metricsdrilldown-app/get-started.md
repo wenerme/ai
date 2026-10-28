@@ -40,9 +40,9 @@ Expand table
 
 If you also have other telemetry data, like logs or traces, you can use the telemetry signals together.
 
-- Refer to [Use signals together](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.
-- Refer to [Telemetry signal workflows](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
+- Refer to [Use signals together](https://grafana.com/docs/grafana-cloud/telemetry-signals/use-signals-together/) to learn about using metrics with other telemetry data and why correlation matters.
+- Refer to [Telemetry signal workflows](https://grafana.com/docs/grafana-cloud/telemetry-signals/workflows/) to explore workflows across all the Drilldown apps.
 
 ## Next steps
 
-Now you’re ready to drill down into your metric data. For more information, refer to [Drill down your metrics](http://grafana-com-website.grafana-com.svc.cluster.local.:80/404/).
+Now you’re ready to drill down into your metric data. For more information, refer to [Drill down your metrics](https://grafana.com/404/).

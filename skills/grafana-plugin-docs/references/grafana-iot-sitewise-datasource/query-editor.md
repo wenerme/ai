@@ -9,13 +9,13 @@ description: "Use the AWS IoT SiteWise query editor to build visual and SQL quer
 
 This document explains how to use the AWS IoT SiteWise query editor. The query editor supports a visual builder for the AWS IoT SiteWise APIs, an SQL clause builder, and a raw SQL code editor.
 
-For general information about the Grafana query editor, refer to [Query and transform data](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/).
+For general information about the Grafana query editor, refer to [Query and transform data](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 ## Before you begin
 
 Before you build a query, ensure you have:
 
-- Configured the [AWS IoT SiteWise data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
+- Configured the [AWS IoT SiteWise data source](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/).
 - Verified that your credentials have read access to the AWS IoT SiteWise assets and properties that you want to query.
 
 ## Key concepts
@@ -207,7 +207,7 @@ In **Code (SQL)** mode, write the query directly. The editor provides autocomple
 
 The default query is:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select $__selectAll from raw_time_series where $__timeFilter(event_timestamp)
@@ -246,7 +246,7 @@ For **Get property value aggregates** queries, the data source attaches metadata
 
 ## Query examples
 
-Use the following examples as starting points. The SQL examples use the views described in [Available views](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/#available-views).
+Use the following examples as starting points. The SQL examples use the views described in [Available views](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/#available-views).
 
 ### Chart aggregated values with the visual builder
 
@@ -261,7 +261,7 @@ To chart the hourly average of an asset property:
 
 Return the raw values for a property over the dashboard time range:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select event_timestamp, double_value
@@ -274,7 +274,7 @@ order by event_timestamp asc
 
 Filter the raw values to a single asset:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select event_timestamp, double_value
@@ -285,7 +285,7 @@ order by event_timestamp asc
 
 ### Return the most recent value for each property
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select property_alias, event_timestamp, double_value
@@ -297,7 +297,7 @@ order by property_alias
 
 Use the `$__autoResolution()` macro to match the resolution to the panel interval:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select event_timestamp, average_value
@@ -308,7 +308,7 @@ order by event_timestamp asc
 
 ### List the assets that use an asset model
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select asset_id, asset_name
@@ -326,5 +326,5 @@ The query editor supports a range of industrial monitoring scenarios, for exampl
 
 ## Next steps
 
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)

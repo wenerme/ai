@@ -11,19 +11,19 @@ To configure the Infinity data source, you need to create an instance of the dat
 
 This page explains how to:
 
-- [Add the data source](#add-the-data-source)
-- [Configure connection settings](#connection)
-- [Configure authentication](#authentication)
-- [Configure network settings](#network-settings)
-- [Configure additional settings](#additional-settings)
-- [Provision the data source](#provision-the-data-source)
+- [Add the data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#add-the-data-source)
+- [Configure connection settings](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#connection)
+- [Configure authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#authentication)
+- [Configure network settings](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#network-settings)
+- [Configure additional settings](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#additional-settings)
+- [Provision the data source](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#provision-the-data-source)
 
 ## Before you begin
 
 Before you configure the Infinity data source, you need:
 
 - Grafana version 11.6 or later
-- [Organization admin permissions](/docs/grafana/latest/administration/roles-and-permissions/#organization-roles) in Grafana, or equivalent [RBAC permissions](/docs/grafana/latest/administration/roles-and-permissions/access-control/) to manage data sources
+- [Organization admin permissions](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles) in Grafana, or equivalent [RBAC permissions](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/access-control/) to manage data sources
 - Network access from Grafana to your target API endpoints
 - Appropriate credentials for authenticated endpoints (API keys, OAuth credentials, etc.)
 
@@ -58,23 +58,23 @@ Expand table
 | **Base URL**      | Optional. The base URL for all queries. If configured, this URL is prefixed to all query URLs. For example, if you set `https://example.com/api` as the base URL and `/users` as the query URL, the final URL will be `https://example.com/api/users`.      |
 | **Allowed hosts** | A list of hosts that the data source is allowed to connect to. Required when authentication, custom headers, or TLS certificates are configured. If no allowed hosts are specified and none of these features are in use, all hosts are allowed by default. |
 
-For more information about URL configuration, refer to [URL reference](/docs/plugins/yesoreyeram-infinity-datasource/latest/references/url/).
+For more information about URL configuration, refer to [URL reference](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/references/url/).
 
 ### Authentication
 
 The Infinity data source supports the following authentication methods:
 
-- [No authentication](#no-authentication)
-- [Basic authentication](#basic-authentication)
-- [Bearer token](#bearer-token)
-- [API key](#api-key)
-- [Digest authentication](#digest-authentication)
-- [OAuth passthrough](#oauth-passthrough)
-- [OAuth 2.0 client credentials](#oauth-20-client-credentials)
-- [OAuth 2.0 JWT](#oauth-20-jwt)
-- [Azure authentication](#azure-authentication)
-- [Azure Blob storage](#azure-blob-storage)
-- [AWS authentication](#aws-authentication)
+- [No authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#no-authentication)
+- [Basic authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#basic-authentication)
+- [Bearer token](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#bearer-token)
+- [API key](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#api-key)
+- [Digest authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#digest-authentication)
+- [OAuth passthrough](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#oauth-passthrough)
+- [OAuth 2.0 client credentials](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#oauth-20-client-credentials)
+- [OAuth 2.0 JWT](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#oauth-20-jwt)
+- [Azure authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#azure-authentication)
+- [Azure Blob storage](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#azure-blob-storage)
+- [AWS authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/configure/#aws-authentication)
 
 #### No authentication
 
@@ -150,7 +150,7 @@ Expand table
 | **Scopes**          | Optional. Specifies requested permissions.                                            |
 | **Endpoint params** | Optional. Additional parameters for requests to the token endpoint.                   |
 
-For advanced token customization, refer to [OAuth2 Custom Tokens](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/). Key customization options include:
+For advanced token customization, refer to [OAuth2 Custom Tokens](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/). Key customization options include:
 
 - Custom header names (for example, `X-API-Key` instead of `Authorization`)
 - Custom token value formats (for example, `Token ${__oauth2.access_token}` instead of `Bearer ${__oauth2.access_token}`)
@@ -171,11 +171,11 @@ Expand table
 | **Subject**                | Optional. The user to impersonate.                                                      |
 | **Scopes**                 | Optional. A comma-separated list of requested permission scopes.                        |
 
-OAuth 2.0 JWT authentication also supports token customization. Refer to [OAuth2 Custom Tokens](/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/) for details.
+OAuth 2.0 JWT authentication also supports token customization. Refer to [OAuth2 Custom Tokens](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/oauth2-custom-tokens/) for details.
 
 #### Azure authentication
 
-To authenticate your API endpoints via Microsoft Azure authentication, refer to [Azure authentication](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/).
+To authenticate your API endpoints via Microsoft Azure authentication, refer to [Azure authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/azure/).
 
 #### Azure Blob storage
 
@@ -191,7 +191,7 @@ Expand table
 
 #### AWS authentication
 
-To authenticate your API endpoints via Amazon AWS authentication, refer to [AWS authentication](/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/).
+To authenticate your API endpoints via Amazon AWS authentication, refer to [AWS authentication](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/aws/).
 
 ### TLS settings
 
@@ -285,7 +285,7 @@ Expand table
 
 ### Private data source connect (PDC)
 
-Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. Refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for more information on how PDC works and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for steps on setting up a PDC connection.
+Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. Refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for more information on how PDC works and [Configure Grafana private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/) for steps on setting up a PDC connection.
 
 If you use PDC with AWS Authentication, the PDC agent must allow internet egress to `sts.<region>.amazonaws.com:443`.
 
@@ -307,11 +307,11 @@ If you receive a `Health check failed` message after you click **Save &amp; Test
 
 ## Provision the data source
 
-You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, and for available configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/).
+You can define and configure the data source in YAML files as part of Grafana’s provisioning system. For more information about provisioning, and for available configuration options, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/).
 
 ### Basic provisioning
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -325,7 +325,7 @@ datasources:
 
 The following example shows provisioning with basic authentication:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -345,7 +345,7 @@ datasources:
 
 ### Provisioning with custom headers
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -365,7 +365,7 @@ datasources:
 
 The following example shows advanced provisioning with TLS and additional options:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -412,7 +412,7 @@ You can provision the Infinity data source using the [Grafana Terraform provider
 
 ### Basic Terraform provisioning
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "infinity" {
@@ -425,7 +425,7 @@ resource "grafana_data_source" "infinity" {
 
 The following example shows provisioning with basic authentication:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "infinity" {
@@ -447,7 +447,7 @@ resource "grafana_data_source" "infinity" {
 
 The following example shows provisioning with bearer token authentication:
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "infinity" {
@@ -467,7 +467,7 @@ resource "grafana_data_source" "infinity" {
 
 ### Terraform provisioning with custom headers
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "infinity" {
@@ -496,7 +496,7 @@ Grafana administrators can configure plugin-wide settings using environment vari
 
 By default, pagination queries are limited to 5 pages maximum. To increase this limit, set the `GF_PLUGIN_PAGINATION_MAX_PAGES` environment variable:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 GF_PLUGIN_PAGINATION_MAX_PAGES=10
@@ -504,7 +504,7 @@ GF_PLUGIN_PAGINATION_MAX_PAGES=10
 
 For Docker deployments:
 
-shell [Copy code to clipboard] Copy
+shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```shell
 docker run -p 3000:3000 \

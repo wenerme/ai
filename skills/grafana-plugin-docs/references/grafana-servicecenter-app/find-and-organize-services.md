@@ -14,9 +14,9 @@ As your service catalog grows, use the Service Center home page and service list
 When you navigate to **Alerts &amp; IRM** &gt; **Service Center**, Service Center opens on the **Home** page. The home page links to the main ways to work with services:
 
 - **View services**: Open the service list.
-- **Create a service**: [Create a single service](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/). This card appears only if you have the Editor or Admin role.
-- **Discover services**: [Find and create services](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/) from the labels on your SLOs, alerts, dashboards, incidents, and synthetic checks.
-- **Import from Backstage**: [Import services](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#import-services-from-backstage) from your Backstage software catalog.
+- **Create a service**: [Create a single service](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/). This card appears only if you have the Editor or Admin role.
+- **Discover services**: [Find and create services](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/discover-services/) from the labels on your SLOs, alerts, dashboards, incidents, and synthetic checks.
+- **Import from Backstage**: [Import services](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#import-services-from-backstage) from your Backstage software catalog.
 
 ## Search and filter the service list
 
@@ -26,7 +26,7 @@ To narrow the list, use any combination of the following filters. The list shows
 
 - **Search by name or identifier**: Matches services whose name or service identifier contains each word you enter. The search isn’t case-sensitive, and it doesn’t match additional identifiers or descriptions.
 - **Filter by team**: Shows services owned by any of the selected teams.
-- **Filter by identifier**: Shows services that have any of the selected additional identifiers, such as `namespace=checkout-prod`. For more information, refer to [Add additional identifiers](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#add-additional-identifiers).
+- **Filter by identifier**: Shows services that have any of the selected additional identifiers, such as `namespace=checkout-prod`. For more information, refer to [Add additional identifiers](https://grafana.com/docs/grafana-cloud/alerting-and-irm/service-center/create-a-service/#add-additional-identifiers).
 - **Starred**: Shows only the services you starred.
 - **My teams**: Shows only services owned by teams you belong to. This switch appears only if you’re a member of at least one team.
 

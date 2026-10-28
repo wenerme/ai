@@ -20,7 +20,7 @@ You can apply styles using one, all, or any combination of the following methods
   - For an external Grafana instance: `https://GRAFANA-URL/public/grafanaCSS.css`
   - For a local Grafana instance: `/public/grafanaCSS.css`
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/style-methods.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/style-methods.png)
 
 ## Dashboard variables
 
@@ -36,7 +36,7 @@ You can define your styles and use them in a template (**Content**, **Default Co
 
 Code for a template:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <td class="name">
@@ -46,7 +46,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Code for the **Styles editor**:
 
-CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+CSS ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```css
 td.name {
@@ -61,19 +61,19 @@ b.name {
 }
 ```
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/styles.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/styles.png)
 
 ## Internal method: Example 2
 
 This example demonstrates a simple styling approach. You can display the status of your devices or servers as green or red dots in a table.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/dots.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/dots.png)
 
 To display this on your dashboard, copy the **Content** and **CSS Styles** parameters from the following sections.
 
 ### Content
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <table>
@@ -111,7 +111,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 ### CSS Styles
 
-CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+CSS ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```css
 .dot_iO {
@@ -143,13 +143,13 @@ tr td {
 
 ## External method: Example
 
-For the external method example, refer to the [Leaflet.js interactive maps](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/leaflet-js/).
+For the external method example, refer to the [Leaflet.js interactive maps](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/leaflet-js/).
 
 ## Override
 
 You can see all the defined default styles in the source code.
 
-ts ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+ts ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ts
 import { css } from '@emotion/css';
@@ -245,7 +245,7 @@ export const getStyles = (theme: GrafanaTheme2) => {
 
 To display content without padding and margins, you need to override the parent CSS style.
 
-CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+CSS ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```css
 & {
@@ -258,13 +258,13 @@ CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster
 
 The code syntax highlighting is based on the `highlight.js` library, which supports key programming languages.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/json.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/json.png)
 
 ### Styling
 
 The Accessibility (A11Y) syntax highlighting style for light and dark themes is included. You can override it in the styles editor by copying one of the styles from the [project source files](https://github.com/highlightjs/highlight.js/tree/main/src/styles).
 
-CSS ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+CSS ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```css
 

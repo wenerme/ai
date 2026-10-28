@@ -11,7 +11,7 @@ The New Relic data source allows you to query and visualize data from New Relic 
 
 > Note
 >
-> The New Relic data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan and [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The New Relic data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan and [Grafana Enterprise](https://grafana.com/docs/grafana/latest/enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -33,7 +33,7 @@ To use the New Relic data source, you need:
 
 - Grafana 11.6.7 or later.
 - A New Relic account with a [User API key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#user-key) and your [Account ID](https://docs.newrelic.com/docs/accounts/accounts-billing/account-structure/account-id/).
-- A [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or an [activated self-managed Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/).
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated self-managed Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).
 
 ## Known limitations
 
@@ -44,22 +44,22 @@ To use the New Relic data source, you need:
 
 The following documents help you set up and use the New Relic data source:
 
-- [Configure the New Relic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/configure/)
-- [New Relic query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/annotations/)
-- [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/)
+- [Configure the New Relic data source](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/configure/)
+- [New Relic query editor](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/annotations/)
+- [Alerting](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Add [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/annotations/) to overlay deployment and alert events on your graphs.
-- Configure [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/template-variables/) for dynamic dashboards.
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to run free-form NRQL queries without building a dashboard.
-- Add [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels/transformations/) to manipulate query results.
-- Set up [Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-newrelic-datasource/latest/alerting/) to monitor your New Relic data.
+- Add [Annotations](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/annotations/) to overlay deployment and alert events on your graphs.
+- Configure [Template variables](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/template-variables/) for dynamic dashboards.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to run free-form NRQL queries without building a dashboard.
+- Add [Transformations](https://grafana.com/docs/grafana/latest/panels/transformations/) to manipulate query results.
+- Set up [Alerting](https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/alerting/) to monitor your New Relic data.
 
 ## Pre-built dashboards
 
@@ -74,7 +74,7 @@ To import the dashboard:
 3. Click the **Dashboards** tab.
 4. Click **Import** next to the Host Metrics dashboard.
 
-For more information about importing dashboards, refer to [Import a dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
+For more information about importing dashboards, refer to [Import a dashboard](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
 ## Related resources
 

@@ -9,15 +9,15 @@ description: "This document describes the templates and variables for the Databr
 
 Instead of hard-coding details such as server, application, and sensor names in metric queries, you can use variables. Grafana displays these variables in drop-down select boxes at the top of the dashboard to help you change the data displayed in your dashboard. Grafana refers to such variables as **template variables**.
 
-After creating a variable, you can use it in your Databricks queries by using [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/syntax/). For more information about variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/).
+After creating a variable, you can use it in your Databricks queries by using [Variable syntax](https://grafana.com/docs/grafana/latest/variables/syntax/). For more information about variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/variables/).
 
 ## Create Databricks query variables
 
-To add a new Databricks query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/variables/variable-types/add-query-variable/).
+To add a new Databricks query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/variables/variable-types/add-query-variable/).
 
 To create a query variable for Databricks, write a SQL query that returns your desired variable options:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM sales_data ORDER BY region
@@ -29,7 +29,7 @@ This query creates a drop-down with all unique regions from the `sales_data` tab
 
 If your query returns a single column, Grafana uses that column for both the variable value and its display text. To show a friendly label while submitting a different value to your queries, return two columns: the first column is the value, and the second column is the display text.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT region_code, region_name FROM sales_data ORDER BY region_name
@@ -41,7 +41,7 @@ In this example, the drop-down shows `region_name`, but the variable interpolate
 
 You can reference an existing variable in the query that defines another variable to create dependent, or chained, variables. For example, if you have a `region` variable, define a `city` variable whose options depend on the selected region:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT city FROM sales_data WHERE region = '${region}' ORDER BY city
@@ -58,9 +58,9 @@ Match the interpolated value to the column’s data type:
 - **String values** must be quoted. Wrap the variable in single quotes, for example `WHERE region = '${region}'`.
 - **Numeric values** are unquoted, for example `WHERE id = ${id}`.
 
-For multi-value variables, use a [variable format](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/) so the generated SQL is valid. For example, use `${region:singlequote}` for a quoted, comma-separated list suitable for an `IN` clause:
+For multi-value variables, use a [variable format](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/) so the generated SQL is valid. For example, use `${region:singlequote}` for a quoted, comma-separated list suitable for an `IN` clause:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM sales_data
@@ -69,6 +69,6 @@ WHERE region IN (${region:singlequote})
 
 > Caution
 >
-> Variable interpolation behavior changed between major plugin versions. After a major upgrade, queries that relied on older interpolation behavior can return a data type mismatch and show `no data`, and data links that include variables can have different URL encoding. After upgrading, review queries that use variables and confirm quoting and data types are correct. Refer to [No data after upgrading the plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#no-data-after-upgrading-the-plugin).
+> Variable interpolation behavior changed between major plugin versions. After a major upgrade, queries that relied on older interpolation behavior can return a data type mismatch and show `no data`, and data links that include variables can have different URL encoding. After upgrading, review queries that use variables and confirm quoting and data types are correct. Refer to [No data after upgrading the plugin](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/troubleshooting/#no-data-after-upgrading-the-plugin).
 
-You can also use built-in macros, such as `$__timeFilter`, in your queries. Refer to [Macros](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros) for the full list.
+You can also use built-in macros, such as `$__timeFilter`, in your queries. Refer to [Macros](https://grafana.com/docs/plugins/grafana-databricks-datasource/latest/query-editor/#macros) for the full list.

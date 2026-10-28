@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Azure DevOps data source plugi
 
 # Troubleshoot Azure DevOps data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Azure DevOps data source. For configuration instructions, refer to [Configure the Azure DevOps data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Azure DevOps data source. For configuration instructions, refer to [Configure the Azure DevOps data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -36,12 +36,12 @@ These errors occur when the personal access token (PAT) is invalid, expired, or 
 
 Expand table
 
-| Cause                  | Solution                                                                                                                                                                                                                                                                  |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Invalid or revoked PAT | Generate a new PAT in Azure DevOps and update the data source configuration.                                                                                                                                                                                              |
-| Expired PAT            | Create a new PAT with a longer expiration period and update the data source configuration.                                                                                                                                                                                |
-| Missing PAT scopes     | Verify the PAT has the required scopes (`Code (Read)`, `Build (Read)`, `Release (Read)`). Refer to [Required PAT scopes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#required-pat-scopes). |
-| Wrong organization URL | Verify the **URL** field matches your Azure DevOps organization (for example, `https://dev.azure.com/<ORGANIZATION>`).                                                                                                                                                    |
+| Cause                  | Solution                                                                                                                                                                                                                         |
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Invalid or revoked PAT | Generate a new PAT in Azure DevOps and update the data source configuration.                                                                                                                                                     |
+| Expired PAT            | Create a new PAT with a longer expiration period and update the data source configuration.                                                                                                                                       |
+| Missing PAT scopes     | Verify the PAT has the required scopes (`Code (Read)`, `Build (Read)`, `Release (Read)`). Refer to [Required PAT scopes](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#required-pat-scopes). |
+| Wrong organization URL | Verify the **URL** field matches your Azure DevOps organization (for example, `https://dev.azure.com/<ORGANIZATION>`).                                                                                                           |
 
 ### Dashboards suddenly return authentication errors after December 1, 2026
 
@@ -67,7 +67,7 @@ To check whether your PAT is global:
 
 **Solution:**
 
-1. In Azure DevOps, create a new PAT scoped to a single organization. Refer to [Create a personal access token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token).
+1. In Azure DevOps, create a new PAT scoped to a single organization. Refer to [Create a personal access token](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token).
 2. In the data source configuration, click **Reset** on the **PAT** field and paste the new token.
 3. Click **Save &amp; test**.
 
@@ -101,7 +101,7 @@ Expand table
 
 1. Set the **Username** field in **Optional Configuration** to the PAT owner’s username.
 2. Verify the server URL is correct and accessible from the Grafana server.
-3. If connecting from Grafana Cloud to an on-premises instance, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable the **Secure Socks Proxy** toggle.
+3. If connecting from Grafana Cloud to an on-premises instance, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and enable the **Secure Socks Proxy** toggle.
 
 ### “Failed to get settings”
 
@@ -112,7 +112,7 @@ Expand table
 **Solutions:**
 
 1. Verify the data source configuration is saved. Click **Save &amp; test** rather than just **Test**.
-2. If provisioning the data source, check that the YAML file has the correct structure with `jsonData.url` and `secureJsonData.patToken`. Refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/#provision-the-data-source).
+2. If provisioning the data source, check that the YAML file has the correct structure with `jsonData.url` and `secureJsonData.patToken`. Refer to [Provision the data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/#provision-the-data-source).
 
 ### Health check succeeds but shows 0 projects
 
@@ -143,7 +143,7 @@ These errors occur when Grafana can’t reach the Azure DevOps endpoints.
 
 1. Verify network connectivity from the Grafana server to the Azure DevOps endpoint.
 2. Check firewall rules allow outbound HTTPS (port 443) to `dev.azure.com` or your on-premises server.
-3. For on-premises Azure DevOps Server behind a private network, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if using Grafana Cloud.
+3. For on-premises Azure DevOps Server behind a private network, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if using Grafana Cloud.
 4. Verify the **URL** doesn’t include a trailing slash or extra path segments.
 
 ## Query errors
@@ -276,7 +276,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -292,7 +292,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [Azure DevOps REST API documentation](https://learn.microsoft.com/en-us/rest/api/azure/devops/) for service-specific guidance.
-3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user.
+3. Contact [Grafana Support](https://grafana.com/profile/org#support) if you’re an Enterprise, Cloud Pro, or Cloud Advanced user.
 4. When reporting issues, include:
 
    - Grafana version and plugin version

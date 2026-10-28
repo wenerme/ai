@@ -11,8 +11,8 @@ Use template variables to create dynamic, reusable dashboards that aren’t tied
 
 ## Before you begin
 
-- [Configure the Catchpoint data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
-- Understand [Grafana template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- [Configure the Catchpoint data source](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/configure/).
+- Understand [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -38,7 +38,7 @@ To create a query variable:
 
 ## Query examples
 
-A query variable uses the same **Action** selector as the [query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/). The **SLO list** query is the most useful source for a variable because it returns a clean list of SLOs rather than time series data. The values are loaded from your Catchpoint account, so what you see depends on the SLOs configured there.
+A query variable uses the same **Action** selector as the [query editor](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/). The **SLO list** query is the most useful source for a variable because it returns a clean list of SLOs rather than time series data. The values are loaded from your Catchpoint account, so what you see depends on the SLOs configured there.
 
 ### Populate a variable with SLOs
 
@@ -54,9 +54,9 @@ After you select the values, the variable’s drop-down lists your SLOs, which y
 
 ## Use variables in queries
 
-After you create a variable, reference it in your Catchpoint queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, create an SLO variable named `slo` and reference it in the **SLO** field of an SLO Status query:
+After you create a variable, reference it in your Catchpoint queries using [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/). For example, create an SLO variable named `slo` and reference it in the **SLO** field of an SLO Status query:
 
-text ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 $slo
@@ -66,5 +66,5 @@ This lets you switch the visualized SLO from a dashboard drop-down without editi
 
 ## Next steps
 
-- [Catchpoint query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)
+- [Catchpoint query editor](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/query-editor/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/troubleshooting/)

@@ -134,14 +134,28 @@ PyMuPDF is licensed under AGPL-3.0, with a commercial license available from Art
 Hybrid converter: pure-Python for the common formats, pandoc fallback for the rest.
 
 Native path (no external binary required):
-- `.docx` — via `mammoth`; text-only tables (with footnotes) and chart data become pipe Markdown, and OMML / Office Math equations (Word-native or MathType "Convert to Office Math") are rewritten to inline LaTeX. Classic MathType OLE objects carry no OMML and are kept only as their preview image.
+- `.docx` — via `mammoth`; text-only tables (with footnotes) and chart data become pipe Markdown, and OMML / Office Math equations (Word-native or MathType "Convert to Office Math") are rewritten to inline LaTeX, including footnote and endnote math. Classic MathType OLE objects carry no OMML and are kept only as their preview image. Simple fields (`w:fldSimple`, e.g. caption numbers) keep their displayed result, and directly hidden runs (`w:vanish`) are omitted with a warning, matching what Word displays.
 - `.html` / `.htm` — via `markdownify` + `beautifulsoup4`
-- `.epub` — via `ebooklib` + `markdownify`
+- `.epub` — via `ebooklib` + `markdownify`; keep spine order, then append
+  supplemental document items (not the EPUB 3 navigation document) with a
+  warning. Resolve images relative to each
+  chapter before basename fallbacks, so equal filenames in different chapter
+  directories keep their own images. Non-rendered script/style/template content
+  is omitted with a warning; interactive `hidden` / `display:none` text is kept.
 - `.ipynb` — via `nbconvert`; code-cell output images and Markdown attachments
   use `<output-stem>_files/` with relative Markdown references
 
 Pandoc fallback (only if you need these):
 - `.doc`, `.odt`, `.rtf`, `.tex`/`.latex`, `.rst`, `.org`, `.typ`
+- `.odt` uses a temporary copy to expose table header rows, flatten text-box
+  paragraphs while retaining inline links, and resolve conditional text from
+  its stored `text:is-hidden` state. Diagnostics report these normalizations
+  and excluded author-hidden fields; text-box geometry remains in the source.
+- `.rtf` normalizes flat field instruction/result containers in a temporary
+  copy so Pandoc retains their displayed text and links. Author-hidden text is
+  omitted with a warning. Both preparations leave source files unchanged.
+- `.doc` still requires a Pandoc build with a `doc` reader; a build without
+  that reader reports an explicit conversion failure, not an empty success.
 - `.typ` evaluates under pandoc, so a real project file that imports its template,
   a package, or a custom function fails there; it then (or without pandoc) keeps the
   source text with `=` headings mapped to Markdown and raw blocks, markup, math, and
@@ -233,6 +247,10 @@ python3 scripts/source_to_md/ppt_to_md.py template.ppsx -o notes/template.md
 
 Behavior:
 - extracts slide text in reading order
+- excludes author-hidden shapes and groups (`cNvPr/@hidden`) with warnings; their text, pictures, tables, charts, and SmartArt descendants do not enter Markdown or the Beautify intake inventory
+- rewrites Office Math equations (`a14:m` OMML) as `$...$` inline or `$$...$$` display LaTeX, using the same converter as `.docx`
+- uses a chart's own visible title in its `> [Chart]` header, and a picture's alt text (`descr`) as its Markdown alt text
+- reads the `mc:Fallback` of other shape-tree `mc:AlternateContent` it cannot interpret (3D models, ink, zoom), so their preview pictures and text are kept; ChartEx stays reported as unsupported
 - converts PowerPoint tables to Markdown tables; cell-internal line breaks become `<br>` so they cannot break the pipe-table row structure
 - transcribes category charts as category × series tables and scatter/bubble charts as typed X/Y[/size] point tables
 - preserves every readable chart dimension or series and emits `[Chart data warning: <reason>]` for missing caches/count mismatches; `[Chart data unavailable: <reason>]` is reserved for charts with no readable points (and unsupported ChartEx), so XY data is never flattened into a misleading category table
@@ -262,7 +280,7 @@ python3 scripts/pptx_intake.py deck.pptx -o projects/demo/analysis
 
 Outputs (per source deck, prefixed by file stem):
 - `<stem>.identity.json` — canvas size/aspect, theme palette/fonts, observed colors/fonts
-- `<stem>.slide_library.json` — text slots, geometry, native tables, native chart display caches, and SmartArt nodes/connections
+- `<stem>.slide_library.json` — text slots, geometry, native tables, native chart titles/display caches, and SmartArt nodes/connections. Chart titles include rich text and linked-string caches; Beautify carries them into its frozen inventory and verifies their presence in the exported deck.
 - `source_profile.json` — the single multi-deck index: a compact Strategist-facing digest per deck (over identity, tables, charts, SmartArt, and page types) under `decks[]`, with prefixed artifact pointers
 
 `project_manager.py import-sources` runs this automatically for PPTX/PPTM/PPSX/PPSM/POTX/POTM inputs and stores the bundle directly under `analysis/`. Multi-deck per project: each deck uses its archived stem, including any collision suffix, for `<stem>.*` artifacts and its `decks[]` entry in the shared `source_profile.json` index. Re-running intake for an existing archived stem replaces its entry. The beautify profile stays single-deck and reads one chosen deck's `<stem>.*` artifacts.

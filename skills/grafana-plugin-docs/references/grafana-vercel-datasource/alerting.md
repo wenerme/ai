@@ -7,11 +7,11 @@ description: "Create Grafana alert rules on Vercel data with the Vercel data sou
 
 # Vercel alerting
 
-The Vercel data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), so you can create alert rules on Vercel data, such as deployment failures or firewall attack activity. The plugin is a backend data source, so Grafana evaluates these queries server-side during each alert rule evaluation.
+The Vercel data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), so you can create alert rules on Vercel data, such as deployment failures or firewall attack activity. The plugin is a backend data source, so Grafana evaluates these queries server-side during each alert rule evaluation.
 
 ## Before you begin
 
-Before you create an alert rule, ensure you have [configured the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/) and are familiar with the [Vercel query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/query-editor/).
+Before you create an alert rule, ensure you have [configured the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/) and are familiar with the [Vercel query editor](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/query-editor/).
 
 ## How alerting works
 
@@ -51,5 +51,5 @@ The rule fires when the **List deployments** action returns one or more `ERROR` 
 
 ## Next steps
 
-- Configure [notification policies and contact points](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/) to route alerts.
-- Refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/) if alert queries return no data.
+- Configure [notification policies and contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/) to route alerts.
+- Refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/) if alert queries return no data.

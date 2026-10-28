@@ -446,15 +446,15 @@ The context available depends on how the method was invoked:
 
 ## Next steps
 
-### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/agent-class/)
 
 Complete API reference for the Agents SDK.
 
-### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/agent-class/callable-methods/)
 
 Expose methods to clients via RPC.
 
-### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/agent-class/state/)
 
 Manage and sync agent state.
 

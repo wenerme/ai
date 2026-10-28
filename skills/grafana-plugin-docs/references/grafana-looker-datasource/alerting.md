@@ -7,15 +7,15 @@ description: "Set up alerts using Looker data in Grafana"
 
 # Looker alerting
 
-The Looker data source supports [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/), so you can create alert rules based on data from your Looker instance and receive notifications when specific conditions are met.
+The Looker data source supports [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/), so you can create alert rules based on data from your Looker instance and receive notifications when specific conditions are met.
 
 ## Before you begin
 
 Before you create an alert rule, ensure you have:
 
 - The appropriate permissions to create alert rules in Grafana.
-- A [configured](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/configure/) and working Looker data source.
-- Familiarity with [Grafana Alerting concepts](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/fundamentals/).
+- A [configured](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/configure/) and working Looker data source.
+- Familiarity with [Grafana Alerting concepts](https://grafana.com/docs/grafana/latest/alerting/fundamentals/).
 
 ## Query requirements for alerting
 
@@ -32,7 +32,7 @@ Queries that return only text or non-numeric data can’t be used directly for a
 
 > Note
 >
-> The `$__timeFilter()`, `$__timeFrom()`, and `$__timeTo()` macros are applied differently depending on the query mode. In **LookML JSON** mode, you can use a macro anywhere in the query body. In **LookML Builder** mode, you can use macros only in the **Filter Expression** field. The **Run Look** query type doesn’t support macros, so scope the saved Look in Looker instead. For macro details, refer to the [Looker query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/query-editor/#macros).
+> The `$__timeFilter()`, `$__timeFrom()`, and `$__timeTo()` macros are applied differently depending on the query mode. In **LookML JSON** mode, you can use a macro anywhere in the query body. In **LookML Builder** mode, you can use macros only in the **Filter Expression** field. The **Run Look** query type doesn’t support macros, so scope the saved Look in Looker instead. For macro details, refer to the [Looker query editor](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/query-editor/#macros).
 
 ## Create an alert rule
 
@@ -56,7 +56,7 @@ To create an alert rule using Looker data:
    - Set the pending period to control how long the condition must be true before the alert fires.
 7. Click **Save rule**.
 
-For detailed instructions, refer to [Create a Grafana-managed alert rule](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+For detailed instructions, refer to [Create a Grafana-managed alert rule](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 
 ## Example: Measure threshold alert
 
@@ -65,7 +65,7 @@ This example creates an alert that fires when a LookML measure crosses a thresho
 1. Create an alert rule and select your Looker data source.
 2. Use the **LookML** query type in **JSON** mode with a query body similar to the following:
 
-   JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```json
    {
@@ -127,7 +127,7 @@ Configure what happens when no data is returned. In the alert rule, find **Confi
 
 ### Test queries in Explore first
 
-Before you create an alert, verify the query in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/). Confirm the result includes at least one numeric field and returns values in the expected range for your threshold.
+Before you create an alert, verify the query in [Explore](https://grafana.com/docs/grafana/latest/explore/). Confirm the result includes at least one numeric field and returns values in the expected range for your threshold.
 
 ## Troubleshooting
 
@@ -138,10 +138,10 @@ If your alerts aren’t working as expected:
 - **Unexpected values:** Confirm the query returns a numeric field for the threshold.
 - **Alert never fires:** Ensure the **Reduce** expression matches your data shape.
 
-For additional troubleshooting, refer to [Troubleshoot Looker data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).
+For additional troubleshooting, refer to [Troubleshoot Looker data source issues](https://grafana.com/docs/plugins/grafana-looker-datasource/latest/troubleshooting/).
 
 ## Additional resources
 
-- [Grafana Alerting documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/)
-- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting documentation](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)

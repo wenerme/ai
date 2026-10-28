@@ -11,8 +11,8 @@ Use template variables with the Amazon Aurora data source to create dynamic, reu
 
 ## Before you begin
 
-- Ensure you have [configured the Amazon Aurora data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/configure/).
-- Understand [Grafana variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+- Ensure you have [configured the Amazon Aurora data source](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/configure/).
+- Understand [Grafana variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -47,7 +47,7 @@ To create a query variable:
 
 Return all table names in a PostgreSQL-compatible database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select table_name from information_schema.tables where table_schema = 'public'
@@ -55,7 +55,7 @@ select table_name from information_schema.tables where table_schema = 'public'
 
 Return all table names in the current MySQL-compatible database:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select table_name from information_schema.tables where table_schema = database()
@@ -63,7 +63,7 @@ select table_name from information_schema.tables where table_schema = database()
 
 Return distinct values from a column:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select distinct city from weather_readings
@@ -73,7 +73,7 @@ select distinct city from weather_readings
 
 To display a user-friendly label in the drop-down while using a different value in queries, alias the columns as `text` and `value`:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select city_name as text, city_id as value from cities
@@ -85,19 +85,19 @@ In this example, the variable drop-down shows city names, but queries use the `c
 
 Reference a variable in any Aurora query with the `$variable` or `${variable}` syntax. Grafana interpolates the variable value before sending the query to your database. For example, with a variable named `tableName`, you can reuse the same panel across multiple tables:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select * from $tableName limit 3;
 ```
 
-For more interpolation options, refer to [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+For more interpolation options, refer to [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ### Multi-value variables
 
 When a variable allows multiple selections, use a format option so the values interpolate into valid SQL. Without a format option, Grafana renders multiple values as `{value1,value2}`, which isn’t valid SQL. Use `singlequote` for string columns:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select recorded_at, temperature
@@ -111,7 +111,7 @@ With `New York` and `Toronto` selected, the query becomes `where city in ('New Y
 
 You can create dependent variables where one variable’s options depend on another variable’s selection. For example, create a `city` variable first, then create a `neighborhood` variable that queries values for the selected city:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select distinct neighborhood from weather_readings where city = ${city:singlequote}
@@ -125,5 +125,5 @@ When the user changes the `city` selection, the `neighborhood` options refresh a
 
 ## Next steps
 
-- [Amazon Aurora query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)
+- [Amazon Aurora query editor](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/query-editor/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/troubleshooting/)

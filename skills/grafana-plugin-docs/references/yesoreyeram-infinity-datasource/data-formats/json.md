@@ -11,7 +11,7 @@ Select **JSON** as the query type to retrieve data from JSON APIs or files. You 
 
 > Tip
 >
-> For a guided introduction, check out the [Visualize JSON data using the Infinity data source](/docs/learning-journeys/infinity-json/) learning journey.
+> For a guided introduction, check out the [Visualize JSON data using the Infinity data source](https://grafana.com/docs/learning-journeys/infinity-json/) learning journey.
 
 Give it a try using Grafana Play
 
@@ -51,7 +51,7 @@ For data without timestamps, set the **Format** to **Timeseries** to add a simul
 
 **Example data**:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -72,7 +72,7 @@ Instead of querying a URL, you can provide JSON data directly in the query edito
 
 **Example inline data**:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -89,7 +89,7 @@ The root selector supports JSONata syntax for complex data extraction. Any selec
 
 **Example data**:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -116,11 +116,11 @@ The Infinity data source offers multiple parsers for JSON data:
 
 ### UQL parser
 
-Use the [UQL parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/) for advanced operations like grouping, ordering, and field manipulation.
+Use the [UQL parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/uql/) for advanced operations like grouping, ordering, and field manipulation.
 
 **Example UQL query**:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-json
@@ -137,7 +137,7 @@ Use the **JSONata** parser when you need:
 - Server-side processing
 - Complex data transformations using [JSONata syntax](https://jsonata.org/)
 
-For more information, refer to [JSONata parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
+For more information, refer to [JSONata parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/backend/).
 
 ### JQ parser
 
@@ -148,7 +148,7 @@ Use the **JQ** parser when you need:
 - Server-side processing
 - Data transformations using [JQ syntax](https://jqlang.github.io/jq/manual/)
 
-For more information, refer to [JQ parser](/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/).
+For more information, refer to [JQ parser](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/query/jq-backend/).
 
 When using JSONata or JQ parsers:
 

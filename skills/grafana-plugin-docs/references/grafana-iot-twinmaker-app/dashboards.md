@@ -58,7 +58,7 @@ To set up the dashboard:
 
 The dashboard sets `sel_entity` and `sel_comp` dynamically in two ways:
 
-- **Alarm list:** The table panel has a transformation attached named **Register links with AWS IoT TwinMaker**. It defines rules that set template variable values from fields of the query response when you click a row. Refer to [Register links transformation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/#register-links-transformation).
+- **Alarm list:** The table panel has a transformation attached named **Register links with AWS IoT TwinMaker**. It defines rules that set template variable values from fields of the query response when you click a row. Refer to [Register links transformation](https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables/#register-links-transformation).
 - **Scene Viewer:** The panel options specify which template variables store the selected entity ID and component name when a tag is clicked in the scene.
 
 ## Example dashboard in Grafana Play

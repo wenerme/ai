@@ -25,10 +25,10 @@ Expand table
 | Labels      | No       | Event labels. Supports multiple comma-separated values.                                                                        |
 | Color       | No       | Event background color. Specify a number field. Grafana colors the event background according to the specified **Thresholds**. |
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/calendar-data.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-calendar/calendar-data.png)
 
 ## Week start
 
 For the **Week** and **Month** layouts, the plugin uses the Grafana system settings to determine the first day of the week: Saturday, Sunday, or Monday. If no setting is specified, the plugin uses the default day from Grafana settings.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-calendar/week-start.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-calendar/week-start.png)

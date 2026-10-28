@@ -31,11 +31,11 @@ When working with the Business Text plugin, you construct a text visualization t
 
 ## Getting started
 
-You can install the Business Text panel from the [Grafana Plugins catalog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-dynamictext-panel/) or using the Grafana command line tool.
+You can install the Business Text panel from the [Grafana Plugins catalog](https://grafana.com/grafana/plugins/marcusolsson-dynamictext-panel/) or using the Grafana command line tool.
 
 Alternatively, use the Grafana command-line tool with the following command:
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install marcusolsson-dynamictext-panel
@@ -43,7 +43,7 @@ grafana cli plugins install marcusolsson-dynamictext-panel
 
 ## Highlights
 
-- Provides an in-panel code editor with automatic JavaScript code formatting. Use it to add your JavaScript code and to [import external JavaScript libraries](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/).
+- Provides an in-panel code editor with automatic JavaScript code formatting. Use it to add your JavaScript code and to [import external JavaScript libraries](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/).
 - Supports [Markdown](https://commonmark.org/help/) and [Handlebars](https://handlebarsjs.com/guide/expressions.html#basic-usage).
 - Renders [markdown-it](https://github.com/markdown-it/markdown-it) into HTML elements.
 
@@ -58,18 +58,18 @@ grafana cli plugins install marcusolsson-dynamictext-panel
 - Supports adding CSS styles with dashboard variables.
 - Supports internationalization using custom helpers.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/screenshot.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/screenshot.png)
 
 ## Documentation
 
 Expand table
 
-| Section                                                                                                                                   | Description                                                    |
-|-------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [Rendering](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering/)   | Explains how to create a visualization template for your data. |
-| [Features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/features/)     | Explains the plugin’s features.                                |
-| [Use cases](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/)   | Demonstrates interesting Community use cases.                  |
-| [Release notes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/release/) | Stay up to date with the latest features and updates.          |
+| Section                                                                                          | Description                                                    |
+|--------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [Rendering](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/rendering/)   | Explains how to create a visualization template for your data. |
+| [Features](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features/)     | Explains the plugin’s features.                                |
+| [Use cases](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/use-cases/)   | Demonstrates interesting Community use cases.                  |
+| [Release notes](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/release/) | Stay up to date with the latest features and updates.          |
 
 ## License
 

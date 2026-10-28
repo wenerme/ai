@@ -9,12 +9,12 @@ description: "Use template variables with the Amazon Redshift data source to cre
 
 Template variables let you create dynamic, reusable dashboards. Instead of hard-coding values like schema names, table names, or filter criteria, you can use variables that change based on user selections or query results.
 
-For an introduction to variables in Grafana, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+For an introduction to variables in Grafana, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Before you begin
 
-- [Configure the Amazon Redshift data source](/docs/plugins/grafana-redshift-datasource/latest/configure/).
-- Familiarize yourself with [Grafana template variables](/docs/grafana/latest/dashboards/variables/).
+- [Configure the Amazon Redshift data source](https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/configure/).
+- Familiarize yourself with [Grafana template variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -44,7 +44,7 @@ To create a query variable:
 
 Return a list of schemas:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT schema_name FROM information_schema.schemata;
@@ -52,7 +52,7 @@ SELECT schema_name FROM information_schema.schemata;
 
 Return a list of tables from a specific schema:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
@@ -60,7 +60,7 @@ SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';
 
 Return distinct values from a column:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT region FROM sales_data;
@@ -68,7 +68,7 @@ SELECT DISTINCT region FROM sales_data;
 
 Return event categories from the Redshift sample database:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT catname FROM public.category ORDER BY catname;
@@ -78,7 +78,7 @@ SELECT catname FROM public.category ORDER BY catname;
 
 To display a user-friendly label while using a different value in queries, alias the columns as `text` and `value`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname AS text, id AS value FROM servers;
@@ -92,11 +92,11 @@ In this example, the variable drop-down shows hostnames, but the underlying valu
 
 ## Use variables in queries
 
-After you create a variable, reference it in your Redshift queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). Grafana replaces the variable with the selected value before sending the query to Redshift.
+After you create a variable, reference it in your Redshift queries using [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/). Grafana replaces the variable with the selected value before sending the query to Redshift.
 
 For example, if you create a variable named `schema`:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM ${schema}.my_table WHERE $__timeFilter(created_at);
@@ -106,7 +106,7 @@ SELECT * FROM ${schema}.my_table WHERE $__timeFilter(created_at);
 
 When a variable allows multiple selections, use the variable inside an `IN` clause:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM sales WHERE region IN (${region});
@@ -118,7 +118,7 @@ Grafana automatically formats the selected values as a comma-separated list.
 
 You can use template variables alongside Grafana macros in the same query:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -138,7 +138,7 @@ ORDER BY
 
 You can create cascading (dependent) variables where one variable’s options depend on another variable’s selection. For example, create a `schema` variable first, then create a `table` variable that queries tables in the selected schema:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT table_name FROM information_schema.tables WHERE table_schema = '${schema}';

@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the DynamoDB data source in Grafana"
 
 # Troubleshoot DynamoDB data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the DynamoDB data source. For configuration instructions, refer to [Configure the DynamoDB data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the DynamoDB data source. For configuration instructions, refer to [Configure the DynamoDB data source](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/).
 
 ## Licensing errors
 
@@ -25,7 +25,7 @@ These errors occur when the DynamoDB plugin license isn’t active or valid.
 
 The DynamoDB data source is an Enterprise plugin. It’s included during Enterprise trials but isn’t part of the standard Grafana Cloud Pro plan by default.
 
-1. Verify your Grafana subscription includes the Enterprise plugins add-on. Check your plan details in the [Grafana Cloud portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/auth/sign-in/).
+1. Verify your Grafana subscription includes the Enterprise plugins add-on. Check your plan details in the [Grafana Cloud portal](https://grafana.com/auth/sign-in/).
 2. If the license has expired or is missing, contact Grafana Support or your account representative to add the correct entitlement.
 3. After confirming the license, reinstall or re-enable the plugin from **Administration** &gt; **Plugins**.
 4. Click **Save &amp; test** on the data source to verify the health check passes.
@@ -45,7 +45,7 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 1. Verify the **Access Key ID** field is populated in the data source configuration.
 2. If using provisioning, confirm the `accessKey` field is set in `secureJsonData`.
-3. If you recently upgraded from v1.x to v2.x, re-enter your access key and secret key. Refer to [V1 to V2 migration issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#v1-to-v2-migration-issues) for details.
+3. If you recently upgraded from v1.x to v2.x, re-enter your access key and secret key. Refer to [V1 to V2 migration issues](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#v1-to-v2-migration-issues) for details.
 
 ### “missing secret key”
 
@@ -103,7 +103,7 @@ Use **Assume role** to access DynamoDB tables in a different AWS account:
 3. Enter the target role’s ARN in **Assume Role ARN**, and an **External ID** if the trust policy requires one.
 4. Confirm with your Grafana administrator that `assume_role_enabled` is set to `true` in `grafana.ini`.
 
-If Assume Role isn’t available in your environment, refer to [“auth method not allowed”](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
+If Assume Role isn’t available in your environment, refer to [“auth method not allowed”](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
 
 ### “Access denied” or “Authorization failed”
 
@@ -172,7 +172,7 @@ These errors occur when Grafana can’t reach the DynamoDB endpoints.
 1. Verify network connectivity from the Grafana server to AWS DynamoDB endpoints.
 2. Check that firewall rules allow outbound HTTPS (port 443) to `dynamodb.<region>.amazonaws.com`.
 3. If using a custom endpoint, verify the **Endpoint** field contains the correct URL.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ### Custom endpoint not working
 
@@ -219,7 +219,7 @@ The v2.0.0 release introduced a breaking change to the configuration format. If 
 1. Before editing the configuration, make sure you have both your **Access Key ID** and **Secret Access Key** available.
 2. Re-enter both credentials on the configuration page.
 3. Click **Save &amp; test** to verify the connection.
-4. If using provisioning, update your YAML to use the V2 format with `isV2: true`, `authType`, and `defaultRegion` in `jsonData`. Refer to [Provision the data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/#provision-the-data-source) for examples.
+4. If using provisioning, update your YAML to use the V2 format with `isV2: true`, `authType`, and `defaultRegion` in `jsonData`. Refer to [Provision the data source](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/#provision-the-data-source) for examples.
 
 ## Query errors
 
@@ -271,7 +271,7 @@ To work around the lack of dynamic time filtering:
 
 1. Verify the timestamp column’s data type in DynamoDB matches your query’s comparison format.
 2. For alerting, design your DynamoDB data to include only recent entries (for example, using TTL), or accept that alert queries scan a broader range.
-3. Consider using a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/) with a custom query to pass time boundaries, though these still require explicit values.
+3. Consider using a [template variable](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/template-variables/) with a custom query to pass time boundaries, though these still require explicit values.
 
 ### Nested map data returns null
 
@@ -297,7 +297,7 @@ This is a known limitation of the DynamoDB data source. Querying data from neste
 2. Add a partition key filter to your `WHERE` clause to avoid full table scans.
 3. Use `LIMIT` to restrict the number of returned items.
 4. Break complex queries into smaller, more focused queries.
-5. Increase the query timeout by setting the `timeout` field in `jsonData` through provisioning. The default is `60` seconds. Refer to [Advanced settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/#advanced-settings) for details.
+5. Increase the query timeout by setting the `timeout` field in `jsonData` through provisioning. The default is `60` seconds. Refer to [Advanced settings](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/#advanced-settings) for details.
 
 ## Template variable errors
 
@@ -351,7 +351,7 @@ The plugin automatically retries queries that return “503” or “Invalid Ses
 3. Add partition key filters to all queries to avoid full table scans.
 4. Increase the provisioned read capacity or switch to on-demand capacity mode in the AWS DynamoDB console.
 5. Enable query caching in Grafana (available in Grafana Enterprise and Grafana Cloud).
-6. Adjust retry settings through provisioning if needed. Refer to [Advanced settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-dynamodb-datasource/latest/configure/#advanced-settings) for the `retries` and `pause` configuration options.
+6. Adjust retry settings through provisioning if needed. Refer to [Advanced settings](https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure/#advanced-settings) for the `retries` and `pause` configuration options.
 
 ## Enable debug logging
 
@@ -359,7 +359,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

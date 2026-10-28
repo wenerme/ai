@@ -224,6 +224,11 @@ notes and an absent file keeps them. Deleting inherited source notes only on a
 copy is not supported in v1. The same output-stem rule applies to narration
 audio.
 
+Imported notes Markdown excludes text in author-hidden notes shapes or groups
+and records a `hidden-notes-content` diagnostic. Unchanged round-trip notes
+still retain their original native XML, including its hidden state; editing a
+visible note does not promote the excluded text into the replacement notes.
+
 When a round-trip recorded-narration export omits `--animation-config`, it reads the workspace `animations.json` the importer wrote; that sidecar is part of the workspace contract, so deleting it fails export rather than restoring source motion.
 
 Narration audio is keyed by the output SVG stem. A copied output page uses its
@@ -1345,6 +1350,11 @@ Positioned `x`/`y`/nonzero `dy` rows keep the existing split/preserve/reflow
 behavior. A row starter's `dx` is consumed by its resolved line position;
 later inline scalar `dx` stays with its run through flattening.
 
+Split rows retain text names, roles, classes and visibility. The first row
+keeps the original text id; later rows use collision-free `-line-N` ids.
+Inline anchors and id-bearing tspans survive splitting. These preservation
+rules do not broaden the native Generate authoring gate.
+
 Native export represents inline `dx` with a separate NBSP run before the
 affected text. Its `a:rPr@spc`, in hundredths of a point, is
 `round(75 * (dx_px - estimated_space_width_px))`. The space estimate uses the
@@ -1391,6 +1401,10 @@ Replaces project-local `<use data-icon="library/name" .../>` placeholders with
 SVG paths. The exact case-sensitive file must exist under the workspace
 `icons/`; bare, aliased, template-source, and unsynced references fail. Use
 this only for manual checks outside `finalize_svg.py`.
+
+The replacement group retains the placeholder's id, class, style, opacity,
+visibility, clipping/filter context, and `data-pptx-*` / `data-edit-*`
+attributes. Hidden icon placeholders therefore remain hidden after embedding.
 
 ## SVG Compatibility Contract
 

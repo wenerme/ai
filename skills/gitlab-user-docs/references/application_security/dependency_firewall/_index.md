@@ -243,11 +243,6 @@ When no rule in any active policy matches a package, the firewall allows it.
 A policy must contain at least one rule. Each rule has a `type` field that is one of `license`,
 `risk_severity`, or `malicious`. In rule mode, select the type from **Choose a rule type**.
 
-> [!note]
-> Rule mode also offers a **Vulnerability** rule type. It is deprecated and is being removed.
-> Use **Risk severity** instead, which counts vulnerabilities per severity rather than matching
-> a single severity floor.
-
 #### License rules
 
 License rules match packages by their SPDX license name. Use `denied` to block packages that

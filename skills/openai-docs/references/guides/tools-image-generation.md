@@ -237,6 +237,7 @@ You can access the revised prompt in the `revised_prompt` field of the image gen
 }
 ```
 
+
 ### Prompting tips
 
 Image generation works best when you use terms like `draw` or `edit` in your prompt.
@@ -1126,17 +1127,24 @@ end
 
 ## Supported models
 
-The following models support the image generation tool:
+The following non-deprecated models have documented support for the image generation tool in the Responses API. Use these model IDs in the top-level `model` field. See each model's page for availability and access requirements.
 
-- `gpt-5.5`
-- `gpt-5.4-mini`
-- `gpt-5.4-nano`
-- `gpt-5.2`
-- `gpt-5`
-- `gpt-5-nano`
-- `o3`
-- `gpt-4.1`
-- `gpt-4.1-mini`
-- `gpt-4.1-nano`
-- `gpt-4o`
-- `gpt-4o-mini`
+- [`chat-latest`](https://developers.openai.com/api/docs/models/chat-latest)
+- [`gpt-5.2`](https://developers.openai.com/api/docs/models/gpt-5.2)
+- [`gpt-5.2-pro`](https://developers.openai.com/api/docs/models/gpt-5.2-pro)
+- [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4)
+- [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini)
+- [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro)
+- [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5)
+- [`gpt-5.5-pro`](https://developers.openai.com/api/docs/models/gpt-5.5-pro)
+- [`gpt-5.6-cyber`](https://developers.openai.com/api/docs/models/gpt-5.6-cyber)
+- [`gpt-5.6-luna`](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
+- [`gpt-5.6-sol`](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
+- [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra)
+- [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra)
+- [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna)
+- [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol)
+- [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+- [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra)
+
+For model availability and shutdown dates, see [Deprecations](https://developers.openai.com/api/docs/deprecations).

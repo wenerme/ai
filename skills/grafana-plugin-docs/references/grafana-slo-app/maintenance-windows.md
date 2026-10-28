@@ -9,7 +9,7 @@ description: "Schedule maintenance windows for Grafana SLO to pause error budget
 
 > Note
 >
-> Maintenance windows is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Maintenance windows is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 Use maintenance windows to schedule planned work for one or more service level objectives (SLOs). During an active maintenance window, Grafana SLO pauses error budget consumption and burn rate alerting for the selected SLOs.
 
@@ -28,7 +28,7 @@ When a maintenance window is active, Grafana SLO omits generated SLI samples for
 >
 > During a maintenance window, Grafana SLO stops writing its generated recording rules, including the SLI samples, for the selected SLOs. This leaves a gap in those recorded metrics for the duration of the window, and Grafana SLO does not backfill the missing samples after the window ends. Queries that read these recording rules directly return no data for that period.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana-cloud/slo/maintenancewindow-anno-example-2.png)
+[](https://grafana.com/media/docs/grafana-cloud/slo/maintenancewindow-anno-example-2.png)
 
 ## Before you begin
 

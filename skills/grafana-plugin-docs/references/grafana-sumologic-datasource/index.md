@@ -11,7 +11,7 @@ The Sumo Logic data source lets you query and visualize metrics and log data fro
 
 > Note
 >
-> The Sumo Logic data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan and [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/introduction/grafana-enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Sumo Logic data source is an Enterprise plugin. It’s available with a [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan and [Grafana Enterprise](https://grafana.com/docs/grafana/latest/introduction/grafana-enterprise/). For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -31,22 +31,22 @@ Expand table
 
 The following guides help you set up and use the Sumo Logic data source:
 
-- [Configure the Sumo Logic data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/configure/)
-- [Sumo Logic query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/query-editor/)
-- [Template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/template-variables/)
-- [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/annotations/)
-- [Set up alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/alerting/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/troubleshooting/)
+- [Configure the Sumo Logic data source](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/configure/)
+- [Sumo Logic query editor](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/query-editor/)
+- [Template variables](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/template-variables/)
+- [Annotations](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/annotations/)
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/alerting/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/troubleshooting/)
 
 ## Additional features
 
 After configuring the data source, you can:
 
-- Use [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/) to query Sumo Logic data without building a dashboard.
-- Add [transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
-- Set up [alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/alerting/) rules to monitor your Sumo Logic metrics.
-- Add [annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/annotations/) to mark events on dashboard panels.
-- Create [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sumologic-datasource/latest/template-variables/) for dynamic, reusable dashboards.
+- Use [Explore](https://grafana.com/docs/grafana/latest/explore/) to query Sumo Logic data without building a dashboard.
+- Add [transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [alerting](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/alerting/) rules to monitor your Sumo Logic metrics.
+- Add [annotations](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/annotations/) to mark events on dashboard panels.
+- Create [template variables](https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/template-variables/) for dynamic, reusable dashboards.
 
 ## Plugin updates
 

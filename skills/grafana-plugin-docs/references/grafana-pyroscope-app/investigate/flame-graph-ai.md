@@ -9,7 +9,7 @@ description: "Use Flame graph AI to better understand your profile data and flam
 
 Flame graph AI helps you understand your profiling data by using a large language model (LLM) to assist with data interpretation.
 
-A flame graph provides a convenient way to visualize performance data. These graphs provide a clear, intuitive understanding of resource allocation and bottlenecks within an application. To learn more, refer to [Flame graph visualizations](/404/).
+A flame graph provides a convenient way to visualize performance data. These graphs provide a clear, intuitive understanding of resource allocation and bottlenecks within an application. To learn more, refer to [Flame graph visualizations](https://grafana.com/404/).
 
 Flame graphs and profiling data in general can help you understand:
 
@@ -17,7 +17,7 @@ Flame graphs and profiling data in general can help you understand:
 2. Root causes: Why is it happening?
 3. Recommended fixes: How would you resolve it?
 
-Flame graph AI answers these questions when explaining your flame graph. To learn more, refer to [AI-powered insights for continuous profiling: introducing Flame graph AI in Grafana Cloud](/blog/2024/05/15/ai-powered-insights-for-continuous-profiling-introducing-flame-graph-ai-in-grafana-cloud/).
+Flame graph AI answers these questions when explaining your flame graph. To learn more, refer to [AI-powered insights for continuous profiling: introducing Flame graph AI in Grafana Cloud](https://grafana.com/blog/2024/05/15/ai-powered-insights-for-continuous-profiling-introducing-flame-graph-ai-in-grafana-cloud/).
 
 ## Flame graph AI complements human interpretation
 
@@ -35,25 +35,25 @@ Refer to the [AI-powered flame graph interpreter](https://pyroscope.io/blog/ai-p
 
 You can use Flame graph AI in the Profiles Drilldown app, nested underneath **Drilldown** &gt; **Profiles**.
 
-In Grafana Cloud, Flame graph AI is powered by [Grafana Assistant](/docs/grafana-cloud/machine-learning/assistant/).
+In Grafana Cloud, Flame graph AI is powered by [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/).
 
-In Grafana open source, Flame graph AI uses the [LLM plugin for Grafana](/docs/grafana-cloud/alerting-and-irm/machine-learning/configure/llm-plugin/).
+In Grafana open source, Flame graph AI uses the [LLM plugin for Grafana](https://grafana.com/docs/grafana-cloud/alerting-and-irm/machine-learning/configure/llm-plugin/).
 
 ### Before you begin
 
 To use Flame graph AI with Grafana Cloud, you need:
 
 - A Grafana Cloud account
-- A Grafana stack in Grafana Cloud with a configured [Pyroscope data source](/docs/grafana-cloud/connect-externally-hosted/data-sources/pyroscope/) that has profiling data
-- [Grafana Assistant](/docs/grafana-cloud/machine-learning/assistant/get-started/) enabled for your Grafana instance
-- The [Profiles Drilldown](/docs/grafana-cloud/visualizations/simplified-exploration/profiles/access/) app activated for your Grafana instance
+- A Grafana stack in Grafana Cloud with a configured [Pyroscope data source](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/pyroscope/) that has profiling data
+- [Grafana Assistant](https://grafana.com/docs/grafana-cloud/machine-learning/assistant/get-started/) enabled for your Grafana instance
+- The [Profiles Drilldown](https://grafana.com/docs/grafana-cloud/visualizations/simplified-exploration/profiles/access/) app activated for your Grafana instance
 
 To use Flame graph AI with Grafana open source, you need:
 
 - Grafana 13.1.0 or later
-- A configured [Pyroscope data source](/docs/grafana-cloud/connect-externally-hosted/data-sources/pyroscope/) that has profiling data
-- The [LLM plugin](/docs/grafana-cloud/alerting-and-irm/machine-learning/configure/llm-plugin/) installed and configured for your Grafana instance
-- The [Profiles Drilldown](/docs/grafana-cloud/visualizations/simplified-exploration/profiles/access/) app installed and activated for your Grafana instance
+- A configured [Pyroscope data source](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/data-sources/pyroscope/) that has profiling data
+- The [LLM plugin](https://grafana.com/docs/grafana-cloud/alerting-and-irm/machine-learning/configure/llm-plugin/) installed and configured for your Grafana instance
+- The [Profiles Drilldown](https://grafana.com/docs/grafana-cloud/visualizations/simplified-exploration/profiles/access/) app installed and activated for your Grafana instance
 
 ### Use Flame graph AI
 

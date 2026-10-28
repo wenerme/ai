@@ -40,18 +40,18 @@ Prerequisites:
 
 To create a saved view:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. At the top of the page, from the filter bar, select a filter, operator, and its value.
 1. Optional. Add more filters.
-1. Above the filter bar, select **Add view** > **New view**.
+1. Above the filter bar, select  > .
 1. Enter a title.
 1. Optional. Enter a description.
    This field can help others find the view and learn what it is for.
-1. Under **Visibility**, select either:
-   - **Private**. Private views are visible only to you.
-   - **Shared**. Shared views are visible to all members of the group or project.
-1. Select **Create view**.
+1. Under , select either:
+   - . Private views are visible only to you.
+   - . Shared views are visible to all members of the group or project.
+1. Select .
 
 The view is created and added above the filter bar, to the right of your other saved views (if there are any).
 
@@ -65,9 +65,9 @@ shared views from teammates.
 
 To add a saved view to your list:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
-1. Above the filter bar, select **Add view** > **Browse views**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Above the filter bar, select  > .
 1. From the list, select a view you want to add.
 
 ## Edit a saved view
@@ -80,13 +80,13 @@ Prerequisites:
 
 To edit a saved view:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select the view you want to edit.
-1. Select the view again, then select **Edit**.
+1. Select the view again, then select .
 1. Edit the title or description of the view.
 1. Edit the visibility of the view. To change this setting, you must be the creator of the view.
-1. Select **Save**.
+1. Select .
 
 ## Copy a link to a saved view
 
@@ -95,19 +95,19 @@ When you select a link to a saved view that isn't already in your list, it's add
 
 To copy a link to a saved view:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select the view you want to copy.
-1. Select the view again, then select **Copy link to view**.
+1. Select the view again, then select .
 
 ## Remove a saved view from your list
 
 To remove a saved view from your list:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select the view you want to remove.
-1. Select the view again, then select **Remove from list**.
+1. Select the view again, then select .
 
 The view is removed from your list but remains available to add again.
 
@@ -124,16 +124,16 @@ Prerequisites:
 
 To delete a saved view:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Select the view you want to delete.
-1. Select the view again, then select **Delete view**.
-1. In the confirmation dialog, select **Delete view**.
+1. Select the view again, then select .
+1. In the confirmation dialog, select .
 
 ## Saved view limits
 
 Users in the Free tier can have only five saved views at a time.
-This limit does not include the default **All items** view.
+This limit does not include the default  view.
 
 When you reach the saved view limit:
 

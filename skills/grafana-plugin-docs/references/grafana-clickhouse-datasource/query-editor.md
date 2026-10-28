@@ -7,16 +7,16 @@ description: "This document describes the ClickHouse query editor"
 
 # ClickHouse query editor
 
-This document explains how to use the ClickHouse query editor to build and run queries. You can access the query editor from [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/explore/) to run ad hoc queries, or when you add or edit a panel and select the ClickHouse data source.
+This document explains how to use the ClickHouse query editor to build and run queries. You can access the query editor from [Explore](https://grafana.com/docs/grafana/latest/visualizations/explore/) to run ad hoc queries, or when you add or edit a panel and select the ClickHouse data source.
 
 ## Before you begin
 
-- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
+- [Configure the ClickHouse data source](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/).
 - Ensure your ClickHouse user has read access to the databases and tables you want to query.
 
 ## Query editor elements
 
-The query editor appears in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/explore/) when you select the ClickHouse data source, or when you add or edit a panel and select ClickHouse. It includes the following elements.
+The query editor appears in [Explore](https://grafana.com/docs/grafana/latest/visualizations/explore/) when you select the ClickHouse data source, or when you add or edit a panel and select ClickHouse. It includes the following elements.
 
 Expand table
 
@@ -88,7 +88,7 @@ Expand table
 
 The builder assembles these into a single query, selecting the grouped columns before the aggregate expressions. For example, grouping by `Datacenter` with a row count and average duration produces:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -116,7 +116,7 @@ Expand table
 
 You can also filter by log message text using the search field, and add column filters for resource, scope, or log attributes.
 
-Columns configured through the data source **Columns** setting are projected into new logs queries automatically, so they appear here as browsable, filterable fields without editing the query. See [Logs configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/#logs-configuration).
+Columns configured through the data source **Columns** setting are projected into new logs queries automatically, so they appear here as browsable, filterable fields without editing the query. See [Logs configuration](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/#logs-configuration).
 
 ### Traces query builder
 
@@ -185,7 +185,7 @@ For time series visualizations, your query must include a `datetime` column. Use
 
 Example of a single series bucketed to the panel interval (replace `mgbench.logs1` with your database and table):
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT $__timeInterval(log_time) AS time, avg(disk_free) AS avg_disk_free
@@ -205,7 +205,7 @@ To create multi-line time series, the query must return at least 3 columns in th
 
 Example (replace `mgbench.logs1` with your database and table):
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT log_time AS time, machine_group, avg(disk_free) AS avg_disk_free
@@ -224,7 +224,7 @@ To use the Logs panel, your query must return a time column and one or more stri
 
 Example (replace `mydb.logs` with your database and table):
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -240,13 +240,13 @@ LIMIT 1000
 
 ## Visualize traces with the Traces panel
 
-To use the Traces panel, your data must meet the [requirements of the traces panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/trace-integration/#data-api). Set the **Query type** to **Traces** when building the query.
+To use the Traces panel, your data must meet the [requirements of the traces panel](https://grafana.com/docs/grafana/latest/explore/trace-integration/#data-api). Set the **Query type** to **Traces** when building the query.
 
 If you use the [OpenTelemetry Collector and ClickHouse exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter), the following query returns the required column names (case sensitive). Replace the trace ID in the WHERE clause with your trace ID or a template variable (for example `$traceId`).
 
 For tables with **`Map(String, String)` attribute columns** (the default schema):
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -267,7 +267,7 @@ ORDER BY startTime ASC
 
 For tables with **`JSON`-type attribute columns** (ClickHouse 26+ with `enable_json_type: true`), select the attribute columns directly, because `mapKeys()` does not work on the `JSON` type:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -349,7 +349,7 @@ Macros simplify query syntax and add dynamic parts such as dashboard time range 
 
 Example query using a time filter macro (replace `test_data` and `date_time` with your table and timestamp column):
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT date_time, data_stuff
@@ -397,7 +397,7 @@ Expand table
 
 For example, the following query returns one series per service, with the request count aggregated into each time bucket:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 $__columns(EventTime, ServiceName, count() AS c) FROM requests WHERE ServiceName != ''
@@ -405,7 +405,7 @@ $__columns(EventTime, ServiceName, count() AS c) FROM requests WHERE ServiceName
 
 For a monotonic counter, the following query charts the per-second request rate of every service:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 $__perSecondColumns(EventTime, ServiceName, RequestsTotal) FROM requests WHERE ServiceName != ''
@@ -420,5 +420,5 @@ Usage notes:
 
 ## Next steps
 
-- [ClickHouse template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Use variables in dashboards and queries.
-- [Configure the ClickHouse data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Connection and authentication options.
+- [ClickHouse template variables](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Use variables in dashboards and queries.
+- [Configure the ClickHouse data source](https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Connection and authentication options.

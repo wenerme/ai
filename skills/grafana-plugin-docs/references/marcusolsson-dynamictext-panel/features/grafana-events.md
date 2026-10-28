@@ -15,13 +15,13 @@ Grafana uses an event bus to publish application events that notify different pa
 
 ## Predefined events
 
-For a complete list of events, refer to the [Grafana Crash Course](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-eventbus/).
+For a complete list of events, refer to the [Grafana Crash Course](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-eventbus/).
 
 ## Subscribe to events
 
 To avoid memory leaks, unsubscribe from all events.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const subscription = context.grafana.eventBus.subscribe(
@@ -41,11 +41,11 @@ return () => {
 
 The following sections show the Business Text panel configuration.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/eb-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/eb-edit.png)
 
 **Content** to copy
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <pre id="event"></pre>
@@ -53,7 +53,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 **Before content rendering** to copy
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const subscription = context.grafana.eventBus.subscribe(

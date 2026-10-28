@@ -75,6 +75,7 @@ following response attributes:
 | `push_access_levels[].id`                        | integer | ID of the push access level configuration. |
 | `push_access_levels[].member_role_id`            | integer | ID of the custom member role with push access. Ultimate only. |
 | `push_access_levels[].user_id`                   | integer | ID of the user with push access. Premium and Ultimate only. |
+{.sortable}
 
 In the following example request, the project ID is `5`.
 
@@ -226,6 +227,7 @@ following response attributes:
 | `push_access_levels[].id`                        | integer | ID of the push access level configuration. |
 | `push_access_levels[].member_role_id`            | integer | ID of the custom member role with push access. Ultimate only. |
 | `push_access_levels[].user_id`                   | integer | ID of the user with push access. Premium and Ultimate only. |
+{.sortable}
 
 In the following example request, the project ID is `5` and branch name is `main`:
 
@@ -319,6 +321,7 @@ Supported attributes:
 | `merge_access_level`           | integer           | No       | Access levels allowed to merge. Default is `40` (Maintainer role). |
 | `push_access_level`            | integer           | No       | Access levels allowed to push. Default is `40` (Maintainer role). |
 | `unprotect_access_level`       | integer           | No       | Access levels allowed to unprotect. Default is `40` (Maintainer role). `0` (No access) is not valid. |
+{.sortable}
 
 When you configure access levels:
 
@@ -363,6 +366,7 @@ following response attributes:
 | `unprotect_access_levels[].id`                       | integer | ID of the unprotect access level configuration. |
 | `unprotect_access_levels[].member_role_id`           | integer | ID of the custom member role with unprotect access. Ultimate only. |
 | `unprotect_access_levels[].user_id`                  | integer | ID of the user with unprotect access. Premium and Ultimate only. |
+{.sortable}
 
 In the following example request, the project ID is `5` and branch name is `*-stable`.
 
@@ -745,6 +749,7 @@ Supported attributes:
 | `allowed_to_push`              | array             | No       | Array of push access levels, with each described by a hash of the form `{user_id: integer}`, `{group_id: integer}`, `{member_role_id: integer}`, `{deploy_key_id: integer}`, or `{access_level: integer}`. `user_id`, `group_id`, and `access_level` are Premium and Ultimate only. `member_role_id` is Ultimate only. |
 | `allowed_to_unprotect`         | array             | No       | Array of unprotect access levels, with each described by a hash of the form `{user_id: integer}`, `{group_id: integer}`, `{member_role_id: integer}`, `{access_level: integer}`, or `{id: integer, _destroy: true}` to destroy an existing access level. `user_id`, `group_id`, and `access_level` are Premium and Ultimate only. `member_role_id` is Ultimate only. Access level `No access` is not available for this field. |
 | `code_owner_approval_required` | boolean           | No       | If `true`, prevents pushes to this branch if it matches an item in the [`CODEOWNERS` file](../user/project/codeowners/_index.md). Premium and Ultimate only. |
+{.sortable}
 
 For information about how access levels interact when you set multiple values,
 see [protect repository branches](#protect-repository-branches).
@@ -780,6 +785,7 @@ following response attributes:
 | `unprotect_access_levels[].id`                       | integer | ID of the unprotect access level configuration. |
 | `unprotect_access_levels[].member_role_id`           | integer | ID of the custom member role with unprotect access. Ultimate only. |
 | `unprotect_access_levels[].user_id`                  | integer | ID of the user with unprotect access. Premium and Ultimate only. |
+{.sortable}
 
 Example request:
 

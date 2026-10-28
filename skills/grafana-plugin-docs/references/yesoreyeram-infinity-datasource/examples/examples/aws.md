@@ -41,7 +41,7 @@ Temporary credentials obtained via `AssumeRole` are automatically refreshed by t
 
 The Grafana server controls which AWS authentication providers the data source offers. Add the following to `grafana.ini` or set equivalent environment variables:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [aws]
@@ -52,7 +52,7 @@ forward_settings_to_plugins = yesoreyeram-infinity-datasource
 
 Or via environment variables:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 GF_AWS_ALLOWED_AUTH_PROVIDERS=default,keys
@@ -66,7 +66,7 @@ If `forward_settings_to_plugins` already contains other data source plugin IDs, 
 
 ## Before you begin
 
-The AWS authentication options depend on the Grafana server configuration described in [Grafana server configuration](#grafana-server-configuration). If the server doesn’t allow the `default` provider, the **AWS SDK Default** option isn’t shown, and if `assume_role_enabled` is disabled, the **Assume Role ARN** and **External ID** fields aren’t shown.
+The AWS authentication options depend on the Grafana server configuration described in [Grafana server configuration](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/aws/#grafana-server-configuration). If the server doesn’t allow the `default` provider, the **AWS SDK Default** option isn’t shown, and if `assume_role_enabled` is disabled, the **Assume Role ARN** and **External ID** fields aren’t shown.
 
 On Grafana Cloud, the `default` provider isn’t allowed, so **AWS SDK Default** isn’t offered. Use **Access and secret key**, optionally with an **Assume Role ARN**, which is supported because role assumption is enabled there.
 
@@ -124,7 +124,7 @@ When running on EKS with [IAM Roles for Service Accounts (IRSA)](https://docs.aw
 1. Create an IAM role with the required permissions and a trust policy that allows the Kubernetes service account.
 2. Annotate the Kubernetes service account:
 
-   YAML [Copy code to clipboard] Copy
+   YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```yaml
    apiVersion: v1
@@ -159,7 +159,7 @@ Expand table
 
 1. Set the **URL** to:
 
-   sh [Copy code to clipboard] Copy
+   sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sh
    https://monitoring.us-east-1.amazonaws.com?Action=ListMetrics&Version=2010-08-01
@@ -172,7 +172,7 @@ Expand table
 
 Use UQL to transform and filter the AWS XML response:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-xml
@@ -184,7 +184,7 @@ parse-xml
 
 **URL:**
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 https://ec2.us-east-1.amazonaws.com?Action=DescribeInstances&Version=2016-11-15
@@ -192,7 +192,7 @@ https://ec2.us-east-1.amazonaws.com?Action=DescribeInstances&Version=2016-11-15
 
 **UQL query:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 parse-xml
@@ -208,7 +208,7 @@ parse-xml
 
 **URL:**
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 https://ce.us-east-1.amazonaws.com
@@ -218,7 +218,7 @@ https://ce.us-east-1.amazonaws.com
 
 **Body (JSON):**
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -235,7 +235,7 @@ JSON [Copy code to clipboard] Copy
 
 ### Access Key &amp; Secret Key
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -257,7 +257,7 @@ datasources:
 
 ### Access Key &amp; Secret Key + AssumeRole
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -281,7 +281,7 @@ datasources:
 
 ### AWS SDK Default
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -300,7 +300,7 @@ datasources:
 
 ### Default Credentials + AssumeRole
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

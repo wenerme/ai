@@ -9,7 +9,7 @@ description: "Create template variables for SAP HANA in Grafana."
 
 Template variables allow you to create dynamic, reusable dashboards. Instead of hard-coding values like table names or filter criteria, you can use variables that users can change from a drop-down menu.
 
-For more information about variables in Grafana, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information about variables in Grafana, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Supported variable types
 
@@ -37,7 +37,7 @@ To add a new SAP HANA query variable:
 5. Enter your SQL query.
 6. Click **Apply**.
 
-For general instructions, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
+For general instructions, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
 
 ### Single column queries
 
@@ -47,7 +47,7 @@ The most common approach is to return a single column of distinct values.
 
 The following query returns the distinct list of `username` from the `users` table:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT DISTINCT("username") FROM "users"
@@ -61,7 +61,7 @@ You can create a variable with different display text and underlying values by r
 
 The following query uses `host_name` as the display text and `host_id` as the actual value:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT host_name AS "__text", host_id AS "__value" FROM hosts_list_table
@@ -83,7 +83,7 @@ The plugin handles query results as follows:
 
 You can use Grafana template variables anywhere in your SAP HANA queries. Variables are replaced with their current values when the query executes.
 
-By default, the data source quotes variable values with single quotes, so a value inserts as `'london'` and a multi-value selection inserts as `'london','perth'`. To change this behavior, use a format modifier as described in [Format variable values](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-saphana-datasource/latest/template-variables/#format-variable-values).
+By default, the data source quotes variable values with single quotes, so a value inserts as `'london'` and a multi-value selection inserts as `'london','perth'`. To change this behavior, use a format modifier as described in [Format variable values](https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/template-variables/#format-variable-values).
 
 > Note
 >
@@ -93,7 +93,7 @@ By default, the data source quotes variable values with single quotes, so a valu
 
 Use the standard variable syntax to insert a single value:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Query with variable
@@ -107,7 +107,7 @@ SELECT * FROM "users" WHERE "city" = 'london'
 
 Variables also work with numeric fields. In this example, `${age}` is a text box variable that accepts numbers:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Query with variable
@@ -121,7 +121,7 @@ SELECT * FROM "users" WHERE "age" > '36'
 
 If your variable returns multiple values (multi-select enabled), use it with the `IN` clause. Note the parentheses around the variable:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Query with multi-value variable
@@ -133,7 +133,7 @@ SELECT * FROM "users" WHERE "city" IN ('london','perth','delhi')
 
 You can also use the shorthand notation without curly braces:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM "users" WHERE "city" IN ($cities)
@@ -145,7 +145,7 @@ You can build dependent variables where one query variable filters its results u
 
 In this example, a `${schema}` variable is defined first, then a `${table}` variable uses it:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Variable: schema
@@ -182,10 +182,10 @@ Expand table
 | `${city:doublequote}` | `"london"`            | `"london","perth"`   |
 | `${city:csv}`         | `london`              | `london,perth`       |
 
-For the full list of format options, refer to [Advanced variable format options](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
+For the full list of format options, refer to [Advanced variable format options](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options).
 
 ## Additional resources
 
-- [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable)
-- [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/)
+- [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable)
+- [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/)

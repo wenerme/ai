@@ -11,7 +11,7 @@ This document explains how to use the Vercel query editor to query resources fro
 
 ## Before you begin
 
-Before you build a query, ensure you have [configured the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/configure/) and that your access token has permission to read the resources you want to query.
+Before you build a query, ensure you have [configured the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/configure/) and that your access token has permission to read the resources you want to query.
 
 ## Key concepts
 
@@ -31,7 +31,7 @@ Expand table
 
 Each query targets a single Vercel REST API resource, which you select with the **Action** field.
 
-1. In a panel or in [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/), select your Vercel data source.
+1. In a panel or in [Explore](https://grafana.com/docs/grafana/latest/explore/), select your Vercel data source.
 2. Select an action from the **Action** field.
 3. Enter any required parameters, such as a deployment or drain identifier.
 4. Expand **Additional Parameters** to set optional query parameters.
@@ -173,5 +173,5 @@ The Vercel data source supports scenarios such as:
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/template-variables/)
-- [Troubleshoot the Vercel data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/)
+- [Use template variables](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/template-variables/)
+- [Troubleshoot the Vercel data source](https://grafana.com/docs/plugins/grafana-vercel-datasource/latest/troubleshooting/)

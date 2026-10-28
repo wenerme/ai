@@ -7,7 +7,7 @@ description: "Add annotations from Amazon Athena data in Grafana."
 
 # Amazon Athena annotations
 
-[Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you overlay rich event information on top of graphs. You can add annotations by clicking on panels or by adding annotation queries through **Dashboard settings** &gt; **Annotations**.
+[Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) let you overlay rich event information on top of graphs. You can add annotations by clicking on panels or by adding annotation queries through **Dashboard settings** &gt; **Annotations**.
 
 ## Create an annotation query
 
@@ -37,7 +37,7 @@ Expand table
 
 The following query creates annotations for humidity readings that exceed 95, tagged by environment.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -52,5 +52,5 @@ WHERE
 
 ## Next steps
 
-- [Amazon Athena query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-athena-datasource/latest/query-editor/)
-- [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Amazon Athena query editor](https://grafana.com/docs/plugins/grafana-athena-datasource/latest/query-editor/)
+- [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)

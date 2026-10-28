@@ -23,18 +23,18 @@ Before you begin, make sure you have a Grafana instance with the Grafana SLO app
 
 ## Create a service account token and configure the Terraform provider
 
-Create a [service account token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/security-and-account-management/authentication-and-permissions/service-accounts/) to authenticate Terraform with Grafana. To generate a token for provisioning SLO resources, complete the following steps:
+Create a [service account token](https://grafana.com/docs/grafana-cloud/security-and-account-management/authentication-and-permissions/service-accounts/) to authenticate Terraform with Grafana. To generate a token for provisioning SLO resources, complete the following steps:
 
 1. Create a new service account.
 2. Assign a role with permissions to manage SLO resources.
 
-   You can assign a basic role such as **Admin** or **Editor**, or use one of the SLO-specific roles such as **SLO Admin** or **SLO Editor**. For details, refer to [RBAC permissions for SLOs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/rbac/).
+   You can assign a basic role such as **Admin** or **Editor**, or use one of the SLO-specific roles such as **SLO Admin** or **SLO Editor**. For details, refer to [RBAC permissions for SLOs](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/set-up/rbac/).
 3. Create a new service account token.
 4. Name and save the token for use in Terraform.
 
 You can now move to the working directory for your Terraform configurations, and create a file named `main.tf` like:
 
-main.tf ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+main.tf ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```maintf
 terraform {
@@ -73,9 +73,9 @@ You do not need to define the recording rules, dashboards, or alert resources se
 
 To define SLOs in Terraform, choose one of the following methods:
 
-1. [Export an existing SLO](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/terraform/#export-an-existing-slo) in Terraform format from the Grafana UI or API.
-2. [Use the SLO wizard to generate an SLO Terraform configuration](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/terraform/#use-the-slo-wizard-to-generate-hcl-without-creating-an-slo) instead of saving the SLO.
-3. [Write the SLO definition](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-slo-app/latest/set-up/terraform/#write-the-slo-terraform-schema) directly in Terraform using the SLO schema.
+1. [Export an existing SLO](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform/#export-an-existing-slo) in Terraform format from the Grafana UI or API.
+2. [Use the SLO wizard to generate an SLO Terraform configuration](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform/#use-the-slo-wizard-to-generate-hcl-without-creating-an-slo) instead of saving the SLO.
+3. [Write the SLO definition](https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform/#write-the-slo-terraform-schema) directly in Terraform using the SLO schema.
 
 ### Export an existing SLO
 
@@ -91,7 +91,7 @@ You can copy or download the generated `resource` block schema for use in your T
 
 You can also make an HTTP GET call to the SLO API with the query parameter `?format=hcl` to retrieve HCL for an individual SLO or the full list of SLOs.
 
-For details, refer to the [SLO API documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/api/).
+For details, refer to the [SLO API documentation](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/set-up/api/).
 
 ### Use the SLO Wizard to generate HCL without creating an SLO
 
@@ -99,7 +99,7 @@ This option lets you use the SLO wizard to define an SLO and export it to HCL fo
 
 From the **Manage SLOs** page, click **More** on the top right of the screen, right of the **New SLO** button, then click **New SLO for Export**.
 
-Using the SLO wizard, follow [the instructions to define your SLO](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/create/).
+Using the SLO wizard, follow [the instructions to define your SLO](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/create/).
 
 On the final page, select **Export SLO to HCL**.
 
@@ -109,7 +109,7 @@ The easiest way to get started with Terraform is to export an SLO using one of t
 
 Alternatively, you can write the SLO definition from scratch using the Terraform schema.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 resource "grafana_slo" "ratio" {
@@ -171,7 +171,7 @@ For details about the SLO schema fields, formats, and requirements, refer to the
 
 By default, the SLI query runs against the data source you name in `destination_datasource`. To run the query against a different source, set the optional `source_datasource_uid` attribute inside the query block.
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 resource "grafana_slo" "source_datasource" {
@@ -198,16 +198,16 @@ resource "grafana_slo" "source_datasource" {
 
 The source data source must be Prometheus-compatible.
 
-A source that differs from the destination requires a stack that uses Grafana-managed recording rules. If your stack uses [legacy data source-managed recording rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules) the `source_datasource_uid` field should be omitted.
+A source that differs from the destination requires a stack that uses Grafana-managed recording rules. If your stack uses [legacy data source-managed recording rules](https://grafana.com/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules) the `source_datasource_uid` field should be omitted.
 
 #### Link the SLO to RCA workbench entities
 
 The optional `search_expression` attribute holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. When you set it:
 
-- An **Open RCA workbench** link appears on the **Manage SLOs** page and the SLO performance page, already scoped to the matching entities.
+- An **Open RCA workbench** link appears on the **Manage SLOs** page, already scoped to the matching entities.
 - The generated burn-rate alert rules carry a `workbench_troubleshoot_url` annotation that opens the same view.
 
-Use an expression that matches entities in your Knowledge Graph, such as `kubelet connected services` or `Show all Services`. For the expression syntax, refer to [use predefined searches](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
+Use an expression that matches entities in your Knowledge Graph, such as `kubelet connected services` or `Show all Services`. For the expression syntax, refer to [use predefined searches](https://grafana.com/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
 
 The attribute must be non-empty if you set it. Omit it entirely to leave the SLO unscoped. It requires version 3.10.0 or later of the Grafana Terraform provider.
 
@@ -218,10 +218,10 @@ To provision a SLO, complete the following steps.
 1. Export the SLO you want to import in Grafana or write directly the SLO in Terraform format as shown in the previous sections.
 2. Copy the sample `resource` block schema into a `main.tf` file on your local machine and customize it if necessary.
 
-   If alerting rules are configured for the SLO, ensure the alerting resources are appropriately configured. Refer to [provision alerting resources with Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/alerting-and-irm/alerting/set-up/provision-alerting-resources/terraform-provisioning/).
+   If alerting rules are configured for the SLO, ensure the alerting resources are appropriately configured. Refer to [provision alerting resources with Terraform](https://grafana.com/docs/grafana-cloud/alerting-and-irm/alerting/set-up/provision-alerting-resources/terraform-provisioning/).
 3. Initialize the working directory containing the Terraform configuration files.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    terraform init
@@ -230,7 +230,7 @@ To provision a SLO, complete the following steps.
    This command initializes the Terraform directory, installing the Grafana Terraform provider configured in the `main.tf` file.
 4. Apply the Terraform configuration files to provision the resources.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    terraform apply
@@ -238,7 +238,7 @@ To provision a SLO, complete the following steps.
 
    Before applying any changes to Grafana, Terraform displays the execution plan and requests your approval.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
     Plan: 1 to add, 0 to change, 0 to destroy.
@@ -252,7 +252,7 @@ To provision a SLO, complete the following steps.
 
    Once you have confirmed to proceed with the changes, Terraform creates the provisioned resources in Grafana!
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
@@ -270,7 +270,7 @@ To import an existing SLO into Terraform state, complete the following steps.
 2. Copy the contents (including both the `import` block and the `resource` block) into your `main.tf` file.
 3. Initialize the working directory containing the Terraform configuration files, if you don’t already have an established terraform setup.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    terraform init
@@ -279,7 +279,7 @@ To import an existing SLO into Terraform state, complete the following steps.
    This command initializes the Terraform directory, installing the Grafana Terraform provider configured in the `main.tf` file.
 4. Apply the Terraform configuration files to import the SLO resource into Terraform. Note that it says “0 to add, 0 to change” meaning no server side changes are applied.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    terraform apply
@@ -287,7 +287,7 @@ To import an existing SLO into Terraform state, complete the following steps.
 
    Before applying any changes to Grafana, Terraform displays the execution plan and requests your approval.
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
     Plan: 1 to import, 0 to add, 0 to change, 0 to destroy.
@@ -299,7 +299,7 @@ To import an existing SLO into Terraform state, complete the following steps.
     Enter a value:
    ```
 
-   shell ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   shell ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```shell
    Apply complete! Resources: 1 imported, 0 added, 0 changed, 0 destroyed.
@@ -312,4 +312,4 @@ You can now access the `terraform.tfstate` file to verify the resource has been 
 For more examples on the concept of this guide:
 
 - Review all the available options and examples of the Terraform SLO schemas in the [Grafana Terraform Provider documentation](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/slo).
-- Review the [tutorial to manage a Grafana Cloud stack using Terraform](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/developer-resources/infrastructure-as-code/terraform/terraform-cloud-stack/).
+- Review the [tutorial to manage a Grafana Cloud stack using Terraform](https://grafana.com/docs/grafana-cloud/developer-resources/infrastructure-as-code/terraform/terraform-cloud-stack/).

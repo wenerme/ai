@@ -13,8 +13,8 @@ Annotations overlay event markers on graphs. Use an Azure Data Explorer query to
 
 Before you create annotations, ensure you have the following:
 
-- A [configured Azure Data Explorer data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
-- A [dashboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/) to add annotations to.
+- A [configured Azure Data Explorer data source](https://grafana.com/docs/plugins/grafana-azure-data-explorer-datasource/latest/configure/).
+- A [dashboard](https://grafana.com/docs/grafana/latest/dashboards/) to add annotations to.
 
 ## Create an annotation query
 
@@ -40,7 +40,7 @@ Return the following columns:
 
 The following query returns annotations with text and tags from a log table:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 MyLogs
@@ -50,7 +50,7 @@ MyLogs
 
 The text and tags columns are optional. The following query returns annotations with only a time and text column:
 
-kusto ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+kusto ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```kusto
 MyLogs
@@ -58,4 +58,4 @@ MyLogs
 | project Timestamp, Text=Message
 ```
 
-For more information about adding and using annotations, refer to [Annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about adding and using annotations, refer to [Annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).

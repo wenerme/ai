@@ -11,8 +11,8 @@ You can configure Grafana alerting rules that query the Sentry data source to re
 
 ## Before you begin
 
-- [Configure the Sentry data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-sentry-datasource/latest/configure/).
-- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+- [Configure the Sentry data source](https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure/).
+- Understand [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Supported query types for alerting
 
@@ -113,4 +113,4 @@ Monitor organization-level event consumption to avoid quota overages:
 - Sentry API rate limits apply to alert rule evaluations. Set evaluation intervals that avoid exceeding rate limits, especially when multiple alert rules query the same Sentry data source.
 - Issues, Events, and Spans queries return tabular data. To create numeric alert conditions from these, use **Reduce** expressions with functions like **Count**, **Min**, **Max**, or **Mean**.
 
-For more information, refer to [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For more information, refer to [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).

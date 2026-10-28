@@ -7,9 +7,9 @@ description: "Troubleshooting guide for the Jenkins data source in Grafana"
 
 # Troubleshoot Jenkins data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Jenkins data source. For configuration instructions, refer to the [Jenkins data source overview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/).
+This document provides solutions to common issues you may encounter when configuring or using the Jenkins data source. For configuration instructions, refer to the [Jenkins data source overview](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/).
 
-Both authentication and network problems surface the same `Unable to connect to Jenkins` message during **Save &amp; test**; read the detail after `Error:` to tell them apart, then jump to [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#authentication-errors) or [Connection errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#connection-errors).
+Both authentication and network problems surface the same `Unable to connect to Jenkins` message during **Save &amp; test**; read the detail after `Error:` to tell them apart, then jump to [Authentication errors](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#authentication-errors) or [Connection errors](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/troubleshooting/#connection-errors).
 
 ## License and setup errors
 
@@ -26,11 +26,11 @@ These errors occur when the Enterprise plugin isn’t licensed, activated, or in
 
 Expand table
 
-| Cause                | Solution                                                                                                                                                                                                 |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Plugin not activated | Confirm your Grafana Cloud plan is Pro or Advanced, or that your Grafana Enterprise license includes `grafana-jenkins-datasource`.                                                                       |
-| Missing permissions  | Sign in with an account that has the `Organization administrator` role.                                                                                                                                  |
-| Plugin not installed | Install the plugin. Refer to [Install and upgrade the Jenkins data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-jenkins-datasource/latest/install/). |
+| Cause                | Solution                                                                                                                                                        |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plugin not activated | Confirm your Grafana Cloud plan is Pro or Advanced, or that your Grafana Enterprise license includes `grafana-jenkins-datasource`.                              |
+| Missing permissions  | Sign in with an account that has the `Organization administrator` role.                                                                                         |
+| Plugin not installed | Install the plugin. Refer to [Install and upgrade the Jenkins data source plugin](https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest/install/). |
 
 ## Version and upgrade guidance
 
@@ -96,7 +96,7 @@ These errors occur when Grafana can’t reach your Jenkins instance.
 1. Verify the **URL** is correct and reachable from the Grafana server, including the scheme (`https://`) and port.
 2. Verify network connectivity and firewall rules allow outbound access from Grafana to the Jenkins instance.
 3. Confirm the [Remote Access API](https://www.jenkins.io/doc/book/using/remote-access-api/) is enabled on your Jenkins instance.
-4. For a Jenkins instance on a private network, enable [Private Data Source Connect (PDC)](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and turn on the **Enable Secure Socks Proxy** toggle in the data source configuration.
+4. For a Jenkins instance on a private network, enable [Private Data Source Connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and turn on the **Enable Secure Socks Proxy** toggle in the data source configuration.
 
 When the connection succeeds, **Save &amp; test** displays `Data source is working`.
 
@@ -154,7 +154,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

@@ -59,6 +59,7 @@ response attributes:
 | `name`                     | string              | Name of the branch. |
 | `protected`                | boolean             | If `true`, the branch is protected from force pushes and deletion. |
 | `web_url`                  | string              | URL to view the branch in the GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -151,6 +152,7 @@ response attributes:
 | `name`                   | string  | Name of the branch. |
 | `protected`              | boolean | Whether the branch is protected from force pushes and deletion. |
 | `web_url`                | string  | URL to view the branch in the GitLab UI. |
+{.sortable}
 
 Example request:
 
@@ -248,6 +250,7 @@ response attributes:
 | `name`                     | string  | Name of the branch. |
 | `protected`                | boolean | If `true`, the branch is protected from force pushes and deletion. |
 | `web_url`                  | string  | URL to view the branch in the GitLab UI. |
+{.sortable}
 
 Example request:
 

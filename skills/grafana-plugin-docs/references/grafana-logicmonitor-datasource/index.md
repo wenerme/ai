@@ -11,11 +11,11 @@ The LogicMonitor Devices data source allows you to query and visualize LogicMoni
 
 > Note
 >
-> Grafana **LogicMonitor Devices** enterprise data source plugin is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Grafana **LogicMonitor Devices** enterprise data source plugin is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
 > Note
 >
-> The LogicMonitor Devices data source is an Enterprise plugin. It is available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The LogicMonitor Devices data source is an Enterprise plugin. It is available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -35,11 +35,11 @@ Before configuring the LogicMonitor Devices data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role to add data sources
 - **LogicMonitor account:** Access to a LogicMonitor portal with REST API v3 bearer token
-- **Grafana version:** Grafana 11.6.7 or later, on any free or paid [Grafana Cloud](http://grafana-com-website.grafana-com.svc.cluster.local.:80/pricing/) plan or on a self-managed instance with an [activated Grafana Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/enterprise/license/activate-license/)
+- **Grafana version:** Grafana 11.6.7 or later, on any free or paid [Grafana Cloud](https://grafana.com/pricing/) plan or on a self-managed instance with an [activated Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/)
 
 ## Install the plugin
 
-To install the data source, refer to the [Installation guide](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/grafana-logicmonitor-datasource/?tab=installation).
+To install the data source, refer to the [Installation guide](https://grafana.com/grafana/plugins/grafana-logicmonitor-datasource/?tab=installation).
 
 ## Configure the data source
 
@@ -80,15 +80,15 @@ Expand table
 
 ### Verify the connection
 
-Click **Save &amp; test** to verify the connection. A successful test displays the message “health check succeeded for ‘metrics usage details’ query”. If the connection fails, refer to [Troubleshoot LogicMonitor data source issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#troubleshoot-logicmonitor-data-source-issues).
+Click **Save &amp; test** to verify the connection. A successful test displays the message “health check succeeded for ‘metrics usage details’ query”. If the connection fails, refer to [Troubleshoot LogicMonitor data source issues](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#troubleshoot-logicmonitor-data-source-issues).
 
 ### Provision the data source
 
-You can configure this data source using configuration files with the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can configure this data source using configuration files with the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 Example provisioning configuration:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -109,7 +109,7 @@ Replace `<ACCOUNT_NAME>` with your LogicMonitor account name and `<TOKEN>` with 
 
 You can configure this data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs).
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "logicmonitor" {
@@ -142,7 +142,7 @@ The **Datasource** drop-down filters client-side against the data sources alread
 Keep two points in mind when using the server-side filter on the **Device** drop-down:
 
 - Filtering matches the LogicMonitor `displayName` field. Devices with the same display name appear together in the results.
-- Special characters such as `"` and `\` must be escaped in LogicMonitor glob filters. If typed values contain these characters, the filter returns no matches. Avoid those characters or scope the query with a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead.
+- Special characters such as `"` and `\` must be escaped in LogicMonitor glob filters. If typed values contain these characters, the filter returns no matches. Avoid those characters or scope the query with a [template variable](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead.
 
 ### Device Instance Data
 
@@ -181,7 +181,7 @@ Use these query types to retrieve and display data in table format:
 
 > Note
 >
-> Starting in `v0.5.0-preview`, table queries and drop-down selectors paginate automatically. The plugin follows offset-based pages of 1000 results and returns up to approximately 10,000 items per query by default. Accounts larger than the effective cap still see truncated lists; scope those queries with the type-to-filter drop-downs or template variables. For more information, refer to [Large result sets and pagination](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#large-result-sets-and-pagination).
+> Starting in `v0.5.0-preview`, table queries and drop-down selectors paginate automatically. The plugin follows offset-based pages of 1000 results and returns up to approximately 10,000 items per query by default. Accounts larger than the effective cap still see truncated lists; scope those queries with the type-to-filter drop-downs or template variables. For more information, refer to [Large result sets and pagination](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#large-result-sets-and-pagination).
 
 ### Large result sets and pagination
 
@@ -190,12 +190,12 @@ The data source paginates every list query against the LogicMonitor REST API usi
 - **Default page size:** 1000 items per request.
 - **Default safety cap:** 10 pages per query, so a single selector or table query fetches up to approximately 10,000 items before stopping.
 - **Selector “load more” path:** The **Device**, **Device Group**, **Datasource**, and **Instance** drop-downs use an on-demand pagination path in the query editor. Each additional page loads only when you request it, so this path isn’t bounded by the same cap as the eager fetch.
-- **Rate-limit impact:** Because a single list query can issue up to `maxPages` API requests, pagination increases the number of requests per query. Refer to [Default rate limits](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#default-rate-limits) when tuning dashboard refresh intervals.
+- **Rate-limit impact:** Because a single list query can issue up to `maxPages` API requests, pagination increases the number of requests per query. Refer to [Default rate limits](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#default-rate-limits) when tuning dashboard refresh intervals.
 
 Accounts larger than the effective cap still see truncated lists. To narrow results:
 
 - Use the server-side type-to-filter behavior on the **Device** drop-down to narrow results before picking downstream selectors.
-- Scope dashboards with [template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead of listing every device or group.
+- Scope dashboards with [template variables](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead of listing every device or group.
 - Split large dashboards into smaller ones by device group to keep each query within the effective cap.
 
 ### Query examples
@@ -223,7 +223,7 @@ To compare metrics across all devices in a group:
 
 ### Use Explore
 
-Use Explore to run queries and visualize results without building a dashboard. For more information, refer to [Explore](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/explore/).
+Use Explore to run queries and visualize results without building a dashboard. For more information, refer to [Explore](https://grafana.com/docs/grafana/latest/explore/).
 
 ## Template variables
 
@@ -237,9 +237,9 @@ To add a LogicMonitor query variable:
 4. Select the LogicMonitor Devices data source.
 5. Enter your query.
 
-For more information about adding query variables, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
+For more information about adding query variables, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable).
 
-After creating a variable, use it in your LogicMonitor queries with [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+After creating a variable, use it in your LogicMonitor queries with [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Set up alerting
 
@@ -253,7 +253,7 @@ To create an alert rule:
 4. Configure the alert conditions based on your LogicMonitor metrics.
 5. Set notification policies and contact points.
 
-For more information about Grafana alerting, refer to [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/).
+For more information about Grafana alerting, refer to [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Add annotations
 
@@ -266,7 +266,7 @@ To add an annotation query:
 3. Select the LogicMonitor Devices data source.
 4. Configure a query that returns the events you want to annotate.
 
-For more information about annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## API rate limits and performance
 
@@ -336,13 +336,13 @@ Query errors surface when the API request succeeds but the data source can’t b
 
 Expand table
 
-| Error message                                               | Cause                                                                                                                                                                                                                                           | Solution                                                                                                                                                                                                                                                                                                                                                                                                               |
-|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missing parameter error                                     | Required fields not selected                                                                                                                                                                                                                    | Select values for all required fields (**Device**, **Datasource**, **Instance**) before running the query.                                                                                                                                                                                                                                                                                                             |
-| No data returned                                            | Time range or permissions issue                                                                                                                                                                                                                 | Verify data exists for the selected time range and that your token has read access to the target device.                                                                                                                                                                                                                                                                                                               |
-| Drop-down missing entries in **Device** or **Device Group** | Account contains more devices or device groups than the plugin’s paginated fetch cap (approximately 10,000 by default)                                                                                                                          | For **Device**, use the server-side type-to-filter to narrow results. For **Device Group**, or if the account exceeds the cap in either selector, scope the dashboard with a template variable. For more information, refer to [Large result sets and pagination](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#large-result-sets-and-pagination). |
-| Drop-down missing entries in **Datasource** or **Instance** | Because both selectors filter client-side against the results returned for the parent selection, missing entries indicate the item isn’t associated with the selected **Device** (or **Device** and **Datasource** combination) in LogicMonitor | Try selecting a different **Device** or **Datasource**, or verify the association in the LogicMonitor portal.                                                                                                                                                                                                                                                                                                          |
-| Type-to-filter in **Device** drop-down returns no matches   | Typed value contains characters that must be escaped in the LogicMonitor `displayName~"..."` glob, such as `"` or `\`                                                                                                                           | Retype the value without those characters, or scope the query with a [template variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead.                                                                                                                                                                                |
+| Error message                                               | Cause                                                                                                                                                                                                                                           | Solution                                                                                                                                                                                                                                                                                                                                                                      |
+|-------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missing parameter error                                     | Required fields not selected                                                                                                                                                                                                                    | Select values for all required fields (**Device**, **Datasource**, **Instance**) before running the query.                                                                                                                                                                                                                                                                    |
+| No data returned                                            | Time range or permissions issue                                                                                                                                                                                                                 | Verify data exists for the selected time range and that your token has read access to the target device.                                                                                                                                                                                                                                                                      |
+| Drop-down missing entries in **Device** or **Device Group** | Account contains more devices or device groups than the plugin’s paginated fetch cap (approximately 10,000 by default)                                                                                                                          | For **Device**, use the server-side type-to-filter to narrow results. For **Device Group**, or if the account exceeds the cap in either selector, scope the dashboard with a template variable. For more information, refer to [Large result sets and pagination](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#large-result-sets-and-pagination). |
+| Drop-down missing entries in **Datasource** or **Instance** | Because both selectors filter client-side against the results returned for the parent selection, missing entries indicate the item isn’t associated with the selected **Device** (or **Device** and **Datasource** combination) in LogicMonitor | Try selecting a different **Device** or **Datasource**, or verify the association in the LogicMonitor portal.                                                                                                                                                                                                                                                                 |
+| Type-to-filter in **Device** drop-down returns no matches   | Typed value contains characters that must be escaped in the LogicMonitor `displayName~"..."` glob, such as `"` or `\`                                                                                                                           | Retype the value without those characters, or scope the query with a [template variable](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#template-variables) instead.                                                                                                                                                                                |
 
 ### Rate-limit errors
 
@@ -362,7 +362,7 @@ The LogicMonitor REST API rate limit for the affected endpoint has been reached 
 1. Increase dashboard refresh intervals so fewer requests hit each endpoint per minute.
 2. Reduce the number of LogicMonitor panels on a single dashboard, or stagger loads across dashboards.
 3. Use template variables to reduce the number of duplicate queries.
-4. Review the specific endpoint’s default limit in [Default rate limits](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-logicmonitor-datasource/latest/#default-rate-limits) and contact your LogicMonitor customer success manager if your usage consistently exceeds the limit.
+4. Review the specific endpoint’s default limit in [Default rate limits](https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest/#default-rate-limits) and contact your LogicMonitor customer success manager if your usage consistently exceeds the limit.
 
 ### Alert rule errors
 
@@ -380,10 +380,10 @@ Template variable queries evaluate before any panel query, so referenced paramet
 
 Expand table
 
-| Symptom                                                | Cause                                                                                                                                       | Solution                                                                                                                                                                      |
-|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Variable drop-down is empty after saving the dashboard | The variable query depends on another variable that hasn’t resolved yet, or on a parameter the plugin can’t resolve outside a panel context | Chain variables so that each depends only on variables defined above it in the dashboard, or replace the upstream reference with a concrete ID.                               |
-| Variable expansion returns an unexpected value         | Variable syntax doesn’t match the plugin’s expected format                                                                                  | Verify the variable syntax against [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/). |
+| Symptom                                                | Cause                                                                                                                                       | Solution                                                                                                                                        |
+|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| Variable drop-down is empty after saving the dashboard | The variable query depends on another variable that hasn’t resolved yet, or on a parameter the plugin can’t resolve outside a panel context | Chain variables so that each depends only on variables defined above it in the dashboard, or replace the upstream reference with a concrete ID. |
+| Variable expansion returns an unexpected value         | Variable syntax doesn’t match the plugin’s expected format                                                                                  | Verify the variable syntax against [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).            |
 
 ### Debug logging
 
@@ -425,8 +425,8 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 ## Learn more
 
-- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
-- [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- [Transformations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
+- [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/)
+- [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
 - [LogicMonitor REST API documentation](https://www.logicmonitor.com/support/rest-api-developers-guide/overview)

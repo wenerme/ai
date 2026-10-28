@@ -36,7 +36,7 @@ Select a rule to open its detail page, which has three tabs:
 
 **Query** shows the expression, with **View in Explore** to open it in Explore.
 
-**Instances** lists the rule’s current alert instances. Refer to [View alert state](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-alert-state/).
+**Instances** lists the rule’s current alert instances. Refer to [View alert state](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-alert-state/).
 
 ## What to check when a rule looks wrong
 
@@ -44,7 +44,7 @@ In order:
 
 1. **Health.** A rule in error health isn’t evaluating, and **Last Error** says why.
 2. **Last Evaluation.** If it’s older than the group’s interval, the group is lagging or stopped.
-3. **Evaluation Time.** If it’s close to the group’s interval, the group is running out of headroom and should be split. Refer to [Manage rule groups](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/).
+3. **Evaluation Time.** If it’s close to the group’s interval, the group is running out of headroom and should be split. Refer to [Manage rule groups](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/).
 4. **The query, in Explore.** If the rule is healthy and evaluating on time but producing nothing, the expression is the thing to check.
 
 ## Group details

@@ -126,7 +126,7 @@ Before configuring the data source in Grafana, set up the required permissions i
 
 Grant the authenticating service account permission to create tokens for the impersonated service account:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 gcloud iam service-accounts add-iam-policy-binding \
@@ -137,7 +137,7 @@ gcloud iam service-accounts add-iam-policy-binding \
 
 Grant the impersonated service account BigQuery access:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 gcloud projects add-iam-policy-binding PROJECT_ID \
@@ -167,7 +167,7 @@ Use [Google Cloud Workload Identity Federation](https://cloud.google.com/iam/doc
 >
 > This authentication method is available on **Grafana Cloud** only. Grafana Cloud exchanges the signed-in user’s OIDC ID token for a short-lived Google Cloud access token before the request reaches the plugin.
 >
-> Workload Identity Federation and [Forward OAuth Identity](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) are different authentication types. WIF exchanges an OIDC ID token from the identity provider Grafana uses for SSO. Forward OAuth Identity forwards a Google OAuth access token and queries BigQuery as that Google user. If Grafana users sign in with [Google OAuth](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/), use Forward OAuth Identity.
+> Workload Identity Federation and [Forward OAuth Identity](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/#forward-oauth-identity) are different authentication types. WIF exchanges an OIDC ID token from the identity provider Grafana uses for SSO. Forward OAuth Identity forwards a Google OAuth access token and queries BigQuery as that Google user. If Grafana users sign in with [Google OAuth](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/), use Forward OAuth Identity.
 
 Configuring Workload Identity Federation involves three systems: Google Cloud, your Grafana Cloud stack, and the data source itself.
 
@@ -184,7 +184,7 @@ Configuring Workload Identity Federation involves three systems: Google Cloud, y
 
 #### In Grafana Cloud
 
-1. Configure your Grafana Cloud stack’s SSO integration against the same OIDC provider, so the signed-in user’s identity is available for Grafana Cloud to exchange for a Google Cloud access token before the request reaches the plugin. Refer to [Configure OAuth2 authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/) for setup details.
+1. Configure your Grafana Cloud stack’s SSO integration against the same OIDC provider, so the signed-in user’s identity is available for Grafana Cloud to exchange for a Google Cloud access token before the request reaches the plugin. Refer to [Configure OAuth2 authentication](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/) for setup details.
 
 #### In the data source configuration
 
@@ -207,7 +207,7 @@ Use Forward OAuth Identity when you want to use Google OAuth authentication in G
 
 To configure Forward OAuth Identity:
 
-1. Configure [Google OAuth authentication](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/) in Grafana.
+1. Configure [Google OAuth authentication](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/google/) in Grafana.
 2. Add the following scopes to the OAuth application:
 
    - `https://www.googleapis.com/auth/bigquery` (required)
@@ -241,15 +241,15 @@ Expand table
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. A successful test displays the message “Data source is working”. If you encounter errors, refer to [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/).
+Click **Save &amp; test** to verify the connection. A successful test displays the message “Data source is working”. If you encounter errors, refer to [Troubleshooting](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
 ### Service account key with private key in secure JSON
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -269,7 +269,7 @@ datasources:
 
 ### Service account key with private key path
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -288,7 +288,7 @@ datasources:
 
 ### GCE default service account
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -303,7 +303,7 @@ datasources:
 
 ### GCE default service account with service account impersonation
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -321,7 +321,7 @@ datasources:
 
 ### Service account key with service account impersonation
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -345,7 +345,7 @@ datasources:
 
 Available on Grafana Cloud only.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -363,7 +363,7 @@ datasources:
 
 ### Forward OAuth Identity
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -380,7 +380,7 @@ datasources:
 
 ### With additional settings
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -438,7 +438,7 @@ You can provision the data source using the [Grafana Terraform provider](https:/
 
 ### Service account key
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "bigquery" {
@@ -460,7 +460,7 @@ resource "grafana_data_source" "bigquery" {
 
 ### GCE default service account
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "bigquery" {
@@ -475,7 +475,7 @@ resource "grafana_data_source" "bigquery" {
 
 ### With service account impersonation
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "bigquery" {
@@ -495,7 +495,7 @@ resource "grafana_data_source" "bigquery" {
 
 Available on Grafana Cloud only.
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "bigquery" {
@@ -513,7 +513,7 @@ resource "grafana_data_source" "bigquery" {
 
 ### With additional settings
 
-hcl ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "bigquery" {
@@ -559,4 +559,4 @@ To import queries:
 - [Google BigQuery documentation](https://cloud.google.com/bigquery/docs)
 - [Create a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts)
 - [BigQuery IAM roles](https://cloud.google.com/bigquery/docs/access-control)
-- [Grafana provisioning documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/)
+- [Grafana provisioning documentation](https://grafana.com/docs/grafana/latest/administration/provisioning/)

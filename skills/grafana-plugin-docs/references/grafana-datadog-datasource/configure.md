@@ -7,20 +7,20 @@ description: "This document outlines configuration options for the Datadog data 
 
 # Configure the Datadog data source
 
-Grafana provides a number of configuration options for Datadog. To install the Datadog plugin, refer to [Install the Datadog data source plugin](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/install/). For general information about adding a data source, refer to [Add a data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
+Grafana provides a number of configuration options for Datadog. To install the Datadog plugin, refer to [Install the Datadog data source plugin](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/install/). For general information about adding a data source, refer to [Add a data source](https://grafana.com/docs/grafana/latest/administration/data-source-management/#add-a-data-source).
 
 ## Before you begin
 
 Before you configure the Datadog data source, ensure you have:
 
-- **A Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled.** The Datadog data source is an Enterprise plugin. Without the required license or entitlement, the plugin doesn’t install or enable, and you might not see an **Install** or **Enable** button on the plugin page. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
+- **A Grafana Enterprise license, or a Grafana Cloud account with Enterprise plugins enabled.** The Datadog data source is an Enterprise plugin. Without the required license or entitlement, the plugin doesn’t install or enable, and you might not see an **Install** or **Enable** button on the plugin page. On Grafana Cloud, Enterprise plugins are included on some plans and available as a paid add-on on others. For details, refer to [Grafana Cloud features](https://grafana.com/docs/grafana-cloud/introduction/understand-grafana-cloud-features/).
 - **Grafana version `11.6.11` or later.**
-- **The organization `administrator` role**, which you need to add data sources. Administrators can also configure the data source with the [Grafana provisioning system](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/).
-- **A Datadog API key and application key.** For instructions, refer to [Get an API key and application key from Datadog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
+- **The organization `administrator` role**, which you need to add data sources. Administrators can also configure the data source with the [Grafana provisioning system](https://grafana.com/docs/grafana/latest/administration/provisioning/).
+- **A Datadog API key and application key.** For instructions, refer to [Get an API key and application key from Datadog](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/#get-an-api-key-and-application-key-from-datadog).
 
 > Caution
 >
-> The Datadog data source requires Enterprise plugin entitlement. If the plugin fails to start with a `Plugin health check failed` message, or a license error such as `invalid license for the enterprise plugin`, the cause is your license or plan, not your Datadog credentials. Verify your license before you install. For details, refer to [License issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#license-issues).
+> The Datadog data source requires Enterprise plugin entitlement. If the plugin fails to start with a `Plugin health check failed` message, or a license error such as `invalid license for the enterprise plugin`, the cause is your license or plan, not your Datadog credentials. Verify your license before you install. For details, refer to [License issues](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/troubleshooting/#license-issues).
 
 ## Configure the data source
 
@@ -51,7 +51,7 @@ You can connect to Datadog using 2 different connection modes, **Default** or **
 - **Mode** - Select your connection mode for Datadog.
 
   - **Default** - Connect directly to Datadog API endpoints.
-  - **Hosted Datadog Metrics** - This mode is now deprecated. Refer to [Datadog proxy documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/send-data/metrics/metrics-datadog/#send-or-visualize-datadog-metrics) for more information.
+  - **Hosted Datadog Metrics** - This mode is now deprecated. Refer to [Datadog proxy documentation](https://grafana.com/docs/grafana-cloud/send-data/metrics/metrics-datadog/#send-or-visualize-datadog-metrics) for more information.
 - **API URL / Region** - *Use with Default mode*. Select your Datadog region from the list, or enter a custom API URL. The following regions are available:
 
   Expand table
@@ -102,11 +102,11 @@ The Datadog **Read Only** role includes all of these permissions. The simplest s
 
 ### Validate your keys
 
-Before you enter your keys into Grafana, you can validate them against the Datadog API. Replace `<api_key>` and `<app_key>` with your keys, and use the API URL for your [region](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/#connection).
+Before you enter your keys into Grafana, you can validate them against the Datadog API. Replace `<api_key>` and `<app_key>` with your keys, and use the API URL for your [region](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#connection).
 
 Validate the API key:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl -X GET "https://api.datadoghq.com/api/v1/validate" \
@@ -117,7 +117,7 @@ A valid API key returns `{"valid":true}`.
 
 Validate both keys together, and confirm that the application key can read metrics:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 curl -X GET "https://api.datadoghq.com/api/v1/metrics?from=$(($(date +%s) - 3600))" \
@@ -136,9 +136,9 @@ Additional settings are optional settings that you can configure for more contro
   - **Show API rate limits** - Check the box to show Datadog API limits for each queried endpoint. To view the API rate limits, go to the **Query Inspector**, select the **JSON** option, and set the source to **DataFrame structure**.
   - **Enable API rate limit threshold** - Check the box to enable rate limiting. Datadog queries stop once the threshold is reached.
   - **API rate limit threshold %** - Enter a threshold percentage in the box. When the API hits the rate limit percent specified, the plugin blocks subsequent requests until the next reset. The default is `100`.
-- **Disable data links** - Check the box to disable data links. The Datadog data source adds data links to **Monitor** query results, which let users open the relevant monitor directly in Datadog. For more information, refer to [Data links](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
+- **Disable data links** - Check the box to disable data links. The Datadog data source adds data links to **Monitor** query results, which let users open the relevant monitor directly in Datadog. For more information, refer to [Data links](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/query-editor/#data-links).
 - **Response Size** - Set the maximum number of items to retrieve in a single API request, such as when querying the metric list or host list. The default is `100`.
-- **Secure Socks Proxy** - *Available when the `secureSocksDSProxyEnabled` feature toggle is enabled and you run Grafana version 10.0.0 or later.* Route the data source connection through the Secure Socks Proxy to a different network. For setup instructions, refer to [Connect through the Secure Socks Proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-datadog-datasource/latest/configure/#connect-through-the-secure-socks-proxy).
+- **Secure Socks Proxy** - *Available when the `secureSocksDSProxyEnabled` feature toggle is enabled and you run Grafana version 10.0.0 or later.* Route the data source connection through the Secure Socks Proxy to a different network. For setup instructions, refer to [Connect through the Secure Socks Proxy](https://grafana.com/docs/plugins/grafana-datadog-datasource/latest/configure/#connect-through-the-secure-socks-proxy).
 
 After you configure your Datadog data source options, click **Save &amp; test** at the bottom to test your data source connection. When the connection succeeds, Grafana displays an `OK` message. You can also remove a connection by clicking **Delete**.
 
@@ -150,25 +150,25 @@ By default, Grafana connects directly to the Datadog API over the public interne
 
 In Grafana Cloud, use Private data source connect (PDC) to route the connection through a network that you control:
 
-1. Set up a PDC network and run the PDC agent. For instructions, refer to [Configure Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+1. Set up a PDC network and run the PDC agent. For instructions, refer to [Configure Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 2. In the Datadog data source configuration, enable the **Secure Socks Proxy** toggle in the **PDC Connect** section.
 3. Select your PDC network and click **Save &amp; test**.
 
 ### Self-managed Grafana
 
 1. Enable the `secureSocksDSProxyEnabled` feature toggle.
-2. Configure the secure socks proxy in the `[secure_socks_datasource_proxy]` section of `grafana.ini`. For instructions, refer to [Configure a data source connection proxy](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
+2. Configure the secure socks proxy in the `[secure_socks_datasource_proxy]` section of `grafana.ini`. For instructions, refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 3. In the Datadog data source configuration, enable the **Secure Socks Proxy** toggle and click **Save &amp; test**.
 
 ## Configure the data source with provisioning
 
-Configure the Datadog data source using configuration files with the Grafana provisioning system. To learn more about how the provisioning system works, including all of the data source settings, refer to [Provisioning Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
+Configure the Datadog data source using configuration files with the Grafana provisioning system. To learn more about how the provisioning system works, including all of the data source settings, refer to [Provisioning Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources).
 
-You can define and configure the Datadog data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer to [Provision Grafana](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/provisioning/#datasources).
+You can define and configure the Datadog data source in YAML files as part of the Grafana provisioning system. For more information about provisioning a data source, and for available configuration options, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources).
 
 The following example is for provisioning the Datadog data source:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -209,7 +209,7 @@ You can configure the Datadog data source as code using the [Grafana Terraform p
 
 The following example provisions a Datadog data source and defines the required variables:
 
-Terraform ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Terraform ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```terraform
 terraform {

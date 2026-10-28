@@ -7,7 +7,7 @@ description: "Troubleshooting guide for the GitLab data source plugin in Grafana
 
 # Troubleshoot GitLab data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the GitLab data source. For configuration instructions, refer to [Configure the GitLab data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the GitLab data source. For configuration instructions, refer to [Configure the GitLab data source](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/configure/).
 
 ## License and entitlement errors
 
@@ -25,12 +25,12 @@ The GitLab data source is a Grafana Enterprise plugin and requires an active plu
 
 Expand table
 
-| Cause                                          | Solution                                                                                                                                                                                                                                                                                                                                                                                             |
-|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Plan or contract doesn’t include the plugin    | Enterprise plugins aren’t included in every plan or contract. Contact your account team to confirm the GitLab data source is part of your entitlement.                                                                                                                                                                                                                                               |
-| Expired license or trial                       | Renew your Grafana Enterprise license or trial. Refer to [Grafana Enterprise](http://grafana-com-website.grafana-com.svc.cluster.local.:80/products/enterprise/).                                                                                                                                                                                                                                    |
-| License not applied to the instance            | Verify your Grafana Enterprise license is installed and valid. For self-managed deployments, ensure the license file is available to Grafana. On Kubernetes, confirm the license secret is created and mounted into the Grafana Pod. Refer to [Grafana Enterprise licensing](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/). |
-| Account not provisioned for Enterprise plugins | If you’re on Grafana Cloud and the plugin remains unavailable after confirming your plan, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support).                                                                                                                                                                                               |
+| Cause                                          | Solution                                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Plan or contract doesn’t include the plugin    | Enterprise plugins aren’t included in every plan or contract. Contact your account team to confirm the GitLab data source is part of your entitlement.                                                                                                                                                                                                      |
+| Expired license or trial                       | Renew your Grafana Enterprise license or trial. Refer to [Grafana Enterprise](https://grafana.com/products/enterprise/).                                                                                                                                                                                                                                    |
+| License not applied to the instance            | Verify your Grafana Enterprise license is installed and valid. For self-managed deployments, ensure the license file is available to Grafana. On Kubernetes, confirm the license secret is created and mounted into the Grafana Pod. Refer to [Grafana Enterprise licensing](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/). |
+| Account not provisioned for Enterprise plugins | If you’re on Grafana Cloud and the plugin remains unavailable after confirming your plan, contact [Grafana Support](https://grafana.com/profile/org#support).                                                                                                                                                                                               |
 
 ## Connection and network errors
 
@@ -49,8 +49,8 @@ Grafana Cloud runs outside your network and can’t reach a GitLab instance that
 
 **Solutions:**
 
-1. Enable **Secure Socks Proxy** in the data source configuration under **Additional Settings**. Refer to [Configure the GitLab data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/configure/).
-2. Set up [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect your Grafana Cloud stack to a GitLab instance on a private network.
+1. Enable **Secure Socks Proxy** in the data source configuration under **Additional Settings**. Refer to [Configure the GitLab data source](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/configure/).
+2. Set up [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to securely connect your Grafana Cloud stack to a GitLab instance on a private network.
 3. For self-managed Grafana, verify that network routing, firewall rules, and DNS resolution allow the Grafana server to reach the GitLab API.
 
 ### 404 errors on queries
@@ -72,7 +72,7 @@ Expand table
 
 > Note
 >
-> A 404 error indicates a URL, path, or missing-resource problem, whereas a 401 or 403 error indicates an authentication or permission problem. For token and permission errors, refer to [Authentication errors](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/#authentication-errors).
+> A 404 error indicates a URL, path, or missing-resource problem, whereas a 401 or 403 error indicates an authentication or permission problem. For token and permission errors, refer to [Authentication errors](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/troubleshooting/#authentication-errors).
 
 ## Authentication errors
 
@@ -89,7 +89,7 @@ These errors appear when you click **Save &amp; test** in the data source config
 
 1. Navigate to the data source configuration page.
 2. Enter a valid GitLab personal access token in the **Access token** field.
-3. Ensure the token has the `read_api` scope. Refer to [Create a GitLab personal access token](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-gitlab-datasource/latest/configure/#create-a-gitlab-personal-access-token) for instructions.
+3. Ensure the token has the `read_api` scope. Refer to [Create a GitLab personal access token](https://grafana.com/docs/plugins/grafana-gitlab-datasource/latest/configure/#create-a-gitlab-personal-access-token) for instructions.
 
 ### “the access token cannot be verified. Double check the token, URL and permissions”
 
@@ -322,7 +322,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -339,7 +339,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Consult the [GitLab documentation](https://docs.gitlab.com/) for service-specific guidance.
-3. Contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/profile/org#support) if you’re a Grafana Cloud or Enterprise customer.
+3. Contact [Grafana Support](https://grafana.com/profile/org#support) if you’re a Grafana Cloud or Enterprise customer.
 4. When reporting issues, include:
 
    - Grafana version and plugin version

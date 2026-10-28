@@ -23,7 +23,7 @@ In practice this means:
 
 This is a Grafana-wide rule that applies to all app plugins, not specific to Logs Drilldown. If a Server Admin needs to change the configuration settings, they need to be granted the Org Admin role in the relevant organization.
 
-Refer to [Plugin management](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/plugin-management/) for more information.
+Refer to [Plugin management](https://grafana.com/docs/grafana/latest/administration/plugin-management/) for more information.
 
 ## Configuration tab
 
@@ -51,7 +51,7 @@ Select a setting to configure it:
 - **Default time range** controls the time range applied when a user opens Logs Drilldown without a time range already set in the URL. Select the **Use custom default time range** checkbox to enable this setting, which reveals **From** and **To** input fields. Both fields are required. Use relative time expressions such as `now-15m`, `now-1h`, or `now-24h` for the start, and `now` for the end. Absolute date-time values are also accepted. The **From** value must be earlier than the **To** value; if either value is missing or invalid, the **Save settings** button is disabled and an inline error is displayed. When disabled, the app uses its built-in default of the last 15 minutes.
 - **Maximum time picker interval** sets an upper bound on the time range interval that users can select in the time picker. The minimum accepted value is one hour (`60m`). Example values: `7d`, `24h`, `2w`. If left empty, users can select any time range.
 - **Quick time ranges** aren’t set on this page. They come from the Grafana server setting `quick_ranges` in the `[time_picker]` section of `grafana.ini` (or `GF_TIME_PICKER_QUICK_RANGES`). When set, the time picker shows those ranges instead of the built-in list, and the custom default time range above is pinned to the top if the list doesn’t already include it. Ranges longer than your Loki retention period or the **Maximum time picker interval** are hidden.
-- **Disable Loki patterns** controls whether the Patterns tab and the [Loki Patterns API](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/loki/latest/reference/loki-http-api/#patterns-detection) endpoint are used by Logs Drilldown.
+- **Disable Loki patterns** controls whether the Patterns tab and the [Loki Patterns API](https://grafana.com/docs/loki/latest/reference/loki-http-api/#patterns-detection) endpoint are used by Logs Drilldown.
 
 After configuring a setting, click **Save settings** to apply the changes.
 
@@ -59,7 +59,7 @@ After configuring a setting, click **Save settings** to apply the changes.
 
 > Note
 >
-> Default fields is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Default fields is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 >
 > To use this feature, enable the kubernetesLogsDrilldown feature toggle in your Grafana configuration file or contact Support.
 
@@ -89,7 +89,7 @@ You can add multiple records to configure different columns for different label 
 
 > Note
 >
-> Landing Page default labels is currently in [public preview](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Landing Page default labels is currently in [public preview](https://grafana.com/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 >
 > To use this feature, enable the kubernetesLogsDrilldown feature toggle in your Grafana configuration file or contact Support.
 
@@ -127,6 +127,6 @@ To configure Landing Page default labels:
 
 ## Related pages
 
-- [Access and install Grafana Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/access/)
-- [Get started with Grafana Logs Drilldown](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/get-started/)
-- [Troubleshooting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/)
+- [Access and install Grafana Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/access/)
+- [Get started with Grafana Logs Drilldown](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/get-started/)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting/)

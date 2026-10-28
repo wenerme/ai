@@ -13,8 +13,8 @@ You can create Grafana alerts based on BigQuery queries to get notified when you
 
 Before setting up alerts:
 
-- [Configure the Google BigQuery data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-bigquery-datasource/latest/configure/)
-- Understand [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
+- [Configure the Google BigQuery data source](https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure/)
+- Understand [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)
 - Ensure your BigQuery credentials are configured using a method that doesn’t require user interaction (service account key, GCE default service account, or service account impersonation)
 
 > Note
@@ -51,7 +51,7 @@ The following examples demonstrate common alerting patterns.
 
 Alert when a value exceeds a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -67,7 +67,7 @@ Set the condition to alert when `error_count` is above your threshold.
 
 Alert when an average value crosses a threshold:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -81,7 +81,7 @@ WHERE $__timeFilter(timestamp)
 
 Alert when a metric changes significantly:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -102,7 +102,7 @@ SELECT
 
 Alert on multiple series with labels:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -161,7 +161,7 @@ BigQuery alerts run on a schedule, and each evaluation executes a query against 
 
 Instead of scanning an entire table:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Expensive: scans all data
@@ -172,7 +172,7 @@ WHERE error = true
 
 Filter to recent data and use partitioning:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 -- Optimized: uses partition pruning
@@ -225,6 +225,6 @@ If alert queries fail:
 
 ## Related resources
 
-- [Grafana Alerting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/)
-- [Create alert rules](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/)
-- [Configure notifications](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/alerting/configure-notifications/)
+- [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/)
+- [Create alert rules](https://grafana.com/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/)
+- [Configure notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/)

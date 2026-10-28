@@ -11,8 +11,8 @@ The Azure DevOps data source supports annotations through Grafana’s built-in a
 
 ## Before you begin
 
-- [Configure the Azure DevOps data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
-- Understand [Grafana annotations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+- [Configure the Azure DevOps data source](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure/).
+- Understand [Grafana annotations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Add an annotation query
 
@@ -21,7 +21,7 @@ To add an Azure DevOps annotation to a dashboard:
 1. Navigate to **Dashboard settings** &gt; **Annotations**.
 2. Click **Add annotation query**.
 3. Select the **Azure DevOps** data source.
-4. Select a query type and configure filters as needed. Refer to the [query editor documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/query-editor/) for available query types and fields.
+4. Select a query type and configure filters as needed. Refer to the [query editor documentation](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/query-editor/) for available query types and fields.
 
 ## Use cases
 
@@ -55,5 +55,5 @@ Mark when releases are created to correlate with downstream effects:
 
 ## Next steps
 
-- [Use template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/) to make annotation queries dynamic.
-- [Troubleshoot annotation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/#annotations-dont-appear-on-panels) if annotations don’t appear on your panels.
+- [Use template variables](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/template-variables/) to make annotation queries dynamic.
+- [Troubleshoot annotation issues](https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting/#annotations-dont-appear-on-panels) if annotations don’t appear on your panels.

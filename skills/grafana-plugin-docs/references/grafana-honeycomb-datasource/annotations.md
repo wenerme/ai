@@ -9,11 +9,11 @@ description: "Use Honeycomb queries to add annotations that overlay event marker
 
 Annotations overlay event markers on your time series graphs, which makes it easier to correlate metrics with specific moments such as error spikes, latency regressions, or deployments. The Honeycomb data source uses the standard Grafana annotation interface, so any Honeycomb query can serve as an annotation source with no additional configuration.
 
-For an overview of annotations, refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For an overview of annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- Ensure you have [configured the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
+- Ensure you have [configured the Honeycomb data source](https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
 - Save your dashboard before you create annotations.
 - Annotations display on time series, state timeline, and candlestick visualizations.
 
@@ -80,7 +80,7 @@ Every time bucket that contains an error produces a marker. Map **Tags** to the 
 
 Use a Raw query when you want to define the request directly. The following example counts error events for each service:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -104,7 +104,7 @@ Use a percentile calculation with a **Having** clause so that only buckets above
 
 The equivalent raw query is:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -122,7 +122,7 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Combine annotations with template variables to scope markers to the current dashboard selection. The following raw query filters errors by a `service` dashboard variable:
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {
@@ -134,9 +134,9 @@ JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 }
 ```
 
-For more information on variables, refer to [Honeycomb template variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/template-variables/).
+For more information on variables, refer to [Honeycomb template variables](https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/template-variables/).
 
 ## Next steps
 
-- Refer to the [Honeycomb query editor](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/) for full details on building queries.
-- Refer to [Annotate visualizations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.
+- Refer to the [Honeycomb query editor](https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/query-editor/) for full details on building queries.
+- Refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.

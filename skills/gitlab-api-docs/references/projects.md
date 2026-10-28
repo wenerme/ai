@@ -3132,8 +3132,10 @@ Prerequisites:
   - `.gif`
   - `.ico`
   - `.jpeg`
+  - `.jpg`
   - `.png`
   - `.tiff`
+  - `.webp`
 
 Supported attributes:
 

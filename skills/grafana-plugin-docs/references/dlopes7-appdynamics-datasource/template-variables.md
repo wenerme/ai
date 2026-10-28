@@ -11,14 +11,14 @@ Instead of hard-coding application names, tier names, or metric paths in your qu
 
 For an introduction to templates and variables, refer to the following topics:
 
-- [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/)
-- [Templates](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/#templates)
-- [Add and manage variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/)
-- [Variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/)
+- [Variables](https://grafana.com/docs/grafana/latest/dashboards/variables/)
+- [Templates](https://grafana.com/docs/grafana/latest/dashboards/variables/#templates)
+- [Add and manage variables](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/)
+- [Variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/)
 
 ## Create AppDynamics query variables
 
-To add a new AppDynamics query variable, refer to [Add a query variable](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select your AppDynamics data source and use one of the supported query patterns.
+To add a new AppDynamics query variable, refer to [Add a query variable](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select your AppDynamics data source and use one of the supported query patterns.
 
 The following table lists the supported query patterns for AppDynamics variables. Replace `AppName` and `TierName` with the actual application and tier names, or use previously defined variables such as `${application}`.
 
@@ -70,7 +70,7 @@ Only the first column of the result is used as the variable values.
 
 ## Use variables in queries
 
-After you create a variable, you can use it in your AppDynamics queries using [variable syntax](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/).
+After you create a variable, you can use it in your AppDynamics queries using [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 ### Metrics queries
 
@@ -84,13 +84,13 @@ You can also put variables in the **Metric** path. For example, after you create
 2. Select `${application}` from the **Application** drop-down.
 3. In raw edit mode, enter `Business Transaction Performance|Business Transactions|${tier}|${bt}|Calls per Minute`.
 
-If `tier` or `bt` is multi-value, those path segments are replaced with `*`. Refer to [Limitations](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/#limitations).
+If `tier` or `bt` is multi-value, those path segments are replaced with `*`. Refer to [Limitations](https://grafana.com/docs/plugins/dlopes7-appdynamics-datasource/latest/template-variables/#limitations).
 
 ### Analytics queries
 
-Use variables in ADQL queries with the appropriate [variable format](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options). Multi-value variables aren’t rewritten to `*` in Analytics queries. Use the `doublequote` formatter for string lists in `WHERE` clauses:
+Use variables in ADQL queries with the appropriate [variable format](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options). Multi-value variables aren’t rewritten to `*` in Analytics queries. Use the `doublequote` formatter for string lists in `WHERE` clauses:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT transactionName, avg(responseTime) FROM transactions WHERE transactionName IN (${transactionName:doublequote})
@@ -112,4 +112,4 @@ The following limitations apply to template variables with the AppDynamics data 
 - **ADQL variable queries must start with `SELECT` and include `FROM`.** Queries that don’t match that pattern are treated as Controller templating queries. If the query has no `.`, the plugin lists applications.
 - **Path queries use `.` as the segment separator.** Don’t use the metric-path pipe character in `AppName.Path...` variable queries.
 
-For more information about variables, refer to [Templates and variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/dashboards/variables/).
+For more information about variables, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).

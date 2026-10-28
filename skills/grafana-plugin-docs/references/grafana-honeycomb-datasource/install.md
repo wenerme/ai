@@ -7,7 +7,7 @@ description: "Install and upgrade the Honeycomb data source plugin for Grafana."
 
 # Install and upgrade the Honeycomb data source plugin
 
-This document covers how to install, upgrade, and verify the Honeycomb data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Honeycomb data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Honeycomb data source plugin across different Grafana deployment environments. After the plugin is installed, refer to [Configure the Honeycomb data source](https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -15,12 +15,12 @@ Verify the following requirements before installing:
 
 Expand table
 
-| Requirement          | Details                                                                                                                                                                                                                                    |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **License**          | Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-honeycomb-datasource`. Free and Starter plans don’t include Enterprise plugins.                                                    |
-| **Grafana version**  | 11.6.7 or later.                                                                                                                                                                                                                           |
-| **Network access**   | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to [https://grafana.com/](http://grafana-com-website.grafana-com.svc.cluster.local.:80/) or a local plugin ZIP. |
-| **Honeycomb access** | An active Honeycomb Enterprise team and an API key with **Manage Queries and Columns** and **Run Queries** permissions.                                                                                                                    |
+| Requirement          | Details                                                                                                                                                                                           |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **License**          | Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-honeycomb-datasource`. Free and Starter plans don’t include Enterprise plugins.           |
+| **Grafana version**  | 11.6.7 or later.                                                                                                                                                                                  |
+| **Network access**   | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to [https://grafana.com/](https://grafana.com/) or a local plugin ZIP. |
+| **Honeycomb access** | An active Honeycomb Enterprise team and an API key with **Manage Queries and Columns** and **Run Queries** permissions.                                                                           |
 
 ## Install the plugin
 
@@ -30,7 +30,7 @@ Choose the installation method that matches your Grafana deployment.
 
 Enterprise plugins must be activated for your organization before they appear as installable in the plugin catalog.
 
-1. Go to [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and sign in with your Grafana Cloud account.
+1. Go to [your Grafana Cloud organization settings](https://grafana.com/orgs) and sign in with your Grafana Cloud account.
 2. Select your organization.
 3. Navigate to the **Plugins** tab and verify that the Honeycomb plugin is activated. If it isn’t listed, confirm your Cloud plan includes Enterprise plugins.
 4. In your Grafana Cloud instance, navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
@@ -38,11 +38,11 @@ Enterprise plugins must be activated for your organization before they appear as
 
 > Note
 >
-> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) and that your Cloud plan is Pro or Advanced. On Grafana Cloud, it can take up to 15 minutes for a newly activated plugin to appear.
+> If the **Install** button doesn’t appear, verify that the plugin is activated for your organization in [your Grafana Cloud organization settings](https://grafana.com/orgs) and that your Cloud plan is Pro or Advanced. On Grafana Cloud, it can take up to 15 minutes for a newly activated plugin to appear.
 
 ### Self-managed Grafana (CLI)
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-honeycomb-datasource
@@ -50,7 +50,7 @@ grafana cli plugins install grafana-honeycomb-datasource
 
 Restart Grafana after installation:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 sudo systemctl restart grafana-server
@@ -60,7 +60,7 @@ sudo systemctl restart grafana-server
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -72,7 +72,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -83,7 +83,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -100,7 +100,7 @@ env:
 
 If you don’t control the Helm chart (for example, on a shared platform cluster), use an init container to download the plugin before Grafana starts:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -124,25 +124,25 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) on a machine with internet access.
+1. Download the plugin ZIP from your [Grafana account portal](https://grafana.com/orgs) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract to the plugins directory:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-honeycomb-datasource-<version>.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-honeycomb-datasource
    ```
 5. Restart Grafana.
 
-The Honeycomb plugin is signed, and official downloads from your [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs) include a valid signature. If Grafana reports a signature error, don’t disable signature verification. Instead, resolve the underlying cause:
+The Honeycomb plugin is signed, and official downloads from your [Grafana account portal](https://grafana.com/orgs) include a valid signature. If Grafana reports a signature error, don’t disable signature verification. Instead, resolve the underlying cause:
 
 - Confirm you downloaded the official ZIP and didn’t modify or repackage its contents.
 - Extract the complete plugin directory, including the `MANIFEST.txt` signature file, into the plugins directory.
@@ -160,7 +160,7 @@ After installing, confirm the plugin is loaded:
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for **Honeycomb** and verify the plugin appears with a status of **Installed**.
 3. Navigate to **Connections** &gt; **Add new connection** and search for **Honeycomb** to confirm it’s available as a data source.
-4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-honeycomb-datasource/latest/install/#troubleshoot-installation-issues).
+4. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshoot installation issues](https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/install/#troubleshoot-installation-issues).
 
 ## Upgrade the plugin
 
@@ -172,13 +172,13 @@ Upgrade steps depend on your Grafana deployment environment.
 
 ### Grafana Cloud
 
-Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
+Plugins are automatically updated on Grafana Cloud. No manual action is required. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/support/).
 
 ### Self-managed Grafana
 
 1. Update the plugin:
 
-   Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-honeycomb-datasource
@@ -188,7 +188,7 @@ Plugins are automatically updated on Grafana Cloud. No manual action is required
 
 To install a specific version:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-honeycomb-datasource <version>
@@ -196,7 +196,7 @@ grafana cli plugins install grafana-honeycomb-datasource <version>
 
 For Docker or Kubernetes, append the version to the plugin name:
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -207,7 +207,7 @@ environment:
 
 If an upgrade causes issues on a self-managed instance, pin a specific plugin version:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-honeycomb-datasource 2.15.4
@@ -217,13 +217,13 @@ Restart Grafana after the rollback.
 
 > Note
 >
-> Rollback isn’t available on Grafana Cloud. Attempting a downgrade can leave the plugin backend on the newer version even when the frontend reports the older one, which results in a mismatched, unsupported state. Roll forward to a fixed version instead of rolling back. If you experience issues after an automatic update, contact [Grafana Support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/support/).
+> Rollback isn’t available on Grafana Cloud. Attempting a downgrade can leave the plugin backend on the newer version even when the frontend reports the older one, which results in a mismatched, unsupported state. Roll forward to a fixed version instead of rolling back. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/support/).
 
 ## Uninstall the plugin
 
 To remove the Honeycomb plugin from a self-managed Grafana instance:
 
-Bash ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-honeycomb-datasource
@@ -243,7 +243,7 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Go to [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
+1. Go to [your Grafana Cloud organization settings](https://grafana.com/orgs).
 2. Select your organization and navigate to the **Plugins** tab.
 3. Verify that the Honeycomb plugin is listed and activated.
 4. Confirm your Cloud plan is Pro or Advanced. Free and Starter plans don’t include Enterprise plugins.
@@ -254,8 +254,8 @@ The following sections address common installation problems.
 
 **Solution:**
 
-- **Grafana Cloud:** Verify plugin activation in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
-- **Self-managed:** Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+- **Grafana Cloud:** Verify plugin activation in [your Grafana Cloud organization settings](https://grafana.com/orgs).
+- **Self-managed:** Verify your Grafana Enterprise license is active. The license must be set via the `GF_ENTERPRISE_LICENSE_TEXT` environment variable or the license path. Refer to [Activate an Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### License key errors (self-managed)
 
@@ -265,8 +265,8 @@ The following sections address common installation problems.
 
 1. Verify the license key doesn’t contain extra whitespace, line breaks, or truncated characters.
 2. Confirm the key is for the correct Grafana instance URL.
-3. Check that the license hasn’t expired in [your Grafana Cloud organization settings](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs).
-4. For license activation help, refer to [Activate an Enterprise license](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/administration/enterprise-licensing/).
+3. Check that the license hasn’t expired in [your Grafana Cloud organization settings](https://grafana.com/orgs).
+4. For license activation help, refer to [Activate an Enterprise license](https://grafana.com/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### Signature error (air-gapped installs)
 
@@ -274,7 +274,7 @@ The following sections address common installation problems.
 
 **Solution:**
 
-1. Download the ZIP from the official [Grafana account portal](http://grafana-com-website.grafana-com.svc.cluster.local.:80/orgs). Official downloads are signed. Don’t modify or repackage the contents.
+1. Download the ZIP from the official [Grafana account portal](https://grafana.com/orgs). Official downloads are signed. Don’t modify or repackage the contents.
 2. Extract the complete plugin directory, including the `MANIFEST.txt` signature file, and confirm the folder is named `grafana-honeycomb-datasource`.
 3. Confirm the ZIP matches your server architecture and the plugin’s supported Grafana version.
 4. Restart Grafana.

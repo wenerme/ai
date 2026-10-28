@@ -9,11 +9,11 @@ description: "Learn how to embed and display YouTube videos on your Grafana dash
 
 This idea comes from a [GitHub issue](https://github.com/VolkovLabs/business-text/issues/261) opened by [Raphealtony](https://github.com/Raphealtony). You can use the Business Text plugin to display YouTube videos on your Grafana dashboard.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-text/yt-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-text/yt-edit.png)
 
 Use the following external library
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 https://youtube.com/iframe_api
@@ -21,7 +21,7 @@ https://youtube.com/iframe_api
 
 ## Content to copy
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <h1>Volkov Labs Latest videos</h1>
@@ -36,7 +36,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Use the following for the **JavaScript &gt; After Content Ready**:
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 import("https://esm.sh/youtube-player").then(({ default: YouTubePlayer }) => {

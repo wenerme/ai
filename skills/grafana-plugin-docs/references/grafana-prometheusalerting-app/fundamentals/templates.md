@@ -25,19 +25,19 @@ Expand table
 
 The ruler renders these when it evaluates the rule, so the result is baked into the alert before Alertmanager ever sees it. The template has access to exactly one alert instance: its labels and its value.
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ $labels.instance }} is using {{ $value | printf "%.1f" }}% of its disk.
 ```
 
-Because this runs on every evaluation, keep it cheap and simple. Refer to [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
+Because this runs on every evaluation, keep it cheap and simple. Refer to [Template annotations and labels](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
 
 ## Notification templates
 
 Alertmanager renders these when it sends a notification, which happens after grouping. The template therefore sees a *group* of alerts, not one, and its job is to format that group into a message.
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "slack.summary" }}
@@ -46,7 +46,7 @@ Go [Copy code to clipboard] Copy
 {{ end }}{{ end }}
 ```
 
-Notice that this template reads `.Annotations.summary`, the output of the rule-level template from the previous step. The two stack: the ruler produces per-alert text, and Alertmanager assembles those into a message. Refer to [Notification templates](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/).
+Notice that this template reads `.Annotations.summary`, the output of the rule-level template from the previous step. The two stack: the ruler produces per-alert text, and Alertmanager assembles those into a message. Refer to [Notification templates](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/).
 
 ## Which one do you want?
 

@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Zendesk data source in Grafana
 
 # Troubleshoot Zendesk data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the Zendesk data source. For configuration instructions, refer to [Configure the Zendesk data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/grafana-zendesk-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the Zendesk data source. For configuration instructions, refer to [Configure the Zendesk data source](https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configure/).
 
 ## Version and upgrade guidance
 
@@ -88,7 +88,7 @@ These errors occur when Grafana cannot reach the Zendesk API.
 1. Verify the **Subdomain** is correct. If your Zendesk URL is `https://company.zendesk.com`, the subdomain is `company`.
 2. Confirm network connectivity from the Grafana server to `https://<subdomain>.zendesk.com`.
 3. Check that firewall rules allow outbound HTTPS on port `443`.
-4. For Grafana Cloud accessing a private network, configure [Private data source connect](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing a private network, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Query errors
 
@@ -117,7 +117,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
