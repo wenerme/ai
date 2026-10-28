@@ -11,7 +11,7 @@ description: "Learn how to delete rows from your Business Table panel with prope
 >
 > Deleting rows is supported starting from Business Table 1.9.0.
 
-This is one of the most requested features. You can [add](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/add/) and delete rows from your Grafana dashboard.
+This is one of the most requested features. You can [add](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/add/) and delete rows from your Grafana dashboard.
 
 You configure data deletion and permissions in the **Delete Data** category.
 
@@ -20,10 +20,10 @@ You configure data deletion and permissions in the **Delete Data** category.
 To configure the delete row feature, use the **Delete data** parameter category to specify:
 
 - Which tabs of your Business Table panel allow deleting rows.
-- [Permission](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/permission/), which provides granular control over who can delete a row.
+- [Permission](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/permission/), which provides granular control over who can delete a row.
 - **Delete Request**, which consists of a data source and query.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/delete-conf.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/delete-conf.png)
 
 ## Delete request
 

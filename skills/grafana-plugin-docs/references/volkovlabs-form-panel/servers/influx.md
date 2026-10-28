@@ -24,7 +24,7 @@ Update according to your environment:
 - Token
 - Query (any valid query you want to test)
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 const query = `
@@ -78,7 +78,7 @@ The body’s elements come from the plugin’s form and are placed inside `${}`.
 
 - `body.element_id1` gets the `element_id1` value from the `body` object.
 
-js ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+js ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```js
 /**

@@ -1659,7 +1659,7 @@ Tests the upstream connection of a remote repository in Artifact Registry.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
-Updates a repository in Artifact Registry. Artifact Registry writes the metadata fields and the settings in separate transactions, metadata first, so a failed update can leave a visibility or description change applied while the settings did not change. Re-sending the same mutation converges.
+Updates a repository in Artifact Registry. Artifact Registry writes the metadata fields and the settings in one transaction, so a failed update applies none of the changes.
 
 **Input type:** `ArtifactRegistryRepositoryUpdateInput`
 

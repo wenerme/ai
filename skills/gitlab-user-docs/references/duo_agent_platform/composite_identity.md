@@ -67,8 +67,12 @@ The composite identity is part of the workflow.
 1. Create a flow in the AI Catalog.
    - No composite identity-related changes occur.
 1. Enable the flow for a project.
-   - A service account is created in the top-level group. (The name is similar to `ai-flowname-groupname`.)
+   - A service account is created in the top-level group.
+     For custom flows, the username is similar to `ai-<flow_name>-<top_level_group_name>`.
+     For foundational flows, the username is similar to `duo-<flow_name>-<top_level_group_name>`.
    - The service account is added to the project with the Developer role.
+     A foundational flow service account is added to
+     [each project that has foundational flows turned on](flows/foundational_flows/_index.md#service-account-and-trigger-setup).
 1. A user executes the flow.
    - The flow is executed by a one-time composite identity.
      This identity has a combination of the user's role and the service account's Developer role,
@@ -81,6 +85,55 @@ The composite identity is part of the workflow.
      For example, if the service account has been added to other projects,
      and the user has access to those projects,
      the flow can access those projects even if the user has not used the flow there before.
+
+     Some users can access every project in a group, like administrators or
+     users with the Owner role for the top-level group.
+     For these users, the projects the service account is a member of set the limit on what the flow can access.
+
+## Investigate activity by a service account
+
+Service account membership, sessions, and data access are separate signals.
+To investigate whether a service account accessed project data, collect evidence for each signal.
+
+### Membership
+
+Membership shows that the service account is authorized to access a project,
+not that the service account accessed the project.
+
+- To check the service account's membership, [view the project members](../project/members/_index.md#view-project-members).
+  Use the members list as the authoritative source, because not every foundational flow membership change creates an audit event.
+- To check membership history, review the `member_created`, `member_destroyed`, and `duo_service_account_provisioned`
+  [audit events](../compliance/audit_event_types.md).
+- To check when flow triggers were created, changed, or deleted in a project, review the
+  `flow_trigger_created`, `flow_trigger_updated`, and `flow_trigger_deleted` audit events.
+  Like membership, these events show configuration changes, not flow runs.
+
+### Session
+
+A session shows that a flow used the service account, and which user the run is attributed to.
+
+- Review the [sessions](sessions/_index.md) for the project, including the user for each session.
+  Sessions are deleted after the [session retention period](sessions/_index.md#session-retention).
+- Review the CI/CD job logs for each session.
+  The logs show the commands the flow ran on the runner, including repository checkout.
+
+### Data access
+
+Data access shows which requests the composite identity made during a session.
+
+- Review the `api_request_access_with_scope` audit events.
+  These events record the method and path of REST API requests made with the `ai_workflows` token scope.
+  These events cover REST API requests only, not GraphQL requests or Git operations like cloning the repository.
+  These events are user-scoped, so they appear in
+  [instance audit events](../../administration/compliance/audit_event_reports.md#instance-audit-events),
+  not group or project audit events.
+- Review the [AI audit events](../ai-governance/ai-audit-events.md).
+  These events are available only if AI audit event storage was turned on before the session ran.
+- Search the API logs for entries that include a `meta.scoped_user` field.
+  This field is present only for requests made with a composite identity,
+  and contains the user the session is attributed to.
+  - On GitLab Self-Managed, search [`api_json.log`](../../administration/logs/_index.md#api_jsonlog).
+  - On GitLab Dedicated, search the [application logs](../../administration/dedicated/monitor.md) in your Amazon S3 bucket.
 
 ## Token permissions for AI Catalog flows
 

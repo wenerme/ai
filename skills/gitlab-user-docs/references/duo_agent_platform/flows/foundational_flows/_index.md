@@ -91,6 +91,37 @@ This is done to adhere to compliance frameworks that require segregation of duti
 
 This attribution does not determine [who is billed for usage](../../../../subscriptions/gitlab_credits.md#billing-subjects-for-credit-usage).
 
+#### Service account and trigger setup
+
+When you turn on a foundational flow, GitLab completes the following actions:
+
+- Creates a service account for the flow in the top-level group.
+  The username is similar to `duo-<flow_name>-<top_level_group_name>`.
+- Adds the service account with the Developer role as a direct member of each project
+  in the group that has foundational flows turned on.
+- Creates the triggers for the flow in each of those projects, if the flow has triggers.
+
+GitLab completes these steps in background jobs, so changes to a large group can take time to reach every project.
+
+When you turn on a foundational flow, it does not scan, index, or read any repository or project.
+The service account acts only when a flow runs, and each session is attributed to a user.
+
+#### Events that start a foundational flow
+
+A foundational flow runs when the following events occur:
+
+- A user performs an action that matches a [trigger](../../triggers/_index.md) for the flow. For example, the user mentions the service account or assigns the service account as a reviewer.
+  For actions that can't start a flow, see [actions that don't initiate a trigger](../../triggers/_index.md#actions-that-dont-initiate-a-trigger).
+- A user starts the flow from an issue, a merge request, or a pipeline.
+- An event in the project starts the flow automatically. For example:
+  - The SAST False Positive Detection and Secret False Positive Detection flows run
+    after security scans, on behalf of the author of the vulnerability.
+  - The Agentic Breaking Change Resolution flow runs when a pipeline fails for a dependency update merge request.
+    The run is attributed to the user who turned on breaking change resolution for the project.
+
+Each run creates a [session](../../sessions/_index.md) and uses a
+[composite identity](../../composite_identity.md) of the user and the service account.
+
 ## Turn foundational flows on or off
 
 You can turn foundational flows on or off:
@@ -201,3 +232,15 @@ Prerequisites:
 1. Expand **GitLab Duo**.
 1. Turn on the **GitLab Duo**, **Allow flow execution**, and **Allow foundational flows** toggles.
 1. Select **Save changes**.
+
+### Effects of turning off a foundational flow
+
+When you turn off a foundational flow for a group or project:
+
+- GitLab deletes the triggers for the flow.
+  Mentions, assignments, and other trigger events no longer start the flow.
+- The service account might remain a member of projects.
+  For more information, see [service account remains a project member](../../troubleshooting.md#service-account-remains-a-project-member-after-foundational-flows-are-turned-off).
+
+To check whether a flow accessed a project, see
+[investigate activity by a service account](../../composite_identity.md#investigate-activity-by-a-service-account).

@@ -11,7 +11,7 @@ The Business Media panel includes these features:
 
 Expand table
 
-| Section                                                                                                                                        | Description                                |
-|------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| [Data sources](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/features/data-sources/) | How to retrieve data from data sources.    |
-| [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-image-panel/latest/features/variables/)       | How to use dashboard and global variables. |
+| Section                                                                                               | Description                                |
+|-------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| [Data sources](https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features/data-sources/) | How to retrieve data from data sources.    |
+| [Variables](https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features/variables/)       | How to use dashboard and global variables. |

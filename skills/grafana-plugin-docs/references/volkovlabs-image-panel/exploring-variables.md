@@ -9,13 +9,13 @@ description: "Learn how dashboard, global, and environment variables work in Gra
 
 Variables in Grafana come in three types: dashboard, global, and environment. This page breaks them down and shows how they fit into your Grafana deployment.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/variables.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/variables.png)
 
 ## Dashboard variables
 
 Dashboard variables live within a single dashboard, powering filters and dynamic controls. They’re your go-to for tailoring what users see.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-charts/variables-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/variables-edit.png)
 
 ## Global variables
 
@@ -35,7 +35,7 @@ Expand table
 | `${__user.id}`    | ID of the current user             |
 | `${__user.login}` | Login handle of the current user   |
 
-For the full list, refer to [Grafana global variable documentation](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/grafana/latest/visualizations/dashboards/variables/add-template-variables/#global-variables).
+For the full list, refer to [Grafana global variable documentation](https://grafana.com/docs/grafana/latest/visualizations/dashboards/variables/add-template-variables/#global-variables).
 
 ## Environment variables
 
@@ -43,4 +43,4 @@ Environment variables pull from the system where Grafana runs (for example, oper
 
 ## Variables at a glance
 
-For Business Charts variable substitution in the Charts function, refer to [Variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-echarts-panel/latest/features/variables/).
+For Business Charts variable substitution in the Charts function, refer to [Variables](https://grafana.com/docs/plugins/volkovlabs-echarts-panel/latest/features/variables/).

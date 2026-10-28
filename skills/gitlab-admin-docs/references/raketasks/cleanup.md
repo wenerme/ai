@@ -200,6 +200,67 @@ level with `NICENESS`. Below are the valid levels, but consult
 - `2` or `Best-effort` (default)
 - `3` or `Idle`
 
+## Clean up orphaned package files
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632256) in GitLab 19.6.
+
+> [!note]
+> This task doesn't work for packages stored on
+> [object storage](../object_storage.md).
+
+When you delete a project, its package files can remain on disk in the
+[package registry local storage path](../packages/_index.md#change-the-local-storage-path).
+To find and move these orphaned package files:
+
+### Linux package (Omnibus)
+
+```shell
+sudo gitlab-rake gitlab:cleanup:orphan_package_files
+```
+
+### Self-compiled (source)
+
+```shell
+bundle exec rake gitlab:cleanup:orphan_package_files RAILS_ENV=production
+```
+
+This task:
+
+- Scans the top-level hashed directories of the packages storage path.
+- Checks each directory against the projects in the database, and the groups that have Debian distributions.
+- Lists each directory without a matching project or group, with its size and the total size.
+- Skips a directory with a file changed in the last 24 hours. A later run handles it.
+
+By default, the task doesn't change anything.
+To move the orphaned directories to the lost and found directory, run the task with `DRY_RUN=false`:
+
+```shell
+sudo gitlab-rake gitlab:cleanup:orphan_package_files DRY_RUN=false
+```
+
+The task moves directories to `<packages storage path>/-/package-lost-found/` and keeps their relative paths.
+The task never deletes files.
+If the task cannot measure or move a directory, it logs an error for that directory and ends with the count of failed directories.
+After you confirm the package registry works as expected, delete the lost and found directory.
+To restore a directory, move it back to the same relative path under the packages storage path.
+
+Example output:
+
+```shell
+$ sudo gitlab-rake gitlab:cleanup:orphan_package_files
+
+I, [2026-10-07T10:15:02.123456 #4321]  INFO -- : Looking for orphaned package files to clean up. Dry run...
+I, [2026-10-07T10:15:03.234567 #4321]  INFO -- : Can move to lost and found /var/opt/gitlab/gitlab-rails/shared/packages/4f/c8/4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8 -> /var/opt/gitlab/gitlab-rails/shared/packages/-/package-lost-found/4f/c8/4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8 (12.5 MB)
+I, [2026-10-07T10:15:03.345678 #4321]  INFO -- : Found 1 orphaned package directories, total size 12.5 MB
+I, [2026-10-07T10:15:03.456789 #4321]  INFO -- : To clean up these files run this command with DRY_RUN=false
+
+$ sudo gitlab-rake gitlab:cleanup:orphan_package_files DRY_RUN=false
+
+I, [2026-10-07T10:16:10.123456 #4400]  INFO -- : Looking for orphaned package files to clean up...
+I, [2026-10-07T10:16:11.234567 #4400]  INFO -- : Did move to lost and found /var/opt/gitlab/gitlab-rails/shared/packages/4f/c8/4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8 -> /var/opt/gitlab/gitlab-rails/shared/packages/-/package-lost-found/4f/c8/4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8 (12.5 MB)
+I, [2026-10-07T10:16:11.345678 #4400]  INFO -- : Moved 1 orphaned package directories, total size 12.5 MB
+```
+
 ## Remove orphaned pool repository records for removed storages
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/616939) in GitLab 19.4.

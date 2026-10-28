@@ -204,7 +204,7 @@ You can customize the agent's behavior and capabilities for a specific interacti
 While you can pass configuration inline, we recommend organizing your agent's files in a structured directory. This makes it easier to manage, version control, and mount into the agent's environment.
 
 > [!NOTE]
-> **Note:** You can use the experimental open-source [Gemini API CLI](https://github.com/google-gemini/Gemini-API-CLI) to automatically scaffold, test, and deploy this directory structure directly from your terminal.
+> **Note:** You can also use the open-source [Gemini API CLI](https://ai.google.dev/gemini-api/docs/cli) to create and run custom agents or connect local sandbox environments directly from your terminal.
 
 A typical agent project directory looks like this:
 

@@ -156,7 +156,7 @@ POST /code_suggestions/direct_access
 ```
 
 > [!note]
-> This endpoint rate-limits each user to 10 requests per 5-minute window.
+> This endpoint rate-limits each user to 50 requests per minute.
 
 Returns user-specific connection details which can be used by IDEs/clients to send `completion` requests directly to
 AI Gateway, including headers that must be proxied to the AI Gateway as well as the required authentication token.

@@ -5997,15 +5997,12 @@ def _build_sequence_targets(
                     'trigger "on-click" when trigger is explicit'
                 )
             resolved_trigger = 'on-click'
-        default_delay = (
-            stagger
-            if (
-                trigger_shape is None
-                and resolved_trigger == 'after-previous'
-                and main_sequence_count > 0
-            )
-            else 0
-        )
+        if trigger_shape is not None:
+            default_delay = 0
+        elif resolved_trigger == 'after-previous' and main_sequence_count > 0:
+            default_delay = stagger
+        else:
+            default_delay = 0
         delay_seconds = validate_seconds(
             group_cfg.get('delay', default_delay),
             f'animations.json {effect_path}.delay',

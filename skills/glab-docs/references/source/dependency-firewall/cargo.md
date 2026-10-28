@@ -5,7 +5,7 @@ group: Developer Clients
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Run Cargo through the GitLab Dependency Firewall. (EXPERIMENTAL)
+Run Cargo through the GitLab Dependency Firewall. (BETA)
 
 ## Synopsis
 
@@ -15,8 +15,8 @@ The command uses your package manager's registry or index configuration, and doe
 
 All arguments are forwarded to `cargo` verbatim.
 
-This feature is an experiment and is not ready for production use.
-It might be unstable or removed at any time.
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
 For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 

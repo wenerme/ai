@@ -13,7 +13,7 @@ A Business Input data source is the quickest way to get started. PostgreSQL is a
 
 ## Business Input
 
-Use a [Business Input data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/marcusolsson-static-datasource/) to retrieve any supported base64 formats and render them on your Grafana dashboard.
+Use a [Business Input data source](https://grafana.com/grafana/plugins/marcusolsson-static-datasource/) to retrieve any supported base64 formats and render them on your Grafana dashboard.
 
 > Note
 >
@@ -23,7 +23,7 @@ Use a [Business Input data source](http://grafana-com-website.grafana-com.svc.cl
 
 For media files, the data source must return base64-encoded file content. It may also return a format definition such as `data:video/mp4;base64,ENCODED-CONTENT`.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -37,11 +37,11 @@ where
   name = 'flow';
 ```
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/video-comments.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/video-comments.png)
 
 PostgreSQL includes functions for working with the base64 format.
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT CONVERT_FROM (DECODE('SGVsbG8gV29ybGQh', 'BASE64'), 'UTF-8');
@@ -52,7 +52,7 @@ SELECT ENCODE (CONVERT_TO('Hello World!', 'UTF-8'), 'BASE64');
 
 Create tables to store images, video, and audio files:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 CREATE TABLE images (name text, img bytea, UNIQUE(name));

@@ -17,7 +17,7 @@ post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new
 The request body contains data with the following structure:
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.   
 **Required if \`agent\` is not provided.**
-The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
+The model that will complete your prompt.\\n\\nSee \[models\](https://aistudio.google.com/docs/models) for additional details.
 
 #### Possible values
 
@@ -957,7 +957,7 @@ updated string (required) Required. Output only. The time at which the response 
 (YYYY-MM-DDThh:mm:ssZ).
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (required) Required. Output only. The steps that make up the interaction, when included in the response.
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.
-The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
+The model that will complete your prompt.\\n\\nSee \[models\](https://aistudio.google.com/docs/models) for additional details.
 
 #### Possible values
 

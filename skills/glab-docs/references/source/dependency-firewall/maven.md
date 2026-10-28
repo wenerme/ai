@@ -5,7 +5,7 @@ group: Developer Clients
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Run Maven through the GitLab Dependency Firewall. (EXPERIMENTAL)
+Run Maven through the GitLab Dependency Firewall. (BETA)
 
 ## Synopsis
 
@@ -13,10 +13,16 @@ Run the Maven binary (`mvn`) through the GitLab Dependency Firewall. The command
 
 The command uses your package manager's registry or index configuration, and does not modify it.
 
+The command checks `.jar`, `.pom`, `.aar`, and `.war` files, including timestamped snapshot files. It does not check checksum and signature files (`.md5`, `.sha1`, `.sha256`, `.sha512`, and `.asc`).
+
+The command runs `mvn` from your `PATH`. The Maven Wrapper (`./mvnw`) is not supported.
+
+Maven does not download artifacts already cached in `~/.m2/repository/`, so the firewall does not check them. Clear the cache to check them again.
+
 All arguments are forwarded to `mvn` verbatim.
 
-This feature is an experiment and is not ready for production use.
-It might be unstable or removed at any time.
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
 For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 
@@ -29,6 +35,12 @@ glab dependency-firewall maven <mvn args> [flags]
 ```console
 # Build a project through the Dependency Firewall
 glab dependency-firewall maven verify
+
+# Resolve dependencies through the Dependency Firewall
+glab dependency-firewall maven dependency:resolve
+
+# Deploy a project through the Dependency Firewall
+glab dependency-firewall maven deploy
 
 ```
 

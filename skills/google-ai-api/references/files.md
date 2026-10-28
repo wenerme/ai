@@ -824,6 +824,8 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     # Poll until the video file is completely processed (state becomes ACTIVE).
     while not myfile.state or myfile.state.name != "ACTIVE":
+      if myfile.state and myfile.state.name == "FAILED":
+        raise ValueError(f"Video file processing failed: {getattr(myfile, 'error', None) or 'state is FAILED'}")
       print("Processing video...")
       print("File state:", myfile.state)
       time.sleep(5)
@@ -847,6 +849,11 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
 
     // Poll until the video file is completely processed (state becomes ACTIVE).
     while (!myfile.state || myfile.state.toString() !== 'ACTIVE') {
+      if (myfile.state && myfile.state.toString() === 'FAILED') {
+        throw new Error(
+          `Video file processing failed: ${myfile.error?.message || 'state is FAILED'}`,
+        );
+      }
       console.log('Processing video...');
       console.log('File state: ', myfile.state);
       await sleep(5000);
@@ -885,7 +892,10 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     fmt.Printf("myfile=%+v\n", myfile)
 
     // Poll until the video file is completely processed (state becomes ACTIVE).
-    for myfile.State == genai.FileStateUnspecified || myfile.State != genai.FileStateActive {
+    for myfile.State != genai.FileStateActive {
+    	if myfile.State == genai.FileStateFailed {
+    		return nil, fmt.Errorf("video file processing failed: %v", myfile.State)
+    	}
     	fmt.Println("Processing video...")
     	fmt.Println("File state:", myfile.State)
     	time.Sleep(5 * time.Second)

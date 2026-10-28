@@ -128,6 +128,17 @@ You might see server errors when:
 - The application has a configuration error.
 - Required dependencies, like databases and APIs, aren't available.
 
+#### Authentication component uses Shadow DOM
+
+If your target application uses Shadow DOM for the authentication component, the scanner
+might fail to detect the login fields. To authenticate successfully:
+
+1. Add a `before_script` to the DAST scanning job that calls the authentication server's API to generate a valid session token. Ensure the token's expiry is longer than your typical DAST scan time.
+1. Fail the job in `before_script` if a token is not returned by running `exit 1` with an appropriate error message that shows where and why the pipeline failed.
+1. Store the token in a variable rather than a temp file. Use the token only in this job, because values passed to another job are preserved and can be intercepted.
+1. Set the `DAST_REQUEST_HEADERS` variable to an Authorization header that carries the token value. The scanner adds that header to every request it sends to the application under test, so you don't need an explicit login action as part of the scan.
+1. To fail the pipeline when authentication or the DAST scan fails, set `allow_failure: false` on the DAST job. The GitLab DAST template allows the DAST job to fail without failing the pipeline, so the pipeline is otherwise marked as `passed with warnings` instead of `failed`.
+
 ### What is the expected outcome?
 
 Many users who encounter issues with a DAST scan have a good high-level idea of what they think the scanner should be doing. For example,

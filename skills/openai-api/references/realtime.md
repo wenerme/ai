@@ -11,6 +11,7 @@ Some notable benefits of the API include:
 - Simultaneous multimodal output: Text is useful for moderation; faster-than-realtime audio ensures stable playback.
 
 The Realtime API is a stateful, event-based API that communicates over a WebSocket.
+To start a Realtime conversation, set `model` in the connection URL. To join an existing call, set `call_id` instead. Transcription sessions use `intent=transcription`.
 
 Open a WebSocket connection using the URL below. Supply path and query parameters and authentication during the opening handshake. Once connected, send client events and receive server events as JSON messages. Close the connection when finished.
 
@@ -19,6 +20,16 @@ Open a WebSocket connection using the URL below. Supply path and query parameter
 ### Authentication
 
 Use Bearer Auth (header Authorization).
+
+### Connection parameters
+
+- `model` (query, string, optional)
+
+- `call_id` (query, string, optional)
+
+- `intent` (query, enum, optional): realtime, transcription
+
+  Selects the session type. Set `transcription` and omit `model` for a transcription session. If omitted, the session type from a client secret applies when present; otherwise the intent is `realtime`.
 
 ### Events
 
@@ -25809,7 +25820,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           "languages": [
             "string"
           ],
-          "model": "whisper-1",
+          "model": "gpt-transcribe",
           "prompt": "prompt"
         },
         "turn_detection": {
@@ -25837,7 +25848,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
     ],
     "instructions": "instructions",
     "max_output_tokens": "inf",
-    "model": "gpt-realtime",
+    "model": "gpt-realtime-1.5",
     "output_modalities": [
       "text"
     ],
@@ -28699,7 +28710,7 @@ curl https://api.openai.com/v1/realtime/sessions \
         "languages": [
           "string"
         ],
-        "model": "whisper-1",
+        "model": "gpt-transcribe",
         "prompt": "prompt"
       },
       "turn_detection": {
@@ -29365,7 +29376,7 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
     "languages": [
       "string"
     ],
-    "model": "whisper-1",
+    "model": "gpt-transcribe",
     "prompt": "prompt"
   },
   "modalities": [
@@ -29529,6 +29540,8 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
 ## Connect
 
+Open a Realtime translation session. The WebSocket URL requires a `model` query parameter.
+
 Open a WebSocket connection using the URL below. Supply path and query parameters and authentication during the opening handshake. Once connected, send client events and receive server events as JSON messages. Close the connection when finished.
 
 **WebSocket** `wss://api.openai.com/v1/realtime/translations`
@@ -29536,6 +29549,10 @@ Open a WebSocket connection using the URL below. Supply path and query parameter
 ### Authentication
 
 Use Bearer Auth (header Authorization).
+
+### Connection parameters
+
+- `model` (query, string, required)
 
 ### Events
 

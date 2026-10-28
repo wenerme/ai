@@ -9,13 +9,13 @@ description: "Learn how to configure the Layout parameter category to set up tab
 
 The **Layout** parameter category determines the set of tabs, then the columns, and their display types for each tab.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/layout.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/layout.png)
 
 ## Column types for displaying data
 
 You can specify a column display type in **Layout &gt; Format &gt; Type**. The display type determines how the data appears. There are currently 8 available types.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/layout-types.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/layout-types.png)
 
 ### Auto
 
@@ -25,7 +25,7 @@ Same as Colored text. Used by default.
 
 The **Boolean** type displays a checkmark in a circle for a `true` value and an empty circle for a `false` value.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/boolean-type.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/boolean-type.png)
 
 ### Colored background
 
@@ -33,23 +33,23 @@ The **Colored background** type changes the cell background colors according to 
 
 Using the **Apply to Row** parameter, you can color the entire row (not shown) or only one cell (as shown).
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/colored-background.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/colored-background.png)
 
 ### Colored text
 
 The **Colored text** type changes the cell font colors according to the Grafana **Thresholds** configuration.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/colored-text.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/colored-text.png)
 
 ### Image
 
 The **Image** type interprets the image links and base64 formats.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/image-type.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/image-type.png)
 
 ### Nested objects
 
-See the [Nested Objects](http://grafana-com-website.grafana-com.svc.cluster.local.:80/plugins/business-table/nested/) section of this documentation.
+See the [Nested Objects](https://grafana.com/plugins/business-table/nested/) section of this documentation.
 
 ### Preformatted
 
@@ -57,17 +57,17 @@ The **Preformatted** type, similar to the `pre` HTML tag, displays text with spa
 
 When the **Preformatted style** switch is ON, the text displays in a fixed-width font. When the **Preformatted style** switch is OFF, the text displays in the font configured for your browser.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/pre-type.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/pre-type.png)
 
 ### Rich text
 
 The **Rich text** type interprets sanitized HTML and Markdown.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/rich-type.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/rich-type.png)
 
 HTML from the example above:
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <h3>Features/ 2</h3>
@@ -77,7 +77,7 @@ HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluste
 
 Markdown from the example above:
 
-Markdown ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+Markdown ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```markdown
 This is the first line.\
@@ -88,17 +88,17 @@ And this is the second line.
 
 Expand table
 
-| Section                                                                                                                                                                                    | Description                                         |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
-| [Multi tables as tabs](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#multi-tables-as-tabs)                 | Demonstrates multi table as tabs                    |
-| [Tree View/Row grouping](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#tree-viewrow-grouping)              | Demonstrates tree view/row grouping                 |
-| [Auto-width columns](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#auto-width-columns)                     | Demonstrates auto-width columns                     |
-| [Table footer](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#table-footer)                                 | Explains how the table footer works                 |
-| [Filtering in the **Client** and **Query** modes](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#filtering) | Demonstrates the **Client** and **Query** filtering |
-| [Sorting](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#sorting)                                           | Demonstrates column sorting                         |
-| [Pin columns](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#pin-columns)                                   | Demonstrates column pinning                         |
-| [Show and hide columns](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#show-and-hide-columns)               | Demonstrates the show/hide column button            |
-| [Hide the table header](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#hide-the-table-header)               | Explains how to hide the table header               |
+| Section                                                                                                                                           | Description                                         |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| [Multi tables as tabs](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#multi-tables-as-tabs)                 | Demonstrates multi table as tabs                    |
+| [Tree View/Row grouping](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#tree-viewrow-grouping)              | Demonstrates tree view/row grouping                 |
+| [Auto-width columns](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#auto-width-columns)                     | Demonstrates auto-width columns                     |
+| [Table footer](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#table-footer)                                 | Explains how the table footer works                 |
+| [Filtering in the **Client** and **Query** modes](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#filtering) | Demonstrates the **Client** and **Query** filtering |
+| [Sorting](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#sorting)                                           | Demonstrates column sorting                         |
+| [Pin columns](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#pin-columns)                                   | Demonstrates column pinning                         |
+| [Show and hide columns](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#show-and-hide-columns)               | Demonstrates the show/hide column button            |
+| [Hide the table header](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/layout/#hide-the-table-header)               | Explains how to hide the table header               |
 
 ### Multi tables as tabs
 
@@ -106,7 +106,7 @@ The Business Table panel lets you create a multi-tab view and configure the fiel
 
 To add a new tab, use the **New Table** parameter. To add a column to an existing tab, use the **New Column** parameter.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/tabs.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/tabs.png)
 
 ### Tree View/Row grouping
 
@@ -114,13 +114,13 @@ This feature lets you combine unique field values into groups and collapse or ex
 
 The following image displays the steps to configure Tree View for the Business Table panel:
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/row-grouping.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/row-grouping.png)
 
 ### Auto-width columns
 
 The column width can be determined automatically within a specified range or explicitly hardcoded by a user in pixels.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/auto-width.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/auto-width.png)
 
 ### Table footer
 
@@ -128,7 +128,7 @@ Every column in the Business Table panel has the **Show in Footer** property. If
 
 You can select an aggregation function for each column to apply to the value displayed in the footer.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/footer.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/footer.png)
 
 ### Filtering
 
@@ -150,19 +150,19 @@ The available options depend on the column data type:
   - **Search** (step 5 in the following image). Provides a form where you can type free text or enter a number value for filtering.
   - **Options** (step 6 in the following image). Provides a multi-select list of all existing values in the column.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/filtering-client-string.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/filtering-client-string.png)
 
 - **Number**
 
 Select from a list of mathematical operations and specify a number to apply it towards.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/filtering-client-number.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/filtering-client-number.png)
 
 - **Time**
 
 Select a time range using a standard Grafana range picker.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/filtering-client-time.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/filtering-client-time.png)
 
 #### Query
 
@@ -170,7 +170,7 @@ This filtering method enables panel interconnectivity or use in data links. With
 
 The following image shows how to configure **Query** filtering method:
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/filtering-query.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/filtering-query.png)
 
 In this example, two panels work together (panel interconnectivity). When you select a value on the Business Variable panel, it changes the status displayed in the Business Table panel.
 
@@ -178,13 +178,13 @@ In this example, two panels work together (panel interconnectivity). When you se
 
 Every column in the Business Table panel has the **Sort** property. Set it to **Yes** and then specify the default sorting order (ascending or descending). A sorting icon appears next to the column header. The order changes to the opposite when you click the icon.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/sorting.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/sorting.png)
 
 ### Pin Columns
 
 Pinning columns is a helpful feature for wide tables. You can pin any column so it always stays visible on the left or right.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/pin.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/pin.png)
 
 In the following example, the **Country** column is pinned to the left.
 
@@ -198,7 +198,7 @@ This feature lets you hide or show any column in your Business Table visualizati
 
 Also, a column might be required for the underlying logic but not intended for display.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/hide-show.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/hide-show.png)
 
 ### Hide the table header
 
@@ -208,7 +208,7 @@ Also, a column might be required for the underlying logic but not intended for d
 
 You can hide the Business Table header from the dashboard by turning off the **Layout &gt; Show header** switch.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/show-hide.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/show-hide.png)
 
 > Note
 >

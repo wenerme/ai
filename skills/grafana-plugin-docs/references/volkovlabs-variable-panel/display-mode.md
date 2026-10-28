@@ -17,15 +17,15 @@ Four options are available for the **Display mode** parameter.
 >
 > The Business Variable panel supports the **Slider** display mode starting from version 3.0.0.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/slider-mode.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/slider-mode.png)
 
 Follow the links below to learn about each display mode.
 
 Expand table
 
-| Section                                                                           | Description                                                    |
-|-----------------------------------------------------------------------------------|----------------------------------------------------------------|
-| [Table](/docs/plugins/volkovlabs-variable-panel/latest/display-mode/table/)       | From simple lists to elaborated TreeViews                      |
-| [Minimize](/docs/plugins/volkovlabs-variable-panel/latest/display-mode/minimize/) | Minimalistic design, similar to the native dashboard variables |
-| [Button](/docs/plugins/volkovlabs-variable-panel/latest/display-mode/button/)     | The choice looks like a set of on/off buttons                  |
-| [Slider](/docs/plugins/volkovlabs-variable-panel/latest/display-mode/slider/)     | Laconic slider for a simple one-value choice                   |
+| Section                                                                                              | Description                                                    |
+|------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| [Table](https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/table/)       | From simple lists to elaborated TreeViews                      |
+| [Minimize](https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/minimize/) | Minimalistic design, similar to the native dashboard variables |
+| [Button](https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/button/)     | The choice looks like a set of on/off buttons                  |
+| [Slider](https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/slider/)     | Laconic slider for a simple one-value choice                   |

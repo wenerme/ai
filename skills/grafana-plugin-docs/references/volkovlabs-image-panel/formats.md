@@ -20,13 +20,13 @@ The plugin determines the file type automatically based on the first base64 symb
 
 Other image formats supported by your browser can be rendered if you provide a definition like `data:image/IMAGE-FORMAT;base64,ENCODED-CONTENT`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/panel.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/panel.png)
 
 ## PDF
 
 The plugin renders PDF files with or without the definition `data:application/pdf;base64,ENCODED-CONTENT`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/pdf.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/pdf.png)
 
 ## Video
 
@@ -35,7 +35,7 @@ The plugin renders video files with the following definitions:
 - MP4: `data:video/mp4;base64,ENCODED-CONTENT`
 - WEBM: `data:video/webm;base64,ENCODED-CONTENT`
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/video-comments.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/video-comments.png)
 
 ## Audio
 

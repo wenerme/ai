@@ -1246,6 +1246,40 @@ resized to 75% of its dimensions.
 
 When selected, images open in an overlay scaled to either 100% or the largest size that fits in the window.
 
+### Float an image beside text
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/224950) in GitLab 19.4.
+
+A floated image sits on the left or right side of the content, and text wraps around it.
+To float an image, follow it with an attribute list that contains a float class:
+
+- `.float-left` floats the image to the left.
+- `.float-right` floats the image to the right.
+- `.float-none` doesn't float the image, which is the default.
+
+You can combine a float class with [image dimensions](#change-image-or-video-dimensions).
+For example:
+
+```markdown
+![GitLab logo](img/markdown_logo_v17_11.png "Title Text"){.float-right width=100}
+This text wraps around the left side of the image.
+```
+
+This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/gitlab/-/blob/master/doc/user/markdown.md#float-an-image-beside-text):
+
+> [GitLab logo]{.float-right width=100}
+> This text wraps around the left side of the image.
+
+You can also use the `img` HTML tag with a `glfm-float-left`, `glfm-float-right`, or `glfm-float-none` class:
+
+```html
+<img src="img/markdown_logo_v17_11.png" alt="GitLab logo" class="glfm-float-right" width="100">
+```
+
+If the `class` attribute contains any other class, GitLab removes the attribute, and the image doesn't float.
+
+You can't float videos or audio.
+
 ### Audio
 
 Similar to videos, link tags for files with an audio extension are automatically converted to
@@ -1263,9 +1297,10 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 
 ### Embedded content
 
+- Offering: GitLab.com, GitLab Self-Managed
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/204952) in GitLab 18.5 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/204952) as an [experiment](../policy/development_stages_support.md#experiment) in GitLab 18.5 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Embed providers [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599713) in GitLab 19.5. Embed providers replace the allowlist of domains.
 - Option to load external content on request [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254949) in GitLab 19.5.
 

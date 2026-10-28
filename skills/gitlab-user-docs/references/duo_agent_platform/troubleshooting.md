@@ -229,6 +229,31 @@ In GitLab 18.9 and later, you might get a namespace-related error.
 
 To resolve this issue, [set a default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
 
+## Service account remains a project member after foundational flows are turned off
+
+After you turn off foundational flows, the service account for a flow might remain a member of projects in the group.
+This issue is tracked in [issue 586410](https://gitlab.com/gitlab-org/gitlab/-/work_items/586410).
+
+A remaining membership does not show that the service account accessed the project.
+To check for activity, see [investigate activity by a service account](composite_identity.md#investigate-activity-by-a-service-account).
+
+To check whether the service account is a member of a project:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Manage** > **Members**.
+1. Search for the service account username, similar to `duo-<flow_name>-<top_level_group_name>`.
+1. In the **Source** column, check where the membership comes from.
+
+GitLab adds foundational flow service accounts as direct members of each project.
+If the **Source** column shows a parent group, someone added the service account to that group.
+Remove the service account from that group.
+
+To remove the service account, [remove the member from each project](../project/members/_index.md#remove-a-member-from-a-project).
+GitLab adds the service account to the project again when you turn on the flow again or when the flow runs in the project.
+
+You can also [delete the service account](../profile/service_accounts.md#delete-a-service-account) from the top-level group.
+Before you delete the service account, collect any data you need.
+
 ## Error: `SSL certificate OpenSSL verify result: unable to get local issuer certificate (20)`
 
 On GitLab Self-Managed instances that use custom or self-signed CA certificates, this message might display when GitLab Duo Agent Platform jobs fail during

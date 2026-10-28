@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/name
 
 # Nameserver sets
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A nameserver set is an account-level group of two to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account.
+A nameserver set is an account-level group of two to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account. Each set has a name to identify it.
 
 Nameserver sets are a separate configuration from [zone](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/), [account](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/), and [tenant](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/) custom nameservers. A zone uses either a nameserver set or one of those configurations, never both. Existing configurations cannot be converted into nameserver sets.
 
@@ -30,7 +30,7 @@ To use a nameserver set, a zone must be in the same account as the set.
 - Each nameserver set is either standard or Advanced.
 - Nameserver names can belong to any domain, even a domain that does not exist as a zone in Cloudflare.
 - The same nameserver name can be used in more than one set within your account.
-- Sets are immutable. You can create and delete a set, but you cannot change one.
+- Sets are immutable. You can create and delete a set, but you cannot change one. Only the name can be changed later.
 - Cloudflare does not create or update DNS records for a nameserver set. You manage the required `A`, `AAAA`, and `NS` records, plus glue where DNS requires it.
 - Currently, nameserver sets cannot yet be used as a [DNS zone default](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) for new zones.
 
@@ -56,11 +56,17 @@ The following limits apply to nameserver sets:
 
 All nameserver names in an Advanced set must use the same `ip_count` value.
 
+### Set names
+
+The top-level `name` is a label for the set. Choose a name that helps you find or identify the set later.
+
+Set names must be unique within an account.
+
 ## Create a nameserver set
 
 To create a set, use the [Create Custom Nameserver Set](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/nameserver_sets/methods/create/) endpoint.
 
-Each name in a set must be unique and lowercase. Internationalized domain names must use Punycode.
+Include a top-level `name` to identify the set. Each nameserver name in `nameservers` must be unique within the set and lowercase. Internationalized domain names must use Punycode.
 
 ### Standard nameserver set
 
@@ -73,6 +79,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings/nam
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
+		"name": "Production",
 		"ip_set": 1,
 		"nameservers": [
 				{
@@ -86,12 +93,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings/nam
 	}'
 ```
 
-The response contains the set ID and the addresses assigned to each nameserver name:
+The response contains the set ID, set name, and addresses assigned to each nameserver name:
 
 ```json
 {
 	"result": {
 		"id": "0e1f2a3b4c5d6e7f8091a2b3c4d5e6f7",
+		"name": "Production",
 		"advanced": false,
 		"ip_set": 1,
 		"nameservers": [
@@ -127,6 +135,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings/nam
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
+		"name": "Production Advanced",
 		"advanced": true,
 		"ip_set": 1,
 		"nameservers": [
@@ -152,6 +161,7 @@ Advanced set responses include an anycast group for each address:
 {
 	"result": {
 		"id": "1f2a3b4c5d6e7f8091a2b3c4d5e6f708",
+		"name": "Production Advanced",
 		"advanced": true,
 		"ip_set": 1,
 		"nameservers": [
@@ -192,6 +202,39 @@ Groups `a` and `b` are advertised from two separate sets of data centers that do
 An account cannot contain two sets with exactly the same nameserver names and addresses.
 
 To [list the sets in your account](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/nameserver_sets/methods/list/), send a `GET` request to the same endpoint, using the `page` and `per_page` query parameters to page through the results. To [retrieve a single set](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/nameserver_sets/methods/get/), add its ID to the path.
+
+## Rename a nameserver set
+
+To rename a set, send a `PATCH` request to `/accounts/{account_id}/dns_settings/nameserver_sets/{nameserver_set_id}` with only the new `name`:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account DNS Settings Write</code>
+
+</details>
+
+*Update Custom Nameserver Setbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dns_settings/nameserver_sets/$NAMESERVER_SET_ID" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "Production primary"
+	}'
+```
+
+Choose a [set name](#set-names) that is unique within your account. Only the top-level `name` field can be updated.
+
+Renaming a set does not affect DNS resolution or require DNS record or delegation changes.
 
 ## Prepare nameserver address records
 
@@ -310,5 +353,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

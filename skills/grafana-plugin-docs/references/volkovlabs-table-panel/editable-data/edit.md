@@ -9,11 +9,11 @@ description: "Learn how to configure data editing and permissions in the Busines
 
 You configure data editing and permissions in the **Edit Data** category. You can further configure all columns that you added in the **Layout** category.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/category.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/category.png)
 
 To allow editing on a column, enable the switch. The **Editable** tag appears next to the column name in the **Layout** category.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/edit-tag.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/edit-tag.png)
 
 ## Update request
 
@@ -24,4 +24,4 @@ First, select the data source where you want to send the updated values. Then, c
 - **Builder**. It uses the standard Grafana query builder.
 - **Code**. It allows you to specify an update request query in a language appropriate for your data source.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/update-request.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/update-request.png)

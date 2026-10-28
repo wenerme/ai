@@ -138,7 +138,8 @@ preview them live as you type the diagram code.
 
 To insert a diagram:
 
-1. In the top bar of a text box, select  **More options** and then **Mermaid diagram** or **PlantUML diagram**.
+1. In the editor toolbar, select  () >
+    or .
 1. Enter the code for your diagram. The diagram preview appears in the text box.
 
 [A mermaid diagram preview in rich text editor with LR syntax creating a left to right flowchart]

@@ -37,15 +37,15 @@ The system has two types of users:
 
 The following image shows the Business Table panel on the dashboard with two orders. The order from Nick R. went through five status changes and has five records in the **order status** column. The order from Mary C. has two records in the **Order status** column.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/example-1.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/example-1.png)
 
 To work with all statuses (all records associated with a specific row), click the **Show All Order Status** link (see the preceding image). This opens a pop-up window, as shown in the following image.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/example-2.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/example-2.png)
 
 Note that you can add or edit only two fields (title and description) in the current feature design.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/edit.png)
 
 ## PostgreSQL database configuration
 
@@ -56,7 +56,7 @@ The following example uses two tables:
 
 SQL to create the `orders` table:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 create table orders
@@ -71,7 +71,7 @@ create table orders
 
 SQL to create the `order_status` table:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 create table order_status
@@ -89,15 +89,15 @@ Data example in these tables.
 
 The `orders` table.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/orders.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/orders.png)
 
 The `order_status` table.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/order-status.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/order-status.png)
 
 SQL to populate the `orders` and `order_status` tables:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 
@@ -131,11 +131,11 @@ Start with the data frame configuration. In this example, the query returns all 
 
 The example uses Grafana’s **Convert field type** transformation to ensure the array of status identifiers can be processed correctly.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/query.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/query.png)
 
 SQL to return data frame for the Business Table panel:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select *,
@@ -153,7 +153,7 @@ In the Business Table **Layout** options:
 2. Set its type to **Nested Objects**.
 3. Select the configured **Object** from the list.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/layout.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/layout.png)
 
 In the **Nested objects** category:
 
@@ -168,11 +168,11 @@ In the **Nested objects** category:
 09. Specify how many nested objects/comments to show at once.
 10. Configure the allowed actions and user privileges. See below for more details.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/nested.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/nested.png)
 
 SQL from the **Get Options &gt; Query Editor** parameter:
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT * FROM order_status WHERE order_status_id IN (${payload.ids:csv});
@@ -182,13 +182,13 @@ SELECT * FROM order_status WHERE order_status_id IN (${payload.ids:csv});
 
 To configure a comment card, identify the data frame column names to display. Starting from release 1.5.0, you can specify four column names. You can enter only the top and bottom **title** and **description** when adding or editing objects. Fields in the middle can display information such as dates, and the user login of who made changes.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/card.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/card.png)
 
 ## Actions and permissions
 
 You can allow three actions on nested objects/comments. All three actions are available in the pop-up window after you click the **Show All** link.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/actions.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/actions.png)
 
 To configure actions and access:
 
@@ -199,13 +199,13 @@ To configure actions and access:
    - **Always Allowed**: Any user has access to this action.
    - **By Backend**: Specify a data frame column name with a boolean type. If the returned value is **true**, access is granted. If the returned value is **false**, access is denied.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/action-config.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/action-config.png)
 
 ### SQL example
 
 #### Add action
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 INSERT INTO order_status (order_status_id, order_id, title, description)
@@ -214,7 +214,7 @@ VALUES (nextval('seq_order_status'), ${payload.row.order_id}, ${payload.item.tit
 
 #### Update action
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 UPDATE order_status
@@ -224,7 +224,7 @@ WHERE order_status_id = ${payload.item.order_status_id};
 
 #### Delete action
 
-SQL ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 DELETE FROM order_status

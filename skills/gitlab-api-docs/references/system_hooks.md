@@ -5,17 +5,28 @@ Set up and manage system hooks with the REST API.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
+- System hooks for an organization [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632591) in GitLab 19.6.
+
 Use this API to manage [system hooks](../administration/system_hooks.md). System hooks
 are different from [group webhooks](group_webhooks.md) that impact all projects and subgroups
-in a group, and [project webhooks](project_webhooks.md) that are limited to a single project.
+in a group and [project webhooks](project_webhooks.md) that are limited to a single project.
+
+Each system hook belongs to one organization, and the `organization_id` attribute shows which one.
+All endpoints work only with the hooks of the current organization:
+
+- Lists return only hooks in the current organization.
+- New hooks are created in the current organization.
+- Requests for a hook in another organization return `404 Not Found`.
+  These requests include retrieving, updating, deleting, and testing the hook and managing its
+  URL variables and custom headers.
 
 Prerequisites:
 
-- You must be an administrator.
+- Administrator access.
 
 ## List all system hooks
 
-Lists all system hooks.
+Lists all system hooks in the current organization.
 
 ```plaintext
 GET /hooks

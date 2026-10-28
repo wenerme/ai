@@ -9,17 +9,17 @@ description: "Learn how to use REST API to request and update data or configurat
 
 The Business Forms panel requests data (`GET` request) and updates data (`DELETE`, `PATCH`, `POST`, or `PUT` request) or configuration through REST API.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/form-api.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/form-api.png)
 
 ## JSON payload
 
 The panel uses form elements defined in the panel options to parse data within the initial request and send data within the update request.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/elements.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/elements.png)
 
 The JSON response of the initial request includes the form elements’ identifiers and values. The panel parses the response and updates the initial values on the form.
 
-JSON ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 { "name": "Name", "amount": 30, "updated": false, "step": 4 }
@@ -31,13 +31,13 @@ After you update values, all the form elements create a similar payload for the 
 
 It’s recommended that you run Grafana behind an NGINX reverse proxy for an additional security layer. The reverse proxy also allows you to expose additional API endpoints and static files within the scope of the same domain, which makes it CORS-ready.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/form-nginx-api.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/form-nginx-api.png)
 
 ## CORS
 
 Operation of the Business Forms panel plugin may be blocked by a CORS policy when accessing an API server. You can find a rejection error in the browser’s console.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/cors.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/cors.png)
 
 Note that Grafana doesn’t explicitly indicate a CORS error.
 
