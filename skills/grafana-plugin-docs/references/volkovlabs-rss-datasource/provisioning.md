@@ -13,7 +13,7 @@ Grafana supports managing data sources by adding one or more YAML config files i
 
 The following example shows how to provision the Business News data source.
 
-YAML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 datasources:
@@ -32,7 +32,7 @@ datasources:
 
 When provisioned, the Business News data source appears in the data sources list.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-news/datasource.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-news/datasource.png)
 
 ### Feed URL
 
@@ -40,13 +40,13 @@ The URL must contain all necessary characters (such as `/` at the end) to avoid 
 
 During testing, you might see the following error.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-news/error.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-news/error.png)
 
 If the URL is correct and returns data but also returns an error, add `/` to the end of the URL to avoid a redirect blocked by CORS policy.
 
 For example, use `https://sitename/feed/` instead of `https://sitename/feed`.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-news/correct-url.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-news/correct-url.png)
 
 > Note
 >

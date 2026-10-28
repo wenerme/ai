@@ -19,4 +19,4 @@ Node-RED usage scenarios with the Business Forms panel:
 - Use an API gateway to relax CORS restrictions, because Node-RED’s default response includes the `Access-Control-Allow-Origin: *` header.
 - Manage authentication across all destination databases and APIs to maintain a single authentication type for all services.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-forms/node-red.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-forms/node-red.png)

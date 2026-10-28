@@ -261,13 +261,56 @@ and your Pages log shows one of these errors:
   `external_url`, but receives a plain HTTP response.
 
 To resolve, set `internal_gitlab_server` to communicate directly with the
-local GitLab Rails instance, bypassing the external URL:
+local GitLab Rails instance, bypassing the external URL.
+Domain lookups work when sent directly to Puma at `localhost:8080`,
+but artifact requests must go through GitLab Workhorse:
+
+```mermaid
+flowchart LR
+  accTitle: Requests from GitLab Pages to GitLab
+  accDescr: Domain lookups can go directly to Puma. Artifact requests must go through NGINX and GitLab Workhorse.
+  Pages[GitLab Pages] -->|internal_gitlab_server: domain lookups| Puma
+  Pages -->|artifacts_server_url: artifact requests| NGINX
+  NGINX --> Workhorse[GitLab Workhorse]
+  Workhorse --> Puma
+```
 
 1. Add the following to `/etc/gitlab/gitlab.rb`:
 
    ```ruby
    gitlab_pages['internal_gitlab_server'] = 'http://localhost:8080'
    ```
+
+1. If `artifacts_server` is on (default), also set `artifacts_server_url`.
+
+   If left unset, Pages sends artifact requests to an address that does not work in this setup.
+   Depending on your GitLab version, the requests either go directly to Puma
+   and fail with a `403 Forbidden` error, or go to the external URL and fail with a `502 Bad Gateway` error.
+   To fix this, set `artifacts_server_url` to an address that goes through Workhorse.
+   For example, if NGINX on the same server listens on port `80`:
+
+   ```ruby
+   gitlab_pages['artifacts_server_url'] = 'http://127.0.0.1/api/v4'
+   ```
+
+   If NGINX listens on a different port, replace `<port>` with that port:
+
+   ```ruby
+   gitlab_pages['artifacts_server_url'] = 'http://127.0.0.1:<port>/api/v4'
+   ```
+
+   NGINX listens on the port in `gitlab_rails['nginx']['listen_port']`,
+   or on the `external_url` port if `listen_port` is not set.
+
+   The local NGINX address works only if NGINX accepts plain HTTP on `127.0.0.1`.
+   It does not work if NGINX:
+
+   - Serves HTTPS (`gitlab_rails['nginx']['listen_https'] = true`, or `listen_https` is not set and `external_url` uses `https`)
+   - Expects the PROXY protocol (`gitlab_rails['nginx']['proxy_protocol'] = true`)
+   - Does not listen on `127.0.0.1` (`gitlab_rails['nginx']['listen_addresses']`)
+   - Runs on another server, or is turned off (`nginx['enable'] = false`)
+
+   In these cases, use another address that goes through Workhorse.
 
 1. Reconfigure GitLab:
 

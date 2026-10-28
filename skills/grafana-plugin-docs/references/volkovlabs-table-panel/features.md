@@ -11,21 +11,21 @@ The Business Table panel has the following features.
 
 Expand table
 
-| Section                                                                                                                                                                       | Description                                  |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
-| [Pagination](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/#pagination)                                    | Explains pagination                          |
-| [Download button](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/download-button/)                          | Demonstrates the Download button             |
-| [External export](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/external-export/)                          | Demonstrates the Table export                |
-| [Infinity data source](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/infinity/)                            | Demonstrates how to use Infinity data source |
-| [Data links](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/#data-links)                                    | Demonstrates data links                      |
-| [Standard options support](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/#support-of-the-standard-options) | Explains the Standard options support        |
-| [Data sources as variables](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/features/#data-sources-as-variables)      | Explains Data sources as variables           |
+| Section                                                                                                                              | Description                                  |
+|--------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| [Pagination](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/#pagination)                                    | Explains pagination                          |
+| [Download button](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/download-button/)                          | Demonstrates the Download button             |
+| [External export](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/external-export/)                          | Demonstrates the Table export                |
+| [Infinity data source](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/infinity/)                            | Demonstrates how to use Infinity data source |
+| [Data links](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/#data-links)                                    | Demonstrates data links                      |
+| [Standard options support](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/#support-of-the-standard-options) | Explains the Standard options support        |
+| [Data sources as variables](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/#data-sources-as-variables)      | Explains Data sources as variables           |
 
 ## Pagination
 
 You have a choice of two pagination modes: **Client** and **Query**.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/pagination.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/pagination.png)
 
 ### Client
 
@@ -33,7 +33,7 @@ With the **Client** mode, all records are retrieved by the Business Table panel 
 
 The **Client** mode is the easiest and fastest to set up. However, users might experience performance issues since all data must be retrieved before being separated into pages.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/client.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/client.png)
 
 ### Query
 
@@ -50,9 +50,9 @@ The necessity of the first three metrics (**pageIndex**, **offset**, **pageSize*
 
 In the example below, we use the Timescale data source, consequently SQL, to retrieve the data. **pageIndex** and **offset** are enough metrics in that case.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/vars.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/vars.png)
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/query.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/query.png)
 
 ### Default pagination size
 
@@ -62,7 +62,7 @@ In the example below, we use the Timescale data source, consequently SQL, to ret
 
 With the **default pagination size** parameter, you configure how many rows per page are available when the dashboard loads for the first time. If a user changes that, it gets saved into the browser cookies for the user’s convenience.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/page-size.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/page-size.png)
 
 ## Data links
 
@@ -70,7 +70,7 @@ The Business Table visualization supports the **Data links** feature. In the exa
 
 You can use the Grafana **Overrides** feature to configure column links (not for the whole row).
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/links.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/links.png)
 
 ### Update variables using data links
 
@@ -78,7 +78,7 @@ Data links help expose additional functionality of the Business Table. Changing 
 
 Configure the Data Links option
 
-![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 /d/${__dashboard.uid}?${__url_time_range}&var-Test=${__data.fields.device}
@@ -86,11 +86,11 @@ Configure the Data Links option
 
 where `__data.fields.device` uses the value from the `device` field in the current row when the cell is clicked. This is how the variable will be changed. In string `var-Test` the substring `Test` is the variable to be replaced.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/data-links-variable-config.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/data-links-variable-config.png)
 
 Clicking on a cell with the value `device10` will change the value of the Text variable.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/click-variable-change.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/click-variable-change.png)
 
 ## Support of the standard options
 
@@ -100,7 +100,7 @@ Clicking on a cell with the value `device10` will change the value of the Text v
 
 The values displayed in the Business Table visualization can be formatted using the Grafana **Standard options**.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/standard.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/standard.png)
 
 ## Data sources as variables
 
@@ -116,12 +116,12 @@ Let’s say a Grafana dashboard has the following dashboard variable:
 - **Name**: DS,
 - **Type**: PostgreSQL.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/dashboard-variable-ds.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/dashboard-variable-ds.png)
 
 You can use this variable in every data flow that affects:
 
 - row,
-- [nested objects](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/volkovlabs-table-panel/latest/editable-data/nested/) stored as a column value.
+- [nested objects](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/nested/) stored as a column value.
 
 ### Row
 
@@ -140,7 +140,7 @@ Rows has three possible data flows:
   - if the delete a row functionality is allowed,
   - after a user clicks on a trash can icon to delete a row.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/single.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/single.png)
 
 ### Nested objects
 
@@ -162,4 +162,4 @@ Nested objects have four possible data flows:
   - if the **Delete Options** functionality is allowed,
   - after a user opens **Show All comments** drawer and clicks on the trash can button.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-table/nested.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/nested.png)

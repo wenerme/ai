@@ -9,12 +9,16 @@ System hooks send HTTP POST requests to external URLs or
 run local scripts on the server when specific events occur.
 
 Unlike project webhooks, system hooks monitor events across
-the entire GitLab instance, not just individual projects.
+an entire organization, not just individual projects.
 These hooks capture events such as user creation, project and
-group changes, and repository pushes from any project.
+group changes, and repository pushes from any project in the organization.
+On an instance that has only the default organization,
+system hooks cover the entire instance.
 
-A system hook belongs to an organization. It runs only for events
-that occur in that organization.
+A system hook belongs to one organization. It runs only for events
+that occur in that organization and never for events in another organization.
+The [system hooks API](../api/system_hooks.md) and **Admin** > **System hooks**
+list only the hooks of the current organization.
 
 ## Triggered events
 
@@ -143,6 +147,9 @@ System hooks are subject to the same push event limits as project webhooks. By d
 This limit is controlled by the `push_event_hooks_limit` setting
 (default: `3`). For GitLab Self-Managed instances, administrators can modify this limit using the
 [Application settings API](../api/settings.md#available-settings).
+
+Each organization other than the default organization can have a limited number of system hooks.
+For more information, see [number of webhooks](instance_limits.md#number-of-webhooks).
 
 System hooks managed by organization administrators are
 [auto-disabled](../user/project/integrations/webhooks.md#auto-disabled-webhooks) after repeated failures,

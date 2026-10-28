@@ -9,6 +9,7 @@ Some notable benefits of the API include:
 - Simultaneous multimodal output: Text is useful for moderation; faster-than-realtime audio ensures stable playback.
 
 The Realtime API is a stateful, event-based API that communicates over a WebSocket.
+To start a Realtime conversation, set `model` in the connection URL. To join an existing call, set `call_id` instead. Transcription sessions use `intent=transcription`.
 
 Open a WebSocket connection using the URL below. Supply path and query parameters and authentication during the opening handshake. Once connected, send client events and receive server events as JSON messages. Close the connection when finished.
 
@@ -17,6 +18,16 @@ Open a WebSocket connection using the URL below. Supply path and query parameter
 ### Authentication
 
 Use Bearer Auth (header Authorization).
+
+### Connection parameters
+
+- `model` (query, string, optional)
+
+- `call_id` (query, string, optional)
+
+- `intent` (query, enum, optional): realtime, transcription
+
+  Selects the session type. Set `transcription` and omit `model` for a transcription session. If omitted, the session type from a client secret applies when present; otherwise the intent is `realtime`.
 
 ### Events
 

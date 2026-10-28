@@ -221,6 +221,29 @@ params = {}
 ProjectExportWorker.new.perform(current_user.id, project.id)
 ```
 
+## Error: `No space left on device` when exporting a project
+
+You might get errors similar to the following when you export a project:
+
+```plaintext
+No space left on device - sendfile
+No space left on device @ rb_sysopen
+Command exited with error code 2: tar: ... Wrote only 1024 of 10240 bytes
+```
+
+These errors occur when a Sidekiq node runs out of space in either `shared_path` or the
+operating system temporary directory (by default, `/tmp`).
+GitLab uses the temporary directory to merge the exported project relations.
+For more information, see [export a project and its data](import_export.md#export-a-project-and-its-data).
+
+To resolve these errors:
+
+1. On the Sidekiq nodes, check the free space in `shared_path` and in the temporary directory.
+1. For the directory that is full, either:
+   - Increase the free space.
+   - For the temporary directory, set the [`TMPDIR`](https://docs.gitlab.com/omnibus/settings/environment-variables/#tmpdir)
+     environment variable to a directory on a larger volume.
+
 ## Manually execute export steps
 
 You usually export a project through [the web interface](import_export.md#export-a-project-and-its-data)

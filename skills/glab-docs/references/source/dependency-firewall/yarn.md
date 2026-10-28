@@ -5,7 +5,7 @@ group: Developer Clients
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Run Yarn through the GitLab Dependency Firewall. (EXPERIMENTAL)
+Run Yarn through the GitLab Dependency Firewall. (BETA)
 
 ## Synopsis
 
@@ -17,8 +17,8 @@ This command requires Yarn 3.2 or later, or Yarn Classic (1.x). It refuses Yarn 
 
 All arguments are forwarded to `yarn` verbatim.
 
-This feature is an experiment and is not ready for production use.
-It might be unstable or removed at any time.
+This feature is in beta and might not be ready for production use.
+It might be unstable and breaking changes can occur outside of major releases.
 For more information, see
 <https://docs.gitlab.com/policy/development_stages_support/>.
 
@@ -29,7 +29,10 @@ glab dependency-firewall yarn <yarn args> [flags]
 ## Examples
 
 ```console
-# Install a package through the Dependency Firewall
+# Install dependencies through the Dependency Firewall
+glab dependency-firewall yarn install
+
+# Add a package through the Dependency Firewall
 glab dependency-firewall yarn add left-pad
 
 ```

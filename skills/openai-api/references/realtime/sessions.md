@@ -746,7 +746,7 @@ curl https://api.openai.com/v1/realtime/sessions \
         "languages": [
           "string"
         ],
-        "model": "whisper-1",
+        "model": "gpt-transcribe",
         "prompt": "prompt"
       },
       "turn_detection": {

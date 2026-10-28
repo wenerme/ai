@@ -265,7 +265,7 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
     "languages": [
       "string"
     ],
-    "model": "whisper-1",
+    "model": "gpt-transcribe",
     "prompt": "prompt"
   },
   "modalities": [

@@ -28,7 +28,7 @@ To retrieve spreadsheet data in JSON format from Google Sheets:
      - Replace `<range>` with the cell range you want to retrieve (e.g., `A1:D7`).
      - Example: `https://sheets.googleapis.com/v4/spreadsheets/1fHQaArXSA9qR4Ie65i12XA_8fp47jAJACOlqHGAFl0hf2wqM/values/Sheet1!A1:D7`
 
-[](/media/docs/grafana/panels-visualizations/business-table/json-import.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/json-import.png)
 
 ## Import as CSV
 
@@ -45,7 +45,7 @@ To retrieve spreadsheet data in CSV format from Google Sheets:
      - Replace `<spreadsheetID>` with the unique ID of your Google Spreadsheet.
      - Example: `https://docs.google.com/spreadsheets/d/1fVQOrLSKqO4Ve65i_LfA4BjSJACOlqHGAFl0hf2wqM/export?format=csv&gid=0`
 
-[](/media/docs/grafana/panels-visualizations/business-table/csv-import.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/csv-import.png)
 
 ## Conclusion
 

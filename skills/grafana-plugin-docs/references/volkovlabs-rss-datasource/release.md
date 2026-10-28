@@ -9,4 +9,4 @@ description: "Learn about new features, enhancements, fixes, and breaking change
 
 Stay informed about the Business News data source development with these release notes, which cover new features, enhancements, fixes, and breaking changes across all versions.
 
-All notable changes to the Business News panel are documented in the [changelog](http://grafana-com-website.grafana-com.svc.cluster.local.:80/grafana/plugins/volkovlabs-rss-datasource/?tab=changelog) in the plugins catalog.
+All notable changes to the Business News panel are documented in the [changelog](https://grafana.com/grafana/plugins/volkovlabs-rss-datasource/?tab=changelog) in the plugins catalog.

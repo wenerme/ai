@@ -18,11 +18,11 @@ The Business Table panel version requirements for Grafana are as follows:
 
 ## Getting started
 
-The Business Table panel can be installed from the [Grafana Catalog](/grafana/plugins/volkovlabs-table-panel/) or utilizing the Grafana command line tool.
+The Business Table panel can be installed from the [Grafana Catalog](https://grafana.com/grafana/plugins/volkovlabs-table-panel/) or utilizing the Grafana command line tool.
 
 For the latter, please use the following command.
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 grafana cli plugins install volkovlabs-table-panel
@@ -39,17 +39,17 @@ grafana cli plugins install volkovlabs-table-panel
 - **Data Editing**: Enable permission-based editing with query integration.
 - **Export Options**: Download table data as CSV or Excel files.
 
-[](/media/docs/grafana/panels-visualizations/business-table/groups.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-table/groups.png)
 
 ## Documentation
 
 Expand table
 
-| Section                                                                     | Description                                           |
-|-----------------------------------------------------------------------------|-------------------------------------------------------|
-| [Editable data](/docs/plugins/volkovlabs-table-panel/latest/editable-data/) | Explains 7 configurable data flows.                   |
-| [Features](/docs/plugins/volkovlabs-table-panel/latest/features/)           | Explains the plugin features.                         |
-| [Release notes](/docs/plugins/volkovlabs-table-panel/latest/release/)       | Stay up to date with the latest features and updates. |
+| Section                                                                                        | Description                                           |
+|------------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| [Editable data](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/editable-data/) | Explains 7 configurable data flows.                   |
+| [Features](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/features/)           | Explains the plugin features.                         |
+| [Release notes](https://grafana.com/docs/plugins/volkovlabs-table-panel/latest/release/)       | Stay up to date with the latest features and updates. |
 
 ## License
 

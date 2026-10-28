@@ -167,8 +167,8 @@ To leave out data such as issues, merge requests, or uploads, use `excluded_rela
 [project export API](../../../api/project_import_export.md#exclude-relations-from-a-project-export).
 You cannot exclude relations when you export from the UI.
 
-The export is generated in your configured `shared_path`, a temporary shared directory
-(by default, `<shared_path>/tmp/gitlab_exports`), and then either:
+The export is generated in your configured `shared_path`
+(by default, in `<shared_path>/tmp/gitlab_exports`), and then either:
 
 - Moved to your configured `uploads_directory`.
 - Uploaded to object storage.
@@ -179,6 +179,14 @@ On GitLab instances with separate Sidekiq, Gitaly, and GitLab application (Rails
 the directory specified in the
 [`shared_path`](https://gitlab.com/gitlab-org/omnibus-gitlab/-/blob/b350e3cd5b06a94adb463ece4d41b9f3df6ab282/files/gitlab-config-template/gitlab.rb.template#L731)
 setting must be available to all nodes.
+
+GitLab exports each project relation, such as issues, merge requests, and LFS objects, as a separate archive.
+To merge the archives, Sidekiq copies or downloads each archive in turn.
+Sidekiq extracts each archive in the operating system temporary directory, not in `shared_path`.
+The [`TMPDIR`](https://docs.gitlab.com/omnibus/settings/environment-variables/#tmpdir) environment variable sets this directory, which defaults to `/tmp`.
+The temporary directory on your Sidekiq nodes must have enough free space for the largest relation archive
+and its extracted contents.
+A separate setting for this directory is proposed in [issue 599256](https://gitlab.com/gitlab-org/gitlab/-/work_items/599256).
 
 #### Project items that are exported
 

@@ -2,6 +2,8 @@
 
 ## Connect
 
+Open a Realtime translation session. The WebSocket URL requires a `model` query parameter.
+
 Open a WebSocket connection using the URL below. Supply path and query parameters and authentication during the opening handshake. Once connected, send client events and receive server events as JSON messages. Close the connection when finished.
 
 **WebSocket** `wss://api.openai.com/v1/realtime/translations`
@@ -9,6 +11,10 @@ Open a WebSocket connection using the URL below. Supply path and query parameter
 ### Authentication
 
 Use Bearer Auth (header Authorization).
+
+### Connection parameters
+
+- `model` (query, string, required)
 
 ### Events
 

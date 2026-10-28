@@ -9,7 +9,7 @@ description: "Learn how to configure all available options for the Business Medi
 
 This section describes all plugin options. The Business Media panel displays multiple types of media files at once. The three option categories, **PDF**, **Image**, **Video/Audio**, appear based on the **Media Source Types** you add in the **Business Media** category.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/options.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/options.png)
 
 ## Business Media
 
@@ -20,7 +20,7 @@ The **Business Media** category has the following parameters:
 
 You can add as many files as you need by using the **+Add** button.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/opt-bm.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/opt-bm.png)
 
 ## Text Options
 
@@ -28,7 +28,7 @@ The **Text Options** category has the following parameters:
 
 - **Field description** is a description displayed under the image specified as a data frame column name.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/img-desc.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/img-desc.png)
 
 > Note
 >
@@ -36,17 +36,17 @@ The **Text Options** category has the following parameters:
 
 - **No Results Message** customizable message to notify users of loading problems or no data found errors.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/nothing.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/nothing.png)
 
 ## Toolbar
 
 The Business Media panel includes a customizable toolbar. Enable **Display toolbar** and select the **Features** you want.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/toolbar.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/toolbar.png)
 
 - **Auto play**: When you add multiple media files, clicking the **Play** button switches images from the first to the last using the **Auto play interval**. If **Auto Play infinity** is **Enabled**, switching starts again from the beginning automatically.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/auto-switch.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/auto-switch.png)
 
 - **Download**: For **Image** type only. Adds a button to download the selected image.
 - **Navigation**: Adds buttons to page media files back and forward.
@@ -55,7 +55,7 @@ The Business Media panel includes a customizable toolbar. Enable **Display toolb
   - **Full Screen**. This enables one button that allows your image to be opened in full-screen mode.
   - **Pan and Pinch**. This enables three buttons to zoom in and out of your image.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/down-nav-zoom.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/down-nav-zoom.png)
 
 ## URL
 
@@ -68,13 +68,13 @@ In the **URL** category, you can specify two parameters:
 - **Image URL**. This address will be opened after a user clicks on the image.
 - **Title**. This text will pop up when a user hovers a mouse over the image.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/url.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/url.png)
 
 ## PDF
 
 Most browsers have a PDF toolbar by default. You can disable that default if needed.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/pdf.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/pdf.png)
 
 ## Image
 
@@ -88,7 +88,7 @@ In the **Image** category there is one drop-down parameter **Scale Algorithm** t
 >
 > The **Crisp Edges** option is not supported in all browsers. Learn more in the [Mozilla CSS documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering).
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/auto-pix.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/auto-pix.png)
 
 ## Video/Audio
 
@@ -99,13 +99,13 @@ In the **Video/Audio** category, there are specific to these formats parameters:
 - **Infinity Play**. With **Enabled**, the file plays in an endless loop.
 - **Poster Image**. You can specify a poster image (thumbnail) file for your video files. A poster image is an image that is shown before the user clicks on the play button (unless the **Auto play** is enabled). The image can be in the base64 format or a link to the external web resource.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/video.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/video.png)
 
 ## Width and Height
 
 The **Width** and **Height** categories allow control of the image size on the dashboard.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/w-h.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/w-h.png)
 
 - **Panel**. The width or height will fit the current panel size.
 - **Original**. The width or height will be taken from the original file.
@@ -120,8 +120,8 @@ The **Width** and **Height** categories allow control of the image size on the d
 
 Following Grafana 11 new features, previously existing image links were removed (the **URL** category) and allowed using a new **Data links** feature instead.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/link.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/link.png)
 
 The links can open in the same tab or a new tab.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-media/link-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-media/link-edit.png)

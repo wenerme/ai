@@ -7,9 +7,9 @@ description: "Learn how to use the Business Text visualization panel to display 
 
 # Business Text
 
-The [Business Text visualization panel](http://grafana-com-website.grafana-com.svc.cluster.local.:80/docs/plugins/marcusolsson-dynamictext-panel/latest/) is a perfect companion to Business News Data Source.
+The [Business Text visualization panel](https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/) is a perfect companion to Business News Data Source.
 
-[](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/docs/grafana/panels-visualizations/business-news/dynamic-text.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-news/dynamic-text.png)
 
 ## Disable Sanitize HTML
 
@@ -17,7 +17,7 @@ To display HTML returned from feeds, disable the **Sanitize HTML** parameter.
 
 ### Docker
 
-sh ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 GF_PANELS_DISABLE_SANITIZE_HTML=true
@@ -39,7 +39,7 @@ Expand table
 
 The template (Content) displays for each row as defined in the options.
 
-HTML ![Copy code to clipboard](http://grafana-com-website.grafana-com.svc.cluster.local.:80/media/images/icons/icon-copy-small-2.svg) Copy
+HTML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```html
 <table width="100%" style="border: 0">
