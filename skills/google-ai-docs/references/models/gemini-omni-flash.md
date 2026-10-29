@@ -21,3 +21,4 @@ page for full coverage of features and capabilities.
 | Limits | **Context window** 1,048,576 tokens **Output video** 3s-10s (360p/720p/1080p/4K, 24 FPS) |
 | Versions | [Model versions:](https://ai.google.dev/gemini-api/docs/models#model-versions) - Stable: `gemini-omni-1.1-flash` - Shut down: `gemini-omni-flash-preview` |
 | Latest update | August 2026 |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-omni-1.1-flash) |

@@ -40,7 +40,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `AgentBrowserAuthenticationSubmitParam object { action, fields, type, selected_option }`
 
-        - `action: "submit"`
+        - `action: "submit" (default: "submit")`
 
           - `"submit"`
 
@@ -62,7 +62,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 16384`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
@@ -74,11 +74,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `AgentBrowserAuthenticationCancelParam object { action, type }`
 
-        - `action: "cancel"`
+        - `action: "cancel" (default: "cancel")`
 
           - `"cancel"`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
@@ -100,11 +100,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             Dismiss this request without approving access.
 
-        - `type: "browser_origin_access"`
+        - `type: "browser_origin_access" (default: "browser_origin_access")`
 
           - `"browser_origin_access"`
 
-    - `type: "agent.session.input.computer_use_approval_request_result"`
+    - `type: "agent.session.input.computer_use_approval_request_result" (default: "agent.session.input.computer_use_approval_request_result")`
 
       The type of the object. Always `agent.session.input.computer_use_approval_request_result`.
 
@@ -136,7 +136,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -152,25 +152,25 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
             - `"input_image"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         The role of the message author. Always `user`.
 
         - `"user"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         The type of the input item. Always `message`.
 
         - `"message"`
 
-    - `type: "agent.session.input.message"`
+    - `type: "agent.session.input.message" (default: "agent.session.input.message")`
 
       The type of the object. Always `agent.session.input.message`.
 
@@ -180,7 +180,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
     Cancels the session's active turn.
 
-    - `type: "agent.session.input.cancel"`
+    - `type: "agent.session.input.cancel" (default: "agent.session.input.cancel")`
 
       The type of the object. Always `agent.session.input.cancel`.
 
@@ -206,7 +206,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "agent.session.input.tool_result"`
+    - `type: "agent.session.input.tool_result" (default: "agent.session.input.tool_result")`
 
       The type of the object. Always `agent.session.input.tool_result`.
 
@@ -224,7 +224,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `array of InputContentParam`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 

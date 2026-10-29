@@ -12,7 +12,7 @@ Lists live files on a connected execution environment with optional directory fi
 
 ### Query Parameters
 
-- `limit: optional number or null`
+- `limit: optional integer or null`
 
   The maximum number of files to return, between 1 and 100.
 
@@ -56,7 +56,7 @@ Lists live files on a connected execution environment with optional directory fi
 
     `minLength: 0`
 
-  - `object: "agent.environment.file"`
+  - `object: "agent.environment.file" (default: "agent.environment.file")`
 
     The object type. Always `agent.environment.file`.
 
@@ -68,7 +68,7 @@ Lists live files on a connected execution environment with optional directory fi
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The file size in bytes.
 
@@ -84,7 +84,7 @@ Lists live files on a connected execution environment with optional directory fi
 
   `minLength: 0`
 
-- `object: "page"`
+- `object: "page" (default: "page")`
 
   The object type. Always `page`.
 
@@ -98,7 +98,7 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID/files \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

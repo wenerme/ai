@@ -32,7 +32,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -44,13 +44,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
           - `"file_id"`
 
-    - `type: "jsonl"`
+    - `type: "jsonl" (default: "jsonl")`
 
       The type of data source. Always `jsonl`.
 
@@ -74,7 +74,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -86,7 +86,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
@@ -96,21 +96,21 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
-        - `type: "stored_completions"`
+        - `type: "stored_completions" (default: "stored_completions")`
 
           The type of source. Always `stored_completions`.
 
           - `"stored_completions"`
 
-        - `created_after: optional number or null`
+        - `created_after: optional integer or null`
 
           An optional Unix timestamp to filter items created after this time.
 
-        - `created_before: optional number or null`
+        - `created_before: optional integer or null`
 
           An optional Unix timestamp to filter items created before this time.
 
-        - `limit: optional number or null`
+        - `limit: optional integer or null`
 
           An optional maximum number of items to return.
 
@@ -127,7 +127,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           An optional model to filter by (e.g., 'gpt-6-astra').
 
-    - `type: "completions"`
+    - `type: "completions" (default: "completions")`
 
       The type of run data source. Always `completions`.
 
@@ -173,7 +173,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The text input to the model.
 
-                  - `type: "input_text"`
+                  - `type: "input_text" (default: "input_text")`
 
                     The type of the input item. Always `input_text`.
 
@@ -183,7 +183,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -213,7 +213,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"original"`
 
-                  - `type: "input_image"`
+                  - `type: "input_image" (default: "input_image")`
 
                     The type of the input item. Always `input_image`.
 
@@ -233,7 +233,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -251,7 +251,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A file input to the model.
 
-                  - `type: "input_file"`
+                  - `type: "input_file" (default: "input_file")`
 
                     The type of the input item. Always `input_file`.
 
@@ -289,7 +289,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -505,11 +505,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
-      - `max_completion_tokens: optional number`
+      - `max_completion_tokens: optional integer`
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort or null`
+      - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -580,7 +580,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               The schema for the response format, described as a JSON Schema object.
               Learn how to build JSON schemas [here](https://json-schema.org/).
 
-            - `strict: optional boolean or null`
+            - `strict: optional boolean or null (default: false)`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -607,11 +607,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"json_object"`
 
-      - `seed: optional number`
+      - `seed: optional integer (default: 42)`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number (default: 1)`
 
         A higher temperature increases randomness in the outputs.
 
@@ -635,7 +635,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Omitting `parameters` defines a function with an empty parameter list.
 
-          - `strict: optional boolean or null`
+          - `strict: optional boolean or null (default: false)`
 
             Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/api/docs/guides/function-calling).
 
@@ -645,7 +645,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"function"`
 
-      - `top_p: optional number`
+      - `top_p: optional number (default: 1)`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -667,7 +667,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -679,7 +679,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
@@ -695,13 +695,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"responses"`
 
-        - `created_after: optional number or null`
+        - `created_after: optional integer or null`
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
           `minimum: 0`
 
-        - `created_before: optional number or null`
+        - `created_before: optional integer or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
 
@@ -719,7 +719,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The name of the model to find responses for. This is a query parameter used to select responses.
 
-        - `reasoning_effort: optional ReasoningEffort or null`
+        - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -745,7 +745,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           List of user identifiers. This is a query parameter used to select responses.
 
-    - `type: "responses"`
+    - `type: "responses" (default: "responses")`
 
       The type of run data source. Always `responses`.
 
@@ -877,11 +877,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
-      - `max_completion_tokens: optional number`
+      - `max_completion_tokens: optional integer`
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort or null`
+      - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -891,11 +891,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
-      - `seed: optional number`
+      - `seed: optional integer (default: 42)`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number (default: 1)`
 
         A higher temperature increases randomness in the outputs.
 
@@ -953,7 +953,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               A description of what the response format is for, used by the model to
               determine how to respond in the format.
 
-            - `strict: optional boolean or null`
+            - `strict: optional boolean or null (default: false)`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -999,7 +999,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether strict parameter validation is enforced for this function tool.
 
-          - `type: "function"`
+          - `type: "function" (default: "function")`
 
             The type of the function tool. Always `function`.
 
@@ -1031,7 +1031,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
-          - `type: "file_search"`
+          - `type: "file_search" (default: "file_search")`
 
             The type of the file search tool. Always `file_search`.
 
@@ -1053,7 +1053,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 5 more`
+              - `type: "eq" or "ne" or "gt" or 5 more (default: "eq")`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -1122,7 +1122,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"or"`
 
-          - `max_num_results: optional number`
+          - `max_num_results: optional integer`
 
             The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
@@ -1158,7 +1158,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-          - `type: "computer"`
+          - `type: "computer" (default: "computer")`
 
             The type of the computer tool. Always `computer`.
 
@@ -1168,11 +1168,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-          - `display_height: number`
+          - `display_height: integer`
 
             The height of the computer display.
 
-          - `display_width: number`
+          - `display_width: integer`
 
             The width of the computer display.
 
@@ -1190,7 +1190,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"browser"`
 
-          - `type: "computer_use_preview"`
+          - `type: "computer_use_preview" (default: "computer_use_preview")`
 
             The type of the computer use tool. Always `computer_use_preview`.
 
@@ -1201,7 +1201,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/api/docs/guides/tools-web-search).
 
-          - `type: "web_search" or "web_search_2025_08_26"`
+          - `type: "web_search" or "web_search_2025_08_26" (default: "web_search")`
 
             The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
 
@@ -1209,7 +1209,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"web_search_2025_08_26"`
 
-          - `external_web_access: optional boolean`
+          - `external_web_access: optional boolean (default: true)`
 
             Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
@@ -1217,14 +1217,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string or null`
+            - `allowed_domains: optional array of string or null (default: [])`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
 
               Example: `["pubmed.ncbi.nlm.nih.gov"]`
 
-          - `search_context_size: optional "low" or "medium" or "high"`
+          - `search_context_size: optional "low" or "medium" or "high" (default: "medium")`
 
             High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
 
@@ -1256,7 +1256,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-            - `type: optional "approximate"`
+            - `type: optional "approximate" (default: "approximate")`
 
               The type of location approximation. Always `approximate`.
 
@@ -1361,7 +1361,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null (default: "always")`
 
             Specify which of the MCP server's tools require approval.
 
@@ -1425,6 +1425,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
+            `pattern: ^tunnel_[a-z0-9]{32}$`
+
         - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
@@ -1443,7 +1445,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
-              - `type: "auto"`
+              - `type: "auto" (default: "auto")`
 
                 Always `auto`.
 
@@ -1473,7 +1475,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
+                  - `type: "disabled" (default: "disabled")`
 
                     Disable outbound network access. Always `disabled`.
 
@@ -1487,7 +1489,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     `minItems: 1`
 
-                  - `type: "allowlist"`
+                  - `type: "allowlist" (default: "allowlist")`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
 
@@ -1535,7 +1537,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `ProgrammaticToolCalling object { type }`
 
-          - `type: "programmatic_tool_calling"`
+          - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
             The type of the tool. Always `programmatic_tool_calling`.
 
@@ -1561,7 +1563,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `background: optional "transparent" or "opaque" or "auto"`
+          - `background: optional "transparent" or "opaque" or "auto" (default: "auto")`
 
             Set the background of the generated image. One of `transparent`, `opaque`,
             or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
@@ -1642,7 +1644,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"gpt-image-2.5-flare-2026-09-08"`
 
-          - `moderation: optional "auto" or "low"`
+          - `moderation: optional "auto" or "low" (default: "auto")`
 
             Moderation level for the generated image. Default: `auto`.
 
@@ -1650,13 +1652,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"low"`
 
-          - `output_compression: optional number`
+          - `output_compression: optional integer (default: 100)`
 
             Compression level for the output image. Default: 100.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg"`
+          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
 
             The output format of the generated image. One of `png`, `webp`, or
             `jpeg`. Default: `png`.
@@ -1667,13 +1669,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"jpeg"`
 
-          - `partial_images: optional number`
+          - `partial_images: optional integer (default: 0)`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
             `minimum: 0`, `maximum: 3`
 
-          - `quality: optional "low" or "medium" or "high" or 3 more`
+          - `quality: optional "low" or "medium" or "high" or 3 more (default: "auto")`
 
             The quality of the generated image. The GPT image models support `low`,
             `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
@@ -1692,7 +1694,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+          - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto" (default: "auto")`
 
             The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
 
@@ -1714,7 +1716,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that allows the model to execute shell commands in a local environment.
 
-          - `type: "local_shell"`
+          - `type: "local_shell" (default: "local_shell")`
 
             The type of the local shell tool. Always `local_shell`.
 
@@ -1724,7 +1726,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that allows the model to execute shell commands.
 
-          - `type: "shell"`
+          - `type: "shell" (default: "shell")`
 
             The type of the shell tool. Always `shell`.
 
@@ -1744,7 +1746,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-              - `type: "container_auto"`
+              - `type: "container_auto" (default: "container_auto")`
 
                 Automatically creates a container for this request
 
@@ -1790,7 +1792,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     `minLength: 1`, `maxLength: 64`
 
-                  - `type: "skill_reference"`
+                  - `type: "skill_reference" (default: "skill_reference")`
 
                     References a skill created with the /v1/skills endpoint.
 
@@ -1820,19 +1822,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                       `minLength: 1`, `maxLength: 70254592`
 
-                    - `media_type: "application/zip"`
+                    - `media_type: "application/zip" (default: "application/zip")`
 
                       The media type of the inline skill payload. Must be `application/zip`.
 
                       - `"application/zip"`
 
-                    - `type: "base64"`
+                    - `type: "base64" (default: "base64")`
 
                       The type of the inline skill source. Must be `base64`.
 
                       - `"base64"`
 
-                  - `type: "inline"`
+                  - `type: "inline" (default: "inline")`
 
                     Defines an inline skill for this request.
 
@@ -1840,7 +1842,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `LocalEnvironment object { type, skills }`
 
-              - `type: "local"`
+              - `type: "local" (default: "local")`
 
                 Use a local computer environment.
 
@@ -1870,7 +1872,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The ID of the referenced container.
 
-              - `type: "container_reference"`
+              - `type: "container_reference" (default: "container_reference")`
 
                 References a container created with the /v1/containers endpoint
 
@@ -1884,7 +1886,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The name of the custom tool, used to identify it in tool calls.
 
-          - `type: "custom"`
+          - `type: "custom" (default: "custom")`
 
             The type of the custom tool. Always `custom`.
 
@@ -1920,7 +1922,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Unconstrained free-form text.
 
-              - `type: "text"`
+              - `type: "text" (default: "text")`
 
                 Unconstrained text format. Always `text`.
 
@@ -1942,7 +1944,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"regex"`
 
-              - `type: "grammar"`
+              - `type: "grammar" (default: "grammar")`
 
                 Grammar format. Always `grammar`.
 
@@ -1972,9 +1974,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `name: string`
 
-                `minLength: 1`, `maxLength: 128`
+                `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 - `"function"`
 
@@ -2016,7 +2018,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The name of the custom tool, used to identify it in tool calls.
 
-              - `type: "custom"`
+              - `type: "custom" (default: "custom")`
 
                 The type of the custom tool. Always `custom`.
 
@@ -2048,7 +2050,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The input format for the custom tool. Default is unconstrained text.
 
-          - `type: "namespace"`
+          - `type: "namespace" (default: "namespace")`
 
             The type of the tool. Always `namespace`.
 
@@ -2058,7 +2060,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Hosted or BYOT tool search configuration for deferred tools.
 
-          - `type: "tool_search"`
+          - `type: "tool_search" (default: "tool_search")`
 
             The type of the tool. Always `tool_search`.
 
@@ -2084,7 +2086,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
-          - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+          - `type: "web_search_preview" or "web_search_preview_2025_03_11" (default: "web_search_preview")`
 
             The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
 
@@ -2112,7 +2114,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.
 
-            - `type: "approximate"`
+            - `type: "approximate" (default: "approximate")`
 
               The type of location approximation. Always `approximate`.
 
@@ -2138,7 +2140,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
-          - `type: "apply_patch"`
+          - `type: "apply_patch" (default: "apply_patch")`
 
             The type of the tool. Always `apply_patch`.
 
@@ -2154,7 +2156,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-      - `top_p: optional number`
+      - `top_p: optional number (default: 1)`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -2177,7 +2179,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Unique identifier for the evaluation run.
 
-- `created_at: number`
+- `created_at: integer`
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
@@ -2205,7 +2207,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -2217,13 +2219,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
           - `"file_id"`
 
-    - `type: "jsonl"`
+    - `type: "jsonl" (default: "jsonl")`
 
       The type of data source. Always `jsonl`.
 
@@ -2247,7 +2249,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -2259,7 +2261,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
@@ -2269,21 +2271,21 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         A StoredCompletionsRunDataSource configuration describing a set of filters
 
-        - `type: "stored_completions"`
+        - `type: "stored_completions" (default: "stored_completions")`
 
           The type of source. Always `stored_completions`.
 
           - `"stored_completions"`
 
-        - `created_after: optional number or null`
+        - `created_after: optional integer or null`
 
           An optional Unix timestamp to filter items created after this time.
 
-        - `created_before: optional number or null`
+        - `created_before: optional integer or null`
 
           An optional Unix timestamp to filter items created before this time.
 
-        - `limit: optional number or null`
+        - `limit: optional integer or null`
 
           An optional maximum number of items to return.
 
@@ -2300,7 +2302,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           An optional model to filter by (e.g., 'gpt-6-astra').
 
-    - `type: "completions"`
+    - `type: "completions" (default: "completions")`
 
       The type of run data source. Always `completions`.
 
@@ -2346,7 +2348,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The text input to the model.
 
-                  - `type: "input_text"`
+                  - `type: "input_text" (default: "input_text")`
 
                     The type of the input item. Always `input_text`.
 
@@ -2356,7 +2358,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -2386,7 +2388,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"original"`
 
-                  - `type: "input_image"`
+                  - `type: "input_image" (default: "input_image")`
 
                     The type of the input item. Always `input_image`.
 
@@ -2406,7 +2408,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -2424,7 +2426,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A file input to the model.
 
-                  - `type: "input_file"`
+                  - `type: "input_file" (default: "input_file")`
 
                     The type of the input item. Always `input_file`.
 
@@ -2462,7 +2464,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                    - `mode: "explicit"`
+                    - `mode: "explicit" (default: "explicit")`
 
                       The breakpoint mode. Always `explicit`.
 
@@ -2678,11 +2680,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, response_format, 4 more }`
 
-      - `max_completion_tokens: optional number`
+      - `max_completion_tokens: optional integer`
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort or null`
+      - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2753,7 +2755,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               The schema for the response format, described as a JSON Schema object.
               Learn how to build JSON schemas [here](https://json-schema.org/).
 
-            - `strict: optional boolean or null`
+            - `strict: optional boolean or null (default: false)`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -2780,11 +2782,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"json_object"`
 
-      - `seed: optional number`
+      - `seed: optional integer (default: 42)`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number (default: 1)`
 
         A higher temperature increases randomness in the outputs.
 
@@ -2808,7 +2810,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Omitting `parameters` defines a function with an empty parameter list.
 
-          - `strict: optional boolean or null`
+          - `strict: optional boolean or null (default: false)`
 
             Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/api/docs/guides/function-calling).
 
@@ -2818,7 +2820,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"function"`
 
-      - `top_p: optional number`
+      - `top_p: optional number (default: 1)`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -2840,7 +2842,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `sample: optional map[unknown]`
 
-        - `type: "file_content"`
+        - `type: "file_content" (default: "file_content")`
 
           The type of jsonl source. Always `file_content`.
 
@@ -2852,7 +2854,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The identifier of the file.
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of jsonl source. Always `file_id`.
 
@@ -2868,13 +2870,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"responses"`
 
-        - `created_after: optional number or null`
+        - `created_after: optional integer or null`
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
           `minimum: 0`
 
-        - `created_before: optional number or null`
+        - `created_before: optional integer or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
 
@@ -2892,7 +2894,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           The name of the model to find responses for. This is a query parameter used to select responses.
 
-        - `reasoning_effort: optional ReasoningEffort or null`
+        - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2918,7 +2920,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           List of user identifiers. This is a query parameter used to select responses.
 
-    - `type: "responses"`
+    - `type: "responses" (default: "responses")`
 
       The type of run data source. Always `responses`.
 
@@ -3050,11 +3052,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
     - `sampling_params: optional object { max_completion_tokens, reasoning_effort, seed, 4 more }`
 
-      - `max_completion_tokens: optional number`
+      - `max_completion_tokens: optional integer`
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort or null`
+      - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -3064,11 +3066,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
         [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
-      - `seed: optional number`
+      - `seed: optional integer (default: 42)`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number (default: 1)`
 
         A higher temperature increases randomness in the outputs.
 
@@ -3126,7 +3128,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               A description of what the response format is for, used by the model to
               determine how to respond in the format.
 
-            - `strict: optional boolean or null`
+            - `strict: optional boolean or null (default: false)`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -3172,7 +3174,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether strict parameter validation is enforced for this function tool.
 
-          - `type: "function"`
+          - `type: "function" (default: "function")`
 
             The type of the function tool. Always `function`.
 
@@ -3204,7 +3206,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
-          - `type: "file_search"`
+          - `type: "file_search" (default: "file_search")`
 
             The type of the file search tool. Always `file_search`.
 
@@ -3226,7 +3228,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The key to compare against the value.
 
-              - `type: "eq" or "ne" or "gt" or 5 more`
+              - `type: "eq" or "ne" or "gt" or 5 more (default: "eq")`
 
                 Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -3295,7 +3297,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"or"`
 
-          - `max_num_results: optional number`
+          - `max_num_results: optional integer`
 
             The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
@@ -3331,7 +3333,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-          - `type: "computer"`
+          - `type: "computer" (default: "computer")`
 
             The type of the computer tool. Always `computer`.
 
@@ -3341,11 +3343,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-          - `display_height: number`
+          - `display_height: integer`
 
             The height of the computer display.
 
-          - `display_width: number`
+          - `display_width: integer`
 
             The width of the computer display.
 
@@ -3363,7 +3365,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"browser"`
 
-          - `type: "computer_use_preview"`
+          - `type: "computer_use_preview" (default: "computer_use_preview")`
 
             The type of the computer use tool. Always `computer_use_preview`.
 
@@ -3374,7 +3376,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/api/docs/guides/tools-web-search).
 
-          - `type: "web_search" or "web_search_2025_08_26"`
+          - `type: "web_search" or "web_search_2025_08_26" (default: "web_search")`
 
             The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
 
@@ -3382,7 +3384,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"web_search_2025_08_26"`
 
-          - `external_web_access: optional boolean`
+          - `external_web_access: optional boolean (default: true)`
 
             Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
@@ -3390,14 +3392,14 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string or null`
+            - `allowed_domains: optional array of string or null (default: [])`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
 
               Example: `["pubmed.ncbi.nlm.nih.gov"]`
 
-          - `search_context_size: optional "low" or "medium" or "high"`
+          - `search_context_size: optional "low" or "medium" or "high" (default: "medium")`
 
             High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
 
@@ -3429,7 +3431,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-            - `type: optional "approximate"`
+            - `type: optional "approximate" (default: "approximate")`
 
               The type of location approximation. Always `approximate`.
 
@@ -3534,7 +3536,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
+          - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null (default: "always")`
 
             Specify which of the MCP server's tools require approval.
 
@@ -3598,6 +3600,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
+            `pattern: ^tunnel_[a-z0-9]{32}$`
+
         - `CodeInterpreter object { container, type, allowed_callers }`
 
           A tool that runs Python code to help generate a response to a prompt.
@@ -3616,7 +3620,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
-              - `type: "auto"`
+              - `type: "auto" (default: "auto")`
 
                 Always `auto`.
 
@@ -3646,7 +3650,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `ContainerNetworkPolicyDisabled object { type }`
 
-                  - `type: "disabled"`
+                  - `type: "disabled" (default: "disabled")`
 
                     Disable outbound network access. Always `disabled`.
 
@@ -3660,7 +3664,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     `minItems: 1`
 
-                  - `type: "allowlist"`
+                  - `type: "allowlist" (default: "allowlist")`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
 
@@ -3708,7 +3712,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         - `ProgrammaticToolCalling object { type }`
 
-          - `type: "programmatic_tool_calling"`
+          - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
             The type of the tool. Always `programmatic_tool_calling`.
 
@@ -3734,7 +3738,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `background: optional "transparent" or "opaque" or "auto"`
+          - `background: optional "transparent" or "opaque" or "auto" (default: "auto")`
 
             Set the background of the generated image. One of `transparent`, `opaque`,
             or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
@@ -3815,7 +3819,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"gpt-image-2.5-flare-2026-09-08"`
 
-          - `moderation: optional "auto" or "low"`
+          - `moderation: optional "auto" or "low" (default: "auto")`
 
             Moderation level for the generated image. Default: `auto`.
 
@@ -3823,13 +3827,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"low"`
 
-          - `output_compression: optional number`
+          - `output_compression: optional integer (default: 100)`
 
             Compression level for the output image. Default: 100.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg"`
+          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
 
             The output format of the generated image. One of `png`, `webp`, or
             `jpeg`. Default: `png`.
@@ -3840,13 +3844,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"jpeg"`
 
-          - `partial_images: optional number`
+          - `partial_images: optional integer (default: 0)`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
             `minimum: 0`, `maximum: 3`
 
-          - `quality: optional "low" or "medium" or "high" or 3 more`
+          - `quality: optional "low" or "medium" or "high" or 3 more (default: "auto")`
 
             The quality of the generated image. The GPT image models support `low`,
             `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
@@ -3865,7 +3869,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+          - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto" (default: "auto")`
 
             The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
 
@@ -3887,7 +3891,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that allows the model to execute shell commands in a local environment.
 
-          - `type: "local_shell"`
+          - `type: "local_shell" (default: "local_shell")`
 
             The type of the local shell tool. Always `local_shell`.
 
@@ -3897,7 +3901,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           A tool that allows the model to execute shell commands.
 
-          - `type: "shell"`
+          - `type: "shell" (default: "shell")`
 
             The type of the shell tool. Always `shell`.
 
@@ -3917,7 +3921,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-              - `type: "container_auto"`
+              - `type: "container_auto" (default: "container_auto")`
 
                 Automatically creates a container for this request
 
@@ -3963,7 +3967,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     `minLength: 1`, `maxLength: 64`
 
-                  - `type: "skill_reference"`
+                  - `type: "skill_reference" (default: "skill_reference")`
 
                     References a skill created with the /v1/skills endpoint.
 
@@ -3993,19 +3997,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                       `minLength: 1`, `maxLength: 70254592`
 
-                    - `media_type: "application/zip"`
+                    - `media_type: "application/zip" (default: "application/zip")`
 
                       The media type of the inline skill payload. Must be `application/zip`.
 
                       - `"application/zip"`
 
-                    - `type: "base64"`
+                    - `type: "base64" (default: "base64")`
 
                       The type of the inline skill source. Must be `base64`.
 
                       - `"base64"`
 
-                  - `type: "inline"`
+                  - `type: "inline" (default: "inline")`
 
                     Defines an inline skill for this request.
 
@@ -4013,7 +4017,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `LocalEnvironment object { type, skills }`
 
-              - `type: "local"`
+              - `type: "local" (default: "local")`
 
                 Use a local computer environment.
 
@@ -4043,7 +4047,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The ID of the referenced container.
 
-              - `type: "container_reference"`
+              - `type: "container_reference" (default: "container_reference")`
 
                 References a container created with the /v1/containers endpoint
 
@@ -4057,7 +4061,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The name of the custom tool, used to identify it in tool calls.
 
-          - `type: "custom"`
+          - `type: "custom" (default: "custom")`
 
             The type of the custom tool. Always `custom`.
 
@@ -4093,7 +4097,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Unconstrained free-form text.
 
-              - `type: "text"`
+              - `type: "text" (default: "text")`
 
                 Unconstrained text format. Always `text`.
 
@@ -4115,7 +4119,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"regex"`
 
-              - `type: "grammar"`
+              - `type: "grammar" (default: "grammar")`
 
                 Grammar format. Always `grammar`.
 
@@ -4145,9 +4149,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `name: string`
 
-                `minLength: 1`, `maxLength: 128`
+                `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 - `"function"`
 
@@ -4189,7 +4193,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The name of the custom tool, used to identify it in tool calls.
 
-              - `type: "custom"`
+              - `type: "custom" (default: "custom")`
 
                 The type of the custom tool. Always `custom`.
 
@@ -4221,7 +4225,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 The input format for the custom tool. Default is unconstrained text.
 
-          - `type: "namespace"`
+          - `type: "namespace" (default: "namespace")`
 
             The type of the tool. Always `namespace`.
 
@@ -4231,7 +4235,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Hosted or BYOT tool search configuration for deferred tools.
 
-          - `type: "tool_search"`
+          - `type: "tool_search" (default: "tool_search")`
 
             The type of the tool. Always `tool_search`.
 
@@ -4257,7 +4261,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
-          - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+          - `type: "web_search_preview" or "web_search_preview_2025_03_11" (default: "web_search_preview")`
 
             The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
 
@@ -4285,7 +4289,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.
 
-            - `type: "approximate"`
+            - `type: "approximate" (default: "approximate")`
 
               The type of location approximation. Always `approximate`.
 
@@ -4311,7 +4315,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Allows the assistant to create, delete, or update files using unified diffs.
 
-          - `type: "apply_patch"`
+          - `type: "apply_patch" (default: "apply_patch")`
 
             The type of the tool. Always `apply_patch`.
 
@@ -4327,7 +4331,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-      - `top_p: optional number`
+      - `top_p: optional number (default: 1)`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -4364,7 +4368,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   The name of the evaluation run.
 
-- `object: "eval.run"`
+- `object: "eval.run" (default: "eval.run")`
 
   The type of the object. Always "eval.run".
 
@@ -4374,15 +4378,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Usage statistics for each model during the evaluation run.
 
-  - `cached_tokens: number`
+  - `cached_tokens: integer`
 
     The number of tokens retrieved from cache.
 
-  - `completion_tokens: number`
+  - `completion_tokens: integer`
 
     The number of completion tokens generated.
 
-  - `invocation_count: number`
+  - `invocation_count: integer`
 
     The number of invocations.
 
@@ -4390,11 +4394,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
     The name of the model.
 
-  - `prompt_tokens: number`
+  - `prompt_tokens: integer`
 
     The number of prompt tokens used.
 
-  - `total_tokens: number`
+  - `total_tokens: integer`
 
     The total number of tokens used.
 
@@ -4402,11 +4406,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Results per testing criteria applied during the evaluation run.
 
-  - `failed: number`
+  - `failed: integer`
 
     Number of tests failed for this criteria.
 
-  - `passed: number`
+  - `passed: integer`
 
     Number of tests passed for this criteria.
 
@@ -4424,19 +4428,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   Counters summarizing the outcomes of the evaluation run.
 
-  - `errored: number`
+  - `errored: integer`
 
     Number of output items that resulted in an error.
 
-  - `failed: number`
+  - `failed: integer`
 
     Number of output items that failed to pass the evaluation.
 
-  - `passed: number`
+  - `passed: integer`
 
     Number of output items that passed the evaluation.
 
-  - `total: number`
+  - `total: integer`
 
     Total number of executed output items.
 
@@ -4467,7 +4471,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -4538,7 +4542,7 @@ curl https://api.openai.com/v1/evals/eval_67e579652b548190aaa83ada4b125f47/runs 
   -d '{"name":"gpt-6-astra","data_source":{"type":"completions","input_messages":{"type":"template","template":[{"role":"developer","content":"Categorize a given news headline into one of the following topics: Technology, Markets, World, Business, or Sports.\n\n# Steps\n\n1. Analyze the content of the news headline to understand its primary focus.\n2. Extract the subject matter, identifying any key indicators or keywords.\n3. Use the identified indicators to determine the most suitable category out of the five options: Technology, Markets, World, Business, or Sports.\n4. Ensure only one category is selected per headline.\n\n# Output Format\n\nRespond with the chosen category as a single word. For instance: \"Technology\", \"Markets\", \"World\", \"Business\", or \"Sports\".\n\n# Examples\n\n**Input**: \"Apple Unveils New iPhone Model, Featuring Advanced AI Features\"  \n**Output**: \"Technology\"\n\n**Input**: \"Global Stocks Mixed as Investors Await Central Bank Decisions\"  \n**Output**: \"Markets\"\n\n**Input**: \"War in Ukraine: Latest Updates on Negotiation Status\"  \n**Output**: \"World\"\n\n**Input**: \"Microsoft in Talks to Acquire Gaming Company for $2 Billion\"  \n**Output**: \"Business\"\n\n**Input**: \"Manchester United Secures Win in Premier League Football Match\"  \n**Output**: \"Sports\" \n\n# Notes\n\n- If the headline appears to fit into more than one category, choose the most dominant theme.\n- Keywords or phrases such as \"stocks\", \"company acquisition\", \"match\", or technological brands can be good indicators for classification.\n"} , {"role":"user","content":"{{item.input}}"}]} ,"sampling_params":{"max_completions_tokens":2048},"model":"gpt-6-astra","source":{"type":"file_content","content":[{"item":{"input":"Tech Company Launches Advanced Artificial Intelligence Platform","ground_truth":"Technology"}}]}}}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

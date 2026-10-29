@@ -22,3 +22,4 @@ full coverage of features and capabilities.
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - `Preview: gemini-3-flash-preview` |
 | Latest update | December 2025 |
 | Model card | [Model card](https://deepmind.google/models/model-cards/gemini-3-flash/) |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3-flash-preview) |

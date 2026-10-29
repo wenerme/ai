@@ -18,11 +18,11 @@ returned.
 
   Identifier for the last message from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of messages to retrieve.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for messages by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
 
@@ -102,7 +102,7 @@ returned.
 
   The identifier of the last chat message in the data array.
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The type of this object. It is always set to "list".
 
@@ -115,7 +115,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -161,7 +161,7 @@ curl https://api.openai.com/v1/chat/completions/chat_abc123/messages \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

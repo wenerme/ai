@@ -11,17 +11,17 @@ The block editor is a visual authoring tool built into Interactive learning. You
 
 This page walks you through:
 
-- [Who can use the block editor](#who-can-use-the-block-editor)
-- [Open the block editor](#open-the-block-editor)
-- [Anatomy of the editor](#anatomy-of-the-editor)
-- [Create your first guide](#create-your-first-guide)
-- [The block types](#the-block-types)
-- [Record interactive steps](#record-interactive-steps)
-- [Save, publish, and update](#save-publish-and-update)
-- [The guide library](#the-guide-library)
-- [View modes](#view-modes)
-- [The pop out button](#the-pop-out-button)
-- [Troubleshooting](#troubleshooting)
+- [Who can use the block editor](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#who-can-use-the-block-editor)
+- [Open the block editor](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#open-the-block-editor)
+- [Anatomy of the editor](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#anatomy-of-the-editor)
+- [Create your first guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#create-your-first-guide)
+- [The block types](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#the-block-types)
+- [Record interactive steps](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#record-interactive-steps)
+- [Save, publish, and update](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#save-publish-and-update)
+- [The guide library](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#the-guide-library)
+- [View modes](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#view-modes)
+- [The pop out button](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#the-pop-out-button)
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#troubleshooting)
 
 ## Who can use the block editor
 
@@ -82,7 +82,7 @@ For automated sequences, use a **Multistep** block (the system performs each ste
 
 When you have several related steps, wrap them in a **Section** block. Sections give the user a single **Do section** button that runs the entire sequence and adds clear visual structure to your guide.
 
-If you turn on **Add and record**, the editor immediately enters [recording mode](#record-interactive-steps) and captures every interaction you perform in Grafana as steps inside the new section.
+If you turn on **Add and record**, the editor immediately enters [recording mode](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#record-interactive-steps) and captures every interaction you perform in Grafana as steps inside the new section.
 
 ### 5. Build out the guide
 
@@ -92,7 +92,7 @@ You can drag blocks by their handle to reorder them, or open **More actions** an
 
 ### 6. Save and publish
 
-Click **Save** to save a draft, then **Publish** when the guide is ready for readers. Refer to [Save, publish, and update](#save-publish-and-update) for details.
+Click **Save** to save a draft, then **Publish** when the guide is ready for readers. Refer to [Save, publish, and update](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/#save-publish-and-update) for details.
 
 ## The block types
 

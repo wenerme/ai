@@ -26,7 +26,7 @@ Modifies a user's role in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -59,7 +59,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -83,7 +83,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

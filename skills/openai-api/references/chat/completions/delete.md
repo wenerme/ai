@@ -35,7 +35,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -53,7 +53,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

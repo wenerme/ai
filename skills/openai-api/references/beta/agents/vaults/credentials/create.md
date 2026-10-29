@@ -32,7 +32,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "mcp_oauth"`
+    - `type: "mcp_oauth" (default: "mcp_oauth")`
 
       The type of the object. Always `mcp_oauth`.
 
@@ -74,7 +74,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
           Sends the client ID without a client secret.
 
-          - `type: "none"`
+          - `type: "none" (default: "none")`
 
             The type of the object. Always `none`.
 
@@ -90,7 +90,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "client_secret_basic"`
+          - `type: "client_secret_basic" (default: "client_secret_basic")`
 
             The type of the object. Always `client_secret_basic`.
 
@@ -106,7 +106,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "client_secret_post"`
+          - `type: "client_secret_post" (default: "client_secret_post")`
 
             The type of the object. Always `client_secret_post`.
 
@@ -140,7 +140,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "static_bearer"`
+    - `type: "static_bearer" (default: "static_bearer")`
 
       The type of the object. Always `static_bearer`.
 
@@ -158,7 +158,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
 
-        - `type: "unrestricted"`
+        - `type: "unrestricted" (default: "unrestricted")`
 
           The type of the object. Always `unrestricted`.
 
@@ -174,7 +174,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
           `minItems: 1`, `maxItems: 16`
 
-        - `type: "limited"`
+        - `type: "limited" (default: "limited")`
 
           The type of the object. Always `limited`.
 
@@ -192,7 +192,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       `minLength: 1`, `maxLength: 1048576`
 
-    - `type: "environment_variable"`
+    - `type: "environment_variable" (default: "environment_variable")`
 
       The type of the object. Always `environment_variable`.
 
@@ -276,7 +276,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             Sends the client ID without a client secret.
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -286,7 +286,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             Sends the client ID and secret using HTTP Basic authentication.
 
-            - `type: "client_secret_basic"`
+            - `type: "client_secret_basic" (default: "client_secret_basic")`
 
               The type of the object. Always `client_secret_basic`.
 
@@ -296,13 +296,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             Sends the client ID and secret in the token request body.
 
-            - `type: "client_secret_post"`
+            - `type: "client_secret_post" (default: "client_secret_post")`
 
               The type of the object. Always `client_secret_post`.
 
               - `"client_secret_post"`
 
-      - `type: "mcp_oauth"`
+      - `type: "mcp_oauth" (default: "mcp_oauth")`
 
         The type of the object. Always `mcp_oauth`.
 
@@ -318,7 +318,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         `minLength: 0`
 
-      - `type: "static_bearer"`
+      - `type: "static_bearer" (default: "static_bearer")`
 
         The type of the object. Always `static_bearer`.
 
@@ -336,7 +336,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
           Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
 
-          - `type: "unrestricted"`
+          - `type: "unrestricted" (default: "unrestricted")`
 
             The type of the object. Always `unrestricted`.
 
@@ -352,7 +352,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             `minItems: 1`, `maxItems: 16`
 
-          - `type: "limited"`
+          - `type: "limited" (default: "limited")`
 
             The type of the object. Always `limited`.
 
@@ -364,13 +364,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         `minLength: 0`
 
-      - `type: "environment_variable"`
+      - `type: "environment_variable" (default: "environment_variable")`
 
         The type of the object. Always `environment_variable`.
 
         - `"environment_variable"`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the credential was created.
 
@@ -386,13 +386,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     `minLength: 0`
 
-  - `object: "vault.credential"`
+  - `object: "vault.credential" (default: "vault.credential")`
 
     The object type. Always `vault.credential`.
 
     - `"vault.credential"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the credential was last updated.
 
@@ -421,7 +421,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {

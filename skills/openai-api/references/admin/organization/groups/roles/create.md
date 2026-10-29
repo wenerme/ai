@@ -24,7 +24,7 @@ Assigns an organization role to a group within the organization.
 
     Identifier for the group.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was created.
 
@@ -95,7 +95,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -132,7 +132,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

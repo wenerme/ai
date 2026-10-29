@@ -128,6 +128,7 @@ The prefix is truncated to the first 32 characters if it exceeds this limit.
 
 To limit the tools returned by the GitLab MCP server to specific groups, configure the
 `X-Gitlab-Enabled-Mcp-Server-Toolsets` HTTP header with a comma-separated list of toolset names.
+For the full list of tools, see the [tools reference](mcp_server_tools.md).
 
 Available toolsets:
 

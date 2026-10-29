@@ -24,6 +24,10 @@ Limits vary depending on the specific model being used, and some limits only
 apply to specific models. For example, Images per minute, or IPM, is only
 calculated for models capable of generating images (Nano Banana), but is
 conceptually similar to TPM. Other models might have a token per day limit (TPD).
+Built-in tools also have specific rate limits. For example, Grounding with Google
+Search on Gemini 3 and newer models is subject to a default limit of 1,500 requests
+per day (RPD) per project on the Gemini Developer API (see
+[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search#pricing)).
 
 Rate limits are more restricted for experimental and preview models.
 
@@ -91,7 +95,9 @@ Specified rate limits are not guaranteed and actual capacity may vary.
 
 [Priority](https://ai.google.dev/gemini-api/docs/priority-inference) consumption holds its own rate
 limits even though consumption is counted towards overall interactive traffic
-rate limits. **Default rate limits are: 0.3x the [standard rate limit](https://aistudio.google.com/rate-limit) for each model and tier**
+rate limits. **Default rate limits are: 0.3x the
+[standard rate limit](https://aistudio.google.com/rate-limit)
+for each model and tier**
 
 ## Batch API rate limits
 

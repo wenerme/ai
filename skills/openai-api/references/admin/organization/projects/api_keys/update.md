@@ -28,7 +28,7 @@ the new request. The response contains only the redacted key, not its secret.
 
 ### Body Parameters
 
-- `expires_in_seconds: optional number`
+- `expires_in_seconds: optional integer`
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
 
@@ -48,13 +48,13 @@ the new request. The response contains only the redacted key, not its secret.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `last_used_at: number or null`
+  - `last_used_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -80,7 +80,7 @@ the new request. The response contains only the redacted key, not its secret.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the service account was created.
 
@@ -110,7 +110,7 @@ the new request. The response contains only the redacted key, not its secret.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the user was created.
 
@@ -140,7 +140,7 @@ the new request. The response contains only the redacted key, not its secret.
 
     The redacted value of the API key
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -159,7 +159,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -199,7 +199,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
   -d '{"scopes": ["api.all.read"], "expires_in_seconds": 86400}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

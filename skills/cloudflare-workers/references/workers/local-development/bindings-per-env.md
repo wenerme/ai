@@ -24,12 +24,13 @@ Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 | --- | --- | --- |
 | **AI** | ❌ | ✅ |
 | **Assets** | ✅ | ❌ |
-| **Analytics Engine** | ✅ | ❌ |
+| **Analytics Engine** | ✅ | ✅ |
 | **Browser Run** | ✅ | ✅ |
 | **D1** | ✅ | ✅ |
 | **Durable Objects** | ✅ | ❌ <sup>[1](#user-content-fn-1)</sup> |
 | **Containers** | ✅ | ❌ |
 | **Email Bindings** | ✅ | ✅ |
+| **Flagship** | ✅ | ✅ |
 | **Hyperdrive** | ✅ | ❌ |
 | **Images** | ✅ | ✅ |
 | **KV** | ✅ | ✅ |
@@ -58,6 +59,7 @@ Supported only in [`wrangler dev --remote`](https://developers.cloudflare.com/wo
 | **Durable Objects** | ✅ |
 | **Containers** | ❌ |
 | **Email Bindings** | ✅ |
+| **Flagship** | ✅ |
 | **Hyperdrive** | ✅ |
 | **Images** | ✅ |
 | **KV** | ✅ |

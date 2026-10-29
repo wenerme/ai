@@ -11,7 +11,7 @@ This document explains how to configure Kerberos authentication for the Oracle d
 
 > Note
 >
-> Kerberos authentication is not supported in Grafana Cloud. Use the **Host with TCP Port** connection method with **Basic authentication** and [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead.
+> Kerberos authentication is not supported in Grafana Cloud. Use the **Host with TCP Port** connection method with **Basic authentication** and [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead.
 
 ## Oracle configuration files
 
@@ -46,7 +46,7 @@ Alternative search paths include:
 
 When setting up the Oracle data source, select **TNSNames Entry** as the connection method. The name entered into the text field should use the following convention:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 /@DBNAME
@@ -56,7 +56,7 @@ When setting up the Oracle data source, select **TNSNames Entry** as the connect
 
 In the following example configuration file, the connection string is `/@XE`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 XE =
@@ -69,7 +69,7 @@ XE =
   )
 ```
 
-Refer to [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/) for the full configuration walkthrough.
+Refer to [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/) for the full configuration walkthrough.
 
 ## Docker configuration
 
@@ -82,7 +82,7 @@ Key volume mappings:
 - `tnsnames.ora`—Oracle connection descriptors
 - `sqlnet.ora`—Oracle networking parameters
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 version: '3.7'
@@ -118,7 +118,7 @@ The following example shows a basic `krb5.conf` for Oracle Kerberos authenticati
 
 `/opt/oracle/network/admin/krb5.conf`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [libdefaults]
@@ -155,7 +155,7 @@ Expand table
 
 `/opt/oracle/network/admin/sqlnet.ora`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 NAMES.DIRECTORY_PATH= (TNSNAMES, EZCONNECT)

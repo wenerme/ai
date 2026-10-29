@@ -68,7 +68,7 @@ curl https://api.openai.com/v1/organization/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -100,7 +100,7 @@ curl -X POST https://api.openai.com/v1/organization/roles \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

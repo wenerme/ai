@@ -50,13 +50,13 @@ Retrieves an execution environment's connection status and safe installed metada
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded file size in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -78,19 +78,19 @@ Retrieves an execution environment's connection status and safe installed metada
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded file size in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `object: "agent.environment"`
+  - `object: "agent.environment" (default: "agent.environment")`
 
     The object type. Always `agent.environment`.
 
@@ -114,7 +114,7 @@ Retrieves an execution environment's connection status and safe installed metada
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -148,7 +148,7 @@ Retrieves an execution environment's connection status and safe installed metada
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -176,7 +176,7 @@ Retrieves an execution environment's connection status and safe installed metada
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -220,7 +220,7 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

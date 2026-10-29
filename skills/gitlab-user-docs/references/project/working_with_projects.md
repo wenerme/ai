@@ -402,6 +402,7 @@ When you archive a project:
 - You cannot add members, create deploy tokens, or change CI/CD variables, integrations, or
   protected branches
 - You cannot view CI/CD variables or integration settings
+- You cannot delete container images until you unarchive the project
 - You can still revoke deploy tokens, delete uploaded files, and remove sensitive data from the repository
 - You can still run a [repository cleanup](repository/repository_size.md#clean-up-repository)
 - The **Protected branches** settings section is hidden, but branch rules are still listed under **Branch rules**

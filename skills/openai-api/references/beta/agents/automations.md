@@ -42,7 +42,7 @@ Saves an active automation without invoking it immediately.
 
             Runs the agent without an execution environment.
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -52,7 +52,7 @@ Saves an active automation without invoking it immediately.
 
             An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -120,7 +120,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -142,7 +142,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -230,7 +230,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 70254592`
 
-                - `media_type: "application/zip"`
+                - `media_type: "application/zip" (default: "application/zip")`
 
                   The archive media type, always `application/zip`.
 
@@ -238,13 +238,13 @@ Saves an active automation without invoking it immediately.
 
                     A ZIP archive.
 
-                - `type: "base64"`
+                - `type: "base64" (default: "base64")`
 
                   The type of the object. Always `base64`.
 
                   - `"base64"`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -284,7 +284,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 64`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -316,7 +316,7 @@ Saves an active automation without invoking it immediately.
 
                   Provides ZIP bytes encoded with standard base64.
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -326,7 +326,7 @@ Saves an active automation without invoking it immediately.
 
             An application-hosted environment configured inline.
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -366,7 +366,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -382,31 +382,31 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
             - `"message"`
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
           - `"new_session"`
 
-        - `agent: optional object { compaction, instructions, model, 5 more }`
+        - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
           Inline agent configuration. Provide exactly one of agent and agent_id.
 
@@ -417,6 +417,14 @@ Saves an active automation without invoking it immediately.
             - `async: optional boolean or null`
 
               Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+          - `experimental: optional object { time_awareness }  (default: {})`
+
+            Experimental settings to merge by key. Omitted settings keep their current values.
+
+            - `time_awareness: optional boolean`
+
+              Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
           - `instructions: optional string or null`
 
@@ -438,7 +446,7 @@ Saves an active automation without invoking it immediately.
 
               Whether subagent tools are enabled.
 
-            - `max_concurrent_subagents: optional number`
+            - `max_concurrent_subagents: optional integer`
 
               Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -522,7 +530,7 @@ Saves an active automation without invoking it immediately.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -536,7 +544,7 @@ Saves an active automation without invoking it immediately.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -584,13 +592,13 @@ Saves an active automation without invoking it immediately.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
                 - `"function"`
 
-              - `defer_loading: optional boolean`
+              - `defer_loading: optional boolean (default: false)`
 
                 Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -598,7 +606,7 @@ Saves an active automation without invoking it immediately.
 
               Discovers deferred function tools and loads them into the model context.
 
-              - `type: "tool_search"`
+              - `type: "tool_search" (default: "tool_search")`
 
                 The type of the object. Always `tool_search`.
 
@@ -608,13 +616,13 @@ Saves an active automation without invoking it immediately.
 
               Enables calling tools from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
                 - `"programmatic_tool_calling"`
 
-              - `enabled: optional boolean`
+              - `enabled: optional boolean (default: true)`
 
                 Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -642,7 +650,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -674,7 +682,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
@@ -696,7 +704,7 @@ Saves an active automation without invoking it immediately.
 
                     `minItems: 0`, `maxItems: 16384`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -730,7 +738,7 @@ Saves an active automation without invoking it immediately.
 
                 Metadata included with requests to this MCP server.
 
-              - `required: optional boolean`
+              - `required: optional boolean (default: false)`
 
                 Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -738,7 +746,7 @@ Saves an active automation without invoking it immediately.
 
               Web search.
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -808,13 +816,13 @@ Saves an active automation without invoking it immediately.
 
               Browser use in an OpenAI-hosted session.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
                 - `"computer_use"`
 
-              - `include_screenshots: optional boolean`
+              - `include_screenshots: optional boolean (default: false)`
 
                 Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -822,7 +830,7 @@ Saves an active automation without invoking it immediately.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -860,7 +868,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -872,7 +880,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 1`, `maxLength: 128`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -888,7 +896,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 1`, `maxLength: 256`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       A future Unix timestamp in seconds.
 
@@ -898,7 +906,7 @@ Saves an active automation without invoking it immediately.
 
       The session an automation invocation targets.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -922,7 +930,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -934,7 +942,7 @@ Saves an active automation without invoking it immediately.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -954,7 +962,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -976,7 +984,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -1020,7 +1028,7 @@ Saves an active automation without invoking it immediately.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -1092,7 +1100,7 @@ Saves an active automation without invoking it immediately.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -1106,7 +1114,7 @@ Saves an active automation without invoking it immediately.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -1152,7 +1160,7 @@ Saves an active automation without invoking it immediately.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -1166,7 +1174,7 @@ Saves an active automation without invoking it immediately.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -1224,7 +1232,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -1258,13 +1266,13 @@ Saves an active automation without invoking it immediately.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -1328,7 +1336,7 @@ Saves an active automation without invoking it immediately.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -1342,7 +1350,7 @@ Saves an active automation without invoking it immediately.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -1352,7 +1360,7 @@ Saves an active automation without invoking it immediately.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -1366,6 +1374,14 @@ Saves an active automation without invoking it immediately.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -1378,7 +1394,7 @@ Saves an active automation without invoking it immediately.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -1446,7 +1462,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -1462,13 +1478,13 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -1540,7 +1556,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -1562,7 +1578,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -1590,13 +1606,13 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -1616,7 +1632,7 @@ Saves an active automation without invoking it immediately.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -1650,7 +1666,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -1666,19 +1682,19 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -1688,7 +1704,7 @@ Saves an active automation without invoking it immediately.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -1714,7 +1730,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -1726,7 +1742,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -1742,7 +1758,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -1762,13 +1778,13 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -1788,7 +1804,7 @@ Saves an active automation without invoking it immediately.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -1826,7 +1842,7 @@ curl https://api.openai.com/v1/agents/automations \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -1874,6 +1890,9 @@ curl https://api.openai.com/v1/agents/automations \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",
@@ -1931,7 +1950,7 @@ Deletes the automation and prevents future invocations without deleting its targ
 
     Always true.
 
-  - `object: "agent.automation.deleted"`
+  - `object: "agent.automation.deleted" (default: "agent.automation.deleted")`
 
     Always `agent.automation.deleted`.
 
@@ -1946,7 +1965,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1970,13 +1989,13 @@ Lists project-owned automations, optionally filtered by target session.
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -2012,7 +2031,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -2024,7 +2043,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -2044,7 +2063,7 @@ Lists project-owned automations, optionally filtered by target session.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -2066,7 +2085,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -2110,7 +2129,7 @@ Lists project-owned automations, optionally filtered by target session.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -2182,7 +2201,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -2196,7 +2215,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -2242,7 +2261,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -2256,7 +2275,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -2314,7 +2333,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -2348,13 +2367,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -2418,7 +2437,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -2432,7 +2451,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -2442,7 +2461,7 @@ Lists project-owned automations, optionally filtered by target session.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -2456,6 +2475,14 @@ Lists project-owned automations, optionally filtered by target session.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -2468,7 +2495,7 @@ Lists project-owned automations, optionally filtered by target session.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -2536,7 +2563,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -2552,13 +2579,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -2630,7 +2657,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -2652,7 +2679,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -2680,13 +2707,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -2706,7 +2733,7 @@ Lists project-owned automations, optionally filtered by target session.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -2740,7 +2767,7 @@ Lists project-owned automations, optionally filtered by target session.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -2756,19 +2783,19 @@ Lists project-owned automations, optionally filtered by target session.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -2778,7 +2805,7 @@ Lists project-owned automations, optionally filtered by target session.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -2804,7 +2831,7 @@ Lists project-owned automations, optionally filtered by target session.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -2816,7 +2843,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -2832,7 +2859,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -2852,13 +2879,13 @@ Lists project-owned automations, optionally filtered by target session.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -2878,7 +2905,7 @@ Lists project-owned automations, optionally filtered by target session.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -2900,7 +2927,7 @@ Lists project-owned automations, optionally filtered by target session.
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -2914,7 +2941,7 @@ curl https://api.openai.com/v1/agents/automations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2964,6 +2991,9 @@ curl https://api.openai.com/v1/agents/automations \
           ],
           "compaction": {
             "async": true
+          },
+          "experimental": {
+            "time_awareness": true
           }
         },
         "agent_id": "agent_id",
@@ -3029,7 +3059,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -3041,7 +3071,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -3061,7 +3091,7 @@ Pauses future scheduled delivery without stopping an active session.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -3083,7 +3113,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -3127,7 +3157,7 @@ Pauses future scheduled delivery without stopping an active session.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -3199,7 +3229,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -3213,7 +3243,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -3259,7 +3289,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -3273,7 +3303,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -3331,7 +3361,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -3365,13 +3395,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -3435,7 +3465,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -3449,7 +3479,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -3459,7 +3489,7 @@ Pauses future scheduled delivery without stopping an active session.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -3473,6 +3503,14 @@ Pauses future scheduled delivery without stopping an active session.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -3485,7 +3523,7 @@ Pauses future scheduled delivery without stopping an active session.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -3553,7 +3591,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -3569,13 +3607,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -3647,7 +3685,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -3669,7 +3707,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -3697,13 +3735,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -3723,7 +3761,7 @@ Pauses future scheduled delivery without stopping an active session.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -3757,7 +3795,7 @@ Pauses future scheduled delivery without stopping an active session.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -3773,19 +3811,19 @@ Pauses future scheduled delivery without stopping an active session.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -3795,7 +3833,7 @@ Pauses future scheduled delivery without stopping an active session.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -3821,7 +3859,7 @@ Pauses future scheduled delivery without stopping an active session.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -3833,7 +3871,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -3849,7 +3887,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -3869,13 +3907,13 @@ Pauses future scheduled delivery without stopping an active session.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -3895,7 +3933,7 @@ Pauses future scheduled delivery without stopping an active session.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -3910,7 +3948,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/pause \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3958,6 +3996,9 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/pause \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",
@@ -4017,7 +4058,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -4029,7 +4070,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -4049,7 +4090,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -4071,7 +4112,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -4115,7 +4156,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -4187,7 +4228,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -4201,7 +4242,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -4247,7 +4288,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -4261,7 +4302,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -4319,7 +4360,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -4353,13 +4394,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -4423,7 +4464,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -4437,7 +4478,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -4447,7 +4488,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -4461,6 +4502,14 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -4473,7 +4522,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -4541,7 +4590,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -4557,13 +4606,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -4635,7 +4684,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -4657,7 +4706,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -4685,13 +4734,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -4711,7 +4760,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -4745,7 +4794,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -4761,19 +4810,19 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -4783,7 +4832,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -4809,7 +4858,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -4821,7 +4870,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -4837,7 +4886,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -4857,13 +4906,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -4883,7 +4932,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -4898,7 +4947,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4946,6 +4995,9 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",
@@ -5005,7 +5057,7 @@ Retrieves a project-owned automation.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -5017,7 +5069,7 @@ Retrieves a project-owned automation.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -5037,7 +5089,7 @@ Retrieves a project-owned automation.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -5059,7 +5111,7 @@ Retrieves a project-owned automation.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -5103,7 +5155,7 @@ Retrieves a project-owned automation.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -5175,7 +5227,7 @@ Retrieves a project-owned automation.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -5189,7 +5241,7 @@ Retrieves a project-owned automation.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -5235,7 +5287,7 @@ Retrieves a project-owned automation.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -5249,7 +5301,7 @@ Retrieves a project-owned automation.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -5307,7 +5359,7 @@ Retrieves a project-owned automation.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -5341,13 +5393,13 @@ Retrieves a project-owned automation.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -5411,7 +5463,7 @@ Retrieves a project-owned automation.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -5425,7 +5477,7 @@ Retrieves a project-owned automation.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -5435,7 +5487,7 @@ Retrieves a project-owned automation.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -5449,6 +5501,14 @@ Retrieves a project-owned automation.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -5461,7 +5521,7 @@ Retrieves a project-owned automation.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -5529,7 +5589,7 @@ Retrieves a project-owned automation.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -5545,13 +5605,13 @@ Retrieves a project-owned automation.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -5623,7 +5683,7 @@ Retrieves a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -5645,7 +5705,7 @@ Retrieves a project-owned automation.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -5673,13 +5733,13 @@ Retrieves a project-owned automation.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -5699,7 +5759,7 @@ Retrieves a project-owned automation.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -5733,7 +5793,7 @@ Retrieves a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -5749,19 +5809,19 @@ Retrieves a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -5771,7 +5831,7 @@ Retrieves a project-owned automation.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -5797,7 +5857,7 @@ Retrieves a project-owned automation.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -5809,7 +5869,7 @@ Retrieves a project-owned automation.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -5825,7 +5885,7 @@ Retrieves a project-owned automation.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -5845,13 +5905,13 @@ Retrieves a project-owned automation.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -5871,7 +5931,7 @@ Retrieves a project-owned automation.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -5885,7 +5945,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5933,6 +5993,9 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",
@@ -5992,7 +6055,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
   `minLength: 1`, `maxLength: 256`
 
-- `run_at: optional number`
+- `run_at: optional integer`
 
   A future Unix timestamp in seconds; accepted only before a one-time scheduled invocation exists.
 
@@ -6014,7 +6077,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
         Runs the agent without an execution environment.
 
-        - `type: "none"`
+        - `type: "none" (default: "none")`
 
           The type of the object. Always `none`.
 
@@ -6024,7 +6087,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
         An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-        - `type: "openai_hosted"`
+        - `type: "openai_hosted" (default: "openai_hosted")`
 
           The type of the object. Always `openai_hosted`.
 
@@ -6092,7 +6155,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               `minLength: 1`, `maxLength: 4096`
 
-            - `type: "file_id"`
+            - `type: "file_id" (default: "file_id")`
 
               The type of the object. Always `file_id`.
 
@@ -6114,7 +6177,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               `minLength: 1`, `maxLength: 4096`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -6202,7 +6265,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               `minLength: 1`, `maxLength: 70254592`
 
-            - `media_type: "application/zip"`
+            - `media_type: "application/zip" (default: "application/zip")`
 
               The archive media type, always `application/zip`.
 
@@ -6210,13 +6273,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A ZIP archive.
 
-            - `type: "base64"`
+            - `type: "base64" (default: "base64")`
 
               The type of the object. Always `base64`.
 
               - `"base64"`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
@@ -6256,7 +6319,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "skill_reference"`
+            - `type: "skill_reference" (default: "skill_reference")`
 
               The type of the object. Always `skill_reference`.
 
@@ -6288,7 +6351,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Provides ZIP bytes encoded with standard base64.
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -6298,7 +6361,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
         An application-hosted environment configured inline.
 
-        - `type: "self_hosted"`
+        - `type: "self_hosted" (default: "self_hosted")`
 
           The type of the object. Always `self_hosted`.
 
@@ -6338,7 +6401,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -6354,31 +6417,31 @@ Updates supplied fields; target and metadata replace the whole field.
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
             - `"input_image"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         The role of the message author. Always `user`.
 
         - `"user"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         The type of the input item. Always `message`.
 
         - `"message"`
 
-    - `type: "new_session"`
+    - `type: "new_session" (default: "new_session")`
 
       The type of the object. Always `new_session`.
 
       - `"new_session"`
 
-    - `agent: optional object { compaction, instructions, model, 5 more }`
+    - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
       Inline agent configuration. Provide exactly one of agent and agent_id.
 
@@ -6389,6 +6452,14 @@ Updates supplied fields; target and metadata replace the whole field.
         - `async: optional boolean or null`
 
           Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+      - `experimental: optional object { time_awareness }  (default: {})`
+
+        Experimental settings to merge by key. Omitted settings keep their current values.
+
+        - `time_awareness: optional boolean`
+
+          Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
       - `instructions: optional string or null`
 
@@ -6410,7 +6481,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Whether subagent tools are enabled.
 
-        - `max_concurrent_subagents: optional number`
+        - `max_concurrent_subagents: optional integer`
 
           Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -6494,7 +6565,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Generates ordinary text without a structured-output constraint.
 
-            - `type: "text"`
+            - `type: "text" (default: "text")`
 
               The type of the object. Always `text`.
 
@@ -6508,7 +6579,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The JSON Schema that generated text must match.
 
-            - `type: "json_schema"`
+            - `type: "json_schema" (default: "json_schema")`
 
               The type of the object. Always `json_schema`.
 
@@ -6556,13 +6627,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             A JSON Schema object describing the function's arguments.
 
-          - `type: "function"`
+          - `type: "function" (default: "function")`
 
             The type of the object. Always `function`.
 
             - `"function"`
 
-          - `defer_loading: optional boolean`
+          - `defer_loading: optional boolean (default: false)`
 
             Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -6570,7 +6641,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Discovers deferred function tools and loads them into the model context.
 
-          - `type: "tool_search"`
+          - `type: "tool_search" (default: "tool_search")`
 
             The type of the object. Always `tool_search`.
 
@@ -6580,13 +6651,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Enables calling tools from model-generated code.
 
-          - `type: "programmatic_tool_calling"`
+          - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
             The type of the object. Always `programmatic_tool_calling`.
 
             - `"programmatic_tool_calling"`
 
-          - `enabled: optional boolean`
+          - `enabled: optional boolean (default: true)`
 
             Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -6614,7 +6685,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "http"`
+              - `type: "http" (default: "http")`
 
                 The type of the object. Always `http`.
 
@@ -6646,7 +6717,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "stdio"`
+              - `type: "stdio" (default: "stdio")`
 
                 The type of the object. Always `stdio`.
 
@@ -6668,7 +6739,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minItems: 0`, `maxItems: 16384`
 
-          - `type: "mcp"`
+          - `type: "mcp" (default: "mcp")`
 
             The type of the object. Always `mcp`.
 
@@ -6702,7 +6773,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Metadata included with requests to this MCP server.
 
-          - `required: optional boolean`
+          - `required: optional boolean (default: false)`
 
             Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -6710,7 +6781,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Web search.
 
-          - `type: "web_search"`
+          - `type: "web_search" (default: "web_search")`
 
             The type of the object. Always `web_search`.
 
@@ -6780,13 +6851,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Browser use in an OpenAI-hosted session.
 
-          - `type: "computer_use"`
+          - `type: "computer_use" (default: "computer_use")`
 
             The type of the object. Always `computer_use`.
 
             - `"computer_use"`
 
-          - `include_screenshots: optional boolean`
+          - `include_screenshots: optional boolean (default: false)`
 
             Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -6794,7 +6865,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Lets the agent manage its own scheduled wakeups.
 
-          - `type: "automations"`
+          - `type: "automations" (default: "automations")`
 
             The type of the object. Always `automations`.
 
@@ -6832,7 +6903,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "existing_session"`
+    - `type: "existing_session" (default: "existing_session")`
 
       The type of the object. Always `existing_session`.
 
@@ -6860,7 +6931,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -6872,7 +6943,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -6892,7 +6963,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -6914,7 +6985,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -6958,7 +7029,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -7030,7 +7101,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -7044,7 +7115,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -7090,7 +7161,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -7104,7 +7175,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -7162,7 +7233,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -7196,13 +7267,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -7266,7 +7337,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -7280,7 +7351,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -7290,7 +7361,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -7304,6 +7375,14 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -7316,7 +7395,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -7384,7 +7463,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -7400,13 +7479,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -7478,7 +7557,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -7500,7 +7579,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -7528,13 +7607,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -7554,7 +7633,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -7588,7 +7667,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -7604,19 +7683,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -7626,7 +7705,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -7652,7 +7731,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -7664,7 +7743,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -7680,7 +7759,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -7700,13 +7779,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -7726,7 +7805,7 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -7742,7 +7821,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7790,6 +7869,9 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",
@@ -7839,7 +7921,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -7851,7 +7933,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -7871,7 +7953,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -7893,7 +7975,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -7937,7 +8019,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -8009,7 +8091,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -8023,7 +8105,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -8069,7 +8151,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -8083,7 +8165,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -8141,7 +8223,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -8175,13 +8257,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -8245,7 +8327,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -8259,7 +8341,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -8269,7 +8351,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -8283,6 +8365,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -8295,7 +8385,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -8363,7 +8453,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -8379,13 +8469,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -8457,7 +8547,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -8479,7 +8569,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -8507,13 +8597,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -8533,7 +8623,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -8567,7 +8657,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -8583,19 +8673,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -8605,7 +8695,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -8631,7 +8721,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -8643,7 +8733,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -8659,7 +8749,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -8679,13 +8769,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -8705,7 +8795,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -8713,7 +8803,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
 ### Automation Agent Config
 
-- `AutomationAgentConfig object { instructions, model, multi_agent, 5 more }`
+- `AutomationAgentConfig object { instructions, model, multi_agent, 6 more }`
 
   Inline agent configuration without a generated session-local identity.
 
@@ -8737,7 +8827,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Whether subagent tools are enabled. Defaults to false.
 
-    - `max_concurrent_subagents: number or null`
+    - `max_concurrent_subagents: integer or null`
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -8809,7 +8899,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Generates ordinary text without a structured-output constraint.
 
-        - `type: "text"`
+        - `type: "text" (default: "text")`
 
           The type of the object. Always `text`.
 
@@ -8823,7 +8913,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The JSON Schema that generated text must match.
 
-        - `type: "json_schema"`
+        - `type: "json_schema" (default: "json_schema")`
 
           The type of the object. Always `json_schema`.
 
@@ -8869,7 +8959,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         A JSON Schema object describing the function's arguments.
 
-      - `type: "function"`
+      - `type: "function" (default: "function")`
 
         The type of the object. Always `function`.
 
@@ -8883,7 +8973,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Whether tools can be called from model-generated code.
 
-      - `type: "programmatic_tool_calling"`
+      - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
         The type of the object. Always `programmatic_tool_calling`.
 
@@ -8941,7 +9031,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "http"`
+          - `type: "http" (default: "http")`
 
             The type of the object. Always `http`.
 
@@ -8975,13 +9065,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minItems: 0`, `maxItems: 2000`
 
-          - `type: "stdio"`
+          - `type: "stdio" (default: "stdio")`
 
             The type of the object. Always `stdio`.
 
             - `"stdio"`
 
-      - `type: "mcp"`
+      - `type: "mcp" (default: "mcp")`
 
         The type of the object. Always `mcp`.
 
@@ -9045,7 +9135,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         - `"live"`
 
-      - `type: "web_search"`
+      - `type: "web_search" (default: "web_search")`
 
         The type of the object. Always `web_search`.
 
@@ -9059,7 +9149,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Whether computer tool outputs include screenshots.
 
-      - `type: "computer_use"`
+      - `type: "computer_use" (default: "computer_use")`
 
         The type of the object. Always `computer_use`.
 
@@ -9069,7 +9159,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Lets the agent manage its own scheduled wakeups.
 
-      - `type: "automations"`
+      - `type: "automations" (default: "automations")`
 
         The type of the object. Always `automations`.
 
@@ -9083,6 +9173,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Whether context is compacted in the background. Defaults to true.
 
+  - `experimental: optional object { time_awareness }`
+
+    The effective experimental settings for the agent.
+
+    - `time_awareness: boolean`
+
+      Whether the model receives periodic current-time reminders.
+
 ### Automation Created By
 
 - `AutomationCreatedBy = Developer { type }  or Agent { session_id, tool_call_id, type }`
@@ -9091,7 +9189,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
   - `Developer object { type }`
 
-    - `type: "developer"`
+    - `type: "developer" (default: "developer")`
 
       The type of the object. Always `developer`.
 
@@ -9111,7 +9209,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `type: "agent"`
+    - `type: "agent" (default: "agent")`
 
       The type of the object. Always `agent`.
 
@@ -9131,7 +9229,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     Always true.
 
-  - `object: "agent.automation.deleted"`
+  - `object: "agent.automation.deleted" (default: "agent.automation.deleted")`
 
     Always `agent.automation.deleted`.
 
@@ -9145,7 +9243,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
   - `None object { type }`
 
-    - `type: "none"`
+    - `type: "none" (default: "none")`
 
       The type of the object. Always `none`.
 
@@ -9213,7 +9311,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of the object. Always `file_id`.
 
@@ -9229,13 +9327,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `size_bytes: number`
+        - `size_bytes: integer`
 
           The decoded size of the inline file in bytes.
 
           `format: int64`, `minimum: 0`
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
@@ -9307,7 +9405,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -9329,7 +9427,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "skill_reference"`
+        - `type: "skill_reference" (default: "skill_reference")`
 
           The type of the object. Always `skill_reference`.
 
@@ -9357,13 +9455,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
           - `"inline"`
 
-    - `type: "openai_hosted"`
+    - `type: "openai_hosted" (default: "openai_hosted")`
 
       The type of the object. Always `openai_hosted`.
 
@@ -9383,7 +9481,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `type: "self_hosted"`
+    - `type: "self_hosted" (default: "self_hosted")`
 
       The type of the object. Always `self_hosted`.
 
@@ -9431,7 +9529,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Runs the agent without an execution environment.
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -9441,7 +9539,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -9509,7 +9607,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -9531,7 +9629,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -9619,7 +9717,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 1`, `maxLength: 70254592`
 
-                - `media_type: "application/zip"`
+                - `media_type: "application/zip" (default: "application/zip")`
 
                   The archive media type, always `application/zip`.
 
@@ -9627,13 +9725,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     A ZIP archive.
 
-                - `type: "base64"`
+                - `type: "base64" (default: "base64")`
 
                   The type of the object. Always `base64`.
 
                   - `"base64"`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -9673,7 +9771,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 1`, `maxLength: 64`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -9705,7 +9803,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   Provides ZIP bytes encoded with standard base64.
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -9715,7 +9813,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             An application-hosted environment configured inline.
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -9755,7 +9853,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -9771,31 +9869,31 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
             - `"message"`
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
           - `"new_session"`
 
-        - `agent: optional object { compaction, instructions, model, 5 more }`
+        - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
           Inline agent configuration. Provide exactly one of agent and agent_id.
 
@@ -9806,6 +9904,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `async: optional boolean or null`
 
               Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+          - `experimental: optional object { time_awareness }  (default: {})`
+
+            Experimental settings to merge by key. Omitted settings keep their current values.
+
+            - `time_awareness: optional boolean`
+
+              Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
           - `instructions: optional string or null`
 
@@ -9827,7 +9933,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether subagent tools are enabled.
 
-            - `max_concurrent_subagents: optional number`
+            - `max_concurrent_subagents: optional integer`
 
               Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -9911,7 +10017,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -9925,7 +10031,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -9973,13 +10079,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
                 - `"function"`
 
-              - `defer_loading: optional boolean`
+              - `defer_loading: optional boolean (default: false)`
 
                 Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -9987,7 +10093,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Discovers deferred function tools and loads them into the model context.
 
-              - `type: "tool_search"`
+              - `type: "tool_search" (default: "tool_search")`
 
                 The type of the object. Always `tool_search`.
 
@@ -9997,13 +10103,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Enables calling tools from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
                 - `"programmatic_tool_calling"`
 
-              - `enabled: optional boolean`
+              - `enabled: optional boolean (default: true)`
 
                 Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -10031,7 +10137,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -10063,7 +10169,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
@@ -10085,7 +10191,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     `minItems: 0`, `maxItems: 16384`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -10119,7 +10225,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Metadata included with requests to this MCP server.
 
-              - `required: optional boolean`
+              - `required: optional boolean (default: false)`
 
                 Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -10127,7 +10233,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Web search.
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -10197,13 +10303,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Browser use in an OpenAI-hosted session.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
                 - `"computer_use"`
 
-              - `include_screenshots: optional boolean`
+              - `include_screenshots: optional boolean (default: false)`
 
                 Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -10211,7 +10317,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -10249,7 +10355,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -10261,7 +10367,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 1`, `maxLength: 128`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -10277,7 +10383,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 1`, `maxLength: 256`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       A future Unix timestamp in seconds.
 
@@ -10287,7 +10393,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The session an automation invocation targets.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -10327,7 +10433,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Whether subagent tools are enabled. Defaults to false.
 
-        - `max_concurrent_subagents: number or null`
+        - `max_concurrent_subagents: integer or null`
 
           Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -10399,7 +10505,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Generates ordinary text without a structured-output constraint.
 
-            - `type: "text"`
+            - `type: "text" (default: "text")`
 
               The type of the object. Always `text`.
 
@@ -10413,7 +10519,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The JSON Schema that generated text must match.
 
-            - `type: "json_schema"`
+            - `type: "json_schema" (default: "json_schema")`
 
               The type of the object. Always `json_schema`.
 
@@ -10459,7 +10565,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A JSON Schema object describing the function's arguments.
 
-          - `type: "function"`
+          - `type: "function" (default: "function")`
 
             The type of the object. Always `function`.
 
@@ -10473,7 +10579,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether tools can be called from model-generated code.
 
-          - `type: "programmatic_tool_calling"`
+          - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
             The type of the object. Always `programmatic_tool_calling`.
 
@@ -10531,7 +10637,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "http"`
+              - `type: "http" (default: "http")`
 
                 The type of the object. Always `http`.
 
@@ -10565,13 +10671,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minItems: 0`, `maxItems: 2000`
 
-              - `type: "stdio"`
+              - `type: "stdio" (default: "stdio")`
 
                 The type of the object. Always `stdio`.
 
                 - `"stdio"`
 
-          - `type: "mcp"`
+          - `type: "mcp" (default: "mcp")`
 
             The type of the object. Always `mcp`.
 
@@ -10635,7 +10741,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             - `"live"`
 
-          - `type: "web_search"`
+          - `type: "web_search" (default: "web_search")`
 
             The type of the object. Always `web_search`.
 
@@ -10649,7 +10755,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether computer tool outputs include screenshots.
 
-          - `type: "computer_use"`
+          - `type: "computer_use" (default: "computer_use")`
 
             The type of the object. Always `computer_use`.
 
@@ -10659,7 +10765,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Lets the agent manage its own scheduled wakeups.
 
-          - `type: "automations"`
+          - `type: "automations" (default: "automations")`
 
             The type of the object. Always `automations`.
 
@@ -10673,6 +10779,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Whether context is compacted in the background. Defaults to true.
 
+      - `experimental: optional object { time_awareness }`
+
+        The effective experimental settings for the agent.
+
+        - `time_awareness: boolean`
+
+          Whether the model receives periodic current-time reminders.
+
     - `agent_id: string or null`
 
       The saved agent reference, or null when an inline agent is configured.
@@ -10685,7 +10799,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       - `None object { type }`
 
-        - `type: "none"`
+        - `type: "none" (default: "none")`
 
           The type of the object. Always `none`.
 
@@ -10753,7 +10867,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "file_id"`
+            - `type: "file_id" (default: "file_id")`
 
               The type of the object. Always `file_id`.
 
@@ -10769,13 +10883,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `size_bytes: number`
+            - `size_bytes: integer`
 
               The decoded size of the inline file in bytes.
 
               `format: int64`, `minimum: 0`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -10847,7 +10961,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
@@ -10869,7 +10983,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "skill_reference"`
+            - `type: "skill_reference" (default: "skill_reference")`
 
               The type of the object. Always `skill_reference`.
 
@@ -10897,13 +11011,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
               - `"inline"`
 
-        - `type: "openai_hosted"`
+        - `type: "openai_hosted" (default: "openai_hosted")`
 
           The type of the object. Always `openai_hosted`.
 
@@ -10923,7 +11037,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minLength: 0`
 
-        - `type: "self_hosted"`
+        - `type: "self_hosted" (default: "self_hosted")`
 
           The type of the object. Always `self_hosted`.
 
@@ -10957,7 +11071,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -10973,19 +11087,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
             - `"input_image"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         The role of the message author. Always `user`.
 
         - `"user"`
 
-      - `type: "message"`
+      - `type: "message" (default: "message")`
 
         The type of the input item. Always `message`.
 
@@ -10995,7 +11109,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Metadata attached to each new session.
 
-    - `type: "new_session"`
+    - `type: "new_session" (default: "new_session")`
 
       The type of the object. Always `new_session`.
 
@@ -11021,7 +11135,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`
 
-    - `type: "existing_session"`
+    - `type: "existing_session" (default: "existing_session")`
 
       The type of the object. Always `existing_session`.
 
@@ -11045,7 +11159,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Runs the agent without an execution environment.
 
-        - `type: "none"`
+        - `type: "none" (default: "none")`
 
           The type of the object. Always `none`.
 
@@ -11055,7 +11169,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-        - `type: "openai_hosted"`
+        - `type: "openai_hosted" (default: "openai_hosted")`
 
           The type of the object. Always `openai_hosted`.
 
@@ -11123,7 +11237,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 1`, `maxLength: 4096`
 
-            - `type: "file_id"`
+            - `type: "file_id" (default: "file_id")`
 
               The type of the object. Always `file_id`.
 
@@ -11145,7 +11259,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 1`, `maxLength: 4096`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -11233,7 +11347,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 1`, `maxLength: 70254592`
 
-            - `media_type: "application/zip"`
+            - `media_type: "application/zip" (default: "application/zip")`
 
               The archive media type, always `application/zip`.
 
@@ -11241,13 +11355,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A ZIP archive.
 
-            - `type: "base64"`
+            - `type: "base64" (default: "base64")`
 
               The type of the object. Always `base64`.
 
               - `"base64"`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
@@ -11287,7 +11401,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "skill_reference"`
+            - `type: "skill_reference" (default: "skill_reference")`
 
               The type of the object. Always `skill_reference`.
 
@@ -11319,7 +11433,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Provides ZIP bytes encoded with standard base64.
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -11329,7 +11443,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         An application-hosted environment configured inline.
 
-        - `type: "self_hosted"`
+        - `type: "self_hosted" (default: "self_hosted")`
 
           The type of the object. Always `self_hosted`.
 
@@ -11369,7 +11483,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -11385,31 +11499,31 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
             - `"input_image"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         The role of the message author. Always `user`.
 
         - `"user"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         The type of the input item. Always `message`.
 
         - `"message"`
 
-    - `type: "new_session"`
+    - `type: "new_session" (default: "new_session")`
 
       The type of the object. Always `new_session`.
 
       - `"new_session"`
 
-    - `agent: optional object { compaction, instructions, model, 5 more }`
+    - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
       Inline agent configuration. Provide exactly one of agent and agent_id.
 
@@ -11420,6 +11534,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `async: optional boolean or null`
 
           Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+      - `experimental: optional object { time_awareness }  (default: {})`
+
+        Experimental settings to merge by key. Omitted settings keep their current values.
+
+        - `time_awareness: optional boolean`
+
+          Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
       - `instructions: optional string or null`
 
@@ -11441,7 +11563,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Whether subagent tools are enabled.
 
-        - `max_concurrent_subagents: optional number`
+        - `max_concurrent_subagents: optional integer`
 
           Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -11525,7 +11647,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Generates ordinary text without a structured-output constraint.
 
-            - `type: "text"`
+            - `type: "text" (default: "text")`
 
               The type of the object. Always `text`.
 
@@ -11539,7 +11661,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The JSON Schema that generated text must match.
 
-            - `type: "json_schema"`
+            - `type: "json_schema" (default: "json_schema")`
 
               The type of the object. Always `json_schema`.
 
@@ -11587,13 +11709,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A JSON Schema object describing the function's arguments.
 
-          - `type: "function"`
+          - `type: "function" (default: "function")`
 
             The type of the object. Always `function`.
 
             - `"function"`
 
-          - `defer_loading: optional boolean`
+          - `defer_loading: optional boolean (default: false)`
 
             Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -11601,7 +11723,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Discovers deferred function tools and loads them into the model context.
 
-          - `type: "tool_search"`
+          - `type: "tool_search" (default: "tool_search")`
 
             The type of the object. Always `tool_search`.
 
@@ -11611,13 +11733,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Enables calling tools from model-generated code.
 
-          - `type: "programmatic_tool_calling"`
+          - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
             The type of the object. Always `programmatic_tool_calling`.
 
             - `"programmatic_tool_calling"`
 
-          - `enabled: optional boolean`
+          - `enabled: optional boolean (default: true)`
 
             Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -11645,7 +11767,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "http"`
+              - `type: "http" (default: "http")`
 
                 The type of the object. Always `http`.
 
@@ -11677,7 +11799,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "stdio"`
+              - `type: "stdio" (default: "stdio")`
 
                 The type of the object. Always `stdio`.
 
@@ -11699,7 +11821,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minItems: 0`, `maxItems: 16384`
 
-          - `type: "mcp"`
+          - `type: "mcp" (default: "mcp")`
 
             The type of the object. Always `mcp`.
 
@@ -11733,7 +11855,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Metadata included with requests to this MCP server.
 
-          - `required: optional boolean`
+          - `required: optional boolean (default: false)`
 
             Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -11741,7 +11863,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Web search.
 
-          - `type: "web_search"`
+          - `type: "web_search" (default: "web_search")`
 
             The type of the object. Always `web_search`.
 
@@ -11811,13 +11933,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Browser use in an OpenAI-hosted session.
 
-          - `type: "computer_use"`
+          - `type: "computer_use" (default: "computer_use")`
 
             The type of the object. Always `computer_use`.
 
             - `"computer_use"`
 
-          - `include_screenshots: optional boolean`
+          - `include_screenshots: optional boolean (default: false)`
 
             Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -11825,7 +11947,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Lets the agent manage its own scheduled wakeups.
 
-          - `type: "automations"`
+          - `type: "automations" (default: "automations")`
 
             The type of the object. Always `automations`.
 
@@ -11863,7 +11985,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "existing_session"`
+    - `type: "existing_session" (default: "existing_session")`
 
       The type of the object. Always `existing_session`.
 
@@ -11881,7 +12003,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -11893,7 +12015,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     - `Developer object { type }`
 
-      - `type: "developer"`
+      - `type: "developer" (default: "developer")`
 
         The type of the object. Always `developer`.
 
@@ -11913,7 +12035,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minLength: 0`
 
-      - `type: "agent"`
+      - `type: "agent" (default: "agent")`
 
         The type of the object. Always `agent`.
 
@@ -11929,13 +12051,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minLength: 0`
 
-  - `object: "agent.automation"`
+  - `object: "agent.automation" (default: "agent.automation")`
 
     Always `agent.automation`.
 
     - `"agent.automation"`
 
-  - `run_at: number`
+  - `run_at: integer`
 
     The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -11981,7 +12103,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether subagent tools are enabled. Defaults to false.
 
-          - `max_concurrent_subagents: number or null`
+          - `max_concurrent_subagents: integer or null`
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -12053,7 +12175,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Generates ordinary text without a structured-output constraint.
 
-              - `type: "text"`
+              - `type: "text" (default: "text")`
 
                 The type of the object. Always `text`.
 
@@ -12067,7 +12189,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The JSON Schema that generated text must match.
 
-              - `type: "json_schema"`
+              - `type: "json_schema" (default: "json_schema")`
 
                 The type of the object. Always `json_schema`.
 
@@ -12113,7 +12235,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A JSON Schema object describing the function's arguments.
 
-            - `type: "function"`
+            - `type: "function" (default: "function")`
 
               The type of the object. Always `function`.
 
@@ -12127,7 +12249,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether tools can be called from model-generated code.
 
-            - `type: "programmatic_tool_calling"`
+            - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
               The type of the object. Always `programmatic_tool_calling`.
 
@@ -12185,7 +12307,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `type: "http"`
+                - `type: "http" (default: "http")`
 
                   The type of the object. Always `http`.
 
@@ -12219,13 +12341,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minItems: 0`, `maxItems: 2000`
 
-                - `type: "stdio"`
+                - `type: "stdio" (default: "stdio")`
 
                   The type of the object. Always `stdio`.
 
                   - `"stdio"`
 
-            - `type: "mcp"`
+            - `type: "mcp" (default: "mcp")`
 
               The type of the object. Always `mcp`.
 
@@ -12289,7 +12411,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               - `"live"`
 
-            - `type: "web_search"`
+            - `type: "web_search" (default: "web_search")`
 
               The type of the object. Always `web_search`.
 
@@ -12303,7 +12425,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether computer tool outputs include screenshots.
 
-            - `type: "computer_use"`
+            - `type: "computer_use" (default: "computer_use")`
 
               The type of the object. Always `computer_use`.
 
@@ -12313,7 +12435,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Lets the agent manage its own scheduled wakeups.
 
-            - `type: "automations"`
+            - `type: "automations" (default: "automations")`
 
               The type of the object. Always `automations`.
 
@@ -12327,6 +12449,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether context is compacted in the background. Defaults to true.
 
+        - `experimental: optional object { time_awareness }`
+
+          The effective experimental settings for the agent.
+
+          - `time_awareness: boolean`
+
+            Whether the model receives periodic current-time reminders.
+
       - `agent_id: string or null`
 
         The saved agent reference, or null when an inline agent is configured.
@@ -12339,7 +12469,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         - `None object { type }`
 
-          - `type: "none"`
+          - `type: "none" (default: "none")`
 
             The type of the object. Always `none`.
 
@@ -12407,7 +12537,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "file_id"`
+              - `type: "file_id" (default: "file_id")`
 
                 The type of the object. Always `file_id`.
 
@@ -12423,13 +12553,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `size_bytes: number`
+              - `size_bytes: integer`
 
                 The decoded size of the inline file in bytes.
 
                 `format: int64`, `minimum: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -12501,7 +12631,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -12523,7 +12653,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "skill_reference"`
+              - `type: "skill_reference" (default: "skill_reference")`
 
                 The type of the object. Always `skill_reference`.
 
@@ -12551,13 +12681,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
                 - `"inline"`
 
-          - `type: "openai_hosted"`
+          - `type: "openai_hosted" (default: "openai_hosted")`
 
             The type of the object. Always `openai_hosted`.
 
@@ -12577,7 +12707,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "self_hosted"`
+          - `type: "self_hosted" (default: "self_hosted")`
 
             The type of the object. Always `self_hosted`.
 
@@ -12611,7 +12741,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
               The type of the object. Always `input_text`.
 
@@ -12627,19 +12757,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "input_image"`
+            - `type: "input_image" (default: "input_image")`
 
               The type of the object. Always `input_image`.
 
               - `"input_image"`
 
-        - `role: "user"`
+        - `role: "user" (default: "user")`
 
           The role of the message author. Always `user`.
 
           - `"user"`
 
-        - `type: "message"`
+        - `type: "message" (default: "message")`
 
           The type of the input item. Always `message`.
 
@@ -12649,7 +12779,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Metadata attached to each new session.
 
-      - `type: "new_session"`
+      - `type: "new_session" (default: "new_session")`
 
         The type of the object. Always `new_session`.
 
@@ -12675,13 +12805,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minLength: 0`
 
-      - `type: "existing_session"`
+      - `type: "existing_session" (default: "existing_session")`
 
         The type of the object. Always `existing_session`.
 
         - `"existing_session"`
 
-  - `type: "once"`
+  - `type: "once" (default: "once")`
 
     The type of the object. Always `once`.
 
@@ -12699,7 +12829,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -12711,7 +12841,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     - `Developer object { type }`
 
-      - `type: "developer"`
+      - `type: "developer" (default: "developer")`
 
         The type of the object. Always `developer`.
 
@@ -12731,7 +12861,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minLength: 0`
 
-      - `type: "agent"`
+      - `type: "agent" (default: "agent")`
 
         The type of the object. Always `agent`.
 
@@ -12753,7 +12883,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minLength: 0`
 
-  - `object: "agent.automation"`
+  - `object: "agent.automation" (default: "agent.automation")`
 
     Always `agent.automation`.
 
@@ -12797,7 +12927,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether subagent tools are enabled. Defaults to false.
 
-          - `max_concurrent_subagents: number or null`
+          - `max_concurrent_subagents: integer or null`
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -12869,7 +12999,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Generates ordinary text without a structured-output constraint.
 
-              - `type: "text"`
+              - `type: "text" (default: "text")`
 
                 The type of the object. Always `text`.
 
@@ -12883,7 +13013,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The JSON Schema that generated text must match.
 
-              - `type: "json_schema"`
+              - `type: "json_schema" (default: "json_schema")`
 
                 The type of the object. Always `json_schema`.
 
@@ -12929,7 +13059,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A JSON Schema object describing the function's arguments.
 
-            - `type: "function"`
+            - `type: "function" (default: "function")`
 
               The type of the object. Always `function`.
 
@@ -12943,7 +13073,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether tools can be called from model-generated code.
 
-            - `type: "programmatic_tool_calling"`
+            - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
               The type of the object. Always `programmatic_tool_calling`.
 
@@ -13001,7 +13131,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minLength: 0`
 
-                - `type: "http"`
+                - `type: "http" (default: "http")`
 
                   The type of the object. Always `http`.
 
@@ -13035,13 +13165,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   `minItems: 0`, `maxItems: 2000`
 
-                - `type: "stdio"`
+                - `type: "stdio" (default: "stdio")`
 
                   The type of the object. Always `stdio`.
 
                   - `"stdio"`
 
-            - `type: "mcp"`
+            - `type: "mcp" (default: "mcp")`
 
               The type of the object. Always `mcp`.
 
@@ -13105,7 +13235,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               - `"live"`
 
-            - `type: "web_search"`
+            - `type: "web_search" (default: "web_search")`
 
               The type of the object. Always `web_search`.
 
@@ -13119,7 +13249,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Whether computer tool outputs include screenshots.
 
-            - `type: "computer_use"`
+            - `type: "computer_use" (default: "computer_use")`
 
               The type of the object. Always `computer_use`.
 
@@ -13129,7 +13259,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Lets the agent manage its own scheduled wakeups.
 
-            - `type: "automations"`
+            - `type: "automations" (default: "automations")`
 
               The type of the object. Always `automations`.
 
@@ -13143,6 +13273,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Whether context is compacted in the background. Defaults to true.
 
+        - `experimental: optional object { time_awareness }`
+
+          The effective experimental settings for the agent.
+
+          - `time_awareness: boolean`
+
+            Whether the model receives periodic current-time reminders.
+
       - `agent_id: string or null`
 
         The saved agent reference, or null when an inline agent is configured.
@@ -13155,7 +13293,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         - `None object { type }`
 
-          - `type: "none"`
+          - `type: "none" (default: "none")`
 
             The type of the object. Always `none`.
 
@@ -13223,7 +13361,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "file_id"`
+              - `type: "file_id" (default: "file_id")`
 
                 The type of the object. Always `file_id`.
 
@@ -13239,13 +13377,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `size_bytes: number`
+              - `size_bytes: integer`
 
                 The decoded size of the inline file in bytes.
 
                 `format: int64`, `minimum: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -13317,7 +13455,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -13339,7 +13477,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "skill_reference"`
+              - `type: "skill_reference" (default: "skill_reference")`
 
                 The type of the object. Always `skill_reference`.
 
@@ -13367,13 +13505,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
                 - `"inline"`
 
-          - `type: "openai_hosted"`
+          - `type: "openai_hosted" (default: "openai_hosted")`
 
             The type of the object. Always `openai_hosted`.
 
@@ -13393,7 +13531,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minLength: 0`
 
-          - `type: "self_hosted"`
+          - `type: "self_hosted" (default: "self_hosted")`
 
             The type of the object. Always `self_hosted`.
 
@@ -13427,7 +13565,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
               The type of the object. Always `input_text`.
 
@@ -13443,19 +13581,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               `minLength: 0`
 
-            - `type: "input_image"`
+            - `type: "input_image" (default: "input_image")`
 
               The type of the object. Always `input_image`.
 
               - `"input_image"`
 
-        - `role: "user"`
+        - `role: "user" (default: "user")`
 
           The role of the message author. Always `user`.
 
           - `"user"`
 
-        - `type: "message"`
+        - `type: "message" (default: "message")`
 
           The type of the input item. Always `message`.
 
@@ -13465,7 +13603,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Metadata attached to each new session.
 
-      - `type: "new_session"`
+      - `type: "new_session" (default: "new_session")`
 
         The type of the object. Always `new_session`.
 
@@ -13491,7 +13629,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minLength: 0`
 
-      - `type: "existing_session"`
+      - `type: "existing_session" (default: "existing_session")`
 
         The type of the object. Always `existing_session`.
 
@@ -13503,7 +13641,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minLength: 0`
 
-  - `type: "periodic"`
+  - `type: "periodic" (default: "periodic")`
 
     The type of the object. Always `periodic`.
 
@@ -13541,7 +13679,7 @@ Queues a manual delivery without changing the saved schedule.
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -13563,13 +13701,13 @@ Queues a manual delivery without changing the saved schedule.
 
       `minLength: 0`
 
-  - `object: "agent.automation.invocation"`
+  - `object: "agent.automation.invocation" (default: "agent.automation.invocation")`
 
     Always `agent.automation.invocation`.
 
     - `"agent.automation.invocation"`
 
-  - `scheduled_at: number or null`
+  - `scheduled_at: integer or null`
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
@@ -13581,7 +13719,7 @@ Queues a manual delivery without changing the saved schedule.
 
     `minLength: 0`
 
-  - `skip_reason: "pending_delivery" or null`
+  - `skip_reason: "pending_delivery" or null (default: "pending_delivery")`
 
     Why an occurrence was skipped, or null when it was not skipped.
 
@@ -13593,7 +13731,7 @@ Queues a manual delivery without changing the saved schedule.
 
     - `Manual object { type }`
 
-      - `type: "manual"`
+      - `type: "manual" (default: "manual")`
 
         The type of the object. Always `manual`.
 
@@ -13615,7 +13753,7 @@ Queues a manual delivery without changing the saved schedule.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -13627,7 +13765,7 @@ Queues a manual delivery without changing the saved schedule.
 
             - `Developer object { type }`
 
-              - `type: "developer"`
+              - `type: "developer" (default: "developer")`
 
                 The type of the object. Always `developer`.
 
@@ -13647,7 +13785,7 @@ Queues a manual delivery without changing the saved schedule.
 
                 `minLength: 0`
 
-              - `type: "agent"`
+              - `type: "agent" (default: "agent")`
 
                 The type of the object. Always `agent`.
 
@@ -13669,7 +13807,7 @@ Queues a manual delivery without changing the saved schedule.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
@@ -13713,7 +13851,7 @@ Queues a manual delivery without changing the saved schedule.
 
                     Whether subagent tools are enabled. Defaults to false.
 
-                  - `max_concurrent_subagents: number or null`
+                  - `max_concurrent_subagents: integer or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -13785,7 +13923,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       Generates ordinary text without a structured-output constraint.
 
-                      - `type: "text"`
+                      - `type: "text" (default: "text")`
 
                         The type of the object. Always `text`.
 
@@ -13799,7 +13937,7 @@ Queues a manual delivery without changing the saved schedule.
 
                         The JSON Schema that generated text must match.
 
-                      - `type: "json_schema"`
+                      - `type: "json_schema" (default: "json_schema")`
 
                         The type of the object. Always `json_schema`.
 
@@ -13845,7 +13983,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       A JSON Schema object describing the function's arguments.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The type of the object. Always `function`.
 
@@ -13859,7 +13997,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       Whether tools can be called from model-generated code.
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The type of the object. Always `programmatic_tool_calling`.
 
@@ -13917,7 +14055,7 @@ Queues a manual delivery without changing the saved schedule.
 
                           `minLength: 0`
 
-                        - `type: "http"`
+                        - `type: "http" (default: "http")`
 
                           The type of the object. Always `http`.
 
@@ -13951,13 +14089,13 @@ Queues a manual delivery without changing the saved schedule.
 
                           `minItems: 0`, `maxItems: 2000`
 
-                        - `type: "stdio"`
+                        - `type: "stdio" (default: "stdio")`
 
                           The type of the object. Always `stdio`.
 
                           - `"stdio"`
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The type of the object. Always `mcp`.
 
@@ -14021,7 +14159,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       - `"live"`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The type of the object. Always `web_search`.
 
@@ -14035,7 +14173,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       Whether computer tool outputs include screenshots.
 
-                    - `type: "computer_use"`
+                    - `type: "computer_use" (default: "computer_use")`
 
                       The type of the object. Always `computer_use`.
 
@@ -14045,7 +14183,7 @@ Queues a manual delivery without changing the saved schedule.
 
                     Lets the agent manage its own scheduled wakeups.
 
-                    - `type: "automations"`
+                    - `type: "automations" (default: "automations")`
 
                       The type of the object. Always `automations`.
 
@@ -14059,6 +14197,14 @@ Queues a manual delivery without changing the saved schedule.
 
                     Whether context is compacted in the background. Defaults to true.
 
+                - `experimental: optional object { time_awareness }`
+
+                  The effective experimental settings for the agent.
+
+                  - `time_awareness: boolean`
+
+                    Whether the model receives periodic current-time reminders.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
@@ -14071,7 +14217,7 @@ Queues a manual delivery without changing the saved schedule.
 
                 - `None object { type }`
 
-                  - `type: "none"`
+                  - `type: "none" (default: "none")`
 
                     The type of the object. Always `none`.
 
@@ -14139,7 +14285,7 @@ Queues a manual delivery without changing the saved schedule.
 
                         `minLength: 0`
 
-                      - `type: "file_id"`
+                      - `type: "file_id" (default: "file_id")`
 
                         The type of the object. Always `file_id`.
 
@@ -14155,13 +14301,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         `minLength: 0`
 
-                      - `size_bytes: number`
+                      - `size_bytes: integer`
 
                         The decoded size of the inline file in bytes.
 
                         `format: int64`, `minimum: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
@@ -14233,7 +14379,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -14255,7 +14401,7 @@ Queues a manual delivery without changing the saved schedule.
 
                         `minLength: 0`
 
-                      - `type: "skill_reference"`
+                      - `type: "skill_reference" (default: "skill_reference")`
 
                         The type of the object. Always `skill_reference`.
 
@@ -14283,13 +14429,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         `minLength: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
                         - `"inline"`
 
-                  - `type: "openai_hosted"`
+                  - `type: "openai_hosted" (default: "openai_hosted")`
 
                     The type of the object. Always `openai_hosted`.
 
@@ -14309,7 +14455,7 @@ Queues a manual delivery without changing the saved schedule.
 
                     `minLength: 0`
 
-                  - `type: "self_hosted"`
+                  - `type: "self_hosted" (default: "self_hosted")`
 
                     The type of the object. Always `self_hosted`.
 
@@ -14343,7 +14489,7 @@ Queues a manual delivery without changing the saved schedule.
 
                       `minLength: 0`
 
-                    - `type: "input_text"`
+                    - `type: "input_text" (default: "input_text")`
 
                       The type of the object. Always `input_text`.
 
@@ -14359,19 +14505,19 @@ Queues a manual delivery without changing the saved schedule.
 
                       `minLength: 0`
 
-                    - `type: "input_image"`
+                    - `type: "input_image" (default: "input_image")`
 
                       The type of the object. Always `input_image`.
 
                       - `"input_image"`
 
-                - `role: "user"`
+                - `role: "user" (default: "user")`
 
                   The role of the message author. Always `user`.
 
                   - `"user"`
 
-                - `type: "message"`
+                - `type: "message" (default: "message")`
 
                   The type of the input item. Always `message`.
 
@@ -14381,7 +14527,7 @@ Queues a manual delivery without changing the saved schedule.
 
                 Metadata attached to each new session.
 
-              - `type: "new_session"`
+              - `type: "new_session" (default: "new_session")`
 
                 The type of the object. Always `new_session`.
 
@@ -14407,7 +14553,7 @@ Queues a manual delivery without changing the saved schedule.
 
                 `minLength: 0`
 
-              - `type: "existing_session"`
+              - `type: "existing_session" (default: "existing_session")`
 
                 The type of the object. Always `existing_session`.
 
@@ -14419,7 +14565,7 @@ Queues a manual delivery without changing the saved schedule.
 
             `minLength: 0`
 
-          - `type: "periodic"`
+          - `type: "periodic" (default: "periodic")`
 
             The type of the object. Always `periodic`.
 
@@ -14435,7 +14581,7 @@ Queues a manual delivery without changing the saved schedule.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -14455,13 +14601,13 @@ Queues a manual delivery without changing the saved schedule.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
             - `"agent.automation"`
 
-          - `run_at: number`
+          - `run_at: integer`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -14481,13 +14627,13 @@ Queues a manual delivery without changing the saved schedule.
 
             The session configuration or existing session receiving invocations.
 
-          - `type: "once"`
+          - `type: "once" (default: "once")`
 
             The type of the object. Always `once`.
 
             - `"once"`
 
-      - `type: "automation"`
+      - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
 
@@ -14514,7 +14660,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -14556,13 +14702,13 @@ Lists delivery records for a project-owned automation.
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -14594,7 +14740,7 @@ Lists delivery records for a project-owned automation.
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -14616,13 +14762,13 @@ Lists delivery records for a project-owned automation.
 
       `minLength: 0`
 
-  - `object: "agent.automation.invocation"`
+  - `object: "agent.automation.invocation" (default: "agent.automation.invocation")`
 
     Always `agent.automation.invocation`.
 
     - `"agent.automation.invocation"`
 
-  - `scheduled_at: number or null`
+  - `scheduled_at: integer or null`
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
@@ -14634,7 +14780,7 @@ Lists delivery records for a project-owned automation.
 
     `minLength: 0`
 
-  - `skip_reason: "pending_delivery" or null`
+  - `skip_reason: "pending_delivery" or null (default: "pending_delivery")`
 
     Why an occurrence was skipped, or null when it was not skipped.
 
@@ -14646,7 +14792,7 @@ Lists delivery records for a project-owned automation.
 
     - `Manual object { type }`
 
-      - `type: "manual"`
+      - `type: "manual" (default: "manual")`
 
         The type of the object. Always `manual`.
 
@@ -14668,7 +14814,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -14680,7 +14826,7 @@ Lists delivery records for a project-owned automation.
 
             - `Developer object { type }`
 
-              - `type: "developer"`
+              - `type: "developer" (default: "developer")`
 
                 The type of the object. Always `developer`.
 
@@ -14700,7 +14846,7 @@ Lists delivery records for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "agent"`
+              - `type: "agent" (default: "agent")`
 
                 The type of the object. Always `agent`.
 
@@ -14722,7 +14868,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
@@ -14766,7 +14912,7 @@ Lists delivery records for a project-owned automation.
 
                     Whether subagent tools are enabled. Defaults to false.
 
-                  - `max_concurrent_subagents: number or null`
+                  - `max_concurrent_subagents: integer or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -14838,7 +14984,7 @@ Lists delivery records for a project-owned automation.
 
                       Generates ordinary text without a structured-output constraint.
 
-                      - `type: "text"`
+                      - `type: "text" (default: "text")`
 
                         The type of the object. Always `text`.
 
@@ -14852,7 +14998,7 @@ Lists delivery records for a project-owned automation.
 
                         The JSON Schema that generated text must match.
 
-                      - `type: "json_schema"`
+                      - `type: "json_schema" (default: "json_schema")`
 
                         The type of the object. Always `json_schema`.
 
@@ -14898,7 +15044,7 @@ Lists delivery records for a project-owned automation.
 
                       A JSON Schema object describing the function's arguments.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The type of the object. Always `function`.
 
@@ -14912,7 +15058,7 @@ Lists delivery records for a project-owned automation.
 
                       Whether tools can be called from model-generated code.
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The type of the object. Always `programmatic_tool_calling`.
 
@@ -14970,7 +15116,7 @@ Lists delivery records for a project-owned automation.
 
                           `minLength: 0`
 
-                        - `type: "http"`
+                        - `type: "http" (default: "http")`
 
                           The type of the object. Always `http`.
 
@@ -15004,13 +15150,13 @@ Lists delivery records for a project-owned automation.
 
                           `minItems: 0`, `maxItems: 2000`
 
-                        - `type: "stdio"`
+                        - `type: "stdio" (default: "stdio")`
 
                           The type of the object. Always `stdio`.
 
                           - `"stdio"`
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The type of the object. Always `mcp`.
 
@@ -15074,7 +15220,7 @@ Lists delivery records for a project-owned automation.
 
                       - `"live"`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The type of the object. Always `web_search`.
 
@@ -15088,7 +15234,7 @@ Lists delivery records for a project-owned automation.
 
                       Whether computer tool outputs include screenshots.
 
-                    - `type: "computer_use"`
+                    - `type: "computer_use" (default: "computer_use")`
 
                       The type of the object. Always `computer_use`.
 
@@ -15098,7 +15244,7 @@ Lists delivery records for a project-owned automation.
 
                     Lets the agent manage its own scheduled wakeups.
 
-                    - `type: "automations"`
+                    - `type: "automations" (default: "automations")`
 
                       The type of the object. Always `automations`.
 
@@ -15112,6 +15258,14 @@ Lists delivery records for a project-owned automation.
 
                     Whether context is compacted in the background. Defaults to true.
 
+                - `experimental: optional object { time_awareness }`
+
+                  The effective experimental settings for the agent.
+
+                  - `time_awareness: boolean`
+
+                    Whether the model receives periodic current-time reminders.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
@@ -15124,7 +15278,7 @@ Lists delivery records for a project-owned automation.
 
                 - `None object { type }`
 
-                  - `type: "none"`
+                  - `type: "none" (default: "none")`
 
                     The type of the object. Always `none`.
 
@@ -15192,7 +15346,7 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "file_id"`
+                      - `type: "file_id" (default: "file_id")`
 
                         The type of the object. Always `file_id`.
 
@@ -15208,13 +15362,13 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `size_bytes: number`
+                      - `size_bytes: integer`
 
                         The decoded size of the inline file in bytes.
 
                         `format: int64`, `minimum: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
@@ -15286,7 +15440,7 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -15308,7 +15462,7 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "skill_reference"`
+                      - `type: "skill_reference" (default: "skill_reference")`
 
                         The type of the object. Always `skill_reference`.
 
@@ -15336,13 +15490,13 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
                         - `"inline"`
 
-                  - `type: "openai_hosted"`
+                  - `type: "openai_hosted" (default: "openai_hosted")`
 
                     The type of the object. Always `openai_hosted`.
 
@@ -15362,7 +15516,7 @@ Lists delivery records for a project-owned automation.
 
                     `minLength: 0`
 
-                  - `type: "self_hosted"`
+                  - `type: "self_hosted" (default: "self_hosted")`
 
                     The type of the object. Always `self_hosted`.
 
@@ -15396,7 +15550,7 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_text"`
+                    - `type: "input_text" (default: "input_text")`
 
                       The type of the object. Always `input_text`.
 
@@ -15412,19 +15566,19 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_image"`
+                    - `type: "input_image" (default: "input_image")`
 
                       The type of the object. Always `input_image`.
 
                       - `"input_image"`
 
-                - `role: "user"`
+                - `role: "user" (default: "user")`
 
                   The role of the message author. Always `user`.
 
                   - `"user"`
 
-                - `type: "message"`
+                - `type: "message" (default: "message")`
 
                   The type of the input item. Always `message`.
 
@@ -15434,7 +15588,7 @@ Lists delivery records for a project-owned automation.
 
                 Metadata attached to each new session.
 
-              - `type: "new_session"`
+              - `type: "new_session" (default: "new_session")`
 
                 The type of the object. Always `new_session`.
 
@@ -15460,7 +15614,7 @@ Lists delivery records for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "existing_session"`
+              - `type: "existing_session" (default: "existing_session")`
 
                 The type of the object. Always `existing_session`.
 
@@ -15472,7 +15626,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `type: "periodic"`
+          - `type: "periodic" (default: "periodic")`
 
             The type of the object. Always `periodic`.
 
@@ -15488,7 +15642,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -15508,13 +15662,13 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
             - `"agent.automation"`
 
-          - `run_at: number`
+          - `run_at: integer`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -15534,13 +15688,13 @@ Lists delivery records for a project-owned automation.
 
             The session configuration or existing session receiving invocations.
 
-          - `type: "once"`
+          - `type: "once" (default: "once")`
 
             The type of the object. Always `once`.
 
             - `"once"`
 
-      - `type: "automation"`
+      - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
 
@@ -15574,7 +15728,7 @@ Lists delivery records for a project-owned automation.
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -15588,7 +15742,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -15652,7 +15806,7 @@ Retrieves a delivery record for a project-owned automation.
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -15674,13 +15828,13 @@ Retrieves a delivery record for a project-owned automation.
 
       `minLength: 0`
 
-  - `object: "agent.automation.invocation"`
+  - `object: "agent.automation.invocation" (default: "agent.automation.invocation")`
 
     Always `agent.automation.invocation`.
 
     - `"agent.automation.invocation"`
 
-  - `scheduled_at: number or null`
+  - `scheduled_at: integer or null`
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
@@ -15692,7 +15846,7 @@ Retrieves a delivery record for a project-owned automation.
 
     `minLength: 0`
 
-  - `skip_reason: "pending_delivery" or null`
+  - `skip_reason: "pending_delivery" or null (default: "pending_delivery")`
 
     Why an occurrence was skipped, or null when it was not skipped.
 
@@ -15704,7 +15858,7 @@ Retrieves a delivery record for a project-owned automation.
 
     - `Manual object { type }`
 
-      - `type: "manual"`
+      - `type: "manual" (default: "manual")`
 
         The type of the object. Always `manual`.
 
@@ -15726,7 +15880,7 @@ Retrieves a delivery record for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -15738,7 +15892,7 @@ Retrieves a delivery record for a project-owned automation.
 
             - `Developer object { type }`
 
-              - `type: "developer"`
+              - `type: "developer" (default: "developer")`
 
                 The type of the object. Always `developer`.
 
@@ -15758,7 +15912,7 @@ Retrieves a delivery record for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "agent"`
+              - `type: "agent" (default: "agent")`
 
                 The type of the object. Always `agent`.
 
@@ -15780,7 +15934,7 @@ Retrieves a delivery record for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
@@ -15824,7 +15978,7 @@ Retrieves a delivery record for a project-owned automation.
 
                     Whether subagent tools are enabled. Defaults to false.
 
-                  - `max_concurrent_subagents: number or null`
+                  - `max_concurrent_subagents: integer or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -15896,7 +16050,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       Generates ordinary text without a structured-output constraint.
 
-                      - `type: "text"`
+                      - `type: "text" (default: "text")`
 
                         The type of the object. Always `text`.
 
@@ -15910,7 +16064,7 @@ Retrieves a delivery record for a project-owned automation.
 
                         The JSON Schema that generated text must match.
 
-                      - `type: "json_schema"`
+                      - `type: "json_schema" (default: "json_schema")`
 
                         The type of the object. Always `json_schema`.
 
@@ -15956,7 +16110,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       A JSON Schema object describing the function's arguments.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The type of the object. Always `function`.
 
@@ -15970,7 +16124,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       Whether tools can be called from model-generated code.
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The type of the object. Always `programmatic_tool_calling`.
 
@@ -16028,7 +16182,7 @@ Retrieves a delivery record for a project-owned automation.
 
                           `minLength: 0`
 
-                        - `type: "http"`
+                        - `type: "http" (default: "http")`
 
                           The type of the object. Always `http`.
 
@@ -16062,13 +16216,13 @@ Retrieves a delivery record for a project-owned automation.
 
                           `minItems: 0`, `maxItems: 2000`
 
-                        - `type: "stdio"`
+                        - `type: "stdio" (default: "stdio")`
 
                           The type of the object. Always `stdio`.
 
                           - `"stdio"`
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The type of the object. Always `mcp`.
 
@@ -16132,7 +16286,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       - `"live"`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The type of the object. Always `web_search`.
 
@@ -16146,7 +16300,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       Whether computer tool outputs include screenshots.
 
-                    - `type: "computer_use"`
+                    - `type: "computer_use" (default: "computer_use")`
 
                       The type of the object. Always `computer_use`.
 
@@ -16156,7 +16310,7 @@ Retrieves a delivery record for a project-owned automation.
 
                     Lets the agent manage its own scheduled wakeups.
 
-                    - `type: "automations"`
+                    - `type: "automations" (default: "automations")`
 
                       The type of the object. Always `automations`.
 
@@ -16170,6 +16324,14 @@ Retrieves a delivery record for a project-owned automation.
 
                     Whether context is compacted in the background. Defaults to true.
 
+                - `experimental: optional object { time_awareness }`
+
+                  The effective experimental settings for the agent.
+
+                  - `time_awareness: boolean`
+
+                    Whether the model receives periodic current-time reminders.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
@@ -16182,7 +16344,7 @@ Retrieves a delivery record for a project-owned automation.
 
                 - `None object { type }`
 
-                  - `type: "none"`
+                  - `type: "none" (default: "none")`
 
                     The type of the object. Always `none`.
 
@@ -16250,7 +16412,7 @@ Retrieves a delivery record for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "file_id"`
+                      - `type: "file_id" (default: "file_id")`
 
                         The type of the object. Always `file_id`.
 
@@ -16266,13 +16428,13 @@ Retrieves a delivery record for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `size_bytes: number`
+                      - `size_bytes: integer`
 
                         The decoded size of the inline file in bytes.
 
                         `format: int64`, `minimum: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
@@ -16344,7 +16506,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -16366,7 +16528,7 @@ Retrieves a delivery record for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "skill_reference"`
+                      - `type: "skill_reference" (default: "skill_reference")`
 
                         The type of the object. Always `skill_reference`.
 
@@ -16394,13 +16556,13 @@ Retrieves a delivery record for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
                         - `"inline"`
 
-                  - `type: "openai_hosted"`
+                  - `type: "openai_hosted" (default: "openai_hosted")`
 
                     The type of the object. Always `openai_hosted`.
 
@@ -16420,7 +16582,7 @@ Retrieves a delivery record for a project-owned automation.
 
                     `minLength: 0`
 
-                  - `type: "self_hosted"`
+                  - `type: "self_hosted" (default: "self_hosted")`
 
                     The type of the object. Always `self_hosted`.
 
@@ -16454,7 +16616,7 @@ Retrieves a delivery record for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_text"`
+                    - `type: "input_text" (default: "input_text")`
 
                       The type of the object. Always `input_text`.
 
@@ -16470,19 +16632,19 @@ Retrieves a delivery record for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_image"`
+                    - `type: "input_image" (default: "input_image")`
 
                       The type of the object. Always `input_image`.
 
                       - `"input_image"`
 
-                - `role: "user"`
+                - `role: "user" (default: "user")`
 
                   The role of the message author. Always `user`.
 
                   - `"user"`
 
-                - `type: "message"`
+                - `type: "message" (default: "message")`
 
                   The type of the input item. Always `message`.
 
@@ -16492,7 +16654,7 @@ Retrieves a delivery record for a project-owned automation.
 
                 Metadata attached to each new session.
 
-              - `type: "new_session"`
+              - `type: "new_session" (default: "new_session")`
 
                 The type of the object. Always `new_session`.
 
@@ -16518,7 +16680,7 @@ Retrieves a delivery record for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "existing_session"`
+              - `type: "existing_session" (default: "existing_session")`
 
                 The type of the object. Always `existing_session`.
 
@@ -16530,7 +16692,7 @@ Retrieves a delivery record for a project-owned automation.
 
             `minLength: 0`
 
-          - `type: "periodic"`
+          - `type: "periodic" (default: "periodic")`
 
             The type of the object. Always `periodic`.
 
@@ -16546,7 +16708,7 @@ Retrieves a delivery record for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -16566,13 +16728,13 @@ Retrieves a delivery record for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
             - `"agent.automation"`
 
-          - `run_at: number`
+          - `run_at: integer`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -16592,13 +16754,13 @@ Retrieves a delivery record for a project-owned automation.
 
             The session configuration or existing session receiving invocations.
 
-          - `type: "once"`
+          - `type: "once" (default: "once")`
 
             The type of the object. Always `once`.
 
             - `"once"`
 
-      - `type: "automation"`
+      - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
 
@@ -16624,7 +16786,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -16666,7 +16828,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -16688,13 +16850,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
       `minLength: 0`
 
-  - `object: "agent.automation.invocation"`
+  - `object: "agent.automation.invocation" (default: "agent.automation.invocation")`
 
     Always `agent.automation.invocation`.
 
     - `"agent.automation.invocation"`
 
-  - `scheduled_at: number or null`
+  - `scheduled_at: integer or null`
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
@@ -16706,7 +16868,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
     `minLength: 0`
 
-  - `skip_reason: "pending_delivery" or null`
+  - `skip_reason: "pending_delivery" or null (default: "pending_delivery")`
 
     Why an occurrence was skipped, or null when it was not skipped.
 
@@ -16718,7 +16880,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
     - `Manual object { type }`
 
-      - `type: "manual"`
+      - `type: "manual" (default: "manual")`
 
         The type of the object. Always `manual`.
 
@@ -16740,7 +16902,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -16752,7 +16914,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             - `Developer object { type }`
 
-              - `type: "developer"`
+              - `type: "developer" (default: "developer")`
 
                 The type of the object. Always `developer`.
 
@@ -16772,7 +16934,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 `minLength: 0`
 
-              - `type: "agent"`
+              - `type: "agent" (default: "agent")`
 
                 The type of the object. Always `agent`.
 
@@ -16794,7 +16956,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
@@ -16838,7 +17000,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Whether subagent tools are enabled. Defaults to false.
 
-                  - `max_concurrent_subagents: number or null`
+                  - `max_concurrent_subagents: integer or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -16910,7 +17072,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       Generates ordinary text without a structured-output constraint.
 
-                      - `type: "text"`
+                      - `type: "text" (default: "text")`
 
                         The type of the object. Always `text`.
 
@@ -16924,7 +17086,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The JSON Schema that generated text must match.
 
-                      - `type: "json_schema"`
+                      - `type: "json_schema" (default: "json_schema")`
 
                         The type of the object. Always `json_schema`.
 
@@ -16970,7 +17132,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       A JSON Schema object describing the function's arguments.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The type of the object. Always `function`.
 
@@ -16984,7 +17146,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       Whether tools can be called from model-generated code.
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The type of the object. Always `programmatic_tool_calling`.
 
@@ -17042,7 +17204,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                           `minLength: 0`
 
-                        - `type: "http"`
+                        - `type: "http" (default: "http")`
 
                           The type of the object. Always `http`.
 
@@ -17076,13 +17238,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                           `minItems: 0`, `maxItems: 2000`
 
-                        - `type: "stdio"`
+                        - `type: "stdio" (default: "stdio")`
 
                           The type of the object. Always `stdio`.
 
                           - `"stdio"`
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The type of the object. Always `mcp`.
 
@@ -17146,7 +17308,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       - `"live"`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The type of the object. Always `web_search`.
 
@@ -17160,7 +17322,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       Whether computer tool outputs include screenshots.
 
-                    - `type: "computer_use"`
+                    - `type: "computer_use" (default: "computer_use")`
 
                       The type of the object. Always `computer_use`.
 
@@ -17170,7 +17332,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Lets the agent manage its own scheduled wakeups.
 
-                    - `type: "automations"`
+                    - `type: "automations" (default: "automations")`
 
                       The type of the object. Always `automations`.
 
@@ -17184,6 +17346,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Whether context is compacted in the background. Defaults to true.
 
+                - `experimental: optional object { time_awareness }`
+
+                  The effective experimental settings for the agent.
+
+                  - `time_awareness: boolean`
+
+                    Whether the model receives periodic current-time reminders.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
@@ -17196,7 +17366,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 - `None object { type }`
 
-                  - `type: "none"`
+                  - `type: "none" (default: "none")`
 
                     The type of the object. Always `none`.
 
@@ -17264,7 +17434,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minLength: 0`
 
-                      - `type: "file_id"`
+                      - `type: "file_id" (default: "file_id")`
 
                         The type of the object. Always `file_id`.
 
@@ -17280,13 +17450,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minLength: 0`
 
-                      - `size_bytes: number`
+                      - `size_bytes: integer`
 
                         The decoded size of the inline file in bytes.
 
                         `format: int64`, `minimum: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
@@ -17358,7 +17528,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -17380,7 +17550,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minLength: 0`
 
-                      - `type: "skill_reference"`
+                      - `type: "skill_reference" (default: "skill_reference")`
 
                         The type of the object. Always `skill_reference`.
 
@@ -17408,13 +17578,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minLength: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
                         - `"inline"`
 
-                  - `type: "openai_hosted"`
+                  - `type: "openai_hosted" (default: "openai_hosted")`
 
                     The type of the object. Always `openai_hosted`.
 
@@ -17434,7 +17604,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     `minLength: 0`
 
-                  - `type: "self_hosted"`
+                  - `type: "self_hosted" (default: "self_hosted")`
 
                     The type of the object. Always `self_hosted`.
 
@@ -17468,7 +17638,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "input_text"`
+                    - `type: "input_text" (default: "input_text")`
 
                       The type of the object. Always `input_text`.
 
@@ -17484,19 +17654,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "input_image"`
+                    - `type: "input_image" (default: "input_image")`
 
                       The type of the object. Always `input_image`.
 
                       - `"input_image"`
 
-                - `role: "user"`
+                - `role: "user" (default: "user")`
 
                   The role of the message author. Always `user`.
 
                   - `"user"`
 
-                - `type: "message"`
+                - `type: "message" (default: "message")`
 
                   The type of the input item. Always `message`.
 
@@ -17506,7 +17676,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 Metadata attached to each new session.
 
-              - `type: "new_session"`
+              - `type: "new_session" (default: "new_session")`
 
                 The type of the object. Always `new_session`.
 
@@ -17532,7 +17702,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 `minLength: 0`
 
-              - `type: "existing_session"`
+              - `type: "existing_session" (default: "existing_session")`
 
                 The type of the object. Always `existing_session`.
 
@@ -17544,7 +17714,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             `minLength: 0`
 
-          - `type: "periodic"`
+          - `type: "periodic" (default: "periodic")`
 
             The type of the object. Always `periodic`.
 
@@ -17560,7 +17730,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -17580,13 +17750,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
             - `"agent.automation"`
 
-          - `run_at: number`
+          - `run_at: integer`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -17606,13 +17776,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             The session configuration or existing session receiving invocations.
 
-          - `type: "once"`
+          - `type: "once" (default: "once")`
 
             The type of the object. Always `once`.
 
             - `"once"`
 
-      - `type: "automation"`
+      - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
 
@@ -17636,7 +17806,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
   - `Manual object { type }`
 
-    - `type: "manual"`
+    - `type: "manual" (default: "manual")`
 
       The type of the object. Always `manual`.
 
@@ -17658,7 +17828,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           `minLength: 0`
 
-        - `created_at: number`
+        - `created_at: integer`
 
           The creation time as a Unix timestamp in seconds.
 
@@ -17670,7 +17840,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           - `Developer object { type }`
 
-            - `type: "developer"`
+            - `type: "developer" (default: "developer")`
 
               The type of the object. Always `developer`.
 
@@ -17690,7 +17860,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               `minLength: 0`
 
-            - `type: "agent"`
+            - `type: "agent" (default: "agent")`
 
               The type of the object. Always `agent`.
 
@@ -17712,7 +17882,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           `minLength: 0`
 
-        - `object: "agent.automation"`
+        - `object: "agent.automation" (default: "agent.automation")`
 
           Always `agent.automation`.
 
@@ -17756,7 +17926,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Whether subagent tools are enabled. Defaults to false.
 
-                - `max_concurrent_subagents: number or null`
+                - `max_concurrent_subagents: integer or null`
 
                   Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -17828,7 +17998,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Generates ordinary text without a structured-output constraint.
 
-                    - `type: "text"`
+                    - `type: "text" (default: "text")`
 
                       The type of the object. Always `text`.
 
@@ -17842,7 +18012,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The JSON Schema that generated text must match.
 
-                    - `type: "json_schema"`
+                    - `type: "json_schema" (default: "json_schema")`
 
                       The type of the object. Always `json_schema`.
 
@@ -17888,7 +18058,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     A JSON Schema object describing the function's arguments.
 
-                  - `type: "function"`
+                  - `type: "function" (default: "function")`
 
                     The type of the object. Always `function`.
 
@@ -17902,7 +18072,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Whether tools can be called from model-generated code.
 
-                  - `type: "programmatic_tool_calling"`
+                  - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                     The type of the object. Always `programmatic_tool_calling`.
 
@@ -17960,7 +18130,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minLength: 0`
 
-                      - `type: "http"`
+                      - `type: "http" (default: "http")`
 
                         The type of the object. Always `http`.
 
@@ -17994,13 +18164,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         `minItems: 0`, `maxItems: 2000`
 
-                      - `type: "stdio"`
+                      - `type: "stdio" (default: "stdio")`
 
                         The type of the object. Always `stdio`.
 
                         - `"stdio"`
 
-                  - `type: "mcp"`
+                  - `type: "mcp" (default: "mcp")`
 
                     The type of the object. Always `mcp`.
 
@@ -18064,7 +18234,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     - `"live"`
 
-                  - `type: "web_search"`
+                  - `type: "web_search" (default: "web_search")`
 
                     The type of the object. Always `web_search`.
 
@@ -18078,7 +18248,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Whether computer tool outputs include screenshots.
 
-                  - `type: "computer_use"`
+                  - `type: "computer_use" (default: "computer_use")`
 
                     The type of the object. Always `computer_use`.
 
@@ -18088,7 +18258,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Lets the agent manage its own scheduled wakeups.
 
-                  - `type: "automations"`
+                  - `type: "automations" (default: "automations")`
 
                     The type of the object. Always `automations`.
 
@@ -18102,6 +18272,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Whether context is compacted in the background. Defaults to true.
 
+              - `experimental: optional object { time_awareness }`
+
+                The effective experimental settings for the agent.
+
+                - `time_awareness: boolean`
+
+                  Whether the model receives periodic current-time reminders.
+
             - `agent_id: string or null`
 
               The saved agent reference, or null when an inline agent is configured.
@@ -18114,7 +18292,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               - `None object { type }`
 
-                - `type: "none"`
+                - `type: "none" (default: "none")`
 
                   The type of the object. Always `none`.
 
@@ -18182,7 +18360,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "file_id"`
+                    - `type: "file_id" (default: "file_id")`
 
                       The type of the object. Always `file_id`.
 
@@ -18198,13 +18376,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `size_bytes: number`
+                    - `size_bytes: integer`
 
                       The decoded size of the inline file in bytes.
 
                       `format: int64`, `minimum: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -18276,7 +18454,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     `minLength: 0`
 
-                  - `type: "inline"`
+                  - `type: "inline" (default: "inline")`
 
                     The type of the object. Always `inline`.
 
@@ -18298,7 +18476,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "skill_reference"`
+                    - `type: "skill_reference" (default: "skill_reference")`
 
                       The type of the object. Always `skill_reference`.
 
@@ -18326,13 +18504,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
                       - `"inline"`
 
-                - `type: "openai_hosted"`
+                - `type: "openai_hosted" (default: "openai_hosted")`
 
                   The type of the object. Always `openai_hosted`.
 
@@ -18352,7 +18530,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   `minLength: 0`
 
-                - `type: "self_hosted"`
+                - `type: "self_hosted" (default: "self_hosted")`
 
                   The type of the object. Always `self_hosted`.
 
@@ -18386,7 +18564,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     `minLength: 0`
 
-                  - `type: "input_text"`
+                  - `type: "input_text" (default: "input_text")`
 
                     The type of the object. Always `input_text`.
 
@@ -18402,19 +18580,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     `minLength: 0`
 
-                  - `type: "input_image"`
+                  - `type: "input_image" (default: "input_image")`
 
                     The type of the object. Always `input_image`.
 
                     - `"input_image"`
 
-              - `role: "user"`
+              - `role: "user" (default: "user")`
 
                 The role of the message author. Always `user`.
 
                 - `"user"`
 
-              - `type: "message"`
+              - `type: "message" (default: "message")`
 
                 The type of the input item. Always `message`.
 
@@ -18424,7 +18602,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               Metadata attached to each new session.
 
-            - `type: "new_session"`
+            - `type: "new_session" (default: "new_session")`
 
               The type of the object. Always `new_session`.
 
@@ -18450,7 +18628,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               `minLength: 0`
 
-            - `type: "existing_session"`
+            - `type: "existing_session" (default: "existing_session")`
 
               The type of the object. Always `existing_session`.
 
@@ -18462,7 +18640,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           `minLength: 0`
 
-        - `type: "periodic"`
+        - `type: "periodic" (default: "periodic")`
 
           The type of the object. Always `periodic`.
 
@@ -18478,7 +18656,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           `minLength: 0`
 
-        - `created_at: number`
+        - `created_at: integer`
 
           The creation time as a Unix timestamp in seconds.
 
@@ -18498,13 +18676,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           `minLength: 0`
 
-        - `object: "agent.automation"`
+        - `object: "agent.automation" (default: "agent.automation")`
 
           Always `agent.automation`.
 
           - `"agent.automation"`
 
-        - `run_at: number`
+        - `run_at: integer`
 
           The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -18524,13 +18702,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           The session configuration or existing session receiving invocations.
 
-        - `type: "once"`
+        - `type: "once" (default: "once")`
 
           The type of the object. Always `once`.
 
           - `"once"`
 
-    - `type: "automation"`
+    - `type: "automation" (default: "automation")`
 
       The type of the object. Always `automation`.
 

@@ -11,7 +11,7 @@ This section contains the headline changes for each Interactive learning release
 
 ## Version 2.19: Organization controls and learning tracks
 
-Administrators can disable Interactive learning for their organization from the plugin configuration page. In Grafana Cloud, this restores the classic **Help** menu after a page reload. Learning progress is preserved, and administrators can re-enable Interactive learning from the same configuration page. Follow [Disable Interactive learning](../administrators-reference/#disable-interactive-learning-in-grafana-cloud) for the procedure.
+Administrators can disable Interactive learning for their organization from the plugin configuration page. In Grafana Cloud, this restores the classic **Help** menu after a page reload. Learning progress is preserved, and administrators can re-enable Interactive learning from the same configuration page. Follow [Disable Interactive learning](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/#disable-interactive-learning-in-grafana-cloud) for the procedure.
 
 The organization setting must save successfully and load when users reload Grafana. If settings cannot be read, Interactive learning can remain enabled. Administrators should reload and verify the result after saving.
 
@@ -75,7 +75,7 @@ Old Coda settings can remain in Interactive learning after migration. If you nee
 
 ## Earlier upgrades
 
-Earlier releases introduced the floating panel, the block editor without dev mode, and kiosk configuration. Use the current [getting-started guide](../getting-started/) and [block editor guide](../block-editor/) for today’s controls.
+Earlier releases introduced the floating panel, the block editor without dev mode, and kiosk configuration. Use the current [getting-started guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started/) and [block editor guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/) for today’s controls.
 
 If your authoring instructions still require dev mode to open the block editor, update them to use **More options** &gt; **Create guide**. Users need the Editor or Admin role; dev mode is not required.
 

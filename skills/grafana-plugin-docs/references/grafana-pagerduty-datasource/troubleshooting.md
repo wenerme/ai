@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the PagerDuty data source in Grafa
 
 # Troubleshoot PagerDuty data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the PagerDuty data source. For configuration instructions, refer to [Configure the PagerDuty data source](/docs/plugins/grafana-pagerduty-datasource/latest/#configure-the-data-source).
+This document provides solutions to common issues you may encounter when configuring or using the PagerDuty data source. For configuration instructions, refer to [Configure the PagerDuty data source](https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest/#configure-the-data-source).
 
 ## Authentication errors
 
@@ -61,7 +61,7 @@ These errors occur when Grafana can’t reach PagerDuty’s API endpoints.
 1. Verify network connectivity from the Grafana server to `api.pagerduty.com` (HTTPS, port 443).
 2. Check that firewall rules allow outbound HTTPS traffic.
 3. If you’re behind a corporate proxy, configure Grafana’s proxy settings in `grafana.ini`.
-4. For Grafana Cloud accessing private resources, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+4. For Grafana Cloud accessing private resources, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Configuration errors
 
@@ -87,7 +87,7 @@ Expand table
 
 The correct provisioning structure is:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 datasources:
@@ -132,12 +132,12 @@ Expand table
 
 Expand table
 
-| Status code | Cause                      | Solution                                                                                                                                                                                                                       |
-|-------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `400`       | Malformed query parameters | Check that filter values are valid. For example, **Service IDs** and **Team IDs** must be valid PagerDuty identifiers.                                                                                                         |
-| `404`       | Incident not found         | When using **Get an incident**, verify the incident ID or number exists in PagerDuty.                                                                                                                                          |
-| `429`       | API rate limit exceeded    | Reduce dashboard refresh frequency, narrow time ranges, add filters, or enable [query caching](/docs/grafana/latest/administration/data-source-management/#query-caching) (available in Grafana Enterprise and Grafana Cloud). |
-| `500`       | PagerDuty server error     | Retry the query. If the error persists, check the [PagerDuty status page](https://status.pagerduty.com/) for ongoing incidents.                                                                                                |
+| Status code | Cause                      | Solution                                                                                                                                                                                                                                          |
+|-------------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `400`       | Malformed query parameters | Check that filter values are valid. For example, **Service IDs** and **Team IDs** must be valid PagerDuty identifiers.                                                                                                                            |
+| `404`       | Incident not found         | When using **Get an incident**, verify the incident ID or number exists in PagerDuty.                                                                                                                                                             |
+| `429`       | API rate limit exceeded    | Reduce dashboard refresh frequency, narrow time ranges, add filters, or enable [query caching](https://grafana.com/docs/grafana/latest/administration/data-source-management/#query-caching) (available in Grafana Enterprise and Grafana Cloud). |
+| `500`       | PagerDuty server error     | Retry the query. If the error persists, check the [PagerDuty status page](https://status.pagerduty.com/) for ongoing incidents.                                                                                                                   |
 
 ### Query timeout
 
@@ -247,7 +247,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]
@@ -264,7 +264,7 @@ If you’ve tried the solutions in this document and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues.
 2. Review the [PagerDuty REST API documentation](https://developer.pagerduty.com/api-reference/) for API-specific guidance.
-3. Contact [Grafana Support](/profile/org#support) if you’re a Grafana Cloud Pro, Cloud Advanced, or Enterprise customer.
+3. Contact [Grafana Support](https://grafana.com/profile/org#support) if you’re a Grafana Cloud Pro, Cloud Advanced, or Enterprise customer.
 4. When reporting issues, include:
 
    - Grafana version and PagerDuty plugin version

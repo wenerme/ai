@@ -41,7 +41,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -62,7 +62,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/u
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

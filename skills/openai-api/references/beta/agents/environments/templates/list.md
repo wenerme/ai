@@ -12,13 +12,13 @@ Lists reusable environment templates without returning confidential values. See 
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -50,7 +50,7 @@ Lists reusable environment templates without returning confidential values. See 
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -86,7 +86,7 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -102,13 +102,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -146,7 +146,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -192,7 +192,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -214,7 +214,7 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -242,13 +242,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -270,7 +270,7 @@ Lists reusable environment templates without returning confidential values. See 
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -284,7 +284,7 @@ curl https://api.openai.com/v1/agents/environments/templates \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

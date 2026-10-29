@@ -10,7 +10,7 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
 - `ContentProvenanceCheck object { created_at, object, results }`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the provenance check was created.
 
@@ -49,7 +49,7 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
         - `"not_detected"`
 
-      - `type: "c2pa"`
+      - `type: "c2pa" (default: "c2pa")`
 
         The provenance signal type. Always `c2pa`.
 
@@ -86,7 +86,7 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
         - `"not_detected"`
 
-      - `type: "synthid"`
+      - `type: "synthid" (default: "synthid")`
 
         The provenance signal type. Always `synthid`.
 
@@ -101,7 +101,7 @@ curl https://api.openai.com/v1/content_provenance_checks \
     -F 'file=@/path/to/file'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

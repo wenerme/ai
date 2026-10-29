@@ -52,15 +52,15 @@ transcript events. Supported formats depend on the model.
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -74,11 +74,11 @@ transcript events. Supported formats depend on the model.
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -160,15 +160,15 @@ transcript events. Supported formats depend on the model.
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -182,11 +182,11 @@ transcript events. Supported formats depend on the model.
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -228,7 +228,7 @@ transcript events. Supported formats depend on the model.
 
     Segments of the transcribed text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -256,7 +256,7 @@ transcript events. Supported formats depend on the model.
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -326,7 +326,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
     -F model=gpt-4o-transcribe
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -368,7 +368,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F model="gpt-4o-transcribe"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -400,7 +400,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F 'known_speaker_references[]=data:audio/wav;base64,AAA...'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -452,7 +452,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -524,7 +524,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -566,7 +566,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F stream=true
 ```
 
-#### Response
+#### Response example
 
 ```json
 data: {"type":"transcript.text.delta","delta":"I","logprobs":[{"token":"I","logprob":-0.00007588794,"bytes":[73]}]}
@@ -646,7 +646,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -712,15 +712,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -734,11 +734,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -804,15 +804,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Usage statistics for models billed by token usage.
 
-        - `input_tokens: number`
+        - `input_tokens: integer`
 
           Number of input tokens billed for this request.
 
-        - `output_tokens: number`
+        - `output_tokens: integer`
 
           Number of output tokens generated.
 
-        - `total_tokens: number`
+        - `total_tokens: integer`
 
           Total number of tokens used (input + output).
 
@@ -826,11 +826,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Details about the input tokens billed for this request.
 
-          - `audio_tokens: optional number`
+          - `audio_tokens: optional integer`
 
             Number of audio tokens billed for this request.
 
-          - `text_tokens: optional number`
+          - `text_tokens: optional integer`
 
             Number of text tokens billed for this request.
 
@@ -912,15 +912,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Usage statistics for models billed by token usage.
 
-        - `input_tokens: number`
+        - `input_tokens: integer`
 
           Number of input tokens billed for this request.
 
-        - `output_tokens: number`
+        - `output_tokens: integer`
 
           Number of output tokens generated.
 
-        - `total_tokens: number`
+        - `total_tokens: integer`
 
           Total number of tokens used (input + output).
 
@@ -934,11 +934,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Details about the input tokens billed for this request.
 
-          - `audio_tokens: optional number`
+          - `audio_tokens: optional integer`
 
             Number of audio tokens billed for this request.
 
-          - `text_tokens: optional number`
+          - `text_tokens: optional integer`
 
             Number of text tokens billed for this request.
 
@@ -980,7 +980,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Segments of the transcribed text and their corresponding details.
 
-      - `id: number`
+      - `id: integer`
 
         Unique identifier of the segment.
 
@@ -1008,7 +1008,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         `format: float`
 
-      - `seek: number`
+      - `seek: integer`
 
         Seek offset of the segment.
 
@@ -1132,15 +1132,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -1154,11 +1154,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -1234,7 +1234,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionSegment object { id, avg_logprob, compression_ratio, 7 more }`
 
-  - `id: number`
+  - `id: integer`
 
     Unique identifier of the segment.
 
@@ -1262,7 +1262,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     `format: float`
 
-  - `seek: number`
+  - `seek: integer`
 
     Seek offset of the segment.
 
@@ -1402,15 +1402,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -1424,11 +1424,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -1512,15 +1512,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Usage statistics for models billed by token usage.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       Number of input tokens billed for this request.
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       Number of output tokens generated.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       Total number of tokens used (input + output).
 
@@ -1534,11 +1534,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Details about the input tokens billed for this request.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer`
 
         Number of audio tokens billed for this request.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Number of text tokens billed for this request.
 
@@ -1602,7 +1602,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Segments of the transcribed text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -1630,7 +1630,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 

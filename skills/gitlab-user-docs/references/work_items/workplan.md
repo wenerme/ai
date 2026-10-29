@@ -87,6 +87,7 @@ You do not need a workplan for small or well-understood changes, where planning 
 ## Turn on planning for a work item
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250010) in GitLab 19.4.
+-  option [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/632233) in GitLab 19.6.
 
 By default, the  widget and the readiness level are hidden on a work item.
 To show them, turn on planning for that work item.
@@ -96,9 +97,13 @@ Prerequisites:
 - An issue or a task.
 - Permission to edit the work item.
 
-To turn on planning:
+To turn on planning, on the work item, in the upper-right corner, use one of the following methods:
 
-- On the work item, in the upper-right corner, select .
+- To [generate a workplan with GitLab Duo](#generate-a-workplan-with-gitlab-duo), select .
+  This option requires workplan generation to be [set up](#set-up-workplan-generation).
+- To [write a workplan yourself](#create-a-workplan-manually), next to ,
+  select the down arrow () > .
+  The workplan editor opens.
 
 The  widget appears on the work item, and the  button no longer appears.
 After you turn on planning for a work item, you cannot turn it off.
@@ -120,7 +125,7 @@ You can generate a workplan with GitLab Duo or write one manually.
 - Generating a workplan in GitLab Duo Chat [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260695) in GitLab 19.6. Feature flag `duo_workplan_async_flow` removed.
 
 GitLab Duo generates the workplan with the  flow, which runs in the background.
-When you [turn on planning](#turn-on-planning-for-a-work-item) for a work item,
+When you select  to [turn on planning](#turn-on-planning-for-a-work-item) for a work item,
 GitLab Duo starts to generate a workplan.
 
 Prerequisites:

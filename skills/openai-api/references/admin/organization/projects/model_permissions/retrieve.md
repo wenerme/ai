@@ -39,7 +39,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissio
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -59,14 +59,14 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
     "object": "project.model_permissions",
     "mode": "allow_list",
     "model_ids": [
-        "gpt-5.6-sol",
+        "gpt-6-astra",
         "o3"
     ]
 }

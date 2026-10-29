@@ -141,6 +141,13 @@ When additional commits are needed beyond this initial clone, the analyzer autom
 
 - For merge requests, the analyzer retrieves only changes committed after the merge base, which minimizes data transfer.
 - If log options are specified, like `--since` or `--max-count`, the analyzer fetches only the required commits.
+- For a commit range, the analyzer fetches the commits made after the base commit of the range. For example:
+  - The commits that a branch adds after it diverges from the default branch.
+  - The commits of a push to the default branch.
+  - A range between two commit SHAs in `SECRET_DETECTION_LOG_OPTIONS`.
+
+  In analyzer version `v7.41.0` and later, a merge commit in the range can bring in commits that are older than
+  the base commit. To include them, the analyzer fetches up to 1023 older commits from the project repository.
 - During a historic scan, the analyzer fetches the complete repository history. If the repository was shallowly cloned, the analyzer uses the `--unshallow` option.
 
 If the analyzer cannot fetch the required commits, it falls back to scanning available data:
@@ -148,8 +155,14 @@ If the analyzer cannot fetch the required commits, it falls back to scanning ava
 - After a force push, the analyzer scans only the current state of the repository.
 - If there are network failures, the analyzer scans commits available after the initial clone.
 - If there are timeouts, the analyzer continues the scan with a partial commit history.
+- If a commit range still has missing commits after the analyzer fetches 1023 older commits from the project
+  repository, it scans only the latest commit. If the latest commit is a merge commit, the scan also includes the
+  commits of the merged branch that the analyzer fetched.
+  For a range between two commit SHAs in `SECRET_DETECTION_LOG_OPTIONS`, the analyzer instead
+  [scans only the first-parent history](#warning-gaps-remain-in-commit-range) of the range.
 
-These fallbacks ensure your pipeline completes successfully, even in restricted environments.
+Except where noted in the troubleshooting section, these fallbacks ensure your pipeline completes successfully,
+even in restricted environments.
 
 ### Initial repository clone depth
 
@@ -545,6 +558,33 @@ Failed to retrieve all the commits from the last Git push event due to a force p
 ```
 
 This is expected behavior. The scan continues using the current repository state.
+
+#### Warning: `Gaps remain in commit range`
+
+In analyzer version `v7.41.0` and later, you might see:
+
+```plaintext
+Gaps remain in commit range <base>..<head>, scanning its first-parent history only
+```
+
+This message appears when `SECRET_DETECTION_LOG_OPTIONS` is a range between two commit SHAs. A merge commit in the
+range brings in commits that are older than the base commit, and the analyzer can't fetch all of them. This usually
+happens when you merge a branch that is far behind, or merge the default branch into it.
+
+The analyzer then scans only the first-parent history of the range. Each merge commit in that history includes all
+the changes it brings in. However, a secret that was added and later removed on the merged branch is not detected.
+To scan every commit, [run a historic scan](#run-a-historic-scan).
+
+#### Error: `could not fetch enough history of commit range`
+
+In analyzer version `v7.41.0` and later, the `secret_detection` job can fail with this error. It fails when
+`SECRET_DETECTION_LOG_OPTIONS` is a range between two commit SHAs and the
+[first-parent history](#warning-gaps-remain-in-commit-range) of the range also has missing commits.
+This can happen when the first-parent history includes commits that are older than the base commit, for example,
+after a `git pull` that merges local commits.
+
+To work around this issue, [run a historic scan](#run-a-historic-scan), or set `SECRET_DETECTION_LOG_OPTIONS`
+to a range that starts at an older base commit.
 
 #### Repository trust configuration
 

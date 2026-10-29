@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/get-started/og.png?v=bfc8e4310
 
 # Get started
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a feature flag in Flagship and evaluate it inside a Cloudflare Worker.
 
@@ -99,6 +99,19 @@ export default {
 ```
 
 The third argument to `getBooleanValue` is the [evaluation context](https://developers.cloudflare.com/flagship/concepts/#evaluation-context). Flagship uses the context attributes to match targeting rules. In this example, the `userId` attribute is passed so that percentage rollouts and user-specific targeting work correctly.
+
+## Test locally
+
+Copy the flag into the local store, then start a local session:
+
+```sh
+npx wrangler flagship flags pull <APP_ID>
+npx wrangler dev
+```
+
+To use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) instead, start your Vite dev server. In a [`cf`](https://developers.cloudflare.com/cf/) project, run `cf dev`, and add `--persist-to .cloudflare/state` to the `pull` command. Either way, run the Wrangler `pull` command first, because `cf` cannot pull flags.
+
+Without `pull`, the local store is empty, so evaluations return the default value you pass in code. For other ways to manage local flags, and to use your remote app instead, refer to [Local development](https://developers.cloudflare.com/flagship/configuration/#local-development).
 
 ## Deploy and test
 
@@ -239,6 +252,7 @@ Refer to the [SDK documentation](https://developers.cloudflare.com/flagship/sdk/
 ## Next steps
 
 - Manage flags from the command line with the [`wrangler flagship` commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/).
+- Test against a [local flag store](https://developers.cloudflare.com/flagship/configuration/#local-development) with Wrangler, the Vite plugin, or `cf dev`.
 - Learn about [targeting rules](https://developers.cloudflare.com/flagship/targeting/) to serve different values based on user attributes.
 - Explore the full [binding API reference](https://developers.cloudflare.com/flagship/binding/) for all evaluation methods.
 - Read about [percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/) for gradual feature releases.
@@ -254,5 +268,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/get-started/og.png?v=bfc8e4310aa95632","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/get-started/#page","headline":"Get started","description":"Create your first Flagship feature flag and evaluate it inside a Cloudflare Worker using the binding API.","url":"https://developers.cloudflare.com/flagship/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/get-started/og.png?v=bfc8e4310aa95632","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

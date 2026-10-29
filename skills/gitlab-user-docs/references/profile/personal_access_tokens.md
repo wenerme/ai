@@ -513,5 +513,5 @@ For authentication in CI/CD jobs, consider:
 - [Project access tokens](../project/settings/project_access_tokens.md)
 - [Personal access tokens API](../../api/personal_access_tokens.md)
 - [Fine-grained personal access tokens](../../auth/tokens/fine_grained_access_tokens.md)
-- [Permissions Assistant](../duo_agent_platform/agents/foundational_agents/permissions_assistant.md),
+- [Permissions Assistant](../../auth/tokens/permissions_assistant.md),
   a GitLab Duo agent that helps you select fine-grained permissions when creating a token

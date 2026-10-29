@@ -14,7 +14,7 @@ Delete the organization's hard spend limit.
 
     Whether the hard spend limit was deleted.
 
-  - `object: "organization.spend_limit.deleted"`
+  - `object: "organization.spend_limit.deleted" (default: "organization.spend_limit.deleted")`
 
     The object type, which is always `organization.spend_limit.deleted`.
 
@@ -28,7 +28,7 @@ curl https://api.openai.com/v1/organization/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -45,7 +45,7 @@ curl -X DELETE https://api.openai.com/v1/organization/spend_limit \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

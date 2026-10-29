@@ -26,7 +26,7 @@ Assigns an organization role to a group within the organization.
 
     Identifier for the group.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was created.
 
@@ -97,7 +97,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -134,7 +134,7 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -191,7 +191,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -208,7 +208,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -233,7 +233,7 @@ Lists the organization roles assigned to a group within the organization.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of organization role assignments to return.
 
@@ -265,7 +265,7 @@ Lists the organization roles assigned to a group within the organization.
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -303,7 +303,7 @@ Lists the organization roles assigned to a group within the organization.
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -330,7 +330,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -375,7 +375,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -439,7 +439,7 @@ Retrieves an organization role assigned to a group.
 
   - `principal_type: string`
 
-- `created_at: number or null`
+- `created_at: integer or null`
 
   When the role was created.
 
@@ -477,7 +477,7 @@ Retrieves an organization role assigned to a group.
 
   Resource type the role applies to.
 
-- `updated_at: number or null`
+- `updated_at: integer or null`
 
   When the role was last updated.
 
@@ -490,7 +490,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -528,7 +528,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -566,7 +566,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
       Identifier for the group.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (in seconds) when the group was created.
 
@@ -658,7 +658,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -696,7 +696,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -720,7 +720,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -758,7 +758,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 

@@ -16,7 +16,7 @@ Delete an external key config for the user's organization
 
   - `api_project_ids: array of string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
   - `name: string`
 
@@ -72,7 +72,7 @@ curl https://api.openai.com/v1/organization/external_keys/$EXTERNAL_KEY_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

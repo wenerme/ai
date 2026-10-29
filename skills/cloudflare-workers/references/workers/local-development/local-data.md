@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/local-development/local-data/og
 
 # Adding local data
 
-Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Whether you are using Wrangler or the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
 
@@ -115,6 +115,42 @@ yarn wrangler d1 execute <DATABASE_NAME> --file=./schema.sql --local
 ```
 pnpm wrangler d1 execute <DATABASE_NAME> --file=./schema.sql --local
 ```
+
+### Flagship apps
+
+#### [Copy flags from a remote app](https://developers.cloudflare.com/flagship/configuration/#local-development)
+
+npmyarnpnpm
+
+```
+npx wrangler flagship flags pull <APP_ID>
+```
+
+```
+yarn wrangler flagship flags pull <APP_ID>
+```
+
+```
+pnpm wrangler flagship flags pull <APP_ID>
+```
+
+#### [Create a flag in the local store](https://developers.cloudflare.com/flagship/reference/wrangler-commands/#local-flag-store)
+
+npmyarnpnpm
+
+```
+npx wrangler flagship flags create <APP_ID> new-checkout --local
+```
+
+```
+yarn wrangler flagship flags create <APP_ID> new-checkout --local
+```
+
+```
+pnpm wrangler flagship flags create <APP_ID> new-checkout --local
+```
+
+To manage the local store with the `cf` CLI instead, refer to [Flagship local development](https://developers.cloudflare.com/flagship/configuration/#use-the-cf-cli).
 
 ### Durable Objects
 
@@ -222,5 +258,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-data/og.png?v=7c487889b7546d0d","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-data/og.png?v=7c487889b7546d0d","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -19,3 +19,4 @@ Visit the [Latest model](https://ai.google.dev/gemini-api/docs/latest-model) pag
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Stable: `gemini-4-argon` |
 | Latest update | October 2026 |
 | Model card | [Model card](https://deepmind.google/models/model-cards/gemini-4-argon/) |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-4-argon) |

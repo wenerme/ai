@@ -20,7 +20,7 @@ Get a safety alert belonging to the authenticated API project.
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -36,7 +36,7 @@ Get a safety alert belonging to the authenticated API project.
 
   - `model: string`
 
-  - `object: "safety.alert"`
+  - `object: "safety.alert" (default: "safety.alert")`
 
     - `"safety.alert"`
 
@@ -63,7 +63,7 @@ curl https://api.openai.com/v1/safety/alerts/$ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -87,7 +87,7 @@ curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abc
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -111,7 +111,7 @@ curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abc
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -127,7 +127,7 @@ curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abc
 
   - `model: string`
 
-  - `object: "safety.alert"`
+  - `object: "safety.alert" (default: "safety.alert")`
 
     - `"safety.alert"`
 

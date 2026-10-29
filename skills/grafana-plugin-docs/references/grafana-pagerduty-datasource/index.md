@@ -11,7 +11,7 @@ The PagerDuty data source plugin allows you to query incident data from [PagerDu
 
 > Note
 >
-> The PagerDuty data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The PagerDuty data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](https://grafana.com/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 
 ## Supported features
 
@@ -31,7 +31,7 @@ Expand table
 
 Before configuring the PagerDuty data source, ensure you have:
 
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Self-hosted installations require Grafana version 11.6.7 or later.
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan or an [activated on-prem Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/). Self-hosted installations require Grafana version 11.6.7 or later.
 - A PagerDuty account with a REST API key. Refer to the [PagerDuty REST API Keys documentation](https://support.pagerduty.com/docs/api-access-keys#rest-api-keys) for instructions on generating an API key. Because this plugin only reads data from PagerDuty, prefer generating a **read-only** API key.
 - **Grafana permissions:** `Organization administrator` role to add and configure data sources.
 
@@ -65,9 +65,9 @@ The following optional settings are available under **Optional Settings** in the
 
 Expand table
 
-| Setting                | Description                                                                                                                                                                                                                                                                                                                        |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Secure Socks Proxy** | Toggle to enable proxying the data source connection through a secure socks proxy. This setting is only visible when the `secureSocksDSProxyEnabled` feature toggle is enabled in Grafana. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/). |
+| Setting                | Description                                                                                                                                                                                                                                                                                                                                           |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Secure Socks Proxy** | Toggle to enable proxying the data source connection through a secure socks proxy. This setting is only visible when the `secureSocksDSProxyEnabled` feature toggle is enabled in Grafana. For more information, refer to [Configure a data source connection proxy](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/proxy/). |
 
 ### Verify the connection
 
@@ -75,9 +75,9 @@ Click **Save &amp; test** to verify that the data source is configured correctly
 
 ### Provision the data source
 
-You can define the PagerDuty data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the PagerDuty data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana data sources](https://grafana.com/docs/grafana/latest/administration/provisioning/#data-sources).
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -94,7 +94,7 @@ datasources:
 
 You can also provision the data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs):
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "pagerduty" {
@@ -163,7 +163,7 @@ To visualize how many incidents your team handles over time:
 3. Enter your team ID in the **Team IDs** field.
 4. Expand **Transformation options** and select `created_at` and `status` under **Select fields**.
 5. Choose the **Bar chart** or **Time series** visualization.
-6. Use a [Group by transformation](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) to aggregate incident counts by day or week.
+6. Use a [Group by transformation](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/#group-by) to aggregate incident counts by day or week.
 
 #### Example: View high-urgency incidents across all services
 
@@ -226,7 +226,7 @@ To overlay PagerDuty incidents on a time series panel that shows CPU or memory u
 
 Incident markers now appear on the time series panel, making it easy to see whether a spike in resource usage corresponds to a PagerDuty incident.
 
-For more information about annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For more information about annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Template variables
 
@@ -245,7 +245,7 @@ To create a PagerDuty query variable:
 >
 > The first two fields selected under **Select fields** are used as the variable label and value, respectively. If only one field is selected, it’s used for both. For example, to create a variable that holds incident IDs with human-readable labels, select `title` and `id` so the incident title displays as the label and the incident ID is used as the value.
 
-After creating a variable, reference it in your PagerDuty queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).
+After creating a variable, reference it in your PagerDuty queries using [variable syntax](https://grafana.com/docs/grafana/latest/dashboards/variables/variable-syntax/). For more information, refer to [Templates and variables](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ### Example: Filter incidents by variable
 
@@ -285,7 +285,7 @@ To create an alert rule using PagerDuty data:
 6. Add a **Threshold** expression to define the alert condition.
 7. Configure notification policies and contact points as needed.
 
-For more information, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+For more information, refer to [Grafana Alerting](https://grafana.com/docs/grafana/latest/alerting/).
 
 ## Plugin updates
 
@@ -297,9 +297,9 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 
 ## Related resources
 
-- [Troubleshoot PagerDuty data source issues](/docs/plugins/grafana-pagerduty-datasource/latest/troubleshooting/)
+- [Troubleshoot PagerDuty data source issues](https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest/troubleshooting/)
 - [PagerDuty REST API documentation](https://developer.pagerduty.com/api-reference/)
-- [Explore](/docs/grafana/latest/explore/)
-- [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
-- [Alerting](/docs/grafana/latest/alerting/)
+- [Explore](https://grafana.com/docs/grafana/latest/explore/)
+- [Transformations](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/)
+- [Alerting](https://grafana.com/docs/grafana/latest/alerting/)
 - [Grafana community forum](https://community.grafana.com/)

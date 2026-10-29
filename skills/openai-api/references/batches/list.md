@@ -10,7 +10,7 @@ List your organization's batches.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -24,7 +24,7 @@ List your organization's batches.
 
     The time frame within which the batch should be processed.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the batch was created.
 
@@ -64,19 +64,19 @@ List your organization's batches.
 
     - `"cancelled"`
 
-  - `cancelled_at: optional number or null`
+  - `cancelled_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch was cancelled.
 
     `format: unixtime`
 
-  - `cancelling_at: optional number or null`
+  - `cancelling_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started cancelling.
 
     `format: unixtime`
 
-  - `completed_at: optional number or null`
+  - `completed_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch was completed.
 
@@ -94,7 +94,7 @@ List your organization's batches.
 
         An error code identifying the error type.
 
-      - `line: optional number or null`
+      - `line: optional integer or null`
 
         The line number of the input file where the error occurred, if applicable.
 
@@ -110,31 +110,31 @@ List your organization's batches.
 
       The object type, which is always `list`.
 
-  - `expired_at: optional number or null`
+  - `expired_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch expired.
 
     `format: unixtime`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch will expire.
 
     `format: unixtime`
 
-  - `failed_at: optional number or null`
+  - `failed_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch failed.
 
     `format: unixtime`
 
-  - `finalizing_at: optional number or null`
+  - `finalizing_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started finalizing.
 
     `format: unixtime`
 
-  - `in_progress_at: optional number or null`
+  - `in_progress_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started processing.
 
@@ -164,15 +164,15 @@ List your organization's batches.
 
     The request counts for different statuses within the batch.
 
-    - `completed: number`
+    - `completed: integer`
 
       Number of requests that have been completed successfully.
 
-    - `failed: number`
+    - `failed: integer`
 
       Number of requests that have failed.
 
-    - `total: number`
+    - `total: integer`
 
       Total number of requests in the batch.
 
@@ -182,7 +182,7 @@ List your organization's batches.
     breakdown of output tokens, and the total tokens used. Only populated on
     batches created after September 7, 2025.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The number of input tokens.
 
@@ -190,12 +190,12 @@ List your organization's batches.
 
       A detailed breakdown of the input tokens.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of tokens that were retrieved from the cache. [More on
         prompt caching](/api/docs/guides/prompt-caching).
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The number of output tokens.
 
@@ -203,11 +203,11 @@ List your organization's batches.
 
       A detailed breakdown of the output tokens.
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         The number of reasoning tokens.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens used.
 
@@ -228,7 +228,7 @@ curl https://api.openai.com/v1/batches \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -299,7 +299,7 @@ curl https://api.openai.com/v1/batches?limit=2 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -18,7 +18,7 @@ Get a safety case by ID.
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -32,7 +32,7 @@ Get a safety case by ID.
 
       - `"deactivation"`
 
-  - `object: "safety.case"`
+  - `object: "safety.case" (default: "safety.case")`
 
     - `"safety.case"`
 
@@ -45,7 +45,7 @@ curl https://api.openai.com/v1/safety/cases/$ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -67,7 +67,7 @@ curl https://api.openai.com/v1/safety/cases/C-abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

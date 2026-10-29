@@ -7,13 +7,13 @@ description: "Use the Oracle query editor to write SQL queries and visualize dat
 
 # Oracle query editor
 
-The Oracle query editor allows you to write raw SQL queries and visualize the results in Grafana panels. You can access the query editor from a dashboard panel in edit mode or from the [Explore](/docs/grafana/latest/explore/) page.
+The Oracle query editor allows you to write raw SQL queries and visualize the results in Grafana panels. You can access the query editor from a dashboard panel in edit mode or from the [Explore](https://grafana.com/docs/grafana/latest/explore/) page.
 
-For general information on Grafana query editors, refer to [Query and transform data](/docs/grafana/latest/panels-visualizations/query-transform-data/).
+For general information on Grafana query editors, refer to [Query and transform data](https://grafana.com/docs/grafana/latest/panels-visualizations/query-transform-data/).
 
 ## Before you begin
 
-- [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/).
+- [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/).
 - Verify your Oracle user has `SELECT` permissions on the tables you want to query.
 
 ## Query editor options
@@ -39,7 +39,7 @@ Any column except `time` and `metric` is treated as a value column. Return a col
 
 ### Example time-series query
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -56,7 +56,7 @@ ORDER BY time
 
 Set **Format as** to **Table** to return results as a table. Any SQL query is valid in table format. Use the SQL `AS` keyword to rename columns in the output.
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT hostname, cpu_usage, memory_usage
@@ -92,7 +92,7 @@ Expand table
 
 If you need to compare macro output against columns stored in a non-UTC timezone, use Oracle’s `FROM_TZ` and `AT TIME ZONE` to convert:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT *
@@ -105,7 +105,7 @@ WHERE event_time BETWEEN
 
 Alternatively, convert your stored column to UTC for comparison:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -130,7 +130,7 @@ Expand table
 
 Example with fill:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -152,7 +152,7 @@ The Oracle data source supports brace notation `$__macro{...}` as an alternative
 
 Examples:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 $__timeGroup{dateColumn, '5m'}
@@ -166,7 +166,7 @@ The timezone-aware macros (`$__timeGroupTZ` and `$__timeFilterTZ`) preserve time
 
 ### Example with timezone-aware macros
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -183,7 +183,7 @@ ORDER BY time
 
 Use brace notation for expressions that involve casting or timezone conversion:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -204,7 +204,7 @@ ORDER BY time
 
 ### Monitor CPU usage over time
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -219,7 +219,7 @@ ORDER BY time
 
 ### Count events per hour with gap filling
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ ORDER BY time
 
 ### Table query with row limit
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -296,7 +296,7 @@ Expand table
 
 ## Use Explore for ad-hoc queries
 
-[Explore](/docs/grafana/latest/explore/) lets you run Oracle queries without creating a dashboard. This is useful for:
+[Explore](https://grafana.com/docs/grafana/latest/explore/) lets you run Oracle queries without creating a dashboard. This is useful for:
 
 - **Investigating incidents:** Quickly check database state, session counts, or recent errors without building a panel.
 - **Developing queries:** Iterate on SQL and verify output before adding it to a dashboard.
@@ -323,7 +323,7 @@ These real-world examples show typical Oracle monitoring and business metric que
 
 **Active sessions over time:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -337,7 +337,7 @@ ORDER BY time
 
 **System statistics (CPU usage, I/O):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -355,7 +355,7 @@ ORDER BY time
 
 **Tablespace usage:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -367,7 +367,7 @@ ORDER BY used_percent DESC
 
 **Tablespace growth over time** (requires AWR or custom logging):
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -384,7 +384,7 @@ ORDER BY time
 
 **Current sessions by status:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -397,7 +397,7 @@ GROUP BY status
 
 **Wait events (top 10):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -413,7 +413,7 @@ FETCH FIRST 10 ROWS ONLY
 
 **Order volume over time:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -428,7 +428,7 @@ ORDER BY time
 
 **SLA compliance (response time percentiles):**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -443,10 +443,10 @@ ORDER BY time
 
 > Note
 >
-> Queries against `V$` and `DBA_` views require the appropriate privileges. Refer to [Create a least-privilege database user](/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user) for permission setup.
+> Queries against `V$` and `DBA_` views require the appropriate privileges. Refer to [Create a least-privilege database user](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user) for permission setup.
 
 ## Next steps
 
-- [Use template variables](/docs/plugins/grafana-oracle-datasource/latest/template-variables/) to create dynamic dashboards.
-- [Set up alerting](/docs/plugins/grafana-oracle-datasource/latest/alerting/) based on Oracle queries.
-- [Create annotations](/docs/plugins/grafana-oracle-datasource/latest/annotations/) to mark events on your time-series panels.
+- [Use template variables](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables/) to create dynamic dashboards.
+- [Set up alerting](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/alerting/) based on Oracle queries.
+- [Create annotations](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/annotations/) to mark events on your time-series panels.

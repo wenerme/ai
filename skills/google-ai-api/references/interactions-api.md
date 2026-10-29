@@ -126,9 +126,6 @@ The agent to interact with.
 
 #### Possible values
 
-- `deep-research-pro-preview-12-2025`
-
-  Gemini Deep Research Agent
 - `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent
@@ -688,13 +685,13 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Deep Research
 
-<iframe src="https:///frame/api/interactions-api_96040eb313456a2eb497dd0d0a70a915bda140d0d6048614264d26ed851c1940.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_7d89464cee88871b95f9f8b7ee3ef608f0ec54449479fc8cbca8b07428444c91.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
 ```json
 {
-  "agent": "deep-research-pro-preview-12-2025",
+  "agent": "deep-research-preview-04-2026",
   "created": "2025-11-26T12:22:47Z",
   "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
   "object": "interaction",
@@ -1393,9 +1390,6 @@ The agent to interact with.
 
 #### Possible values
 
-- `deep-research-pro-preview-12-2025`
-
-  Gemini Deep Research Agent
 - `deep-research-preview-04-2026`
 
   Gemini Deep Research Agent

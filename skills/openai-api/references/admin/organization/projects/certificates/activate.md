@@ -30,19 +30,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -77,7 +77,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/ac
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -109,7 +109,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
 }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

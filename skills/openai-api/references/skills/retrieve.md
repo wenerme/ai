@@ -16,7 +16,7 @@ Get a skill by its ID.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -38,7 +38,7 @@ Get a skill by its ID.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -51,7 +51,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

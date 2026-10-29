@@ -24,7 +24,7 @@ Updates a voice consent recording (metadata only).
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -55,7 +55,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

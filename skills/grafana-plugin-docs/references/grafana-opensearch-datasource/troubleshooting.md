@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the OpenSearch data source in Graf
 
 # Troubleshoot OpenSearch data source issues
 
-This document provides solutions to common issues you might encounter when configuring or using the OpenSearch data source. For configuration instructions, refer to [Configure the OpenSearch data source](/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+This document provides solutions to common issues you might encounter when configuring or using the OpenSearch data source. For configuration instructions, refer to [Configure the OpenSearch data source](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 
 ## Authentication errors
 
@@ -42,13 +42,13 @@ Expand table
 
 Expand table
 
-| Cause                     | Solution                                                                                                                                                                                                     |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Wrong region              | Verify the **Default region** matches the region where your OpenSearch Service domain is deployed.                                                                                                           |
-| Missing IAM permissions   | Ensure the IAM role or user has `es:ESHttpGet` and `es:ESHttpPost` permissions on the domain. Refer to [IAM policies for OpenSearch Service](/docs/plugins/grafana-opensearch-datasource/latest/configure/). |
-| Expired credentials       | Rotate the access keys and update the data source configuration.                                                                                                                                             |
-| Incorrect assume role ARN | Verify the ARN in **Assume Role ARN** is correct and the trust policy allows Grafana to assume the role.                                                                                                     |
-| Serverless service name   | Ensure the **Serverless** toggle is enabled for OpenSearch Serverless collections. SigV4 uses a different service name (`aoss`) for Serverless.                                                              |
+| Cause                     | Solution                                                                                                                                                                                                                        |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Wrong region              | Verify the **Default region** matches the region where your OpenSearch Service domain is deployed.                                                                                                                              |
+| Missing IAM permissions   | Ensure the IAM role or user has `es:ESHttpGet` and `es:ESHttpPost` permissions on the domain. Refer to [IAM policies for OpenSearch Service](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/). |
+| Expired credentials       | Rotate the access keys and update the data source configuration.                                                                                                                                                                |
+| Incorrect assume role ARN | Verify the ARN in **Assume Role ARN** is correct and the trust policy allows Grafana to assume the role.                                                                                                                        |
+| Serverless service name   | Ensure the **Serverless** toggle is enabled for OpenSearch Serverless collections. SigV4 uses a different service name (`aoss`) for Serverless.                                                                                 |
 
 ## Connection errors
 
@@ -68,7 +68,7 @@ These errors occur when Grafana can’t reach the OpenSearch instance.
 2. Check that the Grafana server can reach the OpenSearch instance over the network.
 3. Verify firewall rules allow outbound traffic on the configured port.
 4. For private networks, ensure VPN or private connectivity is configured.
-5. For Grafana Cloud, configure [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
+5. For Grafana Cloud, configure [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) if accessing private resources.
 
 ### TLS or certificate errors
 
@@ -109,7 +109,7 @@ These errors occur during data source setup or health checks.
 
 **Solutions:**
 
-This error occurs when the plugin detects an Elasticsearch instance with version 7.11 or later. Install and use the [Elasticsearch data source](/docs/grafana/latest/datasources/elasticsearch/) instead of the OpenSearch data source.
+This error occurs when the plugin detects an Elasticsearch instance with version 7.11 or later. Install and use the [Elasticsearch data source](https://grafana.com/docs/grafana/latest/datasources/elasticsearch/) instead of the OpenSearch data source.
 
 ### “Generated empty index list”
 
@@ -195,7 +195,7 @@ Expand table
 
 **Solutions:**
 
-1. Verify PPL is [enabled in the data source settings](/docs/plugins/grafana-opensearch-datasource/latest/configure/).
+1. Verify PPL is [enabled in the data source settings](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/configure/).
 2. Check the PPL syntax against the [OpenSearch PPL documentation](https://opensearch.org/docs/latest/search-plugins/sql/ppl/index/).
 3. Verify the index name in the `source` command matches an existing index.
 4. For OpenSearch Serverless, ensure PPL is supported for your collection type.
@@ -316,7 +316,7 @@ These errors occur when creating or evaluating alert rules with OpenSearch queri
 
 **Solutions:**
 
-Only Lucene **Metric** and PPL **Time series** query types reliably produce numeric time-series data for alerting. Logs, Raw Data, Raw Document, and Traces query types return data in formats that can’t be evaluated by alert conditions. Refer to [Supported query types](/docs/plugins/grafana-opensearch-datasource/latest/alerting/) for details.
+Only Lucene **Metric** and PPL **Time series** query types reliably produce numeric time-series data for alerting. Logs, Raw Data, Raw Document, and Traces query types return data in formats that can’t be evaluated by alert conditions. Refer to [Supported query types](https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/alerting/) for details.
 
 ### PPL alert query fails with format errors
 
@@ -330,7 +330,7 @@ Only Lucene **Metric** and PPL **Time series** query types reliably produce nume
 2. Ensure the PPL query returns exactly two columns: a timestamp field and a numeric value field.
 3. Use `stats` with a time aggregation to structure the output correctly, for example:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    source = my_index | eval dateValue = timestamp(timestamp) | stats count(response) by dateValue
@@ -342,7 +342,7 @@ To capture detailed error information for troubleshooting:
 
 1. Set the Grafana log level to `debug` in the configuration file:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [log]

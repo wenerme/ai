@@ -10,7 +10,7 @@ List Containers
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -18,7 +18,7 @@ List Containers
 
   Filter results by container name.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
 
@@ -36,7 +36,7 @@ List Containers
 
     Unique identifier for the container.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the container was created.
 
@@ -66,11 +66,11 @@ List Containers
 
       - `"last_active_at"`
 
-    - `minutes: optional number`
+    - `minutes: optional integer`
 
       The number of minutes after the anchor before the container expires.
 
-  - `last_active_at: optional number`
+  - `last_active_at: optional integer`
 
     Unix timestamp (in seconds) when the container was last active.
 
@@ -129,7 +129,7 @@ curl https://api.openai.com/v1/containers \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -168,7 +168,7 @@ curl https://api.openai.com/v1/containers \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

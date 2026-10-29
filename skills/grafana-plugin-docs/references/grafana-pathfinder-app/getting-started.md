@@ -15,7 +15,7 @@ Interactive learning is in public preview. Available features depend on your Gra
 
 On a Grafana Cloud stack where Interactive learning is available, select **Help** in the top navigation bar to open the sidebar. You do not need to edit a configuration file or install the plugin yourself.
 
-If **Help** opens the classic menu, your administrator might have disabled Pathfinder or the feature might not be available on the stack. Ask an administrator to check the [Interactive learning settings](../administrators-reference/#disable-interactive-learning-in-grafana-cloud).
+If **Help** opens the classic menu, your administrator might have disabled Pathfinder or the feature might not be available on the stack. Ask an administrator to check the [Interactive learning settings](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/#disable-interactive-learning-in-grafana-cloud).
 
 ## Self-managed Grafana
 
@@ -30,7 +30,7 @@ The current plugin requires Grafana 12.3 or later. You need permission to instal
 
 Alternatively, install it with the Grafana CLI and restart Grafana:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-pathfinder-app
@@ -40,7 +40,7 @@ grafana cli plugins install grafana-pathfinder-app
 
 Grafana versions that support `interactiveLearning` can install the plugin when the toggle is enabled, provided plugin preinstallation is allowed. Add it to the enabled toggles in `grafana.ini` or `custom.ini`:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [feature_toggles]
@@ -49,7 +49,7 @@ enable = interactiveLearning
 
 For an environment-based configuration, set:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 GF_FEATURE_TOGGLES_ENABLE=interactiveLearning
@@ -57,7 +57,7 @@ GF_FEATURE_TOGGLES_ENABLE=interactiveLearning
 
 Preserve any other feature toggles you already enable, then restart Grafana. If your deployment disables plugin preinstallation, use your usual plugin installation process instead.
 
-Context-aware recommendations require a separate administrator opt-in on self-managed Grafana. Bundled guides are available without it. Refer to [Configure recommendations](../administrators-reference/#configure-recommendations).
+Context-aware recommendations require a separate administrator opt-in on self-managed Grafana. Bundled guides are available without it. Refer to [Configure recommendations](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/#configure-recommendations).
 
 ## Open a guide
 
@@ -126,4 +126,4 @@ For broader problems, reload Grafana and reopen the guide. Use **More options** 
 
 ## Create guides for your team
 
-Users with the Editor or Admin role can select **More options** &gt; **Create guide** in the sidebar to open the block editor. Saving and publishing depends on storage availability and permissions on your instance. Refer to the [Block editor guide](../block-editor/) for the full workflow.
+Users with the Editor or Admin role can select **More options** &gt; **Create guide** in the sidebar to open the block editor. Saving and publishing depends on storage availability and permissions on your instance. Refer to the [Block editor guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/) for the full workflow.

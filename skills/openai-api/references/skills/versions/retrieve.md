@@ -20,7 +20,7 @@ Get a specific skill version.
 
     Unique identifier for the skill version.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the version was created.
 
@@ -34,7 +34,7 @@ Get a specific skill version.
 
     Name of the skill version.
 
-  - `object: "skill.version"`
+  - `object: "skill.version" (default: "skill.version")`
 
     The object type, which is `skill.version`.
 
@@ -55,7 +55,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

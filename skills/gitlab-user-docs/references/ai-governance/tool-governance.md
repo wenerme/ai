@@ -5,10 +5,10 @@ Configure tool-level approval policies for AI agents to gate sensitive actions w
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
-- Enforcement for background flows, such as the Duo Developer foundational flow, added in GitLab 19.3 behind a [feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md#beta) [with a feature flag](../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
+- Added for background flows, such as the Developer Flow, in GitLab 19.3 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
 - Feature flag `gitlab_duo_governance_settings` removed in GitLab 19.4.
-- Default for local file reads [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256385) from Always Ask to Always Allow in GitLab 19.5.
+- Default for local file reads [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256385) from **Always Ask** to **Always Allow** in GitLab 19.5.
 
 > [!warning]
 > This feature is in [beta](../../policy/development_stages_support.md).
@@ -44,7 +44,8 @@ This feature applies to Agentic Chat and IDE extensions. For flows, governance
 enforcement depends on where the flow runs:
 
 - For flows that run in an IDE extension, GitLab enforces governance rules.
-- For background flows, such as the Duo Developer foundational flow, GitLab enforces governance rules.
+- For background flows, such as the Developer Flow, GitLab enforces governance rules
+  if the `duo_workflow_background_tool_governance` feature flag is enabled.
 
 ## Access types
 

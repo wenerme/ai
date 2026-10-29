@@ -34,19 +34,19 @@ You can get a certificate regardless of whether it is active or not.
 
       The content of the certificate in PEM format.
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -81,7 +81,7 @@ curl https://api.openai.com/v1/organization/certificates/$CERTIFICATE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -105,7 +105,7 @@ curl "https://api.openai.com/v1/organization/certificates/cert_abc?include[]=con
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -21,7 +21,7 @@
 
       The text input to the model.
 
-    - `type: "input_text"`
+    - `type: "input_text" (default: "input_text")`
 
       The type of the input item. Always `input_text`.
 
@@ -31,7 +31,7 @@
 
       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -129,7 +129,7 @@
 
           The text input to the model.
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
           The type of the input item. Always `input_text`.
 
@@ -139,7 +139,7 @@
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -394,7 +394,7 @@
 
         The text being graded against.
 
-      - `type: "text_similarity"`
+      - `type: "text_similarity" (default: "text_similarity")`
 
         The type of grader.
 
@@ -446,7 +446,7 @@
 
               The text input to the model.
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
               The type of the input item. Always `input_text`.
 
@@ -456,7 +456,7 @@
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-              - `mode: "explicit"`
+              - `mode: "explicit" (default: "explicit")`
 
                 The breakpoint mode. Always `explicit`.
 
@@ -621,13 +621,13 @@
 
         The sampling parameters for the model.
 
-        - `max_completions_tokens: optional number or null`
+        - `max_completions_tokens: optional integer or null`
 
           The maximum number of tokens the grader model may generate in its response.
 
           `minimum: 1`
 
-        - `reasoning_effort: optional ReasoningEffort or null`
+        - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -651,7 +651,7 @@
 
           - `"max"`
 
-        - `seed: optional number or null`
+        - `seed: optional integer or null`
 
           A seed value to initialize the randomness, during sampling.
 
@@ -659,7 +659,7 @@
 
           A higher temperature increases randomness in the outputs.
 
-        - `top_p: optional number or null`
+        - `top_p: optional number or null (default: 1)`
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -770,7 +770,7 @@
 
     The name of the grader.
 
-  - `type: "multi"`
+  - `type: "multi" (default: "multi")`
 
     The object type, which is always `multi`.
 
@@ -826,7 +826,7 @@
 
           The text input to the model.
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
           The type of the input item. Always `input_text`.
 
@@ -836,7 +836,7 @@
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -1001,13 +1001,13 @@
 
     The sampling parameters for the model.
 
-    - `max_completions_tokens: optional number or null`
+    - `max_completions_tokens: optional integer or null`
 
       The maximum number of tokens the grader model may generate in its response.
 
       `minimum: 1`
 
-    - `reasoning_effort: optional ReasoningEffort or null`
+    - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
       Constrains effort on reasoning for reasoning models. Currently supported
       values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1031,7 +1031,7 @@
 
       - `"max"`
 
-    - `seed: optional number or null`
+    - `seed: optional integer or null`
 
       A seed value to initialize the randomness, during sampling.
 
@@ -1039,7 +1039,7 @@
 
       A higher temperature increases randomness in the outputs.
 
-    - `top_p: optional number or null`
+    - `top_p: optional number or null (default: 1)`
 
       An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -1125,7 +1125,7 @@
 
     The text being graded against.
 
-  - `type: "text_similarity"`
+  - `type: "text_similarity" (default: "text_similarity")`
 
     The type of grader.
 

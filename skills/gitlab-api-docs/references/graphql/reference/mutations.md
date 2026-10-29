@@ -474,6 +474,9 @@ Sets an admin-locked GitLab Duo availability override on a group.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.1.
 
+Enables a catalog item in multiple projects in the background.
+Rate limited to 10 requests per minute per user.
+
 **Input type:** `AiCatalogItemConsumerBulkCreateInput`
 
 ### `aiCatalogItemConsumerBulkCreate` arguments {.no_toc}

@@ -16,7 +16,7 @@ Retrieve Container File
 
   Unique identifier for the file.
 
-- `bytes: number`
+- `bytes: integer`
 
   Size of the file in bytes.
 
@@ -24,7 +24,7 @@ Retrieve Container File
 
   The container this file belongs to.
 
-- `created_at: number`
+- `created_at: integer`
 
   Unix timestamp (in seconds) when the file was created.
 
@@ -49,7 +49,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID/files/$FILE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -70,7 +70,7 @@ curl https://api.openai.com/v1/containers/container_123/files/file_456 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

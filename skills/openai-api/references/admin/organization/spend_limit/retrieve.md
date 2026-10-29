@@ -52,13 +52,13 @@ Get the organization's hard spend limit.
 
       - `"month"`
 
-  - `object: "organization.spend_limit"`
+  - `object: "organization.spend_limit" (default: "organization.spend_limit")`
 
     The object type, which is always `organization.spend_limit`.
 
     - `"organization.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -69,7 +69,7 @@ curl https://api.openai.com/v1/organization/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -91,7 +91,7 @@ curl https://api.openai.com/v1/organization/spend_limit \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

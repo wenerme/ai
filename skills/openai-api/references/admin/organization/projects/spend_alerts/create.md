@@ -40,7 +40,7 @@ Creates a project spend alert.
 
     Optional subject prefix for alert emails.
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The alert threshold amount, in cents.
 
@@ -92,7 +92,7 @@ Creates a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -115,7 +115,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -152,7 +152,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

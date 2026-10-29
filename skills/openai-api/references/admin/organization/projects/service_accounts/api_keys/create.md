@@ -16,7 +16,7 @@ Creates an API key for a service account in the project.
 
 ### Body Parameters
 
-- `expires_in_seconds: optional number or null`
+- `expires_in_seconds: optional integer or null`
 
   Number of seconds until the API key expires.
 
@@ -36,7 +36,7 @@ Creates an API key for a service account in the project.
 
   The identifier of the API key.
 
-- `created_at: number`
+- `created_at: integer`
 
   The Unix timestamp (in seconds) when the API key was created.
 
@@ -46,7 +46,7 @@ Creates an API key for a service account in the project.
 
   The name of the API key.
 
-- `object: "organization.project.service_account.api_key"`
+- `object: "organization.project.service_account.api_key" (default: "organization.project.service_account.api_key")`
 
   The object type, which is always `organization.project.service_account.api_key`
 
@@ -56,7 +56,7 @@ Creates an API key for a service account in the project.
 
   The unredacted API key value.
 
-- `expires_at: optional number or null`
+- `expires_at: optional integer or null`
 
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -70,7 +70,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -95,7 +95,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

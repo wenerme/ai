@@ -38,7 +38,7 @@ for details.
 
     Segments of the translated text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -66,7 +66,7 @@ for details.
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -100,7 +100,7 @@ curl https://api.openai.com/v1/audio/translations \
     -F model=whisper-1
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -118,7 +118,7 @@ curl https://api.openai.com/v1/audio/translations \
   -F model="whisper-1"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -162,7 +162,7 @@ curl https://api.openai.com/v1/audio/translations \
 
       Segments of the translated text and their corresponding details.
 
-      - `id: number`
+      - `id: integer`
 
         Unique identifier of the segment.
 
@@ -190,7 +190,7 @@ curl https://api.openai.com/v1/audio/translations \
 
         `format: float`
 
-      - `seek: number`
+      - `seek: integer`
 
         Seek offset of the segment.
 
@@ -236,7 +236,7 @@ curl https://api.openai.com/v1/audio/translations \
 
     Segments of the translated text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -264,7 +264,7 @@ curl https://api.openai.com/v1/audio/translations \
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 

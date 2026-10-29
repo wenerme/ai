@@ -13,9 +13,9 @@ This guide walks you through connecting your Oracle Database to Grafana Cloud an
 
 Before you begin, ensure you have:
 
-- A [Grafana Cloud Pro or Advanced](/pricing/) plan.
+- A [Grafana Cloud Pro or Advanced](https://grafana.com/pricing/) plan.
 - An Oracle Database instance.
-- A database user with `SELECT` permissions on the tables you want to query. Refer to [Create a least-privilege database user](/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user) for setup instructions.
+- A database user with `SELECT` permissions on the tables you want to query. Refer to [Create a least-privilege database user](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user) for setup instructions.
 - *If your database is on a private network:* A Linux host in the same network to run the PDC agent.
 
 ## Step 1: Install the plugin
@@ -38,7 +38,7 @@ If your Oracle Database is behind a firewall or on a private network, set up Pri
 2. Click **Add new network** and follow the setup wizard.
 3. Install the PDC agent on a host in the same network as your Oracle Database:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    curl -sL https://raw.githubusercontent.com/grafana/pdc-agent/main/production/install.sh | bash
@@ -46,7 +46,7 @@ If your Oracle Database is behind a firewall or on a private network, set up Pri
 4. Start the agent and verify it shows a **Connected** status in the Grafana Cloud UI.
 5. Confirm the agent host can reach your Oracle Database: `nc -zv <oracle-host> 1521`.
 
-For detailed instructions, refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+For detailed instructions, refer to [Configure Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 ## Step 3: Configure the data source
 
@@ -68,7 +68,7 @@ For detailed instructions, refer to [Configure Private data source connect](/doc
 
 On success, you’ll see a message like: **Success: Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production**.
 
-If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#connection-errors).
+If the connection fails, refer to [Troubleshoot connection errors](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#connection-errors).
 
 ## Step 4: Write your first query
 
@@ -76,7 +76,7 @@ If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins
 2. Select your new Oracle data source from the dropdown.
 3. Paste the following query to verify connectivity and see active sessions:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -90,7 +90,7 @@ If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins
 
 Try a time-series query to see data on a graph:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -128,8 +128,8 @@ Expand table
 
 ## Next steps
 
-- [Oracle query editor](/docs/plugins/grafana-oracle-datasource/latest/query-editor/)—macros, data types, and advanced query patterns.
-- [Template variables](/docs/plugins/grafana-oracle-datasource/latest/template-variables/)—create dynamic dashboards with drop-down filters.
-- [Annotations](/docs/plugins/grafana-oracle-datasource/latest/annotations/)—overlay deployment or event markers on your graphs.
-- [Alerting](/docs/plugins/grafana-oracle-datasource/latest/alerting/)—get notified when metrics cross thresholds.
-- [Troubleshooting](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/)—solutions for common issues.
+- [Oracle query editor](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor/)—macros, data types, and advanced query patterns.
+- [Template variables](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables/)—create dynamic dashboards with drop-down filters.
+- [Annotations](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/annotations/)—overlay deployment or event markers on your graphs.
+- [Alerting](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/alerting/)—get notified when metrics cross thresholds.
+- [Troubleshooting](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/)—solutions for common issues.

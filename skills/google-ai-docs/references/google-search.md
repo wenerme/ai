@@ -413,6 +413,10 @@ billed per prompt.
 For detailed pricing information, see the [Gemini API pricing
 page](https://ai.google.dev/gemini-api/docs/pricing).
 
+> [!NOTE]
+> **Note:** Grounding with Google Search has a default limit of **1,500 requests per
+> day (RPD)** per project on Gemini 3 and newer models in the Paid Tier of the Gemini Developer API. If your application requires a higher daily limit, submit a request in [Google AI Studio](https://aistudio.google.com/rate-limit) (select **Request more quota** next to the `generate_content_search_request_paid` limit).
+
 ## Supported models
 
 You can find full capabilities on the [model
@@ -420,6 +424,7 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 | Model | Grounding with Google Search |
 |---|---|
+| Gemini 4 Argon | ✔️ |
 | Gemini 3.8 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
 | Gemini 3.5 Flash-Lite | ✔️ |

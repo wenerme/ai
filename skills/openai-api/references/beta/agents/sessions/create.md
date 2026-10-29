@@ -14,7 +14,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     Runs the agent without an execution environment.
 
-    - `type: "none"`
+    - `type: "none" (default: "none")`
 
       The type of the object. Always `none`.
 
@@ -24,7 +24,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-    - `type: "openai_hosted"`
+    - `type: "openai_hosted" (default: "openai_hosted")`
 
       The type of the object. Always `openai_hosted`.
 
@@ -92,7 +92,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 1`, `maxLength: 4096`
 
-        - `type: "file_id"`
+        - `type: "file_id" (default: "file_id")`
 
           The type of the object. Always `file_id`.
 
@@ -114,7 +114,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 1`, `maxLength: 4096`
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
@@ -202,7 +202,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 1`, `maxLength: 70254592`
 
-        - `media_type: "application/zip"`
+        - `media_type: "application/zip" (default: "application/zip")`
 
           The archive media type, always `application/zip`.
 
@@ -210,13 +210,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             A ZIP archive.
 
-        - `type: "base64"`
+        - `type: "base64" (default: "base64")`
 
           The type of the object. Always `base64`.
 
           - `"base64"`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -256,7 +256,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 1`, `maxLength: 64`
 
-        - `type: "skill_reference"`
+        - `type: "skill_reference" (default: "skill_reference")`
 
           The type of the object. Always `skill_reference`.
 
@@ -288,7 +288,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Provides ZIP bytes encoded with standard base64.
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
@@ -298,7 +298,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     An application-hosted environment configured inline.
 
-    - `type: "self_hosted"`
+    - `type: "self_hosted" (default: "self_hosted")`
 
       The type of the object. Always `self_hosted`.
 
@@ -316,7 +316,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       `minItems: 0`, `maxItems: 16384`
 
-- `agent: optional object { compaction, instructions, model, 5 more }`
+- `agent: optional object { compaction, experimental, instructions, 6 more }`
 
   Agent configuration. With `agent_id`, supplied fields override the saved agent for this session. Without `agent_id`, `model` is required.
 
@@ -327,6 +327,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `async: optional boolean or null`
 
       Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+  - `experimental: optional object { time_awareness }  (default: {})`
+
+    Experimental settings to merge by key. Omitted settings keep their current values.
+
+    - `time_awareness: optional boolean`
+
+      Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
   - `instructions: optional string or null`
 
@@ -348,7 +356,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Whether subagent tools are enabled.
 
-    - `max_concurrent_subagents: optional number`
+    - `max_concurrent_subagents: optional integer`
 
       Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -432,7 +440,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Generates ordinary text without a structured-output constraint.
 
-        - `type: "text"`
+        - `type: "text" (default: "text")`
 
           The type of the object. Always `text`.
 
@@ -446,7 +454,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           The JSON Schema that generated text must match.
 
-        - `type: "json_schema"`
+        - `type: "json_schema" (default: "json_schema")`
 
           The type of the object. Always `json_schema`.
 
@@ -494,13 +502,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         A JSON Schema object describing the function's arguments.
 
-      - `type: "function"`
+      - `type: "function" (default: "function")`
 
         The type of the object. Always `function`.
 
         - `"function"`
 
-      - `defer_loading: optional boolean`
+      - `defer_loading: optional boolean (default: false)`
 
         Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -508,7 +516,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Discovers deferred function tools and loads them into the model context.
 
-      - `type: "tool_search"`
+      - `type: "tool_search" (default: "tool_search")`
 
         The type of the object. Always `tool_search`.
 
@@ -518,13 +526,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Enables calling tools from model-generated code.
 
-      - `type: "programmatic_tool_calling"`
+      - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
         The type of the object. Always `programmatic_tool_calling`.
 
         - `"programmatic_tool_calling"`
 
-      - `enabled: optional boolean`
+      - `enabled: optional boolean (default: true)`
 
         Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -552,7 +560,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "http"`
+          - `type: "http" (default: "http")`
 
             The type of the object. Always `http`.
 
@@ -584,7 +592,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "stdio"`
+          - `type: "stdio" (default: "stdio")`
 
             The type of the object. Always `stdio`.
 
@@ -606,7 +614,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minItems: 0`, `maxItems: 16384`
 
-      - `type: "mcp"`
+      - `type: "mcp" (default: "mcp")`
 
         The type of the object. Always `mcp`.
 
@@ -640,7 +648,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Metadata included with requests to this MCP server.
 
-      - `required: optional boolean`
+      - `required: optional boolean (default: false)`
 
         Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -648,7 +656,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Web search.
 
-      - `type: "web_search"`
+      - `type: "web_search" (default: "web_search")`
 
         The type of the object. Always `web_search`.
 
@@ -718,13 +726,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Browser use in an OpenAI-hosted session.
 
-      - `type: "computer_use"`
+      - `type: "computer_use" (default: "computer_use")`
 
         The type of the object. Always `computer_use`.
 
         - `"computer_use"`
 
-      - `include_screenshots: optional boolean`
+      - `include_screenshots: optional boolean (default: false)`
 
         Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -732,7 +740,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       Lets the agent manage its own scheduled wakeups.
 
-      - `type: "automations"`
+      - `type: "automations" (default: "automations")`
 
         The type of the object. Always `automations`.
 
@@ -750,7 +758,11 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `string`
 
+    `minLength: 1`, `maxLength: 1048576`
+
   - `array of AgentSessionInputMessageParam`
+
+    `minItems: 0`, `maxItems: 16384`
 
     - `content: array of InputContentParam`
 
@@ -768,7 +780,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
           The type of the object. Always `input_text`.
 
@@ -784,19 +796,19 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "input_image"`
+        - `type: "input_image" (default: "input_image")`
 
           The type of the object. Always `input_image`.
 
           - `"input_image"`
 
-    - `role: "user"`
+    - `role: "user" (default: "user")`
 
       The role of the message author. Always `user`.
 
       - `"user"`
 
-    - `type: optional "message"`
+    - `type: optional "message" (default: "message")`
 
       The type of the input item. Always `message`.
 
@@ -806,7 +818,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
-- `stream: optional boolean`
+- `stream: optional boolean (default: false)`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
 
@@ -828,7 +840,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     `minLength: 0`
 
-  - `agent: object { id, instructions, model, 7 more }`
+  - `agent: object { id, instructions, model, 8 more }`
 
     The agent running in the session.
 
@@ -858,7 +870,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Whether subagent tools are enabled. Defaults to false.
 
-      - `max_concurrent_subagents: number or null`
+      - `max_concurrent_subagents: integer or null`
 
         Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -936,7 +948,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Generates ordinary text without a structured-output constraint.
 
-          - `type: "text"`
+          - `type: "text" (default: "text")`
 
             The type of the object. Always `text`.
 
@@ -950,7 +962,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             The JSON Schema that generated text must match.
 
-          - `type: "json_schema"`
+          - `type: "json_schema" (default: "json_schema")`
 
             The type of the object. Always `json_schema`.
 
@@ -996,7 +1008,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           A JSON Schema object describing the function's arguments.
 
-        - `type: "function"`
+        - `type: "function" (default: "function")`
 
           The type of the object. Always `function`.
 
@@ -1010,7 +1022,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Whether tools can be called from model-generated code.
 
-        - `type: "programmatic_tool_calling"`
+        - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
           The type of the object. Always `programmatic_tool_calling`.
 
@@ -1068,7 +1080,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
               `minLength: 0`
 
-            - `type: "http"`
+            - `type: "http" (default: "http")`
 
               The type of the object. Always `http`.
 
@@ -1102,13 +1114,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
               `minItems: 0`, `maxItems: 2000`
 
-            - `type: "stdio"`
+            - `type: "stdio" (default: "stdio")`
 
               The type of the object. Always `stdio`.
 
               - `"stdio"`
 
-        - `type: "mcp"`
+        - `type: "mcp" (default: "mcp")`
 
           The type of the object. Always `mcp`.
 
@@ -1172,7 +1184,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"live"`
 
-        - `type: "web_search"`
+        - `type: "web_search" (default: "web_search")`
 
           The type of the object. Always `web_search`.
 
@@ -1186,7 +1198,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Whether computer tool outputs include screenshots.
 
-        - `type: "computer_use"`
+        - `type: "computer_use" (default: "computer_use")`
 
           The type of the object. Always `computer_use`.
 
@@ -1196,7 +1208,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Lets the agent manage its own scheduled wakeups.
 
-        - `type: "automations"`
+        - `type: "automations" (default: "automations")`
 
           The type of the object. Always `automations`.
 
@@ -1210,7 +1222,15 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Whether context is compacted in the background. Defaults to true.
 
-  - `created_at: number`
+    - `experimental: optional object { time_awareness }`
+
+      The effective experimental settings for the agent.
+
+      - `time_awareness: boolean`
+
+        Whether the model receives periodic current-time reminders.
+
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the session was created.
 
@@ -1224,7 +1244,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       The session talks to CCA without selecting or provisioning an execution environment.
 
-      - `type: "none"`
+      - `type: "none" (default: "none")`
 
         The type of the object. Always `none`.
 
@@ -1282,13 +1302,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `size_bytes: number`
+          - `size_bytes: integer`
 
             The decoded file size in bytes.
 
             `format: int64`, `minimum: 0`
 
-          - `type: "file_id"`
+          - `type: "file_id" (default: "file_id")`
 
             The type of the object. Always `file_id`.
 
@@ -1310,13 +1330,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `size_bytes: number`
+          - `size_bytes: integer`
 
             The decoded file size in bytes.
 
             `format: int64`, `minimum: 0`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
@@ -1388,7 +1408,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           `minLength: 0`
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
@@ -1422,7 +1442,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `type: "skill_reference"`
+          - `type: "skill_reference" (default: "skill_reference")`
 
             The type of the object. Always `skill_reference`.
 
@@ -1450,13 +1470,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
             - `"inline"`
 
-      - `type: "openai_hosted"`
+      - `type: "openai_hosted" (default: "openai_hosted")`
 
         The type of the object. Always `openai_hosted`.
 
@@ -1494,7 +1514,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         `minLength: 0`
 
-      - `type: "self_hosted"`
+      - `type: "self_hosted" (default: "self_hosted")`
 
         The type of the object. Always `self_hosted`.
 
@@ -1512,7 +1532,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     `minLength: 0`
 
-  - `last_active_at: number`
+  - `last_active_at: integer`
 
     The Unix timestamp, in seconds, when the session was last active.
 
@@ -1522,7 +1542,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     Custom string key-value pairs attached to the session.
 
-  - `object: "agent.session"`
+  - `object: "agent.session" (default: "agent.session")`
 
     The object type. Always `agent.session`.
 
@@ -1610,7 +1630,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `type: "browser_authentication"`
+          - `type: "browser_authentication" (default: "browser_authentication")`
 
             The type of the object. Always `browser_authentication`.
 
@@ -1632,7 +1652,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
             `minLength: 0`
 
-          - `type: "browser_origin_access"`
+          - `type: "browser_origin_access" (default: "browser_origin_access")`
 
             The type of the object. Always `browser_origin_access`.
 
@@ -1650,7 +1670,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         `minLength: 0`
 
-      - `type: "computer_use_approval_request"`
+      - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
         The type of the object. Always `computer_use_approval_request`.
 
@@ -1682,7 +1702,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         `minLength: 0`
 
-      - `type: "function_call"`
+      - `type: "function_call" (default: "function_call")`
 
         The type of the object. Always `function_call`.
 
@@ -1698,7 +1718,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         `minLength: 0`
 
-      - `type: "environment_connection"`
+      - `type: "environment_connection" (default: "environment_connection")`
 
         The type of the object. Always `environment_connection`.
 
@@ -1728,7 +1748,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The number of input tokens used by the agent.
 
@@ -1738,13 +1758,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       A breakdown of the agent's input token usage.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of input tokens retrieved from the prompt cache.
 
         `format: int64`
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The number of output tokens generated by the agent.
 
@@ -1754,13 +1774,13 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       A breakdown of the agent's output token usage.
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         The number of output tokens used for reasoning.
 
         `format: int64`
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of input and output tokens used by the agent.
 
@@ -1786,7 +1806,7 @@ curl https://api.openai.com/v1/agents/sessions \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -1824,6 +1844,9 @@ curl https://api.openai.com/v1/agents/sessions \
     ],
     "compaction": {
       "async": true
+    },
+    "experimental": {
+      "time_awareness": true
     }
   },
   "created_at": 0,

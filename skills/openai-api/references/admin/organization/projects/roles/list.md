@@ -14,13 +14,13 @@ Lists the roles configured for a project.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing roles.
 
-- `limit: optional number`
+- `limit: optional integer (default: 1000)`
 
   A limit on the number of roles to return. Defaults to 1000.
 
   `minimum: 0`, `maximum: 1000`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned roles.
 
@@ -85,7 +85,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -116,7 +116,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -20,7 +20,7 @@ Delete a skill version.
 
   - `deleted: boolean`
 
-  - `object: "skill.version.deleted"`
+  - `object: "skill.version.deleted" (default: "skill.version.deleted")`
 
     - `"skill.version.deleted"`
 
@@ -36,7 +36,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -80,7 +80,7 @@ Updates a webhook endpoint for the authenticated project.
 
   A new HTTPS URL that receives webhook deliveries.
 
-  `maxLength: 2048`
+  `pattern: ^https://`, `maxLength: 2048`
 
 ### Returns
 
@@ -90,7 +90,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -104,7 +104,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -118,7 +118,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -132,7 +132,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

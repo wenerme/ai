@@ -29,7 +29,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   `minLength: 1`, `maxLength: 32000`
 
-- `background: optional "transparent" or "opaque" or "auto" or null`
+- `background: optional "transparent" or "opaque" or "auto" or null (default: "auto")`
 
   Set the background of the generated image output. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their `2026-09-08` snapshots, support `opaque` and `transparent` backgrounds. Transparent backgrounds are available for supported GPT Image models. For `gpt-image-2` and `gpt-image-2-2026-04-21`, this support is in preview. When using `transparent`, set the output format to `png` or `webp`.
 
@@ -76,7 +76,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
     `maxLength: 20971520`, `format: uri`
 
-- `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more or null`
+- `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more or null (default: "gpt-image-2.5-sunburst")`
 
   The GPT image model to use for image editing, including `gpt-image-2`, its dated
   snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
@@ -118,7 +118,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
     - `"chatgpt-image-latest"`
 
-- `moderation: optional "low" or "auto" or null`
+- `moderation: optional "low" or "auto" or null (default: "auto")`
 
   Moderation level for GPT image models.
 
@@ -126,19 +126,19 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `"auto"`
 
-- `n: optional number or null`
+- `n: optional integer or null (default: 1)`
 
   The number of edited images to generate.
 
   `minimum: 1`, `maximum: 10`
 
-- `output_compression: optional number or null`
+- `output_compression: optional integer or null`
 
   Compression level for `jpeg` or `webp` output.
 
   `minimum: 0`, `maximum: 100`
 
-- `output_format: optional "png" or "jpeg" or "webp" or null`
+- `output_format: optional "png" or "jpeg" or "webp" or null (default: "png")`
 
   Output image format. Supported for GPT image models.
 
@@ -148,7 +148,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `"webp"`
 
-- `partial_images: optional number or null`
+- `partial_images: optional integer or null (default: 0)`
 
   The number of partial images to generate. This parameter is used for
   streaming responses that return partial images. Value must be between 0 and 3.
@@ -159,7 +159,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   `minimum: 0`, `maximum: 3`
 
-- `quality: optional "low" or "medium" or "high" or 3 more or null`
+- `quality: optional "low" or "medium" or "high" or 3 more or null (default: "auto")`
 
   Output quality for GPT image models. The GPT image models support `low`, `medium`,
   and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their
@@ -183,7 +183,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   `maxLength: 128`
 
-- `size: optional string or "auto" or "1024x1024" or "1536x1024" or "1024x1536" or null`
+- `size: optional string or "auto" or "1024x1024" or "1536x1024" or "1024x1536" or null (default: "auto")`
 
   The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
 
@@ -201,7 +201,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
     - `"1024x1536"`
 
-- `stream: optional boolean or null`
+- `stream: optional boolean or null (default: false)`
 
   Stream partial image results as events.
 
@@ -215,7 +215,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
   The response from the image generation endpoint.
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the image was created.
 
@@ -295,7 +295,7 @@ Creates an edited or extended image given one or more source images and a prompt
 
     For `gpt-image-1` only, the token usage information for the image generation.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The number of tokens (images and text) in the input prompt.
 
@@ -303,19 +303,19 @@ Creates an edited or extended image given one or more source images and a prompt
 
       The input tokens detailed information for the image generation.
 
-      - `image_tokens: number`
+      - `image_tokens: integer`
 
         The number of image tokens in the input prompt.
 
-      - `text_tokens: number`
+      - `text_tokens: integer`
 
         The number of text tokens in the input prompt.
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The number of output tokens generated by the model.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens (images and text) used for the image generation.
 
@@ -323,11 +323,11 @@ Creates an edited or extended image given one or more source images and a prompt
 
       The output token details for the image generation.
 
-      - `image_tokens: number`
+      - `image_tokens: integer`
 
         The number of image output tokens generated by the model.
 
-      - `text_tokens: number`
+      - `text_tokens: integer`
 
         The number of text output tokens generated by the model.
 
@@ -350,7 +350,7 @@ curl https://api.openai.com/v1/images/edits \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -398,6 +398,47 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F 'prompt=Create a lovely gift basket with these four items in it'
 ```
 
+### JSON request with image URL (json_with_url)
+
+```http
+curl https://api.openai.com/v1/images/edits \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "images": [
+            {
+              "image_url": "https://example.com/source-image.png"
+            }
+          ],
+          "prompt": "Add a watercolor effect to this image",
+          "model": "gpt-image-1.5",
+          "quality": "high",
+          "size": "1024x1024"
+        }'
+```
+
+### JSON request with uploaded file id (json_with_file_id)
+
+```http
+curl https://api.openai.com/v1/images/edits \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "images": [
+            {
+              "file_id": "file-abc123"
+            }
+          ],
+          "prompt": "Replace the background with a snowy mountain scene",
+          "mask": {
+            "file_id": "file-mask123"
+          },
+          "model": "gpt-image-1.5",
+          "output_compression": 100,
+          "output_format": "png"
+        }'
+```
+
 ### Streaming
 
 ```http
@@ -412,7 +453,7 @@ curl -s -N -X POST "https://api.openai.com/v1/images/edits" \
   -F "stream=true"
 ```
 
-#### Response
+#### Response example
 
 ```json
 event: image_edit.partial_image

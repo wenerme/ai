@@ -90,13 +90,13 @@ The client secret is a string that looks like `ek_1234`.
   continue after that time once started. A secret can be used to create multiple sessions
   until it expires.
 
-  - `anchor: optional "created_at"`
+  - `anchor: optional "created_at" (default: "created_at")`
 
     The anchor point for the client secret expiration, meaning that `seconds` will be added to the `created_at` time of the client secret to produce an expiration timestamp. Only `created_at` is currently supported.
 
     - `"created_at"`
 
-  - `seconds: optional number`
+  - `seconds: optional integer (default: 600)`
 
     The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
@@ -108,7 +108,7 @@ The client secret is a string that looks like `ek_1234`.
 
   Response from creating a translation session and client secret for the Realtime API.
 
-  - `expires_at: number`
+  - `expires_at: integer`
 
     Expiration timestamp for the client secret, in seconds since epoch.
 
@@ -157,7 +157,7 @@ The client secret is a string that looks like `ek_1234`.
 
           Target language for translated output audio and transcript deltas.
 
-    - `expires_at: number`
+    - `expires_at: integer`
 
       Expiration timestamp for the session, in seconds since epoch.
 
@@ -191,7 +191,7 @@ curl https://api.openai.com/v1/realtime/translations/client_secrets \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -247,7 +247,7 @@ curl -X POST https://api.openai.com/v1/realtime/translations/client_secrets \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -20,7 +20,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   Ephemeral key returned by the API.
 
-  - `expires_at: number`
+  - `expires_at: integer`
 
     Timestamp for when the token expires. Currently, all tokens expire
     after one minute.
@@ -105,7 +105,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The text input to the model.
 
-      - `type: "input_text"`
+      - `type: "input_text" (default: "input_text")`
 
         The type of the input item. Always `input_text`.
 
@@ -115,7 +115,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -145,7 +145,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"original"`
 
-      - `type: "input_image"`
+      - `type: "input_image" (default: "input_image")`
 
         The type of the input item. Always `input_image`.
 
@@ -165,7 +165,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -183,7 +183,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       A file input to the model.
 
-      - `type: "input_file"`
+      - `type: "input_file" (default: "input_file")`
 
         The type of the input item. Always `input_file`.
 
@@ -221,7 +221,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -239,7 +239,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     Optional version of the prompt template.
 
-- `speed: optional number`
+- `speed: optional number (default: 1)`
 
   The speed of the model's spoken response. 1.0 is the default speed. 0.25 is
   the minimum speed. 1.5 is the maximum speed. This value can only be changed
@@ -351,7 +351,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       Optional custom token limits for this truncation strategy. If not provided, the model's default token limits will be used.
 
-      - `post_instructions: optional number`
+      - `post_instructions: optional integer`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
 
@@ -363,12 +363,12 @@ Returns the created Realtime session object, plus an ephemeral key.
   VAD means that the model will detect the start and end of speech based on
   audio volume and respond at the end of user speech.
 
-  - `prefix_padding_ms: optional number`
+  - `prefix_padding_ms: optional integer`
 
     Amount of audio to include before the VAD detected speech (in
     milliseconds). Defaults to 300ms.
 
-  - `silence_duration_ms: optional number`
+  - `silence_duration_ms: optional integer`
 
     Duration of silence to detect speech stop (in milliseconds). Defaults
     to 500ms. With shorter values the model will respond more quickly,
@@ -537,9 +537,9 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       Configuration for turn detection.
 
-      - `prefix_padding_ms: optional number`
+      - `prefix_padding_ms: optional integer`
 
-      - `silence_duration_ms: optional number`
+      - `silence_duration_ms: optional integer`
 
       - `threshold: optional number`
 
@@ -581,7 +581,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"cedar"`
 
-- `expires_at: optional number`
+- `expires_at: optional integer`
 
   Expiration timestamp for the session, in seconds since epoch.
 
@@ -708,12 +708,12 @@ Returns the created Realtime session object, plus an ephemeral key.
   VAD means that the model will detect the start and end of speech based on
   audio volume and respond at the end of user speech.
 
-  - `prefix_padding_ms: optional number`
+  - `prefix_padding_ms: optional integer`
 
     Amount of audio to include before the VAD detected speech (in
     milliseconds). Defaults to 300ms.
 
-  - `silence_duration_ms: optional number`
+  - `silence_duration_ms: optional integer`
 
     Duration of silence to detect speech stop (in milliseconds). Defaults
     to 500ms. With shorter values the model will respond more quickly,
@@ -743,7 +743,7 @@ curl https://api.openai.com/v1/realtime/sessions \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -824,7 +824,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -971,9 +971,9 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         Configuration for turn detection.
 
-        - `prefix_padding_ms: optional number`
+        - `prefix_padding_ms: optional integer`
 
-        - `silence_duration_ms: optional number`
+        - `silence_duration_ms: optional integer`
 
         - `threshold: optional number`
 
@@ -1015,7 +1015,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           - `"cedar"`
 
-  - `expires_at: optional number`
+  - `expires_at: optional integer`
 
     Expiration timestamp for the session, in seconds since epoch.
 
@@ -1142,12 +1142,12 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
     VAD means that the model will detect the start and end of speech based on
     audio volume and respond at the end of user speech.
 
-    - `prefix_padding_ms: optional number`
+    - `prefix_padding_ms: optional integer`
 
       Amount of audio to include before the VAD detected speech (in
       milliseconds). Defaults to 300ms.
 
-    - `silence_duration_ms: optional number`
+    - `silence_duration_ms: optional integer`
 
       Duration of silence to detect speech stop (in milliseconds). Defaults
       to 500ms. With shorter values the model will respond more quickly,

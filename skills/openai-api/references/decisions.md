@@ -14,7 +14,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
   - `string`
 
+    `minLength: 0`, `maxLength: 10485760`
+
   - `array of DecisionInputUserMessage { content, role, type }  or DecisionInputDeveloperMessage { content, role, type }  or DecisionInputSystemMessage { content, role, type }  or 5 more`
+
+    `minItems: 0`, `maxItems: 131072`
 
     - `DecisionInputUserMessage object { content, role, type }`
 
@@ -26,7 +30,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of DecisionInputPart`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
@@ -34,7 +42,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               `minLength: 0`, `maxLength: 10485760`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
               - `"input_text"`
 
@@ -42,7 +50,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-              - `mode: "explicit"`
+              - `mode: "explicit" (default: "explicit")`
 
                 The breakpoint mode. Always `explicit`.
 
@@ -56,13 +64,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-              `minLength: 0`, `maxLength: 1073741824`
+              `pattern: ^(data:|https?://)`, `minLength: 0`, `maxLength: 1073741824`
 
-            - `type: "input_image"`
+            - `type: "input_image" (default: "input_image")`
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional "low" or "high" or "auto" or "original" or null (default: "auto")`
 
               The image detail level, using the selected model's image profile. Defaults to auto.
 
@@ -78,7 +86,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-              - `mode: "explicit"`
+              - `mode: "explicit" (default: "explicit")`
 
                 The breakpoint mode. Always `explicit`.
 
@@ -94,15 +102,17 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               - `array of map[unknown]`
 
-            - `type: "input_json"`
+                `minItems: 0`
+
+            - `type: "input_json" (default: "input_json")`
 
               - `"input_json"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         - `"user"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         - `"message"`
 
@@ -116,23 +126,27 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of DecisionInputText`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `text: string`
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
           - `prompt_cache_breakpoint: optional object { mode }  or null`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `role: "developer"`
+      - `role: "developer" (default: "developer")`
 
         - `"developer"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         - `"message"`
 
@@ -146,23 +160,27 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of DecisionInputText`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `text: string`
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
           - `prompt_cache_breakpoint: optional object { mode }  or null`
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `role: "system"`
+      - `role: "system" (default: "system")`
 
         - `"system"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         - `"message"`
 
@@ -176,7 +194,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of OutputText { text, type }  or Refusal { refusal, type }`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `OutputText object { text, type }`
 
@@ -184,7 +206,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               `minLength: 0`, `maxLength: 10485760`
 
-            - `type: "output_text"`
+            - `type: "output_text" (default: "output_text")`
 
               - `"output_text"`
 
@@ -194,11 +216,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
               `minLength: 0`, `maxLength: 10485760`
 
-            - `type: "refusal"`
+            - `type: "refusal" (default: "refusal")`
 
               - `"refusal"`
 
-      - `role: "assistant"`
+      - `role: "assistant" (default: "assistant")`
 
         - `"assistant"`
 
@@ -210,7 +232,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `"final_answer"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         - `"message"`
 
@@ -226,9 +248,9 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `name: string`
 
-        `minLength: 1`, `maxLength: 128`
+        `pattern: ^[a-zA-Z0-9_.-]+$`, `minLength: 1`, `maxLength: 128`
 
-      - `type: "function_call"`
+      - `type: "function_call" (default: "function_call")`
 
         - `"function_call"`
 
@@ -238,7 +260,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `namespace: optional string or null`
 
-        `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -260,7 +282,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of DecisionInputText or DecisionInputImage`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
@@ -268,7 +294,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
-      - `type: "function_call_output"`
+      - `type: "function_call_output" (default: "function_call_output")`
 
         - `"function_call_output"`
 
@@ -296,9 +322,9 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `name: string`
 
-        `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
-      - `type: "custom_tool_call"`
+      - `type: "custom_tool_call" (default: "custom_tool_call")`
 
         - `"custom_tool_call"`
 
@@ -308,7 +334,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `namespace: optional string or null`
 
-        `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -330,7 +356,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `Parts = array of DecisionInputText or DecisionInputImage`
+
+          `minItems: 0`, `maxItems: 16384`
 
           - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
@@ -338,7 +368,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             An image provided as a base64 data URL or a publicly accessible HTTP(S) URL. File IDs are not supported.
 
-      - `type: "custom_tool_call_output"`
+      - `type: "custom_tool_call_output" (default: "custom_tool_call_output")`
 
         - `"custom_tool_call_output"`
 
@@ -374,7 +404,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `array of DecisionQuestionInputPart`
+
+        `minItems: 1`, `maxItems: 16384`
 
         - `DecisionQuestionInputText object { text, type }`
 
@@ -382,7 +416,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             - `"input_text"`
 
@@ -394,13 +428,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-            `minLength: 0`, `maxLength: 1073741824`
+            `pattern: ^(data:|https?://)`, `minLength: 0`, `maxLength: 1073741824`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             - `"input_image"`
 
-          - `detail: optional "low" or "high" or "auto" or "original" or null`
+          - `detail: optional "low" or "high" or "auto" or "original" or null (default: "auto")`
 
             The image detail level, using the selected model's image profile. Defaults to auto.
 
@@ -416,7 +450,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
           A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
-    - `type: "predicate"`
+    - `type: "predicate" (default: "predicate")`
 
       The type of the object. Always `predicate`.
 
@@ -442,6 +476,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `string`
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `boolean`
 
       - `description: optional string`
@@ -452,7 +488,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `array of DecisionQuestionInputPart`
+
+        `minItems: 1`, `maxItems: 16384`
 
         - `DecisionQuestionInputText object { text, type }`
 
@@ -464,7 +504,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
           A JSON object or an array of objects rendered as text. Nested values may be any JSON value. Limited to 32 container levels, 10,000 values, and 256 KiB of compact UTF-8 JSON.
 
-    - `type: "choice"`
+    - `type: "choice" (default: "choice")`
 
       The type of the object. Always `choice`.
 
@@ -482,7 +522,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `array of DecisionQuestionInputPart`
+
+        `minItems: 1`, `maxItems: 16384`
 
         - `DecisionQuestionInputText object { text, type }`
 
@@ -506,7 +550,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "score"`
+    - `type: "score" (default: "score")`
 
       The type of the object. Always `score`.
 
@@ -534,7 +578,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     - `"explicit"`
 
-  - `ttl: optional "30m"`
+  - `ttl: optional "30m" (default: "30m")`
 
     The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
 
@@ -564,7 +608,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `probability: number`
 
-      - `type: "predicate"`
+      - `type: "predicate" (default: "predicate")`
 
         The type of the object. Always `predicate`.
 
@@ -577,6 +621,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
         Choice values are typed: a string and a boolean with the same text are distinct.
 
         - `string`
+
+          `minLength: 0`
 
         - `boolean`
 
@@ -598,9 +644,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
           - `string`
 
+            `minLength: 0`
+
           - `boolean`
 
-      - `type: "choice"`
+      - `type: "choice" (default: "choice")`
 
         The type of the object. Always `choice`.
 
@@ -624,13 +672,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         - `probability: number`
 
-        - `value: number`
+        - `value: integer`
 
           `format: int64`
 
       - `score: number`
 
-      - `type: "score"`
+      - `type: "score" (default: "score")`
 
         The type of the object. Always `score`.
 
@@ -644,7 +692,7 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
         `minLength: 0`
 
-      - `type: "refusal"`
+      - `type: "refusal" (default: "refusal")`
 
         The type of the object. Always `refusal`.
 
@@ -660,31 +708,31 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     Token usage for the request.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
-      - `cache_write_tokens: number`
+      - `cache_write_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `output_tokens_details: object { reasoning_tokens }`
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
@@ -706,7 +754,7 @@ curl https://api.openai.com/v1/decisions \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -752,7 +800,7 @@ curl https://api.openai.com/v1/decisions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -790,7 +838,7 @@ curl https://api.openai.com/v1/decisions \
 
       - `probability: number`
 
-      - `type: "predicate"`
+      - `type: "predicate" (default: "predicate")`
 
         The type of the object. Always `predicate`.
 
@@ -803,6 +851,8 @@ curl https://api.openai.com/v1/decisions \
         Choice values are typed: a string and a boolean with the same text are distinct.
 
         - `string`
+
+          `minLength: 0`
 
         - `boolean`
 
@@ -824,9 +874,11 @@ curl https://api.openai.com/v1/decisions \
 
           - `string`
 
+            `minLength: 0`
+
           - `boolean`
 
-      - `type: "choice"`
+      - `type: "choice" (default: "choice")`
 
         The type of the object. Always `choice`.
 
@@ -850,13 +902,13 @@ curl https://api.openai.com/v1/decisions \
 
         - `probability: number`
 
-        - `value: number`
+        - `value: integer`
 
           `format: int64`
 
       - `score: number`
 
-      - `type: "score"`
+      - `type: "score" (default: "score")`
 
         The type of the object. Always `score`.
 
@@ -870,7 +922,7 @@ curl https://api.openai.com/v1/decisions \
 
         `minLength: 0`
 
-      - `type: "refusal"`
+      - `type: "refusal" (default: "refusal")`
 
         The type of the object. Always `refusal`.
 
@@ -886,31 +938,31 @@ curl https://api.openai.com/v1/decisions \
 
     Token usage for the request.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
-      - `cache_write_tokens: number`
+      - `cache_write_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `output_tokens_details: object { reasoning_tokens }`
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
@@ -924,13 +976,13 @@ curl https://api.openai.com/v1/decisions \
 
     A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-    `minLength: 0`, `maxLength: 1073741824`
+    `pattern: ^(data:|https?://)`, `minLength: 0`, `maxLength: 1073741824`
 
-  - `type: "input_image"`
+  - `type: "input_image" (default: "input_image")`
 
     - `"input_image"`
 
-  - `detail: optional "low" or "high" or "auto" or "original" or null`
+  - `detail: optional "low" or "high" or "auto" or "original" or null (default: "auto")`
 
     The image detail level, using the selected model's image profile. Defaults to auto.
 
@@ -946,7 +998,7 @@ curl https://api.openai.com/v1/decisions \
 
     Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `mode: "explicit"`
+    - `mode: "explicit" (default: "explicit")`
 
       The breakpoint mode. Always `explicit`.
 
@@ -968,7 +1020,11 @@ curl https://api.openai.com/v1/decisions \
 
       - `string`
 
+        `minLength: 0`, `maxLength: 10485760`
+
       - `Parts = array of DecisionInputPart`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
@@ -976,7 +1032,7 @@ curl https://api.openai.com/v1/decisions \
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             - `"input_text"`
 
@@ -984,7 +1040,7 @@ curl https://api.openai.com/v1/decisions \
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -998,13 +1054,13 @@ curl https://api.openai.com/v1/decisions \
 
             A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-            `minLength: 0`, `maxLength: 1073741824`
+            `pattern: ^(data:|https?://)`, `minLength: 0`, `maxLength: 1073741824`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             - `"input_image"`
 
-          - `detail: optional "low" or "high" or "auto" or "original" or null`
+          - `detail: optional "low" or "high" or "auto" or "original" or null (default: "auto")`
 
             The image detail level, using the selected model's image profile. Defaults to auto.
 
@@ -1020,7 +1076,7 @@ curl https://api.openai.com/v1/decisions \
 
             Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -1036,15 +1092,17 @@ curl https://api.openai.com/v1/decisions \
 
             - `array of map[unknown]`
 
-          - `type: "input_json"`
+              `minItems: 0`
+
+          - `type: "input_json" (default: "input_json")`
 
             - `"input_json"`
 
-    - `role: "user"`
+    - `role: "user" (default: "user")`
 
       - `"user"`
 
-    - `type: optional "message"`
+    - `type: optional "message" (default: "message")`
 
       - `"message"`
 
@@ -1058,23 +1116,27 @@ curl https://api.openai.com/v1/decisions \
 
       - `string`
 
+        `minLength: 0`, `maxLength: 10485760`
+
       - `Parts = array of DecisionInputText`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `text: string`
 
           `minLength: 0`, `maxLength: 10485760`
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
         - `prompt_cache_breakpoint: optional object { mode }  or null`
 
           Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `role: "developer"`
+    - `role: "developer" (default: "developer")`
 
       - `"developer"`
 
-    - `type: optional "message"`
+    - `type: optional "message" (default: "message")`
 
       - `"message"`
 
@@ -1088,23 +1150,27 @@ curl https://api.openai.com/v1/decisions \
 
       - `string`
 
+        `minLength: 0`, `maxLength: 10485760`
+
       - `Parts = array of DecisionInputText`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `text: string`
 
           `minLength: 0`, `maxLength: 10485760`
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
         - `prompt_cache_breakpoint: optional object { mode }  or null`
 
           Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `role: "system"`
+    - `role: "system" (default: "system")`
 
       - `"system"`
 
-    - `type: optional "message"`
+    - `type: optional "message" (default: "message")`
 
       - `"message"`
 
@@ -1118,7 +1184,11 @@ curl https://api.openai.com/v1/decisions \
 
       - `string`
 
+        `minLength: 0`, `maxLength: 10485760`
+
       - `Parts = array of OutputText { text, type }  or Refusal { refusal, type }`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `OutputText object { text, type }`
 
@@ -1126,7 +1196,7 @@ curl https://api.openai.com/v1/decisions \
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "output_text"`
+          - `type: "output_text" (default: "output_text")`
 
             - `"output_text"`
 
@@ -1136,11 +1206,11 @@ curl https://api.openai.com/v1/decisions \
 
             `minLength: 0`, `maxLength: 10485760`
 
-          - `type: "refusal"`
+          - `type: "refusal" (default: "refusal")`
 
             - `"refusal"`
 
-    - `role: "assistant"`
+    - `role: "assistant" (default: "assistant")`
 
       - `"assistant"`
 
@@ -1152,7 +1222,7 @@ curl https://api.openai.com/v1/decisions \
 
       - `"final_answer"`
 
-    - `type: optional "message"`
+    - `type: optional "message" (default: "message")`
 
       - `"message"`
 
@@ -1168,7 +1238,7 @@ curl https://api.openai.com/v1/decisions \
 
       `minLength: 0`, `maxLength: 10485760`
 
-    - `type: "input_text"`
+    - `type: "input_text" (default: "input_text")`
 
       - `"input_text"`
 
@@ -1176,7 +1246,7 @@ curl https://api.openai.com/v1/decisions \
 
       Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -1190,13 +1260,13 @@ curl https://api.openai.com/v1/decisions \
 
       A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
 
-      `minLength: 0`, `maxLength: 1073741824`
+      `pattern: ^(data:|https?://)`, `minLength: 0`, `maxLength: 1073741824`
 
-    - `type: "input_image"`
+    - `type: "input_image" (default: "input_image")`
 
       - `"input_image"`
 
-    - `detail: optional "low" or "high" or "auto" or "original" or null`
+    - `detail: optional "low" or "high" or "auto" or "original" or null (default: "auto")`
 
       The image detail level, using the selected model's image profile. Defaults to auto.
 
@@ -1212,7 +1282,7 @@ curl https://api.openai.com/v1/decisions \
 
       Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -1228,7 +1298,9 @@ curl https://api.openai.com/v1/decisions \
 
       - `array of map[unknown]`
 
-    - `type: "input_json"`
+        `minItems: 0`
+
+    - `type: "input_json" (default: "input_json")`
 
       - `"input_json"`
 
@@ -1240,7 +1312,7 @@ curl https://api.openai.com/v1/decisions \
 
     `minLength: 0`, `maxLength: 10485760`
 
-  - `type: "input_text"`
+  - `type: "input_text" (default: "input_text")`
 
     - `"input_text"`
 
@@ -1248,7 +1320,7 @@ curl https://api.openai.com/v1/decisions \
 
     Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `mode: "explicit"`
+    - `mode: "explicit" (default: "explicit")`
 
       The breakpoint mode. Always `explicit`.
 

@@ -1506,8 +1506,8 @@
   },
   "grafana-opensearch-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting.md",
-    "size": 15642,
-    "updatedAt": "2026-06-25T05:42:51.449Z"
+    "size": 15996,
+    "updatedAt": "2026-10-29T10:35:24.777Z"
   },
   "grafana-oracle-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/alerting.md",
@@ -1521,33 +1521,33 @@
   },
   "grafana-oracle-datasource/cloud-quickstart.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/cloud-quickstart.md",
-    "size": 5990,
-    "updatedAt": "2026-07-09T04:41:52.894Z"
+    "size": 6350,
+    "updatedAt": "2026-10-29T10:35:25.745Z"
   },
   "grafana-oracle-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure.md",
-    "size": 22462,
-    "updatedAt": "2026-10-21T01:01:51.419Z"
+    "size": 23364,
+    "updatedAt": "2026-10-29T10:35:26.131Z"
   },
   "grafana-oracle-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",
-    "size": 5273,
-    "updatedAt": "2026-07-09T04:41:53.274Z"
+    "size": 5691,
+    "updatedAt": "2026-10-29T10:35:26.453Z"
   },
   "grafana-oracle-datasource/install.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install.md",
-    "size": 11482,
-    "updatedAt": "2026-10-17T00:59:21.315Z"
+    "size": 12554,
+    "updatedAt": "2026-10-29T10:35:26.765Z"
   },
   "grafana-oracle-datasource/kerberos.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos.md",
-    "size": 7126,
-    "updatedAt": "2026-07-21T06:50:26.156Z"
+    "size": 7479,
+    "updatedAt": "2026-10-29T10:35:27.070Z"
   },
   "grafana-oracle-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor.md",
-    "size": 17847,
-    "updatedAt": "2026-10-21T01:01:52.516Z"
+    "size": 19196,
+    "updatedAt": "2026-10-29T10:35:27.410Z"
   },
   "grafana-oracle-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables.md",
@@ -1556,43 +1556,43 @@
   },
   "grafana-oracle-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting.md",
-    "size": 37829,
-    "updatedAt": "2026-10-21T01:01:52.952Z"
+    "size": 39406,
+    "updatedAt": "2026-10-29T10:35:28.088Z"
   },
   "grafana-pagerduty-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest.md",
-    "size": 16877,
-    "updatedAt": "2026-06-25T05:42:54.241Z"
+    "size": 17307,
+    "updatedAt": "2026-10-29T10:35:28.424Z"
   },
   "grafana-pagerduty-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pagerduty-datasource/latest/troubleshooting.md",
-    "size": 15264,
-    "updatedAt": "2026-06-25T05:42:55.259Z"
+    "size": 15561,
+    "updatedAt": "2026-10-29T10:35:28.763Z"
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 13158,
-    "updatedAt": "2026-10-21T01:01:53.608Z"
+    "size": 13587,
+    "updatedAt": "2026-10-29T10:35:29.088Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
-    "size": 8976,
-    "updatedAt": "2026-10-10T16:03:51.644Z"
+    "size": 9156,
+    "updatedAt": "2026-10-29T10:35:29.396Z"
   },
   "grafana-pathfinder-app/block-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
-    "size": 17831,
-    "updatedAt": "2026-10-05T05:28:32.815Z"
+    "size": 18819,
+    "updatedAt": "2026-10-29T10:35:29.722Z"
   },
   "grafana-pathfinder-app/getting-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
-    "size": 7228,
-    "updatedAt": "2026-10-10T16:03:52.030Z"
+    "size": 7597,
+    "updatedAt": "2026-10-29T10:35:30.049Z"
   },
   "grafana-pathfinder-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest.md",
-    "size": 3013,
-    "updatedAt": "2026-10-05T05:28:33.159Z"
+    "size": 3643,
+    "updatedAt": "2026-10-29T10:35:30.366Z"
   },
   "grafana-pathfinder-app/terms-and-conditions.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions.md",
@@ -1601,18 +1601,18 @@
   },
   "grafana-pathfinder-app/upgrade-notes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
-    "size": 7305,
-    "updatedAt": "2026-10-05T05:28:33.513Z"
+    "size": 7485,
+    "updatedAt": "2026-10-29T10:35:31.005Z"
   },
   "grafana-prometheusalerting-app/alerting-rules.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules.md",
-    "size": 1705,
-    "updatedAt": "2026-10-05T05:28:33.691Z"
+    "size": 1819,
+    "updatedAt": "2026-10-29T10:35:31.293Z"
   },
   "grafana-prometheusalerting-app/alerting-rules/create-alert-rule.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-alert-rule.md",
-    "size": 4600,
-    "updatedAt": "2026-09-28T05:14:37.904Z"
+    "size": 4638,
+    "updatedAt": "2026-10-29T10:35:31.626Z"
   },
   "grafana-prometheusalerting-app/alerting-rules/create-recording-rule.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-recording-rule.md",

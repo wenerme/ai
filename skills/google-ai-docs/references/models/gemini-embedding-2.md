@@ -20,3 +20,4 @@ of features and capabilities.
 | Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 8,192 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Stable: `gemini-embedding-2` |
 | Latest update | April 2026 |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding-2) |

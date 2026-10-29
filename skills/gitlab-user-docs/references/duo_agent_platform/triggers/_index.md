@@ -383,6 +383,11 @@ For example, a flow cannot trigger another flow by mentioning the service accoun
 The status change from the settings of a trigger is an exception.
 For more information, see [chain triggers](#chain-triggers).
 
+A trigger with the **Work item** event type and the **Created** action also does not run when:
+
+- The work item is imported from another GitLab instance or another tool, such as GitHub or Jira.
+- The work item is created from an email to [Service Desk](../../project/service_desk/_index.md).
+
 ## GitLab Credits consumption for triggered flows
 
 A flow started by a trigger runs as the trigger's service account with [composite identity](../composite_identity.md).

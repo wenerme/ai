@@ -69,7 +69,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -101,7 +101,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PRO
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

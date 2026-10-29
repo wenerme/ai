@@ -76,17 +76,17 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
     The event type sent in the test.
 
-  - `object: "webhook_endpoint.test"`
+  - `object: "webhook_endpoint.test" (default: "webhook_endpoint.test")`
 
     The object type, which is always webhook_endpoint.test.
 
     - `"webhook_endpoint.test"`
 
-  - `status_code: number`
+  - `status_code: integer`
 
     The HTTP status code returned by the endpoint.
 
-  - `success: true`
+  - `success: true (default: true)`
 
     Whether the test request completed. Always true for returned results; use status_code to determine the endpoint response.
 
@@ -107,7 +107,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID/test \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -22,7 +22,7 @@ Creates a new group in the organization.
 
     Identifier for the group.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was created.
 
@@ -55,7 +55,7 @@ curl https://api.openai.com/v1/organization/groups \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -78,7 +78,7 @@ curl -X POST https://api.openai.com/v1/organization/groups \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

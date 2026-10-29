@@ -10,7 +10,7 @@ List your organization's fine-tuning jobs
 
   Identifier for the last job from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of fine-tuning jobs to retrieve.
 
@@ -27,7 +27,7 @@ List your organization's fine-tuning jobs
 
     The object identifier, which can be referenced in the API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
@@ -59,7 +59,7 @@ List your organization's fine-tuning jobs
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number or null`
+  - `finished_at: integer or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -83,7 +83,7 @@ List your organization's fine-tuning jobs
 
     The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
-  - `seed: number or null`
+  - `seed: integer or null`
 
     The seed used for the fine-tuning job.
 
@@ -107,7 +107,7 @@ List your organization's fine-tuning jobs
 
     - `"paused"`
 
-  - `trained_tokens: number or null`
+  - `trained_tokens: integer or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -119,7 +119,7 @@ List your organization's fine-tuning jobs
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
-  - `estimated_finish: optional number or null`
+  - `estimated_finish: optional integer or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
@@ -129,7 +129,7 @@ List your organization's fine-tuning jobs
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number or null`
+    - `batch_size: optional "auto" or number or null (default: "auto")`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -140,7 +140,9 @@ List your organization's fine-tuning jobs
 
       - `number`
 
-    - `learning_rate_multiplier: optional "auto" or number`
+        `minimum: 1`, `maximum: 256`
+
+    - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
@@ -151,7 +153,9 @@ List your organization's fine-tuning jobs
 
       - `number`
 
-    - `n_epochs: optional "auto" or number`
+        `exclusiveMinimum: 0`
+
+    - `n_epochs: optional "auto" or number (default: "auto")`
 
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
@@ -161,6 +165,8 @@ List your organization's fine-tuning jobs
         - `"auto"`
 
       - `number`
+
+        `minimum: 1`, `maximum: 50`
 
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
@@ -229,7 +235,7 @@ List your organization's fine-tuning jobs
 
         The hyperparameters used for the DPO fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -239,7 +245,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `beta: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `beta: optional "auto" or number (default: "auto")`
 
           The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
@@ -249,7 +257,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `exclusiveMinimum: 0`, `maximum: 2`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -259,7 +269,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -268,6 +280,8 @@ List your organization's fine-tuning jobs
             - `"auto"`
 
           - `number`
+
+            `minimum: 1`, `maximum: 50`
 
     - `reinforcement: optional ReinforcementMethod`
 
@@ -355,7 +369,7 @@ List your organization's fine-tuning jobs
 
             The text being graded against.
 
-          - `type: "text_similarity"`
+          - `type: "text_similarity" (default: "text_similarity")`
 
             The type of grader.
 
@@ -407,7 +421,7 @@ List your organization's fine-tuning jobs
 
                   The text input to the model.
 
-                - `type: "input_text"`
+                - `type: "input_text" (default: "input_text")`
 
                   The type of the input item. Always `input_text`.
 
@@ -417,7 +431,7 @@ List your organization's fine-tuning jobs
 
                   Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                  - `mode: "explicit"`
+                  - `mode: "explicit" (default: "explicit")`
 
                     The breakpoint mode. Always `explicit`.
 
@@ -582,13 +596,13 @@ List your organization's fine-tuning jobs
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number or null`
+            - `max_completions_tokens: optional integer or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
               `minimum: 1`
 
-            - `reasoning_effort: optional ReasoningEffort or null`
+            - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -612,7 +626,7 @@ List your organization's fine-tuning jobs
 
               - `"max"`
 
-            - `seed: optional number or null`
+            - `seed: optional integer or null`
 
               A seed value to initialize the randomness, during sampling.
 
@@ -620,7 +634,7 @@ List your organization's fine-tuning jobs
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number or null`
+            - `top_p: optional number or null (default: 1)`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -757,7 +771,7 @@ List your organization's fine-tuning jobs
 
             The name of the grader.
 
-          - `type: "multi"`
+          - `type: "multi" (default: "multi")`
 
             The object type, which is always `multi`.
 
@@ -767,7 +781,7 @@ List your organization's fine-tuning jobs
 
         The hyperparameters used for the reinforcement fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -777,7 +791,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `compute_multiplier: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `compute_multiplier: optional "auto" or number (default: "auto")`
 
           Multiplier on amount of compute used for exploring search space during training.
 
@@ -787,7 +803,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `eval_interval: optional "auto" or number`
+            `exclusiveMinimum: 0.00001`, `maximum: 10`
+
+        - `eval_interval: optional "auto" or number (default: "auto")`
 
           The number of training steps between evaluation runs.
 
@@ -797,7 +815,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `eval_samples: optional "auto" or number`
+            `minimum: 1`
+
+        - `eval_samples: optional "auto" or number (default: "auto")`
 
           Number of evaluation samples to generate per training step.
 
@@ -807,7 +827,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `minimum: 1`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -817,7 +839,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -827,7 +851,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
+            `minimum: 1`, `maximum: 50`
+
+        - `reasoning_effort: optional "default" or "low" or "medium" or "high" (default: "default")`
 
           Level of reasoning effort.
 
@@ -847,7 +873,7 @@ List your organization's fine-tuning jobs
 
         The hyperparameters used for the fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -857,7 +883,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -867,7 +895,9 @@ List your organization's fine-tuning jobs
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -876,6 +906,8 @@ List your organization's fine-tuning jobs
             - `"auto"`
 
           - `number`
+
+            `minimum: 1`, `maximum: 50`
 
 - `has_more: boolean`
 
@@ -890,7 +922,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -988,7 +1020,7 @@ curl "https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

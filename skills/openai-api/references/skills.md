@@ -16,6 +16,8 @@ Create a new skill.
 
     Skill files to upload (directory upload) or a single zip file.
 
+    `maxItems: 500`
+
   - `string`
 
     Skill zip file to upload.
@@ -28,7 +30,7 @@ Create a new skill.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -50,7 +52,7 @@ Create a new skill.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -69,7 +71,7 @@ curl https://api.openai.com/v1/skills \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -101,7 +103,7 @@ Delete a skill by its ID.
 
   - `deleted: boolean`
 
-  - `object: "skill.deleted"`
+  - `object: "skill.deleted" (default: "skill.deleted")`
 
     - `"skill.deleted"`
 
@@ -113,7 +115,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -135,7 +137,7 @@ List all skills for the current project.
 
   Identifier for the last item from the previous pagination request
 
-- `limit: optional number`
+- `limit: optional integer`
 
   Number of items to retrieve
 
@@ -161,7 +163,7 @@ List all skills for the current project.
 
       Unique identifier for the skill.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (seconds) for when the skill was created.
 
@@ -183,7 +185,7 @@ List all skills for the current project.
 
       Name of the skill.
 
-    - `object: "skill"`
+    - `object: "skill" (default: "skill")`
 
       The object type, which is `skill`.
 
@@ -201,7 +203,7 @@ List all skills for the current project.
 
     The ID of the last item in the list.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The type of object returned, must be `list`.
 
@@ -214,7 +216,7 @@ curl https://api.openai.com/v1/skills \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -254,7 +256,7 @@ Get a skill by its ID.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -276,7 +278,7 @@ Get a skill by its ID.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -289,7 +291,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -327,7 +329,7 @@ Update the default version pointer for a skill.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -349,7 +351,7 @@ Update the default version pointer for a skill.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -366,7 +368,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -390,7 +392,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
   - `deleted: boolean`
 
-  - `object: "skill.deleted"`
+  - `object: "skill.deleted" (default: "skill.deleted")`
 
     - `"skill.deleted"`
 
@@ -402,7 +404,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -424,7 +426,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -442,7 +444,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
       Unique identifier for the skill.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (seconds) for when the skill was created.
 
@@ -464,7 +466,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
       Name of the skill.
 
-    - `object: "skill"`
+    - `object: "skill" (default: "skill")`
 
       The object type, which is `skill`.
 
@@ -482,7 +484,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 
     The ID of the last item in the list.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The type of object returned, must be `list`.
 
@@ -529,6 +531,8 @@ Create a new immutable skill version.
 
     Skill files to upload (directory upload) or a single zip file.
 
+    `maxItems: 500`
+
   - `string`
 
     Skill zip file to upload.
@@ -545,7 +549,7 @@ Create a new immutable skill version.
 
     Unique identifier for the skill version.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the version was created.
 
@@ -559,7 +563,7 @@ Create a new immutable skill version.
 
     Name of the skill version.
 
-  - `object: "skill.version"`
+  - `object: "skill.version" (default: "skill.version")`
 
     The object type, which is `skill.version`.
 
@@ -586,7 +590,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -622,7 +626,7 @@ Delete a skill version.
 
   - `deleted: boolean`
 
-  - `object: "skill.version.deleted"`
+  - `object: "skill.version.deleted" (default: "skill.version.deleted")`
 
     - `"skill.version.deleted"`
 
@@ -638,7 +642,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -665,7 +669,7 @@ List skill versions for a skill.
 
   The skill version ID to start after.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   Number of versions to retrieve.
 
@@ -691,7 +695,7 @@ List skill versions for a skill.
 
       Unique identifier for the skill version.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (seconds) for when the version was created.
 
@@ -705,7 +709,7 @@ List skill versions for a skill.
 
       Name of the skill version.
 
-    - `object: "skill.version"`
+    - `object: "skill.version" (default: "skill.version")`
 
       The object type, which is `skill.version`.
 
@@ -731,7 +735,7 @@ List skill versions for a skill.
 
     The ID of the last item in the list.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The type of object returned, must be `list`.
 
@@ -744,7 +748,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -788,7 +792,7 @@ Get a specific skill version.
 
     Unique identifier for the skill version.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the version was created.
 
@@ -802,7 +806,7 @@ Get a specific skill version.
 
     Name of the skill version.
 
-  - `object: "skill.version"`
+  - `object: "skill.version" (default: "skill.version")`
 
     The object type, which is `skill.version`.
 
@@ -823,7 +827,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -847,7 +851,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
   - `deleted: boolean`
 
-  - `object: "skill.version.deleted"`
+  - `object: "skill.version.deleted" (default: "skill.version.deleted")`
 
     - `"skill.version.deleted"`
 
@@ -863,7 +867,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
     Unique identifier for the skill version.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the version was created.
 
@@ -877,7 +881,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
     Name of the skill version.
 
-  - `object: "skill.version"`
+  - `object: "skill.version" (default: "skill.version")`
 
     The object type, which is `skill.version`.
 
@@ -903,7 +907,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
       Unique identifier for the skill version.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (seconds) for when the version was created.
 
@@ -917,7 +921,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
       Name of the skill version.
 
-    - `object: "skill.version"`
+    - `object: "skill.version" (default: "skill.version")`
 
       The object type, which is `skill.version`.
 
@@ -943,7 +947,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
     The ID of the last item in the list.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The type of object returned, must be `list`.
 

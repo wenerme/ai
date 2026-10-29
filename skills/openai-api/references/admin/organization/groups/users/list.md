@@ -14,13 +14,13 @@ Lists the users assigned to a group.
 
   A cursor for use in pagination. Provide the ID of the last user from the previous list response to retrieve the next page.
 
-- `limit: optional number`
+- `limit: optional integer (default: 100)`
 
   A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
 
   `minimum: 0`, `maximum: 1000`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   Specifies the sort order of users in the list.
 
@@ -67,7 +67,7 @@ curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -92,7 +92,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?lim
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

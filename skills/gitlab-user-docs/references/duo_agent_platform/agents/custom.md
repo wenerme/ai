@@ -169,6 +169,7 @@ To enable an agent:
 
    To turn on a public or restricted agent for multiple projects, from the **Project** dropdown list,
    select the relevant projects. You can select up to 100 projects.
+   You can enable an agent for multiple projects up to 10 times per minute.
 
 1. Select **Enable**.
 

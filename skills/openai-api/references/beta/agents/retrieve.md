@@ -12,7 +12,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
 ### Returns
 
-- `Agent object { id, created_at, instructions, 11 more }`
+- `Agent object { id, created_at, instructions, 12 more }`
 
   A reusable agent scoped to the caller's project.
 
@@ -22,7 +22,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the agent was created.
 
@@ -52,7 +52,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
       Whether subagent tools are enabled. Defaults to false.
 
-    - `max_concurrent_subagents: number or null`
+    - `max_concurrent_subagents: integer or null`
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -64,7 +64,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
     `minLength: 0`
 
-  - `object: "agent"`
+  - `object: "agent" (default: "agent")`
 
     The object type. Always `agent`.
 
@@ -136,7 +136,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         Generates ordinary text without a structured-output constraint.
 
-        - `type: "text"`
+        - `type: "text" (default: "text")`
 
           The type of the object. Always `text`.
 
@@ -150,7 +150,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
           The JSON Schema that generated text must match.
 
-        - `type: "json_schema"`
+        - `type: "json_schema" (default: "json_schema")`
 
           The type of the object. Always `json_schema`.
 
@@ -196,7 +196,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         A JSON Schema object describing the function's arguments.
 
-      - `type: "function"`
+      - `type: "function" (default: "function")`
 
         The type of the object. Always `function`.
 
@@ -206,7 +206,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
       Discovers deferred function tools and loads them into the model context.
 
-      - `type: "tool_search"`
+      - `type: "tool_search" (default: "tool_search")`
 
         The type of the object. Always `tool_search`.
 
@@ -220,7 +220,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         Whether tools can be called from model-generated code.
 
-      - `type: "programmatic_tool_calling"`
+      - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
         The type of the object. Always `programmatic_tool_calling`.
 
@@ -282,7 +282,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
             `minLength: 0`
 
-          - `type: "http"`
+          - `type: "http" (default: "http")`
 
             The type of the object. Always `http`.
 
@@ -316,13 +316,13 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
             `minItems: 0`, `maxItems: 2000`
 
-          - `type: "stdio"`
+          - `type: "stdio" (default: "stdio")`
 
             The type of the object. Always `stdio`.
 
             - `"stdio"`
 
-      - `type: "mcp"`
+      - `type: "mcp" (default: "mcp")`
 
         The type of the object. Always `mcp`.
 
@@ -386,7 +386,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         - `"live"`
 
-      - `type: "web_search"`
+      - `type: "web_search" (default: "web_search")`
 
         The type of the object. Always `web_search`.
 
@@ -400,7 +400,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         Whether computer tool outputs include screenshots.
 
-      - `type: "computer_use"`
+      - `type: "computer_use" (default: "computer_use")`
 
         The type of the object. Always `computer_use`.
 
@@ -410,13 +410,13 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
       Lets the agent manage its own scheduled wakeups.
 
-      - `type: "automations"`
+      - `type: "automations" (default: "automations")`
 
         The type of the object. Always `automations`.
 
         - `"automations"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the agent was last updated.
 
@@ -430,6 +430,14 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
       Whether context is compacted in the background. Defaults to true.
 
+  - `experimental: optional object { time_awareness }`
+
+    The effective experimental settings for the agent.
+
+    - `time_awareness: boolean`
+
+      Whether the model receives periodic current-time reminders.
+
 ### Example
 
 ```http
@@ -438,7 +446,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -480,6 +488,9 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
   "updated_at": 0,
   "compaction": {
     "async": true
+  },
+  "experimental": {
+    "time_awareness": true
   }
 }
 ```

@@ -171,10 +171,12 @@ connection.session.update(
   tool_choice: :auto
 )
 
-connection.each do |event|
+updated = connection.find do |event|
   raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
-  break if event.is_a?(OpenAI::Realtime::SessionUpdatedEvent)
+
+  event.is_a?(OpenAI::Realtime::SessionUpdatedEvent)
 end
+raise "Connection closed before the session update was acknowledged" unless updated
 ```
 
 

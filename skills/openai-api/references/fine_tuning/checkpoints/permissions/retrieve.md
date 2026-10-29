@@ -16,11 +16,11 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
   Identifier for the last permission ID from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 10)`
 
   Number of permissions to retrieve.
 
-- `order: optional "ascending" or "descending"`
+- `order: optional "ascending" or "descending" (default: "descending")`
 
   The order in which to retrieve permissions.
 
@@ -40,7 +40,7 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The permission identifier, which can be referenced in the API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the permission was created.
 
@@ -73,7 +73,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/$FINE_TUNED_MODEL_CHECKPO
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -99,7 +99,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

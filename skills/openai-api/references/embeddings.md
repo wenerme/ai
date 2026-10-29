@@ -20,13 +20,19 @@ Creates an embedding vector representing the input text.
 
     The array of strings that will be turned into an embedding.
 
+    `minItems: 1`, `maxItems: 2048`
+
   - `Array = array of number`
 
     The array of integers that will be turned into an embedding.
 
+    `minItems: 1`, `maxItems: 2048`
+
   - `Array = array of array of number`
 
     The array of arrays containing integers that will be turned into an embedding.
+
+    `minItems: 1`, `maxItems: 2048`
 
 - `model: string or EmbeddingModel`
 
@@ -42,13 +48,13 @@ Creates an embedding vector representing the input text.
 
     - `"text-embedding-3-large"`
 
-- `dimensions: optional number`
+- `dimensions: optional integer`
 
   The number of dimensions the resulting output embeddings should have. Only supported in `text-embedding-3` and later models.
 
   `minimum: 1`
 
-- `encoding_format: optional "float" or "base64"`
+- `encoding_format: optional "float" or "base64" (default: "float")`
 
   The format to return the embeddings in. Can be either `float` or [`base64`](https://pypi.org/project/pybase64/).
 
@@ -76,7 +82,7 @@ Creates an embedding vector representing the input text.
 
       - `string`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the embedding in the list of embeddings.
 
@@ -100,11 +106,11 @@ Creates an embedding vector representing the input text.
 
     The usage information for the request.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer`
 
       The number of tokens used by the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens used by the request.
 
@@ -122,7 +128,7 @@ curl https://api.openai.com/v1/embeddings \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -158,7 +164,7 @@ curl https://api.openai.com/v1/embeddings \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -200,7 +206,7 @@ curl https://api.openai.com/v1/embeddings \
 
       - `string`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the embedding in the list of embeddings.
 
@@ -224,11 +230,11 @@ curl https://api.openai.com/v1/embeddings \
 
     The usage information for the request.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer`
 
       The number of tokens used by the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens used by the request.
 
@@ -246,7 +252,7 @@ curl https://api.openai.com/v1/embeddings \
 
     - `string`
 
-  - `index: number`
+  - `index: integer`
 
     The index of the embedding in the list of embeddings.
 

@@ -116,6 +116,46 @@ OCS resolves vulnerabilities that are no longer found in your cluster after each
 
 If multiple clusters are configured in the same project, an OCS scan in one cluster (for example, Project A) would resolve previously detected vulnerabilities from another cluster (for example, Project B), leading to incorrect vulnerability reporting.
 
+Each vulnerability is associated with the agent that reported it. If you register a new agent for a cluster,
+scans from the new agent do not resolve vulnerabilities reported by the previous agent.
+To clean up these vulnerabilities, [change their status](../../application_security/vulnerability_report/_index.md#change-status-of-vulnerabilities) manually.
+If you delete the previous agent, these vulnerabilities no longer show which agent reported them.
+
+## Permissions for reporting vulnerabilities
+
+OCS creates and resolves vulnerabilities on behalf of the user who registered the agent.
+This user must have the Security Manager, Maintainer, or Owner role for the project that contains the agent.
+
+If this user loses access to the project or no longer has one of these roles (for example, because
+their account is blocked or removed from the group), GitLab rejects the scan results from the agent.
+Vulnerabilities are no longer created or resolved for that cluster.
+The agent logs `create starboard vulnerability api request failed with status: 403` for each vulnerability,
+followed by `Some vulnerabilities failed to create, skipping vulnerability resolution`.
+
+### Register the agent with a service account
+
+To avoid depending on an individual user account, register the agent with a
+[service account](../../profile/service_accounts.md).
+
+Prerequisites:
+
+- You must have permission to create a service account and add it to the project.
+- You must have the Maintainer or Owner role for the project.
+
+To register the agent with a service account:
+
+1. [Create a service account](../../profile/service_accounts.md#create-a-service-account) and
+   [add it to the project](../../profile/service_accounts.md#add-a-service-account-to-a-group-or-project)
+   with the Maintainer role.
+1. [Create a personal access token](../../profile/service_accounts.md#create-a-personal-access-token-for-a-service-account)
+   for the service account with the `api` scope.
+1. With the service account's token, [register the agent](../../../api/cluster_agents.md#create-an-agent)
+   and [create an agent token](../../../api/cluster_agents.md#create-an-agent-token).
+1. Install the agent in your cluster with the agent token.
+
+After you create the agent token, you can revoke the service account's personal access token.
+OCS uses the service account's role in the project, not its personal access token.
+
 ## Configure scanner resource requirements
 
 By default the scanner pod's default resource requirements are:
@@ -313,7 +353,7 @@ Another message indicative of this issue may be: `OCS Scanning pod evicted due t
 
 OCS might fail to complete a scan if it takes Trivy too long to complete the scan. The default scan timeout is 5 minutes, with an extra 15 minutes for the agent to read the results and transmit the vulnerabilities.
 
-To resolve this, [configure the scanner timeout](#configure-scan-timeout) to increase the amount of memory available.
+To resolve this, [configure the scanner timeout](#configure-scan-timeout) to increase the time available for the scan.
 
 ### `trivy report size limit exceeded`
 

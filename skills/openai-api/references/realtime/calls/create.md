@@ -23,7 +23,7 @@ curl -X POST https://api.openai.com/v1/realtime/calls \
   -F 'session={"type":"realtime","model":"gpt-realtime"};type=application/json'
 ```
 
-#### Response
+#### Response example
 
 ```json
 v=0

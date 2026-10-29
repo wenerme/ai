@@ -24,7 +24,7 @@ Deletes the automation and prevents future invocations without deleting its targ
 
     Always true.
 
-  - `object: "agent.automation.deleted"`
+  - `object: "agent.automation.deleted" (default: "agent.automation.deleted")`
 
     Always `agent.automation.deleted`.
 
@@ -39,7 +39,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

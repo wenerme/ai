@@ -48,7 +48,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "file_id"`
+    - `type: "file_id" (default: "file_id")`
 
       The type of the object. Always `file_id`.
 
@@ -70,7 +70,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -164,7 +164,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 70254592`
 
-    - `media_type: "application/zip"`
+    - `media_type: "application/zip" (default: "application/zip")`
 
       The archive media type, always `application/zip`.
 
@@ -172,13 +172,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         A ZIP archive.
 
-    - `type: "base64"`
+    - `type: "base64" (default: "base64")`
 
       The type of the object. Always `base64`.
 
       - `"base64"`
 
-  - `type: "inline"`
+  - `type: "inline" (default: "inline")`
 
     The type of the object. Always `inline`.
 
@@ -218,7 +218,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 64`
 
-    - `type: "skill_reference"`
+    - `type: "skill_reference" (default: "skill_reference")`
 
       The type of the object. Always `skill_reference`.
 
@@ -250,7 +250,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       Provides ZIP bytes encoded with standard base64.
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -274,7 +274,7 @@ Creates reusable environment configuration without returning confidential setup 
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -310,7 +310,7 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -326,13 +326,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -370,7 +370,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -416,7 +416,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -438,7 +438,7 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -466,13 +466,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -487,7 +487,7 @@ curl https://api.openai.com/v1/agents/environments/templates \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -571,7 +571,7 @@ Deletes reusable environment configuration and all confidential template inputs.
 
     Whether the environment template was deleted. Always `true`.
 
-  - `object: "agent.environment.template.deleted"`
+  - `object: "agent.environment.template.deleted" (default: "agent.environment.template.deleted")`
 
     The object type. Always `agent.environment.template.deleted`.
 
@@ -586,7 +586,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -610,13 +610,13 @@ Lists reusable environment templates without returning confidential values. See 
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -648,7 +648,7 @@ Lists reusable environment templates without returning confidential values. See 
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -684,7 +684,7 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -700,13 +700,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -744,7 +744,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -790,7 +790,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -812,7 +812,7 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -840,13 +840,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -868,7 +868,7 @@ Lists reusable environment templates without returning confidential values. See 
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -882,7 +882,7 @@ curl https://api.openai.com/v1/agents/environments/templates \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -976,7 +976,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -1012,7 +1012,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -1028,13 +1028,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -1072,7 +1072,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -1118,7 +1118,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -1140,7 +1140,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -1168,13 +1168,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -1188,7 +1188,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1298,7 +1298,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "file_id"`
+    - `type: "file_id" (default: "file_id")`
 
       The type of the object. Always `file_id`.
 
@@ -1320,7 +1320,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -1414,7 +1414,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minLength: 1`, `maxLength: 70254592`
 
-    - `media_type: "application/zip"`
+    - `media_type: "application/zip" (default: "application/zip")`
 
       The archive media type, always `application/zip`.
 
@@ -1422,13 +1422,13 @@ Updates reusable environment configuration without returning confidential values
 
         A ZIP archive.
 
-    - `type: "base64"`
+    - `type: "base64" (default: "base64")`
 
       The type of the object. Always `base64`.
 
       - `"base64"`
 
-  - `type: "inline"`
+  - `type: "inline" (default: "inline")`
 
     The type of the object. Always `inline`.
 
@@ -1468,7 +1468,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minLength: 1`, `maxLength: 64`
 
-    - `type: "skill_reference"`
+    - `type: "skill_reference" (default: "skill_reference")`
 
       The type of the object. Always `skill_reference`.
 
@@ -1500,7 +1500,7 @@ Updates reusable environment configuration without returning confidential values
 
       Provides ZIP bytes encoded with standard base64.
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -1524,7 +1524,7 @@ Updates reusable environment configuration without returning confidential values
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -1560,7 +1560,7 @@ Updates reusable environment configuration without returning confidential values
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -1576,13 +1576,13 @@ Updates reusable environment configuration without returning confidential values
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -1620,7 +1620,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -1666,7 +1666,7 @@ Updates reusable environment configuration without returning confidential values
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -1688,7 +1688,7 @@ Updates reusable environment configuration without returning confidential values
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -1716,13 +1716,13 @@ Updates reusable environment configuration without returning confidential values
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -1737,7 +1737,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1813,7 +1813,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -1849,7 +1849,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -1865,13 +1865,13 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -1909,7 +1909,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -1955,7 +1955,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -1977,7 +1977,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -2005,13 +2005,13 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -2033,7 +2033,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
     Whether the environment template was deleted. Always `true`.
 
-  - `object: "agent.environment.template.deleted"`
+  - `object: "agent.environment.template.deleted" (default: "agent.environment.template.deleted")`
 
     The object type. Always `agent.environment.template.deleted`.
 

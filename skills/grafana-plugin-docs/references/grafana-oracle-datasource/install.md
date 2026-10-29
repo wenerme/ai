@@ -7,7 +7,7 @@ description: "Install and upgrade the Oracle data source plugin for Grafana."
 
 # Install and upgrade the Oracle data source plugin
 
-This document covers how to install, upgrade, and verify the Oracle data source plugin across different Grafana deployment environments. Once the plugin is installed, refer to [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/) to set up a connection.
+This document covers how to install, upgrade, and verify the Oracle data source plugin across different Grafana deployment environments. Once the plugin is installed, refer to [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/) to set up a connection.
 
 ## Before you begin
 
@@ -15,12 +15,12 @@ Verify the following requirements before installing:
 
 Expand table
 
-| Requirement         | Details                                                                                                                                                            |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **License**         | Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-oracle-datasource`.                                        |
-| **Grafana version** | 11.6.7 or later. Refer to the [version compatibility](#version-compatibility) table for older plugin versions.                                                     |
-| **Architecture**    | `linux/amd64` only. ARM64 (including Apple Silicon) is not supported.                                                                                              |
-| **Network access**  | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to `grafana.com` or a local plugin ZIP. |
+| Requirement         | Details                                                                                                                                                                                  |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **License**         | Grafana Cloud Pro or Advanced plan, or a self-managed Grafana Enterprise license that includes `grafana-oracle-datasource`.                                                              |
+| **Grafana version** | 11.6.7 or later. Refer to the [version compatibility](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install/#version-compatibility) table for older plugin versions. |
+| **Architecture**    | `linux/amd64` only. ARM64 (including Apple Silicon) is not supported.                                                                                                                    |
+| **Network access**  | Grafana Cloud instances require internet access to download the plugin from the catalog. Self-managed installs need access to `grafana.com` or a local plugin ZIP.                       |
 
 ## Install the plugin
 
@@ -32,7 +32,7 @@ The plugin is available to install from the plugin catalog on Pro and Advanced p
 
 ### Self-managed Grafana (CLI)
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-oracle-datasource
@@ -44,7 +44,7 @@ Restart Grafana after installation.
 
 Set the `GF_INSTALL_PLUGINS` environment variable:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -56,7 +56,7 @@ environment:
 
 Add the plugin to your Helm values:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 plugins:
@@ -67,7 +67,7 @@ envFromSecret: grafana-license-secret
 
 Or use the `GF_INSTALL_PLUGINS` environment variable in your deployment spec:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 env:
@@ -88,7 +88,7 @@ env:
 
 If you don’t control the Helm chart (for example, on a shared platform cluster), use an init container to download the plugin before Grafana starts:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 initContainers:
@@ -112,18 +112,18 @@ Mount the same volume at `/var/lib/grafana/plugins` in the Grafana container.
 
 For environments without internet access:
 
-1. Download the plugin ZIP from your [Grafana account portal](/orgs) on a machine with internet access.
+1. Download the plugin ZIP from your [Grafana account portal](https://grafana.com/orgs) on a machine with internet access.
 2. Transfer the ZIP to the Grafana server.
 3. Extract to the plugins directory:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    unzip grafana-oracle-datasource-3.5.1.linux_amd64.zip -d /var/lib/grafana/plugins/
    ```
 4. Set ownership:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    chown -R grafana:grafana /var/lib/grafana/plugins/grafana-oracle-datasource
@@ -136,7 +136,7 @@ After installing, confirm the plugin is loaded:
 
 1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
 2. Search for “Oracle” and verify the plugin appears with a status of **Installed**.
-3. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshooting: Licensing issues](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#licensing-issues).
+3. If the plugin doesn’t appear, check the Grafana server logs for errors and refer to [Troubleshooting: Licensing issues](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#licensing-issues).
 
 ## Upgrade the plugin
 
@@ -163,7 +163,7 @@ Expand table
 1. **Back up data source settings** before upgrading (export via API or note current configuration).
 2. Install the new plugin version:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins update grafana-oracle-datasource
@@ -176,22 +176,22 @@ Expand table
 
 Expand table
 
-| Symptom                                                     | Solution                                                                                                                                                                                                                                                                                                                                                                                     |
-|-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `oracle-plugin_linux_amd64: no such file or directory`      | The plugin binary is missing. Reinstall using `grafana cli plugins install grafana-oracle-datasource` and restart Grafana.                                                                                                                                                                                                                                                                   |
-| `Could not load plugin: 404 Not Found`                      | The plugin files are corrupted. Uninstall (`grafana cli plugins remove grafana-oracle-datasource`), reinstall, and restart.                                                                                                                                                                                                                                                                  |
-| “Unsigned plugin” error                                     | This indicates an incomplete or corrupted copy, not a plugin that must be allowed as unsigned. Re-download the official signed ZIP from your [Grafana account portal](/orgs), extract the complete plugin directory including `MANIFEST.txt`, ensure the folder name matches the plugin ID `grafana-oracle-datasource`, and confirm the architecture is `linux/amd64`. Then restart Grafana. |
-| Plugin is disabled or fails to load after upgrading Grafana | An outdated plugin version can be incompatible with a newer Grafana. Update to the latest version with `grafana cli plugins update grafana-oracle-datasource`, confirm it meets the [version compatibility](#version-compatibility) requirements, and restart Grafana.                                                                                                                       |
-| Plugin doesn’t load after a major Grafana upgrade           | Verify the plugin directory ownership and permissions: `chown -R grafana:grafana /var/lib/grafana/plugins/grafana-oracle-datasource`. On Grafana Cloud, where the plugin updates automatically, contact [Grafana Support](/support/) if a failed update leaves the plugin unavailable.                                                                                                       |
-| Data source settings corrupted after upgrade                | Re-enter connection details and click **Save &amp; test**. For provisioned data sources, redeploy the provisioning YAML.                                                                                                                                                                                                                                                                     |
+| Symptom                                                     | Solution                                                                                                                                                                                                                                                                                                                                                                                                        |
+|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `oracle-plugin_linux_amd64: no such file or directory`      | The plugin binary is missing. Reinstall using `grafana cli plugins install grafana-oracle-datasource` and restart Grafana.                                                                                                                                                                                                                                                                                      |
+| `Could not load plugin: 404 Not Found`                      | The plugin files are corrupted. Uninstall (`grafana cli plugins remove grafana-oracle-datasource`), reinstall, and restart.                                                                                                                                                                                                                                                                                     |
+| “Unsigned plugin” error                                     | This indicates an incomplete or corrupted copy, not a plugin that must be allowed as unsigned. Re-download the official signed ZIP from your [Grafana account portal](https://grafana.com/orgs), extract the complete plugin directory including `MANIFEST.txt`, ensure the folder name matches the plugin ID `grafana-oracle-datasource`, and confirm the architecture is `linux/amd64`. Then restart Grafana. |
+| Plugin is disabled or fails to load after upgrading Grafana | An outdated plugin version can be incompatible with a newer Grafana. Update to the latest version with `grafana cli plugins update grafana-oracle-datasource`, confirm it meets the [version compatibility](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install/#version-compatibility) requirements, and restart Grafana.                                                                |
+| Plugin doesn’t load after a major Grafana upgrade           | Verify the plugin directory ownership and permissions: `chown -R grafana:grafana /var/lib/grafana/plugins/grafana-oracle-datasource`. On Grafana Cloud, where the plugin updates automatically, contact [Grafana Support](https://grafana.com/support/) if a failed update leaves the plugin unavailable.                                                                                                       |
+| Data source settings corrupted after upgrade                | Re-enter connection details and click **Save &amp; test**. For provisioned data sources, redeploy the provisioning YAML.                                                                                                                                                                                                                                                                                        |
 
-Refer to [Upgrade from v2.x to v3.x](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#upgrade-from-v2x-to-v3x) for breaking changes specific to the v3 migration.
+Refer to [Upgrade from v2.x to v3.x](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#upgrade-from-v2x-to-v3x) for breaking changes specific to the v3 migration.
 
 ### Roll back to a previous version
 
 If an upgrade causes issues, you can pin a specific plugin version:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins install grafana-oracle-datasource 3.3.3
@@ -199,7 +199,7 @@ grafana cli plugins install grafana-oracle-datasource 3.3.3
 
 Restart Grafana after the rollback. For Docker or Kubernetes, append the version to the plugin name:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 environment:
@@ -208,13 +208,13 @@ environment:
 
 > Note
 >
-> Rollback is not available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](/support/).
+> Rollback is not available on Grafana Cloud. If you experience issues after an automatic update, contact [Grafana Support](https://grafana.com/support/).
 
 ## Uninstall the plugin
 
 To remove the Oracle plugin from a self-managed Grafana instance:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 grafana cli plugins remove grafana-oracle-datasource

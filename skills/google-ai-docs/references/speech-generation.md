@@ -159,9 +159,6 @@ specifying the `speaker` and optional turn-level `style`. Notice that
 `speech_config` accepts an array (`[{"voice": "..."}]`) for single-speaker
 generation and an object (`{"speakers": [...]}`) for multi-speaker generation:
 
-> [!NOTE]
-> **Note:** The REST API also supports `"mode": "conversational"` inside `speech_config` for natural turn-taking cadence, while `google-genai` version 2.25.0 and later (Python) and `@google/genai` version 2.24.0 and later (JavaScript/TypeScript) accept `{"speakers": [...]}` on `SpeakerConfig`.
-
 ### Python
 
     import base64
@@ -293,7 +290,6 @@ generation and an object (`{"speakers": [...]}`) for multi-speaker generation:
         },
         "generation_config": {
           "speech_config": {
-            "mode": "conversational",
             "speakers": [
               { "speaker": "Joe", "voice": "Puck" },
               { "speaker": "Jane", "voice": "Kore" }

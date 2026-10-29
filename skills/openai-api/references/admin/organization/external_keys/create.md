@@ -26,7 +26,9 @@ Add an external key config for an organization
 
       The Role ARN that OpenAI will assume to call your KMS
 
-    - `type: "aws"`
+      `pattern: ^arn:aws:iam::\d{12}:role/.+$`
+
+    - `type: "aws" (default: "aws")`
 
       - `"aws"`
 
@@ -62,7 +64,7 @@ Add an external key config for an organization
 
       A friendly name to identify this config
 
-    - `type: "gcp"`
+    - `type: "gcp" (default: "gcp")`
 
       - `"gcp"`
 
@@ -74,6 +76,8 @@ Add an external key config for an organization
 
       The numeric GCP project number where you registered OpenAI's workload identity
 
+      `pattern: ^[0-9]{1,19}$`
+
     - `workload_identity_provider_id: string`
 
       The Workload Identity provider that you registered for OpenAI
@@ -81,6 +85,8 @@ Add an external key config for an organization
     - `kms_key_version: optional string`
 
       An exact CryptoKeyVersion number. Required for PSP decryption; not accepted for EKM.
+
+      `pattern: ^[1-9][0-9]*$`
 
     - `purpose: optional "ekm" or "psp_decryption"`
 
@@ -94,7 +100,7 @@ Add an external key config for an organization
 
       The name of the Azure Key Vault master key that you manage
 
-      `maxLength: 127`
+      `pattern: ^org-[0-9a-zA-Z-]*--[0-9a-zA-Z-]*$`, `maxLength: 127`
 
     - `name: string`
 
@@ -104,7 +110,9 @@ Add an external key config for an organization
 
       Your Azure tenant UUID
 
-    - `type: "azure"`
+      `pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$`
+
+    - `type: "azure" (default: "azure")`
 
       - `"azure"`
 
@@ -112,9 +120,13 @@ Add an external key config for an organization
 
       The URI of the Azure vault containing the master key you manage
 
+      `pattern: ^https://.+\.vault\.azure\.net/?$`
+
     - `key_version: optional string`
 
       An exact Azure Key Vault key version. Required for PSP decryption; not accepted for EKM.
+
+      `pattern: ^[0-9a-fA-F]{32}$`
 
     - `purpose: optional "ekm" or "psp_decryption"`
 
@@ -130,7 +142,7 @@ Add an external key config for an organization
 
   - `api_project_ids: array of string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
   - `name: string`
 
@@ -193,7 +205,7 @@ curl https://api.openai.com/v1/organization/external_keys \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

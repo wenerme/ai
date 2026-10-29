@@ -9,9 +9,20 @@ Use this API to interact with [to-do items](../user/todos.md).
 
 ## List all to-do items
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Lists all to-do items. When no filter is applied, it
 returns all pending to-do items for the current user. Different filters allow the
 user to refine the request.
+
+This endpoint is rate limited for each user. The default is 300 requests
+per minute, configurable with the `todos_list_api_limit`
+[application setting](settings.md). Set the limit to `0` to disable it.
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 GET /todos

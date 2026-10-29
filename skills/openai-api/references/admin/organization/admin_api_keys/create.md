@@ -8,7 +8,7 @@ Create an organization admin API key
 
 - `name: string`
 
-- `expires_in_seconds: optional number`
+- `expires_in_seconds: optional integer`
 
   The number of seconds until the API key expires. Omit this field for a key that does not expire.
 
@@ -32,7 +32,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -67,7 +67,7 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

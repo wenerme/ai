@@ -80,6 +80,9 @@ An organization, and everything it contains, is addressed under `/o/<organizatio
 For example, `https://gitlab.example.com/o/my-org/-/overview`.
 Existing group and project URLs keep working.
 
+Groups and projects keep their own URLs, also after you transfer them into an organization.
+Links to a group, project or user profile in the form `/o/<organization-path>/<path>` redirect to that URL.
+
 Because `o` is a reserved path, no top-level group can use `o` as its path.
 
 The default organization is an exception to this URL scheme.

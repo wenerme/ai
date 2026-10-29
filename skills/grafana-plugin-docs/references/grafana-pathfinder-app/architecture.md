@@ -23,7 +23,7 @@ Expand table
 
 Turning off recommendations stops requests to the recommendation service. It does not turn off Interactive learning or all network requests: an online browser can still load the public catalog, guides, and documentation. If the recommendation service is unavailable, Pathfinder uses available fallback content.
 
-For the controls, refer to [Administrator reference](../administrators-reference/).
+For the controls, refer to [Administrator reference](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/).
 
 ## How interactive actions work
 
@@ -54,7 +54,7 @@ Expand table
 
 Dashboard metadata is processed locally and is not included as dashboard content in the recommendation request. The request sends data source types, not data source credentials or query results.
 
-The [Terms and conditions](../terms-and-conditions/) page reproduces the recommendation data usage notice shown in Grafana. An administrator can stop context-aware requests on the **Recommendations** tab.
+The [Terms and conditions](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions/) page reproduces the recommendation data usage notice shown in Grafana. An administrator can stop context-aware requests on the **Recommendations** tab.
 
 ## Where custom guides are stored
 
@@ -70,7 +70,7 @@ Expand table
 
 Custom guides are scoped to their Grafana organization. Publishing a guide does not publish it on Grafana’s public documentation site or copy it to other stacks. To move a guide, export it and import it on the destination instance.
 
-For procedures and storage limitations, refer to the [Block editor guide](../block-editor/).
+For procedures and storage limitations, refer to the [Block editor guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/).
 
 ## Learning progress and display preferences
 

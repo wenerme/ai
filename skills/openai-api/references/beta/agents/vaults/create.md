@@ -28,7 +28,7 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the vault was created.
 
@@ -44,7 +44,7 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
     `minLength: 0`
 
-  - `object: "vault"`
+  - `object: "vault" (default: "vault")`
 
     The object type. Always `vault`.
 
@@ -59,7 +59,7 @@ curl https://api.openai.com/v1/vaults \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {

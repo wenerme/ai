@@ -33,7 +33,7 @@ Modifies a project in the organization.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -45,7 +45,7 @@ Modifies a project in the organization.
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -106,7 +106,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

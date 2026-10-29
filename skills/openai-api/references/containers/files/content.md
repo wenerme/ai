@@ -26,7 +26,7 @@ curl https://api.openai.com/v1/containers/container_123/files/cfile_456/content 
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 <binary content of the file>
