@@ -690,7 +690,7 @@ transcript = client.audio.transcriptions.create(
 )
 raise "Expected a JSON transcript response" if transcript.is_a?(StringIO)
 
-pp(transcript[:words])
+pp(transcript.deep_to_h.fetch(:words))
 ```
 
 ```bash

@@ -1295,6 +1295,25 @@ This example only works when [rendered in GitLab](https://gitlab.com/gitlab-org/
 
 > ![Sample Audio](img/markdown_audio.mp3)
 
+### Hide the video or audio download option
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634250) in GitLab 19.6.
+
+To hide the download option of a video or audio player, follow the video or audio with
+the `controlslist=nodownload` attribute. You can also write the attribute as `controlsList`.
+
+For example:
+
+```markdown
+![Sample Audio](img/markdown_audio.mp3){controlslist=nodownload}
+```
+
+The attribute has no effect on images.
+Some browsers don't support the `controlslist` attribute and still show the download option.
+
+This setting doesn't prevent downloads. Anyone who can view the video or audio can still
+download the file, for example from its URL.
+
 ### Embedded content
 
 - Offering: GitLab.com, GitLab Self-Managed

@@ -158,6 +158,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -227,6 +229,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -363,6 +367,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
 - `created_at: number`
 
   The Unix timestamp (in seconds) for when the eval was created.
+
+  `format: unixtime`
 
 - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
@@ -530,6 +536,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -599,6 +607,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
             - `image_url: string`
 
               The URL of the image input.
+
+              `format: uri`
 
             - `type: "input_image"`
 
@@ -1015,6 +1025,8 @@ List evaluations for a project.
 
     The Unix timestamp (in seconds) for when the eval was created.
 
+    `format: unixtime`
+
   - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
@@ -1181,6 +1193,8 @@ List evaluations for a project.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -1250,6 +1264,8 @@ List evaluations for a project.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -1558,6 +1574,8 @@ Get an evaluation by ID.
 
   The Unix timestamp (in seconds) for when the eval was created.
 
+  `format: unixtime`
+
 - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
   Configuration of data sources used in runs of the evaluation.
@@ -1724,6 +1742,8 @@ Get an evaluation by ID.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -1793,6 +1813,8 @@ Get an evaluation by ID.
             - `image_url: string`
 
               The URL of the image input.
+
+              `format: uri`
 
             - `type: "input_image"`
 
@@ -2061,6 +2083,8 @@ Update certain properties of an evaluation.
 
   The Unix timestamp (in seconds) for when the eval was created.
 
+  `format: unixtime`
+
 - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
   Configuration of data sources used in runs of the evaluation.
@@ -2227,6 +2251,8 @@ Update certain properties of an evaluation.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -2296,6 +2322,8 @@ Update certain properties of an evaluation.
             - `image_url: string`
 
               The URL of the image input.
+
+              `format: uri`
 
             - `type: "input_image"`
 
@@ -2554,6 +2582,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     The Unix timestamp (in seconds) for when the eval was created.
 
+    `format: unixtime`
+
   - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
@@ -2720,6 +2750,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -2789,6 +2821,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -2954,6 +2988,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     The Unix timestamp (in seconds) for when the eval was created.
 
+    `format: unixtime`
+
   - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
@@ -3120,6 +3156,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -3189,6 +3227,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -3323,6 +3363,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     The Unix timestamp (in seconds) for when the eval was created.
 
+    `format: unixtime`
+
   - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
@@ -3489,6 +3531,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -3558,6 +3602,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -3718,6 +3764,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
     The Unix timestamp (in seconds) for when the eval was created.
 
+    `format: unixtime`
+
   - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
     Configuration of data sources used in runs of the evaluation.
@@ -3884,6 +3932,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -3953,6 +4003,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -4090,6 +4142,8 @@ Cancel an ongoing evaluation run.
 - `created_at: number`
 
   Unix timestamp (in seconds) when the evaluation run was created.
+
+  `format: unixtime`
 
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
@@ -4308,6 +4362,8 @@ Cancel an ongoing evaluation run.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                    `format: uri`
+
                   - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -4357,6 +4413,8 @@ Cancel an ongoing evaluation run.
                   - `file_url: optional string`
 
                     The URL of the file to be sent to the model.
+
+                    `format: uri`
 
                   - `filename: optional string`
 
@@ -4451,6 +4509,8 @@ Cancel an ongoing evaluation run.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -4520,6 +4580,8 @@ Cancel an ongoing evaluation run.
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -4772,9 +4834,13 @@ Cancel an ongoing evaluation run.
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+          `minimum: 0`
+
         - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          `minimum: 0`
 
         - `instructions_search: optional string or null`
 
@@ -4881,6 +4947,8 @@ Cancel an ongoing evaluation run.
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 
@@ -5348,6 +5416,8 @@ Cancel an ongoing evaluation run.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -5483,6 +5553,8 @@ Cancel an ongoing evaluation run.
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -5516,6 +5588,8 @@ Cancel an ongoing evaluation run.
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -5546,6 +5620,8 @@ Cancel an ongoing evaluation run.
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -5556,17 +5632,25 @@ Cancel an ongoing evaluation run.
 
                     Optional domain-scoped secrets for allowlisted domains.
 
+                    `minItems: 1`
+
                     - `domain: string`
 
                       The domain associated with the secret.
+
+                      `minLength: 1`
 
                     - `name: string`
 
                       The name of the secret to inject for the domain.
 
+                      `minLength: 1`
+
                     - `value: string`
 
                       The secret value to inject for the domain.
+
+                      `minLength: 1`, `maxLength: 10485760`
 
           - `type: "code_interpreter"`
 
@@ -5577,6 +5661,8 @@ Cancel an ongoing evaluation run.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -5703,6 +5789,8 @@ Cancel an ongoing evaluation run.
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -5717,6 +5805,8 @@ Cancel an ongoing evaluation run.
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -5779,6 +5869,8 @@ Cancel an ongoing evaluation run.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -5796,6 +5888,8 @@ Cancel an ongoing evaluation run.
               - `file_ids: optional array of string`
 
                 An optional list of uploaded files to make available to your code.
+
+                `maxItems: 50`
 
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -5821,11 +5915,15 @@ Cancel an ongoing evaluation run.
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -5854,6 +5952,8 @@ Cancel an ongoing evaluation run.
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -5884,6 +5984,8 @@ Cancel an ongoing evaluation run.
               - `skills: optional array of LocalSkill`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -5926,6 +6028,8 @@ Cancel an ongoing evaluation run.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -5991,13 +6095,19 @@ Cancel an ongoing evaluation run.
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -6006,6 +6116,8 @@ Cancel an ongoing evaluation run.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -6048,6 +6160,8 @@ Cancel an ongoing evaluation run.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -6169,6 +6283,8 @@ Cancel an ongoing evaluation run.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -6263,6 +6379,8 @@ Cancel an ongoing evaluation run.
 - `report_url: string`
 
   The URL to the rendered evaluation run report on the UI dashboard.
+
+  `format: uri`
 
 - `result_counts: object { errored, failed, passed, total }`
 
@@ -6743,6 +6861,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                    `format: uri`
+
                   - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -6792,6 +6912,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `file_url: optional string`
 
                     The URL of the file to be sent to the model.
+
+                    `format: uri`
 
                   - `filename: optional string`
 
@@ -6886,6 +7008,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -6955,6 +7079,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -7207,9 +7333,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+          `minimum: 0`
+
         - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          `minimum: 0`
 
         - `instructions_search: optional string or null`
 
@@ -7316,6 +7446,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 
@@ -7783,6 +7915,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -7918,6 +8052,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -7951,6 +8087,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -7981,6 +8119,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -7991,17 +8131,25 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Optional domain-scoped secrets for allowlisted domains.
 
+                    `minItems: 1`
+
                     - `domain: string`
 
                       The domain associated with the secret.
+
+                      `minLength: 1`
 
                     - `name: string`
 
                       The name of the secret to inject for the domain.
 
+                      `minLength: 1`
+
                     - `value: string`
 
                       The secret value to inject for the domain.
+
+                      `minLength: 1`, `maxLength: 10485760`
 
           - `type: "code_interpreter"`
 
@@ -8012,6 +8160,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -8138,6 +8288,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -8152,6 +8304,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -8214,6 +8368,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -8231,6 +8387,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `file_ids: optional array of string`
 
                 An optional list of uploaded files to make available to your code.
+
+                `maxItems: 50`
 
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -8256,11 +8414,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -8289,6 +8451,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -8319,6 +8483,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `skills: optional array of LocalSkill`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -8361,6 +8527,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -8426,13 +8594,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -8441,6 +8615,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -8483,6 +8659,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -8604,6 +8782,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -8634,6 +8814,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 - `created_at: number`
 
   Unix timestamp (in seconds) when the evaluation run was created.
+
+  `format: unixtime`
 
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
@@ -8852,6 +9034,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                    `format: uri`
+
                   - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -8901,6 +9085,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `file_url: optional string`
 
                     The URL of the file to be sent to the model.
+
+                    `format: uri`
 
                   - `filename: optional string`
 
@@ -8995,6 +9181,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -9064,6 +9252,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -9316,9 +9506,13 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+          `minimum: 0`
+
         - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          `minimum: 0`
 
         - `instructions_search: optional string or null`
 
@@ -9425,6 +9619,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 
@@ -9892,6 +10088,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -10027,6 +10225,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -10060,6 +10260,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -10090,6 +10292,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -10100,17 +10304,25 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     Optional domain-scoped secrets for allowlisted domains.
 
+                    `minItems: 1`
+
                     - `domain: string`
 
                       The domain associated with the secret.
+
+                      `minLength: 1`
 
                     - `name: string`
 
                       The name of the secret to inject for the domain.
 
+                      `minLength: 1`
+
                     - `value: string`
 
                       The secret value to inject for the domain.
+
+                      `minLength: 1`, `maxLength: 10485760`
 
           - `type: "code_interpreter"`
 
@@ -10121,6 +10333,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -10247,6 +10461,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -10261,6 +10477,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -10323,6 +10541,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -10340,6 +10560,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `file_ids: optional array of string`
 
                 An optional list of uploaded files to make available to your code.
+
+                `maxItems: 50`
 
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -10365,11 +10587,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -10398,6 +10624,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -10428,6 +10656,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `skills: optional array of LocalSkill`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -10470,6 +10700,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -10535,13 +10767,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -10550,6 +10788,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -10592,6 +10832,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -10713,6 +10955,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -10807,6 +11051,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 - `report_url: string`
 
   The URL to the rendered evaluation run report on the UI dashboard.
+
+  `format: uri`
 
 - `result_counts: object { errored, failed, passed, total }`
 
@@ -11103,6 +11349,8 @@ Get a list of runs for an evaluation.
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
     Information about the run's data source.
@@ -11320,6 +11568,8 @@ Get a list of runs for an evaluation.
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                      `format: uri`
+
                     - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -11369,6 +11619,8 @@ Get a list of runs for an evaluation.
                     - `file_url: optional string`
 
                       The URL of the file to be sent to the model.
+
+                      `format: uri`
 
                     - `filename: optional string`
 
@@ -11463,6 +11715,8 @@ Get a list of runs for an evaluation.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -11532,6 +11786,8 @@ Get a list of runs for an evaluation.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -11784,9 +12040,13 @@ Get a list of runs for an evaluation.
 
             Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+            `minimum: 0`
+
           - `created_before: optional number or null`
 
             Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+            `minimum: 0`
 
           - `instructions_search: optional string or null`
 
@@ -11893,6 +12153,8 @@ Get a list of runs for an evaluation.
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -12360,6 +12622,8 @@ Get a list of runs for an evaluation.
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -12495,6 +12759,8 @@ Get a list of runs for an evaluation.
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -12528,6 +12794,8 @@ Get a list of runs for an evaluation.
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -12558,6 +12826,8 @@ Get a list of runs for an evaluation.
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -12568,17 +12838,25 @@ Get a list of runs for an evaluation.
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -12589,6 +12867,8 @@ Get a list of runs for an evaluation.
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -12715,6 +12995,8 @@ Get a list of runs for an evaluation.
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -12729,6 +13011,8 @@ Get a list of runs for an evaluation.
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -12791,6 +13075,8 @@ Get a list of runs for an evaluation.
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -12808,6 +13094,8 @@ Get a list of runs for an evaluation.
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -12833,11 +13121,15 @@ Get a list of runs for an evaluation.
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -12866,6 +13158,8 @@ Get a list of runs for an evaluation.
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -12896,6 +13190,8 @@ Get a list of runs for an evaluation.
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -12938,6 +13234,8 @@ Get a list of runs for an evaluation.
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -13003,13 +13301,19 @@ Get a list of runs for an evaluation.
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -13018,6 +13322,8 @@ Get a list of runs for an evaluation.
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -13060,6 +13366,8 @@ Get a list of runs for an evaluation.
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -13181,6 +13489,8 @@ Get a list of runs for an evaluation.
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -13275,6 +13585,8 @@ Get a list of runs for an evaluation.
   - `report_url: string`
 
     The URL to the rendered evaluation run report on the UI dashboard.
+
+    `format: uri`
 
   - `result_counts: object { errored, failed, passed, total }`
 
@@ -13507,6 +13819,8 @@ Get an evaluation run by ID.
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
+  `format: unixtime`
+
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
   Information about the run's data source.
@@ -13724,6 +14038,8 @@ Get an evaluation run by ID.
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                    `format: uri`
+
                   - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -13773,6 +14089,8 @@ Get an evaluation run by ID.
                   - `file_url: optional string`
 
                     The URL of the file to be sent to the model.
+
+                    `format: uri`
 
                   - `filename: optional string`
 
@@ -13867,6 +14185,8 @@ Get an evaluation run by ID.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -13936,6 +14256,8 @@ Get an evaluation run by ID.
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -14188,9 +14510,13 @@ Get an evaluation run by ID.
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+          `minimum: 0`
+
         - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+          `minimum: 0`
 
         - `instructions_search: optional string or null`
 
@@ -14297,6 +14623,8 @@ Get an evaluation run by ID.
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 
@@ -14764,6 +15092,8 @@ Get an evaluation run by ID.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -14899,6 +15229,8 @@ Get an evaluation run by ID.
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -14932,6 +15264,8 @@ Get an evaluation run by ID.
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -14962,6 +15296,8 @@ Get an evaluation run by ID.
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -14972,17 +15308,25 @@ Get an evaluation run by ID.
 
                     Optional domain-scoped secrets for allowlisted domains.
 
+                    `minItems: 1`
+
                     - `domain: string`
 
                       The domain associated with the secret.
+
+                      `minLength: 1`
 
                     - `name: string`
 
                       The name of the secret to inject for the domain.
 
+                      `minLength: 1`
+
                     - `value: string`
 
                       The secret value to inject for the domain.
+
+                      `minLength: 1`, `maxLength: 10485760`
 
           - `type: "code_interpreter"`
 
@@ -14993,6 +15337,8 @@ Get an evaluation run by ID.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -15119,6 +15465,8 @@ Get an evaluation run by ID.
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -15133,6 +15481,8 @@ Get an evaluation run by ID.
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -15195,6 +15545,8 @@ Get an evaluation run by ID.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -15212,6 +15564,8 @@ Get an evaluation run by ID.
               - `file_ids: optional array of string`
 
                 An optional list of uploaded files to make available to your code.
+
+                `maxItems: 50`
 
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -15237,11 +15591,15 @@ Get an evaluation run by ID.
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -15270,6 +15628,8 @@ Get an evaluation run by ID.
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -15300,6 +15660,8 @@ Get an evaluation run by ID.
               - `skills: optional array of LocalSkill`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -15342,6 +15704,8 @@ Get an evaluation run by ID.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -15407,13 +15771,19 @@ Get an evaluation run by ID.
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -15422,6 +15792,8 @@ Get an evaluation run by ID.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -15464,6 +15836,8 @@ Get an evaluation run by ID.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -15585,6 +15959,8 @@ Get an evaluation run by ID.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -15679,6 +16055,8 @@ Get an evaluation run by ID.
 - `report_url: string`
 
   The URL to the rendered evaluation run report on the UI dashboard.
+
+  `format: uri`
 
 - `result_counts: object { errored, failed, passed, total }`
 
@@ -16103,6 +16481,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                  `format: uri`
+
                 - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                   Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -16152,6 +16532,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `file_url: optional string`
 
                   The URL of the file to be sent to the model.
+
+                  `format: uri`
 
                 - `filename: optional string`
 
@@ -16246,6 +16628,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -16315,6 +16699,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 
@@ -16589,6 +16975,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
     Information about the run's data source.
@@ -16806,6 +17194,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                      `format: uri`
+
                     - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -16855,6 +17245,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `file_url: optional string`
 
                       The URL of the file to be sent to the model.
+
+                      `format: uri`
 
                     - `filename: optional string`
 
@@ -16949,6 +17341,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -17018,6 +17412,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -17270,9 +17666,13 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+            `minimum: 0`
+
           - `created_before: optional number or null`
 
             Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+            `minimum: 0`
 
           - `instructions_search: optional string or null`
 
@@ -17379,6 +17779,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -17846,6 +18248,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -17981,6 +18385,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -18014,6 +18420,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -18044,6 +18452,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -18054,17 +18464,25 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -18075,6 +18493,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -18201,6 +18621,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -18215,6 +18637,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -18277,6 +18701,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -18294,6 +18720,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -18319,11 +18747,15 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -18352,6 +18784,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -18382,6 +18816,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -18424,6 +18860,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -18489,13 +18927,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -18504,6 +18948,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -18546,6 +18992,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -18667,6 +19115,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -18761,6 +19211,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `report_url: string`
 
     The URL to the rendered evaluation run report on the UI dashboard.
+
+    `format: uri`
 
   - `result_counts: object { errored, failed, passed, total }`
 
@@ -18800,6 +19252,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
     Information about the run's data source.
@@ -19017,6 +19471,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                      `format: uri`
+
                     - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -19066,6 +19522,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `file_url: optional string`
 
                       The URL of the file to be sent to the model.
+
+                      `format: uri`
 
                     - `filename: optional string`
 
@@ -19160,6 +19618,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -19229,6 +19689,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -19481,9 +19943,13 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+            `minimum: 0`
+
           - `created_before: optional number or null`
 
             Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+            `minimum: 0`
 
           - `instructions_search: optional string or null`
 
@@ -19590,6 +20056,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -20057,6 +20525,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -20192,6 +20662,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -20225,6 +20697,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -20255,6 +20729,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -20265,17 +20741,25 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -20286,6 +20770,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -20412,6 +20898,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -20426,6 +20914,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -20488,6 +20978,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -20505,6 +20997,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -20530,11 +21024,15 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -20563,6 +21061,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -20593,6 +21093,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -20635,6 +21137,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -20700,13 +21204,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -20715,6 +21225,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -20757,6 +21269,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -20878,6 +21392,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -20972,6 +21488,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `report_url: string`
 
     The URL to the rendered evaluation run report on the UI dashboard.
+
+    `format: uri`
 
   - `result_counts: object { errored, failed, passed, total }`
 
@@ -21021,6 +21539,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
     Information about the run's data source.
@@ -21238,6 +21758,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                      `format: uri`
+
                     - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -21287,6 +21809,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `file_url: optional string`
 
                       The URL of the file to be sent to the model.
+
+                      `format: uri`
 
                     - `filename: optional string`
 
@@ -21381,6 +21905,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -21450,6 +21976,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -21702,9 +22230,13 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+            `minimum: 0`
+
           - `created_before: optional number or null`
 
             Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+            `minimum: 0`
 
           - `instructions_search: optional string or null`
 
@@ -21811,6 +22343,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -22278,6 +22812,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -22413,6 +22949,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -22446,6 +22984,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -22476,6 +23016,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -22486,17 +23028,25 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -22507,6 +23057,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -22633,6 +23185,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -22647,6 +23201,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -22709,6 +23265,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -22726,6 +23284,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -22751,11 +23311,15 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -22784,6 +23348,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -22814,6 +23380,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -22856,6 +23424,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -22921,13 +23491,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -22936,6 +23512,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -22978,6 +23556,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -23099,6 +23679,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -23193,6 +23775,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `report_url: string`
 
     The URL to the rendered evaluation run report on the UI dashboard.
+
+    `format: uri`
 
   - `result_counts: object { errored, failed, passed, total }`
 
@@ -23232,6 +23816,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
     Information about the run's data source.
@@ -23449,6 +24035,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                      `format: uri`
+
                     - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -23498,6 +24086,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `file_url: optional string`
 
                       The URL of the file to be sent to the model.
+
+                      `format: uri`
 
                     - `filename: optional string`
 
@@ -23592,6 +24182,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -23661,6 +24253,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -23913,9 +24507,13 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
             Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
+            `minimum: 0`
+
           - `created_before: optional number or null`
 
             Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
+
+            `minimum: 0`
 
           - `instructions_search: optional string or null`
 
@@ -24022,6 +24620,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -24489,6 +25089,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -24624,6 +25226,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -24657,6 +25261,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -24687,6 +25293,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -24697,17 +25305,25 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -24718,6 +25334,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -24844,6 +25462,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -24858,6 +25478,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -24920,6 +25542,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -24937,6 +25561,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -24962,11 +25588,15 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -24995,6 +25625,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -25025,6 +25657,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -25067,6 +25701,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -25132,13 +25768,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -25147,6 +25789,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -25189,6 +25833,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -25310,6 +25956,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -25404,6 +26052,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `report_url: string`
 
     The URL to the rendered evaluation run report on the UI dashboard.
+
+    `format: uri`
 
   - `result_counts: object { errored, failed, passed, total }`
 
@@ -25483,6 +26133,8 @@ Get a list of output items for an evaluation run.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the evaluation run was created.
+
+    `format: unixtime`
 
   - `datasource_item: map[unknown]`
 
@@ -25815,6 +26467,8 @@ Get an evaluation run output item by ID.
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
+  `format: unixtime`
+
 - `datasource_item: map[unknown]`
 
   Details of the input data source item.
@@ -26104,6 +26758,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `datasource_item: map[unknown]`
 
     Details of the input data source item.
@@ -26251,6 +26907,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `created_at: number`
 
     Unix timestamp (in seconds) when the evaluation run was created.
+
+    `format: unixtime`
 
   - `datasource_item: map[unknown]`
 

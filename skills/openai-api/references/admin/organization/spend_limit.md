@@ -187,6 +187,8 @@ Create or replace the organization's hard spend limit.
 
   The hard spend limit amount, in cents.
 
+  `minimum: 1`
+
 ### Returns
 
 - `OrganizationSpendLimit object { currency, enforcement, interval, 2 more }`

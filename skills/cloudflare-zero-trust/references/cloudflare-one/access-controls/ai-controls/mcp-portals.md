@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -686,6 +686,8 @@ The `auth_credentials` field accepts two forms:
 
 Use the account endpoint to retrieve daily or monthly MCP tool-call counts across the account:
 
+By default, these counts include only successful tool calls. To include errors and cached calls, set `response_status=all`. Use `error` or `cached` to count either status separately.
+
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/analytics/tool-calls/timeseries?granularity=daily&aggregate=false&tz=utc&days=30" \
 	--request GET \
@@ -700,8 +702,9 @@ The same query parameters apply to each endpoint:
 | `aggregate` | `true` or `false`. Defaults to `false`. Set to `true` to request aggregated counts. |
 | `tz` | `utc`, `Z`, or a fixed `+HH:MM` or `-HH:MM` offset. Defaults to `utc`. Offsets range from `-12:00` through `+14:00`; `+14:00` and `-12:00` are the limits. The offset is used for local-day bucketing and does not account for daylight saving time changes within the window. |
 | `days` | An integer from `1` to `179`. For daily results, this sets the trailing window and defaults to `7`. It is ignored when `granularity=monthly`. |
+| `response_status` | `success`, `error`, `cached`, or `all`. Defaults to `success`. Set to `all` to include every status. Invalid values, including an empty value, return `400`. |
 
-The response `result` includes the selected `granularity`, `aggregate`, and `tz`, the `start` and `end` of the window as epoch milliseconds, a `series` of `day` and `count` values, and the `total` count. The window includes `start` and excludes `end`. Daily `day` values use `YYYY-MM-DD` in the requested timezone offset.
+The response `result` includes the selected `granularity`, `aggregate`, `tz`, and `response_status`, the `start` and `end` of the window as epoch milliseconds, a `series` of `day` and `count` values, and the `total` count. The window includes `start` and excludes `end`. Daily `day` values use `YYYY-MM-DD` in the requested timezone offset.
 
 Use a scoped endpoint to limit the counts:
 
@@ -1335,5 +1338,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

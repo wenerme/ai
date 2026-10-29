@@ -10,6 +10,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 - `environment_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Body Parameters
 
 - `hosted_environment_file_param: HostedEnvironmentFileParam`
@@ -24,9 +26,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       The ID of the uploaded file.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `path: string`
 
       The absolute destination path inside `/workspace`.
+
+      `minLength: 1`, `maxLength: 4096`
 
     - `type: "file_id"`
 
@@ -42,9 +48,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       The standard-base64-encoded file contents.
 
+      `minLength: 0`, `maxLength: 6990508`
+
     - `path: string`
 
       The absolute destination path inside `/workspace`.
+
+      `minLength: 1`, `maxLength: 4096`
 
     - `type: "inline"`
 
@@ -62,6 +72,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     The ID of the environment containing this file.
 
+    `minLength: 0`
+
   - `object: "agent.environment.file"`
 
     The object type. Always `agent.environment.file`.
@@ -72,9 +84,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     The absolute file path inside the environment's workspace.
 
+    `minLength: 0`
+
   - `size_bytes: number`
 
     The file size in bytes.
+
+    `format: int64`, `minimum: 0`
 
 ### Example
 
@@ -106,11 +122,15 @@ Lists live files on a connected execution environment with optional directory fi
 
 - `environment_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `limit: optional number or null`
 
   The maximum number of files to return, between 1 and 100.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -128,9 +148,13 @@ Lists live files on a connected execution environment with optional directory fi
 
   The opaque token from the previous page. Keep the same path, order, and limit.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `path: optional string or null`
 
   Restrict the listing to this absolute workspace directory.
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -138,9 +162,13 @@ Lists live files on a connected execution environment with optional directory fi
 
   Files available on the current page.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `environment_id: string`
 
     The ID of the environment containing this file.
+
+    `minLength: 0`
 
   - `object: "agent.environment.file"`
 
@@ -152,9 +180,13 @@ Lists live files on a connected execution environment with optional directory fi
 
     The absolute file path inside the environment's workspace.
 
+    `minLength: 0`
+
   - `size_bytes: number`
 
     The file size in bytes.
+
+    `format: int64`, `minimum: 0`
 
 - `has_more: boolean`
 
@@ -163,6 +195,8 @@ Lists live files on a connected execution environment with optional directory fi
 - `next: string or null`
 
   The opaque cursor to use when requesting the next page, if any.
+
+  `minLength: 0`
 
 - `object: "page"`
 
@@ -208,6 +242,8 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID/files \
 
     The ID of the environment containing this file.
 
+    `minLength: 0`
+
   - `object: "agent.environment.file"`
 
     The object type. Always `agent.environment.file`.
@@ -218,6 +254,10 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID/files \
 
     The absolute file path inside the environment's workspace.
 
+    `minLength: 0`
+
   - `size_bytes: number`
 
     The file size in bytes.
+
+    `format: int64`, `minimum: 0`

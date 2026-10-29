@@ -12,9 +12,21 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Require Gateway
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Require Gateway, you can allow access to your applications only to devices enrolled in your Zero Trust organization. Unlike [Require WARP](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/), which will check for any WARP instance (including the consumer version), Require Gateway will only allow requests coming from devices whose traffic is filtered by your organization's Cloudflare Gateway configuration. This policy is best used when you want to protect company-owned assets by only allowing access to employees.
+
+## Check result per client mode
+
+The check result depends on the [client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) configured on the device.
+
+| Client mode | Result | Reason |
+| --- | --- | --- |
+| Traffic and DNS mode | ✅ Pass | Device traffic is routed through and filtered by Gateway |
+| Traffic only mode | ✅ Pass | Device traffic is routed through Gateway except the DNS queries |
+| DNS only mode | ❌ Fail | Only DNS queries are forwarded; network traffic does not flow through Gateway |
+| Local proxy mode | ⚠️ Partial | The check passes only for traffic explicitly configured to use the local SOCKS/HTTP proxy on port `40000`, as this traffic is tunneled through Gateway. Traffic not routed through the proxy bypasses Gateway and fails the check. |
+| Posture only mode | ❌ Fail | The client is enrolled and collects posture data, but does not route traffic through Gateway |
 
 ## Prerequisites
 
@@ -45,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/#page","headline":"Require Gateway","description":"Require Gateway in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/og.png?v=5b46be52e191de9e","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/#page","headline":"Require Gateway","description":"Require Gateway in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/og.png?v=5b46be52e191de9e","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 ```

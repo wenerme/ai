@@ -16,12 +16,12 @@ Prerequisites:
 
 To configure external storage for static objects:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Repository**.
-1. Expand **External storage for repository static objects**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
 1. Enter the base URL and an arbitrary token. When you [set up external storage](#set-up-external-storage),
    use a script that sets these values as `ORIGIN_HOSTNAME` and `STORAGE_TOKEN`.
-1. Select **Save changes**.
+1. Select .
 
 The token is required to distinguish requests coming from the external storage, so users don't
 circumvent the external storage and access the application directly. GitLab expects
@@ -80,7 +80,7 @@ other CDNs or Function as a Service (FaaS) systems should work using the same pr
 
    - `ORIGIN_HOSTNAME`: the hostname of your GitLab installation.
    - `STORAGE_TOKEN`: any arbitrary secure token. You can get a token by running
-     `pwgen -cn1 64` on a UNIX machine. Save this token for the **Admin** area, as
+     `pwgen -cn1 64` on a UNIX machine. Save this token for the  area, as
      described in the [configuring](#configure-external-storage) section.
 
      ```javascript

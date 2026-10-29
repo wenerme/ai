@@ -199,6 +199,8 @@ Create or replace a project's hard spend limit.
 
   The hard spend limit amount, in cents.
 
+  `minimum: 1`
+
 ### Returns
 
 - `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`

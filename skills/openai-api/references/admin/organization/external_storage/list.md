@@ -12,6 +12,8 @@ List the organization's customer-managed external storage configurations.
 
 - `limit: optional number`
 
+  `minimum: 1`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   - `"asc"`
@@ -27,6 +29,8 @@ List the organization's customer-managed external storage configurations.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `geography: string`
 

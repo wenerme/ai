@@ -28,6 +28,8 @@ Retrieve Container File
 
   Unix timestamp (in seconds) when the file was created.
 
+  `format: unixtime`
+
 - `object: string`
 
   The type of this object (`container.file`).

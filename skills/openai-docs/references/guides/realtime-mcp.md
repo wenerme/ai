@@ -170,6 +170,11 @@ connection.session.update(
   ],
   tool_choice: :auto
 )
+
+connection.each do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+  break if event.is_a?(OpenAI::Realtime::SessionUpdatedEvent)
+end
 ```
 
 
@@ -191,7 +196,12 @@ const event = {
 };
 
 ws.send(JSON.stringify(event));
-ws.send(JSON.stringify({ type: "response.create" }));
+ws.send(
+  JSON.stringify({
+    type: "response.create",
+    response: { output_modalities: ["text"], tool_choice: "none" },
+  })
+);
 ```
 
 ```python
@@ -294,7 +304,7 @@ connection.conversation.items.create(
   call_id: call_id,
   output: JSON.generate(status: "shipped", delivery_date: "2026-05-09")
 )
-connection.response.create(tool_choice: :none)
+connection.response.create(output_modalities: [:text], tool_choice: :none)
 ```
 
 
@@ -765,13 +775,15 @@ def on_message(ws, message):
 ```
 
 ```ruby
-connection.each do |event|
+completed_events = {}
+expected_calls = []
+completed_calls = {}
+complete = connection.find do |event|
   case event
   when OpenAI::Realtime::McpListToolsInProgress
     puts("Listing MCP tools for item: #{event.item_id}")
   when OpenAI::Realtime::McpListToolsFailed
-    warn("MCP tool listing failed for item: #{event.item_id}")
-    break
+    raise "MCP tool listing failed for item: #{event.item_id}"
   when OpenAI::Realtime::McpListToolsCompleted
     puts("MCP tools ready for item: #{event.item_id}")
     connection.response.create(
@@ -788,7 +800,8 @@ connection.each do |event|
           ]
         }
       ],
-      tool_choice: :required
+      tool_choice: :required,
+      parallel_tool_calls: false
     )
   when OpenAI::Realtime::ConversationItemDone
     item = event.item
@@ -806,12 +819,14 @@ connection.each do |event|
   when OpenAI::Realtime::ResponseMcpCallCompleted
     puts("MCP tool call completed: #{event.item_id}")
   when OpenAI::Realtime::ResponseMcpCallFailed
-    warn("MCP tool call failed: #{event.item_id}")
-    break
+    raise "MCP tool call failed: #{event.item_id}"
   when OpenAI::Realtime::ResponseOutputItemDoneEvent
     item = event.item
     case item
     when OpenAI::Realtime::RealtimeMcpToolCall
+      raise "MCP tool call failed" if item.error || item.output.nil?
+
+      completed_calls[item.id] = true
       puts("MCP output from #{item.server_label}.#{item.name}: #{item.output}")
     when OpenAI::Realtime::RealtimeConversationItemAssistantMessage
       text = item.content.filter_map do |content|
@@ -820,13 +835,23 @@ connection.each do |event|
       puts("Assistant: #{text}")
     end
   when OpenAI::Realtime::RealtimeErrorEvent
-    warn("Realtime API error: #{event.error.message}")
-    break
+    raise "Realtime API error: #{event.error.message}"
   when OpenAI::Realtime::ResponseDoneEvent
+    raise "Realtime response did not complete" unless event.response.status == :completed
+
+    expected_calls.replace(Array(event.response.output).grep(OpenAI::Realtime::RealtimeMcpToolCall).map(&:id))
+    raise "The response did not call an MCP tool" if expected_calls.empty?
+
+    completed_events[:response] = true
+  end
+  if completed_events[:response] && expected_calls.all? { |id| completed_calls[id] }
     puts("Realtime turn complete.")
-    break
+    true
+  else
+    false
   end
 end
+raise "Connection closed before the MCP tool result arrived" unless complete
 ```
 
 
@@ -939,7 +964,7 @@ approval_request_id = item.id
 
 connection.conversation.items.create(
   type: :mcp_approval_response,
-  id: "mcp_approval_#{approval_request_id}",
+  id: "approval_#{SecureRandom.hex(8)}",
   approval_request_id: approval_request_id,
   approve: true
 )
@@ -1031,6 +1056,8 @@ connection.send(
         ResponseCreateEvent.builder()
             .response(
                 RealtimeResponseCreateParams.builder()
+                    .toolChoice(com.openai.models.responses.ToolChoiceOptions.REQUIRED)
+                    .parallelToolCalls(false)
                     .metadata(
                         RealtimeResponseCreateParams.Metadata.builder()
                             .putAdditionalProperty(
@@ -1102,6 +1129,8 @@ await session.SendCommandAsync(new RealtimeClientCommandResponseCreate
 ```ruby
 connection.response.create(
   output_modalities: [:text],
+  tool_choice: :required,
+  parallel_tool_calls: false,
   input: [
     {
       type: :message,

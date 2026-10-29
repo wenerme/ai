@@ -18,6 +18,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
     Session Description Protocol message for the WebRTC connection.
 
+    `minLength: 1`
+
   - `type: "webrtc"`
 
     The transport used for the Live session. Always `webrtc`.
@@ -60,9 +62,13 @@ Fork a stored Live session onto a new WebRTC connection.
 
             The outer Live server event type. Use 'response.event' for Responses events.
 
+            `minLength: 1`, `maxLength: 256`
+
           - `response_event: optional string`
 
             The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
+
+            `minLength: 1`, `maxLength: 256`
 
   - `delegation: optional object { type, acknowledgement_delay_ms, responses }`
 
@@ -78,6 +84,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
       Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+      `minimum: 0`, `maximum: 800`
+
     - `responses: optional ResponsesDelegationUpdateConfig`
 
       Responses backend settings to update. Omitted settings keep their existing values.
@@ -89,6 +97,8 @@ Fork a stored Live session onto a new WebRTC connection.
       - `max_output_tokens: optional number or null`
 
         Maximum number of output tokens for each delegated response.
+
+        `minimum: 16`
 
       - `model: optional string`
 
@@ -291,6 +301,8 @@ Fork a stored Live session onto a new WebRTC connection.
           - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
 
             The tools that the delegated Responses model may call.
+
+            `minItems: 1`, `maxItems: 128`
 
             - `Function object { name, type }`
 
@@ -498,6 +510,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the container.
@@ -528,6 +542,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -538,11 +554,15 @@ Fork a stored Live session onto a new WebRTC connection.
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `SkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -571,6 +591,8 @@ Fork a stored Live session onto a new WebRTC connection.
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -613,6 +635,8 @@ Fork a stored Live session onto a new WebRTC connection.
               - `skills: optional array of object { description, name, path }  or null`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -695,6 +719,8 @@ Fork a stored Live session onto a new WebRTC connection.
   - `sdp: string`
 
     Session Description Protocol message for the WebRTC connection.
+
+    `minLength: 1`
 
   - `type: "webrtc"`
 

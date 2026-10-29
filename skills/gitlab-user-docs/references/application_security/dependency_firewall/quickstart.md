@@ -117,7 +117,7 @@ If no summary is printed, none of the packages matched your policy. Try
 
 > [!tip]
 > To check a package without installing it, run `glab df package pkg:npm/lodash@4.17.15`.
-> For more information, see [Check a single package](gitlab_cli.md#check-a-single-package).
+> For more information, see [`glab dependency-firewall package`](https://docs.gitlab.com/cli/dependency-firewall/package/).
 
 To see the same results in GitLab, select **Secure** > **Dependency firewall** in your group or
 project. The dashboard counts what has been blocked and warned on, and lists each active rule.
@@ -145,4 +145,4 @@ account that must keep publishing.
 - Add rules for [licenses](_index.md#license-rules), or tune the
   [risk severity thresholds](_index.md#risk-severity-rules).
 - Run the firewall in CI/CD with
-  [`glab df` in your job scripts](gitlab_cli.md#use-the-firewall-in-cicd).
+  [`glab df` in your job scripts](_index.md#use-the-dependency-firewall-in-cicd).

@@ -14,9 +14,13 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   The name of the new voice.
 
+  `minLength: 1`, `maxLength: 256`
+
 - `prompt: string`
 
   A description of the desired voice. Must not contain only whitespace.
+
+  `minLength: 1`, `maxLength: 2000`
 
 - `type: "prompt"`
 
@@ -42,6 +46,8 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   Optional text for the voice to speak during creation. If omitted, a script is generated from the prompt. Must not be blank after trimming whitespace; scripts that are too short are rejected.
 
+  `minLength: 1`, `maxLength: 2000`
+
 ### Returns
 
 - `Voice object { id, created_at, name, 3 more }`
@@ -55,6 +61,8 @@ Returns the saved voice's metadata. Voices created from text prompts are support
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the voice was created.
+
+    `format: unixtime`
 
   - `name: string`
 

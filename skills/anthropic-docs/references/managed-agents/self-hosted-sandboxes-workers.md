@@ -8,6 +8,30 @@ featureMetadata:
     url: https://platform.claude.com/docs/en/managed-agents/overview
   status: beta
   betaHeader: managed-agents-2026-04-01
+  zdr:
+    eligibility: not-eligible
+    note: Sessions are stateful resources; transcripts persist until you delete them. Applies to all Managed Agents sub-features, including Self-hosted sandboxes.
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
+  supportedPlatforms:
+    Claude API: beta
+    Claude Platform on AWS: beta
 ---
 
 The [quickstart](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes#quickstart) runs one `ant` CLI worker that polls continuously and runs every session in one process. This page covers the other ways to run a worker and how to choose among them.
@@ -421,7 +445,7 @@ Start a worker that polls the queue continuously. It authenticates with the [env
       </CodeGroupItem>
     </CodeGroup>
 
-    Because the handler claims work itself, it must [forward the work item's secret](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-workers#forward-the-work-items-secret), as the `work_secret` (typescript: `workSecret`; go: `WorkSecret`) argument does here.
+    Because the handler claims work itself, it must [forward the work item’s secret](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-workers#forward-the-work-items-secret), as the `work_secret` (typescript: `workSecret`; go: `WorkSecret`) argument does here.
   </Step>
 </Steps>
 
@@ -437,7 +461,7 @@ A poller on the host claims work and calls your script once for each work item. 
 
     ```dockerfile
     FROM your-base-image
-    ARG ANT_VERSION=2.1.0
+    ARG ANT_VERSION=2.4.0
     ARG TARGETARCH
     RUN ARCH=$([ "$TARGETARCH" = "arm64" ] && echo arm64 || echo amd64) && \
         curl -fsSL "https://github.com/anthropics/anthropic-cli/releases/download/v${ANT_VERSION}/ant_${ANT_VERSION}_linux_${ARCH}.tar.gz" \
@@ -468,7 +492,7 @@ A poller on the host claims work and calls your script once for each work item. 
 
     The poller sets the `ANTHROPIC_*` variables that the script forwards, except the secret. See [Environment variables](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-reference#environment-variables).
 
-    `/host/outputs` is a host directory you choose. Mounting it at `/workspace` lets you retrieve the session's deliverables after the sandbox exits. The mount also picks up the downloaded `skills/` tree and any intermediate files.
+    `/host/outputs` is a host directory you choose. Mounting it at `/workspace` lets you retrieve the session’s deliverables after the sandbox exits. The mount also picks up the downloaded `skills/` tree and any intermediate files.
   </Step>
 
   <Step title="Start the poller">
@@ -478,7 +502,7 @@ A poller on the host claims work and calls your script once for each work item. 
   </Step>
 </Steps>
 
-### Forward the work item's secret
+### Forward the work item’s secret
 
 Each claimed work item can carry a per-session `secret` (csharp, go: `Secret`), which Anthropic issues. The worker that runs the session needs it to mount [memory stores](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-memory).
 
@@ -486,8 +510,8 @@ A worker that claims and runs sessions in one process (`ant beta:worker poll` wi
 
 | You claim work with                                            | The secret arrives as                                                    | Pass it to the worker as                                                                                                                                                                             |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ant beta:worker poll --on-work`                               | The `secret` field of the work item JSON on your script's standard input | `ANTHROPIC_WORK_SECRET` in the sandbox's environment                                                                                                                                                 |
-| The SDK's `work.poller()` (go: `environments.NewWorkPoller()`) | The `secret` (go: `Secret`) field of each claimed work item              | `ANTHROPIC_WORK_SECRET` in the sandbox's environment, or the `work_secret` (typescript: `workSecret`; go: `WorkSecret`) argument to `handle_item()` (typescript: `handleItem()`; go: `HandleItem()`) |
+| `ant beta:worker poll --on-work`                               | The `secret` field of the work item JSON on your script’s standard input | `ANTHROPIC_WORK_SECRET` in the sandbox’s environment                                                                                                                                                 |
+| The SDK’s `work.poller()` (go: `environments.NewWorkPoller()`) | The `secret` (go: `Secret`) field of each claimed work item              | `ANTHROPIC_WORK_SECRET` in the sandbox’s environment, or the `work_secret` (typescript: `workSecret`; go: `WorkSecret`) argument to `handle_item()` (typescript: `handleItem()`; go: `HandleItem()`) |
 
 Pass the secret only into the sandbox that serves that session, and never log it. See [Security model](https://platform.claude.com/docs/en/managed-agents/self-hosted-sandboxes-security) for how it relates to the environment key.
 
@@ -797,9 +821,9 @@ Replace the `ant beta:worker run` entrypoint with an SDK entrypoint when the san
 
 ## Stage files for a session
 
-Anthropic doesn't mount files or GitHub repositories into self-hosted sandboxes. To make session-specific files available:
+Anthropic doesn’t mount files or GitHub repositories into self-hosted sandboxes. To make session-specific files available:
 
-1. Pass file references, such as an S3 path or commit SHA, in the session's `metadata` field.
+1. Pass file references, such as an S3 path or commit SHA, in the session’s `metadata` field.
 2. In your spawn script or `--on-work` handler, retrieve the session (`GET /v1/sessions/{session_id}`) and read `metadata`. The claimed work item carries the session ID but not the metadata.
 3. Stage the files into the working directory before any tool runs.
 
@@ -900,3 +924,40 @@ Anthropic doesn't mount files or GitHub repositories into self-hosted sandboxes.
     Shared responsibility model for self-hosted sandbox environments.
   </Card>
 </CardGroup>
+
+## Availability
+
+Self-hosted workers are in beta on every model.
+
+### API support
+
+#### [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview)
+
+* Availability: Available
+
+| Status | Cloud platforms                                                                                                    |
+| ------ | ------------------------------------------------------------------------------------------------------------------ |
+| Beta   | Claude API, [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws) |
+
+### Required beta headers
+
+[Beta headers overview](https://platform.claude.com/docs/en/api/beta-headers)
+
+Beta headers allow you to access experimental features and new model capabilities before they become part of the standard API.
+
+* `managed-agents-2026-04-01`
+
+### Data handling
+
+[Data handling overview](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#feature-eligibility)
+
+| Item    | Zero data retention                                                                                                                                      | HIPAA                                                                        |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Status  | Not eligible                                                                                                                                             | Not eligible                                                                 |
+| Details | Sessions are stateful resources; transcripts persist until you delete them. Applies to all Managed Agents sub-features, including Self-hosted sandboxes. | Applies to all Managed Agents sub-features, including Self-hosted sandboxes. |
+
+Applicable endpoints:
+
+* `/v1/agents`
+* `/v1/sessions`
+* `/v1/environments`

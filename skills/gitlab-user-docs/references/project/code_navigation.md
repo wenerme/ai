@@ -17,7 +17,7 @@ Code navigation helps you understand unfamiliar code and how it connects to the 
 project.
 
 Code navigation reads the knowledge graph that
-[GitLab Orbit](https://docs.gitlab.com/orbit/indexed-data/) builds from your code and updates
+[GitLab Orbit](https://docs.gitlab.com/orbit/schema/) builds from your code and updates
 as you push changes.
 From that graph it reads the files in your project, the classes, modules, methods, and
 functions they define, and which of those symbols call each other.
@@ -34,7 +34,7 @@ For a selected symbol, code navigation shows the following:
 Prerequisites:
 
 - The Reporter, Developer, Maintainer, or Owner role for the project.
-- [GitLab Orbit turned on](https://docs.gitlab.com/orbit/remote/getting-started/) for the
+- [GitLab Orbit turned on](https://docs.gitlab.com/orbit/quickstart/#step-1-turn-on-gitlab-orbit) for the
   project's top-level group.
 - A file on the default branch of the project. GitLab Orbit doesn't index other branches.
 
@@ -46,7 +46,7 @@ To view code navigation for a file:
 1. In the upper-right corner of the file, select **Code navigation** ().
 
 If you turned on GitLab Orbit for your top-level group recently,
-[indexing](https://docs.gitlab.com/orbit/remote/indexing/) might still be in progress.
+[indexing](https://docs.gitlab.com/orbit/how-it-works/#indexing) might still be in progress.
 The panel lists symbols when indexing is complete.
 
 To see where a symbol is used:

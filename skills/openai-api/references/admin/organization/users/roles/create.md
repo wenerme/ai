@@ -68,6 +68,8 @@ Assigns an organization role to a user within the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
+    `format: unixtime`
+
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
@@ -78,9 +80,13 @@ Assigns an organization role to a user within the organization.
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
+    `format: unixtime`
+
   - `created: optional number`
 
     The Unix timestamp (in seconds) of when the user was created.
+
+    `format: unixtime`
 
   - `developer_persona: optional string or null`
 
@@ -147,6 +153,8 @@ Assigns an organization role to a user within the organization.
     - `banned: optional boolean or null`
 
     - `banned_at: optional number or null`
+
+      `format: unixtime`
 
     - `email: optional string or null`
 

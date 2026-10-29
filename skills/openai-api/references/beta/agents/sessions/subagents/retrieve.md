@@ -8,7 +8,11 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `subagent_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -20,13 +24,19 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
     The ID of the subagent.
 
+    `minLength: 0`
+
   - `closed_at: number or null`
 
     The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
+    `format: int64`
+
   - `instructions: array of AgentContent or null`
 
     Initial task content, or null when unavailable. Text may contain placeholders for images or audio when only a preview is available.
+
+    `minItems: 0`, `maxItems: 2000`
 
     - `OutputText object { text, type }`
 
@@ -35,6 +45,8 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
       - `text: string`
 
         The text produced by the agent.
+
+        `minLength: 0`
 
       - `type: "output_text"`
 
@@ -50,6 +62,8 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
         The encrypted content payload.
 
+        `minLength: 0`
+
       - `type: "encrypted_content"`
 
         The content type. Always `encrypted_content`.
@@ -59,6 +73,8 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
   - `name: string or null`
 
     The runner-assigned nickname, or null when unavailable.
+
+    `minLength: 0`
 
   - `object: "agent.session.subagent"`
 
@@ -70,13 +86,19 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
     The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
+    `format: int64`
+
   - `parent_agent_id: string`
 
     The ID of the agent that created this subagent.
 
+    `minLength: 0`
+
   - `session_id: string`
 
     The ID of the session that owns the subagent.
+
+    `minLength: 0`
 
   - `status: "active" or "closed"`
 

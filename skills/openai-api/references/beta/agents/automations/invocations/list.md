@@ -8,15 +8,21 @@ Lists delivery records for a project-owned automation.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `after: optional string`
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -36,17 +42,25 @@ Lists delivery records for a project-owned automation.
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The invocation ID.
+
+    `minLength: 0`
 
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -56,9 +70,13 @@ Lists delivery records for a project-owned automation.
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -70,9 +88,13 @@ Lists delivery records for a project-owned automation.
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -106,9 +128,13 @@ Lists delivery records for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -128,9 +154,13 @@ Lists delivery records for a project-owned automation.
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -142,6 +172,8 @@ Lists delivery records for a project-owned automation.
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -149,6 +181,8 @@ Lists delivery records for a project-owned automation.
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -178,9 +212,13 @@ Lists delivery records for a project-owned automation.
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -193,6 +231,8 @@ Lists delivery records for a project-owned automation.
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -294,6 +334,8 @@ Lists delivery records for a project-owned automation.
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -306,9 +348,13 @@ Lists delivery records for a project-owned automation.
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -342,6 +388,8 @@ Lists delivery records for a project-owned automation.
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -353,6 +401,8 @@ Lists delivery records for a project-owned automation.
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -366,6 +416,8 @@ Lists delivery records for a project-owned automation.
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -377,6 +429,8 @@ Lists delivery records for a project-owned automation.
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -392,17 +446,25 @@ Lists delivery records for a project-owned automation.
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -424,6 +486,8 @@ Lists delivery records for a project-owned automation.
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -442,17 +506,25 @@ Lists delivery records for a project-owned automation.
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -494,9 +566,19 @@ Lists delivery records for a project-owned automation.
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -517,6 +599,8 @@ Lists delivery records for a project-owned automation.
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -540,13 +624,19 @@ Lists delivery records for a project-owned automation.
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -556,9 +646,13 @@ Lists delivery records for a project-owned automation.
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -574,9 +668,13 @@ Lists delivery records for a project-owned automation.
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -608,6 +706,8 @@ Lists delivery records for a project-owned automation.
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -616,25 +716,37 @@ Lists delivery records for a project-owned automation.
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -646,6 +758,8 @@ Lists delivery records for a project-owned automation.
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -653,6 +767,8 @@ Lists delivery records for a project-owned automation.
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -664,6 +780,8 @@ Lists delivery records for a project-owned automation.
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -672,9 +790,13 @@ Lists delivery records for a project-owned automation.
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -694,9 +816,13 @@ Lists delivery records for a project-owned automation.
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -708,13 +834,19 @@ Lists delivery records for a project-owned automation.
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -723,6 +855,8 @@ Lists delivery records for a project-owned automation.
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -737,6 +871,8 @@ Lists delivery records for a project-owned automation.
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -770,15 +906,21 @@ Lists delivery records for a project-owned automation.
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -789,6 +931,8 @@ Lists delivery records for a project-owned automation.
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -804,9 +948,13 @@ Lists delivery records for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -820,6 +968,8 @@ Lists delivery records for a project-owned automation.
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -829,6 +979,8 @@ Lists delivery records for a project-owned automation.
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 
@@ -872,6 +1024,8 @@ Lists delivery records for a project-owned automation.
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -879,6 +1033,8 @@ Lists delivery records for a project-owned automation.
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

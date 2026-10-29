@@ -3355,6 +3355,7 @@ META_SCHEMA = {
   "schema" => {
     "type" => "object",
     "properties" => {
+      "description" => { "type" => "string" },
       "name" => {
         "type" => "string",
         "description" => "The name of the schema"
@@ -3407,6 +3408,7 @@ META_SCHEMA = {
       "schema_definition" => {
         "type" => "object",
         "properties" => {
+          "description" => { "type" => "string" },
           "type" => {
             "type" => "string",
             "enum" => ["object", "array", "string", "number", "boolean", "null"]
@@ -4824,6 +4826,7 @@ META_SCHEMA = {
       "schema_definition" => {
         "type" => "object",
         "properties" => {
+          "description" => { "type" => "string" },
           "type" => {
             "type" => "string",
             "enum" => ["object", "array", "string", "number", "boolean", "null"]

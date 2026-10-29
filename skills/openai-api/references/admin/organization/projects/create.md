@@ -67,6 +67,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -76,6 +78,8 @@ Create a new project in the organization. Projects can be created and archived, 
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 

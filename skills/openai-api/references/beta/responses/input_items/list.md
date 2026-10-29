@@ -140,6 +140,8 @@ Returns a list of input items for a given response.
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -189,6 +191,8 @@ Returns a list of input items for a given response.
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -314,6 +318,8 @@ Returns a list of input items for a given response.
               - `url: string`
 
                 The URL of the web resource.
+
+                `format: uri`
 
             - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
@@ -515,6 +521,8 @@ Returns a list of input items for a given response.
         - `score: optional number`
 
           The relevance score of the file - a value between 0 and 1.
+
+          `format: float`
 
         - `text: optional string`
 
@@ -839,6 +847,8 @@ Returns a list of input items for a given response.
 
           The URL of the screenshot image.
 
+          `format: uri`
+
       - `status: "completed" or "incomplete" or "failed" or "in_progress"`
 
         The status of the message input. One of `in_progress`, `completed`, or
@@ -953,6 +963,8 @@ Returns a list of input items for a given response.
 
               The URL of the source.
 
+              `format: uri`
+
         - `OpenPage object { type, url }`
 
           Action type "open_page" - Opens a specific URL from search results.
@@ -966,6 +978,8 @@ Returns a list of input items for a given response.
           - `url: optional string or null`
 
             The URL opened by the model.
+
+            `format: uri`
 
         - `FindInPage object { pattern, type, url }`
 
@@ -984,6 +998,8 @@ Returns a list of input items for a given response.
           - `url: optional string or null`
 
             The URL of the page searched for the pattern, when available.
+
+            `format: uri`
 
       - `agent: optional object { agent_name }  or null`
 
@@ -1146,6 +1162,8 @@ Returns a list of input items for a given response.
 
             The call ID of the program item that produced this tool call.
 
+            `minLength: 1`, `maxLength: 64`
+
           - `type: "program"`
 
             The caller type. Always `program`.
@@ -1247,6 +1265,8 @@ Returns a list of input items for a given response.
           - `image_url: string or null`
 
             The URL of the screenshot image.
+
+            `format: uri`
 
           - `type: "computer_screenshot"`
 
@@ -1770,6 +1790,8 @@ Returns a list of input items for a given response.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -1905,6 +1927,8 @@ Returns a list of input items for a given response.
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -1938,6 +1962,8 @@ Returns a list of input items for a given response.
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -1968,6 +1994,8 @@ Returns a list of input items for a given response.
 
                     A list of allowed domains when type is `allowlist`.
 
+                    `minItems: 1`
+
                   - `type: "allowlist"`
 
                     Allow outbound network access only to specified domains. Always `allowlist`.
@@ -1978,17 +2006,25 @@ Returns a list of input items for a given response.
 
                     Optional domain-scoped secrets for allowlisted domains.
 
+                    `minItems: 1`
+
                     - `domain: string`
 
                       The domain associated with the secret.
+
+                      `minLength: 1`
 
                     - `name: string`
 
                       The name of the secret to inject for the domain.
 
+                      `minLength: 1`
+
                     - `value: string`
 
                       The secret value to inject for the domain.
+
+                      `minLength: 1`, `maxLength: 10485760`
 
           - `type: "code_interpreter"`
 
@@ -1999,6 +2035,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -2125,6 +2163,8 @@ Returns a list of input items for a given response.
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -2139,6 +2179,8 @@ Returns a list of input items for a given response.
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -2201,6 +2243,8 @@ Returns a list of input items for a given response.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -2218,6 +2262,8 @@ Returns a list of input items for a given response.
               - `file_ids: optional array of string`
 
                 An optional list of uploaded files to make available to your code.
+
+                `maxItems: 50`
 
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -2243,11 +2289,15 @@ Returns a list of input items for a given response.
 
                 An optional list of skills referenced by id or inline data.
 
+                `maxItems: 200`
+
                 - `BetaSkillReference object { skill_id, type, version }`
 
                   - `skill_id: string`
 
                     The ID of the referenced skill.
+
+                    `minLength: 1`, `maxLength: 64`
 
                   - `type: "skill_reference"`
 
@@ -2276,6 +2326,8 @@ Returns a list of input items for a given response.
                     - `data: string`
 
                       Base64-encoded skill zip bundle.
+
+                      `minLength: 1`, `maxLength: 70254592`
 
                     - `media_type: "application/zip"`
 
@@ -2306,6 +2358,8 @@ Returns a list of input items for a given response.
               - `skills: optional array of BetaLocalSkill`
 
                 An optional list of skills.
+
+                `maxItems: 200`
 
                 - `description: string`
 
@@ -2348,6 +2402,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -2413,13 +2469,19 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -2428,6 +2490,8 @@ Returns a list of input items for a given response.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -2470,6 +2534,8 @@ Returns a list of input items for a given response.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -2622,6 +2688,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -2953,6 +3021,8 @@ Returns a list of input items for a given response.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -3088,6 +3158,8 @@ Returns a list of input items for a given response.
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -3121,6 +3193,8 @@ Returns a list of input items for a given response.
 
                 An optional list of uploaded files to make available to your code.
 
+                `maxItems: 50`
+
               - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
@@ -3150,6 +3224,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -3276,6 +3352,8 @@ Returns a list of input items for a given response.
 
             Compression level for the output image. Default: 100.
 
+            `minimum: 0`, `maximum: 100`
+
           - `output_format: optional "png" or "webp" or "jpeg"`
 
             The output format of the generated image. One of `png`, `webp`, or
@@ -3290,6 +3368,8 @@ Returns a list of input items for a given response.
           - `partial_images: optional number`
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+            `minimum: 0`, `maximum: 3`
 
           - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -3352,6 +3432,8 @@ Returns a list of input items for a given response.
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -3381,6 +3463,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -3446,13 +3530,19 @@ Returns a list of input items for a given response.
 
             The namespace name used in tool calls (for example, `crm`).
 
+            `minLength: 1`
+
           - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
+            `minItems: 1`
+
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                `minLength: 1`, `maxLength: 128`
 
               - `type: "function"`
 
@@ -3461,6 +3551,8 @@ Returns a list of input items for a given response.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -3503,6 +3595,8 @@ Returns a list of input items for a given response.
               - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
+
+                `minItems: 1`
 
                 - `"direct"`
 
@@ -3655,6 +3749,8 @@ Returns a list of input items for a given response.
           - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
+
+            `minItems: 1`
 
             - `"direct"`
 
@@ -4084,6 +4180,8 @@ Returns a list of input items for a given response.
           - `url: string`
 
             The URL of the image output from the code interpreter.
+
+            `format: uri`
 
       - `status: "in_progress" or "completed" or "incomplete" or 2 more`
 
@@ -4956,6 +5054,8 @@ Returns a list of input items for a given response.
           - `caller_id: string`
 
             The call ID of the program item that produced this tool call.
+
+            `minLength: 1`, `maxLength: 64`
 
           - `type: "program"`
 

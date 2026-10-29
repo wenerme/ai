@@ -407,21 +407,36 @@ System.out.println(turn.subagentId());
 ```
 
 ```ruby
-# Replace the illustrative IDs and URLs below with your own resource values.
+# Replace the illustrative IDs below with values from your command item.
 require "openai"
 
-client = OpenAI::Client.new
-result = client.beta.agents.sessions.turns.list(
-  "sess_123",
-  limit: 20,
-  order: "desc"
-)
-puts result.data
-turn = client.beta.agents.sessions.turns.retrieve(
-  "turn_123",
-  session_id: "sess_123"
-)
-puts turn.subagent_id
+# Discover the owning agent before retrieving the turn.
+def find_turn(client, session_id, turn_id)
+  turns = client.beta.agents.sessions.turns.list(session_id, limit: 100)
+  turns.auto_paging_each do |turn|
+    if turn.id == turn_id
+      return client.beta.agents.sessions.turns.retrieve(turn_id, session_id: session_id)
+    end
+  end
+
+  subagents = client.beta.agents.sessions.subagents.list(session_id, limit: 100)
+  subagents.auto_paging_each do |subagent|
+    turns = client.beta.agents.sessions.subagents.turns.list(
+      subagent.id, session_id: session_id, limit: 100
+    )
+    turns.auto_paging_each do |turn|
+      if turn.id == turn_id
+        return client.beta.agents.sessions.subagents.turns.retrieve(
+          turn_id, session_id: session_id, subagent_id: subagent.id
+        )
+      end
+    end
+  end
+  raise "Turn #{turn_id} not found in session #{session_id}"
+end
+
+turn = find_turn(OpenAI::Client.new, "sess_123", "turn_123")
+puts(turn.subagent_id || "main agent")
 ```
 
 ```bash

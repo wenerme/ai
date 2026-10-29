@@ -22,6 +22,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -31,6 +33,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 

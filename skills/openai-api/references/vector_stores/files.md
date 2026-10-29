@@ -145,6 +145,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -164,6 +166,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store file was created.
+
+    `format: unixtime`
 
   - `last_error: object { code, message }  or null`
 
@@ -240,6 +244,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -441,6 +447,8 @@ Returns a list of vector store files.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -516,6 +524,8 @@ Returns a list of vector store files.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -650,6 +660,8 @@ Retrieves a vector store file.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -725,6 +737,8 @@ Retrieves a vector store file.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -842,6 +856,8 @@ Update attributes on a vector store file.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -917,6 +933,8 @@ Update attributes on a vector store file.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -1034,6 +1052,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -1109,6 +1129,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 

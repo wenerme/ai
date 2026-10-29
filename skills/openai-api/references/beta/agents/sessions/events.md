@@ -10,15 +10,21 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
 - `"Idempotency-Key": optional string`
 
+  `minLength: 1`, `maxLength: 256`
+
 ### Path Parameters
 
 - `session_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
 
 - `events: array of AgentSessionInputParam`
 
   The input events to submit to the session.
+
+  `minItems: 0`, `maxItems: 16384`
 
   - `AgentSessionInputComputerUseApprovalRequestResult object { request_id, response, type }`
 
@@ -27,6 +33,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `request_id: string`
 
       The registered request ID from the required action.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `response: AgentBrowserAuthenticationSubmitParam or AgentBrowserAuthenticationCancelParam or AgentBrowserOriginAccessParam`
 
@@ -42,13 +50,19 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
           Values for up to six active fields in the required action. The submitted field-value mapping and selected option must fit within 120 KiB of JSON.
 
+          `minItems: 0`, `maxItems: 6`
+
           - `field_id: string`
 
             The field ID from the required action.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `value: string`
 
             The value to enter into the registered control.
+
+            `minLength: 0`, `maxLength: 16384`
 
         - `type: "browser_authentication"`
 
@@ -57,6 +71,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
         - `selected_option: optional string or null`
 
           The chosen method. Required when the required action contains options.
+
+          `minLength: 0`, `maxLength: 1048576`
 
       - `AgentBrowserAuthenticationCancelParam object { action, type }`
 
@@ -104,9 +120,13 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       The user messages to add to the session.
 
+      `minItems: 0`, `maxItems: 16384`
+
       - `content: array of InputContentParam`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -115,6 +135,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
           - `text: string`
 
             The text sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_text"`
 
@@ -129,6 +151,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
           - `image_url: string`
 
             The URL of the image sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_image"`
 
@@ -172,6 +196,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       The ID of the function call.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `success: boolean`
 
       Whether the function call succeeded.
@@ -179,6 +205,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `turn_id: string`
 
       The ID of the turn that requested the function call.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "agent.session.input.tool_result"`
 
@@ -189,6 +217,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `error: optional string or null`
 
       The error message when the call failed.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `output: optional AgentFunctionCallOutputParam or null`
 
@@ -243,6 +273,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
@@ -261,25 +293,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The machine-readable error code, if any.
 
+        `minLength: 0`
+
       - `message: string`
 
         A customer-safe explanation of the error.
+
+        `minLength: 0`
 
       - `param: string or null`
 
         The request parameter associated with the error, if any.
 
+        `minLength: 0`
+
       - `type: string`
 
         The error type.
+
+        `minLength: 0`
 
     - `event_id: string`
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `type: "error"`
 
@@ -299,6 +343,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The public ID of the environment.
 
+        `minLength: 0`
+
       - `error: object { code, message, type }  or null`
 
         The error reported while preparing the environment, if any.
@@ -307,13 +353,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A machine-readable error code.
 
+          `minLength: 0`
+
         - `message: string`
 
           A human-readable error message.
 
+          `minLength: 0`
+
         - `type: string`
 
           The error type.
+
+          `minLength: 0`
 
       - `status: "pending" or "ready" or "connected" or 4 more`
 
@@ -351,17 +403,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The environment type.
 
+        `minLength: 0`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.ready"`
 
@@ -381,13 +441,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.suspended"`
 
@@ -407,13 +473,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.expired"`
 
@@ -429,21 +501,31 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The stable environment ID, retained across sandbox replacements.
 
+      `minLength: 0`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `reset_count: number`
 
       Monotonically increasing reset number. Repeated notifications share this number.
 
+      `format: int64`, `minimum: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The associated turn, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.reset"`
 
@@ -459,25 +541,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The output text that was appended.
 
+      `minLength: 0`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `item_id: string`
 
       The ID of the command execution item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.output.command_execution_output.delta"`
 
@@ -493,6 +587,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session: AgentSession`
 
       The session that was created.
@@ -501,7 +597,9 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The ID of the session.
 
-      - `agent: object { id, instructions, model, 6 more }`
+        `minLength: 0`
+
+      - `agent: object { id, instructions, model, 7 more }`
 
         The agent running in the session.
 
@@ -509,13 +607,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the agent.
 
+          `minLength: 0`
+
         - `instructions: string or null`
 
           Custom instructions appended to the agent's default base instructions.
 
+          `minLength: 0`
+
         - `model: string`
 
           The model used by the agent.
+
+          `minLength: 0`
 
         - `multi_agent: MultiAgentConfig`
 
@@ -529,9 +633,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
+            `format: int64`, `minimum: 1`, `maximum: 4294967295`
+
         - `name: string or null`
 
           The reusable agent's name when the session was created, or null if no name was saved. Later changes to the agent's name do not affect this value.
+
+          `minLength: 0`
 
         - `reasoning: AgentReasoning`
 
@@ -633,6 +741,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           Tools available to the agent.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `Function object { defer_loading, description, name, 2 more }`
 
             A function defined by the application.
@@ -645,9 +755,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               A description of what the function does.
 
+              `minLength: 0`
+
             - `name: string`
 
               The name of the function.
+
+              `minLength: 0`
 
             - `parameters: map[unknown]`
 
@@ -681,6 +795,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The MCP tools the agent may call.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `connection_origin: "service" or "environment"`
 
               Where outbound MCP HTTP connections originate.
@@ -692,6 +808,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `credential_id: string or null`
 
               The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+              `minLength: 0`
 
             - `request_metadata: map[unknown]`
 
@@ -705,6 +823,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               A label used to identify the MCP server in tool calls.
 
+              `minLength: 0`
+
             - `transport: McpTransport`
 
               The transport used to connect to the MCP server.
@@ -716,6 +836,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
                 - `server_url: string`
 
                   The URL of the MCP server.
+
+                  `minLength: 0`
 
                 - `type: "http"`
 
@@ -731,17 +853,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                   Arguments passed to the MCP server command.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                 - `command: string`
 
                   The command used to start the MCP server.
+
+                  `minLength: 0`
 
                 - `cwd: string`
 
                   The working directory used to start the MCP server.
 
+                  `minLength: 0`
+
                 - `env_vars: array of string`
 
                   Environment variable names inherited from the execution environment.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                 - `type: "stdio"`
 
@@ -763,6 +893,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Allowed search domains, or `null` when the search is unrestricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `context_size: "low" or "medium" or "high"`
 
               The amount of search context made available to the model. Defaults to `medium`.
@@ -781,17 +913,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The city name.
 
+                `minLength: 0`
+
               - `country: string or null`
 
                 The two-letter ISO country code, such as `US`.
+
+                `minLength: 0`
 
               - `region: string or null`
 
                 The region or state name.
 
+                `minLength: 0`
+
               - `timezone: string or null`
 
                 The IANA timezone, such as `America/Los_Angeles`.
+
+                `minLength: 0`
 
             - `mode: "disabled" or "cached" or "live"`
 
@@ -833,9 +973,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               - `"automations"`
 
+        - `compaction: optional object { async }`
+
+          The effective context compaction settings.
+
+          - `async: boolean`
+
+            Whether context is compacted in the background. Defaults to true.
+
       - `created_at: number`
 
         The Unix timestamp, in seconds, when the session was created.
+
+        `format: int64`
 
       - `environment: Environment`
 
@@ -859,9 +1009,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The public ID of the environment.
 
+            `minLength: 0`
+
           - `capability_directories: array of string`
 
             Directories that contain capabilities exposed to the agent.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `desktop: object { enabled }`
 
@@ -875,6 +1029,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Files available in the environment, excluding their contents.
 
+            `minItems: 0`, `maxItems: 50`
+
             - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
 
               A file copied from the OpenAI Files API.
@@ -883,17 +1039,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The session-scoped ID of the file in the execution environment.
 
+                `minLength: 0`
+
               - `file_id: string`
 
                 The ID of the uploaded file.
+
+                `minLength: 0`
 
               - `path: string`
 
                 The file's absolute path inside the environment.
 
+                `minLength: 0`
+
               - `size_bytes: number`
 
                 The decoded file size in bytes.
+
+                `format: int64`, `minimum: 0`
 
               - `type: "file_id"`
 
@@ -909,13 +1073,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The session-scoped ID of the file in the execution environment.
 
+                `minLength: 0`
+
               - `path: string`
 
                 The file's absolute path inside the environment.
 
+                `minLength: 0`
+
               - `size_bytes: number`
 
                 The decoded file size in bytes.
+
+                `format: int64`, `minimum: 0`
 
               - `type: "inline"`
 
@@ -947,6 +1117,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Domains the environment may access when network access is restricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
           - `packages: object { npm, python, system }`
 
             Packages installed in the environment.
@@ -955,25 +1127,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               npm packages installed globally in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
             - `python: array of string`
 
               Python packages installed in the environment.
+
+              `minItems: 0`, `maxItems: 16384`
 
             - `system: array of string`
 
               System packages installed in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
           - `plugins: array of HostedPlugin`
 
             Plugins installed in the environment, excluding their archive contents.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `description: string`
 
               The installed plugin description.
 
+              `minLength: 0`
+
             - `name: string`
 
               The installed plugin name.
+
+              `minLength: 0`
 
             - `type: "inline"`
 
@@ -985,6 +1169,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Skills installed in the environment, excluding their archive contents.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `HostedSkillReference object { description, name, skill_id, 2 more }`
 
               A skill installed from the Skills API.
@@ -993,13 +1179,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The installed skill description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed skill name.
 
+                `minLength: 0`
+
               - `skill_id: string`
 
                 The referenced skill ID.
+
+                `minLength: 0`
 
               - `type: "skill_reference"`
 
@@ -1011,6 +1203,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The concrete skill version installed for this session.
 
+                `minLength: 0`
+
             - `Inline object { description, name, type }`
 
               A skill installed from an inline ZIP archive.
@@ -1019,9 +1213,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The installed skill description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed skill name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -1053,13 +1251,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The public ID of the environment.
 
+            `minLength: 0`
+
           - `capability_directories: array of string`
 
             Directories that contain capabilities exposed to the agent.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `remote_url: string`
 
             Pass this URL unchanged to `codex exec-server --remote` when connecting this environment.
+
+            `minLength: 0`
 
           - `type: "self_hosted"`
 
@@ -1071,13 +1275,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The absolute project directory inside the environment. Defaults to `/workspace`.
 
+            `minLength: 0`
+
       - `error: string or null`
 
         The error that caused the session to fail, if any.
 
+        `minLength: 0`
+
       - `last_active_at: number`
 
         The Unix timestamp, in seconds, when the session was last active.
+
+        `format: int64`
 
       - `metadata: map[string]`
 
@@ -1092,6 +1302,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
         Actions that must be completed before the session can continue.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
 
@@ -1109,17 +1321,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The registered form or frame origin where values will be entered.
 
+                `minLength: 0`
+
               - `fields: array of object { id, label, required, type }`
 
                 Controls to render. All submitted values are sensitive.
+
+                `minItems: 0`, `maxItems: 2000`
 
                 - `id: string`
 
                   The field ID to submit as field_id in a fields entry.
 
+                  `minLength: 0`
+
                 - `label: string`
 
                   The label to display beside the control.
+
+                  `minLength: 0`
 
                 - `required: boolean`
 
@@ -1129,25 +1349,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                   The rendering type, such as email, password, or text.
 
+                  `minLength: 0`
+
               - `options: array of object { id, field_ids, label }`
 
                 Sign-in methods. Empty for a plain form.
+
+                `minItems: 0`, `maxItems: 2000`
 
                 - `id: string`
 
                   The option ID to submit as selected_option.
 
+                  `minLength: 0`
+
                 - `field_ids: array of string`
 
                   IDs from the registered fields that this method accepts.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                 - `label: string`
 
                   The method label to display.
 
+                  `minLength: 0`
+
               - `reason: string or null`
 
                 Why the agent needs the user to sign in.
+
+                `minLength: 0`
 
               - `type: "browser_authentication"`
 
@@ -1163,9 +1395,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The origin the browser needs permission to access.
 
+                `minLength: 0`
+
               - `reason: string or null`
 
                 The browser's explanation for this request, or null when unavailable.
+
+                `minLength: 0`
 
               - `type: "browser_origin_access"`
 
@@ -1177,9 +1413,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The registered request ID to echo when responding.
 
+            `minLength: 0`
+
           - `turn_id: string`
 
             The turn that requested approval.
+
+            `minLength: 0`
 
           - `type: "computer_use_approval_request"`
 
@@ -1199,13 +1439,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The ID to include when submitting the function result.
 
+            `minLength: 0`
+
           - `name: string`
 
             The function name.
 
+            `minLength: 0`
+
           - `turn_id: string`
 
             The ID of the turn that requested the function call.
+
+            `minLength: 0`
 
           - `type: "function_call"`
 
@@ -1220,6 +1466,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `environment_id: string`
 
             The ID of the environment to reconnect.
+
+            `minLength: 0`
 
           - `type: "environment_connection"`
 
@@ -1255,6 +1503,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The number of input tokens used by the agent.
 
+          `format: int64`
+
         - `input_tokens_details: object { cached_tokens }`
 
           A breakdown of the agent's input token usage.
@@ -1263,9 +1513,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The number of input tokens retrieved from the prompt cache.
 
+            `format: int64`
+
         - `output_tokens: number`
 
           The number of output tokens generated by the agent.
+
+          `format: int64`
 
         - `output_tokens_details: object { reasoning_tokens }`
 
@@ -1275,13 +1529,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The number of output tokens used for reasoning.
 
+            `format: int64`
+
         - `total_tokens: number`
 
           The total number of input and output tokens used by the agent.
 
+          `format: int64`
+
       - `vault_ids: array of string`
 
         The IDs of vaults made available to the session.
+
+        `minItems: 0`, `maxItems: 2000`
 
     - `type: "agent.session.created"`
 
@@ -1297,9 +1557,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `turn: Turn`
 
@@ -1309,17 +1573,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The ID of the turn.
 
+        `minLength: 0`
+
       - `agent_id: string`
 
         The ID of the agent that ran the turn.
+
+        `minLength: 0`
 
       - `completed_at: number or null`
 
         The Unix timestamp, in seconds, when the turn reached a terminal state.
 
+        `format: int64`
+
       - `created_at: number`
 
         The Unix timestamp, in seconds, used to order the turn by creation time. Subagent turns use their start time, falling back to completion time or the subagent opening time when the preceding timestamps are unavailable.
+
+        `format: int64`
 
       - `error: SessionTurnError or null`
 
@@ -1425,6 +1697,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A customer-safe explanation of the failure.
 
+          `minLength: 0`
+
       - `object: "agent.session.turn"`
 
         The object type. Always `agent.session.turn`.
@@ -1435,9 +1709,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The ID of the session that owns the turn.
 
+        `minLength: 0`
+
       - `started_at: number or null`
 
         The Unix timestamp, in seconds, when the turn started.
+
+        `format: int64`
 
       - `status: "queued" or "in_progress" or "waiting" or 3 more`
 
@@ -1471,6 +1749,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The ID of the subagent that ran the turn, if applicable.
 
+        `minLength: 0`
+
       - `usage: TokenUsage or null`
 
         Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
@@ -1478,6 +1758,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `turn_id: string`
 
       The ID of the turn associated with the event.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.created"`
 
@@ -1493,9 +1775,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `turn: Turn`
 
@@ -1504,6 +1790,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `turn_id: string`
 
       The ID of the turn associated with the event.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.in_progress"`
 
@@ -1519,9 +1807,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `turn: Turn`
 
@@ -1530,6 +1822,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `turn_id: string`
 
       The ID of the turn associated with the event.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.completed"`
 
@@ -1549,9 +1843,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `turn: Turn`
 
@@ -1560,6 +1858,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `turn_id: string`
 
       The ID of the turn associated with the event.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.failed"`
 
@@ -1579,9 +1879,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `turn: Turn`
 
@@ -1590,6 +1894,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `turn_id: string`
 
       The ID of the turn associated with the event.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.cancelled"`
 
@@ -1609,6 +1915,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item: AgentSessionItem`
 
       The item that was added.
@@ -1621,9 +1929,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of this item, or null for legacy user messages whose ID was not recorded.
 
+          `minLength: 0`
+
         - `content: array of AgentSessionMessageContent`
 
           The content of the message. User messages contain input text or images; assistant messages contain output text.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `InputText object { text, type }`
 
@@ -1632,6 +1944,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `text: string`
 
               The text supplied by the user.
+
+              `minLength: 0`
 
             - `type: "input_text"`
 
@@ -1647,6 +1961,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The URL of the image supplied by the user, which may be a base64-encoded data URL.
 
+              `minLength: 0`
+
             - `type: "input_image"`
 
               The type of the object. Always `input_image`.
@@ -1660,6 +1976,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `text: string`
 
               The text produced by the assistant.
+
+              `minLength: 0`
 
             - `type: "output_text"`
 
@@ -1707,6 +2025,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "message"`
 
           The item type. Always `message`.
@@ -1721,6 +2041,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the reasoning item.
 
+          `minLength: 0`
+
         - `status: AgentOutputItemStatus or null`
 
           The status of the reasoning item.
@@ -1729,9 +2051,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The reasoning summaries produced by the agent.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `text: string`
 
             The reasoning summary text.
+
+            `minLength: 0`
 
           - `type: "summary_text"`
 
@@ -1742,6 +2068,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "reasoning"`
 
@@ -1757,6 +2085,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the function call item.
 
+          `minLength: 0`
+
         - `arguments: unknown`
 
           The arguments to pass to the function.
@@ -1765,9 +2095,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID used to submit the function result.
 
+          `minLength: 0`
+
         - `name: string`
 
           The name of the function to call.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -1793,6 +2127,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "function_call"`
 
           The item type. Always `function_call`.
@@ -1807,13 +2143,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the function call output item.
 
+          `minLength: 0`
+
         - `call_id: string`
 
           The ID of the function call that produced this output.
 
+          `minLength: 0`
+
         - `error: string or null`
 
           The error message, if the call failed.
+
+          `minLength: 0`
 
         - `output: AgentFunctionCallOutput or null`
 
@@ -1831,6 +2173,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The text supplied to the agent.
 
+                `minLength: 0`
+
               - `type: "input_text"`
 
                 The type of the object. Always `input_text`.
@@ -1844,6 +2188,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -1859,6 +2205,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "function_call_output"`
 
           The item type. Always `function_call_output`.
@@ -1873,9 +2221,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the message.
 
+          `minLength: 0`
+
         - `content: array of AgentContent`
 
           The content exchanged between the agents.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `OutputText object { text, type }`
 
@@ -1884,6 +2236,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `text: string`
 
               The text produced by the agent.
+
+              `minLength: 0`
 
             - `type: "output_text"`
 
@@ -1899,6 +2253,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The encrypted content payload.
 
+              `minLength: 0`
+
             - `type: "encrypted_content"`
 
               The content type. Always `encrypted_content`.
@@ -1909,13 +2265,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID or name of the receiving agent.
 
+          `minLength: 0`
+
         - `sender_agent_id: string`
 
           The ID or name of the sending agent.
 
+          `minLength: 0`
+
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "agent_message"`
 
@@ -1931,6 +2293,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the MCP call item.
 
+          `minLength: 0`
+
         - `arguments: unknown`
 
           The arguments passed to the MCP tool.
@@ -1943,6 +2307,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The name of the MCP tool.
 
+          `minLength: 0`
+
         - `output: unknown`
 
           The output returned by the MCP tool, if any.
@@ -1951,6 +2317,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The label of the MCP server.
 
+          `minLength: 0`
+
         - `status: AgentFunctionCallStatus`
 
           The status of the MCP tool call.
@@ -1958,6 +2326,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "mcp_call"`
 
@@ -1973,6 +2343,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the activity item.
 
+          `minLength: 0`
+
         - `output: object { image_url, type }  or null`
 
           The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
@@ -1980,6 +2352,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `image_url: string`
 
             The complete JPEG image as a base64 data URL.
+
+            `minLength: 0`
 
           - `type: "computer_screenshot"`
 
@@ -1995,9 +2369,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A model-generated description of the activity, when available.
 
+          `minLength: 0`
+
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "computer_use_call"`
 
@@ -2013,6 +2391,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The stable history item ID.
 
+          `minLength: 0`
+
         - `request: object { credential_origin, fields, options, 2 more }`
 
           A registered form awaiting the application's response.
@@ -2021,17 +2401,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The registered form or frame origin where values will be entered.
 
+            `minLength: 0`
+
           - `fields: array of object { id, label, required, type }`
 
             Controls to render. All submitted values are sensitive.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The field ID to submit as field_id in a fields entry.
 
+              `minLength: 0`
+
             - `label: string`
 
               The label to display beside the control.
+
+              `minLength: 0`
 
             - `required: boolean`
 
@@ -2041,25 +2429,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The rendering type, such as email, password, or text.
 
+              `minLength: 0`
+
           - `options: array of object { id, field_ids, label }`
 
             Sign-in methods. Empty for a plain form.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The option ID to submit as selected_option.
 
+              `minLength: 0`
+
             - `field_ids: array of string`
 
               IDs from the registered fields that this method accepts.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `label: string`
 
               The method label to display.
 
+              `minLength: 0`
+
           - `reason: string or null`
 
             Why the agent needs the user to sign in.
+
+            `minLength: 0`
 
           - `type: "browser_authentication"`
 
@@ -2069,7 +2469,11 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `request_id: string`
 
+          `minLength: 0`
+
         - `turn_id: string`
+
+          `minLength: 0`
 
         - `type: "computer_use_approval_request"`
 
@@ -2085,9 +2489,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The stable history item ID.
 
+          `minLength: 0`
+
         - `request_id: string`
 
           The registered request answered by this item.
+
+          `minLength: 0`
 
         - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
@@ -2102,6 +2510,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `selected_option: string or null`
 
               The chosen sign-in method, or null when no options were offered.
+
+              `minLength: 0`
 
             - `type: "browser_authentication"`
 
@@ -2121,6 +2531,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "computer_use_approval_request_result"`
 
           - `"computer_use_approval_request_result"`
@@ -2132,6 +2544,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `id: string`
 
           The ID of the web search call.
+
+          `minLength: 0`
 
         - `action: WebSearchAction or null`
 
@@ -2145,9 +2559,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The search queries, when multiple queries were used.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `query: string or null`
 
               The search query, when a single query was used.
+
+              `minLength: 0`
 
             - `type: "search"`
 
@@ -2169,6 +2587,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The URL of the page that was opened.
 
+              `minLength: 0`
+
           - `FindInPage object { pattern, type, url }`
 
             Finds text within a web page.
@@ -2176,6 +2596,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `pattern: string or null`
 
               The text pattern that was searched for.
+
+              `minLength: 0`
 
             - `type: "find_in_page"`
 
@@ -2186,6 +2608,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
             - `url: string or null`
 
               The URL of the page that was searched.
+
+              `minLength: 0`
 
           - `Other object { type }`
 
@@ -2205,6 +2629,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "web_search_call"`
 
           The item type. Always `web_search_call`.
@@ -2219,25 +2645,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the command execution item.
 
+          `minLength: 0`
+
         - `command: string`
 
           The command that was executed.
+
+          `minLength: 0`
 
         - `cwd: string or null`
 
           The working directory used to execute the command.
 
+          `minLength: 0`
+
         - `duration_ms: number or null`
 
           The command duration in milliseconds.
+
+          `format: int64`
 
         - `exit_code: number or null`
 
           The process exit code, if the command completed.
 
+          `format: int64`
+
         - `output: string or null`
 
           The command output, if available.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2246,6 +2684,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "command_execution"`
 
@@ -2261,13 +2701,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `agent_id: string`
 
           The ID of the agent that requested the subagent.
 
+          `minLength: 0`
+
         - `content: array of AgentContent`
 
           The task given to the spawned agent.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `OutputText object { text, type }`
 
@@ -2281,9 +2727,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The model requested for the spawned agent.
 
+          `minLength: 0`
+
         - `reasoning_effort: string or null`
 
           The reasoning effort requested for the spawned agent.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2292,6 +2742,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "create_subagent_call"`
 
@@ -2309,9 +2761,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `content: array of AgentContent`
 
           The input sent to the receiving agent.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `OutputText object { text, type }`
 
@@ -2325,9 +2781,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the agent receiving the input.
 
+          `minLength: 0`
+
         - `sender_agent_id: string`
 
           The ID of the agent sending the input.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2336,6 +2796,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "send_subagent_input_call"`
 
@@ -2353,13 +2815,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `recipient_agent_id: string`
 
           The ID of the agent to resume.
 
+          `minLength: 0`
+
         - `sender_agent_id: string`
 
           The ID of the agent requesting the resume.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2368,6 +2836,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "resume_subagent_call"`
 
@@ -2385,13 +2855,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `recipient_agent_ids: array of string`
 
           The IDs of the agents to wait for.
 
+          `minItems: 0`, `maxItems: 2000`
+
         - `sender_agent_id: string`
 
           The ID of the agent waiting for results.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2400,6 +2876,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "wait_for_subagents_call"`
 
@@ -2417,13 +2895,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `recipient_agent_id: string`
 
           The ID of the agent to interrupt.
 
+          `minLength: 0`
+
         - `sender_agent_id: string`
 
           The ID of the agent requesting the interrupt.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2432,6 +2916,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "interrupt_subagent_call"`
 
@@ -2449,13 +2935,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the tool call item.
 
+          `minLength: 0`
+
         - `recipient_agent_id: string`
 
           The ID of the agent to close.
 
+          `minLength: 0`
+
         - `sender_agent_id: string`
 
           The ID of the agent requesting the close.
+
+          `minLength: 0`
 
         - `status: AgentFunctionCallStatus`
 
@@ -2464,6 +2956,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "close_subagent_call"`
 
@@ -2477,13 +2971,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the item in the turn output, when the item is agent output.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.item.added"`
 
@@ -2498,6 +2998,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `session: AgentSession`
 
@@ -2517,6 +3019,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session: AgentSession`
 
       The session that started processing.
@@ -2535,6 +3039,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session: AgentSession`
 
       The session and its current required actions.
@@ -2552,6 +3058,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `session: AgentSession`
 
@@ -2575,13 +3083,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.pending"`
 
@@ -2601,13 +3115,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.connected"`
 
@@ -2627,13 +3147,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.disconnected"`
 
@@ -2653,13 +3179,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.environment.failed"`
 
@@ -2675,6 +3207,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `subagent: Subagent`
 
       The subagent that was created.
@@ -2683,13 +3217,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The ID of the subagent.
 
+        `minLength: 0`
+
       - `closed_at: number or null`
 
         The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
+        `format: int64`
+
       - `instructions: array of AgentContent or null`
 
         Initial task content, or null when unavailable. Text may contain placeholders for images or audio when only a preview is available.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `OutputText object { text, type }`
 
@@ -2703,6 +3243,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The runner-assigned nickname, or null when unavailable.
 
+        `minLength: 0`
+
       - `object: "agent.session.subagent"`
 
         The object type. Always `agent.session.subagent`.
@@ -2713,13 +3255,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
+        `format: int64`
+
       - `parent_agent_id: string`
 
         The ID of the agent that created this subagent.
 
+        `minLength: 0`
+
       - `session_id: string`
 
         The ID of the session that owns the subagent.
+
+        `minLength: 0`
 
       - `status: "active" or "closed"`
 
@@ -2747,6 +3295,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `subagent: Subagent`
 
       The subagent that resumed.
@@ -2764,6 +3314,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `subagent: Subagent`
 
@@ -2783,6 +3335,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item: AgentOutputItem`
 
       The completed output item.
@@ -2795,13 +3349,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the message.
 
+          `minLength: 0`
+
         - `content: array of OutputText`
 
           The content of the message.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `text: string`
 
             The text produced by the agent.
+
+            `minLength: 0`
 
           - `type: "output_text"`
 
@@ -2833,6 +3393,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the turn that contains this item.
 
+          `minLength: 0`
+
         - `type: "message"`
 
           The item type. Always `message`.
@@ -2859,6 +3421,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The ID of the activity item.
 
+          `minLength: 0`
+
         - `output: object { image_url, type }  or null`
 
           The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
@@ -2866,6 +3430,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `image_url: string`
 
             The complete JPEG image as a base64 data URL.
+
+            `minLength: 0`
 
           - `type: "computer_screenshot"`
 
@@ -2881,9 +3447,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A model-generated description of the activity, when available.
 
+          `minLength: 0`
+
         - `turn_id: string`
 
           The ID of the turn that contains this item.
+
+          `minLength: 0`
 
         - `type: "computer_use_call"`
 
@@ -2899,6 +3469,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The stable history item ID.
 
+          `minLength: 0`
+
         - `request: object { credential_origin, fields, options, 2 more }`
 
           A registered form awaiting the application's response.
@@ -2907,17 +3479,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The registered form or frame origin where values will be entered.
 
+            `minLength: 0`
+
           - `fields: array of object { id, label, required, type }`
 
             Controls to render. All submitted values are sensitive.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The field ID to submit as field_id in a fields entry.
 
+              `minLength: 0`
+
             - `label: string`
 
               The label to display beside the control.
+
+              `minLength: 0`
 
             - `required: boolean`
 
@@ -2927,25 +3507,37 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               The rendering type, such as email, password, or text.
 
+              `minLength: 0`
+
           - `options: array of object { id, field_ids, label }`
 
             Sign-in methods. Empty for a plain form.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The option ID to submit as selected_option.
 
+              `minLength: 0`
+
             - `field_ids: array of string`
 
               IDs from the registered fields that this method accepts.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `label: string`
 
               The method label to display.
 
+              `minLength: 0`
+
           - `reason: string or null`
 
             Why the agent needs the user to sign in.
+
+            `minLength: 0`
 
           - `type: "browser_authentication"`
 
@@ -2955,7 +3547,11 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `request_id: string`
 
+          `minLength: 0`
+
         - `turn_id: string`
+
+          `minLength: 0`
 
         - `type: "computer_use_approval_request"`
 
@@ -2999,13 +3595,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the output item in the turn output.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.item.done"`
 
@@ -3021,17 +3623,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the content part in the message.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `item_id: string`
 
       The ID of the message item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `part: OutputText`
 
@@ -3041,9 +3651,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.content_part.added"`
 
@@ -3059,17 +3673,25 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the content part in the message.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `item_id: string`
 
       The ID of the message item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `part: OutputText`
 
@@ -3079,9 +3701,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.content_part.done"`
 
@@ -3097,29 +3723,43 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the content part in the message.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `delta: string`
 
       The text that was appended.
+
+      `minLength: 0`
 
     - `event_id: string`
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item_id: string`
 
       The ID of the message item.
+
+      `minLength: 0`
 
     - `output_index: number`
 
       The index of the item in the turn output.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.output_text.delta"`
 
@@ -3135,29 +3775,43 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the content part in the message.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `item_id: string`
 
       The ID of the message item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `text: string`
 
       The complete output text.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.output_text.done"`
 
@@ -3173,13 +3827,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item_id: string`
 
       The ID of the reasoning item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `part: SummaryText`
 
@@ -3189,6 +3849,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         The reasoning summary text.
 
+        `minLength: 0`
+
       - `type: "summary_text"`
 
         The content type. Always `summary_text`.
@@ -3197,13 +3859,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `summary_index: number`
 
       The index of the summary content part.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.reasoning_summary_part.added"`
 
@@ -3219,13 +3887,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item_id: string`
 
       The ID of the reasoning item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `part: SummaryText`
 
@@ -3234,6 +3908,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `status: "incomplete" or null`
 
@@ -3245,9 +3921,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The index of the summary part.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.reasoning_summary_part.done"`
 
@@ -3263,29 +3943,43 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The summary text that was appended.
 
+      `minLength: 0`
+
     - `event_id: string`
 
       The unique ID of the event.
+
+      `minLength: 0`
 
     - `item_id: string`
 
       The ID of the reasoning item.
 
+      `minLength: 0`
+
     - `output_index: number`
 
       The index of the item in the turn output.
+
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
 
     - `session_id: string`
 
       The ID of the session associated with the event.
 
+      `minLength: 0`
+
     - `summary_index: number`
 
       The index of the summary content part.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.reasoning_summary_text.delta"`
 
@@ -3301,29 +3995,43 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The unique ID of the event.
 
+      `minLength: 0`
+
     - `item_id: string`
 
       The ID of the reasoning item.
+
+      `minLength: 0`
 
     - `output_index: number`
 
       The index of the item in the turn output.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `session_id: string`
 
       The ID of the session associated with the event.
+
+      `minLength: 0`
 
     - `summary_index: number`
 
       The index of the summary content part.
 
+      `format: int64`, `minimum: 0`, `maximum: 4294967295`
+
     - `text: string`
 
       The complete reasoning summary text.
 
+      `minLength: 0`
+
     - `turn_id: string or null`
 
       The ID of the turn associated with the event, when applicable.
+
+      `minLength: 0`
 
     - `type: "agent.session.turn.reasoning_summary_text.done"`
 

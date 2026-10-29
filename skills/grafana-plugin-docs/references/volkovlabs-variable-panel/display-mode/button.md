@@ -9,4 +9,4 @@ description: "Learn how to use the Button display mode to show variable values a
 
 In the **Button** display mode, variable values appear as horizontally positioned buttons. You can optionally set up color-coding rules in the **Thresholds** category.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/button-mode.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/button-mode.png)

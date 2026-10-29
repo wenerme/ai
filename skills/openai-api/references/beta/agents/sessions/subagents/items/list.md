@@ -8,7 +8,11 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `subagent_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters
 
@@ -16,9 +20,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -38,6 +46,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `AgentSessionMessage object { id, content, phase, 4 more }`
 
     A user or assistant message recorded in a session.
@@ -46,9 +56,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of this item, or null for legacy user messages whose ID was not recorded.
 
+      `minLength: 0`
+
     - `content: array of AgentSessionMessageContent`
 
       The content of the message. User messages contain input text or images; assistant messages contain output text.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `InputText object { text, type }`
 
@@ -57,6 +71,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `text: string`
 
           The text supplied by the user.
+
+          `minLength: 0`
 
         - `type: "input_text"`
 
@@ -72,6 +88,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
           The URL of the image supplied by the user, which may be a base64-encoded data URL.
 
+          `minLength: 0`
+
         - `type: "input_image"`
 
           The type of the object. Always `input_image`.
@@ -85,6 +103,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `text: string`
 
           The text produced by the assistant.
+
+          `minLength: 0`
 
         - `type: "output_text"`
 
@@ -132,6 +152,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the turn that contains this item.
 
+      `minLength: 0`
+
     - `type: "message"`
 
       The item type. Always `message`.
@@ -146,6 +168,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the reasoning item.
 
+      `minLength: 0`
+
     - `status: AgentOutputItemStatus or null`
 
       The status of the reasoning item.
@@ -154,9 +178,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The reasoning summaries produced by the agent.
 
+      `minItems: 0`, `maxItems: 2000`
+
       - `text: string`
 
         The reasoning summary text.
+
+        `minLength: 0`
 
       - `type: "summary_text"`
 
@@ -167,6 +195,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "reasoning"`
 
@@ -182,6 +212,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the function call item.
 
+      `minLength: 0`
+
     - `arguments: unknown`
 
       The arguments to pass to the function.
@@ -190,9 +222,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID used to submit the function result.
 
+      `minLength: 0`
+
     - `name: string`
 
       The name of the function to call.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -218,6 +254,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the turn that contains this item.
 
+      `minLength: 0`
+
     - `type: "function_call"`
 
       The item type. Always `function_call`.
@@ -232,13 +270,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the function call output item.
 
+      `minLength: 0`
+
     - `call_id: string`
 
       The ID of the function call that produced this output.
 
+      `minLength: 0`
+
     - `error: string or null`
 
       The error message, if the call failed.
+
+      `minLength: 0`
 
     - `output: AgentFunctionCallOutput or null`
 
@@ -256,6 +300,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
             The text supplied to the agent.
 
+            `minLength: 0`
+
           - `type: "input_text"`
 
             The type of the object. Always `input_text`.
@@ -269,6 +315,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
           - `image_url: string`
 
             The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+            `minLength: 0`
 
           - `type: "input_image"`
 
@@ -284,6 +332,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the turn that contains this item.
 
+      `minLength: 0`
+
     - `type: "function_call_output"`
 
       The item type. Always `function_call_output`.
@@ -298,9 +348,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the message.
 
+      `minLength: 0`
+
     - `content: array of AgentContent`
 
       The content exchanged between the agents.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `OutputText object { text, type }`
 
@@ -309,6 +363,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `text: string`
 
           The text produced by the agent.
+
+          `minLength: 0`
 
         - `type: "output_text"`
 
@@ -324,6 +380,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
           The encrypted content payload.
 
+          `minLength: 0`
+
         - `type: "encrypted_content"`
 
           The content type. Always `encrypted_content`.
@@ -334,13 +392,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID or name of the receiving agent.
 
+      `minLength: 0`
+
     - `sender_agent_id: string`
 
       The ID or name of the sending agent.
 
+      `minLength: 0`
+
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "agent_message"`
 
@@ -356,6 +420,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the MCP call item.
 
+      `minLength: 0`
+
     - `arguments: unknown`
 
       The arguments passed to the MCP tool.
@@ -368,6 +434,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The name of the MCP tool.
 
+      `minLength: 0`
+
     - `output: unknown`
 
       The output returned by the MCP tool, if any.
@@ -376,6 +444,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The label of the MCP server.
 
+      `minLength: 0`
+
     - `status: AgentFunctionCallStatus`
 
       The status of the MCP tool call.
@@ -383,6 +453,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "mcp_call"`
 
@@ -398,6 +470,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the activity item.
 
+      `minLength: 0`
+
     - `output: object { image_url, type }  or null`
 
       The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
@@ -405,6 +479,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
       - `image_url: string`
 
         The complete JPEG image as a base64 data URL.
+
+        `minLength: 0`
 
       - `type: "computer_screenshot"`
 
@@ -420,9 +496,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       A model-generated description of the activity, when available.
 
+      `minLength: 0`
+
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "computer_use_call"`
 
@@ -438,6 +518,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The stable history item ID.
 
+      `minLength: 0`
+
     - `request: object { credential_origin, fields, options, 2 more }`
 
       A registered form awaiting the application's response.
@@ -446,17 +528,25 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
         The registered form or frame origin where values will be entered.
 
+        `minLength: 0`
+
       - `fields: array of object { id, label, required, type }`
 
         Controls to render. All submitted values are sensitive.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `id: string`
 
           The field ID to submit as field_id in a fields entry.
 
+          `minLength: 0`
+
         - `label: string`
 
           The label to display beside the control.
+
+          `minLength: 0`
 
         - `required: boolean`
 
@@ -466,25 +556,37 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
           The rendering type, such as email, password, or text.
 
+          `minLength: 0`
+
       - `options: array of object { id, field_ids, label }`
 
         Sign-in methods. Empty for a plain form.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `id: string`
 
           The option ID to submit as selected_option.
 
+          `minLength: 0`
+
         - `field_ids: array of string`
 
           IDs from the registered fields that this method accepts.
+
+          `minItems: 0`, `maxItems: 2000`
 
         - `label: string`
 
           The method label to display.
 
+          `minLength: 0`
+
       - `reason: string or null`
 
         Why the agent needs the user to sign in.
+
+        `minLength: 0`
 
       - `type: "browser_authentication"`
 
@@ -494,7 +596,11 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
     - `request_id: string`
 
+      `minLength: 0`
+
     - `turn_id: string`
+
+      `minLength: 0`
 
     - `type: "computer_use_approval_request"`
 
@@ -510,11 +616,15 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The stable history item ID.
 
+      `minLength: 0`
+
     - `request_id: string`
 
       The registered request answered by this item.
 
-    - `response: object { action, selected_option, type }  or object { action, type }`
+      `minLength: 0`
+
+    - `response: Submit { action, selected_option, type }  or Cancel { action, type }`
 
       The admitted response, without submitted credential values.
 
@@ -527,6 +637,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `selected_option: string or null`
 
           The chosen sign-in method, or null when no options were offered.
+
+          `minLength: 0`
 
         - `type: "browser_authentication"`
 
@@ -546,6 +658,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the turn that contains this item.
 
+      `minLength: 0`
+
     - `type: "computer_use_approval_request_result"`
 
       - `"computer_use_approval_request_result"`
@@ -557,6 +671,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `id: string`
 
       The ID of the web search call.
+
+      `minLength: 0`
 
     - `action: WebSearchAction or null`
 
@@ -570,9 +686,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
           The search queries, when multiple queries were used.
 
+          `minItems: 0`, `maxItems: 2000`
+
         - `query: string or null`
 
           The search query, when a single query was used.
+
+          `minLength: 0`
 
         - `type: "search"`
 
@@ -594,6 +714,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
           The URL of the page that was opened.
 
+          `minLength: 0`
+
       - `FindInPage object { pattern, type, url }`
 
         Finds text within a web page.
@@ -601,6 +723,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `pattern: string or null`
 
           The text pattern that was searched for.
+
+          `minLength: 0`
 
         - `type: "find_in_page"`
 
@@ -611,6 +735,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
         - `url: string or null`
 
           The URL of the page that was searched.
+
+          `minLength: 0`
 
       - `Other object { type }`
 
@@ -630,6 +756,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the turn that contains this item.
 
+      `minLength: 0`
+
     - `type: "web_search_call"`
 
       The item type. Always `web_search_call`.
@@ -644,25 +772,37 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the command execution item.
 
+      `minLength: 0`
+
     - `command: string`
 
       The command that was executed.
+
+      `minLength: 0`
 
     - `cwd: string or null`
 
       The working directory used to execute the command.
 
+      `minLength: 0`
+
     - `duration_ms: number or null`
 
       The command duration in milliseconds.
+
+      `format: int64`
 
     - `exit_code: number or null`
 
       The process exit code, if the command completed.
 
+      `format: int64`
+
     - `output: string or null`
 
       The command output, if available.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -671,6 +811,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "command_execution"`
 
@@ -686,13 +828,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `agent_id: string`
 
       The ID of the agent that requested the subagent.
 
+      `minLength: 0`
+
     - `content: array of AgentContent`
 
       The task given to the spawned agent.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `OutputText object { text, type }`
 
@@ -706,9 +854,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The model requested for the spawned agent.
 
+      `minLength: 0`
+
     - `reasoning_effort: string or null`
 
       The reasoning effort requested for the spawned agent.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -717,6 +869,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "create_subagent_call"`
 
@@ -734,9 +888,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `content: array of AgentContent`
 
       The input sent to the receiving agent.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `OutputText object { text, type }`
 
@@ -750,9 +908,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the agent receiving the input.
 
+      `minLength: 0`
+
     - `sender_agent_id: string`
 
       The ID of the agent sending the input.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -761,6 +923,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "send_subagent_input_call"`
 
@@ -778,13 +942,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `recipient_agent_id: string`
 
       The ID of the agent to resume.
 
+      `minLength: 0`
+
     - `sender_agent_id: string`
 
       The ID of the agent requesting the resume.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -793,6 +963,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "resume_subagent_call"`
 
@@ -810,13 +982,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `recipient_agent_ids: array of string`
 
       The IDs of the agents to wait for.
 
+      `minItems: 0`, `maxItems: 2000`
+
     - `sender_agent_id: string`
 
       The ID of the agent waiting for results.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -825,6 +1003,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "wait_for_subagents_call"`
 
@@ -842,13 +1022,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `recipient_agent_id: string`
 
       The ID of the agent to interrupt.
 
+      `minLength: 0`
+
     - `sender_agent_id: string`
 
       The ID of the agent requesting the interrupt.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -857,6 +1043,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "interrupt_subagent_call"`
 
@@ -874,13 +1062,19 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
       The ID of the tool call item.
 
+      `minLength: 0`
+
     - `recipient_agent_id: string`
 
       The ID of the agent to close.
 
+      `minLength: 0`
+
     - `sender_agent_id: string`
 
       The ID of the agent requesting the close.
+
+      `minLength: 0`
 
     - `status: AgentFunctionCallStatus`
 
@@ -889,6 +1083,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
     - `turn_id: string`
 
       The ID of the turn that contains this item.
+
+      `minLength: 0`
 
     - `type: "close_subagent_call"`
 
@@ -902,6 +1098,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -909,6 +1107,8 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

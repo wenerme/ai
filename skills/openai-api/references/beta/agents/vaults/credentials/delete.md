@@ -8,7 +8,11 @@ Deletes a vault credential. See [vaults](/api/docs/guides/agents-api/tools/vault
 
 - `vault_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `credential_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -19,6 +23,8 @@ Deletes a vault credential. See [vaults](/api/docs/guides/agents-api/tools/vault
   - `id: string`
 
     The ID of the deleted credential.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

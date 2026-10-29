@@ -190,12 +190,6 @@ Type: `string`
 
 Status of any associated forensic copies that may have been captured during the request.
 
-## ForwardAction
-
-Type: `object`
-
-The Forward policy that matched the request. worker\_id is the ID of the Worker the policy sent the request to. error\_code is empty if there was no error, otherwise one of *internalError* | *workerNotFound* | *entrypointNotFound* | *workerLimitExceeded* | *workerException*. Empty ({}) if no Forward policy matched.
-
 ## HTTPHost
 
 Type: `string`

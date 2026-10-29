@@ -11,7 +11,7 @@ Working templates you can copy and adapt. Each is a complete definition. Paste i
 
 ## A Slack title
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "slack.title" }}
@@ -23,7 +23,7 @@ Renders as `[FIRING:3] HighRequestLatency`. Putting the count in the title makes
 
 ## A Slack body
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "slack.text" }}
@@ -40,7 +40,7 @@ Loops over every alert in the group, printing its summary and, when present, its
 
 ## An email subject
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "email.subject" }}
@@ -52,7 +52,7 @@ Go [Copy code to clipboard] Copy
 
 When one notification covers several clusters, group the list so it reads clearly:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "alerts.by_cluster" }}
@@ -64,7 +64,7 @@ Go [Copy code to clipboard] Copy
 
 ## Firing and resolved in one message
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "alerts.status" }}
@@ -85,7 +85,7 @@ Useful when **Send resolved** is enabled, so one message can show what recovered
 
 For a channel where alerts should be readable at a glance:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "alerts.oneline" }}
@@ -93,7 +93,7 @@ Go [Copy code to clipboard] Copy
 {{ end }}
 ```
 
-`.CommonLabels` only holds labels shared by every alert in the group, so this works when the grouping guarantees a single cluster and renders empty when it doesn’t. Refer to [Template reference](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference/).
+`.CommonLabels` only holds labels shared by every alert in the group, so this works when the grouping guarantees a single cluster and renders empty when it doesn’t. Refer to [Template reference](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference/).
 
 ## A guideline
 

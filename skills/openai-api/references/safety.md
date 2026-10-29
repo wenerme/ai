@@ -14,6 +14,8 @@ Get a safety alert belonging to the authenticated API project.
 
   Project safety alert ID
 
+  `maxLength: 38`
+
 ### Returns
 
 - `SafetyAlert object { id, created_at, error_type, 7 more }`
@@ -21,6 +23,8 @@ Get a safety alert belonging to the authenticated API project.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `error_type: "potentially_unintended_data_transfer" or "potentially_unintended_data_access" or "potentially_unintended_destructive_activity" or "other"`
 
@@ -111,6 +115,8 @@ curl https://api.openai.com/v1/safety/alerts/alert_0123456789abcdef0123456789abc
 
   - `created_at: number`
 
+    `format: unixtime`
+
   - `error_type: "potentially_unintended_data_transfer" or "potentially_unintended_data_access" or "potentially_unintended_destructive_activity" or "other"`
 
     - `"potentially_unintended_data_transfer"`
@@ -157,6 +163,8 @@ Get a safety case by ID.
 
   Safety case ID
 
+  `maxLength: 128`
+
 ### Returns
 
 - `SafetyCase object { id, created_at, entity_identifier, 3 more }`
@@ -164,6 +172,8 @@ Get a safety case by ID.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `entity_identifier: string`
 
@@ -232,6 +242,8 @@ curl https://api.openai.com/v1/safety/cases/C-abc123 \
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `entity_identifier: string`
 

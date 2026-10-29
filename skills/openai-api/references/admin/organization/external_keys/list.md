@@ -10,6 +10,8 @@ List the external key configs registered on the user's organization
 
 - `limit: optional number`
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   - `"asc"`

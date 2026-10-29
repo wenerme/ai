@@ -258,7 +258,8 @@ A bar chart also accepts these options under `displayConfig`:
   sum of the rows shown, so the shares always add up to 100% of what is displayed. The share is
   only meaningful when each item falls in exactly one category. For example, with `usersCount`, a
   user who is active in several categories is counted once in each row, so the share is not a
-  share of users. When the query uses a `limit`, the total covers only the rows that are shown.
+  share of users. When the query uses a `limit`, the total covers only the rows on the current
+  page.
 - `colorBy: category` gives each bar its own solid shade from a blue scale, instead of one color
   for the series. The top bar gets the boldest shade, darkest in light mode and lightest in dark,
   so bars stay readable either way. Requires one dimension and one metric, and is ignored otherwise.
@@ -769,6 +770,7 @@ displayConfig:
 - Automatic pagination for analytics mode visualizations [introduced](https://gitlab.com/gitlab-org/glql/-/work_items/170) in GitLab 19.5.
 - **Previous** and **Next** paging for analytics mode tables [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633584) in GitLab 19.6.
 - `columnWidths` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262111) in GitLab 19.6.
+- **Previous** and **Next** controls for analytics mode charts with a `limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264152) in GitLab 19.6.
 
 Display types available in any mode display the first page of results and provide a **Load more**
 action to fetch additional pages. For more information, see [pagination](_index.md#pagination).
@@ -783,5 +785,17 @@ action. They fetch every page of aggregated results automatically, up to a maxim
 If your query returns more than 1,000 aggregated rows, the visualization shows the first 1,000 rows.
 To see all your data, add filters to the query or group by fewer dimensions.
 
-To show a single page instead, set `limit` in the block. The visualization then shows at most that
-many rows, up to a maximum of 100.
+### Page through a chart
+
+Set `limit` on a column, line, bar, area, or diverging bar chart to show that many values of the
+first dimension at a time.
+**Previous** and **Next** controls page through the rest.
+Each page shows every row for its values, so with two dimensions a bar always shows its full
+breakdown.
+With two dimensions, the legend lists every series on every page, so each series keeps its color.
+The controls page through rows that are already fetched, so turning a page fetches nothing new and
+paging covers at most the first 1,000 rows.
+When every value fits on one page, no controls are shown.
+
+For `stat`, `barList`, and `heatMap`, `limit` fetches a single page of that many rows instead, up to a maximum
+of 100.

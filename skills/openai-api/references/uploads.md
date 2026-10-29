@@ -30,9 +30,13 @@ Returns the Upload object with status `cancelled`.
 
     The Unix timestamp (in seconds) for when the Upload was created.
 
+    `format: unixtime`
+
   - `expires_at: number`
 
     The Unix timestamp (in seconds) for when the Upload will expire.
+
+    `format: unixtime`
 
   - `filename: string`
 
@@ -70,6 +74,8 @@ Returns the Upload object with status `cancelled`.
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the file was created.
+
+      `format: unixtime`
 
     - `filename: string`
 
@@ -115,6 +121,8 @@ Returns the Upload object with status `cancelled`.
 
       The Unix timestamp (in seconds) for when the file will expire. In a
       completed file upload response, this can be null when no expiry is set.
+
+      `format: unixtime`
 
     - `status_details: optional string`
 
@@ -226,9 +234,13 @@ Returns the Upload object with status `completed`, including an additional `file
 
     The Unix timestamp (in seconds) for when the Upload was created.
 
+    `format: unixtime`
+
   - `expires_at: number`
 
     The Unix timestamp (in seconds) for when the Upload will expire.
+
+    `format: unixtime`
 
   - `filename: string`
 
@@ -266,6 +278,8 @@ Returns the Upload object with status `completed`, including an additional `file
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the file was created.
+
+      `format: unixtime`
 
     - `filename: string`
 
@@ -311,6 +325,8 @@ Returns the Upload object with status `completed`, including an additional `file
 
       The Unix timestamp (in seconds) for when the file will expire. In a
       completed file upload response, this can be null when no expiry is set.
+
+      `format: unixtime`
 
     - `status_details: optional string`
 
@@ -464,6 +480,8 @@ Returns the Upload object with status `pending`.
 
     The number of seconds after the anchor time that the file will expire. Must be between 3600 (1 hour) and 2592000 (30 days).
 
+    `format: int64`, `minimum: 3600`, `maximum: 2592000`
+
 ### Returns
 
 - `Upload object { id, bytes, created_at, 6 more }`
@@ -482,9 +500,13 @@ Returns the Upload object with status `pending`.
 
     The Unix timestamp (in seconds) for when the Upload was created.
 
+    `format: unixtime`
+
   - `expires_at: number`
 
     The Unix timestamp (in seconds) for when the Upload will expire.
+
+    `format: unixtime`
 
   - `filename: string`
 
@@ -522,6 +544,8 @@ Returns the Upload object with status `pending`.
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the file was created.
+
+      `format: unixtime`
 
     - `filename: string`
 
@@ -567,6 +591,8 @@ Returns the Upload object with status `pending`.
 
       The Unix timestamp (in seconds) for when the file will expire. In a
       completed file upload response, this can be null when no expiry is set.
+
+      `format: unixtime`
 
     - `status_details: optional string`
 
@@ -670,9 +696,13 @@ curl https://api.openai.com/v1/uploads \
 
     The Unix timestamp (in seconds) for when the Upload was created.
 
+    `format: unixtime`
+
   - `expires_at: number`
 
     The Unix timestamp (in seconds) for when the Upload will expire.
+
+    `format: unixtime`
 
   - `filename: string`
 
@@ -710,6 +740,8 @@ curl https://api.openai.com/v1/uploads \
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the file was created.
+
+      `format: unixtime`
 
     - `filename: string`
 
@@ -756,6 +788,8 @@ curl https://api.openai.com/v1/uploads \
       The Unix timestamp (in seconds) for when the file will expire. In a
       completed file upload response, this can be null when no expiry is set.
 
+      `format: unixtime`
+
     - `status_details: optional string`
 
       Deprecated. For details on why a fine-tuning training file failed validation, see the `error` field on `fine_tuning.job`. Completed file upload responses can return null when these details are unset.
@@ -795,6 +829,8 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the Part was created.
+
+    `format: unixtime`
 
   - `object: "upload.part"`
 
@@ -859,6 +895,8 @@ curl https://api.openai.com/v1/uploads/upload_abc123/parts
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the Part was created.
+
+    `format: unixtime`
 
   - `object: "upload.part"`
 

@@ -14,6 +14,8 @@ Lists the roles configured for the organization.
 
   A limit on the number of roles to return. Defaults to 1000.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned roles.

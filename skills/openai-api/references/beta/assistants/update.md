@@ -873,6 +873,10 @@ client = OpenAI::Client.new
 conversations_by_session = {}
 
 handle_message = lambda do |session_id:, content:|
+  unless session_id.is_a?(String) && !session_id.strip.empty? && content.is_a?(String) && !content.strip.empty?
+    raise ArgumentError, "session_id and content are required"
+  end
+
   conversation_id = conversations_by_session[session_id]
   unless conversation_id
     conversation_id = client.conversations.create.id

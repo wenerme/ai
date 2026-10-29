@@ -14,6 +14,8 @@ Reject an incoming SIP call. Send a required SIP rejection status_code between 3
 
   SIP rejection status sent to the caller. This field is required.
 
+  `minimum: 300`, `maximum: 699`
+
 ### Example
 
 ```http

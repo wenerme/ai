@@ -1250,7 +1250,7 @@ require "openai"
 
 client = OpenAI::Client.new
 client.containers.delete("container_id")
-puts("Deleted container_id")
+puts("Container deleted")
 ```
 
 

@@ -22,6 +22,8 @@ Retrieves a group.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `group_type: "group" or "tenant_group"`
 
     The type of the group.

@@ -103,6 +103,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
+  `minimum: 1`, `maximum: 50`
+
 - `ranking_options: optional object { ranker, score_threshold }`
 
   Ranking options for search.
@@ -118,6 +120,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
     - `"default-2024-11-15"`
 
   - `score_threshold: optional number`
+
+    `minimum: 0`, `maximum: 1`
 
 - `rewrite_query: optional boolean`
 
@@ -168,6 +172,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
   - `score: number`
 
     The similarity score for the result.
+
+    `minimum: 0`, `maximum: 1`
 
 - `has_more: boolean`
 

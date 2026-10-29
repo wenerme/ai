@@ -504,6 +504,9 @@ Label keys and values can be no longer than 63 characters
 (Unicode codepoints) and can only contain lowercase letters, numeric
 characters, underscores, and dashes. International characters are allowed.
 Label values are optional. Label keys must start with a letter.
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
+token back unchanged in CreateInteraction to continue decoding.
 stream boolean (optional) Input only. Whether the interaction will be streamed.
 store boolean (optional) Input only. Whether to store the response and request for later retrieval.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
@@ -951,6 +954,11 @@ values:
 
   The interaction is completed, but contains incomplete results (e.g.
   hitting max_tokens).
+- `requires_continuation`
+
+  The interaction requires at least one more request for it to be
+  completed. The next request should set the continuation_token to the one
+  returned by this request.
 created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 updated string (required) Required. Output only. The time at which the response was last updated in ISO 8601 format
@@ -1069,6 +1077,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -1376,6 +1385,9 @@ Error message from an interaction.
 
 code string (optional) A URI that identifies the error type.
 message string (optional) A human-readable error message.
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
+token back unchanged in CreateInteraction to continue decoding.
 agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
 The agent to interact with.
 
@@ -2044,6 +2056,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2187,11 +2200,11 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 
   Priority service tier.
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
-agent string (optional) The agent to interact with.
 continuation_token string (optional) Opaque token to resume a long decode.
 Output: set when status is INCOMPLETE and decoding can be resumed.
 Input: pass the latest token back unchanged in CreateInteraction to
 continue decoding.
+agent string (optional) The agent to interact with.
 object string (optional) Output only. The resource type.
 event_type object (required) No description provided.
 
@@ -2239,6 +2252,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2382,11 +2396,11 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 
   Priority service tier.
 steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
-agent string (optional) The agent to interact with.
 continuation_token string (optional) Opaque token to resume a long decode.
 Output: set when status is INCOMPLETE and decoding can be resumed.
 Input: pass the latest token back unchanged in CreateInteraction to
 continue decoding.
+agent string (optional) The agent to interact with.
 object string (optional) Output only. The resource type.
 event_type object (required) No description provided.
 
@@ -2418,6 +2432,11 @@ values:
 
   The interaction is completed, but contains incomplete results (e.g.
   hitting max_tokens).
+- `requires_continuation`
+
+  The interaction requires at least one more request for it to be
+  completed. The next request should set the continuation_token to the one
+  returned by this request.
 event_type object (required) No description provided.
 
 Always set to `"interaction.status_update"`.
@@ -2429,6 +2448,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3031,6 +3051,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3176,6 +3197,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3310,6 +3332,7 @@ Statistics on the interaction request's token usage.
 #### Fields
 
 total_input_tokens integer (optional) Number of tokens in the prompt (context).
+initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 

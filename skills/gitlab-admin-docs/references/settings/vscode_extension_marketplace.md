@@ -20,9 +20,9 @@ Prerequisites:
 
 To access the VS Code Extension Marketplace settings:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **VS Code Extension Marketplace**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
 
 ## Enable the extension registry
 
@@ -36,7 +36,7 @@ Prerequisites:
 To enable the extension marketplace:
 
 1. Go to the [VS Code Extension Marketplace settings](#access-vs-code-extension-marketplace-settings).
-1. Turn on the **Enable Extension Marketplace** toggle.
+1. Turn on the  toggle.
 
 ## Modify the extension registry
 
@@ -47,10 +47,10 @@ Prerequisites:
 To modify the extension registry:
 
 1. Go to the [VS Code Extension Marketplace settings](#access-vs-code-extension-marketplace-settings).
-1. Expand **Extension registry settings**.
-1. Turn off the **Use Open VSX extension registry** toggle.
-1. Enter full URLs for a VS Code extension registry's **Service URL**, **Item URL**, and **Resource URL Template**.
-1. Select **Save changes**.
+1. Expand .
+1. Turn off the  toggle.
+1. Enter full URLs for a VS Code extension registry's , , and .
+1. Select .
 
 After you modify the extension registry:
 

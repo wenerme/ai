@@ -63,6 +63,8 @@ Creates and executes a batch from an uploaded file of requests
 
     The number of seconds after the anchor time that the file will expire. Must be between 3600 (1 hour) and 2592000 (30 days).
 
+    `format: int64`, `minimum: 3600`, `maximum: 2592000`
+
 ### Returns
 
 - `Batch object { id, completion_window, created_at, 19 more }`
@@ -76,6 +78,8 @@ Creates and executes a batch from an uploaded file of requests
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the batch was created.
+
+    `format: unixtime`
 
   - `endpoint: string`
 
@@ -115,13 +119,19 @@ Creates and executes a batch from an uploaded file of requests
 
     The Unix timestamp (in seconds) for when the batch was cancelled.
 
+    `format: unixtime`
+
   - `cancelling_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started cancelling.
 
+    `format: unixtime`
+
   - `completed_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch was completed.
+
+    `format: unixtime`
 
   - `error_file_id: optional string or null`
 
@@ -155,21 +165,31 @@ Creates and executes a batch from an uploaded file of requests
 
     The Unix timestamp (in seconds) for when the batch expired.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch will expire.
+
+    `format: unixtime`
 
   - `failed_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch failed.
 
+    `format: unixtime`
+
   - `finalizing_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started finalizing.
 
+    `format: unixtime`
+
   - `in_progress_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started processing.
+
+    `format: unixtime`
 
   - `metadata: optional Metadata or null`
 

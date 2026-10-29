@@ -23,7 +23,7 @@ The name of the file and the names you `define` inside it are different things. 
 
 Defining a template changes nothing on its own. To apply it, reference the defined name from the relevant field on a receiver’s integration, such as a Slack integration’s title and text fields.
 
-Refer to [Create a receiver](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver/).
+Refer to [Create a receiver](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver/).
 
 ## Edit a template
 
@@ -48,4 +48,4 @@ Templates are only exercised when a notification is sent, so a mistake surfaces 
 - Change one thing at a time, and confirm a real notification still looks right before moving on.
 - Keep a working copy of a template’s content before a substantial edit, so you can put it back quickly.
 
-The editor is a plain text field, so it won’t catch a syntax error for you. Refer to [Template language](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/language/).
+The editor is a plain text field, so it won’t catch a syntax error for you. Refer to [Template language](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/language/).

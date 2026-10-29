@@ -266,7 +266,7 @@ spend_alert = openai.admin.organization.projects.spend_alerts.create(
   notification_channel: {
     recipients: ["billing@example.com"],
     type: :email,
-    subject_prefix: "[OpenAI spend]"
+    subject_prefix: "OpenAI spend"
   },
   threshold_amount: 50_000
 )

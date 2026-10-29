@@ -245,35 +245,29 @@ conversation = [
   }
 ]
 
-response = client.responses.create(
-  model: "gpt-5.3-codex",
-  input: conversation,
-  store: false,
-  context_management: [
-    {
-      type: :compaction,
-      compact_threshold: 200_000
-    }
-  ]
-)
-conversation.concat(response.output)
-conversation << {
-  type: :message,
-  role: :user,
-  content: "Now implement the next step."
-}
-next_response = client.responses.create(
-  model: "gpt-5.3-codex",
-  input: conversation,
-  store: false,
-  context_management: [
-    {
-      type: :compaction,
-      compact_threshold: 200_000
-    }
-  ]
-)
-puts(next_response.output_text)
+loop do
+  response = client.responses.create(
+    model: "gpt-5.3-codex",
+    input: conversation,
+    store: false,
+    context_management: [
+      {
+        type: :compaction,
+        compact_threshold: 200_000
+      }
+    ]
+  )
+  conversation.concat(response.output)
+  puts(response.output_text)
+  line = $stdin.gets
+  break unless line
+
+  conversation << {
+    type: :message,
+    role: :user,
+    content: line.chomp
+  }
+end
 ```
 
 

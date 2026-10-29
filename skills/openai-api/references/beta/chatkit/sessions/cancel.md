@@ -68,6 +68,8 @@ Cancelling prevents new requests from using the issued client secret.
 
     Unix timestamp (in seconds) for when the session expires.
 
+    `format: unixtime`
+
   - `max_requests_per_1_minute: number`
 
     Convenience copy of the per-minute request limit.

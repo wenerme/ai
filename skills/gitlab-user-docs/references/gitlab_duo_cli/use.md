@@ -344,7 +344,7 @@ To stop using auto mode, press <kbd>Tab</kbd> to switch to another mode.
 The change applies to your next prompt.
 
 Auto mode does not persist between sessions.
-Each new or resumed session, including a session you start with `/new`, starts in build mode.
+Each new or resumed session starts in build mode unless you set a different [default mode](settings.md#default-mode).
 
 #### Troubleshooting auto mode
 

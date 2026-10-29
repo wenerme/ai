@@ -38,7 +38,7 @@ You can adjust the following properties to fine-tune the VAD settings:
 
 Here is an example VAD configuration:
 
-```json
+```jsonc
 {
   "type": "session.update",
   "session": {
@@ -51,11 +51,11 @@ Here is an example VAD configuration:
           "prefix_padding_ms": 300,
           "silence_duration_ms": 500,
           "create_response": true, // only in conversation mode
-          "interrupt_response": true // only in conversation mode
-        }
-      }
-    }
-  }
+          "interrupt_response": true, // only in conversation mode
+        },
+      },
+    },
+  },
 }
 ```
 
@@ -75,7 +75,7 @@ Semantic VAD can be activated by setting `session.audio.input.turn_detection.typ
 
 It can be configured like this:
 
-```json
+```jsonc
 {
   "type": "session.update",
   "session": {
@@ -84,13 +84,13 @@ It can be configured like this:
       "input": {
         "turn_detection": {
           "type": "semantic_vad",
-          "eagerness": "low" | "medium" | "high" | "auto", // optional
+          "eagerness": "auto", // optional
           "create_response": true, // only in conversation mode
           "interrupt_response": true, // only in conversation mode
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 }
 ```
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/og.p
 
 # Builds API reference
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to use the [Workers Builds REST API](https://developers.cloudflare.com/api/resources/workers_builds/) to programmatically trigger builds, manage triggers, and monitor build status. The examples use `curl` commands that you can run directly in your terminal or adapt to your preferred programming language. Some examples pipe output through [`jq` ↗︎](https://jqlang.org/) to filter JSON responses — install it if you do not have it already.
 
@@ -168,7 +168,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/worke
   | jq '.result[] | {build_uuid, status, branch, created_at}'
 ```
 
-The response includes `build_uuid` for each build, which you need for getting logs or canceling builds.
+The response includes `build_uuid` for each build, which you need for getting logs or canceling builds. Builds older than 90 days are not returned. Refer to [Limits & pricing](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/).
 
 ### Get build logs
 
@@ -183,6 +183,8 @@ Use the [`GET /builds/builds/{uuid}/logs`](https://developers.cloudflare.com/api
 curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/builds/builds/{build_uuid}/logs" \
   --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+Build logs are retained for 90 days after the build finishes. To keep them longer, save the response from this endpoint.
 
 ### Cancel a running build
 
@@ -538,5 +540,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/og.png?v=953239305931e5fe","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/og.png?v=953239305931e5fe","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

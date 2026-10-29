@@ -46,6 +46,8 @@ Creates a project spend alert.
 
   The alert threshold amount, in cents.
 
+  `minimum: 0`
+
 ### Returns
 
 - `ProjectSpendAlert object { id, currency, interval, 3 more }`
@@ -260,6 +262,8 @@ Lists project spend alerts.
 - `limit: optional number`
 
   A limit on the number of spend alerts to return. Defaults to 20.
+
+  `minimum: 0`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -564,6 +568,8 @@ Updates a project spend alert.
 - `threshold_amount: number`
 
   The alert threshold amount, in cents.
+
+  `minimum: 0`
 
 ### Returns
 

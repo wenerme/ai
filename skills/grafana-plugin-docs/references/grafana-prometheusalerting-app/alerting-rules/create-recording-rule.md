@@ -45,7 +45,7 @@ For example, `job:request_latency_seconds:mean5m` reads as the mean 5-minute req
 
 If an alerting rule uses a metric produced by a recording rule, they have to be in the same group, with the recording rule listed first. Rules in a group are evaluated top to bottom, so a recording rule below its consumer means the consumer reads a stale value, or nothing at all on the first cycle.
 
-Reorder rules by dragging them on the group edit page. Refer to [Manage rule groups](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/).
+Reorder rules by dragging them on the group edit page. Refer to [Manage rule groups](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/).
 
 ## Checking the result
 

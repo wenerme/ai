@@ -161,14 +161,16 @@ client.responses().create(params).output().stream()
 require "openai"
 
 client = OpenAI::Client.new
+files = {
+  "lib/fib.py" => "def fib(n):\n    if n <= 1:\n        return n\n    return fib(n-1) + fib(n-2)\n",
+  "run.py" => "from lib.fib import fib\n\ndef main():\n  print(fib(42))\n"
+}
+context = files.map { |path, content| "===== #{path}\n#{content}" }.join
 response = client.responses.create(
   model: "gpt-6-astra",
-  input: "Rename fib() to fibonacci() in lib/fib.py and update run.py to use the new name.",
+  input: "The user has the following files:\n<BEGIN_FILES>\n#{context}<END_FILES>\nHelp me rename fib() to fibonacci() in both existing files.",
   tools: [{ type: :apply_patch }]
 )
-
-patch_calls = response.output.select { |item| item.type == :apply_patch_call }
-puts(patch_calls)
 ```
 
 
@@ -330,26 +332,34 @@ client.responses().create(params).output().stream()
 ```
 
 ```ruby
-require "openai"
+9.times do |turn|
+  raise "Response ended with status #{response.status}" unless response.status == OpenAI::Responses::ResponseStatus::COMPLETED
 
-client = OpenAI::Client.new
-response_id = ENV.fetch("OPENAI_RESPONSE_ID")
-patch_call_id = ENV.fetch("OPENAI_APPLY_PATCH_CALL_ID")
-response = client.responses.create(
-  model: "gpt-6-astra",
-  previous_response_id: response_id,
-  input: [
+  patch_calls = response.output.grep(OpenAI::Models::Responses::ResponseApplyPatchToolCall)
+  if patch_calls.empty?
+    puts(response.output_text)
+    break
+  end
+  raise "Patch workflow exceeded eight tool turns" if turn == 8
+
+  # apply_operation is application-owned; see "Implementing the patch harness" in the guide.
+  results = patch_calls.map do |call|
+    success, output = apply_operation(files, call.operation)
     {
       type: :apply_patch_call_output,
-      call_id: patch_call_id,
-      status: :completed,
-      output: "Patch applied successfully."
+      call_id: call.call_id,
+      status: success ? :completed : :failed,
+      output: output
     }
-  ],
-  tools: [{ type: :apply_patch }]
-)
-
-puts(response.output_text)
+  end
+  response = client.responses.create(
+    model: "gpt-6-astra",
+    previous_response_id: response.id,
+    input: results,
+    tools: [{ type: :apply_patch }]
+  )
+end
+files.each { |path, content| print("===== #{path}\n#{content}") }
 ```
 
 

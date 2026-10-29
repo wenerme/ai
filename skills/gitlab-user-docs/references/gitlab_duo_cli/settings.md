@@ -18,6 +18,7 @@ You can change how the GitLab Duo CLI behaves in the following ways:
 the GitLab 19.4 release.
 - Setting to adjust theme [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.11.0) in GitLab Duo CLI 9.11.0, during the GitLab 19.4 release.
 - Setting to run suggested prompts as `/goal` sessions [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.24.0) in GitLab Duo CLI 9.24.0, during the GitLab 19.5 release.
+- Setting to choose the default mode [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.33.0) in GitLab Duo CLI 9.33.0, during the GitLab 19.6 release.
 
 To change a setting:
 
@@ -39,6 +40,7 @@ The following settings are available:
 | **Show work items on session start** | Display your open work items when you start a new session. |
 | **Run suggested prompts as /goal sessions** | Run suggested prompts as `/goal` sessions instead of plain chat messages. A restart is required for changes to take effect. |
 | **Theme**        | Change the theme setting. Options include `auto`, `dark`, `light`, `dark high contrast`, and `light high contrast`. |
+| **Default mode** | Set the [mode](use.md#switch-modes) that new sessions start in. Options are `build` (default), `plan`, and `auto`. |
 
 ## Settings file
 
@@ -81,7 +83,8 @@ The following example sets every setting to its default value:
   "notifications": {
     "channel": "auto" // or "disabled"
   },
-  "theme": "auto" // or "dark", "light", "dark-high-contrast", "light-high-contrast"
+  "theme": "auto", // or "dark", "light", "dark-high-contrast", "light-high-contrast"
+  "defaultMode": "build" // or "plan", "auto"
 }
 ```
 
@@ -94,6 +97,22 @@ The GitLab Duo CLI never deletes or rewrites the file to fix it:
 - If the GitLab Duo CLI does not recognize a setting, for example one from a newer version, it ignores that setting.
 
 If the file is read-only, changes you make in the `/settings` panel apply to the current session only.
+
+## Default mode
+
+The `defaultMode` setting sets the mode that every new session starts in.
+It applies to every new or resumed session, including sessions you start with `/new`.
+To switch modes in the current session only, press <kbd>Tab</kbd>.
+
+Consider the following when you set a default mode:
+
+- The GitLab Duo CLI reads `defaultMode` only from your settings file.
+  Project settings and the managed settings file cannot set it.
+- If the default mode is `auto` but the session does not offer auto mode, the session starts in
+  build mode and the GitLab Duo CLI displays a notice. Auto mode is not available when you use
+  `--dangerously-skip-permissions`. For more information, see [auto mode](use.md#auto-mode).
+- If the value is not `build`, `plan`, or `auto`, the GitLab Duo CLI ignores it and uses `build`.
+- The `/goal` command keeps the mode you selected before you ran it.
 
 ## Managed settings file
 

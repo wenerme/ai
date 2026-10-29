@@ -335,6 +335,7 @@ evaluation = client.evals.create(
   name: "Support answer quality",
   data_source_config: {
     type: :custom,
+    include_sample_schema: true,
     item_schema: {
       type: :object,
       properties: { input: { type: :string } },
@@ -346,7 +347,7 @@ evaluation = client.evals.create(
       type: :string_check,
       name: "mentions_refund",
       input: "{{sample.output_text}}",
-      operation: :contains,
+      operation: :like,
       reference: "refund"
     }
   ]

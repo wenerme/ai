@@ -14,6 +14,8 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
   The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
 
+  `minLength: 1`, `maxLength: 1048576`
+
 ### Returns
 
 - `Vault object { id, created_at, metadata, 2 more }`
@@ -24,9 +26,13 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
     The ID of the vault.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the vault was created.
+
+    `format: int64`
 
   - `metadata: map[string]`
 
@@ -35,6 +41,8 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
   - `name: string or null`
 
     The human-readable name of the vault, if set.
+
+    `minLength: 0`
 
   - `object: "vault"`
 

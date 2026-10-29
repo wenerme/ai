@@ -6,13 +6,13 @@ Configure GitLab Duo for your GitLab instance.
 
 GitLab Duo is an AI-native assistant that helps you across the software development lifecycle.
 
-You can configure GitLab Duo to use:
+To configure GitLab Duo, use one of the following options:
 
-- Cloud-based AI Gateway (default): GitLab-hosted AI Gateway with vendor language models.
-- Self-hosted models: Your own AI Gateway and language models
+- [GitLab-managed AI Gateway](../gateway.md): The default GitLab-managed AI Gateway with vendor language models.
+- [Self-hosted models](../../gitlab_duo_self_hosted/_index.md): [Your own AI Gateway](../../../install/install_ai_gateway.md) and language models
   for full control over your data and security.
-- Hybrid configuration: Self-hosted models for some features
-  and cloud-based models for others.
+- [Hybrid configuration](../../gitlab_duo_self_hosted/_index.md#hybrid-ai-gateway-and-model-configuration):
+  Self-hosted models for some features and GitLab-managed models for others.
 
 ## Prerequisites
 
@@ -218,22 +218,11 @@ The check reports one of these states:
 If the check fails, select it to view the reported message. For more information, see
 [errors when running a functional verification check for Agentic Chat](#errors-when-running-a-functional-verification-check-for-agentic-chat).
 
-## Other hosting options
-
-By default, GitLab Duo uses supported AI vendor language models and sends data through a cloud-based AI Gateway that's hosted by GitLab.
-
-If you want to host your own language models or AI Gateway:
-
-- You can [use GitLab Duo Self-Hosted to host the AI Gateway and use any of the supported self-hosted models](../../gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms).
-  This option provides full control over your data and security.
-- Use a [hybrid configuration](../../gitlab_duo_self_hosted/_index.md#hybrid-ai-gateway-and-model-configuration),
-  where you host your own AI Gateway and models for some features, but configure other features to use the GitLab AI Gateway and vendor models.
-
 ## GitLab Dedicated for Government
 
 For GitLab Dedicated for Government, you must use
 GitLab Duo Self-Hosted with FedRAMP-approved models.
-The cloud-based AI Gateway and vendor models are not available for GitLab Dedicated for Government.
+The GitLab-managed AI Gateway and vendor language models are not available for GitLab Dedicated for Government.
 
 For more information, see
 [configure GitLab Duo on GitLab Dedicated for Government](gitlab_dedicated_for_government.md).

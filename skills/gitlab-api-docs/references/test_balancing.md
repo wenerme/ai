@@ -25,8 +25,8 @@ Both endpoints:
 - Must be called from the running parallel job, authenticated with a
   [CI/CD job token](../ci/jobs/ci_job_token.md) (`CI_JOB_TOKEN`).
 - Return `422 Unprocessable Entity` when the calling job does not use the `parallel:` keyword.
-- Return `422 Unprocessable Entity` for pipelines created more than 30 days ago, because test
-  balancing data, including retries, is retained for 30 days from pipeline creation.
+- Return `422 Unprocessable Entity` for pipelines created more than 7 days ago, because test
+  balancing data, including retries, is retained for 7 days from pipeline creation.
 
 ## Initialize test balancing for a parallel job
 

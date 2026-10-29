@@ -364,6 +364,8 @@ Get images usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.

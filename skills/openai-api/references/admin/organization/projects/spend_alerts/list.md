@@ -22,6 +22,8 @@ Lists project spend alerts.
 
   A limit on the number of spend alerts to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned spend alerts.

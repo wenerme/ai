@@ -112,6 +112,17 @@ Pushing gem to https://gitlab.example.com/api/v4/projects/1/packages/rubygems...
 The gem is published to your package registry, and is shown on the **Packages and registries** page.
 It can take up to 10 minutes before GitLab processes and displays your gem.
 
+### Protect gems
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/603267) in GitLab 19.6.
+
+To control who can push or delete specific gems, add a
+[package protection rule](../package_registry/package_protection_rules.md) with the package type **RubyGems**.
+
+If you push a protected gem without the required role, or with a deploy token,
+the `gem push` command still returns `201 Created`, because GitLab processes gems after upload.
+GitLab then marks the new package with an error: `Gem '<name>' with version '<version>' is protected`.
+
 ### Duplicate gems
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/323796) to prevent duplicate gems by default in GitLab 19.6.

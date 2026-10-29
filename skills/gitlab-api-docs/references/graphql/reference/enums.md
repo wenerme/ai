@@ -1637,6 +1637,7 @@ Values for sorting CI/CD job analytics.
 | `REACHED_DOWNSTREAM_PIPELINE_TRIGGER_RATE_LIMIT` | A job that failed due to reached downstream pipeline trigger rate limit. |
 | `REACHED_MAX_DESCENDANT_PIPELINES_DEPTH` | A job that failed due to reached max descendant pipelines depth. |
 | `REACHED_MAX_PIPELINE_HIERARCHY_SIZE` | A job that failed due to reached max pipeline hierarchy size. |
+| `RULES_PARSE_FAILURE` | A job that failed due to rules parse failure. |
 | `RUNNER_CONFIGURATION_ERROR` | A job that failed due to runner configuration error. |
 | `RUNNER_EXTERNAL_DEPENDENCY_FAILURE` | A job that failed due to runner external dependency failure. |
 | `RUNNER_INTERRUPTED` | A job that failed due to runner interrupted. |
@@ -3956,6 +3957,7 @@ Member role permission.
 | `ADMIN_WEB_HOOK` | Manage webhooks. |
 | `APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | `ARCHIVE_PROJECT` | Allows archiving of projects. |
+| `ARCHIVE_SUBGROUP` | Ability to archive or unarchive a subgroup. This ability does not allow archiving top-level groups. Archiving unlinks projects from their fork networks and closes their open cross-fork merge requests, and unarchiving does not restore either. |
 | `CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
 | `DELETE_SECURITY_SCAN_PROFILES` | Delete security scan profiles. |
 | `DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
@@ -4008,6 +4010,7 @@ Member role standard permission.
 | `ADMIN_WEB_HOOK` | Manage webhooks. |
 | `APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | `ARCHIVE_PROJECT` | Allows archiving of projects. |
+| `ARCHIVE_SUBGROUP` | Ability to archive or unarchive a subgroup. This ability does not allow archiving top-level groups. Archiving unlinks projects from their fork networks and closes their open cross-fork merge requests, and unarchiving does not restore either. |
 | `CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
 | `DELETE_SECURITY_SCAN_PROFILES` | Delete security scan profiles. |
 | `DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
@@ -4791,6 +4794,7 @@ Package type of a package protection rule resource.
 | `NPM` | Packages of the npm format. |
 | `NUGET` | Packages of the NuGet format. |
 | `PYPI` | Packages of the PyPI format. |
+| `RUBYGEMS` | Packages of the RubyGems format. |
 | `TERRAFORM_MODULE` | Packages of the Terraform module format. |
 
 ## `PermissionBoundary`
@@ -6085,6 +6089,7 @@ Name of the feature that the callout is for.
 | `VULNERABILITY_REPORT_LIMITED_EXPERIENCE` | Callout feature name for vulnerability_report_limited_experience. |
 | `WEB_IDE_ALERT_DISMISSED` | Callout feature name for web_ide_alert_dismissed. |
 | `WEB_IDE_CI_ENVIRONMENTS_GUIDANCE` | Callout feature name for web_ide_ci_environments_guidance. |
+| `WORK_ITEM_BOARD_VIEW_POPOVER` | Callout feature name for work_item_board_view_popover. |
 | `WORK_ITEM_DECISION_LOG_POPOVER` | Callout feature name for work_item_decision_log_popover. |
 | `WORK_ITEM_EPIC_FEEDBACK` | Callout feature name for work_item_epic_feedback. |
 | `WORK_ITEM_TICKET_MIGRATION` | Callout feature name for work_item_ticket_migration. |

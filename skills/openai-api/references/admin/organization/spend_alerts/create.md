@@ -40,6 +40,8 @@ Creates an organization spend alert.
 
   The alert threshold amount, in cents.
 
+  `minimum: 0`
+
 ### Returns
 
 - `OrganizationSpendAlert object { id, currency, interval, 3 more }`

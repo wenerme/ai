@@ -71,7 +71,7 @@ The table below indicates when application state is stored for each endpoint. Ze
 | -------------------------- | :--------------------: | :------------------------: | :----------------------------: | :----------------------------: | :------------------------------------------------------: |
 | `/v1/chat/completions`     |           No           |          30 days           | None, see below for exceptions | Yes, see below for limitations |              Yes, see below for limitations              |
 | `/v1/responses`            |           No           |          30 days           | None, see below for exceptions | Yes, see below for limitations |              Yes, see below for limitations              |
-| `/v1/decisions`            |           No           |          30 days           | None, see below for exceptions | Yes, see below for limitations |                   Pending confirmation                   |
+| `/v1/decisions`            |           No           |          30 days           | None, see below for exceptions | Yes, see below for limitations |              Yes, see below for limitations              |
 | `/v1/conversations`        |           No           |       Until deleted        |         Until deleted          |               No               |                            No                            |
 | `/v1/conversations/items`  |           No           |       Until deleted        |         Until deleted          |               No               |                            No                            |
 | `/v1/chatkit/threads`      |           No           |       Until deleted        |         Until deleted          |               No               |                            No                            |
@@ -121,7 +121,13 @@ The table below indicates when application state is stored for each endpoint. Ze
 
 #### `/v1/decisions`
 
-By default, abuse monitoring logs are retained for up to 30 days. Eligible customers can use Zero Data Retention, subject to the limitations below.
+By default, abuse monitoring logs are retained for up to 30 days.
+
+The Decisions API supports [Zero Data Retention](#zero-data-retention), [Private Retention with PSP](#private-retention-with-private-safety-processing), and [Safety Retention](#safety-retention), subject to the eligibility and account configuration requirements described above.
+
+The Decisions API follows the same Private Retention with PSP policy as the Responses API. Flagged content and a sample of requests may be retained for automated safety review. See [Private Retention with PSP](#private-retention-with-private-safety-processing) for details.
+
+The following limitations apply:
 
 - Prompt caching may store encrypted key/value tensors in GPU-local storage as application state. This data is stored on the local GPU machines and is not retained after the 24-hour expiration. To learn more, see the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention).
 - See [image and file inputs](#image-and-file-inputs) for the CSAM retention exception for image inputs.
@@ -246,7 +252,8 @@ response = client.with_options(data_residency: :us).responses.create(
 )
 puts(response.output_text)
 
-response = client.with_options(data_residency: :eu).responses.create(
+# EU processing requires a key from an EU-region project.
+response = client.with_options(data_residency: :eu, api_key: ENV.fetch("OPENAI_EU_API_KEY"), organization: nil, project: nil).responses.create(
   model: "gpt-5.6-terra",
   input: "Reply with OK."
 )

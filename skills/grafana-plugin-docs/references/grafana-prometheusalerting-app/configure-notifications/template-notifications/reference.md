@@ -53,7 +53,7 @@ A template using `.CommonLabels.instance` renders correctly while a group holds 
 
 ## Accessing a label
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ .GroupLabels.alertname }}
@@ -63,7 +63,7 @@ Go [Copy code to clipboard] Copy
 
 For label names that aren’t valid identifiers—anything with a dot or dash—use `index`:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ index .CommonLabels "k8s.namespace" }}
@@ -71,7 +71,7 @@ Go [Copy code to clipboard] Copy
 
 ## Formatting times
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ .StartsAt.Format "2006-01-02 15:04:05 MST" }}
@@ -81,4 +81,4 @@ Go’s reference time is `2006-01-02 15:04:05`; the layout string is that exact 
 
 ## Where the annotation content comes from
 
-`.Annotations` holds values the ruler already rendered during evaluation. A notification template can read and rearrange them, but it can’t recover information the alert never carried. That has to be added at the rule. Refer to [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
+`.Annotations` holds values the ruler already rendered during evaluation. A notification template can read and rearrange them, but it can’t recover information the alert never carried. That has to be added at the rule. Refer to [Template annotations and labels](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).

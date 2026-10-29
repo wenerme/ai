@@ -123,6 +123,8 @@ retry can place another call.
 
           - `id: string`
 
+            `minLength: 1`, `maxLength: 128`
+
   - `client: optional ClientConfig`
 
     Startup-only capabilities for an untrusted frontend attached to a unified WebRTC session. Trusted sideband connections are unaffected.
@@ -155,9 +157,13 @@ retry can place another call.
 
             The outer Live server event type. Use 'response.event' for Responses events.
 
+            `minLength: 1`, `maxLength: 256`
+
           - `response_event: optional string`
 
             The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
+
+            `minLength: 1`, `maxLength: 256`
 
   - `delegation: optional ClientDelegation or Responses { responses, type, acknowledgement_delay_ms }  or Decisions { decisions, type, acknowledgement_delay_ms }  or null`
 
@@ -176,6 +182,8 @@ retry can place another call.
       - `acknowledgement_delay_ms: optional number`
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+        `minimum: 0`, `maximum: 800`
 
     - `Responses object { responses, type, acknowledgement_delay_ms }`
 
@@ -196,6 +204,8 @@ retry can place another call.
         - `max_output_tokens: optional number or null`
 
           Maximum number of output tokens for each delegated response.
+
+          `minimum: 16`
 
         - `parallel_tool_calls: optional boolean or null`
 
@@ -394,6 +404,8 @@ retry can place another call.
             - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
 
               The tools that the delegated Responses model may call.
+
+              `minItems: 1`, `maxItems: 128`
 
               - `Function object { name, type }`
 
@@ -601,6 +613,8 @@ retry can place another call.
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the container.
@@ -631,6 +645,8 @@ retry can place another call.
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -641,11 +657,15 @@ retry can place another call.
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -674,6 +694,8 @@ retry can place another call.
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -716,6 +738,8 @@ retry can place another call.
                 - `skills: optional array of object { description, name, path }  or null`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -787,19 +811,27 @@ retry can place another call.
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+        `minimum: 0`, `maximum: 800`
+
     - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
       - `decisions: DecisionsDelegationConfig`
 
         - `model: string`
 
+          `minLength: 1`
+
         - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
+          `minItems: 1`, `maxItems: 64`
+
           - `Choice object { choices, instructions, type, name }`
 
             - `choices: array of DecisionChoiceOption`
+
+              `minItems: 2`, `maxItems: 255`
 
               - `value: string or boolean`
 
@@ -821,6 +853,8 @@ retry can place another call.
 
                     The text input to the model.
 
+                    `maxLength: 10485760`
+
                   - `type: "input_text"`
 
                     - `"input_text"`
@@ -830,6 +864,8 @@ retry can place another call.
                   - `image_url: string`
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                    `maxLength: 20971520`
 
                   - `type: "input_image"`
 
@@ -881,6 +917,8 @@ retry can place another call.
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                    `maxLength: 20971520`
+
                   - `type: "input_image"`
 
                     - `"input_image"`
@@ -931,6 +969,8 @@ retry can place another call.
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                    `maxLength: 20971520`
+
                   - `type: "input_image"`
 
                     - `"input_image"`
@@ -961,6 +1001,8 @@ retry can place another call.
 
             - `levels: array of object { label, description }`
 
+              `minItems: 2`, `maxItems: 10`
+
               - `label: string`
 
               - `description: optional string`
@@ -979,9 +1021,13 @@ retry can place another call.
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
+        `minimum: 0`, `maximum: 800`
+
   - `input: optional array of InitialItem`
 
     Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and a configured rendered-token limit (8,192 by default).
+
+    `maxItems: 128`
 
     - `Developer object { content, role, id, 2 more }`
 
@@ -990,6 +1036,8 @@ retry can place another call.
       - `content: array of object { text, type }`
 
         The message content. Supply exactly one text part for the initial Live conversation history.
+
+        `minItems: 1`, `maxItems: 1`
 
         - `text: string`
 
@@ -1033,6 +1081,8 @@ retry can place another call.
 
         The message content. Supply exactly one text part for the initial Live conversation history.
 
+        `minItems: 1`, `maxItems: 1`
+
         - `text: string`
 
           The message text to include in the Live session’s initial conversation history.
@@ -1074,6 +1124,8 @@ retry can place another call.
       - `content: array of Text { text, type }  or OutputText { text, type }`
 
         The message content. Supply exactly one text part for the initial Live conversation history.
+
+        `minItems: 1`, `maxItems: 1`
 
         - `Text object { text, type }`
 
@@ -1139,6 +1191,8 @@ retry can place another call.
 
     At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
+    `maxItems: 2`
+
     - `decisions: object { questions }`
 
       Questions evaluated using the current transcript and the session's shared Decision items.
@@ -1146,6 +1200,8 @@ retry can place another call.
       - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
+
+        `minItems: 1`, `maxItems: 64`
 
         - `Choice object { choices, instructions, type, name }`
 
@@ -1175,6 +1231,8 @@ retry can place another call.
 
       Session Description Protocol message for the WebRTC connection.
 
+      `minLength: 1`
+
     - `type: "webrtc"`
 
       The transport used for the Live session. Always `webrtc`.
@@ -1201,6 +1259,8 @@ retry can place another call.
 
           Provider password. Must be at most 4096 bytes and contain no CR, LF, or NUL.
 
+          `minLength: 1`
+
         - `type: "digest"`
 
           Use `digest` for SIP Digest authentication. Handles 401 and 407 challenges.
@@ -1210,6 +1270,8 @@ retry can place another call.
         - `username: string`
 
           Provider username. Must contain a non-whitespace character, be at most 256 bytes, and contain no CR, LF, or NUL.
+
+          `minLength: 1`
 
       - `caller_number: string`
 
@@ -1246,6 +1308,8 @@ retry can place another call.
     - `sdp: string`
 
       Session Description Protocol message for the WebRTC connection.
+
+      `minLength: 1`
 
     - `type: "webrtc"`
 

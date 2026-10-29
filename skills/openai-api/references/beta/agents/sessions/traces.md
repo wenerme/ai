@@ -10,15 +10,21 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `after: optional string`
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -38,13 +44,19 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The root turn ID. Use this ID as the pagination anchor.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp in seconds when the root turn was created.
+
+    `format: int64`
 
   - `object: "agent.session.trace"`
 
@@ -60,9 +72,13 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 
     The session that owns this trace.
 
+    `minLength: 0`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
+
+  `minLength: 0`
 
 - `has_more: boolean`
 
@@ -71,6 +87,8 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 
@@ -118,9 +136,13 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/traces \
 
     The root turn ID. Use this ID as the pagination anchor.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp in seconds when the root turn was created.
+
+    `format: int64`
 
   - `object: "agent.session.trace"`
 
@@ -135,3 +157,5 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/traces \
   - `session_id: string`
 
     The session that owns this trace.
+
+    `minLength: 0`

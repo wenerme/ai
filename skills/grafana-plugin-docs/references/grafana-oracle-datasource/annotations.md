@@ -9,11 +9,11 @@ description: "Add Oracle data source annotations to Grafana dashboards to mark e
 
 Annotations allow you to mark points on a graph with events from your Oracle database. Use annotations to overlay deployment times, incidents, or other significant events on your time-series visualizations.
 
-For general information on Grafana annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+For general information on Grafana annotations, refer to [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
-- [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/).
+- [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/).
 - Verify your Oracle user has `SELECT` permissions on the tables containing event data.
 
 ## Create an annotation query
@@ -44,7 +44,7 @@ Expand table
 
 ### Event markers from an audit table
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -58,7 +58,7 @@ ORDER BY event_time
 
 ### Deployment annotations
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -72,7 +72,7 @@ ORDER BY deploy_time
 
 ### Threshold crossing events
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -88,7 +88,7 @@ ORDER BY check_time
 
 Use `timeEnd` to create shaded regions that span a time range, such as maintenance windows or incidents:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -105,7 +105,7 @@ ORDER BY start_time
 
 You can use the same macros available in the query editor within annotation queries. The `$__timeFilter` macro is particularly important to scope annotations to the dashboard time range:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -120,7 +120,7 @@ ORDER BY event_time
 
 Template variables are also supported in annotation queries, allowing you to filter annotations dynamically:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -135,5 +135,5 @@ ORDER BY event_time
 
 ## Next steps
 
-- [Oracle query editor](/docs/plugins/grafana-oracle-datasource/latest/query-editor/) for the full macro reference.
-- [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.
+- [Oracle query editor](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor/) for the full macro reference.
+- [Annotate visualizations](https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) for more annotation options.

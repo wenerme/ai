@@ -12,6 +12,8 @@ Creates a new group in the organization.
 
   Human readable name for the group.
 
+  `minLength: 1`, `maxLength: 255`
+
 ### Returns
 
 - `Group object { id, created_at, group_type, 2 more }`
@@ -25,6 +27,8 @@ Creates a new group in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `group_type: "group" or "tenant_group"`
 
@@ -167,6 +171,8 @@ Lists all groups in the organization.
 
   A limit on the number of groups to be returned. Limit can range between 0 and 1000, and the default is 100.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Specifies the sort order of the returned groups.
@@ -188,6 +194,8 @@ Lists all groups in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `group_type: "group" or "tenant_group"`
 
@@ -297,6 +305,8 @@ Retrieves a group.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `group_type: "group" or "tenant_group"`
 
     The type of the group.
@@ -368,6 +378,8 @@ Updates a group's information.
 
   New display name for the group.
 
+  `minLength: 1`, `maxLength: 255`
+
 ### Returns
 
 - `id: string`
@@ -377,6 +389,8 @@ Updates a group's information.
 - `created_at: number`
 
   Unix timestamp (in seconds) when the group was created.
+
+  `format: unixtime`
 
 - `is_scim_managed: boolean`
 
@@ -446,6 +460,8 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `group_type: "group" or "tenant_group"`
 
     The type of the group.
@@ -496,6 +512,8 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `is_scim_managed: boolean`
 
     Whether the group is managed through SCIM and controlled by your identity provider.
@@ -535,6 +553,8 @@ Assigns an organization role to a group within the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -741,6 +761,8 @@ Lists the organization roles assigned to a group within the organization.
 
   A limit on the number of organization role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned organization roles.
@@ -770,6 +792,8 @@ Lists the organization roles assigned to a group within the organization.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -806,6 +830,8 @@ Lists the organization roles assigned to a group within the organization.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -941,6 +967,8 @@ Retrieves an organization role assigned to a group.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -976,6 +1004,8 @@ Retrieves an organization role assigned to a group.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -1063,6 +1093,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
     - `created_at: number`
 
       Unix timestamp (in seconds) when the group was created.
+
+      `format: unixtime`
 
     - `name: string`
 
@@ -1154,6 +1186,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -1189,6 +1223,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -1212,6 +1248,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -1247,6 +1285,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 # Users
 
@@ -1401,6 +1441,8 @@ Lists the users assigned to a group.
 - `limit: optional number`
 
   A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
+
+  `minimum: 0`, `maximum: 1000`
 
 - `order: optional "asc" or "desc"`
 

@@ -116,6 +116,10 @@ Limit the maximum daily member invitations allowed per group hierarchy.
 Limit the number of times each minute that webhooks in a top-level namespace can be called.
 All project and group webhooks in the namespace share this limit.
 
+System hooks managed by [organization](../user/organization/_index.md) administrators use the same
+limit, counted for each organization. All system hooks in an organization share this limit.
+System hooks managed by instance administrators are not rate limited.
+
 Calls that exceed the rate limit are logged in `auth.log`.
 
 To set this limit for a GitLab Self-Managed instance, use the [Plan Limits API](../api/plan_limits.md)

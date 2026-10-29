@@ -9,7 +9,7 @@ description: "Use template variables with the OpenSearch data source to create d
 
 Instead of hard-coding values like server names, applications, or sensor names in your queries, you can use template variables. Variables appear as drop-down select boxes at the top of the dashboard, making it easy to change the data displayed.
 
-For an introduction to template variables, refer to the [Grafana template variables documentation](/docs/grafana/latest/dashboards/variables/).
+For an introduction to template variables, refer to the [Grafana template variables documentation](https://grafana.com/docs/grafana/latest/dashboards/variables/).
 
 ## Create a query variable
 
@@ -31,7 +31,7 @@ To create a query variable:
 
 Use `"find": "fields"` to return a list of field names from the index. Optionally filter by type:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "fields", "type": "keyword"}
@@ -39,13 +39,13 @@ JSON [Copy code to clipboard] Copy
 
 Other examples:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "fields", "type": "number"}
 ```
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "fields", "type": "date"}
@@ -98,7 +98,7 @@ If the query targets a multi-field with both a text and keyword type, use `"fiel
 
 You can reference other variables inside a query definition. For example, for a variable named `$host`:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "terms", "field": "@hostname", "query": "@source:$source"}
@@ -110,7 +110,7 @@ In this example, the `$source` variable filters the `$host` variable. Changing t
 
 By default, terms queries return results sorted by term value. To sort by document count (top-N values), add `"orderBy": "doc_count"`:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "terms", "field": "@hostname", "orderBy": "doc_count"}
@@ -120,7 +120,7 @@ This automatically selects descending order. You can explicitly set ascending or
 
 To return the top 10 values by document count:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 {"find": "terms", "field": "@hostname", "orderBy": "doc_count", "order": "desc", "size": 10}
@@ -145,7 +145,7 @@ When the **Multi-value** or **Include all value** options are enabled, Grafana c
 
 You can use variables in the Lucene query field and in the **Terms** group-by field to dynamically change how data is filtered and grouped. For example:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 @hostname:$hostname AND status:[400 TO 499]
@@ -155,7 +155,7 @@ You can use variables in the Lucene query field and in the **Terms** group-by fi
 
 Variables in PPL queries are interpolated using CSV formatting. For example, a multi-value variable produces comma-separated values. You can use variables in PPL queries like this:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 source = my_index | where hostname = '$hostname' | where status >= 400

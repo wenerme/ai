@@ -921,7 +921,7 @@ System.out.println(file.id());
 require "openai"
 
 client = OpenAI::Client.new
-file = client.vector_stores.files.create("vs_123", file_id: "file_123")
+file = client.vector_stores.files.create_and_poll("vs_123", file_id: "file_123")
 puts(file.id)
 ```
 

@@ -19,6 +19,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Nile](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/nile/)
 - [Neon](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/neon/)
 - [Supabase](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/supabase/)
+- [ClickHouse Managed Postgres](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/clickhouse-managed-postgres/)
 - [Timescale](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/timescale/)
 - [Materialize](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/materialize/)
 - [PlanetScale](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/planetscale-postgres/)

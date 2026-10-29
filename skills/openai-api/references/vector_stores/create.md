@@ -36,6 +36,8 @@ Create a vector store.
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -60,9 +62,13 @@ Create a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
+    `minimum: 1`, `maximum: 365`
+
 - `file_ids: optional array of string`
 
   A list of [File](/api/reference/resources/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
+
+  `maxItems: 500`
 
 - `metadata: optional Metadata or null`
 
@@ -91,6 +97,8 @@ Create a vector store.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -116,6 +124,8 @@ Create a vector store.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -164,9 +174,13 @@ Create a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Example
 

@@ -168,7 +168,7 @@ Prerequisites:
 
 > [!note]
 > Storage subscriptions renew automatically each year.
-> You can [disable automatic subscription renewal](../subscriptions/manage_subscription.md#turn-on-or-turn-off-automatic-subscription-renewal).
+> You can [turn off automatic subscription renewal](../subscriptions/manage_subscription.md#turn-off-automatic-subscription-renewal).
 
 ### For your personal namespace
 

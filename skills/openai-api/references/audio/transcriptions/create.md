@@ -88,6 +88,8 @@ transcript events. Supported formats depend on the model.
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -102,6 +104,8 @@ transcript events. Supported formats depend on the model.
 
     Duration of the input audio in seconds.
 
+    `format: double`
+
   - `segments: array of TranscriptionDiarizedSegment`
 
     Segments of the transcript annotated with timestamps and speaker labels.
@@ -114,6 +118,8 @@ transcript events. Supported formats depend on the model.
 
       End timestamp of the segment in seconds.
 
+      `format: double`
+
     - `speaker: string`
 
       Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
@@ -121,6 +127,8 @@ transcript events. Supported formats depend on the model.
     - `start: number`
 
       Start timestamp of the segment in seconds.
+
+      `format: double`
 
     - `text: string`
 
@@ -188,6 +196,8 @@ transcript events. Supported formats depend on the model.
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -201,6 +211,8 @@ transcript events. Supported formats depend on the model.
   - `duration: number`
 
     The duration of the input audio.
+
+    `format: double`
 
   - `language: string`
 
@@ -222,17 +234,25 @@ transcript events. Supported formats depend on the model.
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -242,9 +262,13 @@ transcript events. Supported formats depend on the model.
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 
@@ -262,6 +286,8 @@ transcript events. Supported formats depend on the model.
 
       Duration of the input audio in seconds.
 
+      `format: double`
+
     - `type: "duration"`
 
       The type of the usage object. Always `duration` for this variant.
@@ -276,9 +302,13 @@ transcript events. Supported formats depend on the model.
 
       End time of the word in seconds.
 
+      `format: double`
+
     - `start: number`
 
       Start time of the word in seconds.
+
+      `format: double`
 
     - `word: string`
 

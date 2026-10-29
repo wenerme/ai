@@ -40,6 +40,8 @@ You can send either a multipart/form-data request with the raw file content, or 
 
   Unix timestamp (in seconds) when the file was created.
 
+  `format: unixtime`
+
 - `object: string`
 
   The type of this object (`container.file`).
@@ -204,6 +206,8 @@ List Container files
 
     Unix timestamp (in seconds) when the file was created.
 
+    `format: unixtime`
+
   - `object: string`
 
     The type of this object (`container.file`).
@@ -322,6 +326,8 @@ Retrieve Container File
 
   Unix timestamp (in seconds) when the file was created.
 
+  `format: unixtime`
+
 - `object: string`
 
   The type of this object (`container.file`).
@@ -398,6 +404,8 @@ curl https://api.openai.com/v1/containers/container_123/files/file_456 \
 
     Unix timestamp (in seconds) when the file was created.
 
+    `format: unixtime`
+
   - `object: string`
 
     The type of this object (`container.file`).
@@ -442,6 +450,8 @@ curl https://api.openai.com/v1/containers/container_123/files/file_456 \
 
     Unix timestamp (in seconds) when the file was created.
 
+    `format: unixtime`
+
   - `object: string`
 
     The type of this object (`container.file`).
@@ -473,6 +483,8 @@ curl https://api.openai.com/v1/containers/container_123/files/file_456 \
   - `created_at: number`
 
     Unix timestamp (in seconds) when the file was created.
+
+    `format: unixtime`
 
   - `object: string`
 

@@ -256,7 +256,7 @@ The following API resources are available outside of project and group contexts 
 | [Mobile push subscriptions](mobile_push_subscriptions.md)                                    | `/user/push_subscriptions` |
 | [Namespaces](namespaces.md)                                                                  | `/namespaces` |
 | [Notification settings](notification_settings.md)                                            | `/notification_settings` (also available for groups and projects) |
-| [Orbit](orbit.md)                                                                            | `/orbit/query` |
+| [Orbit](orbit.md)                                                                            | `/orbit` |
 | [Organizations](organizations.md)                                                            | `/organizations` |
 | [Pages domains](pages_domains.md)                                                            | `/pages/domains` (also available for projects) |
 | [Personal access tokens](personal_access_tokens.md)                                          | `/personal_access_tokens` |

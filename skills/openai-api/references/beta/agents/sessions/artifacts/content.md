@@ -8,7 +8,11 @@ Downloads immutable session artifact bytes after the execution environment expir
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `artifact_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Example
 

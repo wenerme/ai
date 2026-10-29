@@ -8,6 +8,8 @@ Retrieves an execution environment's connection status and safe installed metada
 
 - `environment_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `EnvironmentInfo object { id, files, object, 4 more }`
@@ -18,9 +20,13 @@ Retrieves an execution environment's connection status and safe installed metada
 
     The ID of the environment.
 
+    `minLength: 0`
+
   - `files: array of HostedEnvironmentFile`
 
     Files installed in the environment, without their contents.
+
+    `minItems: 0`, `maxItems: 2000`
 
     - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
 
@@ -30,17 +36,25 @@ Retrieves an execution environment's connection status and safe installed metada
 
         The session-scoped ID of the file in the execution environment.
 
+        `minLength: 0`
+
       - `file_id: string`
 
         The ID of the uploaded file.
+
+        `minLength: 0`
 
       - `path: string`
 
         The file's absolute path inside the environment.
 
+        `minLength: 0`
+
       - `size_bytes: number`
 
         The decoded file size in bytes.
+
+        `format: int64`, `minimum: 0`
 
       - `type: "file_id"`
 
@@ -56,13 +70,19 @@ Retrieves an execution environment's connection status and safe installed metada
 
         The session-scoped ID of the file in the execution environment.
 
+        `minLength: 0`
+
       - `path: string`
 
         The file's absolute path inside the environment.
 
+        `minLength: 0`
+
       - `size_bytes: number`
 
         The decoded file size in bytes.
+
+        `format: int64`, `minimum: 0`
 
       - `type: "inline"`
 
@@ -80,13 +100,19 @@ Retrieves an execution environment's connection status and safe installed metada
 
     Plugins installed in the environment, without their archive contents.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `description: string`
 
       The installed plugin description.
 
+      `minLength: 0`
+
     - `name: string`
 
       The installed plugin name.
+
+      `minLength: 0`
 
     - `type: "inline"`
 
@@ -98,6 +124,8 @@ Retrieves an execution environment's connection status and safe installed metada
 
     Skills installed in the environment, without their archive contents.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `HostedSkillReference object { description, name, skill_id, 2 more }`
 
       A skill installed from the Skills API.
@@ -106,13 +134,19 @@ Retrieves an execution environment's connection status and safe installed metada
 
         The installed skill description.
 
+        `minLength: 0`
+
       - `name: string`
 
         The installed skill name.
 
+        `minLength: 0`
+
       - `skill_id: string`
 
         The referenced skill ID.
+
+        `minLength: 0`
 
       - `type: "skill_reference"`
 
@@ -124,6 +158,8 @@ Retrieves an execution environment's connection status and safe installed metada
 
         The concrete skill version installed for this session.
 
+        `minLength: 0`
+
     - `Inline object { description, name, type }`
 
       A skill installed from an inline ZIP archive.
@@ -132,9 +168,13 @@ Retrieves an execution environment's connection status and safe installed metada
 
         The installed skill description.
 
+        `minLength: 0`
+
       - `name: string`
 
         The installed skill name.
+
+        `minLength: 0`
 
       - `type: "inline"`
 

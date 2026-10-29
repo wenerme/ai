@@ -10,9 +10,21 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
   The model to use for the agent. The requested model name is preserved.
 
+  `minLength: 0`, `maxLength: 1048576`
+
+- `compaction: optional object { async }  or null`
+
+  Context compaction settings. Omission or null enables background compaction.
+
+  - `async: optional boolean or null`
+
+    Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
 - `instructions: optional string or null`
 
   Additional instructions appended to the agent's default base instructions. Omit or set to null to add no custom instructions.
+
+  `minLength: 0`, `maxLength: 1048576`
 
 - `metadata: optional map[string] or null`
 
@@ -30,9 +42,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Maximum number of subagents that may run concurrently. Defaults to 6.
 
+    `format: int64`, `minimum: 1`, `maximum: 4294967295`
+
 - `name: optional string or null`
 
   A human-readable name for the agent. Omission or null leaves the agent unnamed.
+
+  `minLength: 0`, `maxLength: 128`
 
 - `reasoning: optional AgentReasoningParam or null`
 
@@ -152,6 +168,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
   Tools available to the agent. Defaults to an empty list. The tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `Function object { description, name, parameters, 2 more }`
 
     A function defined by the application.
@@ -160,9 +178,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       A description of what the function does.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `name: string`
 
       The name of the function.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `parameters: map[unknown]`
 
@@ -210,6 +232,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       A label used to identify the MCP server in tool calls.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `transport: PersistedMcpTransportParam`
 
       The credential-free transport used to connect to the MCP server.
@@ -221,6 +245,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
         - `server_url: string`
 
           The URL of the MCP server.
+
+          `minLength: 0`, `maxLength: 1048576`
 
         - `type: "http"`
 
@@ -240,9 +266,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           The command used to start the MCP server.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `cwd: string`
 
           The working directory used to start the MCP server.
+
+          `minLength: 0`, `maxLength: 1048576`
 
         - `type: "stdio"`
 
@@ -254,9 +284,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           Arguments passed to the MCP server command.
 
+          `minItems: 0`, `maxItems: 16384`
+
         - `env_vars: optional array of string or null`
 
           Environment variable names to inherit from the selected execution environment.
+
+          `minItems: 0`, `maxItems: 16384`
 
     - `type: "mcp"`
 
@@ -267,6 +301,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
     - `allowed_tools: optional array of string or null`
 
       The MCP tools the agent may call. All server tools are allowed when omitted.
+
+      `minItems: 0`, `maxItems: 16384`
 
     - `connection_origin: optional "service" or "environment" or null`
 
@@ -283,6 +319,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
     - `credential_id: optional string or null`
 
       The vault credential selected for this MCP server. Optional when exactly one attached credential matches the server URL.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `request_metadata: optional map[unknown] or null`
 
@@ -306,6 +344,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Domains the search may include.
 
+      `minItems: 0`, `maxItems: 16384`
+
     - `context_size: optional "low" or "medium" or "high" or null`
 
       The amount of search context made available to the model. Defaults to `medium`.
@@ -324,17 +364,25 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         The city name.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `country: optional string or null`
 
         The two-letter ISO country code, such as `US`.
+
+        `minLength: 0`, `maxLength: 1048576`
 
       - `region: optional string or null`
 
         The region or state name.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `timezone: optional string or null`
 
         The IANA timezone, such as `America/Los_Angeles`.
+
+        `minLength: 0`, `maxLength: 1048576`
 
     - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -378,7 +426,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
 ### Returns
 
-- `Agent object { id, created_at, instructions, 10 more }`
+- `Agent object { id, created_at, instructions, 11 more }`
 
   A reusable agent scoped to the caller's project.
 
@@ -386,13 +434,19 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     The ID of the reusable agent.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the agent was created.
 
+    `format: int64`
+
   - `instructions: string or null`
 
     Custom instructions appended to the agent's default base instructions.
+
+    `minLength: 0`
 
   - `metadata: map[string]`
 
@@ -401,6 +455,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `model: string`
 
     The requested model name used for inference.
+
+    `minLength: 0`
 
   - `multi_agent: MultiAgentConfig`
 
@@ -414,9 +470,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
+      `format: int64`, `minimum: 1`, `maximum: 4294967295`
+
   - `name: string or null`
 
     A human-readable name for the agent, or null if it is unnamed.
+
+    `minLength: 0`
 
   - `object: "agent"`
 
@@ -524,6 +584,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Tools available to the agent.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `Function object { defer_loading, description, name, 2 more }`
 
       A function defined by the application.
@@ -536,9 +598,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         A description of what the function does.
 
+        `minLength: 0`
+
       - `name: string`
 
         The name of the function.
+
+        `minLength: 0`
 
       - `parameters: map[unknown]`
 
@@ -582,6 +648,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         The MCP tools the agent may call, or null when all server tools are allowed.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `connection_origin: "service" or "environment"`
 
         Where outbound MCP HTTP connections originate.
@@ -594,6 +662,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         The vault credential selected for this MCP server, if any.
 
+        `minLength: 0`
+
       - `request_metadata: map[unknown]`
 
         Metadata included with requests to this MCP server.
@@ -605,6 +675,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
       - `server_label: string`
 
         A label used to identify the MCP server in tool calls.
+
+        `minLength: 0`
 
       - `transport: PersistedMcpTransport`
 
@@ -622,6 +694,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
             The URL of the MCP server.
 
+            `minLength: 0`
+
           - `type: "http"`
 
             The type of the object. Always `http`.
@@ -636,17 +710,25 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
             Arguments passed to the MCP server command.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `command: string`
 
             The command used to start the MCP server.
+
+            `minLength: 0`
 
           - `cwd: string`
 
             The working directory used to start the MCP server.
 
+            `minLength: 0`
+
           - `env_vars: array of string`
 
             Environment variable names inherited from the execution environment.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `type: "stdio"`
 
@@ -668,6 +750,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Allowed search domains, or `null` when the search is unrestricted.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `context_size: "low" or "medium" or "high"`
 
         The amount of search context made available to the model. Defaults to `medium`.
@@ -686,17 +770,25 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           The city name.
 
+          `minLength: 0`
+
         - `country: string or null`
 
           The two-letter ISO country code, such as `US`.
+
+          `minLength: 0`
 
         - `region: string or null`
 
           The region or state name.
 
+          `minLength: 0`
+
         - `timezone: string or null`
 
           The IANA timezone, such as `America/Los_Angeles`.
+
+          `minLength: 0`
 
       - `mode: "disabled" or "cached" or "live"`
 
@@ -741,6 +833,16 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.
+
+    `format: int64`
+
+  - `compaction: optional object { async }`
+
+    The effective context compaction settings.
+
+    - `async: boolean`
+
+      Whether context is compacted in the background. Defaults to true.
 
 ### Example
 
@@ -793,6 +895,9 @@ curl https://api.openai.com/v1/agents \
       "type": "function"
     }
   ],
-  "updated_at": 0
+  "updated_at": 0,
+  "compaction": {
+    "async": true
+  }
 }
 ```

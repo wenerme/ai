@@ -1055,9 +1055,6 @@ tags:
   description: |-
     Use this API to query [GitLab Orbit](https://docs.gitlab.com/orbit/),
     which indexes a group's software development lifecycle.
-
-    > [!note]
-    > The availability of these endpoints is controlled by a feature flag, and GitLab Orbit is in beta.
   x-displayName: Orbit
   externalDocs:
     url: https://docs.gitlab.com/api/orbit/
@@ -2203,7 +2200,6 @@ paths:
             schema:
               "$ref": "#/components/schemas/postApiV4OrbitQueryRequest"
       x-gitlab-tier: premium
-      x-gitlab-lifecycle: beta
   "/api/v4/orbit/query/{name}":
     post:
       operationId: postApiV4OrbitQueryName
@@ -2234,7 +2230,6 @@ paths:
             schema:
               "$ref": "#/components/schemas/postApiV4OrbitQueryNameRequest"
       x-gitlab-tier: premium
-      x-gitlab-lifecycle: beta
   "/api/v4/orbit/context":
     post:
       operationId: postApiV4OrbitContext
@@ -2289,7 +2284,6 @@ paths:
           description: Unauthorized
         '404':
           description: Skills are not available
-      x-gitlab-lifecycle: beta
   "/api/v4/orbit/skills/{name}":
     get:
       operationId: getApiV4OrbitSkillsName
@@ -2319,7 +2313,6 @@ paths:
           type: string
           pattern: "^[a-z0-9][a-z0-9\\-]*$"
         in: path
-      x-gitlab-lifecycle: beta
   "/api/v4/orbit/skills/{name}/{path}":
     get:
       operationId: getApiV4OrbitSkillsNamePath
@@ -2359,21 +2352,6 @@ paths:
           pattern: "^[^\\/]+(?:\\/[^\\/]+)*$"
         in: path
         example: references/usage.md
-      x-gitlab-lifecycle: beta
-  "/api/v4/orbit/tools":
-    get:
-      operationId: getApiV4OrbitTools
-      summary: List all tools
-      description: Lists all available Orbit operations.
-      tags:
-      - Orbit
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad Request
-      x-gitlab-tier: premium
-      x-gitlab-lifecycle: experiment
   "/api/v4/jobs/{id}/sbom_scans/authorize":
     post:
       operationId: postApiV4JobsIdSbomScansAuthorize
@@ -2880,6 +2858,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '503':
           description: Service unavailable
         '400':
@@ -84300,25 +84280,6 @@ paths:
         schema:
           type: integer
         in: path
-  "/api/v4/usage_data/service_ping":
-    get:
-      operationId: getApiV4UsageDataServicePing
-      summary: Retrieve Service Ping payload
-      description: Retrieves the Service Ping payload from the application cache as
-        JSON. If no cached payload is available, returns an empty response. Requires
-        a personal access token with the `read_service_ping` scope. Introduced in
-        GitLab 16.9.
-      tags:
-      - Usage data
-      responses:
-        '200':
-          description: OK
-        '401':
-          description: 401 Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not found
   "/api/v4/usage_data/track_event":
     post:
       operationId: postApiV4UsageDataTrackEvent
@@ -84343,38 +84304,25 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4UsageDataTrackEventRequest"
-  "/api/v4/swagger_doc":
+  "/api/v4/usage_data/service_ping":
     get:
-      operationId: getApiV4SwaggerDoc
-      summary: Swagger compatible API description
+      operationId: getApiV4UsageDataServicePing
+      summary: Retrieve Service Ping payload
+      description: Retrieves the Service Ping payload from the application cache as
+        JSON. If no cached payload is available, returns an empty response. Requires
+        a personal access token with the `read_service_ping` scope. Introduced in
+        GitLab 16.9.
+      tags:
+      - Usage data
       responses:
         '200':
           description: OK
-  "/api/v4/swagger_doc/{name}":
-    get:
-      operationId: getApiV4SwaggerDocName
-      summary: Swagger compatible API description for specific API
-      responses:
-        '200':
-          description: OK
+        '401':
+          description: 401 Unauthorized
+        '403':
+          description: Forbidden
         '404':
-          description: Not Found
-        '400':
-          description: Bad Request
-      parameters:
-      - name: name
-        required: true
-        description: Resource name of mounted API
-        schema:
-          type: string
-        in: path
-      - name: locale
-        required: false
-        description: Locale of API documentation
-        schema:
-          type: string
-          nullable: true
-        in: query
+          description: Not found
 components:
   securitySchemes:
     http:
@@ -84587,7 +84535,7 @@ components:
       properties:
         version:
           type: string
-          example: 1.1.0
+          example: 1.3.0
         entities:
           type: array
           items:
@@ -84769,22 +84717,30 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         web_url:
           type: string
           example: https://gitlab.example.com/group/project/-/automate/agent-sessions/42
         project_id:
-          type: string
+          type: integer
         namespace_id:
-          type: string
+          type: integer
         agent_privileges:
-          type: string
+          type: array
+          items:
+            type: integer
         agent_privileges_names:
-          type: string
+          type: array
+          items:
+            type: string
         pre_approved_agent_privileges:
-          type: string
+          type: array
+          items:
+            type: integer
         pre_approved_agent_privileges_names:
-          type: string
+          type: array
+          items:
+            type: string
         workflow_definition:
           type: string
         status:
@@ -84794,26 +84750,26 @@ components:
         title:
           type: string
         allow_agent_to_request_user:
-          type: string
+          type: boolean
         image:
           type: string
         environment:
           type: string
         ai_catalog_item_version_id:
-          type: string
+          type: integer
         workload:
-          type: string
+          type: object
         mcp_enabled:
-          type: string
+          type: boolean
         incremental_checkpoints_enabled:
-          type: string
+          type: boolean
         gitlab_url:
           type: string
     APIEntitiesAiDuoWorkflowsBasicCheckpoint:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         thread_ts:
           type: string
         parent_ts:
@@ -84824,13 +84780,13 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         thread_ts:
           type: string
         task:
           type: string
         idx:
-          type: string
+          type: integer
         channel:
           type: string
         write_type:
@@ -84841,7 +84797,7 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         thread_ts:
           type: string
         parent_ts:
@@ -84849,7 +84805,7 @@ components:
         checkpoint_ns:
           type: string
         checkpoint:
-          type: string
+          type: object
         compressed_checkpoint:
           type: string
         checkpoint_writes:
@@ -84857,14 +84813,14 @@ components:
           items:
             "$ref": "#/components/schemas/APIEntitiesAiDuoWorkflowsCheckpointWrite"
         current_thread:
-          type: string
+          type: integer
         metadata:
-          type: string
+          type: object
     APIEntitiesAiDuoWorkflowsEvent:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         correlation_id:
           type: string
         event_type:
@@ -84897,9 +84853,9 @@ components:
         extern_uid:
           type: string
         group_id:
-          type: string
+          type: integer
         active:
-          type: string
+          type: boolean
     APIEntitiesUserPublic:
       type: object
       properties:
@@ -85330,11 +85286,13 @@ components:
       type: object
       properties:
         value:
-          type: string
+          type: integer
         from:
           type: string
+          format: date
         to:
           type: string
+          format: date
     APIEntitiesAnalyticsGroupActivityIssuesCount:
       type: object
       properties:
@@ -85436,7 +85394,7 @@ components:
           description: Review time in hours
           example: 6
         diff_stats:
-          type: string
+          type: object
     DependencyEntityVulnerabilityEntity:
       type: object
       properties:
@@ -86977,9 +86935,9 @@ components:
         extern_uid:
           type: string
         user_id:
-          type: string
+          type: integer
         active:
-          type: string
+          type: boolean
     APIEntitiesMemberRole:
       type: object
       properties:
@@ -87015,6 +86973,9 @@ components:
           type: boolean
           default: false
         archive_project:
+          type: boolean
+          default: false
+        archive_subgroup:
           type: boolean
           default: false
         admin_ai_catalog_item_consumer:
@@ -91494,12 +91455,14 @@ components:
               type: string
             last_checksum:
               type: string
+              format: date-time
             checksum_state:
               type: string
             checksum_retry_count:
-              type: string
+              type: integer
             checksum_retry_at:
               type: string
+              format: date-time
             checksum_failure:
               type: string
     APIEntitiesAdminSecurityPolicySetting:
@@ -93429,6 +93392,8 @@ components:
           type: string
         notify_on_unknown_sign_in:
           type: string
+        o11y_provisioner_url:
+          type: string
         organization_cluster_agent_authorization_enabled:
           type: string
         pages_domain_verification_enabled:
@@ -94213,6 +94178,10 @@ components:
           type: string
         duo_foundational_flows_availability:
           type: string
+        duo_scheduled_triggers_enabled:
+          type: string
+        duo_scheduled_triggers_availability:
+          type: string
         duo_custom_agents_enabled:
           type: boolean
         duo_custom_agents_availability:
@@ -94280,6 +94249,14 @@ components:
         orbit_auto_index_root_namespace:
           type: string
         orbit_dap_enabled_by_default:
+          type: string
+        orbit_query_limit:
+          type: string
+        orbit_indexing_status_limit:
+          type: string
+        orbit_item_counts_limit:
+          type: string
+        orbit_rate_limit_allowlist_raw:
           type: string
         duo_workflow_oauth_application_id:
           type: string
@@ -99635,26 +99612,28 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
         source_id:
-          type: string
+          type: integer
         source_full_name:
           type: string
         source_members_url:
           type: string
         created_at:
           type: string
+          format: date-time
         expires_at:
           type: string
+          format: date
         access_level:
           type: object
           properties:
             string_value:
               type: string
             integer_value:
-              type: string
+              type: integer
             custom_role:
-              type: string
+              type: object
     APIEntitiesProjectUpload:
       type: object
       properties:
@@ -106767,6 +106746,13 @@ components:
           type: boolean
           description: Allows archiving of projects.
           default: false
+        archive_subgroup:
+          type: boolean
+          description: Ability to archive or unarchive a subgroup. This ability does
+            not allow archiving top-level groups. Archiving unlinks projects from
+            their fork networks and closes their open cross-fork merge requests, and
+            unarchiving does not restore either.
+          default: false
         admin_ai_catalog_item_consumer:
           type: boolean
           description: Enable, disable, and configure custom agents and flows from
@@ -107008,6 +106994,13 @@ components:
         archive_project:
           type: boolean
           description: Allows archiving of projects.
+          default: false
+        archive_subgroup:
+          type: boolean
+          description: Ability to archive or unarchive a subgroup. This ability does
+            not allow archiving top-level groups. Archiving unlinks projects from
+            their fork networks and closes their open cross-fork merge requests, and
+            unarchiving does not restore either.
           default: false
         admin_ai_catalog_item_consumer:
           type: boolean
@@ -111230,6 +111223,17 @@ components:
           description: Method call is only tracked if it takes longer than this threshold,
             in milliseconds.
           nullable: true
+        o11y_provisioner_api_key:
+          type: string
+          description: API key GitLab sends to the Observability provisioner. GitLab.com
+            only. Not returned in responses.
+          nullable: true
+          maxLength: 510
+        o11y_provisioner_url:
+          type: string
+          description: URL of the Observability provisioner API. GitLab.com only.
+          nullable: true
+          maxLength: 255
         password_authentication_enabled:
           type: boolean
           description: Flag indicating if password authentication is enabled for the
@@ -113023,6 +113027,26 @@ components:
           description: Maximum number of requests per minute per user per group to
             the group audit events API.
           nullable: true
+        orbit_query_limit:
+          type: integer
+          description: 'Maximum number of GitLab Orbit queries per minute per user.
+            Default: `60`. Set to `0` to disable the rate limit.'
+          nullable: true
+        orbit_indexing_status_limit:
+          type: integer
+          description: 'Maximum number of GitLab Orbit indexing status requests per
+            minute per user. Default: `30`. Set to `0` to disable the rate limit.'
+          nullable: true
+        orbit_item_counts_limit:
+          type: integer
+          description: 'Maximum number of GitLab Orbit item count requests per minute
+            per user. Default: `30`. Set to `0` to disable the rate limit.'
+          nullable: true
+        orbit_rate_limit_allowlist_raw:
+          type: string
+          description: 'Raw newline-, comma-, or whitespace-separated list of usernames
+            excluded from the GitLab Orbit rate limits. Maximum: 100 usernames.'
+          nullable: true
         group_owners_can_manage_default_branch_protection:
           type: boolean
           description: If `true`, allows group owners to manage default branch protection
@@ -113933,6 +113957,12 @@ components:
           type: string
           nullable: true
         duo_foundational_flows_availability:
+          type: string
+          nullable: true
+        duo_scheduled_triggers_enabled:
+          type: string
+          nullable: true
+        duo_scheduled_triggers_availability:
           type: string
           nullable: true
         duo_custom_agents_availability:
@@ -119585,6 +119615,7 @@ components:
           - npm
           - nuget
           - pypi
+          - rubygems
           - terraform_module
           description: Package type protected by the protection rule, for example
             `npm`.
@@ -119635,6 +119666,7 @@ components:
           - npm
           - nuget
           - pypi
+          - rubygems
           - terraform_module
           description: Package type protected by the protection rule, for example
             `npm`.

@@ -10,9 +10,13 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -32,17 +36,25 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The ID of the reusable agent.
+
+    `minLength: 0`
 
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the agent was created.
 
+    `format: int64`
+
   - `instructions: string or null`
 
     Custom instructions appended to the agent's default base instructions.
+
+    `minLength: 0`
 
   - `metadata: map[string]`
 
@@ -51,6 +63,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
   - `model: string`
 
     The requested model name used for inference.
+
+    `minLength: 0`
 
   - `multi_agent: MultiAgentConfig`
 
@@ -64,9 +78,13 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
+      `format: int64`, `minimum: 1`, `maximum: 4294967295`
+
   - `name: string or null`
 
     A human-readable name for the agent, or null if it is unnamed.
+
+    `minLength: 0`
 
   - `object: "agent"`
 
@@ -174,6 +192,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     Tools available to the agent.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `Function object { defer_loading, description, name, 2 more }`
 
       A function defined by the application.
@@ -186,9 +206,13 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         A description of what the function does.
 
+        `minLength: 0`
+
       - `name: string`
 
         The name of the function.
+
+        `minLength: 0`
 
       - `parameters: map[unknown]`
 
@@ -232,6 +256,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         The MCP tools the agent may call, or null when all server tools are allowed.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `connection_origin: "service" or "environment"`
 
         Where outbound MCP HTTP connections originate.
@@ -244,6 +270,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         The vault credential selected for this MCP server, if any.
 
+        `minLength: 0`
+
       - `request_metadata: map[unknown]`
 
         Metadata included with requests to this MCP server.
@@ -255,6 +283,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
       - `server_label: string`
 
         A label used to identify the MCP server in tool calls.
+
+        `minLength: 0`
 
       - `transport: PersistedMcpTransport`
 
@@ -272,6 +302,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
             The URL of the MCP server.
 
+            `minLength: 0`
+
           - `type: "http"`
 
             The type of the object. Always `http`.
@@ -286,17 +318,25 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
             Arguments passed to the MCP server command.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `command: string`
 
             The command used to start the MCP server.
+
+            `minLength: 0`
 
           - `cwd: string`
 
             The working directory used to start the MCP server.
 
+            `minLength: 0`
+
           - `env_vars: array of string`
 
             Environment variable names inherited from the execution environment.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `type: "stdio"`
 
@@ -318,6 +358,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         Allowed search domains, or `null` when the search is unrestricted.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `context_size: "low" or "medium" or "high"`
 
         The amount of search context made available to the model. Defaults to `medium`.
@@ -336,17 +378,25 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
           The city name.
 
+          `minLength: 0`
+
         - `country: string or null`
 
           The two-letter ISO country code, such as `US`.
+
+          `minLength: 0`
 
         - `region: string or null`
 
           The region or state name.
 
+          `minLength: 0`
+
         - `timezone: string or null`
 
           The IANA timezone, such as `America/Los_Angeles`.
+
+          `minLength: 0`
 
       - `mode: "disabled" or "cached" or "live"`
 
@@ -392,9 +442,21 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     The Unix timestamp, in seconds, when the agent was last updated.
 
+    `format: int64`
+
+  - `compaction: optional object { async }`
+
+    The effective context compaction settings.
+
+    - `async: boolean`
+
+      Whether context is compacted in the background. Defaults to true.
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
+
+  `minLength: 0`
 
 - `has_more: boolean`
 
@@ -403,6 +465,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 
@@ -459,7 +523,10 @@ curl https://api.openai.com/v1/agents \
           "type": "function"
         }
       ],
-      "updated_at": 0
+      "updated_at": 0,
+      "compaction": {
+        "async": true
+      }
     }
   ],
   "first_id": "first_id",

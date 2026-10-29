@@ -5,7 +5,7 @@ description: "Browse Mistral model IDs, capabilities, context windows, and prici
 
 # [Mistral logo]Mistral
 
-Access 34 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
+Access 35 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
 
 Learn more in the [Mistral documentation](https://docs.mistral.ai/getting-started/models/).
 
@@ -60,6 +60,18 @@ for await (const chunk of stream) {
     "maxOutput": 4096,
     "inputCost": 0.3,
     "outputCost": 0.9
+  },
+  {
+    "model": "mistral/deepseek-v4-1-flash-1017",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 128000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "mistral/ministral-14b-2512",

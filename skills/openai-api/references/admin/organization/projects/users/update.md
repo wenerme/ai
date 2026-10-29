@@ -30,6 +30,8 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`

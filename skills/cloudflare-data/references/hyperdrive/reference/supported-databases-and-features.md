@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/hyperdrive/reference/supported-database
 
 # Supported databases and features
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Database support
 
@@ -20,7 +20,7 @@ The following table shows which database engines and/or specific database provid
 
 | Database Engine | Supported | Known supported versions | Details |
 | --- | --- | --- | --- |
-| PostgreSQL | ✅ | `9.0` to `17.x` | Both self-hosted and managed (AWS, Azure, Google Cloud, Oracle) instances are supported. |
+| PostgreSQL | ✅ | `9.0` to `18.x` | Both self-hosted and managed (AWS, Azure, Google Cloud, Oracle) instances are supported. |
 | MySQL | ✅ | `5.7` to `8.x` | Both self-hosted and managed (AWS, Azure, Google Cloud, Oracle) instances are supported. MariaDB is also supported. |
 | SQL Server | Not currently supported. |  | |
 | MongoDB | Not currently supported. |  | |
@@ -34,6 +34,7 @@ Hyperdrive also supports databases that are compatible with the Postgres or MySQ
 | Database Engine | Supported | Known supported versions | Details |
 | --- | --- | --- | --- |
 | AWS Aurora | ✅ | All | Postgres-compatible and MySQL-compatible. Refer to AWS Aurora examples for [MySQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/aws-rds-aurora/) and [Postgres](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/aws-rds-aurora/). |
+| ClickHouse Managed Postgres | ✅ | All | Refer to the [ClickHouse Managed Postgres guide](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/clickhouse-managed-postgres/) to connect. |
 | Neon | ✅ | All | Neon currently runs Postgres 15.x |
 | Supabase | ✅ | All | Supabase currently runs Postgres 15.x |
 | Timescale | ✅ | All | See the [Timescale guide](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/timescale/) to connect. |
@@ -110,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/#page","headline":"Supported databases and features","description":"Database engines, providers, and driver libraries compatible with Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/og.png?v=504dd977e87fbc9a","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/#page","headline":"Supported databases and features","description":"Database engines, providers, and driver libraries compatible with Hyperdrive.","url":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/","inLanguage":"en","image":"https://developers.cloudflare.com/hyperdrive/reference/supported-databases-and-features/og.png?v=504dd977e87fbc9a","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

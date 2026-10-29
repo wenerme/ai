@@ -66,9 +66,15 @@ After acceptance, connect a [sideband WebSocket](https://developers.openai.com/a
 
 SIP carries the call audio. Use the sideband for transcripts, delegation, tools, commands, and reflected audio. Choose one owner for each side effect, even if multiple connections observe an event.
 
-#### Observe keypad events
 
-The sideband receives `transport.dtmf.received` when the caller presses a key and `transport.dtmf.send` after a hosted tool successfully sends a tone. Both are notifications only. The `event` field contains one of `0`–`9`, `*`, `#`, or `A`–`D`.
+
+
+
+#### Send and receive keypad events
+
+The sideband receives [`transport.dtmf.received`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.received) when the caller presses a key. To send a DTMF tone to the SIP trunk, send a [`transport.dtmf.send` client event](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.send) over the sideband WebSocket. After the tone is successfully sent, the sideband receives [`transport.dtmf.sent`](https://developers.openai.com/api/reference/resources/live/sideband-websocket#transport.dtmf.sent).
+
+If you supply an `event_id`, the notification includes it as `client_event_id`; failures return an `error` event with `error.client_event_id`.
 
 #### Transfer or end the call
 

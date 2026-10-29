@@ -8,11 +8,15 @@ Updates supplied fields; target and metadata replace the whole field.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Body Parameters
 
 - `expression: optional string`
 
   Only accepted for periodic automations.
+
+  `minLength: 1`, `maxLength: 256`
 
 - `metadata: optional map[string]`
 
@@ -20,9 +24,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
 - `name: optional string`
 
+  `minLength: 1`, `maxLength: 256`
+
 - `run_at: optional number`
 
   A future Unix timestamp in seconds; accepted only before a one-time scheduled invocation exists.
+
+  `format: int64`
 
 - `target: optional AutomationTargetParam`
 
@@ -60,6 +68,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+          `minItems: 0`, `maxItems: 16384`
+
         - `container_size: optional "small" or "medium" or "large"`
 
           The hosted container size. Omission selects the medium tier.
@@ -86,13 +96,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
           An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
+          `minLength: 9`, `maxLength: 256`
+
         - `environment_template_id: optional string`
 
           A reusable hosted template applied before inline session configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
 
+          `minLength: 0`, `maxLength: 64`
+
         - `files: optional array of HostedEnvironmentFileParam or null`
 
           Files available before the agent starts. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 50`
 
           - `FileID object { file_id, path, type }`
 
@@ -102,9 +118,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The ID of the uploaded file.
 
+              `minLength: 1`, `maxLength: 256`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "file_id"`
 
@@ -120,9 +140,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The standard-base64-encoded file contents.
 
+              `minLength: 0`, `maxLength: 6990508`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "inline"`
 
@@ -154,9 +178,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Domains the environment may access when network access is restricted.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `blocked_domains: optional array of string or null`
 
             Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+            `minItems: 0`, `maxItems: 100`
 
         - `packages: optional object { npm, python, system }  or null`
 
@@ -166,25 +194,37 @@ Updates supplied fields; target and metadata replace the whole field.
 
             npm packages to install globally. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `python: optional array of string or null`
 
             Python packages to install. Defaults to an empty list.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `system: optional array of string or null`
 
             System packages to install. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
         - `plugins: optional array of HostedPluginParam or null`
 
           Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 32`
 
           - `description: string`
 
             The plugin description declared in `.codex-plugin/plugin.json`.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The plugin name declared in `.codex-plugin/plugin.json`.
+
+            `minLength: 1`, `maxLength: 64`
 
           - `source: InlineCapabilitySourceParam`
 
@@ -193,6 +233,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `data: string`
 
               Standard-base64 encoded ZIP archive bytes.
+
+              `minLength: 1`, `maxLength: 70254592`
 
             - `media_type: "application/zip"`
 
@@ -218,17 +260,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Ordered, confidential setup commands. Command bodies are never returned.
 
+          `minItems: 0`, `maxItems: 16`
+
           - `command: string`
 
             The shell command to execute.
+
+            `minLength: 0`, `maxLength: 65536`
 
           - `cwd: optional string or null`
 
             The absolute working directory. Defaults to `/workspace`.
 
+            `minLength: 0`, `maxLength: 4096`
+
         - `skills: optional array of HostedSkillParam or null`
 
           Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 200`
 
           - `SkillReference object { skill_id, type, version }`
 
@@ -237,6 +287,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `skill_id: string`
 
               The ID of the skill created through `/v1/skills`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `type: "skill_reference"`
 
@@ -248,6 +300,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The skill version, a positive integer or `latest`; omission selects the default.
 
+              `minLength: 0`, `maxLength: 1048576`
+
           - `Inline object { description, name, source, type }`
 
             Supplies a skill ZIP directly in the session request.
@@ -256,9 +310,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The skill description declared in `SKILL.md`.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `name: string`
 
               The skill name declared in `SKILL.md`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `source: InlineCapabilitySourceParam`
 
@@ -284,17 +342,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Absolute project directory inside the self-hosted environment.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `capability_directories: optional array of string or null`
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 16384`
 
     - `input: array of AgentSessionInputMessageParam`
 
       Initial user messages submitted with each new session.
 
+      `minItems: 0`, `maxItems: 16384`
+
       - `content: array of InputContentParam`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -303,6 +369,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `text: string`
 
             The text sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_text"`
 
@@ -317,6 +385,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `image_url: string`
 
             The URL of the image sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_image"`
 
@@ -342,17 +412,29 @@ Updates supplied fields; target and metadata replace the whole field.
 
       - `"new_session"`
 
-    - `agent: optional object { instructions, model, multi_agent, 4 more }`
+    - `agent: optional object { compaction, instructions, model, 5 more }`
 
       Inline agent configuration. Provide exactly one of agent and agent_id.
+
+      - `compaction: optional object { async }  or null`
+
+        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+
+        - `async: optional boolean or null`
+
+          Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
       - `instructions: optional string or null`
 
         Additional instructions appended to the agent's default base instructions. Omit to leave unchanged.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `model: optional string`
 
         The model to use for the agent. The requested model name is preserved.
+
+        `minLength: 0`, `maxLength: 1048576`
 
       - `multi_agent: optional MultiAgentConfigParam or null`
 
@@ -365,6 +447,8 @@ Updates supplied fields; target and metadata replace the whole field.
         - `max_concurrent_subagents: optional number`
 
           Maximum number of subagents that may run concurrently. Defaults to 6.
+
+          `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
       - `reasoning: optional AgentReasoningParam or null`
 
@@ -484,6 +568,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
         Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+        `minItems: 0`, `maxItems: 16384`
+
         - `Function object { description, name, parameters, 2 more }`
 
           A function defined by the application.
@@ -492,9 +578,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             A description of what the function does.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The name of the function.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `parameters: map[unknown]`
 
@@ -542,6 +632,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             A label used to identify the MCP server in tool calls.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `transport: McpTransportParam`
 
             The transport used to connect to the MCP server.
@@ -554,6 +646,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The URL of the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `type: "http"`
 
                 The type of the object. Always `http`.
@@ -563,6 +657,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `authorization: optional string or null`
 
                 The authorization value sent to the MCP server, if any.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `headers: optional map[string] or null`
 
@@ -576,9 +672,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The command used to start the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `cwd: string`
 
                 The working directory used to start the MCP server.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "stdio"`
 
@@ -590,6 +690,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Arguments passed to the MCP server command.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `env: optional map[string] or null`
 
                 Environment variables set for the MCP server process.
@@ -597,6 +699,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `env_vars: optional array of string or null`
 
                 Environment variable names to inherit from the selected execution environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
           - `type: "mcp"`
 
@@ -607,6 +711,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `allowed_tools: optional array of string or null`
 
             The MCP tools the agent may call. All server tools are allowed when omitted.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `connection_origin: optional "service" or "environment" or null`
 
@@ -623,6 +729,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `credential_id: optional string or null`
 
             The attached vault credential used to authenticate this MCP server. Optional when exactly one attached credential matches the server URL.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `request_metadata: optional map[unknown] or null`
 
@@ -646,6 +754,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Domains the search may include.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `context_size: optional "low" or "medium" or "high" or null`
 
             The amount of search context made available to the model. Defaults to `medium`.
@@ -664,17 +774,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The city name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `country: optional string or null`
 
               The two-letter ISO country code, such as `US`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
             - `region: optional string or null`
 
               The region or state name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `timezone: optional string or null`
 
               The IANA timezone, such as `America/Los_Angeles`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
           - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -720,6 +838,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       A saved agent ID. Provide exactly one of agent and agent_id.
 
+      `minLength: 0`, `maxLength: 64`
+
     - `metadata: optional map[string] or null`
 
       Metadata attached to each new session.
@@ -727,6 +847,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `vault_ids: optional array of string or null`
 
       The IDs of vaults made available to each new session.
+
+      `minItems: 0`, `maxItems: 16384`
 
   - `ExistingSession object { instructions, session_id, type }`
 
@@ -736,9 +858,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       Instructions delivered as an automation notification.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `session_id: string`
 
       The session receiving each invocation.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "existing_session"`
 
@@ -749,6 +875,8 @@ Updates supplied fields; target and metadata replace the whole field.
 - `timezone: optional string`
 
   Only accepted for periodic automations.
+
+  `minLength: 1`, `maxLength: 128`
 
 ### Returns
 
@@ -764,9 +892,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -786,9 +918,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -800,6 +936,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -807,6 +945,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -836,9 +976,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -851,6 +995,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -952,6 +1098,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -964,9 +1112,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -1000,6 +1152,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -1011,6 +1165,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -1024,6 +1180,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -1035,6 +1193,8 @@ Updates supplied fields; target and metadata replace the whole field.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -1050,17 +1210,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -1082,6 +1250,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -1100,17 +1270,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -1152,9 +1330,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -1175,6 +1363,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -1198,13 +1388,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -1214,9 +1410,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -1232,9 +1432,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -1266,6 +1470,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -1274,25 +1480,37 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -1304,6 +1522,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -1311,6 +1531,8 @@ Updates supplied fields; target and metadata replace the whole field.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -1322,6 +1544,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -1330,9 +1554,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -1352,9 +1580,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -1366,13 +1598,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -1381,6 +1619,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -1395,6 +1635,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -1428,15 +1670,21 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -1447,6 +1695,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -1462,9 +1712,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -1478,6 +1732,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -1487,6 +1743,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -1563,7 +1821,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {

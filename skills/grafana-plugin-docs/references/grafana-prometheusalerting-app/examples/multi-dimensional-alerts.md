@@ -11,7 +11,7 @@ A single rule normally produces many alerts, one per series its expression retur
 
 ## The pattern
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 - alert: FilesystemAlmostFull
@@ -33,7 +33,7 @@ One rule covers every filesystem on every host. You don’t write a rule per hos
 
 An alert instance’s identity is its label set, which comes from the series the expression returned. Because each filesystem is a distinct series with distinct labels, each becomes a distinct alert, tracked separately, firing and resolving on its own schedule.
 
-The annotations are templated per instance, so each alert names its own filesystem. Refer to [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
+The annotations are templated per instance, so each alert names its own filesystem. Refer to [Template annotations and labels](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
 
 ## Keeping the notifications sane
 
@@ -41,25 +41,25 @@ Fifty full filesystems produce fifty alert instances. Whether that means fifty n
 
 Grouping by `alertname` and `instance` gives one notification per host, listing that host’s affected filesystems:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 group_by: ['alertname', 'instance']
 ```
 
-Grouping by `alertname` alone gives one notification covering everything. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+Grouping by `alertname` alone gives one notification covering everything. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
 
 ## Check the count before you save
 
 The rule editor’s **Query Preview** shows what the expression returns right now. If it comes back with hundreds of rows, the rule will produce hundreds of alerts the moment it’s saved.
 
-That’s the point at which to reconsider. Either aggregate the expression, or plan the grouping to match. Refer to [High-cardinality alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/).
+That’s the point at which to reconsider. Either aggregate the expression, or plan the grouping to match. Refer to [High-cardinality alerts](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/).
 
 ## Preserve the labels you route on
 
 Aggregating away a label you need for routing breaks the routing silently:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # Keeps instance and mountpoint: routable per host
@@ -71,7 +71,7 @@ count(node_filesystem_avail_bytes / node_filesystem_size_bytes * 100 < 10) > 5
 
 Use `by (...)` to keep the labels you need while still aggregating:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 count by (instance) (

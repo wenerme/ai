@@ -27,6 +27,7 @@ The following foundational flows are available:
 | [Secret False Positive Detection](secret_false_positive_detection.md) | Automatically identify and filter false positives in secret detection findings. |
 | [Security Review](../../../application_security/security_review.md) | Detect business logic security vulnerabilities in merge request changes. |
 | [Software Development](../../../../editor_extensions/software_development.md) | In your IDE, create and work through a plan for a coding task. |
+| [Vulnerability Context Flow](../../../application_security/vulnerabilities/vulnerability_context_flow.md) | Generate security context for a project to help prioritize vulnerabilities. |
 
 ## Choose a flow for coding tasks
 

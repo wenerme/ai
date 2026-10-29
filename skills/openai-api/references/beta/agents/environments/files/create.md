@@ -8,6 +8,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 - `environment_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Body Parameters
 
 - `hosted_environment_file_param: HostedEnvironmentFileParam`
@@ -22,9 +24,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       The ID of the uploaded file.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `path: string`
 
       The absolute destination path inside `/workspace`.
+
+      `minLength: 1`, `maxLength: 4096`
 
     - `type: "file_id"`
 
@@ -40,9 +46,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       The standard-base64-encoded file contents.
 
+      `minLength: 0`, `maxLength: 6990508`
+
     - `path: string`
 
       The absolute destination path inside `/workspace`.
+
+      `minLength: 1`, `maxLength: 4096`
 
     - `type: "inline"`
 
@@ -60,6 +70,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     The ID of the environment containing this file.
 
+    `minLength: 0`
+
   - `object: "agent.environment.file"`
 
     The object type. Always `agent.environment.file`.
@@ -70,9 +82,13 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     The absolute file path inside the environment's workspace.
 
+    `minLength: 0`
+
   - `size_bytes: number`
 
     The file size in bytes.
+
+    `format: int64`, `minimum: 0`
 
 ### Example
 

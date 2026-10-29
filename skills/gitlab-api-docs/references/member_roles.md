@@ -90,6 +90,7 @@ Supported attributes:
 | `admin_vulnerability` | boolean | no       | Permission to edit the vulnerability object, including the status and linking an issue. |
 | `admin_web_hook` | boolean | no       | Permission to administer web hooks. |
 | `archive_project` | boolean | no       | Permission to archive projects. |
+| `archive_subgroup` | boolean | no       | Permission to archive or unarchive a subgroup. |
 | `manage_deploy_tokens` | boolean | no       | Permission to manage deploy tokens. |
 | `manage_group_access_tokens` | boolean | no       | Permission to manage group access tokens. |
 | `manage_merge_request_settings` | boolean | no       | Permission to configure merge request settings. |
@@ -283,6 +284,7 @@ Parameters:
 | `admin_vulnerability` | boolean | no       | Permission to admin project vulnerabilities. |
 | `admin_web_hook` | boolean | no       | Permission to administer web hooks. |
 | `archive_project` | boolean | no       | Permission to archive projects. |
+| `archive_subgroup` | boolean | no       | Permission to archive or unarchive a subgroup. |
 | `manage_deploy_tokens` | boolean | no       | Permission to manage deploy tokens. |
 | `manage_group_access_tokens` | boolean | no       | Permission to manage group access tokens. |
 | `manage_merge_request_settings` | boolean | no       | Permission to configure merge request settings. |

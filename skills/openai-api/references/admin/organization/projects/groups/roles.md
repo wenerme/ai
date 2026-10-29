@@ -32,6 +32,8 @@ Assigns a project role to a group within a project.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     Display name of the group.
@@ -241,6 +243,8 @@ Lists the project roles assigned to a group within a project.
 
   A limit on the number of project role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned project roles.
@@ -270,6 +274,8 @@ Lists the project roles assigned to a group within a project.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -306,6 +312,8 @@ Lists the project roles assigned to a group within a project.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -443,6 +451,8 @@ Retrieves a project role assigned to a group.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -478,6 +488,8 @@ Retrieves a project role assigned to a group.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -565,6 +577,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
     - `created_at: number`
 
       Unix timestamp (in seconds) when the group was created.
+
+      `format: unixtime`
 
     - `name: string`
 
@@ -656,6 +670,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -691,6 +707,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -714,6 +732,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -749,3 +769,5 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`

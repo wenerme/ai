@@ -27,6 +27,8 @@ Returns information about a specific file.
 
     The Unix timestamp (in seconds) for when the file was created.
 
+    `format: unixtime`
+
   - `filename: string`
 
     The name of the file.
@@ -71,6 +73,8 @@ Returns information about a specific file.
 
     The Unix timestamp (in seconds) for when the file will expire. In a
     completed file upload response, this can be null when no expiry is set.
+
+    `format: unixtime`
 
   - `status_details: optional string`
 

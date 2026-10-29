@@ -16,6 +16,25 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-28
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Filter MCP tool-call analytics by response status**
+
+MCP tool-call analytics support a `response_status` query parameter on the account, portal, and server timeseries endpoints. Use `success`, `error`, or `cached` to count one status, or `all` to include every status.
+
+The default is `success`. Previously, counts included failed and cached calls. If you need the previous all-status counts, set `response_status=all` explicitly:
+
+```txt
+GET /accounts/{account_id}/access/ai-controls/mcp/analytics/tool-calls/timeseries?response_status=all
+```
+
+The response includes the selected `response_status`. Invalid values, including an empty value, return `400`.
+
+For all query parameters and scoped endpoints, refer to [View tool-call analytics](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#view-tool-call-analytics).
+
 ## 2026-10-27
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
@@ -549,6 +568,35 @@ This release includes the following highlights:
 **Known issues**
 
 - When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+
+## 2026-10-07
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+
+**Create CASB integrations with Terraform**
+
+You can now create Cloudflare CASB integrations using the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/). This lets you manage supported integrations alongside your other infrastructure-as-code.
+
+The following example creates a Google Cloud Platform integration:
+
+```tf
+resource "cloudflare_zero_trust_casb_integration" "google_cloud_platform" {
+  account_id = var.cloudflare_account_id
+  name       = "Google Cloud Platform"
+  paused     = false
+
+  google_cloud_platform = {
+    google_cloud_platform_service_account = {
+      service_account_key_json = file("service-account-key.json")
+    }
+  }
+}
+```
+
+The `cloudflare_zero_trust_casb_integration` resource requires provider version 5.27.0 or later. Version 4 of the provider and integrations that use OAuth are not supported.
+
+For setup instructions and integration guides, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
 
 ## 2026-10-07
 

@@ -14,6 +14,8 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
 
     The Unix timestamp (in seconds) of when the image was created.
 
+    `format: unixtime`
+
   - `background: optional "transparent" or "opaque"`
 
     The background parameter used for the image generation. Either `transparent` or `opaque`.
@@ -37,6 +39,8 @@ This endpoint is retired and no longer available. Use the image edits endpoint w
     - `url: optional string`
 
       The URL of the generated image when `response_format` is set to `url` for models that support that parameter. Unsupported for GPT image models.
+
+      `format: uri`
 
   - `output_format: optional "png" or "webp" or "jpeg"`
 

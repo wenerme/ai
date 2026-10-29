@@ -24,6 +24,8 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`

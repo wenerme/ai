@@ -23,7 +23,7 @@ The group page lists the alerting and recording rules it contains, along with it
 3. Change **Evaluation interval**, which sets how often the rules in this group are evaluated. Durations are written as `30s`, `1m`, `5m`.
 4. Click **Save**.
 
-The plugin validates the format, and warns you if the interval is longer than the pending period of rules in the group, since that combination can make alerts fire on their first matching evaluation rather than after the delay you intended. Refer to [Rule groups and evaluation](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
+The plugin validates the format, and warns you if the interval is longer than the pending period of rules in the group, since that combination can make alerts fire on their first matching evaluation rather than after the delay you intended. Refer to [Rule groups and evaluation](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
 
 ## Reorder rules
 
@@ -53,7 +53,7 @@ This deletes every rule in the group, not just the group itself, and can’t be 
 
 ## Groups that can’t be edited
 
-Some data sources don’t support editing rule groups. The plugin says the group can’t be edited and that the data source doesn’t support it, rather than offering controls that would fail on save. This is the expected state for vanilla Prometheus, which serves rules from files on disk. Refer to [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
+Some data sources don’t support editing rule groups. The plugin says the group can’t be edited and that the data source doesn’t support it, rather than offering controls that would fail on save. This is the expected state for vanilla Prometheus, which serves rules from files on disk. Refer to [Configure data sources](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
 
 ## How to size a group
 

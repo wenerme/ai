@@ -91,11 +91,9 @@ The GitLab Duo analysis runs and results are displayed on the vulnerability deta
 
 ## Analyze multiple vulnerabilities
 
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-- Status: Beta
-
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21890) in GitLab 19.3 as a [beta](../../../policy/development_stages_support.md#beta) feature [with a feature flag](../../../administration/feature_flags/_index.md) named `bulk_vulnerabilities_duo_workflow_api`. Disabled by default.
 - [Enabled by default for GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253325) in GitLab 19.4.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265025) in GitLab 19.6. Feature flag `bulk_vulnerabilities_duo_workflow_api` removed.
 
 You can trigger the flow to analyze multiple vulnerabilities for
 false positives.

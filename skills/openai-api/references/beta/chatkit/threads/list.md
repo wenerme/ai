@@ -18,6 +18,8 @@ List ChatKit threads with optional pagination and user filters.
 
   Maximum number of thread items to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for results by creation time. Defaults to `desc`.
@@ -29,6 +31,8 @@ List ChatKit threads with optional pagination and user filters.
 - `user: optional string`
 
   Filter threads that belong to this user identifier. Defaults to null to return all users.
+
+  `minLength: 1`, `maxLength: 512`
 
 ### Returns
 
@@ -44,13 +48,15 @@ List ChatKit threads with optional pagination and user filters.
 
     Unix timestamp (in seconds) for when the thread was created.
 
+    `format: unixtime`
+
   - `object: "chatkit.thread"`
 
     Type discriminator that is always `chatkit.thread`.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 

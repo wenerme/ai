@@ -7,5 +7,5 @@ description: "Worked examples of common data source-managed alerting patterns, s
 
 # Examples
 
-- [Multi-dimensional alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts/): one rule, many alert instances.
-- [High-cardinality alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/): keeping the volume manageable.
+- [Multi-dimensional alerts](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts/): one rule, many alert instances.
+- [High-cardinality alerts](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/): keeping the volume manageable.

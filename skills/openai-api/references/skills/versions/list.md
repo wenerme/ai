@@ -18,6 +18,8 @@ List skill versions for a skill.
 
   Number of versions to retrieve.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order of results by version number.
@@ -41,6 +43,8 @@ List skill versions for a skill.
     - `created_at: number`
 
       Unix timestamp (seconds) for when the version was created.
+
+      `format: unixtime`
 
     - `description: string`
 

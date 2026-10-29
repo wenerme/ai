@@ -8,6 +8,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
 - `environment_template_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
@@ -18,13 +20,19 @@ Retrieves reusable environment configuration without returning confidential valu
 
     The ID of the reusable environment template.
 
+    `minLength: 0`
+
   - `capability_directories: array of string`
 
     Directories that expose capabilities to the agent.
 
+    `minItems: 0`, `maxItems: 2000`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+    `format: int64`
 
   - `desktop: object { enabled }`
 
@@ -38,6 +46,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
+    `minItems: 0`, `maxItems: 50`
+
     - `FileID object { file_id, path, type }`
 
       A project-scoped Files API reference resolved separately for each session.
@@ -46,9 +56,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         The ID of the uploaded file.
 
+        `minLength: 0`
+
       - `path: string`
 
         The file's absolute path inside the environment.
+
+        `minLength: 0`
 
       - `type: "file_id"`
 
@@ -64,9 +78,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         The file's absolute path inside the environment.
 
+        `minLength: 0`
+
       - `size_bytes: number`
 
         The decoded size of the inline file in bytes.
+
+        `format: int64`, `minimum: 0`
 
       - `type: "inline"`
 
@@ -77,6 +95,8 @@ Retrieves reusable environment configuration without returning confidential valu
   - `name: string or null`
 
     An optional human-readable display name for the template.
+
+    `minLength: 0`
 
   - `network: object { access, allowed_domains }`
 
@@ -102,6 +122,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
       Domains the environment may access when network access is restricted.
 
+      `minItems: 0`, `maxItems: 2000`
+
   - `object: "agent.environment.template"`
 
     The object type. Always `agent.environment.template`.
@@ -116,25 +138,37 @@ Retrieves reusable environment configuration without returning confidential valu
 
       npm packages installed globally in the environment.
 
+      `minItems: 0`, `maxItems: 16384`
+
     - `python: array of string`
 
       Python packages installed in the environment.
+
+      `minItems: 0`, `maxItems: 16384`
 
     - `system: array of string`
 
       System packages installed in the environment.
 
+      `minItems: 0`, `maxItems: 16384`
+
   - `plugins: array of HostedPlugin`
 
     Safe plugin metadata, excluding inline archive contents.
+
+    `minItems: 0`, `maxItems: 32`
 
     - `description: string`
 
       The installed plugin description.
 
+      `minLength: 0`
+
     - `name: string`
 
       The installed plugin name.
+
+      `minLength: 0`
 
     - `type: "inline"`
 
@@ -146,6 +180,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
     Safe skill metadata, preserving unresolved version selectors.
 
+    `minItems: 0`, `maxItems: 200`
+
     - `SkillReference object { skill_id, type, version }`
 
       A skill resolved afresh from the Skills API whenever a session starts.
@@ -153,6 +189,8 @@ Retrieves reusable environment configuration without returning confidential valu
       - `skill_id: string`
 
         The referenced skill ID.
+
+        `minLength: 0`
 
       - `type: "skill_reference"`
 
@@ -164,6 +202,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
         The requested version selector, including `latest`.
 
+        `minLength: 0`
+
     - `Inline object { description, name, type }`
 
       Safe metadata for an inline skill archive.
@@ -172,9 +212,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         The skill description declared in `SKILL.md`.
 
+        `minLength: 0`
+
       - `name: string`
 
         The skill name declared in `SKILL.md`.
+
+        `minLength: 0`
 
       - `type: "inline"`
 
@@ -185,6 +229,8 @@ Retrieves reusable environment configuration without returning confidential valu
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the template was last updated.
+
+    `format: int64`
 
 ### Example
 

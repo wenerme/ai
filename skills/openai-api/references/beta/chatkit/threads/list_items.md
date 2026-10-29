@@ -22,6 +22,8 @@ List items that belong to a ChatKit thread.
 
   Maximum number of thread items to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for results by creation time. Defaults to `desc`.
@@ -68,6 +70,8 @@ List items that belong to a ChatKit thread.
 
           Preview URL for rendering the attachment inline.
 
+          `format: uri`
+
         - `type: "image" or "file"`
 
           Attachment discriminator.
@@ -111,6 +115,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `inference_options: object { model, tool_choice }  or null`
 
@@ -200,6 +206,8 @@ List items that belong to a ChatKit thread.
 
                 URL referenced by the annotation.
 
+                `format: uri`
+
             - `type: "url"`
 
               Type discriminator that is always `url` for this annotation.
@@ -219,6 +227,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -247,6 +257,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -287,6 +299,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -332,6 +346,8 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
+        `format: unixtime`
+
       - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
@@ -375,6 +391,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 

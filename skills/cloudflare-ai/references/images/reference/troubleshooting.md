@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/images/reference/troubleshooting/og.png
 
 # Troubleshooting
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Requests without resizing enabled
 
@@ -51,6 +51,33 @@ When resizing fails, the response body contains an error message explaining the 
 - 9529 - The image timed out while processing. This may happen when files with very large dimensions are requested or the server is overloaded.
 - 9424, 9516, 9517, 9518 — Internal errors. Please contact support if you encounter these errors.
 
+## Warnings from resizing
+
+Some conditions do not fail a transformation, but stop Cloudflare from optimizing an image as well as it otherwise would. The image is still returned with a `200` status code, and a `Warning` response header explains why. A response can include more than one `Warning` header. Warnings are advisory and never change the status code.
+
+### `cache-control is too restrictive`
+
+Optimizing an image costs CPU time, and that cost is only worthwhile if the result can be reused from cache. Before transforming a remote image, Cloudflare inspects the cache directives on the source image response. If the optimized image is unlikely to stay in cache for at least an hour, Cloudflare returns:
+
+```txt
+Warning: cf-images 299 "cache-control is too restrictive"
+```
+
+The source image is treated as poorly cacheable when any of the following is true:
+
+- The directives include `private` or `no-store`.
+- The directives include `no-cache` or `must-revalidate`, and the response has neither an `ETag` nor a `Last-Modified` header.
+- `max-age` is less than `3600` seconds. If `s-maxage` is present, it is used instead of `max-age`.
+
+Cloudflare then optimizes the image with reduced effort.
+
+To restore full-effort optimization, make the source image cacheable for at least an hour:
+
+- Return `Cache-Control: public, max-age=3600` or longer from your origin. Images often suit much longer lifetimes, for example `max-age=604800`.
+- If you cannot change your origin, use a [Cache Response Rule](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) to set the `max-age` directive on origin responses before they reach the Cloudflare cache.
+
+After changing the headers, purge the source image URL so the new directives take effect. Refer to [Caching and purging](#caching-and-purging).
+
 ---
 
 ## Limits
@@ -81,6 +108,20 @@ Because responses from Workers themselves are not cached at the edge, purging of
 
 If the origin server sends an `Etag` HTTP header, the resized images will have an `Etag` HTTP header that has a format `cf-<gibberish>:<etag of the original image>`. You can compare the second part with the `Etag` header of the source image URL to check if the resized image is up to date.
 
+### Purge when using URL rewrite rules
+
+If you use [URL rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/) to send image requests through `/cdn-cgi/image/`, rewrite rules are also evaluated on purge requests. This can cause a [single-file purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/) to return a success response without clearing the cached image.
+
+To resolve this, exclude purge requests from the rewrite rule by adding the following to the rule expression:
+
+```txt
+and (not (http.request.method eq "PURGE"))
+```
+
+If you cannot modify your rewrite rules, [purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/) and [purge by cache tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) are alternatives.
+
+For related guidance on purging URLs that a Transform Rule modifies, refer to [Purge by single file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/#additional-notes).
+
 Was this helpful?
 
 YesNo
@@ -90,5 +131,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.","url":"https://developers.cloudflare.com/images/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/images/reference/troubleshooting/og.png?v=f57a1093cd6603b1","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and resolve common Cloudflare Images resizing errors, including error codes and origin configuration issues.","url":"https://developers.cloudflare.com/images/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/images/reference/troubleshooting/og.png?v=f57a1093cd6603b1","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

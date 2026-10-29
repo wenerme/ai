@@ -21,6 +21,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   The text to generate audio for. The maximum length is 4096 characters.
 
+  `maxLength: 4096`
+
 - `model: string or SpeechModel`
 
   One of the available [TTS models](/api/docs/guides/text-to-speech): `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`, or `gpt-4o-mini-tts-2025-12-15`.
@@ -85,6 +87,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   Control the voice of your generated audio with additional instructions. Does not work with `tts-1` or `tts-1-hd`.
 
+  `maxLength: 4096`
+
 - `response_format: optional "mp3" or "opus" or "aac" or 3 more`
 
   The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`.
@@ -104,6 +108,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 - `speed: optional number`
 
   The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default.
+
+  `minimum: 0.25`, `maximum: 4`
 
 - `stream_format: optional "sse" or "audio"`
 

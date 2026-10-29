@@ -3025,10 +3025,6 @@ Bulk updates permission settings for multiple AI tool rules.
 
 ## `cancelVulnerabilityWorkflow`
 
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
-
 Cancels a vulnerability workflow execution.
 
 **Input type:** `CancelVulnerabilityWorkflowInput`
@@ -8196,48 +8192,6 @@ Deprecated in GitLab 17.5. Replaced by WorkItem type.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `job` | [`CiJob`](objects.md#cijob) | Job after the mutation. |
 
-## `knowledgeGraphExcludedNamespaceCreate`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
-
-**Input type:** `KnowledgeGraphExcludedNamespaceCreateInput`
-
-### `knowledgeGraphExcludedNamespaceCreate` arguments {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to exclude. |
-
-### `knowledgeGraphExcludedNamespaceCreate` fields {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
-| `group` | [`Group`](objects.md#group) | Excluded group. |
-
-## `knowledgeGraphExcludedNamespaceDestroy`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
-
-**Input type:** `KnowledgeGraphExcludedNamespaceDestroyInput`
-
-### `knowledgeGraphExcludedNamespaceDestroy` arguments {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to remove from exclusions. |
-
-### `knowledgeGraphExcludedNamespaceDestroy` fields {.no_toc}
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
-| `group` | [`Group`](objects.md#group) | Group removed from exclusions. |
-
 ## `labelCreate`
 
 **Input type:** `LabelCreateInput`
@@ -9977,14 +9931,16 @@ Convert a standard comment to a resolvable thread.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.10.
 
+Turns Orbit on or off for a top-level group.
+
 **Input type:** `OrbitUpdateInput`
 
 ### `orbitUpdate` arguments {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `enabled` | [`Boolean!`](scalars.md#boolean) | Whether to enable or disable the Knowledge Graph for the group. |
-| `groupPath` | [`ID!`](scalars.md#id) | Full path of the group to update. |
+| `enabled` | [`Boolean!`](scalars.md#boolean) | Whether to turn Orbit on or off for the top-level group. |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group to update. |
 
 ### `orbitUpdate` fields {.no_toc}
 
@@ -12825,10 +12781,6 @@ Enable/disable secret detection validity checks for the given project.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `startVulnerabilityWorkflow`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
 Creates and starts a vulnerability workflow execution.
 

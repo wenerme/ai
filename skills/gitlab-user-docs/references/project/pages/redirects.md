@@ -25,6 +25,7 @@ are supported.
 | [Domain-level redirects](#domain-level-redirects) | Yes | `http://blog.example.com/* https://www.example.com/blog/:splat 301` |
 | Redirect by country or language                   | No | `/  /anz     302  Country=au,nz` |
 | Redirect by role                                  | No | `/admin/*  200!  Role=admin` |
+{.sortable}
 
 > [!note]
 > The [matching behavior test cases](https://gitlab.com/gitlab-org/gitlab-pages/-/blob/master/internal/redirects/matching_test.go)

@@ -357,6 +357,8 @@ Supported attributes:
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 [policy attributes](#response-attributes).
+On GitLab.com, the default organization returns `404 Not Found` for every policy. Each customer
+reaches its policies through its own group.
 
 Example request:
 
@@ -502,6 +504,8 @@ A `scope_rego` that was authored directly is left as it is.
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 [policy attributes](#response-attributes).
+On GitLab.com, the default organization returns `404 Not Found` for every policy when the request
+is valid. Each customer reaches its policies through its own group.
 The following conditions return `400 Bad Request`:
 
 - No attribute to change is supplied.
@@ -562,6 +566,8 @@ Supported attributes:
 | `policy_id` | integer | Yes      | ID of the policy. |
 
 If successful, returns [`204 No Content`](rest/troubleshooting.md#status-codes).
+On GitLab.com, the default organization returns `404 Not Found` for every policy. Each customer
+reaches its policies through its own group.
 
 Example request:
 

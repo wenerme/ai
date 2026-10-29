@@ -30,6 +30,8 @@ Assigns an organization role to a group within the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     Display name of the group.
@@ -235,6 +237,8 @@ Lists the organization roles assigned to a group within the organization.
 
   A limit on the number of organization role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned organization roles.
@@ -264,6 +268,8 @@ Lists the organization roles assigned to a group within the organization.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -300,6 +306,8 @@ Lists the organization roles assigned to a group within the organization.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -435,6 +443,8 @@ Retrieves an organization role assigned to a group.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -470,6 +480,8 @@ Retrieves an organization role assigned to a group.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -557,6 +569,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
     - `created_at: number`
 
       Unix timestamp (in seconds) when the group was created.
+
+      `format: unixtime`
 
     - `name: string`
 
@@ -648,6 +662,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -683,6 +699,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -706,6 +724,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -741,3 +761,5 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`

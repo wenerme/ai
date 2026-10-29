@@ -24,6 +24,8 @@ Retrieves a service account in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account

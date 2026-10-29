@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1e
 
 # Builds
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a repository hosted by Artifacts, GitHub, or GitLab, enabling automated builds and deployments for your Worker on push.
 
@@ -61,7 +61,7 @@ For details about supported frameworks and what files are created, refer to [Dep
 
 ## View build and Preview URL
 
-You can monitor a build's status and its build logs by navigating to **View build history** at the bottom of the **Deployments** tab of your Worker.
+You can monitor a build's status and its build logs by navigating to **View build history** at the bottom of the **Deployments** tab of your Worker. Builds and their build logs are retained for 90 days after they finish. Refer to [Limits & pricing](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/).
 
 A successful build produces different output depending on the branch:
 
@@ -104,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

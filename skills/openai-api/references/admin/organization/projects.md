@@ -24,6 +24,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -33,6 +35,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -193,6 +197,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -202,6 +208,8 @@ Create a new project in the organization. Projects can be created and archived, 
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -331,6 +339,8 @@ Returns a list of projects.
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -340,6 +350,8 @@ Returns a list of projects.
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -480,6 +492,8 @@ Retrieves a project.
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -489,6 +503,8 @@ Retrieves a project.
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -618,6 +634,8 @@ Modifies a project in the organization.
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -627,6 +645,8 @@ Modifies a project in the organization.
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -725,6 +745,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     The Unix timestamp (in seconds) of when the project was created.
 
+    `format: unixtime`
+
   - `object: "organization.project"`
 
     The object type, which is always `organization.project`
@@ -734,6 +756,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
   - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
+
+    `format: unixtime`
 
   - `external_key_id: optional string or null`
 
@@ -922,9 +946,13 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -949,6 +977,8 @@ Returns a list of API keys in the project.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -978,6 +1008,8 @@ Returns a list of API keys in the project.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -1005,6 +1037,8 @@ Returns a list of API keys in the project.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -1128,9 +1162,13 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -1155,6 +1193,8 @@ Retrieves an API key in the project.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -1184,6 +1224,8 @@ Retrieves an API key in the project.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -1211,6 +1253,8 @@ Retrieves an API key in the project.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -1316,6 +1360,8 @@ the new request. The response contains only the redacted key, not its secret.
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
 
+  `minimum: 1`, `maximum: 31536000`
+
 - `scopes: optional array of string`
 
   Replace the API key scope restrictions. Omit to leave scopes unchanged. An empty array removes key restrictions (All permissions), subject to the owner's effective permissions. Use ["api.all.read"] for read-only access. Scopes do not change the owner's roles or grant administrative permissions.
@@ -1334,9 +1380,13 @@ the new request. The response contains only the redacted key, not its secret.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -1361,6 +1411,8 @@ the new request. The response contains only the redacted key, not its secret.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -1390,6 +1442,8 @@ the new request. The response contains only the redacted key, not its secret.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -1417,6 +1471,8 @@ the new request. The response contains only the redacted key, not its secret.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -1523,9 +1579,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -1550,6 +1610,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -1579,6 +1641,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -1607,6 +1671,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+    `format: unixtime`
+
 # Certificates
 
 ## Activate certificates for project
@@ -1624,6 +1690,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 ### Body Parameters
 
 - `certificate_ids: array of string`
+
+  `minItems: 1`, `maxItems: 10`
 
 ### Returns
 
@@ -1643,13 +1711,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -1759,6 +1833,8 @@ idempotently deactivate up to 10 certificates at a time.
 
 - `certificate_ids: array of string`
 
+  `minItems: 1`, `maxItems: 10`
+
 ### Returns
 
 - `data: array of object { id, active, certificate_details, 3 more }`
@@ -1777,13 +1853,19 @@ idempotently deactivate up to 10 certificates at a time.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -1924,13 +2006,19 @@ List certificates for this project.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -2036,13 +2124,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -2074,13 +2168,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -2112,13 +2212,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -2361,6 +2467,8 @@ Grants a group access to a project.
 
     Unix timestamp (in seconds) when the group was granted project access.
 
+    `format: unixtime`
+
   - `group_id: string`
 
     Identifier of the group that has access to the project.
@@ -2515,6 +2623,8 @@ Lists the groups that have access to a project.
 
   A limit on the number of project groups to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned groups.
@@ -2532,6 +2642,8 @@ Lists the groups that have access to a project.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was granted project access.
+
+    `format: unixtime`
 
   - `group_id: string`
 
@@ -2660,6 +2772,8 @@ Retrieves a project's group.
 
     Unix timestamp (in seconds) when the group was granted project access.
 
+    `format: unixtime`
+
   - `group_id: string`
 
     Identifier of the group that has access to the project.
@@ -2755,6 +2869,8 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
 
     Unix timestamp (in seconds) when the group was granted project access.
 
+    `format: unixtime`
+
   - `group_id: string`
 
     Identifier of the group that has access to the project.
@@ -2814,6 +2930,8 @@ Assigns a project role to a group within a project.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -3024,6 +3142,8 @@ Lists the project roles assigned to a group within a project.
 
   A limit on the number of project role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned project roles.
@@ -3053,6 +3173,8 @@ Lists the project roles assigned to a group within a project.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -3089,6 +3211,8 @@ Lists the project roles assigned to a group within a project.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -3226,6 +3350,8 @@ Retrieves a project role assigned to a group.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -3261,6 +3387,8 @@ Retrieves a project role assigned to a group.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -3348,6 +3476,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
     - `created_at: number`
 
       Unix timestamp (in seconds) when the group was created.
+
+      `format: unixtime`
 
     - `name: string`
 
@@ -3439,6 +3569,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -3474,6 +3606,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -3497,6 +3631,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -3532,6 +3668,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 # Hosted Tool Permissions
 
@@ -4667,6 +4805,8 @@ Lists the roles configured for a project.
 
   A limit on the number of roles to return. Defaults to 1000.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned roles.
@@ -5051,6 +5191,8 @@ Creates a new service account in the project. By default, this also returns an u
 
   Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
 
+  `minimum: 1`, `maximum: 31536000`
+
 ### Returns
 
 - `id: string`
@@ -5060,6 +5202,8 @@ Creates a new service account in the project. By default, this also returns an u
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -5075,7 +5219,11 @@ Creates a new service account in the project. By default, this also returns an u
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+    `format: unixtime`
+
 - `created_at: number`
+
+  `format: unixtime`
 
 - `name: string`
 
@@ -5245,6 +5393,8 @@ Returns a list of service accounts in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -5356,6 +5506,8 @@ Retrieves a service account in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -5455,6 +5607,8 @@ Updates a service account in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -5536,6 +5690,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -5568,6 +5724,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     - `created_at: number`
 
+      `format: unixtime`
+
     - `name: string`
 
     - `object: "organization.project.service_account.api_key"`
@@ -5582,7 +5740,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
       The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+      `format: unixtime`
+
   - `created_at: number`
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -5634,6 +5796,8 @@ Creates an API key for a service account in the project.
 
   Number of seconds until the API key expires.
 
+  `minimum: 1`, `maximum: 31536000`
+
 - `name: optional string`
 
   API key name.
@@ -5652,6 +5816,8 @@ Creates an API key for a service account in the project.
 
   The Unix timestamp (in seconds) when the API key was created.
 
+  `format: unixtime`
+
 - `name: string`
 
   The name of the API key.
@@ -5669,6 +5835,8 @@ Creates an API key for a service account in the project.
 - `expires_at: optional number or null`
 
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+  `format: unixtime`
 
 ### Example
 
@@ -5729,6 +5897,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The Unix timestamp (in seconds) when the API key was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the API key.
@@ -5746,6 +5916,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 # Spend Alerts
 
@@ -5794,6 +5966,8 @@ Creates a project spend alert.
 - `threshold_amount: number`
 
   The alert threshold amount, in cents.
+
+  `minimum: 0`
 
 ### Returns
 
@@ -6009,6 +6183,8 @@ Lists project spend alerts.
 - `limit: optional number`
 
   A limit on the number of spend alerts to return. Defaults to 20.
+
+  `minimum: 0`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -6313,6 +6489,8 @@ Updates a project spend alert.
 - `threshold_amount: number`
 
   The alert threshold amount, in cents.
+
+  `minimum: 0`
 
 ### Returns
 
@@ -6710,6 +6888,8 @@ Create or replace a project's hard spend limit.
 
   The hard spend limit amount, in cents.
 
+  `minimum: 1`
+
 ### Returns
 
 - `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`
@@ -6938,6 +7118,8 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -7097,6 +7279,8 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -7206,6 +7390,8 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -7297,6 +7483,8 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -7376,6 +7564,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
   - `added_at: number`
 
     The Unix timestamp (in seconds) of when the project was added.
+
+    `format: unixtime`
 
   - `object: "organization.project.user"`
 
@@ -7481,6 +7671,8 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was added.
 
+    `format: unixtime`
+
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
@@ -7491,9 +7683,13 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
+    `format: unixtime`
+
   - `created: optional number`
 
     The Unix timestamp (in seconds) of when the user was created.
+
+    `format: unixtime`
 
   - `developer_persona: optional string or null`
 
@@ -7560,6 +7756,8 @@ Assigns a project role to a user within a project.
     - `banned: optional boolean or null`
 
     - `banned_at: optional number or null`
+
+      `format: unixtime`
 
     - `email: optional string or null`
 
@@ -7754,6 +7952,8 @@ Lists the project roles assigned to a user within a project.
 
   A limit on the number of project role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned project roles.
@@ -7783,6 +7983,8 @@ Lists the project roles assigned to a user within a project.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -7819,6 +8021,8 @@ Lists the project roles assigned to a user within a project.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -7956,6 +8160,8 @@ Retrieves a project role assigned to a user.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -7991,6 +8197,8 @@ Retrieves a project role assigned to a user.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -8119,6 +8327,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The Unix timestamp (in seconds) of when the user was added.
 
+      `format: unixtime`
+
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
@@ -8129,9 +8339,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
+      `format: unixtime`
+
     - `created: optional number`
 
       The Unix timestamp (in seconds) of when the user was created.
+
+      `format: unixtime`
 
     - `developer_persona: optional string or null`
 
@@ -8199,6 +8413,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       - `banned_at: optional number or null`
 
+        `format: unixtime`
+
       - `email: optional string or null`
 
       - `enabled: optional boolean or null`
@@ -8243,6 +8459,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -8278,6 +8496,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -8301,6 +8521,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -8336,3 +8558,5 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`

@@ -10,6 +10,8 @@ Creates a webhook endpoint for the authenticated project.
 
   The event types that trigger deliveries to this endpoint.
 
+  `minItems: 1`
+
   - `"batch.completed"`
 
   - `"batch.failed"`
@@ -68,9 +70,13 @@ Creates a webhook endpoint for the authenticated project.
 
   A human-readable name for the webhook endpoint.
 
+  `minLength: 1`, `maxLength: 256`
+
 - `url: string`
 
   The HTTPS URL that receives webhook deliveries.
+
+  `maxLength: 2048`
 
 ### Returns
 
@@ -83,6 +89,8 @@ Creates a webhook endpoint for the authenticated project.
   - `created_at: number`
 
     The Unix timestamp when the endpoint was created.
+
+    `format: unixtime`
 
   - `event_types: array of string`
 
@@ -113,6 +121,8 @@ Creates a webhook endpoint for the authenticated project.
   - `updated_at: optional number`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+    `format: unixtime`
 
 ### Example
 

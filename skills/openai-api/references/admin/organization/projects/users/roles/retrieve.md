@@ -30,6 +30,8 @@ Retrieves a project role assigned to a user.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -65,6 +67,8 @@ Retrieves a project role assigned to a user.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 

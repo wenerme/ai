@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/configuration/multipart-upload-
 
 # Multipart upload metadata
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -53,6 +53,7 @@ At a minimum, the `main_module` key is required to upload a Worker.
 - `assets` `object` optional
   - [Asset](https://developers.cloudflare.com/workers/static-assets/) configuration for a Worker.
   - `config` `object` optional
+    - [`base_path`](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/) determines the URL path prefix where static assets are available.
     - [html\_handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/) determines the redirects and rewrites of requests for HTML content.
     - [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) determines the response when a request does not match a static asset.
   - `jwt` field provides a token authorizing assets to be attached to a Worker.
@@ -196,5 +197,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/og.png?v=e03a6759be39ccfb","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/og.png?v=e03a6759be39ccfb","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,13 +12,25 @@ image: https://developers.cloudflare.com/cloudflare-one/reusable-components/post
 
 # Require WARP
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 This device posture attribute will check for all versions of WARP, including the consumer version.
 
 Cloudflare One enables you to restrict access to your applications to devices running the Cloudflare One Client. This allows you to flexibly ensure that a user's traffic is secure and encrypted before allowing access to a resource protected behind Cloudflare One.
+
+## Check result per client mode
+
+The check result depends on the [client mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) configured on the device.
+
+| Client mode | Result | Reason |
+| --- | --- | --- |
+| Traffic and DNS mode | ✅ Pass | An active Cloudflare One Client tunnel is established |
+| Traffic only mode | ✅ Pass | An active Cloudflare One Client tunnel is established |
+| DNS only mode | ❌ Fail | No Cloudflare One Client tunnel is established; only DNS is forwarded |
+| Local proxy mode | ⚠️ Partial | The Cloudflare One Client is running and authenticated, and traffic explicitly routed through the local SOCKS/HTTP proxy on port `40000` is tunneled through Cloudflare. Traffic not routed through the proxy bypasses the client and fails the check. |
+| Posture only mode | ❌ Fail | The client is enrolled and collects posture data, but does not establish a Cloudflare One Client tunnel |
 
 ## Prerequisites
 
@@ -51,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/#page","headline":"Require WARP","description":"Require WARP in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/og.png?v=b7b08055aa8c6c2c","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/#page","headline":"Require WARP","description":"Require WARP in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/og.png?v=b7b08055aa8c6c2c","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 ```

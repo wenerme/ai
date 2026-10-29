@@ -1396,19 +1396,19 @@ require "pathname"
 
 client = OpenAI::Client.new
 result = client.images.generate(
-  model: "gpt-image-2",
+  model: "gpt-image-2.5-sunburst",
   prompt: "Create an original logo for Field & Flour, a local bakery. Use warm, simple shapes on a fully transparent background, with clean alpha edges and no shadow or checkerboard.",
   size: "1024x1536", quality: :medium, background: :transparent, output_format: :png, n: 4
 )
 Array(result.data).each_with_index do |item, index|
-  File.binwrite("logo-generation-#{index + 1}-gpt-image-2.png", Base64.strict_decode64(item.b64_json || raise("No PNG returned")))
+  File.binwrite("logo-generation-#{index + 1}-gpt-image-2.5-sunburst.png", Base64.strict_decode64(item.b64_json || raise("No PNG returned")))
 end
 result = client.images.edit(
-  model: "gpt-image-2", image: OpenAI::FilePart.new(Pathname("input_images/shampoo.webp"), content_type: "image/webp"),
+  model: "gpt-image-2.5-sunburst", image: OpenAI::FilePart.new(Pathname("input_images/shampoo.webp"), content_type: "image/webp"),
   prompt: "Extract the product onto a fully transparent background. Preserve its geometry and label, with clean edges and no shadow or restyling.",
   size: "1024x1536", quality: :medium, background: :transparent, output_format: :png
 )
-File.binwrite("extract-product-gpt-image-2.png", Base64.strict_decode64(Array(result.data).fetch(0).b64_json || raise("No PNG returned")))
+File.binwrite("extract-product-gpt-image-2.5-sunburst.png", Base64.strict_decode64(Array(result.data).fetch(0).b64_json || raise("No PNG returned")))
 ```
 
 

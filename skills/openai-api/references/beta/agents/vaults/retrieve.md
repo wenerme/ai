@@ -8,6 +8,8 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
 
 - `vault_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `Vault object { id, created_at, metadata, 2 more }`
@@ -18,9 +20,13 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
 
     The ID of the vault.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the vault was created.
+
+    `format: int64`
 
   - `metadata: map[string]`
 
@@ -29,6 +35,8 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
   - `name: string or null`
 
     The human-readable name of the vault, if set.
+
+    `minLength: 0`
 
   - `object: "vault"`
 

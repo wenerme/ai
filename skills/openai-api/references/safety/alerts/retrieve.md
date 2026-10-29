@@ -10,6 +10,8 @@ Get a safety alert belonging to the authenticated API project.
 
   Project safety alert ID
 
+  `maxLength: 38`
+
 ### Returns
 
 - `SafetyAlert object { id, created_at, error_type, 7 more }`
@@ -17,6 +19,8 @@ Get a safety alert belonging to the authenticated API project.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `error_type: "potentially_unintended_data_transfer" or "potentially_unintended_data_access" or "potentially_unintended_destructive_activity" or "other"`
 

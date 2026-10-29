@@ -15,10 +15,10 @@ An alert instance’s identity is its complete set of labels. That set comes fro
 
 Identity matters because Alertmanager uses it for everything:
 
-- **Routing**: matchers in the routing tree are label matchers. Refer to [The routing tree](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
-- **Grouping**: alerts are batched by label value using `group_by`. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
-- **Silencing**: silences match on labels. Refer to [Create a silence](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/).
-- **Inhibition**: source and target matchers are label matchers, and `equal` compares label values. Refer to [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
+- **Routing**: matchers in the routing tree are label matchers. Refer to [The routing tree](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
+- **Grouping**: alerts are batched by label value using `group_by`. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+- **Silencing**: silences match on labels. Refer to [Create a silence](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/).
+- **Inhibition**: source and target matchers are label matchers, and `equal` compares label values. Refer to [Configure inhibition rules](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
 - **Deduplication**: two alerts with identical labels are the same alert.
 
 Because identity is the whole label set, *changing any label produces a different alert*. An alert whose labels change mid-incident looks to Alertmanager like the old one resolving and a new one appearing, which can re-notify people. Avoid putting anything that varies over time—a timestamp, a current value—in a label.
@@ -27,7 +27,7 @@ Because identity is the whole label set, *changing any label produces a differen
 
 `alertname` is set automatically from the rule’s name and is what most routing keys off first. Beyond that, the useful convention is a small, stable set that every rule sets consistently:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 labels:
@@ -35,7 +35,7 @@ labels:
   team: platform
 ```
 
-The value is in the consistency. A routing tree can only send critical alerts to PagerDuty if every rule agrees on what `severity: critical` means and spells it the same way. Refer to [Best practices](/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/).
+The value is in the consistency. A routing tree can only send critical alerts to PagerDuty if every rule agrees on what `severity: critical` means and spells it the same way. Refer to [Best practices](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/).
 
 ### Labels and cardinality
 
@@ -45,7 +45,7 @@ Every distinct label combination is a distinct alert. A label with many possible
 
 Annotations carry the human-readable content: what happened, what it means, what to do about it. They’re passed through to notifications and are what people actually read.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 annotations:
@@ -56,7 +56,7 @@ annotations:
 
 Annotations play no part in routing, grouping, silencing, or deduplication. Changing an annotation on a firing alert doesn’t create a new alert, which is exactly why anything that varies belongs here rather than in a label.
 
-Annotation values are templated by the ruler at evaluation time, so `$labels` and `$value` are available. Refer to [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
+Annotation values are templated by the ruler at evaluation time, so `$labels` and `$value` are available. Refer to [Template annotations and labels](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
 
 ## Which one should it be?
 

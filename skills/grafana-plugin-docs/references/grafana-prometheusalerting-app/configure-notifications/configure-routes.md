@@ -9,7 +9,7 @@ description: "Build the Alertmanager routing tree that decides which receiver ea
 
 The **Routes** page renders the Alertmanager routing tree. Each route has matchers, a receiver, and optional grouping and timing settings, and child routes inherit from their parent.
 
-For how matching works, refer to [The routing tree](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
+For how matching works, refer to [The routing tree](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
 
 ## View a route
 
@@ -27,7 +27,7 @@ The plugin annotates two cases directly in the tree:
 3. Click to add a child route.
 4. Add **matchers**: a label name, an operator, and a value. Click **Add matcher** for more. All matchers on a route have to match.
 5. Select a **Receiver**. Leave it unset to inherit the parent’s.
-6. Optionally set **Group by**, **Group wait**, **Group interval**, and **Repeat interval**. Unset fields inherit from the parent. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+6. Optionally set **Group by**, **Group wait**, **Group interval**, and **Repeat interval**. Unset fields inherit from the parent. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
 7. Optionally enable **Continue matching subsequent sibling nodes** to let matching carry on past this route.
 8. Save.
 
@@ -57,4 +57,4 @@ The plugin rejects a route whose matchers conflict with an existing sibling, sin
 
 ## Test your routing
 
-The **Alerts** page shows the receiver each alert was routed to. After changing the tree, find a current alert and confirm it landed where you intended. This is faster and more reliable than reasoning about the tree on paper. Refer to [View active notifications](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
+The **Alerts** page shows the receiver each alert was routed to. After changing the tree, find a current alert and confirm it landed where you intended. This is faster and more reliable than reasoning about the tree on paper. Refer to [View active notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).

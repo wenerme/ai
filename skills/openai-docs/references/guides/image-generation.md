@@ -2466,7 +2466,7 @@ require "pathname"
 
 client = OpenAI::Client.new
 images = %w[body-lotion.png bath-bomb.png incense-kit.png soap.png].map do |path|
-  Pathname(path)
+  OpenAI::FilePart.new(Pathname(path), content_type: "image/png")
 end
 result = client.images.edit(
   image: images,
@@ -2966,8 +2966,8 @@ require "pathname"
 require "base64"
 
 client = OpenAI::Client.new
-image = Pathname("sunlit_lounge.png")
-mask = Pathname("mask.png")
+image = OpenAI::FilePart.new(Pathname("sunlit_lounge.png"), content_type: "image/png")
+mask = OpenAI::FilePart.new(Pathname("mask.png"), content_type: "image/png")
 result = client.images.edit(
   image: image,
   mask: mask,
@@ -3378,6 +3378,7 @@ rescue OpenAI::Errors::BadRequestError => error
   raise unless error.code == "moderation_blocked"
 
   body = Hash.try_convert(error.body) || {}
+  body = Hash.try_convert(body[:error] || body["error"]) || body
   moderation_details = body[:moderation_details] || body["moderation_details"] || {}
   categories = moderation_details[:categories] || moderation_details["categories"] || []
   stage = moderation_details[:moderation_stage] || moderation_details["moderation_stage"]

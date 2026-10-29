@@ -2,6 +2,37 @@
 title: Memory tool
 url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
 description: Let Claude store and retrieve information across conversations by implementing the memory tool's file operations in your application.
+featureMetadata:
+  status: ga
+  zdr:
+    eligibility: eligible
+    note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements). Client-side memory storage where you control data retention.
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
+  supportedPlatforms:
+    Claude API: ga
+    Claude Platform on AWS: ga
+    Claude Models on Google Cloud (Anthropic managed): ga
+    Amazon Bedrock: ga
+    Amazon Bedrock (InvokeModel): ga
+    Claude Models on Google Cloud (Google managed): ga
+    Microsoft Foundry: ga
 ---
 
 The memory tool lets Claude store and retrieve information across conversations in a directory of memory files. Claude can create, read, update, and delete files that persist between sessions, building up knowledge over time without keeping everything in the context window.
@@ -12,10 +43,6 @@ The memory tool operates client-side: Claude requests file operations, and your 
 
 <Note>
   Use the [feedback form](https://forms.gle/YXC2EKGMhjN1c4L88) to share your feedback on this feature.
-</Note>
-
-<Note>
-  To learn how zero data retention (ZDR) applies to this feature, see [API and data retention](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention).
 </Note>
 
 ## Use cases
@@ -106,7 +133,7 @@ The memory tool is available on all Claude 4 and later models. For the full list
 
 Using the memory tool takes two steps:
 
-1. Add the memory tool to your request. The `tools` entry `{"type": "memory_20250818", "name": "memory"}` is the entire configuration: the `name` must be `memory`, and you don't define an input schema for an Anthropic-provided tool.
+1. Add the memory tool to your request. The `tools` entry `{"type": "memory_20250818", "name": "memory"}` is the entire configuration: the `name` must be `memory`, and you don’t define an input schema for an Anthropic-provided tool.
 2. Implement a client-side handler for each memory command. Your handler must reject paths outside `/memories`, so read [Path traversal protection](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#path-traversal-protection) before you write it.
 
 ## Basic usage
@@ -279,9 +306,9 @@ Using the memory tool takes two steps:
 
 ## Implement the memory handler
 
-Claude's reply to a request like the previous one ends with a `tool_use` block that requests a memory operation, such as `view /memories`. Your application runs the operation and returns the result in a `tool_result` block, then sends the conversation back so Claude can continue: the standard [tool-use loop](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
+Claude’s reply to a request like the previous one ends with a `tool_use` block that requests a memory operation, such as `view /memories`. Your application runs the operation and returns the result in a `tool_result` block, then sends the conversation back so Claude can continue: the standard [tool-use loop](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
 
-Four SDKs provide memory tool helpers that handle the tool interface and the loop. Subclass `BetaAbstractMemoryTool` (Python and C#), use `betaMemoryTool` (TypeScript), or implement `BetaMemoryToolHandler` (Java) to back memory with your own storage, such as files on disk, a database, cloud storage, or encrypted files. Python and TypeScript also ship a ready-made local-filesystem implementation, `BetaLocalFilesystemMemoryTool`. The helper and tool-runner surfaces live in your SDK's beta namespace even though the memory tool itself doesn't require a beta header. The Go and Ruby SDKs have no memory helper, so those examples run the tool-use loop themselves, and PHP wraps your handler closure in its generic `BetaRunnableTool`. All three use an in-memory store that you replace with your own storage.
+Four SDKs provide memory tool helpers that handle the tool interface and the loop. Subclass `BetaAbstractMemoryTool` (Python and C#), use `betaMemoryTool` (TypeScript), or implement `BetaMemoryToolHandler` (Java) to back memory with your own storage, such as files on disk, a database, cloud storage, or encrypted files. Python and TypeScript also ship a ready-made local-filesystem implementation, `BetaLocalFilesystemMemoryTool`. The helper and tool-runner surfaces live in your SDK’s beta namespace even though the memory tool itself doesn’t require a beta header. The Go and Ruby SDKs have no memory helper, so those examples run the tool-use loop themselves, and PHP wraps your handler closure in its generic `BetaRunnableTool`. All three use an in-memory store that you replace with your own storage.
 
 <CodeGroup exclude="shell">
   ```python Python
@@ -706,7 +733,7 @@ Four SDKs provide memory tool helpers that handle the tool interface and the loo
   ```
 </CodeGroup>
 
-The in-memory stores in the Go, PHP, and Ruby examples keep them self-contained: each one dispatches on the `command` field in the `tool_use` block's `input` and returns the strings described under [Tool commands](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#tool-commands). A production handler also needs the [path validation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#path-traversal-protection) these demonstration stores skip. For the SDKs' own complete examples, see:
+The in-memory stores in the Go, PHP, and Ruby examples keep them self-contained: each one dispatches on the `command` field in the `tool_use` block’s `input` and returns the strings described under [Tool commands](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#tool-commands). A production handler also needs the [path validation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#path-traversal-protection) these demonstration stores skip. For the SDKs’ own complete examples, see:
 
 * Python: [examples/memory/basic.py](https://github.com/anthropics/anthropic-sdk-python/blob/main/examples/memory/basic.py)
 * TypeScript: [examples/tools-helpers-memory.ts](https://github.com/anthropics/anthropic-sdk-typescript/blob/main/examples/tools-helpers-memory.ts)
@@ -747,7 +774,7 @@ Here're the files and directories up to 2 levels deep in {path}, excluding hidde
 * Excludes hidden items (files starting with `.`) and `node_modules`
 * Uses a tab character between the size and the path
 
-The first `view` of `/memories` on an empty store is not an error. Where your SDK ships a local-filesystem memory tool, `BetaLocalFilesystemMemoryTool`, it creates the memory root before Claude's first call and returns the list header followed by a single size-and-path line for the empty directory itself.
+The first `view` of `/memories` on an empty store is not an error. Where your SDK ships a local-filesystem memory tool, `BetaLocalFilesystemMemoryTool`, it creates the memory root before Claude’s first call and returns the list header followed by a single size-and-path line for the empty directory itself.
 
 **For files:** Return file contents with a header and line numbers:
 
@@ -773,7 +800,7 @@ Here's the content of /memories/notes.txt with line numbers:
    100	Line one hundred
 ```
 
-Claude's tool description also says that `view` displays image files (`.jpg`, `.jpeg`, and `.png`) and truncates the text view of files longer than 16,000 characters. Expect `view` calls on image paths and follow-up ranged views of long files.
+Claude’s tool description also says that `view` displays image files (`.jpg`, `.jpeg`, and `.png`) and truncates the text view of files longer than 16,000 characters. Expect `view` calls on image paths and follow-up ranged views of long files.
 
 #### Error handling
 
@@ -799,7 +826,7 @@ Creates a new file:
 
 * **File already exists:** `"Error: File {path} already exists"`
 
-Claude's tool description says `create` "creates or overwrites" a file, so expect `create` calls on paths that already exist. Returning the error is the reference behavior, and overwriting instead is a valid implementation choice.
+Claude’s tool description says `create` “creates or overwrites” a file, so expect `create` calls on paths that already exist. Returning the error is the reference behavior, and overwriting instead is a valid implementation choice.
 
 ### str\_replace
 
@@ -814,7 +841,7 @@ Replaces text in a file:
 }
 ```
 
-`new_str` is optional for `str_replace`: when it's omitted, `old_str` is deleted without a replacement.
+`new_str` is optional for `str_replace`: when it’s omitted, `old_str` is deleted without a replacement.
 
 #### Return values
 
@@ -828,7 +855,7 @@ Replaces text in a file:
 
 #### Directory handling
 
-If the path is a directory, return a "file does not exist" error.
+If the path is a directory, return a “file does not exist” error.
 
 ### insert
 
@@ -856,7 +883,7 @@ Inserts text at a specific line:
 
 #### Directory handling
 
-If the path is a directory, return a "file does not exist" error.
+If the path is a directory, return a “file does not exist” error.
 
 ### delete
 
@@ -908,7 +935,7 @@ Renames the directory. The tool description tells Claude it cannot rename the `/
 
 ## Prompting guidance
 
-When the memory tool is present in your request's `tools`, the API automatically adds this instruction to the system prompt. You don't need to send it yourself:
+When the memory tool is present in your request’s `tools`, the API automatically adds this instruction to the system prompt. You don’t need to send it yourself:
 
 ```text wrap
 IMPORTANT: ALWAYS VIEW YOUR MEMORY DIRECTORY BEFORE DOING ANYTHING ELSE.
@@ -919,13 +946,13 @@ MEMORY PROTOCOL:
 ASSUME INTERRUPTION: Your context window might be reset at any moment, so you risk losing any progress that is not recorded in your memory directory.
 ```
 
-Claude's tool description already tells it to keep the memory directory organized, so you don't need to repeat that instruction. If Claude still creates cluttered memory files, you can reinforce it in your prompt:
+Claude’s tool description already tells it to keep the memory directory organized, so you don’t need to repeat that instruction. If Claude still creates cluttered memory files, you can reinforce it in your prompt:
 
 ```text wrap
 Note: when editing your memory folder, always try to keep its content up-to-date, coherent and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary.
 ```
 
-You can also guide what Claude writes to memory. For example: "Only write down information relevant to \<topic> in your memory system."
+You can also guide what Claude writes to memory. For example: “Only write down information relevant to \<topic> in your memory system.”
 
 ## Security considerations
 
@@ -941,7 +968,7 @@ Track memory file sizes and cap how large a file can grow. Consider capping how 
 
 ### Memory expiration
 
-Periodically delete memory files that haven't been accessed in a long time.
+Periodically delete memory files that haven’t been accessed in a long time.
 
 ### Path traversal protection
 
@@ -955,11 +982,11 @@ Consider these safeguards:
 * Resolve paths to their canonical form and verify they remain within the memory directory
 * Reject paths containing sequences such as `../`, `..\\`, or other traversal patterns
 * Watch for URL-encoded traversal sequences (`%2e%2e%2f`)
-* Use your language's built-in path security utilities (for example, Python's `pathlib.Path.resolve()` and `relative_to()`)
+* Use your language’s built-in path security utilities (for example, Python’s `pathlib.Path.resolve()` and `relative_to()`)
 
 ## Error handling
 
-The memory tool uses similar error-handling patterns to the [text editor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool#handle-errors). Each command's error messages are listed under [Tool commands](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#tool-commands). To return an error to Claude, set `is_error` to `true` on the tool result and put the message in `content`:
+The memory tool uses similar error-handling patterns to the [text editor tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool#handle-errors). Each command’s error messages are listed under [Tool commands](https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool#tool-commands). To return an error to Claude, set `is_error` to `true` on the tool result and put the message in `content`:
 
 ```json
 {
@@ -1019,3 +1046,30 @@ Work on one feature at a time. Mark a feature complete only after end-to-end ver
     Directory of Anthropic-provided tools and reference for optional tool definition properties.
   </Card>
 </CardGroup>
+
+## Availability
+
+Memory tool is available on every model and eligible for zero data retention and HIPAA readiness.
+
+### API support
+
+#### [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)
+
+* Availability: Available
+
+| Status    | Models                                                            |
+| --------- | ----------------------------------------------------------------- |
+| Available | [All models](https://platform.claude.com/docs/en/models/overview) |
+
+### Data handling
+
+[Data handling overview](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#feature-eligibility)
+
+| Item    | Zero data retention                                                                                                                                       | HIPAA    |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Status  | Eligible (excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements)) | Eligible |
+| Details | Client-side memory storage where you control data retention.                                                                                              | —        |
+
+Applicable endpoints:
+
+* `/v1/messages` with `memory` tool

@@ -26,6 +26,8 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
 
     The Unix timestamp (in seconds) for when the Part was created.
 
+    `format: unixtime`
+
   - `object: "upload.part"`
 
     The object type, which is always `upload.part`.

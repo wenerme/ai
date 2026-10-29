@@ -49,7 +49,7 @@ Daylight saving is handled correctly when you use a named zone like `Europe/Berl
 
 ## Attach it to a route
 
-A time interval does nothing until a route uses it. Open the route and reference the interval by name. Refer to [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
+A time interval does nothing until a route uses it. Open the route and reference the interval by name. Refer to [Configure routes](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
 
 A route can use an interval in two ways:
 
@@ -66,4 +66,4 @@ Removing can’t be undone. Check which routes reference the interval first. Rem
 
 ## Confirming it works
 
-The **Alerts** page marks alerts suppressed this way as muted by a time interval, and says how many. If a time interval isn’t behaving as expected, that label is the quickest confirmation of whether it’s applying at all. Refer to [View active notifications](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
+The **Alerts** page marks alerts suppressed this way as muted by a time interval, and says how many. If a time interval isn’t behaving as expected, that label is the quickest confirmation of whether it’s applying at all. Refer to [View active notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).

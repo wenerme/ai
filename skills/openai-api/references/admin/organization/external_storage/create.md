@@ -70,6 +70,8 @@ Register one customer-managed external storage configuration.
 
   - `created_at: number`
 
+    `format: unixtime`
+
   - `geography: string`
 
   - `object: "organization.external_storage"`

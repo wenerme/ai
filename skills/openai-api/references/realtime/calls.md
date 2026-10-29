@@ -113,6 +113,8 @@ handle it.
 
         Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+        `minItems: 1`
+
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -188,6 +190,8 @@ handle it.
           associated with the Response) will be emitted when the timeout is reached.
           Idle timeout is currently only supported for `server_vad` mode.
 
+          `minimum: 5000`, `maximum: 30000`
+
         - `interrupt_response: optional boolean`
 
           Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -256,6 +260,8 @@ handle it.
 
       This parameter is a post-processing adjustment to the audio after it is generated, it's
       also possible to prompt the model to speak faster or slower.
+
+      `minimum: 0.25`, `maximum: 1.5`
 
     - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -468,6 +474,8 @@ handle it.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        `format: uri`
+
       - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -517,6 +525,8 @@ handle it.
       - `file_url: optional string`
 
         The URL of the file to be sent to the model.
+
+        `format: uri`
 
       - `filename: optional string`
 
@@ -662,6 +672,8 @@ handle it.
 
       The tool invocation context(s).
 
+      `minItems: 1`
+
       - `"direct"`
 
       - `"programmatic"`
@@ -797,6 +809,8 @@ handle it.
       The URL for the MCP server. One of `server_url`, `connector_id`, or
       `tunnel_id` must be provided.
 
+      `format: uri`
+
     - `tunnel_id: optional string`
 
       The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -861,6 +875,8 @@ handle it.
 
       Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+      `minimum: 0`, `maximum: 1`
+
     - `type: "retention_ratio"`
 
       Use retention ratio truncation.
@@ -874,6 +890,8 @@ handle it.
       - `post_instructions: optional number`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+        `minimum: 0`
 
 ### Example
 

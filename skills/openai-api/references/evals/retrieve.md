@@ -18,6 +18,8 @@ Get an evaluation by ID.
 
   The Unix timestamp (in seconds) for when the eval was created.
 
+  `format: unixtime`
+
 - `data_source_config: EvalCustomDataSourceConfig or LogsDataSourceConfig { schema, type, metadata }  or EvalStoredCompletionsDataSourceConfig`
 
   Configuration of data sources used in runs of the evaluation.
@@ -184,6 +186,8 @@ Get an evaluation by ID.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -253,6 +257,8 @@ Get an evaluation by ID.
             - `image_url: string`
 
               The URL of the image input.
+
+              `format: uri`
 
             - `type: "input_image"`
 

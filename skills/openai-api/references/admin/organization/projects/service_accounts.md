@@ -24,6 +24,8 @@ Creates a new service account in the project. By default, this also returns an u
 
   Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
 
+  `minimum: 1`, `maximum: 31536000`
+
 ### Returns
 
 - `id: string`
@@ -33,6 +35,8 @@ Creates a new service account in the project. By default, this also returns an u
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -48,7 +52,11 @@ Creates a new service account in the project. By default, this also returns an u
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+    `format: unixtime`
+
 - `created_at: number`
+
+  `format: unixtime`
 
 - `name: string`
 
@@ -218,6 +226,8 @@ Returns a list of service accounts in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -329,6 +339,8 @@ Retrieves a service account in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -428,6 +440,8 @@ Updates a service account in the project.
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -509,6 +523,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The Unix timestamp (in seconds) of when the service account was created
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the service account
@@ -541,6 +557,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     - `created_at: number`
 
+      `format: unixtime`
+
     - `name: string`
 
     - `object: "organization.project.service_account.api_key"`
@@ -555,7 +573,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
       The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+      `format: unixtime`
+
   - `created_at: number`
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -607,6 +629,8 @@ Creates an API key for a service account in the project.
 
   Number of seconds until the API key expires.
 
+  `minimum: 1`, `maximum: 31536000`
+
 - `name: optional string`
 
   API key name.
@@ -625,6 +649,8 @@ Creates an API key for a service account in the project.
 
   The Unix timestamp (in seconds) when the API key was created.
 
+  `format: unixtime`
+
 - `name: string`
 
   The name of the API key.
@@ -642,6 +668,8 @@ Creates an API key for a service account in the project.
 - `expires_at: optional number or null`
 
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+  `format: unixtime`
 
 ### Example
 
@@ -702,6 +730,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The Unix timestamp (in seconds) when the API key was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     The name of the API key.
@@ -719,3 +749,5 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`

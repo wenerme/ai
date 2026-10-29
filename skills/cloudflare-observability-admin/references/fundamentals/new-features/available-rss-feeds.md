@@ -42,6 +42,7 @@ Included products
 
 - <a href="https://developers.cloudflare.com/automatic-platform-optimization/">Automatic Platform Optimization</a><a href="https://developers.cloudflare.com/changelog/rss/automatic-platform-optimization.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cache/">Cache / CDN</a><a href="https://developers.cloudflare.com/changelog/rss/cache.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/china-network/">China Network</a><a href="https://developers.cloudflare.com/changelog/rss/china-network.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/">Cloudflare for SaaS</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-for-saas.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/dns/">DNS</a><a href="https://developers.cloudflare.com/changelog/rss/dns.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/load-balancing/">Load Balancing</a><a href="https://developers.cloudflare.com/changelog/rss/load-balancing.xml">Subscribe to RSS</a>
@@ -65,6 +66,7 @@ Included products
 
 - <a href="https://developers.cloudflare.com/api-shield/">API Shield</a><a href="https://developers.cloudflare.com/changelog/rss/api-shield.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/bots/">Bots</a><a href="https://developers.cloudflare.com/changelog/rss/bots.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/cloudflare-challenges/">Challenges</a><a href="https://developers.cloudflare.com/changelog/rss/cloudflare-challenges.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/secrets-store/">Secrets Store</a><a href="https://developers.cloudflare.com/changelog/rss/secrets-store.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/security-center/">Security Center</a><a href="https://developers.cloudflare.com/changelog/rss/security-center.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/security/overview/">Security Overview</a><a href="https://developers.cloudflare.com/changelog/rss/security-overview.xml">Subscribe to RSS</a>

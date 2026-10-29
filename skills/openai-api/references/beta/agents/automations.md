@@ -18,9 +18,13 @@ Saves an active automation without invoking it immediately.
 
       A standard five-field cron expression defining scheduled occurrences.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `name: string`
 
       A human-readable name for the automation.
+
+      `minLength: 1`, `maxLength: 256`
 
     - `target: AutomationTargetParam`
 
@@ -58,6 +62,8 @@ Saves an active automation without invoking it immediately.
 
               Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+              `minItems: 0`, `maxItems: 16384`
+
             - `container_size: optional "small" or "medium" or "large"`
 
               The hosted container size. Omission selects the medium tier.
@@ -84,13 +90,19 @@ Saves an active automation without invoking it immediately.
 
               An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
+              `minLength: 9`, `maxLength: 256`
+
             - `environment_template_id: optional string`
 
               A reusable hosted template applied before inline session configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
 
+              `minLength: 0`, `maxLength: 64`
+
             - `files: optional array of HostedEnvironmentFileParam or null`
 
               Files available before the agent starts. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 50`
 
               - `FileID object { file_id, path, type }`
 
@@ -100,9 +112,13 @@ Saves an active automation without invoking it immediately.
 
                   The ID of the uploaded file.
 
+                  `minLength: 1`, `maxLength: 256`
+
                 - `path: string`
 
                   The absolute destination path inside `/workspace`.
+
+                  `minLength: 1`, `maxLength: 4096`
 
                 - `type: "file_id"`
 
@@ -118,9 +134,13 @@ Saves an active automation without invoking it immediately.
 
                   The standard-base64-encoded file contents.
 
+                  `minLength: 0`, `maxLength: 6990508`
+
                 - `path: string`
 
                   The absolute destination path inside `/workspace`.
+
+                  `minLength: 1`, `maxLength: 4096`
 
                 - `type: "inline"`
 
@@ -152,9 +172,13 @@ Saves an active automation without invoking it immediately.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `blocked_domains: optional array of string or null`
 
                 Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+                `minItems: 0`, `maxItems: 100`
 
             - `packages: optional object { npm, python, system }  or null`
 
@@ -164,25 +188,37 @@ Saves an active automation without invoking it immediately.
 
                 npm packages to install globally. Defaults to an empty list.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: optional array of string or null`
 
                 Python packages to install. Defaults to an empty list.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: optional array of string or null`
 
                 System packages to install. Defaults to an empty list.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: optional array of HostedPluginParam or null`
 
               Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 32`
 
               - `description: string`
 
                 The plugin description declared in `.codex-plugin/plugin.json`.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `name: string`
 
                 The plugin name declared in `.codex-plugin/plugin.json`.
+
+                `minLength: 1`, `maxLength: 64`
 
               - `source: InlineCapabilitySourceParam`
 
@@ -191,6 +227,8 @@ Saves an active automation without invoking it immediately.
                 - `data: string`
 
                   Standard-base64 encoded ZIP archive bytes.
+
+                  `minLength: 1`, `maxLength: 70254592`
 
                 - `media_type: "application/zip"`
 
@@ -216,17 +254,25 @@ Saves an active automation without invoking it immediately.
 
               Ordered, confidential setup commands. Command bodies are never returned.
 
+              `minItems: 0`, `maxItems: 16`
+
               - `command: string`
 
                 The shell command to execute.
+
+                `minLength: 0`, `maxLength: 65536`
 
               - `cwd: optional string or null`
 
                 The absolute working directory. Defaults to `/workspace`.
 
+                `minLength: 0`, `maxLength: 4096`
+
             - `skills: optional array of HostedSkillParam or null`
 
               Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 200`
 
               - `SkillReference object { skill_id, type, version }`
 
@@ -235,6 +281,8 @@ Saves an active automation without invoking it immediately.
                 - `skill_id: string`
 
                   The ID of the skill created through `/v1/skills`.
+
+                  `minLength: 1`, `maxLength: 64`
 
                 - `type: "skill_reference"`
 
@@ -246,6 +294,8 @@ Saves an active automation without invoking it immediately.
 
                   The skill version, a positive integer or `latest`; omission selects the default.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
               - `Inline object { description, name, source, type }`
 
                 Supplies a skill ZIP directly in the session request.
@@ -254,9 +304,13 @@ Saves an active automation without invoking it immediately.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 1`, `maxLength: 64`
 
                 - `source: InlineCapabilitySourceParam`
 
@@ -282,17 +336,25 @@ Saves an active automation without invoking it immediately.
 
               Absolute project directory inside the self-hosted environment.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `capability_directories: optional array of string or null`
 
               Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 16384`
 
         - `input: array of AgentSessionInputMessageParam`
 
           Initial user messages submitted with each new session.
 
+          `minItems: 0`, `maxItems: 16384`
+
           - `content: array of InputContentParam`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 16384`
 
             - `InputText object { text, type }`
 
@@ -301,6 +363,8 @@ Saves an active automation without invoking it immediately.
               - `text: string`
 
                 The text sent to the model.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "input_text"`
 
@@ -315,6 +379,8 @@ Saves an active automation without invoking it immediately.
               - `image_url: string`
 
                 The URL of the image sent to the model.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "input_image"`
 
@@ -340,17 +406,29 @@ Saves an active automation without invoking it immediately.
 
           - `"new_session"`
 
-        - `agent: optional object { instructions, model, multi_agent, 4 more }`
+        - `agent: optional object { compaction, instructions, model, 5 more }`
 
           Inline agent configuration. Provide exactly one of agent and agent_id.
+
+          - `compaction: optional object { async }  or null`
+
+            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+
+            - `async: optional boolean or null`
+
+              Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
           - `instructions: optional string or null`
 
             Additional instructions appended to the agent's default base instructions. Omit to leave unchanged.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `model: optional string`
 
             The model to use for the agent. The requested model name is preserved.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `multi_agent: optional MultiAgentConfigParam or null`
 
@@ -363,6 +441,8 @@ Saves an active automation without invoking it immediately.
             - `max_concurrent_subagents: optional number`
 
               Maximum number of subagents that may run concurrently. Defaults to 6.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: optional AgentReasoningParam or null`
 
@@ -482,6 +562,8 @@ Saves an active automation without invoking it immediately.
 
             Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+            `minItems: 0`, `maxItems: 16384`
+
             - `Function object { description, name, parameters, 2 more }`
 
               A function defined by the application.
@@ -490,9 +572,13 @@ Saves an active automation without invoking it immediately.
 
                 A description of what the function does.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `parameters: map[unknown]`
 
@@ -540,6 +626,8 @@ Saves an active automation without invoking it immediately.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `transport: McpTransportParam`
 
                 The transport used to connect to the MCP server.
@@ -552,6 +640,8 @@ Saves an active automation without invoking it immediately.
 
                     The URL of the MCP server.
 
+                    `minLength: 0`, `maxLength: 1048576`
+
                   - `type: "http"`
 
                     The type of the object. Always `http`.
@@ -561,6 +651,8 @@ Saves an active automation without invoking it immediately.
                   - `authorization: optional string or null`
 
                     The authorization value sent to the MCP server, if any.
+
+                    `minLength: 0`, `maxLength: 1048576`
 
                   - `headers: optional map[string] or null`
 
@@ -574,9 +666,13 @@ Saves an active automation without invoking it immediately.
 
                     The command used to start the MCP server.
 
+                    `minLength: 0`, `maxLength: 1048576`
+
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
+
+                    `minLength: 0`, `maxLength: 1048576`
 
                   - `type: "stdio"`
 
@@ -588,6 +684,8 @@ Saves an active automation without invoking it immediately.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 16384`
+
                   - `env: optional map[string] or null`
 
                     Environment variables set for the MCP server process.
@@ -595,6 +693,8 @@ Saves an active automation without invoking it immediately.
                   - `env_vars: optional array of string or null`
 
                     Environment variable names to inherit from the selected execution environment.
+
+                    `minItems: 0`, `maxItems: 16384`
 
               - `type: "mcp"`
 
@@ -605,6 +705,8 @@ Saves an active automation without invoking it immediately.
               - `allowed_tools: optional array of string or null`
 
                 The MCP tools the agent may call. All server tools are allowed when omitted.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `connection_origin: optional "service" or "environment" or null`
 
@@ -621,6 +723,8 @@ Saves an active automation without invoking it immediately.
               - `credential_id: optional string or null`
 
                 The attached vault credential used to authenticate this MCP server. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `request_metadata: optional map[unknown] or null`
 
@@ -644,6 +748,8 @@ Saves an active automation without invoking it immediately.
 
                 Domains the search may include.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `context_size: optional "low" or "medium" or "high" or null`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -662,17 +768,25 @@ Saves an active automation without invoking it immediately.
 
                   The city name.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `country: optional string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`, `maxLength: 1048576`
 
                 - `region: optional string or null`
 
                   The region or state name.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `timezone: optional string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`, `maxLength: 1048576`
 
               - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -718,6 +832,8 @@ Saves an active automation without invoking it immediately.
 
           A saved agent ID. Provide exactly one of agent and agent_id.
 
+          `minLength: 0`, `maxLength: 64`
+
         - `metadata: optional map[string] or null`
 
           Metadata attached to each new session.
@@ -725,6 +841,8 @@ Saves an active automation without invoking it immediately.
         - `vault_ids: optional array of string or null`
 
           The IDs of vaults made available to each new session.
+
+          `minItems: 0`, `maxItems: 16384`
 
       - `ExistingSession object { instructions, session_id, type }`
 
@@ -734,9 +852,13 @@ Saves an active automation without invoking it immediately.
 
           Instructions delivered as an automation notification.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`, `maxLength: 1048576`
 
         - `type: "existing_session"`
 
@@ -747,6 +869,8 @@ Saves an active automation without invoking it immediately.
     - `timezone: string`
 
       The IANA timezone used to interpret the cron expression.
+
+      `minLength: 1`, `maxLength: 128`
 
     - `type: "periodic"`
 
@@ -762,9 +886,13 @@ Saves an active automation without invoking it immediately.
 
       A human-readable name for the automation.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `run_at: number`
 
       A future Unix timestamp in seconds.
+
+      `format: int64`
 
     - `target: AutomationTargetParam`
 
@@ -792,9 +920,13 @@ Saves an active automation without invoking it immediately.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -814,9 +946,13 @@ Saves an active automation without invoking it immediately.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -828,6 +964,8 @@ Saves an active automation without invoking it immediately.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -835,6 +973,8 @@ Saves an active automation without invoking it immediately.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -864,9 +1004,13 @@ Saves an active automation without invoking it immediately.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -879,6 +1023,8 @@ Saves an active automation without invoking it immediately.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -980,6 +1126,8 @@ Saves an active automation without invoking it immediately.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -992,9 +1140,13 @@ Saves an active automation without invoking it immediately.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -1028,6 +1180,8 @@ Saves an active automation without invoking it immediately.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -1039,6 +1193,8 @@ Saves an active automation without invoking it immediately.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -1052,6 +1208,8 @@ Saves an active automation without invoking it immediately.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -1063,6 +1221,8 @@ Saves an active automation without invoking it immediately.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -1078,17 +1238,25 @@ Saves an active automation without invoking it immediately.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -1110,6 +1278,8 @@ Saves an active automation without invoking it immediately.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -1128,17 +1298,25 @@ Saves an active automation without invoking it immediately.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -1180,9 +1358,19 @@ Saves an active automation without invoking it immediately.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -1203,6 +1391,8 @@ Saves an active automation without invoking it immediately.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -1226,13 +1416,19 @@ Saves an active automation without invoking it immediately.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -1242,9 +1438,13 @@ Saves an active automation without invoking it immediately.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -1260,9 +1460,13 @@ Saves an active automation without invoking it immediately.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -1294,6 +1498,8 @@ Saves an active automation without invoking it immediately.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -1302,25 +1508,37 @@ Saves an active automation without invoking it immediately.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -1332,6 +1550,8 @@ Saves an active automation without invoking it immediately.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -1339,6 +1559,8 @@ Saves an active automation without invoking it immediately.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -1350,6 +1572,8 @@ Saves an active automation without invoking it immediately.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -1358,9 +1582,13 @@ Saves an active automation without invoking it immediately.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -1380,9 +1608,13 @@ Saves an active automation without invoking it immediately.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -1394,13 +1626,19 @@ Saves an active automation without invoking it immediately.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -1409,6 +1647,8 @@ Saves an active automation without invoking it immediately.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -1423,6 +1663,8 @@ Saves an active automation without invoking it immediately.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -1456,15 +1698,21 @@ Saves an active automation without invoking it immediately.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -1475,6 +1723,8 @@ Saves an active automation without invoking it immediately.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -1490,9 +1740,13 @@ Saves an active automation without invoking it immediately.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -1506,6 +1760,8 @@ Saves an active automation without invoking it immediately.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -1515,6 +1771,8 @@ Saves an active automation without invoking it immediately.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -1613,7 +1871,10 @@ curl https://api.openai.com/v1/agents/automations \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {
@@ -1654,6 +1915,8 @@ Deletes the automation and prevents future invocations without deleting its targ
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AutomationDeleted object { id, deleted, object }`
@@ -1661,6 +1924,8 @@ Deletes the automation and prevents future invocations without deleting its targ
   - `id: string`
 
     The deleted automation ID.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 
@@ -1703,9 +1968,13 @@ Lists project-owned automations, optionally filtered by target session.
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -1723,11 +1992,15 @@ Lists project-owned automations, optionally filtered by target session.
 
   Matches existing-session targets, including agent-created automations.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `data: array of Automation`
 
   The resources returned in this page, in the requested sort order.
+
+  `minItems: 0`, `maxItems: 2000`
 
   - `PeriodicAutomation object { id, created_at, created_by, 8 more }`
 
@@ -1737,9 +2010,13 @@ Lists project-owned automations, optionally filtered by target session.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -1759,9 +2036,13 @@ Lists project-owned automations, optionally filtered by target session.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -1773,6 +2054,8 @@ Lists project-owned automations, optionally filtered by target session.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -1780,6 +2063,8 @@ Lists project-owned automations, optionally filtered by target session.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -1809,9 +2094,13 @@ Lists project-owned automations, optionally filtered by target session.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -1824,6 +2113,8 @@ Lists project-owned automations, optionally filtered by target session.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -1925,6 +2216,8 @@ Lists project-owned automations, optionally filtered by target session.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -1937,9 +2230,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -1973,6 +2270,8 @@ Lists project-owned automations, optionally filtered by target session.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -1984,6 +2283,8 @@ Lists project-owned automations, optionally filtered by target session.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -1997,6 +2298,8 @@ Lists project-owned automations, optionally filtered by target session.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -2008,6 +2311,8 @@ Lists project-owned automations, optionally filtered by target session.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -2023,17 +2328,25 @@ Lists project-owned automations, optionally filtered by target session.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -2055,6 +2368,8 @@ Lists project-owned automations, optionally filtered by target session.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -2073,17 +2388,25 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -2125,9 +2448,19 @@ Lists project-owned automations, optionally filtered by target session.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -2148,6 +2481,8 @@ Lists project-owned automations, optionally filtered by target session.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -2171,13 +2506,19 @@ Lists project-owned automations, optionally filtered by target session.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -2187,9 +2528,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -2205,9 +2550,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -2239,6 +2588,8 @@ Lists project-owned automations, optionally filtered by target session.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -2247,25 +2598,37 @@ Lists project-owned automations, optionally filtered by target session.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -2277,6 +2640,8 @@ Lists project-owned automations, optionally filtered by target session.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -2284,6 +2649,8 @@ Lists project-owned automations, optionally filtered by target session.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -2295,6 +2662,8 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -2303,9 +2672,13 @@ Lists project-owned automations, optionally filtered by target session.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -2325,9 +2698,13 @@ Lists project-owned automations, optionally filtered by target session.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -2339,13 +2716,19 @@ Lists project-owned automations, optionally filtered by target session.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -2354,6 +2737,8 @@ Lists project-owned automations, optionally filtered by target session.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -2368,6 +2753,8 @@ Lists project-owned automations, optionally filtered by target session.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -2401,15 +2788,21 @@ Lists project-owned automations, optionally filtered by target session.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -2420,6 +2813,8 @@ Lists project-owned automations, optionally filtered by target session.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -2435,9 +2830,13 @@ Lists project-owned automations, optionally filtered by target session.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -2451,6 +2850,8 @@ Lists project-owned automations, optionally filtered by target session.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -2460,6 +2861,8 @@ Lists project-owned automations, optionally filtered by target session.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -2485,6 +2888,8 @@ Lists project-owned automations, optionally filtered by target session.
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -2492,6 +2897,8 @@ Lists project-owned automations, optionally filtered by target session.
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 
@@ -2554,7 +2961,10 @@ curl https://api.openai.com/v1/agents/automations \
               },
               "type": "function"
             }
-          ]
+          ],
+          "compaction": {
+            "async": true
+          }
         },
         "agent_id": "agent_id",
         "environment": {
@@ -2601,6 +3011,8 @@ Pauses future scheduled delivery without stopping an active session.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `Automation = PeriodicAutomation or OneTimeAutomation`
@@ -2615,9 +3027,13 @@ Pauses future scheduled delivery without stopping an active session.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -2637,9 +3053,13 @@ Pauses future scheduled delivery without stopping an active session.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -2651,6 +3071,8 @@ Pauses future scheduled delivery without stopping an active session.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -2658,6 +3080,8 @@ Pauses future scheduled delivery without stopping an active session.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -2687,9 +3111,13 @@ Pauses future scheduled delivery without stopping an active session.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -2702,6 +3130,8 @@ Pauses future scheduled delivery without stopping an active session.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -2803,6 +3233,8 @@ Pauses future scheduled delivery without stopping an active session.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -2815,9 +3247,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -2851,6 +3287,8 @@ Pauses future scheduled delivery without stopping an active session.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -2862,6 +3300,8 @@ Pauses future scheduled delivery without stopping an active session.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -2875,6 +3315,8 @@ Pauses future scheduled delivery without stopping an active session.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -2886,6 +3328,8 @@ Pauses future scheduled delivery without stopping an active session.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -2901,17 +3345,25 @@ Pauses future scheduled delivery without stopping an active session.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -2933,6 +3385,8 @@ Pauses future scheduled delivery without stopping an active session.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -2951,17 +3405,25 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -3003,9 +3465,19 @@ Pauses future scheduled delivery without stopping an active session.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -3026,6 +3498,8 @@ Pauses future scheduled delivery without stopping an active session.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -3049,13 +3523,19 @@ Pauses future scheduled delivery without stopping an active session.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -3065,9 +3545,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -3083,9 +3567,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -3117,6 +3605,8 @@ Pauses future scheduled delivery without stopping an active session.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -3125,25 +3615,37 @@ Pauses future scheduled delivery without stopping an active session.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -3155,6 +3657,8 @@ Pauses future scheduled delivery without stopping an active session.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -3162,6 +3666,8 @@ Pauses future scheduled delivery without stopping an active session.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -3173,6 +3679,8 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -3181,9 +3689,13 @@ Pauses future scheduled delivery without stopping an active session.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -3203,9 +3715,13 @@ Pauses future scheduled delivery without stopping an active session.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -3217,13 +3733,19 @@ Pauses future scheduled delivery without stopping an active session.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -3232,6 +3754,8 @@ Pauses future scheduled delivery without stopping an active session.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -3246,6 +3770,8 @@ Pauses future scheduled delivery without stopping an active session.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -3279,15 +3805,21 @@ Pauses future scheduled delivery without stopping an active session.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -3298,6 +3830,8 @@ Pauses future scheduled delivery without stopping an active session.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -3313,9 +3847,13 @@ Pauses future scheduled delivery without stopping an active session.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -3329,6 +3867,8 @@ Pauses future scheduled delivery without stopping an active session.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -3338,6 +3878,8 @@ Pauses future scheduled delivery without stopping an active session.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -3413,7 +3955,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/pause \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {
@@ -3454,6 +3999,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `Automation = PeriodicAutomation or OneTimeAutomation`
@@ -3468,9 +4015,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -3490,9 +4041,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -3504,6 +4059,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -3511,6 +4068,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -3540,9 +4099,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -3555,6 +4118,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -3656,6 +4221,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -3668,9 +4235,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -3704,6 +4275,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -3715,6 +4288,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -3728,6 +4303,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -3739,6 +4316,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -3754,17 +4333,25 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -3786,6 +4373,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -3804,17 +4393,25 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -3856,9 +4453,19 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -3879,6 +4486,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -3902,13 +4511,19 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -3918,9 +4533,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -3936,9 +4555,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -3970,6 +4593,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -3978,25 +4603,37 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -4008,6 +4645,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -4015,6 +4654,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -4026,6 +4667,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -4034,9 +4677,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -4056,9 +4703,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -4070,13 +4721,19 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -4085,6 +4742,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -4099,6 +4758,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -4132,15 +4793,21 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -4151,6 +4818,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -4166,9 +4835,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -4182,6 +4855,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -4191,6 +4866,8 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -4266,7 +4943,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {
@@ -4307,6 +4987,8 @@ Retrieves a project-owned automation.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `Automation = PeriodicAutomation or OneTimeAutomation`
@@ -4321,9 +5003,13 @@ Retrieves a project-owned automation.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -4343,9 +5029,13 @@ Retrieves a project-owned automation.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -4357,6 +5047,8 @@ Retrieves a project-owned automation.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -4364,6 +5056,8 @@ Retrieves a project-owned automation.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -4393,9 +5087,13 @@ Retrieves a project-owned automation.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -4408,6 +5106,8 @@ Retrieves a project-owned automation.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -4509,6 +5209,8 @@ Retrieves a project-owned automation.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -4521,9 +5223,13 @@ Retrieves a project-owned automation.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -4557,6 +5263,8 @@ Retrieves a project-owned automation.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -4568,6 +5276,8 @@ Retrieves a project-owned automation.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -4581,6 +5291,8 @@ Retrieves a project-owned automation.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -4592,6 +5304,8 @@ Retrieves a project-owned automation.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -4607,17 +5321,25 @@ Retrieves a project-owned automation.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -4639,6 +5361,8 @@ Retrieves a project-owned automation.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -4657,17 +5381,25 @@ Retrieves a project-owned automation.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -4709,9 +5441,19 @@ Retrieves a project-owned automation.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -4732,6 +5474,8 @@ Retrieves a project-owned automation.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -4755,13 +5499,19 @@ Retrieves a project-owned automation.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -4771,9 +5521,13 @@ Retrieves a project-owned automation.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -4789,9 +5543,13 @@ Retrieves a project-owned automation.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -4823,6 +5581,8 @@ Retrieves a project-owned automation.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -4831,25 +5591,37 @@ Retrieves a project-owned automation.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -4861,6 +5633,8 @@ Retrieves a project-owned automation.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -4868,6 +5642,8 @@ Retrieves a project-owned automation.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -4879,6 +5655,8 @@ Retrieves a project-owned automation.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -4887,9 +5665,13 @@ Retrieves a project-owned automation.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -4909,9 +5691,13 @@ Retrieves a project-owned automation.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -4923,13 +5709,19 @@ Retrieves a project-owned automation.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -4938,6 +5730,8 @@ Retrieves a project-owned automation.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -4952,6 +5746,8 @@ Retrieves a project-owned automation.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -4985,15 +5781,21 @@ Retrieves a project-owned automation.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -5004,6 +5806,8 @@ Retrieves a project-owned automation.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -5019,9 +5823,13 @@ Retrieves a project-owned automation.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -5035,6 +5843,8 @@ Retrieves a project-owned automation.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -5044,6 +5854,8 @@ Retrieves a project-owned automation.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -5118,7 +5930,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {
@@ -5159,11 +5974,15 @@ Updates supplied fields; target and metadata replace the whole field.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Body Parameters
 
 - `expression: optional string`
 
   Only accepted for periodic automations.
+
+  `minLength: 1`, `maxLength: 256`
 
 - `metadata: optional map[string]`
 
@@ -5171,9 +5990,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
 - `name: optional string`
 
+  `minLength: 1`, `maxLength: 256`
+
 - `run_at: optional number`
 
   A future Unix timestamp in seconds; accepted only before a one-time scheduled invocation exists.
+
+  `format: int64`
 
 - `target: optional AutomationTargetParam`
 
@@ -5211,6 +6034,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+          `minItems: 0`, `maxItems: 16384`
+
         - `container_size: optional "small" or "medium" or "large"`
 
           The hosted container size. Omission selects the medium tier.
@@ -5237,13 +6062,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
           An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
+          `minLength: 9`, `maxLength: 256`
+
         - `environment_template_id: optional string`
 
           A reusable hosted template applied before inline session configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
 
+          `minLength: 0`, `maxLength: 64`
+
         - `files: optional array of HostedEnvironmentFileParam or null`
 
           Files available before the agent starts. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 50`
 
           - `FileID object { file_id, path, type }`
 
@@ -5253,9 +6084,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The ID of the uploaded file.
 
+              `minLength: 1`, `maxLength: 256`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "file_id"`
 
@@ -5271,9 +6106,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The standard-base64-encoded file contents.
 
+              `minLength: 0`, `maxLength: 6990508`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "inline"`
 
@@ -5305,9 +6144,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Domains the environment may access when network access is restricted.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `blocked_domains: optional array of string or null`
 
             Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+            `minItems: 0`, `maxItems: 100`
 
         - `packages: optional object { npm, python, system }  or null`
 
@@ -5317,25 +6160,37 @@ Updates supplied fields; target and metadata replace the whole field.
 
             npm packages to install globally. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `python: optional array of string or null`
 
             Python packages to install. Defaults to an empty list.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `system: optional array of string or null`
 
             System packages to install. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
         - `plugins: optional array of HostedPluginParam or null`
 
           Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 32`
 
           - `description: string`
 
             The plugin description declared in `.codex-plugin/plugin.json`.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The plugin name declared in `.codex-plugin/plugin.json`.
+
+            `minLength: 1`, `maxLength: 64`
 
           - `source: InlineCapabilitySourceParam`
 
@@ -5344,6 +6199,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `data: string`
 
               Standard-base64 encoded ZIP archive bytes.
+
+              `minLength: 1`, `maxLength: 70254592`
 
             - `media_type: "application/zip"`
 
@@ -5369,17 +6226,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Ordered, confidential setup commands. Command bodies are never returned.
 
+          `minItems: 0`, `maxItems: 16`
+
           - `command: string`
 
             The shell command to execute.
+
+            `minLength: 0`, `maxLength: 65536`
 
           - `cwd: optional string or null`
 
             The absolute working directory. Defaults to `/workspace`.
 
+            `minLength: 0`, `maxLength: 4096`
+
         - `skills: optional array of HostedSkillParam or null`
 
           Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 200`
 
           - `SkillReference object { skill_id, type, version }`
 
@@ -5388,6 +6253,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `skill_id: string`
 
               The ID of the skill created through `/v1/skills`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `type: "skill_reference"`
 
@@ -5399,6 +6266,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The skill version, a positive integer or `latest`; omission selects the default.
 
+              `minLength: 0`, `maxLength: 1048576`
+
           - `Inline object { description, name, source, type }`
 
             Supplies a skill ZIP directly in the session request.
@@ -5407,9 +6276,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The skill description declared in `SKILL.md`.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `name: string`
 
               The skill name declared in `SKILL.md`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `source: InlineCapabilitySourceParam`
 
@@ -5435,17 +6308,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Absolute project directory inside the self-hosted environment.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `capability_directories: optional array of string or null`
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 16384`
 
     - `input: array of AgentSessionInputMessageParam`
 
       Initial user messages submitted with each new session.
 
+      `minItems: 0`, `maxItems: 16384`
+
       - `content: array of InputContentParam`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -5454,6 +6335,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `text: string`
 
             The text sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_text"`
 
@@ -5468,6 +6351,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `image_url: string`
 
             The URL of the image sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_image"`
 
@@ -5493,17 +6378,29 @@ Updates supplied fields; target and metadata replace the whole field.
 
       - `"new_session"`
 
-    - `agent: optional object { instructions, model, multi_agent, 4 more }`
+    - `agent: optional object { compaction, instructions, model, 5 more }`
 
       Inline agent configuration. Provide exactly one of agent and agent_id.
+
+      - `compaction: optional object { async }  or null`
+
+        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+
+        - `async: optional boolean or null`
+
+          Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
       - `instructions: optional string or null`
 
         Additional instructions appended to the agent's default base instructions. Omit to leave unchanged.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `model: optional string`
 
         The model to use for the agent. The requested model name is preserved.
+
+        `minLength: 0`, `maxLength: 1048576`
 
       - `multi_agent: optional MultiAgentConfigParam or null`
 
@@ -5516,6 +6413,8 @@ Updates supplied fields; target and metadata replace the whole field.
         - `max_concurrent_subagents: optional number`
 
           Maximum number of subagents that may run concurrently. Defaults to 6.
+
+          `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
       - `reasoning: optional AgentReasoningParam or null`
 
@@ -5635,6 +6534,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
         Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+        `minItems: 0`, `maxItems: 16384`
+
         - `Function object { description, name, parameters, 2 more }`
 
           A function defined by the application.
@@ -5643,9 +6544,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             A description of what the function does.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The name of the function.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `parameters: map[unknown]`
 
@@ -5693,6 +6598,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             A label used to identify the MCP server in tool calls.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `transport: McpTransportParam`
 
             The transport used to connect to the MCP server.
@@ -5705,6 +6612,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The URL of the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `type: "http"`
 
                 The type of the object. Always `http`.
@@ -5714,6 +6623,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `authorization: optional string or null`
 
                 The authorization value sent to the MCP server, if any.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `headers: optional map[string] or null`
 
@@ -5727,9 +6638,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The command used to start the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `cwd: string`
 
                 The working directory used to start the MCP server.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "stdio"`
 
@@ -5741,6 +6656,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Arguments passed to the MCP server command.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `env: optional map[string] or null`
 
                 Environment variables set for the MCP server process.
@@ -5748,6 +6665,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `env_vars: optional array of string or null`
 
                 Environment variable names to inherit from the selected execution environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
           - `type: "mcp"`
 
@@ -5758,6 +6677,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `allowed_tools: optional array of string or null`
 
             The MCP tools the agent may call. All server tools are allowed when omitted.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `connection_origin: optional "service" or "environment" or null`
 
@@ -5774,6 +6695,8 @@ Updates supplied fields; target and metadata replace the whole field.
           - `credential_id: optional string or null`
 
             The attached vault credential used to authenticate this MCP server. Optional when exactly one attached credential matches the server URL.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `request_metadata: optional map[unknown] or null`
 
@@ -5797,6 +6720,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Domains the search may include.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `context_size: optional "low" or "medium" or "high" or null`
 
             The amount of search context made available to the model. Defaults to `medium`.
@@ -5815,17 +6740,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The city name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `country: optional string or null`
 
               The two-letter ISO country code, such as `US`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
             - `region: optional string or null`
 
               The region or state name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `timezone: optional string or null`
 
               The IANA timezone, such as `America/Los_Angeles`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
           - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -5871,6 +6804,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       A saved agent ID. Provide exactly one of agent and agent_id.
 
+      `minLength: 0`, `maxLength: 64`
+
     - `metadata: optional map[string] or null`
 
       Metadata attached to each new session.
@@ -5878,6 +6813,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `vault_ids: optional array of string or null`
 
       The IDs of vaults made available to each new session.
+
+      `minItems: 0`, `maxItems: 16384`
 
   - `ExistingSession object { instructions, session_id, type }`
 
@@ -5887,9 +6824,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       Instructions delivered as an automation notification.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `session_id: string`
 
       The session receiving each invocation.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "existing_session"`
 
@@ -5900,6 +6841,8 @@ Updates supplied fields; target and metadata replace the whole field.
 - `timezone: optional string`
 
   Only accepted for periodic automations.
+
+  `minLength: 1`, `maxLength: 128`
 
 ### Returns
 
@@ -5915,9 +6858,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -5937,9 +6884,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -5951,6 +6902,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -5958,6 +6911,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -5987,9 +6942,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -6002,6 +6961,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -6103,6 +7064,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -6115,9 +7078,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -6151,6 +7118,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -6162,6 +7131,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -6175,6 +7146,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -6186,6 +7159,8 @@ Updates supplied fields; target and metadata replace the whole field.
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -6201,17 +7176,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -6233,6 +7216,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -6251,17 +7236,25 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -6303,9 +7296,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -6326,6 +7329,8 @@ Updates supplied fields; target and metadata replace the whole field.
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -6349,13 +7354,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -6365,9 +7376,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -6383,9 +7398,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -6417,6 +7436,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -6425,25 +7446,37 @@ Updates supplied fields; target and metadata replace the whole field.
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -6455,6 +7488,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -6462,6 +7497,8 @@ Updates supplied fields; target and metadata replace the whole field.
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -6473,6 +7510,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -6481,9 +7520,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -6503,9 +7546,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -6517,13 +7564,19 @@ Updates supplied fields; target and metadata replace the whole field.
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -6532,6 +7585,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -6546,6 +7601,8 @@ Updates supplied fields; target and metadata replace the whole field.
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -6579,15 +7636,21 @@ Updates supplied fields; target and metadata replace the whole field.
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -6598,6 +7661,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -6613,9 +7678,13 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -6629,6 +7698,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -6638,6 +7709,8 @@ Updates supplied fields; target and metadata replace the whole field.
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -6714,7 +7787,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           },
           "type": "function"
         }
-      ]
+      ],
+      "compaction": {
+        "async": true
+      }
     },
     "agent_id": "agent_id",
     "environment": {
@@ -6761,9 +7837,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -6783,9 +7863,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The creator session, which is also the automation's target.
 
+          `minLength: 0`
+
         - `tool_call_id: string`
 
           The tool call that created the automation.
+
+          `minLength: 0`
 
         - `type: "agent"`
 
@@ -6797,6 +7881,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The cron expression determining scheduled occurrences.
 
+      `minLength: 0`
+
     - `metadata: map[string]`
 
       Custom string key-value pairs attached to the automation.
@@ -6804,6 +7890,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `name: string`
 
       The automation's display name.
+
+      `minLength: 0`
 
     - `object: "agent.automation"`
 
@@ -6833,9 +7921,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Custom instructions, or null when absent.
 
+            `minLength: 0`
+
           - `model: string`
 
             The requested model name.
+
+            `minLength: 0`
 
           - `multi_agent: MultiAgentConfig`
 
@@ -6848,6 +7940,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `max_concurrent_subagents: number or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: AgentReasoning`
 
@@ -6949,6 +8043,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Configured tools, excluding confidential credentials.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `Function object { defer_loading, description, name, 2 more }`
 
               A function defined by the application.
@@ -6961,9 +8057,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A description of what the function does.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`
 
               - `parameters: map[unknown]`
 
@@ -6997,6 +8097,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The MCP tools the agent may call.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `connection_origin: "service" or "environment"`
 
                 Where outbound MCP HTTP connections originate.
@@ -7008,6 +8110,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `credential_id: string or null`
 
                 The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`
 
               - `request_metadata: map[unknown]`
 
@@ -7021,6 +8125,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`
+
               - `transport: McpTransport`
 
                 The transport used to connect to the MCP server.
@@ -7032,6 +8138,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                   - `server_url: string`
 
                     The URL of the MCP server.
+
+                    `minLength: 0`
 
                   - `type: "http"`
 
@@ -7047,17 +8155,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `command: string`
 
                     The command used to start the MCP server.
+
+                    `minLength: 0`
 
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
 
+                    `minLength: 0`
+
                   - `env_vars: array of string`
 
                     Environment variable names inherited from the execution environment.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `type: "stdio"`
 
@@ -7079,6 +8195,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Allowed search domains, or `null` when the search is unrestricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `context_size: "low" or "medium" or "high"`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -7097,17 +8215,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The city name.
 
+                  `minLength: 0`
+
                 - `country: string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`
 
                 - `region: string or null`
 
                   The region or state name.
 
+                  `minLength: 0`
+
                 - `timezone: string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`
 
               - `mode: "disabled" or "cached" or "live"`
 
@@ -7149,9 +8275,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 - `"automations"`
 
+          - `compaction: optional object { async }`
+
+            The effective context compaction settings.
+
+            - `async: boolean`
+
+              Whether context is compacted in the background. Defaults to true.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
+
+          `minLength: 0`
 
         - `environment: AutomationEnvironment`
 
@@ -7172,6 +8308,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `capability_directories: array of string or null`
 
               Directory overrides, or null to inherit the template or creation default.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `container_size: "small" or "medium" or "large" or null`
 
@@ -7195,13 +8333,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               An existing environment reference, or null when provisioning a new environment.
 
+              `minLength: 0`
+
             - `environment_template_id: string or null`
 
               A template reference, or null when no template is selected.
 
+              `minLength: 0`
+
             - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
               File overrides, excluding contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `FileID object { file_id, path, type }`
 
@@ -7211,9 +8355,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The ID of the uploaded file.
 
+                  `minLength: 0`
+
                 - `path: string`
 
                   The file's absolute path inside the environment.
+
+                  `minLength: 0`
 
                 - `type: "file_id"`
 
@@ -7229,9 +8377,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The file's absolute path inside the environment.
 
+                  `minLength: 0`
+
                 - `size_bytes: number`
 
                   The decoded size of the inline file in bytes.
+
+                  `format: int64`, `minimum: 0`
 
                 - `type: "inline"`
 
@@ -7263,6 +8415,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `packages: object { npm, python, system }  or null`
 
               Package overrides, or null to inherit the template or creation default.
@@ -7271,25 +8425,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 npm packages installed globally in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: array of string`
 
                 Python packages installed in the environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: array of string`
 
                 System packages installed in the environment.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: array of HostedPlugin or null`
 
               Plugin overrides, excluding archive contents, or null to inherit.
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `description: string`
 
                 The installed plugin description.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The installed plugin name.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -7301,6 +8467,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Skill overrides, excluding archive contents, or null to inherit.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `SkillReference object { skill_id, type, version }`
 
                 A skill resolved afresh from the Skills API whenever a session starts.
@@ -7308,6 +8476,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 - `skill_id: string`
 
                   The referenced skill ID.
+
+                  `minLength: 0`
 
                 - `type: "skill_reference"`
 
@@ -7319,6 +8489,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The requested version selector, including `latest`.
 
+                  `minLength: 0`
+
               - `Inline object { description, name, type }`
 
                 Safe metadata for an inline skill archive.
@@ -7327,9 +8499,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 0`
 
                 - `type: "inline"`
 
@@ -7349,9 +8525,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Directories that expose capabilities to the agent.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `environment_id: string or null`
 
               An existing registration, or null to create a session-owned environment.
+
+              `minLength: 0`
 
             - `type: "self_hosted"`
 
@@ -7363,13 +8543,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The absolute project directory in the environment.
 
+              `minLength: 0`
+
         - `input: array of object { content, role, type }`
 
           Initial input delivered to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `content: array of InputContent`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -7378,6 +8564,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `text: string`
 
                 The text supplied to the agent.
+
+                `minLength: 0`
 
               - `type: "input_text"`
 
@@ -7392,6 +8580,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `image_url: string`
 
                 The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                `minLength: 0`
 
               - `type: "input_image"`
 
@@ -7425,15 +8615,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Vaults made available to each new session.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `ExistingSession object { instructions, session_id, type }`
 
         - `instructions: string`
 
           Saved instructions delivered as an automation notification.
 
+          `minLength: 0`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`
 
         - `type: "existing_session"`
 
@@ -7444,6 +8640,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `timezone: string`
 
       The timezone used to interpret the expression.
+
+      `minLength: 0`
 
     - `type: "periodic"`
 
@@ -7459,9 +8657,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The automation ID.
 
+      `minLength: 0`
+
     - `created_at: number`
 
       The creation time as a Unix timestamp in seconds.
+
+      `format: int64`
 
     - `created_by: AutomationCreatedBy`
 
@@ -7475,6 +8677,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The automation's display name.
 
+      `minLength: 0`
+
     - `object: "agent.automation"`
 
       Always `agent.automation`.
@@ -7484,6 +8688,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `run_at: number`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
+
+      `format: int64`
 
     - `status: "active" or "paused" or "completed"`
 
@@ -7507,7 +8713,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
 ### Automation Agent Config
 
-- `AutomationAgentConfig object { instructions, model, multi_agent, 4 more }`
+- `AutomationAgentConfig object { instructions, model, multi_agent, 5 more }`
 
   Inline agent configuration without a generated session-local identity.
 
@@ -7515,9 +8721,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     Custom instructions, or null when absent.
 
+    `minLength: 0`
+
   - `model: string`
 
     The requested model name.
+
+    `minLength: 0`
 
   - `multi_agent: MultiAgentConfig`
 
@@ -7530,6 +8740,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `max_concurrent_subagents: number or null`
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+      `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
   - `reasoning: AgentReasoning`
 
@@ -7631,6 +8843,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     Configured tools, excluding confidential credentials.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `Function object { defer_loading, description, name, 2 more }`
 
       A function defined by the application.
@@ -7643,9 +8857,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         A description of what the function does.
 
+        `minLength: 0`
+
       - `name: string`
 
         The name of the function.
+
+        `minLength: 0`
 
       - `parameters: map[unknown]`
 
@@ -7679,6 +8897,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         The MCP tools the agent may call.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `connection_origin: "service" or "environment"`
 
         Where outbound MCP HTTP connections originate.
@@ -7690,6 +8910,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
       - `credential_id: string or null`
 
         The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+        `minLength: 0`
 
       - `request_metadata: map[unknown]`
 
@@ -7703,6 +8925,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         A label used to identify the MCP server in tool calls.
 
+        `minLength: 0`
+
       - `transport: McpTransport`
 
         The transport used to connect to the MCP server.
@@ -7714,6 +8938,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `server_url: string`
 
             The URL of the MCP server.
+
+            `minLength: 0`
 
           - `type: "http"`
 
@@ -7729,17 +8955,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Arguments passed to the MCP server command.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `command: string`
 
             The command used to start the MCP server.
+
+            `minLength: 0`
 
           - `cwd: string`
 
             The working directory used to start the MCP server.
 
+            `minLength: 0`
+
           - `env_vars: array of string`
 
             Environment variable names inherited from the execution environment.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `type: "stdio"`
 
@@ -7761,6 +8995,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Allowed search domains, or `null` when the search is unrestricted.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `context_size: "low" or "medium" or "high"`
 
         The amount of search context made available to the model. Defaults to `medium`.
@@ -7779,17 +9015,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The city name.
 
+          `minLength: 0`
+
         - `country: string or null`
 
           The two-letter ISO country code, such as `US`.
+
+          `minLength: 0`
 
         - `region: string or null`
 
           The region or state name.
 
+          `minLength: 0`
+
         - `timezone: string or null`
 
           The IANA timezone, such as `America/Los_Angeles`.
+
+          `minLength: 0`
 
       - `mode: "disabled" or "cached" or "live"`
 
@@ -7831,6 +9075,14 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         - `"automations"`
 
+  - `compaction: optional object { async }`
+
+    The effective context compaction settings.
+
+    - `async: boolean`
+
+      Whether context is compacted in the background. Defaults to true.
+
 ### Automation Created By
 
 - `AutomationCreatedBy = Developer { type }  or Agent { session_id, tool_call_id, type }`
@@ -7851,9 +9103,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       The creator session, which is also the automation's target.
 
+      `minLength: 0`
+
     - `tool_call_id: string`
 
       The tool call that created the automation.
+
+      `minLength: 0`
 
     - `type: "agent"`
 
@@ -7868,6 +9124,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
   - `id: string`
 
     The deleted automation ID.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 
@@ -7901,6 +9159,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Directory overrides, or null to inherit the template or creation default.
 
+      `minItems: 0`, `maxItems: 2000`
+
     - `container_size: "small" or "medium" or "large" or null`
 
       The configured container size, or null to use the creation default.
@@ -7923,13 +9183,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       An existing environment reference, or null when provisioning a new environment.
 
+      `minLength: 0`
+
     - `environment_template_id: string or null`
 
       A template reference, or null when no template is selected.
 
+      `minLength: 0`
+
     - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
       File overrides, excluding contents, or null to inherit.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `FileID object { file_id, path, type }`
 
@@ -7939,9 +9205,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The ID of the uploaded file.
 
+          `minLength: 0`
+
         - `path: string`
 
           The file's absolute path inside the environment.
+
+          `minLength: 0`
 
         - `type: "file_id"`
 
@@ -7957,9 +9227,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The file's absolute path inside the environment.
 
+          `minLength: 0`
+
         - `size_bytes: number`
 
           The decoded size of the inline file in bytes.
+
+          `format: int64`, `minimum: 0`
 
         - `type: "inline"`
 
@@ -7991,6 +9265,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Domains the environment may access when network access is restricted.
 
+        `minItems: 0`, `maxItems: 2000`
+
     - `packages: object { npm, python, system }  or null`
 
       Package overrides, or null to inherit the template or creation default.
@@ -7999,25 +9275,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         npm packages installed globally in the environment.
 
+        `minItems: 0`, `maxItems: 16384`
+
       - `python: array of string`
 
         Python packages installed in the environment.
+
+        `minItems: 0`, `maxItems: 16384`
 
       - `system: array of string`
 
         System packages installed in the environment.
 
+        `minItems: 0`, `maxItems: 16384`
+
     - `plugins: array of HostedPlugin or null`
 
       Plugin overrides, excluding archive contents, or null to inherit.
+
+      `minItems: 0`, `maxItems: 2000`
 
       - `description: string`
 
         The installed plugin description.
 
+        `minLength: 0`
+
       - `name: string`
 
         The installed plugin name.
+
+        `minLength: 0`
 
       - `type: "inline"`
 
@@ -8029,6 +9317,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Skill overrides, excluding archive contents, or null to inherit.
 
+      `minItems: 0`, `maxItems: 2000`
+
       - `SkillReference object { skill_id, type, version }`
 
         A skill resolved afresh from the Skills API whenever a session starts.
@@ -8036,6 +9326,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `skill_id: string`
 
           The referenced skill ID.
+
+          `minLength: 0`
 
         - `type: "skill_reference"`
 
@@ -8047,6 +9339,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The requested version selector, including `latest`.
 
+          `minLength: 0`
+
       - `Inline object { description, name, type }`
 
         Safe metadata for an inline skill archive.
@@ -8055,9 +9349,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The skill description declared in `SKILL.md`.
 
+          `minLength: 0`
+
         - `name: string`
 
           The skill name declared in `SKILL.md`.
+
+          `minLength: 0`
 
         - `type: "inline"`
 
@@ -8077,9 +9375,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Directories that expose capabilities to the agent.
 
+      `minItems: 0`, `maxItems: 2000`
+
     - `environment_id: string or null`
 
       An existing registration, or null to create a session-owned environment.
+
+      `minLength: 0`
 
     - `type: "self_hosted"`
 
@@ -8090,6 +9392,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `workspace_directory: string`
 
       The absolute project directory in the environment.
+
+      `minLength: 0`
 
 ### Automation Schedule Param
 
@@ -8103,9 +9407,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       A standard five-field cron expression defining scheduled occurrences.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `name: string`
 
       A human-readable name for the automation.
+
+      `minLength: 1`, `maxLength: 256`
 
     - `target: AutomationTargetParam`
 
@@ -8143,6 +9451,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+              `minItems: 0`, `maxItems: 16384`
+
             - `container_size: optional "small" or "medium" or "large"`
 
               The hosted container size. Omission selects the medium tier.
@@ -8169,13 +9479,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
+              `minLength: 9`, `maxLength: 256`
+
             - `environment_template_id: optional string`
 
               A reusable hosted template applied before inline session configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
 
+              `minLength: 0`, `maxLength: 64`
+
             - `files: optional array of HostedEnvironmentFileParam or null`
 
               Files available before the agent starts. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 50`
 
               - `FileID object { file_id, path, type }`
 
@@ -8185,9 +9501,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The ID of the uploaded file.
 
+                  `minLength: 1`, `maxLength: 256`
+
                 - `path: string`
 
                   The absolute destination path inside `/workspace`.
+
+                  `minLength: 1`, `maxLength: 4096`
 
                 - `type: "file_id"`
 
@@ -8203,9 +9523,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The standard-base64-encoded file contents.
 
+                  `minLength: 0`, `maxLength: 6990508`
+
                 - `path: string`
 
                   The absolute destination path inside `/workspace`.
+
+                  `minLength: 1`, `maxLength: 4096`
 
                 - `type: "inline"`
 
@@ -8237,9 +9561,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Domains the environment may access when network access is restricted.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `blocked_domains: optional array of string or null`
 
                 Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+                `minItems: 0`, `maxItems: 100`
 
             - `packages: optional object { npm, python, system }  or null`
 
@@ -8249,25 +9577,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 npm packages to install globally. Defaults to an empty list.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `python: optional array of string or null`
 
                 Python packages to install. Defaults to an empty list.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `system: optional array of string or null`
 
                 System packages to install. Defaults to an empty list.
 
+                `minItems: 0`, `maxItems: 16384`
+
             - `plugins: optional array of HostedPluginParam or null`
 
               Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 32`
 
               - `description: string`
 
                 The plugin description declared in `.codex-plugin/plugin.json`.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `name: string`
 
                 The plugin name declared in `.codex-plugin/plugin.json`.
+
+                `minLength: 1`, `maxLength: 64`
 
               - `source: InlineCapabilitySourceParam`
 
@@ -8276,6 +9616,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 - `data: string`
 
                   Standard-base64 encoded ZIP archive bytes.
+
+                  `minLength: 1`, `maxLength: 70254592`
 
                 - `media_type: "application/zip"`
 
@@ -8301,17 +9643,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Ordered, confidential setup commands. Command bodies are never returned.
 
+              `minItems: 0`, `maxItems: 16`
+
               - `command: string`
 
                 The shell command to execute.
+
+                `minLength: 0`, `maxLength: 65536`
 
               - `cwd: optional string or null`
 
                 The absolute working directory. Defaults to `/workspace`.
 
+                `minLength: 0`, `maxLength: 4096`
+
             - `skills: optional array of HostedSkillParam or null`
 
               Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 200`
 
               - `SkillReference object { skill_id, type, version }`
 
@@ -8320,6 +9670,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 - `skill_id: string`
 
                   The ID of the skill created through `/v1/skills`.
+
+                  `minLength: 1`, `maxLength: 64`
 
                 - `type: "skill_reference"`
 
@@ -8331,6 +9683,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The skill version, a positive integer or `latest`; omission selects the default.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
               - `Inline object { description, name, source, type }`
 
                 Supplies a skill ZIP directly in the session request.
@@ -8339,9 +9693,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The skill description declared in `SKILL.md`.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `name: string`
 
                   The skill name declared in `SKILL.md`.
+
+                  `minLength: 1`, `maxLength: 64`
 
                 - `source: InlineCapabilitySourceParam`
 
@@ -8367,17 +9725,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Absolute project directory inside the self-hosted environment.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `capability_directories: optional array of string or null`
 
               Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+              `minItems: 0`, `maxItems: 16384`
 
         - `input: array of AgentSessionInputMessageParam`
 
           Initial user messages submitted with each new session.
 
+          `minItems: 0`, `maxItems: 16384`
+
           - `content: array of InputContentParam`
 
             The content of the message.
+
+            `minItems: 0`, `maxItems: 16384`
 
             - `InputText object { text, type }`
 
@@ -8386,6 +9752,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `text: string`
 
                 The text sent to the model.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "input_text"`
 
@@ -8400,6 +9768,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `image_url: string`
 
                 The URL of the image sent to the model.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "input_image"`
 
@@ -8425,17 +9795,29 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           - `"new_session"`
 
-        - `agent: optional object { instructions, model, multi_agent, 4 more }`
+        - `agent: optional object { compaction, instructions, model, 5 more }`
 
           Inline agent configuration. Provide exactly one of agent and agent_id.
+
+          - `compaction: optional object { async }  or null`
+
+            Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+
+            - `async: optional boolean or null`
+
+              Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
           - `instructions: optional string or null`
 
             Additional instructions appended to the agent's default base instructions. Omit to leave unchanged.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `model: optional string`
 
             The model to use for the agent. The requested model name is preserved.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `multi_agent: optional MultiAgentConfigParam or null`
 
@@ -8448,6 +9830,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `max_concurrent_subagents: optional number`
 
               Maximum number of subagents that may run concurrently. Defaults to 6.
+
+              `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
           - `reasoning: optional AgentReasoningParam or null`
 
@@ -8567,6 +9951,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+            `minItems: 0`, `maxItems: 16384`
+
             - `Function object { description, name, parameters, 2 more }`
 
               A function defined by the application.
@@ -8575,9 +9961,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A description of what the function does.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `name: string`
 
                 The name of the function.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `parameters: map[unknown]`
 
@@ -8625,6 +10015,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 A label used to identify the MCP server in tool calls.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `transport: McpTransportParam`
 
                 The transport used to connect to the MCP server.
@@ -8637,6 +10029,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     The URL of the MCP server.
 
+                    `minLength: 0`, `maxLength: 1048576`
+
                   - `type: "http"`
 
                     The type of the object. Always `http`.
@@ -8646,6 +10040,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                   - `authorization: optional string or null`
 
                     The authorization value sent to the MCP server, if any.
+
+                    `minLength: 0`, `maxLength: 1048576`
 
                   - `headers: optional map[string] or null`
 
@@ -8659,9 +10055,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     The command used to start the MCP server.
 
+                    `minLength: 0`, `maxLength: 1048576`
+
                   - `cwd: string`
 
                     The working directory used to start the MCP server.
+
+                    `minLength: 0`, `maxLength: 1048576`
 
                   - `type: "stdio"`
 
@@ -8673,6 +10073,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                     Arguments passed to the MCP server command.
 
+                    `minItems: 0`, `maxItems: 16384`
+
                   - `env: optional map[string] or null`
 
                     Environment variables set for the MCP server process.
@@ -8680,6 +10082,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                   - `env_vars: optional array of string or null`
 
                     Environment variable names to inherit from the selected execution environment.
+
+                    `minItems: 0`, `maxItems: 16384`
 
               - `type: "mcp"`
 
@@ -8690,6 +10094,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `allowed_tools: optional array of string or null`
 
                 The MCP tools the agent may call. All server tools are allowed when omitted.
+
+                `minItems: 0`, `maxItems: 16384`
 
               - `connection_origin: optional "service" or "environment" or null`
 
@@ -8706,6 +10112,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `credential_id: optional string or null`
 
                 The attached vault credential used to authenticate this MCP server. Optional when exactly one attached credential matches the server URL.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `request_metadata: optional map[unknown] or null`
 
@@ -8729,6 +10137,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Domains the search may include.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `context_size: optional "low" or "medium" or "high" or null`
 
                 The amount of search context made available to the model. Defaults to `medium`.
@@ -8747,17 +10157,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   The city name.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `country: optional string or null`
 
                   The two-letter ISO country code, such as `US`.
+
+                  `minLength: 0`, `maxLength: 1048576`
 
                 - `region: optional string or null`
 
                   The region or state name.
 
+                  `minLength: 0`, `maxLength: 1048576`
+
                 - `timezone: optional string or null`
 
                   The IANA timezone, such as `America/Los_Angeles`.
+
+                  `minLength: 0`, `maxLength: 1048576`
 
               - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -8803,6 +10221,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           A saved agent ID. Provide exactly one of agent and agent_id.
 
+          `minLength: 0`, `maxLength: 64`
+
         - `metadata: optional map[string] or null`
 
           Metadata attached to each new session.
@@ -8810,6 +10230,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `vault_ids: optional array of string or null`
 
           The IDs of vaults made available to each new session.
+
+          `minItems: 0`, `maxItems: 16384`
 
       - `ExistingSession object { instructions, session_id, type }`
 
@@ -8819,9 +10241,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Instructions delivered as an automation notification.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `session_id: string`
 
           The session receiving each invocation.
+
+          `minLength: 0`, `maxLength: 1048576`
 
         - `type: "existing_session"`
 
@@ -8832,6 +10258,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `timezone: string`
 
       The IANA timezone used to interpret the cron expression.
+
+      `minLength: 1`, `maxLength: 128`
 
     - `type: "periodic"`
 
@@ -8847,9 +10275,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       A human-readable name for the automation.
 
+      `minLength: 1`, `maxLength: 256`
+
     - `run_at: number`
 
       A future Unix timestamp in seconds.
+
+      `format: int64`
 
     - `target: AutomationTargetParam`
 
@@ -8879,9 +10311,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Custom instructions, or null when absent.
 
+        `minLength: 0`
+
       - `model: string`
 
         The requested model name.
+
+        `minLength: 0`
 
       - `multi_agent: MultiAgentConfig`
 
@@ -8894,6 +10330,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `max_concurrent_subagents: number or null`
 
           Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+          `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
       - `reasoning: AgentReasoning`
 
@@ -8995,6 +10433,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Configured tools, excluding confidential credentials.
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `Function object { defer_loading, description, name, 2 more }`
 
           A function defined by the application.
@@ -9007,9 +10447,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A description of what the function does.
 
+            `minLength: 0`
+
           - `name: string`
 
             The name of the function.
+
+            `minLength: 0`
 
           - `parameters: map[unknown]`
 
@@ -9043,6 +10487,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             The MCP tools the agent may call.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `connection_origin: "service" or "environment"`
 
             Where outbound MCP HTTP connections originate.
@@ -9054,6 +10500,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `credential_id: string or null`
 
             The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+            `minLength: 0`
 
           - `request_metadata: map[unknown]`
 
@@ -9067,6 +10515,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A label used to identify the MCP server in tool calls.
 
+            `minLength: 0`
+
           - `transport: McpTransport`
 
             The transport used to connect to the MCP server.
@@ -9078,6 +10528,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `server_url: string`
 
                 The URL of the MCP server.
+
+                `minLength: 0`
 
               - `type: "http"`
 
@@ -9093,17 +10545,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Arguments passed to the MCP server command.
 
+                `minItems: 0`, `maxItems: 2000`
+
               - `command: string`
 
                 The command used to start the MCP server.
+
+                `minLength: 0`
 
               - `cwd: string`
 
                 The working directory used to start the MCP server.
 
+                `minLength: 0`
+
               - `env_vars: array of string`
 
                 Environment variable names inherited from the execution environment.
+
+                `minItems: 0`, `maxItems: 2000`
 
               - `type: "stdio"`
 
@@ -9125,6 +10585,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Allowed search domains, or `null` when the search is unrestricted.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `context_size: "low" or "medium" or "high"`
 
             The amount of search context made available to the model. Defaults to `medium`.
@@ -9143,17 +10605,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The city name.
 
+              `minLength: 0`
+
             - `country: string or null`
 
               The two-letter ISO country code, such as `US`.
+
+              `minLength: 0`
 
             - `region: string or null`
 
               The region or state name.
 
+              `minLength: 0`
+
             - `timezone: string or null`
 
               The IANA timezone, such as `America/Los_Angeles`.
+
+              `minLength: 0`
 
           - `mode: "disabled" or "cached" or "live"`
 
@@ -9195,9 +10665,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             - `"automations"`
 
+      - `compaction: optional object { async }`
+
+        The effective context compaction settings.
+
+        - `async: boolean`
+
+          Whether context is compacted in the background. Defaults to true.
+
     - `agent_id: string or null`
 
       The saved agent reference, or null when an inline agent is configured.
+
+      `minLength: 0`
 
     - `environment: AutomationEnvironment`
 
@@ -9218,6 +10698,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `capability_directories: array of string or null`
 
           Directory overrides, or null to inherit the template or creation default.
+
+          `minItems: 0`, `maxItems: 2000`
 
         - `container_size: "small" or "medium" or "large" or null`
 
@@ -9241,13 +10723,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           An existing environment reference, or null when provisioning a new environment.
 
+          `minLength: 0`
+
         - `environment_template_id: string or null`
 
           A template reference, or null when no template is selected.
 
+          `minLength: 0`
+
         - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
           File overrides, excluding contents, or null to inherit.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `FileID object { file_id, path, type }`
 
@@ -9257,9 +10745,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The ID of the uploaded file.
 
+              `minLength: 0`
+
             - `path: string`
 
               The file's absolute path inside the environment.
+
+              `minLength: 0`
 
             - `type: "file_id"`
 
@@ -9275,9 +10767,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The file's absolute path inside the environment.
 
+              `minLength: 0`
+
             - `size_bytes: number`
 
               The decoded size of the inline file in bytes.
+
+              `format: int64`, `minimum: 0`
 
             - `type: "inline"`
 
@@ -9309,6 +10805,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Domains the environment may access when network access is restricted.
 
+            `minItems: 0`, `maxItems: 2000`
+
         - `packages: object { npm, python, system }  or null`
 
           Package overrides, or null to inherit the template or creation default.
@@ -9317,25 +10815,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             npm packages installed globally in the environment.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `python: array of string`
 
             Python packages installed in the environment.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `system: array of string`
 
             System packages installed in the environment.
 
+            `minItems: 0`, `maxItems: 16384`
+
         - `plugins: array of HostedPlugin or null`
 
           Plugin overrides, excluding archive contents, or null to inherit.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `description: string`
 
             The installed plugin description.
 
+            `minLength: 0`
+
           - `name: string`
 
             The installed plugin name.
+
+            `minLength: 0`
 
           - `type: "inline"`
 
@@ -9347,6 +10857,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Skill overrides, excluding archive contents, or null to inherit.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `SkillReference object { skill_id, type, version }`
 
             A skill resolved afresh from the Skills API whenever a session starts.
@@ -9354,6 +10866,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `skill_id: string`
 
               The referenced skill ID.
+
+              `minLength: 0`
 
             - `type: "skill_reference"`
 
@@ -9365,6 +10879,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The requested version selector, including `latest`.
 
+              `minLength: 0`
+
           - `Inline object { description, name, type }`
 
             Safe metadata for an inline skill archive.
@@ -9373,9 +10889,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The skill description declared in `SKILL.md`.
 
+              `minLength: 0`
+
             - `name: string`
 
               The skill name declared in `SKILL.md`.
+
+              `minLength: 0`
 
             - `type: "inline"`
 
@@ -9395,9 +10915,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Directories that expose capabilities to the agent.
 
+          `minItems: 0`, `maxItems: 2000`
+
         - `environment_id: string or null`
 
           An existing registration, or null to create a session-owned environment.
+
+          `minLength: 0`
 
         - `type: "self_hosted"`
 
@@ -9409,13 +10933,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           The absolute project directory in the environment.
 
+          `minLength: 0`
+
     - `input: array of object { content, role, type }`
 
       Initial input delivered to each new session.
 
+      `minItems: 0`, `maxItems: 2000`
+
       - `content: array of InputContent`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `InputText object { text, type }`
 
@@ -9424,6 +10954,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `text: string`
 
             The text supplied to the agent.
+
+            `minLength: 0`
 
           - `type: "input_text"`
 
@@ -9438,6 +10970,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `image_url: string`
 
             The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+            `minLength: 0`
 
           - `type: "input_image"`
 
@@ -9471,15 +11005,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Vaults made available to each new session.
 
+      `minItems: 0`, `maxItems: 2000`
+
   - `ExistingSession object { instructions, session_id, type }`
 
     - `instructions: string`
 
       Saved instructions delivered as an automation notification.
 
+      `minLength: 0`
+
     - `session_id: string`
 
       The session receiving each invocation.
+
+      `minLength: 0`
 
     - `type: "existing_session"`
 
@@ -9525,6 +11065,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+          `minItems: 0`, `maxItems: 16384`
+
         - `container_size: optional "small" or "medium" or "large"`
 
           The hosted container size. Omission selects the medium tier.
@@ -9551,13 +11093,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           An existing prewarmed environment. Cannot be combined with a template or inline configuration.
 
+          `minLength: 9`, `maxLength: 256`
+
         - `environment_template_id: optional string`
 
           A reusable hosted template applied before inline session configuration. Omitted fields inherit the template; network overrides cannot broaden its policy.
 
+          `minLength: 0`, `maxLength: 64`
+
         - `files: optional array of HostedEnvironmentFileParam or null`
 
           Files available before the agent starts. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 50`
 
           - `FileID object { file_id, path, type }`
 
@@ -9567,9 +11115,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The ID of the uploaded file.
 
+              `minLength: 1`, `maxLength: 256`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "file_id"`
 
@@ -9585,9 +11137,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The standard-base64-encoded file contents.
 
+              `minLength: 0`, `maxLength: 6990508`
+
             - `path: string`
 
               The absolute destination path inside `/workspace`.
+
+              `minLength: 1`, `maxLength: 4096`
 
             - `type: "inline"`
 
@@ -9619,9 +11175,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Domains the environment may access when network access is restricted.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `blocked_domains: optional array of string or null`
 
             Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
+
+            `minItems: 0`, `maxItems: 100`
 
         - `packages: optional object { npm, python, system }  or null`
 
@@ -9631,25 +11191,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             npm packages to install globally. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `python: optional array of string or null`
 
             Python packages to install. Defaults to an empty list.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `system: optional array of string or null`
 
             System packages to install. Defaults to an empty list.
 
+            `minItems: 0`, `maxItems: 16384`
+
         - `plugins: optional array of HostedPluginParam or null`
 
           Plugins provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 32`
 
           - `description: string`
 
             The plugin description declared in `.codex-plugin/plugin.json`.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The plugin name declared in `.codex-plugin/plugin.json`.
+
+            `minLength: 1`, `maxLength: 64`
 
           - `source: InlineCapabilitySourceParam`
 
@@ -9658,6 +11230,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `data: string`
 
               Standard-base64 encoded ZIP archive bytes.
+
+              `minLength: 1`, `maxLength: 70254592`
 
             - `media_type: "application/zip"`
 
@@ -9683,17 +11257,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Ordered, confidential setup commands. Command bodies are never returned.
 
+          `minItems: 0`, `maxItems: 16`
+
           - `command: string`
 
             The shell command to execute.
+
+            `minLength: 0`, `maxLength: 65536`
 
           - `cwd: optional string or null`
 
             The absolute working directory. Defaults to `/workspace`.
 
+            `minLength: 0`, `maxLength: 4096`
+
         - `skills: optional array of HostedSkillParam or null`
 
           Skills referenced by ID or provided as inline ZIP archives. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 200`
 
           - `SkillReference object { skill_id, type, version }`
 
@@ -9702,6 +11284,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `skill_id: string`
 
               The ID of the skill created through `/v1/skills`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `type: "skill_reference"`
 
@@ -9713,6 +11297,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The skill version, a positive integer or `latest`; omission selects the default.
 
+              `minLength: 0`, `maxLength: 1048576`
+
           - `Inline object { description, name, source, type }`
 
             Supplies a skill ZIP directly in the session request.
@@ -9721,9 +11307,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The skill description declared in `SKILL.md`.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `name: string`
 
               The skill name declared in `SKILL.md`.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `source: InlineCapabilitySourceParam`
 
@@ -9749,17 +11339,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Absolute project directory inside the self-hosted environment.
 
+          `minLength: 0`, `maxLength: 1048576`
+
         - `capability_directories: optional array of string or null`
 
           Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+          `minItems: 0`, `maxItems: 16384`
 
     - `input: array of AgentSessionInputMessageParam`
 
       Initial user messages submitted with each new session.
 
+      `minItems: 0`, `maxItems: 16384`
+
       - `content: array of InputContentParam`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -9768,6 +11366,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `text: string`
 
             The text sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_text"`
 
@@ -9782,6 +11382,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `image_url: string`
 
             The URL of the image sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_image"`
 
@@ -9807,17 +11409,29 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       - `"new_session"`
 
-    - `agent: optional object { instructions, model, multi_agent, 4 more }`
+    - `agent: optional object { compaction, instructions, model, 5 more }`
 
       Inline agent configuration. Provide exactly one of agent and agent_id.
+
+      - `compaction: optional object { async }  or null`
+
+        Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.
+
+        - `async: optional boolean or null`
+
+          Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
       - `instructions: optional string or null`
 
         Additional instructions appended to the agent's default base instructions. Omit to leave unchanged.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `model: optional string`
 
         The model to use for the agent. The requested model name is preserved.
+
+        `minLength: 0`, `maxLength: 1048576`
 
       - `multi_agent: optional MultiAgentConfigParam or null`
 
@@ -9830,6 +11444,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         - `max_concurrent_subagents: optional number`
 
           Maximum number of subagents that may run concurrently. Defaults to 6.
+
+          `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
       - `reasoning: optional AgentReasoningParam or null`
 
@@ -9949,6 +11565,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
+        `minItems: 0`, `maxItems: 16384`
+
         - `Function object { description, name, parameters, 2 more }`
 
           A function defined by the application.
@@ -9957,9 +11575,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A description of what the function does.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `name: string`
 
             The name of the function.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `parameters: map[unknown]`
 
@@ -10007,6 +11629,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             A label used to identify the MCP server in tool calls.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `transport: McpTransportParam`
 
             The transport used to connect to the MCP server.
@@ -10019,6 +11643,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The URL of the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `type: "http"`
 
                 The type of the object. Always `http`.
@@ -10028,6 +11654,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `authorization: optional string or null`
 
                 The authorization value sent to the MCP server, if any.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `headers: optional map[string] or null`
 
@@ -10041,9 +11669,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The command used to start the MCP server.
 
+                `minLength: 0`, `maxLength: 1048576`
+
               - `cwd: string`
 
                 The working directory used to start the MCP server.
+
+                `minLength: 0`, `maxLength: 1048576`
 
               - `type: "stdio"`
 
@@ -10055,6 +11687,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 Arguments passed to the MCP server command.
 
+                `minItems: 0`, `maxItems: 16384`
+
               - `env: optional map[string] or null`
 
                 Environment variables set for the MCP server process.
@@ -10062,6 +11696,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `env_vars: optional array of string or null`
 
                 Environment variable names to inherit from the selected execution environment.
+
+                `minItems: 0`, `maxItems: 16384`
 
           - `type: "mcp"`
 
@@ -10072,6 +11708,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `allowed_tools: optional array of string or null`
 
             The MCP tools the agent may call. All server tools are allowed when omitted.
+
+            `minItems: 0`, `maxItems: 16384`
 
           - `connection_origin: optional "service" or "environment" or null`
 
@@ -10088,6 +11726,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `credential_id: optional string or null`
 
             The attached vault credential used to authenticate this MCP server. Optional when exactly one attached credential matches the server URL.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `request_metadata: optional map[unknown] or null`
 
@@ -10111,6 +11751,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Domains the search may include.
 
+            `minItems: 0`, `maxItems: 16384`
+
           - `context_size: optional "low" or "medium" or "high" or null`
 
             The amount of search context made available to the model. Defaults to `medium`.
@@ -10129,17 +11771,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The city name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `country: optional string or null`
 
               The two-letter ISO country code, such as `US`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
             - `region: optional string or null`
 
               The region or state name.
 
+              `minLength: 0`, `maxLength: 1048576`
+
             - `timezone: optional string or null`
 
               The IANA timezone, such as `America/Los_Angeles`.
+
+              `minLength: 0`, `maxLength: 1048576`
 
           - `mode: optional "disabled" or "cached" or "live" or null`
 
@@ -10185,6 +11835,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       A saved agent ID. Provide exactly one of agent and agent_id.
 
+      `minLength: 0`, `maxLength: 64`
+
     - `metadata: optional map[string] or null`
 
       Metadata attached to each new session.
@@ -10192,6 +11844,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
     - `vault_ids: optional array of string or null`
 
       The IDs of vaults made available to each new session.
+
+      `minItems: 0`, `maxItems: 16384`
 
   - `ExistingSession object { instructions, session_id, type }`
 
@@ -10201,9 +11855,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
       Instructions delivered as an automation notification.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `session_id: string`
 
       The session receiving each invocation.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "existing_session"`
 
@@ -10221,9 +11879,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     The automation ID.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `created_by: AutomationCreatedBy`
 
@@ -10243,9 +11905,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         The creator session, which is also the automation's target.
 
+        `minLength: 0`
+
       - `tool_call_id: string`
 
         The tool call that created the automation.
+
+        `minLength: 0`
 
       - `type: "agent"`
 
@@ -10261,6 +11927,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     The automation's display name.
 
+    `minLength: 0`
+
   - `object: "agent.automation"`
 
     Always `agent.automation`.
@@ -10270,6 +11938,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
   - `run_at: number`
 
     The Unix timestamp, in seconds, of the scheduled occurrence.
+
+    `format: int64`
 
   - `status: "active" or "paused" or "completed"`
 
@@ -10295,9 +11965,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Custom instructions, or null when absent.
 
+          `minLength: 0`
+
         - `model: string`
 
           The requested model name.
+
+          `minLength: 0`
 
         - `multi_agent: MultiAgentConfig`
 
@@ -10310,6 +11984,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `max_concurrent_subagents: number or null`
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+            `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
         - `reasoning: AgentReasoning`
 
@@ -10411,6 +12087,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Configured tools, excluding confidential credentials.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `Function object { defer_loading, description, name, 2 more }`
 
             A function defined by the application.
@@ -10423,9 +12101,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A description of what the function does.
 
+              `minLength: 0`
+
             - `name: string`
 
               The name of the function.
+
+              `minLength: 0`
 
             - `parameters: map[unknown]`
 
@@ -10459,6 +12141,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The MCP tools the agent may call.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `connection_origin: "service" or "environment"`
 
               Where outbound MCP HTTP connections originate.
@@ -10470,6 +12154,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `credential_id: string or null`
 
               The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+              `minLength: 0`
 
             - `request_metadata: map[unknown]`
 
@@ -10483,6 +12169,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A label used to identify the MCP server in tool calls.
 
+              `minLength: 0`
+
             - `transport: McpTransport`
 
               The transport used to connect to the MCP server.
@@ -10494,6 +12182,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 - `server_url: string`
 
                   The URL of the MCP server.
+
+                  `minLength: 0`
 
                 - `type: "http"`
 
@@ -10509,17 +12199,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   Arguments passed to the MCP server command.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                 - `command: string`
 
                   The command used to start the MCP server.
+
+                  `minLength: 0`
 
                 - `cwd: string`
 
                   The working directory used to start the MCP server.
 
+                  `minLength: 0`
+
                 - `env_vars: array of string`
 
                   Environment variable names inherited from the execution environment.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                 - `type: "stdio"`
 
@@ -10541,6 +12239,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Allowed search domains, or `null` when the search is unrestricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `context_size: "low" or "medium" or "high"`
 
               The amount of search context made available to the model. Defaults to `medium`.
@@ -10559,17 +12259,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The city name.
 
+                `minLength: 0`
+
               - `country: string or null`
 
                 The two-letter ISO country code, such as `US`.
+
+                `minLength: 0`
 
               - `region: string or null`
 
                 The region or state name.
 
+                `minLength: 0`
+
               - `timezone: string or null`
 
                 The IANA timezone, such as `America/Los_Angeles`.
+
+                `minLength: 0`
 
             - `mode: "disabled" or "cached" or "live"`
 
@@ -10611,9 +12319,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               - `"automations"`
 
+        - `compaction: optional object { async }`
+
+          The effective context compaction settings.
+
+          - `async: boolean`
+
+            Whether context is compacted in the background. Defaults to true.
+
       - `agent_id: string or null`
 
         The saved agent reference, or null when an inline agent is configured.
+
+        `minLength: 0`
 
       - `environment: AutomationEnvironment`
 
@@ -10634,6 +12352,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `capability_directories: array of string or null`
 
             Directory overrides, or null to inherit the template or creation default.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `container_size: "small" or "medium" or "large" or null`
 
@@ -10657,13 +12377,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             An existing environment reference, or null when provisioning a new environment.
 
+            `minLength: 0`
+
           - `environment_template_id: string or null`
 
             A template reference, or null when no template is selected.
 
+            `minLength: 0`
+
           - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
             File overrides, excluding contents, or null to inherit.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `FileID object { file_id, path, type }`
 
@@ -10673,9 +12399,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The ID of the uploaded file.
 
+                `minLength: 0`
+
               - `path: string`
 
                 The file's absolute path inside the environment.
+
+                `minLength: 0`
 
               - `type: "file_id"`
 
@@ -10691,9 +12421,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The file's absolute path inside the environment.
 
+                `minLength: 0`
+
               - `size_bytes: number`
 
                 The decoded size of the inline file in bytes.
+
+                `format: int64`, `minimum: 0`
 
               - `type: "inline"`
 
@@ -10725,6 +12459,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Domains the environment may access when network access is restricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
           - `packages: object { npm, python, system }  or null`
 
             Package overrides, or null to inherit the template or creation default.
@@ -10733,25 +12469,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               npm packages installed globally in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
             - `python: array of string`
 
               Python packages installed in the environment.
+
+              `minItems: 0`, `maxItems: 16384`
 
             - `system: array of string`
 
               System packages installed in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
           - `plugins: array of HostedPlugin or null`
 
             Plugin overrides, excluding archive contents, or null to inherit.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `description: string`
 
               The installed plugin description.
 
+              `minLength: 0`
+
             - `name: string`
 
               The installed plugin name.
+
+              `minLength: 0`
 
             - `type: "inline"`
 
@@ -10763,6 +12511,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Skill overrides, excluding archive contents, or null to inherit.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `SkillReference object { skill_id, type, version }`
 
               A skill resolved afresh from the Skills API whenever a session starts.
@@ -10770,6 +12520,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `skill_id: string`
 
                 The referenced skill ID.
+
+                `minLength: 0`
 
               - `type: "skill_reference"`
 
@@ -10781,6 +12533,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The requested version selector, including `latest`.
 
+                `minLength: 0`
+
             - `Inline object { description, name, type }`
 
               Safe metadata for an inline skill archive.
@@ -10789,9 +12543,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The skill description declared in `SKILL.md`.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The skill name declared in `SKILL.md`.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -10811,9 +12569,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Directories that expose capabilities to the agent.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `environment_id: string or null`
 
             An existing registration, or null to create a session-owned environment.
+
+            `minLength: 0`
 
           - `type: "self_hosted"`
 
@@ -10825,13 +12587,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             The absolute project directory in the environment.
 
+            `minLength: 0`
+
       - `input: array of object { content, role, type }`
 
         Initial input delivered to each new session.
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `content: array of InputContent`
 
           The content of the message.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `InputText object { text, type }`
 
@@ -10840,6 +12608,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `text: string`
 
               The text supplied to the agent.
+
+              `minLength: 0`
 
             - `type: "input_text"`
 
@@ -10854,6 +12624,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `image_url: string`
 
               The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+              `minLength: 0`
 
             - `type: "input_image"`
 
@@ -10887,15 +12659,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Vaults made available to each new session.
 
+        `minItems: 0`, `maxItems: 2000`
+
     - `ExistingSession object { instructions, session_id, type }`
 
       - `instructions: string`
 
         Saved instructions delivered as an automation notification.
 
+        `minLength: 0`
+
       - `session_id: string`
 
         The session receiving each invocation.
+
+        `minLength: 0`
 
       - `type: "existing_session"`
 
@@ -10919,9 +12697,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     The automation ID.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `created_by: AutomationCreatedBy`
 
@@ -10941,9 +12723,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         The creator session, which is also the automation's target.
 
+        `minLength: 0`
+
       - `tool_call_id: string`
 
         The tool call that created the automation.
+
+        `minLength: 0`
 
       - `type: "agent"`
 
@@ -10955,6 +12741,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     The cron expression determining scheduled occurrences.
 
+    `minLength: 0`
+
   - `metadata: map[string]`
 
     Custom string key-value pairs attached to the automation.
@@ -10962,6 +12750,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
   - `name: string`
 
     The automation's display name.
+
+    `minLength: 0`
 
   - `object: "agent.automation"`
 
@@ -10991,9 +12781,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Custom instructions, or null when absent.
 
+          `minLength: 0`
+
         - `model: string`
 
           The requested model name.
+
+          `minLength: 0`
 
         - `multi_agent: MultiAgentConfig`
 
@@ -11006,6 +12800,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `max_concurrent_subagents: number or null`
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+            `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
         - `reasoning: AgentReasoning`
 
@@ -11107,6 +12903,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           Configured tools, excluding confidential credentials.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `Function object { defer_loading, description, name, 2 more }`
 
             A function defined by the application.
@@ -11119,9 +12917,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A description of what the function does.
 
+              `minLength: 0`
+
             - `name: string`
 
               The name of the function.
+
+              `minLength: 0`
 
             - `parameters: map[unknown]`
 
@@ -11155,6 +12957,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               The MCP tools the agent may call.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `connection_origin: "service" or "environment"`
 
               Where outbound MCP HTTP connections originate.
@@ -11166,6 +12970,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `credential_id: string or null`
 
               The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+              `minLength: 0`
 
             - `request_metadata: map[unknown]`
 
@@ -11179,6 +12985,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               A label used to identify the MCP server in tool calls.
 
+              `minLength: 0`
+
             - `transport: McpTransport`
 
               The transport used to connect to the MCP server.
@@ -11190,6 +12998,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 - `server_url: string`
 
                   The URL of the MCP server.
+
+                  `minLength: 0`
 
                 - `type: "http"`
 
@@ -11205,17 +13015,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   Arguments passed to the MCP server command.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                 - `command: string`
 
                   The command used to start the MCP server.
+
+                  `minLength: 0`
 
                 - `cwd: string`
 
                   The working directory used to start the MCP server.
 
+                  `minLength: 0`
+
                 - `env_vars: array of string`
 
                   Environment variable names inherited from the execution environment.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                 - `type: "stdio"`
 
@@ -11237,6 +13055,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Allowed search domains, or `null` when the search is unrestricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `context_size: "low" or "medium" or "high"`
 
               The amount of search context made available to the model. Defaults to `medium`.
@@ -11255,17 +13075,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The city name.
 
+                `minLength: 0`
+
               - `country: string or null`
 
                 The two-letter ISO country code, such as `US`.
+
+                `minLength: 0`
 
               - `region: string or null`
 
                 The region or state name.
 
+                `minLength: 0`
+
               - `timezone: string or null`
 
                 The IANA timezone, such as `America/Los_Angeles`.
+
+                `minLength: 0`
 
             - `mode: "disabled" or "cached" or "live"`
 
@@ -11307,9 +13135,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               - `"automations"`
 
+        - `compaction: optional object { async }`
+
+          The effective context compaction settings.
+
+          - `async: boolean`
+
+            Whether context is compacted in the background. Defaults to true.
+
       - `agent_id: string or null`
 
         The saved agent reference, or null when an inline agent is configured.
+
+        `minLength: 0`
 
       - `environment: AutomationEnvironment`
 
@@ -11330,6 +13168,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           - `capability_directories: array of string or null`
 
             Directory overrides, or null to inherit the template or creation default.
+
+            `minItems: 0`, `maxItems: 2000`
 
           - `container_size: "small" or "medium" or "large" or null`
 
@@ -11353,13 +13193,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             An existing environment reference, or null when provisioning a new environment.
 
+            `minLength: 0`
+
           - `environment_template_id: string or null`
 
             A template reference, or null when no template is selected.
 
+            `minLength: 0`
+
           - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
             File overrides, excluding contents, or null to inherit.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `FileID object { file_id, path, type }`
 
@@ -11369,9 +13215,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The ID of the uploaded file.
 
+                `minLength: 0`
+
               - `path: string`
 
                 The file's absolute path inside the environment.
+
+                `minLength: 0`
 
               - `type: "file_id"`
 
@@ -11387,9 +13237,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The file's absolute path inside the environment.
 
+                `minLength: 0`
+
               - `size_bytes: number`
 
                 The decoded size of the inline file in bytes.
+
+                `format: int64`, `minimum: 0`
 
               - `type: "inline"`
 
@@ -11421,6 +13275,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               Domains the environment may access when network access is restricted.
 
+              `minItems: 0`, `maxItems: 2000`
+
           - `packages: object { npm, python, system }  or null`
 
             Package overrides, or null to inherit the template or creation default.
@@ -11429,25 +13285,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
               npm packages installed globally in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
             - `python: array of string`
 
               Python packages installed in the environment.
+
+              `minItems: 0`, `maxItems: 16384`
 
             - `system: array of string`
 
               System packages installed in the environment.
 
+              `minItems: 0`, `maxItems: 16384`
+
           - `plugins: array of HostedPlugin or null`
 
             Plugin overrides, excluding archive contents, or null to inherit.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `description: string`
 
               The installed plugin description.
 
+              `minLength: 0`
+
             - `name: string`
 
               The installed plugin name.
+
+              `minLength: 0`
 
             - `type: "inline"`
 
@@ -11459,6 +13327,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Skill overrides, excluding archive contents, or null to inherit.
 
+            `minItems: 0`, `maxItems: 2000`
+
             - `SkillReference object { skill_id, type, version }`
 
               A skill resolved afresh from the Skills API whenever a session starts.
@@ -11466,6 +13336,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               - `skill_id: string`
 
                 The referenced skill ID.
+
+                `minLength: 0`
 
               - `type: "skill_reference"`
 
@@ -11477,6 +13349,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The requested version selector, including `latest`.
 
+                `minLength: 0`
+
             - `Inline object { description, name, type }`
 
               Safe metadata for an inline skill archive.
@@ -11485,9 +13359,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                 The skill description declared in `SKILL.md`.
 
+                `minLength: 0`
+
               - `name: string`
 
                 The skill name declared in `SKILL.md`.
+
+                `minLength: 0`
 
               - `type: "inline"`
 
@@ -11507,9 +13385,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             Directories that expose capabilities to the agent.
 
+            `minItems: 0`, `maxItems: 2000`
+
           - `environment_id: string or null`
 
             An existing registration, or null to create a session-owned environment.
+
+            `minLength: 0`
 
           - `type: "self_hosted"`
 
@@ -11521,13 +13403,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             The absolute project directory in the environment.
 
+            `minLength: 0`
+
       - `input: array of object { content, role, type }`
 
         Initial input delivered to each new session.
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `content: array of InputContent`
 
           The content of the message.
+
+          `minItems: 0`, `maxItems: 2000`
 
           - `InputText object { text, type }`
 
@@ -11536,6 +13424,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `text: string`
 
               The text supplied to the agent.
+
+              `minLength: 0`
 
             - `type: "input_text"`
 
@@ -11550,6 +13440,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             - `image_url: string`
 
               The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+              `minLength: 0`
 
             - `type: "input_image"`
 
@@ -11583,15 +13475,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         Vaults made available to each new session.
 
+        `minItems: 0`, `maxItems: 2000`
+
     - `ExistingSession object { instructions, session_id, type }`
 
       - `instructions: string`
 
         Saved instructions delivered as an automation notification.
 
+        `minLength: 0`
+
       - `session_id: string`
 
         The session receiving each invocation.
+
+        `minLength: 0`
 
       - `type: "existing_session"`
 
@@ -11602,6 +13500,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
   - `timezone: string`
 
     The timezone used to interpret the expression.
+
+    `minLength: 0`
 
   - `type: "periodic"`
 
@@ -11621,6 +13521,8 @@ Queues a manual delivery without changing the saved schedule.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AutomationInvocation object { id, automation_id, created_at, 7 more }`
@@ -11631,13 +13533,19 @@ Queues a manual delivery without changing the saved schedule.
 
     The invocation ID.
 
+    `minLength: 0`
+
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -11647,9 +13555,13 @@ Queues a manual delivery without changing the saved schedule.
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -11661,9 +13573,13 @@ Queues a manual delivery without changing the saved schedule.
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -11697,9 +13613,13 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -11719,9 +13639,13 @@ Queues a manual delivery without changing the saved schedule.
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -11733,6 +13657,8 @@ Queues a manual delivery without changing the saved schedule.
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -11740,6 +13666,8 @@ Queues a manual delivery without changing the saved schedule.
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -11769,9 +13697,13 @@ Queues a manual delivery without changing the saved schedule.
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -11784,6 +13716,8 @@ Queues a manual delivery without changing the saved schedule.
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -11885,6 +13819,8 @@ Queues a manual delivery without changing the saved schedule.
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -11897,9 +13833,13 @@ Queues a manual delivery without changing the saved schedule.
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -11933,6 +13873,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -11944,6 +13886,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -11957,6 +13901,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -11968,6 +13914,8 @@ Queues a manual delivery without changing the saved schedule.
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -11983,17 +13931,25 @@ Queues a manual delivery without changing the saved schedule.
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -12015,6 +13971,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -12033,17 +13991,25 @@ Queues a manual delivery without changing the saved schedule.
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -12085,9 +14051,19 @@ Queues a manual delivery without changing the saved schedule.
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -12108,6 +14084,8 @@ Queues a manual delivery without changing the saved schedule.
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -12131,13 +14109,19 @@ Queues a manual delivery without changing the saved schedule.
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -12147,9 +14131,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -12165,9 +14153,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -12199,6 +14191,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -12207,25 +14201,37 @@ Queues a manual delivery without changing the saved schedule.
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -12237,6 +14243,8 @@ Queues a manual delivery without changing the saved schedule.
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -12244,6 +14252,8 @@ Queues a manual delivery without changing the saved schedule.
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -12255,6 +14265,8 @@ Queues a manual delivery without changing the saved schedule.
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -12263,9 +14275,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -12285,9 +14301,13 @@ Queues a manual delivery without changing the saved schedule.
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -12299,13 +14319,19 @@ Queues a manual delivery without changing the saved schedule.
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -12314,6 +14340,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -12328,6 +14356,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -12361,15 +14391,21 @@ Queues a manual delivery without changing the saved schedule.
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -12380,6 +14416,8 @@ Queues a manual delivery without changing the saved schedule.
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -12395,9 +14433,13 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -12411,6 +14453,8 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -12420,6 +14464,8 @@ Queues a manual delivery without changing the saved schedule.
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 
@@ -12500,15 +14546,21 @@ Lists delivery records for a project-owned automation.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `after: optional string`
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -12528,17 +14580,25 @@ Lists delivery records for a project-owned automation.
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The invocation ID.
+
+    `minLength: 0`
 
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -12548,9 +14608,13 @@ Lists delivery records for a project-owned automation.
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -12562,9 +14626,13 @@ Lists delivery records for a project-owned automation.
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -12598,9 +14666,13 @@ Lists delivery records for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -12620,9 +14692,13 @@ Lists delivery records for a project-owned automation.
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -12634,6 +14710,8 @@ Lists delivery records for a project-owned automation.
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -12641,6 +14719,8 @@ Lists delivery records for a project-owned automation.
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -12670,9 +14750,13 @@ Lists delivery records for a project-owned automation.
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -12685,6 +14769,8 @@ Lists delivery records for a project-owned automation.
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -12786,6 +14872,8 @@ Lists delivery records for a project-owned automation.
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -12798,9 +14886,13 @@ Lists delivery records for a project-owned automation.
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -12834,6 +14926,8 @@ Lists delivery records for a project-owned automation.
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -12845,6 +14939,8 @@ Lists delivery records for a project-owned automation.
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -12858,6 +14954,8 @@ Lists delivery records for a project-owned automation.
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -12869,6 +14967,8 @@ Lists delivery records for a project-owned automation.
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -12884,17 +14984,25 @@ Lists delivery records for a project-owned automation.
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -12916,6 +15024,8 @@ Lists delivery records for a project-owned automation.
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -12934,17 +15044,25 @@ Lists delivery records for a project-owned automation.
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -12986,9 +15104,19 @@ Lists delivery records for a project-owned automation.
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -13009,6 +15137,8 @@ Lists delivery records for a project-owned automation.
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -13032,13 +15162,19 @@ Lists delivery records for a project-owned automation.
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -13048,9 +15184,13 @@ Lists delivery records for a project-owned automation.
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -13066,9 +15206,13 @@ Lists delivery records for a project-owned automation.
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -13100,6 +15244,8 @@ Lists delivery records for a project-owned automation.
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -13108,25 +15254,37 @@ Lists delivery records for a project-owned automation.
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -13138,6 +15296,8 @@ Lists delivery records for a project-owned automation.
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -13145,6 +15305,8 @@ Lists delivery records for a project-owned automation.
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -13156,6 +15318,8 @@ Lists delivery records for a project-owned automation.
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -13164,9 +15328,13 @@ Lists delivery records for a project-owned automation.
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -13186,9 +15354,13 @@ Lists delivery records for a project-owned automation.
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -13200,13 +15372,19 @@ Lists delivery records for a project-owned automation.
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -13215,6 +15393,8 @@ Lists delivery records for a project-owned automation.
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -13229,6 +15409,8 @@ Lists delivery records for a project-owned automation.
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -13262,15 +15444,21 @@ Lists delivery records for a project-owned automation.
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -13281,6 +15469,8 @@ Lists delivery records for a project-owned automation.
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -13296,9 +15486,13 @@ Lists delivery records for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -13312,6 +15506,8 @@ Lists delivery records for a project-owned automation.
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -13321,6 +15517,8 @@ Lists delivery records for a project-owned automation.
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 
@@ -13364,6 +15562,8 @@ Lists delivery records for a project-owned automation.
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -13371,6 +15571,8 @@ Lists delivery records for a project-owned automation.
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 
@@ -13426,7 +15628,11 @@ Retrieves a delivery record for a project-owned automation.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `invocation_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -13438,13 +15644,19 @@ Retrieves a delivery record for a project-owned automation.
 
     The invocation ID.
 
+    `minLength: 0`
+
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -13454,9 +15666,13 @@ Retrieves a delivery record for a project-owned automation.
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -13468,9 +15684,13 @@ Retrieves a delivery record for a project-owned automation.
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -13504,9 +15724,13 @@ Retrieves a delivery record for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -13526,9 +15750,13 @@ Retrieves a delivery record for a project-owned automation.
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -13540,6 +15768,8 @@ Retrieves a delivery record for a project-owned automation.
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -13547,6 +15777,8 @@ Retrieves a delivery record for a project-owned automation.
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -13576,9 +15808,13 @@ Retrieves a delivery record for a project-owned automation.
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -13591,6 +15827,8 @@ Retrieves a delivery record for a project-owned automation.
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -13692,6 +15930,8 @@ Retrieves a delivery record for a project-owned automation.
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -13704,9 +15944,13 @@ Retrieves a delivery record for a project-owned automation.
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -13740,6 +15984,8 @@ Retrieves a delivery record for a project-owned automation.
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -13751,6 +15997,8 @@ Retrieves a delivery record for a project-owned automation.
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -13764,6 +16012,8 @@ Retrieves a delivery record for a project-owned automation.
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -13775,6 +16025,8 @@ Retrieves a delivery record for a project-owned automation.
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -13790,17 +16042,25 @@ Retrieves a delivery record for a project-owned automation.
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -13822,6 +16082,8 @@ Retrieves a delivery record for a project-owned automation.
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -13840,17 +16102,25 @@ Retrieves a delivery record for a project-owned automation.
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -13892,9 +16162,19 @@ Retrieves a delivery record for a project-owned automation.
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -13915,6 +16195,8 @@ Retrieves a delivery record for a project-owned automation.
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -13938,13 +16220,19 @@ Retrieves a delivery record for a project-owned automation.
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -13954,9 +16242,13 @@ Retrieves a delivery record for a project-owned automation.
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -13972,9 +16264,13 @@ Retrieves a delivery record for a project-owned automation.
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -14006,6 +16302,8 @@ Retrieves a delivery record for a project-owned automation.
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -14014,25 +16312,37 @@ Retrieves a delivery record for a project-owned automation.
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -14044,6 +16354,8 @@ Retrieves a delivery record for a project-owned automation.
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -14051,6 +16363,8 @@ Retrieves a delivery record for a project-owned automation.
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -14062,6 +16376,8 @@ Retrieves a delivery record for a project-owned automation.
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -14070,9 +16386,13 @@ Retrieves a delivery record for a project-owned automation.
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -14092,9 +16412,13 @@ Retrieves a delivery record for a project-owned automation.
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -14106,13 +16430,19 @@ Retrieves a delivery record for a project-owned automation.
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -14121,6 +16451,8 @@ Retrieves a delivery record for a project-owned automation.
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -14135,6 +16467,8 @@ Retrieves a delivery record for a project-owned automation.
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -14168,15 +16502,21 @@ Retrieves a delivery record for a project-owned automation.
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -14187,6 +16527,8 @@ Retrieves a delivery record for a project-owned automation.
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -14202,9 +16544,13 @@ Retrieves a delivery record for a project-owned automation.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -14218,6 +16564,8 @@ Retrieves a delivery record for a project-owned automation.
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -14227,6 +16575,8 @@ Retrieves a delivery record for a project-owned automation.
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 
@@ -14308,13 +16658,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
     The invocation ID.
 
+    `minLength: 0`
+
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -14324,9 +16680,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -14338,9 +16698,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -14374,9 +16738,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -14396,9 +16764,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -14410,6 +16782,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -14417,6 +16791,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -14446,9 +16822,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -14461,6 +16841,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -14562,6 +16944,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -14574,9 +16958,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -14610,6 +16998,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -14621,6 +17011,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -14634,6 +17026,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -14645,6 +17039,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -14660,17 +17056,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -14692,6 +17096,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -14710,17 +17116,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -14762,9 +17176,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -14785,6 +17209,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -14808,13 +17234,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -14824,9 +17256,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -14842,9 +17278,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -14876,6 +17316,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -14884,25 +17326,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -14914,6 +17368,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -14921,6 +17377,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -14932,6 +17390,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -14940,9 +17400,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -14962,9 +17426,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -14976,13 +17444,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -14991,6 +17465,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -15005,6 +17481,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -15038,15 +17516,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -15057,6 +17541,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -15072,9 +17558,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -15088,6 +17578,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -15097,6 +17589,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 
@@ -15162,9 +17656,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           The automation ID.
 
+          `minLength: 0`
+
         - `created_at: number`
 
           The creation time as a Unix timestamp in seconds.
+
+          `format: int64`
 
         - `created_by: AutomationCreatedBy`
 
@@ -15184,9 +17682,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               The creator session, which is also the automation's target.
 
+              `minLength: 0`
+
             - `tool_call_id: string`
 
               The tool call that created the automation.
+
+              `minLength: 0`
 
             - `type: "agent"`
 
@@ -15198,6 +17700,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           The cron expression determining scheduled occurrences.
 
+          `minLength: 0`
+
         - `metadata: map[string]`
 
           Custom string key-value pairs attached to the automation.
@@ -15205,6 +17709,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
         - `name: string`
 
           The automation's display name.
+
+          `minLength: 0`
 
         - `object: "agent.automation"`
 
@@ -15234,9 +17740,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 Custom instructions, or null when absent.
 
+                `minLength: 0`
+
               - `model: string`
 
                 The requested model name.
+
+                `minLength: 0`
 
               - `multi_agent: MultiAgentConfig`
 
@@ -15249,6 +17759,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                 - `max_concurrent_subagents: number or null`
 
                   Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                  `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
               - `reasoning: AgentReasoning`
 
@@ -15350,6 +17862,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 Configured tools, excluding confidential credentials.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `Function object { defer_loading, description, name, 2 more }`
 
                   A function defined by the application.
@@ -15362,9 +17876,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     A description of what the function does.
 
+                    `minLength: 0`
+
                   - `name: string`
 
                     The name of the function.
+
+                    `minLength: 0`
 
                   - `parameters: map[unknown]`
 
@@ -15398,6 +17916,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     The MCP tools the agent may call.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `connection_origin: "service" or "environment"`
 
                     Where outbound MCP HTTP connections originate.
@@ -15409,6 +17929,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                   - `credential_id: string or null`
 
                     The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                    `minLength: 0`
 
                   - `request_metadata: map[unknown]`
 
@@ -15422,6 +17944,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     A label used to identify the MCP server in tool calls.
 
+                    `minLength: 0`
+
                   - `transport: McpTransport`
 
                     The transport used to connect to the MCP server.
@@ -15433,6 +17957,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                       - `server_url: string`
 
                         The URL of the MCP server.
+
+                        `minLength: 0`
 
                       - `type: "http"`
 
@@ -15448,17 +17974,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                         Arguments passed to the MCP server command.
 
+                        `minItems: 0`, `maxItems: 2000`
+
                       - `command: string`
 
                         The command used to start the MCP server.
+
+                        `minLength: 0`
 
                       - `cwd: string`
 
                         The working directory used to start the MCP server.
 
+                        `minLength: 0`
+
                       - `env_vars: array of string`
 
                         Environment variable names inherited from the execution environment.
+
+                        `minItems: 0`, `maxItems: 2000`
 
                       - `type: "stdio"`
 
@@ -15480,6 +18014,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Allowed search domains, or `null` when the search is unrestricted.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `context_size: "low" or "medium" or "high"`
 
                     The amount of search context made available to the model. Defaults to `medium`.
@@ -15498,17 +18034,25 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The city name.
 
+                      `minLength: 0`
+
                     - `country: string or null`
 
                       The two-letter ISO country code, such as `US`.
+
+                      `minLength: 0`
 
                     - `region: string or null`
 
                       The region or state name.
 
+                      `minLength: 0`
+
                     - `timezone: string or null`
 
                       The IANA timezone, such as `America/Los_Angeles`.
+
+                      `minLength: 0`
 
                   - `mode: "disabled" or "cached" or "live"`
 
@@ -15550,9 +18094,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     - `"automations"`
 
+              - `compaction: optional object { async }`
+
+                The effective context compaction settings.
+
+                - `async: boolean`
+
+                  Whether context is compacted in the background. Defaults to true.
+
             - `agent_id: string or null`
 
               The saved agent reference, or null when an inline agent is configured.
+
+              `minLength: 0`
 
             - `environment: AutomationEnvironment`
 
@@ -15573,6 +18127,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                 - `capability_directories: array of string or null`
 
                   Directory overrides, or null to inherit the template or creation default.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                 - `container_size: "small" or "medium" or "large" or null`
 
@@ -15596,13 +18152,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   An existing environment reference, or null when provisioning a new environment.
 
+                  `minLength: 0`
+
                 - `environment_template_id: string or null`
 
                   A template reference, or null when no template is selected.
 
+                  `minLength: 0`
+
                 - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                   File overrides, excluding contents, or null to inherit.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `FileID object { file_id, path, type }`
 
@@ -15612,9 +18174,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The ID of the uploaded file.
 
+                      `minLength: 0`
+
                     - `path: string`
 
                       The file's absolute path inside the environment.
+
+                      `minLength: 0`
 
                     - `type: "file_id"`
 
@@ -15630,9 +18196,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The file's absolute path inside the environment.
 
+                      `minLength: 0`
+
                     - `size_bytes: number`
 
                       The decoded size of the inline file in bytes.
+
+                      `format: int64`, `minimum: 0`
 
                     - `type: "inline"`
 
@@ -15664,6 +18234,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     Domains the environment may access when network access is restricted.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                 - `packages: object { npm, python, system }  or null`
 
                   Package overrides, or null to inherit the template or creation default.
@@ -15672,25 +18244,37 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                     npm packages installed globally in the environment.
 
+                    `minItems: 0`, `maxItems: 16384`
+
                   - `python: array of string`
 
                     Python packages installed in the environment.
+
+                    `minItems: 0`, `maxItems: 16384`
 
                   - `system: array of string`
 
                     System packages installed in the environment.
 
+                    `minItems: 0`, `maxItems: 16384`
+
                 - `plugins: array of HostedPlugin or null`
 
                   Plugin overrides, excluding archive contents, or null to inherit.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `description: string`
 
                     The installed plugin description.
 
+                    `minLength: 0`
+
                   - `name: string`
 
                     The installed plugin name.
+
+                    `minLength: 0`
 
                   - `type: "inline"`
 
@@ -15702,6 +18286,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Skill overrides, excluding archive contents, or null to inherit.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     A skill resolved afresh from the Skills API whenever a session starts.
@@ -15709,6 +18295,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                     - `skill_id: string`
 
                       The referenced skill ID.
+
+                      `minLength: 0`
 
                     - `type: "skill_reference"`
 
@@ -15720,6 +18308,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The requested version selector, including `latest`.
 
+                      `minLength: 0`
+
                   - `Inline object { description, name, type }`
 
                     Safe metadata for an inline skill archive.
@@ -15728,9 +18318,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                       The skill description declared in `SKILL.md`.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The skill name declared in `SKILL.md`.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -15750,9 +18344,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   Directories that expose capabilities to the agent.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                 - `environment_id: string or null`
 
                   An existing registration, or null to create a session-owned environment.
+
+                  `minLength: 0`
 
                 - `type: "self_hosted"`
 
@@ -15764,13 +18362,19 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   The absolute project directory in the environment.
 
+                  `minLength: 0`
+
             - `input: array of object { content, role, type }`
 
               Initial input delivered to each new session.
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `content: array of InputContent`
 
                 The content of the message.
+
+                `minItems: 0`, `maxItems: 2000`
 
                 - `InputText object { text, type }`
 
@@ -15779,6 +18383,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                   - `text: string`
 
                     The text supplied to the agent.
+
+                    `minLength: 0`
 
                   - `type: "input_text"`
 
@@ -15793,6 +18399,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                   - `image_url: string`
 
                     The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                    `minLength: 0`
 
                   - `type: "input_image"`
 
@@ -15826,15 +18434,21 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
               Vaults made available to each new session.
 
+              `minItems: 0`, `maxItems: 2000`
+
           - `ExistingSession object { instructions, session_id, type }`
 
             - `instructions: string`
 
               Saved instructions delivered as an automation notification.
 
+              `minLength: 0`
+
             - `session_id: string`
 
               The session receiving each invocation.
+
+              `minLength: 0`
 
             - `type: "existing_session"`
 
@@ -15845,6 +18459,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
         - `timezone: string`
 
           The timezone used to interpret the expression.
+
+          `minLength: 0`
 
         - `type: "periodic"`
 
@@ -15860,9 +18476,13 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           The automation ID.
 
+          `minLength: 0`
+
         - `created_at: number`
 
           The creation time as a Unix timestamp in seconds.
+
+          `format: int64`
 
         - `created_by: AutomationCreatedBy`
 
@@ -15876,6 +18496,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
           The automation's display name.
 
+          `minLength: 0`
+
         - `object: "agent.automation"`
 
           Always `agent.automation`.
@@ -15885,6 +18507,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
         - `run_at: number`
 
           The Unix timestamp, in seconds, of the scheduled occurrence.
+
+          `format: int64`
 
         - `status: "active" or "paused" or "completed"`
 

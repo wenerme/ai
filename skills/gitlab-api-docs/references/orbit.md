@@ -1,27 +1,67 @@
 # Orbit API
 
-REST API to run queries, retrieve schemas, and check cluster health for Orbit.
+REST API to run queries, search entities, and retrieve context and skills for Orbit.
 
 - Tier: Premium, Ultimate
-- Offering: GitLab.com
-- Status: Beta
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19744) as an [experiment](../policy/development_stages_support.md) in GitLab 18.10 [with a feature flag](../administration/feature_flags/_index.md) named `knowledge_graph`. Disabled by default.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237959) from experiment to beta in GitLab 19.1.
 - [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245620) in GitLab 19.3.
-- [GQL mode introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256465) in GitLab 19.4 with a feature flag named `orbit_gql_queries`. Disabled by default.
+- GQL mode [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256465) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `orbit_gql_queries`. Disabled by default.
 - Feature flag `knowledge_graph` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259054) in GitLab 19.5.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259054) in GitLab 19.5.
 - GQL mode [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265010) in GitLab 19.6.
 - Feature flag `orbit_gql_queries` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261947) in GitLab 19.6. GQL is the only query language.
 
-Use this API to run queries, retrieve schemas, and check cluster health for
-[Orbit](https://gitlab.com/gitlab-org/orbit/knowledge-graph).
+Use this API to run queries and named queries, search for entities, and retrieve
+entity context and skills for [Orbit](https://docs.gitlab.com/orbit/).
 
-## Search for graph entities
+## Endpoint reference
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256404) as an [experiment](../policy/development_stages_support.md) in GitLab 19.4.
+For the paths, parameters, and responses of Orbit endpoints, see the
+[interactive API reference](https://api.gitlab.com/rest/#tag/orbit).
+The interactive reference does not include `GET /orbit/grep`.
 
-Searches for readable entities in a project or group and returns Orbit entity tokens.
+## Rate limits
+
+The Orbit query rate limit allows 60 requests per minute for each user by default.
+Administrators can [change the limit and exclude users](../integration/orbit.md#configure-orbit-rate-limits).
+
+These requests count toward the limit:
+
+- `GET /orbit/grep`
+- `POST /orbit/context`
+- `POST /orbit/query`
+- `POST /orbit/query/:name`
+- `GET /orbit/skills`, `GET /orbit/skills/:name`, and `GET /orbit/skills/:name/*path`, including `HEAD` requests
+- The `query_graph` command on the MCP endpoint `POST /orbit/mcp`
+
+When you exceed the limit, the endpoint returns `429 Too Many Requests` with a `Retry-After` header.
+
+## Endpoint status
+
+Each endpoint has its own status. [Experiment](../policy/development_stages_support.md#experiment)
+endpoints can change or be removed without notice.
+
+| Endpoint | Status |
+|----------|--------|
+| `POST /orbit/query` | Generally available |
+| `POST /orbit/query/:name` | Generally available |
+| `GET /orbit/skills` | Generally available |
+| `GET /orbit/skills/:name` | Generally available |
+| `GET /orbit/skills/:name/*path` | Generally available |
+| `GET /orbit/grep` | Experiment |
+| `POST /orbit/context` | Experiment |
+
+## List all graph entities that match a search
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256404) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
+
+Lists all graph entities that match a search.
+The endpoint searches for readable entities in a project or group and returns Orbit entity tokens.
 Results use GitLab search, and might be available before the graph indexes the entities.
 The endpoint selects Zoekt, Advanced Search, or Basic search independently for each scope.
 Every selected scope appears in `scopes` with a `status`, so you can tell an empty scope from one that was skipped, unavailable, or failed.
@@ -31,11 +71,21 @@ Without a Reporter membership in any Orbit-enabled top-level group, such as a pr
 Otherwise, a target outside your Orbit-enabled top-level groups returns `404 Not Found`.
 Where the instance license covers Orbit, administrators in Admin Mode and auditors only need Orbit turned on for the target's top-level group.
 On GitLab.com, they still need the usual Orbit entitlement, like the other Orbit endpoints: a Reporter membership in an entitled top-level group.
-A search that GitLab search treats as abusive, such as a stop word or a term that is too short or too long, returns `400 Bad Request`.
-The endpoint counts toward the Orbit query rate limit. It also counts once toward the [search rate limit](../administration/instance_limits.md#search-rate-limit), plus once for each further scope it searches. Once you hit that limit, the remaining scopes return `rate_limited` without searching.
+With a [fine-grained personal access token](../auth/tokens/fine_grained_access_tokens_rest.md), the token needs the
+`read_orbit` and `use_global_search` permissions.
+The endpoint returns `400 Bad Request` when:
+
+- GitLab search treats the search as abusive, for example a stop word or a term that is too short or too long.
+- `per_scope` is greater than `limit`.
+- `scopes` is empty or contains an unknown scope.
+
+The endpoint counts toward the [Orbit query rate limit](#rate-limits).
+It also counts once toward the [search rate limit](../administration/instance_limits.md#search-rate-limit), plus once for each further scope it searches.
+If you exceed the search rate limit before the search starts, the endpoint returns `429 Too Many Requests`.
+After you reach that limit during the search, the remaining scopes return `rate_limited` without searching.
 
 ```plaintext
-GET /api/v4/orbit/grep
+GET /orbit/grep
 ```
 
 Supported attributes:
@@ -43,11 +93,11 @@ Supported attributes:
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `search` | string | Yes | Search terms. Must contain between 2 and 256 bytes after leading and trailing whitespace is removed. |
-| `full_path` | string | Conditional | Full path of a project or group. Required if `namespace_id` and `project_id` are omitted. |
-| `namespace_id` | integer | Conditional | ID of a group. Required if `full_path` and `project_id` are omitted. |
-| `project_id` | integer | Conditional | ID of a project. Required if `full_path` and `namespace_id` are omitted. |
+| `full_path` | string | Conditional | Full path of a project or group. Maximum 255 characters. Required if `namespace_id` and `project_id` are omitted. |
 | `limit` | integer | No | Maximum total results. From 1 to 50. Default is 20. |
+| `namespace_id` | integer | Conditional | ID of a group. Required if `full_path` and `project_id` are omitted. |
 | `per_scope` | integer | No | Maximum results per scope. From 1 to 10 and no greater than `limit`. Default is 5. |
+| `project_id` | integer | Conditional | ID of a project. Required if `full_path` and `namespace_id` are omitted. |
 | `response_format` | string | No | Response format. One of `raw` or `llm`. Default is `raw`. |
 | `scopes` | string array | No | Scopes to search, as a comma-separated list or repeated `scopes[]` parameters. Valid values: `work_items`, `merge_requests`, `blobs`, `commits`, `notes`, `milestones`, `users`, `projects`, `groups`, and `branches`, or a node type, singular, or alias such as `MergeRequest`, `mr`, `issue`, or `comment`. Defaults to all scopes except `branches`. |
 
@@ -79,7 +129,7 @@ response attributes for `response_format=raw`:
 | `scopes[].pagination` | object | Present when `status` is `ok`. `has_more` is `true` when the scope has more results than were returned. |
 | `scopes[].reason` | object | Present when `status` is not `ok`. `code` is one of `not_available_for_search_type`, `not_available_for_target`, `search_type_error`, `invalid_search`, `search_failed`, `timeout`, `rate_limited`, or `limit_reached`. |
 | `scopes[].result_count` | integer | Number of results from the scope. Present when `status` is `ok`. |
-| `scopes[].status` | string | One of `ok`, `unavailable`, `skipped`, or `error`. `unavailable` means the search type or target doesn't support the scope, the search backend rejected the request (for example, a Zoekt project limit), or you don't have access to it. `skipped` means the total `limit` was reached first. `error` means the search failed or hit the search rate limit, and other scopes keep their results. |
+| `scopes[].status` | string | One of `ok`, `unavailable`, `skipped`, or `error`. `unavailable` means one of three things. The search type or target does not support the scope. The search backend rejected the request, for example a Zoekt project limit. You do not have access to the scope. `skipped` means the total `limit` was reached first. `error` means the search failed (`search_failed`), was not valid (`invalid_search`), timed out (`timeout`), or hit the search rate limit (`rate_limited`). Other scopes keep their results. |
 | `target` | object | Search target. |
 | `target.full_path` | string | Full path of the target. |
 | `target.id` | integer | Target ID. |
@@ -100,6 +150,7 @@ for example `example-group/example-project!42` for a merge request, `example-gro
 or `example-group/example-project@e79b2dc8c2cca1ed93c8c760dfa89b8e47ed1720` for a commit.
 Notes on merge requests and work items also have the `noteable` token, for example `MergeRequest[42]`.
 Notes on other noteables, such as snippets and designs, have only the `id`.
+Branches use a `reference` with `project_id`, `project_path`, and `name`.
 Other entities use a reference with the global database `id`.
 
 Example request:
@@ -156,11 +207,11 @@ orbit_grep version=1.2.0 target=Project[1] search="search term" scopes="merge_re
 ! skipped scope=notes reason=limit_reached
 ```
 
-## Entity context
+## Retrieve entity context
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262223) as an [experiment](../policy/development_stages_support.md) in GitLab 19.4.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262223) as an [experiment](../policy/development_stages_support.md) in GitLab 19.6.
 
 > [!warning]
 > This endpoint is an experiment. The request and response shape can change without notice.
@@ -168,21 +219,29 @@ orbit_grep version=1.2.0 target=Project[1] search="search term" scopes="merge_re
 Resolves one token to a summary of a merge request, work item, CI/CD job, CI/CD pipeline, branch, or commit.
 Optionally, it attaches the graph neighborhood of the entity.
 
-Every request that reaches token resolution counts once against the `orbit_query` rate limit.
+Every request that reaches token resolution counts once against the [`orbit_query` rate limit](#rate-limits).
 This includes summary-only requests, `not_found` results, expansion errors, and `403` responses for users
 without an Orbit-enabled group. Requests rejected with `400` do not count.
 
 With a [fine-grained personal access token](../auth/tokens/fine_grained_access_tokens_rest.md), the
-`read_orbit` permission is not enough. The token also needs `read_merge_request` or `read_work_item` on the
-project or group of the entity, `read_job` on the project for a job and for job logs, `read_pipeline` for pipelines
-and failed tests, `read_pipeline_job` for pipeline jobs, `read_branch` or `read_commit` for a branch or commit,
-`read_commit_diff` and `read_commit_merge_request` for a commit's changed files and merge requests, and `download_code`
-for the changed files of a merge request. Without them,
-the entity is returned as `not_found`. The pipeline status is `null`, and linked items you cannot read are left out of the summary.
+`read_orbit` permission is not enough. The token also needs these permissions:
+
+- `read_merge_request` or `read_work_item` on the project or group of the entity.
+- `read_job` on the project, for a job and for job logs.
+- `read_pipeline` for pipelines.
+- `read_pipeline_test_report` for failed tests.
+- `read_pipeline_job` for pipeline jobs.
+- `read_branch` or `read_commit` for a branch or commit.
+- `read_commit_diff` and `read_commit_merge_request` for the changed files and merge requests of a commit.
+- `download_code` for the changed files of a merge request.
+
+Without them, the entity is returned as `not_found`. The pipeline status is `null`, and linked items you cannot read are left out of the summary.
+Discussions need `read_merge_request_discussion` for a merge request, `read_epic_discussion` for an epic,
+and `read_issue_discussion` for other work items. Without them, `discussions` is `null`.
 The token's project scope applies to the entity summary only. The graph expansion is filtered by your own access, the same as for named queries.
 
 ```plaintext
-POST /api/v4/orbit/context
+POST /orbit/context
 ```
 
 Supported attributes:
@@ -199,8 +258,8 @@ The endpoint requires a JSON request body.
 
 Other failures:
 
-- `403 Forbidden`: Orbit is not licensed for you, or you have no Orbit-enabled group.
-- `404 Not Found`: Orbit is not available for you.
+- `403 Forbidden`: Orbit is not available for you, or you have no Orbit-enabled group.
+- `404 Not Found`: Orbit is not configured on the instance.
 - `429 Too Many Requests`: You exceeded the `orbit_query` rate limit.
 
 ### Token forms
@@ -227,17 +286,17 @@ response attributes for `response_format=raw`:
 
 | Attribute                           | Type         | Description |
 |-------------------------------------|--------------|-------------|
-| `version`                           | string       | Response contract version, `1.3.0`. |
 | `entities`                          | object array | One entry for the one token. |
-| `entities[].token`                  | string       | Token as sent. |
-| `entities[].resolved_token`         | string       | Token in `Type[id]` form, or `path@ref` for a branch or commit. Only present when `found` is `true`. |
-| `entities[].type`                   | string       | `MergeRequest`, `WorkItem`, `Job`, `Pipeline`, `Branch`, or `Commit`. `null` when `found` is `false`. |
-| `entities[].id`                     | string       | Global database ID, in the same form as the node IDs in the graph result, or the branch name or commit SHA. For `iid` and `path@ref` forms, `null` when `found` is `false`. For `Type[id]` and GID tokens, the ID that was sent. |
-| `entities[].found`                  | boolean      | Whether the entity exists and you can read it. |
-| `entities[].summary`                | object       | Summary of a found entity. Contains `namespace_path` and `project_path`. `project_path` is `null` for group work items. Other fields can be added. |
 | `entities[].error.code`             | string       | `invalid_token`, `unsupported_type`, or `not_found`. Present when `found` is `false`. |
 | `entities[].expansion`              | object       | `null` when `expand` is `false` or the token was not found. Otherwise, `{"result": ...}` or `{"error": {"code": ...}}`, plus `query`. |
 | `entities[].expansion.query`        | object       | The named query that ran or would have run: `name` and `parameters` (`node_ids` and `limit`). Absent for `expansion_unsupported_type`. |
+| `entities[].found`                  | boolean      | Whether the entity exists and you can read it. |
+| `entities[].id`                     | string       | Global database ID, in the same form as the node IDs in the graph result, or the branch name or commit SHA. For `iid` and `path@ref` forms, `null` when `found` is `false`. For `Type[id]` and GID tokens, the ID that was sent. |
+| `entities[].resolved_token`         | string       | Token in `Type[id]` form, or `path@ref` for a branch or commit. Only present when `found` is `true`. |
+| `entities[].summary`                | object       | Summary of a found entity. Contains `namespace_path` and `project_path`. `project_path` is `null` for group work items. Other fields can be added. |
+| `entities[].token`                  | string       | Token as sent. |
+| `entities[].type`                   | string       | `MergeRequest`, `WorkItem`, `Job`, `Pipeline`, `Branch`, or `Commit`. `null` when `found` is `false`. |
+| `version`                           | string       | Response contract version, `1.3.0`. |
 
 Summaries include these fields:
 
@@ -293,7 +352,7 @@ Example request:
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
-  --data '{"tokens": ["gitlab-org/gitlab#609451"], "expand": true}' \
+  --data '{"tokens": ["example-group/example-project#42"], "expand": true}' \
   --url "https://gitlab.example.com/api/v4/orbit/context"
 ```
 
@@ -301,52 +360,54 @@ Example response:
 
 ```json
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "entities": [
     {
-      "token": "gitlab-org/gitlab#609451",
-      "resolved_token": "WorkItem[196910643]",
+      "token": "example-group/example-project#42",
+      "resolved_token": "WorkItem[1042]",
       "type": "WorkItem",
-      "id": "196910643",
+      "id": "1042",
       "found": true,
       "summary": {
-        "namespace_path": "gitlab-org",
-        "project_path": "gitlab-org/gitlab",
-        "title": "Describe graph entities",
+        "namespace_path": "example-group",
+        "project_path": "example-group/example-project",
+        "title": "Add search filters",
         "state": "opened",
-        "iid": 609451,
+        "iid": 42,
         "work_item_type": "issue",
-        "web_url": "https://gitlab.example.com/gitlab-org/gitlab/-/work_items/609451",
-        "labels": ["knowledge graph"],
+        "web_url": "https://gitlab.example.com/example-group/example-project/-/work_items/42",
+        "labels": ["backend"],
         "assignees": [{"id": 7, "username": "alex_smith", "name": "Alex Smith"}],
         "milestone": null,
         "linked_merge_requests": [
           {
             "type": "MergeRequest",
-            "id": "412345",
-            "token": "MergeRequest[412345]",
+            "id": "2051",
+            "token": "MergeRequest[2051]",
             "relation": "CLOSES",
-            "iid": 1201,
-            "project_path": "gitlab-org/gitlab",
-            "title": "Add entity context"
+            "iid": 17,
+            "project_path": "example-group/example-project",
+            "title": "Add filter options to search"
           }
         ],
+        "description": "Add filters for labels and milestones to the search page.",
+        "discussions": [],
         "truncated": []
       },
       "expansion": {
         "query": {
           "name": "context_for_issue",
-          "parameters": {"node_ids": [196910643], "limit": 100}
+          "parameters": {"node_ids": [1042], "limit": 100}
         },
         "result": {
-          "format_version": "5.0.4",
+          "format_version": "6.0.0",
           "query_type": "neighbors",
           "nodes": [
-            {"type": "WorkItem", "id": "196910643", "title": "Describe graph entities"},
-            {"type": "MergeRequest", "id": "412345", "iid": 1201}
+            {"type": "WorkItem", "id": "1042", "title": "Add search filters"},
+            {"type": "MergeRequest", "id": "2051", "iid": 17}
           ],
           "edges": [
-            {"from": "MergeRequest", "from_id": "412345", "to": "WorkItem", "to_id": "196910643", "type": "CLOSES"}
+            {"from": "MergeRequest", "from_id": "2051", "to": "WorkItem", "to_id": "1042", "type": "CLOSES"}
           ],
           "pagination": {"has_more": false, "truncated": false}
         }
@@ -362,39 +423,105 @@ When a list in an entity is cut, the entity includes a `truncated=` line right a
 fields that names the incomplete lists, for example `truncated=reviewers,changed_files`.
 A failed job whose failed tests were cut has its own `truncated=failed_tests` line.
 
-## Endpoint reference
+## Run a query
 
-For the full reference of Orbit endpoints, including paths, parameters, and
-responses, see the [interactive API reference](https://api.gitlab.com/rest/#tag/orbit).
-The following sections cover query behavior and worked examples that the
-generated reference doesn't show.
+Runs a GQL query against Orbit.
 
-## Query language
+```plaintext
+POST /orbit/query
+```
 
-Queries are read-only GQL strings that follow openCypher 9 syntax.
-The JSON query DSL is no longer accepted.
-When `query` is a JSON object, `POST /orbit/query` returns `400 Bad Request`.
-Use `response_format: gql` to return query results as a plain-text table.
+Supported attributes:
+
+| Attribute         | Type   | Required | Description |
+|-------------------|--------|----------|-------------|
+| `query`           | string | Yes      | GQL query text. See the [Orbit query language](https://docs.gitlab.com/orbit/queries/query-language/). |
+| `response_format` | string | No       | One of `raw`, `llm`, or `gql`. Default is `raw`. |
+| `source_type`     | string | No       | Subtype of a request from the GitLab UI. Only `code_intelligence` has an effect. The API ignores the attribute for requests that do not come from a GitLab UI session. |
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes).
+For `response_format=raw`, the response is a JSON object with `result`, `query_type`, and `row_count`.
+It also has `raw_query_strings` when Orbit returns them.
+For `llm` and `gql`, the response is `text/plain`.
+For example queries, see [Orbit queries](https://docs.gitlab.com/orbit/queries/).
+
+### Query errors
+
+`POST /orbit/query` and `POST /orbit/query/:name` can return these errors.
+When Orbit reports a query error, the body is JSON with `code` and `message`.
+
+| Status                     | Cause |
+|----------------------------|-------|
+| `400 Bad Request`          | The request is not valid, or the query does not compile or fails validation. For a query error, `code` is `compile_error`, `validation_error`, or `invalid_request`. |
+| `401 Unauthorized`         | The request has no valid token. |
+| `402 Payment Required`     | Your Orbit credits are used up. The JSON body has `code` `quota_exhausted`, `message`, and `reason` `GITLAB_CREDITS_EXHAUSTED`. |
+| `403 Forbidden`            | Orbit is not available for you, or you have no Orbit-enabled group. |
+| `404 Not Found`            | Orbit is not configured on the instance. |
+| `422 Unprocessable Entity` | On GitLab.com, you must select a default group for Orbit billing. The JSON body has `code` `billing_namespace_required`, `message`, `deep_link` to your preferences, and `candidates`, the groups you can select. |
+| `429 Too Many Requests`    | You exceeded the [Orbit query rate limit](#rate-limits). |
+| `502 Bad Gateway`          | Orbit could not run the query, or the connection to Orbit failed. The body is JSON with `code` `execution_error` or `internal_error`, or plain text when the connection failed. |
+| `504 Gateway Timeout`      | The query did not finish in time. `code` is `timeout` when Orbit reports it. |
+
+## Run a named query
+
+Runs a named query. Orbit defines its named queries on the server, so they stay in step with the
+query language and the schema. For programmatic use, use this endpoint instead of `POST /orbit/query`.
+
+To list the named queries, use the GraphQL field [`Query.orbit.queryTemplates`](graphql/reference/objects.md#orbit).
+Each query template has a `name`, a `description`, and the GQL `query` it runs.
+Pass the `name` of a query template as `:name` in the path.
+
+```plaintext
+POST /orbit/query/:name
+```
+
+Supported attributes:
+
+| Attribute         | Type   | Required | Description |
+|-------------------|--------|----------|-------------|
+| `name`            | string | Yes      | Name of the named query. |
+| `parameters`      | hash   | No       | Parameters of the named query. Default is `{}`. |
+| `response_format` | string | No       | One of `raw`, `llm`, or `gql`. Default is `raw`. |
+| `source_type`     | string | No       | Subtype of a request from the GitLab UI. Only `code_intelligence` has an effect. The API ignores the attribute for requests that do not come from a GitLab UI session. |
+
+Send the request body as JSON, with the `Content-Type: application/json` header.
+Other request bodies return `400 Bad Request`.
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the same response as `POST /orbit/query`.
+This endpoint can return the same [errors](#query-errors) as `POST /orbit/query`.
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --header "Content-Type: application/json" \
+  --data '{"parameters": {"entity": "User", "node_ids": [1], "limit": 50}}' \
+  --url "https://gitlab.example.com/api/v4/orbit/query/expand_neighbors"
+```
 
 ## Skills
 
 - [Introduced](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1063) in GitLab 19.5.
 
-Skill endpoints require authentication with the `read_api` scope.
-They don't check the Orbit license, so unavailable skills return `404 Not Found` instead of `403 Forbidden`.
+Skill endpoints require authentication with the `read_api` or `ai_workflows` scope.
+They do not check the Orbit license, so unavailable skills return `404 Not Found` instead of `403 Forbidden`.
 The response is `404 Not Found` with the message `Skills are not available` when:
 
-- The knowledge graph service is an older version without skill RPCs.
-- The knowledge graph service isn't configured on the instance. On GitLab Self-Managed, this is
-  controlled by `orbit.enabled` in `gitlab.yml`, or the legacy `knowledge_graph.enabled` setting.
-- The current user doesn't have at least the Reporter role in a group whose top-level group has Orbit
+- The Orbit service is an older version without skill RPCs.
+- The Orbit service is not configured on the instance. On GitLab Self-Managed, this is
+  controlled by `orbit.enabled` in `gitlab.yml`.
+- The current user does not have at least the Reporter role in a group whose top-level group has Orbit
   turned on. Administrators in Admin Mode and auditors are exempt from this role requirement.
 
 In these cases, the Orbit CLI uses its embedded local skill.
 
-### List deployed skills
+A skill name must start with a lowercase letter or digit, and contain only lowercase letters, digits, and hyphens.
+Other values return `400 Bad Request`.
 
-Lists the Orbit skills deployed with the connected knowledge graph service.
+### List all deployed skills
+
+Lists the Orbit skills deployed with the connected Orbit service.
 
 ```plaintext
 GET /orbit/skills
@@ -406,8 +533,8 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `server_version` | string | Version of the deployed knowledge graph service. |
-| `skills` | array | Deployed skills. |
+| `server_version` | string | Version of the deployed Orbit service. |
+| `skills` | object array | Deployed skills. |
 | `skills[].compatibility` | string | Environment requirements from the skill manifest. |
 | `skills[].description` | string | Description from the skill manifest. |
 | `skills[].name` | string | Skill name. |
@@ -415,6 +542,8 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 
 The response includes an `ETag` header derived from the sorted skill names and versions,
 and a `Cache-Control` header set to `private, max-age=0, must-revalidate`.
+Send the `ETag` value in the `If-None-Match` request header to revalidate the list.
+A matching value returns `304 Not Modified` with no response body.
 
 Example request:
 
@@ -432,7 +561,7 @@ Example response:
     {
       "name": "orbit",
       "version": "0.29.0",
-      "description": "Use the glab orbit CLI for knowledge graph queries.",
+      "description": "Use Orbit to search code and query GitLab data.",
       "compatibility": "Requires Orbit CLI"
     }
   ],
@@ -459,12 +588,12 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `compatibility` | string | Environment requirements from the skill manifest. |
-| `files` | array | Files in the skill tree. |
+| `files` | object array | Files in the skill tree. |
 | `files[].content` | string | UTF-8 file content. |
 | `files[].path` | string | Normalized path relative to the skill root. |
 | `files[].sha256` | string | SHA-256 hash of the file content. |
 | `name` | string | Skill name. |
-| `server_version` | string | Version of the deployed knowledge graph service. |
+| `server_version` | string | Version of the deployed Orbit service. |
 | `version` | string | Skill version. |
 
 The response includes these headers:
@@ -503,7 +632,7 @@ Example response:
 }
 ```
 
-If the skill doesn't exist, returns `404 Not Found` with the known skill names in the error message.
+If the skill does not exist, returns `404 Not Found` with the known skill names in the error message.
 
 ### Check deployed skill metadata
 
@@ -543,15 +672,16 @@ Supported attributes:
 
 | Attribute | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
-| `name` | string | Yes | Deployed skill name. |
+| `name` | string | Yes | Skill name. |
 | `path` | string | Yes | File path relative to the skill root, for example `references/usage.md`. |
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) with the file content,
 not a JSON object. Markdown files (`.md`) have the content type `text/markdown; charset=utf-8`.
-Other files have the content type `text/plain; charset=utf-8`; no skill file is served as HTML.
+Other files have the content type `text/plain; charset=utf-8`. The endpoint never returns a skill file as HTML.
 Only exact paths listed in the skill manifest are available. Unknown paths return `404 Not Found`.
-Malformed paths can return `400 Bad Request`. API error responses are JSON, rather than raw file content;
-requests blocked by path traversal middleware can return a plain-text error.
+A path with a `.` segment returns `404 Not Found`. A path with a `..` segment returns `400 Bad Request`.
+Malformed paths can return `400 Bad Request`. API error responses are JSON, rather than raw file content.
+Requests blocked by path traversal middleware can return a plain-text error.
 
 The response includes a strong `ETag` from the file's SHA-256 and a `Cache-Control` header
 set to `private, max-age=0, must-revalidate`. Send the `ETag` in `If-None-Match` to receive
@@ -569,187 +699,4 @@ Example response:
 
 ```markdown
 # Orbit skill
-```
-
-## Named queries
-
-Prefer `POST /api/v4/orbit/query/:name` over `POST /api/v4/orbit/query` for
-programmatic consumers. A named query's structure lives on the server, so it
-cannot drift from the query language or ontology.
-Named query requests send their parameters in a JSON request body.
-
-## Query examples
-
-The following examples show a GQL query for each query type. All
-examples use `POST /api/v4/orbit/query` and pass the GQL text as the `query` value.
-For the complete query language, see
-[Orbit query language](https://docs.gitlab.com/orbit/remote/queries/query-language/).
-
-The examples use the default `raw` response format. In each response, the `result`
-object lists the matched `nodes` and the `edges` between them. Node IDs are strings.
-Aggregation queries also return `columns`, `group_columns`, and `rows`.
-
-Retrieve a user by username:
-
-```shell
-curl --request POST \
-  --header "PRIVATE-TOKEN: <your_access_token>" \
-  --header "Content-Type: application/json" \
-  --data '{"query": "MATCH (u:User {username: \"john_smith\"}) RETURN u"}' \
-  --url "https://gitlab.example.com/api/v4/orbit/query"
-```
-
-Example response:
-
-```json
-{
-  "result": {
-    "format_version": "5.0.3",
-    "query_type": "traversal",
-    "nodes": [
-      {"type": "User", "id": "1", "username": "john_smith", "name": "John Smith", "state": "active"}
-    ],
-    "edges": [],
-    "pagination": {"has_more": false, "truncated": false}
-  },
-  "query_type": "traversal",
-  "row_count": 1
-}
-```
-
-Find merged merge requests in a project:
-
-```shell
-curl --request POST \
-  --header "PRIVATE-TOKEN: <your_access_token>" \
-  --header "Content-Type: application/json" \
-  --data '{"query": "MATCH (mr:MergeRequest {state: \"merged\"})-[:IN_PROJECT]->(p:Project {id: 8}) RETURN p, mr"}' \
-  --url "https://gitlab.example.com/api/v4/orbit/query"
-```
-
-Example response:
-
-```json
-{
-  "result": {
-    "format_version": "5.0.3",
-    "query_type": "traversal",
-    "nodes": [
-      {"type": "Project", "id": "8", "name": "Diaspora Client", "full_path": "diaspora/diaspora-client", "visibility_level": "public"},
-      {"type": "MergeRequest", "id": "43", "iid": 1, "title": "Resolve connection timeout on large payloads", "state": "merged", "source_branch": "fix-timeout", "target_branch": "main"},
-      {"type": "MergeRequest", "id": "44", "iid": 2, "title": "Replace deprecated API calls in federation module", "state": "merged", "source_branch": "update-federation-api", "target_branch": "main"}
-    ],
-    "edges": [
-      {"from": "MergeRequest", "from_id": "43", "to": "Project", "to_id": "8", "type": "IN_PROJECT"},
-      {"from": "MergeRequest", "from_id": "44", "to": "Project", "to_id": "8", "type": "IN_PROJECT"}
-    ],
-    "pagination": {"has_more": false, "truncated": false}
-  },
-  "query_type": "traversal",
-  "row_count": 2
-}
-```
-
-Count merge requests per project. Traversal and aggregation queries must bound
-at least one node with an ID or property predicate:
-
-```shell
-curl --request POST \
-  --header "PRIVATE-TOKEN: <your_access_token>" \
-  --header "Content-Type: application/json" \
-  --data '{"query": "MATCH (mr:MergeRequest)-[:IN_PROJECT]->(p:Project) WHERE p.id IN [5, 8] RETURN p, count(mr) AS mr_count"}' \
-  --url "https://gitlab.example.com/api/v4/orbit/query"
-```
-
-Example response:
-
-```json
-{
-  "result": {
-    "format_version": "5.0.3",
-    "query_type": "aggregation",
-    "nodes": [],
-    "edges": [],
-    "columns": [{"name": "mr_count", "function": "count", "target": "mr"}],
-    "group_columns": [{"name": "p", "kind": "node", "node": "p", "entity": "Project"}],
-    "rows": [
-      {"p": {"type": "Project", "id": "8", "properties": {"name": "Diaspora Client", "full_path": "diaspora/diaspora-client", "visibility_level": "public"}}, "mr_count": 8},
-      {"p": {"type": "Project", "id": "5", "properties": {"name": "Puppet", "full_path": "brightbox/puppet", "visibility_level": "public"}}, "mr_count": 6}
-    ],
-    "pagination": {"has_more": false, "truncated": false}
-  },
-  "query_type": "aggregation",
-  "row_count": 2
-}
-```
-
-Find outgoing neighbors of a user. Use `-->` for outgoing relationships, `<--`
-for incoming relationships, and `--` for both:
-
-```shell
-curl --request POST \
-  --header "PRIVATE-TOKEN: <your_access_token>" \
-  --header "Content-Type: application/json" \
-  --data '{"query": "MATCH (u:User {id: 1})-->(neighbor) RETURN u, neighbor"}' \
-  --url "https://gitlab.example.com/api/v4/orbit/query"
-```
-
-Example response:
-
-```json
-{
-  "result": {
-    "format_version": "5.0.3",
-    "query_type": "neighbors",
-    "nodes": [
-      {"type": "User", "id": "1", "username": "john_smith", "name": "John Smith", "state": "active"},
-      {"type": "Group", "id": "29", "name": "diaspora", "full_path": "diaspora", "visibility_level": "public"},
-      {"type": "MergeRequest", "id": "43", "iid": "1", "title": "Resolve connection timeout on large payloads", "state": "merged", "source_branch": "fix-timeout", "target_branch": "main"},
-      {"type": "MergeRequest", "id": "44", "iid": "2", "title": "Replace deprecated API calls in federation module", "state": "merged", "source_branch": "update-federation-api", "target_branch": "main"}
-    ],
-    "edges": [
-      {"from": "User", "from_id": "1", "to": "Group", "to_id": "29", "type": "MEMBER_OF"},
-      {"from": "User", "from_id": "1", "to": "MergeRequest", "to_id": "43", "type": "AUTHORED"},
-      {"from": "User", "from_id": "1", "to": "MergeRequest", "to_id": "44", "type": "AUTHORED"}
-    ],
-    "pagination": {"has_more": false, "truncated": false}
-  },
-  "query_type": "neighbors",
-  "row_count": 3
-}
-```
-
-Find the shortest path from a user to a project. Path finding queries name their
-relationship types, go at most three hops, and follow each relationship type only
-in its defined direction:
-
-```shell
-curl --request POST \
-  --header "PRIVATE-TOKEN: <your_access_token>" \
-  --header "Content-Type: application/json" \
-  --data '{"query": "MATCH p = ANY SHORTEST (u:User {id: 1})-[:MEMBER_OF|CONTAINS*1..3]->(pr:Project {id: 8}) RETURN p"}' \
-  --url "https://gitlab.example.com/api/v4/orbit/query"
-```
-
-Example response:
-
-```json
-{
-  "result": {
-    "format_version": "5.0.3",
-    "query_type": "path_finding",
-    "nodes": [
-      {"type": "User", "id": "1", "username": "john_smith", "name": "John Smith", "state": "active"},
-      {"type": "Group", "id": "29", "name": "diaspora", "full_path": "diaspora", "visibility_level": "public"},
-      {"type": "Project", "id": "8", "name": "Diaspora Client", "full_path": "diaspora/diaspora-client", "visibility_level": "public"}
-    ],
-    "edges": [
-      {"from": "User", "from_id": "1", "to": "Group", "to_id": "29", "type": "MEMBER_OF", "path_id": 0, "step": 0},
-      {"from": "Group", "from_id": "29", "to": "Project", "to_id": "8", "type": "CONTAINS", "path_id": 0, "step": 1}
-    ],
-    "pagination": {"has_more": false, "truncated": false}
-  },
-  "query_type": "path_finding",
-  "row_count": 1
-}
 ```

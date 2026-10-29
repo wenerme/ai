@@ -56,6 +56,8 @@ Create Container
 
       A list of allowed domains when type is `allowlist`.
 
+      `minItems: 1`
+
     - `type: "allowlist"`
 
       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -66,17 +68,25 @@ Create Container
 
       Optional domain-scoped secrets for allowlisted domains.
 
+      `minItems: 1`
+
       - `domain: string`
 
         The domain associated with the secret.
+
+        `minLength: 1`
 
       - `name: string`
 
         The name of the secret to inject for the domain.
 
+        `minLength: 1`
+
       - `value: string`
 
         The secret value to inject for the domain.
+
+        `minLength: 1`, `maxLength: 10485760`
 
 - `skills: optional array of SkillReference or InlineSkill`
 
@@ -87,6 +97,8 @@ Create Container
     - `skill_id: string`
 
       The ID of the referenced skill.
+
+      `minLength: 1`, `maxLength: 64`
 
     - `type: "skill_reference"`
 
@@ -116,6 +128,8 @@ Create Container
 
         Base64-encoded skill zip bundle.
 
+        `minLength: 1`, `maxLength: 70254592`
+
       - `media_type: "application/zip"`
 
         The media type of the inline skill payload. Must be `application/zip`.
@@ -143,6 +157,8 @@ Create Container
 - `created_at: number`
 
   Unix timestamp (in seconds) when the container was created.
+
+  `format: unixtime`
 
 - `name: string`
 
@@ -175,6 +191,8 @@ Create Container
 - `last_active_at: optional number`
 
   Unix timestamp (in seconds) when the container was last active.
+
+  `format: unixtime`
 
 - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
 

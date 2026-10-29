@@ -10,9 +10,13 @@ Lists reusable environment templates without returning confidential values. See 
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -32,17 +36,25 @@ Lists reusable environment templates without returning confidential values. See 
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The ID of the reusable environment template.
+
+    `minLength: 0`
 
   - `capability_directories: array of string`
 
     Directories that expose capabilities to the agent.
 
+    `minItems: 0`, `maxItems: 2000`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+    `format: int64`
 
   - `desktop: object { enabled }`
 
@@ -56,6 +68,8 @@ Lists reusable environment templates without returning confidential values. See 
 
     Safe file metadata, excluding contents and session-scoped file IDs.
 
+    `minItems: 0`, `maxItems: 50`
+
     - `FileID object { file_id, path, type }`
 
       A project-scoped Files API reference resolved separately for each session.
@@ -64,9 +78,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         The ID of the uploaded file.
 
+        `minLength: 0`
+
       - `path: string`
 
         The file's absolute path inside the environment.
+
+        `minLength: 0`
 
       - `type: "file_id"`
 
@@ -82,9 +100,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         The file's absolute path inside the environment.
 
+        `minLength: 0`
+
       - `size_bytes: number`
 
         The decoded size of the inline file in bytes.
+
+        `format: int64`, `minimum: 0`
 
       - `type: "inline"`
 
@@ -95,6 +117,8 @@ Lists reusable environment templates without returning confidential values. See 
   - `name: string or null`
 
     An optional human-readable display name for the template.
+
+    `minLength: 0`
 
   - `network: object { access, allowed_domains }`
 
@@ -120,6 +144,8 @@ Lists reusable environment templates without returning confidential values. See 
 
       Domains the environment may access when network access is restricted.
 
+      `minItems: 0`, `maxItems: 2000`
+
   - `object: "agent.environment.template"`
 
     The object type. Always `agent.environment.template`.
@@ -134,25 +160,37 @@ Lists reusable environment templates without returning confidential values. See 
 
       npm packages installed globally in the environment.
 
+      `minItems: 0`, `maxItems: 16384`
+
     - `python: array of string`
 
       Python packages installed in the environment.
+
+      `minItems: 0`, `maxItems: 16384`
 
     - `system: array of string`
 
       System packages installed in the environment.
 
+      `minItems: 0`, `maxItems: 16384`
+
   - `plugins: array of HostedPlugin`
 
     Safe plugin metadata, excluding inline archive contents.
+
+    `minItems: 0`, `maxItems: 32`
 
     - `description: string`
 
       The installed plugin description.
 
+      `minLength: 0`
+
     - `name: string`
 
       The installed plugin name.
+
+      `minLength: 0`
 
     - `type: "inline"`
 
@@ -164,6 +202,8 @@ Lists reusable environment templates without returning confidential values. See 
 
     Safe skill metadata, preserving unresolved version selectors.
 
+    `minItems: 0`, `maxItems: 200`
+
     - `SkillReference object { skill_id, type, version }`
 
       A skill resolved afresh from the Skills API whenever a session starts.
@@ -171,6 +211,8 @@ Lists reusable environment templates without returning confidential values. See 
       - `skill_id: string`
 
         The referenced skill ID.
+
+        `minLength: 0`
 
       - `type: "skill_reference"`
 
@@ -182,6 +224,8 @@ Lists reusable environment templates without returning confidential values. See 
 
         The requested version selector, including `latest`.
 
+        `minLength: 0`
+
     - `Inline object { description, name, type }`
 
       Safe metadata for an inline skill archive.
@@ -190,9 +234,13 @@ Lists reusable environment templates without returning confidential values. See 
 
         The skill description declared in `SKILL.md`.
 
+        `minLength: 0`
+
       - `name: string`
 
         The skill name declared in `SKILL.md`.
+
+        `minLength: 0`
 
       - `type: "inline"`
 
@@ -204,9 +252,13 @@ Lists reusable environment templates without returning confidential values. See 
 
     The Unix timestamp, in seconds, when the template was last updated.
 
+    `format: int64`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
+
+  `minLength: 0`
 
 - `has_more: boolean`
 
@@ -215,6 +267,8 @@ Lists reusable environment templates without returning confidential values. See 
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

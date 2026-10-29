@@ -53,6 +53,8 @@ Get a list of output items for an evaluation run.
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `datasource_item: map[unknown]`
 
     Details of the input data source item.
@@ -384,6 +386,8 @@ Get an evaluation run output item by ID.
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
+  `format: unixtime`
+
 - `datasource_item: map[unknown]`
 
   Details of the input data source item.
@@ -673,6 +677,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
+    `format: unixtime`
+
   - `datasource_item: map[unknown]`
 
     Details of the input data source item.
@@ -820,6 +826,8 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   - `created_at: number`
 
     Unix timestamp (in seconds) when the evaluation run was created.
+
+    `format: unixtime`
 
   - `datasource_item: map[unknown]`
 

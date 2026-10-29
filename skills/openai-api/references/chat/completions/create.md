@@ -30,6 +30,8 @@ chunk objects if the request is streamed.
   supported, like [text](/api/docs/guides/text),
   [images](/api/docs/guides/images-vision), and [audio](/api/docs/guides/audio).
 
+  `minItems: 1`
+
   - `ChatCompletionDeveloperMessageParam object { content, role, name }`
 
     Developer-provided instructions that the model should follow, regardless of
@@ -168,6 +170,8 @@ chunk objects if the request is streamed.
             - `url: string`
 
               Either a URL of the image or the base64 encoded image data.
+
+              `format: uri`
 
             - `detail: optional "auto" or "low" or "high" or "original"`
 
@@ -741,6 +745,8 @@ chunk objects if the request is streamed.
   their existing frequency in the text so far, decreasing the model's
   likelihood to repeat the same line verbatim.
 
+  `minimum: -2`, `maximum: 2`
+
 - `function_call: optional "none" or "auto" or ChatCompletionFunctionCallOption`
 
   Deprecated in favor of `tool_choice`.
@@ -780,6 +786,8 @@ chunk objects if the request is streamed.
   Deprecated in favor of `tools`.
 
   A list of functions the model may generate JSON inputs for.
+
+  `minItems: 1`, `maxItems: 128`
 
   - `name: string`
 
@@ -887,6 +895,8 @@ chunk objects if the request is streamed.
 
   How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
 
+  `minimum: 1`, `maximum: 128`
+
 - `parallel_tool_calls: optional boolean`
 
   Whether to enable [parallel function calling](/api/docs/guides/function-calling#parallel-function-calling) during tool use.
@@ -937,6 +947,8 @@ chunk objects if the request is streamed.
   Number between -2.0 and 2.0. Positive values penalize new tokens based on
   whether they appear in the text so far, increasing the model's likelihood
   to talk about new topics.
+
+  `minimum: -2`, `maximum: 2`
 
 - `prompt_cache_key: optional string or null`
 
@@ -1082,11 +1094,15 @@ chunk objects if the request is streamed.
   A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
   The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
+  `maxLength: 128`
+
 - `seed: optional number or null`
 
   This feature is in Beta.
   If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.
   Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
+
+  `format: int64`, `minimum: -9223372036854775808`, `maximum: 9223372036854775807`
 
 - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
@@ -1168,6 +1184,8 @@ chunk objects if the request is streamed.
 
   What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
   We generally recommend altering this or `top_p` but not both.
+
+  `minimum: 0`, `maximum: 2`
 
 - `tool_choice: optional ChatCompletionToolChoiceOption`
 
@@ -1367,6 +1385,8 @@ chunk objects if the request is streamed.
   requested.
   `logprobs` must be set to `true` if this parameter is used.
 
+  `minimum: 0`, `maximum: 20`
+
 - `top_p: optional number or null`
 
   An alternative to sampling with temperature, called nucleus sampling,
@@ -1375,6 +1395,8 @@ chunk objects if the request is streamed.
   are considered.
 
   We generally recommend altering this or `temperature` but not both.
+
+  `minimum: 0`, `maximum: 1`
 
 - `user: optional string or null`
 
@@ -1581,6 +1603,8 @@ chunk objects if the request is streamed.
 
             The URL of the web resource.
 
+            `format: uri`
+
       - `audio: optional ChatCompletionAudio or null`
 
         If the audio output modality is requested, this object contains data
@@ -1600,6 +1624,8 @@ chunk objects if the request is streamed.
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
           conversations.
+
+          `format: unixtime`
 
         - `transcript: string`
 
@@ -1680,6 +1706,8 @@ chunk objects if the request is streamed.
   - `created: number`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
+
+    `format: unixtime`
 
   - `model: string`
 

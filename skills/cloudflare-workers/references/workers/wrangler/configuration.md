@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -40,7 +40,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-10-28",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -76,7 +76,7 @@ name = "my-worker"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-10-28"
 workers_dev = false
 
 [route]
@@ -1256,6 +1256,8 @@ To bind Analytics Engine datasets to your Worker, assign an array of the below o
   - The binding name used to refer to the dataset.
 - `dataset` `string` optional
   - The dataset name to write to. This will default to the same name as the binding if it is not supplied.
+- `remote` `boolean` optional
+  - Whether the binding should write to the remote dataset during local development. Data points are discarded locally by default. Refer to [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 Example:
 
@@ -1487,6 +1489,8 @@ The following options are available under the `assets` key.
   - Not required if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), which will automatically point to the client build output.
 - `binding` `string` optional
   - The binding name used to refer to the assets. Optional, and only useful when a Worker script is set with `main`.
+- `base_path` `string` optional, defaults to "/"
+  - The URL path prefix where static assets are available. For example, set this to `/docs` to serve the root of `assets.directory` from `/docs/`. Refer to [Serving a subdirectory](https://developers.cloudflare.com/workers/static-assets/routing/advanced/serving-a-subdirectory/).
 - `run_worker_first` `boolean | string[]` optional, defaults to false
   - Controls whether static assets are fetched directly, or a Worker script is invoked. Can be a boolean ( `true`/ `false`) or an array of route pattern strings with support for glob patterns ( `*`) and exception patterns ( `!` prefix). Patterns must begin with `/` or `!/`. Supports at most 100 entries (duplicates count toward the limit). Learn more about fetching assets when using [`run_worker_first`](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 - `html_handling`: `"auto-trailing-slash" | "force-trailing-slash" | "drop-trailing-slash" | "none"` optional, defaults to "auto-trailing-slash"
@@ -1501,6 +1505,7 @@ Example:
 	"assets": {
 		"directory": "./public",
 		"binding": "ASSETS",
+		"base_path": "/docs",
 		"html_handling": "force-trailing-slash",
 		"not_found_handling": "404-page",
 	},
@@ -1511,6 +1516,7 @@ Example:
 [assets]
 directory = "./public"
 binding = "ASSETS"
+base_path = "/docs"
 html_handling = "force-trailing-slash"
 not_found_handling = "404-page"
 ```
@@ -2361,5 +2367,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

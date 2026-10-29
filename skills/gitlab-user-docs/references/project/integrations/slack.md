@@ -167,6 +167,7 @@ The following triggers are available for Slack notifications:
 | **[Group mention](#trigger-notifications-for-group-mentions) in public**  | A group is mentioned in a public context. |
 | **[Group mention](#trigger-notifications-for-group-mentions) in private** | A group is mentioned in a confidential context. |
 | [**Vulnerability**](../../application_security/vulnerabilities/_index.md) | A new, unique vulnerability is recorded. |
+{.sortable}
 
 ## Trigger notifications for group mentions
 

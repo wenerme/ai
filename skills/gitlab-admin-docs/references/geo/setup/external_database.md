@@ -110,7 +110,7 @@ host    replication gitlab_replicator <trusted secondary IP>/32     md5
 ##
 wal_level = hot_standby
 max_wal_senders = 10
-wal_keep_segments = 50
+wal_keep_size = 800 # in MB
 max_replication_slots = 1 # number of secondary instances
 hot_standby = on
 ```
@@ -140,7 +140,7 @@ host    all         all               <trusted primary IP>/24       md5
 ##
 wal_level = hot_standby
 max_wal_senders = 10
-wal_keep_segments = 10
+wal_keep_size = 160 # in MB
 hot_standby = on
 ```
 

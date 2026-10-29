@@ -73,6 +73,8 @@ Use Bearer Auth (header Authorization).
 
     Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+    `minItems: 1`
+
   - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -216,6 +218,8 @@ Use Bearer Auth (header Authorization).
       - `image_url: optional string`
 
         Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+        `format: uri`
 
       - `text: optional string`
 
@@ -658,6 +662,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -1109,6 +1115,8 @@ Use Bearer Auth (header Authorization).
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
 
+          `format: uri`
+
         - `text: optional string`
 
           The text content (for `input_text`).
@@ -1465,6 +1473,8 @@ Use Bearer Auth (header Authorization).
 
     Optional client-generated ID used to identify this event.
 
+    `maxLength: 512`
+
   - `previous_item_id: optional string`
 
     The ID of the preceding item after which the new item will be inserted. If not set, the new item will be appended to the end of the conversation.
@@ -1571,6 +1581,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -1953,6 +1965,8 @@ Use Bearer Auth (header Authorization).
 
     Optional client-generated ID used to identify this event.
 
+    `maxLength: 512`
+
 ### Conversation Item Deleted Event
 
 - `ConversationItemDeletedEvent object { event_id, item_id, type }`
@@ -2066,6 +2080,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -2508,6 +2524,8 @@ Use Bearer Auth (header Authorization).
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -2647,6 +2665,8 @@ Use Bearer Auth (header Authorization).
 
     End time of the segment in seconds.
 
+    `format: double`
+
   - `event_id: string`
 
     The unique ID of the server event.
@@ -2662,6 +2682,8 @@ Use Bearer Auth (header Authorization).
   - `start: number`
 
     Start time of the segment in seconds.
+
+    `format: double`
 
   - `text: string`
 
@@ -2695,6 +2717,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Conversation Item Truncate Event
 
@@ -2736,6 +2760,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Conversation Item Truncated Event
 
@@ -2915,6 +2941,8 @@ Use Bearer Auth (header Authorization).
 
     Optional client-generated ID used to identify this event.
 
+    `maxLength: 512`
+
 ### Input Audio Buffer Clear Event
 
 - `InputAudioBufferClearEvent object { type, event_id }`
@@ -2931,6 +2959,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Input Audio Buffer Cleared Event
 
@@ -2966,6 +2996,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Input Audio Buffer Committed Event
 
@@ -3369,6 +3401,8 @@ Use Bearer Auth (header Authorization).
 
         Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+        `minItems: 1`
+
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -3444,6 +3478,8 @@ Use Bearer Auth (header Authorization).
           associated with the Response) will be emitted when the timeout is reached.
           Idle timeout is currently only supported for `server_vad` mode.
 
+          `minimum: 5000`, `maximum: 30000`
+
         - `interrupt_response: optional boolean`
 
           Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -3512,6 +3548,8 @@ Use Bearer Auth (header Authorization).
 
       This parameter is a post-processing adjustment to the audio after it is generated, it's
       also possible to prompt the model to speak faster or slower.
+
+      `minimum: 0.25`, `maximum: 1.5`
 
     - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -3647,6 +3685,8 @@ Use Bearer Auth (header Authorization).
 
       Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+      `minItems: 1`
+
     - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -3721,6 +3761,8 @@ Use Bearer Auth (header Authorization).
         An `input_audio_buffer.timeout_triggered` event (plus events
         associated with the Response) will be emitted when the timeout is reached.
         Idle timeout is currently only supported for `server_vad` mode.
+
+        `minimum: 5000`, `maximum: 30000`
 
       - `interrupt_response: optional boolean`
 
@@ -3828,6 +3870,8 @@ Use Bearer Auth (header Authorization).
 
     This parameter is a post-processing adjustment to the audio after it is generated, it's
     also possible to prompt the model to speak faster or slower.
+
+    `minimum: 0.25`, `maximum: 1.5`
 
   - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -3955,6 +3999,8 @@ Use Bearer Auth (header Authorization).
       An `input_audio_buffer.timeout_triggered` event (plus events
       associated with the Response) will be emitted when the timeout is reached.
       Idle timeout is currently only supported for `server_vad` mode.
+
+      `minimum: 5000`, `maximum: 30000`
 
     - `interrupt_response: optional boolean`
 
@@ -4107,6 +4153,8 @@ Use Bearer Auth (header Authorization).
           - `image_url: optional string`
 
             Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+            `format: uri`
 
           - `text: optional string`
 
@@ -4464,6 +4512,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
     - `previous_item_id: optional string`
 
       The ID of the preceding item after which the new item will be inserted. If not set, the new item will be appended to the end of the conversation.
@@ -4493,6 +4543,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `ConversationItemRetrieveEvent object { item_id, type, event_id }`
 
     Send this event when you want to retrieve the server's representation of a specific item in the conversation history. This is useful, for example, to inspect user audio after noise cancellation and VAD.
@@ -4513,6 +4565,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event.
+
+      `maxLength: 512`
 
   - `ConversationItemTruncateEvent object { audio_end_ms, content_index, item_id, 2 more }`
 
@@ -4553,6 +4607,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `InputAudioBufferAppendEvent object { audio, type, event_id }`
 
     Send this event to append audio bytes to the input audio buffer. The audio
@@ -4584,6 +4640,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `InputAudioBufferClearEvent object { type, event_id }`
 
     Send this event to clear the audio bytes in the buffer. The server will
@@ -4598,6 +4656,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event.
+
+      `maxLength: 512`
 
   - `OutputAudioBufferClearEvent object { type, event_id }`
 
@@ -4633,6 +4693,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `ResponseCancelEvent object { type, event_id, response_id }`
 
     Send this event to cancel an in-progress response. The server will respond
@@ -4650,6 +4712,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event.
+
+      `maxLength: 512`
 
     - `response_id: optional string`
 
@@ -4693,6 +4757,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event.
+
+      `maxLength: 512`
 
     - `response: optional RealtimeResponseCreateParams`
 
@@ -4808,7 +4874,7 @@ Use Bearer Auth (header Authorization).
 
           - `"none"`
 
-      - `input: optional array of ConversationItem`
+      - `input: optional array of RealtimeResponseInputMessageSystem { content, role, type, 2 more }  or RealtimeResponseInputMessageDeveloper { content, role, type, 2 more }  or RealtimeResponseInputMessageUser { content, role, type, 2 more }  or 4 more`
 
         Input items to include in the prompt for the model. Using this field
         creates a new context for this Response instead of using the default
@@ -4816,41 +4882,261 @@ Use Bearer Auth (header Authorization).
         Note that this can include references to items that previously appeared in the session
         using their id.
 
-        - `RealtimeConversationItemSystemMessage object { content, role, type, 3 more }`
+        - `RealtimeResponseInputMessageSystem object { content, role, type, 2 more }`
 
-          A system message in a Realtime conversation can be used to provide additional context or instructions to the model. This is similar but distinct from the instruction prompt provided at the start of a conversation, as system messages can be added at any point in the conversation. For major changes to the conversation's behavior, use instructions, but for smaller updates (e.g. "the user is now asking about a different topic"), use system messages.
+          - `content: array of object { text, type }`
 
-        - `RealtimeConversationItemUserMessage object { content, role, type, 3 more }`
+            `minItems: 1`, `maxItems: 1`
 
-          A user message item in a Realtime conversation.
+            - `text: string`
 
-        - `RealtimeConversationItemAssistantMessage object { content, role, type, 3 more }`
+              `maxLength: 256000`
 
-          An assistant message item in a Realtime conversation.
+            - `type: "input_text"`
 
-        - `RealtimeConversationItemFunctionCall object { arguments, name, type, 4 more }`
+              - `"input_text"`
 
-          A function call item in a Realtime conversation.
+          - `role: "system"`
 
-        - `RealtimeConversationItemFunctionCallOutput object { call_id, output, type, 3 more }`
+            - `"system"`
 
-          A function call output item in a Realtime conversation.
+          - `type: "message"`
 
-        - `RealtimeMcpApprovalResponse object { id, approval_request_id, approve, 2 more }`
+            - `"message"`
 
-          A Realtime item responding to an MCP approval request.
+          - `id: optional string or null`
 
-        - `RealtimeMcpListTools object { server_label, tools, type, id }`
+            An optional client ID. The value `root` is reserved.
 
-          A Realtime item listing tools available on an MCP server.
+            `minLength: 1`, `maxLength: 32`
 
-        - `RealtimeMcpToolCall object { id, arguments, name, 5 more }`
+          - `status: optional "completed" or "incomplete" or null`
 
-          A Realtime item representing an invocation of a tool on an MCP server.
+            Optional input status. Omission or null defaults to completed.
 
-        - `RealtimeMcpApprovalRequest object { id, arguments, name, 2 more }`
+            - `"completed"`
 
-          A Realtime item requesting human approval of a tool invocation.
+            - `"incomplete"`
+
+        - `RealtimeResponseInputMessageDeveloper object { content, role, type, 2 more }`
+
+          - `content: array of object { text, type }`
+
+            `minItems: 1`, `maxItems: 1`
+
+            - `text: string`
+
+              `maxLength: 256000`
+
+            - `type: "input_text"`
+
+              - `"input_text"`
+
+          - `role: "developer"`
+
+            - `"developer"`
+
+          - `type: "message"`
+
+            - `"message"`
+
+          - `id: optional string or null`
+
+            An optional client ID. The value `root` is reserved.
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `status: optional "completed" or "incomplete" or null`
+
+            Optional input status. Omission or null defaults to completed.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+        - `RealtimeResponseInputMessageUser object { content, role, type, 2 more }`
+
+          - `content: array of InputText { text, type }  or InputAudio { audio, type, transcript }  or InputImage { image_url, type, detail }`
+
+            `minItems: 1`
+
+            - `InputText object { text, type }`
+
+              - `text: string`
+
+                `maxLength: 256000`
+
+              - `type: "input_text"`
+
+                - `"input_text"`
+
+            - `InputAudio object { audio, type, transcript }`
+
+              - `audio: string`
+
+                Base64 audio bytes in the session input audio format.
+
+                `minLength: 1`
+
+              - `type: "input_audio"`
+
+                - `"input_audio"`
+
+              - `transcript: optional string or null`
+
+                Optional text to associate with the input audio.
+
+            - `InputImage object { image_url, type, detail }`
+
+              - `image_url: string`
+
+                A base64 data URL with an image MIME type; use PNG or JPEG.
+
+                `format: uri`
+
+              - `type: "input_image"`
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or null`
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+          - `role: "user"`
+
+            - `"user"`
+
+          - `type: "message"`
+
+            - `"message"`
+
+          - `id: optional string or null`
+
+            An optional client ID. The value `root` is reserved.
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `status: optional "completed" or "incomplete" or null`
+
+            Optional input status. Omission or null defaults to completed.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+        - `RealtimeResponseInputMessageAssistant object { content, role, type, 2 more }`
+
+          - `content: array of object { text, type }`
+
+            `minItems: 1`
+
+            - `text: string`
+
+              `maxLength: 256000`
+
+            - `type: "output_text"`
+
+              - `"output_text"`
+
+          - `role: "assistant"`
+
+            - `"assistant"`
+
+          - `type: "message"`
+
+            - `"message"`
+
+          - `id: optional string or null`
+
+            An optional client ID. The value `root` is reserved.
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `status: optional "completed" or "incomplete" or null`
+
+            Optional input status. Omission or null defaults to completed.
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+        - `FunctionCall object { arguments, call_id, name, 3 more }`
+
+          A function call supplied as input to a Realtime response.
+
+          - `arguments: string`
+
+            `maxLength: 1048576`
+
+          - `call_id: string`
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `name: string`
+
+            `minLength: 1`, `maxLength: 64`
+
+          - `type: "function_call"`
+
+            - `"function_call"`
+
+          - `id: optional string or null`
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `status: optional "completed" or "incomplete" or null`
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+        - `FunctionCallOutput object { call_id, output, type, 2 more }`
+
+          The result of a function call supplied as input to a Realtime response.
+
+          - `call_id: string`
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `output: string`
+
+            `maxLength: 1048576`
+
+          - `type: "function_call_output"`
+
+            - `"function_call_output"`
+
+          - `id: optional string or null`
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `status: optional "completed" or "incomplete" or null`
+
+            - `"completed"`
+
+            - `"incomplete"`
+
+        - `ResponseItemReference object { id, type }`
+
+          Reference an existing item in this Realtime session as response.create input.
+          Item references are only accepted in the response input array, not as new
+          conversation items.
+
+          - `id: string`
+
+            The ID of an existing item in the same Realtime session.
+
+            `minLength: 1`, `maxLength: 32`
+
+          - `type: "item_reference"`
+
+            The type of this item. Always `item_reference`.
+
+            - `"item_reference"`
 
       - `instructions: optional string`
 
@@ -4973,6 +5259,8 @@ Use Bearer Auth (header Authorization).
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -5022,6 +5310,8 @@ Use Bearer Auth (header Authorization).
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -5167,6 +5457,8 @@ Use Bearer Auth (header Authorization).
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -5302,6 +5594,8 @@ Use Bearer Auth (header Authorization).
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -5401,6 +5695,8 @@ Use Bearer Auth (header Authorization).
 
                 Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+                `minItems: 1`
+
               - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
                 The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -5476,6 +5772,8 @@ Use Bearer Auth (header Authorization).
                   associated with the Response) will be emitted when the timeout is reached.
                   Idle timeout is currently only supported for `server_vad` mode.
 
+                  `minimum: 5000`, `maximum: 30000`
+
                 - `interrupt_response: optional boolean`
 
                   Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -5544,6 +5842,8 @@ Use Bearer Auth (header Authorization).
 
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
+
+              `minimum: 0.25`, `maximum: 1.5`
 
             - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -5735,6 +6035,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -5870,6 +6172,8 @@ Use Bearer Auth (header Authorization).
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -5934,6 +6238,8 @@ Use Bearer Auth (header Authorization).
 
               Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+              `minimum: 0`, `maximum: 1`
+
             - `type: "retention_ratio"`
 
               Use retention ratio truncation.
@@ -5947,6 +6253,8 @@ Use Bearer Auth (header Authorization).
               - `post_instructions: optional number`
 
                 Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+                `minimum: 0`
 
       - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
 
@@ -6023,6 +6331,8 @@ Use Bearer Auth (header Authorization).
                   associated with the Response) will be emitted when the timeout is reached.
                   Idle timeout is currently only supported for `server_vad` mode.
 
+                  `minimum: 5000`, `maximum: 30000`
+
                 - `interrupt_response: optional boolean`
 
                   Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -6095,6 +6405,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event. This is an arbitrary string that a client may assign. It will be passed back if there is an error with the event, but the corresponding `session.updated` event will not include it.
+
+      `maxLength: 512`
 
 ### Realtime Conversation Item Assistant Message
 
@@ -6321,6 +6633,8 @@ Use Bearer Auth (header Authorization).
     - `image_url: optional string`
 
       Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+      `format: uri`
 
     - `text: optional string`
 
@@ -6908,6 +7222,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -7603,7 +7919,7 @@ Use Bearer Auth (header Authorization).
 
       - `"none"`
 
-  - `input: optional array of ConversationItem`
+  - `input: optional array of RealtimeResponseInputMessageSystem { content, role, type, 2 more }  or RealtimeResponseInputMessageDeveloper { content, role, type, 2 more }  or RealtimeResponseInputMessageUser { content, role, type, 2 more }  or 4 more`
 
     Input items to include in the prompt for the model. Using this field
     creates a new context for this Response instead of using the default
@@ -7611,427 +7927,261 @@ Use Bearer Auth (header Authorization).
     Note that this can include references to items that previously appeared in the session
     using their id.
 
-    - `RealtimeConversationItemSystemMessage object { content, role, type, 3 more }`
-
-      A system message in a Realtime conversation can be used to provide additional context or instructions to the model. This is similar but distinct from the instruction prompt provided at the start of a conversation, as system messages can be added at any point in the conversation. For major changes to the conversation's behavior, use instructions, but for smaller updates (e.g. "the user is now asking about a different topic"), use system messages.
+    - `RealtimeResponseInputMessageSystem object { content, role, type, 2 more }`
 
       - `content: array of object { text, type }`
 
-        The content of the message.
+        `minItems: 1`, `maxItems: 1`
 
-        - `text: optional string`
+        - `text: string`
 
-          The text content.
+          `maxLength: 256000`
 
-        - `type: optional "input_text"`
-
-          The content type. Always `input_text` for system messages.
+        - `type: "input_text"`
 
           - `"input_text"`
 
       - `role: "system"`
 
-        The role of the message sender. Always `system`.
-
         - `"system"`
 
       - `type: "message"`
 
-        The type of the item. Always `message`.
-
         - `"message"`
 
-      - `id: optional string`
+      - `id: optional string or null`
 
-        The unique ID of the item. This may be provided by the client or generated by the server.
+        An optional client ID. The value `root` is reserved.
 
-      - `object: optional "realtime.item"`
+        `minLength: 1`, `maxLength: 32`
 
-        Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+      - `status: optional "completed" or "incomplete" or null`
 
-        - `"realtime.item"`
-
-      - `status: optional "completed" or "incomplete" or "in_progress"`
-
-        The status of the item. Has no effect on the conversation.
+        Optional input status. Omission or null defaults to completed.
 
         - `"completed"`
 
         - `"incomplete"`
 
-        - `"in_progress"`
+    - `RealtimeResponseInputMessageDeveloper object { content, role, type, 2 more }`
 
-    - `RealtimeConversationItemUserMessage object { content, role, type, 3 more }`
+      - `content: array of object { text, type }`
 
-      A user message item in a Realtime conversation.
+        `minItems: 1`, `maxItems: 1`
 
-      - `content: array of object { audio, detail, image_url, 3 more }`
+        - `text: string`
 
-        The content of the message.
+          `maxLength: 256000`
 
-        - `audio: optional string`
-
-          Base64-encoded audio bytes (for `input_audio`), these will be parsed as the format specified in the session input audio type configuration. This defaults to PCM 16-bit 24kHz mono if not specified.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          The detail level of the image (for `input_image`). `auto` will default to `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-        - `image_url: optional string`
-
-          Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
-
-        - `text: optional string`
-
-          The text content (for `input_text`).
-
-        - `transcript: optional string`
-
-          Transcript of the audio (for `input_audio`). This is not sent to the model, but will be attached to the message item for reference.
-
-        - `type: optional "input_text" or "input_audio" or "input_image"`
-
-          The content type (`input_text`, `input_audio`, or `input_image`).
+        - `type: "input_text"`
 
           - `"input_text"`
 
-          - `"input_audio"`
+      - `role: "developer"`
 
-          - `"input_image"`
+        - `"developer"`
+
+      - `type: "message"`
+
+        - `"message"`
+
+      - `id: optional string or null`
+
+        An optional client ID. The value `root` is reserved.
+
+        `minLength: 1`, `maxLength: 32`
+
+      - `status: optional "completed" or "incomplete" or null`
+
+        Optional input status. Omission or null defaults to completed.
+
+        - `"completed"`
+
+        - `"incomplete"`
+
+    - `RealtimeResponseInputMessageUser object { content, role, type, 2 more }`
+
+      - `content: array of InputText { text, type }  or InputAudio { audio, type, transcript }  or InputImage { image_url, type, detail }`
+
+        `minItems: 1`
+
+        - `InputText object { text, type }`
+
+          - `text: string`
+
+            `maxLength: 256000`
+
+          - `type: "input_text"`
+
+            - `"input_text"`
+
+        - `InputAudio object { audio, type, transcript }`
+
+          - `audio: string`
+
+            Base64 audio bytes in the session input audio format.
+
+            `minLength: 1`
+
+          - `type: "input_audio"`
+
+            - `"input_audio"`
+
+          - `transcript: optional string or null`
+
+            Optional text to associate with the input audio.
+
+        - `InputImage object { image_url, type, detail }`
+
+          - `image_url: string`
+
+            A base64 data URL with an image MIME type; use PNG or JPEG.
+
+            `format: uri`
+
+          - `type: "input_image"`
+
+            - `"input_image"`
+
+          - `detail: optional "low" or "high" or "auto" or null`
+
+            - `"low"`
+
+            - `"high"`
+
+            - `"auto"`
 
       - `role: "user"`
-
-        The role of the message sender. Always `user`.
 
         - `"user"`
 
       - `type: "message"`
 
-        The type of the item. Always `message`.
-
         - `"message"`
 
-      - `id: optional string`
+      - `id: optional string or null`
 
-        The unique ID of the item. This may be provided by the client or generated by the server.
+        An optional client ID. The value `root` is reserved.
 
-      - `object: optional "realtime.item"`
+        `minLength: 1`, `maxLength: 32`
 
-        Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+      - `status: optional "completed" or "incomplete" or null`
 
-        - `"realtime.item"`
-
-      - `status: optional "completed" or "incomplete" or "in_progress"`
-
-        The status of the item. Has no effect on the conversation.
+        Optional input status. Omission or null defaults to completed.
 
         - `"completed"`
 
         - `"incomplete"`
 
-        - `"in_progress"`
+    - `RealtimeResponseInputMessageAssistant object { content, role, type, 2 more }`
 
-    - `RealtimeConversationItemAssistantMessage object { content, role, type, 3 more }`
+      - `content: array of object { text, type }`
 
-      An assistant message item in a Realtime conversation.
+        `minItems: 1`
 
-      - `content: array of object { audio, text, transcript, type }`
+        - `text: string`
 
-        The content of the message.
+          `maxLength: 256000`
 
-        - `audio: optional string`
-
-          Base64-encoded audio bytes, these will be parsed as the format specified in the session output audio type configuration. This defaults to PCM 16-bit 24kHz mono if not specified.
-
-        - `text: optional string`
-
-          The text content.
-
-        - `transcript: optional string`
-
-          The transcript of the audio content, this will always be present if the output type is `audio`.
-
-        - `type: optional "output_text" or "output_audio"`
-
-          The content type, `output_text` or `output_audio` depending on the session `output_modalities` configuration.
+        - `type: "output_text"`
 
           - `"output_text"`
 
-          - `"output_audio"`
-
       - `role: "assistant"`
-
-        The role of the message sender. Always `assistant`.
 
         - `"assistant"`
 
       - `type: "message"`
 
-        The type of the item. Always `message`.
-
         - `"message"`
 
-      - `id: optional string`
+      - `id: optional string or null`
 
-        The unique ID of the item. This may be provided by the client or generated by the server.
+        An optional client ID. The value `root` is reserved.
 
-      - `object: optional "realtime.item"`
+        `minLength: 1`, `maxLength: 32`
 
-        Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+      - `status: optional "completed" or "incomplete" or null`
 
-        - `"realtime.item"`
-
-      - `status: optional "completed" or "incomplete" or "in_progress"`
-
-        The status of the item. Has no effect on the conversation.
+        Optional input status. Omission or null defaults to completed.
 
         - `"completed"`
 
         - `"incomplete"`
 
-        - `"in_progress"`
+    - `FunctionCall object { arguments, call_id, name, 3 more }`
 
-    - `RealtimeConversationItemFunctionCall object { arguments, name, type, 4 more }`
-
-      A function call item in a Realtime conversation.
+      A function call supplied as input to a Realtime response.
 
       - `arguments: string`
 
-        The arguments of the function call. This is a JSON-encoded string representing the arguments passed to the function, for example `{"arg1": "value1", "arg2": 42}`.
-
-      - `name: string`
-
-        The name of the function being called.
-
-      - `type: "function_call"`
-
-        The type of the item. Always `function_call`.
-
-        - `"function_call"`
-
-      - `id: optional string`
-
-        The unique ID of the item. This may be provided by the client or generated by the server.
-
-      - `call_id: optional string`
-
-        The ID of the function call.
-
-      - `object: optional "realtime.item"`
-
-        Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
-
-        - `"realtime.item"`
-
-      - `status: optional "completed" or "incomplete" or "in_progress"`
-
-        The status of the item. Has no effect on the conversation.
-
-        - `"completed"`
-
-        - `"incomplete"`
-
-        - `"in_progress"`
-
-    - `RealtimeConversationItemFunctionCallOutput object { call_id, output, type, 3 more }`
-
-      A function call output item in a Realtime conversation.
+        `maxLength: 1048576`
 
       - `call_id: string`
 
-        The ID of the function call this output is for.
+        `minLength: 1`, `maxLength: 32`
 
-      - `output: string`
+      - `name: string`
 
-        The output of the function call, this is free text and can contain any information or simply be empty.
+        `minLength: 1`, `maxLength: 64`
 
-      - `type: "function_call_output"`
+      - `type: "function_call"`
 
-        The type of the item. Always `function_call_output`.
+        - `"function_call"`
 
-        - `"function_call_output"`
+      - `id: optional string or null`
 
-      - `id: optional string`
+        `minLength: 1`, `maxLength: 32`
 
-        The unique ID of the item. This may be provided by the client or generated by the server.
-
-      - `object: optional "realtime.item"`
-
-        Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
-
-        - `"realtime.item"`
-
-      - `status: optional "completed" or "incomplete" or "in_progress"`
-
-        The status of the item. Has no effect on the conversation.
+      - `status: optional "completed" or "incomplete" or null`
 
         - `"completed"`
 
         - `"incomplete"`
 
-        - `"in_progress"`
+    - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
-    - `RealtimeMcpApprovalResponse object { id, approval_request_id, approve, 2 more }`
+      The result of a function call supplied as input to a Realtime response.
 
-      A Realtime item responding to an MCP approval request.
+      - `call_id: string`
 
-      - `id: string`
+        `minLength: 1`, `maxLength: 32`
 
-        The unique ID of the approval response.
+      - `output: string`
 
-      - `approval_request_id: string`
+        `maxLength: 1048576`
 
-        The ID of the approval request being answered.
+      - `type: "function_call_output"`
 
-      - `approve: boolean`
+        - `"function_call_output"`
 
-        Whether the request was approved.
+      - `id: optional string or null`
 
-      - `type: "mcp_approval_response"`
+        `minLength: 1`, `maxLength: 32`
 
-        The type of the item. Always `mcp_approval_response`.
+      - `status: optional "completed" or "incomplete" or null`
 
-        - `"mcp_approval_response"`
+        - `"completed"`
 
-      - `reason: optional string or null`
+        - `"incomplete"`
 
-        Optional reason for the decision.
+    - `ResponseItemReference object { id, type }`
 
-    - `RealtimeMcpListTools object { server_label, tools, type, id }`
-
-      A Realtime item listing tools available on an MCP server.
-
-      - `server_label: string`
-
-        The label of the MCP server.
-
-      - `tools: array of object { input_schema, name, annotations, description }`
-
-        The tools available on the server.
-
-        - `input_schema: unknown`
-
-          The JSON schema describing the tool's input.
-
-        - `name: string`
-
-          The name of the tool.
-
-        - `annotations: optional unknown or null`
-
-          Additional annotations about the tool.
-
-        - `description: optional string or null`
-
-          The description of the tool.
-
-      - `type: "mcp_list_tools"`
-
-        The type of the item. Always `mcp_list_tools`.
-
-        - `"mcp_list_tools"`
-
-      - `id: optional string`
-
-        The unique ID of the list.
-
-    - `RealtimeMcpToolCall object { id, arguments, name, 5 more }`
-
-      A Realtime item representing an invocation of a tool on an MCP server.
+      Reference an existing item in this Realtime session as response.create input.
+      Item references are only accepted in the response input array, not as new
+      conversation items.
 
       - `id: string`
 
-        The unique ID of the tool call.
+        The ID of an existing item in the same Realtime session.
 
-      - `arguments: string`
+        `minLength: 1`, `maxLength: 32`
 
-        A JSON string of the arguments passed to the tool.
+      - `type: "item_reference"`
 
-      - `name: string`
+        The type of this item. Always `item_reference`.
 
-        The name of the tool that was run.
-
-      - `server_label: string`
-
-        The label of the MCP server running the tool.
-
-      - `type: "mcp_call"`
-
-        The type of the item. Always `mcp_call`.
-
-        - `"mcp_call"`
-
-      - `approval_request_id: optional string or null`
-
-        The ID of an associated approval request, if any.
-
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
-
-        The error from the tool call, if any.
-
-        - `RealtimeMcpProtocolError object { code, message, type }`
-
-          - `code: number`
-
-          - `message: string`
-
-          - `type: "protocol_error"`
-
-            - `"protocol_error"`
-
-        - `RealtimeMcpToolExecutionError object { message, type }`
-
-          - `message: string`
-
-          - `type: "tool_execution_error"`
-
-            - `"tool_execution_error"`
-
-        - `RealtimeMcphttpError object { code, message, type }`
-
-          - `code: number`
-
-          - `message: string`
-
-          - `type: "http_error"`
-
-            - `"http_error"`
-
-      - `output: optional string or null`
-
-        The output from the tool call.
-
-    - `RealtimeMcpApprovalRequest object { id, arguments, name, 2 more }`
-
-      A Realtime item requesting human approval of a tool invocation.
-
-      - `id: string`
-
-        The unique ID of the approval request.
-
-      - `arguments: string`
-
-        A JSON string of arguments for the tool.
-
-      - `name: string`
-
-        The name of the tool to run.
-
-      - `server_label: string`
-
-        The label of the MCP server making the request.
-
-      - `type: "mcp_approval_request"`
-
-        The type of the item. Always `mcp_approval_request`.
-
-        - `"mcp_approval_request"`
+        - `"item_reference"`
 
   - `instructions: optional string`
 
@@ -8154,6 +8304,8 @@ Use Bearer Auth (header Authorization).
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          `format: uri`
+
         - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -8203,6 +8355,8 @@ Use Bearer Auth (header Authorization).
         - `file_url: optional string`
 
           The URL of the file to be sent to the model.
+
+          `format: uri`
 
         - `filename: optional string`
 
@@ -8348,6 +8502,8 @@ Use Bearer Auth (header Authorization).
 
         The tool invocation context(s).
 
+        `minItems: 1`
+
         - `"direct"`
 
         - `"programmatic"`
@@ -8482,6 +8638,8 @@ Use Bearer Auth (header Authorization).
 
         The URL for the MCP server. One of `server_url`, `connector_id`, or
         `tunnel_id` must be provided.
+
+        `format: uri`
 
       - `tunnel_id: optional string`
 
@@ -8789,6 +8947,8 @@ Use Bearer Auth (header Authorization).
           - `image_url: optional string`
 
             Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+            `format: uri`
 
           - `text: optional string`
 
@@ -9249,6 +9409,8 @@ Use Bearer Auth (header Authorization).
         - `seconds: number`
 
           Duration of the input audio in seconds.
+
+          `format: double`
 
         - `type: "duration"`
 
@@ -10479,6 +10641,8 @@ Use Bearer Auth (header Authorization).
 
                 The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+                `minItems: 1`
+
               - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
                 The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -10550,6 +10714,8 @@ Use Bearer Auth (header Authorization).
                   associated with the Response) will be emitted when the timeout is reached.
                   Idle timeout is currently only supported for `server_vad` mode.
 
+                  `minimum: 5000`, `maximum: 30000`
+
                 - `interrupt_response: optional boolean`
 
                   Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -10619,6 +10785,8 @@ Use Bearer Auth (header Authorization).
               This parameter is a post-processing adjustment to the audio after it is generated, it's
               also possible to prompt the model to speak faster or slower.
 
+              `minimum: 0.25`, `maximum: 1.5`
+
             - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
               The voice the model uses to respond. Voice cannot be changed during the
@@ -10660,6 +10828,8 @@ Use Bearer Auth (header Authorization).
         - `expires_at: optional number`
 
           Expiration timestamp for the session, in seconds since epoch.
+
+          `format: unixtime`
 
         - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -10825,6 +10995,8 @@ Use Bearer Auth (header Authorization).
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                `format: uri`
+
               - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -10874,6 +11046,8 @@ Use Bearer Auth (header Authorization).
               - `file_url: optional string`
 
                 The URL of the file to be sent to the model.
+
+                `format: uri`
 
               - `filename: optional string`
 
@@ -11019,6 +11193,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -11154,6 +11330,8 @@ Use Bearer Auth (header Authorization).
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -11218,6 +11396,8 @@ Use Bearer Auth (header Authorization).
 
               Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+              `minimum: 0`, `maximum: 1`
+
             - `type: "retention_ratio"`
 
               Use retention ratio truncation.
@@ -11231,6 +11411,8 @@ Use Bearer Auth (header Authorization).
               - `post_instructions: optional number`
 
                 Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+                `minimum: 0`
 
       - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -11279,6 +11461,8 @@ Use Bearer Auth (header Authorization).
               - `languages: optional array of string`
 
                 The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+                `minItems: 1`
 
               - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -11340,6 +11524,8 @@ Use Bearer Auth (header Authorization).
         - `expires_at: optional number`
 
           Expiration timestamp for the session, in seconds since epoch.
+
+          `format: unixtime`
 
         - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -11554,6 +11740,8 @@ Use Bearer Auth (header Authorization).
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `event_id: string`
 
       The unique ID of the server event.
@@ -11569,6 +11757,8 @@ Use Bearer Auth (header Authorization).
     - `start: number`
 
       Start time of the segment in seconds.
+
+      `format: double`
 
     - `text: string`
 
@@ -11778,6 +11968,8 @@ Use Bearer Auth (header Authorization).
 
     Expiration timestamp for the session, in seconds since epoch.
 
+    `format: unixtime`
+
   - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
     Additional fields to include in server outputs.
@@ -11823,6 +12015,8 @@ Use Bearer Auth (header Authorization).
     - `languages: optional array of string`
 
       The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+      `minItems: 1`
 
     - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -12029,6 +12223,8 @@ Use Bearer Auth (header Authorization).
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          `format: uri`
+
         - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -12079,6 +12275,8 @@ Use Bearer Auth (header Authorization).
 
           The URL of the file to be sent to the model.
 
+          `format: uri`
+
         - `filename: optional string`
 
           The name of the file to be sent to the model.
@@ -12110,6 +12308,8 @@ Use Bearer Auth (header Authorization).
     The speed of the model's spoken response. 1.0 is the default speed. 0.25 is
     the minimum speed. 1.5 is the maximum speed. This value can only be changed
     in between model turns, not while a response is in progress.
+
+    `minimum: 0.25`, `maximum: 1.5`
 
   - `temperature: optional number`
 
@@ -12217,6 +12417,8 @@ Use Bearer Auth (header Authorization).
         An `input_audio_buffer.timeout_triggered` event (plus events
         associated with the Response) will be emitted when the timeout is reached.
         Idle timeout is currently only supported for `server_vad` mode.
+
+        `minimum: 5000`, `maximum: 30000`
 
       - `interrupt_response: optional boolean`
 
@@ -12415,6 +12617,8 @@ Use Bearer Auth (header Authorization).
 
           Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -12490,6 +12694,8 @@ Use Bearer Auth (header Authorization).
             associated with the Response) will be emitted when the timeout is reached.
             Idle timeout is currently only supported for `server_vad` mode.
 
+            `minimum: 5000`, `maximum: 30000`
+
           - `interrupt_response: optional boolean`
 
             Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -12558,6 +12764,8 @@ Use Bearer Auth (header Authorization).
 
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
+
+        `minimum: 0.25`, `maximum: 1.5`
 
       - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -12770,6 +12978,8 @@ Use Bearer Auth (header Authorization).
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          `format: uri`
+
         - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -12819,6 +13029,8 @@ Use Bearer Auth (header Authorization).
         - `file_url: optional string`
 
           The URL of the file to be sent to the model.
+
+          `format: uri`
 
         - `filename: optional string`
 
@@ -12964,6 +13176,8 @@ Use Bearer Auth (header Authorization).
 
         The tool invocation context(s).
 
+        `minItems: 1`
+
         - `"direct"`
 
         - `"programmatic"`
@@ -13099,6 +13313,8 @@ Use Bearer Auth (header Authorization).
         The URL for the MCP server. One of `server_url`, `connector_id`, or
         `tunnel_id` must be provided.
 
+        `format: uri`
+
       - `tunnel_id: optional string`
 
         The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -13163,6 +13379,8 @@ Use Bearer Auth (header Authorization).
 
         Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+        `minimum: 0`, `maximum: 1`
+
       - `type: "retention_ratio"`
 
         Use retention ratio truncation.
@@ -13176,6 +13394,8 @@ Use Bearer Auth (header Authorization).
         - `post_instructions: optional number`
 
           Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+          `minimum: 0`
 
 ### Realtime Tool Choice Config
 
@@ -13280,6 +13500,8 @@ Use Bearer Auth (header Authorization).
 
       The tool invocation context(s).
 
+      `minItems: 1`
+
       - `"direct"`
 
       - `"programmatic"`
@@ -13414,6 +13636,8 @@ Use Bearer Auth (header Authorization).
 
       The URL for the MCP server. One of `server_url`, `connector_id`, or
       `tunnel_id` must be provided.
+
+      `format: uri`
 
     - `tunnel_id: optional string`
 
@@ -13468,6 +13692,8 @@ Use Bearer Auth (header Authorization).
 
       The tool invocation context(s).
 
+      `minItems: 1`
+
       - `"direct"`
 
       - `"programmatic"`
@@ -13602,6 +13828,8 @@ Use Bearer Auth (header Authorization).
 
       The URL for the MCP server. One of `server_url`, `connector_id`, or
       `tunnel_id` must be provided.
+
+      `format: uri`
 
     - `tunnel_id: optional string`
 
@@ -13739,6 +13967,8 @@ Use Bearer Auth (header Authorization).
 
         Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+        `minItems: 1`
+
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -13813,6 +14043,8 @@ Use Bearer Auth (header Authorization).
           An `input_audio_buffer.timeout_triggered` event (plus events
           associated with the Response) will be emitted when the timeout is reached.
           Idle timeout is currently only supported for `server_vad` mode.
+
+          `minimum: 5000`, `maximum: 30000`
 
         - `interrupt_response: optional boolean`
 
@@ -13961,6 +14193,8 @@ Use Bearer Auth (header Authorization).
 
       Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+      `minItems: 1`
+
     - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
       The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -14035,6 +14269,8 @@ Use Bearer Auth (header Authorization).
         An `input_audio_buffer.timeout_triggered` event (plus events
         associated with the Response) will be emitted when the timeout is reached.
         Idle timeout is currently only supported for `server_vad` mode.
+
+        `minimum: 5000`, `maximum: 30000`
 
       - `interrupt_response: optional boolean`
 
@@ -14133,6 +14369,8 @@ Use Bearer Auth (header Authorization).
       An `input_audio_buffer.timeout_triggered` event (plus events
       associated with the Response) will be emitted when the timeout is reached.
       Idle timeout is currently only supported for `server_vad` mode.
+
+      `minimum: 5000`, `maximum: 30000`
 
     - `interrupt_response: optional boolean`
 
@@ -14295,6 +14533,8 @@ Use Bearer Auth (header Authorization).
 
           Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -14369,6 +14609,8 @@ Use Bearer Auth (header Authorization).
             An `input_audio_buffer.timeout_triggered` event (plus events
             associated with the Response) will be emitted when the timeout is reached.
             Idle timeout is currently only supported for `server_vad` mode.
+
+            `minimum: 5000`, `maximum: 30000`
 
           - `interrupt_response: optional boolean`
 
@@ -14494,6 +14736,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `RealtimeTranslationInputAudioBufferAppendEvent object { audio, type, event_id }`
 
     Send this event to append audio bytes to the translation session input audio buffer.
@@ -14526,6 +14770,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client-generated ID used to identify this event.
 
+      `maxLength: 512`
+
   - `RealtimeTranslationSessionCloseEvent object { type, event_id }`
 
     Gracefully close the realtime translation session. The server flushes pending
@@ -14541,6 +14787,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string`
 
       Optional client-generated ID used to identify this event.
+
+      `maxLength: 512`
 
 ### Realtime Translation Client Secret Create Request
 
@@ -14608,6 +14856,8 @@ Use Bearer Auth (header Authorization).
 
       The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
+      `format: int64`, `minimum: 10`, `maximum: 7200`
+
 ### Realtime Translation Client Secret Create Response
 
 - `RealtimeTranslationClientSecretCreateResponse object { expires_at, session, value }`
@@ -14617,6 +14867,8 @@ Use Bearer Auth (header Authorization).
   - `expires_at: number`
 
     Expiration timestamp for the client secret, in seconds since epoch.
+
+    `format: unixtime`
 
   - `session: RealtimeTranslationSession`
 
@@ -14664,6 +14916,8 @@ Use Bearer Auth (header Authorization).
     - `expires_at: number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `model: string`
 
@@ -14713,6 +14967,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Realtime Translation Input Transcript Delta Event
 
@@ -14919,6 +15175,8 @@ Use Bearer Auth (header Authorization).
 
         Expiration timestamp for the session, in seconds since epoch.
 
+        `format: unixtime`
+
       - `model: string`
 
         The Realtime translation model used for this session. This field is set at
@@ -15115,6 +15373,8 @@ Use Bearer Auth (header Authorization).
 
     Expiration timestamp for the session, in seconds since epoch.
 
+    `format: unixtime`
+
   - `model: string`
 
     The Realtime translation model used for this session. This field is set at
@@ -15143,6 +15403,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Realtime Translation Session Closed Event
 
@@ -15263,6 +15525,8 @@ Use Bearer Auth (header Authorization).
 
       Expiration timestamp for the session, in seconds since epoch.
 
+      `format: unixtime`
+
     - `model: string`
 
       The Realtime translation model used for this session. This field is set at
@@ -15336,6 +15600,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event.
+
+    `maxLength: 512`
 
 ### Realtime Translation Session Update Request
 
@@ -15434,6 +15700,8 @@ Use Bearer Auth (header Authorization).
 
       Expiration timestamp for the session, in seconds since epoch.
 
+      `format: unixtime`
+
     - `model: string`
 
       The Realtime translation model used for this session. This field is set at
@@ -15479,6 +15747,8 @@ Use Bearer Auth (header Authorization).
 
       Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+      `minimum: 0`, `maximum: 1`
+
     - `type: "retention_ratio"`
 
       Use retention ratio truncation.
@@ -15492,6 +15762,8 @@ Use Bearer Auth (header Authorization).
       - `post_instructions: optional number`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+        `minimum: 0`
 
 ### Response Audio Delta Event
 
@@ -15656,6 +15928,8 @@ Use Bearer Auth (header Authorization).
 
     Optional client-generated ID used to identify this event.
 
+    `maxLength: 512`
+
   - `response_id: optional string`
 
     A specific response ID to cancel - if not provided, will cancel an
@@ -15815,6 +16089,8 @@ Use Bearer Auth (header Authorization).
 
     Optional client-generated ID used to identify this event.
 
+    `maxLength: 512`
+
   - `response: optional RealtimeResponseCreateParams`
 
     Create a new Realtime response with these parameters
@@ -15929,7 +16205,7 @@ Use Bearer Auth (header Authorization).
 
         - `"none"`
 
-    - `input: optional array of ConversationItem`
+    - `input: optional array of RealtimeResponseInputMessageSystem { content, role, type, 2 more }  or RealtimeResponseInputMessageDeveloper { content, role, type, 2 more }  or RealtimeResponseInputMessageUser { content, role, type, 2 more }  or 4 more`
 
       Input items to include in the prompt for the model. Using this field
       creates a new context for this Response instead of using the default
@@ -15937,427 +16213,261 @@ Use Bearer Auth (header Authorization).
       Note that this can include references to items that previously appeared in the session
       using their id.
 
-      - `RealtimeConversationItemSystemMessage object { content, role, type, 3 more }`
-
-        A system message in a Realtime conversation can be used to provide additional context or instructions to the model. This is similar but distinct from the instruction prompt provided at the start of a conversation, as system messages can be added at any point in the conversation. For major changes to the conversation's behavior, use instructions, but for smaller updates (e.g. "the user is now asking about a different topic"), use system messages.
+      - `RealtimeResponseInputMessageSystem object { content, role, type, 2 more }`
 
         - `content: array of object { text, type }`
 
-          The content of the message.
+          `minItems: 1`, `maxItems: 1`
 
-          - `text: optional string`
+          - `text: string`
 
-            The text content.
+            `maxLength: 256000`
 
-          - `type: optional "input_text"`
-
-            The content type. Always `input_text` for system messages.
+          - `type: "input_text"`
 
             - `"input_text"`
 
         - `role: "system"`
 
-          The role of the message sender. Always `system`.
-
           - `"system"`
 
         - `type: "message"`
 
-          The type of the item. Always `message`.
-
           - `"message"`
 
-        - `id: optional string`
+        - `id: optional string or null`
 
-          The unique ID of the item. This may be provided by the client or generated by the server.
+          An optional client ID. The value `root` is reserved.
 
-        - `object: optional "realtime.item"`
+          `minLength: 1`, `maxLength: 32`
 
-          Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+        - `status: optional "completed" or "incomplete" or null`
 
-          - `"realtime.item"`
-
-        - `status: optional "completed" or "incomplete" or "in_progress"`
-
-          The status of the item. Has no effect on the conversation.
+          Optional input status. Omission or null defaults to completed.
 
           - `"completed"`
 
           - `"incomplete"`
 
-          - `"in_progress"`
+      - `RealtimeResponseInputMessageDeveloper object { content, role, type, 2 more }`
 
-      - `RealtimeConversationItemUserMessage object { content, role, type, 3 more }`
+        - `content: array of object { text, type }`
 
-        A user message item in a Realtime conversation.
+          `minItems: 1`, `maxItems: 1`
 
-        - `content: array of object { audio, detail, image_url, 3 more }`
+          - `text: string`
 
-          The content of the message.
+            `maxLength: 256000`
 
-          - `audio: optional string`
-
-            Base64-encoded audio bytes (for `input_audio`), these will be parsed as the format specified in the session input audio type configuration. This defaults to PCM 16-bit 24kHz mono if not specified.
-
-          - `detail: optional "auto" or "low" or "high"`
-
-            The detail level of the image (for `input_image`). `auto` will default to `high`.
-
-            - `"auto"`
-
-            - `"low"`
-
-            - `"high"`
-
-          - `image_url: optional string`
-
-            Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
-
-          - `text: optional string`
-
-            The text content (for `input_text`).
-
-          - `transcript: optional string`
-
-            Transcript of the audio (for `input_audio`). This is not sent to the model, but will be attached to the message item for reference.
-
-          - `type: optional "input_text" or "input_audio" or "input_image"`
-
-            The content type (`input_text`, `input_audio`, or `input_image`).
+          - `type: "input_text"`
 
             - `"input_text"`
 
-            - `"input_audio"`
+        - `role: "developer"`
 
-            - `"input_image"`
+          - `"developer"`
+
+        - `type: "message"`
+
+          - `"message"`
+
+        - `id: optional string or null`
+
+          An optional client ID. The value `root` is reserved.
+
+          `minLength: 1`, `maxLength: 32`
+
+        - `status: optional "completed" or "incomplete" or null`
+
+          Optional input status. Omission or null defaults to completed.
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+      - `RealtimeResponseInputMessageUser object { content, role, type, 2 more }`
+
+        - `content: array of InputText { text, type }  or InputAudio { audio, type, transcript }  or InputImage { image_url, type, detail }`
+
+          `minItems: 1`
+
+          - `InputText object { text, type }`
+
+            - `text: string`
+
+              `maxLength: 256000`
+
+            - `type: "input_text"`
+
+              - `"input_text"`
+
+          - `InputAudio object { audio, type, transcript }`
+
+            - `audio: string`
+
+              Base64 audio bytes in the session input audio format.
+
+              `minLength: 1`
+
+            - `type: "input_audio"`
+
+              - `"input_audio"`
+
+            - `transcript: optional string or null`
+
+              Optional text to associate with the input audio.
+
+          - `InputImage object { image_url, type, detail }`
+
+            - `image_url: string`
+
+              A base64 data URL with an image MIME type; use PNG or JPEG.
+
+              `format: uri`
+
+            - `type: "input_image"`
+
+              - `"input_image"`
+
+            - `detail: optional "low" or "high" or "auto" or null`
+
+              - `"low"`
+
+              - `"high"`
+
+              - `"auto"`
 
         - `role: "user"`
-
-          The role of the message sender. Always `user`.
 
           - `"user"`
 
         - `type: "message"`
 
-          The type of the item. Always `message`.
-
           - `"message"`
 
-        - `id: optional string`
+        - `id: optional string or null`
 
-          The unique ID of the item. This may be provided by the client or generated by the server.
+          An optional client ID. The value `root` is reserved.
 
-        - `object: optional "realtime.item"`
+          `minLength: 1`, `maxLength: 32`
 
-          Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+        - `status: optional "completed" or "incomplete" or null`
 
-          - `"realtime.item"`
-
-        - `status: optional "completed" or "incomplete" or "in_progress"`
-
-          The status of the item. Has no effect on the conversation.
+          Optional input status. Omission or null defaults to completed.
 
           - `"completed"`
 
           - `"incomplete"`
 
-          - `"in_progress"`
+      - `RealtimeResponseInputMessageAssistant object { content, role, type, 2 more }`
 
-      - `RealtimeConversationItemAssistantMessage object { content, role, type, 3 more }`
+        - `content: array of object { text, type }`
 
-        An assistant message item in a Realtime conversation.
+          `minItems: 1`
 
-        - `content: array of object { audio, text, transcript, type }`
+          - `text: string`
 
-          The content of the message.
+            `maxLength: 256000`
 
-          - `audio: optional string`
-
-            Base64-encoded audio bytes, these will be parsed as the format specified in the session output audio type configuration. This defaults to PCM 16-bit 24kHz mono if not specified.
-
-          - `text: optional string`
-
-            The text content.
-
-          - `transcript: optional string`
-
-            The transcript of the audio content, this will always be present if the output type is `audio`.
-
-          - `type: optional "output_text" or "output_audio"`
-
-            The content type, `output_text` or `output_audio` depending on the session `output_modalities` configuration.
+          - `type: "output_text"`
 
             - `"output_text"`
 
-            - `"output_audio"`
-
         - `role: "assistant"`
-
-          The role of the message sender. Always `assistant`.
 
           - `"assistant"`
 
         - `type: "message"`
 
-          The type of the item. Always `message`.
-
           - `"message"`
 
-        - `id: optional string`
+        - `id: optional string or null`
 
-          The unique ID of the item. This may be provided by the client or generated by the server.
+          An optional client ID. The value `root` is reserved.
 
-        - `object: optional "realtime.item"`
+          `minLength: 1`, `maxLength: 32`
 
-          Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
+        - `status: optional "completed" or "incomplete" or null`
 
-          - `"realtime.item"`
-
-        - `status: optional "completed" or "incomplete" or "in_progress"`
-
-          The status of the item. Has no effect on the conversation.
+          Optional input status. Omission or null defaults to completed.
 
           - `"completed"`
 
           - `"incomplete"`
 
-          - `"in_progress"`
+      - `FunctionCall object { arguments, call_id, name, 3 more }`
 
-      - `RealtimeConversationItemFunctionCall object { arguments, name, type, 4 more }`
-
-        A function call item in a Realtime conversation.
+        A function call supplied as input to a Realtime response.
 
         - `arguments: string`
 
-          The arguments of the function call. This is a JSON-encoded string representing the arguments passed to the function, for example `{"arg1": "value1", "arg2": 42}`.
-
-        - `name: string`
-
-          The name of the function being called.
-
-        - `type: "function_call"`
-
-          The type of the item. Always `function_call`.
-
-          - `"function_call"`
-
-        - `id: optional string`
-
-          The unique ID of the item. This may be provided by the client or generated by the server.
-
-        - `call_id: optional string`
-
-          The ID of the function call.
-
-        - `object: optional "realtime.item"`
-
-          Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
-
-          - `"realtime.item"`
-
-        - `status: optional "completed" or "incomplete" or "in_progress"`
-
-          The status of the item. Has no effect on the conversation.
-
-          - `"completed"`
-
-          - `"incomplete"`
-
-          - `"in_progress"`
-
-      - `RealtimeConversationItemFunctionCallOutput object { call_id, output, type, 3 more }`
-
-        A function call output item in a Realtime conversation.
+          `maxLength: 1048576`
 
         - `call_id: string`
 
-          The ID of the function call this output is for.
+          `minLength: 1`, `maxLength: 32`
 
-        - `output: string`
+        - `name: string`
 
-          The output of the function call, this is free text and can contain any information or simply be empty.
+          `minLength: 1`, `maxLength: 64`
 
-        - `type: "function_call_output"`
+        - `type: "function_call"`
 
-          The type of the item. Always `function_call_output`.
+          - `"function_call"`
 
-          - `"function_call_output"`
+        - `id: optional string or null`
 
-        - `id: optional string`
+          `minLength: 1`, `maxLength: 32`
 
-          The unique ID of the item. This may be provided by the client or generated by the server.
-
-        - `object: optional "realtime.item"`
-
-          Identifier for the API object being returned - always `realtime.item`. Optional when creating a new item.
-
-          - `"realtime.item"`
-
-        - `status: optional "completed" or "incomplete" or "in_progress"`
-
-          The status of the item. Has no effect on the conversation.
+        - `status: optional "completed" or "incomplete" or null`
 
           - `"completed"`
 
           - `"incomplete"`
 
-          - `"in_progress"`
+      - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
-      - `RealtimeMcpApprovalResponse object { id, approval_request_id, approve, 2 more }`
+        The result of a function call supplied as input to a Realtime response.
 
-        A Realtime item responding to an MCP approval request.
+        - `call_id: string`
 
-        - `id: string`
+          `minLength: 1`, `maxLength: 32`
 
-          The unique ID of the approval response.
+        - `output: string`
 
-        - `approval_request_id: string`
+          `maxLength: 1048576`
 
-          The ID of the approval request being answered.
+        - `type: "function_call_output"`
 
-        - `approve: boolean`
+          - `"function_call_output"`
 
-          Whether the request was approved.
+        - `id: optional string or null`
 
-        - `type: "mcp_approval_response"`
+          `minLength: 1`, `maxLength: 32`
 
-          The type of the item. Always `mcp_approval_response`.
+        - `status: optional "completed" or "incomplete" or null`
 
-          - `"mcp_approval_response"`
+          - `"completed"`
 
-        - `reason: optional string or null`
+          - `"incomplete"`
 
-          Optional reason for the decision.
+      - `ResponseItemReference object { id, type }`
 
-      - `RealtimeMcpListTools object { server_label, tools, type, id }`
-
-        A Realtime item listing tools available on an MCP server.
-
-        - `server_label: string`
-
-          The label of the MCP server.
-
-        - `tools: array of object { input_schema, name, annotations, description }`
-
-          The tools available on the server.
-
-          - `input_schema: unknown`
-
-            The JSON schema describing the tool's input.
-
-          - `name: string`
-
-            The name of the tool.
-
-          - `annotations: optional unknown or null`
-
-            Additional annotations about the tool.
-
-          - `description: optional string or null`
-
-            The description of the tool.
-
-        - `type: "mcp_list_tools"`
-
-          The type of the item. Always `mcp_list_tools`.
-
-          - `"mcp_list_tools"`
-
-        - `id: optional string`
-
-          The unique ID of the list.
-
-      - `RealtimeMcpToolCall object { id, arguments, name, 5 more }`
-
-        A Realtime item representing an invocation of a tool on an MCP server.
+        Reference an existing item in this Realtime session as response.create input.
+        Item references are only accepted in the response input array, not as new
+        conversation items.
 
         - `id: string`
 
-          The unique ID of the tool call.
+          The ID of an existing item in the same Realtime session.
 
-        - `arguments: string`
+          `minLength: 1`, `maxLength: 32`
 
-          A JSON string of the arguments passed to the tool.
+        - `type: "item_reference"`
 
-        - `name: string`
+          The type of this item. Always `item_reference`.
 
-          The name of the tool that was run.
-
-        - `server_label: string`
-
-          The label of the MCP server running the tool.
-
-        - `type: "mcp_call"`
-
-          The type of the item. Always `mcp_call`.
-
-          - `"mcp_call"`
-
-        - `approval_request_id: optional string or null`
-
-          The ID of an associated approval request, if any.
-
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
-
-          The error from the tool call, if any.
-
-          - `RealtimeMcpProtocolError object { code, message, type }`
-
-            - `code: number`
-
-            - `message: string`
-
-            - `type: "protocol_error"`
-
-              - `"protocol_error"`
-
-          - `RealtimeMcpToolExecutionError object { message, type }`
-
-            - `message: string`
-
-            - `type: "tool_execution_error"`
-
-              - `"tool_execution_error"`
-
-          - `RealtimeMcphttpError object { code, message, type }`
-
-            - `code: number`
-
-            - `message: string`
-
-            - `type: "http_error"`
-
-              - `"http_error"`
-
-        - `output: optional string or null`
-
-          The output from the tool call.
-
-      - `RealtimeMcpApprovalRequest object { id, arguments, name, 2 more }`
-
-        A Realtime item requesting human approval of a tool invocation.
-
-        - `id: string`
-
-          The unique ID of the approval request.
-
-        - `arguments: string`
-
-          A JSON string of arguments for the tool.
-
-        - `name: string`
-
-          The name of the tool to run.
-
-        - `server_label: string`
-
-          The label of the MCP server making the request.
-
-        - `type: "mcp_approval_request"`
-
-          The type of the item. Always `mcp_approval_request`.
-
-          - `"mcp_approval_request"`
+          - `"item_reference"`
 
     - `instructions: optional string`
 
@@ -16480,6 +16590,8 @@ Use Bearer Auth (header Authorization).
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -16529,6 +16641,8 @@ Use Bearer Auth (header Authorization).
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -16674,6 +16788,8 @@ Use Bearer Auth (header Authorization).
 
           The tool invocation context(s).
 
+          `minItems: 1`
+
           - `"direct"`
 
           - `"programmatic"`
@@ -16808,6 +16924,8 @@ Use Bearer Auth (header Authorization).
 
           The URL for the MCP server. One of `server_url`, `connector_id`, or
           `tunnel_id` must be provided.
+
+          `format: uri`
 
         - `tunnel_id: optional string`
 
@@ -17031,6 +17149,8 @@ Use Bearer Auth (header Authorization).
           - `image_url: optional string`
 
             Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+            `format: uri`
 
           - `text: optional string`
 
@@ -17751,6 +17871,8 @@ Use Bearer Auth (header Authorization).
 
             Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
 
+            `format: uri`
+
           - `text: optional string`
 
             The text content (for `input_text`).
@@ -18322,6 +18444,26 @@ Use Bearer Auth (header Authorization).
 
     - `"response.function_call_arguments.done"`
 
+### Response Item Reference
+
+- `ResponseItemReference object { id, type }`
+
+  Reference an existing item in this Realtime session as response.create input.
+  Item references are only accepted in the response input array, not as new
+  conversation items.
+
+  - `id: string`
+
+    The ID of an existing item in the same Realtime session.
+
+    `minLength: 1`, `maxLength: 32`
+
+  - `type: "item_reference"`
+
+    The type of this item. Always `item_reference`.
+
+    - `"item_reference"`
+
 ### Response Mcp Call Arguments Delta
 
 - `ResponseMcpCallArgumentsDelta object { delta, event_id, item_id, 4 more }`
@@ -18551,6 +18693,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -19002,6 +19146,8 @@ Use Bearer Auth (header Authorization).
         - `image_url: optional string`
 
           Base64-encoded image bytes (for `input_image`) as a data URI. For example `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...`. Supported formats are PNG and JPEG.
+
+          `format: uri`
 
         - `text: optional string`
 
@@ -19544,6 +19690,8 @@ Use Bearer Auth (header Authorization).
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+              `minItems: 1`
+
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
               The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -19615,6 +19763,8 @@ Use Bearer Auth (header Authorization).
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -19684,6 +19834,8 @@ Use Bearer Auth (header Authorization).
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
+            `minimum: 0.25`, `maximum: 1.5`
+
           - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
@@ -19725,6 +19877,8 @@ Use Bearer Auth (header Authorization).
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -19890,6 +20044,8 @@ Use Bearer Auth (header Authorization).
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -19939,6 +20095,8 @@ Use Bearer Auth (header Authorization).
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -20084,6 +20242,8 @@ Use Bearer Auth (header Authorization).
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -20219,6 +20379,8 @@ Use Bearer Auth (header Authorization).
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -20283,6 +20445,8 @@ Use Bearer Auth (header Authorization).
 
             Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+            `minimum: 0`, `maximum: 1`
+
           - `type: "retention_ratio"`
 
             Use retention ratio truncation.
@@ -20296,6 +20460,8 @@ Use Bearer Auth (header Authorization).
             - `post_instructions: optional number`
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+              `minimum: 0`
 
     - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -20344,6 +20510,8 @@ Use Bearer Auth (header Authorization).
             - `languages: optional array of string`
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+              `minItems: 1`
 
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -20405,6 +20573,8 @@ Use Bearer Auth (header Authorization).
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -20552,6 +20722,8 @@ Use Bearer Auth (header Authorization).
 
               Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+              `minItems: 1`
+
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
               The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -20627,6 +20799,8 @@ Use Bearer Auth (header Authorization).
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -20695,6 +20869,8 @@ Use Bearer Auth (header Authorization).
 
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
+
+            `minimum: 0.25`, `maximum: 1.5`
 
           - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -20907,6 +21083,8 @@ Use Bearer Auth (header Authorization).
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -20956,6 +21134,8 @@ Use Bearer Auth (header Authorization).
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -21101,6 +21281,8 @@ Use Bearer Auth (header Authorization).
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -21236,6 +21418,8 @@ Use Bearer Auth (header Authorization).
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -21300,6 +21484,8 @@ Use Bearer Auth (header Authorization).
 
             Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+            `minimum: 0`, `maximum: 1`
+
           - `type: "retention_ratio"`
 
             Use retention ratio truncation.
@@ -21313,6 +21499,8 @@ Use Bearer Auth (header Authorization).
             - `post_instructions: optional number`
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+              `minimum: 0`
 
     - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
 
@@ -21389,6 +21577,8 @@ Use Bearer Auth (header Authorization).
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -21461,6 +21651,8 @@ Use Bearer Auth (header Authorization).
   - `event_id: optional string`
 
     Optional client-generated ID used to identify this event. This is an arbitrary string that a client may assign. It will be passed back if there is an error with the event, but the corresponding `session.updated` event will not include it.
+
+    `maxLength: 512`
 
 ### Session Updated Event
 
@@ -21569,6 +21761,8 @@ Use Bearer Auth (header Authorization).
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+              `minItems: 1`
+
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
               The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -21640,6 +21834,8 @@ Use Bearer Auth (header Authorization).
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -21709,6 +21905,8 @@ Use Bearer Auth (header Authorization).
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
+            `minimum: 0.25`, `maximum: 1.5`
+
           - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
@@ -21750,6 +21948,8 @@ Use Bearer Auth (header Authorization).
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -21915,6 +22115,8 @@ Use Bearer Auth (header Authorization).
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -21964,6 +22166,8 @@ Use Bearer Auth (header Authorization).
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -22109,6 +22313,8 @@ Use Bearer Auth (header Authorization).
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -22244,6 +22450,8 @@ Use Bearer Auth (header Authorization).
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -22308,6 +22516,8 @@ Use Bearer Auth (header Authorization).
 
             Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+            `minimum: 0`, `maximum: 1`
+
           - `type: "retention_ratio"`
 
             Use retention ratio truncation.
@@ -22321,6 +22531,8 @@ Use Bearer Auth (header Authorization).
             - `post_instructions: optional number`
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+              `minimum: 0`
 
     - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -22369,6 +22581,8 @@ Use Bearer Auth (header Authorization).
             - `languages: optional array of string`
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+              `minItems: 1`
 
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -22430,6 +22644,8 @@ Use Bearer Auth (header Authorization).
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -22521,6 +22737,8 @@ Use Bearer Auth (header Authorization).
       - `languages: optional array of string`
 
         Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
+
+        `minItems: 1`
 
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -22622,6 +22840,8 @@ Use Bearer Auth (header Authorization).
         Timestamp for when the token expires. Currently, all tokens expire
         after one minute.
 
+        `format: unixtime`
+
       - `value: string`
 
         Ephemeral key usable in client environments to authenticate connections
@@ -22643,6 +22863,8 @@ Use Bearer Auth (header Authorization).
       - `languages: optional array of string`
 
         The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+        `minItems: 1`
 
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -22831,6 +23053,8 @@ handle it.
 
         Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+        `minItems: 1`
+
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
         The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -22906,6 +23130,8 @@ handle it.
           associated with the Response) will be emitted when the timeout is reached.
           Idle timeout is currently only supported for `server_vad` mode.
 
+          `minimum: 5000`, `maximum: 30000`
+
         - `interrupt_response: optional boolean`
 
           Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -22974,6 +23200,8 @@ handle it.
 
       This parameter is a post-processing adjustment to the audio after it is generated, it's
       also possible to prompt the model to speak faster or slower.
+
+      `minimum: 0.25`, `maximum: 1.5`
 
     - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -23186,6 +23414,8 @@ handle it.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        `format: uri`
+
       - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -23235,6 +23465,8 @@ handle it.
       - `file_url: optional string`
 
         The URL of the file to be sent to the model.
+
+        `format: uri`
 
       - `filename: optional string`
 
@@ -23380,6 +23612,8 @@ handle it.
 
       The tool invocation context(s).
 
+      `minItems: 1`
+
       - `"direct"`
 
       - `"programmatic"`
@@ -23515,6 +23749,8 @@ handle it.
       The URL for the MCP server. One of `server_url`, `connector_id`, or
       `tunnel_id` must be provided.
 
+      `format: uri`
+
     - `tunnel_id: optional string`
 
       The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -23579,6 +23815,8 @@ handle it.
 
       Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+      `minimum: 0`, `maximum: 1`
+
     - `type: "retention_ratio"`
 
       Use retention ratio truncation.
@@ -23592,6 +23830,8 @@ handle it.
       - `post_instructions: optional number`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+        `minimum: 0`
 
 ### Example
 
@@ -23803,6 +24043,8 @@ Returns the created client secret and the effective session object. The client s
 
     The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
+    `format: int64`, `minimum: 10`, `maximum: 7200`
+
 - `session: optional RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
 
   Session configuration to use for the client secret. Choose either a realtime
@@ -23912,6 +24154,8 @@ Returns the created client secret and the effective session object. The client s
 
             Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+            `minItems: 1`
+
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -23987,6 +24231,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -24055,6 +24301,8 @@ Returns the created client secret and the effective session object. The client s
 
           This parameter is a post-processing adjustment to the audio after it is generated, it's
           also possible to prompt the model to speak faster or slower.
+
+          `minimum: 0.25`, `maximum: 1.5`
 
         - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -24267,6 +24515,8 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -24316,6 +24566,8 @@ Returns the created client secret and the effective session object. The client s
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -24461,6 +24713,8 @@ Returns the created client secret and the effective session object. The client s
 
           The tool invocation context(s).
 
+          `minItems: 1`
+
           - `"direct"`
 
           - `"programmatic"`
@@ -24596,6 +24850,8 @@ Returns the created client secret and the effective session object. The client s
           The URL for the MCP server. One of `server_url`, `connector_id`, or
           `tunnel_id` must be provided.
 
+          `format: uri`
+
         - `tunnel_id: optional string`
 
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -24660,6 +24916,8 @@ Returns the created client secret and the effective session object. The client s
 
           Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+          `minimum: 0`, `maximum: 1`
+
         - `type: "retention_ratio"`
 
           Use retention ratio truncation.
@@ -24673,6 +24931,8 @@ Returns the created client secret and the effective session object. The client s
           - `post_instructions: optional number`
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+            `minimum: 0`
 
   - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
 
@@ -24749,6 +25009,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -24817,6 +25079,8 @@ Returns the created client secret and the effective session object. The client s
 - `expires_at: number`
 
   Expiration timestamp for the client secret, in seconds since epoch.
+
+  `format: unixtime`
 
 - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
@@ -24914,6 +25178,8 @@ Returns the created client secret and the effective session object. The client s
 
             The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+            `minItems: 1`
+
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
             The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -24985,6 +25251,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -25054,6 +25322,8 @@ Returns the created client secret and the effective session object. The client s
           This parameter is a post-processing adjustment to the audio after it is generated, it's
           also possible to prompt the model to speak faster or slower.
 
+          `minimum: 0.25`, `maximum: 1.5`
+
         - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
           The voice the model uses to respond. Voice cannot be changed during the
@@ -25095,6 +25365,8 @@ Returns the created client secret and the effective session object. The client s
     - `expires_at: optional number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -25260,6 +25532,8 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -25309,6 +25583,8 @@ Returns the created client secret and the effective session object. The client s
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -25454,6 +25730,8 @@ Returns the created client secret and the effective session object. The client s
 
           The tool invocation context(s).
 
+          `minItems: 1`
+
           - `"direct"`
 
           - `"programmatic"`
@@ -25589,6 +25867,8 @@ Returns the created client secret and the effective session object. The client s
           The URL for the MCP server. One of `server_url`, `connector_id`, or
           `tunnel_id` must be provided.
 
+          `format: uri`
+
         - `tunnel_id: optional string`
 
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -25653,6 +25933,8 @@ Returns the created client secret and the effective session object. The client s
 
           Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+          `minimum: 0`, `maximum: 1`
+
         - `type: "retention_ratio"`
 
           Use retention ratio truncation.
@@ -25666,6 +25948,8 @@ Returns the created client secret and the effective session object. The client s
           - `post_instructions: optional number`
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+            `minimum: 0`
 
   - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -25714,6 +25998,8 @@ Returns the created client secret and the effective session object. The client s
           - `languages: optional array of string`
 
             The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+            `minItems: 1`
 
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -25775,6 +26061,8 @@ Returns the created client secret and the effective session object. The client s
     - `expires_at: optional number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -25957,6 +26245,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     Expiration timestamp for the client secret, in seconds since epoch.
 
+    `format: unixtime`
+
   - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
     The session configuration for either a realtime or transcription session.
@@ -26053,6 +26343,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+              `minItems: 1`
+
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
               The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -26124,6 +26416,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -26193,6 +26487,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
+            `minimum: 0.25`, `maximum: 1.5`
+
           - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
@@ -26234,6 +26530,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -26399,6 +26697,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -26448,6 +26748,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -26593,6 +26895,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -26728,6 +27032,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -26792,6 +27098,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+            `minimum: 0`, `maximum: 1`
+
           - `type: "retention_ratio"`
 
             Use retention ratio truncation.
@@ -26805,6 +27113,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `post_instructions: optional number`
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+              `minimum: 0`
 
     - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -26853,6 +27163,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `languages: optional array of string`
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+              `minItems: 1`
 
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -26914,6 +27226,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -27021,6 +27335,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -27092,6 +27408,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             associated with the Response) will be emitted when the timeout is reached.
             Idle timeout is currently only supported for `server_vad` mode.
 
+            `minimum: 5000`, `maximum: 30000`
+
           - `interrupt_response: optional boolean`
 
             Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -27161,6 +27479,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
 
+        `minimum: 0.25`, `maximum: 1.5`
+
       - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
         The voice the model uses to respond. Voice cannot be changed during the
@@ -27202,6 +27522,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   - `expires_at: optional number`
 
     Expiration timestamp for the session, in seconds since epoch.
+
+    `format: unixtime`
 
   - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -27367,6 +27689,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          `format: uri`
+
         - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -27416,6 +27740,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         - `file_url: optional string`
 
           The URL of the file to be sent to the model.
+
+          `format: uri`
 
         - `filename: optional string`
 
@@ -27561,6 +27887,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         The tool invocation context(s).
 
+        `minItems: 1`
+
         - `"direct"`
 
         - `"programmatic"`
@@ -27696,6 +28024,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         The URL for the MCP server. One of `server_url`, `connector_id`, or
         `tunnel_id` must be provided.
 
+        `format: uri`
+
       - `tunnel_id: optional string`
 
         The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -27760,6 +28090,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+        `minimum: 0`, `maximum: 1`
+
       - `type: "retention_ratio"`
 
         Use retention ratio truncation.
@@ -27773,6 +28105,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         - `post_instructions: optional number`
 
           Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+          `minimum: 0`
 
 ### Realtime Transcription Session Create Response
 
@@ -27864,6 +28198,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -27924,6 +28260,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   - `expires_at: optional number`
 
     Expiration timestamp for the session, in seconds since epoch.
+
+    `format: unixtime`
 
   - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -27988,6 +28326,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     Timestamp for when the token expires. Currently, all tokens expire
     after one minute.
+
+    `format: unixtime`
 
   - `value: string`
 
@@ -28121,6 +28461,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+        `format: uri`
+
       - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -28171,6 +28513,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The URL of the file to be sent to the model.
 
+        `format: uri`
+
       - `filename: optional string`
 
         The name of the file to be sent to the model.
@@ -28202,6 +28546,8 @@ Returns the created Realtime session object, plus an ephemeral key.
   The speed of the model's spoken response. 1.0 is the default speed. 0.25 is
   the minimum speed. 1.5 is the maximum speed. This value can only be changed
   in between model turns, not while a response is in progress.
+
+  `minimum: 0.25`, `maximum: 1.5`
 
 - `temperature: optional number`
 
@@ -28295,6 +28641,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+      `minimum: 0`, `maximum: 1`
+
     - `type: "retention_ratio"`
 
       Use retention ratio truncation.
@@ -28308,6 +28656,8 @@ Returns the created Realtime session object, plus an ephemeral key.
       - `post_instructions: optional number`
 
         Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+        `minimum: 0`
 
 - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
 
@@ -28453,6 +28803,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+        `minItems: 1`
+
       - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
         The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -28534,6 +28886,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 - `expires_at: optional number`
 
   Expiration timestamp for the session, in seconds since epoch.
+
+  `format: unixtime`
 
 - `include: optional array of "item.input_audio_transcription.logprobs"`
 
@@ -28883,6 +29237,8 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -28964,6 +29320,8 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
   - `expires_at: optional number`
 
     Expiration timestamp for the session, in seconds since epoch.
+
+    `format: unixtime`
 
   - `include: optional array of "item.input_audio_transcription.logprobs"`
 
@@ -29192,6 +29550,8 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
     Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+    `minItems: 1`
+
   - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
     The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -29265,6 +29625,8 @@ Returns the created Realtime transcription session object, plus an ephemeral key
     Timestamp for when the token expires. Currently, all tokens expire
     after one minute.
 
+    `format: unixtime`
+
   - `value: string`
 
     Ephemeral key usable in client environments to authenticate connections
@@ -29286,6 +29648,8 @@ Returns the created Realtime transcription session object, plus an ephemeral key
   - `languages: optional array of string`
 
     The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+    `minItems: 1`
 
   - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -29448,6 +29812,8 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
       Timestamp for when the token expires. Currently, all tokens expire
       after one minute.
 
+      `format: unixtime`
+
     - `value: string`
 
       Ephemeral key usable in client environments to authenticate connections
@@ -29469,6 +29835,8 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
     - `languages: optional array of string`
 
       The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+      `minItems: 1`
 
     - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -29638,6 +30006,8 @@ The client secret is a string that looks like `ek_1234`.
 
     The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
+    `format: int64`, `minimum: 10`, `maximum: 7200`
+
 ### Returns
 
 - `RealtimeTranslationClientSecretCreateResponse object { expires_at, session, value }`
@@ -29647,6 +30017,8 @@ The client secret is a string that looks like `ek_1234`.
   - `expires_at: number`
 
     Expiration timestamp for the client secret, in seconds since epoch.
+
+    `format: unixtime`
 
   - `session: RealtimeTranslationSession`
 
@@ -29694,6 +30066,8 @@ The client secret is a string that looks like `ek_1234`.
     - `expires_at: number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `model: string`
 

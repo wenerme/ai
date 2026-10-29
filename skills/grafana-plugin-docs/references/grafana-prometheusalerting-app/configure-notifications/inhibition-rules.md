@@ -52,11 +52,11 @@ Select a rule to open its drawer, which shows its source matchers, target matche
 
 ## Things to watch for
 
-**Both sides need the labels.** If the source alerts carry `datacenter` but the target alerts don’t, they can never be equal, and the rule quietly never fires. Consistent labeling across rules is what makes inhibition work. Refer to [Labels and annotations](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
+**Both sides need the labels.** If the source alerts carry `datacenter` but the target alerts don’t, they can never be equal, and the rule quietly never fires. Consistent labeling across rules is what makes inhibition work. Refer to [Labels and annotations](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/).
 
 **An alert can inhibit itself.** If your source and target matchers both match the same alert, it suppresses itself. Make sure the two sets are genuinely disjoint, usually by matching on different severity levels.
 
-**Suppression is invisible unless you look.** An inhibited alert sends no notification. The **Alerts** page marks it as inhibited and says how many inhibitions apply, which is the only routine way to notice. Refer to [View active notifications](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
+**Suppression is invisible unless you look.** An inhibited alert sends no notification. The **Alerts** page marks it as inhibited and says how many inhibitions apply, which is the only routine way to notice. Refer to [View active notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications/).
 
 ## Inhibition compared with silences and time intervals
 

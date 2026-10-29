@@ -179,6 +179,7 @@ Both sections read from the primary database, because autovacuum runs only there
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251254) in GitLab 19.4.
 - Tasks for a single check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251735) in GitLab 19.4.
 - Menu removed for a single check [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257133) in GitLab 19.5.
+- Planner statistics check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265314) in GitLab 19.6.
 
 Use the Rake task when you have no access to the UI, or when you want the report from a script.
 
@@ -194,15 +195,23 @@ By default, the task reports on every database. To select databases, pass their 
 sudo gitlab-rake "gitlab:db:diagnostics[main,ci]"
 ```
 
-To run the autovacuum check only, use its own task. It accepts the same database names:
+To run one check only, use its own task. The tasks accept the same database names:
 
 ```shell
 sudo gitlab-rake "gitlab:db:diagnostics:autovacuum_settings[main,ci]"
+sudo gitlab-rake "gitlab:db:diagnostics:planner_statistics[main,ci]"
 ```
 
 The report prints a summary first, then a section for each check. The **Autovacuum settings**
 section lists the findings, the effective settings, the per-table overrides, and the scale factor
 risks for each database.
+
+The **Planner statistics** section lists tables of 10 MiB or more that PostgreSQL has never
+analyzed or vacuumed, and partitioned tables whose statistics are older than twice their expected
+interval. Statistics are missing after a PostgreSQL major version upgrade before PostgreSQL 18, and
+autovacuum never analyzes a partitioned table. After a restore, the section reports only partitioned
+tables: building the indexes records a row count for the other restored tables, although they have
+no column statistics either. See [Planner statistics findings](#planner-statistics-findings).
 
 The task exits with status `1` when it finds an error, so a monitoring job can use the exit code.
 
@@ -210,8 +219,8 @@ In a terminal, the task shows a menu to open each section when it runs more than
 it runs one check, or when you pipe or redirect the output, the task prints the whole report.
 
 > [!note]
-> The Rake task reports settings only. It does not show vacuum activity. Vacuum activity is
-> available only on the [Database diagnostics page](#database-diagnostics-page).
+> The Rake task does not show vacuum activity. Vacuum activity is available only on the
+> [Database diagnostics page](#database-diagnostics-page).
 
 ### Autovacuum findings
 
@@ -238,6 +247,16 @@ autovacuum disabled.
 > values in [Recommended autovacuum settings](#recommended-autovacuum-settings). A setting can
 > pass the checks and still be too low for your workload. For example, three autovacuum workers
 > passes the check, but is low for a host with many vCPUs.
+
+### Planner statistics findings
+
+The Rake task reports two findings. Both concern tables of 10 MiB or more, measured by heap size
+without indexes.
+
+| Finding            | Severity | Reported when                                                                                                                                                                                                                                                                                                           | Action                                                                                                                                                                                                                                                                                             |
+|--------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Statistics missing | Error    | PostgreSQL has never analyzed or vacuumed a table, or never analyzed a partitioned table, so it has no statistics to plan queries against it. This is the state after a PostgreSQL major version upgrade before PostgreSQL 18. The check looks at the 100 largest such tables and lists up to 50; when all 100 are 10 MiB or more, the finding says "at least 100". | Run `ANALYZE` on each table in a session with `statement_timeout` set to `0`. `ANALYZE` on a partitioned table covers its partitions as well. When the finding says "at least 100", run `ANALYZE` with no table name to cover the whole database.                                                 |
+| Statistics stale   | Warning  | A partitioned table was last analyzed more than twice its expected interval ago. The **Interval** column shows that interval: the schedule GitLab analyzes the table on, or one week for a partitioned table GitLab does not analyze itself.                                                                           | Run `ANALYZE` on the table in a session with `statement_timeout` set to `0`. For a table GitLab analyzes on a schedule, also check that the `postgres_dynamic_partitions_manager` cron job runs.                                                                                                   |
 
 ### Check dead tuples and freeze age
 

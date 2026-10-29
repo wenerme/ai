@@ -12,6 +12,8 @@ Get a safety case by ID.
 
   Safety case ID
 
+  `maxLength: 128`
+
 ### Returns
 
 - `SafetyCase object { id, created_at, entity_identifier, 3 more }`
@@ -19,6 +21,8 @@ Get a safety case by ID.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `entity_identifier: string`
 
@@ -87,6 +91,8 @@ curl https://api.openai.com/v1/safety/cases/C-abc123 \
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `entity_identifier: string`
 

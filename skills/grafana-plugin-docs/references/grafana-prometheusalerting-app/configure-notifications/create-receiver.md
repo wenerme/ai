@@ -55,7 +55,7 @@ Leave it off for paging integrations that manage incident lifecycle themselves. 
 
 > Caution
 >
-> Renaming a receiver doesn’t update the routes pointing at it. Update those routes first, or the rename leaves them referring to a receiver that no longer exists. Refer to [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
+> Renaming a receiver doesn’t update the routes pointing at it. Update those routes first, or the rename leaves them referring to a receiver that no longer exists. Refer to [Configure routes](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
 
 ## Delete a receiver
 

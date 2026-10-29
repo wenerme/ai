@@ -59,6 +59,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   The text to generate audio for. The maximum length is 4096 characters.
 
+  `maxLength: 4096`
+
 - `model: string or SpeechModel`
 
   One of the available [TTS models](/api/docs/guides/text-to-speech): `tts-1`, `tts-1-hd`, `gpt-4o-mini-tts`, or `gpt-4o-mini-tts-2025-12-15`.
@@ -123,6 +125,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   Control the voice of your generated audio with additional instructions. Does not work with `tts-1` or `tts-1-hd`.
 
+  `maxLength: 4096`
+
 - `response_format: optional "mp3" or "opus" or "aac" or 3 more`
 
   The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`.
@@ -142,6 +146,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 - `speed: optional number`
 
   The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default.
+
+  `minimum: 0.25`, `maximum: 4`
 
 - `stream_format: optional "sse" or "audio"`
 
@@ -298,6 +304,8 @@ transcript events. Supported formats depend on the model.
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -312,6 +320,8 @@ transcript events. Supported formats depend on the model.
 
     Duration of the input audio in seconds.
 
+    `format: double`
+
   - `segments: array of TranscriptionDiarizedSegment`
 
     Segments of the transcript annotated with timestamps and speaker labels.
@@ -324,6 +334,8 @@ transcript events. Supported formats depend on the model.
 
       End timestamp of the segment in seconds.
 
+      `format: double`
+
     - `speaker: string`
 
       Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
@@ -331,6 +343,8 @@ transcript events. Supported formats depend on the model.
     - `start: number`
 
       Start timestamp of the segment in seconds.
+
+      `format: double`
 
     - `text: string`
 
@@ -398,6 +412,8 @@ transcript events. Supported formats depend on the model.
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -411,6 +427,8 @@ transcript events. Supported formats depend on the model.
   - `duration: number`
 
     The duration of the input audio.
+
+    `format: double`
 
   - `language: string`
 
@@ -432,17 +450,25 @@ transcript events. Supported formats depend on the model.
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -452,9 +478,13 @@ transcript events. Supported formats depend on the model.
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 
@@ -472,6 +502,8 @@ transcript events. Supported formats depend on the model.
 
       Duration of the input audio in seconds.
 
+      `format: double`
+
     - `type: "duration"`
 
       The type of the usage object. Always `duration` for this variant.
@@ -486,9 +518,13 @@ transcript events. Supported formats depend on the model.
 
       End time of the word in seconds.
 
+      `format: double`
+
     - `start: number`
 
       Start time of the word in seconds.
+
+      `format: double`
 
     - `word: string`
 
@@ -928,6 +964,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -1018,6 +1056,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Duration of the input audio in seconds.
 
+          `format: double`
+
         - `type: "duration"`
 
           The type of the usage object. Always `duration` for this variant.
@@ -1032,6 +1072,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Duration of the input audio in seconds.
 
+      `format: double`
+
     - `segments: array of TranscriptionDiarizedSegment`
 
       Segments of the transcript annotated with timestamps and speaker labels.
@@ -1044,6 +1086,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         End timestamp of the segment in seconds.
 
+        `format: double`
+
       - `speaker: string`
 
         Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
@@ -1051,6 +1095,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
       - `start: number`
 
         Start timestamp of the segment in seconds.
+
+        `format: double`
 
       - `text: string`
 
@@ -1118,6 +1164,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Duration of the input audio in seconds.
 
+          `format: double`
+
         - `type: "duration"`
 
           The type of the usage object. Always `duration` for this variant.
@@ -1131,6 +1179,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
     - `duration: number`
 
       The duration of the input audio.
+
+      `format: double`
 
     - `language: string`
 
@@ -1152,17 +1202,25 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+        `format: float`
+
       - `compression_ratio: number`
 
         Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+        `format: float`
 
       - `end: number`
 
         End time of the segment in seconds.
 
+        `format: double`
+
       - `no_speech_prob: number`
 
         Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+        `format: float`
 
       - `seek: number`
 
@@ -1172,9 +1230,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Start time of the segment in seconds.
 
+        `format: double`
+
       - `temperature: number`
 
         Temperature parameter used for generating the segment.
+
+        `format: float`
 
       - `text: string`
 
@@ -1192,6 +1254,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -1206,9 +1270,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         End time of the word in seconds.
 
+        `format: double`
+
       - `start: number`
 
         Start time of the word in seconds.
+
+        `format: double`
 
       - `word: string`
 
@@ -1224,6 +1292,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Duration of the input audio in seconds.
 
+    `format: double`
+
   - `segments: array of TranscriptionDiarizedSegment`
 
     Segments of the transcript annotated with timestamps and speaker labels.
@@ -1236,6 +1306,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       End timestamp of the segment in seconds.
 
+      `format: double`
+
     - `speaker: string`
 
       Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
@@ -1243,6 +1315,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
     - `start: number`
 
       Start timestamp of the segment in seconds.
+
+      `format: double`
 
     - `text: string`
 
@@ -1310,6 +1384,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Duration of the input audio in seconds.
 
+        `format: double`
+
       - `type: "duration"`
 
         The type of the usage object. Always `duration` for this variant.
@@ -1330,6 +1406,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     End timestamp of the segment in seconds.
 
+    `format: double`
+
   - `speaker: string`
 
     Speaker label for this segment. When known speakers are provided, the label matches `known_speaker_names[]`. Otherwise speakers are labeled sequentially using capital letters (`A`, `B`, ...).
@@ -1337,6 +1415,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
   - `start: number`
 
     Start timestamp of the segment in seconds.
+
+    `format: double`
 
   - `text: string`
 
@@ -1376,17 +1456,25 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+    `format: float`
+
   - `compression_ratio: number`
 
     Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+    `format: float`
 
   - `end: number`
 
     End time of the segment in seconds.
 
+    `format: double`
+
   - `no_speech_prob: number`
 
     Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+    `format: float`
 
   - `seek: number`
 
@@ -1396,9 +1484,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Start time of the segment in seconds.
 
+    `format: double`
+
   - `temperature: number`
 
     Temperature parameter used for generating the segment.
+
+    `format: float`
 
   - `text: string`
 
@@ -1426,6 +1518,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       End timestamp of the segment in seconds.
 
+      `format: double`
+
     - `speaker: string`
 
       Speaker label for this segment.
@@ -1433,6 +1527,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
     - `start: number`
 
       Start timestamp of the segment in seconds.
+
+      `format: double`
 
     - `text: string`
 
@@ -1674,6 +1770,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     End timestamp of the segment in seconds.
 
+    `format: double`
+
   - `speaker: string`
 
     Speaker label for this segment.
@@ -1681,6 +1779,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
   - `start: number`
 
     Start timestamp of the segment in seconds.
+
+    `format: double`
 
   - `text: string`
 
@@ -1702,6 +1802,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     The duration of the input audio.
 
+    `format: double`
+
   - `language: string`
 
     The language of the input audio.
@@ -1722,17 +1824,25 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -1742,9 +1852,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 
@@ -1762,6 +1876,8 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Duration of the input audio in seconds.
 
+      `format: double`
+
     - `type: "duration"`
 
       The type of the usage object. Always `duration` for this variant.
@@ -1776,9 +1892,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       End time of the word in seconds.
 
+      `format: double`
+
     - `start: number`
 
       Start time of the word in seconds.
+
+      `format: double`
 
     - `word: string`
 
@@ -1792,9 +1912,13 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     End time of the word in seconds.
 
+    `format: double`
+
   - `start: number`
 
     Start time of the word in seconds.
+
+    `format: double`
 
   - `word: string`
 
@@ -1826,6 +1950,8 @@ for details.
 
     The duration of the input audio.
 
+    `format: double`
+
   - `language: string`
 
     The language of the output translation (always `english`).
@@ -1846,17 +1972,25 @@ for details.
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -1866,9 +2000,13 @@ for details.
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 
@@ -1936,6 +2074,8 @@ curl https://api.openai.com/v1/audio/translations \
 
       The duration of the input audio.
 
+      `format: double`
+
     - `language: string`
 
       The language of the output translation (always `english`).
@@ -1956,17 +2096,25 @@ curl https://api.openai.com/v1/audio/translations \
 
         Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+        `format: float`
+
       - `compression_ratio: number`
 
         Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+        `format: float`
 
       - `end: number`
 
         End time of the segment in seconds.
 
+        `format: double`
+
       - `no_speech_prob: number`
 
         Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+        `format: float`
 
       - `seek: number`
 
@@ -1976,9 +2124,13 @@ curl https://api.openai.com/v1/audio/translations \
 
         Start time of the segment in seconds.
 
+        `format: double`
+
       - `temperature: number`
 
         Temperature parameter used for generating the segment.
+
+        `format: float`
 
       - `text: string`
 
@@ -1995,6 +2147,8 @@ curl https://api.openai.com/v1/audio/translations \
   - `duration: number`
 
     The duration of the input audio.
+
+    `format: double`
 
   - `language: string`
 
@@ -2016,17 +2170,25 @@ curl https://api.openai.com/v1/audio/translations \
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -2036,9 +2198,13 @@ curl https://api.openai.com/v1/audio/translations \
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 
@@ -2069,6 +2235,8 @@ Upload a voice consent recording.
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
+
+    `format: unixtime`
 
   - `language: string`
 
@@ -2196,6 +2364,8 @@ Returns a list of voice consent recordings.
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -2278,6 +2448,8 @@ Retrieves a voice consent recording.
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -2348,6 +2520,8 @@ Updates a voice consent recording (metadata only).
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -2413,6 +2587,8 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -2459,9 +2635,13 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   The name of the new voice.
 
+  `minLength: 1`, `maxLength: 256`
+
 - `prompt: string`
 
   A description of the desired voice. Must not contain only whitespace.
+
+  `minLength: 1`, `maxLength: 2000`
 
 - `type: "prompt"`
 
@@ -2487,6 +2667,8 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   Optional text for the voice to speak during creation. If omitted, a script is generated from the prompt. Must not be blank after trimming whitespace; scripts that are too short are rejected.
 
+  `minLength: 1`, `maxLength: 2000`
+
 ### Returns
 
 - `Voice object { id, created_at, name, 3 more }`
@@ -2500,6 +2682,8 @@ Returns the saved voice's metadata. Voices created from text prompts are support
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the voice was created.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -2647,6 +2831,8 @@ curl https://api.openai.com/v1/audio/voices/voice_1234 \
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the voice was created.
+
+    `format: unixtime`
 
   - `name: string`
 

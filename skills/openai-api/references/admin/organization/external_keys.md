@@ -96,6 +96,8 @@ Add an external key config for an organization
 
       The name of the Azure Key Vault master key that you manage
 
+      `maxLength: 127`
+
     - `name: string`
 
       A friendly name to identify this config
@@ -344,6 +346,8 @@ List the external key configs registered on the user's organization
 - `after: optional string or null`
 
 - `limit: optional number`
+
+  `minimum: 0`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 

@@ -527,6 +527,7 @@ query: project = "team/project" and milestone = "Sprint 23" and opened = true
 | Hierarchical link (child)        | `[Link text](child-page)`                 | `[Details](details)` |
 | Root link                        | `[Link text](/page-from-root)`            | `[Home](/home)` |
 | Full URL                         | Standard Markdown                         | `[API Guide](https://gitlab.example.com/.../wikis/api-standards)` |
+{.sortable}
 
 ### Referencing work items
 

@@ -8,6 +8,31 @@ featureMetadata:
     url: https://platform.claude.com/docs/en/managed-agents/overview
   status: beta
   betaHeader: managed-agents-2026-04-01
+  zdr:
+    eligibility: not-eligible
+    note: Sessions are stateful resources; transcripts persist until you delete them. Applies to all Managed Agents sub-features, including Self-hosted sandboxes.
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
+  supportedPlatforms:
+    Claude API: beta
+    Claude Platform on AWS: beta
+    Claude Models on Google Cloud (Anthropic managed): beta
 ---
 
 This guide walks you through creating an agent, setting up an environment, starting a session, and streaming agent responses.
@@ -45,7 +70,7 @@ Let Claude Code set up your agent for you
     For Linux environments, download the release binary directly.
 
     ```bash
-    VERSION=2.3.0
+    VERSION=2.4.0
     OS=$(uname -s | tr '[:upper:]' '[:lower:]')
     case $(uname -m) in
       x86_64) ARCH=amd64 ;;
@@ -65,7 +90,7 @@ Let Claude Code set up your agent for you
     go install github.com/anthropics/anthropic-cli/v2/cmd/ant@latest
     ```
 
-    The binary is placed in `$(go env GOPATH)/bin`. Add it to your `PATH` if it isn't already:
+    The binary is placed in `$(go env GOPATH)/bin`. Add it to your `PATH` if it isn’t already:
 
     ```bash
     export PATH="$PATH:$(go env GOPATH)/bin"
@@ -155,7 +180,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
           }'
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -176,7 +201,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
           ```
         </File>
 
-        [`ant apply`](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply) prints the agent's ID and records it in `claude-lock.json`. You'll reference it in every session you create.
+        [`ant apply`](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply) prints the agent’s ID and records it in `claude-lock.json`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -197,7 +222,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         print(f"Agent ID: {agent.id}, version: {agent.version}")
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -216,7 +241,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         console.log(`Agent ID: ${agent.id}, version: ${agent.version}`);
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -240,7 +265,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         Console.WriteLine($"Agent ID: {agent.ID}, version: {agent.Version}");
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -275,7 +300,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         	fmt.Printf("Agent ID: %s, version: %d\n", agent.ID, agent.Version)
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -305,7 +330,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
             IO.println("Agent ID: " + agent.id() + ", version: " + agent.version());
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -327,7 +352,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         echo "Agent ID: {$agent->id}, version: {$agent->version}\n";
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -346,7 +371,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
         puts "Agent ID: #{agent.id}, version: #{agent.version}"
         ```
 
-        Save the returned `agent.id`. You'll reference it in every session you create.
+        Save the returned `agent.id`. You’ll reference it in every session you create.
       </CodeGroupItem>
     </CodeGroup>
 
@@ -393,7 +418,7 @@ export ANTHROPIC_API_KEY="your-api-key-here"
           ```
         </File>
 
-        [`ant apply`](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply) records the environment's ID in `claude-lock.json` too. To create the agent and the environment with one command, pass both files: `ant apply coding-assistant.md environment.yaml`.
+        [`ant apply`](https://platform.claude.com/docs/en/cli-sdks-libraries/cli/apply) records the environment’s ID in `claude-lock.json` too. To create the agent and the environment with one command, pass both files: `ant apply coding-assistant.md environment.yaml`.
       </CodeGroupItem>
 
       <CodeGroupItem>
@@ -900,11 +925,11 @@ export ANTHROPIC_API_KEY="your-api-key-here"
   </Step>
 </Steps>
 
-## What's happening
+## What’s happening
 
 When you send a user event, Claude Managed Agents:
 
-1. **Provisions a sandbox:** Your environment configuration determines how it's built.
+1. **Provisions a sandbox:** Your environment configuration determines how it’s built.
 2. **Runs the agent loop:** Claude determines which tools to use based on your message.
 3. **Runs tools:** File writes, bash commands, and other tool calls run inside the sandbox.
 4. **Streams events:** You receive real-time updates as the agent works.
@@ -916,7 +941,7 @@ Each of these quickstarts pairs Claude Managed Agents with a popular chat framew
 
 <CardGroup cols={3}>
   <Card title="Chat SDK" icon="github-logo" href="https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/chat-sdk">
-    A research analyst in a browser chat built with Vercel's Chat SDK. Each conversation is one persistent session that streams its reply while a live feed shows the tool calls. Swapping the Chat SDK adapter moves the same handler to Slack, Teams, Discord, or WhatsApp.
+    A research analyst in a browser chat built with Vercel’s Chat SDK. Each conversation is one persistent session that streams its reply while a live feed shows the tool calls. Swapping the Chat SDK adapter moves the same handler to Slack, Teams, Discord, or WhatsApp.
   </Card>
 
   <Card title="assistant-ui" icon="github-logo" href="https://github.com/anthropics/claude-quickstarts/tree/main/managed-agents/assistant-ui">

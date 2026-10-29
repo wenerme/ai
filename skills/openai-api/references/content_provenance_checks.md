@@ -16,6 +16,8 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
     The Unix timestamp, in seconds, when the provenance check was created.
 
+    `format: unixtime`
+
   - `object: "content_provenance_check"`
 
     The object type. Always `content_provenance_check` for this endpoint.
@@ -129,6 +131,8 @@ curl https://api.openai.com/v1/content_provenance_checks \
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the provenance check was created.
+
+    `format: unixtime`
 
   - `object: "content_provenance_check"`
 

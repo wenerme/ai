@@ -11,9 +11,9 @@ Alertmanager decides what happens to an alert once it fires. This section covers
 
 ## Before you begin
 
-These pages need an Alertmanager data source. Without one they don’t appear in the plugin at all. Refer to [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
+These pages need an Alertmanager data source. Without one they don’t appear in the plugin at all. Refer to [Configure data sources](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
 
-Viewing needs `alert.notifications.external:read`; changing anything needs `alert.notifications.external:write`. Silences are separate, using the `alert.instances.external:*` permissions instead. Refer to [Configure access control](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
+Viewing needs `alert.notifications.external:read`; changing anything needs `alert.notifications.external:write`. Silences are separate, using the `alert.instances.external:*` permissions instead. Refer to [Configure access control](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
 
 If several Alertmanagers are configured, check the picker at the top of the page before making changes. Every edit applies to the selected one.
 
@@ -31,9 +31,9 @@ Silences come later. They’re a day-to-day operational tool rather than part of
 
 ## In this section
 
-- [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/)
-- [Create a receiver](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver/)
-- [Create a silence](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/)
-- [Configure time intervals](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals/)
-- [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/)
-- [Notification templates](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/)
+- [Configure routes](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/)
+- [Create a receiver](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver/)
+- [Create a silence](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/)
+- [Configure time intervals](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals/)
+- [Configure inhibition rules](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/)
+- [Notification templates](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/)

@@ -25,7 +25,7 @@ The following context is available to GitLab Duo Agentic Chat.
 - When using Chat in the GitLab UI, the current page title and URL.
 
 Chat will automatically look up the necessary context from
-SDLC data, [Knowledge Graph](../project/repository/knowledge_graph/_index.md), [MCP Clients](../gitlab_duo/model_context_protocol/mcp_clients.md) and [custom instructions](customize/_index.md).
+SDLC data, [GitLab Orbit](https://docs.gitlab.com/orbit/), [MCP Clients](../gitlab_duo/model_context_protocol/mcp_clients.md) and [custom instructions](customize/_index.md).
 
 ### Based on location
 
@@ -88,10 +88,19 @@ The following context is available to the software development flow in GitLab Du
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/589801) in GitLab 18.10.
 
 You can control which project content is excluded as context for GitLab Duo.
-Use this feature to protect sensitive information, like password and configuration files.
+Use this feature to reduce the exposure of sensitive information, like password and configuration files.
 
-When you exclude content, all GitLab Duo Agent Platform features
-exclude this information as context.
+Context exclusions are designed for code suggestions and chat context, where GitLab Duo
+controls which files are read. For these features, excluded files are not used as context.
+
+When an agent runs, exclusions are best-effort only.
+For example:
+
+- Exclusions do not apply to shell commands.
+- The `grep` tool might return content from excluded files.
+- On case-insensitive file systems, like the defaults on Windows and macOS, a path with different capitalization might not match an exclusion.
+
+For limitations specific to the GitLab MCP server, see Known issues.
 
 ### Manage GitLab Duo context exclusions
 

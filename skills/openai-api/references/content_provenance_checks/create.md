@@ -14,6 +14,8 @@ If `not_detected`, it means the tool did not find supported signals in the uploa
 
     The Unix timestamp, in seconds, when the provenance check was created.
 
+    `format: unixtime`
+
   - `object: "content_provenance_check"`
 
     The object type. Always `content_provenance_check` for this endpoint.

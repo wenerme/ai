@@ -28,6 +28,8 @@ Updates a voice consent recording (metadata only).
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).

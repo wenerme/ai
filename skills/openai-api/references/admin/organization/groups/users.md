@@ -152,6 +152,8 @@ Lists the users assigned to a group.
 
   A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Specifies the sort order of users in the list.

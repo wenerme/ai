@@ -515,6 +515,11 @@ When rate limited, a badge appears next to the webhook in the webhook list. On t
 page, a message states how many times per minute the namespace limit was exceeded and when webhooks
 are re-enabled.
 
+System hooks managed by [organization](../organization/_index.md) administrators can be called
+`500` times each minute for each organization. All system hooks in the organization share this limit.
+When the limit is reached, the organization's system hooks are temporarily disabled and
+automatically re-enabled in the next minute.
+
 ### Security policy limits
 
 The maximum number of policies that you can add to a security policy project. These limits apply to each policy type individually. For example, you can have five merge request approval policies and five scan execution policies in the same security policy project.

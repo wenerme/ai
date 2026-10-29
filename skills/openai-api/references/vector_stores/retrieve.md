@@ -22,6 +22,8 @@ Retrieves a vector store.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -47,6 +49,8 @@ Retrieves a vector store.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -95,9 +99,13 @@ Retrieves a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Example
 

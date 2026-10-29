@@ -28,9 +28,13 @@ Returns the Upload object with status `cancelled`.
 
     The Unix timestamp (in seconds) for when the Upload was created.
 
+    `format: unixtime`
+
   - `expires_at: number`
 
     The Unix timestamp (in seconds) for when the Upload will expire.
+
+    `format: unixtime`
 
   - `filename: string`
 
@@ -68,6 +72,8 @@ Returns the Upload object with status `cancelled`.
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the file was created.
+
+      `format: unixtime`
 
     - `filename: string`
 
@@ -113,6 +119,8 @@ Returns the Upload object with status `cancelled`.
 
       The Unix timestamp (in seconds) for when the file will expire. In a
       completed file upload response, this can be null when no expiry is set.
+
+      `format: unixtime`
 
     - `status_details: optional string`
 

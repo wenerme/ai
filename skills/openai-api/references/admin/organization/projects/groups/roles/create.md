@@ -30,6 +30,8 @@ Assigns a project role to a group within a project.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     Display name of the group.

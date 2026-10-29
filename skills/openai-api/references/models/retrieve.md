@@ -22,6 +22,8 @@ Retrieves a model instance, providing basic information about the model such as 
 
     The Unix timestamp (in seconds) when the model was created.
 
+    `format: unixtime`
+
   - `object: "model"`
 
     The object type, which is always "model".
@@ -35,6 +37,8 @@ Retrieves a model instance, providing basic information about the model such as 
   - `shutdown_date: optional string or null`
 
     The date when the model will shut down, or null if not announced.
+
+    `format: date`
 
 ### Example
 
@@ -58,7 +62,7 @@ curl https://api.openai.com/v1/models/$MODEL \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/models/gpt-5.6-sol \
+curl https://api.openai.com/v1/models/gpt-6-astra \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -66,7 +70,7 @@ curl https://api.openai.com/v1/models/gpt-5.6-sol \
 
 ```json
 {
-  "id": "gpt-5.6-sol",
+  "id": "gpt-6-astra",
   "object": "model",
   "created": 1686935002,
   "owned_by": "openai",
