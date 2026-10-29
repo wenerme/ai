@@ -25,6 +25,7 @@ full coverage of features and capabilities.
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Preview: `gemini-robotics-er-2-preview` |
 | Latest update | July 2026 |
 | Model card | [Model card](https://deepmind.google/models/model-cards/gemini-robotics-er-2/) |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-robotics-er-2) |
 
 ### Gemini Robotics ER 2 Streaming Preview
 
@@ -38,6 +39,7 @@ full coverage of features and capabilities.
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Preview: `gemini-robotics-er-2-streaming-preview` |
 | Latest update | July 2026 |
 | Model card | [Model card](https://deepmind.google/models/model-cards/gemini-robotics-er-2/) |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-robotics-er-2-streaming) |
 
 ### Gemini Robotics ER 1.6 Preview
 

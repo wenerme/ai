@@ -18,11 +18,11 @@ Get a list of output items for an evaluation run.
 
   Identifier for the last output item from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of output items to retrieve.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for output items by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
 
@@ -49,7 +49,7 @@ Get a list of output items for an evaluation run.
 
     Unique identifier for the evaluation run output item.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
@@ -59,7 +59,7 @@ Get a list of output items for an evaluation run.
 
     Details of the input data source item.
 
-  - `datasource_item_id: number`
+  - `datasource_item_id: integer`
 
     The identifier for the data source item.
 
@@ -67,7 +67,7 @@ Get a list of output items for an evaluation run.
 
     The identifier of the evaluation group.
 
-  - `object: "eval.run.output_item"`
+  - `object: "eval.run.output_item" (default: "eval.run.output_item")`
 
     The type of the object. Always "eval.run.output_item".
 
@@ -133,7 +133,7 @@ Get a list of output items for an evaluation run.
 
         The role of the message sender (e.g., system, user, developer).
 
-    - `max_completion_tokens: number`
+    - `max_completion_tokens: integer`
 
       The maximum number of tokens allowed for completion.
 
@@ -153,7 +153,7 @@ Get a list of output items for an evaluation run.
 
         The role of the message (e.g. "system", "assistant", "user").
 
-    - `seed: number`
+    - `seed: integer`
 
       The seed used for generating the sample.
 
@@ -169,19 +169,19 @@ Get a list of output items for an evaluation run.
 
       Token usage details for the sample.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of tokens retrieved from cache.
 
-      - `completion_tokens: number`
+      - `completion_tokens: integer`
 
         The number of completion tokens generated.
 
-      - `prompt_tokens: number`
+      - `prompt_tokens: integer`
 
         The number of prompt tokens used.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         The total number of tokens used.
 
@@ -201,7 +201,7 @@ Get a list of output items for an evaluation run.
 
   The identifier of the last eval run output item in the data array.
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The type of this object. It is always set to "list".
 
@@ -214,7 +214,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -288,7 +288,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -382,7 +382,7 @@ Get an evaluation run output item by ID.
 
   Unique identifier for the evaluation run output item.
 
-- `created_at: number`
+- `created_at: integer`
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
@@ -392,7 +392,7 @@ Get an evaluation run output item by ID.
 
   Details of the input data source item.
 
-- `datasource_item_id: number`
+- `datasource_item_id: integer`
 
   The identifier for the data source item.
 
@@ -400,7 +400,7 @@ Get an evaluation run output item by ID.
 
   The identifier of the evaluation group.
 
-- `object: "eval.run.output_item"`
+- `object: "eval.run.output_item" (default: "eval.run.output_item")`
 
   The type of the object. Always "eval.run.output_item".
 
@@ -466,7 +466,7 @@ Get an evaluation run output item by ID.
 
       The role of the message sender (e.g., system, user, developer).
 
-  - `max_completion_tokens: number`
+  - `max_completion_tokens: integer`
 
     The maximum number of tokens allowed for completion.
 
@@ -486,7 +486,7 @@ Get an evaluation run output item by ID.
 
       The role of the message (e.g. "system", "assistant", "user").
 
-  - `seed: number`
+  - `seed: integer`
 
     The seed used for generating the sample.
 
@@ -502,19 +502,19 @@ Get an evaluation run output item by ID.
 
     Token usage details for the sample.
 
-    - `cached_tokens: number`
+    - `cached_tokens: integer`
 
       The number of tokens retrieved from cache.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer`
 
       The number of completion tokens generated.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer`
 
       The number of prompt tokens used.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens used.
 
@@ -529,7 +529,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID/runs/$RUN_ID/output_items/$OUTPUT_
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -595,7 +595,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -673,7 +673,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unique identifier for the evaluation run output item.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
@@ -683,7 +683,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Details of the input data source item.
 
-  - `datasource_item_id: number`
+  - `datasource_item_id: integer`
 
     The identifier for the data source item.
 
@@ -691,7 +691,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     The identifier of the evaluation group.
 
-  - `object: "eval.run.output_item"`
+  - `object: "eval.run.output_item" (default: "eval.run.output_item")`
 
     The type of the object. Always "eval.run.output_item".
 
@@ -757,7 +757,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
         The role of the message sender (e.g., system, user, developer).
 
-    - `max_completion_tokens: number`
+    - `max_completion_tokens: integer`
 
       The maximum number of tokens allowed for completion.
 
@@ -777,7 +777,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
         The role of the message (e.g. "system", "assistant", "user").
 
-    - `seed: number`
+    - `seed: integer`
 
       The seed used for generating the sample.
 
@@ -793,19 +793,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       Token usage details for the sample.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of tokens retrieved from cache.
 
-      - `completion_tokens: number`
+      - `completion_tokens: integer`
 
         The number of completion tokens generated.
 
-      - `prompt_tokens: number`
+      - `prompt_tokens: integer`
 
         The number of prompt tokens used.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         The total number of tokens used.
 
@@ -823,7 +823,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Unique identifier for the evaluation run output item.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the evaluation run was created.
 
@@ -833,7 +833,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     Details of the input data source item.
 
-  - `datasource_item_id: number`
+  - `datasource_item_id: integer`
 
     The identifier for the data source item.
 
@@ -841,7 +841,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     The identifier of the evaluation group.
 
-  - `object: "eval.run.output_item"`
+  - `object: "eval.run.output_item" (default: "eval.run.output_item")`
 
     The type of the object. Always "eval.run.output_item".
 
@@ -907,7 +907,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
         The role of the message sender (e.g., system, user, developer).
 
-    - `max_completion_tokens: number`
+    - `max_completion_tokens: integer`
 
       The maximum number of tokens allowed for completion.
 
@@ -927,7 +927,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
         The role of the message (e.g. "system", "assistant", "user").
 
-    - `seed: number`
+    - `seed: integer`
 
       The seed used for generating the sample.
 
@@ -943,19 +943,19 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       Token usage details for the sample.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of tokens retrieved from cache.
 
-      - `completion_tokens: number`
+      - `completion_tokens: integer`
 
         The number of completion tokens generated.
 
-      - `prompt_tokens: number`
+      - `prompt_tokens: integer`
 
         The number of prompt tokens used.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         The total number of tokens used.
 

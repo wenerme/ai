@@ -52,13 +52,13 @@ Use Bearer Auth (header Authorization).
 
           Delegate tasks to your application. The Live session emits delegation events that your backend handles.
 
-          - `type: "client"`
+          - `type: "client" (default: "client")`
 
             The delegation owner. Always `client` for tasks handled by your application.
 
             - `"client"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
@@ -68,13 +68,13 @@ Use Bearer Auth (header Authorization).
 
           Update the Responses backend for an existing Live session without changing delegation ownership.
 
-          - `type: "responses"`
+          - `type: "responses" (default: "responses")`
 
             The delegation owner. Always `responses` for tasks handled by the Responses API.
 
             - `"responses"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
@@ -88,7 +88,7 @@ Use Bearer Auth (header Authorization).
 
               Instructions for the delegated Responses model, separate from Live instructions. See [backend prompting](/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt).
 
-            - `max_output_tokens: optional number or null`
+            - `max_output_tokens: optional integer or null`
 
               Maximum number of output tokens for each delegated response.
 
@@ -180,7 +180,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the function tool to call.
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   The tool to call. Always `function`.
 
@@ -192,7 +192,7 @@ Use Bearer Auth (header Authorization).
 
                   The label of the MCP server to call.
 
-                - `type: "mcp"`
+                - `type: "mcp" (default: "mcp")`
 
                   The tool to call. Always `mcp`.
 
@@ -204,7 +204,7 @@ Use Bearer Auth (header Authorization).
 
               - `FileSearch object { type }`
 
-                - `type: "file_search"`
+                - `type: "file_search" (default: "file_search")`
 
                   The tool to call. Always `file_search`.
 
@@ -212,7 +212,7 @@ Use Bearer Auth (header Authorization).
 
               - `WebSearch object { type }`
 
-                - `type: "web_search"`
+                - `type: "web_search" (default: "web_search")`
 
                   The tool to call. Always `web_search`.
 
@@ -220,7 +220,7 @@ Use Bearer Auth (header Authorization).
 
               - `WebSearchPreview object { type }`
 
-                - `type: "web_search_preview"`
+                - `type: "web_search_preview" (default: "web_search_preview")`
 
                   The tool to call. Always `web_search_preview`.
 
@@ -228,7 +228,7 @@ Use Bearer Auth (header Authorization).
 
               - `ImageGeneration object { type }`
 
-                - `type: "image_generation"`
+                - `type: "image_generation" (default: "image_generation")`
 
                   The tool to call. Always `image_generation`.
 
@@ -236,7 +236,7 @@ Use Bearer Auth (header Authorization).
 
               - `Computer object { type }`
 
-                - `type: "computer"`
+                - `type: "computer" (default: "computer")`
 
                   The tool to call. Always `computer`.
 
@@ -244,7 +244,7 @@ Use Bearer Auth (header Authorization).
 
               - `CodeInterpreter object { type }`
 
-                - `type: "code_interpreter"`
+                - `type: "code_interpreter" (default: "code_interpreter")`
 
                   The tool to call. Always `code_interpreter`.
 
@@ -252,7 +252,7 @@ Use Bearer Auth (header Authorization).
 
               - `ProgrammaticToolCalling object { type }`
 
-                - `type: "programmatic_tool_calling"`
+                - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                   The tool to call. Always `programmatic_tool_calling`.
 
@@ -262,7 +262,7 @@ Use Bearer Auth (header Authorization).
 
                 Forces the model to call the shell tool when a tool call is required.
 
-                - `type: "shell"`
+                - `type: "shell" (default: "shell")`
 
                   The tool to call. Always `shell`.
 
@@ -274,7 +274,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the custom tool to call.
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   The tool to call. Always `custom`.
 
@@ -284,7 +284,7 @@ Use Bearer Auth (header Authorization).
 
                 Forces the model to call the apply_patch tool when executing a tool call.
 
-                - `type: "apply_patch"`
+                - `type: "apply_patch" (default: "apply_patch")`
 
                   The tool to call. Always `apply_patch`.
 
@@ -304,7 +304,7 @@ Use Bearer Auth (header Authorization).
 
                       The name of the function tool to call.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The tool to call. Always `function`.
 
@@ -316,7 +316,7 @@ Use Bearer Auth (header Authorization).
 
                       The label of the MCP server to call.
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The tool to call. Always `mcp`.
 
@@ -328,7 +328,7 @@ Use Bearer Auth (header Authorization).
 
                   - `FileSearch object { type }`
 
-                    - `type: "file_search"`
+                    - `type: "file_search" (default: "file_search")`
 
                       The tool to call. Always `file_search`.
 
@@ -336,7 +336,7 @@ Use Bearer Auth (header Authorization).
 
                   - `WebSearch object { type }`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The tool to call. Always `web_search`.
 
@@ -344,7 +344,7 @@ Use Bearer Auth (header Authorization).
 
                   - `WebSearchPreview object { type }`
 
-                    - `type: "web_search_preview"`
+                    - `type: "web_search_preview" (default: "web_search_preview")`
 
                       The tool to call. Always `web_search_preview`.
 
@@ -352,7 +352,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ImageGeneration object { type }`
 
-                    - `type: "image_generation"`
+                    - `type: "image_generation" (default: "image_generation")`
 
                       The tool to call. Always `image_generation`.
 
@@ -360,7 +360,7 @@ Use Bearer Auth (header Authorization).
 
                   - `Computer object { type }`
 
-                    - `type: "computer"`
+                    - `type: "computer" (default: "computer")`
 
                       The tool to call. Always `computer`.
 
@@ -368,7 +368,7 @@ Use Bearer Auth (header Authorization).
 
                   - `CodeInterpreter object { type }`
 
-                    - `type: "code_interpreter"`
+                    - `type: "code_interpreter" (default: "code_interpreter")`
 
                       The tool to call. Always `code_interpreter`.
 
@@ -376,7 +376,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ProgrammaticToolCalling object { type }`
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The tool to call. Always `programmatic_tool_calling`.
 
@@ -386,7 +386,7 @@ Use Bearer Auth (header Authorization).
 
                     Forces the model to call the shell tool when a tool call is required.
 
-                    - `type: "shell"`
+                    - `type: "shell" (default: "shell")`
 
                       The tool to call. Always `shell`.
 
@@ -398,7 +398,7 @@ Use Bearer Auth (header Authorization).
 
                       The name of the custom tool to call.
 
-                    - `type: "custom"`
+                    - `type: "custom" (default: "custom")`
 
                       The tool to call. Always `custom`.
 
@@ -408,13 +408,13 @@ Use Bearer Auth (header Authorization).
 
                     Forces the model to call the apply_patch tool when executing a tool call.
 
-                    - `type: "apply_patch"`
+                    - `type: "apply_patch" (default: "apply_patch")`
 
                       The tool to call. Always `apply_patch`.
 
                       - `"apply_patch"`
 
-                - `type: "allowed_tools"`
+                - `type: "allowed_tools" (default: "allowed_tools")`
 
                   The tool choice type. Always `allowed_tools`.
 
@@ -442,7 +442,7 @@ Use Bearer Auth (header Authorization).
 
                   The name the delegated Responses model uses when calling this function.
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   The tool type. Always `function`.
 
@@ -464,7 +464,7 @@ Use Bearer Auth (header Authorization).
 
                 A web search tool available to the Live session’s Responses backend.
 
-                - `type: "web_search"`
+                - `type: "web_search" (default: "web_search")`
 
                   The tool type. Always `web_search`.
 
@@ -472,13 +472,13 @@ Use Bearer Auth (header Authorization).
 
               - `FileSearch object { type }`
 
-                - `type: "file_search"`
+                - `type: "file_search" (default: "file_search")`
 
                   - `"file_search"`
 
               - `CodeInterpreter object { type }`
 
-                - `type: "code_interpreter"`
+                - `type: "code_interpreter" (default: "code_interpreter")`
 
                   - `"code_interpreter"`
 
@@ -486,7 +486,7 @@ Use Bearer Auth (header Authorization).
 
                 A Responses shell tool. Use a hosted container or return local shell results with response.item.create. Domain secrets are not supported.
 
-                - `type: "shell"`
+                - `type: "shell" (default: "shell")`
 
                   - `"shell"`
 
@@ -494,7 +494,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-                    - `type: "container_auto"`
+                    - `type: "container_auto" (default: "container_auto")`
 
                       Automatically creates a container for this request
 
@@ -524,7 +524,7 @@ Use Bearer Auth (header Authorization).
 
                       - `Disabled object { type }`
 
-                        - `type: "disabled"`
+                        - `type: "disabled" (default: "disabled")`
 
                           Disable outbound network access. Always `disabled`.
 
@@ -538,7 +538,7 @@ Use Bearer Auth (header Authorization).
 
                           `minItems: 1`
 
-                        - `type: "allowlist"`
+                        - `type: "allowlist" (default: "allowlist")`
 
                           Allow outbound network access only to specified domains. Always `allowlist`.
 
@@ -558,7 +558,7 @@ Use Bearer Auth (header Authorization).
 
                           `minLength: 1`, `maxLength: 64`
 
-                        - `type: "skill_reference"`
+                        - `type: "skill_reference" (default: "skill_reference")`
 
                           References a skill created with the /v1/skills endpoint.
 
@@ -588,19 +588,19 @@ Use Bearer Auth (header Authorization).
 
                             `minLength: 1`, `maxLength: 70254592`
 
-                          - `media_type: "application/zip"`
+                          - `media_type: "application/zip" (default: "application/zip")`
 
                             The media type of the inline skill payload. Must be `application/zip`.
 
                             - `"application/zip"`
 
-                          - `type: "base64"`
+                          - `type: "base64" (default: "base64")`
 
                             The type of the inline skill source. Must be `base64`.
 
                             - `"base64"`
 
-                        - `type: "inline"`
+                        - `type: "inline" (default: "inline")`
 
                           Defines an inline skill for this request.
 
@@ -612,7 +612,7 @@ Use Bearer Auth (header Authorization).
 
                       The ID of the referenced container.
 
-                    - `type: "container_reference"`
+                    - `type: "container_reference" (default: "container_reference")`
 
                       References a container created with the /v1/containers endpoint
 
@@ -620,7 +620,7 @@ Use Bearer Auth (header Authorization).
 
                   - `Local object { type, skills }`
 
-                    - `type: "local"`
+                    - `type: "local" (default: "local")`
 
                       Use a local computer environment.
 
@@ -646,59 +646,59 @@ Use Bearer Auth (header Authorization).
 
               - `ImageGeneration object { type }`
 
-                - `type: "image_generation"`
+                - `type: "image_generation" (default: "image_generation")`
 
                   - `"image_generation"`
 
               - `Mcp object { type }`
 
-                - `type: "mcp"`
+                - `type: "mcp" (default: "mcp")`
 
                   - `"mcp"`
 
               - `Custom object { type }`
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   - `"custom"`
 
               - `Namespace object { type }`
 
-                - `type: "namespace"`
+                - `type: "namespace" (default: "namespace")`
 
                   - `"namespace"`
 
               - `ToolSearch object { type }`
 
-                - `type: "tool_search"`
+                - `type: "tool_search" (default: "tool_search")`
 
                   - `"tool_search"`
 
               - `ProgrammaticToolCalling object { type }`
 
-                - `type: "programmatic_tool_calling"`
+                - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                   - `"programmatic_tool_calling"`
 
               - `Computer object { type }`
 
-                - `type: "computer"`
+                - `type: "computer" (default: "computer")`
 
                   - `"computer"`
 
               - `ApplyPatch object { type }`
 
-                - `type: "apply_patch"`
+                - `type: "apply_patch" (default: "apply_patch")`
 
                   - `"apply_patch"`
 
         - `Decisions object { type, acknowledgement_delay_ms, decisions }`
 
-          - `type: "decisions"`
+          - `type: "decisions" (default: "decisions")`
 
             - `"decisions"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
@@ -736,6 +736,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                       - `text: string`
@@ -744,7 +746,7 @@ Use Bearer Auth (header Authorization).
 
                         `maxLength: 10485760`
 
-                      - `type: "input_text"`
+                      - `type: "input_text" (default: "input_text")`
 
                         - `"input_text"`
 
@@ -754,9 +756,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -780,11 +782,11 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
-                - `type: "choice"`
+                - `type: "choice" (default: "choice")`
 
                   - `"choice"`
 
@@ -798,6 +800,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                     - `InputImage object { image_url, type, detail }`
@@ -806,9 +810,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -832,11 +836,11 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
-                - `type: "predicate"`
+                - `type: "predicate" (default: "predicate")`
 
                   - `"predicate"`
 
@@ -850,6 +854,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                     - `InputImage object { image_url, type, detail }`
@@ -858,9 +864,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -884,7 +890,7 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
@@ -896,7 +902,7 @@ Use Bearer Auth (header Authorization).
 
                   - `description: optional string`
 
-                - `type: "score"`
+                - `type: "score" (default: "score")`
 
                   - `"score"`
 
@@ -930,11 +936,11 @@ Use Bearer Auth (header Authorization).
 
           - `"session.output_transcript.delta"`
 
-        - `type: "decisions"`
+        - `type: "decisions" (default: "decisions")`
 
           - `"decisions"`
 
-    - `type: "session.update"`
+    - `type: "session.update" (default: "session.update")`
 
       The Live client event type. Always `session.update`.
 
@@ -950,7 +956,7 @@ Use Bearer Auth (header Authorization).
 
     Mute audio input to the Live model without closing the session. The server acknowledges with `session.input_audio.muted`.
 
-    - `type: "session.input_audio.mute"`
+    - `type: "session.input_audio.mute" (default: "session.input_audio.mute")`
 
       The Live client event type. Always `session.input_audio.mute`.
 
@@ -966,7 +972,7 @@ Use Bearer Auth (header Authorization).
 
     Resume audio input to a Live model after muting it. The server acknowledges with `session.input_audio.unmuted`. An active audio fixture still pauses inference until playback finishes.
 
-    - `type: "session.input_audio.unmute"`
+    - `type: "session.input_audio.unmute" (default: "session.input_audio.unmute")`
 
       The Live client event type. Always `session.input_audio.unmute`.
 
@@ -988,7 +994,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`, `maxLength: 1920000`
 
-    - `type: "session.output_audio.fixture.play"`
+    - `type: "session.output_audio.fixture.play" (default: "session.output_audio.fixture.play")`
 
       - `"session.output_audio.fixture.play"`
 
@@ -1006,9 +1012,9 @@ Use Bearer Auth (header Authorization).
 
       The DTMF key to send: one of `0`–`9`, `A`–`D`, `*`, or `#`.
 
-      `minLength: 1`, `maxLength: 1`
+      `pattern: ^[0-9A-D*#]$`, `minLength: 1`, `maxLength: 1`
 
-    - `type: "transport.dtmf.send"`
+    - `type: "transport.dtmf.send" (default: "transport.dtmf.send")`
 
       - `"transport.dtmf.send"`
 
@@ -1032,7 +1038,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`
 
-    - `type: "session.instructions.append"`
+    - `type: "session.instructions.append" (default: "session.instructions.append")`
 
       The Live client event type. Always `session.instructions.append`.
 
@@ -1058,7 +1064,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`
 
-    - `type: "session.thinking.append"`
+    - `type: "session.thinking.append" (default: "session.thinking.append")`
 
       The Live client event type. Always `session.thinking.append`.
 
@@ -1084,7 +1090,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`
 
-    - `type: "session.commentary.append"`
+    - `type: "session.commentary.append" (default: "session.commentary.append")`
 
       The Live client event type. Always `session.commentary.append`.
 
@@ -1104,7 +1110,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`, `maxLength: 256`
 
-    - `type: "decision.create"`
+    - `type: "decision.create" (default: "decision.create")`
 
       - `"decision.create"`
 
@@ -1124,6 +1130,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
             - `InputText object { text, type }`
@@ -1134,7 +1142,7 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 - `"input_text"`
 
@@ -1144,9 +1152,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -1170,11 +1178,11 @@ Use Bearer Auth (header Authorization).
 
                 - `array of map[unknown]`
 
-              - `type: "input_json"`
+              - `type: "input_json" (default: "input_json")`
 
                 - `"input_json"`
 
-        - `role: "user"`
+        - `role: "user" (default: "user")`
 
           The message role. Always `user`.
 
@@ -1184,7 +1192,7 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of this message item.
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -1198,6 +1206,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText`
 
             - `text: string`
@@ -1206,9 +1216,9 @@ Use Bearer Auth (header Authorization).
 
               `maxLength: 10485760`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
-        - `role: "developer"`
+        - `role: "developer" (default: "developer")`
 
           - `"developer"`
 
@@ -1216,7 +1226,7 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of this message item.
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -1230,6 +1240,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText`
 
             - `text: string`
@@ -1238,9 +1250,9 @@ Use Bearer Auth (header Authorization).
 
               `maxLength: 10485760`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
-        - `role: "system"`
+        - `role: "system" (default: "system")`
 
           - `"system"`
 
@@ -1248,7 +1260,7 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of this message item.
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -1262,6 +1274,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of OutputText { text, type }  or Refusal { refusal, type }`
 
             - `OutputText object { text, type }`
@@ -1272,7 +1286,7 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "output_text"`
+              - `type: "output_text" (default: "output_text")`
 
                 - `"output_text"`
 
@@ -1284,11 +1298,11 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "refusal"`
+              - `type: "refusal" (default: "refusal")`
 
                 - `"refusal"`
 
-        - `role: "assistant"`
+        - `role: "assistant" (default: "assistant")`
 
           - `"assistant"`
 
@@ -1304,7 +1318,7 @@ Use Bearer Auth (header Authorization).
 
           - `"final_answer"`
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -1322,9 +1336,9 @@ Use Bearer Auth (header Authorization).
 
         - `name: string`
 
-          `minLength: 1`, `maxLength: 128`
+          `pattern: ^[a-zA-Z0-9_.-]+$`, `minLength: 1`, `maxLength: 128`
 
-        - `type: "function_call"`
+        - `type: "function_call" (default: "function_call")`
 
           The item type. Always `function_call`.
 
@@ -1338,7 +1352,7 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -1364,6 +1378,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
             - `DecisionInputText object { text, type }`
@@ -1374,9 +1390,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -1392,7 +1408,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"original"`
 
-        - `type: "function_call_output"`
+        - `type: "function_call_output" (default: "function_call_output")`
 
           The type of the function tool call output. Always `function_call_output`.
 
@@ -1426,9 +1442,9 @@ Use Bearer Auth (header Authorization).
 
           The name of the custom tool to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
-        - `type: "custom_tool_call"`
+        - `type: "custom_tool_call" (default: "custom_tool_call")`
 
           The item type. Always `custom_tool_call`.
 
@@ -1442,7 +1458,7 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -1468,6 +1484,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
             - `DecisionInputText object { text, type }`
@@ -1478,9 +1496,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -1496,7 +1514,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"original"`
 
-        - `type: "custom_tool_call_output"`
+        - `type: "custom_tool_call_output" (default: "custom_tool_call_output")`
 
           - `"custom_tool_call_output"`
 
@@ -1512,7 +1530,7 @@ Use Bearer Auth (header Authorization).
 
           - `"incomplete"`
 
-    - `type: "decision.item.create"`
+    - `type: "decision.item.create" (default: "decision.item.create")`
 
       - `"decision.item.create"`
 
@@ -1530,7 +1548,7 @@ Use Bearer Auth (header Authorization).
 
       `minLength: 1`
 
-    - `type: "decision.item.delete"`
+    - `type: "decision.item.delete" (default: "decision.item.delete")`
 
       - `"decision.item.delete"`
 
@@ -1578,7 +1596,7 @@ Use Bearer Auth (header Authorization).
 
                 The text input to the model.
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the input item. Always `input_text`.
 
@@ -1588,7 +1606,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -1618,7 +1636,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"original"`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the input item. Always `input_image`.
 
@@ -1638,7 +1656,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -1656,7 +1674,7 @@ Use Bearer Auth (header Authorization).
 
               A file input to the model.
 
-              - `type: "input_file"`
+              - `type: "input_file" (default: "input_file")`
 
                 The type of the input item. Always `input_file`.
 
@@ -1694,7 +1712,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -1807,11 +1825,11 @@ Use Bearer Auth (header Authorization).
 
                   The filename of the file cited.
 
-                - `index: number`
+                - `index: integer`
 
                   The index in the output text at which to insert the file citation.
 
-                - `type: "file_citation"`
+                - `type: "file_citation" (default: "file_citation")`
 
                   The type of the file citation. Always `file_citation`.
 
@@ -1821,11 +1839,11 @@ Use Bearer Auth (header Authorization).
 
                 A citation for a web resource used to generate a model response.
 
-                - `end_index: number`
+                - `end_index: integer`
 
                   The index of the last character of the URL citation in the message.
 
-                - `start_index: number`
+                - `start_index: integer`
 
                   The index of the first character of the URL citation in the message.
 
@@ -1833,7 +1851,7 @@ Use Bearer Auth (header Authorization).
 
                   The title of the web resource.
 
-                - `type: "url_citation"`
+                - `type: "url_citation" (default: "url_citation")`
 
                   The type of the URL citation. Always `url_citation`.
 
@@ -1853,7 +1871,7 @@ Use Bearer Auth (header Authorization).
 
                   The ID of the container file.
 
-                - `end_index: number`
+                - `end_index: integer`
 
                   The index of the last character of the container file citation in the message.
 
@@ -1865,11 +1883,11 @@ Use Bearer Auth (header Authorization).
 
                   The filename of the container file cited.
 
-                - `start_index: number`
+                - `start_index: integer`
 
                   The index of the first character of the container file citation in the message.
 
-                - `type: "container_file_citation"`
+                - `type: "container_file_citation" (default: "container_file_citation")`
 
                   The type of the container file citation. Always `container_file_citation`.
 
@@ -1883,7 +1901,7 @@ Use Bearer Auth (header Authorization).
 
                   The ID of the file.
 
-                - `index: number`
+                - `index: integer`
 
                   The index of the file in the list of files.
 
@@ -1913,7 +1931,7 @@ Use Bearer Auth (header Authorization).
 
               The text output from the model.
 
-            - `type: "output_text"`
+            - `type: "output_text" (default: "output_text")`
 
               The type of the output text. Always `output_text`.
 
@@ -1927,7 +1945,7 @@ Use Bearer Auth (header Authorization).
 
               The refusal explanation from the model.
 
-            - `type: "refusal"`
+            - `type: "refusal" (default: "refusal")`
 
               The type of the refusal. Always `refusal`.
 
@@ -2014,6 +2032,8 @@ Use Bearer Auth (header Authorization).
 
             - `string`
 
+              `maxLength: 512`
+
             - `number`
 
             - `boolean`
@@ -2076,7 +2096,7 @@ Use Bearer Auth (header Authorization).
 
           - `"incomplete"`
 
-        - `type: "computer_call"`
+        - `type: "computer_call" (default: "computer_call")`
 
           The type of the computer call. Always `computer_call`.
 
@@ -2104,17 +2124,17 @@ Use Bearer Auth (header Authorization).
 
               - `"forward"`
 
-            - `type: "click"`
+            - `type: "click" (default: "click")`
 
               Specifies the event type. For a click action, this property is always `click`.
 
               - `"click"`
 
-            - `x: number`
+            - `x: integer`
 
               The x-coordinate where the click occurred.
 
-            - `y: number`
+            - `y: integer`
 
               The y-coordinate where the click occurred.
 
@@ -2130,17 +2150,17 @@ Use Bearer Auth (header Authorization).
 
               The keys being held while double-clicking.
 
-            - `type: "double_click"`
+            - `type: "double_click" (default: "double_click")`
 
               Specifies the event type. For a double click action, this property is always set to `double_click`.
 
               - `"double_click"`
 
-            - `x: number`
+            - `x: integer`
 
               The x-coordinate where the double click occurred.
 
-            - `y: number`
+            - `y: integer`
 
               The y-coordinate where the double click occurred.
 
@@ -2159,15 +2179,15 @@ Use Bearer Auth (header Authorization).
               ]
               ```
 
-              - `x: number`
+              - `x: integer`
 
                 The x-coordinate.
 
-              - `y: number`
+              - `y: integer`
 
                 The y-coordinate.
 
-            - `type: "drag"`
+            - `type: "drag" (default: "drag")`
 
               Specifies the event type. For a drag action, this property is always set to `drag`.
 
@@ -2185,7 +2205,7 @@ Use Bearer Auth (header Authorization).
 
               The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
 
-            - `type: "keypress"`
+            - `type: "keypress" (default: "keypress")`
 
               Specifies the event type. For a keypress action, this property is always set to `keypress`.
 
@@ -2195,17 +2215,17 @@ Use Bearer Auth (header Authorization).
 
             A mouse move action.
 
-            - `type: "move"`
+            - `type: "move" (default: "move")`
 
               Specifies the event type. For a move action, this property is always set to `move`.
 
               - `"move"`
 
-            - `x: number`
+            - `x: integer`
 
               The x-coordinate to move to.
 
-            - `y: number`
+            - `y: integer`
 
               The y-coordinate to move to.
 
@@ -2217,7 +2237,7 @@ Use Bearer Auth (header Authorization).
 
             A screenshot action.
 
-            - `type: "screenshot"`
+            - `type: "screenshot" (default: "screenshot")`
 
               Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
 
@@ -2227,25 +2247,25 @@ Use Bearer Auth (header Authorization).
 
             A scroll action.
 
-            - `scroll_x: number`
+            - `scroll_x: integer`
 
               The horizontal scroll distance.
 
-            - `scroll_y: number`
+            - `scroll_y: integer`
 
               The vertical scroll distance.
 
-            - `type: "scroll"`
+            - `type: "scroll" (default: "scroll")`
 
               Specifies the event type. For a scroll action, this property is always set to `scroll`.
 
               - `"scroll"`
 
-            - `x: number`
+            - `x: integer`
 
               The x-coordinate where the scroll occurred.
 
-            - `y: number`
+            - `y: integer`
 
               The y-coordinate where the scroll occurred.
 
@@ -2261,7 +2281,7 @@ Use Bearer Auth (header Authorization).
 
               The text to type.
 
-            - `type: "type"`
+            - `type: "type" (default: "type")`
 
               Specifies the event type. For a type action, this property is always set to `type`.
 
@@ -2271,7 +2291,7 @@ Use Bearer Auth (header Authorization).
 
             A wait action.
 
-            - `type: "wait"`
+            - `type: "wait" (default: "wait")`
 
               Specifies the event type. For a wait action, this property is always set to `wait`.
 
@@ -2332,7 +2352,7 @@ Use Bearer Auth (header Authorization).
 
           A computer screenshot image used with the computer use tool.
 
-          - `type: "computer_screenshot"`
+          - `type: "computer_screenshot" (default: "computer_screenshot")`
 
             Specifies the event type. For a computer screenshot, this property is
             always set to `computer_screenshot`.
@@ -2349,7 +2369,7 @@ Use Bearer Auth (header Authorization).
 
             `format: uri`
 
-        - `type: "computer_call_output"`
+        - `type: "computer_call_output" (default: "computer_call_output")`
 
           The type of the computer tool call output. Always `computer_call_output`.
 
@@ -2526,7 +2546,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               - `"direct"`
 
@@ -2536,7 +2556,7 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               - `"program"`
 
@@ -2567,6 +2587,8 @@ Use Bearer Auth (header Authorization).
 
             A JSON string of the output of the function tool call.
 
+            `maxLength: 10485760`
+
           - `array of ResponseInputTextContent or ResponseInputImageContent or ResponseInputFileContent`
 
             An array of content outputs (text, image, file) for the function tool call.
@@ -2581,7 +2603,7 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the input item. Always `input_text`.
 
@@ -2591,7 +2613,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -2609,7 +2631,7 @@ Use Bearer Auth (header Authorization).
 
               An image input to the model. Learn about [image inputs](/api/docs/guides/images-vision)
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the input item. Always `input_image`.
 
@@ -2633,7 +2655,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -2651,7 +2673,7 @@ Use Bearer Auth (header Authorization).
 
               A file input to the model.
 
-              - `type: "input_file"`
+              - `type: "input_file" (default: "input_file")`
 
                 The type of the input item. Always `input_file`.
 
@@ -2691,7 +2713,7 @@ Use Bearer Auth (header Authorization).
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -2705,7 +2727,7 @@ Use Bearer Auth (header Authorization).
 
                   - `"12h"`
 
-        - `type: "function_call_output"`
+        - `type: "function_call_output" (default: "function_call_output")`
 
           The type of the function tool call output. Always `function_call_output`.
 
@@ -2727,7 +2749,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -2741,7 +2763,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
@@ -2757,7 +2779,7 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the tool that produced the output.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -2775,7 +2797,7 @@ Use Bearer Auth (header Authorization).
 
           The arguments supplied to the tool search call.
 
-        - `type: "tool_search_call"`
+        - `type: "tool_search_call" (default: "tool_search_call")`
 
           The item type. Always `tool_search_call`.
 
@@ -2831,7 +2853,7 @@ Use Bearer Auth (header Authorization).
 
               Whether strict parameter validation is enforced for this function tool.
 
-            - `type: "function"`
+            - `type: "function" (default: "function")`
 
               The type of the function tool. Always `function`.
 
@@ -2863,7 +2885,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
-            - `type: "file_search"`
+            - `type: "file_search" (default: "file_search")`
 
               The type of the file search tool. Always `file_search`.
 
@@ -2885,7 +2907,7 @@ Use Bearer Auth (header Authorization).
 
                   The key to compare against the value.
 
-                - `type: "eq" or "ne" or "gt" or 5 more`
+                - `type: "eq" or "ne" or "gt" or 5 more (default: "eq")`
 
                   Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
 
@@ -2954,7 +2976,7 @@ Use Bearer Auth (header Authorization).
 
                   - `"or"`
 
-            - `max_num_results: optional number`
+            - `max_num_results: optional integer`
 
               The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
@@ -2990,7 +3012,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-            - `type: "computer"`
+            - `type: "computer" (default: "computer")`
 
               The type of the computer tool. Always `computer`.
 
@@ -3000,11 +3022,11 @@ Use Bearer Auth (header Authorization).
 
             A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-            - `display_height: number`
+            - `display_height: integer`
 
               The height of the computer display.
 
-            - `display_width: number`
+            - `display_width: integer`
 
               The width of the computer display.
 
@@ -3022,7 +3044,7 @@ Use Bearer Auth (header Authorization).
 
               - `"browser"`
 
-            - `type: "computer_use_preview"`
+            - `type: "computer_use_preview" (default: "computer_use_preview")`
 
               The type of the computer use tool. Always `computer_use_preview`.
 
@@ -3033,7 +3055,7 @@ Use Bearer Auth (header Authorization).
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/api/docs/guides/tools-web-search).
 
-            - `type: "web_search" or "web_search_2025_08_26"`
+            - `type: "web_search" or "web_search_2025_08_26" (default: "web_search")`
 
               The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
 
@@ -3041,7 +3063,7 @@ Use Bearer Auth (header Authorization).
 
               - `"web_search_2025_08_26"`
 
-            - `external_web_access: optional boolean`
+            - `external_web_access: optional boolean (default: true)`
 
               Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
@@ -3049,14 +3071,14 @@ Use Bearer Auth (header Authorization).
 
               Filters for the search.
 
-              - `allowed_domains: optional array of string or null`
+              - `allowed_domains: optional array of string or null (default: [])`
 
                 Allowed domains for the search. If not provided, all domains are allowed.
                 Subdomains of the provided domains are allowed as well.
 
                 Example: `["pubmed.ncbi.nlm.nih.gov"]`
 
-            - `search_context_size: optional "low" or "medium" or "high"`
+            - `search_context_size: optional "low" or "medium" or "high" (default: "medium")`
 
               High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
 
@@ -3088,7 +3110,7 @@ Use Bearer Auth (header Authorization).
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-              - `type: optional "approximate"`
+              - `type: optional "approximate" (default: "approximate")`
 
                 The type of location approximation. Always `approximate`.
 
@@ -3193,7 +3215,7 @@ Use Bearer Auth (header Authorization).
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null (default: "always")`
 
               Specify which of the MCP server's tools require approval.
 
@@ -3257,6 +3279,8 @@ Use Bearer Auth (header Authorization).
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
+              `pattern: ^tunnel_[a-z0-9]{32}$`
+
           - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
@@ -3275,7 +3299,7 @@ Use Bearer Auth (header Authorization).
 
                 Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
-                - `type: "auto"`
+                - `type: "auto" (default: "auto")`
 
                   Always `auto`.
 
@@ -3305,7 +3329,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ContainerNetworkPolicyDisabled object { type }`
 
-                    - `type: "disabled"`
+                    - `type: "disabled" (default: "disabled")`
 
                       Disable outbound network access. Always `disabled`.
 
@@ -3319,7 +3343,7 @@ Use Bearer Auth (header Authorization).
 
                       `minItems: 1`
 
-                    - `type: "allowlist"`
+                    - `type: "allowlist" (default: "allowlist")`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
 
@@ -3367,7 +3391,7 @@ Use Bearer Auth (header Authorization).
 
           - `ProgrammaticToolCalling object { type }`
 
-            - `type: "programmatic_tool_calling"`
+            - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
               The type of the tool. Always `programmatic_tool_calling`.
 
@@ -3393,7 +3417,7 @@ Use Bearer Auth (header Authorization).
 
               - `"auto"`
 
-            - `background: optional "transparent" or "opaque" or "auto"`
+            - `background: optional "transparent" or "opaque" or "auto" (default: "auto")`
 
               Set the background of the generated image. One of `transparent`, `opaque`,
               or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
@@ -3474,7 +3498,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
 
-            - `moderation: optional "auto" or "low"`
+            - `moderation: optional "auto" or "low" (default: "auto")`
 
               Moderation level for the generated image. Default: `auto`.
 
@@ -3482,13 +3506,13 @@ Use Bearer Auth (header Authorization).
 
               - `"low"`
 
-            - `output_compression: optional number`
+            - `output_compression: optional integer (default: 100)`
 
               Compression level for the output image. Default: 100.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg"`
+            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
 
               The output format of the generated image. One of `png`, `webp`, or
               `jpeg`. Default: `png`.
@@ -3499,13 +3523,13 @@ Use Bearer Auth (header Authorization).
 
               - `"jpeg"`
 
-            - `partial_images: optional number`
+            - `partial_images: optional integer (default: 0)`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
               `minimum: 0`, `maximum: 3`
 
-            - `quality: optional "low" or "medium" or "high" or 3 more`
+            - `quality: optional "low" or "medium" or "high" or 3 more (default: "auto")`
 
               The quality of the generated image. The GPT image models support `low`,
               `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
@@ -3524,7 +3548,7 @@ Use Bearer Auth (header Authorization).
 
               - `"auto"`
 
-            - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+            - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto" (default: "auto")`
 
               The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
 
@@ -3546,7 +3570,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that allows the model to execute shell commands in a local environment.
 
-            - `type: "local_shell"`
+            - `type: "local_shell" (default: "local_shell")`
 
               The type of the local shell tool. Always `local_shell`.
 
@@ -3556,7 +3580,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that allows the model to execute shell commands.
 
-            - `type: "shell"`
+            - `type: "shell" (default: "shell")`
 
               The type of the shell tool. Always `shell`.
 
@@ -3576,7 +3600,7 @@ Use Bearer Auth (header Authorization).
 
               - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-                - `type: "container_auto"`
+                - `type: "container_auto" (default: "container_auto")`
 
                   Automatically creates a container for this request
 
@@ -3622,7 +3646,7 @@ Use Bearer Auth (header Authorization).
 
                       `minLength: 1`, `maxLength: 64`
 
-                    - `type: "skill_reference"`
+                    - `type: "skill_reference" (default: "skill_reference")`
 
                       References a skill created with the /v1/skills endpoint.
 
@@ -3652,19 +3676,19 @@ Use Bearer Auth (header Authorization).
 
                         `minLength: 1`, `maxLength: 70254592`
 
-                      - `media_type: "application/zip"`
+                      - `media_type: "application/zip" (default: "application/zip")`
 
                         The media type of the inline skill payload. Must be `application/zip`.
 
                         - `"application/zip"`
 
-                      - `type: "base64"`
+                      - `type: "base64" (default: "base64")`
 
                         The type of the inline skill source. Must be `base64`.
 
                         - `"base64"`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       Defines an inline skill for this request.
 
@@ -3672,7 +3696,7 @@ Use Bearer Auth (header Authorization).
 
               - `LocalEnvironment object { type, skills }`
 
-                - `type: "local"`
+                - `type: "local" (default: "local")`
 
                   Use a local computer environment.
 
@@ -3702,7 +3726,7 @@ Use Bearer Auth (header Authorization).
 
                   The ID of the referenced container.
 
-                - `type: "container_reference"`
+                - `type: "container_reference" (default: "container_reference")`
 
                   References a container created with the /v1/containers endpoint
 
@@ -3716,7 +3740,7 @@ Use Bearer Auth (header Authorization).
 
               The name of the custom tool, used to identify it in tool calls.
 
-            - `type: "custom"`
+            - `type: "custom" (default: "custom")`
 
               The type of the custom tool. Always `custom`.
 
@@ -3752,7 +3776,7 @@ Use Bearer Auth (header Authorization).
 
                 Unconstrained free-form text.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   Unconstrained text format. Always `text`.
 
@@ -3774,7 +3798,7 @@ Use Bearer Auth (header Authorization).
 
                   - `"regex"`
 
-                - `type: "grammar"`
+                - `type: "grammar" (default: "grammar")`
 
                   Grammar format. Always `grammar`.
 
@@ -3806,9 +3830,9 @@ Use Bearer Auth (header Authorization).
 
                   The name of the loaded function tool.
 
-                  `minLength: 1`, `maxLength: 128`
+                  `pattern: ^(?![\s\S]*[\r\n])[a-zA-Z0-9_.-]+$`, `minLength: 1`, `maxLength: 128`
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   - `"function"`
 
@@ -3850,7 +3874,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the custom tool, used to identify it in tool calls.
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   The type of the custom tool. Always `custom`.
 
@@ -3882,7 +3906,7 @@ Use Bearer Auth (header Authorization).
 
                   The input format for the custom tool. Default is unconstrained text.
 
-            - `type: "namespace"`
+            - `type: "namespace" (default: "namespace")`
 
               The type of the tool. Always `namespace`.
 
@@ -3892,7 +3916,7 @@ Use Bearer Auth (header Authorization).
 
             Hosted or BYOT tool search configuration for deferred tools.
 
-            - `type: "tool_search"`
+            - `type: "tool_search" (default: "tool_search")`
 
               The type of the tool. Always `tool_search`.
 
@@ -3918,7 +3942,7 @@ Use Bearer Auth (header Authorization).
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
-            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11" (default: "web_search_preview")`
 
               The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
 
@@ -3946,7 +3970,7 @@ Use Bearer Auth (header Authorization).
 
               The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.
 
-              - `type: "approximate"`
+              - `type: "approximate" (default: "approximate")`
 
                 The type of location approximation. Always `approximate`.
 
@@ -3972,7 +3996,7 @@ Use Bearer Auth (header Authorization).
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
-            - `type: "apply_patch"`
+            - `type: "apply_patch" (default: "apply_patch")`
 
               The type of the tool. Always `apply_patch`.
 
@@ -3988,7 +4012,7 @@ Use Bearer Auth (header Authorization).
 
               - `"programmatic"`
 
-        - `type: "tool_search_output"`
+        - `type: "tool_search_output" (default: "tool_search_output")`
 
           The item type. Always `tool_search_output`.
 
@@ -4024,7 +4048,7 @@ Use Bearer Auth (header Authorization).
 
       - `AdditionalTools object { role, tools, type, id }`
 
-        - `role: "developer"`
+        - `role: "developer" (default: "developer")`
 
           The role that provided the additional tools. Only `developer` is supported.
 
@@ -4050,7 +4074,7 @@ Use Bearer Auth (header Authorization).
 
               Whether strict parameter validation is enforced for this function tool.
 
-            - `type: "function"`
+            - `type: "function" (default: "function")`
 
               The type of the function tool. Always `function`.
 
@@ -4082,7 +4106,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
-            - `type: "file_search"`
+            - `type: "file_search" (default: "file_search")`
 
               The type of the file search tool. Always `file_search`.
 
@@ -4104,7 +4128,7 @@ Use Bearer Auth (header Authorization).
 
                 Combine multiple filters using `and` or `or`.
 
-            - `max_num_results: optional number`
+            - `max_num_results: optional integer`
 
               The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
@@ -4140,7 +4164,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-            - `type: "computer"`
+            - `type: "computer" (default: "computer")`
 
               The type of the computer tool. Always `computer`.
 
@@ -4150,11 +4174,11 @@ Use Bearer Auth (header Authorization).
 
             A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
-            - `display_height: number`
+            - `display_height: integer`
 
               The height of the computer display.
 
-            - `display_width: number`
+            - `display_width: integer`
 
               The width of the computer display.
 
@@ -4172,7 +4196,7 @@ Use Bearer Auth (header Authorization).
 
               - `"browser"`
 
-            - `type: "computer_use_preview"`
+            - `type: "computer_use_preview" (default: "computer_use_preview")`
 
               The type of the computer use tool. Always `computer_use_preview`.
 
@@ -4183,7 +4207,7 @@ Use Bearer Auth (header Authorization).
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/api/docs/guides/tools-web-search).
 
-            - `type: "web_search" or "web_search_2025_08_26"`
+            - `type: "web_search" or "web_search_2025_08_26" (default: "web_search")`
 
               The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
 
@@ -4191,7 +4215,7 @@ Use Bearer Auth (header Authorization).
 
               - `"web_search_2025_08_26"`
 
-            - `external_web_access: optional boolean`
+            - `external_web_access: optional boolean (default: true)`
 
               Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
@@ -4199,14 +4223,14 @@ Use Bearer Auth (header Authorization).
 
               Filters for the search.
 
-              - `allowed_domains: optional array of string or null`
+              - `allowed_domains: optional array of string or null (default: [])`
 
                 Allowed domains for the search. If not provided, all domains are allowed.
                 Subdomains of the provided domains are allowed as well.
 
                 Example: `["pubmed.ncbi.nlm.nih.gov"]`
 
-            - `search_context_size: optional "low" or "medium" or "high"`
+            - `search_context_size: optional "low" or "medium" or "high" (default: "medium")`
 
               High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
 
@@ -4238,7 +4262,7 @@ Use Bearer Auth (header Authorization).
 
                 The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
-              - `type: optional "approximate"`
+              - `type: optional "approximate" (default: "approximate")`
 
                 The type of location approximation. Always `approximate`.
 
@@ -4343,7 +4367,7 @@ Use Bearer Auth (header Authorization).
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null`
+            - `require_approval: optional McpToolApprovalFilter { always, never }  or "always" or "never" or null (default: "always")`
 
               Specify which of the MCP server's tools require approval.
 
@@ -4407,6 +4431,8 @@ Use Bearer Auth (header Authorization).
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
+              `pattern: ^tunnel_[a-z0-9]{32}$`
+
           - `CodeInterpreter object { container, type, allowed_callers }`
 
             A tool that runs Python code to help generate a response to a prompt.
@@ -4425,7 +4451,7 @@ Use Bearer Auth (header Authorization).
 
                 Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
 
-                - `type: "auto"`
+                - `type: "auto" (default: "auto")`
 
                   Always `auto`.
 
@@ -4475,7 +4501,7 @@ Use Bearer Auth (header Authorization).
 
           - `ProgrammaticToolCalling object { type }`
 
-            - `type: "programmatic_tool_calling"`
+            - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
               The type of the tool. Always `programmatic_tool_calling`.
 
@@ -4501,7 +4527,7 @@ Use Bearer Auth (header Authorization).
 
               - `"auto"`
 
-            - `background: optional "transparent" or "opaque" or "auto"`
+            - `background: optional "transparent" or "opaque" or "auto" (default: "auto")`
 
               Set the background of the generated image. One of `transparent`, `opaque`,
               or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
@@ -4582,7 +4608,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
 
-            - `moderation: optional "auto" or "low"`
+            - `moderation: optional "auto" or "low" (default: "auto")`
 
               Moderation level for the generated image. Default: `auto`.
 
@@ -4590,13 +4616,13 @@ Use Bearer Auth (header Authorization).
 
               - `"low"`
 
-            - `output_compression: optional number`
+            - `output_compression: optional integer (default: 100)`
 
               Compression level for the output image. Default: 100.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg"`
+            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
 
               The output format of the generated image. One of `png`, `webp`, or
               `jpeg`. Default: `png`.
@@ -4607,13 +4633,13 @@ Use Bearer Auth (header Authorization).
 
               - `"jpeg"`
 
-            - `partial_images: optional number`
+            - `partial_images: optional integer (default: 0)`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
               `minimum: 0`, `maximum: 3`
 
-            - `quality: optional "low" or "medium" or "high" or 3 more`
+            - `quality: optional "low" or "medium" or "high" or 3 more (default: "auto")`
 
               The quality of the generated image. The GPT image models support `low`,
               `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
@@ -4632,7 +4658,7 @@ Use Bearer Auth (header Authorization).
 
               - `"auto"`
 
-            - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
+            - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto" (default: "auto")`
 
               The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing.
 
@@ -4654,7 +4680,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that allows the model to execute shell commands in a local environment.
 
-            - `type: "local_shell"`
+            - `type: "local_shell" (default: "local_shell")`
 
               The type of the local shell tool. Always `local_shell`.
 
@@ -4664,7 +4690,7 @@ Use Bearer Auth (header Authorization).
 
             A tool that allows the model to execute shell commands.
 
-            - `type: "shell"`
+            - `type: "shell" (default: "shell")`
 
               The type of the shell tool. Always `shell`.
 
@@ -4696,7 +4722,7 @@ Use Bearer Auth (header Authorization).
 
               The name of the custom tool, used to identify it in tool calls.
 
-            - `type: "custom"`
+            - `type: "custom" (default: "custom")`
 
               The type of the custom tool. Always `custom`.
 
@@ -4752,9 +4778,9 @@ Use Bearer Auth (header Authorization).
 
                 - `name: string`
 
-                  `minLength: 1`, `maxLength: 128`
+                  `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   - `"function"`
 
@@ -4796,7 +4822,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the custom tool, used to identify it in tool calls.
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   The type of the custom tool. Always `custom`.
 
@@ -4828,7 +4854,7 @@ Use Bearer Auth (header Authorization).
 
                   The input format for the custom tool. Default is unconstrained text.
 
-            - `type: "namespace"`
+            - `type: "namespace" (default: "namespace")`
 
               The type of the tool. Always `namespace`.
 
@@ -4838,7 +4864,7 @@ Use Bearer Auth (header Authorization).
 
             Hosted or BYOT tool search configuration for deferred tools.
 
-            - `type: "tool_search"`
+            - `type: "tool_search" (default: "tool_search")`
 
               The type of the tool. Always `tool_search`.
 
@@ -4864,7 +4890,7 @@ Use Bearer Auth (header Authorization).
 
             This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
-            - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
+            - `type: "web_search_preview" or "web_search_preview_2025_03_11" (default: "web_search_preview")`
 
               The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
 
@@ -4892,7 +4918,7 @@ Use Bearer Auth (header Authorization).
 
               The approximate location of the user. If omitted or null, defaults to the United States. To avoid this fallback, pass `{"type": "approximate"}` without location fields. To localize results, provide the relevant location fields.
 
-              - `type: "approximate"`
+              - `type: "approximate" (default: "approximate")`
 
                 The type of location approximation. Always `approximate`.
 
@@ -4918,7 +4944,7 @@ Use Bearer Auth (header Authorization).
 
             Allows the assistant to create, delete, or update files using unified diffs.
 
-            - `type: "apply_patch"`
+            - `type: "apply_patch" (default: "apply_patch")`
 
               The type of the tool. Always `apply_patch`.
 
@@ -4934,7 +4960,7 @@ Use Bearer Auth (header Authorization).
 
               - `"programmatic"`
 
-        - `type: "additional_tools"`
+        - `type: "additional_tools" (default: "additional_tools")`
 
           The item type. Always `additional_tools`.
 
@@ -4950,7 +4976,7 @@ Use Bearer Auth (header Authorization).
         remains in effect for subsequent responses until it is replaced by another
         configuration update.
 
-        - `type: "configuration_update"`
+        - `type: "configuration_update" (default: "configuration_update")`
 
           The item type. Always `configuration_update`.
 
@@ -4964,7 +4990,7 @@ Use Bearer Auth (header Authorization).
 
           Updates to reasoning configuration. Only effort is supported.
 
-          - `effort: optional ReasoningEffort or null`
+          - `effort: optional ReasoningEffort or null (default: "medium")`
 
             The reasoning effort to use for subsequent responses until another
             configuration update replaces it.
@@ -5002,7 +5028,7 @@ Use Bearer Auth (header Authorization).
 
             A summary of the reasoning output from the model so far.
 
-          - `type: "summary_text"`
+          - `type: "summary_text" (default: "summary_text")`
 
             The type of the object. Always `summary_text`.
 
@@ -5022,7 +5048,7 @@ Use Bearer Auth (header Authorization).
 
             The reasoning text from the model.
 
-          - `type: "reasoning_text"`
+          - `type: "reasoning_text" (default: "reasoning_text")`
 
             The type of the reasoning text. Always `reasoning_text`.
 
@@ -5061,7 +5087,7 @@ Use Bearer Auth (header Authorization).
 
           `maxLength: 104857600`
 
-        - `type: "compaction"`
+        - `type: "compaction" (default: "compaction")`
 
           The type of the item. Always `compaction`.
 
@@ -5234,7 +5260,7 @@ Use Bearer Auth (header Authorization).
 
               The logs output from the code interpreter.
 
-            - `type: "logs"`
+            - `type: "logs" (default: "logs")`
 
               The type of the output. Always `logs`.
 
@@ -5244,7 +5270,7 @@ Use Bearer Auth (header Authorization).
 
             The image output from the code interpreter.
 
-            - `type: "image"`
+            - `type: "image" (default: "image")`
 
               The type of the output. Always `image`.
 
@@ -5270,7 +5296,7 @@ Use Bearer Auth (header Authorization).
 
           - `"failed"`
 
-        - `type: "code_interpreter_call"`
+        - `type: "code_interpreter_call" (default: "code_interpreter_call")`
 
           The type of the code interpreter tool call. Always `code_interpreter_call`.
 
@@ -5296,13 +5322,13 @@ Use Bearer Auth (header Authorization).
 
             Environment variables to set for the command.
 
-          - `type: "exec"`
+          - `type: "exec" (default: "exec")`
 
             The type of the local shell action. Always `exec`.
 
             - `"exec"`
 
-          - `timeout_ms: optional number or null`
+          - `timeout_ms: optional integer or null`
 
             Optional timeout in milliseconds for the command.
 
@@ -5374,11 +5400,11 @@ Use Bearer Auth (header Authorization).
 
             Ordered shell commands for the execution environment to run.
 
-          - `max_output_length: optional number or null`
+          - `max_output_length: optional integer or null`
 
             Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
 
-          - `timeout_ms: optional number or null`
+          - `timeout_ms: optional integer or null`
 
             Maximum wall-clock time in milliseconds to allow the shell commands to run.
 
@@ -5388,7 +5414,7 @@ Use Bearer Auth (header Authorization).
 
           `minLength: 1`, `maxLength: 64`
 
-        - `type: "shell_call"`
+        - `type: "shell_call" (default: "shell_call")`
 
           The type of the item. Always `shell_call`.
 
@@ -5404,7 +5430,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -5418,7 +5444,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
@@ -5464,7 +5490,7 @@ Use Bearer Auth (header Authorization).
 
               Indicates that the shell call exceeded its configured time limit.
 
-              - `type: "timeout"`
+              - `type: "timeout" (default: "timeout")`
 
                 The outcome type. Always `timeout`.
 
@@ -5474,11 +5500,11 @@ Use Bearer Auth (header Authorization).
 
               Indicates that the shell commands finished and returned an exit code.
 
-              - `exit_code: number`
+              - `exit_code: integer`
 
                 The exit code returned by the shell process.
 
-              - `type: "exit"`
+              - `type: "exit" (default: "exit")`
 
                 The outcome type. Always `exit`.
 
@@ -5496,7 +5522,7 @@ Use Bearer Auth (header Authorization).
 
             `maxLength: 10485760`
 
-        - `type: "shell_call_output"`
+        - `type: "shell_call_output" (default: "shell_call_output")`
 
           The type of the item. Always `shell_call_output`.
 
@@ -5512,7 +5538,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -5526,13 +5552,13 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
               - `"program"`
 
-        - `max_output_length: optional number or null`
+        - `max_output_length: optional integer or null`
 
           The maximum number of UTF-8 characters captured for this shell call's combined output.
 
@@ -5576,7 +5602,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`
 
-            - `type: "create_file"`
+            - `type: "create_file" (default: "create_file")`
 
               The operation type. Always `create_file`.
 
@@ -5592,7 +5618,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`
 
-            - `type: "delete_file"`
+            - `type: "delete_file" (default: "delete_file")`
 
               The operation type. Always `delete_file`.
 
@@ -5614,7 +5640,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`
 
-            - `type: "update_file"`
+            - `type: "update_file" (default: "update_file")`
 
               The operation type. Always `update_file`.
 
@@ -5628,7 +5654,7 @@ Use Bearer Auth (header Authorization).
 
           - `"completed"`
 
-        - `type: "apply_patch_call"`
+        - `type: "apply_patch_call" (default: "apply_patch_call")`
 
           The type of the item. Always `apply_patch_call`.
 
@@ -5644,7 +5670,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -5658,7 +5684,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
@@ -5682,7 +5708,7 @@ Use Bearer Auth (header Authorization).
 
           - `"failed"`
 
-        - `type: "apply_patch_call_output"`
+        - `type: "apply_patch_call_output" (default: "apply_patch_call_output")`
 
           The type of the item. Always `apply_patch_call_output`.
 
@@ -5698,7 +5724,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -5712,7 +5738,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
@@ -5855,11 +5881,11 @@ Use Bearer Auth (header Authorization).
 
           - `McpProtocolError object { code, message, type }`
 
-            - `code: number`
+            - `code: integer`
 
             - `message: string`
 
-            - `type: "mcp_protocol_error"`
+            - `type: "mcp_protocol_error" (default: "mcp_protocol_error")`
 
               - `"mcp_protocol_error"`
 
@@ -5867,17 +5893,17 @@ Use Bearer Auth (header Authorization).
 
             - `content: unknown`
 
-            - `type: "mcp_tool_execution_error"`
+            - `type: "mcp_tool_execution_error" (default: "mcp_tool_execution_error")`
 
               - `"mcp_tool_execution_error"`
 
           - `HTTPError object { code, message, type }`
 
-            - `code: number`
+            - `code: integer`
 
             - `message: string`
 
-            - `type: "http_error"`
+            - `type: "http_error" (default: "http_error")`
 
               - `"http_error"`
 
@@ -5948,7 +5974,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               The caller type. Always `direct`.
 
@@ -5962,7 +5988,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 1`, `maxLength: 64`
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               The caller type. Always `program`.
 
@@ -6004,7 +6030,7 @@ Use Bearer Auth (header Authorization).
 
           - `Direct object { type }`
 
-            - `type: "direct"`
+            - `type: "direct" (default: "direct")`
 
               - `"direct"`
 
@@ -6014,7 +6040,7 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
-            - `type: "program"`
+            - `type: "program" (default: "program")`
 
               - `"program"`
 
@@ -6026,7 +6052,7 @@ Use Bearer Auth (header Authorization).
 
         Compacts the current context. Must be the final input item.
 
-        - `type: "compaction_trigger"`
+        - `type: "compaction_trigger" (default: "compaction_trigger")`
 
           The type of the item. Always `compaction_trigger`.
 
@@ -6044,7 +6070,7 @@ Use Bearer Auth (header Authorization).
 
           The ID of the item to reference.
 
-        - `type: optional "item_reference" or null`
+        - `type: optional "item_reference" or null (default: "item_reference")`
 
           The type of item to reference. Always `item_reference`.
 
@@ -6074,7 +6100,7 @@ Use Bearer Auth (header Authorization).
 
           `maxLength: 10485760`
 
-        - `type: "program"`
+        - `type: "program" (default: "program")`
 
           The item type. Always `program`.
 
@@ -6106,13 +6132,13 @@ Use Bearer Auth (header Authorization).
 
           - `"incomplete"`
 
-        - `type: "program_output"`
+        - `type: "program_output" (default: "program_output")`
 
           The item type. Always `program_output`.
 
           - `"program_output"`
 
-    - `type: "response.item.create"`
+    - `type: "response.item.create" (default: "response.item.create")`
 
       The Live client event type. Always `response.item.create`.
 
@@ -6128,7 +6154,7 @@ Use Bearer Auth (header Authorization).
 
     Request a response from the Live session’s Responses backend, or continue a delegated response waiting for tool results. Requires Responses delegation.
 
-    - `type: "response.create"`
+    - `type: "response.create" (default: "response.create")`
 
       The Live client event type. Always `response.create`.
 
@@ -6144,7 +6170,7 @@ Use Bearer Auth (header Authorization).
 
     Request that the Live session close. The terminal `session.closed` event contains the close reason and final usage.
 
-    - `type: "session.close"`
+    - `type: "session.close" (default: "session.close")`
 
       The Live client event type. Always `session.close`.
 
@@ -6172,7 +6198,7 @@ Use Bearer Auth (header Authorization).
 
       The canonical Live session ID.
 
-    - `type: "transport.ringing"`
+    - `type: "transport.ringing" (default: "transport.ringing")`
 
       - `"transport.ringing"`
 
@@ -6186,7 +6212,7 @@ Use Bearer Auth (header Authorization).
 
       The canonical Live session ID.
 
-    - `type: "transport.answered"`
+    - `type: "transport.answered" (default: "transport.answered")`
 
       - `"transport.answered"`
 
@@ -6202,7 +6228,7 @@ Use Bearer Auth (header Authorization).
 
       - `message: string`
 
-      - `type: "call_error"`
+      - `type: "call_error" (default: "call_error")`
 
         - `"call_error"`
 
@@ -6216,7 +6242,7 @@ Use Bearer Auth (header Authorization).
 
       The canonical Live session ID.
 
-    - `type: "transport.failed"`
+    - `type: "transport.failed" (default: "transport.failed")`
 
       - `"transport.failed"`
 
@@ -6226,11 +6252,11 @@ Use Bearer Auth (header Authorization).
 
     - `event: string`
 
-      `minLength: 1`, `maxLength: 1`
+      `pattern: ^[0-9A-D*#]$`, `minLength: 1`, `maxLength: 1`
 
     - `event_id: string`
 
-    - `type: "transport.dtmf.received"`
+    - `type: "transport.dtmf.received" (default: "transport.dtmf.received")`
 
       - `"transport.dtmf.received"`
 
@@ -6240,11 +6266,11 @@ Use Bearer Auth (header Authorization).
 
     - `event: string`
 
-      `minLength: 1`, `maxLength: 1`
+      `pattern: ^[0-9A-D*#]$`, `minLength: 1`, `maxLength: 1`
 
     - `event_id: string`
 
-    - `type: "transport.dtmf.sent"`
+    - `type: "transport.dtmf.sent" (default: "transport.dtmf.sent")`
 
       - `"transport.dtmf.sent"`
 
@@ -6268,7 +6294,7 @@ Use Bearer Auth (header Authorization).
 
         The unique ID of the Live session. Use this ID for sideband connections, forking, and recording download.
 
-      - `expires_at: number`
+      - `expires_at: integer`
 
         The Unix timestamp, in seconds, at which the Live session expires.
 
@@ -6278,13 +6304,15 @@ Use Bearer Auth (header Authorization).
 
         - `string`
 
+          `minLength: 1`
+
         - `"gpt-live-1"`
 
           The Live model. Required in the session configuration for every transport; do not pass it as a URL query parameter.
 
           - `"gpt-live-1"`
 
-      - `status: "active"`
+      - `status: "active" (default: "active")`
 
         The status of the session snapshot. Always `active`, including the final snapshot in session.closed; use the event type to determine that the session has closed.
 
@@ -6312,7 +6340,7 @@ Use Bearer Auth (header Authorization).
 
               - `24000`
 
-            - `type: "audio/pcm"`
+            - `type: "audio/pcm" (default: "audio/pcm")`
 
               The audio encoding. Always `audio/pcm`.
 
@@ -6322,13 +6350,13 @@ Use Bearer Auth (header Authorization).
 
             Raw, mono G.711 μ-law audio for a Live WebSocket connection.
 
-            - `rate: number`
+            - `rate: integer`
 
               Audio sample rate in hertz. G.711 audio uses 8000 Hz.
 
               `minimum: 8000`, `maximum: 8000`
 
-            - `type: "audio/pcmu"`
+            - `type: "audio/pcmu" (default: "audio/pcmu")`
 
               The audio encoding. Always `audio/pcmu`.
 
@@ -6338,13 +6366,13 @@ Use Bearer Auth (header Authorization).
 
             Raw, mono G.711 A-law audio for a Live WebSocket connection.
 
-            - `rate: number`
+            - `rate: integer`
 
               Audio sample rate in hertz. G.711 audio uses 8000 Hz.
 
               `minimum: 8000`, `maximum: 8000`
 
-            - `type: "audio/pcma"`
+            - `type: "audio/pcma" (default: "audio/pcma")`
 
               The audio encoding. Always `audio/pcma`.
 
@@ -6450,6 +6478,8 @@ Use Bearer Auth (header Authorization).
 
             - `array of string`
 
+              `maxItems: 256`
+
           - `allowed_server_events: optional "all" or array of ServerEventSelector`
 
             Server events that may be sent to the frontend data channel. Use 'all' to allow every server event; an empty array allows none. Omission preserves the existing allow-all behavior. Responses events use an object with type 'response.event' and a response_event selector.
@@ -6459,6 +6489,8 @@ Use Bearer Auth (header Authorization).
               - `"all"`
 
             - `array of ServerEventSelector`
+
+              `maxItems: 256`
 
               - `type: string`
 
@@ -6480,13 +6512,13 @@ Use Bearer Auth (header Authorization).
 
           Delegate tasks to your application. The Live session emits delegation events that your backend handles.
 
-          - `type: "client"`
+          - `type: "client" (default: "client")`
 
             The delegation owner. Always `client` for tasks handled by your application.
 
             - `"client"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
@@ -6508,7 +6540,7 @@ Use Bearer Auth (header Authorization).
 
               Instructions for the delegated Responses model, separate from Live instructions. See [backend prompting](/api/docs/guides/live-delegation#start-with-your-existing-backend-prompt).
 
-            - `max_output_tokens: optional number or null`
+            - `max_output_tokens: optional integer or null`
 
               Maximum number of output tokens for each delegated response.
 
@@ -6596,7 +6628,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the function tool to call.
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   The tool to call. Always `function`.
 
@@ -6608,7 +6640,7 @@ Use Bearer Auth (header Authorization).
 
                   The label of the MCP server to call.
 
-                - `type: "mcp"`
+                - `type: "mcp" (default: "mcp")`
 
                   The tool to call. Always `mcp`.
 
@@ -6620,7 +6652,7 @@ Use Bearer Auth (header Authorization).
 
               - `FileSearch object { type }`
 
-                - `type: "file_search"`
+                - `type: "file_search" (default: "file_search")`
 
                   The tool to call. Always `file_search`.
 
@@ -6628,7 +6660,7 @@ Use Bearer Auth (header Authorization).
 
               - `WebSearch object { type }`
 
-                - `type: "web_search"`
+                - `type: "web_search" (default: "web_search")`
 
                   The tool to call. Always `web_search`.
 
@@ -6636,7 +6668,7 @@ Use Bearer Auth (header Authorization).
 
               - `WebSearchPreview object { type }`
 
-                - `type: "web_search_preview"`
+                - `type: "web_search_preview" (default: "web_search_preview")`
 
                   The tool to call. Always `web_search_preview`.
 
@@ -6644,7 +6676,7 @@ Use Bearer Auth (header Authorization).
 
               - `ImageGeneration object { type }`
 
-                - `type: "image_generation"`
+                - `type: "image_generation" (default: "image_generation")`
 
                   The tool to call. Always `image_generation`.
 
@@ -6652,7 +6684,7 @@ Use Bearer Auth (header Authorization).
 
               - `Computer object { type }`
 
-                - `type: "computer"`
+                - `type: "computer" (default: "computer")`
 
                   The tool to call. Always `computer`.
 
@@ -6660,7 +6692,7 @@ Use Bearer Auth (header Authorization).
 
               - `CodeInterpreter object { type }`
 
-                - `type: "code_interpreter"`
+                - `type: "code_interpreter" (default: "code_interpreter")`
 
                   The tool to call. Always `code_interpreter`.
 
@@ -6668,7 +6700,7 @@ Use Bearer Auth (header Authorization).
 
               - `ProgrammaticToolCalling object { type }`
 
-                - `type: "programmatic_tool_calling"`
+                - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                   The tool to call. Always `programmatic_tool_calling`.
 
@@ -6678,7 +6710,7 @@ Use Bearer Auth (header Authorization).
 
                 Forces the model to call the shell tool when a tool call is required.
 
-                - `type: "shell"`
+                - `type: "shell" (default: "shell")`
 
                   The tool to call. Always `shell`.
 
@@ -6690,7 +6722,7 @@ Use Bearer Auth (header Authorization).
 
                   The name of the custom tool to call.
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   The tool to call. Always `custom`.
 
@@ -6700,7 +6732,7 @@ Use Bearer Auth (header Authorization).
 
                 Forces the model to call the apply_patch tool when executing a tool call.
 
-                - `type: "apply_patch"`
+                - `type: "apply_patch" (default: "apply_patch")`
 
                   The tool to call. Always `apply_patch`.
 
@@ -6720,7 +6752,7 @@ Use Bearer Auth (header Authorization).
 
                       The name of the function tool to call.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The tool to call. Always `function`.
 
@@ -6732,7 +6764,7 @@ Use Bearer Auth (header Authorization).
 
                       The label of the MCP server to call.
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The tool to call. Always `mcp`.
 
@@ -6744,7 +6776,7 @@ Use Bearer Auth (header Authorization).
 
                   - `FileSearch object { type }`
 
-                    - `type: "file_search"`
+                    - `type: "file_search" (default: "file_search")`
 
                       The tool to call. Always `file_search`.
 
@@ -6752,7 +6784,7 @@ Use Bearer Auth (header Authorization).
 
                   - `WebSearch object { type }`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The tool to call. Always `web_search`.
 
@@ -6760,7 +6792,7 @@ Use Bearer Auth (header Authorization).
 
                   - `WebSearchPreview object { type }`
 
-                    - `type: "web_search_preview"`
+                    - `type: "web_search_preview" (default: "web_search_preview")`
 
                       The tool to call. Always `web_search_preview`.
 
@@ -6768,7 +6800,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ImageGeneration object { type }`
 
-                    - `type: "image_generation"`
+                    - `type: "image_generation" (default: "image_generation")`
 
                       The tool to call. Always `image_generation`.
 
@@ -6776,7 +6808,7 @@ Use Bearer Auth (header Authorization).
 
                   - `Computer object { type }`
 
-                    - `type: "computer"`
+                    - `type: "computer" (default: "computer")`
 
                       The tool to call. Always `computer`.
 
@@ -6784,7 +6816,7 @@ Use Bearer Auth (header Authorization).
 
                   - `CodeInterpreter object { type }`
 
-                    - `type: "code_interpreter"`
+                    - `type: "code_interpreter" (default: "code_interpreter")`
 
                       The tool to call. Always `code_interpreter`.
 
@@ -6792,7 +6824,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ProgrammaticToolCalling object { type }`
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The tool to call. Always `programmatic_tool_calling`.
 
@@ -6802,7 +6834,7 @@ Use Bearer Auth (header Authorization).
 
                     Forces the model to call the shell tool when a tool call is required.
 
-                    - `type: "shell"`
+                    - `type: "shell" (default: "shell")`
 
                       The tool to call. Always `shell`.
 
@@ -6814,7 +6846,7 @@ Use Bearer Auth (header Authorization).
 
                       The name of the custom tool to call.
 
-                    - `type: "custom"`
+                    - `type: "custom" (default: "custom")`
 
                       The tool to call. Always `custom`.
 
@@ -6824,13 +6856,13 @@ Use Bearer Auth (header Authorization).
 
                     Forces the model to call the apply_patch tool when executing a tool call.
 
-                    - `type: "apply_patch"`
+                    - `type: "apply_patch" (default: "apply_patch")`
 
                       The tool to call. Always `apply_patch`.
 
                       - `"apply_patch"`
 
-                - `type: "allowed_tools"`
+                - `type: "allowed_tools" (default: "allowed_tools")`
 
                   The tool choice type. Always `allowed_tools`.
 
@@ -6858,7 +6890,7 @@ Use Bearer Auth (header Authorization).
 
                   The name the delegated Responses model uses when calling this function.
 
-                - `type: "function"`
+                - `type: "function" (default: "function")`
 
                   The tool type. Always `function`.
 
@@ -6880,7 +6912,7 @@ Use Bearer Auth (header Authorization).
 
                 A web search tool available to the Live session’s Responses backend.
 
-                - `type: "web_search"`
+                - `type: "web_search" (default: "web_search")`
 
                   The tool type. Always `web_search`.
 
@@ -6888,13 +6920,13 @@ Use Bearer Auth (header Authorization).
 
               - `FileSearch object { type }`
 
-                - `type: "file_search"`
+                - `type: "file_search" (default: "file_search")`
 
                   - `"file_search"`
 
               - `CodeInterpreter object { type }`
 
-                - `type: "code_interpreter"`
+                - `type: "code_interpreter" (default: "code_interpreter")`
 
                   - `"code_interpreter"`
 
@@ -6902,7 +6934,7 @@ Use Bearer Auth (header Authorization).
 
                 A Responses shell tool. Use a hosted container or return local shell results with response.item.create. Domain secrets are not supported.
 
-                - `type: "shell"`
+                - `type: "shell" (default: "shell")`
 
                   - `"shell"`
 
@@ -6910,7 +6942,7 @@ Use Bearer Auth (header Authorization).
 
                   - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
-                    - `type: "container_auto"`
+                    - `type: "container_auto" (default: "container_auto")`
 
                       Automatically creates a container for this request
 
@@ -6940,7 +6972,7 @@ Use Bearer Auth (header Authorization).
 
                       - `Disabled object { type }`
 
-                        - `type: "disabled"`
+                        - `type: "disabled" (default: "disabled")`
 
                           Disable outbound network access. Always `disabled`.
 
@@ -6954,7 +6986,7 @@ Use Bearer Auth (header Authorization).
 
                           `minItems: 1`
 
-                        - `type: "allowlist"`
+                        - `type: "allowlist" (default: "allowlist")`
 
                           Allow outbound network access only to specified domains. Always `allowlist`.
 
@@ -6974,7 +7006,7 @@ Use Bearer Auth (header Authorization).
 
                           `minLength: 1`, `maxLength: 64`
 
-                        - `type: "skill_reference"`
+                        - `type: "skill_reference" (default: "skill_reference")`
 
                           References a skill created with the /v1/skills endpoint.
 
@@ -7004,19 +7036,19 @@ Use Bearer Auth (header Authorization).
 
                             `minLength: 1`, `maxLength: 70254592`
 
-                          - `media_type: "application/zip"`
+                          - `media_type: "application/zip" (default: "application/zip")`
 
                             The media type of the inline skill payload. Must be `application/zip`.
 
                             - `"application/zip"`
 
-                          - `type: "base64"`
+                          - `type: "base64" (default: "base64")`
 
                             The type of the inline skill source. Must be `base64`.
 
                             - `"base64"`
 
-                        - `type: "inline"`
+                        - `type: "inline" (default: "inline")`
 
                           Defines an inline skill for this request.
 
@@ -7028,7 +7060,7 @@ Use Bearer Auth (header Authorization).
 
                       The ID of the referenced container.
 
-                    - `type: "container_reference"`
+                    - `type: "container_reference" (default: "container_reference")`
 
                       References a container created with the /v1/containers endpoint
 
@@ -7036,7 +7068,7 @@ Use Bearer Auth (header Authorization).
 
                   - `Local object { type, skills }`
 
-                    - `type: "local"`
+                    - `type: "local" (default: "local")`
 
                       Use a local computer environment.
 
@@ -7062,59 +7094,59 @@ Use Bearer Auth (header Authorization).
 
               - `ImageGeneration object { type }`
 
-                - `type: "image_generation"`
+                - `type: "image_generation" (default: "image_generation")`
 
                   - `"image_generation"`
 
               - `Mcp object { type }`
 
-                - `type: "mcp"`
+                - `type: "mcp" (default: "mcp")`
 
                   - `"mcp"`
 
               - `Custom object { type }`
 
-                - `type: "custom"`
+                - `type: "custom" (default: "custom")`
 
                   - `"custom"`
 
               - `Namespace object { type }`
 
-                - `type: "namespace"`
+                - `type: "namespace" (default: "namespace")`
 
                   - `"namespace"`
 
               - `ToolSearch object { type }`
 
-                - `type: "tool_search"`
+                - `type: "tool_search" (default: "tool_search")`
 
                   - `"tool_search"`
 
               - `ProgrammaticToolCalling object { type }`
 
-                - `type: "programmatic_tool_calling"`
+                - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                   - `"programmatic_tool_calling"`
 
               - `Computer object { type }`
 
-                - `type: "computer"`
+                - `type: "computer" (default: "computer")`
 
                   - `"computer"`
 
               - `ApplyPatch object { type }`
 
-                - `type: "apply_patch"`
+                - `type: "apply_patch" (default: "apply_patch")`
 
                   - `"apply_patch"`
 
-          - `type: "responses"`
+          - `type: "responses" (default: "responses")`
 
             The delegation owner. Always `responses` for tasks handled by the Responses API.
 
             - `"responses"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
@@ -7154,6 +7186,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                       - `text: string`
@@ -7162,7 +7196,7 @@ Use Bearer Auth (header Authorization).
 
                         `maxLength: 10485760`
 
-                      - `type: "input_text"`
+                      - `type: "input_text" (default: "input_text")`
 
                         - `"input_text"`
 
@@ -7172,9 +7206,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -7198,11 +7232,11 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
-                - `type: "choice"`
+                - `type: "choice" (default: "choice")`
 
                   - `"choice"`
 
@@ -7216,6 +7250,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                     - `InputImage object { image_url, type, detail }`
@@ -7224,9 +7260,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -7250,11 +7286,11 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
-                - `type: "predicate"`
+                - `type: "predicate" (default: "predicate")`
 
                   - `"predicate"`
 
@@ -7268,6 +7304,8 @@ Use Bearer Auth (header Authorization).
 
                   - `array of DecisionInputText or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
+                    `minItems: 1`
+
                     - `DecisionInputText object { text, type }`
 
                     - `InputImage object { image_url, type, detail }`
@@ -7276,9 +7314,9 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                        `maxLength: 20971520`
+                        `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-                      - `type: "input_image"`
+                      - `type: "input_image" (default: "input_image")`
 
                         - `"input_image"`
 
@@ -7302,7 +7340,7 @@ Use Bearer Auth (header Authorization).
 
                         - `array of map[unknown]`
 
-                      - `type: "input_json"`
+                      - `type: "input_json" (default: "input_json")`
 
                         - `"input_json"`
 
@@ -7314,17 +7352,17 @@ Use Bearer Auth (header Authorization).
 
                   - `description: optional string`
 
-                - `type: "score"`
+                - `type: "score" (default: "score")`
 
                   - `"score"`
 
                 - `name: optional string`
 
-          - `type: "decisions"`
+          - `type: "decisions" (default: "decisions")`
 
             - `"decisions"`
 
-          - `acknowledgement_delay_ms: optional number`
+          - `acknowledgement_delay_ms: optional integer`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
@@ -7350,13 +7388,13 @@ Use Bearer Auth (header Authorization).
 
               The message text to include in the Live session’s initial conversation history.
 
-            - `type: optional "input_text"`
+            - `type: optional "input_text" (default: "input_text")`
 
               The text content type. Always `input_text`.
 
               - `"input_text"`
 
-          - `role: "developer"`
+          - `role: "developer" (default: "developer")`
 
             The author of this history message. Always `developer`.
 
@@ -7374,7 +7412,7 @@ Use Bearer Auth (header Authorization).
 
             - `"completed"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The history item type. Always `message`.
 
@@ -7394,13 +7432,13 @@ Use Bearer Auth (header Authorization).
 
               The message text to include in the Live session’s initial conversation history.
 
-            - `type: optional "input_text"`
+            - `type: optional "input_text" (default: "input_text")`
 
               The text content type. Always `input_text`.
 
               - `"input_text"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The author of this history message. Always `user`.
 
@@ -7418,7 +7456,7 @@ Use Bearer Auth (header Authorization).
 
             - `"completed"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The history item type. Always `message`.
 
@@ -7442,7 +7480,7 @@ Use Bearer Auth (header Authorization).
 
                 The message text to include in the Live session’s initial conversation history.
 
-              - `type: optional "text"`
+              - `type: optional "text" (default: "text")`
 
                 The text content type. Always `text`.
 
@@ -7456,13 +7494,13 @@ Use Bearer Auth (header Authorization).
 
                 The message text to include in the Live session’s initial conversation history.
 
-              - `type: "output_text"`
+              - `type: "output_text" (default: "output_text")`
 
                 The text content type. Always `output_text`.
 
                 - `"output_text"`
 
-          - `role: "assistant"`
+          - `role: "assistant" (default: "assistant")`
 
             The author of this history message. Always `assistant`.
 
@@ -7480,7 +7518,7 @@ Use Bearer Auth (header Authorization).
 
             - `"completed"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The history item type. Always `message`.
 
@@ -7522,11 +7560,11 @@ Use Bearer Auth (header Authorization).
 
           - `"session.output_transcript.delta"`
 
-        - `type: "decisions"`
+        - `type: "decisions" (default: "decisions")`
 
           - `"decisions"`
 
-    - `type: "session.started"`
+    - `type: "session.started" (default: "session.started")`
 
       The event type, always `session.started`.
 
@@ -7548,7 +7586,7 @@ Use Bearer Auth (header Authorization).
 
       The resolved Live session configuration and server-assigned session metadata.
 
-    - `type: "session.updated"`
+    - `type: "session.updated" (default: "session.updated")`
 
       The event type, always `session.updated`.
 
@@ -7566,7 +7604,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "session.input_audio.muted"`
+    - `type: "session.input_audio.muted" (default: "session.input_audio.muted")`
 
       The event type, always `session.input_audio.muted`.
 
@@ -7584,7 +7622,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "session.input_audio.unmuted"`
+    - `type: "session.input_audio.unmuted" (default: "session.input_audio.unmuted")`
 
       The event type, always `session.input_audio.unmuted`.
 
@@ -7602,7 +7640,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "session.output_audio.fixture.playing"`
+    - `type: "session.output_audio.fixture.playing" (default: "session.output_audio.fixture.playing")`
 
       - `"session.output_audio.fixture.playing"`
 
@@ -7618,7 +7656,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "session.output_audio.fixture.played"`
+    - `type: "session.output_audio.fixture.played" (default: "session.output_audio.fixture.played")`
 
       - `"session.output_audio.fixture.played"`
 
@@ -7630,7 +7668,7 @@ Use Bearer Auth (header Authorization).
 
     Returned when a session.instructions.append command is accepted into the Live session timeline. Acknowledges the appended instructions without guaranteeing that the model has acted on them.
 
-    - `end_ms: number`
+    - `end_ms: integer`
 
       The end of this event on the Live session timeline, in milliseconds from the beginning of the session. For appended context, this can equal start_ms.
 
@@ -7638,11 +7676,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `start_ms: number`
+    - `start_ms: integer`
 
       The start of this event on the Live session timeline, in milliseconds from the beginning of the session.
 
-    - `type: "session.instructions.appended"`
+    - `type: "session.instructions.appended" (default: "session.instructions.appended")`
 
       The event type, always `session.instructions.appended`.
 
@@ -7656,7 +7694,7 @@ Use Bearer Auth (header Authorization).
 
     Returned when a session.thinking.append command is accepted into the Live session timeline. Acknowledges the added reasoning context without guaranteeing any spoken output.
 
-    - `end_ms: number`
+    - `end_ms: integer`
 
       The end of this event on the Live session timeline, in milliseconds from the beginning of the session. For appended context, this can equal start_ms.
 
@@ -7664,11 +7702,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `start_ms: number`
+    - `start_ms: integer`
 
       The start of this event on the Live session timeline, in milliseconds from the beginning of the session.
 
-    - `type: "session.thinking.appended"`
+    - `type: "session.thinking.appended" (default: "session.thinking.appended")`
 
       The event type, always `session.thinking.appended`.
 
@@ -7682,7 +7720,7 @@ Use Bearer Auth (header Authorization).
 
     Returned when a session.commentary.append command is accepted into the Live session timeline. Acknowledges the added commentary without guaranteeing exact wording or completed audio playback.
 
-    - `end_ms: number`
+    - `end_ms: integer`
 
       The end of this event on the Live session timeline, in milliseconds from the beginning of the session. For appended context, this can equal start_ms.
 
@@ -7690,11 +7728,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `start_ms: number`
+    - `start_ms: integer`
 
       The start of this event on the Live session timeline, in milliseconds from the beginning of the session.
 
-    - `type: "session.commentary.appended"`
+    - `type: "session.commentary.appended" (default: "session.commentary.appended")`
 
       The event type, always `session.commentary.appended`.
 
@@ -7712,7 +7750,7 @@ Use Bearer Auth (header Authorization).
 
       The transcript text fragment for the audio in this time range. Append fragments in delivery order to build the transcript.
 
-    - `end_ms: number`
+    - `end_ms: integer`
 
       The end of this event on the Live session timeline, in milliseconds from the beginning of the session. For appended context, this can equal start_ms.
 
@@ -7720,11 +7758,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `start_ms: number`
+    - `start_ms: integer`
 
       The start of this event on the Live session timeline, in milliseconds from the beginning of the session.
 
-    - `type: "session.input_transcript.delta"`
+    - `type: "session.input_transcript.delta" (default: "session.input_transcript.delta")`
 
       The event type, always `session.input_transcript.delta`.
 
@@ -7742,7 +7780,7 @@ Use Bearer Auth (header Authorization).
 
       The transcript text fragment for the audio in this time range. Append fragments in delivery order to build the transcript.
 
-    - `end_ms: number`
+    - `end_ms: integer`
 
       The end of this event on the Live session timeline, in milliseconds from the beginning of the session. For appended context, this can equal start_ms.
 
@@ -7750,11 +7788,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `start_ms: number`
+    - `start_ms: integer`
 
       The start of this event on the Live session timeline, in milliseconds from the beginning of the session.
 
-    - `type: "session.output_transcript.delta"`
+    - `type: "session.output_transcript.delta" (default: "session.output_transcript.delta")`
 
       The event type, always `session.output_transcript.delta`.
 
@@ -7790,7 +7828,7 @@ Use Bearer Auth (header Authorization).
 
           - `"decisions"`
 
-      - `type: "delegation"`
+      - `type: "delegation" (default: "delegation")`
 
         The object type, always `delegation`.
 
@@ -7804,11 +7842,11 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `offset_ms: number`
+    - `offset_ms: integer`
 
       The position on the Live session timeline where the delegation was created, in milliseconds from the beginning of the session.
 
-    - `type: "session.delegation.created"`
+    - `type: "session.delegation.created" (default: "session.delegation.created")`
 
       The event type, always `session.delegation.created`.
 
@@ -7846,7 +7884,7 @@ Use Bearer Auth (header Authorization).
 
             - `probability: number`
 
-            - `type: "predicate"`
+            - `type: "predicate" (default: "predicate")`
 
               The type of the object. Always `predicate`.
 
@@ -7859,6 +7897,8 @@ Use Bearer Auth (header Authorization).
               Choice values are typed: a string and a boolean with the same text are distinct.
 
               - `string`
+
+                `minLength: 0`
 
               - `boolean`
 
@@ -7880,9 +7920,11 @@ Use Bearer Auth (header Authorization).
 
                 - `string`
 
+                  `minLength: 0`
+
                 - `boolean`
 
-            - `type: "choice"`
+            - `type: "choice" (default: "choice")`
 
               The type of the object. Always `choice`.
 
@@ -7906,13 +7948,13 @@ Use Bearer Auth (header Authorization).
 
               - `probability: number`
 
-              - `value: number`
+              - `value: integer`
 
                 `format: int64`
 
             - `score: number`
 
-            - `type: "score"`
+            - `type: "score" (default: "score")`
 
               The type of the object. Always `score`.
 
@@ -7926,7 +7968,7 @@ Use Bearer Auth (header Authorization).
 
               `minLength: 0`
 
-            - `type: "refusal"`
+            - `type: "refusal" (default: "refusal")`
 
               The type of the object. Always `refusal`.
 
@@ -7942,35 +7984,35 @@ Use Bearer Auth (header Authorization).
 
           Token usage for the request.
 
-          - `input_tokens: number`
+          - `input_tokens: integer`
 
             `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
           - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
-            - `cache_write_tokens: number`
+            - `cache_write_tokens: integer`
 
               `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-            - `cached_tokens: number`
+            - `cached_tokens: integer`
 
               `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-          - `output_tokens: number`
+          - `output_tokens: integer`
 
             `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
           - `output_tokens_details: object { reasoning_tokens }`
 
-            - `reasoning_tokens: number`
+            - `reasoning_tokens: integer`
 
               `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-          - `total_tokens: number`
+          - `total_tokens: integer`
 
             `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
-      - `type: "decision.completed"`
+      - `type: "decision.completed" (default: "decision.completed")`
 
         - `"decision.completed"`
 
@@ -7994,7 +8036,7 @@ Use Bearer Auth (header Authorization).
 
       The Live-assigned ID of this trigger firing, or null for a delegation.
 
-    - `type: "decision.event"`
+    - `type: "decision.event" (default: "decision.event")`
 
       - `"decision.event"`
 
@@ -8020,6 +8062,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of InputText { text, type }  or InputImage { image_url, type, detail }  or InputJSON { data, type }`
 
             - `InputText object { text, type }`
@@ -8030,7 +8074,7 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 - `"input_text"`
 
@@ -8040,9 +8084,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -8066,17 +8110,17 @@ Use Bearer Auth (header Authorization).
 
                 - `array of map[unknown]`
 
-              - `type: "input_json"`
+              - `type: "input_json" (default: "input_json")`
 
                 - `"input_json"`
 
-        - `role: "user"`
+        - `role: "user" (default: "user")`
 
           The message role. Always `user`.
 
           - `"user"`
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -8092,6 +8136,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText`
 
             - `text: string`
@@ -8100,13 +8146,13 @@ Use Bearer Auth (header Authorization).
 
               `maxLength: 10485760`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
-        - `role: "developer"`
+        - `role: "developer" (default: "developer")`
 
           - `"developer"`
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -8122,6 +8168,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText`
 
             - `text: string`
@@ -8130,13 +8178,13 @@ Use Bearer Auth (header Authorization).
 
               `maxLength: 10485760`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
-        - `role: "system"`
+        - `role: "system" (default: "system")`
 
           - `"system"`
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -8152,6 +8200,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of OutputText { text, type }  or Refusal { refusal, type }`
 
             - `OutputText object { text, type }`
@@ -8162,7 +8212,7 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "output_text"`
+              - `type: "output_text" (default: "output_text")`
 
                 - `"output_text"`
 
@@ -8174,11 +8224,11 @@ Use Bearer Auth (header Authorization).
 
                 `maxLength: 10485760`
 
-              - `type: "refusal"`
+              - `type: "refusal" (default: "refusal")`
 
                 - `"refusal"`
 
-        - `role: "assistant"`
+        - `role: "assistant" (default: "assistant")`
 
           - `"assistant"`
 
@@ -8190,7 +8240,7 @@ Use Bearer Auth (header Authorization).
 
           - `"final_answer"`
 
-        - `type: optional "message"`
+        - `type: optional "message" (default: "message")`
 
           - `"message"`
 
@@ -8210,9 +8260,9 @@ Use Bearer Auth (header Authorization).
 
         - `name: string`
 
-          `minLength: 1`, `maxLength: 128`
+          `pattern: ^[a-zA-Z0-9_.-]+$`, `minLength: 1`, `maxLength: 128`
 
-        - `type: "function_call"`
+        - `type: "function_call" (default: "function_call")`
 
           The item type. Always `function_call`.
 
@@ -8222,7 +8272,7 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -8250,6 +8300,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
             - `DecisionInputText object { text, type }`
@@ -8260,9 +8312,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -8278,7 +8330,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"original"`
 
-        - `type: "function_call_output"`
+        - `type: "function_call_output" (default: "function_call_output")`
 
           The type of the function tool call output. Always `function_call_output`.
 
@@ -8310,9 +8362,9 @@ Use Bearer Auth (header Authorization).
 
           The name of the custom tool to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
-        - `type: "custom_tool_call"`
+        - `type: "custom_tool_call" (default: "custom_tool_call")`
 
           The item type. Always `custom_tool_call`.
 
@@ -8322,7 +8374,7 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
-          `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -8350,6 +8402,8 @@ Use Bearer Auth (header Authorization).
 
             The text input to the model.
 
+            `maxLength: 10485760`
+
           - `array of DecisionInputText or InputImage { image_url, type, detail }`
 
             - `DecisionInputText object { text, type }`
@@ -8360,9 +8414,9 @@ Use Bearer Auth (header Authorization).
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
-                `maxLength: 20971520`
+                `pattern: ^(data:|https?://)`, `maxLength: 20971520`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 - `"input_image"`
 
@@ -8378,7 +8432,7 @@ Use Bearer Auth (header Authorization).
 
                 - `"original"`
 
-        - `type: "custom_tool_call_output"`
+        - `type: "custom_tool_call_output" (default: "custom_tool_call_output")`
 
           - `"custom_tool_call_output"`
 
@@ -8390,7 +8444,7 @@ Use Bearer Auth (header Authorization).
 
           - `"incomplete"`
 
-    - `type: "decision.item.created"`
+    - `type: "decision.item.created" (default: "decision.item.created")`
 
       - `"decision.item.created"`
 
@@ -8408,7 +8462,7 @@ Use Bearer Auth (header Authorization).
 
     - `item_id: string`
 
-    - `type: "decision.item.deleted"`
+    - `type: "decision.item.deleted" (default: "decision.item.deleted")`
 
       - `"decision.item.deleted"`
 
@@ -8428,7 +8482,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "response.event"`
+    - `type: "response.event" (default: "response.event")`
 
       The event type, always `response.event`.
 
@@ -8450,7 +8504,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "session.usage.updated"`
+    - `type: "session.usage.updated" (default: "session.usage.updated")`
 
       The event type, always `session.usage.updated`.
 
@@ -8506,7 +8560,7 @@ Use Bearer Auth (header Authorization).
 
       The resolved Live session configuration and server-assigned session metadata.
 
-    - `type: "session.closed"`
+    - `type: "session.closed" (default: "session.closed")`
 
       The event type, always `session.closed`.
 
@@ -8552,7 +8606,7 @@ Use Bearer Auth (header Authorization).
 
       The unique ID of the Live server event.
 
-    - `type: "error"`
+    - `type: "error" (default: "error")`
 
       The event type, always `error`.
 
@@ -8578,7 +8632,7 @@ Use Bearer Auth (header Authorization).
 
       A human-readable explanation of the Live session notice.
 
-    - `type: "info"`
+    - `type: "info" (default: "info")`
 
       The event type, always `info`.
 

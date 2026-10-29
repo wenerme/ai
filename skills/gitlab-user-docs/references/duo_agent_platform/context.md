@@ -113,6 +113,8 @@ To specify content that GitLab Duo excludes:
 1. Optional. To delete an existing exclusion, select **Delete** () for the appropriate exclusion.
 1. Select **Save changes**.
 
+The exclusions for a project can be up to 64 KiB in total.
+
 ### Known issues
 
 The following are known issues for context exclusions in the [GitLab MCP server](../model_context_protocol/mcp_server.md):

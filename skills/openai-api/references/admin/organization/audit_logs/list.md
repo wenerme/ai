@@ -6,11 +6,11 @@ List user actions and configuration changes within this organization.
 
 ### Query Parameters
 
-- `actor_emails: optional array of string`
+- `"actor_emails[]": optional array of string`
 
   Return only events performed by users with these emails.
 
-- `actor_ids: optional array of string`
+- `"actor_ids[]": optional array of string`
 
   Return only events performed by these actors. Can be a user ID, a service account ID, or an api key tracking ID.
 
@@ -26,23 +26,23 @@ List user actions and configuration changes within this organization.
 
   Return only events whose `effective_at` (Unix seconds) is in this range.
 
-  - `gt: optional number`
+  - `gt: optional integer`
 
     Return only events whose `effective_at` (Unix seconds) is greater than this value.
 
-  - `gte: optional number`
+  - `gte: optional integer`
 
     Return only events whose `effective_at` (Unix seconds) is greater than or equal to this value.
 
-  - `lt: optional number`
+  - `lt: optional integer`
 
     Return only events whose `effective_at` (Unix seconds) is less than this value.
 
-  - `lte: optional number`
+  - `lte: optional integer`
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
+- `"event_types[]": optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
@@ -344,19 +344,19 @@ List user actions and configuration changes within this organization.
 
   - `"tenant.workspace_invite_email_settings.updated"`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
-- `project_ids: optional array of string`
+- `"project_ids[]": optional array of string`
 
   Return only events for these projects.
 
-- `resource_ids: optional array of string`
+- `"resource_ids[]": optional array of string`
 
   Return only events performed on these targets. For example, a project ID updated. For ChatGPT connector role events, use the workspace connector resource ID shown in `details.id`, such as `<workspace_id>__<connector_id>`.
 
-- `tenant_only: optional boolean`
+- `tenant_only: optional boolean (default: false)`
 
   Return only tenant-scoped events associated with this organization. Required for tenant-scoped events such as `role.bound_to_resource` and `role.unbound_from_resource`. When `true`, all supplied event types must be tenant-scoped.
 
@@ -368,7 +368,7 @@ List user actions and configuration changes within this organization.
 
     The ID of this log.
 
-  - `effective_at: number`
+  - `effective_at: integer`
 
     The Unix timestamp (in seconds) of the event.
 
@@ -932,7 +932,7 @@ List user actions and configuration changes within this organization.
 
           - `role_arn: string`
 
-          - `type: "aws"`
+          - `type: "aws" (default: "aws")`
 
             - `"aws"`
 
@@ -950,7 +950,7 @@ List user actions and configuration changes within this organization.
 
           - `tenant_id: string`
 
-          - `type: "azure"`
+          - `type: "azure" (default: "azure")`
 
             - `"azure"`
 
@@ -962,7 +962,7 @@ List user actions and configuration changes within this organization.
 
           - `region: string`
 
-          - `type: "gcp"`
+          - `type: "gcp" (default: "gcp")`
 
             - `"gcp"`
 
@@ -980,7 +980,7 @@ List user actions and configuration changes within this organization.
 
           - `tenancy_ocid: string`
 
-          - `type: "oci"`
+          - `type: "oci" (default: "oci")`
 
             - `"oci"`
 
@@ -1300,27 +1300,27 @@ List user actions and configuration changes within this organization.
 
       The payload used to update the rate limits.
 
-      - `batch_1_day_max_input_tokens: optional number`
+      - `batch_1_day_max_input_tokens: optional integer`
 
         The maximum batch input tokens per day. Only relevant for certain models.
 
-      - `max_audio_megabytes_per_1_minute: optional number`
+      - `max_audio_megabytes_per_1_minute: optional integer`
 
         The maximum audio megabytes per minute. Only relevant for certain models.
 
-      - `max_images_per_1_minute: optional number`
+      - `max_images_per_1_minute: optional integer`
 
         The maximum images per minute. Only relevant for certain models.
 
-      - `max_requests_per_1_day: optional number`
+      - `max_requests_per_1_day: optional integer`
 
         The maximum requests per day. Only relevant for certain models.
 
-      - `max_requests_per_1_minute: optional number`
+      - `max_requests_per_1_minute: optional integer`
 
         The maximum requests per minute.
 
-      - `max_tokens_per_1_minute: optional number`
+      - `max_tokens_per_1_minute: optional integer`
 
         The maximum tokens per minute.
 
@@ -1753,7 +1753,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2139,7 +2139,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

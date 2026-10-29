@@ -18,6 +18,8 @@ Create a new immutable skill version.
 
     Skill files to upload (directory upload) or a single zip file.
 
+    `maxItems: 500`
+
   - `string`
 
     Skill zip file to upload.
@@ -34,7 +36,7 @@ Create a new immutable skill version.
 
     Unique identifier for the skill version.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the version was created.
 
@@ -48,7 +50,7 @@ Create a new immutable skill version.
 
     Name of the skill version.
 
-  - `object: "skill.version"`
+  - `object: "skill.version" (default: "skill.version")`
 
     The object type, which is `skill.version`.
 
@@ -75,7 +77,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

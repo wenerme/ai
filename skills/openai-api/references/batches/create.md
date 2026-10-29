@@ -59,7 +59,7 @@ Creates and executes a batch from an uploaded file of requests
 
     - `"created_at"`
 
-  - `seconds: number`
+  - `seconds: integer`
 
     The number of seconds after the anchor time that the file will expire. Must be between 3600 (1 hour) and 2592000 (30 days).
 
@@ -75,7 +75,7 @@ Creates and executes a batch from an uploaded file of requests
 
     The time frame within which the batch should be processed.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the batch was created.
 
@@ -115,19 +115,19 @@ Creates and executes a batch from an uploaded file of requests
 
     - `"cancelled"`
 
-  - `cancelled_at: optional number or null`
+  - `cancelled_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch was cancelled.
 
     `format: unixtime`
 
-  - `cancelling_at: optional number or null`
+  - `cancelling_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started cancelling.
 
     `format: unixtime`
 
-  - `completed_at: optional number or null`
+  - `completed_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch was completed.
 
@@ -145,7 +145,7 @@ Creates and executes a batch from an uploaded file of requests
 
         An error code identifying the error type.
 
-      - `line: optional number or null`
+      - `line: optional integer or null`
 
         The line number of the input file where the error occurred, if applicable.
 
@@ -161,31 +161,31 @@ Creates and executes a batch from an uploaded file of requests
 
       The object type, which is always `list`.
 
-  - `expired_at: optional number or null`
+  - `expired_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch expired.
 
     `format: unixtime`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch will expire.
 
     `format: unixtime`
 
-  - `failed_at: optional number or null`
+  - `failed_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch failed.
 
     `format: unixtime`
 
-  - `finalizing_at: optional number or null`
+  - `finalizing_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started finalizing.
 
     `format: unixtime`
 
-  - `in_progress_at: optional number or null`
+  - `in_progress_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the batch started processing.
 
@@ -215,15 +215,15 @@ Creates and executes a batch from an uploaded file of requests
 
     The request counts for different statuses within the batch.
 
-    - `completed: number`
+    - `completed: integer`
 
       Number of requests that have been completed successfully.
 
-    - `failed: number`
+    - `failed: integer`
 
       Number of requests that have failed.
 
-    - `total: number`
+    - `total: integer`
 
       Total number of requests in the batch.
 
@@ -233,7 +233,7 @@ Creates and executes a batch from an uploaded file of requests
     breakdown of output tokens, and the total tokens used. Only populated on
     batches created after September 7, 2025.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The number of input tokens.
 
@@ -241,12 +241,12 @@ Creates and executes a batch from an uploaded file of requests
 
       A detailed breakdown of the input tokens.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of tokens that were retrieved from the cache. [More on
         prompt caching](/api/docs/guides/prompt-caching).
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The number of output tokens.
 
@@ -254,11 +254,11 @@ Creates and executes a batch from an uploaded file of requests
 
       A detailed breakdown of the output tokens.
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         The number of reasoning tokens.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of tokens used.
 
@@ -275,7 +275,7 @@ curl https://api.openai.com/v1/batches \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -343,7 +343,7 @@ curl https://api.openai.com/v1/batches \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

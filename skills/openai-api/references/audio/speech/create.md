@@ -87,7 +87,7 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   `maxLength: 4096`
 
-- `response_format: optional "mp3" or "opus" or "aac" or 3 more`
+- `response_format: optional "mp3" or "opus" or "aac" or 3 more (default: "mp3")`
 
   The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`.
 
@@ -103,13 +103,13 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   - `"pcm"`
 
-- `speed: optional number`
+- `speed: optional number (default: 1)`
 
   The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default.
 
   `minimum: 0.25`, `maximum: 4`
 
-- `stream_format: optional "sse" or "audio"`
+- `stream_format: optional "sse" or "audio" (default: "audio")`
 
   The format to stream the audio in. Supported formats are `sse` and `audio`. `sse` is not supported for `tts-1` or `tts-1-hd`.
 

@@ -28,7 +28,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -46,7 +46,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -72,7 +72,7 @@ Lists all of the users in the organization.
 
   Filter by the email address of users.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -84,7 +84,7 @@ Lists all of the users in the organization.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -96,13 +96,13 @@ Lists all of the users in the organization.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -172,7 +172,7 @@ Lists all of the users in the organization.
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -201,7 +201,7 @@ curl https://api.openai.com/v1/organization/users \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -258,7 +258,7 @@ curl https://api.openai.com/v1/organization/users?after=user_abc&limit=20 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -299,7 +299,7 @@ Retrieves a user by their identifier.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -311,13 +311,13 @@ Retrieves a user by their identifier.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -387,7 +387,7 @@ Retrieves a user by their identifier.
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -406,7 +406,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -455,7 +455,7 @@ curl https://api.openai.com/v1/organization/users/user_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -506,7 +506,7 @@ Modifies a user's role in the organization.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -518,13 +518,13 @@ Modifies a user's role in the organization.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -594,7 +594,7 @@ Modifies a user's role in the organization.
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -615,7 +615,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -667,7 +667,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -692,7 +692,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -704,13 +704,13 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -780,7 +780,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc \
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -872,7 +872,7 @@ Assigns an organization role to a user within the organization.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -884,13 +884,13 @@ Assigns an organization role to a user within the organization.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -960,7 +960,7 @@ Assigns an organization role to a user within the organization.
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -983,7 +983,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1049,7 +1049,7 @@ curl -X POST https://api.openai.com/v1/organization/users/user_abc123/roles \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1107,7 +1107,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1124,7 +1124,7 @@ curl -X DELETE https://api.openai.com/v1/organization/users/user_abc123/roles/ro
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1149,7 +1149,7 @@ Lists the organization roles assigned to a user within the organization.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of organization role assignments to return.
 
@@ -1181,7 +1181,7 @@ Lists the organization roles assigned to a user within the organization.
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -1219,7 +1219,7 @@ Lists the organization roles assigned to a user within the organization.
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -1246,7 +1246,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1291,7 +1291,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1355,7 +1355,7 @@ Retrieves an organization role assigned to a user.
 
   - `principal_type: string`
 
-- `created_at: number or null`
+- `created_at: integer or null`
 
   When the role was created.
 
@@ -1393,7 +1393,7 @@ Retrieves an organization role assigned to a user.
 
   Resource type the role applies to.
 
-- `updated_at: number or null`
+- `updated_at: integer or null`
 
   When the role was last updated.
 
@@ -1406,7 +1406,7 @@ curl https://api.openai.com/v1/organization/users/$USER_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1444,7 +1444,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1522,7 +1522,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       The identifier, which can be referenced in API endpoints
 
-    - `added_at: number`
+    - `added_at: integer`
 
       The Unix timestamp (in seconds) of when the user was added.
 
@@ -1534,13 +1534,13 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       - `"organization.user"`
 
-    - `api_key_last_used_at: optional number or null`
+    - `api_key_last_used_at: optional integer or null`
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
       `format: unixtime`
 
-    - `created: optional number`
+    - `created: optional integer`
 
       The Unix timestamp (in seconds) of when the user was created.
 
@@ -1610,7 +1610,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       - `banned: optional boolean or null`
 
-      - `banned_at: optional number or null`
+      - `banned_at: optional integer or null`
 
         `format: unixtime`
 
@@ -1654,7 +1654,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -1692,7 +1692,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -1716,7 +1716,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -1754,7 +1754,7 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 

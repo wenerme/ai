@@ -18,13 +18,13 @@ Retrieve a ChatKit thread by its identifier.
 
     Identifier of the thread.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) for when the thread was created.
 
     `format: unixtime`
 
-  - `object: "chatkit.thread"`
+  - `object: "chatkit.thread" (default: "chatkit.thread")`
 
     Type discriminator that is always `chatkit.thread`.
 
@@ -38,7 +38,7 @@ Retrieve a ChatKit thread by its identifier.
 
       Indicates that a thread is active.
 
-      - `type: "active"`
+      - `type: "active" (default: "active")`
 
         Status discriminator that is always `active`.
 
@@ -52,7 +52,7 @@ Retrieve a ChatKit thread by its identifier.
 
         Reason that the thread was locked. Defaults to null when no reason is recorded.
 
-      - `type: "locked"`
+      - `type: "locked" (default: "locked")`
 
         Status discriminator that is always `locked`.
 
@@ -66,7 +66,7 @@ Retrieve a ChatKit thread by its identifier.
 
         Reason that the thread was closed. Defaults to null when no reason is recorded.
 
-      - `type: "closed"`
+      - `type: "closed" (default: "closed")`
 
         Status discriminator that is always `closed`.
 
@@ -88,7 +88,7 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -111,7 +111,7 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

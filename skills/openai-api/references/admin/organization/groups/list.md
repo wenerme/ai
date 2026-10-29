@@ -10,13 +10,13 @@ Lists all groups in the organization.
 
   A cursor for use in pagination. `after` is a group ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with group_abc, your subsequent call can include `after=group_abc` in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 100)`
 
   A limit on the number of groups to be returned. Limit can range between 0 and 1000, and the default is 100.
 
   `minimum: 0`, `maximum: 1000`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Specifies the sort order of the returned groups.
 
@@ -34,7 +34,7 @@ Lists all groups in the organization.
 
     Identifier for the group.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was created.
 
@@ -77,7 +77,7 @@ curl https://api.openai.com/v1/organization/groups \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -104,7 +104,7 @@ curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

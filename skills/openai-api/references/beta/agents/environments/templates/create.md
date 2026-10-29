@@ -46,7 +46,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "file_id"`
+    - `type: "file_id" (default: "file_id")`
 
       The type of the object. Always `file_id`.
 
@@ -68,7 +68,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -162,7 +162,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 70254592`
 
-    - `media_type: "application/zip"`
+    - `media_type: "application/zip" (default: "application/zip")`
 
       The archive media type, always `application/zip`.
 
@@ -170,13 +170,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         A ZIP archive.
 
-    - `type: "base64"`
+    - `type: "base64" (default: "base64")`
 
       The type of the object. Always `base64`.
 
       - `"base64"`
 
-  - `type: "inline"`
+  - `type: "inline" (default: "inline")`
 
     The type of the object. Always `inline`.
 
@@ -216,7 +216,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 1`, `maxLength: 64`
 
-    - `type: "skill_reference"`
+    - `type: "skill_reference" (default: "skill_reference")`
 
       The type of the object. Always `skill_reference`.
 
@@ -248,7 +248,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       Provides ZIP bytes encoded with standard base64.
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -272,7 +272,7 @@ Creates reusable environment configuration without returning confidential setup 
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -308,7 +308,7 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -324,13 +324,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -368,7 +368,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -414,7 +414,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -436,7 +436,7 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -464,13 +464,13 @@ Creates reusable environment configuration without returning confidential setup 
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -485,7 +485,7 @@ curl https://api.openai.com/v1/agents/environments/templates \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {

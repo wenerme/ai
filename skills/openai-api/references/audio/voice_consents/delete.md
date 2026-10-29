@@ -30,7 +30,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -122,10 +122,7 @@ The comment is not displayed on your project's **Code** > **Commits** page.
 ### Edit the comment line range
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242736) in GitLab 19.3 [with a flag](../../administration/feature_flags/_index.md) named `rapid_diffs_on_mr_show`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `rapid_diffs_on_mr_show` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241051) in GitLab 19.6.
 
 On merge requests with [rapid diffs](../project/merge_requests/changes.md#rapid-diffs) turned on,
 when you have the comment form open, you can change which lines the comment applies to.

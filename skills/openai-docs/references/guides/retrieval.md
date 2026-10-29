@@ -922,6 +922,10 @@ require "openai"
 
 client = OpenAI::Client.new
 file = client.vector_stores.files.create_and_poll("vs_123", file_id: "file_123")
+unless file.status == OpenAI::VectorStores::VectorStoreFile::Status::COMPLETED
+  raise "File indexing did not complete: #{file.last_error&.message || file.status}"
+end
+
 puts(file.id)
 ```
 

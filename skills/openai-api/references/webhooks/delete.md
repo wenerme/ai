@@ -20,7 +20,7 @@ Deletes a webhook endpoint for the authenticated project.
 
     Whether the endpoint was deleted.
 
-  - `object: "webhook_endpoint.deleted"`
+  - `object: "webhook_endpoint.deleted" (default: "webhook_endpoint.deleted")`
 
     The object type, which is always webhook_endpoint.deleted.
 
@@ -34,7 +34,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

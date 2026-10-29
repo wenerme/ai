@@ -40,7 +40,7 @@ Saves an active automation without invoking it immediately.
 
             Runs the agent without an execution environment.
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -50,7 +50,7 @@ Saves an active automation without invoking it immediately.
 
             An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -118,7 +118,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -140,7 +140,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 4096`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -228,7 +228,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 70254592`
 
-                - `media_type: "application/zip"`
+                - `media_type: "application/zip" (default: "application/zip")`
 
                   The archive media type, always `application/zip`.
 
@@ -236,13 +236,13 @@ Saves an active automation without invoking it immediately.
 
                     A ZIP archive.
 
-                - `type: "base64"`
+                - `type: "base64" (default: "base64")`
 
                   The type of the object. Always `base64`.
 
                   - `"base64"`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -282,7 +282,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 1`, `maxLength: 64`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -314,7 +314,7 @@ Saves an active automation without invoking it immediately.
 
                   Provides ZIP bytes encoded with standard base64.
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -324,7 +324,7 @@ Saves an active automation without invoking it immediately.
 
             An application-hosted environment configured inline.
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -364,7 +364,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -380,31 +380,31 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`, `maxLength: 1048576`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: optional "message"`
+          - `type: optional "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
             - `"message"`
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
           - `"new_session"`
 
-        - `agent: optional object { compaction, instructions, model, 5 more }`
+        - `agent: optional object { compaction, experimental, instructions, 6 more }`
 
           Inline agent configuration. Provide exactly one of agent and agent_id.
 
@@ -415,6 +415,14 @@ Saves an active automation without invoking it immediately.
             - `async: optional boolean or null`
 
               Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
+
+          - `experimental: optional object { time_awareness }  (default: {})`
+
+            Experimental settings to merge by key. Omitted settings keep their current values.
+
+            - `time_awareness: optional boolean`
+
+              Whether to give the model periodic current-time reminders. Omit to keep the current setting.
 
           - `instructions: optional string or null`
 
@@ -436,7 +444,7 @@ Saves an active automation without invoking it immediately.
 
               Whether subagent tools are enabled.
 
-            - `max_concurrent_subagents: optional number`
+            - `max_concurrent_subagents: optional integer`
 
               Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -520,7 +528,7 @@ Saves an active automation without invoking it immediately.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -534,7 +542,7 @@ Saves an active automation without invoking it immediately.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -582,13 +590,13 @@ Saves an active automation without invoking it immediately.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
                 - `"function"`
 
-              - `defer_loading: optional boolean`
+              - `defer_loading: optional boolean (default: false)`
 
                 Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -596,7 +604,7 @@ Saves an active automation without invoking it immediately.
 
               Discovers deferred function tools and loads them into the model context.
 
-              - `type: "tool_search"`
+              - `type: "tool_search" (default: "tool_search")`
 
                 The type of the object. Always `tool_search`.
 
@@ -606,13 +614,13 @@ Saves an active automation without invoking it immediately.
 
               Enables calling tools from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
                 - `"programmatic_tool_calling"`
 
-              - `enabled: optional boolean`
+              - `enabled: optional boolean (default: true)`
 
                 Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -640,7 +648,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -672,7 +680,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`, `maxLength: 1048576`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
@@ -694,7 +702,7 @@ Saves an active automation without invoking it immediately.
 
                     `minItems: 0`, `maxItems: 16384`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -728,7 +736,7 @@ Saves an active automation without invoking it immediately.
 
                 Metadata included with requests to this MCP server.
 
-              - `required: optional boolean`
+              - `required: optional boolean (default: false)`
 
                 Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -736,7 +744,7 @@ Saves an active automation without invoking it immediately.
 
               Web search.
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -806,13 +814,13 @@ Saves an active automation without invoking it immediately.
 
               Browser use in an OpenAI-hosted session.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
                 - `"computer_use"`
 
-              - `include_screenshots: optional boolean`
+              - `include_screenshots: optional boolean (default: false)`
 
                 Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -820,7 +828,7 @@ Saves an active automation without invoking it immediately.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -858,7 +866,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -870,7 +878,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 1`, `maxLength: 128`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -886,7 +894,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 1`, `maxLength: 256`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       A future Unix timestamp in seconds.
 
@@ -896,7 +904,7 @@ Saves an active automation without invoking it immediately.
 
       The session an automation invocation targets.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -920,7 +928,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -932,7 +940,7 @@ Saves an active automation without invoking it immediately.
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -952,7 +960,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -974,7 +982,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -1018,7 +1026,7 @@ Saves an active automation without invoking it immediately.
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -1090,7 +1098,7 @@ Saves an active automation without invoking it immediately.
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -1104,7 +1112,7 @@ Saves an active automation without invoking it immediately.
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -1150,7 +1158,7 @@ Saves an active automation without invoking it immediately.
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -1164,7 +1172,7 @@ Saves an active automation without invoking it immediately.
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -1222,7 +1230,7 @@ Saves an active automation without invoking it immediately.
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -1256,13 +1264,13 @@ Saves an active automation without invoking it immediately.
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -1326,7 +1334,7 @@ Saves an active automation without invoking it immediately.
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -1340,7 +1348,7 @@ Saves an active automation without invoking it immediately.
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -1350,7 +1358,7 @@ Saves an active automation without invoking it immediately.
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -1364,6 +1372,14 @@ Saves an active automation without invoking it immediately.
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -1376,7 +1392,7 @@ Saves an active automation without invoking it immediately.
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -1444,7 +1460,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -1460,13 +1476,13 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -1538,7 +1554,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -1560,7 +1576,7 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -1588,13 +1604,13 @@ Saves an active automation without invoking it immediately.
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -1614,7 +1630,7 @@ Saves an active automation without invoking it immediately.
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -1648,7 +1664,7 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -1664,19 +1680,19 @@ Saves an active automation without invoking it immediately.
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -1686,7 +1702,7 @@ Saves an active automation without invoking it immediately.
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -1712,7 +1728,7 @@ Saves an active automation without invoking it immediately.
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -1724,7 +1740,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -1740,7 +1756,7 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -1760,13 +1776,13 @@ Saves an active automation without invoking it immediately.
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -1786,7 +1802,7 @@ Saves an active automation without invoking it immediately.
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -1824,7 +1840,7 @@ curl https://api.openai.com/v1/agents/automations \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -1872,6 +1888,9 @@ curl https://api.openai.com/v1/agents/automations \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",

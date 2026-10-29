@@ -30,7 +30,7 @@ Deletes a vault credential. See [vaults](/api/docs/guides/agents-api/tools/vault
 
     Whether the resource was deleted. Always `true`.
 
-  - `object: "vault.credential.deleted"`
+  - `object: "vault.credential.deleted" (default: "vault.credential.deleted")`
 
     The object type. Always `vault.credential.deleted`.
 
@@ -45,7 +45,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

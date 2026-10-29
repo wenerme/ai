@@ -127,7 +127,7 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   `maxLength: 4096`
 
-- `response_format: optional "mp3" or "opus" or "aac" or 3 more`
+- `response_format: optional "mp3" or "opus" or "aac" or 3 more (default: "mp3")`
 
   The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`.
 
@@ -143,13 +143,13 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   - `"pcm"`
 
-- `speed: optional number`
+- `speed: optional number (default: 1)`
 
   The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default.
 
   `minimum: 0.25`, `maximum: 4`
 
-- `stream_format: optional "sse" or "audio"`
+- `stream_format: optional "sse" or "audio" (default: "audio")`
 
   The format to stream the audio in. Supported formats are `sse` and `audio`. `sse` is not supported for `tts-1` or `tts-1-hd`.
 
@@ -266,15 +266,15 @@ transcript events. Supported formats depend on the model.
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -288,11 +288,11 @@ transcript events. Supported formats depend on the model.
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -374,15 +374,15 @@ transcript events. Supported formats depend on the model.
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -396,11 +396,11 @@ transcript events. Supported formats depend on the model.
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -442,7 +442,7 @@ transcript events. Supported formats depend on the model.
 
     Segments of the transcribed text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -470,7 +470,7 @@ transcript events. Supported formats depend on the model.
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -540,7 +540,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
     -F model=gpt-4o-transcribe
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -582,7 +582,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F model="gpt-4o-transcribe"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -614,7 +614,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F 'known_speaker_references[]=data:audio/wav;base64,AAA...'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -666,7 +666,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -738,7 +738,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -780,7 +780,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F stream=true
 ```
 
-#### Response
+#### Response example
 
 ```json
 data: {"type":"transcript.text.delta","delta":"I","logprobs":[{"token":"I","logprob":-0.00007588794,"bytes":[73]}]}
@@ -860,7 +860,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
   -F response_format="verbose_json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -926,15 +926,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -948,11 +948,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -1018,15 +1018,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Usage statistics for models billed by token usage.
 
-        - `input_tokens: number`
+        - `input_tokens: integer`
 
           Number of input tokens billed for this request.
 
-        - `output_tokens: number`
+        - `output_tokens: integer`
 
           Number of output tokens generated.
 
-        - `total_tokens: number`
+        - `total_tokens: integer`
 
           Total number of tokens used (input + output).
 
@@ -1040,11 +1040,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Details about the input tokens billed for this request.
 
-          - `audio_tokens: optional number`
+          - `audio_tokens: optional integer`
 
             Number of audio tokens billed for this request.
 
-          - `text_tokens: optional number`
+          - `text_tokens: optional integer`
 
             Number of text tokens billed for this request.
 
@@ -1126,15 +1126,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Usage statistics for models billed by token usage.
 
-        - `input_tokens: number`
+        - `input_tokens: integer`
 
           Number of input tokens billed for this request.
 
-        - `output_tokens: number`
+        - `output_tokens: integer`
 
           Number of output tokens generated.
 
-        - `total_tokens: number`
+        - `total_tokens: integer`
 
           Total number of tokens used (input + output).
 
@@ -1148,11 +1148,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
           Details about the input tokens billed for this request.
 
-          - `audio_tokens: optional number`
+          - `audio_tokens: optional integer`
 
             Number of audio tokens billed for this request.
 
-          - `text_tokens: optional number`
+          - `text_tokens: optional integer`
 
             Number of text tokens billed for this request.
 
@@ -1194,7 +1194,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Segments of the transcribed text and their corresponding details.
 
-      - `id: number`
+      - `id: integer`
 
         Unique identifier of the segment.
 
@@ -1222,7 +1222,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         `format: float`
 
-      - `seek: number`
+      - `seek: integer`
 
         Seek offset of the segment.
 
@@ -1346,15 +1346,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -1368,11 +1368,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -1448,7 +1448,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
 - `TranscriptionSegment object { id, avg_logprob, compression_ratio, 7 more }`
 
-  - `id: number`
+  - `id: integer`
 
     Unique identifier of the segment.
 
@@ -1476,7 +1476,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     `format: float`
 
-  - `seek: number`
+  - `seek: integer`
 
     Seek offset of the segment.
 
@@ -1616,15 +1616,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Usage statistics for models billed by token usage.
 
-      - `input_tokens: number`
+      - `input_tokens: integer`
 
         Number of input tokens billed for this request.
 
-      - `output_tokens: number`
+      - `output_tokens: integer`
 
         Number of output tokens generated.
 
-      - `total_tokens: number`
+      - `total_tokens: integer`
 
         Total number of tokens used (input + output).
 
@@ -1638,11 +1638,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
         Details about the input tokens billed for this request.
 
-        - `audio_tokens: optional number`
+        - `audio_tokens: optional integer`
 
           Number of audio tokens billed for this request.
 
-        - `text_tokens: optional number`
+        - `text_tokens: optional integer`
 
           Number of text tokens billed for this request.
 
@@ -1726,15 +1726,15 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Usage statistics for models billed by token usage.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       Number of input tokens billed for this request.
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       Number of output tokens generated.
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       Total number of tokens used (input + output).
 
@@ -1748,11 +1748,11 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       Details about the input tokens billed for this request.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer`
 
         Number of audio tokens billed for this request.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Number of text tokens billed for this request.
 
@@ -1816,7 +1816,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
     Segments of the transcribed text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -1844,7 +1844,7 @@ curl https://api.openai.com/v1/audio/transcriptions \
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -1964,7 +1964,7 @@ for details.
 
     Segments of the translated text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -1992,7 +1992,7 @@ for details.
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -2026,7 +2026,7 @@ curl https://api.openai.com/v1/audio/translations \
     -F model=whisper-1
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2044,7 +2044,7 @@ curl https://api.openai.com/v1/audio/translations \
   -F model="whisper-1"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2088,7 +2088,7 @@ curl https://api.openai.com/v1/audio/translations \
 
       Segments of the translated text and their corresponding details.
 
-      - `id: number`
+      - `id: integer`
 
         Unique identifier of the segment.
 
@@ -2116,7 +2116,7 @@ curl https://api.openai.com/v1/audio/translations \
 
         `format: float`
 
-      - `seek: number`
+      - `seek: integer`
 
         Seek offset of the segment.
 
@@ -2162,7 +2162,7 @@ curl https://api.openai.com/v1/audio/translations \
 
     Segments of the translated text and their corresponding details.
 
-    - `id: number`
+    - `id: integer`
 
       Unique identifier of the segment.
 
@@ -2190,7 +2190,7 @@ curl https://api.openai.com/v1/audio/translations \
 
       `format: float`
 
-    - `seek: number`
+    - `seek: integer`
 
       Seek offset of the segment.
 
@@ -2232,7 +2232,7 @@ Upload a voice consent recording.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -2263,7 +2263,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -F 'recording=@/path/to/recording'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2318,7 +2318,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2348,7 +2348,7 @@ Returns a list of voice consent recordings.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -2360,7 +2360,7 @@ Returns a list of voice consent recordings.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -2397,7 +2397,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2444,7 +2444,7 @@ Retrieves a voice consent recording.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -2471,7 +2471,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2516,7 +2516,7 @@ Updates a voice consent recording (metadata only).
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -2547,7 +2547,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2583,7 +2583,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -2649,7 +2649,7 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   - `"prompt"`
 
-- `model: optional string or "auto" or "2026-10-08"`
+- `model: optional string or "auto" or "2026-10-08" (default: "auto")`
 
   The voice creation model to use. Defaults to `auto`.
 
@@ -2679,7 +2679,7 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
     The voice identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the voice was created.
 
@@ -2720,7 +2720,7 @@ curl https://api.openai.com/v1/audio/voices \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2788,7 +2788,7 @@ curl https://api.openai.com/v1/audio/voices/$VOICE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2806,7 +2806,7 @@ curl https://api.openai.com/v1/audio/voices/voice_1234 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2828,7 +2828,7 @@ curl https://api.openai.com/v1/audio/voices/voice_1234 \
 
     The voice identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the voice was created.
 

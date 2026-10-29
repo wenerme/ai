@@ -26,7 +26,7 @@ Deletes a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
     Whether the agent was deleted. Always `true`.
 
-  - `object: "agent.deleted"`
+  - `object: "agent.deleted" (default: "agent.deleted")`
 
     The object type. Always `agent.deleted`.
 
@@ -41,7 +41,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

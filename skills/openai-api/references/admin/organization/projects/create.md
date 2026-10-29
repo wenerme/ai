@@ -63,7 +63,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -75,7 +75,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -138,7 +138,7 @@ curl https://api.openai.com/v1/organization/projects \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -164,7 +164,7 @@ curl -X POST https://api.openai.com/v1/organization/projects \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

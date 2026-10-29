@@ -37,7 +37,7 @@ curl https://api.openai.com/v1/organization/data_retention \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -54,7 +54,7 @@ curl https://api.openai.com/v1/organization/data_retention \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -118,7 +118,7 @@ curl https://api.openai.com/v1/organization/data_retention \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -138,7 +138,7 @@ curl -X POST https://api.openai.com/v1/organization/data_retention \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

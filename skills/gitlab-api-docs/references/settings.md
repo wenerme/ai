@@ -495,6 +495,7 @@ Example responses:
 - `default_remove_source_branch_after_merge` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260680) in GitLab 19.6.
 - `iframe_rendering_allowlist` and `iframe_rendering_allowlist_raw` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254945) to accept embed provider IDs instead of domains in GitLab 19.5.
 - `orbit_query_limit`, `orbit_indexing_status_limit`, `orbit_item_counts_limit`, and `orbit_rate_limit_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/476) in GitLab 19.6.
+- `todos_list_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default.
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -984,6 +985,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `throttle_unauthenticated_web_period_in_seconds`          | integer | required by:`throttle_unauthenticated_web_enabled`          | Rate limit period in seconds. |
 | `throttle_unauthenticated_web_requests_per_period`        | integer | required by:`throttle_unauthenticated_web_enabled`          | Maximum requests per period per IP. |
 | `time_tracking_limit_to_hours`           | boolean          | no                                   | Limit display of time tracking units to hours. Default is `false`. |
+| `todos_list_api_limit`                   | integer          | no                                   | Maximum number of requests per minute per user to the [list to-do items](todos.md#list-all-to-do-items) endpoint (`GET /todos`). Default: `300`. Set to `0` to disable the rate limit. |
 | `top_level_group_creation_enabled`           | boolean          | no                                   | Allows a user to create top-level-groups. Default is `true`. |
 | `two_factor_grace_period`                | integer          | required by: `require_two_factor_authentication` | Amount of time (in hours) that users are allowed to skip forced configuration of two-factor authentication. |
 | `unconfirmed_users_delete_after_days`    | integer          | no                                   | Specifies how many days after account creation to delete users who have not confirmed their email. Only applicable if `delete_unconfirmed_users` is set to `true`. Must be `1` or greater. Default is `7`. GitLab Self-Managed, Premium and Ultimate only. |

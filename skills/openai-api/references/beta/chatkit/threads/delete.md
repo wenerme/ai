@@ -18,7 +18,7 @@ Delete a ChatKit thread along with its items and stored attachments.
 
   Indicates that the thread has been deleted.
 
-- `object: "chatkit.thread.deleted"`
+- `object: "chatkit.thread.deleted" (default: "chatkit.thread.deleted")`
 
   Type discriminator that is always `chatkit.thread.deleted`.
 
@@ -33,7 +33,7 @@ curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

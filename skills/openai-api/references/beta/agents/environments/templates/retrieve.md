@@ -28,7 +28,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
     `minItems: 0`, `maxItems: 2000`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the template was created.
 
@@ -64,7 +64,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -80,13 +80,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded size of the inline file in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -124,7 +124,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       `minItems: 0`, `maxItems: 2000`
 
-  - `object: "agent.environment.template"`
+  - `object: "agent.environment.template" (default: "agent.environment.template")`
 
     The object type. Always `agent.environment.template`.
 
@@ -170,7 +170,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -192,7 +192,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -220,13 +220,13 @@ Retrieves reusable environment configuration without returning confidential valu
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the template was last updated.
 
@@ -240,7 +240,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

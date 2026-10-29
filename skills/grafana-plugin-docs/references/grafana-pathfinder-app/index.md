@@ -18,39 +18,39 @@ Interactive learning, also called Pathfinder, brings documentation and guided pr
 - **Context-aware recommendations:** Find documentation and guides relevant to the Grafana page you are using.
 - **Interactive guides:** Use **Show me** to find a control and **Do it** to perform the described action with your Grafana permissions.
 - **Learning paths:** Follow milestones, choose a track where available, and review progress in **My learning**.
-- **Custom guides:** Users with the Editor or Admin role can create content with the [block editor](block-editor/). Saving and publishing requires storage support on the instance.
+- **Custom guides:** Users with the Editor or Admin role can create content with the [block editor](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/). Saving and publishing requires storage support on the instance.
 - **Flexible layouts:** Keep guides in sidebar tabs, move them to a floating panel, or use full screen.
 
 ## Availability and administration
 
 Interactive learning is in public preview for Grafana Cloud and self-managed Grafana. Availability depends on the instance configuration and Cloud rollout. The current plugin requires Grafana 12.3 or later.
 
-On a Cloud stack where it is available, select **Help** to open Interactive learning. For self-managed installation and your first guide, refer to [Get started](getting-started/).
+On a Cloud stack where it is available, select **Help** to open Interactive learning. For self-managed installation and your first guide, refer to [Get started](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started/).
 
-Administrators can [disable Pathfinder in Grafana Cloud](administrators-reference/#disable-interactive-learning-in-grafana-cloud) to restore the classic **Help** menu after users reload, while keeping learning progress. You can also [turn off context-aware recommendations](administrators-reference/#disable-recommendations-only) while keeping guides available.
+Administrators can [disable Pathfinder in Grafana Cloud](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/#disable-interactive-learning-in-grafana-cloud) to restore the classic **Help** menu after users reload, while keeping learning progress. You can also [turn off context-aware recommendations](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/#disable-recommendations-only) while keeping guides available.
 
 ## Explore next steps
 
 [Get started
 \
-Open Interactive learning and follow your first guide.](getting-started/)
+Open Interactive learning and follow your first guide.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started/)
 
 [Block editor
 \
-Author and publish your own interactive guides directly inside Grafana.](block-editor/)
+Author and publish your own interactive guides directly inside Grafana.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/)
 
 [Administrator reference
 \
-Disable Pathfinder in Grafana Cloud and configure recommendations and guide behavior.](administrators-reference/)
+Disable Pathfinder in Grafana Cloud and configure recommendations and guide behavior.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference/)
 
 [Architecture
 \
-Understand content sources, permissions, data usage, and storage.](architecture/)
+Understand content sources, permissions, data usage, and storage.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture/)
 
 [Terms and conditions
 \
-Data usage notice for context-aware recommendations.](terms-and-conditions/)
+Data usage notice for context-aware recommendations.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions/)
 
 [Upgrade notes
 \
-Important information about upgrading, including breaking changes.](upgrade-notes/)
+Important information about upgrading, including breaking changes.](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes/)

@@ -18,13 +18,13 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -50,7 +50,7 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
     `minLength: 0`
 
-  - `closed_at: number or null`
+  - `closed_at: integer or null`
 
     The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
@@ -72,7 +72,7 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
         `minLength: 0`
 
-      - `type: "output_text"`
+      - `type: "output_text" (default: "output_text")`
 
         The content type. Always `output_text`.
 
@@ -88,7 +88,7 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
         `minLength: 0`
 
-      - `type: "encrypted_content"`
+      - `type: "encrypted_content" (default: "encrypted_content")`
 
         The content type. Always `encrypted_content`.
 
@@ -100,13 +100,13 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
     `minLength: 0`
 
-  - `object: "agent.session.subagent"`
+  - `object: "agent.session.subagent" (default: "agent.session.subagent")`
 
     The object type. Always `agent.session.subagent`.
 
     - `"agent.session.subagent"`
 
-  - `opened_at: number`
+  - `opened_at: integer`
 
     The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
@@ -152,7 +152,7 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -166,7 +166,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -12,7 +12,7 @@ Returns webhook event types visible to the authenticated project.
 
     The webhook event types available to the authenticated project.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The object type, which is always list.
 
@@ -25,7 +25,7 @@ curl https://api.openai.com/v1/webhook_event_types \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

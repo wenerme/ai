@@ -13,14 +13,14 @@ Alert rules are stored and evaluated by the ruler of your Prometheus, Mimir, Cor
 
 Editing rules needs two things:
 
-- The `alert.rules.external:write` permission. Refer to [Configure access control](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
-- A data source with a writable ruler API. Mimir, Cortex, and Loki have one; vanilla Prometheus doesn’t, and its rules are read-only here. Refer to [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
+- The `alert.rules.external:write` permission. Refer to [Configure access control](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac/).
+- A data source with a writable ruler API. Mimir, Cortex, and Loki have one; vanilla Prometheus doesn’t, and its rules are read-only here. Refer to [Configure data sources](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
 
 If either is missing you can still browse rules. The create and edit actions are absent.
 
 ## In this section
 
-- [Create an alert rule](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-alert-rule/)
-- [Create a recording rule](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-recording-rule/)
-- [Manage rule groups](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/)
-- [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/)
+- [Create an alert rule](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-alert-rule/)
+- [Create a recording rule](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-recording-rule/)
+- [Manage rule groups](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups/)
+- [Template annotations and labels](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/)

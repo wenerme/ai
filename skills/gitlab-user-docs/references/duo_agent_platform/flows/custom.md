@@ -224,6 +224,7 @@ To enable a flow:
 
    To enable a public or restricted flow for multiple projects, from the **Project** dropdown list,
    select the relevant projects. You can select up to 100 projects.
+   You can enable a flow for multiple projects up to 10 times per minute.
 
 1. For **Add triggers**, select:
    - The [event types that trigger the flow](../triggers/_index.md#trigger-event-types).

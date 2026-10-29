@@ -26,7 +26,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
@@ -38,7 +38,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `object: "agent.session.artifact"`
+  - `object: "agent.session.artifact" (default: "agent.session.artifact")`
 
     The object type. Always `agent.session.artifact`.
 
@@ -56,7 +56,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The immutable artifact size in bytes.
 
@@ -76,7 +76,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

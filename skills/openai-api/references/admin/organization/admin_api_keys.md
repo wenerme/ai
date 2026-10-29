@@ -10,7 +10,7 @@ Create an organization admin API key
 
 - `name: string`
 
-- `expires_in_seconds: optional number`
+- `expires_in_seconds: optional integer`
 
   The number of seconds until the API key expires. Omit this field for a key that does not expire.
 
@@ -34,7 +34,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -69,7 +69,7 @@ curl -X POST https://api.openai.com/v1/organization/admin_api_keys \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -122,7 +122,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -140,7 +140,7 @@ curl -X DELETE https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -162,11 +162,11 @@ List organization API keys
 
   Return keys with IDs that come after this ID in the pagination order.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Maximum number of keys to return.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Order results by creation time, ascending or descending.
 
@@ -182,13 +182,13 @@ List organization API keys
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `expires_at: number or null`
+  - `expires_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key expires
 
@@ -206,7 +206,7 @@ List organization API keys
 
       The identifier, which can be referenced in API endpoints
 
-    - `created_at: optional number`
+    - `created_at: optional integer`
 
       The Unix timestamp (in seconds) of when the user was created
 
@@ -232,7 +232,7 @@ List organization API keys
 
     The redacted value of the API key
 
-  - `last_used_at: optional number or null`
+  - `last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used
 
@@ -259,7 +259,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -297,7 +297,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys?after=key_abc&limit=2
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -349,13 +349,13 @@ Retrieve a single organization API key
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `expires_at: number or null`
+  - `expires_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key expires
 
@@ -373,7 +373,7 @@ Retrieve a single organization API key
 
       The identifier, which can be referenced in API endpoints
 
-    - `created_at: optional number`
+    - `created_at: optional integer`
 
       The Unix timestamp (in seconds) of when the user was created
 
@@ -399,7 +399,7 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `last_used_at: optional number or null`
+  - `last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used
 
@@ -416,7 +416,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/$KEY_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -446,7 +446,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -480,13 +480,13 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `expires_at: number or null`
+  - `expires_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key expires
 
@@ -504,7 +504,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
       The identifier, which can be referenced in API endpoints
 
-    - `created_at: optional number`
+    - `created_at: optional integer`
 
       The Unix timestamp (in seconds) of when the user was created
 
@@ -530,7 +530,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
 
     The redacted value of the API key
 
-  - `last_used_at: optional number or null`
+  - `last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used
 

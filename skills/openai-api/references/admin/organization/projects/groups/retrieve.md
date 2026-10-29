@@ -12,7 +12,7 @@ Retrieves a project's group.
 
 ### Query Parameters
 
-- `group_type: optional "group" or "tenant_group"`
+- `group_type: optional "group" or "tenant_group" (default: "group")`
 
   The type of group to retrieve.
 
@@ -26,7 +26,7 @@ Retrieves a project's group.
 
   Details about a group's membership in a project.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -65,7 +65,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -86,7 +86,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

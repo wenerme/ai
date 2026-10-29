@@ -20,7 +20,7 @@ An alerting rule watches an expression and produces alerts when it returns resul
 02. Click **New alert rule**.
 03. Under **Define alert rule**, enter a **Name**. This becomes the alert’s `alertname` label, so make it descriptive and stable. Renaming it later creates what Alertmanager treats as a different alert.
 04. Select the **Data source** to write the rule to. The query editor can’t load until you’ve chosen one.
-05. Write the **Expression**. Write it so that it returns nothing when everything is healthy, and returns one series per problem otherwise. Refer to [Queries and conditions](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions/).
+05. Write the **Expression**. Write it so that it returns nothing when everything is healthy, and returns one series per problem otherwise. Refer to [Queries and conditions](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions/).
 06. Set the **Pending period**, which is how long the condition has to hold before the alert fires. Select **None** to fire on the first matching evaluation.
 07. Optionally set **Keep firing for**, which is how long the alert keeps firing after the condition stops being met. Leave it empty to resolve as soon as the condition clears. It takes a duration like `5m`, or a compound one like `1h30m`.
 08. Choose a **Namespace** and **Group**. Both pickers search existing values as you type and let you create a new one if nothing matches.
@@ -40,7 +40,7 @@ This is the single most useful step in the form. The preview tells you how many 
 
 Rules take a few seconds to reach the ruler. The plugin shows that the rule is being propagated and refreshes on its own when it lands, so an empty-looking rule immediately after saving is expected.
 
-Once it appears, check its health on the rule detail page. A rule showing **error** health isn’t watching anything. Refer to [Alert rule state and health](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/).
+Once it appears, check its health on the rule detail page. A rule showing **error** health isn’t watching anything. Refer to [Alert rule state and health](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/).
 
 ## Other actions on a rule
 

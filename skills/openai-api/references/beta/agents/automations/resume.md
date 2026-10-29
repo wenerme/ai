@@ -26,7 +26,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -38,7 +38,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       - `Developer object { type }`
 
-        - `type: "developer"`
+        - `type: "developer" (default: "developer")`
 
           The type of the object. Always `developer`.
 
@@ -58,7 +58,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           `minLength: 0`
 
-        - `type: "agent"`
+        - `type: "agent" (default: "agent")`
 
           The type of the object. Always `agent`.
 
@@ -80,7 +80,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
@@ -124,7 +124,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Whether subagent tools are enabled. Defaults to false.
 
-            - `max_concurrent_subagents: number or null`
+            - `max_concurrent_subagents: integer or null`
 
               Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -196,7 +196,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Generates ordinary text without a structured-output constraint.
 
-                - `type: "text"`
+                - `type: "text" (default: "text")`
 
                   The type of the object. Always `text`.
 
@@ -210,7 +210,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   The JSON Schema that generated text must match.
 
-                - `type: "json_schema"`
+                - `type: "json_schema" (default: "json_schema")`
 
                   The type of the object. Always `json_schema`.
 
@@ -256,7 +256,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 A JSON Schema object describing the function's arguments.
 
-              - `type: "function"`
+              - `type: "function" (default: "function")`
 
                 The type of the object. Always `function`.
 
@@ -270,7 +270,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Whether tools can be called from model-generated code.
 
-              - `type: "programmatic_tool_calling"`
+              - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                 The type of the object. Always `programmatic_tool_calling`.
 
@@ -328,7 +328,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                     `minLength: 0`
 
-                  - `type: "http"`
+                  - `type: "http" (default: "http")`
 
                     The type of the object. Always `http`.
 
@@ -362,13 +362,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                     `minItems: 0`, `maxItems: 2000`
 
-                  - `type: "stdio"`
+                  - `type: "stdio" (default: "stdio")`
 
                     The type of the object. Always `stdio`.
 
                     - `"stdio"`
 
-              - `type: "mcp"`
+              - `type: "mcp" (default: "mcp")`
 
                 The type of the object. Always `mcp`.
 
@@ -432,7 +432,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 - `"live"`
 
-              - `type: "web_search"`
+              - `type: "web_search" (default: "web_search")`
 
                 The type of the object. Always `web_search`.
 
@@ -446,7 +446,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 Whether computer tool outputs include screenshots.
 
-              - `type: "computer_use"`
+              - `type: "computer_use" (default: "computer_use")`
 
                 The type of the object. Always `computer_use`.
 
@@ -456,7 +456,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Lets the agent manage its own scheduled wakeups.
 
-              - `type: "automations"`
+              - `type: "automations" (default: "automations")`
 
                 The type of the object. Always `automations`.
 
@@ -470,6 +470,14 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               Whether context is compacted in the background. Defaults to true.
 
+          - `experimental: optional object { time_awareness }`
+
+            The effective experimental settings for the agent.
+
+            - `time_awareness: boolean`
+
+              Whether the model receives periodic current-time reminders.
+
         - `agent_id: string or null`
 
           The saved agent reference, or null when an inline agent is configured.
@@ -482,7 +490,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           - `None object { type }`
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -550,7 +558,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "file_id"`
+                - `type: "file_id" (default: "file_id")`
 
                   The type of the object. Always `file_id`.
 
@@ -566,13 +574,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `size_bytes: number`
+                - `size_bytes: integer`
 
                   The decoded size of the inline file in bytes.
 
                   `format: int64`, `minimum: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
@@ -644,7 +652,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -666,7 +674,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "skill_reference"`
+                - `type: "skill_reference" (default: "skill_reference")`
 
                   The type of the object. Always `skill_reference`.
 
@@ -694,13 +702,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                   `minLength: 0`
 
-                - `type: "inline"`
+                - `type: "inline" (default: "inline")`
 
                   The type of the object. Always `inline`.
 
                   - `"inline"`
 
-            - `type: "openai_hosted"`
+            - `type: "openai_hosted" (default: "openai_hosted")`
 
               The type of the object. Always `openai_hosted`.
 
@@ -720,7 +728,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
               `minLength: 0`
 
-            - `type: "self_hosted"`
+            - `type: "self_hosted" (default: "self_hosted")`
 
               The type of the object. Always `self_hosted`.
 
@@ -754,7 +762,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -770,19 +778,19 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
                 - `"input_image"`
 
-          - `role: "user"`
+          - `role: "user" (default: "user")`
 
             The role of the message author. Always `user`.
 
             - `"user"`
 
-          - `type: "message"`
+          - `type: "message" (default: "message")`
 
             The type of the input item. Always `message`.
 
@@ -792,7 +800,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           Metadata attached to each new session.
 
-        - `type: "new_session"`
+        - `type: "new_session" (default: "new_session")`
 
           The type of the object. Always `new_session`.
 
@@ -818,7 +826,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
           `minLength: 0`
 
-        - `type: "existing_session"`
+        - `type: "existing_session" (default: "existing_session")`
 
           The type of the object. Always `existing_session`.
 
@@ -830,7 +838,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `type: "periodic"`
+    - `type: "periodic" (default: "periodic")`
 
       The type of the object. Always `periodic`.
 
@@ -846,7 +854,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The creation time as a Unix timestamp in seconds.
 
@@ -866,13 +874,13 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       `minLength: 0`
 
-    - `object: "agent.automation"`
+    - `object: "agent.automation" (default: "agent.automation")`
 
       Always `agent.automation`.
 
       - `"agent.automation"`
 
-    - `run_at: number`
+    - `run_at: integer`
 
       The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -892,7 +900,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
       The session configuration or existing session receiving invocations.
 
-    - `type: "once"`
+    - `type: "once" (default: "once")`
 
       The type of the object. Always `once`.
 
@@ -907,7 +915,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -955,6 +963,9 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
       ],
       "compaction": {
         "async": true
+      },
+      "experimental": {
+        "time_awareness": true
       }
     },
     "agent_id": "agent_id",

@@ -30,7 +30,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -47,7 +47,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

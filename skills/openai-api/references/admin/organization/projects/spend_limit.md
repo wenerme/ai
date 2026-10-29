@@ -20,7 +20,7 @@ Delete a project's hard spend limit.
 
     Whether the hard spend limit was deleted.
 
-  - `object: "project.spend_limit.deleted"`
+  - `object: "project.spend_limit.deleted" (default: "project.spend_limit.deleted")`
 
     The object type, which is always `project.spend_limit.deleted`.
 
@@ -34,7 +34,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -51,7 +51,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_li
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -118,13 +118,13 @@ Get a project's hard spend limit.
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -135,7 +135,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -157,7 +157,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_limit \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -195,7 +195,7 @@ Create or replace a project's hard spend limit.
 
   - `"month"`
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The hard spend limit amount, in cents.
 
@@ -249,13 +249,13 @@ Create or replace a project's hard spend limit.
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -272,7 +272,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -299,7 +299,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -363,13 +363,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -383,7 +383,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
 
     Whether the hard spend limit was deleted.
 
-  - `object: "project.spend_limit.deleted"`
+  - `object: "project.spend_limit.deleted" (default: "project.spend_limit.deleted")`
 
     The object type, which is always `project.spend_limit.deleted`.
 

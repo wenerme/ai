@@ -22,7 +22,7 @@ Update the default version pointer for a skill.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -44,7 +44,7 @@ Update the default version pointer for a skill.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -61,7 +61,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -56,7 +56,7 @@ Deletes an immutable session artifact without deleting its live environment file
 
     Whether the session artifact was deleted. Always `true`.
 
-  - `object: "agent.session.artifact.deleted"`
+  - `object: "agent.session.artifact.deleted" (default: "agent.session.artifact.deleted")`
 
     The object type. Always `agent.session.artifact.deleted`.
 
@@ -71,7 +71,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -107,13 +107,13 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -139,7 +139,7 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
@@ -151,7 +151,7 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
     `minLength: 0`
 
-  - `object: "agent.session.artifact"`
+  - `object: "agent.session.artifact" (default: "agent.session.artifact")`
 
     The object type. Always `agent.session.artifact`.
 
@@ -169,7 +169,7 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The immutable artifact size in bytes.
 
@@ -197,7 +197,7 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -211,7 +211,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -262,7 +262,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
@@ -274,7 +274,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `object: "agent.session.artifact"`
+  - `object: "agent.session.artifact" (default: "agent.session.artifact")`
 
     The object type. Always `agent.session.artifact`.
 
@@ -292,7 +292,7 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The immutable artifact size in bytes.
 
@@ -312,7 +312,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -341,7 +341,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
@@ -353,7 +353,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
     `minLength: 0`
 
-  - `object: "agent.session.artifact"`
+  - `object: "agent.session.artifact" (default: "agent.session.artifact")`
 
     The object type. Always `agent.session.artifact`.
 
@@ -371,7 +371,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The immutable artifact size in bytes.
 
@@ -399,7 +399,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
     Whether the session artifact was deleted. Always `true`.
 
-  - `object: "agent.session.artifact.deleted"`
+  - `object: "agent.session.artifact.deleted" (default: "agent.session.artifact.deleted")`
 
     The object type. Always `agent.session.artifact.deleted`.
 

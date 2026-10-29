@@ -14,13 +14,13 @@ Lists organization spend alerts.
 
   Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of spend alerts to return. Defaults to 20.
 
   `minimum: 0`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned spend alerts.
 
@@ -74,7 +74,7 @@ Lists organization spend alerts.
 
     - `"organization.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -103,7 +103,7 @@ curl https://api.openai.com/v1/organization/spend_alerts \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -138,7 +138,7 @@ curl https://api.openai.com/v1/organization/spend_alerts?limit=20&order=asc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

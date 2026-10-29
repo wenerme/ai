@@ -29,7 +29,7 @@ Update certain properties of an evaluation.
 
   Unique identifier for the evaluation.
 
-- `created_at: number`
+- `created_at: integer`
 
   The Unix timestamp (in seconds) for when the eval was created.
 
@@ -52,7 +52,7 @@ Update certain properties of an evaluation.
       The json schema for the run data source items.
       Learn how to build JSON schemas [here](https://json-schema.org/).
 
-    - `type: "custom"`
+    - `type: "custom" (default: "custom")`
 
       The type of data source. Always `custom`.
 
@@ -70,7 +70,7 @@ Update certain properties of an evaluation.
       The json schema for the run data source items.
       Learn how to build JSON schemas [here](https://json-schema.org/).
 
-    - `type: "logs"`
+    - `type: "logs" (default: "logs")`
 
       The type of data source. Always `logs`.
 
@@ -94,7 +94,7 @@ Update certain properties of an evaluation.
       The json schema for the run data source items.
       Learn how to build JSON schemas [here](https://json-schema.org/).
 
-    - `type: "stored_completions"`
+    - `type: "stored_completions" (default: "stored_completions")`
 
       The type of data source. Always `stored_completions`.
 
@@ -122,7 +122,7 @@ Update certain properties of an evaluation.
 
   The name of the evaluation.
 
-- `object: "eval"`
+- `object: "eval" (default: "eval")`
 
   The object type.
 
@@ -155,7 +155,7 @@ Update certain properties of an evaluation.
 
             The text input to the model.
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the input item. Always `input_text`.
 
@@ -165,7 +165,7 @@ Update certain properties of an evaluation.
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -397,7 +397,7 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -462,7 +462,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
   -d '{"name": "Updated Eval", "metadata": {"description": "Updated description"}}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

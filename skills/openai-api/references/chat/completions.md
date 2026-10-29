@@ -52,6 +52,8 @@ chunk objects if the request is streamed.
 
         An array of content parts with a defined type. For developer messages, only type `text` is supported.
 
+        `minItems: 1`
+
         - `text: string`
 
           The text content.
@@ -66,7 +68,7 @@ chunk objects if the request is streamed.
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -108,6 +110,8 @@ chunk objects if the request is streamed.
 
         An array of content parts with a defined type. For system messages, only type `text` is supported.
 
+        `minItems: 1`
+
         - `text: string`
 
           The text content.
@@ -147,6 +151,8 @@ chunk objects if the request is streamed.
 
         An array of content parts with a defined type. Supported options differ based on the [model](/api/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
+        `minItems: 1`
+
         - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
           Learn about [text inputs](/api/docs/guides/text).
@@ -175,7 +181,7 @@ chunk objects if the request is streamed.
 
               `format: uri`
 
-            - `detail: optional "auto" or "low" or "high" or "original"`
+            - `detail: optional "auto" or "low" or "high" or "original" (default: "auto")`
 
               Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -197,7 +203,7 @@ chunk objects if the request is streamed.
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -239,7 +245,7 @@ chunk objects if the request is streamed.
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -283,7 +289,7 @@ chunk objects if the request is streamed.
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -337,6 +343,8 @@ chunk objects if the request is streamed.
       - `ArrayOfContentParts = array of ChatCompletionContentPartText or ChatCompletionContentPartRefusal`
 
         An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
+
+        `minItems: 1`
 
         - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
@@ -443,6 +451,8 @@ chunk objects if the request is streamed.
       - `ArrayOfContentParts = array of ChatCompletionContentPartText`
 
         An array of content parts with a defined type. For tool messages, only type `text` is supported.
+
+        `minItems: 1`
 
         - `text: string`
 
@@ -741,7 +751,7 @@ chunk objects if the request is streamed.
 
         The custom voice ID, e.g. `voice_1234`.
 
-- `frequency_penalty: optional number or null`
+- `frequency_penalty: optional number or null (default: 0)`
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on
   their existing frequency in the text so far, decreasing the model's
@@ -805,7 +815,7 @@ chunk objects if the request is streamed.
 
     Omitting `parameters` defines a function with an empty parameter list.
 
-- `logit_bias: optional map[number] or null`
+- `logit_bias: optional map[number] or null (default: null)`
 
   Modify the likelihood of specified tokens appearing in the completion.
 
@@ -816,17 +826,17 @@ chunk objects if the request is streamed.
   decrease or increase likelihood of selection; values like -100 or 100
   should result in a ban or exclusive selection of the relevant token.
 
-- `logprobs: optional boolean or null`
+- `logprobs: optional boolean or null (default: false)`
 
   Whether to return log probabilities of the output tokens or not. If true,
   returns the log probabilities of each output token returned in the
   `content` of `message`.
 
-- `max_completion_tokens: optional number or null`
+- `max_completion_tokens: optional integer or null`
 
   An upper bound for the number of tokens that can be generated for a completion, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
 
-- `max_tokens: optional number or null`
+- `max_tokens: optional integer or null`
 
   The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the
   chat completion. This value can be used to control
@@ -893,13 +903,13 @@ chunk objects if the request is streamed.
 
         - `"block"`
 
-- `n: optional number or null`
+- `n: optional integer or null (default: 1)`
 
   How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep `n` as `1` to minimize costs.
 
   `minimum: 1`, `maximum: 128`
 
-- `parallel_tool_calls: optional boolean`
+- `parallel_tool_calls: optional boolean (default: true)`
 
   Whether to enable [parallel function calling](/api/docs/guides/function-calling#parallel-function-calling) during tool use.
 
@@ -925,6 +935,8 @@ chunk objects if the request is streamed.
 
       An array of content parts with a defined type. Supported options differ based on the [model](/api/docs/models) being used to generate the response. Can contain text inputs.
 
+      `minItems: 1`
+
       - `text: string`
 
         The text content.
@@ -944,7 +956,7 @@ chunk objects if the request is streamed.
 
     - `"content"`
 
-- `presence_penalty: optional number or null`
+- `presence_penalty: optional number or null (default: 0)`
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on
   whether they appear in the text so far, increasing the model's likelihood
@@ -993,7 +1005,7 @@ chunk objects if the request is streamed.
 
   - `"24h"`
 
-- `reasoning_effort: optional ReasoningEffort or null`
+- `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
   Constrains effort on reasoning for reasoning models. Currently supported
   values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1064,7 +1076,7 @@ chunk objects if the request is streamed.
         The schema for the response format, described as a JSON Schema object.
         Learn how to build JSON schemas [here](https://json-schema.org/).
 
-      - `strict: optional boolean or null`
+      - `strict: optional boolean or null (default: false)`
 
         Whether to enable strict schema adherence when generating the output.
         If set to true, the model will always follow the exact schema defined
@@ -1098,7 +1110,7 @@ chunk objects if the request is streamed.
 
   `maxLength: 128`
 
-- `seed: optional number or null`
+- `seed: optional integer or null`
 
   This feature is in Beta.
   If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.
@@ -1106,7 +1118,7 @@ chunk objects if the request is streamed.
 
   `format: int64`, `minimum: -9223372036854775808`, `maximum: 9223372036854775807`
 
-- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
   Specifies the processing type used for serving the request.
 
@@ -1141,7 +1153,9 @@ chunk objects if the request is streamed.
 
   - `array of string`
 
-- `store: optional boolean or null`
+    `minItems: 1`, `maxItems: 4`
+
+- `store: optional boolean or null (default: false)`
 
   Whether or not to store the output of this chat completion request for
   use in our [model distillation](/api/docs/guides/supervised-fine-tuning#distilling-from-a-larger-model) or
@@ -1149,7 +1163,7 @@ chunk objects if the request is streamed.
 
   Supports text and image inputs. Note: image inputs over 8MB will be dropped.
 
-- `stream: optional boolean or null`
+- `stream: optional boolean or null (default: false)`
 
   If set to true, the model response data will be streamed to the client
   as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
@@ -1182,7 +1196,7 @@ chunk objects if the request is streamed.
     value. **NOTE:** If the stream is interrupted, you may not receive the
     final usage chunk which contains the total token usage for the request.
 
-- `temperature: optional number or null`
+- `temperature: optional number or null (default: 1)`
 
   What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
   We generally recommend altering this or `top_p` but not both.
@@ -1307,7 +1321,7 @@ chunk objects if the request is streamed.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
-      - `strict: optional boolean or null`
+      - `strict: optional boolean or null (default: false)`
 
         Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/api/docs/guides/function-calling).
 
@@ -1379,7 +1393,7 @@ chunk objects if the request is streamed.
 
       - `"custom"`
 
-- `top_logprobs: optional number or null`
+- `top_logprobs: optional integer or null`
 
   An integer between 0 and 20 specifying the maximum number of most likely
   tokens to return at each token position, each with an associated log
@@ -1389,7 +1403,7 @@ chunk objects if the request is streamed.
 
   `minimum: 0`, `maximum: 20`
 
-- `top_p: optional number or null`
+- `top_p: optional number or null (default: 1)`
 
   An alternative to sampling with temperature, called nucleus sampling,
   where the model considers the results of the tokens with top_p probability
@@ -1406,7 +1420,7 @@ chunk objects if the request is streamed.
   A stable identifier for your end-users.
   Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
-- `verbosity: optional "low" or "medium" or "high" or null`
+- `verbosity: optional "low" or "medium" or "high" or null (default: "medium")`
 
   Constrains the verbosity of the model's response. Lower values will result in
   more concise responses, while higher values will result in more verbose responses.
@@ -1424,7 +1438,7 @@ chunk objects if the request is streamed.
   This tool searches the web for relevant results to use in a response.
   Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
-  - `search_context_size: optional "low" or "medium" or "high"`
+  - `search_context_size: optional "low" or "medium" or "high" (default: "medium")`
 
     High level guidance for the amount of context window space to use for the
     search. One of `low`, `medium`, or `high`. `medium` is the default.
@@ -1500,7 +1514,7 @@ chunk objects if the request is streamed.
 
       - `"function_call"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -1589,11 +1603,11 @@ chunk objects if the request is streamed.
 
           A URL citation when using web search.
 
-          - `end_index: number`
+          - `end_index: integer`
 
             The index of the last character of the URL citation in the message.
 
-          - `start_index: number`
+          - `start_index: integer`
 
             The index of the first character of the URL citation in the message.
 
@@ -1621,7 +1635,7 @@ chunk objects if the request is streamed.
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: number`
+        - `expires_at: integer`
 
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
@@ -1705,7 +1719,7 @@ chunk objects if the request is streamed.
 
             - `"custom"`
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
 
@@ -1775,7 +1789,7 @@ chunk objects if the request is streamed.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -1845,7 +1859,7 @@ chunk objects if the request is streamed.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -1875,7 +1889,7 @@ chunk objects if the request is streamed.
 
           - `"error"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -1909,15 +1923,15 @@ chunk objects if the request is streamed.
 
     Usage statistics for the completion request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -1925,20 +1939,20 @@ chunk objects if the request is streamed.
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -1946,7 +1960,7 @@ chunk objects if the request is streamed.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -1954,23 +1968,23 @@ chunk objects if the request is streamed.
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -1997,7 +2011,7 @@ curl https://api.openai.com/v1/chat/completions \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2179,7 +2193,7 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2260,7 +2274,7 @@ curl https://api.openai.com/v1/chat/completions \
 }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2331,7 +2345,7 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2391,7 +2405,7 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2607,7 +2621,7 @@ curl https://api.openai.com/v1/chat/completions \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
@@ -2659,7 +2673,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2677,7 +2691,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2700,7 +2714,7 @@ with the `store` parameter set to `true` will be returned.
 
   Identifier for the last chat completion from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of Chat Completions to retrieve.
 
@@ -2714,7 +2728,7 @@ with the `store` parameter set to `true` will be returned.
 
   The model used to generate the Chat Completions.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for Chat Completions by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
 
@@ -2754,7 +2768,7 @@ with the `store` parameter set to `true` will be returned.
 
       - `"function_call"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -2843,11 +2857,11 @@ with the `store` parameter set to `true` will be returned.
 
           A URL citation when using web search.
 
-          - `end_index: number`
+          - `end_index: integer`
 
             The index of the last character of the URL citation in the message.
 
-          - `start_index: number`
+          - `start_index: integer`
 
             The index of the first character of the URL citation in the message.
 
@@ -2875,7 +2889,7 @@ with the `store` parameter set to `true` will be returned.
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: number`
+        - `expires_at: integer`
 
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
@@ -2959,7 +2973,7 @@ with the `store` parameter set to `true` will be returned.
 
             - `"custom"`
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
 
@@ -3029,7 +3043,7 @@ with the `store` parameter set to `true` will be returned.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -3099,7 +3113,7 @@ with the `store` parameter set to `true` will be returned.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -3129,7 +3143,7 @@ with the `store` parameter set to `true` will be returned.
 
           - `"error"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -3163,15 +3177,15 @@ with the `store` parameter set to `true` will be returned.
 
     Usage statistics for the completion request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -3179,20 +3193,20 @@ with the `store` parameter set to `true` will be returned.
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -3200,7 +3214,7 @@ with the `store` parameter set to `true` will be returned.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -3208,23 +3222,23 @@ with the `store` parameter set to `true` will be returned.
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -3240,7 +3254,7 @@ with the `store` parameter set to `true` will be returned.
 
   The identifier of the last chat completion in the data array.
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The type of this object. It is always set to "list".
 
@@ -3253,7 +3267,7 @@ curl https://api.openai.com/v1/chat/completions \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3430,7 +3444,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3523,7 +3537,7 @@ with the `store` parameter set to `true` will be returned.
 
       - `"function_call"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -3612,11 +3626,11 @@ with the `store` parameter set to `true` will be returned.
 
           A URL citation when using web search.
 
-          - `end_index: number`
+          - `end_index: integer`
 
             The index of the last character of the URL citation in the message.
 
-          - `start_index: number`
+          - `start_index: integer`
 
             The index of the first character of the URL citation in the message.
 
@@ -3644,7 +3658,7 @@ with the `store` parameter set to `true` will be returned.
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: number`
+        - `expires_at: integer`
 
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
@@ -3728,7 +3742,7 @@ with the `store` parameter set to `true` will be returned.
 
             - `"custom"`
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
 
@@ -3798,7 +3812,7 @@ with the `store` parameter set to `true` will be returned.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -3868,7 +3882,7 @@ with the `store` parameter set to `true` will be returned.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -3898,7 +3912,7 @@ with the `store` parameter set to `true` will be returned.
 
           - `"error"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -3932,15 +3946,15 @@ with the `store` parameter set to `true` will be returned.
 
     Usage statistics for the completion request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -3948,20 +3962,20 @@ with the `store` parameter set to `true` will be returned.
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -3969,7 +3983,7 @@ with the `store` parameter set to `true` will be returned.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -3977,23 +3991,23 @@ with the `store` parameter set to `true` will be returned.
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -4004,7 +4018,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4173,7 +4187,7 @@ curl https://api.openai.com/v1/chat/completions/chatcmpl-abc123 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4270,7 +4284,7 @@ the only supported modification is to update the `metadata` field.
 
       - `"function_call"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -4359,11 +4373,11 @@ the only supported modification is to update the `metadata` field.
 
           A URL citation when using web search.
 
-          - `end_index: number`
+          - `end_index: integer`
 
             The index of the last character of the URL citation in the message.
 
-          - `start_index: number`
+          - `start_index: integer`
 
             The index of the first character of the URL citation in the message.
 
@@ -4391,7 +4405,7 @@ the only supported modification is to update the `metadata` field.
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: number`
+        - `expires_at: integer`
 
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
@@ -4475,7 +4489,7 @@ the only supported modification is to update the `metadata` field.
 
             - `"custom"`
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
 
@@ -4545,7 +4559,7 @@ the only supported modification is to update the `metadata` field.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -4615,7 +4629,7 @@ the only supported modification is to update the `metadata` field.
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -4645,7 +4659,7 @@ the only supported modification is to update the `metadata` field.
 
           - `"error"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -4679,15 +4693,15 @@ the only supported modification is to update the `metadata` field.
 
     Usage statistics for the completion request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -4695,20 +4709,20 @@ the only supported modification is to update the `metadata` field.
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -4716,7 +4730,7 @@ the only supported modification is to update the `metadata` field.
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -4724,23 +4738,23 @@ the only supported modification is to update the `metadata` field.
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -4757,7 +4771,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4927,7 +4941,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
   -d '{"metadata": {"foo": "bar"}}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5037,7 +5051,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `"function_call"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -5126,11 +5140,11 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           A URL citation when using web search.
 
-          - `end_index: number`
+          - `end_index: integer`
 
             The index of the last character of the URL citation in the message.
 
-          - `start_index: number`
+          - `start_index: integer`
 
             The index of the first character of the URL citation in the message.
 
@@ -5158,7 +5172,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: number`
+        - `expires_at: integer`
 
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
@@ -5242,7 +5256,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `"custom"`
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
 
@@ -5312,7 +5326,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -5382,7 +5396,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -5412,7 +5426,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"error"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -5446,15 +5460,15 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     Usage statistics for the completion request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -5462,20 +5476,20 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -5483,7 +5497,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -5491,23 +5505,23 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -5586,6 +5600,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
 
+      `minItems: 1`
+
       - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
         Learn about [text inputs](/api/docs/guides/text).
@@ -5604,7 +5620,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -5722,7 +5738,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     Base64 encoded audio bytes generated by the model, in the format
     specified in the request.
 
-  - `expires_at: number`
+  - `expires_at: integer`
 
     The Unix timestamp (in seconds) for when this audio response will
     no longer be accessible on the server for use in multi-turn
@@ -5836,7 +5852,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
           Base64 encoded audio bytes generated by the model, in the format
           specified in the request.
 
-        - `expires_at: optional number`
+        - `expires_at: optional integer`
 
           The Unix timestamp (in seconds) for when this audio response will no
           longer be accessible on the server for use in multi-turn conversations.
@@ -5883,7 +5899,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       - `tool_calls: optional array of object { index, id, function, type }`
 
-        - `index: number`
+        - `index: integer`
 
         - `id: optional string`
 
@@ -5905,7 +5921,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"function"`
 
-    - `index: number`
+    - `index: integer`
 
       The index of the choice in the list of choices.
 
@@ -5983,7 +5999,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           List of the most likely tokens and their log probability, at this token position. The number of entries may be fewer than the requested `top_logprobs`.
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) of when the chat completion was created. Each chunk has the same timestamp.
 
@@ -6044,7 +6060,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -6114,7 +6130,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             The moderation model that produced this result.
 
-          - `type: "moderation_result"`
+          - `type: "moderation_result" (default: "moderation_result")`
 
             The object type, which was always `moderation_result` for successful moderation results.
 
@@ -6150,7 +6166,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     mitigation to certain side-channel attacks. The field is included by
     default and omitted when `stream_options.include_obfuscation` is `false`.
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null (default: "auto")`
 
     Specifies the processing type used for serving the request.
 
@@ -6190,15 +6206,15 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     receive the final usage chunk which contains the total token usage for
     the request.
 
-    - `completion_tokens: number`
+    - `completion_tokens: integer (default: 0)`
 
       Number of tokens in the generated completion.
 
-    - `prompt_tokens: number`
+    - `prompt_tokens: integer (default: 0)`
 
       Number of tokens in the prompt.
 
-    - `total_tokens: number`
+    - `total_tokens: integer (default: 0)`
 
       Total number of tokens used in the request (prompt + completion).
 
@@ -6206,20 +6222,20 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Breakdown of tokens used in a completion.
 
-      - `accepted_prediction_tokens: optional number`
+      - `accepted_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that appeared in the completion.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens generated by the model.
 
-      - `reasoning_tokens: optional number`
+      - `reasoning_tokens: optional integer (default: 0)`
 
         Tokens generated by the model for reasoning.
 
-      - `rejected_prediction_tokens: optional number`
+      - `rejected_prediction_tokens: optional integer (default: 0)`
 
         When using Predicted Outputs, the number of tokens in the
         prediction that did not appear in the completion. However, like
@@ -6227,7 +6243,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
         completion tokens for purposes of billing, output, and context window
         limits.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text output tokens generated by the model.
 
@@ -6235,23 +6251,23 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Breakdown of tokens used in the prompt.
 
-      - `audio_tokens: optional number`
+      - `audio_tokens: optional integer (default: 0)`
 
         Audio input tokens present in the prompt.
 
-      - `cache_write_tokens: optional number`
+      - `cache_write_tokens: optional integer (default: 0)`
 
         The unadjusted number of prompt tokens written to cache.
 
-      - `cached_tokens: optional number`
+      - `cached_tokens: optional integer (default: 0)`
 
         Cached tokens present in the prompt.
 
-      - `image_tokens: optional number`
+      - `image_tokens: optional integer`
 
         Image input tokens present in the prompt.
 
-      - `text_tokens: optional number`
+      - `text_tokens: optional integer`
 
         Text input tokens present in the prompt.
 
@@ -6279,7 +6295,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -6305,7 +6321,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         `format: uri`
 
-      - `detail: optional "auto" or "low" or "high" or "original"`
+      - `detail: optional "auto" or "low" or "high" or "original" (default: "auto")`
 
         Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -6327,7 +6343,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -6369,7 +6385,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -6413,7 +6429,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-      - `mode: "explicit"`
+      - `mode: "explicit" (default: "explicit")`
 
         The breakpoint mode. Always `explicit`.
 
@@ -6441,7 +6457,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       `format: uri`
 
-    - `detail: optional "auto" or "low" or "high" or "original"`
+    - `detail: optional "auto" or "low" or "high" or "original" (default: "auto")`
 
       Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -6463,7 +6479,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `mode: "explicit"`
+    - `mode: "explicit" (default: "explicit")`
 
       The breakpoint mode. Always `explicit`.
 
@@ -6507,7 +6523,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `mode: "explicit"`
+    - `mode: "explicit" (default: "explicit")`
 
       The breakpoint mode. Always `explicit`.
 
@@ -6555,7 +6571,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
     Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-    - `mode: "explicit"`
+    - `mode: "explicit" (default: "explicit")`
 
       The breakpoint mode. Always `explicit`.
 
@@ -6671,6 +6687,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. For developer messages, only type `text` is supported.
 
+      `minItems: 1`
+
       - `text: string`
 
         The text content.
@@ -6685,7 +6703,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -6759,7 +6777,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       Omitting `parameters` defines a function with an empty parameter list.
 
-    - `strict: optional boolean or null`
+    - `strict: optional boolean or null (default: false)`
 
       Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/api/docs/guides/function-calling).
 
@@ -6800,11 +6818,11 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       A URL citation when using web search.
 
-      - `end_index: number`
+      - `end_index: integer`
 
         The index of the last character of the URL citation in the message.
 
-      - `start_index: number`
+      - `start_index: integer`
 
         The index of the first character of the URL citation in the message.
 
@@ -6832,7 +6850,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
       Base64 encoded audio bytes generated by the model, in the format
       specified in the request.
 
-    - `expires_at: number`
+    - `expires_at: integer`
 
       The Unix timestamp (in seconds) for when this audio response will
       no longer be accessible on the server for use in multi-turn
@@ -6998,6 +7016,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         An array of content parts with a defined type. For developer messages, only type `text` is supported.
 
+        `minItems: 1`
+
         - `text: string`
 
           The text content.
@@ -7012,7 +7032,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -7054,6 +7074,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         An array of content parts with a defined type. For system messages, only type `text` is supported.
 
+        `minItems: 1`
+
         - `text: string`
 
           The text content.
@@ -7093,6 +7115,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         An array of content parts with a defined type. Supported options differ based on the [model](/api/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
+        `minItems: 1`
+
         - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
           Learn about [text inputs](/api/docs/guides/text).
@@ -7121,7 +7145,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
               `format: uri`
 
-            - `detail: optional "auto" or "low" or "high" or "original"`
+            - `detail: optional "auto" or "low" or "high" or "original" (default: "auto")`
 
               Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -7143,7 +7167,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -7185,7 +7209,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -7229,7 +7253,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-            - `mode: "explicit"`
+            - `mode: "explicit" (default: "explicit")`
 
               The breakpoint mode. Always `explicit`.
 
@@ -7283,6 +7307,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
       - `ArrayOfContentParts = array of ChatCompletionContentPartText or ChatCompletionContentPartRefusal`
 
         An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`.
+
+        `minItems: 1`
 
         - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
@@ -7389,6 +7415,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
       - `ArrayOfContentParts = array of ChatCompletionContentPartText`
 
         An array of content parts with a defined type. For tool messages, only type `text` is supported.
+
+        `minItems: 1`
 
         - `text: string`
 
@@ -7552,6 +7580,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. Supported options differ based on the [model](/api/docs/models) being used to generate the response. Can contain text inputs.
 
+      `minItems: 1`
+
       - `text: string`
 
         The text content.
@@ -7566,7 +7596,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -7710,6 +7740,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. For system messages, only type `text` is supported.
 
+      `minItems: 1`
+
       - `text: string`
 
         The text content.
@@ -7724,7 +7756,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -7806,7 +7838,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Omitting `parameters` defines a function with an empty parameter list.
 
-      - `strict: optional boolean or null`
+      - `strict: optional boolean or null (default: false)`
 
         Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/api/docs/guides/function-calling).
 
@@ -7988,6 +8020,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. For tool messages, only type `text` is supported.
 
+      `minItems: 1`
+
       - `text: string`
 
         The text content.
@@ -8002,7 +8036,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-        - `mode: "explicit"`
+        - `mode: "explicit" (default: "explicit")`
 
           The breakpoint mode. Always `explicit`.
 
@@ -8045,6 +8079,8 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       An array of content parts with a defined type. Supported options differ based on the [model](/api/docs/models) being used to generate the response. Can contain text, image, or audio inputs.
 
+      `minItems: 1`
+
       - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
         Learn about [text inputs](/api/docs/guides/text).
@@ -8063,7 +8099,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -8089,7 +8125,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             `format: uri`
 
-          - `detail: optional "auto" or "low" or "high" or "original"`
+          - `detail: optional "auto" or "low" or "high" or "original" (default: "auto")`
 
             Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -8111,7 +8147,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -8153,7 +8189,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -8197,7 +8233,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-          - `mode: "explicit"`
+          - `mode: "explicit" (default: "explicit")`
 
             The breakpoint mode. Always `explicit`.
 
@@ -8241,11 +8277,11 @@ returned.
 
   Identifier for the last message from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of messages to retrieve.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for messages by timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `asc`.
 
@@ -8325,7 +8361,7 @@ returned.
 
   The identifier of the last chat message in the data array.
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The type of this object. It is always set to "list".
 
@@ -8338,7 +8374,7 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -8384,7 +8420,7 @@ curl https://api.openai.com/v1/chat/completions/chat_abc123/messages \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

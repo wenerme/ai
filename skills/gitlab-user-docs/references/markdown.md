@@ -1598,7 +1598,7 @@ Visit the [official page](https://mermaidjs.github.io/) for more details. The
 learn Mermaid and debug issues in your Mermaid code. Use it to identify and resolve
 issues in your diagrams.
 
-GitLab supports Mermaid version 11.
+GitLab supports Mermaid version 12.
 
 To generate a diagram or flowchart, write your text inside the `mermaid` block:
 

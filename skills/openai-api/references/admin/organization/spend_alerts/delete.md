@@ -36,7 +36,7 @@ curl https://api.openai.com/v1/organization/spend_alerts/$ALERT_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -54,7 +54,7 @@ curl -X DELETE https://api.openai.com/v1/organization/spend_alerts/alert_abc123 
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

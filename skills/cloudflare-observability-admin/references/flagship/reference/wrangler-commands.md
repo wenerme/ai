@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/wrangler-commands/og
 
 # Wrangler commands
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `wrangler flagship` to manage Flagship apps and feature flags from the command line. Every `wrangler flagship flags` command takes the app ID as the first argument. Most subcommands then take a flag key, for example `wrangler flagship flags get <APP_ID> <KEY>`. List-style commands, such as `wrangler flagship flags list <APP_ID>`, take only the app ID.
 
@@ -20,7 +20,7 @@ Use `wrangler flagship` to manage Flagship apps and feature flags from the comma
 
 ### Authenticate Wrangler
 
-`wrangler flagship` calls the Cloudflare API. Authenticate Wrangler before running commands:
+Commands that target the remote app call the Cloudflare API. Authenticate Wrangler before running them:
 
 ```sh
 wrangler login
@@ -60,6 +60,29 @@ app_id = "<APP_ID>"
 Note
 
 This binding is only used by your Worker's runtime code (`env.FLAGS`). `wrangler flagship` commands always take the app ID as an explicit argument and do not read it from this binding.
+
+## Local flag store
+
+[`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), and [`cf dev`](https://developers.cloudflare.com/cf/projects/#start-development) evaluate Flagship bindings against a local flag store. The store starts empty and is not filled automatically.
+
+Copy flags from the remote app into that store:
+
+```sh
+wrangler flagship flags pull <APP_ID>
+```
+
+`pull` requires authentication because it reads the remote app. Matching keys are overwritten. Flags that exist only locally are reported, not deleted. `pull` writes to the default local store in `.wrangler/state`; pass `--persist-to <DIRECTORY>` if your dev server keeps its data elsewhere.
+
+`create`, `get`, `list`, `update`, `delete`, `enable`, `disable`, `set`, `rollout`, `split`, `evaluate`, and the `rules` commands accept `--local` to read and write the local store. They still default to the remote app.
+
+```sh
+wrangler flagship flags list <APP_ID> --local
+wrangler flagship flags create <APP_ID> new-checkout --local
+```
+
+You cannot pass `--local` and `--remote` together. `--persist-to` requires `--local`.
+
+For binding configuration, including `remote: true`, and for managing the local store with the `cf` CLI, refer to [Local development](https://developers.cloudflare.com/flagship/configuration/#local-development).
 
 ## Quick start
 
@@ -1994,5 +2017,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

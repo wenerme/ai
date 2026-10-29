@@ -93872,6 +93872,8 @@ components:
           type: string
         tags_create_limit:
           type: string
+        todos_list_api_limit:
+          type: string
         group_hooks_create_limit:
           type: string
         project_hooks_create_limit:
@@ -113771,6 +113773,9 @@ components:
           type: string
           nullable: true
         tags_create_limit:
+          type: string
+          nullable: true
+        todos_list_api_limit:
           type: string
           nullable: true
         observability_backend_ssl_verification_enabled:

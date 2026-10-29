@@ -18,7 +18,7 @@ Retrieves an invite.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
@@ -68,13 +68,13 @@ Retrieves an invite.
 
     - `"pending"`
 
-  - `accepted_at: optional number or null`
+  - `accepted_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
     `format: unixtime`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
 
@@ -87,7 +87,7 @@ curl https://api.openai.com/v1/organization/invites/$INVITE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -116,7 +116,7 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

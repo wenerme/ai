@@ -16,7 +16,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
   The required hosting type and its configuration.
 
-  - `type: "openai_hosted"`
+  - `type: "openai_hosted" (default: "openai_hosted")`
 
     The type of the object. Always `openai_hosted`.
 
@@ -68,7 +68,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 1`, `maxLength: 4096`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -90,7 +90,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 1`, `maxLength: 4096`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -178,7 +178,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 1`, `maxLength: 70254592`
 
-      - `media_type: "application/zip"`
+      - `media_type: "application/zip" (default: "application/zip")`
 
         The archive media type, always `application/zip`.
 
@@ -186,13 +186,13 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
           A ZIP archive.
 
-      - `type: "base64"`
+      - `type: "base64" (default: "base64")`
 
         The type of the object. Always `base64`.
 
         - `"base64"`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -232,7 +232,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 1`, `maxLength: 64`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -264,7 +264,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         Provides ZIP bytes encoded with standard base64.
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -316,13 +316,13 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded file size in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "file_id"`
+      - `type: "file_id" (default: "file_id")`
 
         The type of the object. Always `file_id`.
 
@@ -344,19 +344,19 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 0`
 
-      - `size_bytes: number`
+      - `size_bytes: integer`
 
         The decoded file size in bytes.
 
         `format: int64`, `minimum: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
         - `"inline"`
 
-  - `object: "agent.environment"`
+  - `object: "agent.environment" (default: "agent.environment")`
 
     The object type. Always `agent.environment`.
 
@@ -380,7 +380,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
       `minLength: 0`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -414,7 +414,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 0`
 
-      - `type: "skill_reference"`
+      - `type: "skill_reference" (default: "skill_reference")`
 
         The type of the object. Always `skill_reference`.
 
@@ -442,7 +442,7 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
         `minLength: 0`
 
-      - `type: "inline"`
+      - `type: "inline" (default: "inline")`
 
         The type of the object. Always `inline`.
 
@@ -492,7 +492,7 @@ curl https://api.openai.com/v1/agents/environments \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {

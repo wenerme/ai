@@ -12,10 +12,31 @@ Use these tools to interact with GitLab through the GitLab MCP server.
 The GitLab MCP server provides a set of tools that integrate with your existing GitLab workflows.
 You can use these tools to interact directly with GitLab and perform common GitLab operations.
 
+Each tool belongs to a [toolset](mcp_server.md#select-tool-groups-toolsets), which controls whether
+the GitLab MCP server returns it for a given connection. If an agent can't find a tool you expect,
+check whether its toolset is enabled.
+
+## Tools by toolset
+
+| Toolset | Tools |
+|---------|-------|
+| `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
+| `core` | [`get_project`](#get_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
+| `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
+| `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
+| `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
+| `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`save_pipeline`](#save_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
+| `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
+| `wikis` | [`list_wiki_pages`](#list_wiki_pages) |
+| `code_security` | [`list_vulnerabilities`](#list_vulnerabilities), [`get_vulnerability`](#get_vulnerability), [`save_vulnerability`](#save_vulnerability), [`attach_scan_profile`](#attach_scan_profile) |
+| `orbit` | [Orbit tools](#orbit-tools) |
+
 ## `get_mcp_server_version`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200105) in GitLab 18.3.
 - Changed from [beta](../../policy/development_stages_support.md#beta) to [generally available](../../policy/development_stages_support.md#generally-available) in GitLab 19.5.
+
+This tool is part of the [`meta`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Returns the current version of the GitLab MCP server.
 
@@ -28,6 +49,8 @@ What version of the GitLab MCP server am I connected to?
 ## `get_project`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250430) in GitLab 19.4.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Returns metadata for a single GitLab project: numeric ID, full path, default branch, visibility, and web URL.
 
@@ -49,6 +72,8 @@ What is the default branch of gitlab-org/gitlab?
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605876) in GitLab 19.3.
 - `start_sha` and `start_project` parameters [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/621972) in GitLab 19.4.
+
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Adds a commit with one or more file actions to a branch in a single call.
 
@@ -95,6 +120,8 @@ with the content "# New title" and commit message "Add README"
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/625129) in GitLab 19.4. Superseded by [`save_work_item`](#save_work_item).
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`save_work_item`](#save_work_item), which resolves milestone titles and
 label names in the same places (the project and its ancestor groups) but is stricter
 about names it cannot find: `create_issue` creates label names that don't exist yet and
@@ -127,6 +154,8 @@ Create a new issue titled "Fix login bug" in project 123 with description
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/628333) in GitLab 19.4. Superseded by [`get_work_item`](#get_work_item).
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_work_item`](#get_work_item), which covers issues and other work item
 types. This tool no longer appears in `tools/list` but remains callable while callers migrate.
 
@@ -148,6 +177,8 @@ Get details for issue 42 in project 123
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/571243) as `create_merge_request` in GitLab 18.5.
 - `assignee_ids`, `reviewer_ids`, `description`, `labels`, and `milestone_id` [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217458) in GitLab 18.8.
 - Renamed to `save_merge_request` and extended to update merge requests in GitLab 19.3. The `create_merge_request` and `update_merge_request` names remain as aliases.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Creates or updates a merge request in a GitLab project.
 The presence of `merge_request_iid` selects the operation: omit it to create a merge request, or provide it to update an existing one.
@@ -191,6 +222,8 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/605878) to accept `url` and return associated data facets in GitLab 19.3.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a merge request and, optionally, its diffs, commits, notes, pipelines, discussions, approvals, or
 conflicts.
@@ -240,6 +273,8 @@ Get merge request 15 in project gitlab-org/gitlab with its commits
 ## `list_duo_agents_and_flows`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617173) in GitLab 19.5.
+
+This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists the GitLab Duo agents and flows enabled in a project, so you can discover what is
 available instead of guessing a flow name. Which agents and flows a project offers is
@@ -292,6 +327,8 @@ Which Duo flows can I run in gitlab-org/gitlab?
 ## `start_duo_session`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607619) in GitLab 19.5.
+
+This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Starts an asynchronous GitLab Duo Agent Platform session to accomplish a goal in a project.
 Returns a `workflow_id` immediately. Use `get_duo_session` with that ID to track progress and retrieve the final result.
@@ -350,6 +387,8 @@ Fix the flaky spec in issue #1234 and open an MR in gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248587) in GitLab 19.3.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256101) to accept the `statuses` parameter in GitLab 19.5.
 
+This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists your GitLab Duo Agent Platform sessions, excluding Duo Chat sessions.
 Each session includes its individual status, goal preview, flow definition, and creation timestamp.
 Project and group sessions also include a session URL.
@@ -380,6 +419,8 @@ List my active Duo Agent Platform sessions in gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607634) in GitLab 19.4. `get_duo_workflow_status` is also accepted as an alias.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/627561) to return the merge requests, work items and comments the session created, to vary the polling delay by status, and to report `status` with underscores (`input_required` rather than `input required`) to match `list_duo_sessions`, in GitLab 19.5.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631690) to return why a failed session failed and a link to its CI job, in GitLab 19.5.
+
+This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Checks the status of a GitLab Duo Agent Platform session. Running sessions include a suggested
 polling delay, which is longer while the session waits for its CI job to start. Finished sessions
@@ -415,6 +456,8 @@ Check the status of Duo session 42
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617171) in GitLab 19.5.
 
+This tool is part of the [`duo_agent_platform`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Answers a GitLab Duo Agent Platform session that is waiting for input: approves or rejects a
 pending plan or tool call, or replies to a question the agent asked. Works for sessions started
 from `ai_catalog_item_consumer_id` and for those started from `agent`. A session accepts input
@@ -444,6 +487,8 @@ Reject the plan for Duo session 42 and ask it to also add tests
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246413) in GitLab 19.3.
 - `group_id` parameter and group scope [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606934) in GitLab 19.4.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists or searches merge requests in a GitLab project or group, returning compact merge request metadata.
 Group scope always includes merge requests from every project in the group and its subgroups, but excludes
@@ -482,6 +527,8 @@ List my open merge requests in gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["commits"]`.
 
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_merge_request`](#get_merge_request) with `include: ["commits"]`. This tool no
 longer appears in `tools/list` but remains callable while callers migrate.
 
@@ -504,6 +551,8 @@ Show me all commits in merge request 42 from project 123
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["diffs"]`.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Superseded by [`get_merge_request`](#get_merge_request) with `include: ["diffs"]`. For raw patch text,
 also pass `detail: full_patch`. This tool no longer appears in `tools/list` but remains callable
@@ -529,6 +578,8 @@ What files were changed in merge request 25 in the gitlab project?
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["pipelines"]`.
 
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_merge_request`](#get_merge_request) with `include: ["pipelines"]`. This tool no
 longer appears in `tools/list` but remains callable while callers migrate.
 
@@ -549,6 +600,8 @@ Show me all pipelines for merge request 42 in project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/221941) in GitLab 18.10.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["conflicts"]`.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Superseded by [`get_merge_request`](#get_merge_request) with `include: ["conflicts"]`, which
 returns the same conflicts as structured `conflictFiles` entries with separate `ourPath` and
@@ -580,6 +633,8 @@ Show the conflicts for merge request 42 in project gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241114) in GitLab 19.2.
 - [Replaced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605848) `create_merge_request_note` and `create_workitem_note` tools in GitLab 19.4. Both original tool names continue to work as aliases.
 - `method` and `resolved` parameters [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/617756) in GitLab 19.5. `body` is no longer required for every call.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Adds a comment to a GitLab merge request or work item, replies to an existing discussion thread,
 or resolves or unresolves a discussion thread, as the authenticated user.
@@ -625,6 +680,8 @@ Examples:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597494) in GitLab 19.2.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by the `notes` facet of [`get_merge_request`](#get_merge_request).
 
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_merge_request`](#get_merge_request) with `include: ["notes"]`. This tool no
 longer appears in `tools/list` but remains callable while callers migrate.
 
@@ -651,6 +708,8 @@ Show me all comments on merge request 5 in project gitlab-org/gitlab
 ## `save_merge_request_review`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605881) in GitLab 19.4.
+
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Writes merge request review artifacts as the authenticated user. Each call performs
 exactly one operation, selected with the `method` parameter:
@@ -700,6 +759,8 @@ Review merge request 42 in project gitlab-org/gitlab and leave your findings as 
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251379) in GitLab 19.4.
 
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists the members of a GitLab project with their role and access level.
 
 | Parameter           | Type    | Required | Description |
@@ -727,6 +788,8 @@ Who are the maintainers of gitlab-org/gitlab?
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253176) in GitLab 19.4.
 
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Gets a single GitLab user. Use this tool to resolve a username, or your own account, to a numeric
 user ID. For example, use it before you set assignees or reviewers with other tools.
 
@@ -749,6 +812,8 @@ What is my GitLab user ID?
 ## `list_todos`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/598281) in GitLab 19.6.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists your [to-do items](../todos.md), such as review requests, assignments, and mentions.
 Returns pending to-do items unless you set `state` to `done`.
@@ -783,6 +848,8 @@ Which merge requests am I asked to review?
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617968) in GitLab 19.4.
 
+This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Merges a merge request, or schedules it to merge automatically. Without `strategy`, the merge
 starts immediately and completes asynchronously. With `strategy`, auto-merge is armed and the
 merge request merges once its checks pass. To approve a merge request instead, use the
@@ -814,6 +881,8 @@ Merge merge request 42 in project gitlab-org/gitlab once its checks pass, and re
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605877) in GitLab 19.3. `create_branch` is also accepted as an alias.
 
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Adds a branch to a GitLab project from a source ref.
 
 | Parameter    | Type   | Required | Description |
@@ -832,6 +901,8 @@ Create a branch named feature/x from main in project gitlab-org/gitlab
 ## `fork_repository`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597680) in GitLab 19.4.
+
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Forks a GitLab project into a namespace.
 
@@ -864,6 +935,8 @@ Fork gitlab-org/gitlab-test into my personal namespace
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605849) in GitLab 19.4.
 
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists the branches of a GitLab project, optionally filtered by name.
 
 | Parameter  | Type    | Required | Description |
@@ -882,6 +955,8 @@ List branches in gitlab-org/gitlab whose names contain "release"
 ## `get_repository_file`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248744) in GitLab 19.3.
+
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves the contents of a single file from a repository at a specific ref.
 
@@ -914,6 +989,8 @@ Show me app/models/user.rb from the main branch of my-group/my-project
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605873) in GitLab 19.4.
 
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists the files and directories in a GitLab repository at a given path and ref.
 Returns entry metadata only, never file contents. To read the contents of a file,
 use [`get_repository_file`](#get_repository_file).
@@ -940,6 +1017,8 @@ List the files under app/services in gitlab-org/gitlab on the default branch
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605874) in GitLab 19.3.
 
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Retrieves a single commit's metadata, and optionally its diff or notes.
 
 | Parameter     | Type    | Required | Description |
@@ -964,6 +1043,8 @@ Show me commit abc123 in gitlab-org/gitlab with its diff stats
 ## `list_commits`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605875) in GitLab 19.4.
+
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists the commits of a GitLab project, optionally filtered by ref, author, path, or date.
 Returns compact commit metadata. To get the diff or notes of a single commit, use
@@ -996,6 +1077,8 @@ List commits to app/models in gitlab-org/gitlab since 2026-08-01 by Alex
 ## `list_releases`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/618494) in GitLab 19.4.
+
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists releases in a GitLab project, most recently released first.
 
@@ -1036,6 +1119,8 @@ List the most recent releases for project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/618493) in GitLab 19.4.
 
+This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists tags in a GitLab project, most recently updated first. If `search` matches a tag name
 exactly, GitLab lists that tag first.
 
@@ -1069,6 +1154,8 @@ List the most recent tags for the gitlab-org/gitlab project
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605853) in GitLab 19.3.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a pipeline, and optionally its jobs, downstream pipelines, bridge (trigger) jobs, or the
 artifacts its jobs produced.
@@ -1123,6 +1210,8 @@ Examples:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_pipeline`](#get_pipeline) with `include: ["jobs"]`.
 
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_pipeline`](#get_pipeline) with `include: ["jobs"]`, which returns jobs alongside
 the rest of the pipeline's data in a single call. The `jobs` facet returns fewer fields per job:
 it does not include `failure_reason`, `duration`, `queued_duration`, or timestamps. This tool no
@@ -1148,6 +1237,8 @@ Show me all jobs in pipeline 12345 for project gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) in GitLab 19.3.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) from `get_job_log` in GitLab 19.3. `get_job_log` continues to work as an alias and always returns the `log` facet, capped at `byte_limit`.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Gets a CI/CD job's metadata, and optionally its trace/log or the artifacts it produced.
 
@@ -1189,6 +1280,8 @@ Examples:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
 
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Reads a file from inside the artifacts archive of a CI/CD job as text. To discover what a job or
 pipeline produced, use the `get_job` or `get_pipeline` tool with `include: artifacts`.
 
@@ -1225,6 +1318,8 @@ Examples:
 ## `get_pages_content`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617718) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `mcp_get_pages_content`. Disabled by default.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -1267,6 +1362,8 @@ Read https://mygroup.gitlab.io/myproject/docs/api/ and summarize the authenticat
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605854) in GitLab 19.3.
 
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists pipelines in a GitLab project, with optional filters.
 
 | Parameter        | Type    | Required | Description |
@@ -1296,6 +1393,8 @@ List all failed pipelines on the main branch for project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605855) in GitLab 19.3.
 - `update` action [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/619469) in GitLab 19.4.
+
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Runs, retries, cancels, or renames a CI/CD pipeline in a GitLab project. To list pipelines,
 use the `list_pipelines` tool instead.
@@ -1344,6 +1443,8 @@ Examples:
 - [Removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605855) the `create`, `retry`, and `cancel` actions in favor of the `save_pipeline` tool in GitLab 19.3.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/631276) in GitLab 19.5. To rename a pipeline, use [`save_pipeline`](#save_pipeline) with `action: "update"`.
 
+This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 > [!warning]
 > This tool is no longer listed but remains callable by agents that have an outdated tools list
 > or have stored the tool name. To rename a pipeline, use [`save_pipeline`](#save_pipeline) with
@@ -1377,6 +1478,8 @@ Examples:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605882) in GitLab 19.4.
 - `discussions` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597686) in GitLab 19.5.
+
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a single work item (issue, epic, task, incident, objective, or key result) with its
 type, dates, assignees, labels, milestone, and parent. Optionally includes its notes, its
@@ -1428,6 +1531,8 @@ Get issue 42 in project gitlab-org/gitlab with its related merge requests
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/581892) in GitLab 18.7.
 - [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/625128) in GitLab 19.4. Superseded by the `notes` facet of [`get_work_item`](#get_work_item).
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Superseded by [`get_work_item`](#get_work_item) with `include: ["notes"]`, which paginates
 notes in both directions. This tool no longer appears in `tools/list` but remains callable
 while callers migrate.
@@ -1456,6 +1561,8 @@ Show me all comments on work item 42 in project gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230221) in GitLab 19.0.
 - Plain iids for `work_items_ids` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254551) in GitLab 19.4.
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Links a work item to one or more other work items with a relationship type.
 
 | Parameter        | Type             | Required | Description |
@@ -1476,6 +1583,8 @@ Mark work item 42 in project gitlab-org/gitlab as blocked by work item 40
 ## `get_saved_view_work_items`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227911) in GitLab 18.11.
+
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a saved view and its list of work items from a namespace. The tool applies the
 filters and the sort order in the saved view to the returned work items.
@@ -1501,6 +1610,8 @@ Show me the work items in this saved view: <URL>
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251243) in GitLab 19.4.
+
+This tool is part of the [`code_security`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists security vulnerabilities in a GitLab project, with optional filters and cursor pagination.
 Returns paginated vulnerability metadata. To get full details for a single vulnerability,
@@ -1533,6 +1644,8 @@ List critical and high severity vulnerabilities in project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251243) in GitLab 19.4.
 
+This tool is part of the [`code_security`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Returns comprehensive details for a single vulnerability, including title, state, description,
 severity, and identifiers.
 
@@ -1555,6 +1668,8 @@ Get full details for vulnerability 567
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/613026) in GitLab 19.4.
+
+This tool is part of the [`code_security`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Performs write operations on a vulnerability in a GitLab project.
 
@@ -1607,6 +1722,8 @@ Examples:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605852) in GitLab 19.4.
 - `labels`, `add_labels`, `remove_labels`, `milestone_id`, and `milestone` parameters [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/622711) in GitLab 19.4.
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Creates or updates a GitLab work item, such as an issue, task, or epic. Omit `work_item_iid`
 to create a new work item. Provide `work_item_iid` or a work item URL to update an existing
 one. Send only the fields you intend to set, and omit the rest. The tool names
@@ -1655,6 +1772,8 @@ Create a task "Update the onboarding guide" in project gitlab-org/gitlab and ass
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605850) in GitLab 19.4.
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists or searches work items (issues, incidents, test cases, requirements, tasks, tickets,
 objectives, key results, epics) in a group or project. Group scope includes work items of
 descendant projects and subgroups. Each result contains only the ID, IID, title, state, web URL,
@@ -1696,6 +1815,8 @@ List my open tasks in the gitlab-org group updated this month.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237071) in GitLab 19.1.
 
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists the work item types available in a namespace (group or project), including
 system-defined types (such as Issue, Epic, and Task) and custom types.
 Each returned type includes its global ID, name, icon, and the widget types enabled on it,
@@ -1716,6 +1837,8 @@ List the work item types available in the gitlab-org group
 ## `list_projects`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250301) in GitLab 19.4.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Without `group_id`, lists projects where you have at least the Guest role by default;
 pass `min_access_level` to raise the threshold. With `group_id`, lists every project in
@@ -1748,6 +1871,8 @@ List my projects
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607719) in GitLab 19.4.
 
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Lists groups, for navigating the group hierarchy and discovering group IDs and full
 paths to use with other tools. Without `group_id`, this tool lists top-level groups
 where you are a member. With `group_id`, it lists the direct subgroups of that group,
@@ -1775,6 +1900,8 @@ List the subgroups of gitlab-org
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/566143) in GitLab 18.4.
 - Searching groups and projects and ordering and sorting results [added](https://gitlab.com/gitlab-org/gitlab/-/issues/571132) in GitLab 18.6.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214734) from `gitlab_search` to `search` in GitLab 18.8.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Searches for a term across the entire GitLab instance with the search API.
 This tool is available for global, group, and project search.
@@ -1805,6 +1932,8 @@ Search issues for "flaky test" across GitLab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218121) in GitLab 18.9.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/621662) in GitLab 19.5 to accept multiple search terms.
 
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 Searches for labels in a GitLab project or group.
 
 | Parameter    | Type                        | Required | Description |
@@ -1825,6 +1954,8 @@ Show me all labels in project gitlab-org/gitlab
 ## `list_wiki_pages`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240973) in GitLab 19.3.
+
+This tool is part of the [`wikis`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Lists the wiki pages in a GitLab project or group.
 
@@ -1860,6 +1991,8 @@ List the wiki pages in gitlab-org/gitlab
 - `scope` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) in GitLab 19.4.
 - `semantic_query` parameter [renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) to `q` in GitLab 19.4.
 
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
@@ -1894,6 +2027,8 @@ How are authorizations managed in this project?
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240685) in GitLab 19.2.
+
+This tool is part of the [`code_security`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Attaches the given security scan profile to the specified projects, or to all projects under the specified groups.
 

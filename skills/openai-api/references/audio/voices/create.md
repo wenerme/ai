@@ -28,7 +28,7 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
   - `"prompt"`
 
-- `model: optional string or "auto" or "2026-10-08"`
+- `model: optional string or "auto" or "2026-10-08" (default: "auto")`
 
   The voice creation model to use. Defaults to `auto`.
 
@@ -58,7 +58,7 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
     The voice identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the voice was created.
 
@@ -99,7 +99,7 @@ curl https://api.openai.com/v1/audio/voices \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

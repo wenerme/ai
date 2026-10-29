@@ -24,7 +24,7 @@ Grants a group access to a project.
 
   Details about a group's membership in a project.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -68,7 +68,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -93,7 +93,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -47,7 +47,7 @@ Response includes details of the enqueued job including job status and the name 
   The hyperparameters used for the fine-tuning job.
   This value is now deprecated in favor of `method`, and should be passed in under the `method` parameter.
 
-  - `batch_size: optional "auto" or number`
+  - `batch_size: optional "auto" or number (default: "auto")`
 
     Number of examples in each batch. A larger batch size means that model parameters
     are updated less frequently, but with lower variance.
@@ -58,7 +58,9 @@ Response includes details of the enqueued job including job status and the name 
 
     - `number`
 
-  - `learning_rate_multiplier: optional "auto" or number`
+      `minimum: 1`, `maximum: 256`
+
+  - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
     Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
     overfitting.
@@ -69,7 +71,9 @@ Response includes details of the enqueued job including job status and the name 
 
     - `number`
 
-  - `n_epochs: optional "auto" or number`
+      `exclusiveMinimum: 0`
+
+  - `n_epochs: optional "auto" or number (default: "auto")`
 
     The number of epochs to train the model for. An epoch refers to one full cycle
     through the training dataset.
@@ -79,6 +83,8 @@ Response includes details of the enqueued job including job status and the name 
       - `"auto"`
 
     - `number`
+
+      `minimum: 1`, `maximum: 50`
 
 - `integrations: optional array of object { type, wandb }  or null`
 
@@ -145,7 +151,7 @@ Response includes details of the enqueued job including job status and the name 
 
       The hyperparameters used for the DPO fine-tuning job.
 
-      - `batch_size: optional "auto" or number`
+      - `batch_size: optional "auto" or number (default: "auto")`
 
         Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -155,7 +161,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `beta: optional "auto" or number`
+          `minimum: 1`, `maximum: 256`
+
+      - `beta: optional "auto" or number (default: "auto")`
 
         The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
@@ -165,7 +173,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `learning_rate_multiplier: optional "auto" or number`
+          `exclusiveMinimum: 0`, `maximum: 2`
+
+      - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
         Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -175,7 +185,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `n_epochs: optional "auto" or number`
+          `exclusiveMinimum: 0`
+
+      - `n_epochs: optional "auto" or number (default: "auto")`
 
         The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -184,6 +196,8 @@ Response includes details of the enqueued job including job status and the name 
           - `"auto"`
 
         - `number`
+
+          `minimum: 1`, `maximum: 50`
 
   - `reinforcement: optional ReinforcementMethod`
 
@@ -271,7 +285,7 @@ Response includes details of the enqueued job including job status and the name 
 
           The text being graded against.
 
-        - `type: "text_similarity"`
+        - `type: "text_similarity" (default: "text_similarity")`
 
           The type of grader.
 
@@ -323,7 +337,7 @@ Response includes details of the enqueued job including job status and the name 
 
                 The text input to the model.
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the input item. Always `input_text`.
 
@@ -333,7 +347,7 @@ Response includes details of the enqueued job including job status and the name 
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                - `mode: "explicit"`
+                - `mode: "explicit" (default: "explicit")`
 
                   The breakpoint mode. Always `explicit`.
 
@@ -498,13 +512,13 @@ Response includes details of the enqueued job including job status and the name 
 
           The sampling parameters for the model.
 
-          - `max_completions_tokens: optional number or null`
+          - `max_completions_tokens: optional integer or null`
 
             The maximum number of tokens the grader model may generate in its response.
 
             `minimum: 1`
 
-          - `reasoning_effort: optional ReasoningEffort or null`
+          - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
             Constrains effort on reasoning for reasoning models. Currently supported
             values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -528,7 +542,7 @@ Response includes details of the enqueued job including job status and the name 
 
             - `"max"`
 
-          - `seed: optional number or null`
+          - `seed: optional integer or null`
 
             A seed value to initialize the randomness, during sampling.
 
@@ -536,7 +550,7 @@ Response includes details of the enqueued job including job status and the name 
 
             A higher temperature increases randomness in the outputs.
 
-          - `top_p: optional number or null`
+          - `top_p: optional number or null (default: 1)`
 
             An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -673,7 +687,7 @@ Response includes details of the enqueued job including job status and the name 
 
           The name of the grader.
 
-        - `type: "multi"`
+        - `type: "multi" (default: "multi")`
 
           The object type, which is always `multi`.
 
@@ -683,7 +697,7 @@ Response includes details of the enqueued job including job status and the name 
 
       The hyperparameters used for the reinforcement fine-tuning job.
 
-      - `batch_size: optional "auto" or number`
+      - `batch_size: optional "auto" or number (default: "auto")`
 
         Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -693,7 +707,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `compute_multiplier: optional "auto" or number`
+          `minimum: 1`, `maximum: 256`
+
+      - `compute_multiplier: optional "auto" or number (default: "auto")`
 
         Multiplier on amount of compute used for exploring search space during training.
 
@@ -703,7 +719,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `eval_interval: optional "auto" or number`
+          `exclusiveMinimum: 0.00001`, `maximum: 10`
+
+      - `eval_interval: optional "auto" or number (default: "auto")`
 
         The number of training steps between evaluation runs.
 
@@ -713,7 +731,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `eval_samples: optional "auto" or number`
+          `minimum: 1`
+
+      - `eval_samples: optional "auto" or number (default: "auto")`
 
         Number of evaluation samples to generate per training step.
 
@@ -723,7 +743,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `learning_rate_multiplier: optional "auto" or number`
+          `minimum: 1`
+
+      - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
         Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -733,7 +755,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `n_epochs: optional "auto" or number`
+          `exclusiveMinimum: 0`
+
+      - `n_epochs: optional "auto" or number (default: "auto")`
 
         The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -743,7 +767,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
+          `minimum: 1`, `maximum: 50`
+
+      - `reasoning_effort: optional "default" or "low" or "medium" or "high" (default: "default")`
 
         Level of reasoning effort.
 
@@ -763,7 +789,7 @@ Response includes details of the enqueued job including job status and the name 
 
       The hyperparameters used for the fine-tuning job.
 
-      - `batch_size: optional "auto" or number`
+      - `batch_size: optional "auto" or number (default: "auto")`
 
         Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -773,7 +799,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `learning_rate_multiplier: optional "auto" or number`
+          `minimum: 1`, `maximum: 256`
+
+      - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
         Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -783,7 +811,9 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-      - `n_epochs: optional "auto" or number`
+          `exclusiveMinimum: 0`
+
+      - `n_epochs: optional "auto" or number (default: "auto")`
 
         The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -793,14 +823,16 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-- `seed: optional number or null`
+          `minimum: 1`, `maximum: 50`
+
+- `seed: optional integer or null`
 
   The seed controls the reproducibility of the job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases.
   If a seed is not specified, one will be generated for you.
 
   `minimum: 0`, `maximum: 2147483647`
 
-- `suffix: optional string or null`
+- `suffix: optional string or null (default: null)`
 
   A string of up to 64 characters that will be added to your fine-tuned model name.
 
@@ -831,7 +863,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The object identifier, which can be referenced in the API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
@@ -863,7 +895,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number or null`
+  - `finished_at: integer or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -887,7 +919,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
-  - `seed: number or null`
+  - `seed: integer or null`
 
     The seed used for the fine-tuning job.
 
@@ -911,7 +943,7 @@ Response includes details of the enqueued job including job status and the name 
 
     - `"paused"`
 
-  - `trained_tokens: number or null`
+  - `trained_tokens: integer or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -923,7 +955,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
-  - `estimated_finish: optional number or null`
+  - `estimated_finish: optional integer or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
@@ -933,7 +965,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number or null`
+    - `batch_size: optional "auto" or number or null (default: "auto")`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -944,7 +976,9 @@ Response includes details of the enqueued job including job status and the name 
 
       - `number`
 
-    - `learning_rate_multiplier: optional "auto" or number`
+        `minimum: 1`, `maximum: 256`
+
+    - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
       Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
       overfitting.
@@ -955,7 +989,9 @@ Response includes details of the enqueued job including job status and the name 
 
       - `number`
 
-    - `n_epochs: optional "auto" or number`
+        `exclusiveMinimum: 0`
+
+    - `n_epochs: optional "auto" or number (default: "auto")`
 
       The number of epochs to train the model for. An epoch refers to one full cycle
       through the training dataset.
@@ -965,6 +1001,8 @@ Response includes details of the enqueued job including job status and the name 
         - `"auto"`
 
       - `number`
+
+        `minimum: 1`, `maximum: 50`
 
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
@@ -1033,7 +1071,7 @@ Response includes details of the enqueued job including job status and the name 
 
         The hyperparameters used for the DPO fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -1043,7 +1081,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `beta: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `beta: optional "auto" or number (default: "auto")`
 
           The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
 
@@ -1053,7 +1093,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `exclusiveMinimum: 0`, `maximum: 2`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -1063,7 +1105,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -1072,6 +1116,8 @@ Response includes details of the enqueued job including job status and the name 
             - `"auto"`
 
           - `number`
+
+            `minimum: 1`, `maximum: 50`
 
     - `reinforcement: optional ReinforcementMethod`
 
@@ -1159,7 +1205,7 @@ Response includes details of the enqueued job including job status and the name 
 
             The text being graded against.
 
-          - `type: "text_similarity"`
+          - `type: "text_similarity" (default: "text_similarity")`
 
             The type of grader.
 
@@ -1211,7 +1257,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   The text input to the model.
 
-                - `type: "input_text"`
+                - `type: "input_text" (default: "input_text")`
 
                   The type of the input item. Always `input_text`.
 
@@ -1221,7 +1267,7 @@ Response includes details of the enqueued job including job status and the name 
 
                   Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
 
-                  - `mode: "explicit"`
+                  - `mode: "explicit" (default: "explicit")`
 
                     The breakpoint mode. Always `explicit`.
 
@@ -1386,13 +1432,13 @@ Response includes details of the enqueued job including job status and the name 
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number or null`
+            - `max_completions_tokens: optional integer or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
               `minimum: 1`
 
-            - `reasoning_effort: optional ReasoningEffort or null`
+            - `reasoning_effort: optional ReasoningEffort or null (default: "medium")`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1416,7 +1462,7 @@ Response includes details of the enqueued job including job status and the name 
 
               - `"max"`
 
-            - `seed: optional number or null`
+            - `seed: optional integer or null`
 
               A seed value to initialize the randomness, during sampling.
 
@@ -1424,7 +1470,7 @@ Response includes details of the enqueued job including job status and the name 
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number or null`
+            - `top_p: optional number or null (default: 1)`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -1561,7 +1607,7 @@ Response includes details of the enqueued job including job status and the name 
 
             The name of the grader.
 
-          - `type: "multi"`
+          - `type: "multi" (default: "multi")`
 
             The object type, which is always `multi`.
 
@@ -1571,7 +1617,7 @@ Response includes details of the enqueued job including job status and the name 
 
         The hyperparameters used for the reinforcement fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -1581,7 +1627,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `compute_multiplier: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `compute_multiplier: optional "auto" or number (default: "auto")`
 
           Multiplier on amount of compute used for exploring search space during training.
 
@@ -1591,7 +1639,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `eval_interval: optional "auto" or number`
+            `exclusiveMinimum: 0.00001`, `maximum: 10`
+
+        - `eval_interval: optional "auto" or number (default: "auto")`
 
           The number of training steps between evaluation runs.
 
@@ -1601,7 +1651,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `eval_samples: optional "auto" or number`
+            `minimum: 1`
+
+        - `eval_samples: optional "auto" or number (default: "auto")`
 
           Number of evaluation samples to generate per training step.
 
@@ -1611,7 +1663,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `minimum: 1`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -1621,7 +1675,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -1631,7 +1687,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
+            `minimum: 1`, `maximum: 50`
+
+        - `reasoning_effort: optional "default" or "low" or "medium" or "high" (default: "default")`
 
           Level of reasoning effort.
 
@@ -1651,7 +1709,7 @@ Response includes details of the enqueued job including job status and the name 
 
         The hyperparameters used for the fine-tuning job.
 
-        - `batch_size: optional "auto" or number`
+        - `batch_size: optional "auto" or number (default: "auto")`
 
           Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
 
@@ -1661,7 +1719,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `learning_rate_multiplier: optional "auto" or number`
+            `minimum: 1`, `maximum: 256`
+
+        - `learning_rate_multiplier: optional "auto" or number (default: "auto")`
 
           Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
 
@@ -1671,7 +1731,9 @@ Response includes details of the enqueued job including job status and the name 
 
           - `number`
 
-        - `n_epochs: optional "auto" or number`
+            `exclusiveMinimum: 0`
+
+        - `n_epochs: optional "auto" or number (default: "auto")`
 
           The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
 
@@ -1680,6 +1742,8 @@ Response includes details of the enqueued job including job status and the name 
             - `"auto"`
 
           - `number`
+
+            `minimum: 1`, `maximum: 50`
 
 ### Example
 
@@ -1695,7 +1759,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1801,7 +1865,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1851,7 +1915,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1908,7 +1972,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1978,7 +2042,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2041,7 +2105,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2103,7 +2167,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

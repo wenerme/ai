@@ -14,7 +14,7 @@ Get status updates for a fine-tuning job.
 
   Identifier for the last event from the previous pagination request.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   Number of events to retrieve.
 
@@ -26,7 +26,7 @@ Get status updates for a fine-tuning job.
 
     The object identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
@@ -77,7 +77,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID/events \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -104,7 +104,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

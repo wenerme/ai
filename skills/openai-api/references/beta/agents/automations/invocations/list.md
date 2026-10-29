@@ -18,13 +18,13 @@ Lists delivery records for a project-owned automation.
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -56,7 +56,7 @@ Lists delivery records for a project-owned automation.
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The creation time as a Unix timestamp in seconds.
 
@@ -78,13 +78,13 @@ Lists delivery records for a project-owned automation.
 
       `minLength: 0`
 
-  - `object: "agent.automation.invocation"`
+  - `object: "agent.automation.invocation" (default: "agent.automation.invocation")`
 
     Always `agent.automation.invocation`.
 
     - `"agent.automation.invocation"`
 
-  - `scheduled_at: number or null`
+  - `scheduled_at: integer or null`
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
@@ -96,7 +96,7 @@ Lists delivery records for a project-owned automation.
 
     `minLength: 0`
 
-  - `skip_reason: "pending_delivery" or null`
+  - `skip_reason: "pending_delivery" or null (default: "pending_delivery")`
 
     Why an occurrence was skipped, or null when it was not skipped.
 
@@ -108,7 +108,7 @@ Lists delivery records for a project-owned automation.
 
     - `Manual object { type }`
 
-      - `type: "manual"`
+      - `type: "manual" (default: "manual")`
 
         The type of the object. Always `manual`.
 
@@ -130,7 +130,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -142,7 +142,7 @@ Lists delivery records for a project-owned automation.
 
             - `Developer object { type }`
 
-              - `type: "developer"`
+              - `type: "developer" (default: "developer")`
 
                 The type of the object. Always `developer`.
 
@@ -162,7 +162,7 @@ Lists delivery records for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "agent"`
+              - `type: "agent" (default: "agent")`
 
                 The type of the object. Always `agent`.
 
@@ -184,7 +184,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
@@ -228,7 +228,7 @@ Lists delivery records for a project-owned automation.
 
                     Whether subagent tools are enabled. Defaults to false.
 
-                  - `max_concurrent_subagents: number or null`
+                  - `max_concurrent_subagents: integer or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -300,7 +300,7 @@ Lists delivery records for a project-owned automation.
 
                       Generates ordinary text without a structured-output constraint.
 
-                      - `type: "text"`
+                      - `type: "text" (default: "text")`
 
                         The type of the object. Always `text`.
 
@@ -314,7 +314,7 @@ Lists delivery records for a project-owned automation.
 
                         The JSON Schema that generated text must match.
 
-                      - `type: "json_schema"`
+                      - `type: "json_schema" (default: "json_schema")`
 
                         The type of the object. Always `json_schema`.
 
@@ -360,7 +360,7 @@ Lists delivery records for a project-owned automation.
 
                       A JSON Schema object describing the function's arguments.
 
-                    - `type: "function"`
+                    - `type: "function" (default: "function")`
 
                       The type of the object. Always `function`.
 
@@ -374,7 +374,7 @@ Lists delivery records for a project-owned automation.
 
                       Whether tools can be called from model-generated code.
 
-                    - `type: "programmatic_tool_calling"`
+                    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
                       The type of the object. Always `programmatic_tool_calling`.
 
@@ -432,7 +432,7 @@ Lists delivery records for a project-owned automation.
 
                           `minLength: 0`
 
-                        - `type: "http"`
+                        - `type: "http" (default: "http")`
 
                           The type of the object. Always `http`.
 
@@ -466,13 +466,13 @@ Lists delivery records for a project-owned automation.
 
                           `minItems: 0`, `maxItems: 2000`
 
-                        - `type: "stdio"`
+                        - `type: "stdio" (default: "stdio")`
 
                           The type of the object. Always `stdio`.
 
                           - `"stdio"`
 
-                    - `type: "mcp"`
+                    - `type: "mcp" (default: "mcp")`
 
                       The type of the object. Always `mcp`.
 
@@ -536,7 +536,7 @@ Lists delivery records for a project-owned automation.
 
                       - `"live"`
 
-                    - `type: "web_search"`
+                    - `type: "web_search" (default: "web_search")`
 
                       The type of the object. Always `web_search`.
 
@@ -550,7 +550,7 @@ Lists delivery records for a project-owned automation.
 
                       Whether computer tool outputs include screenshots.
 
-                    - `type: "computer_use"`
+                    - `type: "computer_use" (default: "computer_use")`
 
                       The type of the object. Always `computer_use`.
 
@@ -560,7 +560,7 @@ Lists delivery records for a project-owned automation.
 
                     Lets the agent manage its own scheduled wakeups.
 
-                    - `type: "automations"`
+                    - `type: "automations" (default: "automations")`
 
                       The type of the object. Always `automations`.
 
@@ -574,6 +574,14 @@ Lists delivery records for a project-owned automation.
 
                     Whether context is compacted in the background. Defaults to true.
 
+                - `experimental: optional object { time_awareness }`
+
+                  The effective experimental settings for the agent.
+
+                  - `time_awareness: boolean`
+
+                    Whether the model receives periodic current-time reminders.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
@@ -586,7 +594,7 @@ Lists delivery records for a project-owned automation.
 
                 - `None object { type }`
 
-                  - `type: "none"`
+                  - `type: "none" (default: "none")`
 
                     The type of the object. Always `none`.
 
@@ -654,7 +662,7 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "file_id"`
+                      - `type: "file_id" (default: "file_id")`
 
                         The type of the object. Always `file_id`.
 
@@ -670,13 +678,13 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `size_bytes: number`
+                      - `size_bytes: integer`
 
                         The decoded size of the inline file in bytes.
 
                         `format: int64`, `minimum: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
@@ -748,7 +756,7 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "inline"`
+                    - `type: "inline" (default: "inline")`
 
                       The type of the object. Always `inline`.
 
@@ -770,7 +778,7 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "skill_reference"`
+                      - `type: "skill_reference" (default: "skill_reference")`
 
                         The type of the object. Always `skill_reference`.
 
@@ -798,13 +806,13 @@ Lists delivery records for a project-owned automation.
 
                         `minLength: 0`
 
-                      - `type: "inline"`
+                      - `type: "inline" (default: "inline")`
 
                         The type of the object. Always `inline`.
 
                         - `"inline"`
 
-                  - `type: "openai_hosted"`
+                  - `type: "openai_hosted" (default: "openai_hosted")`
 
                     The type of the object. Always `openai_hosted`.
 
@@ -824,7 +832,7 @@ Lists delivery records for a project-owned automation.
 
                     `minLength: 0`
 
-                  - `type: "self_hosted"`
+                  - `type: "self_hosted" (default: "self_hosted")`
 
                     The type of the object. Always `self_hosted`.
 
@@ -858,7 +866,7 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_text"`
+                    - `type: "input_text" (default: "input_text")`
 
                       The type of the object. Always `input_text`.
 
@@ -874,19 +882,19 @@ Lists delivery records for a project-owned automation.
 
                       `minLength: 0`
 
-                    - `type: "input_image"`
+                    - `type: "input_image" (default: "input_image")`
 
                       The type of the object. Always `input_image`.
 
                       - `"input_image"`
 
-                - `role: "user"`
+                - `role: "user" (default: "user")`
 
                   The role of the message author. Always `user`.
 
                   - `"user"`
 
-                - `type: "message"`
+                - `type: "message" (default: "message")`
 
                   The type of the input item. Always `message`.
 
@@ -896,7 +904,7 @@ Lists delivery records for a project-owned automation.
 
                 Metadata attached to each new session.
 
-              - `type: "new_session"`
+              - `type: "new_session" (default: "new_session")`
 
                 The type of the object. Always `new_session`.
 
@@ -922,7 +930,7 @@ Lists delivery records for a project-owned automation.
 
                 `minLength: 0`
 
-              - `type: "existing_session"`
+              - `type: "existing_session" (default: "existing_session")`
 
                 The type of the object. Always `existing_session`.
 
@@ -934,7 +942,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `type: "periodic"`
+          - `type: "periodic" (default: "periodic")`
 
             The type of the object. Always `periodic`.
 
@@ -950,7 +958,7 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `created_at: number`
+          - `created_at: integer`
 
             The creation time as a Unix timestamp in seconds.
 
@@ -970,13 +978,13 @@ Lists delivery records for a project-owned automation.
 
             `minLength: 0`
 
-          - `object: "agent.automation"`
+          - `object: "agent.automation" (default: "agent.automation")`
 
             Always `agent.automation`.
 
             - `"agent.automation"`
 
-          - `run_at: number`
+          - `run_at: integer`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
 
@@ -996,13 +1004,13 @@ Lists delivery records for a project-owned automation.
 
             The session configuration or existing session receiving invocations.
 
-          - `type: "once"`
+          - `type: "once" (default: "once")`
 
             The type of the object. Always `once`.
 
             - `"once"`
 
-      - `type: "automation"`
+      - `type: "automation" (default: "automation")`
 
         The type of the object. Always `automation`.
 
@@ -1036,7 +1044,7 @@ Lists delivery records for a project-owned automation.
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -1050,7 +1058,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -173,7 +173,7 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-previ
 
 | Model | Description | Endpoint |
 |---|---|---|
-| [Gemini Embedding 2](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2) | Our first multimodal embedding model, mapping text, images, video, audio, and PDFs into a unified embedding space for advanced semantic search and RAG systems. | ``` gemini-embedding-2-preview ``` |
+| [Gemini Embedding 2](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2) | Our first multimodal embedding model, mapping text, images, video, audio, and PDFs into a unified embedding space for advanced semantic search and RAG systems. | ``` gemini-embedding-2 ``` |
 | [Gemini Embedding](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001) | High-dimensional vector representations for advanced semantic search, text classification, and RAG systems. | ``` gemini-embedding-001 ``` |
 | [Gemini Robotics ER 2](https://ai.google.dev/gemini-api/docs/robotics-overview) | Embodied reasoning model delivering advanced video understanding, spatial reasoning, multi-step tool orchestration, and multi-robot collaboration for robotics tasks. | ``` gemini-robotics-er-2-preview ``` |
 
@@ -226,7 +226,7 @@ For example: `gemini-flash-latest`.
 
 ### Experimental
 
-Points to an experimental model which will typically be not be suitable for
+Points to an experimental model which will typically not be suitable for
 production use and come with more restrictive rate limits. We release
 experimental models to gather feedback and get our latest updates into the hands
 of developers quickly.

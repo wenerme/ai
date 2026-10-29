@@ -10,7 +10,7 @@ Reject an incoming SIP call. Send a required SIP rejection status_code between 3
 
 ### Body Parameters
 
-- `status_code: number`
+- `status_code: integer`
 
   SIP rejection status sent to the caller. This field is required.
 

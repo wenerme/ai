@@ -65,7 +65,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/data_retention 
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -85,7 +85,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/data_reten
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

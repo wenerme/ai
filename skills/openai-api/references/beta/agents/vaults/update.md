@@ -34,7 +34,7 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the vault was created.
 
@@ -50,7 +50,7 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 
     `minLength: 0`
 
-  - `object: "vault"`
+  - `object: "vault" (default: "vault")`
 
     The object type. Always `vault`.
 
@@ -66,7 +66,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

@@ -22,7 +22,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minLength: 0`
 
-  - `agent: object { id, instructions, model, 7 more }`
+  - `agent: object { id, instructions, model, 8 more }`
 
     The agent running in the session.
 
@@ -52,7 +52,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         Whether subagent tools are enabled. Defaults to false.
 
-      - `max_concurrent_subagents: number or null`
+      - `max_concurrent_subagents: integer or null`
 
         Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -130,7 +130,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           Generates ordinary text without a structured-output constraint.
 
-          - `type: "text"`
+          - `type: "text" (default: "text")`
 
             The type of the object. Always `text`.
 
@@ -144,7 +144,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             The JSON Schema that generated text must match.
 
-          - `type: "json_schema"`
+          - `type: "json_schema" (default: "json_schema")`
 
             The type of the object. Always `json_schema`.
 
@@ -190,7 +190,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           A JSON Schema object describing the function's arguments.
 
-        - `type: "function"`
+        - `type: "function" (default: "function")`
 
           The type of the object. Always `function`.
 
@@ -204,7 +204,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           Whether tools can be called from model-generated code.
 
-        - `type: "programmatic_tool_calling"`
+        - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
           The type of the object. Always `programmatic_tool_calling`.
 
@@ -262,7 +262,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
               `minLength: 0`
 
-            - `type: "http"`
+            - `type: "http" (default: "http")`
 
               The type of the object. Always `http`.
 
@@ -296,13 +296,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
               `minItems: 0`, `maxItems: 2000`
 
-            - `type: "stdio"`
+            - `type: "stdio" (default: "stdio")`
 
               The type of the object. Always `stdio`.
 
               - `"stdio"`
 
-        - `type: "mcp"`
+        - `type: "mcp" (default: "mcp")`
 
           The type of the object. Always `mcp`.
 
@@ -366,7 +366,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           - `"live"`
 
-        - `type: "web_search"`
+        - `type: "web_search" (default: "web_search")`
 
           The type of the object. Always `web_search`.
 
@@ -380,7 +380,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           Whether computer tool outputs include screenshots.
 
-        - `type: "computer_use"`
+        - `type: "computer_use" (default: "computer_use")`
 
           The type of the object. Always `computer_use`.
 
@@ -390,7 +390,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         Lets the agent manage its own scheduled wakeups.
 
-        - `type: "automations"`
+        - `type: "automations" (default: "automations")`
 
           The type of the object. Always `automations`.
 
@@ -404,7 +404,15 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         Whether context is compacted in the background. Defaults to true.
 
-  - `created_at: number`
+    - `experimental: optional object { time_awareness }`
+
+      The effective experimental settings for the agent.
+
+      - `time_awareness: boolean`
+
+        Whether the model receives periodic current-time reminders.
+
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the session was created.
 
@@ -418,7 +426,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       The session talks to CCA without selecting or provisioning an execution environment.
 
-      - `type: "none"`
+      - `type: "none" (default: "none")`
 
         The type of the object. Always `none`.
 
@@ -476,13 +484,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `size_bytes: number`
+          - `size_bytes: integer`
 
             The decoded file size in bytes.
 
             `format: int64`, `minimum: 0`
 
-          - `type: "file_id"`
+          - `type: "file_id" (default: "file_id")`
 
             The type of the object. Always `file_id`.
 
@@ -504,13 +512,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `size_bytes: number`
+          - `size_bytes: integer`
 
             The decoded file size in bytes.
 
             `format: int64`, `minimum: 0`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
@@ -582,7 +590,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           `minLength: 0`
 
-        - `type: "inline"`
+        - `type: "inline" (default: "inline")`
 
           The type of the object. Always `inline`.
 
@@ -616,7 +624,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `type: "skill_reference"`
+          - `type: "skill_reference" (default: "skill_reference")`
 
             The type of the object. Always `skill_reference`.
 
@@ -644,13 +652,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `type: "inline"`
+          - `type: "inline" (default: "inline")`
 
             The type of the object. Always `inline`.
 
             - `"inline"`
 
-      - `type: "openai_hosted"`
+      - `type: "openai_hosted" (default: "openai_hosted")`
 
         The type of the object. Always `openai_hosted`.
 
@@ -688,7 +696,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         `minLength: 0`
 
-      - `type: "self_hosted"`
+      - `type: "self_hosted" (default: "self_hosted")`
 
         The type of the object. Always `self_hosted`.
 
@@ -706,7 +714,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minLength: 0`
 
-  - `last_active_at: number`
+  - `last_active_at: integer`
 
     The Unix timestamp, in seconds, when the session was last active.
 
@@ -716,7 +724,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     Custom string key-value pairs attached to the session.
 
-  - `object: "agent.session"`
+  - `object: "agent.session" (default: "agent.session")`
 
     The object type. Always `agent.session`.
 
@@ -804,7 +812,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `type: "browser_authentication"`
+          - `type: "browser_authentication" (default: "browser_authentication")`
 
             The type of the object. Always `browser_authentication`.
 
@@ -826,7 +834,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
             `minLength: 0`
 
-          - `type: "browser_origin_access"`
+          - `type: "browser_origin_access" (default: "browser_origin_access")`
 
             The type of the object. Always `browser_origin_access`.
 
@@ -844,7 +852,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         `minLength: 0`
 
-      - `type: "computer_use_approval_request"`
+      - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
         The type of the object. Always `computer_use_approval_request`.
 
@@ -876,7 +884,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         `minLength: 0`
 
-      - `type: "function_call"`
+      - `type: "function_call" (default: "function_call")`
 
         The type of the object. Always `function_call`.
 
@@ -892,7 +900,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         `minLength: 0`
 
-      - `type: "environment_connection"`
+      - `type: "environment_connection" (default: "environment_connection")`
 
         The type of the object. Always `environment_connection`.
 
@@ -922,7 +930,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The number of input tokens used by the agent.
 
@@ -932,13 +940,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       A breakdown of the agent's input token usage.
 
-      - `cached_tokens: number`
+      - `cached_tokens: integer`
 
         The number of input tokens retrieved from the prompt cache.
 
         `format: int64`
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The number of output tokens generated by the agent.
 
@@ -948,13 +956,13 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       A breakdown of the agent's output token usage.
 
-      - `reasoning_tokens: number`
+      - `reasoning_tokens: integer`
 
         The number of output tokens used for reasoning.
 
         `format: int64`
 
-    - `total_tokens: number`
+    - `total_tokens: integer`
 
       The total number of input and output tokens used by the agent.
 
@@ -974,7 +982,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1012,6 +1020,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
     ],
     "compaction": {
       "async": true
+    },
+    "experimental": {
+      "time_awareness": true
     }
   },
   "created_at": 0,

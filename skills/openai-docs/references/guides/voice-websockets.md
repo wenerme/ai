@@ -328,28 +328,19 @@ const ws = new WebSocket(url, {
   },
 });
 
-let sessionCreated = false;
-
+let connected = false;
 ws.on("message", function incoming(message) {
   const event = JSON.parse(message.toString());
+  if (event.type === "error") throw new Error(event.error.message);
   if (event.type === "session.created") {
-    sessionCreated = true;
+    connected = true;
     console.log(`Connected to the Realtime API: ${event.session.id}`);
     ws.close(1000);
-  } else if (event.type === "error") {
-    console.error(event);
-    ws.close();
   }
 });
-ws.on("error", function handleError(error) {
-  console.error(error);
-  ws.close();
-});
-ws.on("close", function closed() {
-  if (!sessionCreated) {
-    console.error("Connection closed before the Realtime session was created.");
-    process.exitCode = 1;
-  }
+ws.on("close", () => {
+  if (!connected)
+    throw new Error("Connection closed before the session was created");
 });
 ```
 

@@ -22,7 +22,7 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the vault was created.
 
@@ -38,7 +38,7 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
 
     `minLength: 0`
 
-  - `object: "vault"`
+  - `object: "vault" (default: "vault")`
 
     The object type. Always `vault`.
 
@@ -52,7 +52,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

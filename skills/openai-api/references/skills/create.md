@@ -14,6 +14,8 @@ Create a new skill.
 
     Skill files to upload (directory upload) or a single zip file.
 
+    `maxItems: 500`
+
   - `string`
 
     Skill zip file to upload.
@@ -26,7 +28,7 @@ Create a new skill.
 
     Unique identifier for the skill.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (seconds) for when the skill was created.
 
@@ -48,7 +50,7 @@ Create a new skill.
 
     Name of the skill.
 
-  - `object: "skill"`
+  - `object: "skill" (default: "skill")`
 
     The object type, which is `skill`.
 
@@ -67,7 +69,7 @@ curl https://api.openai.com/v1/skills \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

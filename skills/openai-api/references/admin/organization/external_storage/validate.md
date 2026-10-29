@@ -14,13 +14,13 @@ Validate one customer-managed external storage configuration.
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
   - `geography: string`
 
-  - `object: "organization.external_storage"`
+  - `object: "organization.external_storage" (default: "organization.external_storage")`
 
     - `"organization.external_storage"`
 
@@ -40,7 +40,7 @@ Validate one customer-managed external storage configuration.
 
       - `role_arn: string`
 
-      - `type: "aws"`
+      - `type: "aws" (default: "aws")`
 
         - `"aws"`
 
@@ -58,7 +58,7 @@ Validate one customer-managed external storage configuration.
 
       - `tenant_id: string`
 
-      - `type: "azure"`
+      - `type: "azure" (default: "azure")`
 
         - `"azure"`
 
@@ -70,7 +70,7 @@ Validate one customer-managed external storage configuration.
 
       - `region: string`
 
-      - `type: "gcp"`
+      - `type: "gcp" (default: "gcp")`
 
         - `"gcp"`
 
@@ -88,7 +88,7 @@ Validate one customer-managed external storage configuration.
 
       - `tenancy_ocid: string`
 
-      - `type: "oci"`
+      - `type: "oci" (default: "oci")`
 
         - `"oci"`
 
@@ -110,7 +110,7 @@ curl https://api.openai.com/v1/organization/external_storage/$EXTERNAL_STORAGE_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -139,7 +139,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

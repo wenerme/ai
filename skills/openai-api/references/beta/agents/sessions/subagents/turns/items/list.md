@@ -26,13 +26,13 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
   `minLength: 0`, `maxLength: 1048576`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
   `format: int64`, `minimum: 1`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   The order in which resources are returned. Defaults to `desc`.
 
@@ -78,7 +78,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "input_text"`
+        - `type: "input_text" (default: "input_text")`
 
           The type of the object. Always `input_text`.
 
@@ -94,7 +94,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "input_image"`
+        - `type: "input_image" (default: "input_image")`
 
           The type of the object. Always `input_image`.
 
@@ -110,7 +110,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "output_text"`
+        - `type: "output_text" (default: "output_text")`
 
           The type of the object. Always `output_text`.
 
@@ -158,7 +158,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "message"`
+    - `type: "message" (default: "message")`
 
       The item type. Always `message`.
 
@@ -190,7 +190,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
         `minLength: 0`
 
-      - `type: "summary_text"`
+      - `type: "summary_text" (default: "summary_text")`
 
         The content type. Always `summary_text`.
 
@@ -202,7 +202,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "reasoning"`
+    - `type: "reasoning" (default: "reasoning")`
 
       The item type. Always `reasoning`.
 
@@ -260,7 +260,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "function_call"`
+    - `type: "function_call" (default: "function_call")`
 
       The item type. Always `function_call`.
 
@@ -294,7 +294,11 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       - `string`
 
+        `minLength: 0`
+
       - `array of InputContent`
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `InputText object { text, type }`
 
@@ -306,7 +310,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
             `minLength: 0`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -322,7 +326,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
             `minLength: 0`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
@@ -338,7 +342,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "function_call_output"`
+    - `type: "function_call_output" (default: "function_call_output")`
 
       The item type. Always `function_call_output`.
 
@@ -370,7 +374,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "output_text"`
+        - `type: "output_text" (default: "output_text")`
 
           The content type. Always `output_text`.
 
@@ -386,7 +390,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "encrypted_content"`
+        - `type: "encrypted_content" (default: "encrypted_content")`
 
           The content type. Always `encrypted_content`.
 
@@ -410,7 +414,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "agent_message"`
+    - `type: "agent_message" (default: "agent_message")`
 
       The item type. Always `agent_message`.
 
@@ -460,7 +464,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "mcp_call"`
+    - `type: "mcp_call" (default: "mcp_call")`
 
       The item type. Always `mcp_call`.
 
@@ -486,7 +490,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
         `minLength: 0`
 
-      - `type: "computer_screenshot"`
+      - `type: "computer_screenshot" (default: "computer_screenshot")`
 
         The content type. Always `computer_screenshot`.
 
@@ -508,7 +512,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "computer_use_call"`
+    - `type: "computer_use_call" (default: "computer_use_call")`
 
       The item type. Always `computer_use_call`.
 
@@ -592,7 +596,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
         `minLength: 0`
 
-      - `type: "browser_authentication"`
+      - `type: "browser_authentication" (default: "browser_authentication")`
 
         The type of the object. Always `browser_authentication`.
 
@@ -606,7 +610,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "computer_use_approval_request"`
+    - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
       The item type. Always computer_use_approval_request.
 
@@ -634,7 +638,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       - `Submit object { action, selected_option, type }`
 
-        - `action: "submit"`
+        - `action: "submit" (default: "submit")`
 
           - `"submit"`
 
@@ -644,17 +648,17 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
       - `Cancel object { action, type }`
 
-        - `action: "cancel"`
+        - `action: "cancel" (default: "cancel")`
 
           - `"cancel"`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
@@ -664,7 +668,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "computer_use_approval_request_result"`
+    - `type: "computer_use_approval_request_result" (default: "computer_use_approval_request_result")`
 
       - `"computer_use_approval_request_result"`
 
@@ -698,7 +702,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "search"`
+        - `type: "search" (default: "search")`
 
           The type of the object. Always `search`.
 
@@ -708,7 +712,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
         Opens a web page.
 
-        - `type: "open_page"`
+        - `type: "open_page" (default: "open_page")`
 
           The type of the object. Always `open_page`.
 
@@ -730,7 +734,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
           `minLength: 0`
 
-        - `type: "find_in_page"`
+        - `type: "find_in_page" (default: "find_in_page")`
 
           The type of the object. Always `find_in_page`.
 
@@ -746,7 +750,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
         Another web search action.
 
-        - `type: "other"`
+        - `type: "other" (default: "other")`
 
           The type of the object. Always `other`.
 
@@ -762,7 +766,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "web_search_call"`
+    - `type: "web_search_call" (default: "web_search_call")`
 
       The item type. Always `web_search_call`.
 
@@ -790,13 +794,13 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `duration_ms: number or null`
+    - `duration_ms: integer or null`
 
       The command duration in milliseconds.
 
       `format: int64`
 
-    - `exit_code: number or null`
+    - `exit_code: integer or null`
 
       The process exit code, if the command completed.
 
@@ -818,7 +822,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "command_execution"`
+    - `type: "command_execution" (default: "command_execution")`
 
       The item type. Always `command_execution`.
 
@@ -876,7 +880,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "create_subagent_call"`
+    - `type: "create_subagent_call" (default: "create_subagent_call")`
 
       The item type. Always `create_subagent_call`.
 
@@ -930,7 +934,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "send_subagent_input_call"`
+    - `type: "send_subagent_input_call" (default: "send_subagent_input_call")`
 
       The item type. Always `send_subagent_input_call`.
 
@@ -970,7 +974,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "resume_subagent_call"`
+    - `type: "resume_subagent_call" (default: "resume_subagent_call")`
 
       The item type. Always `resume_subagent_call`.
 
@@ -1010,7 +1014,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "wait_for_subagents_call"`
+    - `type: "wait_for_subagents_call" (default: "wait_for_subagents_call")`
 
       The item type. Always `wait_for_subagents_call`.
 
@@ -1050,7 +1054,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "interrupt_subagent_call"`
+    - `type: "interrupt_subagent_call" (default: "interrupt_subagent_call")`
 
       The item type. Always `interrupt_subagent_call`.
 
@@ -1090,7 +1094,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       `minLength: 0`
 
-    - `type: "close_subagent_call"`
+    - `type: "close_subagent_call" (default: "close_subagent_call")`
 
       The item type. Always `close_subagent_call`.
 
@@ -1114,7 +1118,7 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
   `minLength: 0`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   The object type, which is always `list`.
 
@@ -1128,7 +1132,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

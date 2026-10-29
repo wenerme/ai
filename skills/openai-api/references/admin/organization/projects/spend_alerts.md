@@ -42,7 +42,7 @@ Creates a project spend alert.
 
     Optional subject prefix for alert emails.
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The alert threshold amount, in cents.
 
@@ -94,7 +94,7 @@ Creates a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -117,7 +117,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -154,7 +154,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -211,7 +211,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -229,7 +229,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_al
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -259,13 +259,13 @@ Lists project spend alerts.
 
   Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of spend alerts to return. Defaults to 20.
 
   `minimum: 0`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned spend alerts.
 
@@ -319,7 +319,7 @@ Lists project spend alerts.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -348,7 +348,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -383,7 +383,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -466,7 +466,7 @@ Retrieves a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -477,7 +477,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -504,7 +504,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -565,7 +565,7 @@ Updates a project spend alert.
 
     Optional subject prefix for alert emails.
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The alert threshold amount, in cents.
 
@@ -617,7 +617,7 @@ Updates a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -640,7 +640,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -677,7 +677,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -742,7 +742,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 

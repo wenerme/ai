@@ -20,6 +20,14 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Whether to compact context in the background. Omission or null defaults to true. Set to false to use blocking compaction. Background compaction may increase token usage.
 
+- `experimental: optional object { time_awareness }  (default: {"time_awareness":false})`
+
+  Experimental agent settings. All experimental features default to disabled.
+
+  - `time_awareness: optional boolean (default: false)`
+
+    Whether to give the model periodic current-time reminders. Defaults to false.
+
 - `instructions: optional string or null`
 
   Additional instructions appended to the agent's default base instructions. Omit or set to null to add no custom instructions.
@@ -38,7 +46,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Whether subagent tools are enabled.
 
-  - `max_concurrent_subagents: optional number`
+  - `max_concurrent_subagents: optional integer`
 
     Maximum number of subagents that may run concurrently. Defaults to 6.
 
@@ -128,7 +136,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Generates ordinary text without a structured-output constraint.
 
-      - `type: "text"`
+      - `type: "text" (default: "text")`
 
         The type of the object. Always `text`.
 
@@ -142,7 +150,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         The JSON Schema that generated text must match.
 
-      - `type: "json_schema"`
+      - `type: "json_schema" (default: "json_schema")`
 
         The type of the object. Always `json_schema`.
 
@@ -190,13 +198,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       A JSON Schema object describing the function's arguments.
 
-    - `type: "function"`
+    - `type: "function" (default: "function")`
 
       The type of the object. Always `function`.
 
       - `"function"`
 
-    - `defer_loading: optional boolean`
+    - `defer_loading: optional boolean (default: false)`
 
       Whether this function is deferred and discovered through tool search. Defaults to `false`.
 
@@ -204,7 +212,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Discovers deferred function tools and loads them into the model context.
 
-    - `type: "tool_search"`
+    - `type: "tool_search" (default: "tool_search")`
 
       The type of the object. Always `tool_search`.
 
@@ -214,13 +222,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Enables calling tools from model-generated code.
 
-    - `type: "programmatic_tool_calling"`
+    - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
       The type of the object. Always `programmatic_tool_calling`.
 
       - `"programmatic_tool_calling"`
 
-    - `enabled: optional boolean`
+    - `enabled: optional boolean (default: true)`
 
       Whether tools can be called from model-generated code. Defaults to `true`.
 
@@ -248,7 +256,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "http"`
+        - `type: "http" (default: "http")`
 
           The type of the object. Always `http`.
 
@@ -274,7 +282,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           `minLength: 0`, `maxLength: 1048576`
 
-        - `type: "stdio"`
+        - `type: "stdio" (default: "stdio")`
 
           The type of the object. Always `stdio`.
 
@@ -292,7 +300,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           `minItems: 0`, `maxItems: 16384`
 
-    - `type: "mcp"`
+    - `type: "mcp" (default: "mcp")`
 
       The type of the object. Always `mcp`.
 
@@ -326,7 +334,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Metadata included with requests to this MCP server.
 
-    - `required: optional boolean`
+    - `required: optional boolean (default: false)`
 
       Whether this MCP server must initialize before the first turn. Defaults to `false`.
 
@@ -334,7 +342,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Web search.
 
-    - `type: "web_search"`
+    - `type: "web_search" (default: "web_search")`
 
       The type of the object. Always `web_search`.
 
@@ -404,13 +412,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Browser use in an OpenAI-hosted session.
 
-    - `type: "computer_use"`
+    - `type: "computer_use" (default: "computer_use")`
 
       The type of the object. Always `computer_use`.
 
       - `"computer_use"`
 
-    - `include_screenshots: optional boolean`
+    - `include_screenshots: optional boolean (default: false)`
 
       Whether computer tool outputs include screenshots. Defaults to `false`.
 
@@ -418,7 +426,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     Lets the agent manage its own scheduled wakeups.
 
-    - `type: "automations"`
+    - `type: "automations" (default: "automations")`
 
       The type of the object. Always `automations`.
 
@@ -426,7 +434,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
 ### Returns
 
-- `Agent object { id, created_at, instructions, 11 more }`
+- `Agent object { id, created_at, instructions, 12 more }`
 
   A reusable agent scoped to the caller's project.
 
@@ -436,7 +444,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     `minLength: 0`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the agent was created.
 
@@ -466,7 +474,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Whether subagent tools are enabled. Defaults to false.
 
-    - `max_concurrent_subagents: number or null`
+    - `max_concurrent_subagents: integer or null`
 
       Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -478,7 +486,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
     `minLength: 0`
 
-  - `object: "agent"`
+  - `object: "agent" (default: "agent")`
 
     The object type. Always `agent`.
 
@@ -550,7 +558,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Generates ordinary text without a structured-output constraint.
 
-        - `type: "text"`
+        - `type: "text" (default: "text")`
 
           The type of the object. Always `text`.
 
@@ -564,7 +572,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
           The JSON Schema that generated text must match.
 
-        - `type: "json_schema"`
+        - `type: "json_schema" (default: "json_schema")`
 
           The type of the object. Always `json_schema`.
 
@@ -610,7 +618,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         A JSON Schema object describing the function's arguments.
 
-      - `type: "function"`
+      - `type: "function" (default: "function")`
 
         The type of the object. Always `function`.
 
@@ -620,7 +628,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Discovers deferred function tools and loads them into the model context.
 
-      - `type: "tool_search"`
+      - `type: "tool_search" (default: "tool_search")`
 
         The type of the object. Always `tool_search`.
 
@@ -634,7 +642,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Whether tools can be called from model-generated code.
 
-      - `type: "programmatic_tool_calling"`
+      - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
         The type of the object. Always `programmatic_tool_calling`.
 
@@ -696,7 +704,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
             `minLength: 0`
 
-          - `type: "http"`
+          - `type: "http" (default: "http")`
 
             The type of the object. Always `http`.
 
@@ -730,13 +738,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
             `minItems: 0`, `maxItems: 2000`
 
-          - `type: "stdio"`
+          - `type: "stdio" (default: "stdio")`
 
             The type of the object. Always `stdio`.
 
             - `"stdio"`
 
-      - `type: "mcp"`
+      - `type: "mcp" (default: "mcp")`
 
         The type of the object. Always `mcp`.
 
@@ -800,7 +808,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         - `"live"`
 
-      - `type: "web_search"`
+      - `type: "web_search" (default: "web_search")`
 
         The type of the object. Always `web_search`.
 
@@ -814,7 +822,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Whether computer tool outputs include screenshots.
 
-      - `type: "computer_use"`
+      - `type: "computer_use" (default: "computer_use")`
 
         The type of the object. Always `computer_use`.
 
@@ -824,13 +832,13 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Lets the agent manage its own scheduled wakeups.
 
-      - `type: "automations"`
+      - `type: "automations" (default: "automations")`
 
         The type of the object. Always `automations`.
 
         - `"automations"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the agent was last updated.
 
@@ -844,6 +852,14 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Whether context is compacted in the background. Defaults to true.
 
+  - `experimental: optional object { time_awareness }`
+
+    The effective experimental settings for the agent.
+
+    - `time_awareness: boolean`
+
+      Whether the model receives periodic current-time reminders.
+
 ### Example
 
 ```http
@@ -856,7 +872,7 @@ curl https://api.openai.com/v1/agents \
         }'
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {
@@ -898,6 +914,9 @@ curl https://api.openai.com/v1/agents \
   "updated_at": 0,
   "compaction": {
     "async": true
+  },
+  "experimental": {
+    "time_awareness": true
   }
 }
 ```

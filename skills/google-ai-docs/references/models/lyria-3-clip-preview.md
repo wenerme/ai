@@ -21,3 +21,4 @@ coverage of features and capabilities.
 | Consumption options | **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)** Not supported **[Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)** Not supported **[Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)** Not supported |
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models#model-versions) for more details. - Preview: `lyria-3-clip-preview` - Preview: `lyria-3-pro-preview` |
 | Latest update | March 2026 |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#lyria-3) |

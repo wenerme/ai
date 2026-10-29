@@ -36,7 +36,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/$FINE_TUNED_MODEL_CHECKPO
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -53,7 +53,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

@@ -331,7 +331,7 @@ To view lifecycle metrics:
       Based on the filter you select, the dashboard automatically aggregates lifecycle metrics and displays the status of the value stream.
    1. Select a parameter.
    1. Select a value or enter text to refine the results.
-   1. To adjust the date range:
+   1. To adjust the date range, up to a maximum of 180 days:
       - In the **From** field, select a start date.
       - In the **To** field, select an end date.
 

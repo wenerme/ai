@@ -29,7 +29,7 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -49,7 +49,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
   -X DELETE
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

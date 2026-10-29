@@ -10,6 +10,8 @@ Get Live session content
 
   The ID of the stored Live session to download. Use the session ID returned when the session started with storage enabled.
 
+  `pattern: ^live_[A-Za-z0-9_-]{1,128}$`
+
 ### Example
 
 ```http

@@ -42,7 +42,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `AgentBrowserAuthenticationSubmitParam object { action, fields, type, selected_option }`
 
-        - `action: "submit"`
+        - `action: "submit" (default: "submit")`
 
           - `"submit"`
 
@@ -64,7 +64,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 16384`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
@@ -76,11 +76,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `AgentBrowserAuthenticationCancelParam object { action, type }`
 
-        - `action: "cancel"`
+        - `action: "cancel" (default: "cancel")`
 
           - `"cancel"`
 
-        - `type: "browser_authentication"`
+        - `type: "browser_authentication" (default: "browser_authentication")`
 
           - `"browser_authentication"`
 
@@ -102,11 +102,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             Dismiss this request without approving access.
 
-        - `type: "browser_origin_access"`
+        - `type: "browser_origin_access" (default: "browser_origin_access")`
 
           - `"browser_origin_access"`
 
-    - `type: "agent.session.input.computer_use_approval_request_result"`
+    - `type: "agent.session.input.computer_use_approval_request_result" (default: "agent.session.input.computer_use_approval_request_result")`
 
       The type of the object. Always `agent.session.input.computer_use_approval_request_result`.
 
@@ -138,7 +138,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_text"`
+          - `type: "input_text" (default: "input_text")`
 
             The type of the object. Always `input_text`.
 
@@ -154,25 +154,25 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
             `minLength: 0`, `maxLength: 1048576`
 
-          - `type: "input_image"`
+          - `type: "input_image" (default: "input_image")`
 
             The type of the object. Always `input_image`.
 
             - `"input_image"`
 
-      - `role: "user"`
+      - `role: "user" (default: "user")`
 
         The role of the message author. Always `user`.
 
         - `"user"`
 
-      - `type: optional "message"`
+      - `type: optional "message" (default: "message")`
 
         The type of the input item. Always `message`.
 
         - `"message"`
 
-    - `type: "agent.session.input.message"`
+    - `type: "agent.session.input.message" (default: "agent.session.input.message")`
 
       The type of the object. Always `agent.session.input.message`.
 
@@ -182,7 +182,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
     Cancels the session's active turn.
 
-    - `type: "agent.session.input.cancel"`
+    - `type: "agent.session.input.cancel" (default: "agent.session.input.cancel")`
 
       The type of the object. Always `agent.session.input.cancel`.
 
@@ -208,7 +208,7 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "agent.session.input.tool_result"`
+    - `type: "agent.session.input.tool_result" (default: "agent.session.input.tool_result")`
 
       The type of the object. Always `agent.session.input.tool_result`.
 
@@ -226,7 +226,11 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       - `string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `array of InputContentParam`
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -325,7 +329,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "error"`
+    - `type: "error" (default: "error")`
 
       The type of the object. Always `error`.
 
@@ -423,7 +427,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.ready"`
+    - `type: "agent.session.environment.ready" (default: "agent.session.environment.ready")`
 
       The type of the object. Always `agent.session.environment.ready`.
 
@@ -455,7 +459,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.suspended"`
+    - `type: "agent.session.environment.suspended" (default: "agent.session.environment.suspended")`
 
       The type of the object. Always `agent.session.environment.suspended`.
 
@@ -487,7 +491,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.expired"`
+    - `type: "agent.session.environment.expired" (default: "agent.session.environment.expired")`
 
       The type of the object. Always `agent.session.environment.expired`.
 
@@ -509,7 +513,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `reset_count: number`
+    - `reset_count: integer`
 
       Monotonically increasing reset number. Repeated notifications share this number.
 
@@ -527,7 +531,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.reset"`
+    - `type: "agent.session.environment.reset" (default: "agent.session.environment.reset")`
 
       The type of the object. Always `agent.session.environment.reset`.
 
@@ -555,7 +559,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -573,7 +577,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.output.command_execution_output.delta"`
+    - `type: "agent.output.command_execution_output.delta" (default: "agent.output.command_execution_output.delta")`
 
       The type of the object. Always `agent.output.command_execution_output.delta`.
 
@@ -599,7 +603,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `agent: object { id, instructions, model, 7 more }`
+      - `agent: object { id, instructions, model, 8 more }`
 
         The agent running in the session.
 
@@ -629,7 +633,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Whether subagent tools are enabled. Defaults to false.
 
-          - `max_concurrent_subagents: number or null`
+          - `max_concurrent_subagents: integer or null`
 
             Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
@@ -707,7 +711,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Generates ordinary text without a structured-output constraint.
 
-              - `type: "text"`
+              - `type: "text" (default: "text")`
 
                 The type of the object. Always `text`.
 
@@ -721,7 +725,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 The JSON Schema that generated text must match.
 
-              - `type: "json_schema"`
+              - `type: "json_schema" (default: "json_schema")`
 
                 The type of the object. Always `json_schema`.
 
@@ -767,7 +771,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               A JSON Schema object describing the function's arguments.
 
-            - `type: "function"`
+            - `type: "function" (default: "function")`
 
               The type of the object. Always `function`.
 
@@ -781,7 +785,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Whether tools can be called from model-generated code.
 
-            - `type: "programmatic_tool_calling"`
+            - `type: "programmatic_tool_calling" (default: "programmatic_tool_calling")`
 
               The type of the object. Always `programmatic_tool_calling`.
 
@@ -839,7 +843,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                   `minLength: 0`
 
-                - `type: "http"`
+                - `type: "http" (default: "http")`
 
                   The type of the object. Always `http`.
 
@@ -873,13 +877,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                   `minItems: 0`, `maxItems: 2000`
 
-                - `type: "stdio"`
+                - `type: "stdio" (default: "stdio")`
 
                   The type of the object. Always `stdio`.
 
                   - `"stdio"`
 
-            - `type: "mcp"`
+            - `type: "mcp" (default: "mcp")`
 
               The type of the object. Always `mcp`.
 
@@ -943,7 +947,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               - `"live"`
 
-            - `type: "web_search"`
+            - `type: "web_search" (default: "web_search")`
 
               The type of the object. Always `web_search`.
 
@@ -957,7 +961,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Whether computer tool outputs include screenshots.
 
-            - `type: "computer_use"`
+            - `type: "computer_use" (default: "computer_use")`
 
               The type of the object. Always `computer_use`.
 
@@ -967,7 +971,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Lets the agent manage its own scheduled wakeups.
 
-            - `type: "automations"`
+            - `type: "automations" (default: "automations")`
 
               The type of the object. Always `automations`.
 
@@ -981,7 +985,15 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Whether context is compacted in the background. Defaults to true.
 
-      - `created_at: number`
+        - `experimental: optional object { time_awareness }`
+
+          The effective experimental settings for the agent.
+
+          - `time_awareness: boolean`
+
+            Whether the model receives periodic current-time reminders.
+
+      - `created_at: integer`
 
         The Unix timestamp, in seconds, when the session was created.
 
@@ -995,7 +1007,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The session talks to CCA without selecting or provisioning an execution environment.
 
-          - `type: "none"`
+          - `type: "none" (default: "none")`
 
             The type of the object. Always `none`.
 
@@ -1053,13 +1065,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `size_bytes: number`
+              - `size_bytes: integer`
 
                 The decoded file size in bytes.
 
                 `format: int64`, `minimum: 0`
 
-              - `type: "file_id"`
+              - `type: "file_id" (default: "file_id")`
 
                 The type of the object. Always `file_id`.
 
@@ -1081,13 +1093,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `size_bytes: number`
+              - `size_bytes: integer`
 
                 The decoded file size in bytes.
 
                 `format: int64`, `minimum: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
@@ -1159,7 +1171,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "inline"`
+            - `type: "inline" (default: "inline")`
 
               The type of the object. Always `inline`.
 
@@ -1193,7 +1205,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "skill_reference"`
+              - `type: "skill_reference" (default: "skill_reference")`
 
                 The type of the object. Always `skill_reference`.
 
@@ -1221,13 +1233,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "inline"`
+              - `type: "inline" (default: "inline")`
 
                 The type of the object. Always `inline`.
 
                 - `"inline"`
 
-          - `type: "openai_hosted"`
+          - `type: "openai_hosted" (default: "openai_hosted")`
 
             The type of the object. Always `openai_hosted`.
 
@@ -1265,7 +1277,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "self_hosted"`
+          - `type: "self_hosted" (default: "self_hosted")`
 
             The type of the object. Always `self_hosted`.
 
@@ -1283,7 +1295,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `last_active_at: number`
+      - `last_active_at: integer`
 
         The Unix timestamp, in seconds, when the session was last active.
 
@@ -1293,7 +1305,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         Custom string key-value pairs attached to the session.
 
-      - `object: "agent.session"`
+      - `object: "agent.session" (default: "agent.session")`
 
         The object type. Always `agent.session`.
 
@@ -1381,7 +1393,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "browser_authentication"`
+              - `type: "browser_authentication" (default: "browser_authentication")`
 
                 The type of the object. Always `browser_authentication`.
 
@@ -1403,7 +1415,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "browser_origin_access"`
+              - `type: "browser_origin_access" (default: "browser_origin_access")`
 
                 The type of the object. Always `browser_origin_access`.
 
@@ -1421,7 +1433,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "computer_use_approval_request"`
+          - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
             The type of the object. Always `computer_use_approval_request`.
 
@@ -1453,7 +1465,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "function_call"`
+          - `type: "function_call" (default: "function_call")`
 
             The type of the object. Always `function_call`.
 
@@ -1469,7 +1481,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "environment_connection"`
+          - `type: "environment_connection" (default: "environment_connection")`
 
             The type of the object. Always `environment_connection`.
 
@@ -1499,7 +1511,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         Best-effort token usage for the session, or null if unknown. Recorded usage may change.
 
-        - `input_tokens: number`
+        - `input_tokens: integer`
 
           The number of input tokens used by the agent.
 
@@ -1509,13 +1521,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A breakdown of the agent's input token usage.
 
-          - `cached_tokens: number`
+          - `cached_tokens: integer`
 
             The number of input tokens retrieved from the prompt cache.
 
             `format: int64`
 
-        - `output_tokens: number`
+        - `output_tokens: integer`
 
           The number of output tokens generated by the agent.
 
@@ -1525,13 +1537,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           A breakdown of the agent's output token usage.
 
-          - `reasoning_tokens: number`
+          - `reasoning_tokens: integer`
 
             The number of output tokens used for reasoning.
 
             `format: int64`
 
-        - `total_tokens: number`
+        - `total_tokens: integer`
 
           The total number of input and output tokens used by the agent.
 
@@ -1543,7 +1555,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minItems: 0`, `maxItems: 2000`
 
-    - `type: "agent.session.created"`
+    - `type: "agent.session.created" (default: "agent.session.created")`
 
       The type of the object. Always `agent.session.created`.
 
@@ -1581,13 +1593,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `completed_at: number or null`
+      - `completed_at: integer or null`
 
         The Unix timestamp, in seconds, when the turn reached a terminal state.
 
         `format: int64`
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp, in seconds, used to order the turn by creation time. Subagent turns use their start time, falling back to completion time or the subagent opening time when the preceding timestamps are unavailable.
 
@@ -1699,7 +1711,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-      - `object: "agent.session.turn"`
+      - `object: "agent.session.turn" (default: "agent.session.turn")`
 
         The object type. Always `agent.session.turn`.
 
@@ -1711,7 +1723,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `started_at: number or null`
+      - `started_at: integer or null`
 
         The Unix timestamp, in seconds, when the turn started.
 
@@ -1761,7 +1773,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.created"`
+    - `type: "agent.session.turn.created" (default: "agent.session.turn.created")`
 
       The type of the object. Always `agent.session.turn.created`.
 
@@ -1793,7 +1805,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.in_progress"`
+    - `type: "agent.session.turn.in_progress" (default: "agent.session.turn.in_progress")`
 
       The type of the object. Always `agent.session.turn.in_progress`.
 
@@ -1825,7 +1837,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.completed"`
+    - `type: "agent.session.turn.completed" (default: "agent.session.turn.completed")`
 
       The type of the object. Always `agent.session.turn.completed`.
 
@@ -1861,7 +1873,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.failed"`
+    - `type: "agent.session.turn.failed" (default: "agent.session.turn.failed")`
 
       The type of the object. Always `agent.session.turn.failed`.
 
@@ -1897,7 +1909,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.cancelled"`
+    - `type: "agent.session.turn.cancelled" (default: "agent.session.turn.cancelled")`
 
       The type of the object. Always `agent.session.turn.cancelled`.
 
@@ -1947,7 +1959,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "input_text"`
+            - `type: "input_text" (default: "input_text")`
 
               The type of the object. Always `input_text`.
 
@@ -1963,7 +1975,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "input_image"`
+            - `type: "input_image" (default: "input_image")`
 
               The type of the object. Always `input_image`.
 
@@ -1979,7 +1991,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "output_text"`
+            - `type: "output_text" (default: "output_text")`
 
               The type of the object. Always `output_text`.
 
@@ -2027,7 +2039,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "message"`
+        - `type: "message" (default: "message")`
 
           The item type. Always `message`.
 
@@ -2059,7 +2071,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "summary_text"`
+          - `type: "summary_text" (default: "summary_text")`
 
             The content type. Always `summary_text`.
 
@@ -2071,7 +2083,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "reasoning"`
+        - `type: "reasoning" (default: "reasoning")`
 
           The item type. Always `reasoning`.
 
@@ -2129,7 +2141,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "function_call"`
+        - `type: "function_call" (default: "function_call")`
 
           The item type. Always `function_call`.
 
@@ -2163,7 +2175,11 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `string`
 
+            `minLength: 0`
+
           - `array of InputContent`
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `InputText object { text, type }`
 
@@ -2175,7 +2191,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "input_text"`
+              - `type: "input_text" (default: "input_text")`
 
                 The type of the object. Always `input_text`.
 
@@ -2191,7 +2207,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
                 `minLength: 0`
 
-              - `type: "input_image"`
+              - `type: "input_image" (default: "input_image")`
 
                 The type of the object. Always `input_image`.
 
@@ -2207,7 +2223,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "function_call_output"`
+        - `type: "function_call_output" (default: "function_call_output")`
 
           The item type. Always `function_call_output`.
 
@@ -2239,7 +2255,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "output_text"`
+            - `type: "output_text" (default: "output_text")`
 
               The content type. Always `output_text`.
 
@@ -2255,7 +2271,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "encrypted_content"`
+            - `type: "encrypted_content" (default: "encrypted_content")`
 
               The content type. Always `encrypted_content`.
 
@@ -2279,7 +2295,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "agent_message"`
+        - `type: "agent_message" (default: "agent_message")`
 
           The item type. Always `agent_message`.
 
@@ -2329,7 +2345,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "mcp_call"`
+        - `type: "mcp_call" (default: "mcp_call")`
 
           The item type. Always `mcp_call`.
 
@@ -2355,7 +2371,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "computer_screenshot"`
+          - `type: "computer_screenshot" (default: "computer_screenshot")`
 
             The content type. Always `computer_screenshot`.
 
@@ -2377,7 +2393,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "computer_use_call"`
+        - `type: "computer_use_call" (default: "computer_use_call")`
 
           The item type. Always `computer_use_call`.
 
@@ -2461,7 +2477,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "browser_authentication"`
+          - `type: "browser_authentication" (default: "browser_authentication")`
 
             The type of the object. Always `browser_authentication`.
 
@@ -2475,7 +2491,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "computer_use_approval_request"`
+        - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
           The item type. Always computer_use_approval_request.
 
@@ -2503,7 +2519,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `Submit object { action, selected_option, type }`
 
-            - `action: "submit"`
+            - `action: "submit" (default: "submit")`
 
               - `"submit"`
 
@@ -2513,17 +2529,17 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "browser_authentication"`
+            - `type: "browser_authentication" (default: "browser_authentication")`
 
               - `"browser_authentication"`
 
           - `Cancel object { action, type }`
 
-            - `action: "cancel"`
+            - `action: "cancel" (default: "cancel")`
 
               - `"cancel"`
 
-            - `type: "browser_authentication"`
+            - `type: "browser_authentication" (default: "browser_authentication")`
 
               - `"browser_authentication"`
 
@@ -2533,7 +2549,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "computer_use_approval_request_result"`
+        - `type: "computer_use_approval_request_result" (default: "computer_use_approval_request_result")`
 
           - `"computer_use_approval_request_result"`
 
@@ -2567,7 +2583,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "search"`
+            - `type: "search" (default: "search")`
 
               The type of the object. Always `search`.
 
@@ -2577,7 +2593,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Opens a web page.
 
-            - `type: "open_page"`
+            - `type: "open_page" (default: "open_page")`
 
               The type of the object. Always `open_page`.
 
@@ -2599,7 +2615,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               `minLength: 0`
 
-            - `type: "find_in_page"`
+            - `type: "find_in_page" (default: "find_in_page")`
 
               The type of the object. Always `find_in_page`.
 
@@ -2615,7 +2631,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             Another web search action.
 
-            - `type: "other"`
+            - `type: "other" (default: "other")`
 
               The type of the object. Always `other`.
 
@@ -2631,7 +2647,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "web_search_call"`
+        - `type: "web_search_call" (default: "web_search_call")`
 
           The item type. Always `web_search_call`.
 
@@ -2659,13 +2675,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `duration_ms: number or null`
+        - `duration_ms: integer or null`
 
           The command duration in milliseconds.
 
           `format: int64`
 
-        - `exit_code: number or null`
+        - `exit_code: integer or null`
 
           The process exit code, if the command completed.
 
@@ -2687,7 +2703,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "command_execution"`
+        - `type: "command_execution" (default: "command_execution")`
 
           The item type. Always `command_execution`.
 
@@ -2745,7 +2761,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "create_subagent_call"`
+        - `type: "create_subagent_call" (default: "create_subagent_call")`
 
           The item type. Always `create_subagent_call`.
 
@@ -2799,7 +2815,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "send_subagent_input_call"`
+        - `type: "send_subagent_input_call" (default: "send_subagent_input_call")`
 
           The item type. Always `send_subagent_input_call`.
 
@@ -2839,7 +2855,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "resume_subagent_call"`
+        - `type: "resume_subagent_call" (default: "resume_subagent_call")`
 
           The item type. Always `resume_subagent_call`.
 
@@ -2879,7 +2895,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "wait_for_subagents_call"`
+        - `type: "wait_for_subagents_call" (default: "wait_for_subagents_call")`
 
           The item type. Always `wait_for_subagents_call`.
 
@@ -2919,7 +2935,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "interrupt_subagent_call"`
+        - `type: "interrupt_subagent_call" (default: "interrupt_subagent_call")`
 
           The item type. Always `interrupt_subagent_call`.
 
@@ -2959,7 +2975,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "close_subagent_call"`
+        - `type: "close_subagent_call" (default: "close_subagent_call")`
 
           The item type. Always `close_subagent_call`.
 
@@ -2967,7 +2983,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The current public item type.
 
-    - `output_index: number or null`
+    - `output_index: integer or null`
 
       The index of the item in the turn output, when the item is agent output.
 
@@ -2985,7 +3001,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.item.added"`
+    - `type: "agent.session.turn.item.added" (default: "agent.session.turn.item.added")`
 
       The type of the object. Always `agent.session.turn.item.added`.
 
@@ -3005,7 +3021,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The session that became idle.
 
-    - `type: "agent.session.idle"`
+    - `type: "agent.session.idle" (default: "agent.session.idle")`
 
       The type of the object. Always `agent.session.idle`.
 
@@ -3025,7 +3041,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The session that started processing.
 
-    - `type: "agent.session.in_progress"`
+    - `type: "agent.session.in_progress" (default: "agent.session.in_progress")`
 
       The type of the object. Always `agent.session.in_progress`.
 
@@ -3045,7 +3061,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The session and its current required actions.
 
-    - `type: "agent.session.requires_action"`
+    - `type: "agent.session.requires_action" (default: "agent.session.requires_action")`
 
       The type of the object. Always `agent.session.requires_action`.
 
@@ -3065,7 +3081,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The failed session.
 
-    - `type: "agent.session.failed"`
+    - `type: "agent.session.failed" (default: "agent.session.failed")`
 
       The type of the object. Always `agent.session.failed`.
 
@@ -3097,7 +3113,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.pending"`
+    - `type: "agent.session.environment.pending" (default: "agent.session.environment.pending")`
 
       The type of the object. Always `agent.session.environment.pending`.
 
@@ -3129,7 +3145,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.connected"`
+    - `type: "agent.session.environment.connected" (default: "agent.session.environment.connected")`
 
       The type of the object. Always `agent.session.environment.connected`.
 
@@ -3161,7 +3177,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.disconnected"`
+    - `type: "agent.session.environment.disconnected" (default: "agent.session.environment.disconnected")`
 
       The type of the object. Always `agent.session.environment.disconnected`.
 
@@ -3193,7 +3209,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.environment.failed"`
+    - `type: "agent.session.environment.failed" (default: "agent.session.environment.failed")`
 
       The type of the object. Always `agent.session.environment.failed`.
 
@@ -3219,7 +3235,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `closed_at: number or null`
+      - `closed_at: integer or null`
 
         The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
@@ -3245,13 +3261,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `object: "agent.session.subagent"`
+      - `object: "agent.session.subagent" (default: "agent.session.subagent")`
 
         The object type. Always `agent.session.subagent`.
 
         - `"agent.session.subagent"`
 
-      - `opened_at: number`
+      - `opened_at: integer`
 
         The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
@@ -3281,7 +3297,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           The subagent is closed.
 
-    - `type: "agent.session.subagent.created"`
+    - `type: "agent.session.subagent.created" (default: "agent.session.subagent.created")`
 
       The type of the object. Always `agent.session.subagent.created`.
 
@@ -3301,7 +3317,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The subagent that resumed.
 
-    - `type: "agent.session.subagent.active"`
+    - `type: "agent.session.subagent.active" (default: "agent.session.subagent.active")`
 
       The type of the object. Always `agent.session.subagent.active`.
 
@@ -3321,7 +3337,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       The subagent that was closed.
 
-    - `type: "agent.session.subagent.closed"`
+    - `type: "agent.session.subagent.closed" (default: "agent.session.subagent.closed")`
 
       The type of the object. Always `agent.session.subagent.closed`.
 
@@ -3363,7 +3379,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "output_text"`
+          - `type: "output_text" (default: "output_text")`
 
             The content type. Always `output_text`.
 
@@ -3379,7 +3395,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             The agent's final answer.
 
-        - `role: "assistant"`
+        - `role: "assistant" (default: "assistant")`
 
           The role of the message author. Always `assistant`.
 
@@ -3395,7 +3411,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "message"`
+        - `type: "message" (default: "message")`
 
           The item type. Always `message`.
 
@@ -3433,7 +3449,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "computer_screenshot"`
+          - `type: "computer_screenshot" (default: "computer_screenshot")`
 
             The content type. Always `computer_screenshot`.
 
@@ -3455,7 +3471,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "computer_use_call"`
+        - `type: "computer_use_call" (default: "computer_use_call")`
 
           The item type. Always `computer_use_call`.
 
@@ -3539,7 +3555,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             `minLength: 0`
 
-          - `type: "browser_authentication"`
+          - `type: "browser_authentication" (default: "browser_authentication")`
 
             The type of the object. Always `browser_authentication`.
 
@@ -3553,7 +3569,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minLength: 0`
 
-        - `type: "computer_use_approval_request"`
+        - `type: "computer_use_approval_request" (default: "computer_use_approval_request")`
 
           The item type. Always computer_use_approval_request.
 
@@ -3591,7 +3607,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A request to close a subagent.
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the output item in the turn output.
 
@@ -3609,7 +3625,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.item.done"`
+    - `type: "agent.session.turn.item.done" (default: "agent.session.turn.item.done")`
 
       The type of the object. Always `agent.session.turn.item.done`.
 
@@ -3619,7 +3635,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     Emitted when an output text content part is added.
 
-    - `content_index: number`
+    - `content_index: integer`
 
       The index of the content part in the message.
 
@@ -3637,7 +3653,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3659,7 +3675,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.content_part.added"`
+    - `type: "agent.session.turn.content_part.added" (default: "agent.session.turn.content_part.added")`
 
       The type of the object. Always `agent.session.turn.content_part.added`.
 
@@ -3669,7 +3685,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     Emitted when an output content part is complete.
 
-    - `content_index: number`
+    - `content_index: integer`
 
       The index of the content part in the message.
 
@@ -3687,7 +3703,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3709,7 +3725,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.content_part.done"`
+    - `type: "agent.session.turn.content_part.done" (default: "agent.session.turn.content_part.done")`
 
       The type of the object. Always `agent.session.turn.content_part.done`.
 
@@ -3719,7 +3735,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     Emitted when text is appended to an output text content part.
 
-    - `content_index: number`
+    - `content_index: integer`
 
       The index of the content part in the message.
 
@@ -3743,7 +3759,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3761,7 +3777,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.output_text.delta"`
+    - `type: "agent.session.turn.output_text.delta" (default: "agent.session.turn.output_text.delta")`
 
       The type of the object. Always `agent.session.turn.output_text.delta`.
 
@@ -3771,7 +3787,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
     Emitted when an output text content part is complete.
 
-    - `content_index: number`
+    - `content_index: integer`
 
       The index of the content part in the message.
 
@@ -3789,7 +3805,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3813,7 +3829,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.output_text.done"`
+    - `type: "agent.session.turn.output_text.done" (default: "agent.session.turn.output_text.done")`
 
       The type of the object. Always `agent.session.turn.output_text.done`.
 
@@ -3835,7 +3851,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3851,7 +3867,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minLength: 0`
 
-      - `type: "summary_text"`
+      - `type: "summary_text" (default: "summary_text")`
 
         The content type. Always `summary_text`.
 
@@ -3861,7 +3877,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `summary_index: number`
+    - `summary_index: integer`
 
       The index of the summary content part.
 
@@ -3873,7 +3889,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.reasoning_summary_part.added"`
+    - `type: "agent.session.turn.reasoning_summary_part.added" (default: "agent.session.turn.reasoning_summary_part.added")`
 
       The type of the object. Always `agent.session.turn.reasoning_summary_part.added`.
 
@@ -3895,7 +3911,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3917,7 +3933,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"incomplete"`
 
-    - `summary_index: number`
+    - `summary_index: integer`
 
       The index of the summary part.
 
@@ -3929,7 +3945,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.reasoning_summary_part.done"`
+    - `type: "agent.session.turn.reasoning_summary_part.done" (default: "agent.session.turn.reasoning_summary_part.done")`
 
       The type of the object. Always `agent.session.turn.reasoning_summary_part.done`.
 
@@ -3957,7 +3973,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -3969,7 +3985,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `summary_index: number`
+    - `summary_index: integer`
 
       The index of the summary content part.
 
@@ -3981,7 +3997,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.reasoning_summary_text.delta"`
+    - `type: "agent.session.turn.reasoning_summary_text.delta" (default: "agent.session.turn.reasoning_summary_text.delta")`
 
       The type of the object. Always `agent.session.turn.reasoning_summary_text.delta`.
 
@@ -4003,7 +4019,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `output_index: number`
+    - `output_index: integer`
 
       The index of the item in the turn output.
 
@@ -4015,7 +4031,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `summary_index: number`
+    - `summary_index: integer`
 
       The index of the summary content part.
 
@@ -4033,7 +4049,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       `minLength: 0`
 
-    - `type: "agent.session.turn.reasoning_summary_text.done"`
+    - `type: "agent.session.turn.reasoning_summary_text.done" (default: "agent.session.turn.reasoning_summary_text.done")`
 
       The type of the object. Always `agent.session.turn.reasoning_summary_text.done`.
 

@@ -24,3 +24,4 @@ coverage of features and capabilities.
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-3-pro-image` |
 | Latest update | November 2025 |
 | Model card | [Model card](https://deepmind.google/models/model-cards/gemini-3-pro-image/) |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image) |

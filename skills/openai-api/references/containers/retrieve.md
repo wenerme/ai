@@ -14,7 +14,7 @@ Retrieve Container
 
   Unique identifier for the container.
 
-- `created_at: number`
+- `created_at: integer`
 
   Unix timestamp (in seconds) when the container was created.
 
@@ -44,11 +44,11 @@ Retrieve Container
 
     - `"last_active_at"`
 
-  - `minutes: optional number`
+  - `minutes: optional integer`
 
     The number of minutes after the anchor before the container expires.
 
-- `last_active_at: optional number`
+- `last_active_at: optional integer`
 
   Unix timestamp (in seconds) when the container was last active.
 
@@ -89,7 +89,7 @@ curl https://api.openai.com/v1/containers/$CONTAINER_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -120,7 +120,7 @@ curl https://api.openai.com/v1/containers/cntr_682dfebaacac8198bbfe9c2474fb6f4a0
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

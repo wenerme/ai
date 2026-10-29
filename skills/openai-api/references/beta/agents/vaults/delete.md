@@ -26,7 +26,7 @@ Deletes a vault and all its credentials. See [vaults](/api/docs/guides/agents-ap
 
     Whether the resource was deleted. Always `true`.
 
-  - `object: "vault.deleted"`
+  - `object: "vault.deleted" (default: "vault.deleted")`
 
     The object type. Always `vault.deleted`.
 
@@ -41,7 +41,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

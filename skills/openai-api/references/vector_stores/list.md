@@ -14,11 +14,11 @@ Returns a list of vector stores.
 
   A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_foo, your subsequent call can include before=obj_foo in order to fetch the previous page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
 
@@ -34,7 +34,7 @@ Returns a list of vector stores.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
@@ -42,27 +42,27 @@ Returns a list of vector stores.
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
-    - `cancelled: number`
+    - `cancelled: integer`
 
       The number of files that were cancelled.
 
-    - `completed: number`
+    - `completed: integer`
 
       The number of files that have been successfully processed.
 
-    - `failed: number`
+    - `failed: integer`
 
       The number of files that have failed to process.
 
-    - `in_progress: number`
+    - `in_progress: integer`
 
       The number of files that are currently being processed.
 
-    - `total: number`
+    - `total: integer`
 
       The total number of files.
 
-  - `last_active_at: number or null`
+  - `last_active_at: integer or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
 
@@ -97,7 +97,7 @@ Returns a list of vector stores.
 
     - `"completed"`
 
-  - `usage_bytes: number`
+  - `usage_bytes: integer`
 
     The total number of bytes used by the files in the vector store.
 
@@ -111,13 +111,13 @@ Returns a list of vector stores.
 
       - `"last_active_at"`
 
-    - `days: number`
+    - `days: integer`
 
       The number of days after the anchor time that the vector store will expire.
 
       `minimum: 1`, `maximum: 365`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
 
@@ -139,7 +139,7 @@ curl https://api.openai.com/v1/vector_stores \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -185,7 +185,7 @@ curl https://api.openai.com/v1/vector_stores \
   -H "OpenAI-Beta: assistants=v2"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

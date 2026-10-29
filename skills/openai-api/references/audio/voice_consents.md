@@ -16,7 +16,7 @@ Upload a voice consent recording.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -47,7 +47,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -F 'recording=@/path/to/recording'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -102,7 +102,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -132,7 +132,7 @@ Returns a list of voice consent recordings.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -144,7 +144,7 @@ Returns a list of voice consent recordings.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -181,7 +181,7 @@ curl https://api.openai.com/v1/audio/voice_consents \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -228,7 +228,7 @@ Retrieves a voice consent recording.
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -255,7 +255,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -300,7 +300,7 @@ Updates a voice consent recording (metadata only).
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
@@ -331,7 +331,7 @@ curl https://api.openai.com/v1/audio/voice_consents/$CONSENT_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -367,7 +367,7 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
 
     The consent recording identifier.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 

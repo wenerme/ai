@@ -1,5 +1,3 @@
-# Gemini Embedding model
-
 <br />
 
 A specialized engine for high-dimensional vector representation, providing
@@ -21,3 +19,4 @@ of features and capabilities.
 | Token limits^[\[\*\]](https://ai.google.dev/gemini-api/docs/tokens)^ | **Input token limit** 2,048 **Output dimension size** Flexible, supports: 128 - 3072, Recommended: 768, 1536, 3072 |
 | Versions | Read the [model version patterns](https://ai.google.dev/gemini-api/docs/models/gemini#model-versions) for more details. - Stable: `gemini-embedding-001` |
 | Latest update | June 2025 |
+| Pricing | [Pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding) |

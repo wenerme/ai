@@ -105,7 +105,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/hosted_tool_per
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -143,7 +143,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/hosted_too
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

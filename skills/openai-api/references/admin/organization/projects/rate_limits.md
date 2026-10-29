@@ -20,7 +20,7 @@ Returns the rate limits per model for a project.
 
   A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, beginning with obj_foo, your subsequent call can include before=obj_foo in order to fetch the previous page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 100)`
 
   A limit on the number of objects to be returned. The default is 100.
 
@@ -32,11 +32,11 @@ Returns the rate limits per model for a project.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -50,19 +50,19 @@ Returns the rate limits per model for a project.
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
 
@@ -83,7 +83,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 example 1
 
 ```json
 {
@@ -107,6 +107,19 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
 }
 ```
 
+#### 404 — default
+
+```json
+{
+  "error": {
+    "code": "project_not_found",
+    "message": "The project proj_abc was not found",
+    "type": "invalid_request_error",
+    "param": null
+  }
+}
+```
+
 ### Example
 
 ```http
@@ -115,7 +128,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -150,27 +163,27 @@ Updates a project rate limit.
 
 ### Body Parameters
 
-- `batch_1_day_max_input_tokens: optional number`
+- `batch_1_day_max_input_tokens: optional integer`
 
   The maximum batch input tokens per day. Only relevant for certain models.
 
-- `max_audio_megabytes_per_1_minute: optional number`
+- `max_audio_megabytes_per_1_minute: optional integer`
 
   The maximum audio megabytes per minute. Only relevant for certain models.
 
-- `max_images_per_1_minute: optional number`
+- `max_images_per_1_minute: optional integer`
 
   The maximum images per minute. Only relevant for certain models.
 
-- `max_requests_per_1_day: optional number`
+- `max_requests_per_1_day: optional integer`
 
   The maximum requests per day. Only relevant for certain models.
 
-- `max_requests_per_1_minute: optional number`
+- `max_requests_per_1_minute: optional integer`
 
   The maximum requests per minute.
 
-- `max_tokens_per_1_minute: optional number`
+- `max_tokens_per_1_minute: optional integer`
 
   The maximum tokens per minute.
 
@@ -184,11 +197,11 @@ Updates a project rate limit.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -202,19 +215,19 @@ Updates a project rate limit.
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
 
@@ -227,7 +240,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
     -d '{}'
 ```
 
-#### Response
+#### 200 example 1
 
 ```json
 {
@@ -243,6 +256,19 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
 }
 ```
 
+#### 404 — default
+
+```json
+{
+  "error": {
+    "code": "project_not_found",
+    "message": "The project proj_abc was not found",
+    "type": "invalid_request_error",
+    "param": null
+  }
+}
+```
+
 ### Example
 
 ```http
@@ -254,7 +280,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -279,11 +305,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -297,18 +323,18 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.

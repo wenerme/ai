@@ -88,14 +88,33 @@ By default, the packages cleanup policy is disabled. To enable it:
 1. Expand **Package registry**.
 1. Under **Manage storage used by package assets**, set the rules appropriately.
 
-### Available rules
+### Duplicate assets
 
-- `Number of duplicated assets to keep`: Some package formats support multiple copies of the same asset.
-  You can set a limit on how many duplicated assets to keep.
-  When the limit is reached, the oldest assets are automatically deleted.
-  Unique filenames, like those produced by Maven snapshots, are not counted as duplicated assets.
+The cleanup policy treats package assets as duplicates when both of these conditions are true:
 
-- `Number of duplicated assets to keep` runs [every 12 hours](https://gitlab.com/gitlab-org/gitlab/-/blob/master/app/models/packages/cleanup/policy.rb).
+- The assets belong to the same package in the project. For most formats, this means the same
+  name and version. For Conan packages, the user and channel must also match.
+- The assets have exactly the same filename. Filenames are case-sensitive, and the policy
+  does not use wildcards or patterns.
+
+Assets with different filenames are never duplicates.
+For example, Maven snapshot files include a timestamp in each filename, so the policy does not
+treat them as duplicates. Files with a fixed name, like `maven-metadata.xml`, are duplicates,
+and the policy deletes the older copies.
+
+For Conan packages, assets must also have the same file type, recipe revision, package revision,
+and package reference to be duplicates.
+
+The policy keeps the most recently uploaded duplicates, up to the number set in
+, and deletes the older ones.
+When the setting is , the default, the policy keeps every asset.
+To change the setting, see [enable the cleanup policy](#enable-the-cleanup-policy).
+
+The cleanup policy runs about every 12 hours. The first run starts about 12 hours after you
+save the setting.
+
+To control whether you can publish the same package name and version again, see
+[allow or prevent duplicates](supported_functionality.md#allow-or-prevent-duplicates).
 
 ### Set cleanup limits to conserve resources
 

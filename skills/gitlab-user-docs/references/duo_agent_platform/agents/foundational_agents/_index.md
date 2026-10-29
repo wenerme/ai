@@ -33,16 +33,12 @@ Tier availability varies by agent. For details, see each agent's page.
 | [Data Analyst](data_analyst.md) | Analyze and visualize platform data. |
 | [Flow Creator](flow_creator.md) | Create custom flows for the AI Catalog from Chat. |
 | [Onboarding Agent](onboarding_guide.md) | Adopt the GitLab DevSecOps platform, from first repository import through security and compliance maturity. |
-| [Permissions Assistant](permissions_assistant.md) | Select the correct permissions for a fine-grained personal access token. |
+| [Permissions Assistant](../../../../auth/tokens/permissions_assistant.md) | Select the correct permissions for a fine-grained personal access token. |
 | [Planner](planner.md) | Get assistance with product management and planning workflows. |
 | [Security Analyst](security_analyst_agent.md) | Get assistance with security analysis and vulnerability management. |
 | [Support Assistant](support_assistant.md) | Diagnose and resolve GitLab product problems. |
 
 ## Duplicate an agent
-
-> [!note]
-> You can duplicate foundational agents on GitLab.com only.
-> On GitLab Self-Managed, GitLab Dedicated, and GitLab Dedicated for Government, you cannot duplicate them.
 
 To make changes to a foundational agent, create a copy of it.
 

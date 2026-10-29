@@ -32,11 +32,11 @@ Returns a list of vector store files in a batch.
 
   - `"cancelled"`
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
 
@@ -52,7 +52,7 @@ Returns a list of vector store files in a batch.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
@@ -94,7 +94,7 @@ Returns a list of vector store files in a batch.
 
     - `"failed"`
 
-  - `usage_bytes: number`
+  - `usage_bytes: integer`
 
     The total vector store usage in bytes. Note that this may be different from the original file size.
 
@@ -112,6 +112,8 @@ Returns a list of vector store files in a batch.
 
     - `string`
 
+      `maxLength: 512`
+
     - `number`
 
     - `boolean`
@@ -124,13 +126,13 @@ Returns a list of vector store files in a batch.
 
       - `static: StaticFileChunkingStrategy`
 
-        - `chunk_overlap_tokens: number`
+        - `chunk_overlap_tokens: integer`
 
           The number of tokens that overlap between chunks. The default value is `400`.
 
           Note that the overlap must not exceed half of `max_chunk_size_tokens`.
 
-        - `max_chunk_size_tokens: number`
+        - `max_chunk_size_tokens: integer`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
@@ -168,7 +170,7 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATC
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -212,7 +214,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123
   -H "OpenAI-Beta: assistants=v2"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

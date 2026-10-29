@@ -23,7 +23,7 @@ Update a conversation
 
     The unique ID of the conversation.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The time at which the conversation was created, measured in seconds since the Unix epoch.
 
@@ -34,7 +34,7 @@ Update a conversation
     Set of 16 key-value pairs that can be attached to an object. This can be         useful for storing additional information about the object in a structured         format, and querying for objects via API or the dashboard.
     Keys are strings with a maximum length of 64 characters. Values are strings         with a maximum length of 512 characters.
 
-  - `object: "conversation"`
+  - `object: "conversation" (default: "conversation")`
 
     The object type, which is always `conversation`.
 
@@ -53,7 +53,7 @@ curl https://api.openai.com/v1/conversations/$CONVERSATION_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -77,7 +77,7 @@ curl https://api.openai.com/v1/conversations/conv_123 \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

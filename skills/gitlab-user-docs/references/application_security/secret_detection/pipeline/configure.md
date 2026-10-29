@@ -104,7 +104,7 @@ Change the behavior of pipeline secret detection by defining available CI/CD var
 | `SECRET_DETECTION_EXCLUDED_PATHS` | ""            | Exclude vulnerabilities from output based on the paths. The paths are a comma-separated list of patterns. Patterns can be globs (see [`doublestar.Match`](https://pkg.go.dev/github.com/bmatcuk/doublestar/v4@v4.0.2#Match) for supported patterns), or file or folder paths (for example, `doc,spec` ). Parent directories also match patterns. Detected secrets previously added to the vulnerability report are not removed. |
 | `SECRET_DETECTION_HISTORIC_SCAN`  | false         | Flag to enable a historic Gitleaks scan. |
 | `SECRET_DETECTION_IMAGE_SUFFIX`   | "" | Suffix added to the image name. If set to `-fips`, `FIPS-enabled` images are used for scan. See [Use FIPS-enabled images](_index.md#fips-enabled-images) for more details. |
-| `SECRET_DETECTION_LOG_OPTIONS`  | ""        | Flag to specify a commit range to scan. Gitleaks uses [`git log`](https://git-scm.com/docs/git-log) to determine the commit range. When defined, pipeline secret detection attempts to fetch all commits in the branch. If the analyzer can't access every commit, it continues with the already checked out repository. |
+| `SECRET_DETECTION_LOG_OPTIONS`  | ""        | Flag to specify a commit range to scan. Gitleaks uses [`git log`](https://git-scm.com/docs/git-log) to determine the commit range. When defined, pipeline secret detection attempts to fetch all commits in the branch. If the analyzer can't access every commit, it continues with the already checked out repository. For more information, see [how the analyzer fetches commits](_index.md#how-the-analyzer-fetches-commits). |
 
 ## Customize analyzer rulesets
 

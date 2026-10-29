@@ -78,7 +78,7 @@ Creates a webhook endpoint for the authenticated project.
 
   The HTTPS URL that receives webhook deliveries.
 
-  `maxLength: 2048`
+  `pattern: ^https://`, `maxLength: 2048`
 
 ### Returns
 
@@ -88,7 +88,7 @@ Creates a webhook endpoint for the authenticated project.
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -102,7 +102,7 @@ Creates a webhook endpoint for the authenticated project.
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -120,7 +120,7 @@ Creates a webhook endpoint for the authenticated project.
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -141,7 +141,7 @@ curl https://api.openai.com/v1/webhook_endpoints \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -181,7 +181,7 @@ Deletes a webhook endpoint for the authenticated project.
 
     Whether the endpoint was deleted.
 
-  - `object: "webhook_endpoint.deleted"`
+  - `object: "webhook_endpoint.deleted" (default: "webhook_endpoint.deleted")`
 
     The object type, which is always webhook_endpoint.deleted.
 
@@ -195,7 +195,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -217,7 +217,7 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
   ID of the last webhook endpoint from the previous page.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   Maximum number of webhook endpoints to return. Defaults to 20.
 
@@ -235,7 +235,7 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
       The unique ID of the webhook endpoint.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp when the endpoint was created.
 
@@ -249,7 +249,7 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
       The human-readable name of the endpoint.
 
-    - `object: "webhook_endpoint"`
+    - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
       The object type, which is always webhook_endpoint.
 
@@ -263,7 +263,7 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
       The HTTPS URL that receives webhook deliveries.
 
-    - `updated_at: optional number`
+    - `updated_at: optional integer`
 
       The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -281,7 +281,7 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
     The ID of the last endpoint in this page.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The object type, which is always list.
 
@@ -294,7 +294,7 @@ curl https://api.openai.com/v1/webhook_endpoints \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -337,7 +337,7 @@ Retrieves a webhook endpoint for the authenticated project.
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -351,7 +351,7 @@ Retrieves a webhook endpoint for the authenticated project.
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -365,7 +365,7 @@ Retrieves a webhook endpoint for the authenticated project.
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -378,7 +378,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -419,7 +419,7 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -433,7 +433,7 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -451,7 +451,7 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -465,7 +465,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID/rotate_sec
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -561,17 +561,17 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
     The event type sent in the test.
 
-  - `object: "webhook_endpoint.test"`
+  - `object: "webhook_endpoint.test" (default: "webhook_endpoint.test")`
 
     The object type, which is always webhook_endpoint.test.
 
     - `"webhook_endpoint.test"`
 
-  - `status_code: number`
+  - `status_code: integer`
 
     The HTTP status code returned by the endpoint.
 
-  - `success: true`
+  - `success: true (default: true)`
 
     Whether the test request completed. Always true for returned results; use status_code to determine the endpoint response.
 
@@ -592,7 +592,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID/test \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -692,7 +692,7 @@ Updates a webhook endpoint for the authenticated project.
 
   A new HTTPS URL that receives webhook deliveries.
 
-  `maxLength: 2048`
+  `pattern: ^https://`, `maxLength: 2048`
 
 ### Returns
 
@@ -702,7 +702,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -716,7 +716,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -730,7 +730,7 @@ Updates a webhook endpoint for the authenticated project.
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -744,7 +744,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -773,7 +773,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -811,7 +811,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -849,7 +849,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -887,7 +887,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -925,7 +925,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -973,7 +973,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -1029,7 +1029,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -1077,7 +1077,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -1125,7 +1125,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the event was created.
 
@@ -1173,7 +1173,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the batch API request was cancelled.
 
@@ -1209,7 +1209,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the batch API request was completed.
 
@@ -1245,7 +1245,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the batch API request expired.
 
@@ -1281,7 +1281,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the batch API request failed.
 
@@ -1319,7 +1319,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     Whether the endpoint was deleted.
 
-  - `object: "webhook_endpoint.deleted"`
+  - `object: "webhook_endpoint.deleted" (default: "webhook_endpoint.deleted")`
 
     The object type, which is always webhook_endpoint.deleted.
 
@@ -1335,7 +1335,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the eval run was canceled.
 
@@ -1371,7 +1371,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the eval run failed.
 
@@ -1407,7 +1407,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the eval run succeeded.
 
@@ -1443,7 +1443,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the fine-tuning job was cancelled.
 
@@ -1479,7 +1479,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the fine-tuning job failed.
 
@@ -1515,7 +1515,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the fine-tuning job succeeded.
 
@@ -1555,7 +1555,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the event was created.
 
@@ -1629,7 +1629,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the event was created.
 
@@ -1708,7 +1708,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the model response was completed.
 
@@ -1780,7 +1780,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the model response was cancelled.
 
@@ -1816,7 +1816,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the model response was completed.
 
@@ -1852,7 +1852,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the model response failed.
 
@@ -1888,7 +1888,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the model response was interrupted.
 
@@ -1924,7 +1924,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp in seconds when the event was created.
 
@@ -1935,6 +1935,8 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     - `id: string`
 
       The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+      `pattern: ^alert_[0-9a-f]{32}$`
 
   - `object: "event"`
 
@@ -1958,7 +1960,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp in seconds when the event was created.
 
@@ -1992,7 +1994,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp in seconds when the event was created.
 
@@ -2003,6 +2005,8 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
     - `id: string`
 
       The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+      `pattern: ^alert_[0-9a-f]{32}$`
 
   - `object: "event"`
 
@@ -2026,7 +2030,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook event.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp in seconds when the event was created.
 
@@ -2064,7 +2068,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2100,7 +2104,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2136,7 +2140,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2172,7 +2176,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2208,7 +2212,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2254,7 +2258,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2308,7 +2312,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2354,7 +2358,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2400,7 +2404,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp, in seconds, when the event was created.
 
@@ -2446,7 +2450,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the batch API request was cancelled.
 
@@ -2480,7 +2484,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the batch API request was completed.
 
@@ -2514,7 +2518,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the batch API request expired.
 
@@ -2548,7 +2552,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the batch API request failed.
 
@@ -2582,7 +2586,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the eval run was canceled.
 
@@ -2616,7 +2620,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the eval run failed.
 
@@ -2650,7 +2654,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the eval run succeeded.
 
@@ -2684,7 +2688,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the fine-tuning job was cancelled.
 
@@ -2718,7 +2722,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the fine-tuning job failed.
 
@@ -2752,7 +2756,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the fine-tuning job succeeded.
 
@@ -2790,7 +2794,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the event was created.
 
@@ -2862,7 +2866,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the event was created.
 
@@ -2939,7 +2943,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the model response was completed.
 
@@ -3009,7 +3013,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the model response was cancelled.
 
@@ -3043,7 +3047,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the model response was completed.
 
@@ -3077,7 +3081,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the model response failed.
 
@@ -3111,7 +3115,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp (in seconds) of when the model response was interrupted.
 
@@ -3145,7 +3149,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the webhook event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp in seconds when the event was created.
 
@@ -3156,6 +3160,8 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       - `id: string`
 
         The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+        `pattern: ^alert_[0-9a-f]{32}$`
 
     - `object: "event"`
 
@@ -3177,7 +3183,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the webhook event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp in seconds when the event was created.
 
@@ -3209,7 +3215,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the webhook event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp in seconds when the event was created.
 
@@ -3220,6 +3226,8 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       - `id: string`
 
         The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+        `pattern: ^alert_[0-9a-f]{32}$`
 
     - `object: "event"`
 
@@ -3241,7 +3249,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the webhook event.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp in seconds when the event was created.
 
@@ -3273,7 +3281,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -3287,7 +3295,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -3301,7 +3309,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -3319,7 +3327,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The unique ID of the webhook endpoint.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       The Unix timestamp when the endpoint was created.
 
@@ -3333,7 +3341,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The human-readable name of the endpoint.
 
-    - `object: "webhook_endpoint"`
+    - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
       The object type, which is always webhook_endpoint.
 
@@ -3347,7 +3355,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
       The HTTPS URL that receives webhook deliveries.
 
-    - `updated_at: optional number`
+    - `updated_at: optional integer`
 
       The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -3365,7 +3373,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The ID of the last endpoint in this page.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The object type, which is always list.
 
@@ -3379,17 +3387,17 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The event type sent in the test.
 
-  - `object: "webhook_endpoint.test"`
+  - `object: "webhook_endpoint.test" (default: "webhook_endpoint.test")`
 
     The object type, which is always webhook_endpoint.test.
 
     - `"webhook_endpoint.test"`
 
-  - `status_code: number`
+  - `status_code: integer`
 
     The HTTP status code returned by the endpoint.
 
-  - `success: true`
+  - `success: true (default: true)`
 
     Whether the test request completed. Always true for returned results; use status_code to determine the endpoint response.
 
@@ -3407,7 +3415,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The unique ID of the webhook endpoint.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp when the endpoint was created.
 
@@ -3421,7 +3429,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The human-readable name of the endpoint.
 
-  - `object: "webhook_endpoint"`
+  - `object: "webhook_endpoint" (default: "webhook_endpoint")`
 
     The object type, which is always webhook_endpoint.
 
@@ -3439,7 +3447,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The HTTPS URL that receives webhook deliveries.
 
-  - `updated_at: optional number`
+  - `updated_at: optional integer`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
 
@@ -3453,7 +3461,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     The webhook event types available to the authenticated project.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The object type, which is always list.
 
@@ -3475,7 +3483,7 @@ Returns webhook event types visible to the authenticated project.
 
     The webhook event types available to the authenticated project.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The object type, which is always list.
 
@@ -3488,7 +3496,7 @@ curl https://api.openai.com/v1/webhook_event_types \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

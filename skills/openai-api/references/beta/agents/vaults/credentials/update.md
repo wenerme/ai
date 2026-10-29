@@ -24,7 +24,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
     Rotate an OAuth credential for an HTTPS MCP destination.
 
-    - `type: "mcp_oauth"`
+    - `type: "mcp_oauth" (default: "mcp_oauth")`
 
       The type of the object. Always `mcp_oauth`.
 
@@ -66,7 +66,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
           Updates credentials sent using HTTP Basic authentication.
 
-          - `type: "client_secret_basic"`
+          - `type: "client_secret_basic" (default: "client_secret_basic")`
 
             The type of the object. Always `client_secret_basic`.
 
@@ -82,7 +82,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
           Updates credentials sent in the token request body.
 
-          - `type: "client_secret_post"`
+          - `type: "client_secret_post" (default: "client_secret_post")`
 
             The type of the object. Always `client_secret_post`.
 
@@ -104,7 +104,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
       `minLength: 0`, `maxLength: 1048576`
 
-    - `type: "static_bearer"`
+    - `type: "static_bearer" (default: "static_bearer")`
 
       The type of the object. Always `static_bearer`.
 
@@ -120,7 +120,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
       `minLength: 1`, `maxLength: 1048576`
 
-    - `type: "environment_variable"`
+    - `type: "environment_variable" (default: "environment_variable")`
 
       The type of the object. Always `environment_variable`.
 
@@ -198,7 +198,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
             Sends the client ID without a client secret.
 
-            - `type: "none"`
+            - `type: "none" (default: "none")`
 
               The type of the object. Always `none`.
 
@@ -208,7 +208,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
             Sends the client ID and secret using HTTP Basic authentication.
 
-            - `type: "client_secret_basic"`
+            - `type: "client_secret_basic" (default: "client_secret_basic")`
 
               The type of the object. Always `client_secret_basic`.
 
@@ -218,13 +218,13 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
             Sends the client ID and secret in the token request body.
 
-            - `type: "client_secret_post"`
+            - `type: "client_secret_post" (default: "client_secret_post")`
 
               The type of the object. Always `client_secret_post`.
 
               - `"client_secret_post"`
 
-      - `type: "mcp_oauth"`
+      - `type: "mcp_oauth" (default: "mcp_oauth")`
 
         The type of the object. Always `mcp_oauth`.
 
@@ -240,7 +240,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
         `minLength: 0`
 
-      - `type: "static_bearer"`
+      - `type: "static_bearer" (default: "static_bearer")`
 
         The type of the object. Always `static_bearer`.
 
@@ -258,7 +258,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
           Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
 
-          - `type: "unrestricted"`
+          - `type: "unrestricted" (default: "unrestricted")`
 
             The type of the object. Always `unrestricted`.
 
@@ -274,7 +274,7 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
             `minItems: 1`, `maxItems: 16`
 
-          - `type: "limited"`
+          - `type: "limited" (default: "limited")`
 
             The type of the object. Always `limited`.
 
@@ -286,13 +286,13 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
         `minLength: 0`
 
-      - `type: "environment_variable"`
+      - `type: "environment_variable" (default: "environment_variable")`
 
         The type of the object. Always `environment_variable`.
 
         - `"environment_variable"`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp, in seconds, when the credential was created.
 
@@ -308,13 +308,13 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
     `minLength: 0`
 
-  - `object: "vault.credential"`
+  - `object: "vault.credential" (default: "vault.credential")`
 
     The object type. Always `vault.credential`.
 
     - `"vault.credential"`
 
-  - `updated_at: number`
+  - `updated_at: integer`
 
     The Unix timestamp, in seconds, when the credential was last updated.
 
@@ -333,10 +333,12 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     -H 'Content-Type: application/json' \
     -H 'OpenAI-Beta: agents=v1' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
+    -d '{
+          "metadata": {}
+        }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

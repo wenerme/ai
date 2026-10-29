@@ -18,7 +18,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   Create the service account without default roles or an API key.
 
-- `expires_in_seconds: optional number or null`
+- `expires_in_seconds: optional integer or null`
 
   Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
 
@@ -32,7 +32,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -46,13 +46,13 @@ Creates a new service account in the project. By default, this also returns an u
 
   - `value: string`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
     `format: unixtime`
 
-- `created_at: number`
+- `created_at: integer`
 
   `format: unixtime`
 
@@ -81,7 +81,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -112,7 +112,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

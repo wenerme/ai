@@ -22,6 +22,8 @@ Update attributes on a vector store file.
 
   - `string`
 
+    `maxLength: 512`
+
   - `number`
 
   - `boolean`
@@ -36,7 +38,7 @@ Update attributes on a vector store file.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
@@ -78,7 +80,7 @@ Update attributes on a vector store file.
 
     - `"failed"`
 
-  - `usage_bytes: number`
+  - `usage_bytes: integer`
 
     The total vector store usage in bytes. Note that this may be different from the original file size.
 
@@ -96,6 +98,8 @@ Update attributes on a vector store file.
 
     - `string`
 
+      `maxLength: 512`
+
     - `number`
 
     - `boolean`
@@ -108,13 +112,13 @@ Update attributes on a vector store file.
 
       - `static: StaticFileChunkingStrategy`
 
-        - `chunk_overlap_tokens: number`
+        - `chunk_overlap_tokens: integer`
 
           The number of tokens that overlap between chunks. The default value is `400`.
 
           Note that the overlap must not exceed half of `max_chunk_size_tokens`.
 
-        - `max_chunk_size_tokens: number`
+        - `max_chunk_size_tokens: integer`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
@@ -150,7 +154,7 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/files/$FILE_ID \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -186,7 +190,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
   -d '{"attributes": {"key1": "value1", "key2": 2}}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

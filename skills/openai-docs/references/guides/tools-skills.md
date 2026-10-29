@@ -415,8 +415,23 @@ print(response.output_text)
 ```go
 // The surrounding program prepares an isolated sandbox with the skill files.
 client := openai.NewClient()
-tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{Environment: responses.FunctionShellToolEnvironmentUnionParam{OfLocal: &responses.LocalEnvironmentParam{Skills: []responses.LocalSkillParam{{Name: "csv-insights", Description: "Summarize CSV files and produce a markdown report.", Path: "/workspace/skills/csv-insights"}}}}}}
-params := responses.ResponseNewParams{Model: "gpt-6-astra", Tools: []responses.ToolUnionParam{tool}, Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.")}}
+tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{
+	Environment: responses.FunctionShellToolEnvironmentUnionParam{
+		OfLocal: &responses.LocalEnvironmentParam{
+			Skills: []responses.LocalSkillParam{{
+				Name:        "csv-insights",
+				Description: "Summarize CSV files and produce a markdown report.",
+				Path:        "/workspace/skills/csv-insights",
+			}},
+		},
+	},
+}}
+params := responses.ResponseNewParams{
+	Model: "gpt-6-astra",
+	Tools: []responses.ToolUnionParam{tool},
+	Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(
+		"Use the csv-insights skill and run locally to summarize /workspace/reports.csv. Read the skill instructions, write /workspace/report.md, and include the total in your final answer.")},
+}
 for turn := 0; turn <= 8; turn++ {
 	response, err := client.Responses.New(ctx, params)
 	if err != nil {

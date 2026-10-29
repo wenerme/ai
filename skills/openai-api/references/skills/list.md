@@ -10,7 +10,7 @@ List all skills for the current project.
 
   Identifier for the last item from the previous pagination request
 
-- `limit: optional number`
+- `limit: optional integer`
 
   Number of items to retrieve
 
@@ -36,7 +36,7 @@ List all skills for the current project.
 
       Unique identifier for the skill.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (seconds) for when the skill was created.
 
@@ -58,7 +58,7 @@ List all skills for the current project.
 
       Name of the skill.
 
-    - `object: "skill"`
+    - `object: "skill" (default: "skill")`
 
       The object type, which is `skill`.
 
@@ -76,7 +76,7 @@ List all skills for the current project.
 
     The ID of the last item in the list.
 
-  - `object: "list"`
+  - `object: "list" (default: "list")`
 
     The type of object returned, must be `list`.
 
@@ -89,7 +89,7 @@ curl https://api.openai.com/v1/skills \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

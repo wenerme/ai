@@ -56,7 +56,7 @@ Retrieves a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -67,7 +67,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -94,7 +94,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

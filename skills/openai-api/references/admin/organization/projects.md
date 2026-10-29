@@ -20,7 +20,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -32,7 +32,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -92,7 +92,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -115,7 +115,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/archive \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -193,7 +193,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -205,7 +205,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -268,7 +268,7 @@ curl https://api.openai.com/v1/organization/projects \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -294,7 +294,7 @@ curl -X POST https://api.openai.com/v1/organization/projects \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -319,11 +319,11 @@ Returns a list of projects.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `include_archived: optional boolean`
+- `include_archived: optional boolean (default: false)`
 
   If `true` returns all projects including those that have been `archived`. Archived projects are not included by default.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -335,7 +335,7 @@ Returns a list of projects.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -347,7 +347,7 @@ Returns a list of projects.
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -416,7 +416,7 @@ curl https://api.openai.com/v1/organization/projects \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -447,7 +447,7 @@ curl https://api.openai.com/v1/organization/projects?after=proj_abc&limit=20&inc
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -488,7 +488,7 @@ Retrieves a project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -500,7 +500,7 @@ Retrieves a project.
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -559,7 +559,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -582,7 +582,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -630,7 +630,7 @@ Modifies a project in the organization.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -642,7 +642,7 @@ Modifies a project in the organization.
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -703,7 +703,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -741,7 +741,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the project was created.
 
@@ -753,7 +753,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     - `"organization.project"`
 
-  - `archived_at: optional number or null`
+  - `archived_at: optional integer or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
@@ -876,7 +876,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -894,7 +894,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -920,7 +920,7 @@ Returns a list of API keys in the project.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -942,13 +942,13 @@ Returns a list of API keys in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `last_used_at: number or null`
+  - `last_used_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -974,7 +974,7 @@ Returns a list of API keys in the project.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the service account was created.
 
@@ -1004,7 +1004,7 @@ Returns a list of API keys in the project.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the user was created.
 
@@ -1034,7 +1034,7 @@ Returns a list of API keys in the project.
 
     The redacted value of the API key
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -1057,7 +1057,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1104,7 +1104,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys?after=key
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1158,13 +1158,13 @@ Retrieves an API key in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `last_used_at: number or null`
+  - `last_used_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1190,7 +1190,7 @@ Retrieves an API key in the project.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the service account was created.
 
@@ -1220,7 +1220,7 @@ Retrieves an API key in the project.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the user was created.
 
@@ -1250,7 +1250,7 @@ Retrieves an API key in the project.
 
     The redacted value of the API key
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -1263,7 +1263,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1302,7 +1302,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1356,7 +1356,7 @@ the new request. The response contains only the redacted key, not its secret.
 
 ### Body Parameters
 
-- `expires_in_seconds: optional number`
+- `expires_in_seconds: optional integer`
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
 
@@ -1376,13 +1376,13 @@ the new request. The response contains only the redacted key, not its secret.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `last_used_at: number or null`
+  - `last_used_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1408,7 +1408,7 @@ the new request. The response contains only the redacted key, not its secret.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the service account was created.
 
@@ -1438,7 +1438,7 @@ the new request. The response contains only the redacted key, not its secret.
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the user was created.
 
@@ -1468,7 +1468,7 @@ the new request. The response contains only the redacted key, not its secret.
 
     The redacted value of the API key
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -1487,7 +1487,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1527,7 +1527,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
   -d '{"scopes": ["api.all.read"], "expires_in_seconds": 86400}'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1575,13 +1575,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the API key was created
 
     `format: unixtime`
 
-  - `last_used_at: number or null`
+  - `last_used_at: integer or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1607,7 +1607,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the service account was created.
 
@@ -1637,7 +1637,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
         The identifier, which can be referenced in API endpoints
 
-      - `created_at: number`
+      - `created_at: integer`
 
         The Unix timestamp (in seconds) of when the user was created.
 
@@ -1667,7 +1667,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
     The redacted value of the API key
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -1707,19 +1707,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -1754,7 +1754,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/ac
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1786,7 +1786,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
 }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1849,19 +1849,19 @@ idempotently deactivate up to 10 certificates at a time.
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -1896,7 +1896,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates/de
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -1928,7 +1928,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
 }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -1976,11 +1976,11 @@ List certificates for this project.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "desc")`
 
   Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
 
@@ -2002,19 +2002,19 @@ List certificates for this project.
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -2047,7 +2047,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/certificates \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2078,7 +2078,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2120,19 +2120,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -2164,19 +2164,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -2208,19 +2208,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
   - `certificate_details: object { expires_at, valid_at }`
 
-    - `expires_at: optional number`
+    - `expires_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
       `format: unixtime`
 
-    - `valid_at: optional number`
+    - `valid_at: optional integer`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
@@ -2283,7 +2283,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/data_retention 
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2300,7 +2300,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/data_retention \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2376,7 +2376,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/data_retention 
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2396,7 +2396,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/data_reten
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2463,7 +2463,7 @@ Grants a group access to a project.
 
   Details about a group's membership in a project.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -2507,7 +2507,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2532,7 +2532,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2577,7 +2577,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2594,7 +2594,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc123/group
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2619,13 +2619,13 @@ Lists the groups that have access to a project.
 
   Cursor for pagination. Provide the ID of the last group from the previous response to fetch the next page.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of project groups to return. Defaults to 20.
 
   `minimum: 0`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned groups.
 
@@ -2639,7 +2639,7 @@ Lists the groups that have access to a project.
 
   Project group memberships returned in the current page.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -2692,7 +2692,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2720,7 +2720,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2754,7 +2754,7 @@ Retrieves a project's group.
 
 ### Query Parameters
 
-- `group_type: optional "group" or "tenant_group"`
+- `group_type: optional "group" or "tenant_group" (default: "group")`
 
   The type of group to retrieve.
 
@@ -2768,7 +2768,7 @@ Retrieves a project's group.
 
   Details about a group's membership in a project.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -2807,7 +2807,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/groups/$GROUP_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -2828,7 +2828,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -2865,7 +2865,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups/group_01
 
   Details about a group's membership in a project.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was granted project access.
 
@@ -2927,7 +2927,7 @@ Assigns a project role to a group within a project.
 
     Identifier for the group.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     Unix timestamp (in seconds) when the group was created.
 
@@ -2998,7 +2998,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3035,7 +3035,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8A
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3094,7 +3094,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles/$ROLE
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3111,7 +3111,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3138,7 +3138,7 @@ Lists the project roles assigned to a group within a project.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing project roles.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of project role assignments to return.
 
@@ -3170,7 +3170,7 @@ Lists the project roles assigned to a group within a project.
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -3208,7 +3208,7 @@ Lists the project roles assigned to a group within a project.
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -3235,7 +3235,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3280,7 +3280,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3346,7 +3346,7 @@ Retrieves a project role assigned to a group.
 
   - `principal_type: string`
 
-- `created_at: number or null`
+- `created_at: integer or null`
 
   When the role was created.
 
@@ -3384,7 +3384,7 @@ Retrieves a project role assigned to a group.
 
   Resource type the role applies to.
 
-- `updated_at: number or null`
+- `updated_at: integer or null`
 
   When the role was last updated.
 
@@ -3397,7 +3397,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/groups/$GROUP_ID/roles/$ROLE
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3435,7 +3435,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3473,7 +3473,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
       Identifier for the group.
 
-    - `created_at: number`
+    - `created_at: integer`
 
       Unix timestamp (in seconds) when the group was created.
 
@@ -3565,7 +3565,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -3603,7 +3603,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -3627,7 +3627,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -3665,7 +3665,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -3736,7 +3736,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/hosted_tool_per
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3766,7 +3766,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/hosted_tool_permis
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -3895,7 +3895,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/hosted_tool_per
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -3933,7 +3933,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/hosted_too
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4039,7 +4039,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissio
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4056,7 +4056,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/model_pe
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4106,7 +4106,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissio
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4126,7 +4126,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4201,7 +4201,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/model_permissio
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4227,7 +4227,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/model_perm
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4303,7 +4303,7 @@ Returns the rate limits per model for a project.
 
   A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, beginning with obj_foo, your subsequent call can include before=obj_foo in order to fetch the previous page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 100)`
 
   A limit on the number of objects to be returned. The default is 100.
 
@@ -4315,11 +4315,11 @@ Returns the rate limits per model for a project.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -4333,19 +4333,19 @@ Returns the rate limits per model for a project.
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
 
@@ -4366,7 +4366,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 example 1
 
 ```json
 {
@@ -4390,6 +4390,19 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits \
 }
 ```
 
+#### 404 — default
+
+```json
+{
+  "error": {
+    "code": "project_not_found",
+    "message": "The project proj_abc was not found",
+    "type": "invalid_request_error",
+    "param": null
+  }
+}
+```
+
 ### Example
 
 ```http
@@ -4398,7 +4411,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/rate_limits?after=
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4433,27 +4446,27 @@ Updates a project rate limit.
 
 ### Body Parameters
 
-- `batch_1_day_max_input_tokens: optional number`
+- `batch_1_day_max_input_tokens: optional integer`
 
   The maximum batch input tokens per day. Only relevant for certain models.
 
-- `max_audio_megabytes_per_1_minute: optional number`
+- `max_audio_megabytes_per_1_minute: optional integer`
 
   The maximum audio megabytes per minute. Only relevant for certain models.
 
-- `max_images_per_1_minute: optional number`
+- `max_images_per_1_minute: optional integer`
 
   The maximum images per minute. Only relevant for certain models.
 
-- `max_requests_per_1_day: optional number`
+- `max_requests_per_1_day: optional integer`
 
   The maximum requests per day. Only relevant for certain models.
 
-- `max_requests_per_1_minute: optional number`
+- `max_requests_per_1_minute: optional integer`
 
   The maximum requests per minute.
 
-- `max_tokens_per_1_minute: optional number`
+- `max_tokens_per_1_minute: optional integer`
 
   The maximum tokens per minute.
 
@@ -4467,11 +4480,11 @@ Updates a project rate limit.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -4485,19 +4498,19 @@ Updates a project rate limit.
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
 
@@ -4510,7 +4523,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
     -d '{}'
 ```
 
-#### Response
+#### 200 example 1
 
 ```json
 {
@@ -4526,6 +4539,19 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/rate_limits/$RA
 }
 ```
 
+#### 404 — default
+
+```json
+{
+  "error": {
+    "code": "project_not_found",
+    "message": "The project proj_abc was not found",
+    "type": "invalid_request_error",
+    "param": null
+  }
+}
+```
+
 ### Example
 
 ```http
@@ -4537,7 +4563,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4562,11 +4588,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
 
     The identifier, which can be referenced in API endpoints.
 
-  - `max_requests_per_1_minute: number`
+  - `max_requests_per_1_minute: integer`
 
     The maximum requests per minute.
 
-  - `max_tokens_per_1_minute: number`
+  - `max_tokens_per_1_minute: integer`
 
     The maximum tokens per minute.
 
@@ -4580,19 +4606,19 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/rate_limit
 
     - `"project.rate_limit"`
 
-  - `batch_1_day_max_input_tokens: optional number`
+  - `batch_1_day_max_input_tokens: optional integer`
 
     The maximum batch input tokens per day. Only present for relevant models.
 
-  - `max_audio_megabytes_per_1_minute: optional number`
+  - `max_audio_megabytes_per_1_minute: optional integer`
 
     The maximum audio megabytes per minute. Only present for relevant models.
 
-  - `max_images_per_1_minute: optional number`
+  - `max_images_per_1_minute: optional integer`
 
     The maximum images per minute. Only present for relevant models.
 
-  - `max_requests_per_1_day: optional number`
+  - `max_requests_per_1_day: optional integer`
 
     The maximum requests per day. Only present for relevant models.
 
@@ -4672,7 +4698,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4704,7 +4730,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4757,7 +4783,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4775,7 +4801,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8P
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4801,13 +4827,13 @@ Lists the roles configured for a project.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing roles.
 
-- `limit: optional number`
+- `limit: optional integer (default: 1000)`
 
   A limit on the number of roles to return. Defaults to 1000.
 
   `minimum: 0`, `maximum: 1000`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned roles.
 
@@ -4872,7 +4898,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -4903,7 +4929,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles?limit=20 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -4982,7 +5008,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5006,7 +5032,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PROJ \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5094,7 +5120,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/roles/$ROLE_ID \
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5126,7 +5152,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/roles/role_01J1F8PRO
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5187,7 +5213,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   Create the service account without default roles or an API key.
 
-- `expires_in_seconds: optional number or null`
+- `expires_in_seconds: optional integer or null`
 
   Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
 
@@ -5201,7 +5227,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   - `id: string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -5215,13 +5241,13 @@ Creates a new service account in the project. By default, this also returns an u
 
   - `value: string`
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
     `format: unixtime`
 
-- `created_at: number`
+- `created_at: integer`
 
   `format: unixtime`
 
@@ -5250,7 +5276,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5281,7 +5307,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5333,7 +5359,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5351,7 +5377,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5377,7 +5403,7 @@ Returns a list of service accounts in the project.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -5389,7 +5415,7 @@ Returns a list of service accounts in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the service account was created
 
@@ -5432,7 +5458,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5460,7 +5486,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?a
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5502,7 +5528,7 @@ Retrieves a service account in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the service account was created
 
@@ -5535,7 +5561,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5555,7 +5581,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/s
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5603,7 +5629,7 @@ Updates a service account in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the service account was created
 
@@ -5638,7 +5664,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5662,7 +5688,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5686,7 +5712,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the service account was created
 
@@ -5722,7 +5748,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     - `id: string`
 
-    - `created_at: number`
+    - `created_at: integer`
 
       `format: unixtime`
 
@@ -5736,13 +5762,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     - `value: string`
 
-    - `expires_at: optional number or null`
+    - `expires_at: optional integer or null`
 
       The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
       `format: unixtime`
 
-  - `created_at: number`
+  - `created_at: integer`
 
     `format: unixtime`
 
@@ -5792,7 +5818,7 @@ Creates an API key for a service account in the project.
 
 ### Body Parameters
 
-- `expires_in_seconds: optional number or null`
+- `expires_in_seconds: optional integer or null`
 
   Number of seconds until the API key expires.
 
@@ -5812,7 +5838,7 @@ Creates an API key for a service account in the project.
 
   The identifier of the API key.
 
-- `created_at: number`
+- `created_at: integer`
 
   The Unix timestamp (in seconds) when the API key was created.
 
@@ -5822,7 +5848,7 @@ Creates an API key for a service account in the project.
 
   The name of the API key.
 
-- `object: "organization.project.service_account.api_key"`
+- `object: "organization.project.service_account.api_key" (default: "organization.project.service_account.api_key")`
 
   The object type, which is always `organization.project.service_account.api_key`
 
@@ -5832,7 +5858,7 @@ Creates an API key for a service account in the project.
 
   The unredacted API key value.
 
-- `expires_at: optional number or null`
+- `expires_at: optional integer or null`
 
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -5846,7 +5872,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -5871,7 +5897,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -5893,7 +5919,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The identifier of the API key.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) when the API key was created.
 
@@ -5903,7 +5929,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The name of the API key.
 
-  - `object: "organization.project.service_account.api_key"`
+  - `object: "organization.project.service_account.api_key" (default: "organization.project.service_account.api_key")`
 
     The object type, which is always `organization.project.service_account.api_key`
 
@@ -5913,7 +5939,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
     The unredacted API key value.
 
-  - `expires_at: optional number or null`
+  - `expires_at: optional integer or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
@@ -5963,7 +5989,7 @@ Creates a project spend alert.
 
     Optional subject prefix for alert emails.
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The alert threshold amount, in cents.
 
@@ -6015,7 +6041,7 @@ Creates a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -6038,7 +6064,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6075,7 +6101,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6132,7 +6158,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6150,7 +6176,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_al
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6180,13 +6206,13 @@ Lists project spend alerts.
 
   Cursor for pagination. Provide the ID of the first spend alert from the previous response to fetch the previous page.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of spend alerts to return. Defaults to 20.
 
   `minimum: 0`, `maximum: 100`
 
-- `order: optional "asc" or "desc"`
+- `order: optional "asc" or "desc" (default: "asc")`
 
   Sort order for the returned spend alerts.
 
@@ -6240,7 +6266,7 @@ Lists project spend alerts.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -6269,7 +6295,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6304,7 +6330,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts?limit
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6387,7 +6413,7 @@ Retrieves a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -6398,7 +6424,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6425,7 +6451,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_alerts/alert
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6486,7 +6512,7 @@ Updates a project spend alert.
 
     Optional subject prefix for alert emails.
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The alert threshold amount, in cents.
 
@@ -6538,7 +6564,7 @@ Updates a project spend alert.
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -6561,7 +6587,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_alerts/$A
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6598,7 +6624,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6663,7 +6689,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
     - `"project.spend_alert"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The alert threshold amount, in cents.
 
@@ -6709,7 +6735,7 @@ Delete a project's hard spend limit.
 
     Whether the hard spend limit was deleted.
 
-  - `object: "project.spend_limit.deleted"`
+  - `object: "project.spend_limit.deleted" (default: "project.spend_limit.deleted")`
 
     The object type, which is always `project.spend_limit.deleted`.
 
@@ -6723,7 +6749,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6740,7 +6766,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_li
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6807,13 +6833,13 @@ Get a project's hard spend limit.
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -6824,7 +6850,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6846,7 +6872,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/spend_limit \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -6884,7 +6910,7 @@ Create or replace a project's hard spend limit.
 
   - `"month"`
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The hard spend limit amount, in cents.
 
@@ -6938,13 +6964,13 @@ Create or replace a project's hard spend limit.
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -6961,7 +6987,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -6988,7 +7014,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7052,13 +7078,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
 
       - `"month"`
 
-  - `object: "project.spend_limit"`
+  - `object: "project.spend_limit" (default: "project.spend_limit")`
 
     The object type, which is always `project.spend_limit`.
 
     - `"project.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -7072,7 +7098,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
 
     Whether the hard spend limit was deleted.
 
-  - `object: "project.spend_limit.deleted"`
+  - `object: "project.spend_limit.deleted" (default: "project.spend_limit.deleted")`
 
     The object type, which is always `project.spend_limit.deleted`.
 
@@ -7114,7 +7140,7 @@ Adds a user to the project. Users must already be members of the organization to
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -7149,7 +7175,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7174,7 +7200,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7219,7 +7245,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7237,7 +7263,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/users/us
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7263,7 +7289,7 @@ Returns a list of users in the project.
 
   A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
 
-- `limit: optional number`
+- `limit: optional integer (default: 20)`
 
   A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
 
@@ -7275,7 +7301,7 @@ Returns a list of users in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -7314,7 +7340,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7343,7 +7369,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users?after=user_a
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7386,7 +7412,7 @@ Retrieves a user in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -7417,7 +7443,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7438,7 +7464,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/users/user_abc \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7479,7 +7505,7 @@ Modifies a user's role in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -7512,7 +7538,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users/$USER_ID 
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7536,7 +7562,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7561,7 +7587,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -7667,7 +7693,7 @@ Assigns a project role to a user within a project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the user was added.
 
@@ -7679,13 +7705,13 @@ Assigns a project role to a user within a project.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number or null`
+  - `api_key_last_used_at: optional integer or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
     `format: unixtime`
 
-  - `created: optional number`
+  - `created: optional integer`
 
     The Unix timestamp (in seconds) of when the user was created.
 
@@ -7755,7 +7781,7 @@ Assigns a project role to a user within a project.
 
     - `banned: optional boolean or null`
 
-    - `banned_at: optional number or null`
+    - `banned_at: optional integer or null`
 
       `format: unixtime`
 
@@ -7778,7 +7804,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7844,7 +7870,7 @@ curl -X POST https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/ro
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7904,7 +7930,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles/$ROLE_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -7921,7 +7947,7 @@ curl -X DELETE https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -7948,7 +7974,7 @@ Lists the project roles assigned to a user within a project.
 
   Cursor for pagination. Provide the value from the previous response's `next` field to continue listing project roles.
 
-- `limit: optional number`
+- `limit: optional integer`
 
   A limit on the number of project role assignments to return.
 
@@ -7980,7 +8006,7 @@ Lists the project roles assigned to a user within a project.
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -8018,7 +8044,7 @@ Lists the project roles assigned to a user within a project.
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -8045,7 +8071,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -8090,7 +8116,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -8156,7 +8182,7 @@ Retrieves a project role assigned to a user.
 
   - `principal_type: string`
 
-- `created_at: number or null`
+- `created_at: integer or null`
 
   When the role was created.
 
@@ -8194,7 +8220,7 @@ Retrieves a project role assigned to a user.
 
   Resource type the role applies to.
 
-- `updated_at: number or null`
+- `updated_at: integer or null`
 
   When the role was last updated.
 
@@ -8207,7 +8233,7 @@ curl https://api.openai.com/v1/projects/$PROJECT_ID/users/$USER_ID/roles/$ROLE_I
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -8245,7 +8271,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -8323,7 +8349,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The identifier, which can be referenced in API endpoints
 
-    - `added_at: number`
+    - `added_at: integer`
 
       The Unix timestamp (in seconds) of when the user was added.
 
@@ -8335,13 +8361,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       - `"organization.user"`
 
-    - `api_key_last_used_at: optional number or null`
+    - `api_key_last_used_at: optional integer or null`
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
       `format: unixtime`
 
-    - `created: optional number`
+    - `created: optional integer`
 
       The Unix timestamp (in seconds) of when the user was created.
 
@@ -8411,7 +8437,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       - `banned: optional boolean or null`
 
-      - `banned_at: optional number or null`
+      - `banned_at: optional integer or null`
 
         `format: unixtime`
 
@@ -8455,7 +8481,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -8493,7 +8519,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 
@@ -8517,7 +8543,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     - `principal_type: string`
 
-  - `created_at: number or null`
+  - `created_at: integer or null`
 
     When the role was created.
 
@@ -8555,7 +8581,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Resource type the role applies to.
 
-  - `updated_at: number or null`
+  - `updated_at: integer or null`
 
     When the role was last updated.
 

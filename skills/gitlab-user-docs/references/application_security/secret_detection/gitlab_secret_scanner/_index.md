@@ -222,6 +222,9 @@ To scan with a FIPS-enabled image, use the default analyzer for
 ## Troubleshooting
 
 For common issues in pipeline secret detection, see the [troubleshooting](../pipeline/_index.md#troubleshooting) documentation.
+The analyzer fetches commits [the same way as the Gitleaks-based analyzer](../pipeline/_index.md#how-the-analyzer-fetches-commits).
+The Gitleaks-based analyzer uses version `v7.41.0`. Replace it with `v0.34.0`, the
+matching version of this analyzer.
 
 ### View findings suppressed by confidence threshold
 

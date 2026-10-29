@@ -51,7 +51,7 @@ curl https://api.openai.com/v1/organization/roles/$ROLE_ID \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -75,7 +75,7 @@ curl https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
   -H "Content-Type: application/json"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

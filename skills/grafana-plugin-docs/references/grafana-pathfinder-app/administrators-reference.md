@@ -52,7 +52,7 @@ To keep guides available while stopping context-aware recommendation requests:
 2. Turn off **Enable context-aware recommendations**.
 3. Select **Save settings**.
 
-This is separate from **Enable interactive learning**. Bundled guides remain available, and online browsers can fetch the public guide catalog and content. For details about data usage, refer to [Terms and conditions](../terms-and-conditions/).
+This is separate from **Enable interactive learning**. Bundled guides remain available, and online browsers can fetch the public guide catalog and content. For details about data usage, refer to [Terms and conditions](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/terms-and-conditions/).
 
 ## Configure recommendations
 
@@ -60,7 +60,7 @@ Context-aware recommendations use the current Grafana page and other contextual 
 
 The service is enabled by default in Grafana Cloud. On self-managed Grafana, an administrator must review the data usage notice and enable **Enable context-aware recommendations** on the **Recommendations** tab, then select **Save settings**.
 
-For an overview of content sources and data handling, refer to [Interactive learning architecture](../architecture/).
+For an overview of content sources and data handling, refer to [Interactive learning architecture](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture/).
 
 ## Choose how guides open
 
@@ -111,7 +111,7 @@ Users with the Editor or Admin role can open **More options** &gt; **Create guid
 
 Saving and publishing guides requires the Pathfinder storage service to be available on the instance and the user to have permission to write guides. If storage is unavailable, authors can still work locally and export guide JSON. Published guides are available to users in the same Grafana organization; they are not automatically shared to other stacks.
 
-For draft, publishing, sharing, and import instructions, refer to the [Block editor guide](../block-editor/).
+For draft, publishing, sharing, and import instructions, refer to the [Block editor guide](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor/).
 
 ## Kiosk mode
 
@@ -129,7 +129,7 @@ A catalog opened from the sidebar can launch guides in a new browser tab. Select
 
 Add `pathfinderKiosk=1` to a Grafana URL to open a kiosk. This works even when the **Enable kiosk mode** setting is off, but Pathfinder itself must be available. The link does not change the saved setting.
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 https://your-stack.grafana.net/?pathfinderKiosk=1
@@ -137,7 +137,7 @@ https://your-stack.grafana.net/?pathfinderKiosk=1
 
 To choose a different catalog, add `kioskRulesUrl` with the URL-encoded address of the catalog JSON:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 https://your-stack.grafana.net/?pathfinderKiosk=1&kioskRulesUrl=https%3A%2F%2Finteractive-learning.grafana.net%2Fmy-kiosk.json
@@ -155,7 +155,7 @@ Custom catalog selections must use HTTPS and come from Grafana’s guide CDN (`h
 
 A catalog can be a rules array or an object containing `rules` and an optional HTML `banner`. For example, this entry opens a bundled guide from Explore:
 
-JSON [Copy code to clipboard] Copy
+JSON ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```json
 [
@@ -182,4 +182,4 @@ These features depend on additional services and might not be available on your 
 - **Sandbox terminals:** Require the separate Coda app plugin, configured and registered by an administrator. If available, **Enable Coda terminal** on the **Configuration** tab exposes sandbox steps. Grafana Cloud can also enable terminals remotely; in that case the setting is read-only. Sandbox availability and permitted roles depend on the Coda configuration.
 - **Live sessions:** Allow a presenter to share guide actions with attendees. They are experimental and require a configured signalling service. The **Configuration** tab exposes the available settings when the feature is supported.
 
-For changes affecting existing sandbox installations, refer to [Upgrade notes](../upgrade-notes/).
+For changes affecting existing sandbox installations, refer to [Upgrade notes](https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes/).

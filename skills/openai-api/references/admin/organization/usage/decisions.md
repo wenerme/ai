@@ -6,7 +6,7 @@ Get Decisions API usage details for the organization.
 
 ### Query Parameters
 
-- `start_time: number`
+- `start_time: integer`
 
   Start time (Unix seconds) of the query time range, inclusive.
 
@@ -28,7 +28,7 @@ Get Decisions API usage details for the organization.
 
   - `"1d"`
 
-- `end_time: optional number or null`
+- `end_time: optional integer or null`
 
   End time (Unix seconds) of the query time range, exclusive.
 
@@ -50,7 +50,7 @@ Get Decisions API usage details for the organization.
 
   - `"api_source"`
 
-- `limit: optional number or null`
+- `limit: optional integer or null`
 
   Specifies the number of buckets to return.
 
@@ -78,27 +78,27 @@ Get Decisions API usage details for the organization.
 
 - `data: array of object { end_time, object, results, start_time }`
 
-  - `end_time: number`
+  - `end_time: integer`
 
-  - `object: "bucket"`
+  - `object: "bucket" (default: "bucket")`
 
     - `"bucket"`
 
   - `results: array of object { input_tokens, num_model_requests, object, 22 more }`
 
-    - `input_tokens: number`
+    - `input_tokens: integer`
 
       The aggregated number of input tokens used, including cached and cache-write tokens. This includes text, audio, and image tokens. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-    - `num_model_requests: number`
+    - `num_model_requests: integer`
 
       The count of requests made to the model.
 
-    - `object: "organization.usage.decisions.result"`
+    - `object: "organization.usage.decisions.result" (default: "organization.usage.decisions.result")`
 
       - `"organization.usage.decisions.result"`
 
-    - `output_tokens: number`
+    - `output_tokens: integer`
 
       The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
@@ -118,47 +118,47 @@ Get Decisions API usage details for the organization.
 
       When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
 
-    - `input_audio_tokens: optional number or null`
+    - `input_audio_tokens: optional integer or null`
 
       The aggregated number of uncached audio input tokens used.
 
-    - `input_cache_write_12h_tokens: optional number or null`
+    - `input_cache_write_12h_tokens: optional integer or null`
 
       The aggregated number of input tokens written to the cache with a 12-hour retention period.
 
-    - `input_cache_write_30m_tokens: optional number or null`
+    - `input_cache_write_30m_tokens: optional integer or null`
 
       The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
-    - `input_cache_write_tokens: optional number or null`
+    - `input_cache_write_tokens: optional integer or null`
 
       The aggregated number of input tokens written to the cache across 30-minute and 12-hour retention periods.
 
-    - `input_cached_audio_tokens: optional number or null`
+    - `input_cached_audio_tokens: optional integer or null`
 
       The aggregated number of cached audio input tokens used.
 
-    - `input_cached_image_tokens: optional number or null`
+    - `input_cached_image_tokens: optional integer or null`
 
       The aggregated number of cached image input tokens used.
 
-    - `input_cached_text_tokens: optional number or null`
+    - `input_cached_text_tokens: optional integer or null`
 
       The aggregated number of cached text input tokens used.
 
-    - `input_cached_tokens: optional number or null`
+    - `input_cached_tokens: optional integer or null`
 
       The aggregated number of cached input tokens used across text, audio, and image inputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-    - `input_image_tokens: optional number or null`
+    - `input_image_tokens: optional integer or null`
 
       The aggregated number of uncached image input tokens used.
 
-    - `input_text_tokens: optional number or null`
+    - `input_text_tokens: optional integer or null`
 
       The aggregated number of uncached text input tokens used, excluding cache-write tokens.
 
-    - `input_uncached_tokens: optional number or null`
+    - `input_uncached_tokens: optional integer or null`
 
       The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
@@ -166,15 +166,15 @@ Get Decisions API usage details for the organization.
 
       When `group_by=model`, this field provides the model name of the grouped usage result.
 
-    - `output_audio_tokens: optional number or null`
+    - `output_audio_tokens: optional integer or null`
 
       The aggregated number of audio output tokens used.
 
-    - `output_image_tokens: optional number or null`
+    - `output_image_tokens: optional integer or null`
 
       The aggregated number of image output tokens used.
 
-    - `output_text_tokens: optional number or null`
+    - `output_text_tokens: optional integer or null`
 
       The aggregated number of text output tokens used.
 
@@ -190,24 +190,24 @@ Get Decisions API usage details for the organization.
 
       When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-  - `start_time: number`
+  - `start_time: integer`
 
 - `has_more: boolean`
 
 - `next_page: string or null`
 
-- `object: "page"`
+- `object: "page" (default: "page")`
 
   - `"page"`
 
 ### Example
 
 ```http
-curl https://api.openai.com/v1/organization/usage/decisions \
+curl "https://api.openai.com/v1/organization/usage/decisions?start_time=0" \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -265,7 +265,7 @@ curl --get "https://api.openai.com/v1/organization/usage/decisions" \
   --data-urlencode "group_by=model"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

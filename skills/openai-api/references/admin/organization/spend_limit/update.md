@@ -18,7 +18,7 @@ Create or replace the organization's hard spend limit.
 
   - `"month"`
 
-- `threshold_amount: number`
+- `threshold_amount: integer`
 
   The hard spend limit amount, in cents.
 
@@ -72,13 +72,13 @@ Create or replace the organization's hard spend limit.
 
       - `"month"`
 
-  - `object: "organization.spend_limit"`
+  - `object: "organization.spend_limit" (default: "organization.spend_limit")`
 
     The object type, which is always `organization.spend_limit`.
 
     - `"organization.spend_limit"`
 
-  - `threshold_amount: number`
+  - `threshold_amount: integer`
 
     The hard spend limit amount, in cents.
 
@@ -95,7 +95,7 @@ curl https://api.openai.com/v1/organization/spend_limit \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -122,7 +122,7 @@ curl -X POST https://api.openai.com/v1/organization/spend_limit \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

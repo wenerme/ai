@@ -8,7 +8,7 @@ List the external key configs registered on the user's organization
 
 - `after: optional string or null`
 
-- `limit: optional number`
+- `limit: optional integer`
 
   `minimum: 0`, `maximum: 100`
 
@@ -34,7 +34,7 @@ List the external key configs registered on the user's organization
 
   - `api_project_ids: array of string`
 
-  - `created_at: number`
+  - `created_at: integer`
 
   - `name: string`
 
@@ -88,7 +88,7 @@ List the external key configs registered on the user's organization
 
 - `last_id: string or null`
 
-- `object: "list"`
+- `object: "list" (default: "list")`
 
   - `"list"`
 
@@ -99,7 +99,7 @@ curl https://api.openai.com/v1/organization/external_keys \
     -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

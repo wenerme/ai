@@ -20,7 +20,7 @@ Retrieves a vector store file batch.
 
     The identifier, which can be referenced in API endpoints.
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
 
@@ -28,23 +28,23 @@ Retrieves a vector store file batch.
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
-    - `cancelled: number`
+    - `cancelled: integer`
 
       The number of files that where cancelled.
 
-    - `completed: number`
+    - `completed: integer`
 
       The number of files that have been processed.
 
-    - `failed: number`
+    - `failed: integer`
 
       The number of files that have failed to process.
 
-    - `in_progress: number`
+    - `in_progress: integer`
 
       The number of files that are currently being processed.
 
-    - `total: number`
+    - `total: integer`
 
       The total number of files.
 
@@ -78,7 +78,7 @@ curl https://api.openai.com/v1/vector_stores/$VECTOR_STORE_ID/file_batches/$BATC
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -106,7 +106,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches/vsfb_abc123 
   -H "OpenAI-Beta: assistants=v2"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

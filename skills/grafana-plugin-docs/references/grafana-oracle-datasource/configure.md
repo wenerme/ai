@@ -15,7 +15,7 @@ Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
 - **Oracle Database access:** An Oracle user with `SELECT` permissions on the tables you want to query.
-- **Plugin installed:** The Oracle plugin must be installed. Refer to [Install and upgrade the Oracle data source plugin](/docs/plugins/grafana-oracle-datasource/latest/install/) for installation instructions.
+- **Plugin installed:** The Oracle plugin must be installed. Refer to [Install and upgrade the Oracle data source plugin](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/install/) for installation instructions.
 
 > Note
 >
@@ -25,7 +25,7 @@ Before configuring the data source, ensure you have:
 
 Create a dedicated Oracle user for Grafana with minimal permissions:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 CREATE USER grafana_reader IDENTIFIED BY "<strong_password>";
@@ -37,7 +37,7 @@ GRANT SELECT ON schema_name.table_name TO grafana_reader;
 
 To grant read access to all tables in a schema:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 BEGIN
@@ -50,7 +50,7 @@ END;
 
 For monitoring dashboards that query system views (`V$` views, `DBA_` views), grant the appropriate roles:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 GRANT SELECT_CATALOG_ROLE TO grafana_reader;
@@ -133,7 +133,7 @@ Expand table
 >
 > Only the `[tcp[s]://]host[:port]/service` form is supported. Easy Connect Plus parameters (`?param=value`) and comma-separated multi-host address lists are not supported.
 
-Configure SSL/TLS and Oracle wallet options for this connection method under [SSL/TLS](#ssltls).
+Configure SSL/TLS and Oracle wallet options for this connection method under [SSL/TLS](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/#ssltls).
 
 ### TNSNames Entry
 
@@ -141,7 +141,7 @@ Specify a `tnsnames.ora` entry for connection. This method requires the `tnsname
 
 > Note
 >
-> TNSNames is not supported in Grafana Cloud. Use Host with TCP Port and [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead.
+> TNSNames is not supported in Grafana Cloud. Use Host with TCP Port and [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) instead.
 
 Expand table
 
@@ -176,7 +176,7 @@ Kerberos authentication requires a TNSNames or Easy Connect Plus connection and 
 >
 > Kerberos authentication is not supported in Grafana Cloud.
 
-Kerberos must be configured in the `sqlnet.ora` file (and, for TNSNames connections, the `tnsnames.ora` file). Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for configuration parameters.
+Kerberos must be configured in the `sqlnet.ora` file (and, for TNSNames connections, the `tnsnames.ora` file). Refer to [Kerberos integration](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for configuration parameters.
 
 ## SSL/TLS
 
@@ -230,7 +230,7 @@ Expand table
 
 Monitor the Oracle `V$SESSION` view to observe how many sessions Grafana actually opens:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT COUNT(*) FROM V$SESSION WHERE USERNAME = 'GRAFANA_READER';
@@ -240,19 +240,19 @@ SELECT COUNT(*) FROM V$SESSION WHERE USERNAME = 'GRAFANA_READER';
 
 For Grafana Cloud users connecting to databases in a private network, Private data source connect (PDC) establishes a secured connection between your Grafana Cloud instance and your private Oracle database.
 
-Refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for setup instructions.
+Refer to [Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for setup instructions.
 
 ## Verify the connection
 
-Click **Save &amp; test** to verify the connection. On success, Grafana displays a message with your Oracle version banner, for example: **Success: Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production**. If the connection fails, refer to [Troubleshoot connection errors](/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#connection-errors).
+Click **Save &amp; test** to verify the connection. On success, Grafana displays a message with your Oracle version banner, for example: **Success: Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production**. If the connection fails, refer to [Troubleshoot connection errors](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/troubleshooting/#connection-errors).
 
 ## Provision the data source
 
-You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provision Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#datasources).
 
 ### TCP connection with basic authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -275,7 +275,7 @@ datasources:
 
 ### TNSNames connection with basic authentication
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -295,7 +295,7 @@ datasources:
 
 ### Easy Connect Plus connection with SSL/TLS
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -320,7 +320,7 @@ datasources:
 
 You can provision the Oracle data source using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/data_source):
 
-hcl [Copy code to clipboard] Copy
+hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```hcl
 resource "grafana_data_source" "oracle" {
@@ -354,7 +354,7 @@ For environments with many Oracle databases, use automated provisioning to manag
 
 1. **Use Terraform for provisioning.** Define data sources as Terraform resources with variables for database-specific values:
 
-   hcl [Copy code to clipboard] Copy
+   hcl ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```hcl
    variable "oracle_databases" {
@@ -389,7 +389,7 @@ For environments with many Oracle databases, use automated provisioning to manag
    }
    ```
 2. **Use consistent naming conventions.** Adopt a pattern like `Oracle - <environment> - <service>` (for example, `Oracle - prod - inventory`) so users can find the correct data source using the data source selector or the built-in `datasource` template variable.
-3. **Use the Grafana HTTP API.** For CI/CD pipelines, you can create data sources programmatically using the [Data source API](/docs/grafana/latest/developers/http_api/data_source/).
+3. **Use the Grafana HTTP API.** For CI/CD pipelines, you can create data sources programmatically using the [Data source API](https://grafana.com/docs/grafana/latest/developers/http_api/data_source/).
 4. **Use the data source template variable.** Create a `datasource` type variable filtered to `grafana-oracle-datasource` to let users switch between Oracle databases within a single dashboard.
 
 ## Environment variables
@@ -410,7 +410,7 @@ Expand table
 
 Example:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 export GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE=32
@@ -419,7 +419,7 @@ export GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE=100
 
 Alternatively, configure the response size and connection pool size in `grafana.ini` under the `[plugin.grafana-oracle-datasource]` section.
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [plugin.grafana-oracle-datasource]

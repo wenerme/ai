@@ -26,7 +26,7 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
     `minLength: 0`
 
-  - `closed_at: number or null`
+  - `closed_at: integer or null`
 
     The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
@@ -48,7 +48,7 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
         `minLength: 0`
 
-      - `type: "output_text"`
+      - `type: "output_text" (default: "output_text")`
 
         The content type. Always `output_text`.
 
@@ -64,7 +64,7 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
         `minLength: 0`
 
-      - `type: "encrypted_content"`
+      - `type: "encrypted_content" (default: "encrypted_content")`
 
         The content type. Always `encrypted_content`.
 
@@ -76,13 +76,13 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
     `minLength: 0`
 
-  - `object: "agent.session.subagent"`
+  - `object: "agent.session.subagent" (default: "agent.session.subagent")`
 
     The object type. Always `agent.session.subagent`.
 
     - `"agent.session.subagent"`
 
-  - `opened_at: number`
+  - `opened_at: integer`
 
     The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
@@ -120,7 +120,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {

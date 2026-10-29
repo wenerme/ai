@@ -78,7 +78,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [SAST False Positive Detection Flow](../application_security/vulnerabilities/false_positive_detection.md)  Automatically identify and filter out false positives in SAST security scans. | No | No  | Yes |
 | [SAST Vulnerability Resolution Flow](flows/foundational_flows/agentic_sast_vulnerability_resolution.md)  Automatically generate fixes and remediation steps for SAST vulnerabilities. | No | No  | Yes |
 | [Secret False Positive Detection Flow](flows/foundational_flows/secret_false_positive_detection.md)  Automatically identify and filter false positives in secret detection findings. | No | No  | Yes |
-| [Permissions Assistant](agents/foundational_agents/permissions_assistant.md)  Select the right permissions when creating a fine-grained personal access token. | No | No  | Yes |
+| [Permissions Assistant](../../auth/tokens/permissions_assistant.md)  Select the right permissions when creating a fine-grained personal access token. | No | No  | Yes |
 | [Security Analyst Agent](agents/foundational_agents/security_analyst_agent.md)  Automate repetitive security tasks: Triage issues, analyze vulnerabilities, and generate fixes. | No | No  | Yes |
 | [MCP server](../model_context_protocol/mcp_server.md)  Securely connect AI tools and applications to your GitLab instance. | Yes | Yes | Yes |
 

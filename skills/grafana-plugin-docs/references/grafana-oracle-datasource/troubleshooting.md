@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Oracle data source plugin in G
 
 # Troubleshoot Oracle data source issues
 
-This document provides solutions to common issues you may encounter when configuring or using the Oracle data source. For configuration instructions, refer to [Configure the Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/configure/).
+This document provides solutions to common issues you may encounter when configuring or using the Oracle data source. For configuration instructions, refer to [Configure the Oracle data source](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/).
 
 ## Licensing issues
 
@@ -27,8 +27,8 @@ Expand table
 
 | Cause                                          | Solution                                                                                                                                                                                                                                     |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Free-tier Grafana Cloud plan                   | The Oracle plugin requires a Pro or Advanced plan. Upgrade at [Grafana pricing](/pricing/).                                                                                                                                                  |
-| Enterprise license expired or not activated    | For self-managed Grafana, activate a current license token, and re-generate it if it has expired. Refer to [Activate a Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).                               |
+| Free-tier Grafana Cloud plan                   | The Oracle plugin requires a Pro or Advanced plan. Upgrade at [Grafana pricing](https://grafana.com/pricing/).                                                                                                                               |
+| Enterprise license expired or not activated    | For self-managed Grafana, activate a current license token, and re-generate it if it has expired. Refer to [Activate a Grafana Enterprise license](https://grafana.com/docs/grafana/latest/enterprise/license/activate-license/).            |
 | License doesn’t include plugin entitlement     | Contact your Grafana account team to verify that `grafana-oracle-datasource` is included in your license.                                                                                                                                    |
 | License token file permissions (self-managed)  | The license file must be readable by the Grafana process but not world-readable. Set permissions to `640` with the Grafana user as owner: `chmod 640 /var/lib/grafana/license.jwt` and `chown grafana:grafana /var/lib/grafana/license.jwt`. |
 | Grafana Cloud subscription not provisioned yet | New Cloud subscriptions may take a few minutes to provision plugin access. Wait 5-10 minutes and refresh the page. If the issue persists, contact Grafana support.                                                                           |
@@ -43,10 +43,10 @@ Expand table
 
 **Solutions:**
 
-1. **Grafana Cloud:** Verify your plan includes the Oracle plugin at [Grafana pricing](/pricing/). The plugin is not available on the free tier.
+1. **Grafana Cloud:** Verify your plan includes the Oracle plugin at [Grafana pricing](https://grafana.com/pricing/). The plugin is not available on the free tier.
 2. **Self-managed:** Install the plugin using the Grafana CLI:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    grafana cli plugins install grafana-oracle-datasource
@@ -92,7 +92,7 @@ The new go-ora driver handles TNS connection strings differently than Oracle Ins
 1. Verify the `ORACLE_HOME` environment variable is set and points to the directory containing `network/admin/tnsnames.ora`.
 2. Pass the full TNS descriptor directly in the TNSName field instead of a short name:
 
-   [Copy code to clipboard] Copy
+   ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```none
    (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=oracle-db1)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)(SERVER=DEDICATED)))
@@ -128,7 +128,7 @@ The go-ora driver does not support LDAP-based TNS name resolution (`sqlnet.ora`/
 
 1. Switch to **Host with TCP Port** and enter the hostname, port, and service name directly.
 2. Pass the full TNS descriptor in the **TNSName** field instead of relying on LDAP resolution.
-3. For Grafana Cloud, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) with the TCP connection method.
+3. For Grafana Cloud, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) with the TCP connection method.
 
 ### Summary of v3.x breaking changes
 
@@ -156,7 +156,7 @@ These errors occur when Grafana can’t reach the Oracle database. Before invest
 
 You can also test with Oracle’s `sqlplus` client:
 
-sh [Copy code to clipboard] Copy
+sh ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sh
 sqlplus <USER>/<PASSWORD>@<IP_ADDRESS>:<PORT>/<DB_NAME>
@@ -178,12 +178,12 @@ Refer to the official Oracle documentation for `sqlplus` installation:
 
 Expand table
 
-| Cause                               | Solution                                                                                                                                                                                                               |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Private database from Grafana Cloud | Grafana Cloud can’t reach databases on private networks directly. Set up [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a secure tunnel. |
-| Firewall blocking port 1521         | Ensure firewall rules and security groups allow outbound TCP traffic from the Grafana server to the Oracle host on port `1521` (or your configured port).                                                              |
-| Wrong IP or hostname                | Verify the IP address resolves correctly from the Grafana server. For Kubernetes deployments, ensure the Oracle service DNS is resolvable from the Grafana pod.                                                        |
-| VPN or network segmentation         | Confirm the Grafana server is on a network segment with routing to the Oracle database.                                                                                                                                |
+| Cause                               | Solution                                                                                                                                                                                                                                  |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Private database from Grafana Cloud | Grafana Cloud can’t reach databases on private networks directly. Set up [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) to establish a secure tunnel. |
+| Firewall blocking port 1521         | Ensure firewall rules and security groups allow outbound TCP traffic from the Grafana server to the Oracle host on port `1521` (or your configured port).                                                                                 |
+| Wrong IP or hostname                | Verify the IP address resolves correctly from the Grafana server. For Kubernetes deployments, ensure the Oracle service DNS is resolvable from the Grafana pod.                                                                           |
+| VPN or network segmentation         | Confirm the Grafana server is on a network segment with routing to the Oracle database.                                                                                                                                                   |
 
 ### “connection reset by peer”
 
@@ -215,7 +215,7 @@ The Oracle plugin uses a raw TCP connection to communicate with the database (Or
 
 **Solutions:**
 
-1. For Grafana Cloud connecting to private databases, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+1. For Grafana Cloud connecting to private databases, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 2. For self-managed Grafana behind a firewall, configure network routing or firewall rules to allow direct TCP traffic on port `1521` from the Grafana server to the Oracle database.
 3. If you use the **Secure Socks Proxy** feature (available when the `secureSocksDSProxyEnabled` feature toggle is enabled), you can route the connection through a SOCKS5 proxy.
 
@@ -234,7 +234,7 @@ The Oracle plugin uses a raw TCP connection to communicate with the database (Or
 4. In the Grafana Cloud data source settings, verify you’ve selected the correct PDC network from the drop-down.
 5. Check that the hostname and port in the data source configuration are correct from the PDC agent’s network perspective (use internal/private hostnames, not public ones).
 
-For PDC setup instructions, refer to [Configure Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+For PDC setup instructions, refer to [Configure Private data source connect](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
 
 ### “DB connection error”
 
@@ -270,7 +270,7 @@ Expand table
 1. Increase the **Dataproxy Timeout** in the data source settings to a higher value. The default is 120 seconds.
 2. For self-managed Grafana, set the `GF_DATAPROXY_TIMEOUT` environment variable:
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    export GF_DATAPROXY_TIMEOUT=300
@@ -278,7 +278,7 @@ Expand table
 3. Optimize your query. Large or complex queries may take longer to execute. Consider adding indexes.
 4. Set Oracle-side query limits to prevent long-running queries from impacting the database:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    ALTER PROFILE grafana_profile LIMIT CPU_PER_CALL 30000;
@@ -339,7 +339,7 @@ Expand table
 | `ORACLE_HOME` not set        | Set the `ORACLE_HOME` environment variable: `export ORACLE_HOME=/opt/oracle`                                                                                       |
 | File permissions             | Ensure Grafana has read access to the configuration files.                                                                                                         |
 
-Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for detailed file location information.
+Refer to [Kerberos integration](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for detailed file location information.
 
 ## Authentication errors
 
@@ -381,7 +381,7 @@ Expand table
 | Incorrect `krb5.conf`      | Verify the `krb5.conf` file contains the correct realm and KDC information.                                                         |
 | Misconfigured `sqlnet.ora` | Check that `SQLNET.KERBEROS5_CC_NAME` points to the correct ticket cache location.                                                  |
 
-Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for detailed configuration instructions.
+Refer to [Kerberos integration](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for detailed configuration instructions.
 
 ## Query errors
 
@@ -403,12 +403,12 @@ The Grafana database user doesn’t have `SELECT` permission on the referenced o
 
 1. Grant `SELECT` on the specific tables or views to the Grafana user:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    GRANT SELECT ON schema_name.table_name TO grafana_reader;
    ```
-2. For monitoring queries against data dictionary and dynamic performance views (`V$`, `DBA_`), grant the appropriate access. Refer to [Create a least-privilege database user](/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user).
+2. For monitoring queries against data dictionary and dynamic performance views (`V$`, `DBA_`), grant the appropriate access. Refer to [Create a least-privilege database user](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure/#create-a-least-privilege-database-user).
 3. Qualify the object with its schema (for example, `schema_name.table_name`) if the user’s default schema differs from the object’s owner.
 4. Verify the object name and confirm you’re connected to the correct database or pluggable database (PDB) service, because an object that exists in one service isn’t visible from another.
 
@@ -427,7 +427,7 @@ The Oracle data source sends the query text directly to the database. It doesn�
 
 1. Remove SQL\*Plus directives such as `SET`, `DEFINE`, `COLUMN`, `SPOOL`, `PROMPT`, and `EXIT`.
 2. Remove trailing statement terminators. Enter a single SQL statement without a trailing `;` or `/`.
-3. Replace SQL\*Plus substitution variables (`&var`) with [Grafana template variables](/docs/plugins/grafana-oracle-datasource/latest/template-variables/).
+3. Replace SQL\*Plus substitution variables (`&var`) with [Grafana template variables](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/template-variables/).
 4. Test the cleaned statement in Explore before adding it to a panel.
 
 ### “Query result too large”
@@ -449,7 +449,7 @@ The Oracle plugin enforces a maximum response size for gRPC messages. The defaul
 
 1. Add aggregation to reduce data volume:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -462,14 +462,14 @@ The Oracle plugin enforces a maximum response size for gRPC messages. The defaul
    ```
 2. Limit results using a `ROWNUM` or `FETCH FIRST` clause:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT * FROM your_table WHERE ROWNUM <= 1000
    ```
 3. For self-managed Grafana, increase the max response size (default `16`, maximum `512`, in MB) by adding `max_response_size` under the `[plugin.grafana-oracle-datasource]` section of `grafana.ini`:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [plugin.grafana-oracle-datasource]
@@ -478,7 +478,7 @@ The Oracle plugin enforces a maximum response size for gRPC messages. The defaul
 
    On Grafana versions before 12.4.2 you can instead set the `GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE` environment variable (still supported for backward compatibility):
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    export GF_PLUGINS_ORACLE_DATASOURCE_MAX_RESPONSE_SIZE=32
@@ -506,7 +506,7 @@ The **Row Limit** setting (default 1,000,000 rows) limits the maximum number of 
 2. Add aggregation or filtering to reduce the row count below the limit.
 3. For provisioned data sources, set `rowLimit` in `jsonData`:
 
-   YAML [Copy code to clipboard] Copy
+   YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```yaml
    jsonData:
@@ -548,7 +548,7 @@ Expand table
 
 **Example—casting LONG to VARCHAR2:**
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 SELECT
@@ -575,7 +575,7 @@ Expand table
 | Invalid interval format      | Use valid interval formats: `'5m'`, `'1h'`, `'1d'`                                                         |
 | Mixed parentheses and braces | Use one notation style per query. If braces are needed for complex expressions, use braces for all macros. |
 
-Refer to [Oracle query editor](/docs/plugins/grafana-oracle-datasource/latest/query-editor/) for the complete macro reference.
+Refer to [Oracle query editor](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor/) for the complete macro reference.
 
 ### Timezone issues
 
@@ -596,7 +596,7 @@ Timezone handling has also changed across plugin versions, so results can shift 
 1. Ensure the **Timezone** setting in the data source configuration matches your Oracle server’s timezone.
 2. Use the timezone-aware macros `$__timeFilterTZ` and `$__timeGroupTZ`:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT
@@ -609,7 +609,7 @@ Timezone handling has also changed across plugin versions, so results can shift 
    ```
 3. If your data is stored in a local timezone, convert the macro output to match:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    SELECT *
@@ -621,14 +621,14 @@ Timezone handling has also changed across plugin versions, so results can shift 
    ```
 4. Alternatively, convert your stored column to UTC for comparison:
 
-   SQL [Copy code to clipboard] Copy
+   SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```sql
    WHERE FROM_TZ(CAST(event_time AS TIMESTAMP), 'America/New_York') AT TIME ZONE 'UTC'
      BETWEEN $__timeFrom() AND $__timeTo()
    ```
 
-Refer to [Oracle query editor: timezone conversion](/docs/plugins/grafana-oracle-datasource/latest/query-editor/#convert-time-macros-to-a-local-timezone) for more examples.
+Refer to [Oracle query editor: timezone conversion](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/query-editor/#convert-time-macros-to-a-local-timezone) for more examples.
 
 ### No data returned
 
@@ -676,7 +676,7 @@ These issues relate to slow queries or resource exhaustion.
 
 1. Increase the **Connection Pool Size** in the data source settings, or add `poolsize` under the `[plugin.grafana-oracle-datasource]` section of `grafana.ini`:
 
-   ini [Copy code to clipboard] Copy
+   ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```ini
    [plugin.grafana-oracle-datasource]
@@ -685,7 +685,7 @@ These issues relate to slow queries or resource exhaustion.
 
    On Grafana versions before 12.4.2 you can instead set the `GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE` environment variable (still supported for backward compatibility):
 
-   Bash [Copy code to clipboard] Copy
+   Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
    ```bash
    export GF_PLUGINS_ORACLE_DATASOURCE_POOLSIZE=100
@@ -717,7 +717,7 @@ The Oracle plugin doesn’t support ARM64 architecture. Use an x64/amd64 system 
 
 TNSNames and Kerberos authentication are not supported in Grafana Cloud. Use the **Host with TCP Port** connection method with **Basic authentication**.
 
-For connecting to private databases, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+For connecting to private databases, use [Private data source connect (PDC)](https://grafana.com/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
 
 ## Debug logging
 
@@ -725,7 +725,7 @@ For advanced troubleshooting, enable debug logging to get detailed information a
 
 Add the following to your Grafana configuration file (`grafana.ini`) or set as environment variables:
 
-ini [Copy code to clipboard] Copy
+ini ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```ini
 [log]
@@ -738,7 +738,7 @@ enable_alpha = true
 
 Or using environment variables:
 
-Bash [Copy code to clipboard] Copy
+Bash ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```bash
 export GF_LOG_LEVEL=debug
@@ -755,9 +755,9 @@ Reset the log level to `info` after troubleshooting to avoid excessive log volum
 If you’ve tried the solutions above and still encounter issues:
 
 1. Check the [Grafana community forums](https://community.grafana.com/) for similar issues and solutions.
-2. Review the [Oracle data source documentation](/docs/plugins/grafana-oracle-datasource/latest/) for additional configuration options.
+2. Review the [Oracle data source documentation](https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/) for additional configuration options.
 3. Consult the [Oracle Database documentation](https://docs.oracle.com/en/database/) for service-specific guidance.
-4. Contact [Grafana Support](/support/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
+4. Contact [Grafana Support](https://grafana.com/support/) if you’re an Enterprise, Cloud Pro, or Cloud contracted customer.
 
 When reporting issues, include:
 

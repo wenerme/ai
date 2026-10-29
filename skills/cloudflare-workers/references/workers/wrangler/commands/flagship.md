@@ -12,11 +12,19 @@ image: https://developers.cloudflare.com/workers/wrangler/commands/flagship/og.p
 
 # Flagship
 
-Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `wrangler flagship` to manage [Flagship](https://developers.cloudflare.com/flagship/) apps and feature flags from the command line.
 
 `wrangler flagship` is available in Wrangler v4.107.0 and later.
+
+\`--local\` option
+
+Most `wrangler flagship flags` commands accept `--local` to read and write the local flag store used by [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), and [`cf dev`](https://developers.cloudflare.com/cf/projects/#start-development). They still default to the remote app. Bindings with `remote: true` do not use the local store, so `--local` changes do not affect them.
+
+`wrangler flagship flags pull <APP_ID>` copies remote flags into that store.
+
+For more information, refer to [Flagship local development](https://developers.cloudflare.com/flagship/configuration/#local-development).
 
 ## Authentication
 
@@ -1442,5 +1450,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/og.png?v=46ac9c3713a23c1c","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/og.png?v=46ac9c3713a23c1c","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

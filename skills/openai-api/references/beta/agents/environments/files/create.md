@@ -32,7 +32,7 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "file_id"`
+    - `type: "file_id" (default: "file_id")`
 
       The type of the object. Always `file_id`.
 
@@ -54,7 +54,7 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
       `minLength: 1`, `maxLength: 4096`
 
-    - `type: "inline"`
+    - `type: "inline" (default: "inline")`
 
       The type of the object. Always `inline`.
 
@@ -72,7 +72,7 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     `minLength: 0`
 
-  - `object: "agent.environment.file"`
+  - `object: "agent.environment.file" (default: "agent.environment.file")`
 
     The object type. Always `agent.environment.file`.
 
@@ -84,7 +84,7 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
     `minLength: 0`
 
-  - `size_bytes: number`
+  - `size_bytes: integer`
 
     The file size in bytes.
 
@@ -99,7 +99,7 @@ curl https://api.openai.com/v1/agents/environments/$ENVIRONMENT_ID/files \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 201 — Example
 
 ```json
 {

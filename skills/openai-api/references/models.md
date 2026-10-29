@@ -28,7 +28,7 @@ curl https://api.openai.com/v1/models/$MODEL \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -46,7 +46,7 @@ curl https://api.openai.com/v1/models/ft:gpt-4o-mini:acemeco:suffix:abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -70,7 +70,7 @@ Lists the currently available models, and provides basic information about each 
 
     The model identifier, which can be referenced in the API endpoints.
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) when the model was created.
 
@@ -103,7 +103,7 @@ curl https://api.openai.com/v1/models \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -127,7 +127,7 @@ curl https://api.openai.com/v1/models \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -178,7 +178,7 @@ Retrieves a model instance, providing basic information about the model such as 
 
     The model identifier, which can be referenced in the API endpoints.
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) when the model was created.
 
@@ -207,7 +207,7 @@ curl https://api.openai.com/v1/models/$MODEL \
     -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -226,7 +226,7 @@ curl https://api.openai.com/v1/models/gpt-6-astra \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
@@ -250,7 +250,7 @@ curl https://api.openai.com/v1/models/gpt-6-astra \
 
     The model identifier, which can be referenced in the API endpoints.
 
-  - `created: number`
+  - `created: integer`
 
     The Unix timestamp (in seconds) when the model was created.
 

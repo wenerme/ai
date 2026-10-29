@@ -32,7 +32,7 @@ Adds a user to the project. Users must already be members of the organization to
 
     The identifier, which can be referenced in API endpoints
 
-  - `added_at: number`
+  - `added_at: integer`
 
     The Unix timestamp (in seconds) of when the project was added.
 
@@ -67,7 +67,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/users \
         }'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -92,7 +92,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users \
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {

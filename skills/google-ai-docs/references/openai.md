@@ -246,7 +246,8 @@ functionality, so they can't be used at the same time.
           }'
 
 Gemini 3 supports OpenAI compatibility for thought signatures in chat completion
-APIs. You can find the full example on the [thought signatures](https://ai.google.dev/gemini-api/docs/thought-signatures#openai) page.
+APIs. You can find the full example on the
+[thought signatures](https://ai.google.dev/gemini-api/docs/thought-signatures#openai) page.
 
 ## Streaming
 
@@ -824,7 +825,7 @@ Gemini models can output JSON objects in any [structure you define](https://ai.g
 
 Text embeddings measure the relatedness of text strings and can be generated
 using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You can use
-`gemini-embedding-2-preview` for multimodal embeddings or
+`gemini-embedding-2` for multimodal embeddings or
 `gemini-embedding-001` for text-only embeddings.
 
 ### Python
@@ -838,7 +839,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You ca
 
     response = client.embeddings.create(
         input="Your text string goes here",
-        model="gemini-embedding-2-preview"
+        model="gemini-embedding-2"
     )
 
     print(response.data[0].embedding)
@@ -854,7 +855,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You ca
 
     async function main() {
       const embedding = await openai.embeddings.create({
-        model: "gemini-embedding-2-preview",
+        model: "gemini-embedding-2",
         input: "Your text string goes here",
       });
 
@@ -870,7 +871,7 @@ using the [Gemini API](https://ai.google.dev/gemini-api/docs/embeddings). You ca
     -H "Authorization: Bearer GEMINI_API_KEY" \
     -d '{
         "input": "Your text string goes here",
-        "model": "gemini-embedding-2-preview"
+        "model": "gemini-embedding-2"
       }'
 
 ## Batch API

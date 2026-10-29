@@ -34,7 +34,7 @@ Updates a service account in the project.
 
     The identifier, which can be referenced in API endpoints
 
-  - `created_at: number`
+  - `created_at: integer`
 
     The Unix timestamp (in seconds) of when the service account was created
 
@@ -69,7 +69,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     -d '{}'
 ```
 
-#### Response
+#### 200 — Example
 
 ```json
 {
@@ -93,7 +93,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   }'
 ```
 
-#### Response
+#### Response example
 
 ```json
 {
