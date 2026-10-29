@@ -1053,7 +1053,7 @@ their corresponding top-level category object in your `settings.json` file.
       "auto": {
         "displayName": "Auto",
         "tier": "auto",
-        "isPreview": true,
+        "isPreview": false,
         "isVisible": true,
         "features": {
           "thinking": true,

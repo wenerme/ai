@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/china-network/reference/available-produ
 
 # Available products and features
 
-Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/reference/available-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/china-network/reference/available-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following products and features are available on the Cloudflare China Network operated by JD Cloud:
 
@@ -44,7 +44,6 @@ The following products and features are available on the Cloudflare China Networ
 | [Assets](https://developers.cloudflare.com/workers/static-assets/) | Upload static assets (HTML, CSS, images and other files) as part of your Worker — Cloudflare will handle caching and serving them to web browsers. |
 | [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) | Attach text strings or JSON values to your Worker. |
 | [Images](https://developers.cloudflare.com/images/optimization/binding/)<sup>[4](#user-content-fn-4)</sup> | Store, transform, optimize, and deliver images at scale. |
-| [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) | Securely connect to backend servers over [mTLS ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/). |
 | [Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) | Define rate limits and write code around them in your Worker. |
 | [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) | Attach encrypted text values to your Worker. |
 | [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) | Service bindings allow one Worker to call into another, without going through a publicly-accessible URL. |
@@ -58,6 +57,7 @@ The following products and features are available on the Cloudflare China Networ
 | --- | --- |
 | [IPv6](https://developers.cloudflare.com/network/ipv6-compatibility/) | All data centers have IPv6 support by default. |
 | [SSL/TLS](https://developers.cloudflare.com/ssl/) | Customer Certificate, Dedicated Certificate, Universal Certificate, Custom, ACM (Dedicated), Universal SSL. |
+| mTLS<sup>[5](#user-content-fn-5)</sup> | Mutual TLS authentication between clients and the Cloudflare edge, and between the Cloudflare edge and your origin. |
 | [HTTP/3 (QUIC) ↗︎](https://www.cloudflare.com/learning/performance/what-is-http3/) | The latest version of the HTTP protocol to optimize page loading performance. |
 | [WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/) | Real-time communication with Cloudflare Workers serverless functions. |
 
@@ -77,9 +77,10 @@ For more details or specific product features, refer to the [FAQ](https://develo
 ## Footnotes
 
 1. [Turnstile](https://developers.cloudflare.com/turnstile/) is not available within Mainland China. [↩](#user-content-fnref-1)
-2. [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/) require that China Network is enabled on both the original zone (the one visitors are accessing) and the target zone. Otherwise, visitors will receive a [1016 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/) along with an [HTTP 530 status code](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/). [↩](#user-content-fnref-2)
+2. [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/) require that China Network is enabled on the original zone (the one visitors are accessing). The target zone does not need to be on the China Network, but it must be accessible from Mainland China. Otherwise, visitors will receive a [1016 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/) along with an [HTTP 530 status code](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-530/). [↩](#user-content-fnref-2)
 3. R2 buckets cannot be created within Mainland China and [custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#add-your-domain-to-cloudflare) are not supported within Mainland China. However, R2 can be extended into Mainland China through [Global Acceleration](https://developers.cloudflare.com/china-network/concepts/global-acceleration/). [↩](#user-content-fnref-3)
 4. Image Resizing works [within Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/), but may not be available [through URL format](https://developers.cloudflare.com/images/optimization/features/). [↩](#user-content-fnref-4)
+5. mTLS on the China Network is supported in two configurations: client-to-edge, using [mTLS with Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) (including Client Certificate Forwarding); and edge-to-origin, using [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/). [↩](#user-content-fnref-5)
 
 Was this helpful?
 
@@ -90,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/available-products/#page","headline":"Available products and features","description":"Cloudflare products and features supported on the China Network operated by JD Cloud.","url":"https://developers.cloudflare.com/china-network/reference/available-products/","inLanguage":"en","image":"https://developers.cloudflare.com/china-network/reference/available-products/og.png?v=f4dac81645ef67d5","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/reference/available-products/#page","headline":"Available products and features","description":"Cloudflare products and features supported on the China Network operated by JD Cloud.","url":"https://developers.cloudflare.com/china-network/reference/available-products/","inLanguage":"en","image":"https://developers.cloudflare.com/china-network/reference/available-products/og.png?v=f4dac81645ef67d5","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

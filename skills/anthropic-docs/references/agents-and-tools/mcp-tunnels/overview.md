@@ -2,22 +2,50 @@
 title: MCP tunnels
 url: https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/overview
 description: Securely connect Claude to MCP servers running in your private network without opening inbound ports or exposing services to the public internet.
+featureMetadata:
+  status: research-preview
+  betaHeader: mcp-client-2026-09-15, mcp-client-2025-11-20
+  zdr:
+    eligibility: not-eligible
+    note: Research preview. The MCP tunnels security page describes the data-flow boundary and subprocessor details.
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
+  supportedPlatforms:
+    Claude API: research-preview
 ---
 
-MCP tunnels let you connect Claude to Model Context Protocol (MCP) servers that run inside your private network. Traffic flows over an outbound-only connection, so you don't need to open inbound firewall ports, expose services to the public internet, or allowlist Anthropic's IP ranges on your origin.
-
 <Note>
-  MCP tunnels are in research preview. [Request access](https://claude.com/form/mcp-tunnels) to try them. They are provided "as-is" without any uptime, support, or continuity commitment, and they depend on a third-party network provider (Cloudflare) that makes no availability commitment for the underlying transport. Anthropic may modify or discontinue MCP tunnels at any time.
+  MCP tunnels are in research preview.
+
+  MCP tunnels are in research preview. They are provided “as-is” without any uptime, support, or continuity commitment, and they depend on a third-party network provider (Cloudflare) that makes no availability commitment for the underlying transport. Anthropic may modify or discontinue MCP tunnels at any time.
+
+  * [Request access](https://claude.com/form/mcp-tunnels)
 </Note>
 
-For Zero Data Retention and HIPAA BAA eligibility, see [API and data retention](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#feature-eligibility).
+MCP tunnels let you connect Claude to Model Context Protocol (MCP) servers that run inside your private network. Traffic flows over an outbound-only connection, so you don’t need to open inbound firewall ports, expose services to the public internet, or allowlist Anthropic’s IP ranges on your origin.
 
 ## How it works
 
 The [tunnel stack](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components) is two components that run inside your network:
 
-* **[cloudflared](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components):** Cloudflare's open-source tunnel connector. It initiates outbound-only connections to the [tunnel edge](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components) and carries encrypted traffic from Anthropic to your proxy.
-* **[Proxy](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components):** Anthropic's routing component. It terminates [inner TLS](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components), validates that upstream IPs fall within an allowed range, and routes each request to the correct [upstream MCP server](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components) based on hostname.
+* **[cloudflared](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components):** Cloudflare’s open-source tunnel connector. It initiates outbound-only connections to the [tunnel edge](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components) and carries encrypted traffic from Anthropic to your proxy.
+* **[Proxy](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components):** Anthropic’s routing component. It terminates [inner TLS](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components), validates that upstream IPs fall within an allowed range, and routes each request to the correct [upstream MCP server](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/concepts#components) based on hostname.
 
 Each MCP server you expose gets a hostname under your tunnel domain (for example, `docs.<your-tunnel-domain>`). You attach these hostnames to a Managed Agent session in the Claude Console, or pass them to the Messages API through the [MCP connector](https://platform.claude.com/docs/en/agents-and-tools/mcp-connector).
 
@@ -27,7 +55,7 @@ Before deploying, make sure you have:
 
 * A deployment target: a Kubernetes cluster, or a VM with Docker and Docker Compose.
 
-* A tunnel. Create one in the Claude Console (see [Create a tunnel](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/console#create-a-tunnel)) or through the API; the Helm chart's setup hook can also create one for you during install.
+* A tunnel. Create one in the Claude Console (see [Create a tunnel](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/console#create-a-tunnel)) or through the API; the Helm chart’s setup hook can also create one for you during install.
 
 * A way for your stack to authenticate to the Tunnels API. Choose one:
 
@@ -55,16 +83,16 @@ Three independent layers protect every request:
 | Layer                                                                       | Protects against                                                         |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Outer mTLS between Anthropic and the transport provider, with IP validation | Unauthorized clients reaching the tunnel                                 |
-| Inner TLS from Anthropic's back end to your proxy                           | Payload inspection by the transport provider or any network intermediary |
+| Inner TLS from Anthropic’s back end to your proxy                           | Payload inspection by the transport provider or any network intermediary |
 | OAuth on each MCP server                                                    | Unauthorized use of MCP tools by authenticated tunnel traffic            |
 
-The tunnel transport runs on Cloudflare's network. Because the proxy terminates inner TLS using a certificate that only you hold, Cloudflare cannot read request or response payloads. Anthropic does not connect to a tunnel until a CA certificate is registered, so payloads are always encrypted when they cross Cloudflare's network. Cloudflare does receive connection metadata; see [What the transport provider can observe](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/overview#what-the-transport-provider-can-observe).
+The tunnel transport runs on Cloudflare’s network. Because the proxy terminates inner TLS using a certificate that only you hold, Cloudflare cannot read request or response payloads. Anthropic does not connect to a tunnel until a CA certificate is registered, so payloads are always encrypted when they cross Cloudflare’s network. Cloudflare does receive connection metadata; see [What the transport provider can observe](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/overview#what-the-transport-provider-can-observe).
 
 ### Shared responsibility model
 
 | Anthropic handles                                                         | Your organization handles                                                                                                                      |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tunnel access control                                                     | All content and traffic that transits your tunnel, and compliance with applicable third-party acceptable-use policies (including Cloudflare's) |
+| Tunnel access control                                                     | All content and traffic that transits your tunnel, and compliance with applicable third-party acceptable-use policies (including Cloudflare’s) |
 | Validating your CA certificate before connecting to your proxy            | Adherence to the deployment guidance on these pages                                                                                            |
 | Ensuring Claude only sends requests to tunnels owned by your organization | Securing tunnel tokens and TLS private keys                                                                                                    |
 |                                                                           | Managing the server certificate and renewing it before it expires                                                                              |
@@ -85,11 +113,11 @@ Cloudflare provides the outbound transport. It cannot read MCP request or respon
 * connection timing and byte-volume
 * the `*.tunnel.anthropic.com` subdomain assigned to your tunnel
 
-Anthropic's agreement with Cloudflare restricts Cloudflare's use of this telemetry. Cloudflare acts as a subprocessor for this research preview.
+Anthropic’s agreement with Cloudflare restricts Cloudflare’s use of this telemetry. Cloudflare acts as a subprocessor for this research preview.
 
 ## Deploy a tunnel
 
-If you're new to MCP tunnels, start with the quickstart to get a working tunnel locally before configuring a production deployment.
+If you’re new to MCP tunnels, start with the quickstart to get a working tunnel locally before configuring a production deployment.
 
 <CardGroup cols={2}>
   <Card title="Quickstart" icon="rocket" href="https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/quickstart">
@@ -115,7 +143,7 @@ Choosing between them:
 * **Authentication for setup**
 
   * **Programmatic access** (through Workload Identity Federation) when you have an OIDC identity provider such as a Kubernetes cluster, cloud IAM, or SPIFFE
-  * **Manual credentials** when you don't, or when you're testing
+  * **Manual credentials** when you don’t, or when you’re testing
 
 ## Use the tunneled MCP servers
 
@@ -130,14 +158,14 @@ In both cases, the tunnel carries encrypted traffic to your MCP server but does 
 ### Managed Agents (Console)
 
 1. On the [Sessions](https://platform.claude.com/sessions) page (`platform.claude.com/sessions`) in the Claude Console, create a session and select **Create new agent** so you can edit the MCP server list.
-2. Click **+ MCP Server** and open the dropdown menu. Tunnels in the session's workspace that have at least one active certificate appear at the top of the list, above the public connector catalog.
+2. Click **+ MCP Server** and open the dropdown menu. Tunnels in the session’s workspace that have at least one active certificate appear at the top of the list, above the public connector catalog.
 3. Select the tunnel and supply the **Subdomain** that your proxy routes to a specific MCP server, and the **Path** the upstream MCP server expects. The **Resolves to** line shows the exact URL.
 
 ### Messages API
 
-Pass the upstream MCP server's URL in the `mcp_servers` array, the same way as any other remote MCP server. The request body and `anthropic-beta` header follow the standard [MCP connector](https://platform.claude.com/docs/en/agents-and-tools/mcp-connector) format; only the `url` is tunnel-specific. The following example uses the MCP connector's `mcp-client` beta header, which is separate from the `mcp-tunnels` beta used by the [Tunnels API](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/reference). Make the request in the workspace the tunnel was created in by using an API key for that workspace or, if your key isn't scoped to a workspace, by setting the [`anthropic-workspace-id` header](https://platform.claude.com/docs/en/manage-claude/authentication#select-a-workspace) to that workspace.
+Pass the upstream MCP server’s URL in the `mcp_servers` array, the same way as any other remote MCP server. The request body and `anthropic-beta` header follow the standard [MCP connector](https://platform.claude.com/docs/en/agents-and-tools/mcp-connector) format; only the `url` is tunnel-specific. The following example uses the MCP connector’s `mcp-client` beta header, which is separate from the `mcp-tunnels` beta used by the [Tunnels API](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/reference). Make the request in the workspace the tunnel was created in by using an API key for that workspace or, if your key isn’t scoped to a workspace, by setting the [`anthropic-workspace-id` header](https://platform.claude.com/docs/en/manage-claude/authentication#select-a-workspace) to that workspace.
 
-The URL's host is `<subdomain>.<your-tunnel-domain>`. The path depends on your upstream MCP server, not the tunnel: FastMCP's `streamable-http` transport serves at `/mcp`, and other servers might use `/` or a custom path (check the server's documentation). The proxy forwards the path untouched.
+The URL’s host is `<subdomain>.<your-tunnel-domain>`. The path depends on your upstream MCP server, not the tunnel: FastMCP’s `streamable-http` transport serves at `/mcp`, and other servers might use `/` or a custom path (check the server’s documentation). The proxy forwards the path untouched.
 
 <CodeGroup>
   ```bash cURL
@@ -396,3 +424,48 @@ For authenticating to the upstream MCP server (`authorization_token`) and other 
     Use tunneled servers from the Messages API.
   </Card>
 </CardGroup>
+
+## Availability
+
+MCP tunnels are in research preview on every model.
+
+### API support
+
+#### [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)
+
+* Availability: Available
+
+| Status           | Cloud platforms |
+| ---------------- | --------------- |
+| Research preview | Claude API      |
+
+#### [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview)
+
+* Availability: Available
+
+| Status           | Cloud platforms |
+| ---------------- | --------------- |
+| Research preview | Claude API      |
+
+### Required beta headers
+
+[Beta headers overview](https://platform.claude.com/docs/en/api/beta-headers)
+
+Beta headers allow you to access experimental features and new model capabilities before they become part of the standard API.
+
+| Header                                             | APIs                                                                                        |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `mcp-client-2026-09-15` or `mcp-client-2025-11-20` | [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages) |
+
+### Data handling
+
+[Data handling overview](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#feature-eligibility)
+
+| Item    | Zero data retention                                                                                                                                                                                | HIPAA        |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Status  | Not eligible                                                                                                                                                                                       | Not eligible |
+| Details | Research preview. The MCP tunnels security page describes the data-flow boundary and subprocessor details. [Learn more](https://platform.claude.com/docs/en/agents-and-tools/mcp-tunnels/security) | —            |
+
+Applicable endpoints:
+
+* `/v1/tunnels`

@@ -130,6 +130,19 @@ To delete a saved view:
 1. Select the view again, then select .
 1. In the confirmation dialog, select .
 
+## Change the view mode
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed
+
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22581) in GitLab 19.6 [with feature flags](../../administration/feature_flags/_index.md) named `planning_view_boards` and `planning_view_boards_group`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by feature flags.
+> For more information, see the history.
+
+When you open a saved view, use the buttons to the right of the filter bar to switch between view modes, such as list and board.
+
 ## Saved view limits
 
 Users in the Free tier can have only five saved views at a time.

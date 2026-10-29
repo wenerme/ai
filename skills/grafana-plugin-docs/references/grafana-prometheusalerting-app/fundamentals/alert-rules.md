@@ -15,7 +15,7 @@ Both live side by side in the same rule groups, and the plugin lists both togeth
 
 **Alerting rules** watch for a condition and produce alerts when it holds. This is what most people mean by a rule.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 - alert: HighRequestLatency
@@ -29,7 +29,7 @@ YAML [Copy code to clipboard] Copy
 
 **Recording rules** evaluate an expression ahead of time and save the result as a new time series. They produce no alerts. They exist so that expensive queries run once on a schedule instead of every time a dashboard or alerting rule needs them.
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 - record: job:request_latency_seconds:mean5m
@@ -57,9 +57,9 @@ Recording rules have no pending period, keep firing for, or annotations, because
 
 Rules are organized into **groups**, and groups sit inside a **namespace**. In Mimir and Cortex a namespace is roughly a file’s worth of rules; in vanilla Prometheus it corresponds to a rule file on disk.
 
-The group is the unit of evaluation: everything in a group runs together, on the group’s interval, in the order the rules are listed. Refer to [Rule groups and evaluation](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
+The group is the unit of evaluation: everything in a group runs together, on the group’s interval, in the order the rules are listed. Refer to [Rule groups and evaluation](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
 
 ## In this section
 
-- [Queries and conditions](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions/)
-- [Labels and annotations](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/)
+- [Queries and conditions](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions/)
+- [Labels and annotations](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations/)

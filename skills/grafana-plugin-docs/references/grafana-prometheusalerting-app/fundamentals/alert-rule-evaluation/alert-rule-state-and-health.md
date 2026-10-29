@@ -45,7 +45,7 @@ For recording rules the plugin distinguishes this explicitly, showing **Recordin
 
 > Caution
 >
-> Watch rule health, not just firing alerts. A silent alerting stack looks the same whether everything is fine or every rule is failing to evaluate. Refer to [Best practices](/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/).
+> Watch rule health, not just firing alerts. A silent alerting stack looks the same whether everything is fine or every rule is failing to evaluate. Refer to [Best practices](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/).
 
 ## Newly created rules
 

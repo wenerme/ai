@@ -48,6 +48,8 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   **Note:** Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for `max_tokens` and `stop`.
 
+  `minimum: 0`, `maximum: 20`
+
 - `echo: optional boolean or null`
 
   Echo back the prompt in addition to the completion
@@ -57,6 +59,8 @@ Returns a completion object, or a sequence of completion objects if the request 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
   [See more information about frequency and presence penalties.](/api/docs/guides/text)
+
+  `minimum: -2`, `maximum: 2`
 
 - `logit_bias: optional map[number] or null`
 
@@ -72,11 +76,15 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   The maximum value for `logprobs` is 5.
 
+  `minimum: 0`, `maximum: 5`
+
 - `max_tokens: optional number or null`
 
   The maximum number of [tokens](https://platform.openai.com/tokenizer) that can be generated in the completion.
 
   The token count of your prompt plus `max_tokens` cannot exceed the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.
+
+  `minimum: 0`
 
 - `n: optional number or null`
 
@@ -84,17 +92,23 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   **Note:** Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for `max_tokens` and `stop`.
 
+  `minimum: 1`, `maximum: 128`
+
 - `presence_penalty: optional number or null`
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 
   [See more information about frequency and presence penalties.](/api/docs/guides/text)
 
+  `minimum: -2`, `maximum: 2`
+
 - `seed: optional number or null`
 
   If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.
 
   Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
+
+  `format: int64`
 
 - `stop: optional string or array of string or null`
 
@@ -148,11 +162,15 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   We generally recommend altering this or `top_p` but not both.
 
+  `minimum: 0`, `maximum: 2`
+
 - `top_p: optional number or null`
 
   An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
 
   We generally recommend altering this or `temperature` but not both.
+
+  `minimum: 0`, `maximum: 1`
 
 - `user: optional string`
 
@@ -201,6 +219,8 @@ Returns a completion object, or a sequence of completion objects if the request 
   - `created: number`
 
     The Unix timestamp (in seconds) of when the completion was created.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -478,6 +498,8 @@ curl https://api.openai.com/v1/completions \
   - `created: number`
 
     The Unix timestamp (in seconds) of when the completion was created.
+
+    `format: unixtime`
 
   - `model: string`
 

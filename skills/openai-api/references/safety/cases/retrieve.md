@@ -10,6 +10,8 @@ Get a safety case by ID.
 
   Safety case ID
 
+  `maxLength: 128`
+
 ### Returns
 
 - `SafetyCase object { id, created_at, entity_identifier, 3 more }`
@@ -17,6 +19,8 @@ Get a safety case by ID.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `entity_identifier: string`
 

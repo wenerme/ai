@@ -481,8 +481,8 @@
   },
   "grafana-clickhouse-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting.md",
-    "size": 39166,
-    "updatedAt": "2026-10-28T00:53:26.426Z"
+    "size": 39695,
+    "updatedAt": "2026-10-29T00:52:47.122Z"
   },
   "grafana-cloudflare-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting.md",
@@ -1296,8 +1296,8 @@
   },
   "grafana-metricsdrilldown-app/drill-down-metrics.md": {
     "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics.md",
-    "size": 6781,
-    "updatedAt": "2026-10-28T00:53:52.562Z"
+    "size": 6859,
+    "updatedAt": "2026-10-29T00:53:16.389Z"
   },
   "grafana-metricsdrilldown-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/get-started.md",
@@ -1501,8 +1501,8 @@
   },
   "grafana-opensearch-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/template-variables.md",
-    "size": 8537,
-    "updatedAt": "2026-06-25T05:42:51.094Z"
+    "size": 9060,
+    "updatedAt": "2026-10-29T00:53:23.495Z"
   },
   "grafana-opensearch-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/troubleshooting.md",
@@ -1516,8 +1516,8 @@
   },
   "grafana-oracle-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/annotations.md",
-    "size": 4553,
-    "updatedAt": "2026-07-09T04:41:52.738Z"
+    "size": 5007,
+    "updatedAt": "2026-10-29T00:53:24.086Z"
   },
   "grafana-oracle-datasource/cloud-quickstart.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/cloud-quickstart.md",
@@ -1616,33 +1616,33 @@
   },
   "grafana-prometheusalerting-app/alerting-rules/create-recording-rule.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-recording-rule.md",
-    "size": 3090,
-    "updatedAt": "2026-10-05T05:28:34.034Z"
+    "size": 3109,
+    "updatedAt": "2026-10-29T00:53:28.242Z"
   },
   "grafana-prometheusalerting-app/alerting-rules/manage-rule-groups.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups.md",
-    "size": 3594,
-    "updatedAt": "2026-10-04T15:29:19.032Z"
+    "size": 3632,
+    "updatedAt": "2026-10-29T00:53:28.431Z"
   },
   "grafana-prometheusalerting-app/alerting-rules/template-annotations-and-labels.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels.md",
-    "size": 3738,
-    "updatedAt": "2026-10-05T05:28:34.363Z"
+    "size": 4072,
+    "updatedAt": "2026-10-29T00:53:28.616Z"
   },
   "grafana-prometheusalerting-app/configure-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications.md",
-    "size": 2579,
-    "updatedAt": "2026-10-05T05:28:34.522Z"
+    "size": 2731,
+    "updatedAt": "2026-10-29T00:53:28.801Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/configure-routes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes.md",
-    "size": 3495,
-    "updatedAt": "2026-10-05T05:28:34.696Z"
+    "size": 3552,
+    "updatedAt": "2026-10-29T00:53:28.999Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/create-receiver.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver.md",
-    "size": 3924,
-    "updatedAt": "2026-10-05T05:28:34.846Z"
+    "size": 3943,
+    "updatedAt": "2026-10-29T00:53:29.199Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/create-silence.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence.md",
@@ -1651,93 +1651,93 @@
   },
   "grafana-prometheusalerting-app/configure-notifications/inhibition-rules.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules.md",
-    "size": 3935,
-    "updatedAt": "2026-10-05T05:28:35.193Z"
+    "size": 3973,
+    "updatedAt": "2026-10-29T00:53:29.570Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/template-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications.md",
-    "size": 1553,
-    "updatedAt": "2026-10-02T16:26:24.193Z"
+    "size": 1648,
+    "updatedAt": "2026-10-29T00:53:29.766Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/template-notifications/examples.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/examples.md",
-    "size": 3338,
-    "updatedAt": "2026-10-02T16:26:24.397Z"
+    "size": 3735,
+    "updatedAt": "2026-10-29T00:53:29.954Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/template-notifications/language.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/language.md",
-    "size": 3736,
-    "updatedAt": "2026-10-02T16:26:24.573Z"
+    "size": 4341,
+    "updatedAt": "2026-10-29T00:53:30.139Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/template-notifications/manage-notification-templates.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/manage-notification-templates.md",
-    "size": 2563,
-    "updatedAt": "2026-10-02T16:26:24.772Z"
+    "size": 2601,
+    "updatedAt": "2026-10-29T00:53:30.317Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/template-notifications/reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference.md",
-    "size": 4249,
-    "updatedAt": "2026-10-02T16:26:24.945Z"
+    "size": 4457,
+    "updatedAt": "2026-10-29T00:53:30.527Z"
   },
   "grafana-prometheusalerting-app/configure-notifications/time-intervals.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals.md",
-    "size": 4171,
-    "updatedAt": "2026-10-02T16:26:25.115Z"
+    "size": 4209,
+    "updatedAt": "2026-10-29T00:53:30.735Z"
   },
   "grafana-prometheusalerting-app/examples.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples.md",
-    "size": 700,
-    "updatedAt": "2026-10-02T16:26:25.304Z"
+    "size": 738,
+    "updatedAt": "2026-10-29T00:53:30.911Z"
   },
   "grafana-prometheusalerting-app/examples/high-cardinality-alerts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts.md",
-    "size": 3994,
-    "updatedAt": "2026-10-02T16:26:25.484Z"
+    "size": 4328,
+    "updatedAt": "2026-10-29T00:53:31.093Z"
   },
   "grafana-prometheusalerting-app/examples/multi-dimensional-alerts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts.md",
-    "size": 3515,
-    "updatedAt": "2026-10-02T16:26:25.645Z"
+    "size": 3824,
+    "updatedAt": "2026-10-29T00:53:31.272Z"
   },
   "grafana-prometheusalerting-app/fundamentals.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals.md",
-    "size": 3490,
-    "updatedAt": "2026-10-02T16:26:25.822Z"
+    "size": 3604,
+    "updatedAt": "2026-10-29T00:53:31.465Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation.md",
-    "size": 991,
-    "updatedAt": "2026-09-29T16:40:25.397Z"
+    "size": 1029,
+    "updatedAt": "2026-10-29T00:53:31.653Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md",
-    "size": 3578,
-    "updatedAt": "2026-10-02T16:26:26.153Z"
+    "size": 3597,
+    "updatedAt": "2026-10-29T00:53:31.849Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation/rule-groups.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups.md",
-    "size": 3688,
-    "updatedAt": "2026-10-02T16:26:26.324Z"
+    "size": 3707,
+    "updatedAt": "2026-10-29T00:53:32.053Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rules.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules.md",
-    "size": 3412,
-    "updatedAt": "2026-10-02T16:26:26.509Z"
+    "size": 3595,
+    "updatedAt": "2026-10-29T00:53:32.299Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rules/labels-and-annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations.md",
-    "size": 4648,
-    "updatedAt": "2026-10-02T16:26:26.680Z"
+    "size": 4888,
+    "updatedAt": "2026-10-29T00:53:32.474Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rules/queries-conditions.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions.md",
-    "size": 4776,
-    "updatedAt": "2026-10-02T16:26:26.845Z"
+    "size": 4959,
+    "updatedAt": "2026-10-29T00:53:32.726Z"
   },
   "grafana-prometheusalerting-app/fundamentals/notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications.md",
-    "size": 3277,
-    "updatedAt": "2026-09-28T05:14:43.071Z"
+    "size": 3391,
+    "updatedAt": "2026-10-29T00:53:32.935Z"
   },
   "grafana-prometheusalerting-app/fundamentals/notifications/group-alert-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications.md",
@@ -3451,8 +3451,8 @@
   },
   "volkovlabs-variable-panel/display-mode/button.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/button.md",
-    "size": 599,
-    "updatedAt": "2026-06-25T05:44:42.181Z"
+    "size": 618,
+    "updatedAt": "2026-10-29T00:54:37.761Z"
   },
   "volkovlabs-variable-panel/display-mode/minimize.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/minimize.md",
@@ -3461,73 +3461,73 @@
   },
   "volkovlabs-variable-panel/display-mode/slider.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/slider.md",
-    "size": 1075,
-    "updatedAt": "2026-06-25T05:44:42.938Z"
+    "size": 1113,
+    "updatedAt": "2026-10-29T00:54:38.157Z"
   },
   "volkovlabs-variable-panel/display-mode/table.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/display-mode/table.md",
-    "size": 14397,
-    "updatedAt": "2026-06-25T05:44:43.321Z"
+    "size": 15389,
+    "updatedAt": "2026-10-29T00:54:38.364Z"
   },
   "volkovlabs-variable-panel/features.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features.md",
-    "size": 1709,
-    "updatedAt": "2026-06-25T05:44:43.689Z"
+    "size": 1861,
+    "updatedAt": "2026-10-29T00:54:38.549Z"
   },
   "volkovlabs-variable-panel/features/empty.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/empty.md",
-    "size": 913,
-    "updatedAt": "2026-06-25T05:44:44.060Z"
+    "size": 951,
+    "updatedAt": "2026-10-29T00:54:38.745Z"
   },
   "volkovlabs-variable-panel/features/input.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/input.md",
-    "size": 1010,
-    "updatedAt": "2026-06-25T05:44:44.431Z"
+    "size": 1048,
+    "updatedAt": "2026-10-29T00:54:38.984Z"
   },
   "volkovlabs-variable-panel/features/key.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/key.md",
-    "size": 1092,
-    "updatedAt": "2026-06-25T05:44:44.810Z"
+    "size": 1174,
+    "updatedAt": "2026-10-29T00:54:39.168Z"
   },
   "volkovlabs-variable-panel/features/persistent.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/persistent.md",
-    "size": 1348,
-    "updatedAt": "2026-06-25T05:44:45.223Z"
+    "size": 1386,
+    "updatedAt": "2026-10-29T00:54:39.371Z"
   },
   "volkovlabs-variable-panel/features/redirect.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/redirect.md",
-    "size": 1621,
-    "updatedAt": "2026-06-25T05:44:45.600Z"
+    "size": 1678,
+    "updatedAt": "2026-10-29T00:54:39.559Z"
   },
   "volkovlabs-variable-panel/features/sort.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/features/sort.md",
-    "size": 1059,
-    "updatedAt": "2026-06-25T05:44:45.980Z"
+    "size": 1097,
+    "updatedAt": "2026-10-29T00:54:39.744Z"
   },
   "volkovlabs-variable-panel/index.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest.md",
-    "size": 2773,
-    "updatedAt": "2026-06-25T05:44:46.346Z"
+    "size": 2988,
+    "updatedAt": "2026-10-29T00:54:39.940Z"
   },
   "volkovlabs-variable-panel/release.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-variable-panel/latest/release.md",
-    "size": 640,
-    "updatedAt": "2026-06-25T05:44:46.718Z"
+    "size": 659,
+    "updatedAt": "2026-10-29T00:54:40.125Z"
   },
   "yesoreyeram-infinity-datasource/advanced-features.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features.md",
-    "size": 1921,
-    "updatedAt": "2026-06-25T05:44:47.092Z"
+    "size": 2092,
+    "updatedAt": "2026-10-29T00:54:40.331Z"
   },
   "yesoreyeram-infinity-datasource/advanced-features/advanced-features/oauth2-custom-tokens.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/advanced-features/oauth2-custom-tokens.md",
-    "size": 5811,
-    "updatedAt": "2026-06-25T05:44:47.466Z"
+    "size": 6126,
+    "updatedAt": "2026-10-29T00:54:40.533Z"
   },
   "yesoreyeram-infinity-datasource/advanced-features/global-queries.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/global-queries.md",
-    "size": 2352,
-    "updatedAt": "2026-06-25T05:44:47.842Z"
+    "size": 2415,
+    "updatedAt": "2026-10-29T00:54:40.719Z"
   },
   "yesoreyeram-infinity-datasource/advanced-features/logs.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/advanced-features/logs.md",
@@ -3646,8 +3646,8 @@
   },
   "yesoreyeram-infinity-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest.md",
-    "size": 5064,
-    "updatedAt": "2026-10-28T00:55:13.082Z"
+    "size": 5043,
+    "updatedAt": "2026-10-29T00:54:45.089Z"
   },
   "yesoreyeram-infinity-datasource/installation.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/installation.md",

@@ -24,7 +24,7 @@ Example usage:
 
 ```txt
 # Match requests over TCP where the RTT exceeds 200 ms
-cf.timings.client_quic_rtt_msec > 200
+cf.timings.client_tcp_rtt_msec > 200
 ```
 
 Categories:

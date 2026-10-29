@@ -72,6 +72,8 @@ Register one customer-managed external storage configuration.
 
   - `created_at: number`
 
+    `format: unixtime`
+
   - `geography: string`
 
   - `object: "organization.external_storage"`
@@ -419,6 +421,8 @@ List the organization's customer-managed external storage configurations.
 
 - `limit: optional number`
 
+  `minimum: 1`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   - `"asc"`
@@ -434,6 +438,8 @@ List the organization's customer-managed external storage configurations.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `geography: string`
 
@@ -668,6 +674,8 @@ Get one customer-managed external storage configuration.
 
   - `created_at: number`
 
+    `format: unixtime`
+
   - `geography: string`
 
   - `object: "organization.external_storage"`
@@ -827,6 +835,8 @@ Validate one customer-managed external storage configuration.
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `geography: string`
 
@@ -1018,6 +1028,8 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `geography: string`
 

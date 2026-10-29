@@ -38,6 +38,8 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -197,6 +199,8 @@ Returns a list of users in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -306,6 +310,8 @@ Retrieves a user in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -397,6 +403,8 @@ Modifies a user's role in the project.
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`
@@ -476,6 +484,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
   - `added_at: number`
 
     The Unix timestamp (in seconds) of when the project was added.
+
+    `format: unixtime`
 
   - `object: "organization.project.user"`
 
@@ -581,6 +591,8 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was added.
 
+    `format: unixtime`
+
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
@@ -591,9 +603,13 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
+    `format: unixtime`
+
   - `created: optional number`
 
     The Unix timestamp (in seconds) of when the user was created.
+
+    `format: unixtime`
 
   - `developer_persona: optional string or null`
 
@@ -660,6 +676,8 @@ Assigns a project role to a user within a project.
     - `banned: optional boolean or null`
 
     - `banned_at: optional number or null`
+
+      `format: unixtime`
 
     - `email: optional string or null`
 
@@ -854,6 +872,8 @@ Lists the project roles assigned to a user within a project.
 
   A limit on the number of project role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned project roles.
@@ -883,6 +903,8 @@ Lists the project roles assigned to a user within a project.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -919,6 +941,8 @@ Lists the project roles assigned to a user within a project.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -1056,6 +1080,8 @@ Retrieves a project role assigned to a user.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -1091,6 +1117,8 @@ Retrieves a project role assigned to a user.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -1219,6 +1247,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The Unix timestamp (in seconds) of when the user was added.
 
+      `format: unixtime`
+
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
@@ -1229,9 +1259,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
+      `format: unixtime`
+
     - `created: optional number`
 
       The Unix timestamp (in seconds) of when the user was created.
+
+      `format: unixtime`
 
     - `developer_persona: optional string or null`
 
@@ -1299,6 +1333,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       - `banned_at: optional number or null`
 
+        `format: unixtime`
+
       - `email: optional string or null`
 
       - `enabled: optional boolean or null`
@@ -1343,6 +1379,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -1378,6 +1416,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -1401,6 +1441,8 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -1436,3 +1478,5 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`

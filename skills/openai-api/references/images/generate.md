@@ -80,6 +80,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
   The number of images to generate. Must be between 1 and 10.
 
+  `minimum: 1`, `maximum: 10`
+
 - `output_compression: optional number or null`
 
   The compression level (0-100%) for the generated images. This parameter is only supported for the GPT image models with the `webp` or `jpeg` output formats, and defaults to 100.
@@ -102,6 +104,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
   Note that the final image may be sent before the full number of partial images
   are generated if the full image is generated more quickly.
+
+  `minimum: 0`, `maximum: 3`
 
 - `quality: optional "low" or "medium" or "high" or 5 more or null`
 
@@ -140,6 +144,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 - `safety_identifier: optional string or null`
 
   A stable identifier for an end user in your organization, used for safety monitoring and abuse detection. Hash a username or email address to avoid sending identifying information. A non-empty value takes precedence over the deprecated `user` parameter. If omitted, null, or empty, the API uses `user` when available. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+
+  `maxLength: 128`
 
 - `size: optional string or "auto" or "1024x1024" or "1536x1024" or 5 more or null`
 
@@ -195,6 +201,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
     The Unix timestamp (in seconds) of when the image was created.
 
+    `format: unixtime`
+
   - `background: optional "transparent" or "opaque"`
 
     The background parameter used for the image generation. Either `transparent` or `opaque`.
@@ -218,6 +226,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
     - `url: optional string`
 
       The URL of the generated image when `response_format` is set to `url` for models that support that parameter. Unsupported for GPT image models.
+
+      `format: uri`
 
   - `output_format: optional "png" or "webp" or "jpeg"`
 

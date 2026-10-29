@@ -8,19 +8,27 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `after: optional string`
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `environment_id: optional string or null`
 
   Restrict the listing to artifacts produced by this environment.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -40,17 +48,25 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The immutable artifact ID.
+
+    `minLength: 0`
 
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
+    `format: int64`
+
   - `environment_id: string`
 
     The ID of the environment that produced the artifact.
+
+    `minLength: 0`
 
   - `object: "agent.session.artifact"`
 
@@ -62,21 +78,31 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
     The original absolute file path in the execution environment.
 
+    `minLength: 0`
+
   - `session_id: string`
 
     The ID of the session that owns the artifact.
+
+    `minLength: 0`
 
   - `size_bytes: number`
 
     The immutable artifact size in bytes.
 
+    `format: int64`, `minimum: 0`
+
   - `turn_id: string`
 
     The ID of the completed turn that published the artifact.
 
+    `minLength: 0`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
+
+  `minLength: 0`
 
 - `has_more: boolean`
 
@@ -85,6 +111,8 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

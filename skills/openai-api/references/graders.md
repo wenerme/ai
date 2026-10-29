@@ -69,6 +69,8 @@
 
       The URL of the image input.
 
+      `format: uri`
+
     - `type: "input_image"`
 
       The type of the image input. Always `input_image`.
@@ -175,6 +177,8 @@
 
           The URL of the image input.
 
+          `format: uri`
+
         - `type: "input_image"`
 
           The type of the image input. Always `input_image`.
@@ -244,6 +248,8 @@
           - `image_url: string`
 
             The URL of the image input.
+
+            `format: uri`
 
           - `type: "input_image"`
 
@@ -488,6 +494,8 @@
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -558,6 +566,8 @@
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -616,6 +626,8 @@
         - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
+
+          `minimum: 1`
 
         - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -693,6 +705,8 @@
             - `image_url: string`
 
               The URL of the image input.
+
+              `format: uri`
 
             - `type: "input_image"`
 
@@ -860,6 +874,8 @@
 
           The URL of the image input.
 
+          `format: uri`
+
         - `type: "input_image"`
 
           The type of the image input. Always `input_image`.
@@ -930,6 +946,8 @@
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -988,6 +1006,8 @@
     - `max_completions_tokens: optional number or null`
 
       The maximum number of tokens the grader model may generate in its response.
+
+      `minimum: 1`
 
     - `reasoning_effort: optional ReasoningEffort or null`
 

@@ -106,7 +106,8 @@ list of security implications when accessing GitLab from a disallowed IP address
   GitLab Self-Managed instances should use `gitlab-sshd` with
   [PROXY protocol](../../administration/operations/gitlab_sshd.md#proxy-protocol-support) enabled.
 - IP restrictions apply to Git clone operations performed by CI/CD jobs, except on GitLab.com hosted runners.
-  Git LFS object downloads are always subject to IP restrictions, including on GitLab.com hosted runners.
+  Git LFS object downloads and container registry requests are always subject to IP restrictions,
+  including on GitLab.com hosted runners.
 - IP restrictions do not apply to runner registration. If a runner outside the allowed ranges
   picks up a job, the job fails with the error
   `This job could not be executed because group IP address restrictions are enabled, and the runner's IP address is not in the allowed range.`
@@ -123,9 +124,22 @@ The hosted runner infrastructure is included in the GitLab.com
 so hosted runners can run jobs for projects in your group without being added to your group's allowlist.
 
 > [!note]
-> Git LFS object downloads are an exception. A job on a hosted runner can clone the repository, but
-> fetching the repository's Git LFS objects fails when group IP address restrictions are enabled.
-> The fix is proposed in [issue 634546](https://gitlab.com/gitlab-org/gitlab/-/issues/634546).
+> Git LFS object downloads and container registry requests are exceptions.
+> When group IP address restrictions are enabled, a job on a hosted runner can clone the repository,
+> but these operations fail:
+>
+> - Git LFS object downloads.
+>   The fix is proposed in [issue 634546](https://gitlab.com/gitlab-org/gitlab/-/issues/634546).
+> - Image pulls from and pushes to the GitLab container registry.
+>   The fix is proposed in [issue 635361](https://gitlab.com/gitlab-org/gitlab/-/issues/635361).
+
+As a workaround, to use the container registry from hosted runners in a group with IP address
+restrictions, add the hosted runner IP addresses to your group's allowlist.
+Hosted runners can run in more than one Google Cloud region, so an allowlist that covers only
+one region can cause intermittent job failures.
+To find the hosted runner regions, see [IP range](../gitlab_com/_index.md#ip-range).
+Alternatively, use group or project runners with a fixed IP address, and add only that address
+to your allowlist.
 
 To prevent hosted runners from running jobs for projects in your group,
 [disable instance runners for the group](../../ci/runners/runners_scope.md#disable-instance-runners-for-a-group)

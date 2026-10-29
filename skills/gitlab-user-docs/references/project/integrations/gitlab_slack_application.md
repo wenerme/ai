@@ -241,6 +241,7 @@ The following slash commands are available for GitLab:
 | `/gitlab <project> deploy <from> to <to>` | [Deploys](#deploy-command) from the `<from>` environment to the `<to>` environment. |
 | `/gitlab <project> run <job name> <arguments>` | Executes the [ChatOps](../../../ci/chatops/_index.md) job `<job name>` on the default branch. |
 | `/gitlab incident declare` | Opens a dialog to [create an incident from Slack](../../../operations/incident_management/slack.md). |
+{.sortable}
 
 ### `deploy` command
 
@@ -339,6 +340,7 @@ The following GitLab events can trigger notifications in Slack:
 | [Incident](../../../operations/incident_management/slack.md)          | An incident is created, closed, or reopened. |
 | [Vulnerability](../../application_security/vulnerabilities/_index.md) | A new, unique vulnerability is recorded on the default branch. |
 | Alert                                                                 | A new, unique alert is recorded. |
+{.sortable}
 
 ### Trigger notifications for group mentions
 

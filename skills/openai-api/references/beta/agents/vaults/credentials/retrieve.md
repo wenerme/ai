@@ -8,7 +8,11 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 - `vault_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `credential_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -19,6 +23,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
   - `id: string`
 
     The ID of the credential.
+
+    `minLength: 0`
 
   - `auth: CredentialAuth`
 
@@ -32,9 +38,13 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
         When the OAuth access token expires, as an RFC 3339 timestamp, if known.
 
+        `minLength: 0`
+
       - `mcp_server_url: string`
 
         The HTTPS MCP server URL authorized by this credential.
+
+        `minLength: 0`
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
@@ -44,17 +54,25 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
           The OAuth client ID used when requesting a new access token.
 
+          `minLength: 0`
+
         - `resource: string or null`
 
           The resource URI sent to the OAuth token endpoint during refresh, if configured.
+
+          `minLength: 0`
 
         - `scope: string or null`
 
           Space-separated OAuth scopes requested during refresh, if configured.
 
+          `minLength: 0`
+
         - `token_endpoint: string`
 
           The HTTPS OAuth token endpoint used for refresh.
+
+          `minLength: 0`
 
         - `token_endpoint_auth: McpOauthTokenEndpointAuth`
 
@@ -104,6 +122,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
         The HTTPS MCP server URL authorized by this credential.
 
+        `minLength: 0`
+
       - `type: "static_bearer"`
 
         The type of the object. Always `static_bearer`.
@@ -136,6 +156,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
             The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
 
+            `minItems: 1`, `maxItems: 16`
+
           - `type: "limited"`
 
             The type of the object. Always `limited`.
@@ -145,6 +167,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
       - `secret_name: string`
 
         The environment variable name that receives the placeholder in the sandbox.
+
+        `minLength: 0`
 
       - `type: "environment_variable"`
 
@@ -156,6 +180,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
     The Unix timestamp, in seconds, when the credential was created.
 
+    `format: int64`
+
   - `metadata: map[string]`
 
     Application-defined key-value pairs associated with this credential.
@@ -163,6 +189,8 @@ Retrieves vault credential metadata without returning secret values. See [vaults
   - `name: string`
 
     The human-readable name of the credential.
+
+    `minLength: 0`
 
   - `object: "vault.credential"`
 
@@ -174,9 +202,13 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
     The Unix timestamp, in seconds, when the credential was last updated.
 
+    `format: int64`
+
   - `vault_id: string`
 
     The ID of the vault containing this credential.
+
+    `minLength: 0`
 
 ### Example
 

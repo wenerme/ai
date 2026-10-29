@@ -190,6 +190,8 @@ Run a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -260,6 +262,8 @@ Run a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -318,6 +322,8 @@ Run a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -421,6 +427,8 @@ Run a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -978,6 +986,8 @@ Validate a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -1048,6 +1058,8 @@ Validate a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -1106,6 +1118,8 @@ Validate a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -1209,6 +1223,8 @@ Validate a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -1462,6 +1478,8 @@ Validate a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -1532,6 +1550,8 @@ Validate a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -1590,6 +1610,8 @@ Validate a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -1693,6 +1715,8 @@ Validate a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -2074,6 +2098,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -2144,6 +2170,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -2202,6 +2230,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
         - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
+
+          `minimum: 1`
 
         - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -2305,6 +2335,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 

@@ -22,6 +22,8 @@ Get an evaluation run output item by ID.
 
   Unix timestamp (in seconds) when the evaluation run was created.
 
+  `format: unixtime`
+
 - `datasource_item: map[unknown]`
 
   Details of the input data source item.

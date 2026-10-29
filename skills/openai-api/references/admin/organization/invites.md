@@ -50,6 +50,8 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
+    `format: unixtime`
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
@@ -98,9 +100,13 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
+
+    `format: unixtime`
 
 ### Example
 
@@ -268,6 +274,8 @@ Returns a list of invites in the organization.
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
+    `format: unixtime`
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
@@ -316,9 +324,13 @@ Returns a list of invites in the organization.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -430,6 +442,8 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
+    `format: unixtime`
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
@@ -478,9 +492,13 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
+
+    `format: unixtime`
 
 ### Example
 
@@ -550,6 +568,8 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
+    `format: unixtime`
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
@@ -598,9 +618,13 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
+
+    `format: unixtime`
 
 ### Invite Delete Response
 

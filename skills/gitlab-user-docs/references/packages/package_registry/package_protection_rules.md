@@ -17,12 +17,13 @@
 - Generic protected packages became [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/537971) in GitLab 18.2. Feature flag `packages_protected_packages_generic` removed.
 - NuGet protected packages became [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/524145) in GitLab 18.2. Feature flag `packages_protected_packages_nuget` removed.
 - Helm protected packages became [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/538375) in GitLab 18.3. Feature flag `packages_protected_packages_helm` removed.
+- RubyGems protected packages [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/603267) in GitLab 19.6.
 
 By default, any user with the Developer, Maintainer, or Owner role can create,
 edit, and delete packages. Add a package protection rule to restrict
 which users can make changes to your packages.
 
-GitLab supports package protection for npm, PyPI, Maven, and Conan packages, but [epic 5574](https://gitlab.com/groups/gitlab-org/-/epics/5574) proposes to add additional features and package formats.
+GitLab supports package protection for Cargo, Conan, Generic, Helm, Maven, npm, NuGet, PyPI, RubyGems, and Terraform module packages, but [epic 5574](https://gitlab.com/groups/gitlab-org/-/epics/5574) proposes to add additional features and package formats.
 
 When a package is protected, the default behavior enforces these restrictions on the package:
 

@@ -65,6 +65,8 @@ List ChatKit threads with optional pagination and user filters.
 
   Maximum number of thread items to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for results by creation time. Defaults to `desc`.
@@ -76,6 +78,8 @@ List ChatKit threads with optional pagination and user filters.
 - `user: optional string`
 
   Filter threads that belong to this user identifier. Defaults to null to return all users.
+
+  `minLength: 1`, `maxLength: 512`
 
 ### Returns
 
@@ -90,6 +94,8 @@ List ChatKit threads with optional pagination and user filters.
   - `created_at: number`
 
     Unix timestamp (in seconds) for when the thread was created.
+
+    `format: unixtime`
 
   - `object: "chatkit.thread"`
 
@@ -261,6 +267,8 @@ List items that belong to a ChatKit thread.
 
   Maximum number of thread items to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for results by creation time. Defaults to `desc`.
@@ -307,6 +315,8 @@ List items that belong to a ChatKit thread.
 
           Preview URL for rendering the attachment inline.
 
+          `format: uri`
+
         - `type: "image" or "file"`
 
           Attachment discriminator.
@@ -350,6 +360,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `inference_options: object { model, tool_choice }  or null`
 
@@ -439,6 +451,8 @@ List items that belong to a ChatKit thread.
 
                 URL referenced by the annotation.
 
+                `format: uri`
+
             - `type: "url"`
 
               Type discriminator that is always `url` for this annotation.
@@ -458,6 +472,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -486,6 +502,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -526,6 +544,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -571,6 +591,8 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
+        `format: unixtime`
+
       - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
@@ -614,6 +636,8 @@ List items that belong to a ChatKit thread.
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -792,6 +816,8 @@ Retrieve a ChatKit thread by its identifier.
 
     Unix timestamp (in seconds) for when the thread was created.
 
+    `format: unixtime`
+
   - `object: "chatkit.thread"`
 
     Type discriminator that is always `chatkit.thread`.
@@ -954,6 +980,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     Unix timestamp (in seconds) for when the session expires.
 
+    `format: unixtime`
+
   - `max_requests_per_1_minute: number`
 
     Convenience copy of the per-minute request limit.
@@ -1094,9 +1122,13 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
       Maximum size in megabytes for each uploaded file. Defaults to 512 MB, which is the maximum allowable size.
 
+      `minimum: 1`, `maximum: 512`
+
     - `max_files: optional number`
 
       Maximum number of files that can be uploaded to the session. Defaults to 10.
+
+      `minimum: 1`
 
   - `history: optional object { enabled, recent_threads }`
 
@@ -1109,6 +1141,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
     - `recent_threads: optional number`
 
       Number of recent ChatKit threads users have access to. Defaults to unlimited when unset.
+
+      `minimum: 1`
 
 ### Chat Session Expires After Param
 
@@ -1125,6 +1159,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   - `seconds: number`
 
     Number of seconds after the anchor when the session expires.
+
+    `format: int64`, `minimum: 1`, `maximum: 600`
 
 ### Chat Session File Upload
 
@@ -1177,6 +1213,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   - `max_requests_per_1_minute: optional number`
 
     Maximum number of requests allowed per minute for the session. Defaults to 10.
+
+    `minimum: 1`
 
 ### Chat Session Status
 
@@ -1242,6 +1280,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     Preview URL for rendering the attachment inline.
 
+    `format: uri`
+
   - `type: "image" or "file"`
 
     Attachment discriminator.
@@ -1302,6 +1342,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
           URL referenced by the annotation.
 
+          `format: uri`
+
       - `type: "url"`
 
         Type discriminator that is always `url` for this annotation.
@@ -1331,6 +1373,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   - `created_at: number`
 
     Unix timestamp (in seconds) for when the thread was created.
+
+    `format: unixtime`
 
   - `object: "chatkit.thread"`
 
@@ -1448,6 +1492,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
             URL referenced by the annotation.
 
+            `format: uri`
+
         - `type: "url"`
 
           Type discriminator that is always `url` for this annotation.
@@ -1467,6 +1513,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   - `created_at: number`
 
     Unix timestamp (in seconds) for when the item was created.
+
+    `format: unixtime`
 
   - `object: "chatkit.thread_item"`
 
@@ -1522,6 +1570,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
           Preview URL for rendering the attachment inline.
 
+          `format: uri`
+
         - `type: "image" or "file"`
 
           Attachment discriminator.
@@ -1565,6 +1615,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `inference_options: object { model, tool_choice }  or null`
 
@@ -1654,6 +1706,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
                 URL referenced by the annotation.
 
+                `format: uri`
+
             - `type: "url"`
 
               Type discriminator that is always `url` for this annotation.
@@ -1673,6 +1727,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -1701,6 +1757,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -1741,6 +1799,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -1786,6 +1846,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
         Unix timestamp (in seconds) for when the item was created.
 
+        `format: unixtime`
+
       - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
@@ -1829,6 +1891,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
       - `created_at: number`
 
         Unix timestamp (in seconds) for when the item was created.
+
+        `format: unixtime`
 
       - `object: "chatkit.thread_item"`
 
@@ -1914,6 +1978,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
       Preview URL for rendering the attachment inline.
 
+      `format: uri`
+
     - `type: "image" or "file"`
 
       Attachment discriminator.
@@ -1958,6 +2024,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 
     Unix timestamp (in seconds) for when the item was created.
 
+    `format: unixtime`
+
   - `inference_options: object { model, tool_choice }  or null`
 
     Inference overrides applied to the message. Defaults to null when unset.
@@ -2001,6 +2069,8 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
   - `created_at: number`
 
     Unix timestamp (in seconds) for when the item was created.
+
+    `format: unixtime`
 
   - `object: "chatkit.thread_item"`
 

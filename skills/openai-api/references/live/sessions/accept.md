@@ -18,6 +18,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
     The Live model to use for the accepted call.
 
+    `minLength: 1`
+
     - `string`
 
     - `"gpt-live-1"`
@@ -116,6 +118,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
           - `id: string`
 
+            `minLength: 1`, `maxLength: 128`
+
   - `delegation: optional ClientDelegation or Responses { responses, type, acknowledgement_delay_ms }  or Decisions { decisions, type, acknowledgement_delay_ms }  or null`
 
     Who handles tasks delegated by the Live model. Omitted or null selects your application; use `responses` or `decisions` to delegate to the corresponding API.
@@ -133,6 +137,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
       - `acknowledgement_delay_ms: optional number`
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+        `minimum: 0`, `maximum: 800`
 
     - `Responses object { responses, type, acknowledgement_delay_ms }`
 
@@ -153,6 +159,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
         - `max_output_tokens: optional number or null`
 
           Maximum number of output tokens for each delegated response.
+
+          `minimum: 16`
 
         - `parallel_tool_calls: optional boolean or null`
 
@@ -351,6 +359,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
             - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
 
               The tools that the delegated Responses model may call.
+
+              `minItems: 1`, `maxItems: 128`
 
               - `Function object { name, type }`
 
@@ -558,6 +568,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the container.
@@ -588,6 +600,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -598,11 +612,15 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -631,6 +649,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -673,6 +693,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
                 - `skills: optional array of object { description, name, path }  or null`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -744,19 +766,27 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+        `minimum: 0`, `maximum: 800`
+
     - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
       - `decisions: DecisionsDelegationConfig`
 
         - `model: string`
 
+          `minLength: 1`
+
         - `questions: array of DecisionQuestion`
 
           Native Decision API questions evaluated together, in order.
 
+          `minItems: 1`, `maxItems: 64`
+
           - `Choice object { choices, instructions, type, name }`
 
             - `choices: array of DecisionChoiceOption`
+
+              `minItems: 2`, `maxItems: 255`
 
               - `value: string or boolean`
 
@@ -778,6 +808,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                     The text input to the model.
 
+                    `maxLength: 10485760`
+
                   - `type: "input_text"`
 
                     - `"input_text"`
@@ -787,6 +819,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
                   - `image_url: string`
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                    `maxLength: 20971520`
 
                   - `type: "input_image"`
 
@@ -838,6 +872,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                    `maxLength: 20971520`
+
                   - `type: "input_image"`
 
                     - `"input_image"`
@@ -888,6 +924,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
                     A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                    `maxLength: 20971520`
+
                   - `type: "input_image"`
 
                     - `"input_image"`
@@ -918,6 +956,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
             - `levels: array of object { label, description }`
 
+              `minItems: 2`, `maxItems: 10`
+
               - `label: string`
 
               - `description: optional string`
@@ -936,9 +976,13 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
         Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
+        `minimum: 0`, `maximum: 800`
+
   - `input: optional array of InitialItem`
 
     Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and a configured rendered-token limit (8,192 by default).
+
+    `maxItems: 128`
 
     - `Developer object { content, role, id, 2 more }`
 
@@ -947,6 +991,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
       - `content: array of object { text, type }`
 
         The message content. Supply exactly one text part for the initial Live conversation history.
+
+        `minItems: 1`, `maxItems: 1`
 
         - `text: string`
 
@@ -990,6 +1036,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
         The message content. Supply exactly one text part for the initial Live conversation history.
 
+        `minItems: 1`, `maxItems: 1`
+
         - `text: string`
 
           The message text to include in the Live session’s initial conversation history.
@@ -1031,6 +1079,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
       - `content: array of Text { text, type }  or OutputText { text, type }`
 
         The message content. Supply exactly one text part for the initial Live conversation history.
+
+        `minItems: 1`, `maxItems: 1`
 
         - `Text object { text, type }`
 
@@ -1096,6 +1146,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
     At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
+    `maxItems: 2`
+
     - `decisions: object { questions }`
 
       Questions evaluated using the current transcript and the session's shared Decision items.
@@ -1103,6 +1155,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
       - `questions: array of DecisionQuestion`
 
         Native Decision API questions evaluated together, in order.
+
+        `minItems: 1`, `maxItems: 64`
 
         - `Choice object { choices, instructions, type, name }`
 

@@ -11,6 +11,8 @@ Creates an edited or extended image given one or more source images and a prompt
   Input image references to edit.
   For GPT image models, you can provide up to 16 images.
 
+  `minItems: 1`, `maxItems: 16`
+
   - `file_id: optional string`
 
     The File API ID of an uploaded image to use as input.
@@ -19,9 +21,13 @@ Creates an edited or extended image given one or more source images and a prompt
 
     A fully qualified URL or base64-encoded data URL.
 
+    `maxLength: 20971520`, `format: uri`
+
 - `prompt: string`
 
   A text description of the desired image edit.
+
+  `minLength: 1`, `maxLength: 32000`
 
 - `background: optional "transparent" or "opaque" or "auto" or null`
 
@@ -41,6 +47,20 @@ Creates an edited or extended image given one or more source images and a prompt
 
   - `"low"`
 
+- `markup: optional object { file_id, image_url }`
+
+  A transparent PNG overlaid on the first image, referenced by file ID, HTTPS URL, or base64 data URL. Must match that image's dimensions after orientation and contain transparent pixels. Supports GPT Image 2.5 and 2.6. Cannot be combined with mask.
+
+  - `file_id: optional string`
+
+    The File API ID of an uploaded image to use as input.
+
+  - `image_url: optional string`
+
+    A fully qualified URL or base64-encoded data URL.
+
+    `maxLength: 20971520`, `format: uri`
+
 - `mask: optional object { file_id, image_url }`
 
   Reference an input image by either URL or uploaded file ID.
@@ -53,6 +73,8 @@ Creates an edited or extended image given one or more source images and a prompt
   - `image_url: optional string`
 
     A fully qualified URL or base64-encoded data URL.
+
+    `maxLength: 20971520`, `format: uri`
 
 - `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more or null`
 
@@ -108,9 +130,13 @@ Creates an edited or extended image given one or more source images and a prompt
 
   The number of edited images to generate.
 
+  `minimum: 1`, `maximum: 10`
+
 - `output_compression: optional number or null`
 
   Compression level for `jpeg` or `webp` output.
+
+  `minimum: 0`, `maximum: 100`
 
 - `output_format: optional "png" or "jpeg" or "webp" or null`
 
@@ -130,6 +156,8 @@ Creates an edited or extended image given one or more source images and a prompt
 
   Note that the final image may be sent before the full number of partial images
   are generated if the full image is generated more quickly.
+
+  `minimum: 0`, `maximum: 3`
 
 - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -152,6 +180,8 @@ Creates an edited or extended image given one or more source images and a prompt
 - `safety_identifier: optional string or null`
 
   A stable identifier for an end user in your organization, used for safety monitoring and abuse detection. Hash a username or email address to avoid sending identifying information. A non-empty value takes precedence over the deprecated `user` parameter. If omitted, null, or empty, the API uses `user` when available. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+
+  `maxLength: 128`
 
 - `size: optional string or "auto" or "1024x1024" or "1536x1024" or "1024x1536" or null`
 
@@ -189,6 +219,8 @@ Creates an edited or extended image given one or more source images and a prompt
 
     The Unix timestamp (in seconds) of when the image was created.
 
+    `format: unixtime`
+
   - `background: optional "transparent" or "opaque"`
 
     The background parameter used for the image generation. Either `transparent` or `opaque`.
@@ -212,6 +244,8 @@ Creates an edited or extended image given one or more source images and a prompt
     - `url: optional string`
 
       The URL of the generated image when `response_format` is set to `url` for models that support that parameter. Unsupported for GPT image models.
+
+      `format: uri`
 
   - `output_format: optional "png" or "webp" or "jpeg"`
 

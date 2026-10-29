@@ -93,7 +93,7 @@ and the extension is `yaml`, `yml`, or `json`. These examples are all correct:
 To render an OpenAPI file:
 
 1. [Search for](#search-for-a-file) the OpenAPI file in your repository.
-1. Select **Display rendered file**.
+1. Select .
 1. To display the `operationId` in the operations list, add `displayOperationId=true` to the query string.
 
 > [!note]
@@ -109,14 +109,14 @@ To render an OpenAPI file:
 > For more information, see the history.
 
 Print a Markdown file as a PDF to save its rendered content for sharing or archiving.
-When you view a Markdown file, the **Download** action is a dropdown list with two options:
-**Download as Markdown** and **Print as PDF**.
+When you view a Markdown file, the  action is a dropdown list with two options:
+ and .
 
 To print a Markdown file as a PDF:
 
-1. In the top bar, select **Search or go to** and find your project.
+1. In the top bar, select  and find your project.
 1. Go to the Markdown file you want to print.
-1. In the upper right, select **Download** () > **Print as PDF**.
+1. In the upper right, select  () > .
 1. In your browser's print dialog, save the file as a PDF.
 
 ## View Git records for a file
@@ -135,13 +135,13 @@ sharing and referencing code in documentation, issues, or merge requests.
 
 To create a permalink:
 
-1. In the top bar, select **Search or go to** and find your project.
+1. In the top bar, select  and find your project.
 1. Go to the file or directory you want to link to.
 1. Optional. For specific code selections:
    - **Single line**: Select the line number.
    - **Multiple lines**: Select the first line number, then hold <kbd>Shift</kbd> and select the last line number.
    - **Markdown anchor**: Hover over a heading to reveal the anchor link (), and select it.
-1. Select **Actions** (), then select **Copy Permalink**.
+1. Select  (), then select .
    Alternatively, press <kbd>y</kbd>. For more shortcuts, see [keyboard shortcuts](../../../shortcuts.md).
 
 When you paste a permalink to lines of a file in a comment or description, GitLab can
@@ -162,7 +162,7 @@ the current branch and modify the file. This helps you identify files that have 
 
 To view the open merge requests for a file:
 
-1. In the top bar, select **Search or go to** and find your project.
+1. In the top bar, select  and find your project.
 1. Go to the file you want to view.
 1. In the upper right of the screen, next to the filename, look for the green badge with the number
    of  **Open** merge requests.
@@ -176,22 +176,22 @@ The file finder uses fuzzy search and highlights results as you type.
 
 To search for a file, press <kbd>t</kbd> anywhere in your project, or:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Repository**.
-1. In the upper right, select **Find file**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the upper right, select .
 1. On the dialog, start entering the filename:
 
    [Find file button]
 
 1. Optional. To narrow the search options, press <kbd>Command</kbd>+<kbd>K</kbd> or
-   select **Commands** on the lower right corner of the dialog:
-   - For **Pages or actions**, enter <kbd>></kbd>.
-   - For **Users**, enter <kbd>@</kbd>.
-   - For **Projects**, enter <kbd>:</kbd>.
-   - For **Files**, enter <kbd>~</kbd>.
+   select  on the lower right corner of the dialog:
+   - For , enter <kbd>></kbd>.
+   - For , enter <kbd>@</kbd>.
+   - For , enter <kbd>:</kbd>.
+   - For , enter <kbd>~</kbd>.
 1. From the dropdown list, select the file to view it in your repository.
 
-To go back to the **Files** page, press <kbd>Esc</kbd>.
+To go back to the  page, press <kbd>Esc</kbd>.
 
 This feature uses the [`fuzzaldrin-plus`](https://github.com/jeancroy/fuzz-aldrin-plus) library.
 

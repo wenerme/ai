@@ -15,8 +15,8 @@ This feature works for the **Minimize** and **Button** display modes.
 
 Before this feature was introduced, you couldn’t unselect all values. A user always had to have a value selected after making the first selection.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/multi-value.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/multi-value.png)
 
 To enable this feature, enable the **Allow empty value** parameter in the **Values** category.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/empty-all.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/empty-all.png)

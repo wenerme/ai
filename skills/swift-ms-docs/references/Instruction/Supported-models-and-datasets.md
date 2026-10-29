@@ -12,6 +12,8 @@ The table below introduces the models integrated with ms-swift:
 - Support Megatron: Whether Megatron-SWIFT training is supported
 - Tags: Tags associated with the model
 
+`allenai/Olmo-3-7B-Think` uses `olmo3` as both its model type and default template. On NPU, SDPA with pure Ulysses is supported with `padding_free=false` and `packing=false`. Choose a sequence-parallel size that divides the model's KV head count so that `rp_world_size=1`. The current NPU adaptation does not support FlashAttention, packing/padding-free, or Ring Attention.
+
 ### Large Language Models
 | Model ID | Model Type | Default Template | Default Agent Template | Requires | Support Megatron | Tags | HF Model ID |
 | -------- | -----------| ---------------- | ---------------------- | -------- | ---------------- | ---- | ----------- |
@@ -719,6 +721,7 @@ The table below introduces the models integrated with ms-swift:
 |[BAAI/bge-reranker-base](https://modelscope.cn/models/BAAI/bge-reranker-base)|bge_reranker|bge_reranker||-|&#x2718;|-|[BAAI/bge-reranker-base](https://huggingface.co/BAAI/bge-reranker-base)|
 |[BAAI/bge-reranker-v2-m3](https://modelscope.cn/models/BAAI/bge-reranker-v2-m3)|bge_reranker|bge_reranker||-|&#x2718;|-|[BAAI/bge-reranker-v2-m3](https://huggingface.co/BAAI/bge-reranker-v2-m3)|
 |[BAAI/bge-reranker-large](https://modelscope.cn/models/BAAI/bge-reranker-large)|bge_reranker|bge_reranker||-|&#x2718;|-|[BAAI/bge-reranker-large](https://huggingface.co/BAAI/bge-reranker-large)|
+|[allenai/Olmo-3-7B-Think](https://modelscope.cn/models/allenai/Olmo-3-7B-Think)|olmo3|olmo3||transformers>=4.57|&#x2718;|-|[allenai/Olmo-3-7B-Think](https://huggingface.co/allenai/Olmo-3-7B-Think)|
 |[allenai/OLMoE-1B-7B-0125](https://modelscope.cn/models/allenai/OLMoE-1B-7B-0125)|olmoe|olmoe||-|&#x2714;|-|[allenai/OLMoE-1B-7B-0125](https://huggingface.co/allenai/OLMoE-1B-7B-0125)|
 |[allenai/OLMoE-1B-7B-0125-Instruct](https://modelscope.cn/models/allenai/OLMoE-1B-7B-0125-Instruct)|olmoe|olmoe||-|&#x2714;|-|[allenai/OLMoE-1B-7B-0125-Instruct](https://huggingface.co/allenai/OLMoE-1B-7B-0125-Instruct)|
 |[allenai/OLMoE-1B-7B-0924](https://modelscope.cn/models/allenai/OLMoE-1B-7B-0924)|olmoe|olmoe_0924||-|&#x2714;|-|[allenai/OLMoE-1B-7B-0924](https://huggingface.co/allenai/OLMoE-1B-7B-0924)|
@@ -1103,6 +1106,7 @@ The table below introduces the models integrated with ms-swift:
 |[OpenBMB/MiniCPM-V-4.6](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.6)|minicpmv4_6|minicpmv4_6||transformers>=5.7.0|&#x2714;|vision, video|[openbmb/MiniCPM-V-4.6](https://huggingface.co/openbmb/MiniCPM-V-4.6)|
 |[OpenBMB/MiniCPM-V-4.7-1B](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B)|minicpmv4_7|minicpmv4_7||transformers>=5.18.0|&#x2718;|vision, video|[openbmb/MiniCPM-V-4.7-1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B)|
 |[OpenBMB/MiniCPM-V-4.7-35B-A3B](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B)|minicpmv4_7|minicpmv4_7||transformers>=5.18.0|&#x2718;|vision, video|[openbmb/MiniCPM-V-4.7-35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)|
+|[OpenBMB/MiniCPM-OCR-1.0](https://modelscope.cn/models/OpenBMB/MiniCPM-OCR-1.0)|minicpm_ocr|minicpm_ocr||transformers>=5.21.0|&#x2718;|vision, video|[openbmb/MiniCPM-OCR-1.0](https://huggingface.co/openbmb/MiniCPM-OCR-1.0)|
 |[OpenBMB/MiniCPM-o-2_6](https://modelscope.cn/models/OpenBMB/MiniCPM-o-2_6)|minicpmo|minicpmo|hermes|timm, transformers>=4.36, decord, soundfile|&#x2718;|vision, video, omni, audio|[openbmb/MiniCPM-o-2_6](https://huggingface.co/openbmb/MiniCPM-o-2_6)|
 |[OpenBMB/MiniCPM-o-4_5](https://modelscope.cn/models/OpenBMB/MiniCPM-o-4_5)|minicpmo|minicpmo4_5|hermes|timm, transformers==4.51.3, decord, soundfile, minicpmo-utils==1.0.6|&#x2718;|vision, video, omni, audio|[openbmb/MiniCPM-o-4_5](https://huggingface.co/openbmb/MiniCPM-o-4_5)|
 |[MiniMax/MiniMax-VL-01](https://modelscope.cn/models/MiniMax/MiniMax-VL-01)|minimax_vl|minimax_vl||-|&#x2718;|vision|[MiniMaxAI/MiniMax-VL-01](https://huggingface.co/MiniMaxAI/MiniMax-VL-01)|

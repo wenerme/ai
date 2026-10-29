@@ -32,6 +32,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             - `text: string`
 
+              `minLength: 0`, `maxLength: 10485760`
+
             - `type: "input_text"`
 
               - `"input_text"`
@@ -53,6 +55,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
             - `image_url: string`
 
               A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+              `minLength: 0`, `maxLength: 1073741824`
 
             - `type: "input_image"`
 
@@ -116,6 +120,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
           - `text: string`
 
+            `minLength: 0`, `maxLength: 10485760`
+
           - `type: "input_text"`
 
           - `prompt_cache_breakpoint: optional object { mode }  or null`
@@ -143,6 +149,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
         - `Parts = array of DecisionInputText`
 
           - `text: string`
+
+            `minLength: 0`, `maxLength: 10485760`
 
           - `type: "input_text"`
 
@@ -174,6 +182,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
             - `text: string`
 
+              `minLength: 0`, `maxLength: 10485760`
+
             - `type: "output_text"`
 
               - `"output_text"`
@@ -181,6 +191,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
           - `Refusal object { refusal, type }`
 
             - `refusal: string`
+
+              `minLength: 0`, `maxLength: 10485760`
 
             - `type: "refusal"`
 
@@ -206,9 +218,15 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `arguments: string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `call_id: string`
 
+        `minLength: 1`, `maxLength: 64`
+
       - `name: string`
+
+        `minLength: 1`, `maxLength: 128`
 
       - `type: "function_call"`
 
@@ -216,7 +234,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `id: optional string or null`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `namespace: optional string or null`
+
+        `minLength: 1`, `maxLength: 64`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -229,6 +251,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
     - `FunctionCallOutput object { call_id, output, type, 2 more }`
 
       - `call_id: string`
+
+        `minLength: 1`, `maxLength: 64`
 
       - `output: string or array of DecisionInputText or DecisionInputImage`
 
@@ -250,6 +274,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `id: optional string or null`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
         - `"in_progress"`
@@ -262,9 +288,15 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `call_id: string`
 
+        `minLength: 1`, `maxLength: 64`
+
       - `input: string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `name: string`
+
+        `minLength: 1`, `maxLength: 64`
 
       - `type: "custom_tool_call"`
 
@@ -272,7 +304,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `id: optional string or null`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `namespace: optional string or null`
+
+        `minLength: 1`, `maxLength: 64`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -285,6 +321,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
     - `CustomToolCallOutput object { call_id, output, type, 2 more }`
 
       - `call_id: string`
+
+        `minLength: 1`, `maxLength: 64`
 
       - `output: string or array of DecisionInputText or DecisionInputImage`
 
@@ -306,6 +344,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `id: optional string or null`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
         - `"in_progress"`
@@ -318,9 +358,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
   The model to use. Only `gpt-6-luna` is supported.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `questions: array of Predicate { instructions, type, name }  or Choice { choices, instructions, type, name }  or Score { instructions, levels, type, name }`
 
   Ask 1–400 questions about the input. Each question can be a predicate, choice, or score. Answers come back in the same order.
+
+  `minItems: 1`, `maxItems: 400`
 
   - `Predicate object { instructions, type, name }`
 
@@ -336,6 +380,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
           - `text: string`
 
+            `minLength: 0`, `maxLength: 10485760`
+
           - `type: "input_text"`
 
             - `"input_text"`
@@ -347,6 +393,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
           - `image_url: string`
 
             A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+            `minLength: 0`, `maxLength: 1073741824`
 
           - `type: "input_image"`
 
@@ -376,6 +424,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     - `name: optional string`
 
+      `minLength: 0`, `maxLength: 1048576`
+
   - `Choice object { choices, instructions, type, name }`
 
     Choose from the supplied options based on the input.
@@ -383,6 +433,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
     - `choices: array of object { value, description }`
 
       Provide between 2 and 255 choices. Each choice must be unique.
+
+      `minItems: 2`, `maxItems: 255`
 
       - `value: string or boolean`
 
@@ -393,6 +445,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
         - `boolean`
 
       - `description: optional string`
+
+        `minLength: 0`, `maxLength: 1048576`
 
     - `instructions: string or array of DecisionQuestionInputPart`
 
@@ -418,6 +472,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     - `name: optional string`
 
+      `minLength: 0`, `maxLength: 1048576`
+
   - `Score object { instructions, levels, type, name }`
 
     Rate the input against the supplied ordered levels.
@@ -440,9 +496,15 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     - `levels: array of object { label, description }`
 
+      `minItems: 2`, `maxItems: 10`
+
       - `label: string`
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `description: optional string`
+
+        `minLength: 0`, `maxLength: 1048576`
 
     - `type: "score"`
 
@@ -452,9 +514,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     - `name: optional string`
 
+      `minLength: 0`, `maxLength: 1048576`
+
 - `prompt_cache_key: optional string or null`
 
   Partition prompt cache reuse by caller-provided key.
+
+  `minLength: 0`, `maxLength: 64`
 
 - `prompt_cache_options: optional object { mode, ttl }  or null`
 
@@ -478,6 +544,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
   Opaque caller-provided end-user identifier, scoped by the verified org. Match Responses' limit; this is never the authenticated user identity.
 
+  `minLength: 0`, `maxLength: 128`
+
 ### Returns
 
 - `Decision object { answers, model, usage }`
@@ -486,9 +554,13 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     Answers in question order. Any question can return a refusal instead of an answer; other questions can still receive answers. A refusal has `type: "refusal"` and the question's `name`, or `null` if it was unnamed.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `Predicate object { name, probability, type }`
 
       - `name: string or null`
+
+        `minLength: 0`
 
       - `probability: number`
 
@@ -512,7 +584,11 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `probabilities: array of object { probability, value }`
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `probability: number`
 
@@ -536,13 +612,21 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `probabilities: array of object { label, probability, value }`
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `label: string`
+
+          `minLength: 0`
 
         - `probability: number`
 
         - `value: number`
+
+          `format: int64`
 
       - `score: number`
 
@@ -558,6 +642,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `type: "refusal"`
 
         The type of the object. Always `refusal`.
@@ -568,25 +654,39 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
     The model used.
 
+    `minLength: 0`
+
   - `usage: object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
     Token usage for the request.
 
     - `input_tokens: number`
 
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
       - `cache_write_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
       - `cached_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `output_tokens: number`
+
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `output_tokens_details: object { reasoning_tokens }`
 
       - `reasoning_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `total_tokens: number`
+
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
 ### Example
 
@@ -680,9 +780,13 @@ curl https://api.openai.com/v1/decisions \
 
     Answers in question order. Any question can return a refusal instead of an answer; other questions can still receive answers. A refusal has `type: "refusal"` and the question's `name`, or `null` if it was unnamed.
 
+    `minItems: 0`, `maxItems: 2000`
+
     - `Predicate object { name, probability, type }`
 
       - `name: string or null`
+
+        `minLength: 0`
 
       - `probability: number`
 
@@ -706,7 +810,11 @@ curl https://api.openai.com/v1/decisions \
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `probabilities: array of object { probability, value }`
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `probability: number`
 
@@ -730,13 +838,21 @@ curl https://api.openai.com/v1/decisions \
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `probabilities: array of object { label, probability, value }`
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `label: string`
+
+          `minLength: 0`
 
         - `probability: number`
 
         - `value: number`
+
+          `format: int64`
 
       - `score: number`
 
@@ -752,6 +868,8 @@ curl https://api.openai.com/v1/decisions \
 
       - `name: string or null`
 
+        `minLength: 0`
+
       - `type: "refusal"`
 
         The type of the object. Always `refusal`.
@@ -762,25 +880,39 @@ curl https://api.openai.com/v1/decisions \
 
     The model used.
 
+    `minLength: 0`
+
   - `usage: object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
     Token usage for the request.
 
     - `input_tokens: number`
 
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
       - `cache_write_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
       - `cached_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `output_tokens: number`
+
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
     - `output_tokens_details: object { reasoning_tokens }`
 
       - `reasoning_tokens: number`
 
+        `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
     - `total_tokens: number`
+
+      `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
 ### Decision Input Image
 
@@ -791,6 +923,8 @@ curl https://api.openai.com/v1/decisions \
   - `image_url: string`
 
     A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+    `minLength: 0`, `maxLength: 1073741824`
 
   - `type: "input_image"`
 
@@ -840,6 +974,8 @@ curl https://api.openai.com/v1/decisions \
 
           - `text: string`
 
+            `minLength: 0`, `maxLength: 10485760`
+
           - `type: "input_text"`
 
             - `"input_text"`
@@ -861,6 +997,8 @@ curl https://api.openai.com/v1/decisions \
           - `image_url: string`
 
             A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+            `minLength: 0`, `maxLength: 1073741824`
 
           - `type: "input_image"`
 
@@ -924,6 +1062,8 @@ curl https://api.openai.com/v1/decisions \
 
         - `text: string`
 
+          `minLength: 0`, `maxLength: 10485760`
+
         - `type: "input_text"`
 
         - `prompt_cache_breakpoint: optional object { mode }  or null`
@@ -951,6 +1091,8 @@ curl https://api.openai.com/v1/decisions \
       - `Parts = array of DecisionInputText`
 
         - `text: string`
+
+          `minLength: 0`, `maxLength: 10485760`
 
         - `type: "input_text"`
 
@@ -982,6 +1124,8 @@ curl https://api.openai.com/v1/decisions \
 
           - `text: string`
 
+            `minLength: 0`, `maxLength: 10485760`
+
           - `type: "output_text"`
 
             - `"output_text"`
@@ -989,6 +1133,8 @@ curl https://api.openai.com/v1/decisions \
         - `Refusal object { refusal, type }`
 
           - `refusal: string`
+
+            `minLength: 0`, `maxLength: 10485760`
 
           - `type: "refusal"`
 
@@ -1020,6 +1166,8 @@ curl https://api.openai.com/v1/decisions \
 
     - `text: string`
 
+      `minLength: 0`, `maxLength: 10485760`
+
     - `type: "input_text"`
 
       - `"input_text"`
@@ -1041,6 +1189,8 @@ curl https://api.openai.com/v1/decisions \
     - `image_url: string`
 
       A base64-encoded image in a data URL or a publicly accessible HTTP(S) image URL.
+
+      `minLength: 0`, `maxLength: 1073741824`
 
     - `type: "input_image"`
 
@@ -1087,6 +1237,8 @@ curl https://api.openai.com/v1/decisions \
 - `DecisionInputText object { text, type, prompt_cache_breakpoint }`
 
   - `text: string`
+
+    `minLength: 0`, `maxLength: 10485760`
 
   - `type: "input_text"`
 

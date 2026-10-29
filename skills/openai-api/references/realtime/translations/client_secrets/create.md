@@ -74,6 +74,8 @@ The client secret is a string that looks like `ek_1234`.
 
     The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
+    `format: int64`, `minimum: 10`, `maximum: 7200`
+
 ### Returns
 
 - `RealtimeTranslationClientSecretCreateResponse object { expires_at, session, value }`
@@ -83,6 +85,8 @@ The client secret is a string that looks like `ek_1234`.
   - `expires_at: number`
 
     Expiration timestamp for the client secret, in seconds since epoch.
+
+    `format: unixtime`
 
   - `session: RealtimeTranslationSession`
 
@@ -130,6 +134,8 @@ The client secret is a string that looks like `ek_1234`.
     - `expires_at: number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `model: string`
 

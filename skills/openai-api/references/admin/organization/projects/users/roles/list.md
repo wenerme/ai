@@ -20,6 +20,8 @@ Lists the project roles assigned to a user within a project.
 
   A limit on the number of project role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned project roles.
@@ -49,6 +51,8 @@ Lists the project roles assigned to a user within a project.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -85,6 +89,8 @@ Lists the project roles assigned to a user within a project.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 

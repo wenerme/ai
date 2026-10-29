@@ -94,6 +94,8 @@ Add an external key config for an organization
 
       The name of the Azure Key Vault master key that you manage
 
+      `maxLength: 127`
+
     - `name: string`
 
       A friendly name to identify this config

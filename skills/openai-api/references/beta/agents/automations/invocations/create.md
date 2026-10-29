@@ -8,6 +8,8 @@ Queues a manual delivery without changing the saved schedule.
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AutomationInvocation object { id, automation_id, created_at, 7 more }`
@@ -18,13 +20,19 @@ Queues a manual delivery without changing the saved schedule.
 
     The invocation ID.
 
+    `minLength: 0`
+
   - `automation_id: string`
 
     The automation that owns the invocation.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The creation time as a Unix timestamp in seconds.
+
+    `format: int64`
 
   - `error: object { code, message }  or null`
 
@@ -34,9 +42,13 @@ Queues a manual delivery without changing the saved schedule.
 
       A machine-readable error code.
 
+      `minLength: 0`
+
     - `message: string`
 
       A public explanation of the delivery failure.
+
+      `minLength: 0`
 
   - `object: "agent.automation.invocation"`
 
@@ -48,9 +60,13 @@ Queues a manual delivery without changing the saved schedule.
 
     The intended occurrence as a Unix timestamp in seconds, or null for manual runs.
 
+    `format: int64`
+
   - `session_id: string or null`
 
     The target or newly created session ID, or null before one is available.
+
+    `minLength: 0`
 
   - `skip_reason: "pending_delivery" or null`
 
@@ -84,9 +100,13 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -106,9 +126,13 @@ Queues a manual delivery without changing the saved schedule.
 
                 The creator session, which is also the automation's target.
 
+                `minLength: 0`
+
               - `tool_call_id: string`
 
                 The tool call that created the automation.
+
+                `minLength: 0`
 
               - `type: "agent"`
 
@@ -120,6 +144,8 @@ Queues a manual delivery without changing the saved schedule.
 
             The cron expression determining scheduled occurrences.
 
+            `minLength: 0`
+
           - `metadata: map[string]`
 
             Custom string key-value pairs attached to the automation.
@@ -127,6 +153,8 @@ Queues a manual delivery without changing the saved schedule.
           - `name: string`
 
             The automation's display name.
+
+            `minLength: 0`
 
           - `object: "agent.automation"`
 
@@ -156,9 +184,13 @@ Queues a manual delivery without changing the saved schedule.
 
                   Custom instructions, or null when absent.
 
+                  `minLength: 0`
+
                 - `model: string`
 
                   The requested model name.
+
+                  `minLength: 0`
 
                 - `multi_agent: MultiAgentConfig`
 
@@ -171,6 +203,8 @@ Queues a manual delivery without changing the saved schedule.
                   - `max_concurrent_subagents: number or null`
 
                     Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
+
+                    `format: int64`, `minimum: 1`, `maximum: 4294967295`
 
                 - `reasoning: AgentReasoning`
 
@@ -272,6 +306,8 @@ Queues a manual delivery without changing the saved schedule.
 
                   Configured tools, excluding confidential credentials.
 
+                  `minItems: 0`, `maxItems: 2000`
+
                   - `Function object { defer_loading, description, name, 2 more }`
 
                     A function defined by the application.
@@ -284,9 +320,13 @@ Queues a manual delivery without changing the saved schedule.
 
                       A description of what the function does.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The name of the function.
+
+                      `minLength: 0`
 
                     - `parameters: map[unknown]`
 
@@ -320,6 +360,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       The MCP tools the agent may call.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `connection_origin: "service" or "environment"`
 
                       Where outbound MCP HTTP connections originate.
@@ -331,6 +373,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `credential_id: string or null`
 
                       The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+                      `minLength: 0`
 
                     - `request_metadata: map[unknown]`
 
@@ -344,6 +388,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       A label used to identify the MCP server in tool calls.
 
+                      `minLength: 0`
+
                     - `transport: McpTransport`
 
                       The transport used to connect to the MCP server.
@@ -355,6 +401,8 @@ Queues a manual delivery without changing the saved schedule.
                         - `server_url: string`
 
                           The URL of the MCP server.
+
+                          `minLength: 0`
 
                         - `type: "http"`
 
@@ -370,17 +418,25 @@ Queues a manual delivery without changing the saved schedule.
 
                           Arguments passed to the MCP server command.
 
+                          `minItems: 0`, `maxItems: 2000`
+
                         - `command: string`
 
                           The command used to start the MCP server.
+
+                          `minLength: 0`
 
                         - `cwd: string`
 
                           The working directory used to start the MCP server.
 
+                          `minLength: 0`
+
                         - `env_vars: array of string`
 
                           Environment variable names inherited from the execution environment.
+
+                          `minItems: 0`, `maxItems: 2000`
 
                         - `type: "stdio"`
 
@@ -402,6 +458,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       Allowed search domains, or `null` when the search is unrestricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                     - `context_size: "low" or "medium" or "high"`
 
                       The amount of search context made available to the model. Defaults to `medium`.
@@ -420,17 +478,25 @@ Queues a manual delivery without changing the saved schedule.
 
                         The city name.
 
+                        `minLength: 0`
+
                       - `country: string or null`
 
                         The two-letter ISO country code, such as `US`.
+
+                        `minLength: 0`
 
                       - `region: string or null`
 
                         The region or state name.
 
+                        `minLength: 0`
+
                       - `timezone: string or null`
 
                         The IANA timezone, such as `America/Los_Angeles`.
+
+                        `minLength: 0`
 
                     - `mode: "disabled" or "cached" or "live"`
 
@@ -472,9 +538,19 @@ Queues a manual delivery without changing the saved schedule.
 
                       - `"automations"`
 
+                - `compaction: optional object { async }`
+
+                  The effective context compaction settings.
+
+                  - `async: boolean`
+
+                    Whether context is compacted in the background. Defaults to true.
+
               - `agent_id: string or null`
 
                 The saved agent reference, or null when an inline agent is configured.
+
+                `minLength: 0`
 
               - `environment: AutomationEnvironment`
 
@@ -495,6 +571,8 @@ Queues a manual delivery without changing the saved schedule.
                   - `capability_directories: array of string or null`
 
                     Directory overrides, or null to inherit the template or creation default.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                   - `container_size: "small" or "medium" or "large" or null`
 
@@ -518,13 +596,19 @@ Queues a manual delivery without changing the saved schedule.
 
                     An existing environment reference, or null when provisioning a new environment.
 
+                    `minLength: 0`
+
                   - `environment_template_id: string or null`
 
                     A template reference, or null when no template is selected.
 
+                    `minLength: 0`
+
                   - `files: array of FileID { file_id, path, type }  or Inline { path, size_bytes, type }  or null`
 
                     File overrides, excluding contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `FileID object { file_id, path, type }`
 
@@ -534,9 +618,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The ID of the uploaded file.
 
+                        `minLength: 0`
+
                       - `path: string`
 
                         The file's absolute path inside the environment.
+
+                        `minLength: 0`
 
                       - `type: "file_id"`
 
@@ -552,9 +640,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The file's absolute path inside the environment.
 
+                        `minLength: 0`
+
                       - `size_bytes: number`
 
                         The decoded size of the inline file in bytes.
+
+                        `format: int64`, `minimum: 0`
 
                       - `type: "inline"`
 
@@ -586,6 +678,8 @@ Queues a manual delivery without changing the saved schedule.
 
                       Domains the environment may access when network access is restricted.
 
+                      `minItems: 0`, `maxItems: 2000`
+
                   - `packages: object { npm, python, system }  or null`
 
                     Package overrides, or null to inherit the template or creation default.
@@ -594,25 +688,37 @@ Queues a manual delivery without changing the saved schedule.
 
                       npm packages installed globally in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                     - `python: array of string`
 
                       Python packages installed in the environment.
+
+                      `minItems: 0`, `maxItems: 16384`
 
                     - `system: array of string`
 
                       System packages installed in the environment.
 
+                      `minItems: 0`, `maxItems: 16384`
+
                   - `plugins: array of HostedPlugin or null`
 
                     Plugin overrides, excluding archive contents, or null to inherit.
+
+                    `minItems: 0`, `maxItems: 2000`
 
                     - `description: string`
 
                       The installed plugin description.
 
+                      `minLength: 0`
+
                     - `name: string`
 
                       The installed plugin name.
+
+                      `minLength: 0`
 
                     - `type: "inline"`
 
@@ -624,6 +730,8 @@ Queues a manual delivery without changing the saved schedule.
 
                     Skill overrides, excluding archive contents, or null to inherit.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                     - `SkillReference object { skill_id, type, version }`
 
                       A skill resolved afresh from the Skills API whenever a session starts.
@@ -631,6 +739,8 @@ Queues a manual delivery without changing the saved schedule.
                       - `skill_id: string`
 
                         The referenced skill ID.
+
+                        `minLength: 0`
 
                       - `type: "skill_reference"`
 
@@ -642,6 +752,8 @@ Queues a manual delivery without changing the saved schedule.
 
                         The requested version selector, including `latest`.
 
+                        `minLength: 0`
+
                     - `Inline object { description, name, type }`
 
                       Safe metadata for an inline skill archive.
@@ -650,9 +762,13 @@ Queues a manual delivery without changing the saved schedule.
 
                         The skill description declared in `SKILL.md`.
 
+                        `minLength: 0`
+
                       - `name: string`
 
                         The skill name declared in `SKILL.md`.
+
+                        `minLength: 0`
 
                       - `type: "inline"`
 
@@ -672,9 +788,13 @@ Queues a manual delivery without changing the saved schedule.
 
                     Directories that expose capabilities to the agent.
 
+                    `minItems: 0`, `maxItems: 2000`
+
                   - `environment_id: string or null`
 
                     An existing registration, or null to create a session-owned environment.
+
+                    `minLength: 0`
 
                   - `type: "self_hosted"`
 
@@ -686,13 +806,19 @@ Queues a manual delivery without changing the saved schedule.
 
                     The absolute project directory in the environment.
 
+                    `minLength: 0`
+
               - `input: array of object { content, role, type }`
 
                 Initial input delivered to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
                 - `content: array of InputContent`
 
                   The content of the message.
+
+                  `minItems: 0`, `maxItems: 2000`
 
                   - `InputText object { text, type }`
 
@@ -701,6 +827,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `text: string`
 
                       The text supplied to the agent.
+
+                      `minLength: 0`
 
                     - `type: "input_text"`
 
@@ -715,6 +843,8 @@ Queues a manual delivery without changing the saved schedule.
                     - `image_url: string`
 
                       The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+                      `minLength: 0`
 
                     - `type: "input_image"`
 
@@ -748,15 +878,21 @@ Queues a manual delivery without changing the saved schedule.
 
                 Vaults made available to each new session.
 
+                `minItems: 0`, `maxItems: 2000`
+
             - `ExistingSession object { instructions, session_id, type }`
 
               - `instructions: string`
 
                 Saved instructions delivered as an automation notification.
 
+                `minLength: 0`
+
               - `session_id: string`
 
                 The session receiving each invocation.
+
+                `minLength: 0`
 
               - `type: "existing_session"`
 
@@ -767,6 +903,8 @@ Queues a manual delivery without changing the saved schedule.
           - `timezone: string`
 
             The timezone used to interpret the expression.
+
+            `minLength: 0`
 
           - `type: "periodic"`
 
@@ -782,9 +920,13 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation ID.
 
+            `minLength: 0`
+
           - `created_at: number`
 
             The creation time as a Unix timestamp in seconds.
+
+            `format: int64`
 
           - `created_by: AutomationCreatedBy`
 
@@ -798,6 +940,8 @@ Queues a manual delivery without changing the saved schedule.
 
             The automation's display name.
 
+            `minLength: 0`
+
           - `object: "agent.automation"`
 
             Always `agent.automation`.
@@ -807,6 +951,8 @@ Queues a manual delivery without changing the saved schedule.
           - `run_at: number`
 
             The Unix timestamp, in seconds, of the scheduled occurrence.
+
+            `format: int64`
 
           - `status: "active" or "paused" or "completed"`
 

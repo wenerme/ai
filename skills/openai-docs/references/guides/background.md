@@ -303,6 +303,7 @@ while [:queued, :in_progress].include?(response.status)
 end
 
 puts("Final status: #{response.status}")
+puts("Output:")
 puts(response.output_text)
 ```
 
@@ -687,7 +688,8 @@ if (!completed)
 ```ruby
 require "openai"
 
-client = OpenAI::Client.new
+# An uncapped background novel can run beyond the SDK's default ten minutes.
+client = OpenAI::Client.new(timeout: 30 * 60)
 stream = client.responses.stream(
   model: "gpt-6-astra",
   input: "Write a very long novel about otters in space.",
@@ -696,15 +698,20 @@ stream = client.responses.stream(
 
 last_sequence_number = -1
 response_id = ""
-stream.each do |event|
-  puts(event.type)
-  last_sequence_number = event.sequence_number || last_sequence_number
-  if event.is_a?(OpenAI::Models::Responses::ResponseCreatedEvent)
-    response_id = event.response.id
+begin
+  stream.each do |event|
+    puts(event.type)
+    # The SDK filters transport keepalives before yielding stored events.
+    last_sequence_number = event.sequence_number || last_sequence_number
+    if event.is_a?(OpenAI::Models::Responses::ResponseCreatedEvent)
+      response_id = event.response.id
+    end
   end
+ensure
+  stream.close
 end
 
-puts("Response #{response_id}; last sequence number #{last_sequence_number}")
+puts("response #{response_id} last cursor #{last_sequence_number}")
 
 # If the connection drops, resume from the last sequence number:
 # client.responses.stream(response_id: response_id, starting_after: last_sequence_number).each do |event|

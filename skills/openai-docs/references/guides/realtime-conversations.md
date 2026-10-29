@@ -309,6 +309,13 @@ connection.conversation.items.create(
     }
   ]
 )
+
+connection.each do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+  next unless event.is_a?(OpenAI::Realtime::ConversationItemDone)
+
+  break if event.item.is_a?(OpenAI::Realtime::RealtimeConversationItemUserMessage)
+end
 ```
 
 
@@ -372,6 +379,15 @@ connection.response.create(
   output_modalities: [:text],
   instructions: "Respond with a concise text message."
 )
+
+connection.each do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+  next unless event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
+
+  raise "Response failed: #{event.response.status}" unless event.response.status == :completed
+
+  break
+end
 ```
 
 
@@ -385,6 +401,7 @@ function handleEvent(message) {
   const serverEvent = JSON.parse(data);
   if (serverEvent.type === "response.done") {
     console.log(serverEvent.response.output[0]);
+    dataChannel.close();
   }
 }
 
@@ -946,6 +963,14 @@ connection.conversation.items.create(
     }
   ]
 )
+
+receipt = connection.find do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+
+  event.is_a?(OpenAI::Realtime::ConversationItemDone) &&
+    event.item.is_a?(OpenAI::Realtime::RealtimeConversationItemUserMessage)
+end
+raise "Connection closed before the audio item was acknowledged" unless receipt
 ```
 
 
@@ -968,8 +993,14 @@ Listen for response.output_audio.delta events
 function handleEvent(message) {
   const serverEvent = JSON.parse(message.toString());
   if (serverEvent.type === "response.output_audio.delta") {
-    // Access Base64-encoded audio chunks
-    // console.log(serverEvent.delta);
+    const audio = Buffer.from(serverEvent.delta, "base64");
+    console.log(`Received ${audio.length} audio bytes`);
+  }
+  if (serverEvent.type === "error") throw new Error(serverEvent.error.message);
+  if (serverEvent.type === "response.done") {
+    if (serverEvent.response.status !== "completed")
+      throw new Error(`Response failed: ${serverEvent.response.status}`);
+    ws.close(1000);
   }
 }
 
@@ -1015,7 +1046,11 @@ connection.each do |event|
   when OpenAI::Realtime::ResponseAudioDeltaEvent
     audio_bytes = Base64.strict_decode64(event.delta)
     puts("Received #{audio_bytes.bytesize} audio bytes")
+  when OpenAI::Realtime::RealtimeErrorEvent
+    raise event.error.message
   when OpenAI::Realtime::ResponseDoneEvent
+    raise "Response failed: #{event.response.status}" unless event.response.status == :completed
+
     break
   end
 end
@@ -1067,6 +1102,15 @@ connection.conversation.items.create(
   ]
 )
 connection.response.create(output_modalities: [:text])
+
+completion = connection.find do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+
+  event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
+end
+unless completion.is_a?(OpenAI::Realtime::ResponseDoneEvent) && completion.response.status == :completed
+  raise "The Realtime response did not complete"
+end
 ```
 
 
@@ -1206,6 +1250,15 @@ connection.response.create(
   output_modalities: [:text],
   instructions: "Classify the conversation as support or sales."
 )
+
+connection.each do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+  next unless event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
+
+  raise "Response failed: #{event.response.status}" unless event.response.status == :completed
+
+  break
+end
 ```
 
 
@@ -1228,6 +1281,7 @@ function handleEvent(message) {
       );
     }
     console.log(response.output[0]);
+    dataChannel.close();
   }
 }
 
@@ -1335,7 +1389,7 @@ const event = {
       // potentially include existing conversation items:
       {
         type: "item_reference",
-        id: "some_conversation_item_id",
+        id: existingItemId,
       },
       {
         type: "message",
@@ -1428,6 +1482,7 @@ const event = {
   response: {
     // An empty input array removes existing context
     input: [],
+    output_modalities: ["text"],
     instructions: prompt,
   },
 };
@@ -1500,6 +1555,15 @@ connection.response.create(
   output_modalities: [:text],
   instructions: "Generate a concise greeting without conversation context."
 )
+
+connection.each do |event|
+  raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+  next unless event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
+
+  raise "Response failed: #{event.response.status}" unless event.response.status == :completed
+
+  break
+end
 ```
 
 
@@ -1601,26 +1665,25 @@ Instead of immediately returning a text or audio response, the model will instea
 
 ```json
 {
-    "type": "response.done",
-    "event_id": "event_AeqLA8iR6FK20L4XZs2P6",
-    "response": {
-        "object": "realtime.response",
-        "id": "resp_AeqL8XwMUOri9OhcQJIu9",
+  "type": "response.done",
+  "event_id": "event_AeqLA8iR6FK20L4XZs2P6",
+  "response": {
+    "object": "realtime.response",
+    "id": "resp_AeqL8XwMUOri9OhcQJIu9",
+    "status": "completed",
+    "status_details": null,
+    "output": [
+      {
+        "object": "realtime.item",
+        "id": "item_AeqL8gmRWDn9bIsUM2T35",
+        "type": "function_call",
         "status": "completed",
-        "status_details": null,
-        "output": [
-            {
-                "object": "realtime.item",
-                "id": "item_AeqL8gmRWDn9bIsUM2T35",
-                "type": "function_call",
-                "status": "completed",
-                "name": "generate_horoscope",
-                "call_id": "call_sHlR7iaFwQ2YQOqm",
-                "arguments": "{\"sign\":\"Aquarius\"}"
-            }
-        ],
-        ...
-    }
+        "name": "generate_horoscope",
+        "call_id": "call_sHlR7iaFwQ2YQOqm",
+        "arguments": "{\"sign\":\"Aquarius\"}"
+      }
+    ]
+  }
 }
 ```
 
@@ -1684,11 +1747,15 @@ This unsuccessful event sent from the client will emit an error event like the f
 
 ```json
 {
-  "type": "invalid_request_error",
-  "code": "invalid_value",
-  "message": "Invalid value: 'scooby.dooby.doo' ...",
-  "param": "type",
-  "event_id": "my_awesome_event"
+  "type": "error",
+  "event_id": "event_error_123",
+  "error": {
+    "type": "invalid_request_error",
+    "code": "invalid_value",
+    "message": "Invalid value: 'scooby.dooby.doo'.",
+    "param": "type",
+    "event_id": "my_awesome_event"
+  }
 }
 ```
 

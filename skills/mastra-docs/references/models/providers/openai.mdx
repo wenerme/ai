@@ -5,7 +5,7 @@ description: "Browse OpenAI model IDs, capabilities, context windows, and pricin
 
 # [OpenAI logo]OpenAI
 
-Access 52 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
+Access 51 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
 
 Learn more in the [OpenAI documentation](https://platform.openai.com/docs/models).
 
@@ -37,18 +37,6 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
-  {
-    "model": "openai/chatgpt-image-latest",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
   {
     "model": "openai/gpt-4.1",
     "imageInput": true,
@@ -432,30 +420,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 12.5,
     "outputCost": 75
-  },
-  {
-    "model": "openai/gpt-image-1-mini",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "openai/gpt-image-1.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "openai/gpt-image-2",

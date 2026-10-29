@@ -38,6 +38,8 @@ Create a vector store.
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -62,9 +64,13 @@ Create a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
+    `minimum: 1`, `maximum: 365`
+
 - `file_ids: optional array of string`
 
   A list of [File](/api/reference/resources/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files.
+
+  `maxItems: 500`
 
 - `metadata: optional Metadata or null`
 
@@ -93,6 +99,8 @@ Create a vector store.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -118,6 +126,8 @@ Create a vector store.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -166,9 +176,13 @@ Create a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -345,6 +359,8 @@ Returns a list of vector stores.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -370,6 +386,8 @@ Returns a list of vector stores.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -418,9 +436,13 @@ Returns a list of vector stores.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 - `first_id: string`
 
@@ -556,6 +578,8 @@ Retrieves a vector store.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -581,6 +605,8 @@ Retrieves a vector store.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -629,9 +655,13 @@ Retrieves a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -806,6 +836,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   The maximum number of results to return. This number should be between 1 and 50 inclusive.
 
+  `minimum: 1`, `maximum: 50`
+
 - `ranking_options: optional object { ranker, score_threshold }`
 
   Ranking options for search.
@@ -821,6 +853,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
     - `"default-2024-11-15"`
 
   - `score_threshold: optional number`
+
+    `minimum: 0`, `maximum: 1`
 
 - `rewrite_query: optional boolean`
 
@@ -871,6 +905,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
   - `score: number`
 
     The similarity score for the result.
+
+    `minimum: 0`, `maximum: 1`
 
 - `has_more: boolean`
 
@@ -1008,6 +1044,8 @@ Modifies a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
+    `minimum: 1`, `maximum: 365`
+
 - `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
@@ -1035,6 +1073,8 @@ Modifies a vector store.
 
     The Unix timestamp (in seconds) for when the vector store was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -1060,6 +1100,8 @@ Modifies a vector store.
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -1108,9 +1150,13 @@ Modifies a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -1232,6 +1278,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -1264,6 +1312,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
 
     The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+    `minimum: 100`, `maximum: 4096`
+
 ### Static File Chunking Strategy Object
 
 - `StaticFileChunkingStrategyObject object { static, type }`
@@ -1279,6 +1329,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
     - `max_chunk_size_tokens: number`
 
       The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+      `minimum: 100`, `maximum: 4096`
 
   - `type: "static"`
 
@@ -1304,6 +1356,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
 
       The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+      `minimum: 100`, `maximum: 4096`
+
   - `type: "static"`
 
     Always `static`.
@@ -1323,6 +1377,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store was created.
+
+    `format: unixtime`
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
@@ -1349,6 +1405,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
   - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
+
+    `format: unixtime`
 
   - `metadata: Metadata or null`
 
@@ -1397,9 +1455,13 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
 
       The number of days after the anchor time that the vector store will expire.
 
+      `minimum: 1`, `maximum: 365`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
+
+    `format: unixtime`
 
 ### Vector Store Deleted
 
@@ -1457,6 +1519,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123 \
 
     The similarity score for the result.
 
+    `minimum: 0`, `maximum: 1`
+
 # File Batches
 
 ## Cancel vector store file batch
@@ -1484,6 +1548,8 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
+
+    `format: unixtime`
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
@@ -1642,6 +1708,8 @@ Create a vector store file batch.
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -1652,9 +1720,13 @@ Create a vector store file batch.
 
   A list of [File](/api/reference/resources/files) IDs that the vector store should use. Useful for tools like `file_search` that can access files. If `attributes` or `chunking_strategy` are provided, they will be applied to all files in the batch. The maximum batch size is 2000 files. This endpoint is recommended for multi-file ingestion and helps reduce per-vector-store write request pressure. Mutually exclusive with `files`.
 
+  `minItems: 1`, `maxItems: 2000`
+
 - `files: optional array of object { file_id, attributes, chunking_strategy }`
 
   A list of objects that each include a `file_id` plus optional `attributes` or `chunking_strategy`. Use this when you need to override metadata for specific files. The global `attributes` or `chunking_strategy` will be ignored and must be specified for each file. The maximum batch size is 2000 files. This endpoint is recommended for multi-file ingestion and helps reduce per-vector-store write request pressure. Mutually exclusive with `file_ids`.
+
+  `minItems: 1`, `maxItems: 2000`
 
   - `file_id: string`
 
@@ -1691,6 +1763,8 @@ Create a vector store file batch.
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
+
+    `format: unixtime`
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
@@ -1871,6 +1945,8 @@ Returns a list of vector store files in a batch.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -1946,6 +2022,8 @@ Returns a list of vector store files in a batch.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -2080,6 +2158,8 @@ Retrieves a vector store file batch.
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
 
+    `format: unixtime`
+
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
     - `cancelled: number`
@@ -2194,6 +2274,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches/vsfb_abc123 
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store files batch was created.
+
+    `format: unixtime`
 
   - `file_counts: object { cancelled, completed, failed, 2 more }`
 
@@ -2386,6 +2468,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 
         The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
 
+        `minimum: 100`, `maximum: 4096`
+
     - `type: "static"`
 
       Always `static`.
@@ -2405,6 +2489,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the vector store file was created.
+
+    `format: unixtime`
 
   - `last_error: object { code, message }  or null`
 
@@ -2481,6 +2567,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -2682,6 +2770,8 @@ Returns a list of vector store files.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -2757,6 +2847,8 @@ Returns a list of vector store files.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -2891,6 +2983,8 @@ Retrieves a vector store file.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -2966,6 +3060,8 @@ Retrieves a vector store file.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -3083,6 +3179,8 @@ Update attributes on a vector store file.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -3158,6 +3256,8 @@ Update attributes on a vector store file.
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 
@@ -3275,6 +3375,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
+    `format: unixtime`
+
   - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
@@ -3350,6 +3452,8 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files/file-abc123 \
         - `max_chunk_size_tokens: number`
 
           The maximum number of tokens in each chunk. The default value is `800`. The minimum value is `100` and the maximum value is `4096`.
+
+          `minimum: 100`, `maximum: 4096`
 
       - `type: "static"`
 

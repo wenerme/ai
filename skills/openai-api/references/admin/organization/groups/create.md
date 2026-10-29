@@ -10,6 +10,8 @@ Creates a new group in the organization.
 
   Human readable name for the group.
 
+  `minLength: 1`, `maxLength: 255`
+
 ### Returns
 
 - `Group object { id, created_at, group_type, 2 more }`
@@ -23,6 +25,8 @@ Creates a new group in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `group_type: "group" or "tenant_group"`
 

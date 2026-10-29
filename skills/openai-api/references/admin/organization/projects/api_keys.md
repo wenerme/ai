@@ -105,9 +105,13 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -132,6 +136,8 @@ Returns a list of API keys in the project.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -161,6 +167,8 @@ Returns a list of API keys in the project.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -188,6 +196,8 @@ Returns a list of API keys in the project.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -311,9 +321,13 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -338,6 +352,8 @@ Retrieves an API key in the project.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -367,6 +383,8 @@ Retrieves an API key in the project.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -394,6 +412,8 @@ Retrieves an API key in the project.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -499,6 +519,8 @@ the new request. The response contains only the redacted key, not its secret.
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
 
+  `minimum: 1`, `maximum: 31536000`
+
 - `scopes: optional array of string`
 
   Replace the API key scope restrictions. Omit to leave scopes unchanged. An empty array removes key restrictions (All permissions), subject to the owner's effective permissions. Use ["api.all.read"] for read-only access. Scopes do not change the owner's roles or grant administrative permissions.
@@ -517,9 +539,13 @@ the new request. The response contains only the redacted key, not its secret.
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -544,6 +570,8 @@ the new request. The response contains only the redacted key, not its secret.
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -573,6 +601,8 @@ the new request. The response contains only the redacted key, not its secret.
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -600,6 +630,8 @@ the new request. The response contains only the redacted key, not its secret.
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`
 
 ### Example
 
@@ -706,9 +738,13 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -733,6 +769,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
       - `created_at: number`
 
         The Unix timestamp (in seconds) of when the service account was created.
+
+        `format: unixtime`
 
       - `name: string`
 
@@ -762,6 +800,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
 
         The Unix timestamp (in seconds) of when the user was created.
 
+        `format: unixtime`
+
       - `email: string`
 
         The email address of the user.
@@ -789,3 +829,5 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/api_keys/k
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+    `format: unixtime`

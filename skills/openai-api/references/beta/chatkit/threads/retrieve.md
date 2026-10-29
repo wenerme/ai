@@ -22,13 +22,15 @@ Retrieve a ChatKit thread by its identifier.
 
     Unix timestamp (in seconds) for when the thread was created.
 
+    `format: unixtime`
+
   - `object: "chatkit.thread"`
 
     Type discriminator that is always `chatkit.thread`.
 
     - `"chatkit.thread"`
 
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+  - `status: Active { type }  or Locked { reason, type }  or Closed { reason, type }`
 
     Current status for the thread. Defaults to `active` for newly created threads.
 

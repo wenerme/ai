@@ -11,7 +11,7 @@ The Business Variable panel supports input text boxes in the **Table** and **Min
 
 In the **Table** display mode, you can use the **Sticky position** option to keep the Business Variable panel in sight when scrolling the dashboard.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/input.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/input.png)
 
 ## Enter the key for the text box type
 
@@ -19,4 +19,4 @@ Pressing the Enter key after typing a text value in the Text box variable type t
 
 Before this feature was implemented, users had to click outside the box for the variable to take effect.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/enter.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/enter.png)

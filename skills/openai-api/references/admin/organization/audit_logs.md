@@ -374,6 +374,8 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
+    `format: unixtime`
+
   - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 
     The event type.
@@ -2218,6 +2220,8 @@ curl https://api.openai.com/v1/organization/audit_logs \
   - `effective_at: number`
 
     The Unix timestamp (in seconds) of the event.
+
+    `format: unixtime`
 
   - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 146 more`
 

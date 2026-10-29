@@ -32,6 +32,8 @@ This enables organization owners to share fine-tuned models with other projects 
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -222,6 +224,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -346,6 +350,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -440,6 +446,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -482,6 +490,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -505,6 +515,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the permission was created.
+
+      `format: unixtime`
 
     - `object: "checkpoint.permission"`
 

@@ -30,6 +30,8 @@ List checkpoints for a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the checkpoint was created.
 
+    `format: unixtime`
+
   - `fine_tuned_model_checkpoint: string`
 
     The name of the fine-tuned checkpoint model that is created.

@@ -248,7 +248,7 @@ limit: <number>
 | `metrics` | Yes | Aggregated values to compute. At least one metric is required. |
 | `dimensions` | No | Fields to group results by. Select any combination, or omit entirely to return a single aggregated row. |
 | `sort` | No | Sort fields must also appear in your selected dimensions or metrics. |
-| `limit` | No | Rows per page, up to `100`. Tables page through results with **Previous** and **Next**. Analytics-mode display types such as charts and stats fetch every page automatically when `limit` is omitted, up to 1,000 rows. See [Pagination support](display_types.md#pagination-support). |
+| `limit` | No | For lists, tables, stats, bar lists, and heat maps, rows per page, up to `100`. Tables page through results with **Previous** and **Next**. Analytics-mode display types such as charts and stats fetch every page automatically when `limit` is omitted, up to 1,000 rows. On a column, line, bar, area, or diverging bar chart, `limit` sets how many values of the first dimension each page shows, with **Previous** and **Next** controls. The chart still fetches every row, up to 1,000, so `limit` does not make it load faster. See [Pagination support](display_types.md#pagination-support). |
 
 ### Field parameters
 

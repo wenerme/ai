@@ -8,6 +8,8 @@ Removes a managed agent session from the public API and returns a deletion confi
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AgentSessionDeleted object { id, deleted, object }`
@@ -17,6 +19,8 @@ Removes a managed agent session from the public API and returns a deletion confi
   - `id: string`
 
     The ID of the deleted session.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

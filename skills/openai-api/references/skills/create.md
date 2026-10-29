@@ -30,6 +30,8 @@ Create a new skill.
 
     Unix timestamp (seconds) for when the skill was created.
 
+    `format: unixtime`
+
   - `default_version: string`
 
     Default version for the skill.

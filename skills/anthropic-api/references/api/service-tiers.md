@@ -2,7 +2,33 @@
 title: Service tiers
 url: https://platform.claude.com/docs/en/api/service-tiers
 description: Different tiers of service allow you to balance availability, performance, and predictable costs based on your application's needs.
+featureMetadata:
+  status: ga
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
+  supportedPlatforms:
+    Claude API: ga
 ---
+
+<Warning>
+  Service tiers are legacy.
+</Warning>
 
 <Warning>
   Priority Tier capacity commitments are no longer available for purchase. Organizations with an existing commitment can continue to use Priority Tier through their contract end date, and this page remains available as a reference for them. If you need guaranteed capacity, [contact sales](https://claude.com/contact-sales).
@@ -20,7 +46,7 @@ The standard tier is the default service tier for all API requests. The API prio
 
 ## Priority Tier
 
-The API prioritizes requests in this tier over all other requests. This prioritization helps minimize ["server overloaded" errors](https://platform.claude.com/docs/en/api/errors#http-errors), even during peak times.
+The API prioritizes requests in this tier over all other requests. This prioritization helps minimize [“server overloaded” errors](https://platform.claude.com/docs/en/api/errors#http-errors), even during peak times.
 
 For more information, see [Existing Priority Tier commitments](https://platform.claude.com/docs/en/api/service-tiers#existing-priority-tier-commitments).
 
@@ -183,7 +209,7 @@ You can control which service tiers can be used for a request by setting the `se
 The `service_tier` parameter accepts the following values:
 
 * `"auto"` (default) - Uses the Priority Tier capacity if available, falling back to your other capacity if not
-* `"standard_only"` - Uses only standard tier capacity, useful if you don't want to use your Priority Tier capacity
+* `"standard_only"` - Uses only standard tier capacity, useful if you don’t want to use your Priority Tier capacity
 
 The response `usage` object also includes the service tier assigned to the request:
 
@@ -230,3 +256,22 @@ Priority Tier targets 99.5 percent uptime with prioritized computational resourc
 Priority Tier is supported on all available Claude models except Claude Fable 5.1, Claude Haiku 5.5, Claude Mythos 5.1, Claude Mythos 5, [Claude Mythos Preview](https://anthropic.com/glasswing), Claude Opus 5.5, Claude Opus 5, Claude Sonnet 5.5, and Claude Sonnet 5.
 
 Check the [Models overview](https://platform.claude.com/docs/en/models/overview) for more details on available models.
+
+## Availability
+
+Service tiers are available on every model.
+
+### API support
+
+#### [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)
+
+* Availability: Available
+* Usage: Needs a Priority Tier commitment, which is no longer sold. With one, requests use Priority Tier by default; set `service_tier` to `"standard_only"` to use only standard capacity.
+
+| Status    | Cloud platforms |
+| --------- | --------------- |
+| Available | Claude API      |
+
+#### [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview)
+
+* Availability: Not available

@@ -328,12 +328,28 @@ const ws = new WebSocket(url, {
   },
 });
 
-ws.on("open", function open() {
-  console.log("Connected to server.");
-});
+let sessionCreated = false;
 
 ws.on("message", function incoming(message) {
-  console.log(JSON.parse(message.toString()));
+  const event = JSON.parse(message.toString());
+  if (event.type === "session.created") {
+    sessionCreated = true;
+    console.log(`Connected to the Realtime API: ${event.session.id}`);
+    ws.close(1000);
+  } else if (event.type === "error") {
+    console.error(event);
+    ws.close();
+  }
+});
+ws.on("error", function handleError(error) {
+  console.error(error);
+  ws.close();
+});
+ws.on("close", function closed() {
+  if (!sessionCreated) {
+    console.error("Connection closed before the Realtime session was created.");
+    process.exitCode = 1;
+  }
 });
 ```
 
@@ -363,23 +379,30 @@ headers = [
 ]
 
 
-def on_open(ws):
-    print("Connected to server.")
+session_created = False
 
 
 def on_message(ws, message):
+    global session_created
     data = json.loads(message)
     print("Received event:", json.dumps(data, indent=2))
+    if data["type"] == "session.created":
+        session_created = True
+        print("Connected to the Realtime API.")
+        ws.close()
+    elif data["type"] == "error":
+        ws.close()
 
 
 ws = websocket.WebSocketApp(
     url,
     header=headers,
-    on_open=on_open,
     on_message=on_message,
 )
 
 ws.run_forever()
+if not session_created:
+    raise RuntimeError("Connection closed before the Realtime session was created.")
 ```
 
   
@@ -405,8 +428,15 @@ client = OpenAI::Client.new(
 )
 
 client.realtime.connect(model: "gpt-realtime-2.1") do |connection|
-  puts("Connected to the Realtime API: #{connection.url.host}")
-  connection.each { |event| puts("Received event: #{event.type}") }
+  created = connection.find do |event|
+    raise event.error.message if event.is_a?(OpenAI::Realtime::RealtimeErrorEvent)
+
+    next unless event.is_a?(OpenAI::Realtime::SessionCreatedEvent)
+
+    puts("Connected to the Realtime API: #{event.session[:id]}")
+    true
+  end
+  raise "Connection closed before the session was created" unless created
 end
 ```
 
@@ -522,9 +552,6 @@ const ws = new WebSocket(
     "realtime",
     // Use a short-lived token fetched from your application server.
     "openai-insecure-api-key." + OPENAI_REALTIME_EPHEMERAL_KEY,
-    // Optional
-    "openai-organization." + OPENAI_ORG_ID,
-    "openai-project." + OPENAI_PROJECT_ID,
   ]
 );
 

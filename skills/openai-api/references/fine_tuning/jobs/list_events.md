@@ -30,6 +30,8 @@ Get status updates for a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `level: "info" or "warn" or "error"`
 
     The log level of the event.

@@ -16,6 +16,8 @@ Lists the currently available models, and provides basic information about each 
 
     The Unix timestamp (in seconds) when the model was created.
 
+    `format: unixtime`
+
   - `object: "model"`
 
     The object type, which is always "model".
@@ -29,6 +31,8 @@ Lists the currently available models, and provides basic information about each 
   - `shutdown_date: optional string or null`
 
     The date when the model will shut down, or null if not announced.
+
+    `format: date`
 
 - `object: "list"`
 

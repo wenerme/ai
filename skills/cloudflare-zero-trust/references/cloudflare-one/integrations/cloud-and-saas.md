@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Cloud and SaaS integrations
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can integrate cloud environments and SaaS applications with [Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/). Once you have added an integration, you can [view and manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
 
@@ -63,6 +63,34 @@ The workflow pages for managing findings and webhooks appear first, followed by 
   - [Troubleshoot compute accounts](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/)
 - [Zoom](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/)
 
+## Create an integration
+
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**. [Go to **Cloud & SaaS** ↗](https://one.dash.cloudflare.com/?to=/:account/integrations/cloud-and-saas/integrations)
+2. Select **Connect an integration** or **Add integration**.
+3. Browse the available integrations and select the application you want to add.
+4. Follow the integration instructions in the dashboard.
+5. To run your first scan, select **Save integration**.
+
+Terraform supports only integrations that do not use OAuth. The `cloudflare_zero_trust_casb_integration` resource requires version 5.27.0 or later of the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/). Version 4 is not supported.
+
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Create an integration using the [`cloudflare_zero_trust_casb_integration` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_casb_integration) resource. The following example creates a Google Cloud Platform integration:
+
+   ```tf
+   resource "cloudflare_zero_trust_casb_integration" "google_cloud_platform" {
+     account_id = var.cloudflare_account_id
+     name       = "Google Cloud Platform"
+     paused     = false
+
+     google_cloud_platform = {
+       google_cloud_platform_service_account = {
+         service_account_key_json = file("service-account-key.json")
+       }
+     }
+   }
+   ```
+
 Was this helpful?
 
 YesNo
@@ -72,5 +100,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/#page","headline":"Cloud and SaaS integrations","description":"Cloud and SaaS integrations resources and guides for Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/og.png?v=4c0bebb8f8ca984e","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/#page","headline":"Cloud and SaaS integrations","description":"Cloud and SaaS integrations resources and guides for Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/og.png?v=4c0bebb8f8ca984e","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

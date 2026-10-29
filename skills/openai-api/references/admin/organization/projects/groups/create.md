@@ -28,6 +28,8 @@ Grants a group access to a project.
 
     Unix timestamp (in seconds) when the group was granted project access.
 
+    `format: unixtime`
+
   - `group_id: string`
 
     Identifier of the group that has access to the project.

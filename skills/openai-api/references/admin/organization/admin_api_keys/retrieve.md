@@ -24,9 +24,13 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
+    `format: unixtime`
+
   - `expires_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key expires
+
+    `format: unixtime`
 
   - `object: "organization.admin_api_key"`
 
@@ -43,6 +47,8 @@ Retrieve a single organization API key
     - `created_at: optional number`
 
       The Unix timestamp (in seconds) of when the user was created
+
+      `format: unixtime`
 
     - `name: optional string`
 
@@ -67,6 +73,8 @@ Retrieve a single organization API key
   - `last_used_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used
+
+    `format: unixtime`
 
   - `name: optional string or null`
 

@@ -18,6 +18,8 @@ Retrieve Container
 
   Unix timestamp (in seconds) when the container was created.
 
+  `format: unixtime`
+
 - `name: string`
 
   Name of the container.
@@ -49,6 +51,8 @@ Retrieve Container
 - `last_active_at: optional number`
 
   Unix timestamp (in seconds) when the container was last active.
+
+  `format: unixtime`
 
 - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
 

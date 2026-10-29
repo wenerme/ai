@@ -1800,8 +1800,8 @@ The Python sample uses `pip install "openai[realtime]>=3.8.0"`.
 The JavaScript sample uses `npm install openai@^7.10.0 ws`.
 The Ruby sample uses `gem install openai async-websocket`.
 
-For Go, run `go get github.com/openai/openai-go/v3@v3.70.0`.
-For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
+For Go, run `go get github.com/openai/openai-go/v3@v3.73.0`.
+For Java, add the Maven dependency `com.openai:openai-java:4.79.0`.
 These Go and Java SDK versions provide native Responses WebSocket support.
 
 Start a Responses API WebSocket session
@@ -1810,49 +1810,109 @@ Start a Responses API WebSocket session
 import OpenAI from "openai";
 import { ResponsesWS } from "openai/resources/responses/ws";
 
-const openai = new OpenAI();
+const testLogTool = {
+  type: "function",
+  name: "search_test_logs",
+  description: "Search test logs for a query.",
+  parameters: {
+    type: "object",
+    properties: { query: { type: "string" } },
+    required: ["query"],
+    additionalProperties: false,
+  },
+  strict: true,
+};
 
+const codeSearchTool = {
+  type: "function",
+  name: "search_code",
+  description: "Search the codebase for a query.",
+  parameters: {
+    type: "object",
+    properties: { query: { type: "string" } },
+    required: ["query"],
+    additionalProperties: false,
+  },
+  strict: true,
+};
+
+const openai = new OpenAI();
 const ws = new ResponsesWS(openai);
 
-ws.on("event", (event) => {
-  console.log(event.type);
-  if (
-    event.type === "response.completed" ||
-    event.type === "response.failed" ||
-    event.type === "response.incomplete"
-  ) {
-    ws.close();
+try {
+  ws.send({
+    type: "response.create",
+    model: "gpt-6-astra",
+    store: false,
+    input: [
+      {
+        type: "message",
+        role: "user",
+        content: [
+          {
+            type: "input_text",
+            text:
+              "Find the flaky test in this run, call the tools you need, " +
+              "and keep going until you can explain the root cause.",
+          },
+        ],
+      },
+    ],
+    tools: [testLogTool, codeSearchTool],
+  });
+  let completed = false;
+  for await (const event of ws) {
+    if (event.type === "error") throw event.error;
+    if (event.type !== "message") continue;
+    const message = event.message;
+    if (message.type === "response.completed") {
+      console.log(JSON.stringify(message.response.output));
+      completed = true;
+      break;
+    }
+    if (
+      message.type === "response.failed" ||
+      message.type === "response.incomplete"
+    ) {
+      throw new Error(JSON.stringify(message));
+    }
   }
-});
-ws.on("error", (error) => {
-  console.error(error);
+  if (!completed) {
+    throw new Error("Connection closed before the response finished.");
+  }
+} finally {
   ws.close();
-});
-
-ws.send({
-  type: "response.create",
-  model: "gpt-6-astra",
-  store: false,
-  input: [
-    {
-      type: "message",
-      role: "user",
-      content: [
-        {
-          type: "input_text",
-          text:
-            "Find the flaky test in this run, call the tools you need, " +
-            "and keep going until you can explain the root cause.",
-        },
-      ],
-    },
-  ],
-  tools: [testLogTool, codeSearchTool],
-});
+}
 ```
 
 ```python
 from openai import OpenAI
+from openai.types.responses import FunctionToolParam
+
+test_log_tool: FunctionToolParam = {
+    "type": "function",
+    "name": "search_test_logs",
+    "description": "Search test logs.",
+    "parameters": {
+        "type": "object",
+        "properties": {"query": {"type": "string"}},
+        "required": ["query"],
+        "additionalProperties": False,
+    },
+    "strict": True,
+}
+code_search_tool: FunctionToolParam = {
+    "type": "function",
+    "name": "search_code",
+    "description": "Search source code.",
+    "parameters": {
+        "type": "object",
+        "properties": {"query": {"type": "string"}},
+        "required": ["query"],
+        "additionalProperties": False,
+    },
+    "strict": True,
+}
 
 client = OpenAI()
 
@@ -1879,8 +1939,14 @@ with client.responses.connect() as connection:
         ],
         tools=[test_log_tool, code_search_tool],
     )
-    first_event = connection.recv()
-    print(first_event.type)
+    for event in connection:
+        if event.type == "response.completed":
+            print(event.response.output)
+            break
+        if event.type in {"response.failed", "response.incomplete", "error"}:
+            raise RuntimeError(event.to_json())
+    else:
+        raise RuntimeError("Connection closed before the response finished.")
 ```
 
 ```go

@@ -36,6 +36,8 @@ more in the [moderation guide](/api/docs/guides/moderation).
 
           Either a URL of the image or the base64 encoded image data.
 
+          `format: uri`
+
       - `type: "image_url"`
 
         Always `image_url`.

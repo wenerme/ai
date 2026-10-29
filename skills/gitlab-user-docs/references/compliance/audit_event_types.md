@@ -353,6 +353,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`duo_scheduled_triggers_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264600) | GitLab Duo scheduled triggers enabled setting on group changed | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) | Group |
 | [`flow_trigger_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was created for a project | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Project |
 | [`flow_trigger_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was deleted from a project or group | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Group, Project |
 | [`flow_trigger_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230069) | A flow trigger was updated for a project or group | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/593020) | Group, Project |
@@ -563,7 +564,7 @@ Audit event types belong to the following product categories.
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`orbit_cloud_connector_token_issued`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253400) | Orbit fetches the instance Cloud Connector token to authenticate billing-event emission | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1229) | Instance |
-| [`orbit_instance_trial_start`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261678) | Triggered when the instance-wide Orbit trial is started on a GitLab Self-Managed or GitLab Dedicated instance | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1385) | Instance |
+| [`orbit_instance_trial_start`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261678) | Triggered when the instance-wide Orbit trial is started on a GitLab Self-Managed or GitLab Dedicated instance | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1385) | Instance |
 
 ### Mcp server
 

@@ -13,7 +13,7 @@ Alertmanager templates use Go’s `text/template` syntax. This page covers the p
 
 Every template is a named definition:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ define "slack.title" }}
@@ -23,7 +23,7 @@ Go [Copy code to clipboard] Copy
 
 Reference it from another template with `template`:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ template "slack.title" . }}
@@ -35,7 +35,7 @@ The trailing `.` passes the current context through. Leaving it off gives the te
 
 `.` is the current context. At the top of a notification template it’s the notification data: the group of alerts and their shared labels. Inside a `range` it becomes the current item.
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ .GroupLabels.alertname }}       one field of the notification
@@ -44,7 +44,7 @@ Go [Copy code to clipboard] Copy
 
 Losing track of what `.` refers to is the single most common template bug. Inside a loop, use `$` to reach back to the original top-level context:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ range .Alerts }}{{ $.GroupLabels.cluster }} — {{ .Labels.instance }}
@@ -53,7 +53,7 @@ Go [Copy code to clipboard] Copy
 
 ## Loops and conditionals
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ range .Alerts }}
@@ -61,13 +61,13 @@ Go [Copy code to clipboard] Copy
 {{ end }}
 ```
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ if eq .Status "firing" }}Firing{{ else }}Resolved{{ end }}
 ```
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ if .Alerts.Firing }}{{ len .Alerts.Firing }} firing{{ end }}
@@ -77,7 +77,7 @@ Comparison functions are written as functions, not operators: `eq`, `ne`, `lt`, 
 
 ## Variables
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ $count := len .Alerts }}
@@ -101,7 +101,7 @@ Expand table
 
 Go templates keep the whitespace around actions, which is why templates often render with unexpected blank lines. Add a hyphen inside the braces to trim it:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{- range .Alerts }}
@@ -115,4 +115,4 @@ Go [Copy code to clipboard] Copy
 
 There’s no preview in the plugin, and a broken template shows up when a notification is sent. Build them up in small steps: start with plain static text, confirm it arrives, then add one field at a time.
 
-Refer to [Template examples](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/examples/) for working starting points, and [Template reference](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference/) for the available fields.
+Refer to [Template examples](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/examples/) for working starting points, and [Template reference](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference/) for the available fields.

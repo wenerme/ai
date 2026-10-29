@@ -8,6 +8,8 @@ Deletes the automation and prevents future invocations without deleting its targ
 
 - `automation_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AutomationDeleted object { id, deleted, object }`
@@ -15,6 +17,8 @@ Deletes the automation and prevents future invocations without deleting its targ
   - `id: string`
 
     The deleted automation ID.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

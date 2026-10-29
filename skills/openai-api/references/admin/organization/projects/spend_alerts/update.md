@@ -46,6 +46,8 @@ Updates a project spend alert.
 
   The alert threshold amount, in cents.
 
+  `minimum: 0`
+
 ### Returns
 
 - `ProjectSpendAlert object { id, currency, interval, 3 more }`

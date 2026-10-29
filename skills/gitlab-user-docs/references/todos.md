@@ -41,6 +41,27 @@ To sort the To-Do List:
 > [!note]
 > On the **Snoozed** and **Done** tabs, **Recommended** sorts items by their creation date only.
 
+### Group the To-Do List
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261843) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_grouped_view`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+You can group to-do items by the issue, merge request, or other item they relate to.
+Each group lists its to-do items and shows how many there are.
+
+To group the To-Do List:
+
+- On the  tab, in the upper-right corner, select .
+
+GitLab saves your choice in your browser for the next time you visit the To-Do List.
+To show the to-do items as a list again, select .
+
+Only the to-do items on the current page are grouped.
+Other pages might have more to-do items for the same item.
+
 ## Actions that create to-do items
 
 - Multiple to-do items [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/28355) in GitLab 17.8. Feature flag `multiple_todos` enabled by default.

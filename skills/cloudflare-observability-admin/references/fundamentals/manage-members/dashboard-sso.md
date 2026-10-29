@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/dashboard-s
 
 # Set up dashboard SSO
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers single sign-on (SSO) for all customers who log in with a custom email domain. By creating a Cloudflare SSO connector, you can enforce SSO to the Cloudflare dashboard with the identity provider (IdP) of your choice. SSO will be enforced for every user in your email domain.
 
@@ -178,7 +178,7 @@ Cloudflare dashboard SSO does not support:
 
 IdP-initiated login is supported for Cloudflare dashboard SSO, with configuration available via your identity provider (IdP).
 
-A step-by-step guide is currently available for Okta, and similar configurations are possible with other identity providers that support custom SSO endpoints.
+Step-by-step guides are currently available for Okta and Entra ID, and similar configurations are possible with other identity providers that support custom SSO endpoints.
 
 ### Okta
 
@@ -196,8 +196,8 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 2. Select **Create App Integration** to start a new SAML integration to handle the IdP-initiated SSO flow. Note that this is a second, distinct Cloudflare-Okta integration, created separately from the [IdP integration with Zero Trust](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 3. In the pop-up, select **SAML 2.0** and select **Next**.
 4. Enter a name for the app and select **Next**.
-5. In the **Single Sign-On URL** field, paste the **SSO Endpoint URL** [you copied earlier](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#prerequisites-1).
-6. In the **Audience URI (SP Entity ID)** field, paste the **Access Entity ID or Issuer** [you copied earlier](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#prerequisites-1).
+5. In the **Single Sign-On URL** field, paste the **SSO Endpoint URL** you copied in [Prerequisites](#prerequisites-1).
+6. In the **Audience URI (SP Entity ID)** field, paste the **Access Entity ID or Issuer** you copied in [Prerequisites](#prerequisites-1).
 7. Set the **Name ID Format** to **EmailAddress**.
 8. Set the **Application Username** to **Email**.
 9. Select **Next** > **Finish** to save the integration.
@@ -209,8 +209,41 @@ If you use only one IdP (for example, Okta) for Cloudflare SSO and want users to
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
 2. Go to **Authentication**.
-3. Disable **Accept all available identity providers** and ensure only Okta is selected as the login method.
-4. Enable **Apply instant authentication** to allow users to skip identity provider selection.
+3. Turn off **Accept all available identity providers** and ensure only Okta is selected as the login method.
+4. Turn on **Apply instant authentication** to allow users to skip identity provider selection.
+
+### Entra ID
+
+Configure an identity provider (IdP)-initiated single sign-on (SSO) session using Cloudflare Zero Trust and Microsoft Entra ID (formerly Azure AD).
+
+#### Prerequisites
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
+2. Select **Configure** to access the application settings.
+3. In the **Basic Information** section, copy the **SSO Endpoint URL** and **Access Entity ID or Issuer**. You will need these values when configuring Entra ID.
+
+#### Configure Entra ID as the IdP
+
+1. Log in to the [Microsoft Entra admin center ↗︎](https://entra.microsoft.com/) and go to **Applications** > **Enterprise applications**.
+2. Select **New application** > **Create your own application**.
+3. Enter a name for the application (for example, `Cloudflare Dashboard SSO`), select **Integrate any other application you don't find in the gallery (Non-gallery)**, then select **Create**.
+4. Once the application is created, go to **Single sign-on** in the left-hand menu and select **SAML**.
+5. In the **Basic SAML Configuration** section, select **Edit** and configure the following:
+   - **Identifier (Entity ID)**: Paste the **Access Entity ID or Issuer** you copied in [Prerequisites](#prerequisites-2).
+   - **Reply URL (Assertion Consumer Service URL)**: Paste the **SSO Endpoint URL** you copied in [Prerequisites](#prerequisites-2).
+6. Select **Save**.
+7. In the **Attributes & Claims** section, ensure the **Unique User Identifier (Name ID)** claim is set to emit the user's email address (for example, `user.mail` or `user.userprincipalname`).
+8. Assign users or groups to the application under **Users and groups** to control who can use IdP-initiated SSO.
+9. Test the integration by going to **Single sign-on** > **Test** and selecting **Test sign in** to verify the SSO flow.
+
+**(Optional) Enforce single IdP login with instant authentication**
+
+If you use only one IdP (for example, Entra ID) for Cloudflare SSO and want users to skip the identity provider selection prompt:
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
+2. Go to **Authentication**.
+3. Turn off **Accept all available identity providers** and ensure only Entra ID is selected as the login method.
+4. Turn on **Apply instant authentication** to allow users to skip identity provider selection.
 
 ## Bypass dashboard SSO
 
@@ -432,5 +465,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/og.png?v=ce56a2db812d7cdb","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/og.png?v=ce56a2db812d7cdb","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

@@ -70,6 +70,8 @@ Assigns an organization role to a user within the organization.
 
     The Unix timestamp (in seconds) of when the user was added.
 
+    `format: unixtime`
+
   - `object: "organization.user"`
 
     The object type, which is always `organization.user`
@@ -80,9 +82,13 @@ Assigns an organization role to a user within the organization.
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
+    `format: unixtime`
+
   - `created: optional number`
 
     The Unix timestamp (in seconds) of when the user was created.
+
+    `format: unixtime`
 
   - `developer_persona: optional string or null`
 
@@ -149,6 +155,8 @@ Assigns an organization role to a user within the organization.
     - `banned: optional boolean or null`
 
     - `banned_at: optional number or null`
+
+      `format: unixtime`
 
     - `email: optional string or null`
 
@@ -339,6 +347,8 @@ Lists the organization roles assigned to a user within the organization.
 
   A limit on the number of organization role assignments to return.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned organization roles.
@@ -368,6 +378,8 @@ Lists the organization roles assigned to a user within the organization.
   - `created_at: number or null`
 
     When the role was created.
+
+    `format: unixtime`
 
   - `created_by: string or null`
 
@@ -404,6 +416,8 @@ Lists the organization roles assigned to a user within the organization.
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 - `has_more: boolean`
 
@@ -539,6 +553,8 @@ Retrieves an organization role assigned to a user.
 
   When the role was created.
 
+  `format: unixtime`
+
 - `created_by: string or null`
 
   Identifier of the actor who created the role.
@@ -574,6 +590,8 @@ Retrieves an organization role assigned to a user.
 - `updated_at: number or null`
 
   When the role was last updated.
+
+  `format: unixtime`
 
 ### Example
 
@@ -702,6 +720,8 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       The Unix timestamp (in seconds) of when the user was added.
 
+      `format: unixtime`
+
     - `object: "organization.user"`
 
       The object type, which is always `organization.user`
@@ -712,9 +732,13 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
+      `format: unixtime`
+
     - `created: optional number`
 
       The Unix timestamp (in seconds) of when the user was created.
+
+      `format: unixtime`
 
     - `developer_persona: optional string or null`
 
@@ -782,6 +806,8 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
       - `banned_at: optional number or null`
 
+        `format: unixtime`
+
       - `email: optional string or null`
 
       - `enabled: optional boolean or null`
@@ -826,6 +852,8 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -861,6 +889,8 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`
 
 ### Role Retrieve Response
 
@@ -884,6 +914,8 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
 
     When the role was created.
 
+    `format: unixtime`
+
   - `created_by: string or null`
 
     Identifier of the actor who created the role.
@@ -919,3 +951,5 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles/role_01J1F8R
   - `updated_at: number or null`
 
     When the role was last updated.
+
+    `format: unixtime`

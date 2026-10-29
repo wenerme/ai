@@ -338,7 +338,7 @@ Sync do |task|
   task.with_timeout(120) do
     client.responses.connect(request_options: { timeout: 10 }) do |connection|
       connection.response.create(
-        model: "gpt-6-astra", reasoning: { effort: "medium" },
+        model: "gpt-6-astra", store: false, reasoning: { effort: "medium" },
         input: "Draft a project plan for building a task-tracking app."
       )
       state = {}

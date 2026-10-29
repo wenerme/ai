@@ -38,6 +38,8 @@ You can send either a multipart/form-data request with the raw file content, or 
 
   Unix timestamp (in seconds) when the file was created.
 
+  `format: unixtime`
+
 - `object: string`
 
   The type of this object (`container.file`).

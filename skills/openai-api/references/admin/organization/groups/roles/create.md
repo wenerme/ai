@@ -28,6 +28,8 @@ Assigns an organization role to a group within the organization.
 
     Unix timestamp (in seconds) when the group was created.
 
+    `format: unixtime`
+
   - `name: string`
 
     Display name of the group.

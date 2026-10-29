@@ -13,7 +13,7 @@ description: "Learn how to use the Slider display mode for single-value selectio
 
 **Slider** is the fourth **Display mode** option.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/slider-mode.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/slider-mode.png)
 
 Use the **Slider** display mode when a dashboard variable contains many values and only one selection is logically acceptable. For example, a user might need to choose a year, as shown in the following video. A standard drop-down list appears for comparison.
 
@@ -23,4 +23,4 @@ Use the **Slider** display mode when a dashboard variable contains many values a
 
 You can also display text values using the **Slider** display mode.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/slider-string.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/slider-string.png)

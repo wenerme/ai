@@ -34,13 +34,19 @@ Modify a certificate. Note that only the name can be modified.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 

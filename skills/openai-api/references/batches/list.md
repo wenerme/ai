@@ -28,6 +28,8 @@ List your organization's batches.
 
     The Unix timestamp (in seconds) for when the batch was created.
 
+    `format: unixtime`
+
   - `endpoint: string`
 
     The OpenAI API endpoint used by the batch.
@@ -66,13 +68,19 @@ List your organization's batches.
 
     The Unix timestamp (in seconds) for when the batch was cancelled.
 
+    `format: unixtime`
+
   - `cancelling_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started cancelling.
 
+    `format: unixtime`
+
   - `completed_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch was completed.
+
+    `format: unixtime`
 
   - `error_file_id: optional string or null`
 
@@ -106,21 +114,31 @@ List your organization's batches.
 
     The Unix timestamp (in seconds) for when the batch expired.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch will expire.
+
+    `format: unixtime`
 
   - `failed_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch failed.
 
+    `format: unixtime`
+
   - `finalizing_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started finalizing.
 
+    `format: unixtime`
+
   - `in_progress_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started processing.
+
+    `format: unixtime`
 
   - `metadata: optional Metadata or null`
 

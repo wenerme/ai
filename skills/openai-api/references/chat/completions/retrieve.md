@@ -146,6 +146,8 @@ with the `store` parameter set to `true` will be returned.
 
             The URL of the web resource.
 
+            `format: uri`
+
       - `audio: optional ChatCompletionAudio or null`
 
         If the audio output modality is requested, this object contains data
@@ -165,6 +167,8 @@ with the `store` parameter set to `true` will be returned.
           The Unix timestamp (in seconds) for when this audio response will
           no longer be accessible on the server for use in multi-turn
           conversations.
+
+          `format: unixtime`
 
         - `transcript: string`
 
@@ -245,6 +249,8 @@ with the `store` parameter set to `true` will be returned.
   - `created: number`
 
     The Unix timestamp (in seconds) of when the chat completion was created.
+
+    `format: unixtime`
 
   - `model: string`
 

@@ -28,6 +28,8 @@ This enables organization owners to share fine-tuned models with other projects 
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".

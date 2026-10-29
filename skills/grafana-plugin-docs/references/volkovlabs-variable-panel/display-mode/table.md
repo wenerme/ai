@@ -13,9 +13,9 @@ The **Table** mode provides many variations, from a simple single variable view 
 
 With minimal configuration, your Business Variable panel can display as a simple list. Whether multiple selections are allowed depends on the settings you choose in the variable configuration menu. In the following example, multiple selections and the **Include All** option are allowed.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/basic.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/basic.png)
 
-[](/media/docs/grafana/panels-visualizations/business-variable/basic-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/basic-edit.png)
 
 ## Single variable plus statuses
 
@@ -24,9 +24,9 @@ To add a status circle, complete the following steps:
 1. Connect the data source that retrieves two fields: a variable name and a numeric value.
 2. Configure thresholds by specifying colors for data ranges.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/basic-plus.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/basic-plus.png)
 
-[](/media/docs/grafana/panels-visualizations/business-variable/basic-plus-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/basic-plus-edit.png)
 
 ## Multiple variables view
 
@@ -34,25 +34,25 @@ This configuration is similar to the previous one. The differences are:
 
 - The dashboard variables connect to one another.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/four-vars.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/four-vars.png)
 
 - Every level selection is a separate Business Variable panel.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/multiple.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/multiple.png)
 
 ## TreeView
 
 You can display the Multiple variables view as a TreeView structure.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/treeview.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/treeview.png)
 
 The **TreeView** display mode consists of *groups*, which are usually called *tabs*. Start by creating at least one **New Group** and assigning a dashboard variable to the **Select variable to display** parameter.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/start.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/start.png)
 
 To display tab names, add at least two tabs.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/add-tabs.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/add-tabs.png)
 
 ### TreeView levels
 
@@ -65,27 +65,27 @@ For example, to create a four-level TreeView (Country &gt; State &gt; City &gt; 
 - `city` is the third level and updates with every `state` or `country` refresh.
 - `device` is the fourth level and updates with every `state`, `country`, or `city` refresh.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/four-vars.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/four-vars.png)
 
 In the Business Variable panel options, add four TreeView levels. Ensure the level names match the dashboard variable names they represent.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/levels.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/levels.png)
 
 The following example shows a TreeView with status circles.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/treeview-edit.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/treeview-edit.png)
 
 ### Multi-level selection
 
 In the **Groups** category, when you enable the **Allow multi-level selection** parameter, selecting a group root automatically selects all elements in the group.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/group-selection.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/group-selection.png)
 
 ### TreeView groups and tabs
 
 The following TreeView has two groups or tabs. To add a new group or tab, use the **New Group** parameter.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/tabs.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/tabs.png)
 
 ### Collapse and expand on initial load
 
@@ -95,7 +95,7 @@ The following TreeView has two groups or tabs. To add a new group or tab, use th
 
 You can control how your TreeView appears when the dashboard opens.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/col-exp.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/col-exp.png)
 
 ### Tabs order
 
@@ -108,19 +108,19 @@ When you have multiple tabs, you can specify their order in the **Tab order** pa
 - **In order**: The tabs always appear in the same order as they appear in the panel options.
 - **Selected first**: The selected tab always appears first.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/order.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/order.png)
 
 ## Dashboard variable name display
 
 You can enable an option to display the variable name in front of the value to provide additional context for users.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/varname-disp.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/varname-disp.png)
 
 ## Favorites
 
 The Business Variable panel lets you select values as favorites. The favorite icon in the header lets you filter all favorites for quick navigation and selection.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/favorites.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/favorites.png)
 
 > Note
 >
@@ -134,11 +134,11 @@ However, some users work with Grafana dashboards on multiple devices and browser
 
 These users can store their favorites in a data source.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/fav.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/fav.png)
 
 SQL to create the table in the following example:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 CREATE TABLE favorites (
@@ -160,7 +160,7 @@ Expand table
 
 #### Get items query
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select * from favorites where user_id=${__user.id};
@@ -168,7 +168,7 @@ select * from favorites where user_id=${__user.id};
 
 #### Add item query
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 INSERT INTO favorites(variable, value, user_id)
@@ -177,7 +177,7 @@ VALUES ('${payload.variable}', '${payload.value}', ${__user.id})
 
 #### Delete item query
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 DELETE FROM favorites WHERE id=${payload.id}
@@ -187,7 +187,7 @@ DELETE FROM favorites WHERE id=${payload.id}
 
 Enable the **Sticky** option to keep the Business Variable panel in sight. The panel won’t scroll out of view.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/sticky.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/sticky.png)
 
 ## Search
 
@@ -199,7 +199,7 @@ Enable the **Sticky** option to keep the Business Variable panel in sight. The p
 
 When you start typing in the search text field, you can remove all entered characters by clicking the X button that appears in the far-right corner of the search field.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/clean.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/clean.png)
 
 ### Always visible search option
 
@@ -213,7 +213,7 @@ When this option is **Disabled**, the funnel icon appears on the dashboard. User
 
 When this option is **Enabled**, the funnel icon is hidden and users can’t hide the search text area.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/hide-search.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/hide-search.png)
 
 ## Total and selected values count
 
@@ -225,7 +225,7 @@ In the **Table** display mode, you can choose to display total and selected valu
 
 This parameter enables or disables the count display. The total count appears next to the header in gray text. The first number shows how many values are selected. The second number shows how many values are available for selection in total.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/total.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/total.png)
 
 ## Tab auto-grouping
 
@@ -237,7 +237,7 @@ The auto-group tab feature adds more sophistication to the Business Variable pan
 
 The Business Variable panel moves the selected tab to the far left among all other tabs.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/tab.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/tab.png)
 
 ## Selected tab preservation
 
@@ -251,7 +251,7 @@ To configure tab preservation, use the **Selected group id** parameter from the 
 
 In the following example, three different dashboards have an identical Business Variable panel. All three Business Variable panels use the word *device* in the **Selected group id** parameter.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/tab-pres.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/tab-pres.png)
 
 ## Custom image for the Grafana thresholds
 
@@ -261,7 +261,7 @@ In the following example, three different dashboards have an identical Business 
 
 Grafana thresholds provide better visual representation of data on your dashboard. You can enhance thresholds by specifying an SVG image instead of a simple colored circle:
 
-[](/media/docs/grafana/panels-visualizations/business-variable/img.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/img.png)
 
 ## Advanced: Select dependent variable to reset
 
@@ -303,7 +303,7 @@ In this scenario, two dashboard variables exist:
 
 - `device`, which uses the following query:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
  select name from device_time;
@@ -311,19 +311,19 @@ SQL [Copy code to clipboard] Copy
 
 - `type`, which uses the following query that depends on the first variable:
 
-SQL [Copy code to clipboard] Copy
+SQL ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```sql
 select value from device_time where name='$device';
 ```
 
-[](/media/docs/grafana/panels-visualizations/business-variable/reset-var.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/reset-var.png)
 
 With this configuration, whenever you update the `device` variable (by selecting a value in the dashboard dropdown), the `type` variable automatically refreshes/updates. This means the query to populate the `type` variable runs with every `device` variable value update.
 
 In the following example, some `type` variable values overlap:
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 - device 1, type in ('1', '2', '3')
@@ -333,7 +333,7 @@ text [Copy code to clipboard] Copy
 
 The value ‘3’ is common for all devices. The value ‘2’ is shared by device 1 and device 2. The value ‘1’ is unique to the first device.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/values.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/values.png)
 
 If you set `type` to ‘3’, then when you switch devices in the `device` variable, you always see ‘3’ in the `type` variable. The `type` variable refreshes/updates (the underlying query reruns), and then Grafana sets it to ‘3’ (the previously selected value).
 
@@ -347,7 +347,7 @@ The variable name you specify in **Select dependent variable to reset** always r
 
 Variables don’t have to depend on each other. In this scenario, the `type` variable has the **Custom** type. Values are specified directly, separated by commas.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/comma.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/comma.png)
 
 With the **Custom** dashboard variable type, the two dashboard variables aren’t linked and act independently. This means refreshing/updating the `device` variable doesn’t affect the `type` variable.
 

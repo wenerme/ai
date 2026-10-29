@@ -22,6 +22,8 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was sent.
 
+    `format: unixtime`
+
   - `email: string`
 
     The email address of the individual to whom the invite was sent
@@ -70,9 +72,13 @@ Retrieves an invite.
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
+    `format: unixtime`
+
   - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
+
+    `format: unixtime`
 
 ### Example
 

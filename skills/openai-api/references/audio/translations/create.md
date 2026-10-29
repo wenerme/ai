@@ -22,6 +22,8 @@ for details.
 
     The duration of the input audio.
 
+    `format: double`
+
   - `language: string`
 
     The language of the output translation (always `english`).
@@ -42,17 +44,25 @@ for details.
 
       Average logprob of the segment. If the value is lower than -1, consider the logprobs failed.
 
+      `format: float`
+
     - `compression_ratio: number`
 
       Compression ratio of the segment. If the value is greater than 2.4, consider the compression failed.
+
+      `format: float`
 
     - `end: number`
 
       End time of the segment in seconds.
 
+      `format: double`
+
     - `no_speech_prob: number`
 
       Probability of no speech in the segment. If the value is higher than 1.0 and the `avg_logprob` is below -1, consider this segment silent.
+
+      `format: float`
 
     - `seek: number`
 
@@ -62,9 +72,13 @@ for details.
 
       Start time of the segment in seconds.
 
+      `format: double`
+
     - `temperature: number`
 
       Temperature parameter used for generating the segment.
+
+      `format: float`
 
     - `text: string`
 

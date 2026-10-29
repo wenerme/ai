@@ -25,7 +25,7 @@ The scope is one alert instance. A rule matching fifty filesystems renders its a
 
 Reference a label by name:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 {{ $labels.instance }} is unreachable.
@@ -33,7 +33,7 @@ Go [Copy code to clipboard] Copy
 
 Format the value, which is a float and prints unhelpfully by default:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 Disk is {{ $value | printf "%.1f" }}% full.
@@ -41,7 +41,7 @@ Disk is {{ $value | printf "%.1f" }}% full.
 
 Use `humanize` for large or small numbers, and `humanizeDuration` for seconds:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 Receiving {{ $value | humanize }} requests per second.
@@ -50,7 +50,7 @@ Backlog will clear in {{ $value | humanizeDuration }}.
 
 Build a link that points at the specific thing that’s broken:
 
-Go [Copy code to clipboard] Copy
+Go ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```go
 https://grafana.example.com/d/abc123?var-instance={{ $labels.instance }}
@@ -58,7 +58,7 @@ https://grafana.example.com/d/abc123?var-instance={{ $labels.instance }}
 
 ## A worked example
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 annotations:
@@ -79,7 +79,7 @@ Templating a label from another label is safe, since neither changes. Templating
 
 ## Keep it simple
 
-These templates run on every evaluation of every instance, so they’re not the place for elaborate logic. If a notification needs a complicated layout, build that in a notification template instead, where it runs once per notification rather than once per instance per evaluation. Refer to [Templates](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/templates/).
+These templates run on every evaluation of every instance, so they’re not the place for elaborate logic. If a notification needs a complicated layout, build that in a notification template instead, where it runs once per notification rather than once per instance per evaluation. Refer to [Templates](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/templates/).
 
 ## Troubleshooting
 

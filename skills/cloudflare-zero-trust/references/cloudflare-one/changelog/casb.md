@@ -16,6 +16,33 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/casb.xml)
 
+## 2026-10-07
+
+
+**Create CASB integrations with Terraform**
+
+You can now create Cloudflare CASB integrations using the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/). This lets you manage supported integrations alongside your other infrastructure-as-code.
+
+The following example creates a Google Cloud Platform integration:
+
+```tf
+resource "cloudflare_zero_trust_casb_integration" "google_cloud_platform" {
+  account_id = var.cloudflare_account_id
+  name       = "Google Cloud Platform"
+  paused     = false
+
+  google_cloud_platform = {
+    google_cloud_platform_service_account = {
+      service_account_key_json = file("service-account-key.json")
+    }
+  }
+}
+```
+
+The `cloudflare_zero_trust_casb_integration` resource requires provider version 5.27.0 or later. Version 4 of the provider and integrations that use OAuth are not supported.
+
+For setup instructions and integration guides, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
+
 ## 2026-10-05
 
 

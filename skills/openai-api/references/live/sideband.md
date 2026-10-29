@@ -62,6 +62,8 @@ Use Bearer Auth (header Authorization).
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+            `minimum: 0`, `maximum: 800`
+
         - `Responses object { type, acknowledgement_delay_ms, responses }`
 
           Update the Responses backend for an existing Live session without changing delegation ownership.
@@ -76,6 +78,8 @@ Use Bearer Auth (header Authorization).
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+            `minimum: 0`, `maximum: 800`
+
           - `responses: optional ResponsesDelegationUpdateConfig`
 
             Responses backend settings to update. Omitted settings keep their existing values.
@@ -87,6 +91,8 @@ Use Bearer Auth (header Authorization).
             - `max_output_tokens: optional number or null`
 
               Maximum number of output tokens for each delegated response.
+
+              `minimum: 16`
 
             - `model: optional string`
 
@@ -289,6 +295,8 @@ Use Bearer Auth (header Authorization).
                 - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
 
                   The tools that the delegated Responses model may call.
+
+                  `minItems: 1`, `maxItems: 128`
 
                   - `Function object { name, type }`
 
@@ -496,6 +504,8 @@ Use Bearer Auth (header Authorization).
 
                       An optional list of uploaded files to make available to your code.
 
+                      `maxItems: 50`
+
                     - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                       The memory limit for the container.
@@ -526,6 +536,8 @@ Use Bearer Auth (header Authorization).
 
                           A list of allowed domains when type is `allowlist`.
 
+                          `minItems: 1`
+
                         - `type: "allowlist"`
 
                           Allow outbound network access only to specified domains. Always `allowlist`.
@@ -536,11 +548,15 @@ Use Bearer Auth (header Authorization).
 
                       An optional list of skills referenced by id or inline data.
 
+                      `maxItems: 200`
+
                       - `SkillReference object { skill_id, type, version }`
 
                         - `skill_id: string`
 
                           The ID of the referenced skill.
+
+                          `minLength: 1`, `maxLength: 64`
 
                         - `type: "skill_reference"`
 
@@ -569,6 +585,8 @@ Use Bearer Auth (header Authorization).
                           - `data: string`
 
                             Base64-encoded skill zip bundle.
+
+                            `minLength: 1`, `maxLength: 70254592`
 
                           - `media_type: "application/zip"`
 
@@ -611,6 +629,8 @@ Use Bearer Auth (header Authorization).
                     - `skills: optional array of object { description, name, path }  or null`
 
                       An optional list of skills.
+
+                      `maxItems: 200`
 
                       - `description: string`
 
@@ -682,17 +702,25 @@ Use Bearer Auth (header Authorization).
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+            `minimum: 0`, `maximum: 800`
+
           - `decisions: optional DecisionsDelegationUpdateConfig`
 
             - `model: optional string`
+
+              `minLength: 1`
 
             - `questions: optional array of DecisionQuestion`
 
               Native Decision API questions evaluated together, in order.
 
+              `minItems: 1`, `maxItems: 64`
+
               - `Choice object { choices, instructions, type, name }`
 
                 - `choices: array of DecisionChoiceOption`
+
+                  `minItems: 2`, `maxItems: 255`
 
                   - `value: string or boolean`
 
@@ -714,6 +742,8 @@ Use Bearer Auth (header Authorization).
 
                         The text input to the model.
 
+                        `maxLength: 10485760`
+
                       - `type: "input_text"`
 
                         - `"input_text"`
@@ -723,6 +753,8 @@ Use Bearer Auth (header Authorization).
                       - `image_url: string`
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                        `maxLength: 20971520`
 
                       - `type: "input_image"`
 
@@ -774,6 +806,8 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                        `maxLength: 20971520`
+
                       - `type: "input_image"`
 
                         - `"input_image"`
@@ -824,6 +858,8 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                        `maxLength: 20971520`
+
                       - `type: "input_image"`
 
                         - `"input_image"`
@@ -854,6 +890,8 @@ Use Bearer Auth (header Authorization).
 
                 - `levels: array of object { label, description }`
 
+                  `minItems: 2`, `maxItems: 10`
+
                   - `label: string`
 
                   - `description: optional string`
@@ -868,6 +906,8 @@ Use Bearer Auth (header Authorization).
 
         At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
+        `maxItems: 2`
+
         - `decisions: object { questions }`
 
           Questions evaluated using the current transcript and the session's shared Decision items.
@@ -875,6 +915,8 @@ Use Bearer Auth (header Authorization).
           - `questions: array of DecisionQuestion`
 
             Native Decision API questions evaluated together, in order.
+
+            `minItems: 1`, `maxItems: 64`
 
             - `Choice object { choices, instructions, type, name }`
 
@@ -902,6 +944,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `InputAudioMuteEvent object { type, event_id }`
 
     Mute audio input to the Live model without closing the session. The server acknowledges with `session.input_audio.muted`.
@@ -915,6 +959,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
   - `InputAudioUnmuteEvent object { type, event_id }`
 
@@ -930,6 +976,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `OutputAudioFixturePlayEvent object { audio, type, event_id }`
 
     Play one complete audio fixture through the session output. Send this event over the primary WebSocket or a server sideband. Audio must be raw mono PCM16 little-endian at 24 kHz, regardless of the session audio format, and at most 30 seconds. The entire payload is validated before model speech is interrupted and input is muted. Only one fixture can be active. fixture.playing acknowledges acceptance and fixture.played reports server mixer drain. These notifications are not exact transport-media boundaries. Input arriving during playback is dropped and not replayed.
@@ -937,6 +985,8 @@ Use Bearer Auth (header Authorization).
     - `audio: string`
 
       Base64-encoded raw mono PCM16 audio, little-endian, at 24 kHz. Do not include a WAV or other container header.
+
+      `minLength: 1`, `maxLength: 1920000`
 
     - `type: "session.output_audio.fixture.play"`
 
@@ -946,6 +996,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `TransportDtmfSend object { event, type, event_id }`
 
     Send one DTMF keypress to the SIP trunk through a Live sideband connection. This command is supported only for SIP calls. A successful send emits `transport.dtmf.sent` on sideband. If you provide `event_id`, the success notification includes it as `client_event_id`; a failure includes it as `error.client_event_id`. Send separate events for multiple keypresses.
@@ -954,6 +1006,8 @@ Use Bearer Auth (header Authorization).
 
       The DTMF key to send: one of `0`–`9`, `A`–`D`, `*`, or `#`.
 
+      `minLength: 1`, `maxLength: 1`
+
     - `type: "transport.dtmf.send"`
 
       - `"transport.dtmf.send"`
@@ -961,6 +1015,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
   - `InstructionsAppendEvent object { content, delegation_id, type, event_id }`
 
@@ -974,6 +1030,8 @@ Use Bearer Auth (header Authorization).
 
       Required, nullable. Set null for general session context, or use the ID from session.delegation.created for an existing client delegation. Non-null IDs are not accepted with Responses delegation.
 
+      `minLength: 1`
+
     - `type: "session.instructions.append"`
 
       The Live client event type. Always `session.instructions.append`.
@@ -983,6 +1041,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
   - `ThinkingAppendEvent object { content, delegation_id, type, event_id }`
 
@@ -996,6 +1056,8 @@ Use Bearer Auth (header Authorization).
 
       Required, nullable. Set null for general session context, or use the ID from session.delegation.created for an existing client delegation. Non-null IDs are not accepted with Responses delegation.
 
+      `minLength: 1`
+
     - `type: "session.thinking.append"`
 
       The Live client event type. Always `session.thinking.append`.
@@ -1005,6 +1067,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
   - `CommentaryAppendEvent object { content, delegation_id, type, event_id }`
 
@@ -1018,6 +1082,8 @@ Use Bearer Auth (header Authorization).
 
       Required, nullable. Set null for general session context, or use the ID from session.delegation.created for an existing client delegation. Non-null IDs are not accepted with Responses delegation.
 
+      `minLength: 1`
+
     - `type: "session.commentary.append"`
 
       The Live client event type. Always `session.commentary.append`.
@@ -1028,11 +1094,15 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `DecisionCreateEvent object { event_id, type }`
 
     Evaluate the configured questions using the current conversation and Decision inputs. Reusing an event_id is rejected for the lifetime of the session.
 
     - `event_id: string`
+
+      `minLength: 1`, `maxLength: 256`
 
     - `type: "decision.create"`
 
@@ -1062,6 +1132,8 @@ Use Bearer Auth (header Authorization).
 
                 The text input to the model.
 
+                `maxLength: 10485760`
+
               - `type: "input_text"`
 
                 - `"input_text"`
@@ -1071,6 +1143,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 
@@ -1130,6 +1204,8 @@ Use Bearer Auth (header Authorization).
 
               The text input to the model.
 
+              `maxLength: 10485760`
+
             - `type: "input_text"`
 
         - `role: "developer"`
@@ -1159,6 +1235,8 @@ Use Bearer Auth (header Authorization).
             - `text: string`
 
               The text input to the model.
+
+              `maxLength: 10485760`
 
             - `type: "input_text"`
 
@@ -1192,6 +1270,8 @@ Use Bearer Auth (header Authorization).
 
                 The text content.
 
+                `maxLength: 10485760`
+
               - `type: "output_text"`
 
                 - `"output_text"`
@@ -1201,6 +1281,8 @@ Use Bearer Auth (header Authorization).
               - `refusal: string`
 
                 The refusal text.
+
+                `maxLength: 10485760`
 
               - `type: "refusal"`
 
@@ -1236,7 +1318,11 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the function tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `name: string`
+
+          `minLength: 1`, `maxLength: 128`
 
         - `type: "function_call"`
 
@@ -1252,6 +1338,8 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
           - `"in_progress"`
@@ -1265,6 +1353,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the function tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
@@ -1283,6 +1373,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 
@@ -1324,6 +1416,8 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the function tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `input: string`
 
           The input to the custom tool call.
@@ -1331,6 +1425,8 @@ Use Bearer Auth (header Authorization).
         - `name: string`
 
           The name of the custom tool to call.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `type: "custom_tool_call"`
 
@@ -1346,6 +1442,8 @@ Use Bearer Auth (header Authorization).
 
           The namespace of the function to call.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
           - `"in_progress"`
@@ -1359,6 +1457,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the function tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
@@ -1377,6 +1477,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 
@@ -1418,11 +1520,15 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `DecisionItemDeleteEvent object { item_id, type, event_id }`
 
     Delete an input item from future decisions without starting an evaluation or changing Live voice context.
 
     - `item_id: string`
+
+      `minLength: 1`
 
     - `type: "decision.item.delete"`
 
@@ -1431,6 +1537,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
   - `ResponseItemCreateEvent object { item, type, event_id }`
 
@@ -1524,6 +1632,8 @@ Use Bearer Auth (header Authorization).
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                `format: uri`
+
               - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -1573,6 +1683,8 @@ Use Bearer Auth (header Authorization).
               - `file_url: optional string`
 
                 The URL of the file to be sent to the model.
+
+                `format: uri`
 
               - `filename: optional string`
 
@@ -1730,6 +1842,8 @@ Use Bearer Auth (header Authorization).
                 - `url: string`
 
                   The URL of the web resource.
+
+                  `format: uri`
 
               - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
 
@@ -1915,6 +2029,8 @@ Use Bearer Auth (header Authorization).
           - `score: optional number`
 
             The relevance score of the file - a value between 0 and 1.
+
+            `format: float`
 
           - `text: optional string`
 
@@ -2210,6 +2326,8 @@ Use Bearer Auth (header Authorization).
 
           The ID of the computer tool call that produced the output.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `output: ResponseComputerToolCallOutputScreenshot`
 
           A computer screenshot image used with the computer use tool.
@@ -2228,6 +2346,8 @@ Use Bearer Auth (header Authorization).
           - `image_url: optional string`
 
             The URL of the screenshot image.
+
+            `format: uri`
 
         - `type: "computer_call_output"`
 
@@ -2331,6 +2451,8 @@ Use Bearer Auth (header Authorization).
 
                 The URL of the source.
 
+                `format: uri`
+
           - `OpenPage object { type, url }`
 
             Action type "open_page" - Opens a specific URL from search results.
@@ -2344,6 +2466,8 @@ Use Bearer Auth (header Authorization).
             - `url: optional string or null`
 
               The URL opened by the model.
+
+              `format: uri`
 
           - `FindInPage object { pattern, type, url }`
 
@@ -2362,6 +2486,8 @@ Use Bearer Auth (header Authorization).
             - `url: optional string or null`
 
               The URL of the page searched for the pattern, when available.
+
+              `format: uri`
 
       - `FunctionCall object { arguments, call_id, name, 6 more }`
 
@@ -2453,6 +2579,8 @@ Use Bearer Auth (header Authorization).
 
                 The text input to the model.
 
+                `maxLength: 10485760`
+
               - `type: "input_text"`
 
                 The type of the input item. Always `input_text`.
@@ -2499,6 +2627,8 @@ Use Bearer Auth (header Authorization).
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+                `maxLength: 20971520`, `format: uri`
+
               - `prompt_cache_breakpoint: optional object { mode, ttl }  or null`
 
                 Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -2541,6 +2671,8 @@ Use Bearer Auth (header Authorization).
 
                 The base64-encoded data of the file to be sent to the model.
 
+                `maxLength: 73400320`
+
               - `file_id: optional string or null`
 
                 The ID of the file to be sent to the model.
@@ -2548,6 +2680,8 @@ Use Bearer Auth (header Authorization).
               - `file_url: optional string or null`
 
                 The URL of the file to be sent to the model.
+
+                `format: uri`
 
               - `filename: optional string or null`
 
@@ -2585,6 +2719,8 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the function tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `caller: optional Direct { type }  or Program { caller_id, type }  or null`
 
           The execution context that produced this tool call.
@@ -2603,6 +2739,8 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
+              `minLength: 1`, `maxLength: 64`
+
             - `type: "program"`
 
               The caller type. Always `program`.
@@ -2613,9 +2751,13 @@ Use Bearer Auth (header Authorization).
 
           The name of the tool that produced the output.
 
+          `minLength: 1`, `maxLength: 128`
+
         - `namespace: optional string or null`
 
           The namespace of the tool that produced the output.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -2646,6 +2788,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: optional string or null`
 
           The unique ID of the tool search call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `execution: optional "server" or "client"`
 
@@ -2969,6 +3113,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -3104,6 +3250,8 @@ Use Bearer Auth (header Authorization).
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -3137,6 +3285,8 @@ Use Bearer Auth (header Authorization).
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -3167,6 +3317,8 @@ Use Bearer Auth (header Authorization).
 
                       A list of allowed domains when type is `allowlist`.
 
+                      `minItems: 1`
+
                     - `type: "allowlist"`
 
                       Allow outbound network access only to specified domains. Always `allowlist`.
@@ -3177,17 +3329,25 @@ Use Bearer Auth (header Authorization).
 
                       Optional domain-scoped secrets for allowlisted domains.
 
+                      `minItems: 1`
+
                       - `domain: string`
 
                         The domain associated with the secret.
+
+                        `minLength: 1`
 
                       - `name: string`
 
                         The name of the secret to inject for the domain.
 
+                        `minLength: 1`
+
                       - `value: string`
 
                         The secret value to inject for the domain.
+
+                        `minLength: 1`, `maxLength: 10485760`
 
             - `type: "code_interpreter"`
 
@@ -3198,6 +3358,8 @@ Use Bearer Auth (header Authorization).
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -3324,6 +3486,8 @@ Use Bearer Auth (header Authorization).
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -3338,6 +3502,8 @@ Use Bearer Auth (header Authorization).
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -3400,6 +3566,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -3417,6 +3585,8 @@ Use Bearer Auth (header Authorization).
                 - `file_ids: optional array of string`
 
                   An optional list of uploaded files to make available to your code.
+
+                  `maxItems: 50`
 
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
@@ -3442,11 +3612,15 @@ Use Bearer Auth (header Authorization).
 
                   An optional list of skills referenced by id or inline data.
 
+                  `maxItems: 200`
+
                   - `SkillReference object { skill_id, type, version }`
 
                     - `skill_id: string`
 
                       The ID of the referenced skill.
+
+                      `minLength: 1`, `maxLength: 64`
 
                     - `type: "skill_reference"`
 
@@ -3475,6 +3649,8 @@ Use Bearer Auth (header Authorization).
                       - `data: string`
 
                         Base64-encoded skill zip bundle.
+
+                        `minLength: 1`, `maxLength: 70254592`
 
                       - `media_type: "application/zip"`
 
@@ -3505,6 +3681,8 @@ Use Bearer Auth (header Authorization).
                 - `skills: optional array of LocalSkill`
 
                   An optional list of skills.
+
+                  `maxItems: 200`
 
                   - `description: string`
 
@@ -3547,6 +3725,8 @@ Use Bearer Auth (header Authorization).
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -3612,15 +3792,21 @@ Use Bearer Auth (header Authorization).
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools loaded inside this namespace.
+
+              `minItems: 1`
 
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
 
                   The name of the loaded function tool.
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -3629,6 +3815,8 @@ Use Bearer Auth (header Authorization).
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -3671,6 +3859,8 @@ Use Bearer Auth (header Authorization).
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -3792,6 +3982,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -3809,6 +4001,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: optional string or null`
 
           The unique ID of the tool search call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `execution: optional "server" or "client"`
 
@@ -4069,6 +4263,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -4204,6 +4400,8 @@ Use Bearer Auth (header Authorization).
               The URL for the MCP server. One of `server_url`, `connector_id`, or
               `tunnel_id` must be provided.
 
+              `format: uri`
+
             - `tunnel_id: optional string`
 
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -4237,6 +4435,8 @@ Use Bearer Auth (header Authorization).
 
                   An optional list of uploaded files to make available to your code.
 
+                  `maxItems: 50`
+
                 - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                   The memory limit for the code interpreter container.
@@ -4266,6 +4466,8 @@ Use Bearer Auth (header Authorization).
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -4392,6 +4594,8 @@ Use Bearer Auth (header Authorization).
 
               Compression level for the output image. Default: 100.
 
+              `minimum: 0`, `maximum: 100`
+
             - `output_format: optional "png" or "webp" or "jpeg"`
 
               The output format of the generated image. One of `png`, `webp`, or
@@ -4406,6 +4610,8 @@ Use Bearer Auth (header Authorization).
             - `partial_images: optional number`
 
               Number of partial images to generate in streaming mode, from 0 (default value) to 3.
+
+              `minimum: 0`, `maximum: 3`
 
             - `quality: optional "low" or "medium" or "high" or 3 more`
 
@@ -4468,6 +4674,8 @@ Use Bearer Auth (header Authorization).
 
               The tool invocation context(s).
 
+              `minItems: 1`
+
               - `"direct"`
 
               - `"programmatic"`
@@ -4497,6 +4705,8 @@ Use Bearer Auth (header Authorization).
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -4530,13 +4740,19 @@ Use Bearer Auth (header Authorization).
 
               The namespace name used in tool calls (for example, `crm`).
 
+              `minLength: 1`
+
             - `tools: array of Function { name, type, allowed_callers, 6 more }  or Custom { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
+              `minItems: 1`
+
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  `minLength: 1`, `maxLength: 128`
 
                 - `type: "function"`
 
@@ -4545,6 +4761,8 @@ Use Bearer Auth (header Authorization).
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -4587,6 +4805,8 @@ Use Bearer Auth (header Authorization).
                 - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                   The tool invocation context(s).
+
+                  `minItems: 1`
 
                   - `"direct"`
 
@@ -4707,6 +4927,8 @@ Use Bearer Auth (header Authorization).
             - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
+
+              `minItems: 1`
 
               - `"direct"`
 
@@ -4836,6 +5058,8 @@ Use Bearer Auth (header Authorization).
         - `encrypted_content: string`
 
           The encrypted content of the compaction summary.
+
+          `maxLength: 104857600`
 
         - `type: "compaction"`
 
@@ -5030,6 +5254,8 @@ Use Bearer Auth (header Authorization).
 
               The URL of the image output from the code interpreter.
 
+              `format: uri`
+
         - `status: "in_progress" or "completed" or "incomplete" or 2 more`
 
           The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
@@ -5160,6 +5386,8 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the shell tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `type: "shell_call"`
 
           The type of the item. Always `shell_call`.
@@ -5187,6 +5415,8 @@ Use Bearer Auth (header Authorization).
             - `caller_id: string`
 
               The call ID of the program item that produced this tool call.
+
+              `minLength: 1`, `maxLength: 64`
 
             - `type: "program"`
 
@@ -5219,6 +5449,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the shell tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `output: array of ResponseFunctionShellCallOutputContent`
 
@@ -5256,9 +5488,13 @@ Use Bearer Auth (header Authorization).
 
             Captured stderr output for the shell call.
 
+            `maxLength: 10485760`
+
           - `stdout: string`
 
             Captured stdout output for the shell call.
+
+            `maxLength: 10485760`
 
         - `type: "shell_call_output"`
 
@@ -5288,6 +5524,8 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
+              `minLength: 1`, `maxLength: 64`
+
             - `type: "program"`
 
               The caller type. Always `program`.
@@ -5316,6 +5554,8 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the apply patch tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `operation: CreateFile { diff, path, type }  or DeleteFile { path, type }  or UpdateFile { diff, path, type }`
 
           The specific create, delete, or update instruction for the apply_patch tool call.
@@ -5328,9 +5568,13 @@ Use Bearer Auth (header Authorization).
 
               Unified diff content to apply when creating the file.
 
+              `maxLength: 10485760`
+
             - `path: string`
 
               Path of the file to create relative to the workspace root.
+
+              `minLength: 1`
 
             - `type: "create_file"`
 
@@ -5346,6 +5590,8 @@ Use Bearer Auth (header Authorization).
 
               Path of the file to delete relative to the workspace root.
 
+              `minLength: 1`
+
             - `type: "delete_file"`
 
               The operation type. Always `delete_file`.
@@ -5360,9 +5606,13 @@ Use Bearer Auth (header Authorization).
 
               Unified diff content to apply to the existing file.
 
+              `maxLength: 10485760`
+
             - `path: string`
 
               Path of the file to update relative to the workspace root.
+
+              `minLength: 1`
 
             - `type: "update_file"`
 
@@ -5406,6 +5656,8 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
+              `minLength: 1`, `maxLength: 64`
+
             - `type: "program"`
 
               The caller type. Always `program`.
@@ -5419,6 +5671,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the apply patch tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `status: "completed" or "failed"`
 
@@ -5456,6 +5710,8 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
+              `minLength: 1`, `maxLength: 64`
+
             - `type: "program"`
 
               The caller type. Always `program`.
@@ -5465,6 +5721,8 @@ Use Bearer Auth (header Authorization).
         - `output: optional string or null`
 
           Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
+
+          `maxLength: 10485760`
 
       - `McpListTools object { id, server_label, tools, 2 more }`
 
@@ -5702,6 +5960,8 @@ Use Bearer Auth (header Authorization).
 
               The call ID of the program item that produced this tool call.
 
+              `minLength: 1`, `maxLength: 64`
+
             - `type: "program"`
 
               The caller type. Always `program`.
@@ -5800,13 +6060,19 @@ Use Bearer Auth (header Authorization).
 
           The stable call ID of the program item.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `code: string`
 
           The JavaScript source executed by programmatic tool calling.
 
+          `maxLength: 10485760`
+
         - `fingerprint: string`
 
           Opaque program replay fingerprint that must be round-tripped.
+
+          `maxLength: 10485760`
 
         - `type: "program"`
 
@@ -5824,9 +6090,13 @@ Use Bearer Auth (header Authorization).
 
           The call ID of the program item.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `result: string`
 
           The result produced by the program item.
+
+          `maxLength: 10485760`
 
         - `status: "completed" or "incomplete"`
 
@@ -5852,6 +6122,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `ResponseCreateEvent object { type, event_id }`
 
     Request a response from the Live session’s Responses backend, or continue a delegated response waiting for tool results. Requires Responses delegation.
@@ -5866,6 +6138,8 @@ Use Bearer Auth (header Authorization).
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
 
+      `maxLength: 512`
+
   - `SessionCloseEvent object { type, event_id }`
 
     Request that the Live session close. The terminal `session.closed` event contains the close reason and final usage.
@@ -5879,6 +6153,8 @@ Use Bearer Auth (header Authorization).
     - `event_id: optional string or null`
 
       Optional client identifier for correlating this command with a server event's client_event_id or error.client_event_id.
+
+      `maxLength: 512`
 
 ### Sideband Server Event
 
@@ -5950,6 +6226,8 @@ Use Bearer Auth (header Authorization).
 
     - `event: string`
 
+      `minLength: 1`, `maxLength: 1`
+
     - `event_id: string`
 
     - `type: "transport.dtmf.received"`
@@ -5961,6 +6239,8 @@ Use Bearer Auth (header Authorization).
     A SIP DTMF keypress successfully sent to the SIP trunk. Delivered only to sideband observers; this is not a client command.
 
     - `event: string`
+
+      `minLength: 1`, `maxLength: 1`
 
     - `event_id: string`
 
@@ -6026,6 +6306,8 @@ Use Bearer Auth (header Authorization).
 
               Audio sample rate in hertz. Live WebSocket PCM audio supports 16000 or 24000 Hz.
 
+              `minimum: 16000`, `maximum: 24000`
+
               - `16000`
 
               - `24000`
@@ -6044,6 +6326,8 @@ Use Bearer Auth (header Authorization).
 
               Audio sample rate in hertz. G.711 audio uses 8000 Hz.
 
+              `minimum: 8000`, `maximum: 8000`
+
             - `type: "audio/pcmu"`
 
               The audio encoding. Always `audio/pcmu`.
@@ -6057,6 +6341,8 @@ Use Bearer Auth (header Authorization).
             - `rate: number`
 
               Audio sample rate in hertz. G.711 audio uses 8000 Hz.
+
+              `minimum: 8000`, `maximum: 8000`
 
             - `type: "audio/pcma"`
 
@@ -6144,6 +6430,8 @@ Use Bearer Auth (header Authorization).
 
               - `id: string`
 
+                `minLength: 1`, `maxLength: 128`
+
       - `client: optional ClientConfig`
 
         Startup-only capabilities for an untrusted frontend attached to a unified WebRTC session. Trusted sideband connections are unaffected.
@@ -6176,9 +6464,13 @@ Use Bearer Auth (header Authorization).
 
                 The outer Live server event type. Use 'response.event' for Responses events.
 
+                `minLength: 1`, `maxLength: 256`
+
               - `response_event: optional string`
 
                 The nested Responses event type. Required when type is 'response.event'; forbidden for other event types.
+
+                `minLength: 1`, `maxLength: 256`
 
       - `delegation: optional ClientDelegation or Responses { responses, type, acknowledgement_delay_ms }  or Decisions { decisions, type, acknowledgement_delay_ms }  or null`
 
@@ -6197,6 +6489,8 @@ Use Bearer Auth (header Authorization).
           - `acknowledgement_delay_ms: optional number`
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
+
+            `minimum: 0`, `maximum: 800`
 
         - `Responses object { responses, type, acknowledgement_delay_ms }`
 
@@ -6217,6 +6511,8 @@ Use Bearer Auth (header Authorization).
             - `max_output_tokens: optional number or null`
 
               Maximum number of output tokens for each delegated response.
+
+              `minimum: 16`
 
             - `parallel_tool_calls: optional boolean or null`
 
@@ -6415,6 +6711,8 @@ Use Bearer Auth (header Authorization).
                 - `tools: array of Function { name, type }  or Mcp { server_label, type, name }  or FileSearch { type }  or 9 more`
 
                   The tools that the delegated Responses model may call.
+
+                  `minItems: 1`, `maxItems: 128`
 
                   - `Function object { name, type }`
 
@@ -6622,6 +6920,8 @@ Use Bearer Auth (header Authorization).
 
                       An optional list of uploaded files to make available to your code.
 
+                      `maxItems: 50`
+
                     - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                       The memory limit for the container.
@@ -6652,6 +6952,8 @@ Use Bearer Auth (header Authorization).
 
                           A list of allowed domains when type is `allowlist`.
 
+                          `minItems: 1`
+
                         - `type: "allowlist"`
 
                           Allow outbound network access only to specified domains. Always `allowlist`.
@@ -6662,11 +6964,15 @@ Use Bearer Auth (header Authorization).
 
                       An optional list of skills referenced by id or inline data.
 
+                      `maxItems: 200`
+
                       - `SkillReference object { skill_id, type, version }`
 
                         - `skill_id: string`
 
                           The ID of the referenced skill.
+
+                          `minLength: 1`, `maxLength: 64`
 
                         - `type: "skill_reference"`
 
@@ -6695,6 +7001,8 @@ Use Bearer Auth (header Authorization).
                           - `data: string`
 
                             Base64-encoded skill zip bundle.
+
+                            `minLength: 1`, `maxLength: 70254592`
 
                           - `media_type: "application/zip"`
 
@@ -6737,6 +7045,8 @@ Use Bearer Auth (header Authorization).
                     - `skills: optional array of object { description, name, path }  or null`
 
                       An optional list of skills.
+
+                      `maxItems: 200`
 
                       - `description: string`
 
@@ -6808,19 +7118,27 @@ Use Bearer Auth (header Authorization).
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400 for Decisions sessions and 0 (request immediately) for other sessions. Omission in a session update preserves the current value. Updates apply to subsequent delegations.
 
+            `minimum: 0`, `maximum: 800`
+
         - `Decisions object { decisions, type, acknowledgement_delay_ms }`
 
           - `decisions: DecisionsDelegationConfig`
 
             - `model: string`
 
+              `minLength: 1`
+
             - `questions: array of DecisionQuestion`
 
               Native Decision API questions evaluated together, in order.
 
+              `minItems: 1`, `maxItems: 64`
+
               - `Choice object { choices, instructions, type, name }`
 
                 - `choices: array of DecisionChoiceOption`
+
+                  `minItems: 2`, `maxItems: 255`
 
                   - `value: string or boolean`
 
@@ -6842,6 +7160,8 @@ Use Bearer Auth (header Authorization).
 
                         The text input to the model.
 
+                        `maxLength: 10485760`
+
                       - `type: "input_text"`
 
                         - `"input_text"`
@@ -6851,6 +7171,8 @@ Use Bearer Auth (header Authorization).
                       - `image_url: string`
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                        `maxLength: 20971520`
 
                       - `type: "input_image"`
 
@@ -6902,6 +7224,8 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                        `maxLength: 20971520`
+
                       - `type: "input_image"`
 
                         - `"input_image"`
@@ -6952,6 +7276,8 @@ Use Bearer Auth (header Authorization).
 
                         A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
 
+                        `maxLength: 20971520`
+
                       - `type: "input_image"`
 
                         - `"input_image"`
@@ -6982,6 +7308,8 @@ Use Bearer Auth (header Authorization).
 
                 - `levels: array of object { label, description }`
 
+                  `minItems: 2`, `maxItems: 10`
+
                   - `label: string`
 
                   - `description: optional string`
@@ -7000,9 +7328,13 @@ Use Bearer Auth (header Authorization).
 
             Milliseconds to wait before requesting an automatic spoken acknowledgement for a delegation. The model may still speak before this delay. Any commentary or thinking appended to the session cancels all pending acknowledgements, including those for other delegations. Defaults to 400. Updates apply to subsequent delegations.
 
+            `minimum: 0`, `maximum: 800`
+
       - `input: optional array of InitialItem`
 
         Ordered text-only history supplied before startup. Supports developer, user, and assistant messages with one text part each; at most 128 messages and a configured rendered-token limit (8,192 by default).
+
+        `maxItems: 128`
 
         - `Developer object { content, role, id, 2 more }`
 
@@ -7011,6 +7343,8 @@ Use Bearer Auth (header Authorization).
           - `content: array of object { text, type }`
 
             The message content. Supply exactly one text part for the initial Live conversation history.
+
+            `minItems: 1`, `maxItems: 1`
 
             - `text: string`
 
@@ -7054,6 +7388,8 @@ Use Bearer Auth (header Authorization).
 
             The message content. Supply exactly one text part for the initial Live conversation history.
 
+            `minItems: 1`, `maxItems: 1`
+
             - `text: string`
 
               The message text to include in the Live session’s initial conversation history.
@@ -7095,6 +7431,8 @@ Use Bearer Auth (header Authorization).
           - `content: array of Text { text, type }  or OutputText { text, type }`
 
             The message content. Supply exactly one text part for the initial Live conversation history.
+
+            `minItems: 1`, `maxItems: 1`
 
             - `Text object { text, type }`
 
@@ -7160,6 +7498,8 @@ Use Bearer Auth (header Authorization).
 
         At most one Decisions trigger per transcript event type. Triggers run independently of delegation. On update, omit triggers to keep the current configuration, send a list to replace it, or send an empty list to disable triggers.
 
+        `maxItems: 2`
+
         - `decisions: object { questions }`
 
           Questions evaluated using the current transcript and the session's shared Decision items.
@@ -7167,6 +7507,8 @@ Use Bearer Auth (header Authorization).
           - `questions: array of DecisionQuestion`
 
             Native Decision API questions evaluated together, in order.
+
+            `minItems: 1`, `maxItems: 64`
 
             - `Choice object { choices, instructions, type, name }`
 
@@ -7494,9 +7836,13 @@ Use Bearer Auth (header Authorization).
 
           Answers in question order. Any question can return a refusal instead of an answer; other questions can still receive answers. A refusal has `type: "refusal"` and the question's `name`, or `null` if it was unnamed.
 
+          `minItems: 0`, `maxItems: 2000`
+
           - `Predicate object { name, probability, type }`
 
             - `name: string or null`
+
+              `minLength: 0`
 
             - `probability: number`
 
@@ -7520,7 +7866,11 @@ Use Bearer Auth (header Authorization).
 
             - `name: string or null`
 
+              `minLength: 0`
+
             - `probabilities: array of object { probability, value }`
+
+              `minItems: 0`, `maxItems: 2000`
 
               - `probability: number`
 
@@ -7544,13 +7894,21 @@ Use Bearer Auth (header Authorization).
 
             - `name: string or null`
 
+              `minLength: 0`
+
             - `probabilities: array of object { label, probability, value }`
 
+              `minItems: 0`, `maxItems: 2000`
+
               - `label: string`
+
+                `minLength: 0`
 
               - `probability: number`
 
               - `value: number`
+
+                `format: int64`
 
             - `score: number`
 
@@ -7566,6 +7924,8 @@ Use Bearer Auth (header Authorization).
 
             - `name: string or null`
 
+              `minLength: 0`
+
             - `type: "refusal"`
 
               The type of the object. Always `refusal`.
@@ -7576,25 +7936,39 @@ Use Bearer Auth (header Authorization).
 
           The model used.
 
+          `minLength: 0`
+
         - `usage: object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
           Token usage for the request.
 
           - `input_tokens: number`
 
+            `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
           - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
 
             - `cache_write_tokens: number`
 
+              `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
             - `cached_tokens: number`
 
+              `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
           - `output_tokens: number`
+
+            `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
           - `output_tokens_details: object { reasoning_tokens }`
 
             - `reasoning_tokens: number`
 
+              `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
+
           - `total_tokens: number`
+
+            `format: int64`, `minimum: -2147483648`, `maximum: 2147483647`
 
       - `type: "decision.completed"`
 
@@ -7654,6 +8028,8 @@ Use Bearer Auth (header Authorization).
 
                 The text input to the model.
 
+                `maxLength: 10485760`
+
               - `type: "input_text"`
 
                 - `"input_text"`
@@ -7663,6 +8039,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 
@@ -7720,6 +8098,8 @@ Use Bearer Auth (header Authorization).
 
               The text input to the model.
 
+              `maxLength: 10485760`
+
             - `type: "input_text"`
 
         - `role: "developer"`
@@ -7747,6 +8127,8 @@ Use Bearer Auth (header Authorization).
             - `text: string`
 
               The text input to the model.
+
+              `maxLength: 10485760`
 
             - `type: "input_text"`
 
@@ -7778,6 +8160,8 @@ Use Bearer Auth (header Authorization).
 
                 The text content.
 
+                `maxLength: 10485760`
+
               - `type: "output_text"`
 
                 - `"output_text"`
@@ -7787,6 +8171,8 @@ Use Bearer Auth (header Authorization).
               - `refusal: string`
 
                 The refusal text.
+
+                `maxLength: 10485760`
 
               - `type: "refusal"`
 
@@ -7820,7 +8206,11 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the function tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `name: string`
+
+          `minLength: 1`, `maxLength: 128`
 
         - `type: "function_call"`
 
@@ -7831,6 +8221,8 @@ Use Bearer Auth (header Authorization).
         - `namespace: optional string or null`
 
           The namespace of the function to call.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -7847,6 +8239,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the function tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
@@ -7865,6 +8259,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 
@@ -7904,6 +8300,8 @@ Use Bearer Auth (header Authorization).
 
           The unique ID of the function tool call generated by the model.
 
+          `minLength: 1`, `maxLength: 64`
+
         - `input: string`
 
           The input to the custom tool call.
@@ -7911,6 +8309,8 @@ Use Bearer Auth (header Authorization).
         - `name: string`
 
           The name of the custom tool to call.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `type: "custom_tool_call"`
 
@@ -7921,6 +8321,8 @@ Use Bearer Auth (header Authorization).
         - `namespace: optional string or null`
 
           The namespace of the function to call.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -7937,6 +8339,8 @@ Use Bearer Auth (header Authorization).
         - `call_id: string`
 
           The unique ID of the function tool call generated by the model.
+
+          `minLength: 1`, `maxLength: 64`
 
         - `output: string or array of DecisionInputText or InputImage { image_url, type, detail }`
 
@@ -7955,6 +8359,8 @@ Use Bearer Auth (header Authorization).
               - `image_url: string`
 
                 A base64-encoded image data URL or a publicly accessible HTTP(S) image URL.
+
+                `maxLength: 20971520`
 
               - `type: "input_image"`
 

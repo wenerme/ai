@@ -1020,7 +1020,7 @@ The alternative branches to the provided user message. Multiple branches can be 
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.2.
 
-List the events for a Duo Agent Platform. Returns only the latest checkpoint by default. Use `first` and `after` to page through history. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
+List the events for a Duo Agent Platform. Returns only the latest checkpoint by default. Use `first` and `after` to page through history. When the `limit_duo_workflow_events_page_cost` feature flag is enabled, returns at most 5 checkpoints per page, otherwise at most 100. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
 
 **Returns:** [`DuoWorkflowEventConnection!`](objects.md#duoworkfloweventconnection)
 
@@ -1479,16 +1479,6 @@ All jobs on this GitLab instance. Returns an empty result for users without admi
 | `failureReason` | [`CiJobFailureReason`](enums.md#cijobfailurereason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by failure reason. Currently only `RUNNER_SYSTEM_FAILURE` together with `runnerTypes: INSTANCE_TYPE` is supported. |
 | `runnerTypes` | [`[CiRunnerType!]`](enums.md#cirunnertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.4.Filter jobs by runner type if feature flag `:admin_jobs_filter_runner_type` is enabled. |
 | `statuses` | [`[CiJobStatus!]`](enums.md#cijobstatus) | Filter jobs by status. |
-
-## `knowledgeGraphExcludedNamespaces`
-
-- Status: Experiment
-
-- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
-
-Top-level groups excluded from automatic Knowledge Graph indexing. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.
-
-**Returns:** [`GroupConnection!`](objects.md#groupconnection)
 
 ## `ldapAdminRoleLinks`
 

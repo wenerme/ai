@@ -253,7 +253,7 @@ The following guide assumes that:
    ##
    # postgresql['max_replication_slots'] = 1 # Set this to be the number of Geo secondary nodes if you have more than one
    # postgresql['max_wal_senders'] = 10
-   # postgresql['wal_keep_segments'] = 10
+   # postgresql['wal_keep_size'] = 160 # in MB
    ```
 
 1. Disable automatic database migrations temporarily until PostgreSQL is restarted and listening on the private address.
@@ -270,7 +270,7 @@ The following guide assumes that:
    postgresql['md5_auth_cidr_addresses'] = ['<primary_site_ip>/32', '<secondary_site_ip>/32', '<another_secondary_site_ip>/32']
    ```
 
-   You may also want to edit the `wal_keep_segments` and `max_wal_senders` to match your
+   You may also want to edit the `wal_keep_size` and `max_wal_senders` to match your
    database replication requirements. Consult the [PostgreSQL - Replication documentation](https://www.postgresql.org/docs/16/runtime-config-replication.html)
    for more information.
 

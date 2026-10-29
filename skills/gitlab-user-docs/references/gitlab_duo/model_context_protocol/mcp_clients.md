@@ -299,40 +299,6 @@ Other example servers are [Smithery.ai](https://smithery.ai/) and [Awesome MCP S
 }
 ```
 
-#### GitLab Knowledge Graph server
-
-The [GitLab Knowledge Graph](https://gitlab-org.gitlab.io/rust/knowledge-graph/) provides code intelligence
-through MCP. You can approve all tools or specific ones:
-
-```json
-{
-  "mcpServers": {
-    "knowledge-graph": {
-      "type": "sse",
-      "url": "http://localhost:27495/mcp/sse",
-      "approvedTools": true
-    }
-  }
-}
-```
-
-Or approve only specific tools:
-
-```json
-{
-  "mcpServers": {
-    "knowledge-graph": {
-      "type": "sse",
-      "url": "http://localhost:27495/mcp/sse",
-      "approvedTools": ["list_projects", "search_codebase_definitions", "get_references", "get_definition"]
-    }
-  }
-}
-```
-
-For more information about available tools, see the
-[Knowledge Graph MCP tools documentation](https://gitlab-org.gitlab.io/rust/knowledge-graph/mcp/tools/).
-
 #### HTTP server
 
 ```json

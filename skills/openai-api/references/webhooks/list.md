@@ -14,6 +14,8 @@ Returns webhook endpoints for the authenticated project in newest-first order.
 
   Maximum number of webhook endpoints to return. Defaults to 20.
 
+  `minimum: 1`, `maximum: 100`
+
 ### Returns
 
 - `WebhookEndpointList object { data, first_id, has_more, 2 more }`
@@ -29,6 +31,8 @@ Returns webhook endpoints for the authenticated project in newest-first order.
     - `created_at: number`
 
       The Unix timestamp when the endpoint was created.
+
+      `format: unixtime`
 
     - `event_types: array of string`
 
@@ -55,6 +59,8 @@ Returns webhook endpoints for the authenticated project in newest-first order.
     - `updated_at: optional number`
 
       The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+      `format: unixtime`
 
   - `first_id: string or null`
 

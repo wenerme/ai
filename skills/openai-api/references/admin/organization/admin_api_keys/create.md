@@ -12,6 +12,8 @@ Create an organization admin API key
 
   The number of seconds until the API key expires. Omit this field for a key that does not expire.
 
+  `minimum: 1`, `maximum: 31536000`
+
 ### Returns
 
 - `value: string`

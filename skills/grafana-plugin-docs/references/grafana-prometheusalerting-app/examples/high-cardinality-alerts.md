@@ -21,7 +21,7 @@ The most effective fix is to alert on the aggregate rather than each member.
 
 Instead of one alert per pod:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 rate(container_cpu_usage_seconds_total[5m]) > 0.9
@@ -29,7 +29,7 @@ rate(container_cpu_usage_seconds_total[5m]) > 0.9
 
 alert on how many pods are affected, per service:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 count by (namespace, service) (
@@ -45,7 +45,7 @@ Labels that vary widely—pod names in a large cluster, request IDs, user IDs—
 
 Aggregate them away with `sum by` or `max by`, keeping only the labels you route or group on:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 max by (namespace, service) (
@@ -58,7 +58,7 @@ max by (namespace, service) (
 
 Absolute thresholds don’t survive growth. A rule firing at “more than 10 failing pods” is reasonable at 50 pods and meaningless at 5000.
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 count by (service) (up == 0) / count by (service) (up) > 0.2
@@ -70,7 +70,7 @@ This fires when more than a fifth of a service’s instances are down, whatever 
 
 When per-instance alerts are genuinely wanted—you do want to know which machines are down—keep the rule detailed and let Alertmanager batch the notifications:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 group_by: ['alertname', 'cluster']
@@ -92,7 +92,7 @@ Expand table
 | Target matchers | `severity = warning`             |
 | Equal labels    | `cluster`                        |
 
-Refer to [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
+Refer to [Configure inhibition rules](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/).
 
 ## Choosing between these
 

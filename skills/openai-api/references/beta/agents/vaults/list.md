@@ -10,9 +10,13 @@ Lists vaults using ID-based pagination. See [vaults](/api/docs/guides/agents-api
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `metadata: optional map[string]`
 
@@ -54,13 +58,19 @@ Lists vaults using ID-based pagination. See [vaults](/api/docs/guides/agents-api
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The ID of the vault.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the vault was created.
+
+    `format: int64`
 
   - `metadata: map[string]`
 
@@ -69,6 +79,8 @@ Lists vaults using ID-based pagination. See [vaults](/api/docs/guides/agents-api
   - `name: string or null`
 
     The human-readable name of the vault, if set.
+
+    `minLength: 0`
 
   - `object: "vault"`
 
@@ -80,6 +92,8 @@ Lists vaults using ID-based pagination. See [vaults](/api/docs/guides/agents-api
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -87,6 +101,8 @@ Lists vaults using ID-based pagination. See [vaults](/api/docs/guides/agents-api
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

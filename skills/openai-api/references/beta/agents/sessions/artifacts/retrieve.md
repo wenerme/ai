@@ -8,7 +8,11 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `artifact_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -20,13 +24,19 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     The immutable artifact ID.
 
+    `minLength: 0`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the artifact was published.
 
+    `format: int64`
+
   - `environment_id: string`
 
     The ID of the environment that produced the artifact.
+
+    `minLength: 0`
 
   - `object: "agent.session.artifact"`
 
@@ -38,17 +48,25 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
     The original absolute file path in the execution environment.
 
+    `minLength: 0`
+
   - `session_id: string`
 
     The ID of the session that owns the artifact.
+
+    `minLength: 0`
 
   - `size_bytes: number`
 
     The immutable artifact size in bytes.
 
+    `format: int64`, `minimum: 0`
+
   - `turn_id: string`
 
     The ID of the completed turn that published the artifact.
+
+    `minLength: 0`
 
 ### Example
 

@@ -13,7 +13,7 @@ The Infinity data source supports OAuth2 authentication with advanced customizat
 
 By default, OAuth2 authentication sends the access token in the standard format:
 
-http [Copy code to clipboard] Copy
+http ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```http
 Authorization: Bearer <access_token>
@@ -79,7 +79,7 @@ Expand table
 
 To configure custom OAuth2 token handling, add the following to your data source provisioning YAML:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1
@@ -100,7 +100,7 @@ datasources:
 
 This configuration sends requests with:
 
-http [Copy code to clipboard] Copy
+http ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```http
 X-API-Key: ApiKey abc123
@@ -108,7 +108,7 @@ X-API-Key: ApiKey abc123
 
 Instead of the default:
 
-http [Copy code to clipboard] Copy
+http ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```http
 Authorization: Bearer abc123
@@ -127,7 +127,7 @@ Expand table
 
 **Use case**: Some OAuth2 servers validate the `Accept` header or other headers in token requests. By default, the OAuth2 library may not set certain headers, causing authentication failures with error messages like:
 
-[Copy code to clipboard] Copy
+![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```none
 oauth2: "invalid_request" "The header 'Accept : ' is not supported."

@@ -369,6 +369,8 @@ Response includes details of the enqueued job including job status and the name 
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -439,6 +441,8 @@ Response includes details of the enqueued job including job status and the name 
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -497,6 +501,8 @@ Response includes details of the enqueued job including job status and the name 
           - `max_completions_tokens: optional number or null`
 
             The maximum number of tokens the grader model may generate in its response.
+
+            `minimum: 1`
 
           - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -600,6 +606,8 @@ Response includes details of the enqueued job including job status and the name 
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -790,11 +798,15 @@ Response includes details of the enqueued job including job status and the name 
   The seed controls the reproducibility of the job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases.
   If a seed is not specified, one will be generated for you.
 
+  `minimum: 0`, `maximum: 2147483647`
+
 - `suffix: optional string or null`
 
   A string of up to 64 characters that will be added to your fine-tuned model name.
 
   For example, a `suffix` of "custom-model-name" would produce a model name like `ft:gpt-4o-mini:openai:custom-model-name:7p4lURel`.
+
+  `minLength: 1`, `maxLength: 64`
 
 - `validation_file: optional string or null`
 
@@ -822,6 +834,8 @@ Response includes details of the enqueued job including job status and the name 
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
+
+    `format: unixtime`
 
   - `error: object { code, message, param }  or unknown or null`
 
@@ -852,6 +866,8 @@ Response includes details of the enqueued job including job status and the name 
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -911,6 +927,8 @@ Response includes details of the enqueued job including job status and the name 
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -951,6 +969,8 @@ Response includes details of the enqueued job including job status and the name 
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -1237,6 +1257,8 @@ Response includes details of the enqueued job including job status and the name 
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -1307,6 +1329,8 @@ Response includes details of the enqueued job including job status and the name 
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -1365,6 +1389,8 @@ Response includes details of the enqueued job including job status and the name 
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -1468,6 +1494,8 @@ Response includes details of the enqueued job including job status and the name 
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 

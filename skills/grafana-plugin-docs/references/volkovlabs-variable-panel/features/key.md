@@ -11,7 +11,7 @@ A Grafana variable can contain key-value pairs. This makes it possible to join d
 
 In the following example, screen 1 shows the `city` variable created with three key-value pairs.
 
-text [Copy code to clipboard] Copy
+text ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```text
 Chicago:1, New York:2, Tampa:3
@@ -21,4 +21,4 @@ Screen 2 shows a dashboard view where end users see only city names. After you m
 
 You can then use the `city` variable’s value in queries for other panels, as shown in screen 3.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/key-value.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/key-value.png)

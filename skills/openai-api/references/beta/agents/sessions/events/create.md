@@ -8,15 +8,21 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
 - `"Idempotency-Key": optional string`
 
+  `minLength: 1`, `maxLength: 256`
+
 ### Path Parameters
 
 - `session_id: string`
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
 
 - `events: array of AgentSessionInputParam`
 
   The input events to submit to the session.
+
+  `minItems: 0`, `maxItems: 16384`
 
   - `AgentSessionInputComputerUseApprovalRequestResult object { request_id, response, type }`
 
@@ -25,6 +31,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `request_id: string`
 
       The registered request ID from the required action.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `response: AgentBrowserAuthenticationSubmitParam or AgentBrowserAuthenticationCancelParam or AgentBrowserOriginAccessParam`
 
@@ -40,13 +48,19 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
           Values for up to six active fields in the required action. The submitted field-value mapping and selected option must fit within 120 KiB of JSON.
 
+          `minItems: 0`, `maxItems: 6`
+
           - `field_id: string`
 
             The field ID from the required action.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `value: string`
 
             The value to enter into the registered control.
+
+            `minLength: 0`, `maxLength: 16384`
 
         - `type: "browser_authentication"`
 
@@ -55,6 +69,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
         - `selected_option: optional string or null`
 
           The chosen method. Required when the required action contains options.
+
+          `minLength: 0`, `maxLength: 1048576`
 
       - `AgentBrowserAuthenticationCancelParam object { action, type }`
 
@@ -102,9 +118,13 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       The user messages to add to the session.
 
+      `minItems: 0`, `maxItems: 16384`
+
       - `content: array of InputContentParam`
 
         The content of the message.
+
+        `minItems: 0`, `maxItems: 16384`
 
         - `InputText object { text, type }`
 
@@ -113,6 +133,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
           - `text: string`
 
             The text sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_text"`
 
@@ -127,6 +149,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
           - `image_url: string`
 
             The URL of the image sent to the model.
+
+            `minLength: 0`, `maxLength: 1048576`
 
           - `type: "input_image"`
 
@@ -170,6 +194,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
       The ID of the function call.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `success: boolean`
 
       Whether the function call succeeded.
@@ -177,6 +203,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `turn_id: string`
 
       The ID of the turn that requested the function call.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "agent.session.input.tool_result"`
 
@@ -187,6 +215,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
     - `error: optional string or null`
 
       The error message when the call failed.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `output: optional AgentFunctionCallOutputParam or null`
 

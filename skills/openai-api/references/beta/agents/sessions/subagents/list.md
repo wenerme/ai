@@ -8,15 +8,21 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
 - `session_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `after: optional string`
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -36,17 +42,25 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The ID of the subagent.
+
+    `minLength: 0`
 
   - `closed_at: number or null`
 
     The Unix timestamp, in seconds, when the subagent was closed. Null while active, including after resume.
 
+    `format: int64`
+
   - `instructions: array of AgentContent or null`
 
     Initial task content, or null when unavailable. Text may contain placeholders for images or audio when only a preview is available.
+
+    `minItems: 0`, `maxItems: 2000`
 
     - `OutputText object { text, type }`
 
@@ -55,6 +69,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
       - `text: string`
 
         The text produced by the agent.
+
+        `minLength: 0`
 
       - `type: "output_text"`
 
@@ -70,6 +86,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
         The encrypted content payload.
 
+        `minLength: 0`
+
       - `type: "encrypted_content"`
 
         The content type. Always `encrypted_content`.
@@ -79,6 +97,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
   - `name: string or null`
 
     The runner-assigned nickname, or null when unavailable.
+
+    `minLength: 0`
 
   - `object: "agent.session.subagent"`
 
@@ -90,13 +110,19 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
     The Unix timestamp, in seconds, when the subagent was first opened. Resuming does not change it.
 
+    `format: int64`
+
   - `parent_agent_id: string`
 
     The ID of the agent that created this subagent.
 
+    `minLength: 0`
+
   - `session_id: string`
 
     The ID of the session that owns the subagent.
+
+    `minLength: 0`
 
   - `status: "active" or "closed"`
 
@@ -114,6 +140,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
   The ID of the first resource in `data`, or `null` if the page is empty.
 
+  `minLength: 0`
+
 - `has_more: boolean`
 
   Whether there are more resources to retrieve after this page.
@@ -121,6 +149,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 

@@ -20,6 +20,8 @@ Retrieves a webhook endpoint for the authenticated project.
 
     The Unix timestamp when the endpoint was created.
 
+    `format: unixtime`
+
   - `event_types: array of string`
 
     The event types that trigger deliveries to this endpoint.
@@ -45,6 +47,8 @@ Retrieves a webhook endpoint for the authenticated project.
   - `updated_at: optional number`
 
     The Unix timestamp of the last endpoint configuration or signing-secret change. Initialized at creation; tests and unchanged updates do not advance it.
+
+    `format: unixtime`
 
 ### Example
 

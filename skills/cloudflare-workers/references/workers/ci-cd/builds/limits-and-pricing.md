@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing
 
 # Limits & pricing
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds has the following limits.
 
@@ -27,6 +27,7 @@ Workers Builds has the following limits.
 | **Disk space** | 20 GB | 20 GB |
 | **Environment variables** | 64 | 64 |
 | **Size per environment variable** | 5 KB | 5 KB |
+| **Build and build log retention** | 90 days | 90 days |
 
 ## Definitions
 
@@ -39,6 +40,7 @@ Workers Builds has the following limits.
 - **Disk space**: The amount of disk space available to your build.
 - **Environment variables**: The number of custom environment variables you can configure per Worker.
 - **Size per environment variable**: The maximum size for each individual environment variable.
+- **Build and build log retention**: How long a build and its build logs are retained after the build finishes. Versions and deployments created by the build are not removed, and you can still [roll back](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) to them.
 
 Was this helpful?
 
@@ -49,5 +51,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/#page","headline":"Limits & pricing","description":"Limits & pricing for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/og.png?v=db53c6e993192d49","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/#page","headline":"Limits & pricing","description":"Limits & pricing for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/limits-and-pricing/og.png?v=db53c6e993192d49","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

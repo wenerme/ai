@@ -13,7 +13,7 @@ description: "Learn how to use Persistent Mode to store selected variable values
 
 This feature applies when you configure the Business Variable panel in the **Minimize** and **Button** layouts. You can turn this mode on or off in the Business Variable panel options.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/persist-on-off.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/persist-on-off.png)
 
 When you enable persistent mode, selected values are stored in the browser’s local storage. This is useful when one Business Variable panel controls another Business Variable panel.
 
@@ -21,4 +21,4 @@ For example, in the following illustration, two variable panels exist. One displ
 
 Depending on the **Persistent** option value set for the **State** variable panel, the selected value is either saved in the browser for future use or not.
 
-[](/media/docs/grafana/panels-visualizations/business-variable/persistent.png)
+[](https://grafana.com/media/docs/grafana/panels-visualizations/business-variable/persistent.png)

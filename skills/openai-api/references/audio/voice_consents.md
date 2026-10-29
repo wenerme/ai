@@ -20,6 +20,8 @@ Upload a voice consent recording.
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -146,6 +148,8 @@ Returns a list of voice consent recordings.
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -228,6 +232,8 @@ Retrieves a voice consent recording.
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -298,6 +304,8 @@ Updates a voice consent recording (metadata only).
 
     The Unix timestamp (in seconds) for when the consent recording was created.
 
+    `format: unixtime`
+
   - `language: string`
 
     The BCP 47 language tag for the consent phrase (for example, `en-US`).
@@ -362,6 +370,8 @@ curl https://api.openai.com/v1/audio/voice_consents/cons_1234 \
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the consent recording was created.
+
+    `format: unixtime`
 
   - `language: string`
 

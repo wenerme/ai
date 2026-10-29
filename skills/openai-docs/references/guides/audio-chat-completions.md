@@ -443,10 +443,11 @@ completion = client.chat.completions.create(
     voice: :alloy,
     format: :wav
   },
-  store: true
+  store: false
 )
 
-puts(completion.choices.fetch(0).message.content)
+message = completion.choices.fetch(0).message
+puts(message.audio&.transcript || message.content)
 ```
 
 ```bash

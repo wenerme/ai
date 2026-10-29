@@ -16,6 +16,23 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-10-28
+
+
+**Filter MCP tool-call analytics by response status**
+
+MCP tool-call analytics support a `response_status` query parameter on the account, portal, and server timeseries endpoints. Use `success`, `error`, or `cached` to count one status, or `all` to include every status.
+
+The default is `success`. Previously, counts included failed and cached calls. If you need the previous all-status counts, set `response_status=all` explicitly:
+
+```txt
+GET /accounts/{account_id}/access/ai-controls/mcp/analytics/tool-calls/timeseries?response_status=all
+```
+
+The response includes the selected `response_status`. Invalid values, including an empty value, return `400`.
+
+For all query parameters and scoped endpoints, refer to [View tool-call analytics](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#view-tool-call-analytics).
+
 ## 2026-10-27
 
 

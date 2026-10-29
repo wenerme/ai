@@ -20,6 +20,8 @@ Creates an API key for a service account in the project.
 
   Number of seconds until the API key expires.
 
+  `minimum: 1`, `maximum: 31536000`
+
 - `name: optional string`
 
   API key name.
@@ -38,6 +40,8 @@ Creates an API key for a service account in the project.
 
   The Unix timestamp (in seconds) when the API key was created.
 
+  `format: unixtime`
+
 - `name: string`
 
   The name of the API key.
@@ -55,6 +59,8 @@ Creates an API key for a service account in the project.
 - `expires_at: optional number or null`
 
   The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
+  `format: unixtime`
 
 ### Example
 

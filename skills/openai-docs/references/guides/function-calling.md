@@ -1608,13 +1608,7 @@ stream.each do |event|
     item = event.item
     next unless item.is_a?(OpenAI::Models::Responses::ResponseFunctionToolCall)
 
-    final_tool_calls[event.output_index] = {
-      id: item.id,
-      call_id: item.call_id,
-      name: item.name,
-      type: item.type,
-      arguments: item.arguments.dup
-    }
+    final_tool_calls[event.output_index] = item.to_h.merge(arguments: item.arguments.dup)
   when OpenAI::Models::Responses::ResponseFunctionCallArgumentsDeltaEvent
     tool_call = final_tool_calls[event.output_index]
     tool_call[:arguments] << event.delta if tool_call

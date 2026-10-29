@@ -8,11 +8,15 @@ Lists live files on a connected execution environment with optional directory fi
 
 - `environment_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Query Parameters
 
 - `limit: optional number or null`
 
   The maximum number of files to return, between 1 and 100.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `order: optional "asc" or "desc"`
 
@@ -30,9 +34,13 @@ Lists live files on a connected execution environment with optional directory fi
 
   The opaque token from the previous page. Keep the same path, order, and limit.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `path: optional string or null`
 
   Restrict the listing to this absolute workspace directory.
+
+  `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
 
@@ -40,9 +48,13 @@ Lists live files on a connected execution environment with optional directory fi
 
   Files available on the current page.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `environment_id: string`
 
     The ID of the environment containing this file.
+
+    `minLength: 0`
 
   - `object: "agent.environment.file"`
 
@@ -54,9 +66,13 @@ Lists live files on a connected execution environment with optional directory fi
 
     The absolute file path inside the environment's workspace.
 
+    `minLength: 0`
+
   - `size_bytes: number`
 
     The file size in bytes.
+
+    `format: int64`, `minimum: 0`
 
 - `has_more: boolean`
 
@@ -65,6 +81,8 @@ Lists live files on a connected execution environment with optional directory fi
 - `next: string or null`
 
   The opaque cursor to use when requesting the next page, if any.
+
+  `minLength: 0`
 
 - `object: "page"`
 

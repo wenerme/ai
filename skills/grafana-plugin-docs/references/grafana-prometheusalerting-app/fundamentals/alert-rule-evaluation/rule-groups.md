@@ -33,7 +33,7 @@ The plugin warns about this directly. If you set an evaluation interval longer t
 
 > Note
 >
-> This evaluation interval belongs to a rule group and controls how often rules run. It’s unrelated to the Alertmanager group interval, which controls how often notifications are sent. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+> This evaluation interval belongs to a rule group and controls how often rules run. It’s unrelated to the Alertmanager group interval, which controls how often notifications are sent. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
 
 ## Rules run in order
 

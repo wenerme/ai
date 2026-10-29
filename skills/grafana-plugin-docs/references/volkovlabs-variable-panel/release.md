@@ -9,4 +9,4 @@ description: "Learn about the latest features, enhancements, fixes, and breaking
 
 Learn about the latest features, enhancements, fixes, and breaking changes for the Business Variable panel.
 
-All notable changes to the Business Variable panel are documented in the [changelog](/grafana/plugins/volkovlabs-variable-panel/?tab=changelog) in the plugins catalog.
+All notable changes to the Business Variable panel are documented in the [changelog](https://grafana.com/grafana/plugins/volkovlabs-variable-panel/?tab=changelog) in the plugins catalog.

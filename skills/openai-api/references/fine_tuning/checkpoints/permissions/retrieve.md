@@ -44,6 +44,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".

@@ -192,6 +192,8 @@ Run a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -262,6 +264,8 @@ Run a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -320,6 +324,8 @@ Run a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -423,6 +429,8 @@ Run a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -980,6 +988,8 @@ Validate a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -1050,6 +1060,8 @@ Validate a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -1108,6 +1120,8 @@ Validate a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -1211,6 +1225,8 @@ Validate a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -1464,6 +1480,8 @@ Validate a grader.
 
             The URL of the image input.
 
+            `format: uri`
+
           - `type: "input_image"`
 
             The type of the image input. Always `input_image`.
@@ -1534,6 +1552,8 @@ Validate a grader.
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -1592,6 +1612,8 @@ Validate a grader.
       - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
+
+        `minimum: 1`
 
       - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -1695,6 +1717,8 @@ Validate a grader.
               - `image_url: string`
 
                 The URL of the image input.
+
+                `format: uri`
 
               - `type: "input_image"`
 
@@ -2076,6 +2100,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -2146,6 +2172,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -2204,6 +2232,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
         - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
+
+          `minimum: 1`
 
         - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -2308,6 +2338,8 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -2411,6 +2443,8 @@ This enables organization owners to share fine-tuned models with other projects 
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the permission was created.
+
+    `format: unixtime`
 
   - `object: "checkpoint.permission"`
 
@@ -2602,6 +2636,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -2726,6 +2762,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -2820,6 +2858,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -2862,6 +2902,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
     The Unix timestamp (in seconds) for when the permission was created.
 
+    `format: unixtime`
+
   - `object: "checkpoint.permission"`
 
     The object type, which is always "checkpoint.permission".
@@ -2885,6 +2927,8 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
     - `created_at: number`
 
       The Unix timestamp (in seconds) for when the permission was created.
+
+      `format: unixtime`
 
     - `object: "checkpoint.permission"`
 
@@ -2932,6 +2976,8 @@ Immediately cancel a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -2961,6 +3007,8 @@ Immediately cancel a fine-tune job.
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -3020,6 +3068,8 @@ Immediately cancel a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -3060,6 +3110,8 @@ Immediately cancel a fine-tune job.
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -3346,6 +3398,8 @@ Immediately cancel a fine-tune job.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -3416,6 +3470,8 @@ Immediately cancel a fine-tune job.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -3474,6 +3530,8 @@ Immediately cancel a fine-tune job.
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -3577,6 +3635,8 @@ Immediately cancel a fine-tune job.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -4255,6 +4315,8 @@ Response includes details of the enqueued job including job status and the name 
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -4325,6 +4387,8 @@ Response includes details of the enqueued job including job status and the name 
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -4383,6 +4447,8 @@ Response includes details of the enqueued job including job status and the name 
           - `max_completions_tokens: optional number or null`
 
             The maximum number of tokens the grader model may generate in its response.
+
+            `minimum: 1`
 
           - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -4486,6 +4552,8 @@ Response includes details of the enqueued job including job status and the name 
                   - `image_url: string`
 
                     The URL of the image input.
+
+                    `format: uri`
 
                   - `type: "input_image"`
 
@@ -4676,11 +4744,15 @@ Response includes details of the enqueued job including job status and the name 
   The seed controls the reproducibility of the job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases.
   If a seed is not specified, one will be generated for you.
 
+  `minimum: 0`, `maximum: 2147483647`
+
 - `suffix: optional string or null`
 
   A string of up to 64 characters that will be added to your fine-tuned model name.
 
   For example, a `suffix` of "custom-model-name" would produce a model name like `ft:gpt-4o-mini:openai:custom-model-name:7p4lURel`.
+
+  `minLength: 1`, `maxLength: 64`
 
 - `validation_file: optional string or null`
 
@@ -4708,6 +4780,8 @@ Response includes details of the enqueued job including job status and the name 
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
+
+    `format: unixtime`
 
   - `error: object { code, message, param }  or unknown or null`
 
@@ -4738,6 +4812,8 @@ Response includes details of the enqueued job including job status and the name 
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -4797,6 +4873,8 @@ Response includes details of the enqueued job including job status and the name 
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -4837,6 +4915,8 @@ Response includes details of the enqueued job including job status and the name 
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -5123,6 +5203,8 @@ Response includes details of the enqueued job including job status and the name 
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -5193,6 +5275,8 @@ Response includes details of the enqueued job including job status and the name 
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -5251,6 +5335,8 @@ Response includes details of the enqueued job including job status and the name 
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -5354,6 +5440,8 @@ Response includes details of the enqueued job including job status and the name 
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -6041,6 +6129,8 @@ List your organization's fine-tuning jobs
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -6070,6 +6160,8 @@ List your organization's fine-tuning jobs
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -6129,6 +6221,8 @@ List your organization's fine-tuning jobs
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -6169,6 +6263,8 @@ List your organization's fine-tuning jobs
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -6455,6 +6551,8 @@ List your organization's fine-tuning jobs
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -6525,6 +6623,8 @@ List your organization's fine-tuning jobs
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -6583,6 +6683,8 @@ List your organization's fine-tuning jobs
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -6686,6 +6788,8 @@ List your organization's fine-tuning jobs
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -7059,6 +7163,8 @@ Get status updates for a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `level: "info" or "warn" or "error"`
 
     The log level of the event.
@@ -7184,6 +7290,8 @@ Pause a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -7213,6 +7321,8 @@ Pause a fine-tune job.
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -7272,6 +7382,8 @@ Pause a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -7312,6 +7424,8 @@ Pause a fine-tune job.
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -7598,6 +7712,8 @@ Pause a fine-tune job.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -7668,6 +7784,8 @@ Pause a fine-tune job.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -7726,6 +7844,8 @@ Pause a fine-tune job.
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -7829,6 +7949,8 @@ Pause a fine-tune job.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -8174,6 +8296,8 @@ Resume a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -8203,6 +8327,8 @@ Resume a fine-tune job.
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -8262,6 +8388,8 @@ Resume a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -8302,6 +8430,8 @@ Resume a fine-tune job.
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -8588,6 +8718,8 @@ Resume a fine-tune job.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -8658,6 +8790,8 @@ Resume a fine-tune job.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -8716,6 +8850,8 @@ Resume a fine-tune job.
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -8819,6 +8955,8 @@ Resume a fine-tune job.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -9166,6 +9304,8 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -9195,6 +9335,8 @@ Get info about a fine-tuning job.
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -9254,6 +9396,8 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -9294,6 +9438,8 @@ Get info about a fine-tuning job.
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -9580,6 +9726,8 @@ Get info about a fine-tuning job.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -9650,6 +9798,8 @@ Get info about a fine-tuning job.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -9708,6 +9858,8 @@ Get info about a fine-tuning job.
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -9811,6 +9963,8 @@ Get info about a fine-tuning job.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -10151,6 +10305,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -10180,6 +10336,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -10239,6 +10397,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -10279,6 +10439,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -10565,6 +10727,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -10635,6 +10799,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -10693,6 +10859,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -10796,6 +10964,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 
@@ -10995,6 +11165,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `level: "info" or "warn" or "error"`
 
     The log level of the event.
@@ -11120,6 +11292,8 @@ List checkpoints for a fine-tuning job.
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the checkpoint was created.
+
+    `format: unixtime`
 
   - `fine_tuned_model_checkpoint: string`
 
@@ -11263,6 +11437,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
   - `created_at: number`
 
     The Unix timestamp (in seconds) for when the checkpoint was created.
+
+    `format: unixtime`
 
   - `fine_tuned_model_checkpoint: string`
 
@@ -11664,6 +11840,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
 
               The URL of the image input.
 
+              `format: uri`
+
             - `type: "input_image"`
 
               The type of the image input. Always `input_image`.
@@ -11734,6 +11912,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
 
                 The URL of the image input.
 
+                `format: uri`
+
               - `type: "input_image"`
 
                 The type of the image input. Always `input_image`.
@@ -11792,6 +11972,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
         - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
+
+          `minimum: 1`
 
         - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -11895,6 +12077,8 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
                 - `image_url: string`
 
                   The URL of the image input.
+
+                  `format: uri`
 
                 - `type: "input_image"`
 

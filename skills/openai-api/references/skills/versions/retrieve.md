@@ -24,6 +24,8 @@ Get a specific skill version.
 
     Unix timestamp (seconds) for when the version was created.
 
+    `format: unixtime`
+
   - `description: string`
 
     Description of the skill version.

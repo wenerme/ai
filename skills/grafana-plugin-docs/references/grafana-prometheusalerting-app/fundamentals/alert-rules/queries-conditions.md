@@ -18,7 +18,7 @@ The ruler evaluates the expression on each interval and looks at the result:
 
 So you write a query that returns nothing in the healthy case, and returns something when there’s a problem. The comparison operator is what does the filtering:
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 node_filesystem_avail_bytes / node_filesystem_size_bytes * 100 < 10
@@ -26,13 +26,13 @@ node_filesystem_avail_bytes / node_filesystem_size_bytes * 100 < 10
 
 While every filesystem has more than 10% free, this returns no series and no alert exists. As soon as one drops below, the series for that filesystem is returned and becomes an alert instance.
 
-This is why one rule commonly produces many alerts. If fifty filesystems are below the threshold, you get fifty alert instances from a single rule, each carrying the labels of its own series. Refer to [Multi-dimensional alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts/).
+This is why one rule commonly produces many alerts. If fifty filesystems are below the threshold, you get fifty alert instances from a single rule, each carrying the labels of its own series. Refer to [Multi-dimensional alerts](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts/).
 
 ## Aggregation changes what you get
 
 How you aggregate decides how many alerts you get and how specific they are.
 
-promql [Copy code to clipboard] Copy
+promql ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```promql
 # One alert per instance: you learn exactly which machine
@@ -42,7 +42,7 @@ up{job="api"} == 0
 count(up{job="api"} == 0) > 3
 ```
 
-Neither is better in general. Per-instance alerts are precise but can flood you during a broad outage; aggregated alerts stay quiet but need investigation. Refer to [High-cardinality alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/).
+Neither is better in general. Per-instance alerts are precise but can flood you during a broad outage; aggregated alerts stay quiet but need investigation. Refer to [High-cardinality alerts](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/).
 
 ## The pending period
 
@@ -60,7 +60,7 @@ In the plugin, this field is labeled **Pending period**. Setting it to **None** 
 
 > Note
 >
-> The pending period is measured in evaluations, not wall-clock time. A rule in a group evaluated every 5 minutes with `for: 1m` fires on the second consecutive matching evaluation: 5 minutes later, not 1. Keep the evaluation interval well below the pending period. Refer to [Rule groups and evaluation](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
+> The pending period is measured in evaluations, not wall-clock time. A rule in a group evaluated every 5 minutes with `for: 1m` fires on the second consecutive matching evaluation: 5 minutes later, not 1. Keep the evaluation interval well below the pending period. Refer to [Rule groups and evaluation](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/).
 
 ## Keeping an alert firing after it clears
 

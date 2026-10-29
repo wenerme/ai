@@ -8,6 +8,8 @@ Deletes a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
 - `agent_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `AgentDeleted object { id, deleted, object }`
@@ -17,6 +19,8 @@ Deletes a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
   - `id: string`
 
     The ID of the deleted agent.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

@@ -51,6 +51,9 @@ already uses.
 
 Packages in other ecosystems are fetched without evaluation.
 
+For the command to use with each package manager, see
+[`glab dependency-firewall`](https://docs.gitlab.com/cli/dependency-firewall/).
+
 ## Restrictions
 
 - Only the traffic that `glab df` proxies is evaluated. A package manager run on its own, such
@@ -123,6 +126,19 @@ The setting applies to every project on the instance. There is no per-group togg
 
 To turn off the firewall, repeat the steps for your offering and turn the setting off. Existing
 policies are preserved, but the firewall stops evaluating packages.
+
+## Use the dependency firewall in CI/CD
+
+To check packages in a CI/CD job, run your package manager through `glab df` in the job script,
+and set the `GLAB_ENABLE_CI_AUTOLOGIN` CI/CD variable to `true`. The CLI then signs in with the
+CI/CD job token. The `glab dependency-firewall` CLI reference has an example job.
+
+The job token can evaluate packages for its own project only. GitLab refuses a token from
+another project. The user who triggered the job must have the Reporter, Security Manager,
+Developer, Maintainer, or Owner role for the project.
+
+To fail the job when any package was blocked, see
+[`glab dependency-firewall ci-summary`](https://docs.gitlab.com/cli/dependency-firewall/ci-summary/).
 
 ## Prevent bypassing the firewall
 
@@ -499,3 +515,32 @@ The following audit event types are recorded:
 
 Each event records the package, the operation, the policy name, and the rule that matched. For
 more information, see [Audit event types](../../compliance/audit_event_types.md#dependency-firewall).
+
+## Troubleshooting
+
+When you use the dependency firewall, you might encounter the following issues.
+
+If GitLab can't evaluate a package, the CLI blocks it. If the firewall isn't evaluating the
+project, the CLI allows every package.
+
+### Error: `policy check failed:`
+
+A package is blocked, and its reason in the summary starts with `policy check failed:`.
+
+This issue occurs when the evaluation request fails because of a network error, a timeout
+after 60 seconds, a server error (`503`), rate limiting (`429`), or a permission error (`403`),
+for example when you do not have the Reporter role.
+
+The CLI retries a failed check the next time the package is requested in the same run.
+`glab df package` does not block the package. It exits with `1` instead.
+
+### Warning: `dependency firewall not evaluating`
+
+The CLI prints a line to standard error that starts with `dependency firewall not evaluating`,
+and allows every package for the rest of the run.
+
+The line is expected when the firewall is not turned on for the project. You can use the same
+commands in every project, whether or not a policy applies.
+
+This issue also occurs when GitLab cannot find the project or your token cannot access it.
+To resolve this issue, check your Git remote and your token's access to the project.

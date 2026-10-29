@@ -485,6 +485,51 @@ After you create a conversation with an agent:
 - If you go back to a conversation and the associated agent is no longer available,
   you cannot continue that conversation.
 
+## Attach images
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250665) in GitLab 19.5 as an [experiment](../../policy/development_stages_support.md#experiment) with a [feature flag](../../administration/feature_flags/_index.md) named `dap_web_chat_file_attachments`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Attach images to a Chat message in the GitLab UI so Chat can answer questions about them.
+For example, you can attach a screenshot of an error message or a UI design.
+
+Chat sends your images and message to the model provider.
+Do not attach images that contain sensitive information.
+
+### Supported formats and limits
+
+| Limit | Value |
+| ----- | ----- |
+| Formats | PNG, JPEG, and WebP |
+| Size of each image | 2 MiB |
+| Images in each message | 5 |
+| Total size of the images in each message | 2.5 MB |
+
+If a file does not meet these limits, Chat does not attach it and shows a message.
+
+These restrictions also apply:
+
+- Chat does not support other file types, like PDF, GIF, and HEIC.
+- You can attach images only in the GitLab UI, not in editor extensions.
+- Because of the total size limit, a message cannot contain five images of the maximum size.
+
+### Attach an image to a message
+
+To attach an image to a message:
+
+1. On the GitLab Duo sidebar, open a new or existing Chat conversation.
+1. In the Chat text box, select **Add or enable** ().
+1. Select **Attach image**, then select one or more images.
+1. Enter your message and send it.
+
+You can also paste an image into the Chat text box or drag an image onto the
+GitLab Duo sidebar.
+
 ## Web search
 
 - Status: Experiment

@@ -338,6 +338,8 @@ Get audio speeches usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -969,6 +971,8 @@ Get audio transcriptions usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -1581,6 +1585,8 @@ Get code interpreter sessions usage details for the organization.
       - `seconds: number`
 
         The number of seconds processed.
+
+        `format: int64`
 
       - `api_key_id: optional string or null`
 
@@ -2219,6 +2225,8 @@ Get completions usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -2856,6 +2864,8 @@ Get costs details for the organization.
       - `seconds: number`
 
         The number of seconds processed.
+
+        `format: int64`
 
       - `api_key_id: optional string or null`
 
@@ -3790,6 +3800,8 @@ Get embeddings usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -4420,6 +4432,8 @@ Get file search calls usage details for the organization.
       - `seconds: number`
 
         The number of seconds processed.
+
+        `format: int64`
 
       - `api_key_id: optional string or null`
 
@@ -5079,6 +5093,8 @@ Get images usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -5712,6 +5728,8 @@ Get moderations usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -6324,6 +6342,8 @@ Get vector stores usage details for the organization.
       - `seconds: number`
 
         The number of seconds processed.
+
+        `format: int64`
 
       - `api_key_id: optional string or null`
 
@@ -6966,6 +6986,8 @@ Get web search calls usage details for the organization.
 
         The number of seconds processed.
 
+        `format: int64`
+
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -7564,6 +7586,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -8041,6 +8065,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `seconds: number`
 
           The number of seconds processed.
+
+          `format: int64`
 
         - `api_key_id: optional string or null`
 
@@ -8520,6 +8546,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -8998,6 +9026,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -9475,6 +9505,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `seconds: number`
 
           The number of seconds processed.
+
+          `format: int64`
 
         - `api_key_id: optional string or null`
 
@@ -10082,6 +10114,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -10559,6 +10593,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `seconds: number`
 
           The number of seconds processed.
+
+          `format: int64`
 
         - `api_key_id: optional string or null`
 
@@ -11038,6 +11074,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -11515,6 +11553,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `seconds: number`
 
           The number of seconds processed.
+
+          `format: int64`
 
         - `api_key_id: optional string or null`
 
@@ -11994,6 +12034,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           The number of seconds processed.
 
+          `format: int64`
+
         - `api_key_id: optional string or null`
 
           When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
@@ -12471,6 +12513,8 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `seconds: number`
 
           The number of seconds processed.
+
+          `format: int64`
 
         - `api_key_id: optional string or null`
 

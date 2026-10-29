@@ -8,6 +8,8 @@ Deletes reusable environment configuration and all confidential template inputs.
 
 - `environment_template_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `EnvironmentTemplateDeleted object { id, deleted, object }`
@@ -17,6 +19,8 @@ Deletes reusable environment configuration and all confidential template inputs.
   - `id: string`
 
     The ID of the deleted environment template.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

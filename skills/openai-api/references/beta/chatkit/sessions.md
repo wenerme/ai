@@ -70,6 +70,8 @@ Cancelling prevents new requests from using the issued client secret.
 
     Unix timestamp (in seconds) for when the session expires.
 
+    `format: unixtime`
+
   - `max_requests_per_1_minute: number`
 
     Convenience copy of the per-minute request limit.
@@ -242,6 +244,8 @@ Create a ChatKit session.
 
   A free-form string that identifies your end user; ensures this Session can access other objects that have the same `user` scope.
 
+  `minLength: 1`
+
 - `workflow: ChatSessionWorkflowParam`
 
   Workflow that powers the session.
@@ -296,9 +300,13 @@ Create a ChatKit session.
 
       Maximum size in megabytes for each uploaded file. Defaults to 512 MB, which is the maximum allowable size.
 
+      `minimum: 1`, `maximum: 512`
+
     - `max_files: optional number`
 
       Maximum number of files that can be uploaded to the session. Defaults to 10.
+
+      `minimum: 1`
 
   - `history: optional object { enabled, recent_threads }`
 
@@ -311,6 +319,8 @@ Create a ChatKit session.
     - `recent_threads: optional number`
 
       Number of recent ChatKit threads users have access to. Defaults to unlimited when unset.
+
+      `minimum: 1`
 
 - `expires_after: optional ChatSessionExpiresAfterParam`
 
@@ -326,6 +336,8 @@ Create a ChatKit session.
 
     Number of seconds after the anchor when the session expires.
 
+    `format: int64`, `minimum: 1`, `maximum: 600`
+
 - `rate_limits: optional ChatSessionRateLimitsParam`
 
   Optional override for per-minute request limits. When omitted, defaults to 10.
@@ -333,6 +345,8 @@ Create a ChatKit session.
   - `max_requests_per_1_minute: optional number`
 
     Maximum number of requests allowed per minute for the session. Defaults to 10.
+
+    `minimum: 1`
 
 ### Returns
 
@@ -391,6 +405,8 @@ Create a ChatKit session.
   - `expires_at: number`
 
     Unix timestamp (in seconds) for when the session expires.
+
+    `format: unixtime`
 
   - `max_requests_per_1_minute: number`
 

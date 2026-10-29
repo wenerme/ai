@@ -10,6 +10,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 - `certificate_ids: array of string`
 
+  `minItems: 1`, `maxItems: 10`
+
 ### Returns
 
 - `data: array of object { id, active, certificate_details, 3 more }`
@@ -28,13 +30,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 

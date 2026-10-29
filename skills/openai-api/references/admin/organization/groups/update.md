@@ -14,6 +14,8 @@ Updates a group's information.
 
   New display name for the group.
 
+  `minLength: 1`, `maxLength: 255`
+
 ### Returns
 
 - `id: string`
@@ -23,6 +25,8 @@ Updates a group's information.
 - `created_at: number`
 
   Unix timestamp (in seconds) when the group was created.
+
+  `format: unixtime`
 
 - `is_scim_managed: boolean`
 

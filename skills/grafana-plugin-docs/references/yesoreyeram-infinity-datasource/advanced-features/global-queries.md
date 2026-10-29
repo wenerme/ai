@@ -33,7 +33,7 @@ You can register multiple global queries per data source instance.
 
 Configure global queries through provisioning:
 
-YAML [Copy code to clipboard] Copy
+YAML ![Copy code to clipboard](https://grafana.com/media/images/icons/icon-copy-small-2.svg) Copy
 
 ```yaml
 apiVersion: 1

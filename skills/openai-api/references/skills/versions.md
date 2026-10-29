@@ -40,6 +40,8 @@ Create a new immutable skill version.
 
     Unix timestamp (seconds) for when the version was created.
 
+    `format: unixtime`
+
   - `description: string`
 
     Description of the skill version.
@@ -158,6 +160,8 @@ List skill versions for a skill.
 
   Number of versions to retrieve.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order of results by version number.
@@ -181,6 +185,8 @@ List skill versions for a skill.
     - `created_at: number`
 
       Unix timestamp (seconds) for when the version was created.
+
+      `format: unixtime`
 
     - `description: string`
 
@@ -277,6 +283,8 @@ Get a specific skill version.
 
     Unix timestamp (seconds) for when the version was created.
 
+    `format: unixtime`
+
   - `description: string`
 
     Description of the skill version.
@@ -350,6 +358,8 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
     Unix timestamp (seconds) for when the version was created.
 
+    `format: unixtime`
+
   - `description: string`
 
     Description of the skill version.
@@ -387,6 +397,8 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
     - `created_at: number`
 
       Unix timestamp (seconds) for when the version was created.
+
+      `format: unixtime`
 
     - `description: string`
 

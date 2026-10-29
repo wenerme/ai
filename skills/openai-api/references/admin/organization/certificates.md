@@ -12,6 +12,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 - `certificate_ids: array of string`
 
+  `minItems: 1`, `maxItems: 10`
+
 ### Returns
 
 - `data: array of object { id, active, certificate_details, 3 more }`
@@ -30,13 +32,19 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -169,13 +177,19 @@ Organizations can upload up to 50 certificates.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -266,6 +280,8 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 - `certificate_ids: array of string`
 
+  `minItems: 1`, `maxItems: 10`
+
 ### Returns
 
 - `data: array of object { id, active, certificate_details, 3 more }`
@@ -284,13 +300,19 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -484,13 +506,19 @@ List uploaded certificates for this organization.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -614,13 +642,19 @@ You can get a certificate regardless of whether it is active or not.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -727,13 +761,19 @@ Modify a certificate. Note that only the name can be modified.
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -831,13 +871,19 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -881,13 +927,19 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -919,13 +971,19 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 
@@ -971,13 +1029,19 @@ curl -X POST https://api.openai.com/v1/organization/certificates/cert_abc \
 
       The Unix timestamp (in seconds) of when the certificate expires.
 
+      `format: unixtime`
+
     - `valid_at: optional number`
 
       The Unix timestamp (in seconds) of when the certificate becomes valid.
 
+      `format: unixtime`
+
   - `created_at: number`
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
+
+    `format: unixtime`
 
   - `name: string or null`
 

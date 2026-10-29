@@ -67,6 +67,7 @@ Supported input rules:
 | `* List item`, or `- List item`, or `+ List item` | Unordered list       |
 | `1. List item`                                            | Numbered list        |
 | ``                                               | Collapsible section  |
+{.sortable}
 
 ## Tables
 

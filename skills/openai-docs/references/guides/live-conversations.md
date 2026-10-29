@@ -424,6 +424,7 @@ import { ForksWS } from "openai/resources/live/forks/ws";
 async function forkSession(sourceSessionId) {
   const ws = new ForksWS(new OpenAI(), { session_id: sourceSessionId });
   let finalized = false;
+  let closeRequested = false;
   try {
     for await (const event of ws) {
       if (event.type === "open") {
@@ -435,8 +436,12 @@ async function forkSession(sourceSessionId) {
           console.log("Fork ready:", event.message.session.id);
           // This startup example closes the fork after confirming it is ready.
           ws.send({ type: "session.close" });
+          closeRequested = true;
         } else if (event.message.type === "session.closed") {
           console.log("Final usage:", event.message.usage);
+          if (!closeRequested) {
+            throw new Error("Fork ended before startup completed");
+          }
           finalized = true;
           break;
         }
@@ -458,13 +463,17 @@ def fork_session(source_session_id: str) -> None:
     with client.live.forks.connect(session_id=source_session_id) as connection:
         connection.session.start(session={})
         finalized = False
+        close_requested = False
         for event in connection:
             if event.type == "session.started":
                 print("Fork ready:", event.session.id)
                 # This startup example closes the fork after confirming it is ready.
                 connection.session.close()
+                close_requested = True
             elif event.type == "session.closed":
                 print("Final usage:", event.usage)
+                if not close_requested:
+                    raise RuntimeError("Fork ended before startup completed")
                 finalized = True
                 break
             elif event.type == "error":

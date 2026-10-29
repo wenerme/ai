@@ -14,6 +14,8 @@ List all skills for the current project.
 
   Number of items to retrieve
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order of results by timestamp. Use `asc` for ascending order or `desc` for descending order.
@@ -37,6 +39,8 @@ List all skills for the current project.
     - `created_at: number`
 
       Unix timestamp (seconds) for when the skill was created.
+
+      `format: unixtime`
 
     - `default_version: string`
 

@@ -8,6 +8,8 @@ Deletes a vault and all its credentials. See [vaults](/api/docs/guides/agents-ap
 
 - `vault_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Returns
 
 - `VaultDeleted object { id, deleted, object }`
@@ -17,6 +19,8 @@ Deletes a vault and all its credentials. See [vaults](/api/docs/guides/agents-ap
   - `id: string`
 
     The ID of the deleted vault.
+
+    `minLength: 0`
 
   - `deleted: boolean`
 

@@ -37,6 +37,8 @@ Returns the created client secret and the effective session object. The client s
 
     The number of seconds from the anchor point to the expiration. Select a value between `10` and `7200` (2 hours). This default to 600 seconds (10 minutes) if not specified.
 
+    `format: int64`, `minimum: 10`, `maximum: 7200`
+
 - `session: optional RealtimeSessionCreateRequest or RealtimeTranscriptionSessionCreateRequest`
 
   Session configuration to use for the client secret. Choose either a realtime
@@ -146,6 +148,8 @@ Returns the created client secret and the effective session object. The client s
 
             Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
 
+            `minItems: 1`
+
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
             The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
@@ -221,6 +225,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -289,6 +295,8 @@ Returns the created client secret and the effective session object. The client s
 
           This parameter is a post-processing adjustment to the audio after it is generated, it's
           also possible to prompt the model to speak faster or slower.
+
+          `minimum: 0.25`, `maximum: 1.5`
 
         - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more or ID { id }`
 
@@ -501,6 +509,8 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -550,6 +560,8 @@ Returns the created client secret and the effective session object. The client s
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -695,6 +707,8 @@ Returns the created client secret and the effective session object. The client s
 
           The tool invocation context(s).
 
+          `minItems: 1`
+
           - `"direct"`
 
           - `"programmatic"`
@@ -830,6 +844,8 @@ Returns the created client secret and the effective session object. The client s
           The URL for the MCP server. One of `server_url`, `connector_id`, or
           `tunnel_id` must be provided.
 
+          `format: uri`
+
         - `tunnel_id: optional string`
 
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -894,6 +910,8 @@ Returns the created client secret and the effective session object. The client s
 
           Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+          `minimum: 0`, `maximum: 1`
+
         - `type: "retention_ratio"`
 
           Use retention ratio truncation.
@@ -907,6 +925,8 @@ Returns the created client secret and the effective session object. The client s
           - `post_instructions: optional number`
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+            `minimum: 0`
 
   - `RealtimeTranscriptionSessionCreateRequest object { type, audio, include }`
 
@@ -983,6 +1003,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -1051,6 +1073,8 @@ Returns the created client secret and the effective session object. The client s
 - `expires_at: number`
 
   Expiration timestamp for the client secret, in seconds since epoch.
+
+  `format: unixtime`
 
 - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
@@ -1148,6 +1172,8 @@ Returns the created client secret and the effective session object. The client s
 
             The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+            `minItems: 1`
+
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
             The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -1219,6 +1245,8 @@ Returns the created client secret and the effective session object. The client s
               associated with the Response) will be emitted when the timeout is reached.
               Idle timeout is currently only supported for `server_vad` mode.
 
+              `minimum: 5000`, `maximum: 30000`
+
             - `interrupt_response: optional boolean`
 
               Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -1288,6 +1316,8 @@ Returns the created client secret and the effective session object. The client s
           This parameter is a post-processing adjustment to the audio after it is generated, it's
           also possible to prompt the model to speak faster or slower.
 
+          `minimum: 0.25`, `maximum: 1.5`
+
         - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
           The voice the model uses to respond. Voice cannot be changed during the
@@ -1329,6 +1359,8 @@ Returns the created client secret and the effective session object. The client s
     - `expires_at: optional number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -1494,6 +1526,8 @@ Returns the created client secret and the effective session object. The client s
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+            `format: uri`
+
           - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
             Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -1543,6 +1577,8 @@ Returns the created client secret and the effective session object. The client s
           - `file_url: optional string`
 
             The URL of the file to be sent to the model.
+
+            `format: uri`
 
           - `filename: optional string`
 
@@ -1688,6 +1724,8 @@ Returns the created client secret and the effective session object. The client s
 
           The tool invocation context(s).
 
+          `minItems: 1`
+
           - `"direct"`
 
           - `"programmatic"`
@@ -1823,6 +1861,8 @@ Returns the created client secret and the effective session object. The client s
           The URL for the MCP server. One of `server_url`, `connector_id`, or
           `tunnel_id` must be provided.
 
+          `format: uri`
+
         - `tunnel_id: optional string`
 
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -1887,6 +1927,8 @@ Returns the created client secret and the effective session object. The client s
 
           Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+          `minimum: 0`, `maximum: 1`
+
         - `type: "retention_ratio"`
 
           Use retention ratio truncation.
@@ -1900,6 +1942,8 @@ Returns the created client secret and the effective session object. The client s
           - `post_instructions: optional number`
 
             Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+            `minimum: 0`
 
   - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -1948,6 +1992,8 @@ Returns the created client secret and the effective session object. The client s
           - `languages: optional array of string`
 
             The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+            `minItems: 1`
 
           - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -2009,6 +2055,8 @@ Returns the created client secret and the effective session object. The client s
     - `expires_at: optional number`
 
       Expiration timestamp for the session, in seconds since epoch.
+
+      `format: unixtime`
 
     - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -2191,6 +2239,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     Expiration timestamp for the client secret, in seconds since epoch.
 
+    `format: unixtime`
+
   - `session: RealtimeSessionCreateResponse or RealtimeTranscriptionSessionCreateResponse`
 
     The session configuration for either a realtime or transcription session.
@@ -2287,6 +2337,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+              `minItems: 1`
+
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
               The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -2358,6 +2410,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
                 associated with the Response) will be emitted when the timeout is reached.
                 Idle timeout is currently only supported for `server_vad` mode.
 
+                `minimum: 5000`, `maximum: 30000`
+
               - `interrupt_response: optional boolean`
 
                 Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -2427,6 +2481,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             This parameter is a post-processing adjustment to the audio after it is generated, it's
             also possible to prompt the model to speak faster or slower.
 
+            `minimum: 0.25`, `maximum: 1.5`
+
           - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
             The voice the model uses to respond. Voice cannot be changed during the
@@ -2468,6 +2524,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -2633,6 +2691,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+              `format: uri`
+
             - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
               Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -2682,6 +2742,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `file_url: optional string`
 
               The URL of the file to be sent to the model.
+
+              `format: uri`
 
             - `filename: optional string`
 
@@ -2827,6 +2889,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             The tool invocation context(s).
 
+            `minItems: 1`
+
             - `"direct"`
 
             - `"programmatic"`
@@ -2962,6 +3026,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             The URL for the MCP server. One of `server_url`, `connector_id`, or
             `tunnel_id` must be provided.
 
+            `format: uri`
+
           - `tunnel_id: optional string`
 
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -3026,6 +3092,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+            `minimum: 0`, `maximum: 1`
+
           - `type: "retention_ratio"`
 
             Use retention ratio truncation.
@@ -3039,6 +3107,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `post_instructions: optional number`
 
               Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+              `minimum: 0`
 
     - `RealtimeTranscriptionSessionCreateResponse object { id, object, type, 3 more }`
 
@@ -3087,6 +3157,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             - `languages: optional array of string`
 
               The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+              `minItems: 1`
 
             - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
@@ -3148,6 +3220,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
       - `expires_at: optional number`
 
         Expiration timestamp for the session, in seconds since epoch.
+
+        `format: unixtime`
 
       - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -3255,6 +3329,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -3326,6 +3402,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             associated with the Response) will be emitted when the timeout is reached.
             Idle timeout is currently only supported for `server_vad` mode.
 
+            `minimum: 5000`, `maximum: 30000`
+
           - `interrupt_response: optional boolean`
 
             Whether or not to automatically interrupt (cancel) any ongoing response with output to the default
@@ -3395,6 +3473,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         This parameter is a post-processing adjustment to the audio after it is generated, it's
         also possible to prompt the model to speak faster or slower.
 
+        `minimum: 0.25`, `maximum: 1.5`
+
       - `voice: optional string or "alloy" or "ash" or "ballad" or 7 more`
 
         The voice the model uses to respond. Voice cannot be changed during the
@@ -3436,6 +3516,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   - `expires_at: optional number`
 
     Expiration timestamp for the session, in seconds since epoch.
+
+    `format: unixtime`
 
   - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
@@ -3601,6 +3683,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
+          `format: uri`
+
         - `prompt_cache_breakpoint: optional object { mode, ttl }`
 
           Marks the exact end of a reusable prompt prefix. When `ttl` is omitted, the breakpoint inherits the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
@@ -3650,6 +3734,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         - `file_url: optional string`
 
           The URL of the file to be sent to the model.
+
+          `format: uri`
 
         - `filename: optional string`
 
@@ -3795,6 +3881,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         The tool invocation context(s).
 
+        `minItems: 1`
+
         - `"direct"`
 
         - `"programmatic"`
@@ -3930,6 +4018,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         The URL for the MCP server. One of `server_url`, `connector_id`, or
         `tunnel_id` must be provided.
 
+        `format: uri`
+
       - `tunnel_id: optional string`
 
         The Secure MCP Tunnel ID to use instead of a direct server URL. One of
@@ -3994,6 +4084,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Fraction of post-instruction conversation tokens to retain (`0.0` - `1.0`) when the conversation exceeds the input token limit. Setting this to `0.8` means that messages will be dropped until 80% of the maximum allowed tokens are used. This helps reduce the frequency of truncations and improve cache rates.
 
+        `minimum: 0`, `maximum: 1`
+
       - `type: "retention_ratio"`
 
         Use retention ratio truncation.
@@ -4007,6 +4099,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         - `post_instructions: optional number`
 
           Maximum tokens allowed in the conversation after instructions (which including tool definitions). For example, setting this to 5,000 would mean that truncation would occur when the conversation exceeds 5,000 tokens after instructions. This cannot be higher than the model's context window size minus the maximum output tokens.
+
+          `minimum: 0`
 
 ### Realtime Transcription Session Create Response
 
@@ -4098,6 +4192,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
 
+          `minItems: 1`
+
         - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
           The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
@@ -4158,6 +4254,8 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
   - `expires_at: optional number`
 
     Expiration timestamp for the session, in seconds since epoch.
+
+    `format: unixtime`
 
   - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 

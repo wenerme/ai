@@ -14,6 +14,8 @@ Lists all groups in the organization.
 
   A limit on the number of groups to be returned. Limit can range between 0 and 1000, and the default is 100.
 
+  `minimum: 0`, `maximum: 1000`
+
 - `order: optional "asc" or "desc"`
 
   Specifies the sort order of the returned groups.
@@ -35,6 +37,8 @@ Lists all groups in the organization.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was created.
+
+    `format: unixtime`
 
   - `group_type: "group" or "tenant_group"`
 

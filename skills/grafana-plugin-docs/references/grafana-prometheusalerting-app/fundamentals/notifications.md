@@ -14,10 +14,10 @@ Once a rule fires, the ruler’s job is done. It just keeps reporting the alert.
 For each firing alert, in roughly this order:
 
 1. **Deduplicate.** Alerts with identical labels are the same alert, even from different ruler replicas.
-2. **Group.** Related alerts are batched so one incident produces one notification instead of fifty. Refer to [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
-3. **Route.** The routing tree is walked to decide which receiver the group goes to. Refer to [The routing tree](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
+2. **Group.** Related alerts are batched so one incident produces one notification instead of fifty. Refer to [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/).
+3. **Route.** The routing tree is walked to decide which receiver the group goes to. Refer to [The routing tree](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/).
 4. **Suppress, if applicable.** A matching silence, an active inhibition rule, or a route muted by a time interval stops the notification here.
-5. **Notify.** The receiver’s integrations are called. Refer to [Receivers](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/receivers/).
+5. **Notify.** The receiver’s integrations are called. Refer to [Receivers](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/receivers/).
 
 The important consequence: a firing alert and a delivered notification are different things. Most “the alert fired but nobody was paged” problems are a suppression or routing step in the middle, not a broken rule.
 
@@ -39,6 +39,6 @@ The **Alerts** page shows which of these applied, labeling an alert as silenced 
 
 ## In this section
 
-- [The routing tree](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/)
-- [Receivers](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/receivers/)
-- [Group alert notifications](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/)
+- [The routing tree](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree/)
+- [Receivers](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/receivers/)
+- [Group alert notifications](https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications/)

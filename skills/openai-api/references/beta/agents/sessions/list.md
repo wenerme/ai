@@ -10,13 +10,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
   Return resources after this resource ID in the selected order.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `agent_id: optional string`
 
   Only return sessions whose root agent has this ID. Omit to return sessions for all agents.
 
+  `minLength: 0`, `maxLength: 1048576`
+
 - `limit: optional number`
 
   The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+  `format: int64`, `minimum: 1`, `maximum: 100`
 
 - `metadata: optional map[string]`
 
@@ -40,11 +46,15 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
   The resources returned in this page, in the requested sort order.
 
+  `minItems: 0`, `maxItems: 2000`
+
   - `id: string`
 
     The ID of the session.
 
-  - `agent: object { id, instructions, model, 6 more }`
+    `minLength: 0`
+
+  - `agent: object { id, instructions, model, 7 more }`
 
     The agent running in the session.
 
@@ -52,13 +62,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       The ID of the agent.
 
+      `minLength: 0`
+
     - `instructions: string or null`
 
       Custom instructions appended to the agent's default base instructions.
 
+      `minLength: 0`
+
     - `model: string`
 
       The model used by the agent.
+
+      `minLength: 0`
 
     - `multi_agent: MultiAgentConfig`
 
@@ -72,9 +88,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         Maximum number of subagents that may run concurrently, or null when disabled. Defaults to 6 when enabled.
 
+        `format: int64`, `minimum: 1`, `maximum: 4294967295`
+
     - `name: string or null`
 
       The reusable agent's name when the session was created, or null if no name was saved. Later changes to the agent's name do not affect this value.
+
+      `minLength: 0`
 
     - `reasoning: AgentReasoning`
 
@@ -176,6 +196,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       Tools available to the agent.
 
+      `minItems: 0`, `maxItems: 2000`
+
       - `Function object { defer_loading, description, name, 2 more }`
 
         A function defined by the application.
@@ -188,9 +210,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           A description of what the function does.
 
+          `minLength: 0`
+
         - `name: string`
 
           The name of the function.
+
+          `minLength: 0`
 
         - `parameters: map[unknown]`
 
@@ -224,6 +250,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           The MCP tools the agent may call.
 
+          `minItems: 0`, `maxItems: 2000`
+
         - `connection_origin: "service" or "environment"`
 
           Where outbound MCP HTTP connections originate.
@@ -235,6 +263,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
         - `credential_id: string or null`
 
           The attached vault credential selected for this MCP server, if any. Optional when exactly one attached credential matches the server URL.
+
+          `minLength: 0`
 
         - `request_metadata: map[unknown]`
 
@@ -248,6 +278,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           A label used to identify the MCP server in tool calls.
 
+          `minLength: 0`
+
         - `transport: McpTransport`
 
           The transport used to connect to the MCP server.
@@ -259,6 +291,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
             - `server_url: string`
 
               The URL of the MCP server.
+
+              `minLength: 0`
 
             - `type: "http"`
 
@@ -274,17 +308,25 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
               Arguments passed to the MCP server command.
 
+              `minItems: 0`, `maxItems: 2000`
+
             - `command: string`
 
               The command used to start the MCP server.
+
+              `minLength: 0`
 
             - `cwd: string`
 
               The working directory used to start the MCP server.
 
+              `minLength: 0`
+
             - `env_vars: array of string`
 
               Environment variable names inherited from the execution environment.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `type: "stdio"`
 
@@ -306,6 +348,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           Allowed search domains, or `null` when the search is unrestricted.
 
+          `minItems: 0`, `maxItems: 2000`
+
         - `context_size: "low" or "medium" or "high"`
 
           The amount of search context made available to the model. Defaults to `medium`.
@@ -324,17 +368,25 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The city name.
 
+            `minLength: 0`
+
           - `country: string or null`
 
             The two-letter ISO country code, such as `US`.
+
+            `minLength: 0`
 
           - `region: string or null`
 
             The region or state name.
 
+            `minLength: 0`
+
           - `timezone: string or null`
 
             The IANA timezone, such as `America/Los_Angeles`.
+
+            `minLength: 0`
 
         - `mode: "disabled" or "cached" or "live"`
 
@@ -376,9 +428,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           - `"automations"`
 
+    - `compaction: optional object { async }`
+
+      The effective context compaction settings.
+
+      - `async: boolean`
+
+        Whether context is compacted in the background. Defaults to true.
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
+
+    `format: int64`
 
   - `environment: Environment`
 
@@ -402,9 +464,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The public ID of the environment.
 
+        `minLength: 0`
+
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+        `minItems: 0`, `maxItems: 2000`
 
       - `desktop: object { enabled }`
 
@@ -418,6 +484,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         Files available in the environment, excluding their contents.
 
+        `minItems: 0`, `maxItems: 50`
+
         - `HostedEnvironmentFileID object { id, file_id, path, 2 more }`
 
           A file copied from the OpenAI Files API.
@@ -426,17 +494,25 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The session-scoped ID of the file in the execution environment.
 
+            `minLength: 0`
+
           - `file_id: string`
 
             The ID of the uploaded file.
+
+            `minLength: 0`
 
           - `path: string`
 
             The file's absolute path inside the environment.
 
+            `minLength: 0`
+
           - `size_bytes: number`
 
             The decoded file size in bytes.
+
+            `format: int64`, `minimum: 0`
 
           - `type: "file_id"`
 
@@ -452,13 +528,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The session-scoped ID of the file in the execution environment.
 
+            `minLength: 0`
+
           - `path: string`
 
             The file's absolute path inside the environment.
 
+            `minLength: 0`
+
           - `size_bytes: number`
 
             The decoded file size in bytes.
+
+            `format: int64`, `minimum: 0`
 
           - `type: "inline"`
 
@@ -490,6 +572,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           Domains the environment may access when network access is restricted.
 
+          `minItems: 0`, `maxItems: 2000`
+
       - `packages: object { npm, python, system }`
 
         Packages installed in the environment.
@@ -498,25 +582,37 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           npm packages installed globally in the environment.
 
+          `minItems: 0`, `maxItems: 16384`
+
         - `python: array of string`
 
           Python packages installed in the environment.
+
+          `minItems: 0`, `maxItems: 16384`
 
         - `system: array of string`
 
           System packages installed in the environment.
 
+          `minItems: 0`, `maxItems: 16384`
+
       - `plugins: array of HostedPlugin`
 
         Plugins installed in the environment, excluding their archive contents.
+
+        `minItems: 0`, `maxItems: 2000`
 
         - `description: string`
 
           The installed plugin description.
 
+          `minLength: 0`
+
         - `name: string`
 
           The installed plugin name.
+
+          `minLength: 0`
 
         - `type: "inline"`
 
@@ -528,6 +624,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         Skills installed in the environment, excluding their archive contents.
 
+        `minItems: 0`, `maxItems: 2000`
+
         - `HostedSkillReference object { description, name, skill_id, 2 more }`
 
           A skill installed from the Skills API.
@@ -536,13 +634,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The installed skill description.
 
+            `minLength: 0`
+
           - `name: string`
 
             The installed skill name.
 
+            `minLength: 0`
+
           - `skill_id: string`
 
             The referenced skill ID.
+
+            `minLength: 0`
 
           - `type: "skill_reference"`
 
@@ -554,6 +658,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The concrete skill version installed for this session.
 
+            `minLength: 0`
+
         - `Inline object { description, name, type }`
 
           A skill installed from an inline ZIP archive.
@@ -562,9 +668,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The installed skill description.
 
+            `minLength: 0`
+
           - `name: string`
 
             The installed skill name.
+
+            `minLength: 0`
 
           - `type: "inline"`
 
@@ -596,13 +706,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The public ID of the environment.
 
+        `minLength: 0`
+
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
 
+        `minItems: 0`, `maxItems: 2000`
+
       - `remote_url: string`
 
         Pass this URL unchanged to `codex exec-server --remote` when connecting this environment.
+
+        `minLength: 0`
 
       - `type: "self_hosted"`
 
@@ -614,13 +730,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The absolute project directory inside the environment. Defaults to `/workspace`.
 
+        `minLength: 0`
+
   - `error: string or null`
 
     The error that caused the session to fail, if any.
 
+    `minLength: 0`
+
   - `last_active_at: number`
 
     The Unix timestamp, in seconds, when the session was last active.
+
+    `format: int64`
 
   - `metadata: map[string]`
 
@@ -635,6 +757,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
   - `required_actions: array of ComputerUseApprovalRequest { request, request_id, turn_id, type }  or FunctionCall { arguments, call_id, name, 2 more }  or EnvironmentConnection { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    `minItems: 0`, `maxItems: 2000`
 
     - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
 
@@ -652,17 +776,25 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The registered form or frame origin where values will be entered.
 
+            `minLength: 0`
+
           - `fields: array of object { id, label, required, type }`
 
             Controls to render. All submitted values are sensitive.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The field ID to submit as field_id in a fields entry.
 
+              `minLength: 0`
+
             - `label: string`
 
               The label to display beside the control.
+
+              `minLength: 0`
 
             - `required: boolean`
 
@@ -672,25 +804,37 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
               The rendering type, such as email, password, or text.
 
+              `minLength: 0`
+
           - `options: array of object { id, field_ids, label }`
 
             Sign-in methods. Empty for a plain form.
+
+            `minItems: 0`, `maxItems: 2000`
 
             - `id: string`
 
               The option ID to submit as selected_option.
 
+              `minLength: 0`
+
             - `field_ids: array of string`
 
               IDs from the registered fields that this method accepts.
+
+              `minItems: 0`, `maxItems: 2000`
 
             - `label: string`
 
               The method label to display.
 
+              `minLength: 0`
+
           - `reason: string or null`
 
             Why the agent needs the user to sign in.
+
+            `minLength: 0`
 
           - `type: "browser_authentication"`
 
@@ -706,9 +850,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
             The origin the browser needs permission to access.
 
+            `minLength: 0`
+
           - `reason: string or null`
 
             The browser's explanation for this request, or null when unavailable.
+
+            `minLength: 0`
 
           - `type: "browser_origin_access"`
 
@@ -720,9 +868,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The registered request ID to echo when responding.
 
+        `minLength: 0`
+
       - `turn_id: string`
 
         The turn that requested approval.
+
+        `minLength: 0`
 
       - `type: "computer_use_approval_request"`
 
@@ -742,13 +894,19 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The ID to include when submitting the function result.
 
+        `minLength: 0`
+
       - `name: string`
 
         The function name.
 
+        `minLength: 0`
+
       - `turn_id: string`
 
         The ID of the turn that requested the function call.
+
+        `minLength: 0`
 
       - `type: "function_call"`
 
@@ -763,6 +921,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
       - `environment_id: string`
 
         The ID of the environment to reconnect.
+
+        `minLength: 0`
 
       - `type: "environment_connection"`
 
@@ -798,6 +958,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       The number of input tokens used by the agent.
 
+      `format: int64`
+
     - `input_tokens_details: object { cached_tokens }`
 
       A breakdown of the agent's input token usage.
@@ -806,9 +968,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The number of input tokens retrieved from the prompt cache.
 
+        `format: int64`
+
     - `output_tokens: number`
 
       The number of output tokens generated by the agent.
+
+      `format: int64`
 
     - `output_tokens_details: object { reasoning_tokens }`
 
@@ -818,17 +984,25 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         The number of output tokens used for reasoning.
 
+        `format: int64`
+
     - `total_tokens: number`
 
       The total number of input and output tokens used by the agent.
+
+      `format: int64`
 
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
 
+    `minItems: 0`, `maxItems: 2000`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
+
+  `minLength: 0`
 
 - `has_more: boolean`
 
@@ -837,6 +1011,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 - `last_id: string or null`
 
   The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+  `minLength: 0`
 
 - `object: "list"`
 
@@ -889,7 +1065,10 @@ curl https://api.openai.com/v1/agents/sessions \
             },
             "type": "function"
           }
-        ]
+        ],
+        "compaction": {
+          "async": true
+        }
       },
       "created_at": 0,
       "environment": {

@@ -24,6 +24,8 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
+    `format: unixtime`
+
   - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
@@ -53,6 +55,8 @@ Get info about a fine-tuning job.
   - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+    `format: unixtime`
 
   - `model: string`
 
@@ -112,6 +116,8 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
+    `format: unixtime`
+
   - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
@@ -152,6 +158,8 @@ Get info about a fine-tuning job.
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
+
+    `maxItems: 5`
 
     - `type: "wandb"`
 
@@ -438,6 +446,8 @@ Get info about a fine-tuning job.
 
                   The URL of the image input.
 
+                  `format: uri`
+
                 - `type: "input_image"`
 
                   The type of the image input. Always `input_image`.
@@ -508,6 +518,8 @@ Get info about a fine-tuning job.
 
                     The URL of the image input.
 
+                    `format: uri`
+
                   - `type: "input_image"`
 
                     The type of the image input. Always `input_image`.
@@ -566,6 +578,8 @@ Get info about a fine-tuning job.
             - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
+
+              `minimum: 1`
 
             - `reasoning_effort: optional ReasoningEffort or null`
 
@@ -669,6 +683,8 @@ Get info about a fine-tuning job.
                     - `image_url: string`
 
                       The URL of the image input.
+
+                      `format: uri`
 
                     - `type: "input_image"`
 

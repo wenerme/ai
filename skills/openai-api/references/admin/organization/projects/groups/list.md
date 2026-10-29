@@ -18,6 +18,8 @@ Lists the groups that have access to a project.
 
   A limit on the number of project groups to return. Defaults to 20.
 
+  `minimum: 0`, `maximum: 100`
+
 - `order: optional "asc" or "desc"`
 
   Sort order for the returned groups.
@@ -35,6 +37,8 @@ Lists the groups that have access to a project.
   - `created_at: number`
 
     Unix timestamp (in seconds) when the group was granted project access.
+
+    `format: unixtime`
 
   - `group_id: string`
 

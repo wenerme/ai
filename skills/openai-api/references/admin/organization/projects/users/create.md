@@ -36,6 +36,8 @@ Adds a user to the project. Users must already be members of the organization to
 
     The Unix timestamp (in seconds) of when the project was added.
 
+    `format: unixtime`
+
   - `object: "organization.project.user"`
 
     The object type, which is always `organization.project.user`

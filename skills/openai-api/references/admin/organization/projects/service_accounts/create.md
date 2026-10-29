@@ -22,6 +22,8 @@ Creates a new service account in the project. By default, this also returns an u
 
   Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
 
+  `minimum: 1`, `maximum: 31536000`
+
 ### Returns
 
 - `id: string`
@@ -31,6 +33,8 @@ Creates a new service account in the project. By default, this also returns an u
   - `id: string`
 
   - `created_at: number`
+
+    `format: unixtime`
 
   - `name: string`
 
@@ -46,7 +50,11 @@ Creates a new service account in the project. By default, this also returns an u
 
     The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
+    `format: unixtime`
+
 - `created_at: number`
+
+  `format: unixtime`
 
 - `name: string`
 

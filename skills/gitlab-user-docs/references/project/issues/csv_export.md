@@ -88,6 +88,7 @@ The following columns are included in the CSV file.
 | Time Estimate     | [Time estimate](../time_tracking.md#estimates) in seconds |
 | Time Spent        | [Time spent](../time_tracking.md#time-spent) in seconds |
 | Weight            | Issue weight |
+{.sortable}
 
 ## Troubleshooting
 

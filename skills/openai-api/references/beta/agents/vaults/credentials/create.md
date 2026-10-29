@@ -8,6 +8,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
 - `vault_id: string`
 
+  `minLength: 0`, `maxLength: 1048576`
+
 ### Body Parameters
 
 - `auth: CredentialAuthCreateParam`
@@ -22,9 +24,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       A write-only OAuth access token; never returned by credential resources.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `mcp_server_url: string`
 
       The HTTPS MCP server URL authorized by this credential.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "mcp_oauth"`
 
@@ -36,6 +42,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       When the OAuth access token expires, as an RFC 3339 timestamp, if known.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `refresh: optional object { client_id, refresh_token, token_endpoint, 3 more }  or null`
 
       Optional refresh configuration for an HTTPS OAuth token endpoint.
@@ -44,13 +52,19 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         The OAuth client ID used when requesting a new access token.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `refresh_token: string`
 
         The refresh token to store. This secret is never returned in credential resources.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `token_endpoint: string`
 
         The HTTPS OAuth token endpoint used to exchange the refresh token for a new access token.
+
+        `minLength: 0`, `maxLength: 1048576`
 
       - `token_endpoint_auth: McpOauthTokenEndpointAuthCreateParam`
 
@@ -74,6 +88,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             The OAuth client secret to store. Never returned in credential resources.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `type: "client_secret_basic"`
 
             The type of the object. Always `client_secret_basic`.
@@ -88,6 +104,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             The OAuth client secret to store. Never returned in credential resources.
 
+            `minLength: 0`, `maxLength: 1048576`
+
           - `type: "client_secret_post"`
 
             The type of the object. Always `client_secret_post`.
@@ -98,9 +116,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         The resource URI to send to the OAuth token endpoint during refresh, if required.
 
+        `minLength: 0`, `maxLength: 1048576`
+
       - `scope: optional string or null`
 
         Space-separated OAuth scopes to request during refresh, if required.
+
+        `minLength: 0`, `maxLength: 1048576`
 
   - `StaticBearer object { token, mcp_server_url, type }`
 
@@ -110,9 +132,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       The bearer token to store. This secret is never returned in credential resources.
 
+      `minLength: 0`, `maxLength: 1048576`
+
     - `mcp_server_url: string`
 
       The HTTPS MCP server URL authorized by this credential.
+
+      `minLength: 0`, `maxLength: 1048576`
 
     - `type: "static_bearer"`
 
@@ -146,6 +172,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
           The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
 
+          `minItems: 1`, `maxItems: 16`
+
         - `type: "limited"`
 
           The type of the object. Always `limited`.
@@ -156,9 +184,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       The environment variable name that receives the placeholder, such as `SERVICE_API_KEY`. Use ASCII letters, digits, and underscores, starting with a letter or underscore. Names starting with `CODEX_` and managed proxy or certificate variable names are reserved.
 
+      `minLength: 1`, `maxLength: 1048576`
+
     - `secret_value: string`
 
       The write-only secret to store. Never returned in credential resources or supplied directly to sandbox code. Must be nonempty and must not contain carriage returns, newlines, or NUL bytes.
+
+      `minLength: 1`, `maxLength: 1048576`
 
     - `type: "environment_variable"`
 
@@ -169,6 +201,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 - `name: string`
 
   The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
+
+  `minLength: 1`, `maxLength: 1048576`
 
 - `metadata: optional map[string]`
 
@@ -184,6 +218,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     The ID of the credential.
 
+    `minLength: 0`
+
   - `auth: CredentialAuth`
 
     The authentication method and non-secret configuration of the credential.
@@ -196,9 +232,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         When the OAuth access token expires, as an RFC 3339 timestamp, if known.
 
+        `minLength: 0`
+
       - `mcp_server_url: string`
 
         The HTTPS MCP server URL authorized by this credential.
+
+        `minLength: 0`
 
       - `refresh: object { client_id, resource, scope, 2 more }  or null`
 
@@ -208,17 +248,25 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
           The OAuth client ID used when requesting a new access token.
 
+          `minLength: 0`
+
         - `resource: string or null`
 
           The resource URI sent to the OAuth token endpoint during refresh, if configured.
+
+          `minLength: 0`
 
         - `scope: string or null`
 
           Space-separated OAuth scopes requested during refresh, if configured.
 
+          `minLength: 0`
+
         - `token_endpoint: string`
 
           The HTTPS OAuth token endpoint used for refresh.
+
+          `minLength: 0`
 
         - `token_endpoint_auth: McpOauthTokenEndpointAuth`
 
@@ -268,6 +316,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
         The HTTPS MCP server URL authorized by this credential.
 
+        `minLength: 0`
+
       - `type: "static_bearer"`
 
         The type of the object. Always `static_bearer`.
@@ -300,6 +350,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
             The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
 
+            `minItems: 1`, `maxItems: 16`
+
           - `type: "limited"`
 
             The type of the object. Always `limited`.
@@ -309,6 +361,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
       - `secret_name: string`
 
         The environment variable name that receives the placeholder in the sandbox.
+
+        `minLength: 0`
 
       - `type: "environment_variable"`
 
@@ -320,6 +374,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     The Unix timestamp, in seconds, when the credential was created.
 
+    `format: int64`
+
   - `metadata: map[string]`
 
     Application-defined key-value pairs associated with this credential.
@@ -327,6 +383,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
   - `name: string`
 
     The human-readable name of the credential.
+
+    `minLength: 0`
 
   - `object: "vault.credential"`
 
@@ -338,9 +396,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     The Unix timestamp, in seconds, when the credential was last updated.
 
+    `format: int64`
+
   - `vault_id: string`
 
     The ID of the vault containing this credential.
+
+    `minLength: 0`
 
 ### Example
 

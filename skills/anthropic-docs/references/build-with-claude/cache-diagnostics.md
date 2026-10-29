@@ -5,8 +5,26 @@ description: Diagnose unexpected prompt cache misses by comparing consecutive re
 featureMetadata:
   status: ga
   zdr:
-    eligibility: eligible
-    note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements).
+    eligibility: qualified
+    note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements). Your prompts and Claude's outputs are not stored. A fingerprint of cryptographic hashes and token-count estimates is retained briefly to allow comparison against the next request.
+  supportedModels:
+    - claude-fable-5-1
+    - claude-mythos-5-1
+    - claude-fable-5
+    - claude-mythos-5
+    - claude-mythos-preview
+    - claude-opus-5-5
+    - claude-opus-5
+    - claude-sonnet-5-5
+    - claude-sonnet-5
+    - claude-haiku-5-5
+    - claude-haiku-4-5-20251001
+    - claude-opus-4-8
+    - claude-opus-4-7
+    - claude-opus-4-6
+    - claude-sonnet-4-6
+    - claude-opus-4-5-20251101
+    - claude-sonnet-4-5-20250929
   supportedPlatforms:
     Claude API: ga
 ---
@@ -17,7 +35,7 @@ Cache diagnostics closes that gap. Pass the `id` of your previous response, and 
 
 ## How cache diagnostics works
 
-For each request that includes the `diagnostics` object, the API stores a lightweight fingerprint keyed by the response `id`. It stores nothing for requests that omit the object. On your next request, include the previous response's `id` as `diagnostics.previous_message_id`. The API rebuilds the fingerprint for the new request, compares it against the stored one, and attaches a `diagnostics` object to the response describing the first point of divergence.
+For each request that includes the `diagnostics` object, the API stores a lightweight fingerprint keyed by the response `id`. It stores nothing for requests that omit the object. On your next request, include the previous response’s `id` as `diagnostics.previous_message_id`. The API rebuilds the fingerprint for the new request, compares it against the stored one, and attaches a `diagnostics` object to the response describing the first point of divergence.
 
 The comparison is about request structure, independent of whether the cache actually hit. See [Reading diagnostics alongside usage](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#reading-diagnostics-alongside-usage) for how to combine the `diagnostics` result with `usage.cache_read_input_tokens`.
 
@@ -702,13 +720,13 @@ In a multi-turn conversation, carry the latest response `id` forward as `previou
 <Tabs>
   <Tab title="cURL">
     <Info>
-      This workflow doesn't translate well to a one-off shell command. Use the Claude SDK to run the loop; the per-turn HTTP request is identical to [Basic usage](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#basic-usage).
+      This workflow doesn’t translate well to a one-off shell command. Use the Claude SDK to run the loop; the per-turn HTTP request is identical to [Basic usage](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#basic-usage).
     </Info>
   </Tab>
 
   <Tab title="CLI">
     <Info>
-      This workflow doesn't translate well to a one-off shell command. Use the Claude SDK to run the loop; the per-turn CLI command is identical to [Basic usage](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#basic-usage).
+      This workflow doesn’t translate well to a one-off shell command. Use the Claude SDK to run the loop; the per-turn CLI command is identical to [Basic usage](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#basic-usage).
     </Info>
   </Tab>
 
@@ -1013,7 +1031,7 @@ When `cache_miss_reason` is non-null, it looks like this:
 
 ## Reading diagnostics alongside usage
 
-`diagnostics` answers "did my request change?" whereas `usage.cache_read_input_tokens` answers "did the cache hit?" Combining them tells you where to look.
+`diagnostics` answers “did my request change?” whereas `usage.cache_read_input_tokens` answers “did the cache hit?” Combining them tells you where to look.
 
 This matrix applies to turns where you passed a real `previous_message_id`. On the first turn (`previous_message_id: null`), `diagnostics` is always `null` and `cache_read_input_tokens` is normally zero because the cache is being written, not read; no troubleshooting is needed. The matrix also does not apply when `cache_miss_reason` is `null` (the comparison is still pending; check the next turn) or when its `type` is `previous_message_not_found` or `unavailable` (no comparison was produced).
 
@@ -1034,13 +1052,42 @@ This matrix applies to turns where you passed a real `previous_message_id`. On t
 
 ## Data retention
 
-Cache diagnostics is ZDR eligible (qualified). Anthropic does not store the raw text of your prompts or Claude's outputs for this feature.
+Cache diagnostics is ZDR eligible (qualified). Anthropic does not store the raw text of your prompts or Claude’s outputs for this feature.
 
 The API stores a fingerprint only for requests that include the `diagnostics` object. The fingerprint consists only of cryptographic hashes and token-count estimates, keyed by the response `id` and scoped to your organization and workspace. Fingerprints expire after a short period and are not used for any other purpose.
-
-For ZDR eligibility across all features, see [API and data retention](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention).
 
 ## See also
 
 * [Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 * [Token counting](https://platform.claude.com/docs/en/build-with-claude/token-counting)
+
+## Availability
+
+Cache diagnostics are available on every model.
+
+### API support
+
+#### [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)
+
+* Availability: Available
+
+| Status    | Cloud platforms |
+| --------- | --------------- |
+| Available | Claude API      |
+
+#### [Managed Agents](https://platform.claude.com/docs/en/managed-agents/overview)
+
+* Availability: Not available
+
+### Data handling
+
+[Data handling overview](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#feature-eligibility)
+
+| Item    | Zero data retention                                                                                                                                                                                                                                                                      | HIPAA        |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Status  | Eligible (qualified; excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements))                                                                                                                     | Not eligible |
+| Details | Your prompts and Claude’s outputs are not stored. A fingerprint of cryptographic hashes and token-count estimates is retained briefly to allow comparison against the next request. [Learn more](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics#data-retention) | —            |
+
+Applicable endpoints:
+
+* `/v1/messages` with `diagnostics`
