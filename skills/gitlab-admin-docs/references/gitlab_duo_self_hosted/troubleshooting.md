@@ -230,7 +230,8 @@ docker exec -it <ai-gateway-container> sh
 curl '<your-aigateway-endpoint>/monitoring/healthz'
 ```
 
-If the response is not `200`, this means that AI Gateway is not installed correctly. To resolve, follow the [documentation on how to install the AI Gateway](../../install/install_ai_gateway.md).
+If the response is not `200`, the AI Gateway is not installed correctly.
+To resolve this issue, see [self-hosted AI Gateway](../../install/install_ai_gateway.md).
 
 ## Check that the AI Gateway environment variables are set up correctly
 

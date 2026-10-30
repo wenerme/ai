@@ -487,9 +487,13 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"far_field"`
 
-    - `transcription: optional object { language, languages, model, prompt }`
+    - `transcription: optional object { keywords, language, languages, 2 more }`
 
       Configuration for input audio transcription.
+
+      - `keywords: optional array of string`
+
+        Words or phrases configured to guide transcription of the input audio.
 
       - `language: optional string or null`
 
@@ -756,6 +760,9 @@ curl https://api.openai.com/v1/realtime/sessions \
         "type": "near_field"
       },
       "transcription": {
+        "keywords": [
+          "string"
+        ],
         "language": "language",
         "languages": [
           "string"

@@ -1288,6 +1288,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minItems: 0`, `maxItems: 2000`
 
+      - `review: optional "none" or "auto_review"`
+
+        Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+        - `"none"`
+
+        - `"auto_review"`
+
     - `type: "agent.session.created" (default: "agent.session.created")`
 
       The type of the object. Always `agent.session.created`.

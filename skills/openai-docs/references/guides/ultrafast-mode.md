@@ -15,6 +15,8 @@ Ultrafast mode for GPT-6 Astra and GPT-6.1 Sol is available to all API users.
 
 Set `model` to `gpt-6-astra` or `gpt-6.1-sol` and `service_tier` to `ultrafast` in each `response.create` event.
 
+Install your language's SDK and WebSocket dependencies as described in [Connect and create responses](https://developers.openai.com/api/docs/guides/websocket-mode#connect-and-create-responses). Set `OPENAI_API_KEY` in your environment before running the example.
+
 Use Ultrafast across turns on one WebSocket
 
 ```javascript
@@ -26,6 +28,7 @@ import { ResponsesWS } from "openai/resources/responses/ws";
 
 const client = new OpenAI();
 const ws = new ResponsesWS(client);
+
 let previousResponseId = null;
 
 try {
@@ -35,6 +38,7 @@ try {
   ]) {
     let completed = false;
     const events = ws.stream();
+
     ws.send({
       type: "response.create",
       model: "gpt-6-astra",
@@ -78,6 +82,7 @@ try {
 from openai import OpenAI
 
 client = OpenAI()
+
 previous_response_id: str | None = None
 prompts = [
     "Explain why the sky is blue in one sentence.",
@@ -92,6 +97,7 @@ with client.responses.connect() as connection:
             previous_response_id=previous_response_id,
             input=prompt,
         )
+
         for event in connection:
             if event.type == "response.output_text.delta":
                 print(event.delta, end="", flush=True)
@@ -105,8 +111,155 @@ with client.responses.connect() as connection:
             raise RuntimeError("Connection closed before the response finished.")
 ```
 
+```go
+package main
 
-The example streams two responses over the same connection. The second request sends the new prompt and passes the first response's ID as `previous_response_id`. Reuse the connection for later turns and tool results. See [Continue with incremental inputs](https://developers.openai.com/api/docs/guides/websocket-mode#continue-with-incremental-inputs).
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+
+	client := openai.NewClient()
+	conn, err := client.Responses.Connect(ctx, responses.ResponseConnectionOptions{})
+	if err != nil {
+		panic(err)
+	}
+	defer conn.Close()
+
+	previousResponseID := ""
+
+	for _, prompt := range []string{
+		"Explain why the sky is blue in one sentence.",
+		"Now explain why sunsets look red.",
+	} {
+		request := responses.ResponsesClientEventResponseCreateParam{
+			Model:       "gpt-6-astra",
+			ServiceTier: "ultrafast",
+			Input: responses.ResponsesClientEventResponseCreateInputUnionParam{
+				OfString: openai.String(prompt),
+			},
+		}
+		if previousResponseID != "" {
+			request.PreviousResponseID = openai.String(previousResponseID)
+		}
+
+		if err := conn.Create(ctx, request); err != nil {
+			panic(err)
+		}
+
+		// FinalResponse reads events until the response finishes.
+		response, err := conn.FinalResponse(ctx)
+		if err != nil {
+			panic(err)
+		}
+		if response.Status != responses.ResponseStatusCompleted {
+			panic(fmt.Sprintf("Response ended with status %s", response.Status))
+		}
+
+		previousResponseID = response.ID
+		fmt.Println(response.OutputText())
+	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.responses.ResponseStatus;
+import com.openai.models.responses.ResponsesClientEvent;
+import java.util.List;
+
+var client = OpenAIOkHttpClient.fromEnv();
+
+try (var connection = client.responses().connect()) {
+  String previousResponseId = null;
+
+  for (var prompt :
+      List.of(
+          "Explain why the sky is blue in one sentence.",
+          "Now explain why sunsets look red.")) {
+    var request =
+        ResponsesClientEvent.ResponseCreate.builder()
+            .model("gpt-6-astra")
+            .serviceTier(ResponsesClientEvent.ResponseCreate.ServiceTier.ULTRAFAST)
+            .input(prompt);
+    if (previousResponseId != null) {
+      request.previousResponseId(previousResponseId);
+    }
+
+    connection.send(ResponsesClientEvent.ofResponseCreate(request.build()));
+
+    var response = connection.finalResponse();
+    if (response.status().filter(ResponseStatus.COMPLETED::equals).isEmpty()) {
+      throw new IllegalStateException(
+          "Response ended with status " + response.status().orElse(null));
+    }
+
+    previousResponseId = response.id();
+    response.output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(text -> System.out.println(text.text()));
+  }
+} finally {
+  client.close();
+}
+```
+
+```ruby
+# Install: gem install openai async-websocket
+# Set OPENAI_API_KEY in your environment.
+
+require "async"
+require "openai"
+
+client = OpenAI::Client.new
+
+request = {
+  model: "gpt-6-astra",
+  service_tier: :ultrafast
+}
+prompts = [
+  "Explain why the sky is blue in one sentence.",
+  "Now explain why sunsets look red."
+]
+
+Sync do |task|
+  task.with_timeout(120) do
+    client.responses.connect(request_options: { timeout: 10 }) do |connection|
+      prompts.each do |prompt|
+        connection.response.create(**request, input: prompt)
+
+        loop do
+          event = connection.receive
+          raise "Connection closed before the response finished" unless event
+
+          case event
+          when OpenAI::Responses::ResponseCompletedEvent
+            request[:previous_response_id] = event.response.id
+            puts(event.response.output_text)
+            break
+          when OpenAI::Responses::ResponseFailedEvent, OpenAI::Responses::ResponseIncompleteEvent,
+               OpenAI::Responses::ResponsesServerEvent::ResponseWsError
+            raise "Response failed: #{event.to_json}"
+          end
+        end
+      end
+    end
+  end
+end
+```
+
+
+The examples send two requests over the same connection and print each response. The Go, Java, and Ruby examples wait for the complete response before printing it. The second request sends the new prompt and passes the first response's ID as `previous_response_id`. Reuse the connection for later turns and tool results. See [Continue with incremental inputs](https://developers.openai.com/api/docs/guides/websocket-mode#continue-with-incremental-inputs).
 
 ## HTTP alternative
 
@@ -118,6 +271,7 @@ Create an Ultrafast response over HTTP
 import OpenAI from "openai";
 
 const client = new OpenAI();
+
 const response = await client.responses.create({
   model: "gpt-6-astra",
   service_tier: "ultrafast",
@@ -142,16 +296,30 @@ print(response.output_text)
 ```
 
 ```go
-client := openai.NewClient()
-response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
-	Model:       "gpt-6-astra",
-	ServiceTier: responses.ResponseNewParamsServiceTierUltrafast,
-	Input:       responses.ResponseNewParamsInputUnion{OfString: openai.String("Explain why the sky is blue in one sentence.")},
-})
-if err != nil {
-	panic(err)
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:       "gpt-6-astra",
+		ServiceTier: responses.ResponseNewParamsServiceTierUltrafast,
+		Input:       responses.ResponseNewParamsInputUnion{OfString: openai.String("Explain why the sky is blue in one sentence.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
 }
-fmt.Println(response.OutputText())
 ```
 
 ```java

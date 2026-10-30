@@ -1,12 +1,14 @@
-# AI Gateway
+# GitLab-managed AI Gateway
+
+The default GitLab-managed AI Gateway with vendor language models.
 
 The AI Gateway is a standalone service that gives access to AI-native GitLab Duo features.
 
 GitLab operates an instance of the AI Gateway, based in the cloud.
 This instance is used by GitLab.com, [GitLab Self-Managed](configure/_index.md), and GitLab Dedicated.
 
-You can also use a self-hosted AI Gateway instance on GitLab Self-Managed
-through [GitLab Duo Self-Hosted](../gitlab_duo_self_hosted/_index.md).
+To use your own AI Gateway on GitLab Self-Managed,
+see [self-hosted AI Gateway](../../install/install_ai_gateway.md).
 
 ## Region support
 

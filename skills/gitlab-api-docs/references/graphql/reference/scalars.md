@@ -80,6 +80,12 @@ A `AiDuoWorkflowsWorkflowID` is a global ID. It is encoded as a string.
 
 An example `AiDuoWorkflowsWorkflowID` is: `"gid://gitlab/Ai::DuoWorkflows::Workflow/1"`.
 
+## `AiExternalAgentsAgentIdentityID`
+
+A `AiExternalAgentsAgentIdentityID` is a global ID. It is encoded as a string.
+
+An example `AiExternalAgentsAgentIdentityID` is: `"gid://gitlab/Ai::ExternalAgents::AgentIdentity/1"`.
+
 ## `AiFlowScheduleID`
 
 A `AiFlowScheduleID` is a global ID. It is encoded as a string.

@@ -285,8 +285,8 @@ to your GitLab instance URL to ensure the following:
   which is not available to offline environments.
 - A 20-second delay does not occur on each request.
 
-For TLS termination and additional configuration options, see
-[Install the GitLab AI Gateway](../../install/install_ai_gateway.md).
+For TLS termination and additional configuration options,
+see [self-hosted AI Gateway](../../install/install_ai_gateway.md).
 
 ## Start vLLM
 

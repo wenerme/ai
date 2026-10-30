@@ -131,7 +131,23 @@ By default, you can't push a gem if a gem with the same name and version already
 The `gem push` command still returns `201 Created`, because GitLab processes gems after upload.
 GitLab then marks the new package with an error: `Gem '<name>' with version '<version>' already exists`.
 
-To change this behavior for a group, use the
+Prerequisites:
+
+- You must have the Owner role for the group.
+
+To allow duplicate gems for a group:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Settings** > **Packages and registries**.
+1. In the **RubyGems** row of the **Duplicate packages** table, turn on the **Allow duplicates** toggle.
+   This toggle is off by default.
+1. Optional. In the **Exceptions** text box, enter a regular expression that matches the names and versions of gems.
+   - When **Allow duplicates** is off, gems that match the regex can be duplicated.
+   - When **Allow duplicates** is on, gems that match the regex can't be duplicated.
+
+Your changes are automatically saved.
+
+You can also change this behavior with the
 [`updateNamespacePackageSettings`](../../../api/graphql/reference/mutations.md#updatenamespacepackagesettings) GraphQL mutation:
 
 - To allow duplicate gems, set `rubygemsDuplicatesAllowed` to `true`.

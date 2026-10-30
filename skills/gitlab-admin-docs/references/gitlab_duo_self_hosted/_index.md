@@ -219,14 +219,14 @@ If you have an offline license, you can set up fully private infrastructure:
    - Check the [supported models and hardware requirements](supported_models_and_hardware_requirements.md)
      to confirm your model and hardware choices.
 
-1. [Install the AI Gateway](../../install/install_ai_gateway.md) to access GitLab Duo features.
+1. Install a [self-hosted AI Gateway](../../install/install_ai_gateway.md) to access GitLab Duo features.
 1. [Configure your GitLab instance](configure_duo_features.md) to use self-hosted models.
 1. [Enable logging](logging.md) to track and manage your system's performance.
 
 ## Related topics
 
 - [Troubleshooting](troubleshooting.md)
-- [Install the GitLab AI Gateway](../../install/install_ai_gateway.md)
+- [Self-hosted AI Gateway](../../install/install_ai_gateway.md)
 - [Supported models](supported_models_and_hardware_requirements.md)
 - [Supported platforms](supported_llm_serving_platforms.md)
 - [Tutorial: AWS Bedrock BYOM deployment guide](../../solutions/integrations/aws_bedrock_byom.md)

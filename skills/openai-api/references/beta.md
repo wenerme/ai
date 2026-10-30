@@ -5268,7 +5268,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -6229,6 +6229,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The IDs of vaults made available to the session.
 
     `minItems: 0`, `maxItems: 2000`
+
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
 
 ### Agent Session Assistant Message
 
@@ -7279,6 +7287,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The IDs of vaults made available to the session.
 
       `minItems: 0`, `maxItems: 2000`
+
+    - `review: optional "none" or "auto_review"`
+
+      Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+      - `"none"`
+
+      - `"auto_review"`
 
   - `type: "agent.session.created" (default: "agent.session.created")`
 
@@ -9449,6 +9465,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         The IDs of vaults made available to the session.
 
         `minItems: 0`, `maxItems: 2000`
+
+      - `review: optional "none" or "auto_review"`
+
+        Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+        - `"none"`
+
+        - `"auto_review"`
 
     - `type: "agent.session.created" (default: "agent.session.created")`
 
@@ -12924,6 +12948,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
+    - `review: optional "none" or "auto_review"`
+
+      Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+      - `"none"`
+
+      - `"auto_review"`
+
   - `type: "agent.session.failed" (default: "agent.session.failed")`
 
     The type of the object. Always `agent.session.failed`.
@@ -13904,6 +13936,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
+    - `review: optional "none" or "auto_review"`
+
+      Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+      - `"none"`
+
+      - `"auto_review"`
+
   - `type: "agent.session.idle" (default: "agent.session.idle")`
 
     The type of the object. Always `agent.session.idle`.
@@ -14883,6 +14923,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The IDs of vaults made available to the session.
 
       `minItems: 0`, `maxItems: 2000`
+
+    - `review: optional "none" or "auto_review"`
+
+      Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+      - `"none"`
+
+      - `"auto_review"`
 
   - `type: "agent.session.in_progress" (default: "agent.session.in_progress")`
 
@@ -17363,6 +17411,14 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The IDs of vaults made available to the session.
 
       `minItems: 0`, `maxItems: 2000`
+
+    - `review: optional "none" or "auto_review"`
+
+      Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+      - `"none"`
+
+      - `"auto_review"`
 
   - `type: "agent.session.requires_action" (default: "agent.session.requires_action")`
 
@@ -47745,6 +47801,18 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
+- `review: optional "none" or "auto_review"`
+
+  Action review mode. Omit to use none.
+
+  - `"none"`
+
+    Keep the existing execution behavior without automatic action review.
+
+  - `"auto_review"`
+
+    Review eligible actions automatically. Deny manual approval fallbacks.
+
 - `stream: optional boolean (default: false)`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -47757,7 +47825,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -48719,6 +48787,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
+
 ### Example
 
 ```http
@@ -48829,7 +48905,8 @@ curl https://api.openai.com/v1/agents/sessions \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "review": "none"
 }
 ```
 
@@ -49896,6 +49973,14 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -50024,7 +50109,8 @@ curl https://api.openai.com/v1/agents/sessions \
       },
       "vault_ids": [
         "string"
-      ]
+      ],
+      "review": "none"
     }
   ],
   "first_id": "first_id",
@@ -50050,7 +50136,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -51011,6 +51097,14 @@ Retrieves the current state of a managed agent session. See [managing sessions](
     The IDs of vaults made available to the session.
 
     `minItems: 0`, `maxItems: 2000`
+
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
 
 ### Example
 
@@ -51116,7 +51210,8 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "review": "none"
 }
 ```
 
@@ -51200,9 +51295,21 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
+- `review: optional "none" or "auto_review"`
+
+  Default action review for new root turns. Existing turns and their subagents keep their review mode.
+
+  - `"none"`
+
+    Keep the existing execution behavior without automatic action review.
+
+  - `"auto_review"`
+
+    Review eligible actions automatically. Deny manual approval fallbacks.
+
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -52163,6 +52270,14 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
     The IDs of vaults made available to the session.
 
     `minItems: 0`, `maxItems: 2000`
+
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
 
 ### Example
 
@@ -52269,7 +52384,8 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "review": "none"
 }
 ```
 
@@ -54260,6 +54376,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
         The IDs of vaults made available to the session.
 
         `minItems: 0`, `maxItems: 2000`
+
+      - `review: optional "none" or "auto_review"`
+
+        Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+        - `"none"`
+
+        - `"auto_review"`
 
     - `type: "agent.session.created" (default: "agent.session.created")`
 

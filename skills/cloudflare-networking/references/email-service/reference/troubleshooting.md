@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/email-service/reference/troubleshooting
 
 # Troubleshooting
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common authentication, delivery, and inbox placement issues with Email Service.
 
@@ -294,6 +294,14 @@ Complaint suppressions appear after Cloudflare receives and validates the provid
 
 Not every failure results in a suppression. Email Service creates automatic entries only for eligible recipient-side failures. Sender authentication, sender reputation, and unrelated infrastructure failures do not suppress the recipient. Check [Email sending logs](https://developers.cloudflare.com/email-service/observability/logs/) for the specific failure.
 
+## Conflicts with external mail providers
+
+### Onboarding fails with "Non-Cloudflare MX records exist"
+
+When you enable Email Routing on a domain that already has `MX` records from another provider (such as Google Workspace, Microsoft 365, or Zoho Mail), onboarding fails with error 2008, "Non-Cloudflare MX records exist". Email Routing requires exclusive control of the root domain `MX` records.
+
+To switch your domain to Email Routing, refer to [Move to Email Routing from another provider](https://developers.cloudflare.com/email-service/configuration/domains/#move-to-email-routing-from-another-provider).
+
 ## Testing tools
 
 Use these tools to validate your email authentication setup:
@@ -339,5 +347,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Diagnose and fix authentication, delivery, and inbox placement issues for Email Service.","url":"https://developers.cloudflare.com/email-service/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/troubleshooting/og.png?v=cfb0345825341448","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

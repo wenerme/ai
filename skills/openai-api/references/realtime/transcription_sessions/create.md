@@ -168,9 +168,13 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
   The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `input_audio_transcription: optional object { language, languages, model, prompt }`
+- `input_audio_transcription: optional object { keywords, language, languages, 2 more }`
 
   Configuration of the transcription model.
+
+  - `keywords: optional array of string`
+
+    Words or phrases configured to guide transcription of the input audio.
 
   - `language: optional string or null`
 
@@ -267,6 +271,9 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
   },
   "input_audio_format": "input_audio_format",
   "input_audio_transcription": {
+    "keywords": [
+      "string"
+    ],
     "language": "language",
     "languages": [
       "string"

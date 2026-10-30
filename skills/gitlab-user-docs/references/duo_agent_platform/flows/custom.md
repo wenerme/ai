@@ -192,6 +192,8 @@ When you enable a flow in a project:
   flow. Some of the trigger events involve the service account user. For more
   information, see [composite identity](../composite_identity.md).
 
+You can enable a flow or agent up to 30 times per minute.
+
 Prerequisites:
 
 - You must have the Maintainer or Owner role for the project.
@@ -319,6 +321,7 @@ To disable a flow:
 1. On the confirmation dialog, select **Disable**.
 
 The flow no longer appears in the project or group, and can't be run. Any service accounts or triggers associated with the flow are also removed.
+You can disable a flow or agent up to 30 times per minute.
 
 ## Use a flow
 

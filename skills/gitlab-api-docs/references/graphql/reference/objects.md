@@ -571,6 +571,28 @@ Additional context for AI message.
 | `id` | [`ID!`](scalars.md#id) | ID of the additional context. |
 | `metadata` | [`JSON`](scalars.md#json) | Metadata of the additional context. |
 
+## `AiAgentIdentity`
+
+External agent connected to a project by a user through the GitLab CLI, one for each user, project, agent type and machine.
+
+### `AiAgentIdentity` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `agentType` | [`AiExternalAgentType!`](enums.md#aiexternalagenttype) | Type of the agent. |
+| `createdAt` | [`Time!`](scalars.md#time) | When the agent was first connected. |
+| `id` | [`AiExternalAgentsAgentIdentityID!`](scalars.md#aiexternalagentsagentidentityid) | Global ID of the agent identity. |
+| `lastSyncedAt` | [`Time`](scalars.md#time) | When the agent last synced a session. Null if it has not synced since GitLab started recording sync times. |
+| `project` | [`Project`](#project) | Project the agent is connected to. |
+| `revokedAt` | [`Time`](scalars.md#time) | When the agent identity was revoked. |
+| `sessionCount` | [`Int!`](scalars.md#int) | Number of sessions the agent has recorded (limited to 1000, plus one to indicate that more exist). |
+| `status` | [`AiAgentIdentityStatus!`](enums.md#aiagentidentitystatus) | Status of the agent identity. |
+| `user` | [`UserCore`](#usercore) | User who connected the agent. |
+
+## `AiAgentIdentityConnection`
+
+Paginated collection of [`AiAgentIdentity`](#aiagentidentity). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+
 ## `AiAuditEvent`
 
 Audit event recorded for a GitLab Duo Agent Platform session.
@@ -10540,6 +10562,7 @@ GPG signature for a signed commit.
 | `additionalPurchasedStorageSize` | [`Float`](scalars.md#float) | Additional storage purchased for the root namespace in bytes. |
 | `adminEditPath` | [`String`](scalars.md#string) | Admin path for editing group. Only available to admins. |
 | `adminShowPath` | [`String`](scalars.md#string) | Admin path of the group. Only available to admins. |
+| `aiAgentIdentities` | [`AiAgentIdentityConnection`](#aiagentidentityconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.External agents connected to projects in the group and its subgroups through the GitLab CLI, most recently synced first. Returns none when the `ai_governance_sessions_api` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiAgentIdentities`:</strong> <dl><dt>`agentTypes` ([`[AiExternalAgentType!]`](enums.md#aiexternalagenttype))</dt><dd>Filter by agent types (maximum is 1000).</dd><dt>`status` ([`AiAgentIdentityStatus`](enums.md#aiagentidentitystatus))</dt><dd>Filter by status.</dd><dt>`userId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to agents connected by the user with the given global ID.</dd></dl> |
 | `aiAuditEventsStorageEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Indicates whether AI audit events are stored for the group. |
 | `aiCatalogItems` | [`AiCatalogItemConnection!`](#aicatalogitemconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.AI Catalog items that the group can enable. This field can be resolved for only one group in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiCatalogItems`:</strong> <dl><dt>`enabledBy` ([`[AiCatalogGroupItemEnabledBy!]`](enums.md#aicataloggroupitemenabledby))</dt><dd>Return only items enabled in any of these ways. Returns all items the group can enable when omitted or empty.</dd><dt>`itemTypes` ([`[AiCatalogItemType!]`](enums.md#aicatalogitemtype))</dt><dd>Types of items to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search items by name and description.</dd><dt>`sort` ([`AiCatalogItemsSort`](enums.md#aicatalogitemssort))</dt><dd>Sort order of items.</dd></dl> |
 | `aiDomainSettings` | [`StringConnection`](#stringconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.List of allowed or denied domains for AI features. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiDomainSettings`:</strong> <dl><dt>`domainSettingType` ([`AiDomainSettingType!`](enums.md#aidomainsettingtype))</dt><dd>Type of domain setting to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Filter domains by substring match.</dd></dl> |
@@ -12684,6 +12707,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 | `sourceProject` | [`Project`](#project) | Source project of the merge request. |
 | `sourceProjectId` | [`Int`](scalars.md#int) | ID of the merge request source project. |
 | `squash` | [`Boolean!`](scalars.md#boolean) | Indicates if the merge request is set to be squashed when merged. [Project settings](https://docs.gitlab.com/user/project/merge_requests/squash_and_merge/#configure-squash-options-for-a-project) may override this value. Use `squash_on_merge` instead to take project squash options into account. |
+| `squashCommitMessage` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Squash commit message GitLab uses if the merge request is merged now. Returns `null` if `squashOnMerge` is `false`, or if the `merge_request_squash_commit_message` feature flag is disabled. Uses the message saved when auto-merge is set, otherwise the default squash commit message. For a merged merge request, can differ from the squash commit that was created. |
 | `squashOnMerge` | [`Boolean!`](scalars.md#boolean) | Indicates if the merge request will be squashed when merged. |
 | `squashReadOnly` | [`Boolean!`](scalars.md#boolean) | Indicates if `squashReadOnly` is enabled. |
 | `stack` | [`[MergeRequest!]`](#mergerequest) | Other open merge requests in the same stack as this merge request, ordered from the top of the stack to the bottom. Returns null if this merge request is not part of a stack, or if the stack contains more than 20 merge requests. |
@@ -16456,6 +16480,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `adminEditPath` | [`String`](scalars.md#string) | Admin path for editing project. Only available to admins. |
 | `adminShowPath` | [`String`](scalars.md#string) | Admin path of the project. Only available to admins. |
 | `agentConfigurations` | [`AgentConfigurationConnection`](#agentconfigurationconnection) | Agent configurations defined by the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
+| `aiAgentIdentities` | [`AiAgentIdentityConnection`](#aiagentidentityconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.External agents connected to the project through the GitLab CLI, most recently synced first. Returns none when the `ai_governance_sessions_api` feature flag is disabled. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiAgentIdentities`:</strong> <dl><dt>`agentTypes` ([`[AiExternalAgentType!]`](enums.md#aiexternalagenttype))</dt><dd>Filter by agent types (maximum is 1000).</dd><dt>`status` ([`AiAgentIdentityStatus`](enums.md#aiagentidentitystatus))</dt><dd>Filter by status.</dd><dt>`userId` ([`UserID`](scalars.md#userid))</dt><dd>Filter to agents connected by the user with the given global ID.</dd></dl> |
 | `aiCatalogItem` | [`AiCatalogItem`](interfaces.md#aicatalogitem) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.5.AI Catalog item of the project.  <strong>Arguments for `aiCatalogItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to find.</dd><dt>`showSoftDeleted` ([`Boolean`](scalars.md#boolean))</dt><dd>Whether to show the item if it has been soft-deleted. Defaults to `false`.</dd></dl> |
 | `aiCatalogItemConsumerForItem` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.0.AI Catalog item configuration for the given item in the project.  <strong>Arguments for `aiCatalogItemConsumerForItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to return the configuration of.</dd></dl> |
 | `aiCatalogItems` | [`AiCatalogItemConnection!`](#aicatalogitemconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.6.AI Catalog items of the project. This field can be resolved for only one project in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiCatalogItems`:</strong> <dl><dt>`allAvailable` ([`Boolean`](scalars.md#boolean))</dt><dd>Include public items from the AI Catalog.</dd><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Include only items that are enabled or disabled in the project.</dd><dt>`itemTypes` ([`[AiCatalogItemType!]`](enums.md#aicatalogitemtype))</dt><dd>Types of items to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search items by name and description.</dd><dt>`sort` ([`AiCatalogItemsSort`](enums.md#aicatalogitemssort))</dt><dd>Sort order of items.</dd></dl> |
@@ -22235,6 +22260,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `agentPresence` | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Agent attribution for a work item created by a GitLab Duo Agent Platform session. Available to anyone who can read the work item; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null when no session created the work item or when the `agent_presence_consolidation` feature flag is disabled. |
 | `archived` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.5.Whether the work item belongs to an archived project or group. |
 | `author` | [`UserCore`](#usercore) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.9.User that created the work item. |
 | `availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the work item. |

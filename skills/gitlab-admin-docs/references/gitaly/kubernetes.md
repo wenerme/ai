@@ -34,8 +34,36 @@ masks the problem by:
 
 The same approach doesn't fit a container-based lifecycle where a container or pod needs to fully shut down and start as a new container or pod.
 
-To support a Cloud Native deployment, Gitaly (non-Cluster) is the only generally available option. [Gitaly Cluster (Praefect) on Kubernetes](praefect/_index.md#gitaly-cluster-on-kubernetes) is in beta.
+To support a Cloud Native deployment, Gitaly (non-Cluster) is the only generally available option.
+For a comparison of the available options, see [deployment options](#deployment-options).
 By leveraging the right Kubernetes and Gitaly features and configuration, you can minimize service disruption and provide a good user experience.
+
+## Deployment options
+
+Gitaly Cluster (Praefect) on Kubernetes is in beta and is not recommended for production use.
+GitLab has de-prioritized work on this configuration in favor of a new Gitaly storage backend that brings
+repository-level resilience and horizontal scaling to Kubernetes without Praefect or its PostgreSQL database.
+For more information, see the
+[Scaling Git design document](https://handbook.gitlab.com/handbook/engineering/architecture/design-documents/scaling-git/).
+To follow development progress, see [epic 21711](https://gitlab.com/groups/gitlab-org/-/work_items/21711).
+
+If you need repository-level high availability and automatic failover, use a
+[Cloud Native Hybrid](../reference_architectures/_index.md#cloud-native-hybrid) architecture, with the GitLab
+application components on Kubernetes and Gitaly Cluster (Praefect) deployed with the Linux package outside
+Kubernetes.
+This option is generally available and is the recommended option.
+
+The following table compares the options to deploy Gitaly on, or alongside, Kubernetes.
+
+| Option | Status | Repository-level high availability | Use when |
+|--------|--------|------------------------------------|----------|
+| Gitaly Cluster (Praefect) with the Linux package, in a [Cloud Native Hybrid](../reference_architectures/_index.md#cloud-native-hybrid) architecture | Generally available | Yes. Automatic failover, strong consistency on healthy replicas, and distributed reads | You need repository-level high availability. This is the recommended option |
+| Sharded (non-cluster) Gitaly on Kubernetes | Generally available in GitLab 18.11 and later | No. Each Gitaly pod is a single point of failure for the repositories it serves | You want all components in Kubernetes and can accept brief disruption to a repository when its pod rotates |
+| [Gitaly Cluster (Praefect) on Kubernetes](praefect/_index.md#gitaly-cluster-on-kubernetes) | Beta. Not recommended for production use | Yes, in beta. The [Praefect chart](https://docs.gitlab.com/charts/charts/gitlab/praefect/) that deploys this configuration is an experiment | You evaluate in a non-production environment |
+| [Geo](../geo/_index.md) | Generally available | No. Geo is disaster recovery: active-passive, with manual failover | You need disaster recovery or geographically distributed operations. Geo complements repository-level clustering and does not replace it |
+
+For the availability objectives of Gitaly Cluster (Praefect), see
+[Gitaly Cluster (Praefect)](praefect/_index.md).
 
 ## Requirements
 

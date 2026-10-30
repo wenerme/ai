@@ -17,6 +17,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Debug D1](https://developers.cloudflare.com/d1/observability/debug-d1/)
 - [Metrics and analytics](https://developers.cloudflare.com/d1/observability/metrics-analytics/)
 - [Billing](https://developers.cloudflare.com/d1/observability/billing/)
+- [Find slow and expensive queries](https://developers.cloudflare.com/d1/observability/find-expensive-queries/)
 - [Audit Logs](https://developers.cloudflare.com/d1/observability/audit-logs/)
 
 Was this helpful?

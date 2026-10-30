@@ -1372,6 +1372,20 @@ You can also construct a custom context that the model will use to generate a re
 Listen for out-of-band model response with custom context
 
 ```javascript
+const existingItemId = "item_pizza";
+ws.send(
+  JSON.stringify({
+    type: "conversation.item.create",
+    item: {
+      id: existingItemId,
+      type: "message",
+      role: "user",
+      content: [
+        { type: "input_text", text: "We are ordering pizza for dinner." },
+      ],
+    },
+  })
+);
 const event = {
   type: "response.create",
   response: {
@@ -1406,6 +1420,25 @@ ws.send(JSON.stringify(event));
 ```
 
 ```python
+import json
+
+existing_item_id = "item_pizza"
+ws.send(
+    json.dumps(
+        {
+            "type": "conversation.item.create",
+            "item": {
+                "id": existing_item_id,
+                "type": "message",
+                "role": "user",
+                "content": [
+                    {"type": "input_text", "text": "We are ordering pizza for dinner."}
+                ],
+            },
+        }
+    )
+)
+
 event = {
     "type": "response.create",
     "response": {
@@ -1416,7 +1449,7 @@ event = {
         # context is appropriate
         "input": [
             # potentially include existing conversation items:
-            {"type": "item_reference", "id": "some_conversation_item_id"},
+            {"type": "item_reference", "id": existing_item_id},
             # include new content as well
             {
                 "type": "message",
@@ -1436,6 +1469,19 @@ ws.send(json.dumps(event))
 ```
 
 ```ruby
+existing_item_id = "item_order"
+connection.conversation.items.create(
+  id: existing_item_id,
+  type: :message,
+  role: :user,
+  content: [
+    {
+      type: :input_text,
+      text: "Order ORD-123 has not arrived."
+    }
+  ]
+)
+
 connection.response.create(
   conversation: :none,
   metadata: { topic: "classification" },
@@ -1764,20 +1810,22 @@ In WebRTC and SIP connections the server manages a buffer of output audio, and t
 
 With a WebSocket connection the client manages audio playback, and thus must stop playback and handle truncation. Here's how this procedure works:
 
-1. The client monitors for new `input_audio_buffer.speech_started` events from the server, which indicate the user has started speaking. The server will automatically cancel any in-progress model response and a `response.cancelled` event will be emitted.
-1. When the client detects this event, it should immediately stop playback of any audio currently being played from the model. It should note how much of the last audio response was played before the interruption.
-1. The client should send a [`conversation.item.truncate`](https://developers.openai.com/api/reference/resources/realtime) event to remove the unplayed portion of the model's last response from the conversation.
+1. On `input_audio_buffer.speech_started`, immediately stop playback of the model's audio and discard any queued audio for that item. Record how many milliseconds of that item's audio the user actually heard.
+1. Send a [`conversation.item.truncate`](https://developers.openai.com/api/reference/resources/realtime) event with the interrupted item's ID, the audio content index, and that played duration as `audio_end_ms`. This removes the unplayed portion from the conversation.
+1. When VAD interrupts an in-progress response, the server cancels it and sends `response.done` with `response.status` set to `cancelled`. Use that event to observe completion; don't wait for it before stopping playback or sending the truncation event.
 
 Here's an example:
 
 ```json
 {
-    "type": "conversation.item.truncate",
-    "item_id": "item_1234", # this is the item ID of the model's last response
-    "content_index": 0,
-    "audio_end_ms": 1500 # truncate audio after 1.5 seconds
+  "type": "conversation.item.truncate",
+  "item_id": "item_1234",
+  "content_index": 0,
+  "audio_end_ms": 1500
 }
 ```
+
+This example truncates audio after 1.5 seconds of playback.
 
 What about truncating the transcript as well? The realtime model doesn't have enough information to precisely align transcript and audio, and thus `conversation.item.truncate` will cut the audio at a given place and remove the text transcript for the unplayed portion. This solves the problem of removing unplayed audio but doesn't provide a truncated transcript.
 
