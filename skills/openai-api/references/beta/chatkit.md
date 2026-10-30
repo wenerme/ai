@@ -48,6 +48,8 @@ Cancelling prevents new requests from using the issued client secret.
 
 - `session_id: string`
 
+  Unique identifier for the ChatKit session to cancel.
+
 ### Returns
 
 - `ChatSession object { id, chatkit_configuration, client_secret, 7 more }`
@@ -628,6 +630,8 @@ Delete a ChatKit thread along with its items and stored attachments.
 
 - `thread_id: string`
 
+  Identifier of the ChatKit thread to delete.
+
 ### Returns
 
 - `id: string`
@@ -870,6 +874,8 @@ List items that belong to a ChatKit thread.
 ### Path Parameters
 
 - `thread_id: string`
+
+  Identifier of the ChatKit thread whose items are requested.
 
 ### Query Parameters
 
@@ -1419,6 +1425,8 @@ Retrieve a ChatKit thread by its identifier.
 ### Path Parameters
 
 - `thread_id: string`
+
+  Identifier of the ChatKit thread to retrieve.
 
 ### Returns
 

@@ -10,9 +10,13 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 

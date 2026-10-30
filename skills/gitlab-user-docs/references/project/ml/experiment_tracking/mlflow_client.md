@@ -58,6 +58,24 @@ experiment_id = mlflow.create_experiment(name="<your_experiment>")
 mlflow.set_experiment(experiment_name="<your_experiment>")
 ```
 
+### Listing experiments
+
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263896) to return experiments in pages from the `experiments/list` endpoint in GitLab 19.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `mlflow_bounded_list_responses`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+MLflow 1.x clients list experiments with `list_experiments`, which calls the `experiments/list` endpoint.
+MLflow 2.0 removed `list_experiments`.
+
+When the `mlflow_bounded_list_responses` feature flag is enabled, `experiments/list` returns at most
+1,000 experiments and a `next_page_token`:
+
+- `mlflow.list_experiments()` requests every page.
+- `MlflowClient().list_experiments()` returns one page. To get the next page, pass the returned token as `page_token`.
+- If you call the endpoint directly, pass `next_page_token` as the `page_token` parameter.
+
 ### Creating a run
 
 ```python
@@ -200,6 +218,12 @@ model = client.create_registered_model(model_name, description=description)
 
 #### Fetching a model
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263896) to return only the latest model version in `latest_versions` in GitLab 19.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `mlflow_bounded_list_responses`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
 ```python
 from mlflow import MlflowClient
 
@@ -207,6 +231,13 @@ client = MlflowClient()
 model_name = '<your_model_name>'
 model = client.get_registered_model(model_name)
 ```
+
+`latest_versions` contains every version of the model.
+When the `mlflow_bounded_list_responses` feature flag is enabled,
+`latest_versions` contains only the latest model version,
+which is the same version `get_latest_versions` returns.
+
+`search_registered_models` and `update_registered_model` return `latest_versions` the same way.
 
 #### Updating a model
 

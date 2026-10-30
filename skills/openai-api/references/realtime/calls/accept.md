@@ -9,6 +9,10 @@ handle it.
 
 - `call_id: string`
 
+  The identifier for the call provided in the
+  [`realtime.call.incoming`](/api/reference/resources/webhooks#realtime.call.incoming)
+  webhook.
+
 ### Body Parameters
 
 - `type: "realtime"`

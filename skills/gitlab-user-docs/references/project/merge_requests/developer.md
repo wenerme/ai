@@ -116,7 +116,7 @@ If the work item has no workplan, the flow uses the description.
 
 Prerequisites:
 
-- [Create a trigger](../../duo_agent_platform/triggers/_index.md#create-a-trigger)
+- [Create an event trigger](../../duo_agent_platform/triggers/_index.md#create-an-event-trigger)
   for the Developer Flow with the **Work item** event type and only the
   **Status changed** action. If you also select **Created**, you cannot select statuses,
   and the flow does not start when a work item is created.

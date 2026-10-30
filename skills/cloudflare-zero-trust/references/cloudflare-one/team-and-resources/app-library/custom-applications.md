@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-l
 
 # Custom applications
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a custom application to identify an internal service or an application that is not in the Cloudflare-managed catalog. Custom applications belong to your account and appear alongside Cloudflare-managed applications in the App Library. You can use them in [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#application), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#application), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/#application) policies with the existing **Application** selector.
 
@@ -58,6 +58,20 @@ You cannot delete a custom application while a Gateway rule or reusable profile 
 
 If the application is still referenced, deletion fails and the API returns HTTP `409` with the referencing resource IDs, names, and types. If Gateway cannot verify the references, deletion also fails and the application remains available.
 
+## Required API token permissions
+
+To create, edit, or delete custom applications with the API or Terraform, the API token must have at least one of the following permissions:
+
+- *Account* > *Zero Trust* > *Edit*
+- *Account* > *Resource Library* > *Edit*
+
+To list or view applications and categories, the API token must have at least one of the following permissions:
+
+- *Account* > *Zero Trust* > *Read*
+- *Account* > *Zero Trust* > *Edit*
+- *Account* > *Resource Library* > *Read*
+- *Account* > *Resource Library* > *Edit*
+
 ## Custom application limits
 
 For the number of custom applications you can create per account, refer to [Application Library account limits](https://developers.cloudflare.com/cloudflare-one/account-limits/#application-library).
@@ -83,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/#page","headline":"Custom applications","description":"Create, edit, and delete custom applications in the App Library and use them in Gateway policies.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/og.png?v=fbedbc2d26364f3a","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/#page","headline":"Custom applications","description":"Create, edit, and delete custom applications in the App Library and use them in Gateway policies.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/custom-applications/og.png?v=fbedbc2d26364f3a","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

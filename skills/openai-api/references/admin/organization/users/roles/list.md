@@ -8,6 +8,8 @@ Lists the organization roles assigned to a user within the organization.
 
 - `user_id: string`
 
+  The ID of the user to inspect.
+
 ### Query Parameters
 
 - `after: optional string`

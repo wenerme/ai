@@ -8,9 +8,13 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 

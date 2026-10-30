@@ -8,6 +8,8 @@ Lists the users assigned to a group.
 
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 ### Query Parameters
 
 - `after: optional string`

@@ -8,6 +8,8 @@ Delete a ChatKit thread along with its items and stored attachments.
 
 - `thread_id: string`
 
+  Identifier of the ChatKit thread to delete.
+
 ### Returns
 
 - `id: string`

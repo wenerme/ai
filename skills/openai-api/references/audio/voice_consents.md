@@ -80,6 +80,8 @@ Deletes a voice consent recording.
 
 - `consent_id: string`
 
+  The ID of the consent recording to delete.
+
 ### Returns
 
 - `VoiceConsentDeleted object { id, deleted, object }`
@@ -218,6 +220,8 @@ Retrieves a voice consent recording.
 
 - `consent_id: string`
 
+  The ID of the consent recording to retrieve.
+
 ### Returns
 
 - `VoiceConsent object { id, created_at, language, 2 more }`
@@ -283,6 +287,8 @@ Updates a voice consent recording (metadata only).
 ### Path Parameters
 
 - `consent_id: string`
+
+  The ID of the consent recording to update.
 
 ### Body Parameters
 

@@ -14,6 +14,7 @@ Use the security inventory to visualize which assets you need to secure and unde
 The security inventory shows:
 
 - Your groups, subgroups, and projects.
+- A summary of risk across the group's projects, including projects that need attention, have stale scans, or are unprotected.
 - Security scanner coverage for each project, regardless of how the scanner is enabled. Tool coverage reflects the scan status of the most recent pipeline on the default branch. Security scanners include:
   - Static application security testing (SAST)
   - Dependency scanning
@@ -38,6 +39,22 @@ To view the security inventory:
 1. Complete one of the following actions:
    - To view a group's subgroups, projects, and security assets, select the group.
    - To view a group or project's scanner coverage, search for the group or project.
+
+## Project status
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632028) in GitLab 19.6 [with a flag](../../../administration/feature_flags/_index.md) named `security_inventory_projects_widget`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+The **Projects** card shows how many projects in the group have each of the following statuses. A project can have more than one status at the same time:
+
+- **Needs attention**: The project has at least one scanner with a [failed status](#scanner-coverage).
+- **Has stale scans**: The project has at least one scanner with a [stale status](#scanner-coverage).
+- **Unprotected**: The project has no security scanner configured.
+
+To filter the inventory by a status, select it in the card.
 
 ## Scanner coverage
 
@@ -67,6 +84,7 @@ To view the number of projects in each status, hover over the bar.
 You can filter projects in the security inventory to focus on specific areas of interest.
 The following filters are available:
 
+- **Status**: Filter projects by status (like **needs attention**, **has stale scans**, **unprotected**, or **has scanners enabled**). For example, show projects where `Status = Unprotected`.
 - **Vulnerability count**: Filter projects based on the number of identified vulnerabilities. For example, show projects with `critical vulnerabilities ≥ 10`.
 - **Tool coverage**: Filter projects by the status of security analyzers (like **enabled**, **not enabled**, or **failed**). For example, show projects where `Advanced SAST = enabled`.
 - **Project name**: Search for specific projects by name.
@@ -84,6 +102,7 @@ You can share or bookmark a filtered view by copying the URL from your browser.
 - GraphQL references:
   - [AnalyzerGroupStatusType](../../../api/graphql/reference/objects.md#analyzergroupstatustype) - Counts for each analyzer status in the group and subgroups.
   - [AnalyzerProjectStatusType](../../../api/graphql/reference/objects.md#analyzerprojectstatustype) - Analyzer status (success/fail) for projects.
+  - [SecurityPostureCounters](../../../api/graphql/reference/objects.md#securityposturecounters) - Counts of projects by project status in the group.
   - [VulnerabilityNamespaceStatisticType](../../../api/graphql/reference/objects.md#vulnerabilitynamespacestatistictype) - Counts for each vulnerability severity in the group and its subgroups.
   - [VulnerabilityStatisticType](../../../api/graphql/reference/objects.md#vulnerabilitystatistictype) - Counts for each vulnerability severity in the project.
 

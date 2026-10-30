@@ -578,6 +578,11 @@ The page also shows PostgreSQL information that loads with the page, including r
 the autovacuum settings in effect. For more information, see
 [Monitor autovacuum](postgresql/vacuum.md#monitor-autovacuum).
 
+The checks and this information are on the  tab.
+If `pg_ash` is installed, the  tab
+shows the [active session history](monitoring/performance/_index.md#view-active-session-history)
+of the main database.
+
 #### Collation health check
 
 The collation health check attempts to detect PostgreSQL issues that

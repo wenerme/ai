@@ -8,6 +8,8 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters

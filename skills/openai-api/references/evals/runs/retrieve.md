@@ -8,7 +8,11 @@ Get an evaluation run by ID.
 
 - `eval_id: string`
 
+  The ID of the evaluation to retrieve runs for.
+
 - `run_id: string`
+
+  The ID of the run to retrieve.
 
 ### Returns
 

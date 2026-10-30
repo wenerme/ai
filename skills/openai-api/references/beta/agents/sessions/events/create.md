@@ -14,6 +14,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters

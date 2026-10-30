@@ -8,6 +8,8 @@ Creates a project spend alert.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 ### Body Parameters
 
 - `currency: "USD"`

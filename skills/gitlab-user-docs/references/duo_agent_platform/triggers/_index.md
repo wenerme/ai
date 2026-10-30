@@ -5,33 +5,27 @@ Create and manage triggers to control when flows run in your project.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_flow_triggers`. Enabled by default.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217634) in GitLab 18.8 to require an additional [flag](../../../administration/feature_flags/_index.md) named `ai_catalog_create_third_party_flows`. Disabled by default.
+- Introduced in GitLab 18.3 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_flow_triggers`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
-
-> [!flag]
-> To change the location of your flow configuration file, you must enable a feature flag.
-> For more information, see the history.
+- Feature flag `ai_flow_triggers` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239280) in GitLab 19.1.
 
 A trigger determines when a flow or external agent runs.
 A trigger cannot be created for a custom agent or foundational agent.
 
-For example, you can specify flows to be triggered when you mention them
-in a discussion, or when you assign them as a reviewer.
+A trigger is one of two kinds:
 
-## Foundational flow triggers
+- An [event trigger](#event-triggers) runs a flow when something happens in the project,
+  for example when someone mentions the service account or a pipeline fails.
+- A [scheduled trigger](#scheduled-triggers) runs a flow at a recurring time,
+  for example every weekday at 9:00 AM.
 
-A trigger runs only when its foundational flow is turned on for your group or project. For more information, see [turn foundational flows on or off](../flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+| Detail | Event trigger | Scheduled trigger |
+|--------|---------------|-------------------|
+| What starts the run | An action by a person, such as a mention or an approval | The schedule. No person starts the run. |
+| Who the flow runs as | The service account of the flow, with [composite identity](../composite_identity.md) | A [dedicated service account](#service-account-for-scheduled-triggers), without composite identity |
+| What the flow receives | For a mention, the comment. For other events, the web address of the merge request, work item, or project. | The web address of the project |
 
-Foundational flows can start in the following ways:
-
-- Default triggers that GitLab adds when you turn on the flow.
-- Triggers that you create for events the flow supports.
-- Another way, such as when a security scan finishes.
-  These flows don't use triggers, so you don't see them listed in **AI** > **Triggers**.
-
-For details about how to start each flow, see the individual
-[foundational flow documentation](../flows/foundational_flows/_index.md).
+To run the same flow on an event and on a schedule, create two triggers.
 
 ## View triggers
 
@@ -46,25 +40,20 @@ To view the triggers for a project:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
 
-## Create a trigger
+## Event triggers
 
-- **Assign** and **Assign reviewer** event types [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567787) in GitLab 18.5.
-- Pipeline events trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/212797) in GitLab 18.9 as an [experiment](../../../policy/development_stages_support.md) with a [flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_pipeline_hooks`. Disabled by default.
-- **Merge request ready** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592454) in GitLab 19.0 with a [flag](../../../administration/feature_flags/_index.md) named `merge_request_ready_flow_trigger`. Disabled by default.
-- **Merge request code conflict** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234044) in GitLab 19.1.
-- **Merge request** trigger event type with the **Approved** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237081) in GitLab 19.1.
-- Feature flag `ai_flow_trigger_pipeline_hooks` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/587272) in GitLab 19.1.
-- **Work item created** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599985) in GitLab 19.1.
-- **Merge request ready** trigger event type [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/598421) in GitLab 19.1. Feature flag `merge_request_ready_flow_trigger` removed.
-- **Work item status changed** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599983) in GitLab 19.2.
+An event trigger runs a flow when one of its conditions occurs, for example when someone assigns
+the service account as a reviewer.
+A trigger can have several event conditions.
+
+### Create an event trigger
+
+- **Configuration path** option [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217634) in GitLab 18.9 to require a [flag](../../../administration/feature_flags/_index.md) named `ai_catalog_create_third_party_flows`. Disabled by default.
 - **Merge request ready** and **Merge request code conflict** event types [consolidated](https://gitlab.com/gitlab-org/gitlab/-/work_items/602777) into the **Merge request** event type as the **Marked ready** and **Merge conflict** actions in GitLab 19.2.
 - Trigger creation form [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248807) to add conditions one at a time in GitLab 19.3.
-- **Merge request** trigger event type with the **Created** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242698) in GitLab 19.4.
-- **Status** filter for the **Work item** trigger event type with the **Status changed** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607577) in GitLab 19.4.
-- **Type** filter for the **Work item** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633870) in GitLab 19.6.
 
 > [!flag]
-> The availability of this feature is controlled by a feature flag.
+> The availability of the **Configuration path** option is controlled by a feature flag.
 > For more information, see the history.
 
 Prerequisites:
@@ -75,7 +64,7 @@ To create a trigger:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
-1. Select **New flow trigger**.
+1. Select **New trigger**.
 1. In **Description**, enter a description for the trigger.
 1. In the **Conditions** section, for each condition that should start the trigger:
    1. Select **Add condition**, then select **On an event**.
@@ -86,7 +75,7 @@ To create a trigger:
 1. From the **Service account** dropdown list,
    select a user to be [the composite identity](../composite_identity.md).
 1. For **Configuration source**, select one of the following:
-   - **AI Catalog**: From the flows configured for this project,
+   - **Flow or external agent**: From the flows configured for this project,
      select a flow for the trigger to execute.
    - **Configuration path**: Enter the path to the flow configuration file
      (for example, `.gitlab/duo/flows/claude.yaml`).
@@ -95,22 +84,22 @@ To create a trigger:
    event select **Edit event** (). Enter the text in the
    **Instructions** field, then select **Save**. For more information, see
    [Add instructions](#add-instructions).
-1. Select **Create flow trigger**.
+1. Select **Create trigger**.
 
 The trigger now appears in **AI** > **Triggers**.
 
-### Trigger event types
+#### Trigger event types
 
-| Name            | Description                                                                           | Configuration |
-|-----------------|---------------------------------------------------------------------------------------|------|
-| Mention         | When the service account user is mentioned in a comment on an issue or merge request. | None |
-| Assign          | When the service account user is assigned to an issue or merge request.               | None |
-| Assign reviewer | When the service account user is assigned as a reviewer to a merge request.           | None |
-| Pipeline events | When a pipeline changes state.                                                        | From the **Run when** dropdown list, select one or more of the following:- **Running**- **Passed**- **Failed**- **Canceled** |
-| Merge request   | When a selected merge request action occurs.                                          | From the **Run when** dropdown list, select one of the following:- **Approved**: When a merge request has all required approvals.- **Created**: When someone creates a merge request, draft or ready, and GitLab generates its diff. GitLab syncs code owner approval rules against that diff before the flow runs, unless the merge request joins a merge train or GitLab cannot reload the diff.- **Marked ready**: When a draft merge request is marked as ready for review.- **Merge conflict**: When a merge request can no longer be merged due to a code conflict. |
-| Work item       | When a selected work item action occurs.                                              | From the **Run when** dropdown list, select one of the following:- **Created**: When a work item is created- **Status changed**: When a work item's status changes. When **Status changed** is the only selected action, you can select one or more statuses to run the flow only when the work item changes to one of them.For both actions, from the **Type** dropdown list, you can select work item types to run the flow only for those types. When you select types, the **Status** dropdown list shows only the statuses of those types. If the selected types do not use a selected status, the list shows that status in a separate group, so that you can clear it. When you select no type, the same applies to a status that no type uses. |
+| Name            | Description                                                                           | Configuration | Introduced in |
+|-----------------|---------------------------------------------------------------------------------------|------|------|
+| Mention         | When the service account user is mentioned in a comment on an issue or merge request. | None | GitLab 18.3 |
+| Assign          | When the service account user is assigned to an issue or merge request.               | None | GitLab [18.5](https://gitlab.com/gitlab-org/gitlab/-/issues/567787) |
+| Assign reviewer | When the service account user is assigned as a reviewer to a merge request.           | None | GitLab [18.5](https://gitlab.com/gitlab-org/gitlab/-/issues/567787) |
+| Pipeline events | When a pipeline changes state.                                                        | From the **Run when** dropdown list, select one or more of the following:- **Running**- **Passed**- **Failed**- **Canceled** | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/212797) as an [experiment](../../../policy/development_stages_support.md#experiment). [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/587272) in GitLab 19.1. |
+| Merge request   | When a selected merge request action occurs.                                          | From the **Run when** dropdown list, select one of the following:- **Approved**: When a merge request has all required approvals. Introduced in GitLab 19.1.- **Created**: When someone creates a merge request, draft or ready, and GitLab generates its diff. GitLab syncs code owner approval rules against that diff before the flow runs, unless the merge request joins a merge train or GitLab cannot reload the diff. Introduced in GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242698).- **Marked ready**: When a draft merge request is marked as ready for review. Introduced in GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/592454).- **Merge conflict**: When a merge request can no longer be merged due to a code conflict. Introduced in GitLab [19.1](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234044). | GitLab [19.1](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/237081) |
+| Work item       | When a selected work item action occurs.                                              | From the **Run when** dropdown list, select one of the following:- **Created**: When a work item is created. Introduced in GitLab 19.1.- **Status changed**: When a work item's status changes. When **Status changed** is the only selected action, you can select one or more statuses to run the flow only when the work item changes to one of them. Introduced in GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/work_items/599983). Status selection introduced in GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/607577).For both actions, from the **Type** dropdown list, you can select work item types to run the flow only for those types. When you select types, the **Status** dropdown list shows only the statuses of those types. If the selected types do not use a selected status, the list shows that status in a separate group, so that you can clear it. When you select no type, the same applies to a status that no type uses. Type selection introduced in GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/633870). | GitLab [19.1](https://gitlab.com/gitlab-org/gitlab/-/work_items/599985) |
 
-### Work item type IDs
+#### Work item type IDs
 
 In the GraphQL API, the `filter` argument of the `aiFlowTriggerCreate` and `aiFlowTriggerUpdate`
 mutations sets the work item type filter with a `work_item_type_id` rule.
@@ -155,76 +144,21 @@ The trigger form shows and changes only `in` rules.
 For a `not_in` rule, the **Type** dropdown list shows **Any type**, and the form keeps the rule.
 If you change the types in the form, the form replaces the `not_in` rule.
 
-## Add instructions
+### Foundational flow triggers
 
-- Instructions for each condition [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627896) in GitLab 19.5 [with a flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_goals`. Disabled by default.
+A trigger runs only when its foundational flow is turned on for your group or project. For more information, see [turn foundational flows on or off](../flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+Foundational flows can start in the following ways:
 
-Instructions are text that tells the flow what to do. Add instructions to a condition when you
-want the flow to do a specific task for that event. Two trigger events can run the same flow
-with different instructions.
+- Default triggers that GitLab adds when you turn on the flow.
+- Triggers that you create for events the flow supports.
+- Another way, such as when a security scan finishes.
+  These flows don't use triggers, so you don't see them listed in **AI** > **Triggers**.
 
-Prerequisites:
+For details about how to start each flow, see the individual
+[foundational flow documentation](../flows/foundational_flows/_index.md).
 
-- You must have the Maintainer or Owner role for the project.
-- The trigger must use a flow that accepts instructions. If the flow does not accept them, the
-  **Instructions** field does not appear.
-
-To add instructions to a condition in an existing trigger:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **AI** > **Triggers**.
-1. For the trigger you want to change, select **More actions** () > **Edit trigger**.
-1. In the **Conditions** section, for the condition you want to change, select **Edit event** ().
-1. In the **Instructions** field, enter the instructions. Use 4096 characters or fewer.
-1. Select **Save**.
-1. Select **Save changes**.
-
-The instructions appear under the condition in the **Conditions** section.
-
-Instructions belong to one condition, not to the whole trigger. For a **Merge request** event,
-one set of instructions applies to every action that you select in **Run when**.
-
-You can also add instructions when you [create a trigger](#create-a-trigger) or when you
-[enable a flow](../flows/custom.md#enable-a-flow). In the trigger form, the **Instructions**
-field stays hidden until you set **Configuration source**. If you select **AI Catalog**, you
-must also select a flow that accepts instructions.
-
-### Write instructions
-
-The instructions go in front of the information that the event supplies. The instructions never
-replace that information. Do not repeat that information in the instructions.
-
-The flow also receives:
-
-- For a mention event, the comment that the person wrote.
-- For every other event, a short context block. The block gives the web address of the merge
-  request, work item, or project. The block also gives the action that occurred.
-
-> [!warning]
-> The flow runs with the permissions of the service account. No person is present to answer
-> questions from the flow. Write the instructions so that the flow can complete them alone.
-
-To write instructions that get the result you want:
-
-- Give the flow one clear task.
-- Do not name the resource. The context block already names it.
-- Give all the details that the flow needs. The flow cannot ask you for more.
-- Say what the output must look like. For example, give the format or the maximum length.
-- Ask only for work that the service account has permission to do.
-
-The following table shows example instructions.
-
-| Event | Instructions |
-|-------|--------------|
-| Mention | `Answer the question in a comment. Keep the reply under 200 words.` |
-| Merge request, **Created** action | `Review the code changes and list any missing tests in a comment.` |
-| Work item, **Created** action | `Add a severity label and a test plan.` |
-
-## Change the work item when the session finishes
+### Change the work item when the session finishes
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633112) in GitLab 19.6 [with flags](../../../administration/feature_flags/_index.md) named `dap_software_factory` and `ai_flow_trigger_chaining`. Disabled by default.
 
@@ -267,13 +201,13 @@ To change the work item when the session finishes:
    - Select the **Mark merge requests as ready** checkbox.
 1. Select **Save changes**.
 
-You can also set these settings when you [create a trigger](#create-a-trigger).
+You can also set these settings when you [create an event trigger](#create-an-event-trigger).
 
 If you later add the **Created** action, remove the last status, or remove the **Work item** condition, GitLab clears the settings.
 If you change the types so that they do not have the status of **Set work item status**,
 GitLab clears that status.
 
-### When GitLab applies the settings
+#### When GitLab applies the settings
 
 GitLab applies the settings only when all of these conditions are true:
 
@@ -296,7 +230,7 @@ GitLab applies the settings only when all of these conditions are true:
 
 GitLab does not set a status that the work item type does not have.
 
-### Chain triggers
+#### Chain triggers
 
 GitLab writes the changes as the composite identity of the session.
 For this reason, GitLab treats the status change as an event that a flow caused.
@@ -321,7 +255,7 @@ human action between the stages.
 | A | `Planning` | Generate Workplan | `Ready for development` | No |
 | B | `Ready for development` | GitLab Duo Developer | `In review` | Yes |
 
-### Known issues
+#### Known issues
 
 - A session can finish without the work done. For example, GitLab Duo Developer can decide
   that no code change is necessary and open no merge request. GitLab still sets the status.
@@ -329,6 +263,274 @@ human action between the stages.
   GitLab then does not set the status.
 - If the status that the trigger sets is also one of the statuses that the trigger runs on,
   the change can start the trigger again. The form shows a warning for this configuration.
+
+### Actions that don't initiate a trigger
+
+All trigger event types require a human user to perform the triggering action.
+A non-human user such as a bot user, service account user, or another flow, cannot activate a trigger.
+
+This restriction applies to all [trigger event types](#trigger-event-types).
+For example, a flow cannot trigger another flow by mentioning the service account in a comment.
+The status change from the settings of a trigger is an exception.
+For more information, see [chain triggers](#chain-triggers).
+
+A trigger with the **Work item** event type and the **Created** action also does not run when:
+
+- The work item is imported from another GitLab instance or another tool, such as GitHub or Jira.
+- The work item is created from an email to [Service Desk](../../project/service_desk/_index.md).
+
+## Scheduled triggers
+
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594180) in GitLab 19.4 as a [beta](../../../policy/development_stages_support.md#beta) [with flags](../../../administration/feature_flags/_index.md) named `ai_flow_schedules` and `autonomous_service_account_execution`. Disabled by default.
+- Setting to turn off scheduled triggers [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by feature flags.
+> For more information, see the history.
+
+A scheduled trigger runs a flow at a recurring time.
+Use a scheduled trigger for work that does not start from an event, such as a weekly
+summary of stale issues.
+The flow receives no merge request or work item, so use [instructions](#add-instructions)
+to tell the flow what to do on each run.
+
+> [!disclaimer]
+
+Scheduled triggers have these limits:
+
+- A trigger has one schedule.
+- You can create scheduled triggers only in projects, not in groups.
+- By default, a project can have up to 100 scheduled triggers.
+
+### Service account for scheduled triggers
+
+When you create a scheduled trigger, GitLab creates a service account for that trigger only.
+The account name starts with `Duo Scheduled`, followed by the project path and the
+trigger description.
+GitLab adds the account to the project with the same role as the service account of the flow.
+GitLab does not assign the Owner role to the account, and a run fails if the account has it.
+
+A scheduled run does not use [composite identity](../composite_identity.md), so the role of
+the service account is the only limit on what the flow can do.
+The flow can also access other projects that the service account is a member of.
+For more information, see [security threats in GitLab Duo Agent Platform](../security_threats.md).
+
+The role of the account follows the role of the service account of the flow:
+
+- Before each run, if the flow account has a lower role, GitLab lowers the role of the
+  trigger account to match. If GitLab cannot lower the role, the run fails.
+- If the flow account has a higher role, GitLab raises the role of the trigger account only
+  when someone edits the trigger. GitLab does not raise the role above what the editor can assign.
+
+### Create a scheduled trigger
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+- Your role for the project must be equal to or higher than the role of the service account
+  of the flow.
+- You must have permission to [create service accounts](../../profile/service_accounts.md#create-a-service-account)
+  and to add members to the project.
+- The project must belong to a group, and the group must not prevent adding members to projects.
+- [Experiment and beta features](../turn_on_off.md#turn-on-beta-and-experimental-features)
+  must be turned on.
+- Scheduled triggers must be [turned on](#turn-scheduled-triggers-on-or-off) for the group or instance.
+- A custom flow from the AI Catalog must be enabled in the project.
+  External agents and flows that use a configuration file cannot run on a schedule.
+
+To change the flow of an existing scheduled trigger:
+
+- Your role for the project must be equal to or higher than the role of the trigger's service account.
+- You must have permission to add members to the project.
+- The new flow must be a custom flow from the AI Catalog.
+
+You do not need these permissions to change the schedule, description, or instructions.
+
+To create a scheduled trigger:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **AI** > **Triggers**.
+1. Select **New trigger**.
+1. In **Description**, enter a description for the trigger.
+1. If **Configuration source** is shown, select **Flow or external agent**.
+1. From the **Flow** or **Flow or external agent** dropdown list, select the flow.
+1. In the **Conditions** section, select **Add condition**, then select **On a schedule**.
+1. From the **Frequency** dropdown list, select how often the flow runs.
+   Depending on the frequency, select when the flow runs:
+
+   | Frequency        | What you select |
+   |------------------|-----------------|
+   | Every 15 minutes | None |
+   | Every 30 minutes | None |
+   | Hourly           | The minute past the hour. |
+   | Daily            | The hour and minute. |
+   | Weekdays         | The hour and minute, Monday through Friday. |
+   | Weekly           | The day of the week, hour, and minute. |
+   | Monthly          | The day of the month, from 1 to 28, and the hour and minute. |
+
+   Hours use the 24-hour clock. Minutes are in 15-minute steps.
+1. Optional. For frequencies other than every 15 or 30 minutes, from the **Time zone**
+   dropdown list, select a time zone.
+   The default is the time zone of your profile, or of your browser if your profile has none.
+1. Optional. If the **Instructions** field is shown, enter what the flow must do on each run.
+1. Select **Add schedule**.
+1. Select **Create trigger**.
+
+The flow might run a few minutes after the scheduled time, because GitLab spreads scheduled
+runs to distribute load.
+
+### When a scheduled run fails
+
+When a scheduled run fails, GitLab emails the users with the Owner or Maintainer role for the project.
+If the project has no users with these roles, GitLab emails the users with the Owner or Maintainer role for the group.
+A run fails if, for example, the service account is missing from the project, is inactive,
+has the Owner role, or has a role that GitLab cannot lower to match the flow.
+
+After three consecutive failures, GitLab deactivates the schedule and sends a deactivation
+email instead of a failure email.
+A successful run resets the count.
+
+GitLab skips a scheduled run, and does not count a failure, when:
+
+- The trigger is turned off.
+- Scheduled triggers are turned off for the group or instance.
+- The namespace has no GitLab Credits left.
+- The project is archived or scheduled for deletion.
+
+To resume a deactivated schedule, fix the cause in the email, then set `active` to `true` with the
+[`aiFlowScheduleUpdate`](../../../api/graphql/reference/mutations.md#aiflowscheduleupdate)
+GraphQL mutation.
+To get the ID of the schedule, query the `flowSchedules` field of the trigger.
+Reactivation does not reset the failure count, so one more failed run deactivates the
+schedule again.
+The trigger toggle does not reactivate a schedule. After GitLab deactivates the schedule,
+the trigger stays turned on, but the flow does not run.
+
+### Turn scheduled triggers on or off
+
+Scheduled triggers are turned on by default.
+When you turn off scheduled triggers, existing schedules stop running but GitLab keeps them.
+Runs that are in progress continue.
+You cannot add a schedule to a trigger while scheduled triggers are turned off.
+When you turn scheduled triggers back on, schedules resume at their next scheduled time.
+GitLab does not make up the runs that it skipped.
+
+To turn scheduled triggers on or off, **Allow flow execution** must be turned on.
+
+### On GitLab.com
+
+Prerequisites:
+
+- You must have the Owner role for the top-level group.
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings** > **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Select **Save changes**.
+
+The setting applies to the subgroups and projects of the group.
+
+### On GitLab Self-Managed
+
+Prerequisites:
+
+- For the instance, you must have administrator access.
+- For a group, you must have the Owner role for the group.
+
+To turn scheduled triggers on or off for the instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Select **Save changes**.
+
+To turn scheduled triggers on or off for a group:
+
+1. In the top bar, select **Search or go to** and find your group.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab Duo features**.
+1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Select **Save changes**.
+
+The setting applies to the subgroups and projects of the group.
+
+## Add instructions
+
+- Instructions for each condition [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627896) in GitLab 19.5 [with a flag](../../../administration/feature_flags/_index.md) named `ai_flow_trigger_goals`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Instructions are text that tells the flow what to do. Add instructions to an event or a schedule
+when you want the flow to do a specific task when that condition occurs.
+Two conditions can run the same flow with different instructions.
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role for the project.
+- The trigger must use a flow that accepts instructions. If the flow does not accept them, the
+  **Instructions** field does not appear.
+
+To add instructions to a condition in an existing trigger:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **AI** > **Triggers**.
+1. For the trigger you want to change, select **More actions** () > **Edit trigger**.
+1. In the **Conditions** section, for the condition you want to change, select **Edit event**
+   or **Edit schedule** ().
+1. In the **Instructions** field, enter the instructions. Use 4096 characters or fewer.
+1. Select **Save**.
+1. Select **Save changes**.
+
+The instructions appear under the condition in the **Conditions** section.
+
+Instructions belong to one condition, not to the whole trigger. For a **Merge request** event,
+one set of instructions applies to every action that you select in **Run when**.
+
+You can also add instructions when you [create an event trigger](#create-an-event-trigger),
+[create a scheduled trigger](#create-a-scheduled-trigger), or
+[enable a flow](../flows/custom.md#enable-a-flow).
+In the trigger form, the **Instructions** field stays hidden until you set **Configuration source**.
+If you select **Flow or external agent**, you must also select a flow that accepts instructions.
+
+### Write instructions
+
+The instructions go in front of the information that the event supplies. The instructions never
+replace that information. Do not repeat that information in the instructions.
+
+The flow also receives:
+
+- For a mention event, the comment that the person wrote.
+- For every other event, a short context block. The block gives the web address of the merge
+  request, work item, or project. The block also gives the action that occurred.
+- For a schedule, a context block with the web address of the project.
+
+> [!warning]
+> The flow runs with the permissions of the service account. No person is present to answer
+> questions from the flow. Write the instructions so that the flow can complete them alone.
+
+To write instructions that get the result you want:
+
+- Give the flow one clear task.
+- Do not name the resource. The context block already names it.
+- Give all the details that the flow needs. The flow cannot ask you for more.
+- Say what the output must look like. For example, give the format or the maximum length.
+- Ask only for work that the service account has permission to do.
+
+The following table shows example instructions.
+
+| Condition | Instructions |
+|-----------|--------------|
+| Mention | `Answer the question in a comment. Keep the reply under 200 words.` |
+| Merge request, **Created** action | `Review the code changes and list any missing tests in a comment.` |
+| Work item, **Created** action | `Add a severity label and a test plan.` |
+| Schedule, **Weekly** | `List the open issues with no activity in the last 30 days in a new issue.` |
 
 ## Edit a trigger
 
@@ -373,24 +575,9 @@ Prerequisites:
 
 You can also delete a custom flow's trigger on its configuration page, under **Trigger conditions**.
 
-## Actions that don't initiate a trigger
-
-All trigger event types require a human user to perform the triggering action.
-A non-human user such as a bot user, service account user, or another flow, cannot activate a trigger.
-
-This restriction applies to all [trigger event types](#trigger-event-types).
-For example, a flow cannot trigger another flow by mentioning the service account in a comment.
-The status change from the settings of a trigger is an exception.
-For more information, see [chain triggers](#chain-triggers).
-
-A trigger with the **Work item** event type and the **Created** action also does not run when:
-
-- The work item is imported from another GitLab instance or another tool, such as GitHub or Jira.
-- The work item is created from an email to [Service Desk](../../project/service_desk/_index.md).
-
 ## GitLab Credits consumption for triggered flows
 
-A flow started by a trigger runs as the trigger's service account with [composite identity](../composite_identity.md).
+A flow started by a trigger runs as a service account.
 The flow's usage is billed to the namespace, not to the user who performed the triggering action.
 
 For example, a trigger runs a flow when a merge request receives all required approvals,
@@ -399,7 +586,7 @@ the trigger runs the flow as the configured service account, and the usage is bi
 to the namespace rather than to the third approver.
 
 This billing applies to every trigger event type, including a pipeline state change,
-a work item status change, or a mention.
+a work item status change, a mention, or a schedule.
 
 For more information, see [billing subjects for credit usage](../../../subscriptions/gitlab_credits.md#billing-subjects-for-credit-usage).
 
@@ -444,3 +631,15 @@ To resolve this issue:
 An event that you can save in a trigger is not necessarily an event the flow can run.
 For example, Developer cannot run from **Pipeline events**.
 Use a supported event rather than adding an event only to make a service account selectable.
+
+### Error: `Event types cannot combine autonomous event types`
+
+When you save a trigger that has both a schedule and an event, you might get this error:
+
+```plaintext
+Event types cannot combine autonomous event types (scheduled) with other event types. Create a separate trigger for them.
+```
+
+A trigger with a schedule cannot have event conditions, and you cannot save the trigger until
+you remove one of them.
+To resolve this error, remove the event and create a separate trigger for it.

@@ -8,6 +8,8 @@ Delete a skill by its ID.
 
 - `skill_id: string`
 
+  The identifier of the skill to delete.
+
 ### Returns
 
 - `DeletedSkill object { id, deleted, object }`

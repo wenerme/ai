@@ -8,6 +8,8 @@ Creates a new service account in the project. By default, this also returns an u
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Body Parameters
 
 - `name: string`

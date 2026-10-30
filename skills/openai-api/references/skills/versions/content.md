@@ -10,9 +10,15 @@ Download a skill version zip bundle.
 
 - `skill_id: string`
 
+  The identifier of the skill.
+
 - `version: string`
 
   The skill version number.
+
+### Returns
+
+`file`
 
 ### Example
 

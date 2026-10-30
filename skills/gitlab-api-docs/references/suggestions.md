@@ -45,7 +45,7 @@ response attributes:
 
 | Attribute      | Type    | Description |
 |----------------|---------|-------------|
-| `applicable`   | boolean | If `true`, suggestion can be applied. |
+| `appliable`    | boolean | If `true`, suggestion can be applied. |
 | `applied`      | boolean | If `true`, suggestion has been applied. |
 | `from_content` | string  | Original content before the suggestion. |
 | `from_line`    | integer | Starting line number of the suggestion. |
@@ -68,8 +68,8 @@ Example response:
   "id": 5,
   "from_line": 10,
   "to_line": 10,
-  "applicable": true,
-  "applied": false,
+  "appliable": false,
+  "applied": true,
   "from_content": "This is an example\n",
   "to_content": "This is an example\n"
 }
@@ -99,7 +99,7 @@ response attributes:
 
 | Attribute      | Type    | Description |
 |----------------|---------|-------------|
-| `applicable`   | boolean | If `true`, suggestion can be applied. |
+| `appliable`    | boolean | If `true`, suggestion can be applied. |
 | `applied`      | boolean | If `true`, suggestion has been applied. |
 | `from_content` | string  | Original content before the suggestion. |
 | `from_line`    | integer | Starting line number of the suggestion. |
@@ -125,8 +125,8 @@ Example response:
     "id": 5,
     "from_line": 10,
     "to_line": 10,
-    "applicable": true,
-    "applied": false,
+    "appliable": false,
+    "applied": true,
     "from_content": "This is an example\n",
     "to_content": "This is an example\n"
   },
@@ -134,8 +134,8 @@ Example response:
     "id": 6,
     "from_line": 19,
     "to_line": 19,
-    "applicable": true,
-    "applied": false,
+    "appliable": false,
+    "applied": true,
     "from_content": "This is another example\n",
     "to_content": "This is another example\n"
   }

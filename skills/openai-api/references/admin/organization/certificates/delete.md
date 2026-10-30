@@ -10,6 +10,8 @@ The certificate must be inactive for the organization and all projects.
 
 - `certificate_id: string`
 
+  Unique ID of the certificate to delete.
+
 ### Returns
 
 - `id: string`

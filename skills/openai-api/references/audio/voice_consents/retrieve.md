@@ -8,6 +8,8 @@ Retrieves a voice consent recording.
 
 - `consent_id: string`
 
+  The ID of the consent recording to retrieve.
+
 ### Returns
 
 - `VoiceConsent object { id, created_at, language, 2 more }`

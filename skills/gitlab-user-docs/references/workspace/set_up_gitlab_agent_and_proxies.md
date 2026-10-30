@@ -90,7 +90,7 @@ GitLab Relay (KAS) is the component that communicates with the agent in your clu
 
 To configure the `remote_development` module in the agent project:
 
-1. In the top bar, select **Search or go to** and find your project.
+1. In the top bar, select  and find your project.
 1. In your project, create a `.gitlab/agents/<agentName>/config.yaml` file.
    `agentName` is the name of the agent you configured when you set up workspace infrastructure.
 1. In `config.yaml`, use the following configuration for workspace settings:
@@ -120,11 +120,11 @@ use that agent.
 
 To allow your GitLab agent for Kubernetes in a group and make it available to all projects in that group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Workspaces**.
-1. In the **Group agents** section, select the **All agents** tab.
-1. For the GitLab agent for Kubernetes, select **Allow**.
-1. On the confirmation dialog, select **Allow agent**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select the  tab.
+1. For the GitLab agent for Kubernetes, select .
+1. On the confirmation dialog, select .
 
 ## Grant workspace permissions
 
@@ -217,7 +217,7 @@ To register an OAuth application on your GitLab instance:
    - Group-owned application
    - Instance-wide application from the Admin area
 1. Set the redirect URI to `https://${GITLAB_WORKSPACES_PROXY_DOMAIN}/auth/callback`.
-1. Ensure the **Confidential** checkbox is selected. It should be selected by default.
+1. Ensure the  checkbox is selected. It should be selected by default.
 1. If you create an instance-wide application, also select the **Trusted** checkbox.
 1. Set the scopes to `api`, `read_user`, `openid`, and `profile`.
 1. Export your configuration values:

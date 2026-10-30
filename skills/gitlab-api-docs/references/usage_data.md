@@ -211,7 +211,18 @@ Sample response:
 
 ## Track internal events
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264988) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `rate_limit_track_internal_events`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag.
+> For more information, see the history.
+
 Tracks internal events in the GitLab instance.
+
+The `/track_events` endpoint is rate limited for each user. The limit is
+200 events every minute. Each event in a request counts toward the limit
+individually. When you exceed the limit, the endpoint returns
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 Prerequisites:
 

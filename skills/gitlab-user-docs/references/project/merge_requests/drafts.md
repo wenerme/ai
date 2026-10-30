@@ -16,7 +16,7 @@ cannot merge until you remove the **Draft** flag, even if they meet all other me
 You can flag a merge request as a draft in several ways:
 
 - Viewing a merge request: In the upper-right corner of the merge request,
-  select **Merge request actions** (), then **Mark as draft**.
+  select **More actions** (), then **Mark as draft**.
 - Creating or editing a merge request: You can do either of the following:
   - Add `[Draft]`, `Draft:` or `(Draft)` to the beginning of the merge request's title.
   - Select **Mark as draft** below the **Title** field.

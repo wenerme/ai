@@ -8,6 +8,8 @@ Retrieves a vector store.
 
 - `vector_store_id: string`
 
+  The ID of the vector store to retrieve.
+
 ### Returns
 
 - `VectorStore object { id, created_at, file_counts, 8 more }`

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/model-context-protocol/apis/agen
 
 # McpAgent (deprecated)
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `McpAgent` creates a stateful legacy MCP server backed by a Durable Object.
 
@@ -470,9 +470,9 @@ For a stateless server, read the same props with `getMcpAuthContext()`. Refer to
 The `McpAgent` class provides full access to the [Agent state APIs](https://developers.cloudflare.com/agents/agent-class/state/):
 
 - [`state`](https://developers.cloudflare.com/agents/agent-class/state/) — Current persisted state
-- [`initialState`](https://developers.cloudflare.com/agents/agent-class/state/#set-the-initial-state-for-an-agent) — Default state when instance starts
+- [`initialState`](https://developers.cloudflare.com/agents/agent-class/state/#initial-state) — Default state when instance starts
 - [`setState`](https://developers.cloudflare.com/agents/agent-class/state/) — Update and persist state
-- [`onStateChanged`](https://developers.cloudflare.com/agents/agent-class/state/#synchronizing-state) — React to state changes
+- [`onStateChanged`](https://developers.cloudflare.com/agents/agent-class/state/#sync-with-clients) — React to state changes
 - [`sql`](https://developers.cloudflare.com/agents/agent-class/#sql-api) — Execute SQL queries on embedded database
 
 State resets after the session ends
@@ -771,5 +771,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent (deprecated)","description":"Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=a70cfe330765f7a7","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent (deprecated)","description":"Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/og.png?v=a70cfe330765f7a7","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

@@ -10,6 +10,8 @@ You can get a certificate regardless of whether it is active or not.
 
 - `certificate_id: string`
 
+  Unique ID of the certificate to retrieve.
+
 ### Query Parameters
 
 - `include: optional array of "content"`

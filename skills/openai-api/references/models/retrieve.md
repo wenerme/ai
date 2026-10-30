@@ -8,6 +8,8 @@ Retrieves a model instance, providing basic information about the model such as 
 
 - `model: string`
 
+  The ID of the model to use for this request
+
 ### Returns
 
 - `Model object { id, created, object, 2 more }`

@@ -8,6 +8,8 @@ Retrieves an execution environment's connection status and safe installed metada
 
 - `environment_id: string`
 
+  The ID of the environment.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns

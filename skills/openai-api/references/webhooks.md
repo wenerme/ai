@@ -169,6 +169,8 @@ Deletes a webhook endpoint for the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint to delete.
+
 ### Returns
 
 - `DeletedWebhookEndpoint object { id, deleted, object }`
@@ -329,6 +331,8 @@ Retrieves a webhook endpoint for the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint to retrieve.
+
 ### Returns
 
 - `WebhookEndpoint object { id, created_at, event_types, 5 more }`
@@ -404,6 +408,8 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 ### Path Parameters
 
 - `webhook_endpoint_id: string`
+
+  The ID of the webhook endpoint whose signing secret will be rotated.
 
 ### Body Parameters
 
@@ -492,6 +498,8 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 ### Path Parameters
 
 - `webhook_endpoint_id: string`
+
+  The ID of the webhook endpoint to test.
 
 ### Body Parameters
 
@@ -619,6 +627,8 @@ Updates a webhook endpoint for the authenticated project.
 ### Path Parameters
 
 - `webhook_endpoint_id: string`
+
+  The ID of the webhook endpoint to update.
 
 ### Body Parameters
 

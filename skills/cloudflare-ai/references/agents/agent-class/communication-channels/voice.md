@@ -12,21 +12,34 @@ image: https://developers.cloudflare.com/agents/agent-class/communication-channe
 
 # Voice
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence. Audio streams over WebSocket — no SFU or meeting infrastructure required. Beta
 
 ## Overview
 
-`@cloudflare/voice` provides two server-side mixins and matching client libraries:
+`agents/voice` provides two server-side mixins and matching client libraries:
 
 | Export | Import | Purpose |
 | --- | --- | --- |
-| `withVoice` | `@cloudflare/voice` | Full voice agent: STT, LLM, TTS, persistence |
-| `withVoiceInput` | `@cloudflare/voice` | STT-only: transcription without response |
-| `useVoiceAgent` | `@cloudflare/voice/react` | React hook for `withVoice` agents |
-| `useVoiceInput` | `@cloudflare/voice/react` | React hook for `withVoiceInput` agents |
-| `VoiceClient` | `@cloudflare/voice/client` | Framework-agnostic client |
+| `withVoice` | `agents/voice` | Full voice agent: STT, LLM, TTS, persistence |
+| `withVoiceInput` | `agents/voice` | STT-only: transcription without response |
+| `useVoiceAgent` | `agents/voice/react` | React hook for `withVoice` agents |
+| `useVoiceInput` | `agents/voice/react` | React hook for `withVoiceInput` agents |
+| `VoiceClient` | `agents/voice/client` | Framework-agnostic client |
+
+Migrating from \`@cloudflare/voice\`
+
+Voice now ships in the `agents` package (version 0.23.0 and later). The `@cloudflare/voice` package is deprecated. It still works and forwards each entry point to its replacement, so you can migrate by changing imports:
+
+| Previous import | Replacement |
+| --- | --- |
+| `@cloudflare/voice` | `agents/voice` |
+| `@cloudflare/voice/client` | `agents/voice/client` |
+| `@cloudflare/voice/react` | `agents/voice/react` |
+| `@cloudflare/voice/errors` | `agents/voice/errors` |
+
+Exported names, the voice wire protocol, and SQLite table names are unchanged.
 
 Built on Cloudflare Durable Objects, you get:
 
@@ -42,14 +55,14 @@ Built on Cloudflare Durable Objects, you get:
 ### Install
 
 ```sh
-npm install @cloudflare/voice agents
+npm install agents
 ```
 
 ### Server
 
 ```js
 import { Agent } from "agents";
-import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
+import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -70,7 +83,7 @@ import {
 	WorkersAIFluxSTT,
 	WorkersAITTS,
 	type VoiceTurnContext,
-} from "@cloudflare/voice";
+} from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -87,7 +100,7 @@ export class MyAgent extends VoiceAgent<Env> {
 ### Client (React)
 
 ```tsx
-import { useVoiceAgent } from "@cloudflare/voice/react";
+import { useVoiceAgent } from "agents/voice/react";
 
 function VoiceUI() {
 	const {
@@ -202,7 +215,7 @@ Set providers as class properties. Class field initializers run after `super()`,
 | `tts` | `TTSProvider` | Yes | Text-to-speech |
 
 ```js
-import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
+import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -213,7 +226,7 @@ export class MyAgent extends VoiceAgent {
 ```
 
 ```ts
-import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
+import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -448,7 +461,7 @@ const VoiceAgent = withVoice(Agent, {
 
 ```js
 import { Agent } from "agents";
-import { withVoiceInput, WorkersAINova3STT } from "@cloudflare/voice";
+import { withVoiceInput, WorkersAINova3STT } from "agents/voice";
 
 const InputAgent = withVoiceInput(Agent);
 
@@ -463,7 +476,7 @@ export class DictationAgent extends InputAgent {
 
 ```ts
 import { Agent } from "agents";
-import { withVoiceInput, WorkersAINova3STT } from "@cloudflare/voice";
+import { withVoiceInput, WorkersAINova3STT } from "agents/voice";
 
 const InputAgent = withVoiceInput(Agent);
 
@@ -498,7 +511,7 @@ It does **not** have TTS hooks (`beforeSynthesize`, `afterSynthesize`) or `onTur
 Wraps `VoiceClient` for `withVoice` agents. Manages connection, mic capture, playback, silence detection, and interrupt detection.
 
 ```tsx
-import { useVoiceAgent } from "@cloudflare/voice/react";
+import { useVoiceAgent } from "agents/voice/react";
 
 const selectedSpeakerId = "default";
 
@@ -572,7 +585,7 @@ Changing tuning options triggers a client reconnect (the connection key includes
 Lightweight hook for dictation and voice-to-text. Accumulates user transcripts into a single string.
 
 ```tsx
-import { useVoiceInput } from "@cloudflare/voice/react";
+import { useVoiceInput } from "agents/voice/react";
 
 function Dictation() {
 	const {
@@ -607,7 +620,7 @@ function Dictation() {
 Framework-agnostic client for environments without React.
 
 ```js
-import { VoiceClient } from "@cloudflare/voice/client";
+import { VoiceClient } from "agents/voice/client";
 
 const client = new VoiceClient({ agent: "MyAgent" });
 
@@ -635,7 +648,7 @@ client.disconnect();
 ```
 
 ```ts
-import { VoiceClient } from "@cloudflare/voice/client";
+import { VoiceClient } from "agents/voice/client";
 
 const client = new VoiceClient({ agent: "MyAgent" });
 
@@ -705,7 +718,7 @@ import {
 	WorkersAIFluxSTT,
 	WorkersAINova3STT,
 	WorkersAITTS,
-} from "@cloudflare/voice";
+} from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -735,7 +748,7 @@ import {
 	WorkersAIFluxSTT,
 	WorkersAINova3STT,
 	WorkersAITTS,
-} from "@cloudflare/voice";
+} from "agents/voice";
 
 const VoiceAgent = withVoice(Agent);
 
@@ -1115,5 +1128,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/#page","headline":"Voice","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/og.png?v=def5f75be26dd0bb","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/#page","headline":"Voice","description":"Build real-time voice agents with speech-to-text, text-to-speech, and conversation persistence over WebSocket.","url":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/og.png?v=def5f75be26dd0bb","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -8,6 +8,8 @@ Delete a file and remove it from all vector stores.
 
 - `file_id: string`
 
+  The ID of the file to use for this request.
+
 ### Returns
 
 - `FileDeleted object { id, deleted, object }`

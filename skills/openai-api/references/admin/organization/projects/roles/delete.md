@@ -8,7 +8,11 @@ Deletes a custom role from a project.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 - `role_id: string`
+
+  The ID of the role to delete.
 
 ### Returns
 

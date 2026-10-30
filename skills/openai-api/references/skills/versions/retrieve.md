@@ -8,6 +8,8 @@ Get a specific skill version.
 
 - `skill_id: string`
 
+  The identifier of the skill.
+
 - `version: string`
 
   The version number to retrieve.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf
 
 # Browser
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/browser/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Give your agent a browser it can return to on later turns. [Browser Run](https://developers.cloudflare.com/browser-run/) keeps the remote browser open, so your agent can continue from the same page with its tabs, cookies, and login session intact while the browser session remains alive.
 
@@ -31,20 +31,22 @@ Start with a [Pi Durable agent](https://developers.cloudflare.com/agents/harness
 npmyarnpnpmbun
 
 ```
-npm i agents @cloudflare/codemode @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+npm i agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/codemode
 ```
 
 ```
-yarn add agents @cloudflare/codemode @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+yarn add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/codemode
 ```
 
 ```
-pnpm add agents @cloudflare/codemode @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/codemode
 ```
 
 ```
-bun add agents @cloudflare/codemode @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/codemode
 ```
+
+The Pi packages are optional peer dependencies of `agents`, at `~1.4.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
 
 This example installs a `Browser` and `PiHarness` on a plain Durable Object. Pi chooses when to call the browser tool. [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) starts both components and provides their storage.
 
@@ -163,7 +165,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 	"name": "persistent-browser-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-28",
+	"compatibility_date": "2026-10-30",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI" },
 	"browser": { "binding": "BROWSER" },
@@ -179,7 +181,7 @@ Configure the model, browser, Worker Loader, and Durable Object bindings:
 name = "persistent-browser-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-28"
+compatibility_date = "2026-10-30"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -1036,5 +1038,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns, and can open sites your agent serves itself. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/browser/#page","headline":"Browser","description":"Give your agent a browser that remembers tabs, cookies, and logins between turns, and can open sites your agent serves itself. Use it with Pi Durable, the AI SDK, or another harness.","url":"https://developers.cloudflare.com/agents/tools/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/tools/browser/og.png?v=c6d74daaf14142d0","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

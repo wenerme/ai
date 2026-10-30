@@ -419,6 +419,8 @@ The certificate must be inactive for the organization and all projects.
 
 - `certificate_id: string`
 
+  Unique ID of the certificate to delete.
+
 ### Returns
 
 - `id: string`
@@ -614,6 +616,8 @@ You can get a certificate regardless of whether it is active or not.
 
 - `certificate_id: string`
 
+  Unique ID of the certificate to retrieve.
+
 ### Query Parameters
 
 - `include: optional array of "content"`
@@ -734,6 +738,8 @@ Modify a certificate. Note that only the name can be modified.
 ### Path Parameters
 
 - `certificate_id: string`
+
+  Unique ID of the certificate to modify.
 
 ### Body Parameters
 

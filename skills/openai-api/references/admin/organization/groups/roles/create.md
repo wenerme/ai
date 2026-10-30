@@ -8,6 +8,8 @@ Assigns an organization role to a group within the organization.
 
 - `group_id: string`
 
+  The ID of the group that should receive the organization role.
+
 ### Body Parameters
 
 - `role_id: string`

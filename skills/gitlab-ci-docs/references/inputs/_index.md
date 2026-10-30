@@ -497,7 +497,7 @@ spec:
 ---
 
 deploy:
-  script: echo "Config: $[[ inputs.custom_config ]]"
+  script: 'echo "Config: $[[ inputs.custom_config ]]"'
 ```
 
 In this example, when `deployment_type` is `custom`, the `custom_config` input appears on

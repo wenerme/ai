@@ -53,7 +53,7 @@ Configure routes and high availability for Mesh nodes.
 
 ### [Follow a guide](https://developers.cloudflare.com/mesh/guides/)
 
-Connect client devices or deploy Mesh in containers.
+Connect devices, servers, and sites, or deploy Mesh in containers.
 
 ## Mesh vs. Cloudflare Tunnel
 

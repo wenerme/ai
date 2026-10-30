@@ -8,6 +8,8 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
 - `batch_id: string`
 
+  The ID of the batch to cancel.
+
 ### Returns
 
 - `Batch object { id, completion_window, created_at, 19 more }`

@@ -10,6 +10,8 @@ the only supported modification is to update the `metadata` field.
 
 - `completion_id: string`
 
+  The ID of the chat completion to update.
+
 ### Body Parameters
 
 - `metadata: Metadata or null`

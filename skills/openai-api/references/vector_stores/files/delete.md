@@ -8,7 +8,11 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file to delete.
 
 ### Returns
 

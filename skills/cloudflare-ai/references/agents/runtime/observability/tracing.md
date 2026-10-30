@@ -1,7 +1,7 @@
 ---
 description: Trace model calls, tool runs, and approvals with Workers traces.
 title: Tracing
-image: https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/og.png?v=227a76068403c203
+image: https://developers.cloudflare.com/agents/runtime/observability/tracing/og.png?v=227a76068403c203
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/runtime/operations/observability
 
 # Tracing
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent tracing helps you understand what an agent did at every turn, including its model calls, tool runs, and approval requests. Use traces to investigate unexpected behavior, find slow operations, and review token usage.
 
@@ -52,7 +52,7 @@ Select an agent to see its traces. Each trace includes its duration, token break
 
 There are two ways to follow what an agent did: **Session replay** and **Trace**.
 
-**Session replay** shows the recorded conversation across turns, including messages, reasoning, tool calls, and subagent activity. What appears depends on your [payload recording settings](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#payload-privacy).
+**Session replay** shows the recorded conversation across turns, including messages, reasoning, tool calls, and subagent activity. What appears depends on your [payload recording settings](https://developers.cloudflare.com/agents/runtime/observability/tracing/#payload-privacy).
 
 ![Session replay showing messages, reasoning, and subagent tool calls](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1980,height=1352,format=webp/_astro/agent_tracing_session_replay.uwseMu6e.png)
 
@@ -89,7 +89,7 @@ Do not derive the agent name from a request, conversation, or user identifier. T
 
 ### Payload privacy
 
-Message and tool payloads can contain personally identifiable information. Only record payloads that are safe to store. Each integration controls payload recording differently, so configure it in the relevant [Framework setup](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#framework-setup) section.
+Message and tool payloads can contain personally identifiable information. Only record payloads that are safe to store. Each integration controls payload recording differently, so configure it in the relevant [Framework setup](https://developers.cloudflare.com/agents/runtime/observability/tracing/#framework-setup) section.
 
 Think and `wrapAISDK()` use `storeMessages` to record input and output messages on `chat` spans. They use `storeTools` to record arguments and results on `execute_tool` spans.
 
@@ -97,9 +97,11 @@ Think and `wrapAISDK()` use `storeMessages` to record input and output messages 
 
 Tracing and payload controls depend on the integration. Think and Flue instrument turns automatically. Direct AI SDK calls and custom harnesses need additional setup.
 
+The [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) does not create agent spans by itself. On a Durable Object that installs the Lifecycle directly, trace model calls with [`wrapAISDK()`](#ai-sdk) or the [Workers custom spans API](#custom-harnesses).
+
 ### Think
 
-Think automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#trace-structure). No additional tracing setup is required.
+Think automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/observability/tracing/#trace-structure). No additional tracing setup is required.
 
 #### Store payloads
 
@@ -125,7 +127,7 @@ export class MyAgent extends Think<Env> {
 
 ### Flue
 
-[Flue v2+ ↗︎](https://flueframework.com/blog/flue-2/) also automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#trace-structure). No additional tracing setup is required.
+[Flue v2+ ↗︎](https://flueframework.com/blog/flue-2/) also automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/observability/tracing/#trace-structure). No additional tracing setup is required.
 
 #### Exclude payloads
 
@@ -165,7 +167,7 @@ const tracedAI = wrapAISDK(ai);
 
 `wrapAISDK()` supports AI SDK v6 and v7. It instruments `generateText`, `streamText`, `generateObject`, and `streamObject`, creating the `invoke_agent` parent before model and tool work begins.
 
-Unlike Think, a direct AI SDK call has no Agent instance from which to infer dashboard identity. Supply the [agent identity fields](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#agent-identity) on each call.
+Unlike Think, a direct AI SDK call has no Agent instance from which to infer dashboard identity. Supply the [agent identity fields](https://developers.cloudflare.com/agents/runtime/observability/tracing/#agent-identity) on each call.
 
 Only include context that is safe to store. Do not include credentials, tokens, user input, or other secrets.
 
@@ -320,17 +322,13 @@ Beginning December 1, 2026, agent traces contribute to account-level ingestion a
 
 ## Next steps
 
-### [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/)
+### [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/observability/diagnostics-channels/)
 
 Subscribe to structured agent events for state changes, schedules, workflows, and more.
 
-### [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
+### [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/)
 
-wrangler.jsonc setup and deployment.
-
-### [Agents API](https://developers.cloudflare.com/agents/agent-class/)
-
-Complete API reference for the Agents SDK.
+Run capabilities inside any Durable Object.
 
 Was this helpful?
 
@@ -341,5 +339,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#page","headline":"Tracing","description":"Trace model calls, tool runs, and approvals with Workers traces.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/og.png?v=227a76068403c203","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/observability/tracing/#page","headline":"Tracing","description":"Trace model calls, tool runs, and approvals with Workers traces.","url":"https://developers.cloudflare.com/agents/runtime/observability/tracing/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/observability/tracing/og.png?v=227a76068403c203","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

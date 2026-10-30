@@ -8,6 +8,8 @@ Retrieves a user by their identifier.
 
 - `user_id: string`
 
+  The ID of the user.
+
 ### Returns
 
 - `OrganizationUser object { id, added_at, object, 13 more }`

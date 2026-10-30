@@ -8,6 +8,8 @@ Retrieves a project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Returns
 
 - `Project object { id, created_at, object, 5 more }`

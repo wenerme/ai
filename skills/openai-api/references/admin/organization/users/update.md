@@ -8,6 +8,8 @@ Modifies a user's role in the organization.
 
 - `user_id: string`
 
+  The ID of the user.
+
 ### Body Parameters
 
 - `developer_persona: optional string or null`

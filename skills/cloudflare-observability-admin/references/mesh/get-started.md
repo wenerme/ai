@@ -194,7 +194,7 @@ Use the Add device workflow to find the Cloudflare One Client installer and orga
 4. Open the client and select **Cloudflare Zero Trust** when prompted for a connection type.
 5. Enter the organization name displayed in the Mesh dashboard and complete authentication.
 
-The workflow does not enroll the device or verify connectivity. After the Cloudflare One Client displays **Connected**, test connectivity as described in [Connect client devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/#2-verify-connectivity).
+The workflow does not enroll the device or verify connectivity. After the Cloudflare One Client displays **Connected**, test connectivity as described in [Connect two devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/#verify-connectivity).
 
 ## 3. Test connectivity
 
@@ -263,14 +263,16 @@ If your account already has a Cloudflare One deployment, the setup wizard will n
   - Run `warp-cli connect`.
   - If your private network uses a firewall to restrict Internet traffic, ensure that it allows the [WARP ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
   - Review your [WARP daemon logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) for information about why the connection is failing.
-- **Client device cannot reach Mesh IPs** — Verify that your Split Tunnel configuration routes the Mesh IP range ( `100.96.0.0/12`) through Cloudflare. For details, refer to [Connect client devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/).
+- **Client device cannot reach Mesh IPs** — Verify that your Split Tunnel configuration routes the Mesh IP range ( `100.96.0.0/12`) through Cloudflare. For details, refer to [Connect two devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/).
 - **Windows firewall blocks Mesh traffic** — Windows Firewall blocks inbound traffic from `100.96.0.0/12` by default. Add a firewall rule that allows incoming requests from this range for your desired protocols and ports.
 
 For general client issues, refer to [Troubleshoot the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/).
 
+For unreachable Mesh IPs, routed subnets, and one-way site traffic, refer to [Troubleshoot Cloudflare Mesh connectivity](https://developers.cloudflare.com/mesh/troubleshooting/).
+
 ## Next steps
 
-- [**Connect client devices**](https://developers.cloudflare.com/mesh/guides/connect-client-devices/) — Platform-specific installation details, Split Tunnel configuration, and firewall considerations.
+- [**Connect two devices**](https://developers.cloudflare.com/mesh/guides/connect-client-devices/) — Enroll two devices and verify private connectivity between them.
 - [**Run Mesh on Linux**](https://developers.cloudflare.com/mesh/guides/run-mesh-on-linux/) — Install a Mesh node on Debian, Ubuntu, or RHEL, with each command explained.
 - [**Run in Docker / Kubernetes**](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/) — Deploy a Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD pipelines.
 - [**Add routes**](https://developers.cloudflare.com/mesh/features/routes/) — Make an entire subnet behind your node reachable (databases, printers, other servers).

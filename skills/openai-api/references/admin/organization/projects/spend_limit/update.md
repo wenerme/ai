@@ -8,6 +8,8 @@ Create or replace a project's hard spend limit.
 
 - `project_id: string`
 
+  The ID of the project whose hard spend limit is being managed.
+
 ### Body Parameters
 
 - `currency: "USD"`

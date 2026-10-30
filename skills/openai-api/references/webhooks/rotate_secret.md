@@ -8,6 +8,8 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint whose signing secret will be rotated.
+
 ### Body Parameters
 
 - `keep_old_secret_active_for_24_hours: optional boolean`

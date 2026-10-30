@@ -8,6 +8,8 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters

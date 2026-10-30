@@ -207,7 +207,7 @@ To lock an issue or merge request:
 1. Go to your merge request or issue:
    - For merge requests, select **Code** > **Merge requests**, and find your merge request.
    - For issues, select **Plan** > **Work items**, and find your issue.
-1. In the upper-right corner, select **Merge request actions** or **Issue actions**
+1. In the upper-right corner, select **More actions** or **Issue actions**
    (), then select **Lock discussion**.
 
 GitLab adds a system note to the page details.

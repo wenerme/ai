@@ -8,6 +8,8 @@ Retrieves an organization role.
 
 - `role_id: string`
 
+  The ID of the role to retrieve.
+
 ### Returns
 
 - `Role object { id, description, name, 4 more }`

@@ -8,6 +8,8 @@ Returns information about a specific file.
 
 - `file_id: string`
 
+  The ID of the file to use for this request.
+
 ### Returns
 
 - `FileObject object { id, bytes, created_at, 6 more }`

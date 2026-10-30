@@ -1851,6 +1851,31 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `repository` | [`ArtifactRegistryRepository`](objects.md#artifactregistryrepository) | Repository holding the deleted version. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not applied. |
 
+## `artifactRegistryVersionsBulkDelete`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Deletes up to 1000 versions of one package in an Artifact Registry repository, each with its files. Permanently deletes published versions on a hosted repository and evicts cached versions on a remote repository. A virtual repository holds no versions, so the mutation returns not found in `errors`. Artifact Registry applies the batch in the background, so the mutation reports acceptance rather than completion, and a version can still be listed until the batch reaches it. Re-read the version list to see the result. IDs that name no version of the package are ignored. On a hosted npm repository, deleting a version also removes its dist-tags, and deleting a package's last version removes the package. Applies to Maven and npm repositories only.
+
+**Input type:** `ArtifactRegistryVersionsBulkDeleteInput`
+
+### `artifactRegistryVersionsBulkDelete` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `ids` | [`[ID!]!`](scalars.md#id) | IDs of the versions to delete in Artifact Registry, as returned by the `id` field on a version. Not GitLab global IDs. Takes 1 to 1000 entries, and a repeated ID counts toward the limit. |
+| `name` | [`String!`](scalars.md#string) | Name of the repository holding the package, unique within the organization. |
+| `packageId` | [`ID!`](scalars.md#id) | ID of the package holding the versions in Artifact Registry, as returned by the `id` field on a package. Not a GitLab global ID. |
+
+### `artifactRegistryVersionsBulkDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `repository` | [`ArtifactRegistryRepository`](objects.md#artifactregistryrepository) | Repository holding the deleted versions. Counters were read before the deletion applied, so they can lag its result. Null when the batch was refused or not accepted. |
+
 ## `ascpComponentCreate`
 
 - Status: Experiment

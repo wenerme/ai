@@ -18,27 +18,27 @@ on your GitLab instance. When turned on, only authenticated
 <i class="fa-youtube-play" aria-hidden="true"></i>
 For a demonstration, see [Pages access controls](https://www.youtube.com/watch?v=tSPAr5mQYc8).
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. To turn on access control, turn on the **Pages** toggle. If you don't see the toggle,
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To turn on access control, turn on the  toggle. If you don't see the toggle,
    that means it isn't turned on. Ask your administrator to [turn it on](../../../administration/pages/_index.md#access-control).
 
 1. Use the Pages access control dropdown list to set who can view pages hosted
    with GitLab Pages, depending on your project's visibility:
 
    - If your project is private:
-     - **Only project members**: Only [project members](../members/_index.md) can browse the website.
-     - **Everyone**: Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
+     - : Only [project members](../members/_index.md) can browse the website.
+     - : Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
    - If your project is internal:
-     - **Only project members**: Only project members can browse the website.
-     - **Everyone with access**: Everyone logged into GitLab can browse the website, no matter their project membership. [External users](../../../administration/external_users.md) can access the website only if they have a membership in the project.
-     - **Everyone**: Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
+     - : Only project members can browse the website.
+     - : Everyone logged into GitLab can browse the website, no matter their project membership. [External users](../../../administration/external_users.md) can access the website only if they have a membership in the project.
+     - : Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
    - If your project is public:
-     - **Only project members**: Only project members can browse the website.
-     - **Everyone with access**: Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
+     - : Only project members can browse the website.
+     - : Everyone, both logged into and logged out of GitLab, can browse the website, no matter their project membership.
 
-1. Select **Save changes**. Your changes might not take effect immediately. GitLab Pages uses
+1. Select . Your changes might not take effect immediately. GitLab Pages uses
    a caching mechanism for efficiency. Your changes may not take effect until that cache is
    invalidated, which usually takes less than a minute.
 
@@ -50,7 +50,7 @@ When [SAML SSO](../../group/saml_sso/_index.md) is configured for the associated
 and access control is turned on, users must authenticate using SSO before accessing the website.
 
 When public access is turned off at the [instance](../../../administration/pages/_index.md#disable-public-access-to-all-pages-sites)
-or [group](#remove-public-access-for-group-pages) level, projects lose the **Everyone**
+or [group](#remove-public-access-for-group-pages) level, projects lose the
 visibility level option and are restricted to project members or everyone with access,
 depending on the project's visibility setting.
 
@@ -69,11 +69,11 @@ Prerequisites
 
 To do this:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Permissions and group features**.
-1. Under **Pages public access**, select the **Remove public access** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , select the  checkbox.
+1. Select .
 
 GitLab Pages uses a cache for efficiency. Changes to access settings typically take effect in one minute when the cache updates.
 
@@ -105,7 +105,7 @@ To sign out of your GitLab Pages website, revoke the application access token
 for GitLab Pages:
 
 1. In the upper-right corner, select your avatar.
-1. Select **Edit profile**.
-1. In the left sidebar, select **Access** > **Applications**.
-1. In the **Authorized applications** section, find the **GitLab Pages**
-   entry, and select **Revoke**.
+1. Select .
+1. In the left sidebar, select  > .
+1. In the  section, find the **GitLab Pages**
+   entry, and select .

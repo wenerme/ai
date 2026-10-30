@@ -8,6 +8,8 @@ Creates a custom role for a project.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 ### Body Parameters
 
 - `permissions: array of string`

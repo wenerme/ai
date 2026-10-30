@@ -8,7 +8,11 @@ Retrieves an organization role assigned to a user.
 
 - `user_id: string`
 
+  The ID of the user to inspect.
+
 - `role_id: string`
+
+  The ID of the organization role to retrieve for the user.
 
 ### Returns
 

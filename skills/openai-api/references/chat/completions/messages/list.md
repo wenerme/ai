@@ -10,6 +10,8 @@ returned.
 
 - `completion_id: string`
 
+  The ID of the chat completion to retrieve messages from.
+
 ### Query Parameters
 
 - `after: optional string`

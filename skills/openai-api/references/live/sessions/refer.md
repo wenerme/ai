@@ -8,6 +8,8 @@ Transfer a SIP call to another destination. Supply a nonblank target_uri for the
 
 - `session_id: string`
 
+  Opaque Live session identifier from the creation response or incoming-call webhook. Preserve the returned value unchanged, including its prefix.
+
 ### Body Parameters
 
 - `target_uri: string`

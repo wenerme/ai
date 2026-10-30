@@ -8,6 +8,8 @@ Retrieve a ChatKit thread by its identifier.
 
 - `thread_id: string`
 
+  Identifier of the ChatKit thread to retrieve.
+
 ### Returns
 
 - `ChatKitThread object { id, created_at, object, 3 more }`

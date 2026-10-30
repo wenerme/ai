@@ -198,6 +198,8 @@ Delete an invite. If the invite has already been accepted, it cannot be deleted.
 
 - `invite_id: string`
 
+  The ID of the invite to delete.
+
 ### Returns
 
 - `id: string`
@@ -427,6 +429,8 @@ Retrieves an invite.
 ### Path Parameters
 
 - `invite_id: string`
+
+  The ID of the invite to retrieve.
 
 ### Returns
 

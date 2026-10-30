@@ -45,8 +45,9 @@ Prerequisites:
 - You must have the Owner role for a top-level group.
 - You must control a custom domain `example.com` or subdomain `subdomain.example.com` that matches the email domain you want to verify.
 - You must be able to create DNS `TXT` records for your domain to prove ownership.
-- You must have a dedicated project in the top-level group that uses
-  [GitLab Pages](../project/pages/_index.md).
+- You must have a project in the top-level group with
+  [GitLab Pages](../project/pages/_index.md) enabled.
+  You do not have to deploy a site.
 
 To add a custom domain for a group:
 

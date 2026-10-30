@@ -88,6 +88,12 @@ to run as a database superuser.
 If the `pg_stat_activity` privileges are missing after the install, the status Rake task
 prints the same statements.
 
+Without the privileges of the `pg_read_all_stats` role, `pg_ash` samples only the sessions of
+the database user that GitLab connects as.
+PostgreSQL hides what the sessions of other users are doing, such as a console session that holds a lock.
+In this case, the install Rake task prints a warning with the `GRANT` statement.
+The `pg_read_all_stats` role also allows reading the queries and statistics of all database users.
+
 ### Linux package (Omnibus)
 
 To install `pg_ash`:
@@ -168,6 +174,11 @@ To remove `pg_ash` and every sample it holds:
 sudo -u git -H bundle exec rake gitlab:db:pg_ash:uninstall RAILS_ENV=production
 ```
 
+Each GitLab version supports one `pg_ash` version.
+If the  tab says
+that this version of GitLab needs another `pg_ash` version, for example after you upgrade GitLab,
+uninstall `pg_ash` and install it again. Uninstalling deletes every sample.
+
 To turn on sampling:
 
 1. Sign in as a user with administrator access.
@@ -190,6 +201,87 @@ Each Sidekiq process reads the new value in up to 90 seconds.
 `PG_ASH_SAMPLER_INTERVAL_SECONDS` sets how often a Sidekiq process checks whether it should take
 over as the sampling process.
 It does not set the sample interval.
+
+### View active session history
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/608101) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+View the load on the main database in a time range, by wait event type, and the queries that caused it.
+
+Prerequisites:
+
+- Administrator access.
+- `pg_ash` installed. Session sampling must be turned on to record new activity.
+
+To view active session history:
+
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Select the  tab.
+1. Optional. From the  dropdown list, select a time range.
+   The default is the last hour.
+   To choose a start and end, select ,
+   then select the  and  dates and times.
+
+A time range can be up to 24 hours long, and start up to 30 days ago.
+A time range shorter than 61 minutes starts earlier, so that it is 61 minutes long.
+The data ends at the last minute that the `pg_ash_rollup_minute_worker` job summarized,
+so the newest data is usually one or two minutes old.
+The tab shows:
+
+- : The share of the load for each wait event type,
+  and the average and peak number of active sessions.
+  `CPU*` counts sessions that were active without a wait event.
+  These sessions were running on the CPU, or in a part of PostgreSQL that does not report wait events.
+- : The queries that caused the most load, across all wait event types.
+
+When a time range starts before the oldest minute summary in `pg_ash`,
+for example on the first day after you install it, `pg_ash` reads hourly summaries instead:
+
+- The time range widens to whole hours.
+  The current hour has no hourly summary yet, so its load is missing.
+-  shows .
+- Time without summarized samples, such as before the install or the current hour, counts as no load,
+  so averages are lower than the load while sampling ran.
+
+The tab shows only sessions on the primary database, so load on read replicas does not appear.
+Sessions of other database users appear only if the GitLab database user has the `pg_read_all_stats` role.
+
+`pg_ash` weights every stored sample by the current sample interval.
+If you change the interval, the numbers for earlier time ranges change by the same ratio.
+For example, after a change from one to five seconds, earlier load shows five times too high.
+
+#### Query IDs and text
+
+`pg_ash` records the query ID that PostgreSQL reports for each active session.
+PostgreSQL computes query IDs when `compute_query_id` is `on`,
+or when it is `auto` and the `pg_stat_statements` library is loaded.
+Load without a query ID shows as .
+This load includes queries that are waiting for a table lock,
+because PostgreSQL usually assigns a query ID only after a query gets its table locks.
+In , this row also includes the load
+from queries outside the top queries of each minute,
+or with fewer than three samples in that minute.
+On hourly summaries, it also includes queries outside the top 100 of each hour.
+
+The query text comes from the `pg_stat_statements` extension in the main database.
+Queries, transaction commands, and schema changes or maintenance that can hold heavy locks,
+such as `ALTER TABLE`, `CREATE INDEX`, or `VACUUM`, show their text.
+Values, such as strings and numbers, show as placeholders, for example `$1`.
+Comments are removed, and names, such as table and column names, show as written.
+A query shows  when:
+
+- The extension is not installed or no longer has the query.
+- The statement is another type, such as `ALTER ROLE` or `COPY` to a file,
+  because these can contain passwords.
+- The text contains a backslash. With `standard_conforming_strings` turned off,
+  a backslash can change where a value ends.
+- The statement has not finished. `pg_stat_statements` stores text only for finished statements,
+  so a schema change that is still waiting for a lock shows only its query ID.
+  The text appears after the same statement finishes, also for the minutes it spent waiting.
+
+To read a query that does not fit, select .
+Query text is limited to 1,000 characters.
 
 ### Rollup and retention
 

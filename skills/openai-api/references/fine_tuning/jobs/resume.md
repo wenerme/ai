@@ -8,6 +8,8 @@ Resume a fine-tune job.
 
 - `fine_tuning_job_id: string`
 
+  The ID of the fine-tuning job to resume.
+
 ### Returns
 
 - `FineTuningJob object { id, created_at, error, 16 more }`

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/think/configuration/og
 
 # Configuration
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think is configured by overriding methods and properties on your `Think` subclass. Most agents only override `getModel()`.
 
@@ -21,16 +21,16 @@ Think is configured by overriding methods and properties on your `Think` subclas
 | Method / Property | Default | Description |
 | --- | --- | --- |
 | `getModel()` | throws | Return the `LanguageModel` to use |
-| `getSystemPrompt()` | `"You are a helpful assistant."` | System prompt (fallback when no context blocks) |
+| `getSystemPrompt()` | `"You are a helpful assistant."` | Instructions at the top of the system prompt, above context blocks. The default is used only with no context blocks |
 | `getTools()` | `{}` | AI SDK `ToolSet` for the agentic loop |
 | `getScheduledTasks()` | `{}` | Code-declared recurring prompts or handlers — refer to [Scheduled tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) |
 | `getDefaultTimezone()` | `undefined` | Default timezone for wall-clock scheduled tasks |
 | `getMessengers()` | `{}` | Messenger ingress and delivery declarations — refer to [Messengers](https://developers.cloudflare.com/agents/harnesses/think/messengers/) |
 | `maxSteps` | `10` | Max tool-call rounds per turn |
 | `sendReasoning` | `true` | Send reasoning chunks to chat clients |
-| `configureSession()` | identity | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) |
-| `getSkills()` | `[]` | Return Agent Skills sources for on-demand skill activation — refer to [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) |
-| `getSkillScriptRunner()` | `null` | Enable the optional `run_skill_script` tool |
+| `configureSession()` | identity | Add context blocks, compaction, search, skills — refer to [Sessions](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/) |
+| `getSkills()` | `[]` | Return Agent Skills sources for on-demand skill activation — refer to [Agent Skills](https://developers.cloudflare.com/agents/skills/) |
+| `getSkillScriptRunner()` | `null` | Enable the experimental `run_skill_script` tool — refer to [Execution](https://developers.cloudflare.com/agents/skills/execution/) |
 | `messageConcurrency` | `"queue"` | How overlapping submits behave — refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/#message-concurrency) |
 | `includeMcpTools` | `true` | Convert connected MCP tools to AI SDK tools and add them to model turns. Refer to [MCP tools](https://developers.cloudflare.com/agents/harnesses/think/tools/#mcp-tools) |
 | `waitForMcpConnections` | `false` | Wait for MCP servers before inference |
@@ -111,7 +111,7 @@ export class MyAgent extends Think<Env> {
 
 ## Session integration
 
-Think stores conversations in a [Session](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) — the storage layer that holds your messages and gives the model writable memory. Two concepts come up here: **context blocks** are labelled sections of the system prompt the model can read and update (for example, a `memory` block of facts about the user), and **compaction** summarizes older messages so long conversations stay within the model's context window. Override `configureSession` to add persistent memory, compaction, search, and skills:
+Think stores conversations in a [Session](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/) — the storage layer that holds your messages and gives the model writable memory. Two concepts come up here: **context blocks** are labelled sections of the system prompt the model can read and update (for example, a `memory` block of facts about the user), and **compaction** summarizes older messages so long conversations stay within the model's context window. Override `configureSession` to add persistent memory, compaction, search, and skills:
 
 ```js
 import { Think, Session } from "@cloudflare/think";
@@ -157,9 +157,9 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-When `configureSession` adds context blocks, Think builds the system prompt from those blocks instead of using `getSystemPrompt()`. Think's `this.messages` getter reads directly from Session's tree-structured storage.
+When `configureSession` adds context blocks, Think builds the system prompt from an overridden `getSystemPrompt()` followed by those blocks. The default `getSystemPrompt()` is only used when there are no blocks. Think's `this.messages` getter reads directly from Session's tree-structured storage.
 
-For the full Session API — context blocks, compaction, search, skills, and multi-session support — refer to the [Sessions documentation](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/).
+For the full Session API — context blocks, compaction, search, skills, and multi-session support — refer to the [Sessions documentation](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/).
 
 ## Package exports
 
@@ -192,7 +192,7 @@ Bundled with `@cloudflare/think`:
 | --- | --- |
 | `@cloudflare/codemode` | Code execution for `createExecuteTool()` |
 
-The Agent Skills engine and its script runner live in [`agents/skills`](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/), so skill scripts pull `@cloudflare/worker-bundler` and `just-bash` through `agents`, not Think.
+The Agent Skills parser, sources, and script runner live in [`agents/skills`](https://developers.cloudflare.com/agents/skills/), so the script runner pulls `just-bash` through `agents`, not Think.
 
 Was this helpful?
 
@@ -203,5 +203,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/configuration/og.png?v=933c898d421435fa","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/think/configuration/og.png?v=933c898d421435fa","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

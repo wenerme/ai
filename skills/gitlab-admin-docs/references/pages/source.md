@@ -468,10 +468,10 @@ Prerequisites:
 
 To change this value:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Preferences**.
-1. Expand **Pages**.
-1. Update the value for **Maximum size of pages (MB)**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Update the value for .
 
 ## Backup
 

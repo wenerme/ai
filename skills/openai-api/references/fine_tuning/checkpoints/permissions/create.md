@@ -10,6 +10,8 @@ This enables organization owners to share fine-tuned models with other projects 
 
 - `fine_tuned_model_checkpoint: string`
 
+  The ID of the fine-tuned model checkpoint to create a permission for.
+
 ### Body Parameters
 
 - `project_ids: array of string`

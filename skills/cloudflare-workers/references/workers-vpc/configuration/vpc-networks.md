@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/
 
 # VPC Networks
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
@@ -53,7 +53,7 @@ The `remote` flag must be set to `true` to enable remote bindings during local d
 
 ## Bind to Cloudflare Mesh
 
-[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker to Cloudflare Mesh using `network_id: "cf1:network"`, your Worker can reach:
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) connects your services, devices, and Workers through Cloudflare's global network. When you bind a Worker using `network_id: "cf1:network"`, the binding uses your account's default virtual network. Your Worker can reach:
 
 - Any Mesh node or client device in your account
 - Subnet routes and hostname routes announced through Cloudflare Tunnel or Cloudflare Mesh
@@ -96,6 +96,77 @@ Bind to Cloudflare Mesh using `network_id: "cf1:network"`:
 binding = "MY_VPC"
 network_id = "cf1:network"
 remote = true
+```
+
+## Select a virtual network
+
+Set `network_id` to `cf1:vnet:<VNET_UUID>` to access services through a specific configured [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/). Separate bindings can select different virtual networks, including when those networks use overlapping IP ranges.
+
+For example, the following bindings select production and staging virtual networks:
+
+```jsonc
+{
+  "vpc_networks": [
+    {
+      "binding": "PRODUCTION",
+      "network_id": "cf1:vnet:<PRODUCTION_VNET_UUID>",
+      "remote": true
+    },
+    {
+      "binding": "STAGING",
+      "network_id": "cf1:vnet:<STAGING_VNET_UUID>",
+      "remote": true
+    }
+  ]
+}
+```
+
+```toml
+[[vpc_networks]]
+binding = "PRODUCTION"
+network_id = "cf1:vnet:<PRODUCTION_VNET_UUID>"
+remote = true
+
+[[vpc_networks]]
+binding = "STAGING"
+network_id = "cf1:vnet:<STAGING_VNET_UUID>"
+remote = true
+```
+
+Each binding can reach a different backend at the same private IP address:
+
+*src/index.jsjs*
+
+```js
+export default {
+	async fetch(_request, env) {
+		const production = await env.PRODUCTION.fetch("http://10.0.1.50/status");
+		const staging = await env.STAGING.fetch("http://10.0.1.50/status");
+
+		return Response.json({
+			production: await production.text(),
+			staging: await staging.text(),
+		});
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+export default {
+	async fetch(_request: Request, env: Env): Promise<Response> {
+		const production = await env.PRODUCTION.fetch(
+			"http://10.0.1.50/status",
+		);
+		const staging = await env.STAGING.fetch("http://10.0.1.50/status");
+
+		return Response.json({
+			production: await production.text(),
+			staging: await staging.text(),
+		});
+	},
+} satisfies ExportedHandler<Env>;
 ```
 
 ## Runtime usage
@@ -161,17 +232,17 @@ Note
 VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) both connect Workers to private infrastructure, but they make different trade-offs.
 
 - **Use VPC Services** when you have a known set of targets and want each binding scoped to a specific host and port.
-- **Use VPC Networks** when you need broader access — an entire Cloudflare Tunnel or all of Cloudflare Mesh — and want the URL in your `fetch()` call to control routing at runtime.
+- **Use VPC Networks** when you need broad access — an entire Cloudflare Tunnel or routes in a virtual network — and want the URL in your `fetch()` call to control routing at runtime.
 
 The following table summarizes the differences:
 
 | Feature | VPC Networks | VPC Services |
 | --- | --- | --- |
-| Scope | A single Cloudflare Tunnel, or Cloudflare Mesh and Cloudflare WAN routes | Specific host + port |
-| Configuration | `tunnel_id` (single Cloudflare Tunnel) or `cf1:network` (account-wide) | `service_id` |
+| Scope | Cloudflare Tunnel or routes in a virtual network | Specific host + port |
+| Configuration | `tunnel_id`, `cf1:network`, or `cf1:vnet:<UUID>` | `service_id` |
 | Protocols | HTTP (`fetch()`) and TCP (`connect()`) | HTTP (`fetch()`) or TCP (via [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)) |
 | Service registration | Not required | Required for each target |
-| Use when | Dynamic discovery, network-wide access, reaching services across your account | Fixed, cataloged services |
+| Use when | Dynamic discovery or access to routes in a virtual network | Fixed, cataloged services |
 
 ## Next steps
 
@@ -190,5 +261,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

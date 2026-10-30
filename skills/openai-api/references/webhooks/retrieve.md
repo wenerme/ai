@@ -8,6 +8,8 @@ Retrieves a webhook endpoint for the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint to retrieve.
+
 ### Returns
 
 - `WebhookEndpoint object { id, created_at, event_types, 5 more }`

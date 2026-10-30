@@ -10,6 +10,8 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
 - `fine_tuned_model_checkpoint: string`
 
+  The ID of the fine-tuned model checkpoint to get permissions for.
+
 ### Query Parameters
 
 - `after: optional string`

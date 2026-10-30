@@ -8,6 +8,8 @@ Updates project data retention controls.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 ### Body Parameters
 
 - `retention_type: "organization_default" or "none" or "zero_data_retention" or 3 more`

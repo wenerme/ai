@@ -8,7 +8,11 @@ Retrieves a user in a group.
 
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 - `user_id: string`
+
+  The ID of the user to retrieve from the group.
 
 ### Returns
 

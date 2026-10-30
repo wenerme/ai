@@ -8,13 +8,19 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
 
+  The ID of the subagent in this session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of a turn belonging to this subagent.
 
   `minLength: 0`, `maxLength: 1048576`
 

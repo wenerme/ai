@@ -8,6 +8,8 @@ Get status updates for a fine-tuning job.
 
 - `fine_tuning_job_id: string`
 
+  The ID of the fine-tuning job to get events for.
+
 ### Query Parameters
 
 - `after: optional string`

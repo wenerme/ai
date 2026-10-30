@@ -1,7 +1,7 @@
 ---
-description: Connect two private networks using Cloudflare Mesh nodes and Cloudflare's network.
-title: Network to network
-image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/og.png?v=43aefad2275200ab
+description: Connect two sites with Cloudflare Mesh by routing traffic in both directions between private subnets through Mesh nodes.
+title: Connect two private networks with Cloudflare Mesh
+image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/og.png?v=19e1a35d3288eda9
 ---
 
 [Skip to content](#main-content)
@@ -10,81 +10,112 @@ image: https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/networ
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Network to network
+# Connect two private networks with Cloudflare Mesh
 
-Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Connect two separate private networks so devices on each network can send and receive traffic in both directions through Cloudflare. This is useful when you need to link office locations, data centers, or cloud environments. For example, employees in one office could access a file server, printer, or internal application in another office.
+Connect two sites, offices, or cloud networks with [Cloudflare Mesh](https://developers.cloudflare.com/mesh/). A Linux Mesh node at each site carries traffic between the private subnets through Cloudflare. Hosts behind the nodes do not need the Cloudflare One Client.
 
-To explore other connection scenarios, refer to [Replace your VPN](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/).
+This example uses separate subnets and tests traffic in both directions:
 
-## How it works
+| Site | Private subnet | Mesh node local IP | Test host IP |
+| --- | --- | --- | --- |
+| Site A | `10.0.0.0/24` | `10.0.0.10` | `10.0.0.50` |
+| Site B | `192.168.1.0/24` | `192.168.1.10` | `192.168.1.50` |
 
-[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector) lets you deploy mesh nodes — lightweight network connectors that you install on a single Linux device in each network. That device handles traffic for the entire network: it sends outbound traffic to Cloudflare and receives inbound traffic back, then passes it to the right device on the network. Because of this, other devices on the network do not need to install any software.
+Replace these addresses with your own. The subnets must not overlap each other or your Mesh IP range.
 
 ## Prerequisites
 
-- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
-- A Linux device or virtual machine on your first private network. This is where you install your first mesh node.
-- A second Linux device or virtual machine on a separate private network. This is where you install your second mesh node.
+- A [supported Linux host](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#linux) at each site, with a stable local IP and administrator access
+- Access to each site's router or cloud route table to direct traffic to its local Mesh node
+- A test service on a host in each subnet, such as SSH on TCP port `22`
+- Netcat ( `nc`) installed on the hosts where you will run the TCP tests
 
-Note
+Before you begin, [set up Cloudflare Mesh](https://developers.cloudflare.com/mesh/get-started/) for your account. The setup wizard configures device enrollment, Mesh IP assignment, enrolled-device reachability, and Gateway proxying.
 
-Mesh nodes are currently Linux-only. For more details on requirements, refer to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/).
+If your account already uses Cloudflare One, verify the [required account settings](https://developers.cloudflare.com/mesh/get-started/#required-account-settings). Existing settings are not overwritten by the setup wizard.
 
-## Step 1: Create your first mesh node
+For containers, use separate node identities and review the [container source NAT behavior](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/#source-nat/) before configuring return routes.
+
+## Connect a node at each site
 
 1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
-2. Select **Add participant** > **Add node**.
-3. Enter a name for the node (for example, `office-a`).
-4. Follow the wizard to configure enrollment and device profile settings.
-5. Copy the install commands from the wizard and run them on your Linux device.
-6. After the node connects, the dashboard confirms it is online.
+2. Select **Add participant** > **Add node**. Name the node `site-a`, select **Create node**, and then select **Linux**.
+3. Run the displayed installation and registration commands on the Linux host at Site A. Confirm that the node appears as **Online**.
+4. Repeat the procedure at Site B with a new node named `site-b`. Use the new node's installation commands and token. Each site needs a distinct node identity.
+5. Confirm both nodes appear as **Online** and record their local IPs and Mesh IPs.
 
-## Step 2: Add a route for the first network
+Each node must forward traffic for its subnet. The Linux installation commands include persistent IP forwarding. On both hosts, verify that IPv4 forwarding is on:
 
-1. Go to the node detail page for your first node.
-2. Select the **Routes** tab.
-3. Select **Add a route**.
-4. Enter the IP range of your first network (for example, `10.0.0.0/24`).
-5. Select **Create**.
+```sh
+sysctl net.ipv4.ip_forward
+```
 
-## Step 3: Create your second mesh node
+If the output is not `net.ipv4.ip_forward = 1`, follow [Make IP forwarding persistent](https://developers.cloudflare.com/mesh/best-practices/#make-ip-forwarding-persistent/). Cloud virtual machines may also require [provider-specific forwarding settings](https://developers.cloudflare.com/mesh/best-practices/#cloud-vpc-deployments/).
 
-Repeat [Step 1](#step-1-create-your-first-mesh-node) on a Linux device in your second network. Give it a distinct name (for example, `office-b`).
+If a node uses UFW, firewalld, nftables, or another host firewall, allow forwarded traffic between its local network and Cloudflare One Client interfaces. Also check that cloud firewall rules or security groups allow the forwarded traffic. Enabling `net.ipv4.ip_forward` does not override firewall rules that drop forwarded packets.
 
-## Step 4: Add a route for the second network
+## Advertise each local subnet
 
-Repeat [Step 2](#step-2-add-a-route-for-the-first-network) for your second node, entering the IP range of your second network (for example, `192.168.1.0/24`). The IP range must not overlap with your first network.
+A [CIDR route](https://developers.cloudflare.com/mesh/features/routes/#manage-cidr-routes) tells Cloudflare which node can reach a private subnet.
 
-## Step 5: Forward device traffic
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh** and select `site-a`. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+2. In the **Routes** tab, select **Add route**. Enter `10.0.0.0/24` and select **Add route**.
+3. Select `site-b` and add a route for `192.168.1.0/24`.
 
-If the mesh node is installed on your network's router (the device that serves as the default gateway), other devices on the network automatically send traffic through it. No additional configuration is needed, and you can skip this step.
+Advertise only subnets that the node can reach on its own local network. A route to a node's Mesh IP is not a substitute for a route to hosts behind that node.
 
-If the mesh node is installed on a different device, other devices on the network need a static route so they know to send cross-network traffic to the mesh node. Without this route, devices do not know where to send traffic destined for the other network.
+## Route remote subnets through Cloudflare
 
-For details on routing options, refer to [Routes](https://developers.cloudflare.com/mesh/features/routes/).
+Each node must send traffic for the **other** site's subnet through Cloudflare. Check the [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) settings in the device profile applied to each node:
 
-## Step 6: Verify your connection
+| Node | Include mode | Exclude mode |
+| --- | --- | --- |
+| `site-a` | Include `100.96.0.0/12` and `192.168.1.0/24` | Do not exclude either range or a parent range containing it |
+| `site-b` | Include `100.96.0.0/12` and `10.0.0.0/24` | Do not exclude either range or a parent range containing it |
 
-Devices on both networks can now communicate through Cloudflare. To verify connectivity, try reaching a device on the opposite network (for example, `ping 192.168.1.100` from a device on your first network).
+Use your configured device IP range if it differs from `100.96.0.0/12`. On each node, run `warp-cli settings` to confirm which [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#via-the-cli) is applied. If both nodes share a profile, changing it affects both sites. Confirm that `site-a` can still reach `10.0.0.50` locally and `site-b` can still reach `192.168.1.50` locally.
 
-## Recommended next steps
+## Configure the site routers
 
-After verifying your connection, consider securing your connected networks with policies and access controls:
+When a node is not the local default gateway, add static routes on the site's router. The next hop is the node's **local IP**, not its Mesh IP:
 
-- **Set up Gateway policies**: By default, all traffic between your network segments flows through Cloudflare without restriction. Gateway policies let you scan, filter, and log traffic between your networks. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
-- **Create an Access application**: Restrict access to specific services or hosts on your connected networks with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
-- **Enable high availability**: Deploy multiple replicas of each mesh node for automatic failover. For more information, refer to [High availability](https://developers.cloudflare.com/mesh/features/high-availability/).
+1. On the Site A router, route `192.168.1.0/24` to `10.0.0.10`.
+2. On the Site B router, route `10.0.0.0/24` to `192.168.1.10`.
 
-For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
+These routes also provide the return path: a reply from Site B to a Site A host returns through `site-b`, and vice versa. To reach hosts from enrolled devices by Mesh IP, also route `100.96.0.0/12` to the local node at **each** site. If a node is the site's default gateway, hosts already send traffic through it and those additional static routes are not needed.
 
-## Troubleshoot
+## Verify both directions
 
-If you have issues connecting, refer to these resources:
+Confirm that an SSH service listens on each test host, or use the port of another service. Test from a host **behind** each node, not only from the nodes themselves:
 
-- [Tips and best practices](https://developers.cloudflare.com/mesh/best-practices/): review common Cloudflare Mesh configuration tips and troubleshooting strategies.
-- [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
+1. On Site A host `10.0.0.50`, test Site B host `192.168.1.50`:
+
+   ```sh
+   nc -vz 192.168.1.50 22
+   ```
+
+2. On Site B host `192.168.1.50`, test Site A host `10.0.0.50`:
+
+   ```sh
+   nc -vz 10.0.0.50 22
+   ```
+
+A successful TCP connection confirms the service path. If a test fails, check forwarding, Split Tunnels, return routes, destination firewalls, and [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/). `ping` requires the ICMP Gateway proxy. For a symptom-by-symptom checklist, refer to [Troubleshoot Cloudflare Mesh connectivity](https://developers.cloudflare.com/mesh/troubleshooting/).
+
+## Secure and monitor the connection
+
+Use [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) to control which sources can reach each destination IP and port. You can combine network policies with [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) for enrolled client devices.
+
+Review allowed and blocked connections in [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network). Client device traffic includes the enrolled user identity. Mesh node traffic uses the identity `warp_connector@<your-team-name>.cloudflareaccess.com`.
+
+## Next steps
+
+- [Connect two servers](https://developers.cloudflare.com/mesh/guides/connect-servers/) by Mesh IP without subnet routing.
+- [Configure high availability](https://developers.cloudflare.com/mesh/features/high-availability/) for routed subnets.
+- [Review MTU recommendations](https://developers.cloudflare.com/mesh/best-practices/#mtu-and-packet-fragmentation/) if large packets fail.
+- [Explore other VPN replacement scenarios](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/).
 
 Was this helpful?
 
@@ -95,5 +126,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/#page","headline":"Network to network","description":"Connect two private networks using Cloudflare Mesh nodes and Cloudflare's network.","url":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/og.png?v=43aefad2275200ab","dateModified":"2026-09-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/mesh/guides/connect-sites/#page","headline":"Connect two private networks with Cloudflare Mesh","description":"Connect two sites with Cloudflare Mesh by routing traffic in both directions between private subnets through Mesh nodes.","url":"https://developers.cloudflare.com/mesh/guides/connect-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/og.png?v=19e1a35d3288eda9","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux","Private networks"]}
 ```

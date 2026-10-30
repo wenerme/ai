@@ -8,6 +8,8 @@ Retrieves an invite.
 
 - `invite_id: string`
 
+  The ID of the invite to retrieve.
+
 ### Returns
 
 - `Invite object { id, created_at, email, 6 more }`

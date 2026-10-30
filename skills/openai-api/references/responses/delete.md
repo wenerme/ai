@@ -8,6 +8,8 @@ Deletes a model response with the given ID.
 
 - `response_id: string`
 
+  The ID of the response to delete.
+
 ### Returns
 
 - `id: string`

@@ -45,33 +45,33 @@ Prerequisites:
 
 ### From a project
 
-1. In the top bar, select **Search or go to** and find your project.
-1. On the project page, select the **Code** dropdown in the upper-right corner, then in the **Workspaces** section, select **New workspace**.
-1. From the **Cluster agent** dropdown list, select a cluster agent owned by the group the project belongs to.
-1. From the **Git reference** dropdown list, select the branch, tag, or commit hash
+1. In the top bar, select  and find your project.
+1. On the project page, select the  dropdown in the upper-right corner, then in the  section, select .
+1. From the  dropdown list, select a cluster agent owned by the group the project belongs to.
+1. From the  dropdown list, select the branch, tag, or commit hash
    GitLab uses to create the workspace. By default, this is the branch you're viewing.
-1. From the **Devfile** dropdown list, select one of the following:
+1. From the  dropdown list, select one of the following:
    - [GitLab default devfile](_index.md#gitlab-default-devfile).
    - [Custom devfile](_index.md#custom-devfile).
-1. In **Variables**, enter the keys and values of the environment variables you want to inject into the workspace.
-   To add a new variable, select **Add variable**.
-1. Select **Create workspace**.
+1. In , enter the keys and values of the environment variables you want to inject into the workspace.
+   To add a new variable, select .
+1. Select .
 
 ### From a merge request
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Code** > **Merge requests**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the merge request you want to create a workspace for.
-1. Select **Code** > **Open in Workspace**.
-1. From the **Cluster agent** dropdown list, select a cluster agent owned by the group the project belongs to.
-1. From the **Git reference** dropdown list, select the branch, tag, or commit hash
+1. Select  > .
+1. From the  dropdown list, select a cluster agent owned by the group the project belongs to.
+1. From the  dropdown list, select the branch, tag, or commit hash
    GitLab uses to create the workspace. By default, this is the source branch of the merge request.
-1. From the **Devfile** dropdown list, select one of the following:
+1. From the  dropdown list, select one of the following:
    - [GitLab default devfile](_index.md#gitlab-default-devfile).
    - [Custom devfile](_index.md#custom-devfile).
-1. In **Variables**, enter the keys and values of the environment variables you want to inject into the workspace.
-   To add a new variable, select **Add variable**.
-1. Select **Create workspace**.
+1. In , enter the keys and values of the environment variables you want to inject into the workspace.
+   To add a new variable, select .
+1. Select .
 
 The workspace might take a few minutes to start.
 To open the workspace, under **Preview**, select the workspace.
@@ -195,9 +195,9 @@ To connect to a workspace with an SSH client:
 
 1. Get the name of the workspace:
 
-   1. In the top bar, select **Search or go to**.
-   1. Select **Your work**.
-   1. Select **Workspaces**.
+   1. In the top bar, select .
+   1. Select .
+   1. Select .
    1. Copy the name of the workspace you want to connect to.
 
 1. Run this command:

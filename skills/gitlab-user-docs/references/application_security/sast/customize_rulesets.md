@@ -86,7 +86,7 @@ The following table describes what happens when you customize SAST rulesets:
 
 | Action                     | Scan behavior                                                                                                                                                               | Pipeline security tab                                                                                                      | Vulnerability report                                                                                                                                   |
 |----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Disable a rule             | Analyzers still scan for the vulnerability but the rule's results are removed after the scan completes. GitLab Advanced SAST excludes disabled rules from the initial scan. | Findings detected by the rule before it was disabled no longer appear after the next pipeline runs.                        | Vulnerabilities detected by the rule before it was disabled are marked as [**No longer detected**](../vulnerability_report/_index.md#activity-filter). |
+| Disable a rule             | Analyzers other than GitLab Advanced SAST still scan for the vulnerability but the rule's results are removed after the scan completes. GitLab Advanced SAST tries to exclude disabled rules from the initial scan. For the exact behavior and performance implications, see [how GitLab Advanced SAST applies disables](#how-gitlab-advanced-sast-applies-disables). | Findings detected by the rule before it was disabled no longer appear after the next pipeline runs.                        | Vulnerabilities detected by the rule before it was disabled are marked as [**No longer detected**](../vulnerability_report/_index.md#activity-filter). |
 | Override metadata          | No change to scan behavior.                                                                                                                                                 | Metadata of findings detected by the rule before it was overridden are updated after the next pipeline runs.               | Metadata of vulnerabilities detected by the rule before it was overridden are updated.                                                                 |
 | Replace default ruleset | The default ruleset is not used by analyzers that support custom rulesets.                                                                                               | Findings detected by rules in the default ruleset before it was replaced no longer appear after the next pipeline runs. | Vulnerabilities detected by rules in the default ruleset are marked as [**No longer detected**](../vulnerability_report/_index.md#activity-filter). |
 
@@ -492,6 +492,76 @@ You can also see each identifier and its associated `type` in the [downloadable 
       type = "semgrep_id"
       value = "java_cookie_rule-CookieHTTPOnly"
 ```
+
+#### How GitLab Advanced SAST applies disables
+
+GitLab Advanced SAST handles a disable in one of three ways, depending on how
+the `[$analyzer.ruleset.identifier]` matches the rules the engine is about to
+run:
+
+- Pre-scan exclusion: When the identifier matches a rule the engine would
+  otherwise load, the rule is removed from the rule set before scanning.
+  Findings are not produced and the rule's scan time is not spent. A
+  `gitlab-advanced-sast_id` matches when its value is the full ID of a loaded
+  rule. A `cwe` matches every rule, in every language, whose metadata carries
+  that CWE number. A `semgrep_id` matches every rule whose metadata carries
+  that Semgrep rule ID.
+- Post-scan report filter: When the identifier matches no loaded rule but
+  matches an identifier of a finding, the engine still runs the rule. The
+  matching findings are removed from the report after the scan, but the
+  rule's scan time is still spent. This happens when a
+  `gitlab-advanced-sast_id` value is the base identifier of a
+  [generated rule](#generated-rule-variants).
+- No effect: When the identifier matches neither a loaded rule nor a finding,
+  the disable changes nothing.
+
+For every entry, the analyzer writes the debug log line `Adding disabled identifier`,
+whichever of the three ways applies. That line alone does not
+show that a rule was excluded. To verify which way a disable takes, run the
+job with [`SECURE_LOG_LEVEL: "debug"`](_index.md#available-cicd-variables).
+Then compare the taint-rule count in the engine's progress log
+(`Starting rule sink/source prefilter sweep (N taint rules, M targets)`)
+against a baseline run with no ruleset file. The count covers taint rules
+only, so it does not change when the excluded rule is not a taint rule.
+
+#### Generated rule variants
+
+Some GitLab Advanced SAST rules are generated. When the rule set is built, a
+single rule template fans out into multiple variants, one for each source (for
+example, one variant for each web framework). The variants share the base identifier shown in
+`gl-sast-report.json`, but the engine loads them under IDs with a
+`-source-id-N` suffix. For example, the base identifier
+`python-lang-pathtraversal-file-taint` is loaded as
+`python-lang-pathtraversal-file-taint-source-id-0` through
+`-source-id-9`.
+
+This distinction matters when you disable a rule by its `gitlab-advanced-sast_id` to
+reduce scan time rather than only to hide findings:
+
+- Disabling by the base identifier (for example,
+  `python-lang-pathtraversal-file-taint`) suppresses the findings as a
+  post-scan report filter. The variants still run, so their scan time is
+  still spent.
+- Disabling by an exact variant ID (for example,
+  `python-lang-pathtraversal-file-taint-source-id-3`) excludes that one
+  variant pre-scan. To stop a generated rule from running at all, list every
+  variant explicitly. Alternatively, disable the rule by its `semgrep_id` or
+  `cwe` identifier, which all variants share.
+
+The number in a variant ID is the position of the source template in the
+sorted list of source templates for the rule's language. It changes when a
+source template is added or removed. A ruleset that lists variant IDs can
+then disable a different variant after a GitLab Advanced SAST update. After each
+update, check that the listed variants still map to the intended source
+templates. To find out which source template a variant maps to, use the debug
+output.
+
+The analyzer removes the `-source-id-N` suffix when it writes
+`gl-sast-report.json`, so the report shows only the base identifier. To see
+the variant IDs, run the job with `SECURE_LOG_LEVEL: "debug"`. The job log
+then includes the engine's raw JSON output. Each result there carries the
+variant ID in `check_id`, and `extra.metadata.source-id` names the source
+template the variant was generated from.
 
 ### Disable specific default rules of other SAST analyzers
 

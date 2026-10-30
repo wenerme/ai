@@ -148,10 +148,10 @@ from sharing cookies.
 
 The project maintainer can turn off this feature:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Clear the **Use unique domain** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Clear the  checkbox.
+1. Select .
 
 For example URLs, see [GitLab Pages default domain names](getting_started_part_one.md#gitlab-pages-default-domain-names).
 
@@ -168,10 +168,10 @@ Prerequisites:
 - You must have the Maintainer or Owner role for the project.
 - A [custom domain](custom_domains_ssl_tls_certification/_index.md#set-up-a-custom-domain) must be set up.
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. From the **Primary domain** dropdown list, select the domain to redirect to.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. From the  dropdown list, select the domain to redirect to.
+1. Select .
 
 ## Expiring deployments
 
@@ -209,24 +209,24 @@ Prerequisites:
 
 To recover a stopped deployment that has not yet been deleted:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Near **Deployments** turn on the **Include stopped deployments** toggle.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Near  turn on the  toggle.
    If your deployment has not been deleted yet, it should be included in the
    list.
-1. Expand the deployment you want to recover and select **Restore**.
+1. Expand the deployment you want to recover and select .
 
 ### Delete a Deployment
 
 To delete a deployment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Under **Deployments**, select any area on the deployment you wish to delete.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Under , select any area on the deployment you wish to delete.
    The deployment details expand.
-1. Select **Delete**.
+1. Select .
 
-When you select **Delete**, your deployment is stopped immediately.
+When you select , your deployment is stopped immediately.
 Stopped deployments are deleted by a cron job running every 10 minutes.
 
 To restore a stopped deployment that has not been deleted yet, see

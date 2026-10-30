@@ -9,6 +9,8 @@ created with the `store` parameter set to `true` can be deleted.
 
 - `completion_id: string`
 
+  The ID of the chat completion to delete.
+
 ### Returns
 
 - `ChatCompletionDeleted object { id, deleted, object }`

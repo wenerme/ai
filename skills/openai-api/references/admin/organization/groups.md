@@ -103,6 +103,8 @@ Deletes a group from the organization.
 
 - `group_id: string`
 
+  The ID of the group to delete.
+
 ### Returns
 
 - `id: string`
@@ -291,6 +293,8 @@ Retrieves a group.
 
 - `group_id: string`
 
+  The ID of the group to retrieve.
+
 ### Returns
 
 - `Group object { id, created_at, group_type, 2 more }`
@@ -371,6 +375,8 @@ Updates a group's information.
 ### Path Parameters
 
 - `group_id: string`
+
+  The ID of the group to update.
 
 ### Body Parameters
 
@@ -534,6 +540,8 @@ Assigns an organization role to a group within the organization.
 
 - `group_id: string`
 
+  The ID of the group that should receive the organization role.
+
 ### Body Parameters
 
 - `role_id: string`
@@ -695,7 +703,11 @@ Unassigns an organization role from a group within the organization.
 
 - `group_id: string`
 
+  The ID of the group to modify.
+
 - `role_id: string`
+
+  The ID of the organization role to remove from the group.
 
 ### Returns
 
@@ -750,6 +762,8 @@ Lists the organization roles assigned to a group within the organization.
 ### Path Parameters
 
 - `group_id: string`
+
+  The ID of the group whose organization role assignments you want to list.
 
 ### Query Parameters
 
@@ -947,7 +961,11 @@ Retrieves an organization role assigned to a group.
 
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 - `role_id: string`
+
+  The ID of the organization role to retrieve for the group.
 
 ### Returns
 
@@ -1300,6 +1318,8 @@ Adds a user to a group.
 
 - `group_id: string`
 
+  The ID of the group to update.
+
 ### Body Parameters
 
 - `user_id: string`
@@ -1374,7 +1394,11 @@ Removes a user from a group.
 
 - `group_id: string`
 
+  The ID of the group to update.
+
 - `user_id: string`
+
+  The ID of the user to remove from the group.
 
 ### Returns
 
@@ -1431,6 +1455,8 @@ Lists the users assigned to a group.
 ### Path Parameters
 
 - `group_id: string`
+
+  The ID of the group to inspect.
 
 ### Query Parameters
 
@@ -1543,7 +1569,11 @@ Retrieves a user in a group.
 
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 - `user_id: string`
+
+  The ID of the user to retrieve from the group.
 
 ### Returns
 

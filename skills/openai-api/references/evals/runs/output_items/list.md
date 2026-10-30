@@ -8,7 +8,11 @@ Get a list of output items for an evaluation run.
 
 - `eval_id: string`
 
+  The ID of the evaluation to retrieve runs for.
+
 - `run_id: string`
+
+  The ID of the run to retrieve output items for.
 
 ### Query Parameters
 

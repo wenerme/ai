@@ -856,6 +856,8 @@ Retrieves an execution environment's connection status and safe installed metada
 
 - `environment_id: string`
 
+  The ID of the environment.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -1320,6 +1322,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 - `environment_id: string`
 
+  The ID of the environment.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
@@ -1431,6 +1435,8 @@ Lists live files on a connected execution environment with optional directory fi
 ### Path Parameters
 
 - `environment_id: string`
+
+  The ID of the environment.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -2127,6 +2133,8 @@ Deletes reusable environment configuration and all confidential template inputs.
 
 - `environment_template_id: string`
 
+  The ID of the reusable environment template.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -2530,6 +2538,8 @@ Retrieves reusable environment configuration without returning confidential valu
 
 - `environment_template_id: string`
 
+  The ID of the reusable environment template.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -2827,6 +2837,8 @@ Updates reusable environment configuration without returning confidential values
 ### Path Parameters
 
 - `environment_template_id: string`
+
+  The ID of the reusable environment template.
 
   `minLength: 0`, `maxLength: 1048576`
 

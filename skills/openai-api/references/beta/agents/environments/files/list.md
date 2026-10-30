@@ -8,6 +8,8 @@ Lists live files on a connected execution environment with optional directory fi
 
 - `environment_id: string`
 
+  The ID of the environment.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters

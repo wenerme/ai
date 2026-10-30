@@ -10,6 +10,8 @@ Returns the Upload object with status `cancelled`.
 
 - `upload_id: string`
 
+  The ID of the Upload.
+
 ### Returns
 
 - `Upload object { id, bytes, created_at, 6 more }`

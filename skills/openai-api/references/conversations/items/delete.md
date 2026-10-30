@@ -8,7 +8,11 @@ Delete an item from a conversation with the given IDs.
 
 - `conversation_id: string`
 
+  The ID of the conversation that contains the item.
+
 - `item_id: string`
+
+  The ID of the item to delete.
 
 ### Returns
 

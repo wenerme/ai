@@ -37,7 +37,7 @@ To turn on GitLab Advanced SAST C/C++ analysis in your project:
 
      ```yaml
      include:
-     - component: gitlab.com/components/sast/sast@main
+       - component: gitlab.com/components/sast/sast@main
          inputs:
            run_advanced_sast_cpp: "true"
 

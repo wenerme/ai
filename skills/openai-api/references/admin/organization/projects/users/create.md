@@ -8,6 +8,8 @@ Adds a user to the project. Users must already be members of the organization to
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Body Parameters
 
 - `role: string`

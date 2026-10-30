@@ -8,6 +8,8 @@ Assigns an organization role to a user within the organization.
 
 - `user_id: string`
 
+  The ID of the user that should receive the organization role.
+
 ### Body Parameters
 
 - `role_id: string`

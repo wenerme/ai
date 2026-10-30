@@ -8,6 +8,8 @@ Returns the rate limits per model for a project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Query Parameters
 
 - `after: optional string`

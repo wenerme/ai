@@ -8,6 +8,10 @@ Transfer an active SIP call to a new destination using the SIP REFER verb.
 
 - `call_id: string`
 
+  The identifier for the call provided in the
+  [`realtime.call.incoming`](/api/reference/resources/webhooks#realtime.call.incoming)
+  webhook.
+
 ### Body Parameters
 
 - `target_uri: string`

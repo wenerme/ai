@@ -8,7 +8,11 @@ Retrieves a project spend alert.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `alert_id: string`
+
+  The ID of the spend alert to retrieve.
 
 ### Returns
 

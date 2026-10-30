@@ -6,6 +6,11 @@
 [![Go Report Card](https://goreportcard.com/badge/gitea.dev/tea)](https://goreportcard.com/report/gitea.dev/tea) [![GoDoc](https://pkg.go.dev/badge/gitea.dev/tea?status.svg)](https://godoc.org/gitea.dev/tea)
 ![Tea Release Status](https://gitea.com/gitea/tea/actions/workflows/release-nightly.yml/badge.svg)
 
+> [!IMPORTANT]
+> tea has been replaced by [gt](https://gitea.com/gitea/cli), the new official CLI for Gitea, and this repository will be archived.
+> Please use gt and open new issues and pull requests at https://gitea.com/gitea/cli.
+> See [Migrating from tea](https://gitea.com/gitea/cli/src/branch/main/docs/migrating-from-tea.md) for the command mapping.
+
 ## The official CLI for Gitea
 
 [demo gif]

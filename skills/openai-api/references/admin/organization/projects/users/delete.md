@@ -11,7 +11,11 @@ archived (archived projects have no users).
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `user_id: string`
+
+  The ID of the user.
 
 ### Returns
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v
 
 # Extensions
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Both tools and system prompt sections are provided to the Pi `Harness` via extensions. An extension is Pi Durable's own: a plain object with a `name`, `tools`, and `sections`, installed on the registry you pass to `Harness.open()`. [`PiHarness`](https://developers.cloudflare.com/agents/harnesses/pi/) does not wrap them, so every Pi Durable extension feature works.
 
@@ -184,15 +184,14 @@ this.registry.install({
 
 ## Add skills
 
-`skills(sources)` from `agents/harness/pi` turns [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) sources from `agents/skills` into a Pi extension named `agents.skills`. It has two tools, `activate_skill` and `read_skill_resource`, and a `skills` section that lists the skills. It reads the sources, so install it in an `async` factory:
+`skills(sources)` from `agents/harness/pi` turns [Agent Skills](https://developers.cloudflare.com/agents/skills/) sources from `agents/skills` into a Pi extension named `agents.skills`. Sources can read skills from a [Computer Workspace](https://developers.cloudflare.com/agents/skills/sources/computer/), [R2](https://developers.cloudflare.com/agents/skills/sources/r2/), or a [manifest](https://developers.cloudflare.com/agents/skills/sources/code/). The extension has two tools, `activate_skill` and `read_skill_resource`, and a `skills` section that lists the skills. It reads the sources, so install it in an `async` factory:
 
 ```ts
 import { skills } from "agents/harness/pi";
-import { fromManifest } from "agents/skills";
+import { manifest } from "agents/skills";
 
-const handbook = fromManifest({
+const handbook = manifest({
 	id: "handbook",
-	fingerprint: "v1",
 	skills: [
 		{
 			name: "release-notes",
@@ -210,7 +209,7 @@ harness = new PiHarness({
 });
 ```
 
-The tools match the ones [Think](https://developers.cloudflare.com/agents/harnesses/think/) offers, so a skill written for one works in the other. The model can read a skill's instructions and resources. Skill scripts do not run.
+The tools match the ones [Think](https://developers.cloudflare.com/agents/harnesses/think/) offers, so a skill written for one works in the other. The sources are read once, when the factory builds the extension. The model can read a skill's instructions and resources. To run skill scripts, give the model a shell or Workspace tool. Refer to [Execution](https://developers.cloudflare.com/agents/skills/execution/).
 
 ## Use more of Pi Durable
 
@@ -233,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -8,7 +8,11 @@ Unassigns an organization role from a group within the organization.
 
 - `group_id: string`
 
+  The ID of the group to modify.
+
 - `role_id: string`
+
+  The ID of the organization role to remove from the group.
 
 ### Returns
 

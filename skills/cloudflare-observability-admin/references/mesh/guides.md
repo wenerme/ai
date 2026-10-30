@@ -1,5 +1,5 @@
 ---
-description: Connect devices and deploy Cloudflare Mesh nodes on Linux hosts and in container environments.
+description: Connect devices, servers, or private networks with Cloudflare Mesh, or deploy nodes on Linux hosts and in containers.
 title: Guides
 image: https://developers.cloudflare.com/mesh/guides/og.png?v=f47253a4437bcc4a
 ---
@@ -12,11 +12,15 @@ image: https://developers.cloudflare.com/mesh/guides/og.png?v=f47253a4437bcc4a
 
 # Guides
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/mesh/guides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-- [Connect client devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/)
+- [Connect two devices privately with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-client-devices/)
+- [Connect two servers with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-servers/)
+- [Connect two private networks with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-sites/)
 - [Run Mesh on Linux](https://developers.cloudflare.com/mesh/guides/run-mesh-on-linux/)
 - [Run Mesh in Docker / Kubernetes](https://developers.cloudflare.com/mesh/guides/run-mesh-in-containers/)
+
+For connection failures, refer to [Troubleshoot Cloudflare Mesh connectivity](https://developers.cloudflare.com/mesh/troubleshooting/).
 
 Was this helpful?
 
@@ -27,5 +31,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/mesh/guides/#page","headline":"Guides","description":"Connect devices and deploy Cloudflare Mesh nodes on Linux hosts and in container environments.","url":"https://developers.cloudflare.com/mesh/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/mesh/guides/og.png?v=f47253a4437bcc4a","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/mesh/guides/#page","headline":"Guides","description":"Connect devices, servers, or private networks with Cloudflare Mesh, or deploy nodes on Linux hosts and in containers.","url":"https://developers.cloudflare.com/mesh/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/mesh/guides/og.png?v=f47253a4437bcc4a","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

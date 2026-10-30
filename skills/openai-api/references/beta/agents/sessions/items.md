@@ -10,6 +10,8 @@ Lists items produced by the session's root agent, including its interactions wit
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters

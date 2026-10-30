@@ -8,9 +8,15 @@ Unassigns a project role from a group within a project.
 
 - `project_id: string`
 
+  The ID of the project to modify.
+
 - `group_id: string`
 
+  The ID of the group whose project role assignment should be removed.
+
 - `role_id: string`
+
+  The ID of the project role to remove from the group.
 
 ### Returns
 

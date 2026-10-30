@@ -8,6 +8,8 @@ Get a project's hard spend limit.
 
 - `project_id: string`
 
+  The ID of the project whose hard spend limit is being managed.
+
 ### Returns
 
 - `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`

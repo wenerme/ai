@@ -8,6 +8,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 
 - `vector_store_id: string`
 
+  The ID of the vector store for which to create a File.
+
 ### Body Parameters
 
 - `file_id: string`

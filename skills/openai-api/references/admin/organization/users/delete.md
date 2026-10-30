@@ -8,6 +8,8 @@ Deletes a user from the organization.
 
 - `user_id: string`
 
+  The ID of the user.
+
 ### Returns
 
 - `id: string`

@@ -10,6 +10,8 @@ Returns the rate limits per model for a project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Query Parameters
 
 - `after: optional string`
@@ -159,7 +161,11 @@ Updates a project rate limit.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `rate_limit_id: string`
+
+  The ID of the rate limit.
 
 ### Body Parameters
 

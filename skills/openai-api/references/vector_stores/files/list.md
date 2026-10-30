@@ -8,6 +8,8 @@ Returns a list of vector store files.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the files belong to.
+
 ### Query Parameters
 
 - `after: optional string`

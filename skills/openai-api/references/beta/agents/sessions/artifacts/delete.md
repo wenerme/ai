@@ -8,9 +8,13 @@ Deletes an immutable session artifact without deleting its live environment file
 
 - `session_id: string`
 
+  The ID of the session that owns the artifact.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `artifact_id: string`
+
+  The immutable session artifact ID.
 
   `minLength: 0`, `maxLength: 1048576`
 
