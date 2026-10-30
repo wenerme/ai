@@ -551,6 +551,14 @@ sends the query to a search service. The search service depends on the model pro
 Do not include sensitive information in a conversation that uses web search.
 The search query might include it.
 
+Web search is limited for each model call:
+
+- Anthropic models: up to five web searches.
+- OpenAI models: up to five web search and page read calls.
+
+Chat can make more than one model call to answer a message,
+so the total for one message can be higher than five.
+
 You cannot limit which domains web search can reach.
 [Issue 604066](https://gitlab.com/gitlab-org/gitlab/-/work_items/604066) proposes to add domain allowlists and denylists.
 

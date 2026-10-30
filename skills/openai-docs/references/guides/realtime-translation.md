@@ -123,7 +123,7 @@ await pc.setRemoteDescription({
 
 Connect to the dedicated translation endpoint and select the model in the URL:
 
-Before running this example, install `ws` for Node.js, `websocket-client` for Python, or `async-websocket` for Ruby (`gem install async-websocket`). For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
+Before running this example, install `ws` for Node.js, `websocket-client` and `sounddevice` for Python, or `async-websocket` for Ruby (`gem install async-websocket`). For Java, add the Maven dependency `com.openai:openai-java:4.75.1`.
 
 The Java examples cover connection setup, language configuration, and audio input separately. They don't show a complete translation workflow: the Java SDK supports receiving events and finishing a session, but this guide doesn't include Java examples for those steps. Use the Node.js or Python examples to follow the complete workflow below.
 
@@ -366,17 +366,56 @@ ws.on("message", (data) => {
 ```
 
 ```python
-while True:
-    event = json.loads(ws.recv())
+import base64
+import json
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import suppress
+from queue import SimpleQueue
 
-    if event["type"] == "session.output_audio.delta":
-        play_pcm16(event["delta"])
+import sounddevice as sd
 
-    if event["type"] == "session.output_transcript.delta":
-        print(event["delta"], end="", flush=True)
+audio_queue = SimpleQueue()
 
-    if event["type"] == "session.input_transcript.delta":
-        update_source_transcript(event["delta"])
+
+def play_audio():
+    try:
+        # Closing the stream waits for PortAudio's pending buffers to finish.
+        with sd.RawOutputStream(samplerate=24000, channels=1, dtype="int16") as stream:
+            while (pcm := audio_queue.get()) is not None:
+                stream.write(pcm)
+    except Exception:
+        # The receiver may have already closed the socket.
+        with suppress(OSError):
+            ws.abort()  # Wake recv() so the receiver can report the playback failure.
+        raise
+
+
+with ThreadPoolExecutor(max_workers=1) as executor:
+    playback = executor.submit(play_audio)
+    try:
+        while True:
+            event = json.loads(ws.recv())
+            if playback.done():
+                playback.result()  # Report a playback failure on the receiver.
+
+            if event["type"] == "session.output_audio.delta":
+                audio_queue.put(base64.b64decode(event["delta"]))
+
+            if event["type"] in (
+                "session.output_transcript.delta",
+                "session.input_transcript.delta",
+            ):
+                print(event["delta"], end="", flush=True)
+
+            if event["type"] == "error":
+                raise RuntimeError(f"Translation error: {event['error']['code']}")
+
+            if event["type"] == "session.closed":
+                break
+    finally:
+        ws.close()
+        audio_queue.put(None)
+        playback.result()
 ```
 
 
@@ -451,7 +490,30 @@ closeTranslationSession();
 ```
 
 ```python
+import base64
+import json
 import time
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import suppress
+from queue import SimpleQueue
+
+import sounddevice as sd
+
+audio_queue = SimpleQueue()
+
+
+def play_audio():
+    try:
+        # Closing the stream waits for PortAudio's pending buffers to finish.
+        with sd.RawOutputStream(samplerate=24000, channels=1, dtype="int16") as stream:
+            while (pcm := audio_queue.get()) is not None:
+                stream.write(pcm)
+    except Exception:
+        # The receiver may have already closed the socket.
+        with suppress(OSError):
+            ws.abort()  # Wake recv() so the receiver can report the playback failure.
+        raise
+
 
 translation_session_closing = False
 
@@ -465,38 +527,45 @@ def close_translation_session():
     ws.send(json.dumps({"type": "session.close"}))
 
 
-# Call this when the source stream ends.
-close_translation_session()
-# Adjust this deadline for your application's finalization requirements.
-drain_deadline = time.monotonic() + 15.0
+with ThreadPoolExecutor(max_workers=1) as executor:
+    playback = executor.submit(play_audio)
+    try:
+        # Call this when the source stream ends.
+        close_translation_session()
+        # Adjust this deadline for your application's finalization requirements.
+        drain_deadline = time.monotonic() + 15.0
 
-try:
-    while True:
-        remaining = drain_deadline - time.monotonic()
-        if remaining <= 0:
-            raise TimeoutError("Translation finalization timed out")
-        ws.settimeout(remaining)
-        data = ws.recv()
-        if not data:
-            raise RuntimeError("Translation disconnected before session.closed")
-        event = json.loads(data)
+        while True:
+            remaining = drain_deadline - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError("Translation finalization timed out")
+            ws.settimeout(remaining)
+            data = ws.recv()
+            if not data:
+                raise RuntimeError("Translation disconnected before session.closed")
+            event = json.loads(data)
+            if playback.done():
+                playback.result()  # Report a playback failure on the receiver.
 
-        if event["type"] == "error":
-            raise RuntimeError(f"Translation error: {event['error']['code']}")
+            if event["type"] == "error":
+                raise RuntimeError(f"Translation error: {event['error']['code']}")
 
-        if event["type"] == "session.output_audio.delta":
-            play_pcm16(event["delta"])
+            if event["type"] == "session.output_audio.delta":
+                audio_queue.put(base64.b64decode(event["delta"]))
 
-        if event["type"] == "session.output_transcript.delta":
-            print(event["delta"], end="", flush=True)
+            if event["type"] in (
+                "session.output_transcript.delta",
+                "session.input_transcript.delta",
+            ):
+                print(event["delta"], end="", flush=True)
 
-        if event["type"] == "session.input_transcript.delta":
-            update_source_transcript(event["delta"])
-
-        if event["type"] == "session.closed":
-            break
-finally:
-    ws.close()
+            if event["type"] == "session.closed":
+                break
+    finally:
+        # The server deadline covers receiving events, not local playback.
+        ws.close()
+        audio_queue.put(None)
+        playback.result()
 ```
 
 

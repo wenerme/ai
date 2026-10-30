@@ -503,6 +503,9 @@ Rate limited to 10 requests per minute per user.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
 
+Enables a catalog item in a project or top-level group.
+Rate limited to 30 requests per minute per user.
+
 **Input type:** `AiCatalogItemConsumerCreateInput`
 
 ### `aiCatalogItemConsumerCreate` arguments {.no_toc}
@@ -533,6 +536,9 @@ Rate limited to 10 requests per minute per user.
 - Status: Experiment
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.3.
+
+Disables a catalog item in a project or top-level group.
+Rate limited to 30 requests per minute per user.
 
 **Input type:** `AiCatalogItemConsumerDeleteInput`
 

@@ -232,6 +232,7 @@ Included products
 
 </summary>
 
+- <a href="https://developers.cloudflare.com/byoip/">BYOIP</a><a href="https://developers.cloudflare.com/changelog/rss/byoip.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/magic-transit/">Magic Transit</a><a href="https://developers.cloudflare.com/changelog/rss/magic-transit.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/network-flow/">Network Flow</a><a href="https://developers.cloudflare.com/changelog/rss/network-flow.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/network-interconnect/">Network Interconnect</a><a href="https://developers.cloudflare.com/changelog/rss/network-interconnect.xml">Subscribe to RSS</a>

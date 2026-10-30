@@ -10635,9 +10635,13 @@ Use Bearer Auth (header Authorization).
 
                 - `"far_field"`
 
-            - `transcription: optional object { language, languages, model, prompt }  or null`
+            - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
               Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+              - `keywords: optional array of string`
+
+                Words or phrases configured to guide transcription of the input audio.
 
               - `language: optional string or null`
 
@@ -11458,9 +11462,13 @@ Use Bearer Auth (header Authorization).
 
                 Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `transcription: optional object { language, languages, model, prompt }  or null`
+            - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
               Configuration of the transcription model.
+
+              - `keywords: optional array of string`
+
+                Words or phrases configured to guide transcription of the input audio.
 
               - `language: optional string or null`
 
@@ -12012,9 +12020,13 @@ Use Bearer Auth (header Authorization).
 
       - `"far_field"`
 
-  - `input_audio_transcription: optional object { language, languages, model, prompt }  or null`
+  - `input_audio_transcription: optional object { keywords, language, languages, 2 more }  or null`
 
     Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+    - `keywords: optional array of string`
+
+      Words or phrases configured to guide transcription of the input audio.
 
     - `language: optional string or null`
 
@@ -19694,9 +19706,13 @@ Use Bearer Auth (header Authorization).
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -20517,9 +20533,13 @@ Use Bearer Auth (header Authorization).
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration of the transcription model.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -21769,9 +21789,13 @@ Use Bearer Auth (header Authorization).
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -22592,9 +22616,13 @@ Use Bearer Auth (header Authorization).
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration of the transcription model.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -22874,9 +22902,13 @@ Use Bearer Auth (header Authorization).
 
       The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-    - `input_audio_transcription: optional object { language, languages, model, prompt }`
+    - `input_audio_transcription: optional object { keywords, language, languages, 2 more }`
 
       Configuration of the transcription model.
+
+      - `keywords: optional array of string`
+
+        Words or phrases configured to guide transcription of the input audio.
 
       - `language: optional string or null`
 
@@ -25210,9 +25242,13 @@ Returns the created client secret and the effective session object. The client s
 
             - `"far_field"`
 
-        - `transcription: optional object { language, languages, model, prompt }  or null`
+        - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+          - `keywords: optional array of string`
+
+            Words or phrases configured to guide transcription of the input audio.
 
           - `language: optional string or null`
 
@@ -26033,9 +26069,13 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-        - `transcription: optional object { language, languages, model, prompt }  or null`
+        - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
           Configuration of the transcription model.
+
+          - `keywords: optional array of string`
+
+            Words or phrases configured to guide transcription of the input audio.
 
           - `language: optional string or null`
 
@@ -26150,6 +26190,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           "type": "near_field"
         },
         "transcription": {
+          "keywords": [
+            "string"
+          ],
           "language": "language",
           "languages": [
             "string"
@@ -26377,9 +26420,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -27200,9 +27247,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }  or null`
+          - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
             Configuration of the transcription model.
+
+            - `keywords: optional array of string`
+
+              Words or phrases configured to guide transcription of the input audio.
 
             - `language: optional string or null`
 
@@ -27371,9 +27422,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, languages, model, prompt }  or null`
+      - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
         Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
+
+        - `keywords: optional array of string`
+
+          Words or phrases configured to guide transcription of the input audio.
 
         - `language: optional string or null`
 
@@ -28236,9 +28291,13 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, languages, model, prompt }  or null`
+      - `transcription: optional object { keywords, language, languages, 2 more }  or null`
 
         Configuration of the transcription model.
+
+        - `keywords: optional array of string`
+
+          Words or phrases configured to guide transcription of the input audio.
 
         - `language: optional string or null`
 
@@ -28841,9 +28900,13 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"far_field"`
 
-    - `transcription: optional object { language, languages, model, prompt }`
+    - `transcription: optional object { keywords, language, languages, 2 more }`
 
       Configuration for input audio transcription.
+
+      - `keywords: optional array of string`
+
+        Words or phrases configured to guide transcription of the input audio.
 
       - `language: optional string or null`
 
@@ -29110,6 +29173,9 @@ curl https://api.openai.com/v1/realtime/sessions \
         "type": "near_field"
       },
       "transcription": {
+        "keywords": [
+          "string"
+        ],
         "language": "language",
         "languages": [
           "string"
@@ -29275,9 +29341,13 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, languages, model, prompt }`
+      - `transcription: optional object { keywords, language, languages, 2 more }`
 
         Configuration for input audio transcription.
+
+        - `keywords: optional array of string`
+
+          Words or phrases configured to guide transcription of the input audio.
 
         - `language: optional string or null`
 
@@ -29687,9 +29757,13 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
   The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `input_audio_transcription: optional object { language, languages, model, prompt }`
+- `input_audio_transcription: optional object { keywords, language, languages, 2 more }`
 
   Configuration of the transcription model.
+
+  - `keywords: optional array of string`
+
+    Words or phrases configured to guide transcription of the input audio.
 
   - `language: optional string or null`
 
@@ -29786,6 +29860,9 @@ curl https://api.openai.com/v1/realtime/transcription_sessions \
   },
   "input_audio_format": "input_audio_format",
   "input_audio_transcription": {
+    "keywords": [
+      "string"
+    ],
     "language": "language",
     "languages": [
       "string"
@@ -29874,9 +29951,13 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     The format of input audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-  - `input_audio_transcription: optional object { language, languages, model, prompt }`
+  - `input_audio_transcription: optional object { keywords, language, languages, 2 more }`
 
     Configuration of the transcription model.
+
+    - `keywords: optional array of string`
+
+      Words or phrases configured to guide transcription of the input audio.
 
     - `language: optional string or null`
 

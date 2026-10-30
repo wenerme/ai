@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/configuration/domains/og.
 
 Configure domains for Cloudflare Email Service, manage DNS records, and verify domain setup for both email sending and routing.
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure your domains to work with Cloudflare Email Service. This includes DNS record management, domain verification, and advanced domain settings.
 
@@ -303,6 +303,19 @@ Note
 
 Unlocking an Email Service-created record and editing it to point to another provider does not remove its association with Email Service. The record will still be treated as managed by Email Service and will be deleted when you disable Email Routing.
 
+### Move to Email Routing from another provider
+
+If your domain has `MX` records from another provider, Email Routing onboarding fails with error 2008, "Non-Cloudflare MX records exist". Follow these steps to switch.
+
+1. Add and verify your destination addresses. Destination addresses belong to the account and can be added before onboarding. Refer to [Route emails](https://developers.cloudflare.com/email-service/get-started/route-emails/) for details. [Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
+2. In the Cloudflare dashboard, go to **DNS** > **Records** and delete your provider's `MX` records. Complete step 3 immediately after — there is a brief window where no MX records exist. Most senders retry delivery and succeed once Cloudflare's records propagate, typically within minutes. Resolvers that cached the absence of MX records may take up to 30 minutes to retry.
+
+   If you no longer send through your current provider, you can also remove its SPF `include:` entry and DKIM records at this point. If you continue to send through it, keep its SPF `include:` and leave its DKIM records in place. DKIM selectors use different names and do not conflict.
+3. Enable Email Routing for your domain. Cloudflare adds the required `MX` records and a DKIM record at `cf2024-1._domainkey.<yourdomain>`. If no SPF record exists, Cloudflare also adds one. If you already have an SPF record, add the Cloudflare `include:` manually — refer to [Routing records](#routing-records) for the correct value.
+4. Create your routing rules immediately. When the `MX` records point to Cloudflare, mail to an address with no matching rule is rejected with "Address does not exist", and the sender does not retry.
+
+Until Email Routing is active, keep the old provider account open. Messages sent to cached old `MX` records arrive in your previous mailbox rather than being lost.
+
 ### Transfer domain ownership
 
 1. The domain must remain in the same Cloudflare account.
@@ -348,5 +361,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/domains/og.png?v=4871d876f74d072f","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/domains/#page","headline":"Domain configuration","description":"Configure and verify DNS records for Email Service sending and routing on your domain.","url":"https://developers.cloudflare.com/email-service/configuration/domains/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/configuration/domains/og.png?v=4871d876f74d072f","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

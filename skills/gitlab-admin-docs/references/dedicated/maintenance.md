@@ -58,6 +58,8 @@ Long-running connections may be interrupted during this period. To minimize disr
 you can implement strategies like automatic recovery and retry.
 
 Longer service interruptions are rare. If extended downtime is expected, you receive advance notice.
+Some maintenance, such as a [reference architecture change](#reference-architecture-changes),
+makes your instance read-only for a period instead.
 
 > [!note]
 > Performance degradation or downtime during the scheduled maintenance window does not
@@ -102,6 +104,30 @@ to resolve any visual inconsistencies.
 
 Upgrades to [hosted runners for GitLab Dedicated](hosted_runners.md#upgrades) are also zero-downtime
 and can occur outside your scheduled maintenance window.
+
+## Reference architecture changes
+
+A change to your [reference architecture](create_instance/storage_types.md#view-reference-architecture),
+for example an upgrade to support more load, makes your instance read-only while GitLab
+resizes your infrastructure.
+GitLab schedules the change with you in advance through your account team.
+
+During the resize, your instance is in [maintenance mode](../maintenance_mode/_index.md#behavior-of-gitlab-features-in-maintenance-mode):
+
+- You can read projects, merge requests, and other content.
+- Most write actions fail, including Git pushes, and new CI/CD jobs do not start.
+- Some requests might fail for a few minutes at a time while the database, Redis,
+  and Gitaly nodes restart.
+
+GitLab turns off maintenance mode when the resize completes.
+
+Plan for up to one hour in maintenance mode for each step.
+Each step moves your instance up or down one reference architecture size.
+A larger change runs as several steps, each with its own maintenance mode period.
+For example, with the sizes shown in Switchboard, a change from M to XL runs as two steps:
+
+1. M to L
+1. L to XL
 
 ## Emergency maintenance
 

@@ -78,9 +78,21 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
+- `review: optional "none" or "auto_review"`
+
+  Default action review for new root turns. Existing turns and their subagents keep their review mode.
+
+  - `"none"`
+
+    Keep the existing execution behavior without automatic action review.
+
+  - `"auto_review"`
+
+    Review eligible actions automatically. Deny manual approval fallbacks.
+
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -1042,6 +1054,14 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `review: optional "none" or "auto_review"`
+
+    Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
+
+    - `"none"`
+
+    - `"auto_review"`
+
 ### Example
 
 ```http
@@ -1147,6 +1167,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "review": "none"
 }
 ```

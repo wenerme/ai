@@ -108932,12 +108932,9 @@ components:
           nullable: true
         fast_dependency_paths_enabled:
           type: boolean
-          description: If `true`, enables fast mode for dependency path graph builds,
-            recording one path per dependency instead of all possible paths to reduce
-            memory and processing time for large dependency graphs. Requires the `dependency_paths`
-            feature flag to be enabled. At least one of `secret_push_protection_enabled`,
-            `pre_receive_secret_detection_enabled`, `fast_dependency_paths_enabled`
-            must be provided.
+          description: Deprecated. Has no effect; dependency graph builds always record
+            direct edges only. At least one of `secret_push_protection_enabled`, `pre_receive_secret_detection_enabled`,
+            `fast_dependency_paths_enabled` must be provided.
           nullable: true
     postApiV4ProjectsIdApprovalRulesRequest:
       type: object

@@ -62,7 +62,10 @@ sidekiq -[#ff8dd1,norank]--> database
 > [!note]
 > When deploying Gitaly on Kubernetes, Gitaly only supports sharded (non-cluster) configurations. You can upgrade Gitaly without downtime through
 > [client retries](../settings/gitaly_timeouts.md). Each Gitaly pod is a single point of failure for the repositories it serves.
-> Gitaly Cluster (Praefect) on Kubernetes is in beta (see [Gitaly Cluster on Kubernetes](../gitaly/praefect/_index.md#gitaly-cluster-on-kubernetes)) and is not included in this reference architecture.
+> Gitaly Cluster (Praefect) on Kubernetes is in beta, is not recommended for production use, and is not
+> included in this reference architecture.
+> GitLab has de-prioritized this configuration in favor of a new Gitaly storage backend.
+> For details of alternatives to using Gitaly Cluster (Praefect) on Kubernetes and available options, see [deployment options](../gitaly/kubernetes.md#deployment-options).
 >
 > If you require Gitaly high availability with automatic failover, consider [Cloud Native Hybrid architectures](_index.md#cloud-native-hybrid), which deploy Gitaly Cluster on virtual machines while running stateless components in Kubernetes. For Gitaly on Kubernetes requirements and limitations, see [Gitaly on Kubernetes](../gitaly/kubernetes.md#requirements).
 
@@ -320,7 +323,10 @@ Gitaly in Kubernetes with the Cloud Native architectures uses StatefulSets with 
 
 By design, Gitaly (non-Cluster) on Kubernetes is a single point of failure service for repositories stored on each pod. Data is sourced and served from a single instance per pod. Each Gitaly pod manages its own set of repositories, providing horizontal scaling of Git storage through repository distribution.
 
-Gitaly Cluster (Praefect) on Kubernetes is in beta and is not included in the Cloud Native architectures. For more information, see [Gitaly Cluster on Kubernetes](../gitaly/praefect/_index.md#gitaly-cluster-on-kubernetes) and [Gitaly on Kubernetes](../gitaly/kubernetes.md).
+Gitaly Cluster (Praefect) on Kubernetes is in beta, is not recommended for production use, and is not
+included in the Cloud Native architectures.
+GitLab has de-prioritized this configuration in favor of a new Gitaly storage backend.
+For details of alternatives to using Gitaly Cluster (Praefect) on Kubernetes and available options, see [deployment options](../gitaly/kubernetes.md#deployment-options).
 
 **Repository distribution:**
 

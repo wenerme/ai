@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/api/route-emails/email-ha
 
 Process incoming emails with the email() handler in Cloudflare Workers. Forward, reply, reject, or process emails programmatically.
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Process incoming emails using the `email()` handler in your Cloudflare Workers. This allows you to programmatically handle email routing with custom logic.
 
@@ -104,6 +104,20 @@ export default {
 	},
 };
 ```
+
+## Authentication results
+
+Email Routing validates Domain-based Message Authentication, Reporting & Conformance (DMARC) before invoking your Worker. It prepends a standard [`Authentication-Results` ↗︎](https://www.rfc-editor.org/rfc/rfc8601.html) header that records SPF, DKIM, and DMARC results in a machine-readable format.
+
+A simplified header with passing results looks like this:
+
+```txt
+Authentication-Results: mx.cloudflare.net; spf=pass; dkim=pass; dmarc=pass
+```
+
+To check for `dmarc=pass`, read the first `Authentication-Results` header through `message.headers` and verify that its authentication service identifier is `mx.cloudflare.net`. Other `Authentication-Results` headers may have been supplied by the sender and should not be trusted.
+
+Cloudflare invokes the Worker directly, so Authenticated Received Chain (ARC) verification is not required to trust this result. ARC is intended for downstream mail servers after forwarding. ARC headers remain available through `message.headers` and `message.raw`.
 
 ## Email actions
 
@@ -418,5 +432,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/og.png?v=bce7e41c11423abf","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#page","headline":"Workers API","description":"Process incoming emails with the email() handler in Cloudflare Workers to forward, reply, or reject messages.","url":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/api/route-emails/email-handler/og.png?v=bce7e41c11423abf","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -141,6 +141,7 @@ The agent appears in the AI Catalog. To use the agent with Chat, you must enable
 Enable an agent to use it with Chat.
 
 When you enable an agent in a project, it is enabled in the top-level group for that project at the same time.
+You can enable an agent or flow up to 30 times per minute.
 
 Prerequisites:
 
@@ -275,6 +276,7 @@ To disable an agent:
 1. On the confirmation dialog, select **Disable**.
 
 The agent no longer appears in the project, and is not available in Chat.
+You can disable an agent or flow up to 30 times per minute.
 
 ## Duplicate an agent
 

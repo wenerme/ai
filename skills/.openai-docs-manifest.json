@@ -1178,10 +1178,10 @@
   "openai-docs/guides/realtime-conversations.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-conversations.md",
     "skill": "openai-docs",
-    "etag": "W/\"f4ea2fd79d728e328e29ffe26ad32624\"",
-    "lastModified": "Thu, 29 Oct 2026 08:34:27 GMT",
-    "size": 71017,
-    "updatedAt": "2026-10-29T10:27:12.854Z"
+    "etag": "W/\"b237f0f6de74f0ee98df6343632d55c8\"",
+    "lastModified": "Fri, 30 Oct 2026 06:52:04 GMT",
+    "size": 71979,
+    "updatedAt": "2026-10-30T10:23:41.986Z"
   },
   "openai-docs/guides/realtime-mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-mcp.md",
@@ -1202,10 +1202,10 @@
   "openai-docs/guides/realtime-translation.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-translation.md",
     "skill": "openai-docs",
-    "etag": "W/\"9f6402b4ad9a25639d631e8f8ac089a3\"",
-    "lastModified": "Tue, 27 Oct 2026 00:41:55 GMT",
-    "size": 19580,
-    "updatedAt": "2026-10-27T00:57:16.265Z"
+    "etag": "W/\"b1012074c06a4fdfb30e410f16065633\"",
+    "lastModified": "Fri, 30 Oct 2026 07:16:07 GMT",
+    "size": 21977,
+    "updatedAt": "2026-10-30T10:23:42.738Z"
   },
   "openai-docs/guides/realtime-vad.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-vad.md",
@@ -1602,10 +1602,10 @@
   "openai-docs/guides/ultrafast-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode.md",
     "skill": "openai-docs",
-    "etag": "W/\"eada7f50289c299df859356529e82194\"",
-    "lastModified": "Sat, 10 Oct 2026 03:43:37 GMT",
-    "size": 7458,
-    "updatedAt": "2026-10-10T05:37:53.493Z"
+    "etag": "W/\"9adacc3fdaa4c3ce66121dc89d687eba\"",
+    "lastModified": "Fri, 30 Oct 2026 07:06:10 GMT",
+    "size": 11932,
+    "updatedAt": "2026-10-30T10:23:55.050Z"
   },
   "openai-docs/guides/upgrading-to-gpt-5p4.md": {
     "url": "https://developers.openai.com/api/docs/guides/upgrading-to-gpt-5p4.md",
@@ -3364,18 +3364,18 @@
   "openai-api/beta.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/index.md",
     "skill": "openai-api",
-    "etag": "W/\"264826a3eb1baa91b2efd466217f410d\"",
-    "lastModified": "Fri, 30 Oct 2026 00:49:49 GMT",
-    "size": 8901134,
-    "updatedAt": "2026-10-30T00:49:49.529Z"
+    "etag": "W/\"ad55092fa6697fb63cff182dab0cd6e9\"",
+    "lastModified": "Fri, 30 Oct 2026 10:24:50 GMT",
+    "size": 8904663,
+    "updatedAt": "2026-10-30T10:24:50.337Z"
   },
   "openai-api/beta/agents.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/index.md",
     "skill": "openai-api",
-    "etag": "W/\"4763cb361e3086edba4d84e2a4f537cc\"",
-    "lastModified": "Fri, 30 Oct 2026 00:49:49 GMT",
-    "size": 1560761,
-    "updatedAt": "2026-10-30T00:49:49.954Z"
+    "etag": "W/\"66b453115764858bfb7783910c4e8d4a\"",
+    "lastModified": "Fri, 30 Oct 2026 07:58:53 GMT",
+    "size": 1564290,
+    "updatedAt": "2026-10-30T10:24:50.584Z"
   },
   "openai-api/beta/agents/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/methods/create/index.md",
@@ -3620,18 +3620,18 @@
   "openai-api/beta/agents/sessions.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/index.md",
     "skill": "openai-api",
-    "etag": "W/\"6975223e81df40fea91ad093cc4ea191\"",
-    "lastModified": "Fri, 30 Oct 2026 00:49:58 GMT",
-    "size": 370114,
-    "updatedAt": "2026-10-30T00:49:58.716Z"
+    "etag": "W/\"407077f6e5b0c06fc10bfd821f18949f\"",
+    "lastModified": "Fri, 30 Oct 2026 10:24:59 GMT",
+    "size": 371976,
+    "updatedAt": "2026-10-30T10:24:59.361Z"
   },
   "openai-api/beta/agents/sessions/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"7d9e68cc535917d69c7e5fe6cda70d45\"",
-    "lastModified": "Thu, 29 Oct 2026 10:29:17 GMT",
-    "size": 46302,
-    "updatedAt": "2026-10-29T10:29:17.414Z"
+    "etag": "W/\"31f185fe89aa2e9a774c7a59117bb613\"",
+    "lastModified": "Fri, 30 Oct 2026 10:24:59 GMT",
+    "size": 46826,
+    "updatedAt": "2026-10-30T10:24:59.730Z"
   },
   "openai-api/beta/agents/sessions/delete.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/delete/index.md",
@@ -3644,26 +3644,26 @@
   "openai-api/beta/agents/sessions/list.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/list/index.md",
     "skill": "openai-api",
-    "etag": "W/\"dc84084c39c965ecb3d41d9b2839fba9\"",
-    "lastModified": "Thu, 29 Oct 2026 10:29:18 GMT",
-    "size": 26545,
-    "updatedAt": "2026-10-29T10:29:18.251Z"
+    "etag": "W/\"fb9d359ef38759b1becda90f45550b87\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:00 GMT",
+    "size": 26799,
+    "updatedAt": "2026-10-30T10:25:00.313Z"
   },
   "openai-api/beta/agents/sessions/retrieve.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/retrieve/index.md",
     "skill": "openai-api",
-    "etag": "W/\"0128c4143c28dd474111e0e76811e481\"",
-    "lastModified": "Fri, 30 Oct 2026 00:49:59 GMT",
-    "size": 24620,
-    "updatedAt": "2026-10-30T00:49:59.782Z"
+    "etag": "W/\"0b0d5a060ffdd7760b899f12fd730969\"",
+    "lastModified": "Fri, 30 Oct 2026 08:03:12 GMT",
+    "size": 24871,
+    "updatedAt": "2026-10-30T10:25:00.577Z"
   },
   "openai-api/beta/agents/sessions/update.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/update/index.md",
     "skill": "openai-api",
-    "etag": "W/\"d04d402f8b7d3c5f75a88cfabeb549d9\"",
-    "lastModified": "Fri, 30 Oct 2026 00:50:00 GMT",
-    "size": 26102,
-    "updatedAt": "2026-10-30T00:50:00.094Z"
+    "etag": "W/\"b1e57aeed1056ac43eca5c7d4b764e5b\"",
+    "lastModified": "Fri, 30 Oct 2026 07:57:25 GMT",
+    "size": 26689,
+    "updatedAt": "2026-10-30T10:25:00.814Z"
   },
   "openai-api/beta/agents/sessions/artifacts.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/artifacts/index.md",
@@ -3708,10 +3708,10 @@
   "openai-api/beta/agents/sessions/events.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/events/index.md",
     "skill": "openai-api",
-    "etag": "W/\"2a29a5102640b77dc4230d4683acea42\"",
-    "lastModified": "Fri, 30 Oct 2026 00:50:02 GMT",
-    "size": 96649,
-    "updatedAt": "2026-10-30T00:50:02.100Z"
+    "etag": "W/\"879ba9b628ecb3caeee145b17453a2c2\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:02 GMT",
+    "size": 96895,
+    "updatedAt": "2026-10-30T10:25:02.348Z"
   },
   "openai-api/beta/agents/sessions/events/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/events/methods/create/index.md",
@@ -3724,10 +3724,10 @@
   "openai-api/beta/agents/sessions/events/stream.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/events/methods/stream/index.md",
     "skill": "openai-api",
-    "etag": "W/\"bbca9303a24f4ce7dd2822cd17c84e26\"",
-    "lastModified": "Fri, 30 Oct 2026 00:50:02 GMT",
-    "size": 89417,
-    "updatedAt": "2026-10-30T00:50:02.851Z"
+    "etag": "W/\"c6f4e62317420c99bee5f99c4c4bbfb7\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:02 GMT",
+    "size": 89663,
+    "updatedAt": "2026-10-30T10:25:02.915Z"
   },
   "openai-api/beta/agents/sessions/items.md": {
     "url": "https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/items/index.md",
@@ -5236,10 +5236,10 @@
   "openai-api/realtime.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/index.md",
     "skill": "openai-api",
-    "etag": "W/\"de35300057f6d532f0742a942857bd2d\"",
-    "lastModified": "Fri, 30 Oct 2026 00:51:01 GMT",
-    "size": 998395,
-    "updatedAt": "2026-10-30T00:51:01.576Z"
+    "etag": "W/\"30c1fdf36f4c0c84c07d3fb5f69d9bd6\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:52 GMT",
+    "size": 1000983,
+    "updatedAt": "2026-10-30T10:25:52.686Z"
   },
   "openai-api/realtime/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/methods/connect/index.md",
@@ -5300,50 +5300,50 @@
   "openai-api/realtime/client_secrets.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/index.md",
     "skill": "openai-api",
-    "etag": "W/\"b7f1478a346b1eaf17303a763ebaff56\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:56 GMT",
-    "size": 158462,
-    "updatedAt": "2026-10-29T10:30:56.844Z"
+    "etag": "W/\"2f1d892cd26a75fbd75e2e74de4a314a\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:55 GMT",
+    "size": 159342,
+    "updatedAt": "2026-10-30T10:25:55.340Z"
   },
   "openai-api/realtime/client_secrets/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"099e18a61587fffdd7c0beff4da02ec0\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:57 GMT",
-    "size": 82684,
-    "updatedAt": "2026-10-29T10:30:57.374Z"
+    "etag": "W/\"6ac3e07085ce171e0bec480a7853ae47\"",
+    "lastModified": "Fri, 30 Oct 2026 08:05:19 GMT",
+    "size": 83016,
+    "updatedAt": "2026-10-30T10:25:55.577Z"
   },
   "openai-api/realtime/sessions.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/sessions/index.md",
     "skill": "openai-api",
-    "etag": "W/\"3438a7702fd4034cf937caa293a36de2\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:57 GMT",
-    "size": 34233,
-    "updatedAt": "2026-10-29T10:30:57.806Z"
+    "etag": "W/\"f696929e78a4bfb44382badbdaefaef5\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:55 GMT",
+    "size": 34547,
+    "updatedAt": "2026-10-30T10:25:55.884Z"
   },
   "openai-api/realtime/sessions/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/sessions/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"4ea9405553402633578d035b1e1af605\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:58 GMT",
-    "size": 25184,
-    "updatedAt": "2026-10-29T10:30:58.224Z"
+    "etag": "W/\"d61ce7455559c7a1a93c0958dd1d0a11\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:56 GMT",
+    "size": 25365,
+    "updatedAt": "2026-10-30T10:25:56.236Z"
   },
   "openai-api/realtime/transcription_sessions.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/transcription_sessions/index.md",
     "skill": "openai-api",
-    "etag": "W/\"80ef38a41b419653bfcc10d107e83466\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:58 GMT",
-    "size": 14518,
-    "updatedAt": "2026-10-29T10:30:58.648Z"
+    "etag": "W/\"0565038a976fbe43bd9acb34d56f03ac\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:56 GMT",
+    "size": 14804,
+    "updatedAt": "2026-10-30T10:25:56.571Z"
   },
   "openai-api/realtime/transcription_sessions/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/transcription_sessions/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"af467843c2562be92a372f913a4ff39c\"",
-    "lastModified": "Thu, 29 Oct 2026 10:30:59 GMT",
-    "size": 10554,
-    "updatedAt": "2026-10-29T10:30:59.068Z"
+    "etag": "W/\"b0cd63f1b6d84b99f8122924b08d90a9\"",
+    "lastModified": "Fri, 30 Oct 2026 10:25:56 GMT",
+    "size": 10715,
+    "updatedAt": "2026-10-30T10:25:56.859Z"
   },
   "openai-api/realtime/translations.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/subresources/translations/index.md",

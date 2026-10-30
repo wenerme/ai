@@ -198,6 +198,8 @@ Install the correct GitLab version, and then try again.
 > The restore command requires [additional parameters](backup_gitlab.md#back-up-and-restore-for-installations-using-pgbouncer) when
 > your installation is using PgBouncer, for either performance reasons or when using it with a Patroni cluster.
 
+Before you reconfigure and start GitLab, [prepare the restored databases for queries](#prepare-the-restored-databases-for-queries).
+
 Run reconfigure on the PostgreSQL node:
 
 ```shell
@@ -226,17 +228,6 @@ sudo gitlab-rake gitlab:artifacts:check
 sudo gitlab-rake gitlab:lfs:check
 sudo gitlab-rake gitlab:uploads:check
 ```
-
-After the restore is completed, it's recommended to generate database statistics to improve the database performance and avoid inconsistencies in the UI:
-
-1. Enter the [database console](https://docs.gitlab.com/omnibus/settings/database/#connecting-to-the-postgresql-database).
-1. Run the following:
-
-   ```sql
-   SET STATEMENT_TIMEOUT=0 ; ANALYZE VERBOSE;
-   ```
-
-There are ongoing discussions about integrating the command into the restore command, see [issue 276184](https://gitlab.com/gitlab-org/gitlab/-/issues/276184) for more details.
 
 Post-restore verification guides:
 
@@ -297,7 +288,11 @@ docker exec -it <name of container> gitlab-ctl status
 
 # Run the restore. NOTE: "_gitlab_backup.tar" is omitted from the name
 docker exec -it <name of container> gitlab-backup restore BACKUP=11493107454_2018_04_25_10.6.4-ce
+```
 
+Before you restart the container, [prepare the restored databases for queries](#prepare-the-restored-databases-for-queries).
+
+```shell
 # Restart the GitLab container
 docker restart <name of container>
 
@@ -360,11 +355,63 @@ docker exec -it <name of container> gitlab-rake gitlab:check SANITIZE=true
    ```
 
 1. Restore `/home/git/gitlab/.secret` if necessary.
+1. [Prepare the restored databases for queries](#prepare-the-restored-databases-for-queries).
 1. Restart GitLab:
 
    ```shell
    sudo service gitlab restart
    ```
+
+## Prepare the restored databases for queries
+
+After the database restore succeeds, gather optimizer statistics before you restart application
+processes or resume traffic.
+Until you analyze the restored tables, the query planner can choose inefficient plans and the UI can
+show inconsistent counts.
+Repeat this procedure for each distinct restored PostgreSQL database, including a separate CI database
+if your installation uses one.
+
+To prepare a database:
+
+1. Connect to the restored database with a PostgreSQL client.
+   Use a role that can analyze the restored tables.
+   To open a console, see [Start a database console](../troubleshooting/postgresql.md#start-a-database-console).
+1. Run these statements in the same interactive session:
+
+   ```sql
+   SET statement_timeout = 0;
+   ANALYZE VERBOSE;
+   ```
+
+1. Check the output for errors and skipped tables before you resume traffic.
+
+Database-wide `ANALYZE` includes partitioned parent tables.
+Autovacuum can analyze individual partitions, but does not analyze their parents.
+For more information, see [PostgreSQL statistics maintenance](https://www.postgresql.org/docs/current/routine-vacuuming.html#VACUUM-FOR-STATISTICS).
+
+### Prepare visibility maps (optional)
+
+`ANALYZE` gathers optimizer statistics but does not rebuild visibility maps.
+To prepare visibility maps before application traffic resumes, run `VACUUM (VERBOSE, ANALYZE)`:
+
+```sql
+SET statement_timeout = 0;
+VACUUM (VERBOSE, ANALYZE);
+```
+
+Run the statements separately in the same interactive session, outside a transaction block.
+
+> [!note]
+> `VACUUM` can take substantially longer than `ANALYZE` alone and can generate substantial I/O and
+> write-ahead log (WAL) data.
+
+If you defer the vacuum, index-only scans may require many heap reads.
+This can degrade query performance until the vacuum completes.
+Choose based on your restore window and workload requirements.
+Check the output for skipped tables.
+For more information, see [PostgreSQL visibility map maintenance](https://www.postgresql.org/docs/current/routine-vacuuming.html#VACUUM-FOR-VISIBILITY-MAP).
+
+Automatic post-restore analysis is proposed in [issue 276184](https://gitlab.com/gitlab-org/gitlab/-/issues/276184).
 
 ## Restoring only one or a few projects or groups from a backup
 

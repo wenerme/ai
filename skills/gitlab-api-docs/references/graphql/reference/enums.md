@@ -124,6 +124,16 @@ The category of the additional context.
 | `TERMINAL` | Terminal content category. |
 | `USER_RULE` | User_rule content category. |
 
+## `AiAgentIdentityStatus`
+
+Status of an external agent identity.
+
+| Value | Description |
+| ----- | ----------- |
+| `ACTIVE` | Not revoked, and synced in the last 30 days, or registered in the last 30 days and not synced yet. |
+| `INACTIVE` | Not revoked, and not active. |
+| `REVOKED` | Revoked, so the agent can no longer sync sessions. |
+
 ## `AiBackgroundToolPermission`
 
 Permission mode for an AI tool on the background-flow surface. `ask` is not available because no human is present to approve on a background flow.
@@ -321,6 +331,17 @@ Type of domain setting to retrieve for AI features.
 | ----- | ----------- |
 | `ALLOWED` | Domains that are allowed. |
 | `DENIED` | Domains that are denied. |
+
+## `AiExternalAgentType`
+
+Type of an external agent connected to GitLab through the GitLab CLI.
+
+| Value | Description |
+| ----- | ----------- |
+| `CLAUDE_CODE` | Agent type `claude-code`. |
+| `CODEX` | Agent type `codex`. |
+| `CURSOR` | Agent type `cursor`. |
+| `OPENCODE` | Agent type `opencode`. |
 
 ## `AiFeatureProviders`
 
@@ -5887,6 +5908,7 @@ Category of error.
 | `MISSING_DATES` | One or both of start_date and due_date is missing. |
 | `PRIORITY_ASC` | Priority by ascending order. |
 | `PRIORITY_DESC` | Priority by descending order. |
+| `TOO_MANY_DATA_POINTS` | There are too many data points to chart. |
 | `TOO_MANY_EVENTS` | There are too many events. |
 | `UNSUPPORTED` | This type does not support timebox reports. |
 | `UPDATED_ASC` | Updated at ascending order. |

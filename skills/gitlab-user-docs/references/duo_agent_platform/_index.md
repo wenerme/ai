@@ -41,7 +41,7 @@ To use the Agent Platform:
   - In GitLab 18.8 and later, have the [Agent Platform turned on](turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
   - In GitLab 18.7 and earlier, have [beta and experimental features turned on](turn_on_off.md#turn-on-beta-and-experimental-features).
 - For GitLab Self-Managed, [configure your instance](../../administration/gitlab_duo/configure/_index.md).
-- For GitLab Duo Self-Hosted, [install the AI Gateway](../../install/install_ai_gateway.md) with the Agent Platform service.
+- For GitLab Duo Self-Hosted, install a [self-hosted AI Gateway](../../install/install_ai_gateway.md) with the Agent Platform service.
 
 To use the Agent Platform in your local environment:
 
