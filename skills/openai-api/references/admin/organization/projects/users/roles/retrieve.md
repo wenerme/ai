@@ -8,9 +8,15 @@ Retrieves a project role assigned to a user.
 
 - `project_id: string`
 
+  The ID of the project to inspect.
+
 - `user_id: string`
 
+  The ID of the user to inspect.
+
 - `role_id: string`
+
+  The ID of the project role to retrieve for the user.
 
 ### Returns
 

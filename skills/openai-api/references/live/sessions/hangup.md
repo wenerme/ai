@@ -8,6 +8,8 @@ End a SIP call identified by session_id.
 
 - `session_id: string`
 
+  Opaque Live session identifier from the creation response or incoming-call webhook. Preserve the returned value unchanged, including its prefix.
+
 ### Example
 
 ```http

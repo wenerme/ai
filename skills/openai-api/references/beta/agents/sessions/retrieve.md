@@ -8,6 +8,8 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns

@@ -8,7 +8,11 @@ Returns a list of vector store files in a batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the files belong to.
+
 - `batch_id: string`
+
+  The ID of the file batch that the files belong to.
 
 ### Query Parameters
 

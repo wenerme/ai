@@ -8,7 +8,11 @@ Assigns a project role to a group within a project.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 - `group_id: string`
+
+  The ID of the group that should receive the project role.
 
 ### Body Parameters
 

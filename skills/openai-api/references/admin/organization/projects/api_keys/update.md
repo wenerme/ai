@@ -24,7 +24,11 @@ the new request. The response contains only the redacted key, not its secret.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `api_key_id: string`
+
+  The ID of the API key.
 
 ### Body Parameters
 

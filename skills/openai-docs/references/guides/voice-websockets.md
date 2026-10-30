@@ -26,6 +26,8 @@ The example below uses Marin, PCM16 audio at 24 kHz, and a Responses backend wit
 
 For Node.js, install `openai` and `ws` with `npm install openai ws` and save the JavaScript example as `client.mjs`. For Python on macOS or Linux, install `openai[realtime]` and save the Python example as `client.py`. Set `OPENAI_API_KEY` in the server environment. These examples require an SDK version with Live support. The example reads raw, mono PCM16 audio at 24 kHz from standard input and writes returned audio in the same format to standard output. Connect these streams to your application's audio capture and playback. Logs and transcript events go to standard error so they do not corrupt the audio stream.
 
+For Go, use Go 1.26 or later, save the example as `main.go`, initialize a module with `go mod init live-demo`, and install `github.com/openai/openai-go/v3@v3.85.1` with `go get`. For Java, use Java 17 or later, add the Maven dependency `com.openai:openai-java:4.90.0`, and use the `LiveConnectionWebsocketExample` class. For Ruby 3.3 or later, install the SDK with `gem install openai -v 0.110.0`, install its WebSocket dependency with `gem install async-websocket`, and save the example as `client.rb`.
+
 ```javascript
 import OpenAI from "openai";
 import { LiveWS } from "openai/resources/live/ws";
@@ -237,8 +239,410 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
+```go
+package main
 
-Run `node client.mjs` or `python client.py` with your audio source and player attached. After `Session ready` appears, supply a continuous microphone stream paced at its recorded sample rate. Piping an entire file at once does not simulate a live microphone. EOF on the audio source does not end the conversation. Send `SIGINT` to the process to request a graceful close.
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"io"
+	"os"
+	"os/signal"
+	"time"
+)
+
+func run() error {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	client := openai.NewClient()
+	connection, err := client.Live.Connect(ctx, live.LiveConnectionOptions{})
+	if err != nil {
+		return err
+	}
+	defer connection.Abort()
+	session := live.SessionConfigParam{
+		Model:        "gpt-live-1",
+		Instructions: openai.String("Be concise. Delegate requests needing current information to the backend, which can search the web."),
+		Audio:        live.SessionConfigAudioParam{Format: live.AudioFormatParamOfAudioPCM(24000), Output: live.SessionConfigAudioOutputParam{Voice: live.SessionConfigAudioOutputVoiceUnionParam{OfString: openai.String("marin")}}},
+		Delegation: live.SessionConfigDelegationUnionParam{OfResponses: &live.SessionConfigDelegationResponsesParam{Responses: live.ResponsesDelegationConfigParam{
+			Model: "gpt-5.6-luna", Tools: []live.ResponsesDelegationConfigToolUnionParam{{OfWebSearch: &live.ResponsesDelegationConfigToolWebSearchParam{}}},
+			ToolChoice: live.ResponsesDelegationConfigToolChoiceUnionParam{OfLiveToolChoiceEnum: openai.String("auto")},
+		}}},
+	}
+	if err := connection.Send(ctx, live.ClientEventUnionParam{OfSessionStart: &live.SessionStartEventParam{Session: session, EventID: openai.String("event_start")}}); err != nil {
+		return err
+	}
+	events := make(chan live.ServerEventUnion)
+	failures := make(chan error, 2)
+	go func() {
+		for {
+			event, err := connection.Recv(ctx)
+			if err != nil {
+				select {
+				case failures <- err:
+				case <-ctx.Done():
+				}
+				return
+			}
+			select {
+			case events <- event:
+			case <-ctx.Done():
+				return
+			}
+		}
+	}()
+	audio := make(chan []byte)
+	interrupts := make(chan os.Signal, 1)
+	signal.Notify(interrupts, os.Interrupt)
+	defer signal.Stop(interrupts)
+	timer := time.NewTimer(30 * time.Second)
+	defer timer.Stop()
+	started, closing := false, false
+	for {
+		select {
+		case <-timer.C:
+			return fmt.Errorf("session startup or finalization timed out")
+		case err := <-failures:
+			return err
+		case <-interrupts:
+			if !started {
+				return fmt.Errorf("interrupted before session.started")
+			}
+			if closing {
+				continue
+			}
+			closing = true
+			timer.Reset(15 * time.Second)
+			if err := connection.Send(ctx, live.ClientEventUnionParam{OfSessionClose: &live.SessionCloseEventParam{}}); err != nil {
+				return err
+			}
+		case chunk := <-audio:
+			if closing {
+				continue
+			}
+			if err := connection.Send(ctx, live.ClientEventUnionParam{OfSessionInputAudioAppend: &live.InputAudioAppendEventParam{Audio: base64.StdEncoding.EncodeToString(chunk)}}); err != nil {
+				return err
+			}
+		case event := <-events:
+			switch event.Type {
+			case "error":
+				return fmt.Errorf("Live error: %s", event.RawJSON())
+			case "session.started":
+				if started {
+					continue
+				}
+				started = true
+				timer.Stop()
+				fmt.Fprintln(os.Stderr, "Session ready", event.AsSessionStartedEvent().Session.ID)
+				// stdin/stdout carry raw mono PCM16 at 24 kHz, not WAV files.
+				go func() {
+					pending := []byte{}
+					for {
+						buffer := make([]byte, 4800)
+						n, err := os.Stdin.Read(buffer)
+						pending = append(pending, buffer[:n]...)
+						complete := len(pending) - len(pending)%2
+						if complete > 0 {
+							chunk := append([]byte(nil), pending[:complete]...)
+							pending = pending[complete:]
+							select {
+							case audio <- chunk:
+							case <-ctx.Done():
+								return
+							}
+						}
+						if err != nil {
+							if err != io.EOF {
+								select {
+								case failures <- err:
+								case <-ctx.Done():
+								}
+							}
+							// EOF does not close the session. Press Ctrl+C to finalize it.
+							return
+						}
+					}
+				}()
+			case "session.output_audio.delta":
+				chunk, err := base64.StdEncoding.DecodeString(event.AsOutputAudioDeltaEvent().Delta)
+				if err != nil {
+					return err
+				}
+				if _, err = os.Stdout.Write(chunk); err != nil {
+					return err
+				}
+			case "session.closed":
+				if !started {
+					return fmt.Errorf("session closed before startup")
+				}
+				fmt.Fprintln(os.Stderr, "Final session usage", event.AsSessionClosedEvent().Usage)
+				return nil
+			default:
+				fmt.Fprintln(os.Stderr, event.RawJSON())
+			}
+		}
+	}
+}
+func main() {
+	if err := run(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public final class LiveConnectionWebsocketExample {
+  public static void main(String[] args) throws Exception {
+    var session =
+        SessionConfig.builder()
+            .model("gpt-live-1")
+            .instructions(
+                "Be concise. Delegate requests needing current information to the backend, which can search the web.")
+            .audio(
+                SessionConfig.Audio.builder()
+                    .audioPcmFormat(AudioFormat.AudioPcm.Rate.of(24000L))
+                    .output(SessionConfig.Audio.Output.builder().voice("marin").build())
+                    .build())
+            .responsesDelegation(
+                ResponsesDelegationConfig.builder()
+                    .model("gpt-5.6-luna")
+                    .addToolWebSearch()
+                    .toolChoice(ResponsesDelegationConfig.ToolChoice.LiveToolChoiceEnum.AUTO)
+                    .build())
+            .build();
+    var closing = new AtomicBoolean();
+    var finished = new CountDownLatch(1);
+    var audio = new ArrayBlockingQueue<byte[]>(8);
+    var failures = new ArrayBlockingQueue<Exception>(1);
+    try (var http = OkHttpClient.builder().build();
+        var connection =
+            LiveConnection.connect(ClientOptions.builder().fromEnv().httpClient(http).build())) {
+      Thread shutdown =
+          new Thread(
+              () -> {
+                closing.set(true);
+                try {
+                  if (!finished.await(15, TimeUnit.SECONDS)) {
+                    System.err.println("Incomplete finalization: no session.closed event");
+                    connection.close();
+                  }
+                } catch (InterruptedException interrupted) {
+                  Thread.currentThread().interrupt();
+                }
+              });
+      Runtime.getRuntime().addShutdownHook(shutdown);
+      try {
+        connection.send(
+            ClientEvent.ofSessionStart(
+                SessionStartEvent.builder().session(session).eventId("event_start").build()));
+        boolean started = false, closeSent = false;
+        long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
+        var incoming = connection.receiveAsync();
+        while (true) {
+          if (System.nanoTime() > deadline)
+            throw new IllegalStateException("Session startup or finalization timed out");
+          if (!failures.isEmpty()) throw failures.take();
+          if (closing.get() && started && !closeSent) {
+            closeSent = true;
+            deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(15);
+            connection.send(ClientEvent.ofSessionClose(SessionCloseEvent.builder().build()));
+          }
+          var chunk = audio.poll();
+          if (chunk != null && !closing.get())
+            connection.send(
+                ClientEvent.ofSessionInputAudioAppend(
+                    InputAudioAppendEvent.builder()
+                        .audio(Base64.getEncoder().encodeToString(chunk))
+                        .build()));
+          ServerEvent event;
+          try {
+            event = incoming.get(20, TimeUnit.MILLISECONDS);
+          } catch (TimeoutException waiting) {
+            continue;
+          }
+          if (event.isErrorEvent()) throw new IllegalStateException(event.toString());
+          if (event.isSessionStarted() && !started) {
+            started = true;
+            deadline = Long.MAX_VALUE;
+            System.err.println("Session ready " + event.asSessionStarted().session().id());
+            // stdin/stdout carry raw mono PCM16 at 24 kHz, not WAV files.
+            Thread reader =
+                new Thread(
+                    () -> {
+                      try {
+                        int pending = -1;
+                        while (!closing.get()) {
+                          byte[] buffer = new byte[4800];
+                          int offset = pending < 0 ? 0 : 1;
+                          if (offset == 1) buffer[0] = (byte) pending;
+                          int count = System.in.read(buffer, offset, buffer.length - offset);
+                          // EOF does not close the session. Press Ctrl+C to finalize it.
+                          if (count < 0) return;
+                          count += offset;
+                          pending = count % 2 == 0 ? -1 : Byte.toUnsignedInt(buffer[count - 1]);
+                          int complete = count - count % 2;
+                          if (complete > 0) audio.put(Arrays.copyOf(buffer, complete));
+                        }
+                      } catch (Exception error) {
+                        failures.offer(error);
+                      }
+                    });
+            reader.setDaemon(true);
+            reader.start();
+          } else if (event.isSessionOutputAudioDelta()) {
+            System.out.write(Base64.getDecoder().decode(event.asSessionOutputAudioDelta().delta()));
+            System.out.flush();
+          } else if (event.isSessionClosed()) {
+            if (!started) throw new IllegalStateException("Session closed before startup");
+            System.err.println("Final session usage " + event.asSessionClosed().usage());
+            return;
+          } else {
+            System.err.println(event);
+          }
+          incoming = connection.receiveAsync();
+        }
+      } finally {
+        closing.set(true);
+        finished.countDown();
+        try {
+          Runtime.getRuntime().removeShutdownHook(shutdown);
+        } catch (IllegalStateException shuttingDown) {
+          /* The hook is already draining. */
+        }
+      }
+    }
+  }
+}
+```
+
+```ruby
+require "openai"
+require "base64"
+$stdin.binmode
+$stdout.binmode
+session = {
+  model: "gpt-live-1",
+  instructions: "Be concise. Delegate requests needing current information to the backend, which can search the web.",
+  audio: {
+    format: {
+      type: :"audio/pcm",
+      rate: 24_000
+    },
+    output: { voice: :marin }
+  },
+  delegation: {
+    type: :responses,
+    responses: {
+      model: "gpt-5.6-luna",
+      tools: [{ type: :web_search }],
+      tool_choice: :auto
+    }
+  }
+}
+client = OpenAI::Client.new
+client.live.connect do |connection|
+  state = {
+    closing: false,
+    finalized: false,
+    started: false
+  }
+  threads = {}
+  mutex = Mutex.new
+  previous = trap("INT") do
+    threads[:closer] ||= Thread.new do
+      mutex.synchronize do
+        state[:closing] = true
+        if state[:started]
+          connection.send_event(type: :"session.close")
+        else
+          connection.close
+        end
+      end
+      sleep 15
+      unless state[:finalized]
+        warn "Incomplete finalization: no session.closed event"
+        connection.close
+      end
+    end
+  end
+  begin
+    threads[:startup] = Thread.new do
+      sleep 30
+      unless state[:started]
+        warn "Session startup timed out"
+        connection.close
+      end
+    end
+    connection.send_event(type: :"session.start", session: session, event_id: "event_start")
+    connection.each do |event|
+      case event
+      when OpenAI::Models::Live::ErrorEvent
+        raise "Live error: #{event.to_json}"
+      when OpenAI::Models::Live::SessionStartedEvent
+        next if state[:started]
+
+        state[:started] = true
+        warn "Session ready #{event.session.id}"
+        # stdin/stdout carry raw mono PCM16 at 24 kHz, not WAV files.
+        threads[:sender] = Thread.new do
+          pending = +"".b
+          loop do
+            pending << $stdin.readpartial(4800)
+            complete = pending.bytesize - pending.bytesize % 2
+            chunk = pending.slice!(0, complete).to_s
+            mutex.synchronize do
+              break if state[:closing]
+
+              connection.send_event(type: :"session.input_audio.append", audio: Base64.strict_encode64(chunk)) unless chunk.empty?
+            end
+          end
+        rescue EOFError
+          # EOF does not close the session. Press Ctrl+C to finalize it.
+          nil
+        rescue => error
+          warn "Audio input failed: #{error.class}"
+          connection.close
+        end
+      when OpenAI::Models::Live::OutputAudioDeltaEvent
+        $stdout.write(Base64.strict_decode64(event.delta))
+        $stdout.flush
+      when OpenAI::Models::Live::SessionClosedEvent
+        raise "Session closed before startup" unless state[:started]
+
+        warn "Final session usage #{event.usage}"
+        state[:finalized] = true
+        break
+      else
+        warn event.to_json
+      end
+    end
+    raise "Connection closed without final session usage" unless state[:finalized]
+  ensure
+    trap("INT", previous)
+    threads[:startup]&.kill
+    threads[:startup]&.join
+    threads[:sender]&.kill
+    threads[:sender]&.join
+    threads[:closer]&.kill
+    threads[:closer]&.join
+  end
+end
+```
+
+
+Run `node client.mjs`, `python client.py`, `go run .`, `ruby client.rb`, or your Java application with your audio source and player attached. After `Session ready` appears, supply a continuous microphone stream paced at its recorded sample rate. Piping an entire file at once does not simulate a live microphone. EOF on the audio source does not end the conversation. Send `SIGINT` to the process to request a graceful close.
 
 The example connects the audio streams; your application handles capture, buffering, playback, and resampling when needed. Test these parts with your devices and network before evaluating model behavior.
 

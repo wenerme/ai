@@ -8,9 +8,15 @@ Get an evaluation run output item by ID.
 
 - `eval_id: string`
 
+  The ID of the evaluation to retrieve runs for.
+
 - `run_id: string`
 
+  The ID of the run to retrieve.
+
 - `output_item_id: string`
+
+  The ID of the output item to retrieve.
 
 ### Returns
 

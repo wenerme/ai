@@ -8,6 +8,8 @@ Updates reusable environment configuration without returning confidential values
 
 - `environment_template_id: string`
 
+  The ID of the reusable environment template.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters

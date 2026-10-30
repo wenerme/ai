@@ -19,8 +19,8 @@ returns all pending to-do items for the current user. Different filters allow th
 user to refine the request.
 
 This endpoint is rate limited for each user. The default is 300 requests
-per minute, configurable with the `todos_list_api_limit`
-[application setting](settings.md). Set the limit to `0` to disable it.
+every minute, configurable with the `todos_list_api_limit`
+[application setting](settings.md). Set the limit to `0` to turn it off.
 After you reach the limit, you receive
 [`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 

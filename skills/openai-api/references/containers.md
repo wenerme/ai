@@ -318,6 +318,8 @@ Delete Container
 
 - `container_id: string`
 
+  The ID of the container to delete.
+
 ### Returns
 
 - `id: string`
@@ -1454,6 +1456,10 @@ Retrieve Container File Content
 - `container_id: string`
 
 - `file_id: string`
+
+### Returns
+
+`file`
 
 ### Example
 

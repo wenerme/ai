@@ -186,6 +186,40 @@ Example response:
 }
 ```
 
+### Check the status of a flow
+
+To check the status of a flow after you trigger it, use the
+[`duoWorkflowWorkflows`](graphql/reference/queries.md#duoworkflowworkflows) GraphQL query:
+
+```graphql
+query {
+  duoWorkflowWorkflows(workflowId: "gid://gitlab/Ai::DuoWorkflows::Workflow/<flow_id>") {
+    nodes {
+      status
+      webUrl
+    }
+  }
+}
+```
+
+Replace `<flow_id>` with the `id` from the response.
+
+When the flow ends, the `status` can be any of the following:
+
+- `FINISHED`
+- `FAILED`
+- `STOPPED`.
+
+The following statuses mean that the flow is waiting for a user:
+
+- `PAUSED`
+- `INPUT_REQUIRED`
+- `PLAN_APPROVAL_REQUIRED`
+- `TOOL_CALL_APPROVAL_REQUIRED`
+
+To receive lifecycle events instead of polling, use
+[webhook callbacks](../user/duo_agent_platform/flows/webhook_callbacks.md).
+
 ## Restart a flow
 
 - Status: Experiment

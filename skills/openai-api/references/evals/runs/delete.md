@@ -8,7 +8,11 @@ Delete an eval run.
 
 - `eval_id: string`
 
+  The ID of the evaluation to delete the run from.
+
 - `run_id: string`
+
+  The ID of the run to delete.
 
 ### Returns
 

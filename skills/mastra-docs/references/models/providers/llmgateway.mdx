@@ -5,7 +5,7 @@ description: "Browse DevPass (LLM Gateway) model IDs, capabilities, context wind
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 196 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 199 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -300,8 +300,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 384000,
-    "inputCost": 0.435,
-    "outputCost": 0.87
+    "inputCost": 0.66,
+    "outputCost": 1.98
   },
   {
     "model": "llmgateway/deepseek-v4.1-flash",
@@ -538,7 +538,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131000,
+    "contextWindow": 128000,
     "maxOutput": 98304,
     "inputCost": 0.6,
     "outputCost": 2.2
@@ -550,7 +550,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131000,
+    "contextWindow": 128000,
     "maxOutput": 98304,
     "inputCost": 0.2,
     "outputCost": 1.1
@@ -658,7 +658,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 203000,
+    "contextWindow": 202800,
     "maxOutput": 131072,
     "inputCost": 0.573,
     "outputCost": 2.58
@@ -746,6 +746,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.088,
     "outputCost": 0.25
+  },
+  {
+    "model": "llmgateway/glm-5.3-flashx",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 0.37,
+    "outputCost": 1.25
   },
   {
     "model": "llmgateway/glm-5v-turbo",
@@ -1418,6 +1430,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 1.9,
     "outputCost": 8
+  },
+  {
+    "model": "llmgateway/kimi-k2.8-preview",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 1,
+    "outputCost": 4
   },
   {
     "model": "llmgateway/kimi-k3",
@@ -2378,6 +2402,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.2,
     "outputCost": 1.15
+  },
+  {
+    "model": "llmgateway/step-5-preview",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 1,
+    "outputCost": 2.7
   }
 ]}
 />
@@ -2416,7 +2452,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "llmgateway/step-3.7-flash"
+      ? "llmgateway/step-5-preview"
       : "llmgateway/Qwen3.8-27B";
   }
 });

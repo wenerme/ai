@@ -10,6 +10,8 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters
@@ -349,9 +351,13 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -868,9 +874,13 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 

@@ -8,7 +8,11 @@ Retrieves a service account in the project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `service_account_id: string`
+
+  The ID of the service account.
 
 ### Returns
 

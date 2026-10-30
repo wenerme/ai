@@ -10,6 +10,12 @@ Returns a response containing the contents of the specified file.
 
 - `file_id: string`
 
+  The ID of the file to use for this request.
+
+### Returns
+
+`file`
+
 ### Example
 
 ```http
@@ -187,6 +193,8 @@ Delete a file and remove it from all vector stores.
 ### Path Parameters
 
 - `file_id: string`
+
+  The ID of the file to use for this request.
 
 ### Returns
 
@@ -422,6 +430,8 @@ Returns information about a specific file.
 ### Path Parameters
 
 - `file_id: string`
+
+  The ID of the file to use for this request.
 
 ### Returns
 

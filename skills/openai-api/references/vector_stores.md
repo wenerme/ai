@@ -268,6 +268,8 @@ Delete a vector store.
 
 - `vector_store_id: string`
 
+  The ID of the vector store to delete.
+
 ### Returns
 
 - `VectorStoreDeleted object { id, deleted, object }`
@@ -564,6 +566,8 @@ Retrieves a vector store.
 
 - `vector_store_id: string`
 
+  The ID of the vector store to retrieve.
+
 ### Returns
 
 - `VectorStore object { id, created_at, file_counts, 8 more }`
@@ -740,6 +744,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store to search.
 
 ### Body Parameters
 
@@ -1029,6 +1035,8 @@ Modifies a vector store.
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store to modify.
 
 ### Body Parameters
 
@@ -1537,7 +1545,11 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch to cancel.
 
 ### Returns
 
@@ -1665,6 +1677,8 @@ Create a vector store file batch.
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store for which to create a File Batch.
 
 ### Body Parameters
 
@@ -1905,7 +1919,11 @@ Returns a list of vector store files in a batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the files belong to.
+
 - `batch_id: string`
+
+  The ID of the file batch that the files belong to.
 
 ### Query Parameters
 
@@ -2152,7 +2170,11 @@ Retrieves a vector store file batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch being retrieved.
 
 ### Returns
 
@@ -2343,7 +2365,11 @@ Retrieve the parsed contents of a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store.
+
 - `file_id: string`
+
+  The ID of the file within the vector store.
 
 ### Returns
 
@@ -2427,6 +2453,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store for which to create a File.
 
 ### Body Parameters
 
@@ -2675,7 +2703,11 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file to delete.
 
 ### Returns
 
@@ -2737,6 +2769,8 @@ Returns a list of vector store files.
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store that the files belong to.
 
 ### Query Parameters
 
@@ -2983,7 +3017,11 @@ Retrieves a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file being retrieved.
 
 ### Returns
 
@@ -3165,7 +3203,11 @@ Update attributes on a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file to update attributes.
 
 ### Body Parameters
 

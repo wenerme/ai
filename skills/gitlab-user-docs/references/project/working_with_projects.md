@@ -339,11 +339,12 @@ the deletion job instead restores the project, and the project is no longer sche
 When a project is marked for deletion, scheduled CI/CD pipelines stop running, and the project
 becomes read-only.
 You can still view its contents, but you cannot add members, create or delete content, share it
-with other groups, create deploy tokens, or change CI/CD variables, integrations, or protected
-branches.
+with other groups, create deploy tokens, add or edit webhooks, change the visibility,
+or change CI/CD variables, integrations, or protected branches.
 You also cannot view CI/CD variables or integration settings.
 You can still revoke deploy tokens, delete uploaded files, and remove sensitive data from the repository.
 You can also run a [repository cleanup](repository/repository_size.md#clean-up-repository).
+With the API, you can also delete webhooks and turn off integrations.
 The **Protected branches** settings section is hidden, but branch rules are still listed under **Branch rules**.
 [External status check](merge_requests/status_checks.md) services cannot [set the status of a check](../../api/status_checks.md#set-status-of-an-external-status-check) on a merge request. The API returns `403 Forbidden`.
 To make the project writable again, [restore it](#restore-a-project).
@@ -399,12 +400,13 @@ When you archive a project:
 
 - The project becomes inactive and displays an `Archived` badge
 - Most features become read-only, including repositories, issues, merge requests, and packages
-- You cannot add members, create deploy tokens, or change CI/CD variables, integrations, or
-  protected branches
+- You cannot add members, create deploy tokens, add or edit webhooks, change the visibility,
+  or change CI/CD variables, integrations, or protected branches
 - You cannot view CI/CD variables or integration settings
 - You cannot delete container images until you unarchive the project
 - You can still revoke deploy tokens, delete uploaded files, and remove sensitive data from the repository
 - You can still run a [repository cleanup](repository/repository_size.md#clean-up-repository)
+- With the API, you can still delete webhooks and turn off integrations
 - The **Protected branches** settings section is hidden, but branch rules are still listed under **Branch rules**
 - [External status check](merge_requests/status_checks.md) services cannot [set the status of a check](../../api/status_checks.md#set-status-of-an-external-status-check) on a merge request. The API returns a `403 Forbidden` error.
 - Fork relationships are removed and open merge requests from forks are closed

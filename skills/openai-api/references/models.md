@@ -10,6 +10,8 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 - `model: string`
 
+  The model to delete
+
 ### Returns
 
 - `ModelDeleted object { id, deleted, object }`
@@ -167,6 +169,8 @@ Retrieves a model instance, providing basic information about the model such as 
 ### Path Parameters
 
 - `model: string`
+
+  The ID of the model to use for this request
 
 ### Returns
 

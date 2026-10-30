@@ -8,7 +8,11 @@ Retrieves an organization role assigned to a group.
 
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 - `role_id: string`
+
+  The ID of the organization role to retrieve for the group.
 
 ### Returns
 

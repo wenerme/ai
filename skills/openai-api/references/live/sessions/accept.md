@@ -8,6 +8,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
 - `session_id: string`
 
+  Opaque Live session identifier from the creation response or incoming-call webhook. Preserve the returned value unchanged, including its prefix.
+
 ### Body Parameters
 
 - `session: object { model, type, audio, 5 more }`

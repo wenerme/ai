@@ -11,7 +11,11 @@ is archived (archived projects have no service accounts).
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `service_account_id: string`
+
+  The ID of the service account.
 
 ### Returns
 

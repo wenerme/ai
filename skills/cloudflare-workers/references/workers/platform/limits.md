@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/platform/limits/og.png?v=58be33
 
 # Limits
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Account plan limits
 
@@ -47,7 +47,7 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 | Response header size | 128 KB (total) |
 | Response body size | No enforced limit |
 
-Request body size limits depend on your Cloudflare account plan, not your Workers plan. Requests exceeding these limits return a [`413 Request entity too large`](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/#cloudflare-specific-information) error.
+For incoming requests to a Worker on your domain, request body size limits depend on the domain's Cloudflare plan, not your Workers plan. Requests exceeding these limits return a [`413 Request entity too large`](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/#cloudflare-specific-information) error.
 
 | Cloudflare Plan | Maximum request body size |
 | --- | --- |
@@ -57,6 +57,8 @@ Request body size limits depend on your Cloudflare account plan, not your Worker
 | Enterprise | Up to 5 GB (self-serve) |
 
 Enterprise customers can adjust the maximum request body size up to 5 GB themselves from the zone's **Network** page (**Maximum Upload Size**). For limits above 5 GB, contact your account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+Cloudflare limits each HTTP request body sent to an external service by a [Durable Object](https://developers.cloudflare.com/durable-objects/platform/limits/#outbound-http-request-body-size) or through a [Container outbound handler](https://developers.cloudflare.com/containers/platform/limits/#outbound-http-request-body-size) to **100 MiB by default**. Increasing **Maximum Upload Size** for your domain does not increase this limit. Refer to the product limits for upload guidance and how to request an increase.
 
 Cloudflare does not enforce response body size limits. [CDN cache limits](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) apply: 512 MB for Free, Pro, and Business plans, and 5 GB for Enterprise.
 
@@ -454,5 +456,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/limits/og.png?v=58be33e8c39614b7","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/limits/og.png?v=58be33e8c39614b7","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

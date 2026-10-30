@@ -8,6 +8,8 @@ Get an evaluation by ID.
 
 - `eval_id: string`
 
+  The ID of the evaluation to retrieve.
+
 ### Returns
 
 - `id: string`

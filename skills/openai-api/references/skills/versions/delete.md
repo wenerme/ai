@@ -8,6 +8,8 @@ Delete a skill version.
 
 - `skill_id: string`
 
+  The identifier of the skill.
+
 - `version: string`
 
   The skill version number.

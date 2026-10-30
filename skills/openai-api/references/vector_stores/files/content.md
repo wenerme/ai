@@ -8,7 +8,11 @@ Retrieve the parsed contents of a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store.
+
 - `file_id: string`
+
+  The ID of the file within the vector store.
 
 ### Returns
 

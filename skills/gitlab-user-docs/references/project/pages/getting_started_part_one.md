@@ -42,7 +42,7 @@ Pages domains are `*.gitlab.io`.
 | Project pages owned by a group | `acmecorp/webshop` | `http(s)://acmecorp.example.io/webshop`|
 | Project pages owned by a subgroup | `acmecorp/documentation/product-manual` | `http(s)://acmecorp.example.io/documentation/product-manual`|
 
-When the **Use unique domain** setting is turned on, Pages builds the domain name from
+When the  setting is turned on, Pages builds the domain name from
 the flattened project name and a six-character unique ID. Users receive a `308 Permanent Redirect` status
 redirecting the browser to these unique domain URLs. Browsers might cache this redirect:
 
@@ -65,7 +65,7 @@ For example, if the unique ID is `f85695`, the last example is
 The following examples show how Pages domains work.
 
 > [!note]
-> The following examples imply you turned off the **Use unique domain** setting. If you did not, refer to the previous table, replacing `example.io` with `gitlab.io`.
+> The following examples imply you turned off the  setting. If you did not, refer to the previous table, replacing `example.io` with `gitlab.io`.
 
 ### Project website examples
 

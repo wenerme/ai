@@ -207,7 +207,6 @@ seconds:
 
 - `duration_s`: Total time to retrieve the request
 - `queue_duration_s`: Total time the request was queued inside GitLab Workhorse
-- `correlation_duration_s`: Total time since the root request or job of the call chain started
 - `view_duration_s`: Total time inside the Rails views
 - `db_duration_s`: Total time to retrieve data from PostgreSQL
 - `cpu_s`: Total time spent on CPU
@@ -227,10 +226,6 @@ seconds:
 - `redis_<instance>_write_bytes`: Total bytes written to a Redis instance
 - `pid`: The worker's Linux process ID (changes when workers restart)
 - `worker_id`: The worker's logical ID (does not change when workers restart)
-
-> [!flag]
-> The availability of `correlation_duration_s` is controlled by the `log_correlation_duration`
-> feature flag. This flag is disabled by default.
 
 User clone and fetch activity using HTTP transport appears in the log as `action: git_upload_pack`.
 
@@ -648,6 +643,8 @@ file. For example:
 Jobs enqueued by a request, or by another job, share the `correlation_id` of that request or job.
 The `correlation_duration_s` field is the time in seconds since the root request or job of that chain
 started, so a filter like `correlation_duration_s > 3600` finds jobs that belong to a long-running chain.
+The start time does not cross HTTP or gRPC calls, so a chain that passes through a request, for example
+when a job pushes to a repository and Gitaly calls the internal API, starts a new measurement at that request.
 
 > [!flag]
 > The availability of `correlation_duration_s` is controlled by the `log_correlation_duration`

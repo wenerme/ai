@@ -8,7 +8,11 @@ Assigns a project role to a user within a project.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 - `user_id: string`
+
+  The ID of the user that should receive the project role.
 
 ### Body Parameters
 

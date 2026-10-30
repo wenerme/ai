@@ -62,13 +62,13 @@ Prerequisites:
 
 To allow a cluster agent for workspaces in a group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Workspaces**.
-1. In the **Group agents** section, select the **All agents** tab.
-1. From the list of available agents, find the agent with status **Blocked**, and select **Allow**.
-1. On the confirmation dialog, select **Allow agent**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select the  tab.
+1. From the list of available agents, find the agent with status , and select .
+1. On the confirmation dialog, select .
 
-GitLab updates the status of the selected agent to **Allowed**, and displays the agent in the **Allowed agents** tab.
+GitLab updates the status of the selected agent to , and displays the agent in the  tab.
 
 ## Remove an allowed cluster agent for workspaces in a group
 
@@ -79,13 +79,13 @@ Prerequisites:
 
 To remove an allowed cluster agent from a group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Workspaces**.
-1. In the **Group agents** section, select the **Allowed agents** tab.
-1. From the list of allowed agents, find the agent you want to remove, and select **Block**.
-1. On the confirmation dialog, select **Block agent**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select the  tab.
+1. From the list of allowed agents, find the agent you want to remove, and select .
+1. On the confirmation dialog, select .
 
-GitLab updates the status of the selected agent to **Blocked**, and removes the agent from the **Allowed agents** tab.
+GitLab updates the status of the selected agent to , and removes the agent from the  tab.
 
 > [!note]
 > Removing an allowed cluster agent from a group does not immediately stop running workspaces using
@@ -103,9 +103,9 @@ Prerequisites:
 
 To allow a cluster agent for workspaces on the instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Available agents for workspaces**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
 1. From the list of agents with workspaces enabled, find the agent you want to allow, and select the
    availability toggle.
 
@@ -119,9 +119,9 @@ Prerequisites:
 
 To remove an allowed cluster agent from the instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Available agents for workspaces**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
 1. From the list of allowed agents, find the agent you want to remove, and clear the availability toggle.
 
 > [!note]

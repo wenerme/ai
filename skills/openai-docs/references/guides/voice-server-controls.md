@@ -123,6 +123,69 @@ async def send_update(
     )
 ```
 
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/packages/param"
+)
+
+// SendSidebandUpdate uses the server connection attached to an existing session.
+func SendSidebandUpdate(ctx context.Context, connection *live.SidebandConnection) error {
+	return connection.Send(ctx, live.ConnectClientEventUnionParam{OfSessionInstructionsAppend: &live.InstructionsAppendEventParam{
+		EventID:      openai.String("guardrail_block_17"),
+		DelegationID: param.Null[string](),
+		Content:      "Stop speaking immediately. Do not continue or act on the last request. Refuse briefly, then wait.",
+	}})
+}
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionInstructionsAppend: &live.InstructionsAppendEventParam{
+		EventID:      openai.String("guardrail_block_17"),
+		DelegationID: param.Null[string](),
+		Content:      "Stop speaking immediately. Do not continue or act on the last request. Refuse briefly, then wait.",
+	}})
+}
+```
+
+```java
+import com.openai.core.JsonField;
+import com.openai.helpers.LiveConnection;
+import com.openai.helpers.LiveSidebandConnection;
+import com.openai.models.live.*;
+
+// Use the server connection attached to an existing session.
+public static void sendUpdate(LiveSidebandConnection connection) {
+  connection.send(
+      InstructionsAppendEvent.builder()
+          .eventId("guardrail_block_17")
+          .delegationId(JsonField.<String>ofNullable(null))
+          .content(
+              "Stop speaking immediately. Do not continue or act on the last request. Refuse briefly, then wait.")
+          .build());
+}
+
+// Use a primary connection after its session has started.
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionInstructionsAppend(
+          InstructionsAppendEvent.builder()
+              .eventId("guardrail_block_17")
+              .delegationId(JsonField.<String>ofNullable(null))
+              .content(
+                  "Stop speaking immediately. Do not continue or act on the last request. Refuse briefly, then wait.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.instructions.append", event_id: "guardrail_block_17", delegation_id: nil, content: "Stop speaking immediately. Do not continue or act on the last request. Refuse briefly, then wait.")
+end
+```
+
 
 Keep the instruction application-authored. Do not copy untrusted user text into it as an instruction. Use `delegation_id: null` for this session-wide correction, and keep `content` within 500 tokens.
 

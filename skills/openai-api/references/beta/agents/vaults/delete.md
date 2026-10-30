@@ -8,6 +8,8 @@ Deletes a vault and all its credentials. See [vaults](/api/docs/guides/agents-ap
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns

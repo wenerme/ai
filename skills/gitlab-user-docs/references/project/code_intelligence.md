@@ -120,8 +120,8 @@ To enable code intelligence for a project, add GitLab CI/CD jobs to your project
 
    ```yaml
    code_navigation:
-      rules:
-      - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH # the job only needs to run against the default branch
+     rules:
+       - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH # the job only needs to run against the default branch
      image: sourcegraph/lsif-go:v1
      allow_failure: true # recommended
      script:

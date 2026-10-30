@@ -8,6 +8,8 @@ List skill versions for a skill.
 
 - `skill_id: string`
 
+  The identifier of the skill.
+
 ### Query Parameters
 
 - `after: optional string`

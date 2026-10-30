@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290
 
 # OpenCode
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenCode ↗︎](https://opencode.ai/v2/docs/build/sdk/) is an extensible agent harness. The Agents SDK's `OpenCodeHarness` runs its Workerd SDK inside a plain Durable Object. Refer to [OpenCode's Cloudflare SDK documentation ↗︎](https://opencode.ai/v2/docs/build/sdk/cloudflare/) for the embedded host API.
 
@@ -24,7 +24,7 @@ OpenCode owns the agent loop, transcript, tools, and session recovery. `OpenCode
 
 ## How it works
 
-`OpenCodeHarness` is a [Lifecycle capability ↗︎](https://github.com/cloudflare/agents/blob/main/docs/agents/lifecycle.md). The Lifecycle starts the capability and provides storage and a durable job queue.
+`OpenCodeHarness` is a [Lifecycle capability](https://developers.cloudflare.com/agents/runtime/lifecycle/). The Lifecycle starts the capability and provides storage and a durable job queue.
 
 ```
 flowchart LR
@@ -84,7 +84,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 	"name": "opencode-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-21",
+	"compatibility_date": "2026-10-30",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": { "binding": "AI", "remote": true },
 	"durable_objects": {
@@ -98,7 +98,7 @@ Add the `AI` binding, a SQLite-backed Durable Object, and `nodejs_compat` to you
 name = "opencode-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-21"
+compatibility_date = "2026-10-30"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -499,7 +499,7 @@ export default Plugin.define({
 });
 ```
 
-Import this plugin and add it to `plugins`. The `content` supplies instructions without reading a local file at runtime. Refer to [OpenCode skills ↗︎](https://opencode.ai/v2/docs/build/plugins/#skills) for registration and [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) for authoring guidance.
+Import this plugin and add it to `plugins`. The `content` supplies instructions without reading a local file at runtime. Refer to [OpenCode skills ↗︎](https://opencode.ai/v2/docs/build/plugins/#skills) for registration and [Agent Skills](https://developers.cloudflare.com/agents/skills/) for authoring guidance.
 
 Was this helpful?
 
@@ -510,5 +510,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/opencode/#page","headline":"OpenCode","description":"Run OpenCode 2.0 in a plain Durable Object with the Agents SDK, Workers AI and AI Gateway models, bundled plugins, and durable sessions.","url":"https://developers.cloudflare.com/agents/harnesses/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/opencode/og.png?v=e290a515eca01995","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

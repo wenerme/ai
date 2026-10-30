@@ -8,6 +8,8 @@ Deletes a group from the organization.
 
 - `group_id: string`
 
+  The ID of the group to delete.
+
 ### Returns
 
 - `id: string`

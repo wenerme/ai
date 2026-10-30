@@ -8,6 +8,8 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 - `model: string`
 
+  The model to delete
+
 ### Returns
 
 - `ModelDeleted object { id, deleted, object }`

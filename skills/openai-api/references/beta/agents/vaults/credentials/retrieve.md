@@ -8,9 +8,13 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `credential_id: string`
+
+  The ID of the vault credential.
 
   `minLength: 0`, `maxLength: 1048576`
 

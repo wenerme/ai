@@ -8,9 +8,15 @@ Retrieves a project role assigned to a group.
 
 - `project_id: string`
 
+  The ID of the project to inspect.
+
 - `group_id: string`
 
+  The ID of the group to inspect.
+
 - `role_id: string`
+
+  The ID of the project role to retrieve for the group.
 
 ### Returns
 

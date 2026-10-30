@@ -8,6 +8,8 @@ Deletes a voice consent recording.
 
 - `consent_id: string`
 
+  The ID of the consent recording to delete.
+
 ### Returns
 
 - `VoiceConsentDeleted object { id, deleted, object }`

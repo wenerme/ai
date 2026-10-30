@@ -10,6 +10,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 - `environment_id: string`
 
+  The ID of the environment.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
@@ -121,6 +123,8 @@ Lists live files on a connected execution environment with optional directory fi
 ### Path Parameters
 
 - `environment_id: string`
+
+  The ID of the environment.
 
   `minLength: 0`, `maxLength: 1048576`
 

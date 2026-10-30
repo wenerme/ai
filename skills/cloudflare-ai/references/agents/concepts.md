@@ -17,6 +17,7 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [What are agents?](https://developers.cloudflare.com/agents/concepts/what-are-agents/)
 - [Conversation state and memory](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/)
 - [Tools](https://developers.cloudflare.com/agents/concepts/tools/)
+- [Agent Skills](https://developers.cloudflare.com/agents/concepts/agent-skills/)
 - [Calling LLMs](https://developers.cloudflare.com/agents/concepts/calling-llms/)
 - [Using Agents with Workflows](https://developers.cloudflare.com/agents/concepts/workflows/)
 - [Agentic patterns](https://developers.cloudflare.com/agents/concepts/agentic-patterns/)

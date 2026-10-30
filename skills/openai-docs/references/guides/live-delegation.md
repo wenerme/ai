@@ -74,6 +74,42 @@ session: SessionConfigParam = {
 }
 ```
 
+```go
+import (
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+var session = live.SessionConfigParam{Model: "gpt-live-1", Delegation: live.SessionConfigDelegationUnionParam{OfResponses: &live.SessionConfigDelegationResponsesParam{Responses: live.ResponsesDelegationConfigParam{Model: "gpt-6-luna", Instructions: openai.String("[Your backend prompt]")}}}}
+```
+
+```java
+import com.openai.models.live.*;
+
+var session =
+    SessionConfig.builder()
+        .model("gpt-live-1")
+        .responsesDelegation(
+            ResponsesDelegationConfig.builder()
+                .model("gpt-6-luna")
+                .instructions("[Your backend prompt]")
+                .build())
+        .build();
+```
+
+```ruby
+require "openai"
+session = OpenAI::Models::Live::SessionConfig.new(
+  model: "gpt-live-1", delegation: {
+    type: :responses,
+    responses: {
+      model: "gpt-6-luna",
+      instructions: "[Your backend prompt]"
+    }
+  }
+)
+```
+
 
 Start with [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna), or try [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol) for more complex backend tasks. Compare answer quality and latency on your tasks before choosing a backend model.
 
@@ -210,6 +246,54 @@ async def send_update(
     )
 ```
 
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfResponseItemCreate: &live.ResponseItemCreateEventParam{
+		EventID: openai.String("tool_result_1"),
+		Item:    responses.ResponseInputItemUnionParam{OfFunctionCallOutput: &responses.ResponseInputItemFunctionCallOutputParam{CallID: openai.String("call_123"), Output: responses.ResponseInputItemFunctionCallOutputOutputUnionParam{OfString: openai.String("{\"status\":\"confirmed\",\"order_id\":\"order_123\"}")}}},
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+import com.openai.models.responses.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofResponseItemCreate(
+          ResponseItemCreateEvent.builder()
+              .eventId("tool_result_1")
+              .item(
+                  ResponseInputItem.FunctionCallOutput.builder()
+                      .callId("call_123")
+                      .output("{\"status\":\"confirmed\",\"order_id\":\"order_123\"}")
+                      .build())
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(
+    type: "response.item.create", event_id: "tool_result_1", item: {
+      type: "function_call_output",
+      call_id: "call_123",
+      output: "{\"status\":\"confirmed\",\"order_id\":\"order_123\"}"
+    }
+  )
+end
+```
+
 
 Then explicitly continue the response:
 
@@ -233,6 +317,37 @@ async def send_update(
     await connection.response.create(
         event_id="continue_1",
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfResponseCreate: &live.ResponseCreateEventParam{
+		EventID: openai.String("continue_1"),
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofResponseCreate(ResponseCreateEvent.builder().eventId("continue_1").build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "response.create", event_id: "continue_1")
+end
 ```
 
 
@@ -262,6 +377,29 @@ export const session = {
 from openai.types.live.session_config_param import SessionConfigParam
 
 session: SessionConfigParam = {"model": "gpt-live-1", "delegation": {"type": "client"}}
+```
+
+```go
+import (
+	"github.com/openai/openai-go/v3/live"
+)
+
+var session = live.SessionConfigParam{Model: "gpt-live-1", Delegation: live.SessionConfigDelegationUnionParam{OfClient: &live.ClientDelegationParam{}}}
+```
+
+```java
+import com.openai.models.live.*;
+
+var session =
+    SessionConfig.builder()
+        .model("gpt-live-1")
+        .delegation(ClientDelegation.builder().build())
+        .build();
+```
+
+```ruby
+require "openai"
+session = OpenAI::Models::Live::SessionConfig.new(model: "gpt-live-1", delegation: { type: :client })
 ```
 
 
@@ -324,6 +462,44 @@ async def send_update(
         delegation_id="item_9tA2bF3h7K9m2P5q8R1s4",
         content="The order shipped today and should arrive tomorrow.",
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionCommentaryAppend: &live.CommentaryAppendEventParam{
+		EventID:      openai.String("result_123"),
+		DelegationID: openai.String("item_9tA2bF3h7K9m2P5q8R1s4"),
+		Content:      "The order shipped today and should arrive tomorrow.",
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionCommentaryAppend(
+          CommentaryAppendEvent.builder()
+              .eventId("result_123")
+              .delegationId("item_9tA2bF3h7K9m2P5q8R1s4")
+              .content("The order shipped today and should arrive tomorrow.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.commentary.append", event_id: "result_123", delegation_id: "item_9tA2bF3h7K9m2P5q8R1s4", content: "The order shipped today and should arrive tomorrow.")
+end
 ```
 
 
@@ -405,6 +581,44 @@ async def send_update(
     )
 ```
 
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionThinkingAppend: &live.ThinkingAppendEventParam{
+		EventID:      openai.String("availability_progress"),
+		DelegationID: openai.String("item_123"),
+		Content:      "Checking Thursday availability. No appointment has been booked.",
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionThinkingAppend(
+          ThinkingAppendEvent.builder()
+              .eventId("availability_progress")
+              .delegationId("item_123")
+              .content("Checking Thursday availability. No appointment has been booked.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.thinking.append", event_id: "availability_progress", delegation_id: "item_123", content: "Checking Thursday availability. No appointment has been booked.")
+end
+```
+
 
 For a confirmed booking, send the result the user should hear:
 
@@ -432,6 +646,44 @@ async def send_update(
         delegation_id="item_123",
         content="Your appointment is confirmed for Thursday at 2:00 PM",
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionCommentaryAppend: &live.CommentaryAppendEventParam{
+		EventID:      openai.String("appointment_result"),
+		DelegationID: openai.String("item_123"),
+		Content:      "Your appointment is confirmed for Thursday at 2:00 PM",
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionCommentaryAppend(
+          CommentaryAppendEvent.builder()
+              .eventId("appointment_result")
+              .delegationId("item_123")
+              .content("Your appointment is confirmed for Thursday at 2:00 PM")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.commentary.append", event_id: "appointment_result", delegation_id: "item_123", content: "Your appointment is confirmed for Thursday at 2:00 PM")
+end
 ```
 
 
@@ -467,6 +719,47 @@ async def send_update(
             "with it, then wait for the user."
         ),
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/packages/param"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionInstructionsAppend: &live.InstructionsAppendEventParam{
+		EventID:      openai.String("guardrail_block_17"),
+		DelegationID: param.Null[string](),
+		Content:      "Stop speaking about that request. Briefly explain that you cannot help with it, then wait for the user.",
+	}})
+}
+```
+
+```java
+import com.openai.core.JsonField;
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionInstructionsAppend(
+          InstructionsAppendEvent.builder()
+              .eventId("guardrail_block_17")
+              .delegationId(JsonField.<String>ofNullable(null))
+              .content(
+                  "Stop speaking about that request. Briefly explain that you cannot help with it, then wait for the user.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.instructions.append", event_id: "guardrail_block_17", delegation_id: nil, content: "Stop speaking about that request. Briefly explain that you cannot help with it, then wait for the user.")
+end
 ```
 
 
@@ -586,6 +879,64 @@ async def send_update(
         event_id="typed_order_number",
         item=item,
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfResponseItemCreate: &live.ResponseItemCreateEventParam{
+		EventID: openai.String("typed_order_number"),
+		Item:    responses.ResponseInputItemUnionParam{OfMessage: &responses.EasyInputMessageParam{Role: "user", Content: responses.EasyInputMessageContentUnionParam{OfInputItemContentList: responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("My order number is A0042.")}}}},
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+import com.openai.models.responses.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofResponseItemCreate(
+          ResponseItemCreateEvent.builder()
+              .eventId("typed_order_number")
+              .item(
+                  EasyInputMessage.builder()
+                      .role(EasyInputMessage.Role.USER)
+                      .contentOfResponseInputMessageContentList(
+                          java.util.List.of(
+                              ResponseInputContent.ofInputText(
+                                  ResponseInputText.builder()
+                                      .text("My order number is A0042.")
+                                      .build())))
+                      .build())
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(
+    type: "response.item.create", event_id: "typed_order_number", item: {
+      type: "message",
+      role: "user",
+      content: [
+        {
+          type: "input_text",
+          text: "My order number is A0042."
+        }
+      ]
+    }
+  )
+end
 ```
 
 

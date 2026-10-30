@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/agent-class/og.png?v=b105b2adcb7
 
 # Agent class
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/agent-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
@@ -27,7 +27,7 @@ The Agents SDK provides two main APIs:
 
 Note
 
-Agents require [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/). Refer to [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/) to learn how to add the required bindings.
+Agents require [Cloudflare Durable Objects](https://developers.cloudflare.com/durable-objects/). Refer to [Routing](https://developers.cloudflare.com/agents/runtime/routing/) to learn how to add the required bindings.
 
 ## Agent class
 
@@ -102,19 +102,19 @@ flowchart TD
 | **Durable execution** | `runFiber()`, `startFiber()`, `stash()`, `onFiberRecovered()`, `keepAlive()`, `keepAliveWhile()` | [Durable execution](https://developers.cloudflare.com/agents/agent-class/durable-execution/) |
 | **Queue** | `queue()`, `dequeue()`, `dequeueAll()`, `getQueue()` | [Queue tasks](https://developers.cloudflare.com/agents/agent-class/queue-tasks/) |
 | **WebSockets** | `onConnect()`, `onMessage()`, `onClose()`, `broadcast()` | [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/) |
-| **HTTP/SSE** | `onRequest()` | [HTTP and SSE](https://developers.cloudflare.com/agents/agent-class/http-sse/) |
+| **HTTP/SSE** | `onRequest()` | [HTTP and SSE](https://developers.cloudflare.com/agents/runtime/routing/http-sse/) |
 | **Email** | `onEmail()`, `replyToEmail()` | [Email routing](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/) |
 | **Workflows** | `runWorkflow()`, `waitForApproval()` | [Run Workflows](https://developers.cloudflare.com/agents/agent-class/run-workflows/) |
 | **MCP Client** | `addMcpServer()`, `removeMcpServer()`, `getMcpServers()` | [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) |
-| **AI Models** | Workers AI, OpenAI, Anthropic bindings | [Using AI models](https://developers.cloudflare.com/agents/agent-class/using-ai-models/) |
+| **AI Models** | Workers AI, OpenAI, Anthropic bindings | [Models](https://developers.cloudflare.com/agents/models/) |
 | **Protocol messages** | `shouldSendProtocolMessages()`, `isConnectionProtocolEnabled()` | [Protocol messages](https://developers.cloudflare.com/agents/agent-class/protocol-messages/) |
 | **Context** | `getCurrentAgent()` | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/) |
-| **Tracing** | `wrapAISDK()` | [Tracing](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/) |
-| **Diagnostics channels** | `subscribe()`, diagnostics channels | [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/) |
+| **Tracing** | `wrapAISDK()` | [Tracing](https://developers.cloudflare.com/agents/runtime/observability/tracing/) |
+| **Diagnostics channels** | `subscribe()`, diagnostics channels | [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/observability/diagnostics-channels/) |
 | **Sub-agents** | `subAgent()`, `abortSubAgent()`, `deleteSubAgent()` | [Sub-agents](https://developers.cloudflare.com/agents/agent-class/sub-agents/) |
 | **Agents as tools** | `runAgentTool()`, `clearAgentToolRuns()`, `hasAgentToolRun()` | [Agents as tools](https://developers.cloudflare.com/agents/agent-class/agent-tools/) |
-| **Agent Skills** | `skills` registry, bundled skill sources, script runners | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) |
-| **Sessions** | `Session.create()`, context blocks, compaction, search | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) |
+| **Agent Skills** | `SKILL.md` parser, Workspace, R2, and manifest sources, script runner | [Agent Skills](https://developers.cloudflare.com/agents/skills/) |
+| **Sessions** | `Sessions` capability: message history, branches, compaction, search | [Sessions](https://developers.cloudflare.com/agents/runtime/capabilities/sessions/) |
 | **Think** | `Think` base class, workspace tools, lifecycle hooks, extensions | [Think](https://developers.cloudflare.com/agents/harnesses/think/) |
 | **Chat SDK** | `createChatSdkState()`, `ChatSdkStateAgent` | [Chat SDK](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat-sdk/) |
 
@@ -217,13 +217,9 @@ Refer to [Routing](https://developers.cloudflare.com/agents/agent-class/routing/
 
 ## Next steps
 
-### [Quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/)
+### [Build your first Durable Agent](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 
-Build your first agent in about 10 minutes.
-
-### [Configuration](https://developers.cloudflare.com/agents/runtime/operations/configuration/)
-
-Learn about wrangler.jsonc setup and deployment.
+Run the Pi harness in a Durable Object, give it a workspace, and connect over WebSockets.
 
 ### [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/)
 
@@ -242,5 +238,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/#page","headline":"Agent class","description":"Reference for the Agent base class, its hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/agent-class/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/og.png?v=b105b2adcb78ce98","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/agent-class/#page","headline":"Agent class","description":"Reference for the Agent base class, its hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/agent-class/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/agent-class/og.png?v=b105b2adcb78ce98","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

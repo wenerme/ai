@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/configuration/outbound-traff
 
 # Handle outbound traffic
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
@@ -399,6 +399,16 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 
 The `Container` class calls these methods automatically when you use the functions shown above. You can also call them directly for cases the class does not cover.
 
+## Troubleshoot outbound uploads
+
+An HTTP upload forwarded through an outbound handler can fail with `413 Payload Too Large` when its request body exceeds the [100 MiB default outbound limit](https://developers.cloudflare.com/containers/platform/limits/#outbound-http-request-body-size). Increasing **Maximum Upload Size** for your application's custom domain does not increase this limit.
+
+Identify whether the failure occurs on the incoming request to your application or the outbound request to the destination. Check the destination's limits as well. Compare the complete request body size with each applicable limit.
+
+If the destination supports multipart or resumable uploads, send smaller parts in separate requests. If you need a larger individual request, [contact Cloudflare with the upload details](https://developers.cloudflare.com/containers/platform/limits/#outbound-http-request-body-size).
+
+The error `Can't read from request stream after responding with an exception.` can accompany an upload failure. It can also occur after unrelated exceptions. Check earlier errors and the response status to identify the cause.
+
 ## Local development
 
 `wrangler dev` supports outbound interception. A sidecar process is spawned inside the container's network namespace. It applies `TPROXY` rules to route matching traffic to the local Workerd instance, mirroring production behavior.
@@ -419,5 +429,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

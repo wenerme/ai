@@ -8,6 +8,8 @@ Deletes a custom role from the organization.
 
 - `role_id: string`
 
+  The ID of the role to delete.
+
 ### Returns
 
 - `id: string`

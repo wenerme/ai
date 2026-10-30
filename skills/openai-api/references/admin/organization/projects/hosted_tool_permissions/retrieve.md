@@ -8,6 +8,8 @@ Returns hosted tool permissions for a project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Returns
 
 - `ProjectHostedToolPermissions object { code_interpreter, file_search, image_generation, 2 more }`

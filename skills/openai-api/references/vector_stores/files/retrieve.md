@@ -8,7 +8,11 @@ Retrieves a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file being retrieved.
 
 ### Returns
 

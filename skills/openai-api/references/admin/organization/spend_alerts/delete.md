@@ -8,6 +8,8 @@ Deletes an organization spend alert.
 
 - `alert_id: string`
 
+  The ID of the spend alert to delete.
+
 ### Returns
 
 - `OrganizationSpendAlertDeleted object { id, deleted, object }`

@@ -8,7 +8,11 @@ Retrieves a project's group.
 
 - `project_id: string`
 
+  The ID of the project to inspect.
+
 - `group_id: string`
+
+  The ID of the group to retrieve.
 
 ### Query Parameters
 

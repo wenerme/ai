@@ -104,6 +104,8 @@ Additionally, archived groups:
 - Display an `Archived` badge on the group page
 - Appear in the **Inactive** tab on the **Your work** page, and **Explore** page
 - Cannot be transferred to another namespace
+- Cannot have webhooks added or edited, integrations changed, or the visibility changed
+- Can still have webhooks deleted and integrations turned off with the API
 
 ### Known limitations
 

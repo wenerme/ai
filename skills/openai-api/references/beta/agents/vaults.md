@@ -85,6 +85,8 @@ Deletes a vault and all its credentials. See [vaults](/api/docs/guides/agents-ap
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -282,6 +284,8 @@ Retrieves a vault by its ID. See [vaults](/api/docs/guides/agents-api/tools/vaul
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -349,6 +353,8 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 ### Path Parameters
 
 - `vault_id: string`
+
+  The ID of the vault.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -523,6 +529,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 ### Path Parameters
 
 - `vault_id: string`
+
+  The ID of the vault.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -977,9 +985,13 @@ Deletes a vault credential. See [vaults](/api/docs/guides/agents-api/tools/vault
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `credential_id: string`
+
+  The ID of the vault credential.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -1033,6 +1045,8 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 ### Path Parameters
 
 - `vault_id: string`
+
+  The ID of the vault.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -1362,9 +1376,13 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `credential_id: string`
+
+  The ID of the vault credential.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -1612,9 +1630,13 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
 - `vault_id: string`
 
+  The ID of the vault.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `credential_id: string`
+
+  The ID of the vault credential.
 
   `minLength: 0`, `maxLength: 1048576`
 

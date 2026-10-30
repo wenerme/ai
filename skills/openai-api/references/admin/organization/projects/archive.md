@@ -8,6 +8,8 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 - `project_id: string`
 
+  The ID of the project.
+
 ### Returns
 
 - `Project object { id, created_at, object, 5 more }`

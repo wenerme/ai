@@ -9,6 +9,8 @@ with the `store` parameter set to `true` will be returned.
 
 - `completion_id: string`
 
+  The ID of the chat completion to retrieve.
+
 ### Returns
 
 - `ChatCompletion object { id, choices, created, 7 more }`

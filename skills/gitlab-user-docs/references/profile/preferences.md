@@ -469,10 +469,10 @@ If your project is not linked to a remote repository in GitLab, you must
 
 - Status: Beta
 
-When Orbit in GitLab Duo is on for you, you can choose which GitLab Duo features use Orbit.
-Orbit in GitLab Duo is on for members of a top-level group with Orbit on, or when an administrator turns it on for the instance.
+When GitLab Orbit in GitLab Duo is turned on, you can choose which GitLab Duo features use GitLab Orbit.
+GitLab Orbit in GitLab Duo is available for members of a top-level group with GitLab Orbit turned on, or when an administrator turns the setting on for the instance.
 
-To choose which features use Orbit:
+To choose which features use GitLab Orbit:
 
 1. In the upper-right corner, select your avatar.
 1. Select **Preferences**.
@@ -481,7 +481,7 @@ To choose which features use Orbit:
    - **Orbit Agent**
    - **Other Foundational Agents**
    - **Custom Agents**
-1. Optional. If you belong to more than one top-level group with GitLab Orbit, from the **Default group** dropdown list, select the group to assign Orbit usage to.
+1. If you belong to more than one top-level group with GitLab Orbit, from the **Default group** dropdown list, select the group to bill for your GitLab Orbit usage.
 1. Select **Save changes**.
 
 ## Integrate your GitLab instance with third-party services

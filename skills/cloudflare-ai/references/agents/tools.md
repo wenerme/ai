@@ -24,6 +24,7 @@ Tools give agents capabilities such as [searching the web](https://developers.cl
 - [Web search](https://developers.cloudflare.com/agents/tools/web-search/)
 - [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/)
 - [Agentic Payments](https://developers.cloudflare.com/agents/tools/payments/)
+- [Skills](https://developers.cloudflare.com/agents/tools/skills/)
 - [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/)
 
 Was this helpful?

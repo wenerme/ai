@@ -8,6 +8,12 @@ Returns a response containing the contents of the specified file.
 
 - `file_id: string`
 
+  The ID of the file to use for this request.
+
+### Returns
+
+`file`
+
 ### Example
 
 ```http

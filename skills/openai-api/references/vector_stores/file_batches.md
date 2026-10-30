@@ -10,7 +10,11 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch to cancel.
 
 ### Returns
 
@@ -138,6 +142,8 @@ Create a vector store file batch.
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store for which to create a File Batch.
 
 ### Body Parameters
 
@@ -378,7 +384,11 @@ Returns a list of vector store files in a batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the files belong to.
+
 - `batch_id: string`
+
+  The ID of the file batch that the files belong to.
 
 ### Query Parameters
 
@@ -625,7 +635,11 @@ Retrieves a vector store file batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch being retrieved.
 
 ### Returns
 

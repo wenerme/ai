@@ -10,6 +10,8 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters

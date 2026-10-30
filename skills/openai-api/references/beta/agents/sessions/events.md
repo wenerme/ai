@@ -16,6 +16,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
@@ -276,6 +278,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 

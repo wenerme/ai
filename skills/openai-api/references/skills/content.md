@@ -10,6 +10,12 @@ Download a skill zip bundle by its ID.
 
 - `skill_id: string`
 
+  The identifier of the skill to download.
+
+### Returns
+
+`file`
+
 ### Example
 
 ```http

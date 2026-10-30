@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/examples/voice-agent/og.png?v=3f
 
 # Voice agent
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/voice-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/voice-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket. Beta
 
@@ -30,12 +30,12 @@ By the end of this guide you will have:
 
 ## 1. Create the project
 
-Scaffold a new Workers project with Vite and React, then add the voice dependencies:
+Scaffold a new Workers project with Vite and React, then update `agents` to a version that includes `agents/voice`:
 
 ```sh
 npm create cloudflare@latest voice-agent -- --template cloudflare/agents-starter
 cd voice-agent
-npm install @cloudflare/voice
+npm install agents@latest
 ```
 
 The starter gives you a working Vite + React + Cloudflare Workers setup. You will replace the server and client code in the following steps.
@@ -48,7 +48,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 {
 	"name": "voice-agent",
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-10-30",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "src/server.ts",
 	"upload_source_maps": true,
@@ -75,7 +75,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 ```toml
 name = "voice-agent"
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-10-30"
 compatibility_flags = [ "nodejs_compat" ]
 main = "src/server.ts"
 upload_source_maps = true
@@ -98,7 +98,7 @@ Replace `src/server.ts` with the following. The `withVoice` mixin adds the full 
 
 ```js
 import { Agent, routeAgentRequest } from "agents";
-import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "@cloudflare/voice";
+import { withVoice, WorkersAIFluxSTT, WorkersAITTS } from "agents/voice";
 import { streamText, tool, stepCountIs } from "ai";
 import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
@@ -164,7 +164,7 @@ import {
 	WorkersAIFluxSTT,
 	WorkersAITTS,
 	type VoiceTurnContext,
-} from "@cloudflare/voice";
+} from "agents/voice";
 import { streamText, tool, stepCountIs } from "ai";
 import { createAI } from "agents/models/ai-sdk";
 import { z } from "zod";
@@ -237,7 +237,7 @@ Key points:
 Replace `src/client.tsx` with a React component using the `useVoiceAgent` hook. The hook manages the WebSocket connection, mic capture, audio playback, and interrupt detection.
 
 ```tsx
-import { useVoiceAgent } from "@cloudflare/voice/react";
+import { useVoiceAgent } from "agents/voice/react";
 
 function App() {
 	const {
@@ -399,7 +399,7 @@ Full reference for withVoice, withVoiceInput, React hooks, VoiceClient, and all 
 
 Build text-based AI chat with AIChatAgent and useAgentChat.
 
-### [Using AI models](https://developers.cloudflare.com/agents/agent-class/using-ai-models/)
+### [Models](https://developers.cloudflare.com/agents/models/)
 
 Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents.
 
@@ -412,5 +412,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/examples/voice-agent/og.png?v=3ffcc90eba034b41","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/examples/voice-agent/og.png?v=3ffcc90eba034b41","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

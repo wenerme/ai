@@ -247,7 +247,7 @@ its reliability or security.
 
 Another python library that provides function decorators for backoff and retry is [backoff](https://pypi.org/project/backoff/):
 
-Using the Tenacity library
+Using the backoff library
 
 ```python
 import backoff

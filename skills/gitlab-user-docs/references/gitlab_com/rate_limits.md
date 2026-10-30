@@ -81,13 +81,15 @@ minute.
 
 | Rate limit                       | Free                                              | Premium           | Ultimate           |
 | -------------------------------- | ------------------------------------------------- | ----------------- | ------------------ |
-| Authenticated traffic for a user | 100 each minute, 200 for web traffic[^free-burst] | 1,250 each minute | 2,000 each minute  |
+| Authenticated traffic for a user | 100 each minute, 300 for web traffic[^free-burst] | 1,250 each minute | 2,000 each minute  |
 | Traffic for a top-level group    | 400 each minute                                   | 5,000 each minute | 10,000 each minute |
 
 [^free-burst]: In Free, the burst limit for a user is counted separately for each kind of traffic:
 
-    - Web traffic: 200 requests each minute. Web traffic is what your browser sends while
+    - Web traffic: 300 requests each minute. Web traffic is what your browser sends while
       you use GitLab, such as page loads and the GraphQL queries the pages make.
+    - Avatars, the web app manifest, and files attached to issues, merge requests, comments,
+      and wiki pages: 300 requests each minute.
     - API traffic: 100 requests each minute.
     - Git over HTTPS, Git LFS, and dependency proxy traffic: 100 requests each minute, shared.
 

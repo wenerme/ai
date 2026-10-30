@@ -8,6 +8,8 @@ Retrieves a group.
 
 - `group_id: string`
 
+  The ID of the group to retrieve.
+
 ### Returns
 
 - `Group object { id, created_at, group_type, 2 more }`

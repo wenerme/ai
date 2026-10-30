@@ -8,9 +8,13 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 

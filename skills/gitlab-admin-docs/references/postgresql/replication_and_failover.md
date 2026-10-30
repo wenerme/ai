@@ -719,7 +719,7 @@ After deploying the configuration follow these steps:
 
 ## Patroni
 
-Patroni is an opinionated solution for PostgreSQL high-availability. It takes control of PostgreSQL, overrides its configuration, and manages its lifecycle (start, stop, restart). Patroni is the only option for PostgreSQL 12+ clustering and for cascading replication for Geo deployments.
+Patroni is an opinionated solution for PostgreSQL high-availability. It takes control of PostgreSQL, overrides its configuration, and manages its lifecycle (start, stop, restart). Patroni is the only supported option for PostgreSQL clustering and for cascading replication for Geo deployments.
 
 The fundamental [architecture](#example-recommended-setup-manual-steps) does not change for Patroni.
 You do not need any special consideration for Patroni while provisioning your database nodes. Patroni heavily relies on Consul to store the state of the cluster and elect a leader. Any failure in the Consul cluster and its leader election propagates to the Patroni cluster as well.
@@ -734,14 +734,17 @@ on each node.
 Run `gitlab-ctl patroni members` to query Patroni for a summary of the cluster status:
 
 ```plaintext
-+ Cluster: postgresql-ha (6970678148837286213) ------+---------+---------+----+-----------+
-| Member                              | Host         | Role    | State   | TL | Lag in MB |
-+-------------------------------------+--------------+---------+---------+----+-----------+
-| gitlab-database-1.example.com       | 172.18.0.111 | Replica | running |  5 |         0 |
-| gitlab-database-2.example.com       | 172.18.0.112 | Replica | running |  5 |       100 |
-| gitlab-database-3.example.com       | 172.18.0.113 | Leader  | running |  5 |           |
-+-------------------------------------+--------------+---------+---------+----+-----------+
++ Cluster: postgresql-ha (6970678148837286213) ------+---------+-----------+----+-----------+
+| Member                              | Host         | Role    | State     | TL | Lag in MB |
++-------------------------------------+--------------+---------+-----------+----+-----------+
+| gitlab-database-1.example.com       | 172.18.0.111 | Replica | streaming |  5 |         0 |
+| gitlab-database-2.example.com       | 172.18.0.112 | Replica | streaming |  5 |       100 |
+| gitlab-database-3.example.com       | 172.18.0.113 | Leader  | running   |  5 |           |
++-------------------------------------+--------------+---------+-----------+----+-----------+
 ```
+
+The leader reports `running`.
+A healthy replica reports `streaming`, or `in archive recovery` when it replays from the WAL archive.
 
 To verify the status of replication:
 
@@ -794,7 +797,7 @@ If a replica is not in sync, `gitlab-ctl patroni members` indicates the volume
 of missing data, and the `lag` fields indicate the elapsed time.
 
 Read more about the data returned by the leader
-[in the PostgreSQL documentation](https://www.postgresql.org/docs/16/monitoring-stats.html#PG-STAT-REPLICATION-VIEW),
+[in the PostgreSQL documentation](https://www.postgresql.org/docs/17/monitoring-stats.html#PG-STAT-REPLICATION-VIEW),
 including other values for the `state` field.
 
 The replicas should return:
@@ -818,7 +821,7 @@ conninfo              | user=gitlab_replicator host=172.18.0.113 port=5432 appli
 ```
 
 Read more about the data returned by the replica
-[in the PostgreSQL documentation](https://www.postgresql.org/docs/16/monitoring-stats.html#PG-STAT-WAL-RECEIVER-VIEW).
+[in the PostgreSQL documentation](https://www.postgresql.org/docs/17/monitoring-stats.html#PG-STAT-WAL-RECEIVER-VIEW).
 
 ### Selecting the appropriate Patroni replication method
 
@@ -830,7 +833,7 @@ configured determines the amount of tolerable data loss.
 > [!warning]
 > Replication is not a backup strategy! There is no replacement for a well-considered and tested backup solution.
 
-Linux package installations default [`synchronous_commit`](https://www.postgresql.org/docs/16/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT) to `on`.
+Linux package installations default [`synchronous_commit`](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT) to `on`.
 
 ```ruby
 postgresql['synchronous_commit'] = 'on'
@@ -900,6 +903,9 @@ a manual one, where you have two slightly different options:
   ```shell
   sudo gitlab-ctl patroni switchover
   ```
+
+To specify the current leader node for either command, use the `--leader` option.
+The `--master` option is deprecated in GitLab 19.4, and its removal is planned for GitLab 20.0.
 
 For further details on this subject, see the
 [Patroni documentation](https://patroni.readthedocs.io/en/latest/rest_api.html#switchover-and-failover-endpoints).
@@ -1076,9 +1082,9 @@ cluster.
 
 #### Preflight check
 
-We rely on PostgreSQL [logical replication](https://www.postgresql.org/docs/16/logical-replication.html)
+We rely on PostgreSQL [logical replication](https://www.postgresql.org/docs/17/logical-replication.html)
 to support near-zero-downtime upgrades of Patroni clusters. The
-[logical replication requirements](https://www.postgresql.org/docs/16/logical-replication-restrictions.html)
+[logical replication requirements](https://www.postgresql.org/docs/17/logical-replication-restrictions.html)
 must be met. In particular, `wal_level` must be `logical`. To check the `wal_level`,
 run the following command with `gitlab-psql` on any node of the existing cluster:
 
@@ -1173,7 +1179,7 @@ CREATE SUBSCRIPTION patroni_upgrade
 
 In this statement, `EXISTING_CLUSTER_LEADER` is the host address of the leader node
 of the existing cluster. You can also use
-[other parameters](https://www.postgresql.org/docs/16/libpq-connect.html#LIBPQ-PARAMKEYWORDS)
+[other parameters](https://www.postgresql.org/docs/17/libpq-connect.html#LIBPQ-PARAMKEYWORDS)
 to change the connection string. For example, you can pass the authentication password.
 
 To check the status of replication, run these queries:

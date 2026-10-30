@@ -133,6 +133,7 @@ pipelines, each of which may contain a security scan.
 
 The results of all completed pipelines for the latest commit in
 the merge request's source and target branch are evaluated and used to enforce the merge request approval policy.
+For the source branch, pipelines that belong to a different merge request for the same commit are not considered.
 On-demand DAST pipelines are not considered.
 
 If a project uses [merge request pipelines](../../../ci/pipelines/merge_request_pipelines.md), you must set the CI/CD variable `AST_ENABLE_MR_PIPELINES` to `"true"` for the security scanning jobs to be present in the pipeline.
@@ -955,7 +956,7 @@ actions:
 ### Scope of merge request approval policy comparison
 
 - To determine when approval is required on a merge request, GitLab compares completed pipelines for each supported pipeline source for the source and target branch (for example, `feature`/`main`). This ensures the most comprehensive evaluation of scan results.
-- For the source branch, the comparison pipelines are all completed pipelines for each supported pipeline source for the latest commit in the source branch.
+- For the source branch, the comparison pipelines are all completed pipelines for each supported pipeline source for the latest commit in the source branch, excluding pipelines that belong to a different merge request.
 - If the merge request approval policy looks only for the newly detected states (`new_needs_triage` & `new_dismissed`), the comparison is performed against all the supported pipeline sources in the common ancestor between the source and the target branch. An exception is when using Merged Results pipelines, in which case the comparison is done against the tip of the MR's target branch.
 - If the merge request approval policy looks for pre-existing states (`detected`, `confirmed`, `resolved`, `dismissed`), the comparison is always done against the tip of the default branch (for example, `main`).
 - If the merge request approval policy looks for a combination of new and pre-existing vulnerability states, the comparison is done against the common ancestor of the source and target branches.

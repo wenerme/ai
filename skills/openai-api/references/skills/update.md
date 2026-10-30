@@ -8,6 +8,8 @@ Update the default version pointer for a skill.
 
 - `skill_id: string`
 
+  The identifier of the skill.
+
 ### Body Parameters
 
 - `default_version: string`

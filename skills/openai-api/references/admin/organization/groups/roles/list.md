@@ -8,6 +8,8 @@ Lists the organization roles assigned to a group within the organization.
 
 - `group_id: string`
 
+  The ID of the group whose organization role assignments you want to list.
+
 ### Query Parameters
 
 - `after: optional string`

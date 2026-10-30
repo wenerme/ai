@@ -8,6 +8,8 @@ Get a skill by its ID.
 
 - `skill_id: string`
 
+  The identifier of the skill to retrieve.
+
 ### Returns
 
 - `Skill object { id, created_at, default_version, 4 more }`

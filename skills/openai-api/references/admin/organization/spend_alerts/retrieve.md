@@ -8,6 +8,8 @@ Retrieves an organization spend alert.
 
 - `alert_id: string`
 
+  The ID of the spend alert to retrieve.
+
 ### Returns
 
 - `OrganizationSpendAlert object { id, currency, interval, 3 more }`

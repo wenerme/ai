@@ -8,7 +8,11 @@ Retrieves a vector store file batch.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch being retrieved.
 
 ### Returns
 

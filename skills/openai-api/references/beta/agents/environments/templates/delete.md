@@ -8,6 +8,8 @@ Deletes reusable environment configuration and all confidential template inputs.
 
 - `environment_template_id: string`
 
+  The ID of the reusable environment template.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns

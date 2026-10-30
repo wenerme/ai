@@ -127,6 +127,68 @@ session: SessionConfigParam = {
 }
 ```
 
+```go
+import (
+	"github.com/openai/openai-go/v3/live"
+)
+
+var session = live.SessionConfigParam{Model: "gpt-live-1", Input: []live.InitialItemUnionParam{
+	{OfUser: &live.InitialItemUserParam{Content: []live.InitialItemUserContentParam{{Text: "I need help with my recent order."}}}},
+	{OfAssistant: &live.InitialItemAssistantParam{Content: []live.InitialItemAssistantContentUnionParam{{OfOutputText: &live.InitialItemAssistantContentOutputTextParam{Text: "What is the order number?"}}}}},
+}}
+```
+
+```java
+import com.openai.models.live.*;
+
+var session =
+    SessionConfig.builder()
+        .model("gpt-live-1")
+        .addInput(
+            InitialItem.User.builder()
+                .addContent(
+                    InitialItem.User.Content.builder()
+                        .text("I need help with my recent order.")
+                        .build())
+                .build())
+        .addInput(
+            InitialItem.Assistant.builder()
+                .addContent(
+                    InitialItem.Assistant.Content.ofOutputText(
+                        InitialItem.Assistant.Content.OutputText.builder()
+                            .text("What is the order number?")
+                            .build()))
+                .build())
+        .build();
+```
+
+```ruby
+require "openai"
+session = OpenAI::Models::Live::SessionConfig.new(
+  model: "gpt-live-1", input: [
+    {
+      type: :message,
+      role: :user,
+      content: [
+        {
+          type: :input_text,
+          text: "I need help with my recent order."
+        }
+      ]
+    }, {
+      type: :message,
+      role: :assistant,
+      content: [
+        {
+          type: :output_text,
+          text: "What is the order number?"
+        }
+      ]
+    }
+  ]
+)
+```
+
 
 The list accepts up to 128 messages and 8,192 combined tokens. Each message has one text part and one of these roles: `developer`, `user`, or `assistant`. Developer and user messages use `input_text`; assistant messages use `text` or `output_text`. Put trusted application instructions in `instructions` or a developer message.
 
@@ -180,6 +242,47 @@ async def send_update(
             "running."
         ),
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/packages/param"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionThinkingAppend: &live.ThinkingAppendEventParam{
+		EventID:      openai.String("context_1"),
+		DelegationID: param.Null[string](),
+		Content:      "The user has already accepted the terms. The account lookup is still running.",
+	}})
+}
+```
+
+```java
+import com.openai.core.JsonField;
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionThinkingAppend(
+          ThinkingAppendEvent.builder()
+              .eventId("context_1")
+              .delegationId(JsonField.<String>ofNullable(null))
+              .content(
+                  "The user has already accepted the terms. The account lookup is still running.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.thinking.append", event_id: "context_1", delegation_id: nil, content: "The user has already accepted the terms. The account lookup is still running.")
+end
 ```
 
 
@@ -272,6 +375,38 @@ async def send_update(
     )
 ```
 
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionInputAudioMute: &live.InputAudioMuteEventParam{
+		EventID: openai.String("mute_1"),
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionInputAudioMute(
+          InputAudioMuteEvent.builder().eventId("mute_1").build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.input_audio.mute", event_id: "mute_1")
+end
+```
+
 
 Wait for `session.input_audio.muted` with `client_event_id: "mute_1"` before treating the command as accepted. To resume input, send `session.input_audio.unmute` and wait for `session.input_audio.unmuted`. Handle errors for either command.
 
@@ -335,6 +470,47 @@ async def send_update(
             "training purposes."
         ),
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/packages/param"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionInstructionsAppend: &live.InstructionsAppendEventParam{
+		EventID:      openai.String("disclosure_1"),
+		DelegationID: param.Null[string](),
+		Content:      "Immediately say the following disclosure exactly and in full before responding to the caller: This call may be recorded for quality and training purposes.",
+	}})
+}
+```
+
+```java
+import com.openai.core.JsonField;
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofSessionInstructionsAppend(
+          InstructionsAppendEvent.builder()
+              .eventId("disclosure_1")
+              .delegationId(JsonField.<String>ofNullable(null))
+              .content(
+                  "Immediately say the following disclosure exactly and in full before responding to the caller: This call may be recorded for quality and training purposes.")
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "session.instructions.append", event_id: "disclosure_1", delegation_id: nil, content: "Immediately say the following disclosure exactly and in full before responding to the caller: This call may be recorded for quality and training purposes.")
+end
 ```
 
 
@@ -482,6 +658,122 @@ def fork_session(source_session_id: str) -> None:
             raise RuntimeError("Connection closed before session.closed")
 ```
 
+```go
+import (
+	"context"
+	"fmt"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"os"
+	"time"
+)
+
+func forkSession(ctx context.Context, sourceSessionID string) error {
+	client := openai.NewClient()
+	connection, err := client.Live.Forks.Connect(ctx, sourceSessionID, live.ForkConnectionOptions{})
+	if err != nil {
+		return err
+	}
+	defer connection.Abort()
+	if err := connection.Send(ctx, live.ForkClientEventUnionParam{OfSessionStart: &live.ForkSessionStartEventParam{Session: live.ForkSessionConfigParam{}}}); err != nil {
+		return err
+	}
+	started := false
+	for {
+		event, err := connection.Recv(ctx)
+		if err != nil {
+			return err
+		}
+		switch event.Type {
+		case "error":
+			return fmt.Errorf("Live fork error: %s", event.RawJSON())
+		case "session.started":
+			started = true
+			if err := connection.Send(ctx, live.ForkClientEventUnionParam{OfSessionClose: &live.SessionCloseEventParam{}}); err != nil {
+				return err
+			}
+		case "session.closed":
+			if !started {
+				return fmt.Errorf("fork closed before session.started")
+			}
+			fmt.Fprintln(os.Stderr, "Final session usage", event.OfSessionClosedEvent.Usage)
+			return nil
+		}
+	}
+}
+```
+
+```java
+import com.openai.client.okhttp.OkHttpClient;
+import com.openai.core.ClientOptions;
+import com.openai.helpers.LiveForkConnection;
+import com.openai.models.live.*;
+import com.openai.models.live.forks.*;
+import java.util.concurrent.TimeUnit;
+
+public static void forkSession(String sourceSessionId) throws Exception {
+  try (var http = OkHttpClient.builder().build();
+      var connection =
+          LiveForkConnection.connect(
+              ClientOptions.builder().fromEnv().httpClient(http).build(), sourceSessionId)) {
+    connection.send(
+        ForkClientEvent.ofSessionStart(
+            ForkSessionStartEvent.builder()
+                .session(ForkSessionConfig.builder().build())
+                .build()));
+    boolean started = false;
+    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(30);
+    while (true) {
+      long remaining = deadline - System.nanoTime();
+      if (remaining <= 0) throw new IllegalStateException("Incomplete fork finalization");
+      var event = connection.receiveAsync().get(remaining, TimeUnit.NANOSECONDS);
+      if (event.isErrorEvent()) throw new IllegalStateException(event.toString());
+      if (event.isSessionStarted()) {
+        started = true;
+        connection.send(ForkClientEvent.ofSessionClose(SessionCloseEvent.builder().build()));
+      } else if (event.isSessionClosed()) {
+        if (!started) throw new IllegalStateException("Fork closed before session.started");
+        System.err.println("Final session usage " + event.asSessionClosed().usage());
+        return;
+      }
+    }
+  }
+}
+```
+
+```ruby
+require "openai"
+require "timeout"
+def fork_websocket_session(source_session_id)
+  client = OpenAI::Client.new
+  Timeout.timeout(30) do
+    client.live.forks.connect(source_session_id) do |connection|
+      connection.send_event(type: :"session.start", session: {})
+      state = {
+        started: false,
+        finalized: false
+      }
+      connection.each do |event|
+        case event
+        when OpenAI::Models::Live::ErrorEvent
+          raise "Live fork error: #{event.to_json}"
+        when OpenAI::Models::Live::SessionStartedEvent
+          state[:started] = true
+          connection.send_event(type: :"session.close")
+        when OpenAI::Models::Live::SessionClosedEvent
+          raise "Fork closed before session.started" unless state[:started]
+
+          warn "Final session usage #{event.usage}"
+          state[:finalized] = true
+          break
+        end
+      end
+      raise "Connection closed without final session usage" unless state[:finalized]
+    end
+  end
+end
+```
+
 
 ### Start a WebRTC fork
 
@@ -510,6 +802,57 @@ def fork_session(source_session_id: str, offer_sdp: str) -> None:
         transport={"type": "webrtc", "sdp": offer_sdp},
     )
     print(fork.model_dump_json())
+```
+
+```go
+import (
+	"context"
+	"encoding/json"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/option"
+	"os"
+)
+
+func forkSession(ctx context.Context, sourceSessionID, offerSDP string) (*live.SessionForkResponse, error) {
+	client := openai.NewClient(option.WithMaxRetries(0))
+	return client.Live.Sessions.Fork(ctx, sourceSessionID, live.SessionForkParams{Transport: live.SessionForkParamsTransport{Sdp: offerSDP}})
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.live.sessions.SessionForkParams;
+import com.openai.models.live.sessions.SessionForkResponse;
+
+public static SessionForkResponse forkSession(String sourceSessionId, String offerSdp) {
+  var client = OpenAIOkHttpClient.builder().fromEnv().maxRetries(0).build();
+  try {
+    return client
+        .live()
+        .sessions()
+        .fork(
+            SessionForkParams.builder()
+                .sessionId(sourceSessionId)
+                .transport(SessionForkParams.Transport.builder().sdp(offerSdp).build())
+                .build());
+  } finally {
+    client.close();
+  }
+}
+```
+
+```ruby
+require "openai"
+def fork_session(source_session_id, offer_sdp)
+  client = OpenAI::Client.new(max_retries: 0)
+  client.live.sessions.fork(
+    source_session_id, transport: {
+      type: :webrtc,
+      sdp: offer_sdp
+    }
+  )
+end
 ```
 
 
@@ -544,6 +887,67 @@ def download_recording(session_id: str) -> None:
         session_id
     ) as response:
         response.stream_to_file("recording.wav")
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"io"
+	"os"
+)
+
+func downloadRecording(ctx context.Context, sessionID string) error {
+	client := openai.NewClient()
+	response, err := client.Live.Sessions.DownloadRecording(ctx, sessionID)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	file, err := os.Create("recording.wav")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	_, err = io.Copy(file, response.Body)
+	return err
+}
+```
+
+```java
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.live.sessions.SessionDownloadRecordingParams;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
+public static void downloadRecording(String sessionId) throws Exception {
+  var client = OpenAIOkHttpClient.fromEnv();
+  try (var response =
+          client
+              .live()
+              .sessions()
+              .downloadRecording(
+                  SessionDownloadRecordingParams.builder().sessionId(sessionId).build());
+      var body = response.body()) {
+    Files.copy(body, Path.of("recording.wav"), StandardCopyOption.REPLACE_EXISTING);
+  } finally {
+    client.close();
+  }
+}
+```
+
+```ruby
+require "openai"
+def download_recording(session_id)
+  client = OpenAI::Client.new
+  response = client.live.sessions.download_recording(session_id)
+  File.open("recording.wav", "wb") do |file|
+    IO.copy_stream(response, file)
+  end
+ensure
+  response&.close
+end
 ```
 
 

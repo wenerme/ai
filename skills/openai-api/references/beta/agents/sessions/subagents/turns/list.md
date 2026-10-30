@@ -8,9 +8,13 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 

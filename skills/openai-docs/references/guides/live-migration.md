@@ -287,6 +287,55 @@ async def send_update(
     )
 ```
 
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfResponseItemCreate: &live.ResponseItemCreateEventParam{
+		EventID: openai.String("availability_result_1"),
+		Item:    responses.ResponseInputItemUnionParam{OfFunctionCallOutput: &responses.ResponseInputItemFunctionCallOutputParam{CallID: openai.String("call_availability"), Output: responses.ResponseInputItemFunctionCallOutputOutputUnionParam{OfString: openai.String("{\"available\":true,\"slot_id\":\"slot_friday_14\",\"booked\":false}")}}},
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+import com.openai.models.responses.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofResponseItemCreate(
+          ResponseItemCreateEvent.builder()
+              .eventId("availability_result_1")
+              .item(
+                  ResponseInputItem.FunctionCallOutput.builder()
+                      .callId("call_availability")
+                      .output(
+                          "{\"available\":true,\"slot_id\":\"slot_friday_14\",\"booked\":false}")
+                      .build())
+              .build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(
+    type: "response.item.create", event_id: "availability_result_1", item: {
+      type: "function_call_output",
+      call_id: "call_availability",
+      output: "{\"available\":true,\"slot_id\":\"slot_friday_14\",\"booked\":false}"
+    }
+  )
+end
+```
+
 
 After submitting every required function result, continue the backend:
 
@@ -310,6 +359,38 @@ async def send_update(
     await connection.response.create(
         event_id="continue_availability_1",
     )
+```
+
+```go
+import (
+	"context"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+// SendUpdate requires a started Live session.
+func SendUpdate(ctx context.Context, connection *live.LiveConnection) error {
+	return connection.Send(ctx, live.ClientEventUnionParam{OfResponseCreate: &live.ResponseCreateEventParam{
+		EventID: openai.String("continue_availability_1"),
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+
+public static void sendUpdate(LiveConnection connection) {
+  connection.send(
+      ClientEvent.ofResponseCreate(
+          ResponseCreateEvent.builder().eventId("continue_availability_1").build()));
+}
+```
+
+```ruby
+def send_update(connection)
+  connection.send_event(type: "response.create", event_id: "continue_availability_1")
+end
 ```
 
 
@@ -464,6 +545,101 @@ async def handle_delegation(
         delegation_id=event.delegation.id,
         content=summary,
     )
+```
+
+```go
+import (
+	"context"
+	"crypto/rand"
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/live"
+)
+
+type Context struct {
+	Revision           int
+	RecentConversation string
+	Task               string
+}
+
+func handleDelegation(ctx context.Context, event live.ServerEventUnion, connection *live.LiveConnection,
+	readContext func() *Context, runAgent func(context.Context, Context) (string, error), currentRevision func() int) error {
+	if event.Type != "session.delegation.created" || event.AsDelegationCreatedEvent().Delegation.Target != "client" {
+		return nil
+	}
+	snapshot := readContext()
+	if snapshot == nil {
+		return nil
+	} // Retain the notice; resolve the request before acting.
+	saved := *snapshot
+	summary, err := runAgent(ctx, saved)
+	if err != nil {
+		return err
+	}
+	if currentRevision() != saved.Revision {
+		return nil
+	}
+	return connection.Send(ctx, live.ClientEventUnionParam{OfSessionCommentaryAppend: &live.CommentaryAppendEventParam{
+		EventID: openai.String(rand.Text()), DelegationID: openai.String(event.AsDelegationCreatedEvent().Delegation.ID), Content: summary,
+	}})
+}
+```
+
+```java
+import com.openai.helpers.LiveConnection;
+import com.openai.models.live.*;
+import java.util.UUID;
+import java.util.concurrent.CompletionStage;
+import java.util.function.*;
+
+public record Context(int revision, String recentConversation, String task) {}
+
+public static CompletionStage<Void> handleDelegation(
+    ServerEvent event,
+    LiveConnection connection,
+    Supplier<Context> readContext,
+    Function<Context, CompletionStage<String>> runAgent,
+    IntSupplier currentRevision) {
+  if (!event.isSessionDelegationCreated()
+      || !event.asSessionDelegationCreated().delegation().target().toString().equals("client"))
+    return java.util.concurrent.CompletableFuture.completedFuture(null);
+  var snapshot = readContext.get();
+  // Retain the notice; resolve the request before acting.
+  if (snapshot == null) return java.util.concurrent.CompletableFuture.completedFuture(null);
+  return runAgent
+      .apply(snapshot)
+      .thenAccept(
+          summary -> {
+            if (currentRevision.getAsInt() != snapshot.revision()) return;
+            connection.send(
+                ClientEvent.ofSessionCommentaryAppend(
+                    CommentaryAppendEvent.builder()
+                        .eventId(UUID.randomUUID().toString())
+                        .delegationId(event.asSessionDelegationCreated().delegation().id())
+                        .content(summary)
+                        .build()));
+          });
+}
+```
+
+```ruby
+require "openai"
+require "securerandom"
+Context = Data.define(:revision, :recent_conversation, :task)
+
+def handle_delegation(event, connection, read_context:, run_agent:, current_revision:)
+  return unless event.type == :"session.delegation.created" && event.delegation.target == :client
+
+  context = read_context.call
+  return if context.nil? # Retain the notice; resolve the request before acting.
+
+  summary = run_agent.call(context)
+  return unless current_revision.call == context.revision
+
+  connection.send_event(
+    type: :"session.commentary.append", event_id: SecureRandom.uuid,
+    delegation_id: event.delegation.id, content: summary
+  )
+end
 ```
 
 

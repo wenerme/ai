@@ -8,6 +8,8 @@ Get a list of runs for an evaluation.
 
 - `eval_id: string`
 
+  The ID of the evaluation to retrieve runs for.
+
 ### Query Parameters
 
 - `after: optional string`

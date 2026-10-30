@@ -10,7 +10,11 @@ Retrieve the parsed contents of a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store.
+
 - `file_id: string`
+
+  The ID of the file within the vector store.
 
 ### Returns
 
@@ -94,6 +98,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store for which to create a File.
 
 ### Body Parameters
 
@@ -342,7 +348,11 @@ Delete a vector store file. This will remove the file from the vector store but 
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file to delete.
 
 ### Returns
 
@@ -404,6 +414,8 @@ Returns a list of vector store files.
 ### Path Parameters
 
 - `vector_store_id: string`
+
+  The ID of the vector store that the files belong to.
 
 ### Query Parameters
 
@@ -650,7 +662,11 @@ Retrieves a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file being retrieved.
 
 ### Returns
 
@@ -832,7 +848,11 @@ Update attributes on a vector store file.
 
 - `vector_store_id: string`
 
+  The ID of the vector store the file belongs to.
+
 - `file_id: string`
+
+  The ID of the file to update attributes.
 
 ### Body Parameters
 

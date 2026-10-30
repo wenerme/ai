@@ -8,7 +8,11 @@ Lists the project roles assigned to a user within a project.
 
 - `project_id: string`
 
+  The ID of the project to inspect.
+
 - `user_id: string`
+
+  The ID of the user to inspect.
 
 ### Query Parameters
 

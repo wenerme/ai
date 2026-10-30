@@ -12,6 +12,8 @@ Deleting a voice does not delete its consent recording. Deleting an already dele
 
 - `voice_id: string`
 
+  The ID of the voice to delete.
+
 ### Returns
 
 - `VoiceDeleted object { id, deleted, object }`

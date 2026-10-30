@@ -8,6 +8,8 @@ Removes a managed agent session from the public API and returns a deletion confi
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns

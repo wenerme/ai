@@ -192,42 +192,13 @@ This ensures that responses to Mesh clients are forwarded to the Mesh node for d
 
 ## Site-to-site routing
 
-When you have Mesh nodes at multiple sites, devices on one subnet can reach devices on another subnet through Cloudflare.
+Mesh nodes can route traffic between private subnets at different sites. Each node advertises its local CIDR and routes the remote CIDR through Cloudflare.
 
-```
-flowchart TD
-  subgraph siteA["Site A — 10.0.0.0/24"]
-    serverA["Server <br> 10.0.0.50"] --- nodeA["Mesh node <br> 10.0.0.1"]
-  end
-  subgraph siteB["Site B — 192.168.1.0/24"]
-    serverB["Server <br> 192.168.1.50"] --- nodeB["Mesh node <br> 192.168.1.1"]
-  end
-  nodeA <--> CF((Cloudflare))
-  nodeB <--> CF
-
-```
-
-For this to work:
-
-1. Each Mesh node must advertise the local subnet as a [CIDR route](#add-a-route) so Cloudflare knows which node to forward traffic to.
-2. The remote subnet CIDRs must route through Cloudflare on each node. In your Mesh node's [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration, add the remote site's CIDR to the include list (or remove it from the exclude list).
-3. Each site's router needs static routes pointing remote subnets to the local Mesh node:
-
-**Site A router:**
-
-- **Destination**: `192.168.1.0/24` → **Next hop**: `10.0.0.1` (local Mesh node)
-- **Destination**: `100.96.0.0/12` → **Next hop**: `10.0.0.1`
-
-**Site B router:**
-
-- **Destination**: `10.0.0.0/24` → **Next hop**: `192.168.1.1` (local Mesh node)
-- **Destination**: `100.96.0.0/12` → **Next hop**: `192.168.1.1`
-
-For production site-to-site deployments, consider enabling [high availability](https://developers.cloudflare.com/mesh/features/high-availability/) on each node. HA provides failover for the CIDR routes advertised by a node — if the active replica goes down, Cloudflare promotes a standby so traffic to the subnet continues to flow.
+To configure both sites, their routers, return routes, and verification tests, refer to [Connect two private networks with Cloudflare Mesh](https://developers.cloudflare.com/mesh/guides/connect-sites/).
 
 ## DNS filtering
 
-To filter DNS queries from the subnet using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/):
+To filter DNS queries from the subnet using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/):
 
 1. **Configure DNS on your router**: Point your router's DNS to the Gateway resolver IPs:
    - `172.64.36.1`
@@ -239,7 +210,7 @@ To filter DNS queries from the subnet using [Cloudflare Gateway](https://develop
    - The subnet's internal DNS resolver IP
    - Gateway initial resolved IP range: `172.64.128.0/20` (IPv4) and `2606:4700:0cf1:4000::/64` (IPv6)
 
-Gateway logs DNS queries with the private source IP of the originating device. You can use this to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for internal DNS records.
+Gateway logs DNS queries with the private source IP of the originating device. You can use this to create [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) for internal DNS records.
 
 ## Hostname routes
 
@@ -254,7 +225,7 @@ Hostname routes replace [virtual networks](https://developers.cloudflare.com/clo
 
    Requests `wiki.internal.local`
 2. DNS query↓
-3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/)
 
    Returns a token IP, then rewrites the destination to the real private IP. `172.64.128.0/20`
 4. [Hostname route](https://developers.cloudflare.com/mesh/features/routes/#hostname-routes)↓
@@ -277,7 +248,7 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
   2. In **Proxy and inspection**, turn on **Allow Secure Web Gateway to proxy traffic**.
   3. Select **TCP**.
   4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
-  5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
+  5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
   1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
      - `Zero Trust Write`
   2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
@@ -290,7 +261,7 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
      }
      ```
 
-     Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/).
+     Cloudflare will now proxy traffic from enrolled devices, except for the traffic excluded in your [split tunnel settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#3-route-private-network-ips-through-the-cloudflare-one-client). For more information on how Gateway forwards traffic, refer to [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/proxy/).
 - **Route the following IPv4 ranges through Cloudflare** in the [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) configuration of **both** the Mesh node's device profile **and** your client device profiles. In Include mode, add each range. In Exclude mode, ensure none of them (or their parent ranges) are excluded.
 
   | Purpose | IPv4 |
@@ -369,10 +340,10 @@ If the node cannot resolve the hostname on its own, the simplest option is to ad
 
 #### Split DNS: DNS and application traffic use different connectors
 
-You only need a Gateway [resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) when the DNS query must be sent to a **different** connector than the application traffic — for example, the internal DNS server sits behind one Mesh node or Cloudflare Tunnel, while the application is reached through another. In that case:
+You only need a Gateway [resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) when the DNS query must be sent to a **different** connector than the application traffic — for example, the internal DNS server sits behind one Mesh node or Cloudflare Tunnel, while the application is reached through another. In that case:
 
 1. Add a [CIDR route](#add-a-route) for the DNS server's IP so Gateway can reach it through the connector where the DNS server lives (a Mesh node or a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)).
-2. Create a [resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) that sends DNS queries for the hostname (or its domain) to that internal DNS server.
+2. Create a [resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/resolver-policies/) that sends DNS queries for the hostname (or its domain) to that internal DNS server.
 
 Where to run the DNS server
 
@@ -385,7 +356,7 @@ For a **public** hostname, the Mesh node handles resolution: Gateway sends the D
 
 ### Secure hostname traffic
 
-After adding a hostname route, secure it with either an [Access self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) or [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). For details and examples, refer to [Connect a private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#3-recommended-filter-network-traffic-with-gateway).
+After adding a hostname route, secure it with either an [Access self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) or [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/). For details and examples, refer to [Connect a private hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#3-recommended-filter-network-traffic-with-gateway).
 
 ### Limitations
 

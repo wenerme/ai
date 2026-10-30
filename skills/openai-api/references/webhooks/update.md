@@ -8,6 +8,8 @@ Updates a webhook endpoint for the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint to update.
+
 ### Body Parameters
 
 - `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 24 more`

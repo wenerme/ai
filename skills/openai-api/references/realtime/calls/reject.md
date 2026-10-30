@@ -8,6 +8,10 @@ Decline an incoming SIP call by returning a SIP status code to the caller.
 
 - `call_id: string`
 
+  The identifier for the call provided in the
+  [`realtime.call.incoming`](/api/reference/resources/webhooks#realtime.call.incoming)
+  webhook.
+
 ### Body Parameters
 
 - `status_code: optional integer`

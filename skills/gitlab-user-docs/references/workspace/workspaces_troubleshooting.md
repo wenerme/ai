@@ -76,8 +76,8 @@ If the names are different, rename the folder to match the agent name exactly.
 Verify the agent is connected to GitLab:
 
 1. Go to your group.
-1. Select **Operate** > **Kubernetes clusters**.
-1. Verify if **Connection status** is **Connected**. If not connected, check the agent logs:
+1. Select  > .
+1. Verify if  is . If not connected, check the agent logs:
 
    ```shell
    kubectl logs -f -l app=gitlab-agent -n gitlab-workspaces
@@ -149,13 +149,13 @@ infrastructure problems, or revoked repository permissions.
 
 To resolve this issue:
 
-1. When prompted to select another workspace in the error dialog, select **Cancel**.
-1. From the VS Code menu, select **File** > **Open Folder**.
-1. Go to the `/projects` directory and select **OK**.
-1. In the **EXPLORER** panel, check for a directory with the same name as your project.
+1. When prompted to select another workspace in the error dialog, select .
+1. From the VS Code menu, select  > .
+1. Go to the `/projects` directory and select .
+1. In the  panel, check for a directory with the same name as your project.
    - If the directory is missing, the Git clone operation failed completely.
    - If the directory exists but is empty, the clone operation started but didn't complete.
-1. Open a terminal. From the menu, select **Terminal** > **New Terminal**.
+1. Open a terminal. From the menu, select  > .
 1. Go to the workspace logs directory:
 
    ```shell

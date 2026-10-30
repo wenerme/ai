@@ -8,7 +8,11 @@ Cancel a vector store file batch. This attempts to cancel the processing of file
 
 - `vector_store_id: string`
 
+  The ID of the vector store that the file batch belongs to.
+
 - `batch_id: string`
+
+  The ID of the file batch to cancel.
 
 ### Returns
 

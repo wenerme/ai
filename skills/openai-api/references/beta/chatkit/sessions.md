@@ -12,6 +12,8 @@ Cancelling prevents new requests from using the issued client secret.
 
 - `session_id: string`
 
+  Unique identifier for the ChatKit session to cancel.
+
 ### Returns
 
 - `ChatSession object { id, chatkit_configuration, client_secret, 7 more }`

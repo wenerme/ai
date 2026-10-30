@@ -223,8 +223,9 @@ session after you apply the license:
 GitlabSubscriptions::AddOnPurchases::OfflineCloudLicenseProvisionWorker.new.perform
 ```
 
-The job reads the current license and does nothing unless that license is an
-offline cloud license. It is safe to run more than once.
+The job reads the current license and does nothing if that license is an online
+cloud license. For a legacy license, the job provisions only the GitLab Orbit add-on.
+It is safe to run more than once.
 
 ### Remove licenses
 

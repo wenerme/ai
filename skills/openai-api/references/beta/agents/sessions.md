@@ -1918,6 +1918,8 @@ Removes a managed agent session from the public API and returns a deletion confi
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -3117,6 +3119,8 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Returns
@@ -4200,6 +4204,8 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -5354,11 +5360,21 @@ Downloads immutable session artifact bytes after the execution environment expir
 
 - `session_id: string`
 
+  The ID of the session that owns the artifact.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `artifact_id: string`
 
+  The immutable session artifact ID.
+
   `minLength: 0`, `maxLength: 1048576`
+
+### Returns
+
+`file`
+
+Content type: `application/octet-stream`
 
 ### Example
 
@@ -5378,9 +5394,13 @@ Deletes an immutable session artifact without deleting its live environment file
 
 - `session_id: string`
 
+  The ID of the session that owns the artifact.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `artifact_id: string`
+
+  The immutable session artifact ID.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -5434,6 +5454,8 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -5588,9 +5610,13 @@ Retrieves immutable metadata for one durable session artifact. See [session arti
 
 - `session_id: string`
 
+  The ID of the session that owns the artifact.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `artifact_id: string`
+
+  The immutable session artifact ID.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -5766,6 +5792,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -6027,6 +6055,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -9826,6 +9856,8 @@ Lists items produced by the session's root agent, including its interactions wit
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters
@@ -10981,6 +11013,8 @@ Lists subagents in a session, including nested and closed subagents. See [subage
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters
@@ -11178,9 +11212,13 @@ Retrieves a subagent belonging to this session. See [subagent workflows](/api/do
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -11323,9 +11361,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -12482,9 +12524,13 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -12825,13 +12871,19 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
 
+  The ID of the subagent in this session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of a turn belonging to this subagent.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -13116,13 +13168,19 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
 
+  The ID of the subagent in this session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of a turn belonging to this subagent.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -14279,6 +14337,8 @@ Lists published root-turn traces as OTLP JSON, ordered by turn creation time and
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 ### Query Parameters
@@ -14440,6 +14500,8 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 ### Path Parameters
 
 - `session_id: string`
+
+  The ID of the session.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -14780,9 +14842,13 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 
@@ -15299,9 +15365,13 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
 - `session_id: string`
 
+  The ID of the session that owns the turn.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `turn_id: string`
+
+  The ID of the turn.
 
   `minLength: 0`, `maxLength: 1048576`
 

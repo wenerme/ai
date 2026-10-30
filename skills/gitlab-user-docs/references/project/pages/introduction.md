@@ -70,11 +70,11 @@ Permanently delete all Pages deployments for a project.
 
 To delete your Pages:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Select the **Domains & settings** tab.
-1. Select **Delete Pages**.
-1. In the confirmation dialog, select **Delete Pages**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  tab.
+1. Select .
+1. In the confirmation dialog, select .
 
 Your Pages site is no longer deployed.
 To deploy this Pages site again, run a new pipeline.
@@ -325,12 +325,12 @@ If anyone tries to access the old URL, they receive a `404` error.
 Prerequisites
 
 - You must have the Maintainer or Owner role for the project.
-- The **Use unique domain** setting [must be turned on](_index.md#unique-domains) in your project's Pages settings.
+- The  setting [must be turned on](_index.md#unique-domains) in your project's Pages settings.
 
 To regenerate a unique domain for your GitLab Pages site:
 
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to **Access pages**, press **Regenerate unique domain**.
+1. In the left sidebar, select  > .
+1. Next to , press .
 1. GitLab generates a new unique domain for your Pages site.
 
 ## Known issues

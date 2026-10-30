@@ -1,5 +1,5 @@
 ---
-description: Build and host AI agents on Cloudflare. Start with the Pi harness, which runs a durable model loop with tools in a Durable Object, and add state, real-time connections, and scheduled tasks with the Agents SDK.
+description: Build and host AI agents on Cloudflare. Run an agent harness in a Durable Object, add capabilities such as state, WebSockets, and scheduling with the Agents SDK Lifecycle, and give the agent tools.
 title: Build Agents on Cloudflare
 image: https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669
 ---
@@ -12,44 +12,44 @@ image: https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669
 
 # Build Agents on Cloudflare
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build and host Agents on Cloudflare, connect chat, voice, email, Slack, and webhooks to a durable agent runtime with Browser, Sandbox, AI Search, MCP, Payments, and other MCP tools.
+Build and host AI agents on Cloudflare. Connect chat, voice, email, Slack, and webhooks to a durable agent, and give it tools such as a workspace, a browser, web search, MCP servers, and payments.
 
-When you host agents on Cloudflare, each agent session has a durable identity, local SQL storage, real-time connections, scheduled work, and recoverable execution.
+When you host agents on Cloudflare, each agent has a durable identity, local SQL storage, real-time connections, scheduled work, and recoverable execution.
 
 Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
 
 [Chat](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/) [Email](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/) [Voice](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/) [Slack](https://developers.cloudflare.com/agents/agent-class/communication-channels/slack/) [Webhook](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/)
 
-Agent harness
+Runtime
 
-Controls planning, tool use, and response flow.
+The Lifecycle provides hooks for Capabilities to schedule durable work.
 
-[Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/) [Build-your-own agent](https://developers.cloudflare.com/agents/agent-class/)
+[Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/)
 
-Agents SDK runtime
+[State](https://developers.cloudflare.com/agents/runtime/capabilities/state/) [WebSockets](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/) [Scheduler](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/) [MCP client](https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/)
 
-Durable identity, state, connections, scheduling, and recovery.
+Harnesses
 
-[Agent class](https://developers.cloudflare.com/agents/agent-class/)
+[Pi](https://developers.cloudflare.com/agents/harnesses/pi/) [OpenCode](https://developers.cloudflare.com/agents/harnesses/opencode/) [Think](https://developers.cloudflare.com/agents/harnesses/think/)
 
-[State](https://developers.cloudflare.com/agents/agent-class/state/) [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) [Routing](https://developers.cloudflare.com/agents/agent-class/routing/) [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/) [Scheduling](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/) [Fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/)
+[Workspace](https://developers.cloudflare.com/agents/tools/filesystem/) [Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/) [Browser](https://developers.cloudflare.com/agents/tools/browser/) [Web fetch](https://developers.cloudflare.com/agents/tools/web-fetch/) [Web search](https://developers.cloudflare.com/agents/tools/web-search/) [MCP servers](https://developers.cloudflare.com/agents/tools/mcp/) [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/) [Payments](https://developers.cloudflare.com/agents/tools/payments/)
 
-[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/) [MCP](https://developers.cloudflare.com/agents/tools/mcp/) [Browser](https://developers.cloudflare.com/agents/tools/browser/) [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/) [Payments](https://developers.cloudflare.com/agents/tools/payments/)
-
-[ObservabilityLogs · metrics · traces](https://developers.cloudflare.com/agents/runtime/operations/observability/)
+[ObservabilityLogs · metrics · traces](https://developers.cloudflare.com/agents/runtime/observability/)
 
 Agents on Cloudflare are composed from four parts:
 
-- **Communication channels** define how users and systems reach your agent, such as [chat](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/), [voice](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/), [email](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/), [Slack](https://developers.cloudflare.com/agents/agent-class/communication-channels/slack/), [webhooks](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/), and other event sources.
-- **The agent harness** defines the loop: how the agent calls models, selects tools, handles tool results, streams responses, and decides whether to continue. Use the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/) to run Pi Durable in a Durable Object, or build your own loop directly on the [Agents SDK runtime](https://developers.cloudflare.com/agents/agent-class/).
-- **The Agents SDK runtime** provides durable infrastructure: the [`Agent` class](https://developers.cloudflare.com/agents/agent-class/internals/), [state](https://developers.cloudflare.com/agents/agent-class/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/agent-class/routing/), [WebSockets](https://developers.cloudflare.com/agents/agent-class/websockets/), [scheduling](https://developers.cloudflare.com/agents/agent-class/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/agent-class/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
-- **Tools** give the agent capabilities: [browser automation](https://developers.cloudflare.com/agents/tools/browser/), [sandboxed code execution](https://developers.cloudflare.com/agents/tools/sandbox/), [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/), [MCP tools](https://developers.cloudflare.com/agents/tools/mcp/), and [payments](https://developers.cloudflare.com/agents/tools/payments/). [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) lets models discover and orchestrate multiple tools by writing code.
+- **The runtime is a Durable Object, the Lifecycle, and capabilities.** Each agent is a [Durable Object](https://developers.cloudflare.com/durable-objects/), and [routing](https://developers.cloudflare.com/agents/runtime/routing/) sends each request to the right one. The Agents SDK [Lifecycle](https://developers.cloudflare.com/agents/runtime/lifecycle/) runs inside the Durable Object, handles its requests, alarms, and WebSocket events, and starts the [capabilities](https://developers.cloudflare.com/agents/runtime/capabilities/) you add to it with `.use()`. Capabilities include [`WebSockets`](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/), [`State`](https://developers.cloudflare.com/agents/runtime/capabilities/state/), [`Scheduler`](https://developers.cloudflare.com/agents/runtime/capabilities/scheduler/), and [`MCPClientManager`](https://developers.cloudflare.com/agents/runtime/capabilities/mcp-client-manager/).
+- **The harness is the capability that runs the agent loop.** A harness calls models, runs tools, handles tool results, streams responses, and decides whether to continue. It is the unit of compute for an agent, and the Agents SDK exists to make harnesses run well on Cloudflare. Use the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), which runs the [Pi ↗︎](https://pi.dev/) agent loop durably and keeps a run going after the object is evicted.
+- **Tools** let the agent act. For a durable file system and code execution, give the agent a [workspace](https://developers.cloudflare.com/agents/tools/filesystem/) from Cloudflare Computer. The Agents SDK also includes [web fetch](https://developers.cloudflare.com/agents/tools/web-fetch/), [web search](https://developers.cloudflare.com/agents/tools/web-search/), [browser automation](https://developers.cloudflare.com/agents/tools/browser/), [sandboxed code execution](https://developers.cloudflare.com/agents/tools/sandbox/), [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/), [MCP servers](https://developers.cloudflare.com/agents/tools/mcp/), [payments](https://developers.cloudflare.com/agents/tools/payments/), and [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/).
+- **Communication channels** define how users and systems reach your agent, such as [chat](https://developers.cloudflare.com/agents/agent-class/communication-channels/chat/), [voice](https://developers.cloudflare.com/agents/agent-class/communication-channels/voice/), [email](https://developers.cloudflare.com/agents/agent-class/communication-channels/email/), [Slack](https://developers.cloudflare.com/agents/agent-class/communication-channels/slack/), [webhooks](https://developers.cloudflare.com/agents/agent-class/communication-channels/webhooks/), and other event sources. These guides use the [`Agent` class](https://developers.cloudflare.com/agents/agent-class/), a preset Durable Object with the Lifecycle and a set of capabilities already installed.
+
+Agents publish structured events, such as state changes, schedules, and MCP connections, that you can use for [observability](https://developers.cloudflare.com/agents/runtime/observability/).
 
 ### Get started
 
-Build your agent with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/). [Pi Durable ↗︎](https://earendil.com/posts/pi-durable/) runs the agent loop, including the transcript, model calls, tools, and retries, inside a Durable Object. `PiHarness` from the Agents SDK stores Pi's state in the object's SQLite database and resumes the run after an eviction. No API keys are required. The examples use [Workers AI](https://developers.cloudflare.com/workers-ai/) through the `AI` binding.
+Build your first agent with the Pi harness. The [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/) runs the [Pi ↗︎](https://pi.dev/) agent loop durably in a Durable Object. It uses the Lifecycle's job queue to schedule future work, so a run continues after the object is evicted. No API keys are required. The examples use [Workers AI](https://developers.cloudflare.com/workers-ai/) through the `AI` binding.
 
 npmyarnpnpmbun
 
@@ -69,11 +69,17 @@ pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works
 bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
 ```
 
-The [Pi harness guide](https://developers.cloudflare.com/agents/harnesses/pi/) builds a first agent in one file. To start from a complete app with a browser UI, a durable filesystem, and code execution, deploy the Pi harness example:
+The Pi packages are optional peer dependencies of `agents`, at `~1.4.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
+
+To start from a complete app with a browser UI, a Cloudflare Computer workspace, and code execution, deploy the Pi harness example:
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/next/harnesses/pi)
 
+To build it step by step, follow [Build your first Durable Agent](https://developers.cloudflare.com/agents/getting-started/quick-start/). To learn the Lifecycle, [`State`](https://developers.cloudflare.com/agents/runtime/capabilities/state/), and [`WebSockets`](https://developers.cloudflare.com/agents/runtime/capabilities/websockets/) without a model, refer to [Learn the runtime](https://developers.cloudflare.com/agents/getting-started/learn-the-runtime/). To add the Lifecycle to a Worker you already have, refer to [Add to an existing project](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/).
+
 ### Example agents
+
+The Pi agent runs on the Pi harness. The other examples build on the [`Agent` class](https://developers.cloudflare.com/agents/agent-class/) preset.
 
 [Pi agent](https://developers.cloudflare.com/agents/harnesses/pi/)
 
@@ -108,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/#page","headline":"Build Agents on Cloudflare","description":"Build and host AI agents on Cloudflare. Start with the Pi harness, which runs a durable model loop with tools in a Durable Object, and add state, real-time connections, and scheduled tasks with the Agents SDK.","url":"https://developers.cloudflare.com/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/#page","headline":"Build Agents on Cloudflare","description":"Build and host AI agents on Cloudflare. Run an agent harness in a Durable Object, add capabilities such as state, WebSockets, and scheduling with the Agents SDK Lifecycle, and give the agent tools.","url":"https://developers.cloudflare.com/agents/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/og.png?v=5f3790c1b824e669","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

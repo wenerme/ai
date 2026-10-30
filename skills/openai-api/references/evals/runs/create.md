@@ -8,6 +8,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
 - `eval_id: string`
 
+  The ID of the evaluation to create a run for.
+
 ### Body Parameters
 
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`

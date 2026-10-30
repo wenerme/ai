@@ -8,6 +8,8 @@ Grants a group access to a project.
 
 - `project_id: string`
 
+  The ID of the project to update.
+
 ### Body Parameters
 
 - `group_id: string`

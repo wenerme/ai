@@ -117,6 +117,12 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
   - `"audio"`
 
+### Returns
+
+`file`
+
+Content type: `application/octet-stream`
+
 ### Example
 
 ```http

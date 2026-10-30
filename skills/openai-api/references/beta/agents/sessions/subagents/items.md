@@ -10,9 +10,13 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
 
 - `session_id: string`
 
+  The ID of the session.
+
   `minLength: 0`, `maxLength: 1048576`
 
 - `subagent_id: string`
+
+  The ID of the subagent in this session.
 
   `minLength: 0`, `maxLength: 1048576`
 

@@ -12,6 +12,10 @@ Get Live session content
 
   `pattern: ^live_[A-Za-z0-9_-]{1,128}$`
 
+### Returns
+
+`file`
+
 ### Example
 
 ```http

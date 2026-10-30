@@ -8,6 +8,8 @@ Deletes a webhook endpoint for the authenticated project.
 
 - `webhook_endpoint_id: string`
 
+  The ID of the webhook endpoint to delete.
+
 ### Returns
 
 - `DeletedWebhookEndpoint object { id, deleted, object }`

@@ -8,6 +8,8 @@ List items that belong to a ChatKit thread.
 
 - `thread_id: string`
 
+  Identifier of the ChatKit thread whose items are requested.
+
 ### Query Parameters
 
 - `after: optional string`

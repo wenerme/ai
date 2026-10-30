@@ -129,6 +129,8 @@ Deletes a custom role from the organization.
 
 - `role_id: string`
 
+  The ID of the role to delete.
+
 ### Returns
 
 - `id: string`
@@ -329,6 +331,8 @@ Retrieves an organization role.
 
 - `role_id: string`
 
+  The ID of the role to retrieve.
+
 ### Returns
 
 - `Role object { id, description, name, 4 more }`
@@ -422,6 +426,8 @@ Updates an existing organization role.
 ### Path Parameters
 
 - `role_id: string`
+
+  The ID of the role to update.
 
 ### Body Parameters
 

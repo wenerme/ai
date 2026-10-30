@@ -403,8 +403,8 @@ Upgrading to an [officially supported operating system](../../install/package/_i
 
 This problem comes from the permissions of the GitLab Pages OAuth application. To fix it:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Applications** > **GitLab Pages**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > **GitLab Pages**.
 1. Edit the application.
 1. Under **Scopes**, ensure that the `api` scope is selected.
 1. Save your changes.
@@ -446,8 +446,8 @@ You may see this error if `pages_external_url` was updated at some point of time
 
 1. Check the [system OAuth application](../../integration/oauth_provider.md#create-an-instance-wide-application):
 
-   1. In the upper-right corner, select **Admin**.
-   1. Select **Applications** and then **Add new application**.
+   1. In the upper-right corner, select .
+   1. Select  and then .
    1. Ensure the **Callback URL/Redirect URI** is using the protocol (HTTP or HTTPS) that
       `pages_external_url` is configured to use.
 1. The domain and path components of `Redirect URI` are valid: they should look like `projects.<pages_external_url>/auth`.

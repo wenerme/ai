@@ -8,7 +8,11 @@ Lists the project roles assigned to a group within a project.
 
 - `project_id: string`
 
+  The ID of the project to inspect.
+
 - `group_id: string`
+
+  The ID of the group to inspect.
 
 ### Query Parameters
 

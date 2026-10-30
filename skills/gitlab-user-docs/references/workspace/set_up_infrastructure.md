@@ -146,13 +146,13 @@ The GitLab agent for Kubernetes connects your AWS Kubernetes cluster to GitLab.
 To create a token for the agent:
 
 1. Go to your group.
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Kubernetes clusters**.
-1. Select **Connect a cluster**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
 1. Enter a name for your agent and save for later use. For example, `gitlab-workspaces-agentk-eks`.
-1. Select **Create and register**.
+1. Select .
 1. Save the token and GitLab Relay (KAS) address for later use.
-1. Select **Continue**.
+1. Select .
 
 ## Configure GitLab OAuth
 
@@ -161,21 +161,21 @@ Next, set up OAuth authentication to securely access workspaces.
 To configure GitLab OAuth:
 
 1. In the upper-right corner, select your avatar.
-1. Select **Edit profile**.
-1. In the left sidebar, select **Access** > **Applications**.
-1. Scroll down to **OAuth applications**.
-1. Select **Add new application**.
+1. Select .
+1. In the left sidebar, select  > .
+1. Scroll down to .
+1. Select .
 1. Update the following settings:
 
    - Name: GitLab Workspaces Proxy
    - Redirect URI: For example, `https://workspaces.example.dev/auth/callback`. Replace with your
      user-defined domain.
-   - Select the **Confidential** checkbox.
+   - Select the  checkbox.
    - Scopes: `api`, `read_user`, `openid`, and `profile`.
 
-1. Select **Save application**.
-1. Save the **Application ID** and **Secret** for your CI/CD variables.
-1. Select **Continue**.
+1. Select .
+1. Save the  and  for your CI/CD variables.
+1. Select .
 
 ## Configure CI/CD variables
 
@@ -184,10 +184,10 @@ pipeline can run.
 
 To configure CI/CD variables:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. In the **Project variables** section, add the following required variables:
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  section, add the following required variables:
 
    | Variable                                       | Value |
    |------------------------------------------------|-------|
@@ -259,8 +259,8 @@ resources in AWS.
 To run the pipeline:
 
 1. Create a new pipeline in your GitLab project:
-   1. In the left sidebar, select **Build** > **Pipelines**.
-   1. Select **New pipeline** and select **New pipeline** again to confirm.
+   1. In the left sidebar, select  > .
+   1. Select  and select  again to confirm.
 1. Verify the `plan` job succeeds, then manually trigger the `apply` job.
 
 When the OpenTofu code runs, it creates these resources in AWS:
@@ -296,11 +296,11 @@ Next, you'll authorize the GitLab agent for Kubernetes to connect to your GitLab
 
 To authorize the agent:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **Workspaces**.
-1. In the **Group agents** section, select the **All agents** tab.
-1. From the list of available agents, find the agent with status **Blocked**, and select **Allow**.
-1. On the confirmation dialog, select **Allow agent**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the  section, select the  tab.
+1. From the list of available agents, find the agent with status , and select .
+1. On the confirmation dialog, select .
 
 ## Create a workspace and verify setup
 
@@ -309,7 +309,7 @@ Finally, let's make sure everything is working correctly by creating a test work
 To verify your workspace setup:
 
 1. Create a new workspace by following the steps in [create a workspace](configuration.md#create-a-workspace).
-1. From your project, select **Code**.
+1. From your project, select .
 1. Select your workspace name.
 1. Interact with the workspace by opening the Web IDE, accessing the terminal, or making changes to project files.
 

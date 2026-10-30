@@ -1237,6 +1237,7 @@ Show me all jobs in pipeline 12345 for project gitlab-org/gitlab
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) in GitLab 19.3.
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) from `get_job_log` in GitLab 19.3. `get_job_log` continues to work as an alias and always returns the `log` facet, capped at `byte_limit`.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+- Opt-in log tail reads [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633041) in GitLab 19.6.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1247,11 +1248,24 @@ Gets a CI/CD job's metadata, and optionally its trace/log or the artifacts it pr
 | `id`          | string  | Yes      | ID or full path of the project. |
 | `job_id`      | integer | Yes      | ID of the job. |
 | `include`     | array   | No       | Facet to include alongside the job, one per call: `log` or `artifacts`. |
-| `byte_offset` | integer | No       | Byte offset to start reading the job's log from. Only applies when `include` is `log`. Default is `0`. |
+| `from`        | string  | No       | Read from the `start` or `end` of the log. Default is `start`. Only applies to the `log` facet. Cannot combine `end` with `byte_offset`. |
+| `byte_offset` | integer | No       | Byte offset to start reading the job's log from. Only applies when `include` is `log` and `from` is `start`. Default is `0`. |
 | `byte_limit`  | integer | No       | Maximum number of bytes of the job's log to return. Only applies when `include` is `log`. Default and maximum is `512000`. |
 
 When the log is longer than `byte_limit`, the response reports the total size and tells you the
 `byte_offset` to use for the next window.
+
+To read the last 32 KiB, set `from: "end"` and `byte_limit: 32768`.
+The response includes `log.metadata.returned.start` and `log.metadata.returned.end`,
+which identify the returned byte range. The `end` offset is exclusive.
+If earlier bytes exist, `log.system_instruction` provides arguments for the preceding window.
+Use all of those arguments, including `from: "start"`, to replace the tail request's parameters.
+For more earlier windows, subtract the desired window size from the returned `start`,
+clamp the result to zero, and set `byte_limit` to the distance between those offsets.
+
+`log.metadata.truncated` indicates that bytes remain after the returned window.
+It is `false` for a tail window that reaches the end, even when earlier bytes exist.
+Byte offsets refer to the original log, before replacement of incomplete UTF-8 characters.
 
 The `artifacts` facet lists every artifact the job produced, with its `name`, `size`, `file_type`,
 and expiry information.
@@ -1268,6 +1282,12 @@ Examples:
 
   ```plaintext
   Show me the log output for job 88 in project gitlab-org/gitlab
+  ```
+
+- Get the end of a job's log:
+
+  ```plaintext
+  Show me the last 32 KiB of log output for job 88 in project gitlab-org/gitlab
   ```
 
 - Get a job's artifacts:

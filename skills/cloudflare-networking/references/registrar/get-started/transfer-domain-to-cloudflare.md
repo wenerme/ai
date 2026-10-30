@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/registrar/get-started/transfer-domain-t
 
 # Transfer your domain to Cloudflare
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Transferring a domain moves your registration from your current registrar to Cloudflare.
 
@@ -22,7 +22,7 @@ Transferring a domain moves your registration from your current registrar to Clo
 
 Note
 
-Before you can transfer, you must first [add your domain to Cloudflare](#1-add-your-domain-to-cloudflare). You cannot [enter an authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code) until your domain is active on Cloudflare. If your domain is registered with Shopify, Wix, or a similar platform, you may not be able to change nameservers while the domain is registered there. Refer to [Transfer from Shopify, Block, or Wix](#transfer-from-shopify-block-or-wix) for the recommended workaround, or [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/) if you are running into issues.
+Before you can transfer, you must first [add your domain to Cloudflare](#1-add-your-domain-to-cloudflare). You cannot [enter an authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code) until your domain is active on Cloudflare. If your domain is registered with Shopify, Block, or a similar platform, you may not be able to change nameservers while the domain is registered there. Refer to [Transfer from Shopify or Block](#transfer-from-shopify-or-block) for the recommended workaround, or [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/) if you are running into issues.
 
 Note
 
@@ -129,6 +129,7 @@ Each registrar has a different interface for updating nameservers. These links e
 - <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/258/84/what-should-i-do-to-transfer-a-domain-from-namecheap/">Namecheap ↗︎</a>
 - <a href="https://www.networksolutions.com/help/article/transfer-out-of-network-solutions">Network Solutions ↗︎</a>
 - <a href="https://support.squarespace.com/hc/articles/205812338-Transferring-a-domain-away-from-Squarespace">Squarespace ↗︎</a>
+- <a href="https://support.wix.com/en/article/transferring-your-wix-domain-away-from-wix-2477749">Wix ↗︎</a>
 
 </details>
 
@@ -210,9 +211,9 @@ Registrants transferring a `.us` domain will always receive a FOA email.
 
 ---
 
-## Transfer from Shopify, Block, or Wix
+## Transfer from Shopify or Block
 
-Some commerce and site-building platforms (such as Shopify, Block, and Wix) act as both your hosting provider and domain registrar. These platforms typically do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer is not possible.
+Some commerce and site-building platforms (such as Shopify and Block) act as both your hosting provider and domain registrar. These platforms typically do not allow you to change nameservers while the domain is registered with them. Because Cloudflare requires your nameservers to point to Cloudflare before a transfer can begin, a direct transfer is not possible.
 
 The workaround is to transfer your domain to another registrar first, wait 60 days, then transfer to Cloudflare:
 
@@ -289,5 +290,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/og.png?v=5416088fca0d1b89","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/og.png?v=5416088fca0d1b89","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

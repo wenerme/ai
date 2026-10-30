@@ -88,7 +88,7 @@ To report abuse from a user's comment:
 
 ## Report abuse from a merge request
 
-1. On the merge request, in the upper-right corner, select **Merge request actions** ().
+1. On the merge request, in the upper-right corner, select **More actions** ().
 1. Select **Report abuse**.
 1. Select a reason for reporting this user.
 1. Complete an abuse report.
