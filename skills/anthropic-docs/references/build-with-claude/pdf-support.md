@@ -3,7 +3,7 @@ title: PDF support
 url: https://platform.claude.com/docs/en/build-with-claude/pdf-support
 description: "Process PDFs with Claude: extract text, analyze charts, and understand visual content from your documents."
 featureMetadata:
-  status: ga
+  status: stable
   zdr:
     eligibility: eligible
     note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements).
@@ -26,20 +26,20 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Claude Models on Google Cloud (Anthropic managed): ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Claude Models on Google Cloud (Anthropic managed): stable
     Amazon Bedrock:
-      availability: ga
+      availability: stable
       note: Base64 sources only.
     Amazon Bedrock (InvokeModel):
-      availability: ga
+      availability: stable
       note: Base64 sources only.
     Claude Models on Google Cloud (Google managed):
-      availability: ga
+      availability: stable
       note: Base64 sources only.
     Microsoft Foundry:
-      availability: ga
+      availability: stable
       note: "`file_id` sources need a Hosted on Anthropic deployment."
 ---
 

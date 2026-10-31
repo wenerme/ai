@@ -7,53 +7,67 @@ date: "2024-04-10T22:21:00+08:00"
 ## Environment variables
 
 These environment variables are set automatically in every workflow run and can be accessed directly (e.g. `$CI` in shell scripts).
+A `GITEA_*` name listed with a `GITHUB_*` name holds the same value.
 
 | Name | Description | Example |
 |---|---|---|
+| `ACT` | Always set to `true`, unless the runner is configured with `runner.set_act_env: false`. | `true` |
 | `CI` | Always set to `true`. | `true` |
-| `GITEA_ACTIONS` | Always set to `true`. Useful to distinguish Gitea Actions from other CI systems. | `true` |
-| `GITEA_ACTIONS_RUNNER_VERSION` | The version of the runner executing the workflow. | `1.0.8` |
-| `GITEA_DOCKER_WORKSPACE` | The workspace path as the Docker daemon sees it, for bind mounts into containers a job starts, e.g. `${GITEA_DOCKER_WORKSPACE:-.}/data:/app/data` in a compose file. Only set for jobs running in a container. | `/var/lib/docker/volumes/GITEA-ACTIONS-TASK-42_***/_data` |
-| `GITEA_ENV``GITHUB_ENV` | Path to the file that sets environment variables for subsequent steps. | `/home/runner/work/_temp/_runner_file_commands/set_env_***` |
-| `GITEA_OUTPUT``GITHUB_OUTPUT` | Path to the file that sets step output parameters. | `/home/runner/work/_temp/_runner_file_commands/set_output_***` |
-| `GITEA_PATH``GITHUB_PATH` | Path to the file that adds system `PATH` entries for subsequent steps. | `/home/runner/work/_temp/_runner_file_commands/add_path_***` |
-| `GITEA_STATE``GITHUB_STATE` | Path to the file that sets step state variables. | `/home/runner/work/_temp/_runner_file_commands/save_state_***` |
-| `GITEA_STEP_SUMMARY``GITHUB_STEP_SUMMARY` | Path to the file for writing job summaries. | `/home/runner/work/_temp/_runner_file_commands/step_summary_***` |
-| `GITHUB_ACTIONS` | Always set to `true`. | `true` |
-| `GITHUB_ACTION` | The name of the action currently running, or the step `id`. | `__run` |
-| `GITHUB_ACTION_PATH` | The path where the action is located. | `/home/runner/work/_actions/actions/checkout/v4` |
-| `GITHUB_ACTION_REF` | The ref of the action being executed. | `v4` |
-| `GITHUB_ACTION_REPOSITORY` | The owner and repository of the action. | `actions/checkout` |
-| `GITHUB_ACTOR` | The username of the user that triggered the workflow. | `silverwind` |
-| `GITHUB_API_URL` | The URL of the REST API. | `https://gitea.com/api/v1` |
-| `GITHUB_BASE_REF` | The target branch of a pull request. | `main` |
-| `GITHUB_EVENT_NAME` | The name of the event that triggered the workflow. | `push` |
-| `GITHUB_EVENT_PATH` | Path to the file containing the event webhook payload. | `/home/runner/work/_temp/_github_workflow/event.json` |
-| `GITHUB_GRAPHQL_URL` | Empty in Gitea (GraphQL is not supported). | _(empty)_ |
-| `GITHUB_HEAD_REF` | The source branch of a pull request. | `feature-branch` |
-| `GITHUB_JOB` | The `job_id` of the current job. | `build` |
-| `GITHUB_REF` | The fully-formed ref that triggered the workflow. | `refs/heads/main` |
-| `GITHUB_REF_NAME` | The short ref name. | `main` |
-| `GITHUB_REF_TYPE` | The type of ref: `branch` or `tag`. | `branch` |
-| `GITHUB_REPOSITORY` | The owner and repository name. | `gitea/docs` |
-| `GITHUB_REPOSITORY_OWNER` | The repository owner's username. | `gitea` |
-| `GITHUB_RETENTION_DAYS` | The number of days that artifacts are kept, empty when kept forever. | `90` |
-| `GITHUB_RUN_ATTEMPT` | The attempt number of the workflow run. | `1` |
-| `GITHUB_RUN_ID` | A unique number for each workflow run. | `1234` |
-| `GITHUB_RUN_NUMBER` | A unique number for each run of a particular workflow. | `42` |
-| `GITHUB_SERVER_URL` | The URL of the Gitea instance. | `https://gitea.com` |
-| `GITHUB_SHA` | The commit SHA that triggered the workflow. | `a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2` |
-| `GITHUB_WORKFLOW` | The name of the workflow. | `CI` |
-| `GITHUB_WORKSPACE` | The default working directory on the runner. | `/workspace/gitea/docs` |
+| `GITEA_ACTION``GITHUB_ACTION` | The `id` of the current step, or its index when it has none. | `0` |
+| `GITEA_ACTION_PATH``GITHUB_ACTION_PATH` | The path where the action is located. Only set in composite actions. | `/var/run/act/actions/***` |
+| `GITEA_ACTION_REF``GITHUB_ACTION_REF` | The ref of the action being executed. | `v4` |
+| `GITEA_ACTION_REPOSITORY``GITHUB_ACTION_REPOSITORY` | The owner and repository of the action. | `actions/checkout` |
+| `GITEA_ACTIONS``GITHUB_ACTIONS` | Always set to `true`. `GITEA_ACTIONS` is useful to distinguish Gitea Actions from other CI systems. | `true` |
+| `GITEA_ACTIONS_RUNNER_VERSION` | The version of the runner executing the workflow. | `v5.2.4` |
+| `GITEA_ACTOR``GITHUB_ACTOR` | The username of the user that triggered the workflow. | `alice` |
+| `GITEA_ACTOR_ID``GITHUB_ACTOR_ID` | The ID of the user that triggered the workflow. | `1` |
+| `GITEA_API_URL``GITHUB_API_URL` | The URL of the REST API. | `https://gitea.example.com/api/v1` |
+| `GITEA_BASE_REF``GITHUB_BASE_REF` | The target branch of a pull request. | `main` |
+| `GITEA_DOCKER_WORKSPACE` | The workspace path as the Docker daemon sees it, for bind mounts into containers a job starts, e.g. `${GITEA_DOCKER_WORKSPACE:-.}/data:/app/data` in a compose file. Only set for jobs running in a container. | `/var/lib/docker/volumes/GITEA-ACTIONS-TASK-42-***/_data` |
+| `GITEA_ENV``GITHUB_ENV` | Path to the file that sets environment variables for subsequent steps. | `/var/run/act/workflow/envs.txt` |
+| `GITEA_EVENT_NAME``GITHUB_EVENT_NAME` | The name of the event that triggered the workflow. | `push` |
+| `GITEA_EVENT_PATH``GITHUB_EVENT_PATH` | Path to the file containing the event webhook payload. | `/var/run/act/workflow/event.json` |
+| `GITEA_GRAPHQL_URL``GITHUB_GRAPHQL_URL` | Empty in Gitea (GraphQL is not supported). | _(empty)_ |
+| `GITEA_HEAD_REF``GITHUB_HEAD_REF` | The source branch of a pull request. | `feature-branch` |
+| `GITEA_JOB``GITHUB_JOB` | The `job_id` of the current job. | `build` |
+| `GITEA_OUTPUT``GITHUB_OUTPUT` | Path to the file that sets step output parameters. | `/var/run/act/workflow/outputcmd.txt` |
+| `GITEA_PATH``GITHUB_PATH` | Path to the file that adds system `PATH` entries for subsequent steps. | `/var/run/act/workflow/pathcmd.txt` |
+| `GITEA_REF``GITHUB_REF` | The fully-formed ref that triggered the workflow. | `refs/heads/main` |
+| `GITEA_REF_NAME``GITHUB_REF_NAME` | The short ref name. | `main` |
+| `GITEA_REF_PROTECTED``GITHUB_REF_PROTECTED` | `true` if branch protections are configured for the ref that triggered the workflow. | `true` |
+| `GITEA_REF_TYPE``GITHUB_REF_TYPE` | The type of ref: `branch` or `tag`. | `branch` |
+| `GITEA_REPOSITORY``GITHUB_REPOSITORY` | The owner and repository name. | `owner/repo` |
+| `GITEA_REPOSITORY_ID``GITHUB_REPOSITORY_ID` | The ID of the repository. | `123` |
+| `GITEA_REPOSITORY_OWNER``GITHUB_REPOSITORY_OWNER` | The repository owner's username. | `owner` |
+| `GITEA_REPOSITORY_OWNER_ID``GITHUB_REPOSITORY_OWNER_ID` | The ID of the repository owner. | `45` |
+| `GITEA_RETENTION_DAYS``GITHUB_RETENTION_DAYS` | The number of days that artifacts are kept, empty when kept forever. | `90` |
+| `GITEA_RUN_ATTEMPT``GITHUB_RUN_ATTEMPT` | The attempt number of the workflow run. | `1` |
+| `GITEA_RUN_ID``GITHUB_RUN_ID` | A unique number for each workflow run. | `1234` |
+| `GITEA_RUN_NUMBER``GITHUB_RUN_NUMBER` | A unique number for each run of a particular workflow. | `42` |
+| `GITEA_SERVER_URL``GITHUB_SERVER_URL` | The URL of the Gitea instance. | `https://gitea.example.com` |
+| `GITEA_SHA``GITHUB_SHA` | The commit SHA that triggered the workflow. | `a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2` |
+| `GITEA_STATE``GITHUB_STATE` | Path to the file that sets step state variables. | `/var/run/act/workflow/statecmd.txt` |
+| `GITEA_STEP_SUMMARY``GITHUB_STEP_SUMMARY` | Path to the file for writing job summaries. | `/var/run/act/workflow/step-summary-0.md` |
+| `GITEA_TRIGGERING_ACTOR``GITHUB_TRIGGERING_ACTOR` | The username of the user that initiated the workflow run. May differ from `GITEA_ACTOR` on re-runs. | `alice` |
+| `GITEA_WORKFLOW``GITHUB_WORKFLOW` | The name of the workflow. | `CI` |
+| `GITEA_WORKFLOW_SHA``GITHUB_WORKFLOW_SHA` | The commit SHA of the workflow file. | `a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2` |
+| `GITEA_WORKSPACE``GITHUB_WORKSPACE` | The default working directory on the runner. | `/workspace/owner/repo` |
+| `TRACEPARENT` | The W3C trace context of the job's span, so instrumented tools can add spans to the job's trace. Only set when the runner exports traces, see [Monitoring](/runner/monitoring/#opentelemetry). | `00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01` |
+| `TRACESTATE` | Vendor-specific trace data that accompanies `TRACEPARENT`. Only set when the trace carries any. | `rojo=00f067aa0ba902b7` |
 
 ### Runner environment variables
 
 | Name | Description | Example |
 |---|---|---|
+| `ImageOS` | The OS and release of the job's image, read by `setup-*` actions. | `ubuntu24` |
 | `RUNNER_ARCH` | The architecture of the runner. | `X64` |
+| `RUNNER_DEBUG` | Set to `1` when the `ACTIONS_STEP_DEBUG` secret is `true`, unset otherwise. | `1` |
+| `RUNNER_ENVIRONMENT` | Always set to `self-hosted`. | `self-hosted` |
+| `RUNNER_NAME` | The name of the runner executing the job. | `my-runner` |
 | `RUNNER_OS` | The operating system of the runner. | `Linux` |
 | `RUNNER_TEMP` | Path to a temporary directory on the runner. | `/tmp` |
 | `RUNNER_TOOL_CACHE` | Path to the tool cache directory on the runner. | `/opt/hostedtoolcache` |
+| `RUNNER_WORKSPACE` | The parent directory of `GITEA_WORKSPACE`. | `/workspace/owner` |
 
 ### Internal environment variables
 
@@ -63,10 +77,10 @@ These are used internally by the runner and actions. They are typically not need
 |---|---|---|
 | `ACTIONS_CACHE_URL` | URL for the actions cache service. | `http://192.168.1.10:8088/` |
 | `ACTIONS_ID_TOKEN_REQUEST_TOKEN` | Token for OIDC requests. Only set when `id-token: write` is granted. | `***` |
-| `ACTIONS_ID_TOKEN_REQUEST_URL` | URL to request OIDC tokens. Only set when `id-token: write` is granted. | `https://gitea.com/api/actions/oidc/token?` |
-| `ACTIONS_RESULTS_URL` | URL for storing artifacts. | `https://gitea.com` |
+| `ACTIONS_ID_TOKEN_REQUEST_URL` | URL to request OIDC tokens. Only set when `id-token: write` is granted. | `https://gitea.example.com/api/actions/oidc/token?` |
+| `ACTIONS_RESULTS_URL` | URL for storing artifacts. | `https://gitea.example.com` |
 | `ACTIONS_RUNTIME_TOKEN` | Authentication token for the Actions pipeline API. | `***` |
-| `ACTIONS_RUNTIME_URL` | URL for the Gitea Actions pipeline API. | `https://gitea.com/api/actions_pipeline/` |
+| `ACTIONS_RUNTIME_URL` | URL for the Gitea Actions pipeline API. | `https://gitea.example.com/api/actions_pipeline/` |
 
 ## Context variables
 
@@ -74,39 +88,39 @@ These variables are available in workflow expressions via `${{ gitea.<name> }}`.
 
 | Name | Description | Example |
 |---|---|---|
-| `gitea.action``github.action` | The name of the action currently running, or the `id` of a step. | `__run` |
-| `gitea.action_path``github.action_path` | The path where an action is located. Only supported in composite actions. | `/home/runner/work/_actions/actions/checkout/v4` |
+| `gitea.action``github.action` | The `id` of the current step, or its index when it has none. | `0` |
+| `gitea.action_path``github.action_path` | The path where an action is located. Only supported in composite actions. | `/var/run/act/actions/***` |
 | `gitea.action_ref``github.action_ref` | The ref of the action being executed. | `v4` |
 | `gitea.action_repository``github.action_repository` | The owner and repository name of the action. | `actions/checkout` |
 | `gitea.action_status``github.action_status` | The current result of a composite action. | `success` |
-| `gitea.actor``github.actor` | The username of the user that triggered the initial workflow run. | `silverwind` |
-| `gitea.api_url``github.api_url` | The URL of the REST API. | `https://gitea.com/api/v1` |
+| `gitea.actor``github.actor` | The username of the user that triggered the initial workflow run. | `alice` |
+| `gitea.api_url``github.api_url` | The URL of the REST API. | `https://gitea.example.com/api/v1` |
 | `gitea.base_ref``github.base_ref` | The target branch of a pull request. Only set for `pull_request` and `pull_request_target` events. | `main` |
-| `gitea.env``github.env` | Path on the runner to the file that sets environment variables from workflow commands. Unique to each step. | `/home/runner/work/_temp/_runner_file_commands/set_env_***` |
+| `gitea.env``github.env` | Path on the runner to the file that sets environment variables from workflow commands. | `/var/run/act/workflow/envs.txt` |
 | `gitea.event``github.event` | The full event webhook payload as an object. See [Event payload](#event-payload). | `{...}` |
 | `gitea.event_name``github.event_name` | The name of the event that triggered the workflow run. | `push` |
-| `gitea.event_path``github.event_path` | Path on the runner to the file containing the full event webhook payload. | `/home/runner/work/_temp/_github_workflow/event.json` |
+| `gitea.event_path``github.event_path` | Path on the runner to the file containing the full event webhook payload. | `/var/run/act/workflow/event.json` |
 | `gitea.head_ref``github.head_ref` | The source branch of a pull request. Only set for `pull_request` and `pull_request_target` events. | `feature-branch` |
 | `gitea.job``github.job` | The `job_id` of the current job. | `build` |
 | `gitea.ref``github.ref` | The fully-formed ref that triggered the workflow. | `refs/heads/main` |
 | `gitea.ref_name``github.ref_name` | The short ref name. | `main` |
 | `gitea.ref_protected``github.ref_protected` | `true` if branch protections are configured for the ref that triggered the workflow run. | `true` |
 | `gitea.ref_type``github.ref_type` | The type of ref: `branch` or `tag`. | `branch` |
-| `gitea.path``github.path` | Path on the runner to the file that sets system `PATH` variables from workflow commands. Unique to each step. | `/home/runner/work/_temp/_runner_file_commands/add_path_***` |
-| `gitea.repository``github.repository` | The owner and repository name. | `gitea/docs` |
-| `gitea.repository_owner``github.repository_owner` | The repository owner's username. | `gitea` |
-| `gitea.repositoryUrl``github.repositoryUrl` | The HTML URL to the repository. | `https://gitea.com/gitea/docs` |
+| `gitea.path``github.path` | Path on the runner to the file that sets system `PATH` variables from workflow commands. | `/var/run/act/workflow/pathcmd.txt` |
+| `gitea.repository``github.repository` | The owner and repository name. | `owner/repo` |
+| `gitea.repository_owner``github.repository_owner` | The repository owner's username. | `owner` |
+| `gitea.repositoryUrl``github.repositoryUrl` | The HTML URL to the repository. | `https://gitea.example.com/owner/repo` |
 | `gitea.retention_days``github.retention_days` | The number of days that artifacts are kept, empty when kept forever. | `90` |
 | `gitea.run_id``github.run_id` | A unique number for each workflow run within a repository. Does not change on re-run. | `1234` |
 | `gitea.run_number``github.run_number` | A unique number for each run of a particular workflow. Starts at 1 and increments with each new run. | `42` |
 | `gitea.run_attempt``github.run_attempt` | A unique number for each re-run attempt. Starts at 1 and increments with each re-run. | `1` |
 | `gitea.secret_source``github.secret_source` | The source of a secret used in a workflow. Always `Actions` in Gitea. | `Actions` |
-| `gitea.server_url``github.server_url` | The URL of the Gitea instance. | `https://gitea.com` |
+| `gitea.server_url``github.server_url` | The URL of the Gitea instance. | `https://gitea.example.com` |
 | `gitea.sha``github.sha` | The commit SHA that triggered the workflow. | `a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2` |
-| `gitea.token``github.token` | A token to authenticate on behalf of the Gitea App installed on the repository. See [Token permissions](token-permissions.md). | `ghs_***` |
-| `gitea.triggering_actor``github.triggering_actor` | The username of the user that initiated the workflow run. May differ from `actor` on re-runs. | `silverwind` |
+| `gitea.token``github.token` | A token to authenticate on behalf of the Gitea App installed on the repository. See [Token permissions](token-permissions.md). | `***` |
+| `gitea.triggering_actor``github.triggering_actor` | The username of the user that initiated the workflow run. May differ from `actor` on re-runs. | `alice` |
 | `gitea.workflow``github.workflow` | The name of the workflow. If unnamed, the full path of the workflow file. | `CI` |
-| `gitea.workspace``github.workspace` | The default working directory on the runner and the default location of your repository when using the `checkout` action. | `/workspace/gitea/docs` |
+| `gitea.workspace``github.workspace` | The default working directory on the runner and the default location of your repository when using the `checkout` action. | `/workspace/owner/repo` |
 | `gitea.gitea_default_actions_url` | The default URL for downloading actions. Gitea-specific. | `https://github.com` |
 
 ### Event payload
@@ -122,11 +136,11 @@ These fields exist in almost every payload:
 | Name | Description | Example |
 |---|---|---|
 | `gitea.event.action` | The activity type. Only set for events that have activity types, see [supported events](faq.md#what-workflow-trigger-events-does-gitea-support). | `opened` |
-| `gitea.event.repository.full_name` | The owner and name of the repository. | `gitea/docs` |
+| `gitea.event.repository.full_name` | The owner and name of the repository. | `owner/repo` |
 | `gitea.event.repository.default_branch` | The default branch of the repository. | `main` |
 | `gitea.event.repository.private` | Whether the repository is private. | `false` |
-| `gitea.event.repository.html_url` | The HTML URL of the repository. | `https://gitea.com/gitea/docs` |
-| `gitea.event.sender.login` | The username of the user that triggered the event. Also available as `sender.username`. | `silverwind` |
+| `gitea.event.repository.html_url` | The HTML URL of the repository. | `https://gitea.example.com/owner/repo` |
+| `gitea.event.sender.login` | The username of the user that triggered the event. Also available as `sender.username`. | `alice` |
 
 The remaining fields are specific to one or a few events:
 
@@ -141,12 +155,12 @@ The remaining fields are specific to one or a few events:
 | `gitea.event.commits` | `push` | The commits contained in the push, each with `id`, `message`, `url`, `author`, `added`, `removed` and `modified`. | `[{...}]` |
 | `gitea.event.head_commit.message` | `push` | The message of the most recent commit of the push. | `fix: broken link` |
 | `gitea.event.total_commits` | `push` | The number of commits in the push. Gitea-specific. | `3` |
-| `gitea.event.compare_url` | `push` | The URL comparing `before` with `after`. GitHub names this field `compare`. | `https://gitea.com/gitea/docs/compare/a1b2c3d...e5f6a1b` |
-| `gitea.event.pusher.login` | `push` | The username of the user that pushed. | `silverwind` |
-| `gitea.event.forkee.full_name` | `fork` | The owner and name of the new fork. | `silverwind/docs` |
+| `gitea.event.compare_url` | `push` | The URL comparing `before` with `after`. GitHub names this field `compare`. | `https://gitea.example.com/owner/repo/compare/a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2...f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5` |
+| `gitea.event.pusher.login` | `push` | The username of the user that pushed. | `alice` |
+| `gitea.event.forkee.full_name` | `fork` | The owner and name of the new fork. | `alice/repo` |
 | `gitea.event.page` | `gollum` | The name of the wiki page. | `Home` |
 | `gitea.event.number` | `issues`, `pull_request`, `pull_request_target`, `pull_request_review`, `pull_request_review_comment` | The index of the issue or pull request. Not set for `issue_comment`, use `gitea.event.issue.number` there. | `386` |
-| `gitea.event.issue.number``gitea.event.issue.title``gitea.event.issue.body``gitea.event.issue.state``gitea.event.issue.labels``gitea.event.issue.user.login` | `issues`, `issue_comment` | The issue the event happened on. | `Expand gitea.event in actions docs` |
+| `gitea.event.issue.number``gitea.event.issue.title``gitea.event.issue.body``gitea.event.issue.state``gitea.event.issue.labels``gitea.event.issue.user.login` | `issues`, `issue_comment` | The issue the event happened on. | `Fix typo in README` |
 | `gitea.event.comment.body` | `issue_comment` | The body of the comment. | `LGTM` |
 | `gitea.event.is_pull` | `issue_comment` | Whether the comment was made on a pull request. Gitea-specific, GitHub sets `issue.pull_request` on the issue object instead. | `true` |
 | `gitea.event.pull_request.number``gitea.event.pull_request.title``gitea.event.pull_request.body``gitea.event.pull_request.draft``gitea.event.pull_request.merged``gitea.event.pull_request.state``gitea.event.pull_request.labels``gitea.event.pull_request.user.login` | `pull_request`, `pull_request_target`, `pull_request_review`, `pull_request_review_comment` | The pull request the event happened on. | `Add caching to CI` |

@@ -3,7 +3,7 @@ title: Search results
 url: https://platform.claude.com/docs/en/build-with-claude/search-results
 description: Get natural citations for RAG applications by providing search results with source attribution
 featureMetadata:
-  status: ga
+  status: stable
   zdr:
     eligibility: eligible
     note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements).
@@ -26,12 +26,12 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Amazon Bedrock: ga
-    Amazon Bedrock (InvokeModel): ga
-    Claude Models on Google Cloud (Google managed): ga
-    Microsoft Foundry: ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Amazon Bedrock: stable
+    Amazon Bedrock (InvokeModel): stable
+    Claude Models on Google Cloud (Google managed): stable
+    Microsoft Foundry: stable
 ---
 
 **API support**: Usage differs by product.

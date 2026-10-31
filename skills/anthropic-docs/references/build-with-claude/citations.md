@@ -3,7 +3,7 @@ title: Citations
 url: https://platform.claude.com/docs/en/build-with-claude/citations
 description: Ground Claude's responses in your source documents. Citations return the exact passages that support each claim, so you can verify answers and surface sources to your users.
 featureMetadata:
-  status: ga
+  status: stable
   zdr:
     eligibility: eligible
     note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements).
@@ -26,12 +26,12 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Amazon Bedrock: ga
-    Amazon Bedrock (InvokeModel): ga
-    Claude Models on Google Cloud (Google managed): ga
-    Microsoft Foundry: ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Amazon Bedrock: stable
+    Amazon Bedrock (InvokeModel): stable
+    Claude Models on Google Cloud (Google managed): stable
+    Microsoft Foundry: stable
 ---
 
 Claude can provide detailed citations when answering questions about documents, helping you track and verify the sources behind each response.

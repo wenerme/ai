@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 54004 files, 541 MiB total
+> 125 skills, 54006 files, 541 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1451,7 +1451,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 91 | 821 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 104 | 625 KiB |
-| [gitea-docs](./skills/gitea-docs/SKILL.md) | 102 | 708 KiB |
+| [gitea-docs](./skills/gitea-docs/SKILL.md) | 102 | 710 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 372 | 4.8 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 259 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
@@ -1463,7 +1463,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 634 | 6.6 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 745 | 5.7 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 92 | 390 KiB |
-| [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 370 | 2.1 MiB |
+| [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 370 | 2.2 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 32 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 79 | 500 KiB |
@@ -1476,7 +1476,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 190 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 12 | 81 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 965 | 9.1 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 967 | 9.1 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 185 | 565 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |

@@ -3,7 +3,7 @@ title: Web fetch tool
 url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool
 description: Fetch and read content from specific URLs to augment Claude's context with live web content.
 featureMetadata:
-  status: ga
+  status: stable
   zdr:
     eligibility: eligible
     note: Excludes [Covered Models](https://platform.claude.com/docs/en/manage-claude/api-and-data-retention#model-specific-data-retention-requirements). Fetched web content returned in the API response. Dynamic filtering for web fetch is not eligible for ZDR or HIPAA. Website publishers might retain request data (such as fetched URLs and request metadata) according to their own policies.
@@ -26,11 +26,11 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Claude Models on Google Cloud (Anthropic managed): ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Claude Models on Google Cloud (Anthropic managed): stable
     Microsoft Foundry:
-      availability: ga
+      availability: stable
       note: "Deployments hosted on Azure support only `web_fetch_20250910`: no dynamic filtering, response inclusion or cache bypass."
 ---
 
