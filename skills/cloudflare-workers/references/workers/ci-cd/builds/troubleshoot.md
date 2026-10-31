@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.pn
 
 # Troubleshooting builds
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to identify and resolve build errors, as well as troubleshoot common issues in the Workers Builds deployment process.
 
@@ -80,6 +80,27 @@ If this error appears in Workers Builds but `npm ci` works on your machine, your
 
 If you are running into errors associated with your Git integration, you can try removing access to your [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#removing-access) or [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#removing-access) integration from Cloudflare, then reinstalling the [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#reinstall-a-git-integration) or [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#reinstall-a-git-integration) integration.
 
+## Builds API errors
+
+These errors are returned by the [Builds API](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/).
+
+### "Resource not found" error
+
+You are likely using the Worker name instead of the Worker tag. The Builds API requires the `tag` (a UUID like `1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d`), not the Worker name. Refer to [Get your Worker tag](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#get-your-worker-tag).
+
+### "Invalid request body" (12002) when updating branch patterns
+
+The [`PATCH /builds/triggers/{trigger_uuid}`](https://developers.cloudflare.com/api/resources/workers_builds/subresources/triggers/methods/update/) endpoint returns this error when the trigger's resulting `branch_includes` and `branch_excludes` are not one of these combinations:
+
+| Trigger | `branch_includes` | `branch_excludes` |
+| --- | --- | --- |
+| Production | One branch name without wildcards (for example, `["main"]`) | Empty (`[]`) |
+| Legacy branch builds (non-production) | `["*"]` | One or more branch names without wildcards |
+
+The error is also returned if the update would change a production trigger into a non-production trigger, or the other way around. Branch patterns such as `feature/*` are not supported.
+
+To change your production branch, [update `git_repository.branch`](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#update-build-settings) instead.
+
 ## For additional support
 
 If you discover additional issues or would like to provide feedback, reach out to us in the [Cloudflare Developers Discord ↗︎](https://discord.com/channels/595317990191398933/1052656806058528849).
@@ -93,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.png?v=bea231c9b08a06d4","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/#page","headline":"Troubleshooting builds","description":"Learn how to troubleshoot common and known issues in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/troubleshoot/og.png?v=bea231c9b08a06d4","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

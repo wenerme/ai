@@ -16,6 +16,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `conversation: optional string or BetaResponseConversationParam or null`
 
   The conversation that this response belongs to. Items from this conversation are prepended to `input_items` for this response request.

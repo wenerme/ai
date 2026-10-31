@@ -86,7 +86,7 @@ Like [Page Rules](https://developers.cloudflare.com/rules/page-rules/), an origi
 
 ## Troubleshooting
 
-When troubleshooting origin rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+When troubleshooting origin rules, use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to determine if a rule is triggering for a specific URL.
 
 Was this helpful?
 

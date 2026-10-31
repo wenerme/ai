@@ -8,6 +8,8 @@ Run a grader.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
 
   The grader used for the fine-tuning job.
@@ -803,6 +805,8 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
 Validate a grader.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
 

@@ -33,5 +33,5 @@ You can see compute usage:
 
 To view GitLab-hosted runner compute usage for all namespaces across your entire GitLab instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Usage quotas**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .

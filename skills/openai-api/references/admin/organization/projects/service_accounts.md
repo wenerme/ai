@@ -14,6 +14,8 @@ Creates a new service account in the project. By default, this also returns an u
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The name of the service account being created.
@@ -430,6 +432,8 @@ Updates a service account in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: optional string`
 
   The updated service account name.
@@ -640,6 +644,8 @@ Creates an API key for a service account in the project.
   The ID of the service account.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `expires_in_seconds: optional integer or null`
 

@@ -242,6 +242,8 @@ Create a ChatKit session.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `user: string`
 
   A free-form string that identifies your end user; ensures this Session can access other objects that have the same `user` scope.

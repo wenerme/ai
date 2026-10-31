@@ -886,8 +886,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       - `"create_subagent_call"`
 
-        The current public item type.
-
   - `AgentSendSubagentInputCallItem object { id, content, recipient_agent_id, 4 more }`
 
     A request to send input to another agent.
@@ -940,8 +938,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       - `"send_subagent_input_call"`
 
-        The current public item type.
-
   - `AgentResumeSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
 
     A request to resume a subagent.
@@ -979,8 +975,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
       The item type. Always `resume_subagent_call`.
 
       - `"resume_subagent_call"`
-
-        The current public item type.
 
   - `AgentWaitForSubagentsCallItem object { id, recipient_agent_ids, sender_agent_id, 3 more }`
 
@@ -1020,8 +1014,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       - `"wait_for_subagents_call"`
 
-        The current public item type.
-
   - `AgentInterruptSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
 
     A request to interrupt a subagent's current turn. The subagent remains available.
@@ -1060,8 +1052,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
 
       - `"interrupt_subagent_call"`
 
-        The current public item type.
-
   - `AgentCloseSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
 
     A request to close a subagent.
@@ -1099,8 +1089,6 @@ Lists items belonging to one root-agent turn, including its interactions with su
       The item type. Always `close_subagent_call`.
 
       - `"close_subagent_call"`
-
-        The current public item type.
 
 - `first_id: string or null`
 

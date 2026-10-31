@@ -30,7 +30,7 @@ xAI's next-generation video generation model. Generates, edits, and extends vide
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video) |
 | Zero data retention | Yes |
-| Pricing | <ul><li>Default (per second)$0.08</li><li>@480p (per second)$0.08</li><li>@720p (per second)$0.14</li></ul> |
+| Pricing | <ul><li>@480p (per second)$0.08</li><li>@720p (per second)$0.14</li><li>Default (per second)$0.08</li><li>@1080p (per second)$0.25</li></ul> |
 
 ## Usage
 
@@ -94,7 +94,7 @@ aspect\_ratio
 
 resolution
 
-`string`enum: 480p, 720p
+`string`enum: 480p, 720p, 1080p
 
 size
 

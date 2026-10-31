@@ -12,6 +12,8 @@ Modifies a vector store.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_after: optional object { anchor, days }  or null`
 
   The expiration policy for a vector store.

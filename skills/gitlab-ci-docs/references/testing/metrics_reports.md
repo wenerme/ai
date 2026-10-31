@@ -24,9 +24,9 @@ For a merge request, GitLab compares the metrics from the source branch to the v
 [baseline pipeline](_index.md#baseline-pipeline-selection) on the target branch.
 The merge request widget displays the metrics in this order:
 
+- Metrics added by the merge request.
+- Metrics removed by the merge request.
 - Existing metrics with changed values.
-- Metrics added by the merge request (marked with a **New** badge).
-- Metrics removed by the merge request (marked with a **Removed** badge).
 - Existing metrics with unchanged values.
 
 If the baseline pipeline has no metrics report artifacts, all metrics from the source branch
@@ -78,7 +78,7 @@ When working with metrics reports, you might encounter the following issues.
 
 ### Metrics reports did not change
 
-You might see **Metrics report scanning detected no new changes** when viewing metrics reports in merge requests.
+You might see  when viewing metrics reports in merge requests.
 
 This issue occurs when your GitLab subscription doesn't include metrics reports,
 which require the Premium or Ultimate tier. In that case, GitLab ignores the metrics,

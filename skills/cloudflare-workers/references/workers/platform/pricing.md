@@ -174,8 +174,11 @@ Workers KV is included in both the Free and Paid [Workers plans](https://develop
 | Keys deleted | 1,000 / day | 1 million/month, + $5.00/million |
 | List requests | 1,000 / day | 1 million/month, + $5.00/million |
 | Stored data | 1 GB | 1 GB, + $0.50/ GB-month |
+| Namespaces | 1,000 | Unlimited, with a default limit of 1,000. First 1,000 included + $0.10 per additional namespace per month. |
 
-<sup>1</sup> The Workers Free plan includes limited Workers KV usage. All limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error.
+Refer to [KV limits](https://developers.cloudflare.com/kv/platform/limits/#workers-kv) for namespace creation limits and limit increases.
+
+<sup>1</sup> The Workers Free plan includes limited Workers KV usage. Daily usage limits reset daily at 00:00 UTC. If you exceed any one of these limits, further operations of that type will fail with an error.
 
 Note
 
@@ -218,7 +221,7 @@ To learn more about Hyperdrive, refer to the [Hyperdrive documentation](https://
 
 ## Queues
 
-Cloudflare Queues charges for the total number of operations against each of your queues during a given month.
+Cloudflare Queues charges for operations and for queues above the included amount on the Workers Paid plan.
 
 - An operation is counted for each 64 KB of data that is written, read, or deleted.
 - Messages larger than 64 KB are charged as if they were multiple messages: for example, a 65 KB message and a 127 KB message would both incur two operation charges when written, read, or deleted.
@@ -229,9 +232,12 @@ Cloudflare Queues charges for the total number of operations against each of you
 |  | Workers Free | Workers Paid |
 | --- | --- | --- |
 | Standard operations | 10,000 operations/day included | 1,000,000 operations/month included + $0.40/million operations |
+| Queues per account | 10,000 | Unlimited, with a default limit of 10,000. First 10,000 included + $0.10 per additional queue per month. |
 | Message retention | 24 hours (non-configurable) | 4 days default, configurable up to 14 days |
 
-In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly bill:
+Refer to [Queues limits](https://developers.cloudflare.com/queues/platform/limits/) for queue creation limits and how to request a limit increase.
+
+In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly operations charges, excluding charges for additional queues:
 
 ```txt
 ((Number of Messages * 3) - 1,000,000) / 1,000,000  * $0.40
@@ -271,6 +277,11 @@ D1 is available on both the Workers Free and Workers Paid plans.
 | Rows read | 5 million / day | First 25 billion / month included + $0.001 / million rows |
 | Rows written | 100,000 / day | First 50 million / month included + $1.00 / million rows |
 | Storage (per GB stored) | 5 GB (total) | First 5 GB included + $0.75 / GB-mo |
+| Databases | 10 | First 100,000 included + $0.10 per additional database per month. |
+
+You pay $0.10 per month for each D1 database above the included amount, even when it is empty or receives no traffic. Usage and storage are billed separately.
+
+Refer to [D1 limits](https://developers.cloudflare.com/d1/platform/limits/) for database creation and storage limits.
 
 Track your D1 usage
 
@@ -285,7 +296,7 @@ To accurately track your usage, use the [meta object](https://developers.cloudfl
 5. Defining [indexes](https://developers.cloudflare.com/d1/best-practices/use-indexes/) on your table(s) reduces the number of rows read by a query when filtering on that indexed field. For example, if the `users` table has an index on a timestamp column `created_at`, the query `SELECT * FROM users WHERE created_at > ?1` would only need to read a subset of the table.
 6. Indexes will add an additional written row when writes include the indexed column, as there are two rows written: one to the table itself, and one to the index. The performance benefit of an index and reduction in rows read will, in nearly all cases, offset this additional write.
 7. Storage is based on gigabytes stored per month, and is based on the sum of all databases in your account. Tables and indexes both count towards storage consumed.
-8. Free limits reset daily at 00:00 UTC. Monthly included limits reset based on your monthly subscription renewal date, which is determined by the day you first subscribed.
+8. Free daily usage limits reset at 00:00 UTC. Monthly included usage resets based on your monthly subscription renewal date, which is determined by the day you first subscribed.
 9. There are no data transfer (egress) or throughput (bandwidth) charges for data accessed from D1.
 10. [Read replication](https://developers.cloudflare.com/d1/best-practices/read-replication/) does not charge extra for read replicas. You incur the same usage billing based on `rows_read` and `rows_written` by your queries.
 
@@ -426,6 +437,7 @@ Vectorize is currently only available on the Workers paid plan.
 | --- | --- | --- |
 | **Total queried vector dimensions** | 30 million queried vector dimensions / month | First 50 million queried vector dimensions / month included + $0.01 per million |
 | **Total stored vector dimensions** | 5 million stored vector dimensions | First 10 million stored vector dimensions + $0.05 per 100 million |
+| Indexes | 100 | Unlimited, with a default limit of 50,000. First 50,000 included + $0.10 per additional index per month. |
 
 ### Calculating vector dimensions
 

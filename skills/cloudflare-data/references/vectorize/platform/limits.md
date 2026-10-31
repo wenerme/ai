@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/vectorize/platform/limits/og.png?v=e242
 
 # Limits
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limits apply to accounts, indexes, and vectors:
 
@@ -22,7 +22,7 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 | Feature | Current Limit |
 | --- | --- |
-| Indexes per account | 50,000 (Workers Paid) / 100 (Free) |
+| Indexes per account | Workers Paid: Unlimited, with a default limit of 50,000. Each index above 50,000 costs [$0.10 per month](https://developers.cloudflare.com/vectorize/platform/pricing/#billing-metrics). Free: 100. |
 | Maximum dimensions per vector | 1536 dimensions, 32 bits precision |
 | Precision per vector dimension | 32 bits (float32) |
 | Maximum vector ID length | 64 bytes |
@@ -71,5 +71,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/limits/#page","headline":"Limits","description":"Account, index, and vector limits for Vectorize on Free and Paid plans.","url":"https://developers.cloudflare.com/vectorize/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/vectorize/platform/limits/og.png?v=e2428b5f4ca09b3a","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/limits/#page","headline":"Limits","description":"Account, index, and vector limits for Vectorize on Free and Paid plans.","url":"https://developers.cloudflare.com/vectorize/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/vectorize/platform/limits/og.png?v=e2428b5f4ca09b3a","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

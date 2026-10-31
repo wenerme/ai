@@ -12,6 +12,8 @@ Modify a certificate. Note that only the name can be modified.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: optional string`
 
   The updated name for the certificate

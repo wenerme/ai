@@ -14,6 +14,8 @@ Create a new immutable skill version.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `files: array of string or string`
 
   Skill files to upload (directory upload) or a single zip file.

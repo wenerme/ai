@@ -12,6 +12,8 @@ Rotates the signing secret for a webhook endpoint in the authenticated project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `keep_old_secret_active_for_24_hours: optional boolean`
 
   Whether to keep the previous signing secret valid for 24 hours after rotation. Defaults to false, which invalidates the previous secret immediately.

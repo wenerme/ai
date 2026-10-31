@@ -8,6 +8,8 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `email: string`
 
   Send an email to this address

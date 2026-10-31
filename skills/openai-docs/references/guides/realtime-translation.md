@@ -157,6 +157,25 @@ ws.connect(
 )
 ```
 
+```go
+ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+defer cancel()
+client := openai.NewClient()
+session, err := client.Realtime.ConnectTranslation(ctx, "gpt-realtime-translate", realtime.TranslationConnectionOptions{}, option.WithHeader("OpenAI-Safety-Identifier", "hashed-user-id"))
+if err != nil {
+	return err
+}
+defer session.Abort()
+created, err := session.Recv(ctx)
+if err != nil {
+	return err
+}
+fmt.Println(created.Type)
+if created.Type != "session.created" {
+	return fmt.Errorf("expected session.created, got %s", created.Type)
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -261,6 +280,18 @@ ws.send(
 )
 ```
 
+```go
+if err := session.Send(ctx, realtime.RealtimeTranslationClientEventParamOfSessionUpdate(realtime.RealtimeTranslationSessionUpdateRequestParam{
+	Audio: realtime.RealtimeTranslationSessionUpdateRequestAudioParam{
+		Output: realtime.RealtimeTranslationSessionUpdateRequestAudioOutputParam{
+			Language: openai.String("es"),
+		},
+	},
+})); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -312,6 +343,16 @@ ws.send(
         }
     )
 )
+```
+
+```go
+// audio contains mono PCM16 samples at 24 kHz.
+for start := 0; start < len(audio); start += 4800 {
+	end := min(start+4800, len(audio))
+	if err := session.Send(ctx, realtime.RealtimeTranslationClientEventParamOfSessionInputAudioBufferAppend(base64.StdEncoding.EncodeToString(audio[start:end]))); err != nil {
+		return err
+	}
+}
 ```
 
 ```java
@@ -418,6 +459,35 @@ with ThreadPoolExecutor(max_workers=1) as executor:
         playback.result()
 ```
 
+```go
+// Run this listener while another goroutine sends audio into the session.
+func listen(ctx context.Context, session *realtime.TranslationSession) error {
+	for {
+		event, err := session.Recv(ctx)
+		if err != nil {
+			return err
+		}
+		switch event.Type {
+		case "error":
+			return fmt.Errorf("translation error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		case "session.output_transcript.delta":
+			fmt.Print(event.OfRealtimeTranslationOutputTranscriptDeltaEvent.Delta)
+		case "session.output_audio.delta":
+			pcm, err := base64.StdEncoding.DecodeString(event.OfRealtimeTranslationOutputAudioDeltaEvent.Delta)
+			if err != nil {
+				return err
+			}
+			// Feed pcm into your application's 24 kHz audio player.
+			fmt.Fprintln(log.Writer(), "Received audio bytes:", len(pcm))
+		case "session.closed":
+			return session.Close()
+		}
+	}
+}
+```
+
+
+In Go, run `listen` concurrently while sending audio. It closes the transport after receiving `session.closed`.
 
 ## Close a WebSocket session
 
@@ -566,6 +636,15 @@ with ThreadPoolExecutor(max_workers=1) as executor:
         ws.close()
         audio_queue.put(None)
         playback.result()
+```
+
+```go
+// Stop sending audio first. The listener closes the transport after session.closed.
+if err := session.Send(ctx, realtime.RealtimeTranslationClientEventUnionParam{
+	OfSessionClose: &realtime.RealtimeTranslationSessionCloseEventParam{},
+}); err != nil {
+	return err
+}
 ```
 
 

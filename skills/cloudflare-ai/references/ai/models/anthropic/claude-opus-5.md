@@ -30,7 +30,7 @@ Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise wor
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://www.anthropic.com/claude/opus) |
 | Request formats | Anthropic Messages |
-| Pricing | <ul><li>Input (per 1M tokens)$5.00</li><li>Output (per 1M tokens)$25.00</li><li>Cached input (per 1M tokens)$0.50</li><li>Cache creation (per 1M tokens)$6.25</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$5.00</li><li>Cached input (per 1M tokens)$0.50</li><li>Cache creation (per 1M tokens)$6.25</li><li>Output (per 1M tokens)$25.00</li></ul> |
 
 ## Usage
 
@@ -334,9 +334,9 @@ max\_tokens
 
 `number`requiredexclusiveMinimum: 0
 
-system
+▶system
 
-`string`
+`one of`
 
 stream
 

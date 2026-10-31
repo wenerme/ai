@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/configuration/og.png?v=75
 
 # Configuration
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
 
@@ -38,7 +38,7 @@ Add a `cache` block to your Wrangler configuration:
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-31",
 	"cache": {
 		"enabled": true,
 	},
@@ -50,7 +50,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-31"
 
 [cache]
 enabled = true
@@ -70,7 +70,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-31",
 	"cache": {
 		"enabled": false,
 	},
@@ -82,7 +82,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-31"
 
 [cache]
 enabled = false
@@ -104,7 +104,7 @@ Requires Wrangler 4.107.0 or above.
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-31",
 	"cache": {
 		"enabled": true,
 	},
@@ -122,7 +122,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-31"
 
 [cache]
 enabled = true
@@ -151,6 +151,26 @@ For lowest latency, disable cache for an entrypoint instead of returning \`Cache
 
 Do not enable caching on a gateway entrypoint and then return `Cache-Control: no-store` on every response to keep it running. With caching enabled, each request to that entrypoint still consults the lower and upper cache tiers first — incurring the [tiered-cache](https://developers.cloudflare.com/workers/cache/#tiered-cache) round trip — only to run the Worker and discard an uncacheable response. That adds latency for no benefit. Disable caching on the entrypoint in the `exports` map instead, so requests skip the cache lookup and go straight to your gateway logic.
 
+## Bypass cache for a request
+
+For calls between Workers in the same account, set [`cache: "no-store"`](https://developers.cloudflare.com/workers/runtime-apis/fetch/#parameters) in the calling Worker's `fetch()` options. This skips the cache lookup and invokes the callee directly, without storing its response.
+
+For example, with a [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/http/) named `OTHER_WORKER`:
+
+```js
+const response = await env.OTHER_WORKER.fetch(request, {
+	cache: "no-store",
+});
+```
+
+```ts
+const response = await env.OTHER_WORKER.fetch(request, {
+	cache: "no-store",
+});
+```
+
+The same option applies to loopback calls through [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/), such as `ctx.exports.Backend.fetch(request, { cache: "no-store" })`.
+
 ## Versioned deployments
 
 The `cache` configuration is part of your Worker version:
@@ -177,7 +197,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-31",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -190,7 +210,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-31"
 
 [cache]
 enabled = true
@@ -211,7 +231,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-13",
+	"compatibility_date": "2026-10-31",
 	"cache": {
 		"enabled": false,
 	},
@@ -230,7 +250,7 @@ name = "my-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-13"
+compatibility_date = "2026-10-31"
 
 [cache]
 enabled = false
@@ -593,5 +613,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/configuration/#page","headline":"Configuration","description":"Enable and configure Workers Caching.","url":"https://developers.cloudflare.com/workers/cache/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

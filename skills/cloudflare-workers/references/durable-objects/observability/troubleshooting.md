@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/observability/troublesh
 
 # Troubleshooting
 
-Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Debugging
 
@@ -49,9 +49,11 @@ There is a limit on how quickly you can create new [stubs](https://developers.cl
 
 ### Durable Object reset because its code was updated.
 
-Reset in error messages refers to in-memory state. Any durable state that has already been successfully persisted via `state.storage` is not affected.
+This error occurs when a code update is applied before a Durable Object reaches hibernation. This includes an `immediate` code update strategy and `deferred` deployments whose `max_delay` is reached before the object hibernates.
 
-Refer to [Global Uniqueness](https://developers.cloudflare.com/durable-objects/platform/known-issues/#global-uniqueness).
+Reset in error messages refers to in-memory state. Any durable state already persisted with `ctx.storage` is not affected. Make operations retryable and persist important state so a forced update can safely restart the object.
+
+Refer to [Durable Objects code updates](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/) and [Global uniqueness](https://developers.cloudflare.com/durable-objects/platform/known-issues/#global-uniqueness).
 
 ### Durable Object storage operation exceeded timeout which caused object to be reset.
 
@@ -70,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/#page","headline":"Troubleshooting","description":"Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.","url":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/og.png?v=14aee494feb17c92","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/#page","headline":"Troubleshooting","description":"Debug Durable Objects with wrangler dev and wrangler tail, and resolve common errors like overload and storage issues.","url":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/observability/troubleshooting/og.png?v=14aee494feb17c92","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

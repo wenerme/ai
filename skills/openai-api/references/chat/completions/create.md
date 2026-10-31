@@ -23,6 +23,8 @@ chunk objects if the request is streamed.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `messages: array of ChatCompletionMessageParam`
 
   A list of messages comprising the conversation so far. Depending on the

@@ -8,6 +8,8 @@ Use this endpoint to quickly answer classification or scoring questions about so
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `input: string or array of DecisionInputMessage or object { content, role, type }  or object { content, role, type }  or 2 more`
 
   The input to evaluate for every question. Provide a text string or an ordered array of messages, function calls and outputs, or custom tool calls and outputs. Each tool output must identify a matching call by call ID.

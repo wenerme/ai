@@ -12,6 +12,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `transport: object { sdp, type }`
 
   WebRTC transport with an SDP offer for the new connection to the forked session.

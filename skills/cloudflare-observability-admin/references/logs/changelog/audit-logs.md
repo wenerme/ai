@@ -16,6 +16,21 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
+## 2026-10-30
+
+
+**Audit Logs v2: Account analytics**
+
+Audit Logs v2 now includes analytics for account-level audit logs in the Cloudflare dashboard. The **Actions over time** chart separates successful and failed actions for the selected time range.
+
+Summary cards show **Total actions**, **Unique actors**, **Products impacted**, and **Failure rate**. Select a card to investigate action types, authentication methods, top actors, top products, or failed actions. You can apply or exclude values as filters to update both the analytics and audit log table.
+
+![Account analytics in Audit Logs v2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=426,format=webp/_astro/audit-logs-v2-account-analytics.2WZv2Lwb.png)
+
+Account analytics are not available for organization-level audit logs.
+
+For more information, refer to the [account analytics documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#account-analytics).
+
 ## 2026-10-13
 
 

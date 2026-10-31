@@ -6,6 +6,8 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: optional map[string] or null`
 
   Key-value pairs to associate with the vault, such as an application or team identifier.

@@ -16,6 +16,14 @@ It is possible to add multiple Parts in parallel. You can decide the intended or
 
   The ID of the Upload.
 
+### Body Parameters
+
+Content type: `multipart/form-data`
+
+- `data: string`
+
+  The chunk of bytes for this Part.
+
 ### Returns
 
 - `UploadPart object { id, created_at, object, upload_id }`

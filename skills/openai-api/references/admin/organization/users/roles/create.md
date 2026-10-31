@@ -12,6 +12,8 @@ Assigns an organization role to a user within the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `role_id: string`
 
   Identifier of the role to assign.

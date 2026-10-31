@@ -286,6 +286,7 @@ To change this limit on your GitLab Self-Managed instance:
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196545) in 18.3.
 - CI Lint rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/599486) in GitLab 19.2 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_ci_lint_rate_limit`. Disabled by default.
 - `ci_lint_limit_per_user` [reset to `0`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256176) on all instances in GitLab 19.5.
+- CI Lint rate limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264018) in GitLab 19.6. Feature flag `ci_enforce_ci_lint_rate_limit` removed.
 
 You can set limits so that users and processes can't request more than a certain number of pipelines each minute.
 These limits can help save resources and improve stability.
@@ -297,7 +298,8 @@ GitLab enforces the following rate limits in this section:
   commit SHA, and user. Set to `0` (no limit) by default.
 - **Per user**: Limits total pipelines created by a user across all projects. Set to `0` (no limit) by default.
 - **Per user for CI lint requests**: Limits [CI lint](../../ci/yaml/lint.md) requests made by a user across all
-  projects. CI lint requests are similar to pipeline creation requests.
+  projects. CI lint requests do not count toward the pipeline creation limits, except requests that
+  [simulate a pipeline](../../ci/yaml/lint.md#simulate-a-pipeline), which count toward both.
 
 By default, `ci_lint_limit_per_user` is set to `0` (no limit).
 Upgrading to GitLab 19.5 resets this value to `0` on every instance, even where an administrator
@@ -310,10 +312,6 @@ the 101st request is blocked. Access to the endpoint is allowed again after one 
 These limits are not applied per IP address.
 
 Requests that exceed the limits are logged in the `application_json.log` file.
-
-> [!flag]
-> The `ci_lint_limit_per_user` limit is enforced only when the `ci_enforce_ci_lint_rate_limit` feature flag is enabled.
-> Until the flag is enabled, requests that exceed the limit are logged but not blocked.
 
 ### Set pipeline request limits
 

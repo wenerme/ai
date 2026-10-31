@@ -22,7 +22,7 @@ Status: Beta
 The following metrics are available in the runner fleet dashboard:
 
 > [!note]
-> To view **Runner usage** and **Wait time to pick a job** metrics, you must configure the [ClickHouse integration](../../integration/clickhouse.md).
+> To view  and  metrics, you must configure the [ClickHouse integration](../../integration/clickhouse.md).
 >
 > <i class="fa-youtube-play" aria-hidden="true"></i>
 > For an overview, see [setting up runner fleet dashboard with ClickHouse](https://www.youtube.com/watch?v=YpGV95Ctbpk).
@@ -41,13 +41,13 @@ The following metrics are available in the runner fleet dashboard:
 Prerequisites:
 
 - You must be an administrator.
-- To view metrics for **Runner usage** and **Wait time to pick a job**, you must configure the [ClickHouse integration](../../integration/clickhouse.md).
+- To view metrics for  and , you must configure the [ClickHouse integration](../../integration/clickhouse.md).
 
 To view the runner fleet dashboard:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. Select **Fleet dashboard**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Select .
 
 ## Export compute minutes used by instance runners
 
@@ -61,7 +61,7 @@ CSV file shows the runner type and job status for each project. The CSV is sent 
 
 To export compute minutes used by instance runners:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. Select **Fleet dashboard**.
-1. Select **Export CSV**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Select .
+1. Select .

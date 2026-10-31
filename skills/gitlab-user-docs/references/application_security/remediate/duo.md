@@ -112,7 +112,7 @@ Vulnerability Resolution is available in the following workflows:
 
 Prerequisites:
 
-- The Maintainer or Owner role for the project.
+- The Developer, Security Manager, Maintainer, or Owner role for the project.
 - The vulnerability must be a SAST finding from a supported analyzer:
   - Any [GitLab-supported analyzer](../sast/analyzers.md).
   - A properly integrated third-party SAST scanner that reports the vulnerability location and a CWE Identifier for each vulnerability.
@@ -120,11 +120,11 @@ Prerequisites:
 
 To resolve a vulnerability from the vulnerability report:
 
-1. In the left sidebar, select **Search or go to** and find your project.
+1. In the top bar, select **Search or go to** and find your project.
 1. Select **Secure** > **Vulnerability report**.
 1. Optional. To remove the default filters, select **Clear** ().
 1. Above the list of vulnerabilities, select the filter bar.
-1. In the dropdown list that appears, select **Activity**, then select **Vulnerability Resolution available** in the **GitLab Duo (AI)** category.
+1. In the dropdown list that appears, select **Activity**, then select **Vulnerability Resolution available** in the **GitLab Duo resolution** category.
 1. Select outside the filter field. The vulnerability severity totals and list of matching vulnerabilities are updated.
 1. Select the SAST vulnerability you want resolved.
    - A blue icon is shown next to vulnerabilities that support Vulnerability Resolution.
@@ -156,7 +156,7 @@ Vulnerability Resolution automatically creates a merge request suggestion commen
 
 Prerequisites:
 
-- The Maintainer or Owner role for the project.
+- The Developer, Security Manager, Maintainer, or Owner role for the project.
 - The vulnerability must be a SAST finding from a supported analyzer:
   - Any [GitLab-supported analyzer](../sast/analyzers.md).
   - A properly integrated third-party SAST scanner that reports the vulnerability location and a CWE Identifier for each vulnerability.
@@ -164,7 +164,7 @@ Prerequisites:
 
 To resolve a vulnerability finding:
 
-1. In the left sidebar, select **Search or go to** and find your project.
+1. In the top bar, select **Search or go to** and find your project.
 1. Select **Merge requests**.
 1. Select a merge request.
    - Vulnerability findings supported by Vulnerability Resolution are indicated by the tanuki AI icon ().

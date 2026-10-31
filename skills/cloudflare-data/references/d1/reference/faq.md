@@ -65,11 +65,17 @@ Yes, you can use an index to reduce the number of rows read by a query. [Creatin
 
 Yes, although minimal. An empty table consumes at least a few kilobytes, based on the number of columns (table width) in the table. An empty database consumes approximately 12 KB of storage.
 
+### How much do additional databases cost?
+
+The Workers Paid plan includes 100,000 databases per account. Each additional database costs $0.10 per month. Query and storage charges apply separately.
+
+For example, 100,020 databases existing for a full billing month cost `(100,020 - 100,000) × $0.10 = $2.00` for the 20 additional databases.
+
 ## Limits
 
 ### How much work can a D1 database do?
 
-D1 is designed for horizontal scale out across multiple, smaller (10 GB) databases, such as per-user, per-tenant or per-entity databases. D1 allows you to build applications with thousands of databases at no extra cost, as the pricing is based only on query and storage costs.
+D1 is designed for horizontal scale out across multiple, smaller (10 GB) databases, such as per-user, per-tenant or per-entity databases. The Workers Paid plan includes 100,000 databases per account. You pay [$0.10 per D1 database per month](https://developers.cloudflare.com/d1/platform/pricing/#billing-metrics) above the included amount. Query and storage charges apply separately.
 
 #### Storage
 

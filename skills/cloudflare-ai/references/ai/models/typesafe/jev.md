@@ -1,5 +1,5 @@
 ---
-description: Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.
+description: Jev 1.13 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. Image inputs are beta and dreamer-ready, not recommended for production.
 title: Jev
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -23,7 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Third-party
 - Zero data retention
 
-Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.
+Jev 1.13 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. Image inputs are beta and dreamer-ready, not recommended for production.
 
 | Model Info | |
 | --- | --- |
@@ -31,7 +31,7 @@ Jev is TypeSafe's structured evaluation model. It evaluates one state against ty
 | Terms and License | [link ↗](https://docs.typesafe.ai/legal.md) |
 | More information | [link ↗](https://docs.typesafe.ai/models.md) |
 | Zero data retention | Yes |
-| Pricing | <ul><li>Input (per 1M tokens)$0.042</li><li>Output (per 1M tokens)$0.00</li><li>Cached input (per 1M tokens)$0.00</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$0.042</li><li>Cached input (per 1M tokens)$0.00</li><li>Output (per 1M tokens)$0.00</li></ul> |
 
 ## Usage
 
@@ -120,14 +120,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       "confidence": 0.8,
       "probabilities": {
         "billing": 0.87,
-        "sales": 0,
-        "technical": 0.13
+        "technical": 0.13,
+        "sales": 0
       }
     },
     "frustration": {
       "type": "score",
-      "score": 1.04,
-      "confidence": 0.94,
+      "score": 1.05,
+      "confidence": 0.93,
       "legend": {
         "0": "Calm",
         "1": "Frustrated",
@@ -135,8 +135,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       },
       "probabilities": {
         "0": 0,
-        "1": 0.96,
-        "2": 0.04
+        "1": 0.95,
+        "2": 0.05
       }
     }
   },
@@ -310,9 +310,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       "choice": "account",
       "confidence": 1,
       "probabilities": {
-        "technical": 0,
-        "billing": 0,
         "account": 1,
+        "billing": 0,
+        "technical": 0,
         "other": 0
       }
     }
@@ -414,8 +414,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
   "answers": {
     "risk_level": {
       "type": "score",
-      "score": 1.84,
-      "confidence": 0.77,
+      "score": 1.86,
+      "confidence": 0.79,
       "legend": {
         "0": "Low risk: activity is consistent with the account history",
         "1": "Moderate risk: some unusual activity needs monitoring",
@@ -423,13 +423,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
       },
       "probabilities": {
         "0": 0,
-        "1": 0.16,
-        "2": 0.84
+        "1": 0.14,
+        "2": 0.86
       }
     },
     "escalate": {
       "type": "noul",
-      "noul": 0.81
+      "noul": 0.8
     }
   },
   "usage": {
@@ -441,11 +441,171 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 </details>
 
+<details>
+
+<summary>**Beta image classification** — Beta image input: identify whether a photo contains a blue object</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'typesafe/jev',
+  {
+    state: { photo: 'solid-blue-photo' },
+    assets: {
+      'solid-blue-photo': {
+        type: 'image',
+        format: 'jpg',
+        data_base64:
+          '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAUG/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoA0SMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k=',
+      },
+    },
+    questions: { is_blue: { type: 'noul', instructions: 'Is the object in `photo` blue?' } },
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "typesafe/jev",
+  "input": {
+    "state": {
+      "photo": "solid-blue-photo"
+    },
+    "assets": {
+      "solid-blue-photo": {
+        "type": "image",
+        "format": "jpg",
+        "data_base64": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAUG/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoA0SMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k="
+      }
+    },
+    "questions": {
+      "is_blue": {
+        "type": "noul",
+        "instructions": "Is the object in `photo` blue?"
+      }
+    }
+  }
+}'
+```
+
+```json
+{
+  "model": "jev-1.13.0",
+  "answers": {
+    "is_blue": {
+      "type": "noul",
+      "noul": 0
+    }
+  },
+  "usage": {
+    "input_tokens": 486,
+    "output_tokens": 21
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>**Beta image criteria** — Beta image input: classify a referenced image in question criteria</summary>
+
+
+
+```ts
+const response = await env.AI.run(
+  'typesafe/jev',
+  {
+    state: 'solid-blue-photo',
+    assets: {
+      'solid-blue-photo': {
+        type: 'image',
+        format: 'jpg',
+        data_base64:
+          '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAUG/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoA0SMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k=',
+      },
+    },
+    questions: {
+      color: {
+        type: 'choice',
+        instructions: 'Which color best describes the image?',
+        criteria: {
+          blue: 'A blue image such as solid-blue-photo',
+          other: 'Any image that is not blue',
+        },
+      },
+    },
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "typesafe/jev",
+  "input": {
+    "state": "solid-blue-photo",
+    "assets": {
+      "solid-blue-photo": {
+        "type": "image",
+        "format": "jpg",
+        "data_base64": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAEAAQADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAUG/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AoA0SMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//9k="
+      }
+    },
+    "questions": {
+      "color": {
+        "type": "choice",
+        "instructions": "Which color best describes the image?",
+        "criteria": {
+          "blue": "A blue image such as solid-blue-photo",
+          "other": "Any image that is not blue"
+        }
+      }
+    }
+  }
+}'
+```
+
+```json
+{
+  "model": "jev-1.13.0",
+  "answers": {
+    "color": {
+      "type": "choice",
+      "choice": "other",
+      "confidence": 0.84,
+      "probabilities": {
+        "blue": 0.08,
+        "other": 0.92
+      }
+    }
+  },
+  "usage": {
+    "input_tokens": 726,
+    "output_tokens": 31
+  }
+}
+```
+
+</details>
+
 ## Parameters
 
 ▶state
 
 `one of`required
+
+▶assets{}
+
+`object`
 
 ▶questions{}
 
@@ -478,5 +638,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/typesafe/jev/#page","headline":"Jev","description":"Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.","url":"https://developers.cloudflare.com/ai/models/typesafe/jev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/typesafe/jev/#page","headline":"Jev","description":"Jev 1.13 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. Image inputs are beta and dreamer-ready, not recommended for production.","url":"https://developers.cloudflare.com/ai/models/typesafe/jev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

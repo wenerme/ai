@@ -71,6 +71,8 @@ Updates organization data retention controls.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `retention_type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
 
   The desired organization data retention type.

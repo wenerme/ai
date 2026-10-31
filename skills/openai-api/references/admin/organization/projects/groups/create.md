@@ -12,6 +12,8 @@ Grants a group access to a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `group_id: string`
 
   Identifier of the group to add to the project.

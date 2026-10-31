@@ -18,6 +18,8 @@ This enables organization owners to share fine-tuned models with other projects 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `project_ids: array of string`
 
   The project identifiers to grant access to.

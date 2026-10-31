@@ -106,7 +106,7 @@ To view measurement results:
 
 1. Go to your pipeline.
 1. Select the job that includes Eco CI measurements.
-1. In the job details, under **Job artifacts**, select **Browse**.
+1. In the job details, under , select .
 1. Open the `eco-ci-output.txt` file.
 
 Example output:

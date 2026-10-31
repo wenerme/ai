@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/platform/known-issues/o
 
 # Known issues
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects is generally available. However, there are some known issues.
 
@@ -28,9 +28,11 @@ A Durable Object may be replaced in the event of a network partition or a softwa
 
 ## Code updates
 
-Code changes for Workers and Durable Objects are released globally in an eventually consistent manner. Because each Durable Object is globally unique, the situation can arise that a request arrives to the latest version of your Worker (running in one part of the world), which then calls to a unique Durable Object running the previous version of your code for a short period of time (typically seconds to minutes). If you create a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), this period of time is determined by how long your live deployment is configured to use more than one version.
+Code changes for Workers and Durable Objects are released globally in an eventually consistent manner. A request can reach the latest version of your Worker, which then calls a unique Durable Object running a previous version of your code.
 
-For this reason, it is best practice to ensure that API changes between your Workers and Durable Objects are forward and backward compatible across code updates.
+With a `deferred` [code update strategy](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/), an active Durable Object can continue running a previous version until it hibernates or its `max_delay` is reached. Gradual deployments can extend this window while your deployment uses more than one version. If you deploy multiple versions before an object hibernates, it might skip intermediate versions and use the latest version when it wakes.
+
+Ensure that API changes between your Workers and Durable Objects are forward and backward compatible across code updates.
 
 ## Development tools
 
@@ -55,5 +57,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/known-issues/#page","headline":"Known issues","description":"Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.","url":"https://developers.cloudflare.com/durable-objects/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/known-issues/og.png?v=5abb79ff5e2d562c","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/known-issues/#page","headline":"Known issues","description":"Known issues with Durable Objects, including global uniqueness guarantees, code updates, and development tool limitations.","url":"https://developers.cloudflare.com/durable-objects/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/known-issues/og.png?v=5abb79ff5e2d562c","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

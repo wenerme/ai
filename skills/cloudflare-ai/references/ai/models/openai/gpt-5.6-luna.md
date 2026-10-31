@@ -30,7 +30,7 @@ GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, 
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Request formats | Responses |
-| Pricing | <ul><li>Input (per 1M tokens)$0.20</li><li>Output (per 1M tokens)$1.20</li><li>Cached input (per 1M tokens)$0.02</li><li>Cache creation (per 1M tokens)$0.25</li></ul> |
+| Pricing | <ul><li>Short-context input (per 1M)$0.20</li><li>Short-context cached input (per 1M)$0.02</li><li>Short-context cache write (per 1M)$0.25</li><li>Short-context output (per 1M)$1.20</li><li>Long-context input (per 1M)$0.40</li><li>Long-context cached input (per 1M)$0.04</li><li>Long-context cache write (per 1M)$0.50</li><li>Long-context output (per 1M)$1.80</li></ul> |
 
 ## Usage
 

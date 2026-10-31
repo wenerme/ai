@@ -16,7 +16,7 @@ You can deploy an application to Heroku by using GitLab CI/CD.
 
 1. In Heroku:
    1. Create an application and copy the application name.
-   1. Browse to **Account Settings** and copy the API key.
+   1. Browse to  and copy the API key.
 1. In your GitLab project, create two [variables](../variables/_index.md):
    - `HEROKU_APP_NAME` for the application name.
    - `HEROKU_PRODUCTION_KEY` for the API key

@@ -17,6 +17,8 @@ integrations, migrate to `gpt-realtime-2.1-mini` through the
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `input: string`
 
   The text to generate audio for. The maximum length is 4096 characters.

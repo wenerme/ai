@@ -103,6 +103,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `file_id: string`
 
   A [File](/api/reference/resources/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/api/reference/resources/vector_stores/subresources/file_batches/methods/create) to minimize per-vector-store write requests.
@@ -855,6 +857,8 @@ Update attributes on a vector store file.
   The ID of the file to update attributes.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `attributes: map[string or number or boolean] or null`
 

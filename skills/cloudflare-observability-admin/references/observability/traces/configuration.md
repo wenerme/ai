@@ -12,11 +12,20 @@ image: https://developers.cloudflare.com/observability/traces/configuration/og.p
 
 # Configuration
 
-Last updated Oct 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/traces/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/traces/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure [Cloudflare Traces](https://developers.cloudflare.com/observability/traces/) separately for each domain. Choose how many requests to trace, where to save or send traces, and whether to connect them to traces from other systems.
 
 ![Trace settings for sampling, persistence, export destinations, trace rules, and trace context propagation.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=892,format=webp/_astro/trace-configuration.K-zGxXIJ.png)
+
+## API access
+
+To manage trace rules and settings via the API, create an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone Observability** permission scoped to the relevant zone:
+
+- **Zone Observability Read** — read trace rules and settings
+- **Zone Observability Edit** — update or delete trace rules and settings
+
+Refer to the [API reference](https://developers.cloudflare.com/api/resources/zones/subresources/observability/subresources/tracing/subresources/rules/) for full endpoint documentation.
 
 ## Head sampling
 
@@ -79,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/traces/configuration/#page","headline":"Configuration","description":"Choose how each domain samples, stores, exports, and connects traces.","url":"https://developers.cloudflare.com/observability/traces/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/traces/configuration/og.png?v=61a155bcdb386a5f","dateModified":"2026-10-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/observability/traces/configuration/#page","headline":"Configuration","description":"Choose how each domain samples, stores, exports, and connects traces.","url":"https://developers.cloudflare.com/observability/traces/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/traces/configuration/og.png?v=61a155bcdb386a5f","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

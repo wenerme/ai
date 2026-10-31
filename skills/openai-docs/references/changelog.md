@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## October, 2026
 
+### Oct 30
+
+Feature · Model: gpt-6-rosalind
+
+Released [GPT-6 Rosalind](https://developers.openai.com/api/docs/pricing#life-sciences-models), bringing specialized biological reasoning with scientific tool use to complex life sciences research. Access is available to organizations approved for Rosalind Research through the [trusted-access program](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research) for internal research by authorized users.
+
 ### Oct 28
 
 Feature

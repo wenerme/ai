@@ -190,6 +190,56 @@ app.post("/session", async (req, res) => {
 app.listen(3000);
 ```
 
+```go
+func handler(client openai.Client) http.Handler {
+	mux := http.NewServeMux()
+	mux.HandleFunc("POST /session", func(w http.ResponseWriter, r *http.Request) {
+		offer, err := io.ReadAll(http.MaxBytesReader(w, r.Body, 64*1024))
+		if err != nil || strings.TrimSpace(string(offer)) == "" {
+			http.Error(w, "A valid SDP offer is required", http.StatusBadRequest)
+			return
+		}
+		opts := []option.RequestOption{
+			option.WithHeader("OpenAI-Safety-Identifier", "hashed-user-id"),
+		}
+		// Forward the browser's negotiated data-channel ID when WARP is enabled.
+		if dcid := r.URL.Query().Get("dcid"); dcid != "" {
+			id, err := strconv.Atoi(dcid)
+			if err != nil || id < 0 || id > 65534 {
+				http.Error(w, "Invalid data-channel ID", 400)
+				return
+			}
+			opts = append(opts, option.WithQuery("dcid", dcid))
+		}
+		response, err := client.Realtime.Calls.New(r.Context(), realtime.CallNewParams{
+			Sdp: string(offer),
+			Session: realtime.RealtimeSessionCreateRequestParam{
+				Model: "gpt-realtime-2.1",
+				Audio: realtime.RealtimeAudioConfigParam{
+					Output: realtime.RealtimeAudioConfigOutputParam{
+						Voice: realtime.RealtimeAudioConfigOutputVoiceUnionParam{
+							OfString: openai.String("marin"),
+						},
+					},
+				},
+			},
+		}, opts...)
+		if err != nil {
+			http.Error(w, "Could not create Realtime call", http.StatusBadGateway)
+			return
+		}
+		defer response.Body.Close()
+		w.Header().Set("Content-Type", "application/sdp")
+		w.Header().Set("Location", response.Header.Get("Location"))
+		w.WriteHeader(response.StatusCode)
+		if _, err := io.Copy(w, response.Body); err != nil {
+			log.Print("Could not write SDP answer")
+		}
+	})
+	return mux
+}
+```
+
 
 ### Connect from your browser
 

@@ -12,6 +12,8 @@ Updates hosted tool permissions for a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `code_interpreter: optional object { enabled }  or null`
 
   The code interpreter permission update.

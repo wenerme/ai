@@ -30,7 +30,7 @@ Claude Fable 5.1 is Anthropic's next model in the Fable family, with improvement
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/about-claude/models/overview) |
 | Request formats | Anthropic Messages |
-| Pricing | <ul><li>Input (per 1M tokens)$10.00</li><li>Output (per 1M tokens)$50.00</li><li>Cached input (per 1M tokens)$0.25</li><li>Cache creation (per 1M tokens)$12.50</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$10.00</li><li>Cached input (per 1M tokens)$0.25</li><li>Cache creation (per 1M tokens)$12.50</li><li>Output (per 1M tokens)$50.00</li></ul> |
 
 ## Usage
 
@@ -399,9 +399,9 @@ max\_tokens
 
 `number`requiredexclusiveMinimum: 0
 
-system
+▶system
 
-`string`
+`one of`
 
 stream
 

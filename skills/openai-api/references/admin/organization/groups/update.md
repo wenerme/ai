@@ -12,6 +12,8 @@ Updates a group's information.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   New display name for the group.

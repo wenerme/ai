@@ -6,6 +6,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `model: string`
 
   The model to use for the agent. The requested model name is preserved.

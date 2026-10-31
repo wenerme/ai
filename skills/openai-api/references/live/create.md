@@ -23,6 +23,8 @@ retry can place another call.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `session: MediaSessionConfig`
 
   Startup configuration for the Live session.

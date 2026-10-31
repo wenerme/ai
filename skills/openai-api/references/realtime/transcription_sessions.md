@@ -16,6 +16,8 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `include: optional array of "item.input_audio_transcription.logprobs"`
 
   The set of items to include in the transcription. Current available items are:

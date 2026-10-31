@@ -30,7 +30,7 @@ GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, us
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Request formats | Responses |
-| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$12.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$2.50</li></ul> |
+| Pricing | <ul><li>Short-context input (per 1M)$2.00</li><li>Short-context cached input (per 1M)$0.20</li><li>Short-context cache write (per 1M)$2.50</li><li>Short-context output (per 1M)$12.00</li><li>Long-context input (per 1M)$4.00</li><li>Long-context cached input (per 1M)$0.40</li><li>Long-context cache write (per 1M)$5.00</li><li>Long-context output (per 1M)$18.00</li></ul> |
 
 ## Usage
 

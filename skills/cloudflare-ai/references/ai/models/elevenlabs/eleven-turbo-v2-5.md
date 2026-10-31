@@ -28,7 +28,7 @@ ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generat
 | --- | --- |
 | Terms and License | [link ↗](https://elevenlabs.io/terms) |
 | More information | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert) |
-| Pricing | <ul><li>Per character$0.00005</li><li>Default (per second)$0.00005</li></ul> |
+| Pricing | <ul><li>Per character$0.00005</li></ul> |
 
 ## Usage
 

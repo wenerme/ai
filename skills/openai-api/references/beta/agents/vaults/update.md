@@ -14,6 +14,8 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: optional map[string]`
 
   Replaces all metadata. Omit to leave unchanged, or pass {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.

@@ -21,7 +21,7 @@ check whether its toolset is enabled.
 | Toolset | Tools |
 |---------|-------|
 | `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
-| `core` | [`get_project`](#get_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
+| `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
@@ -66,6 +66,37 @@ Example:
 
 ```plaintext
 What is the default branch of gitlab-org/gitlab?
+```
+
+## `save_project`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585569) in GitLab 19.6.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Creates a new GitLab project in the specified namespace (group or user). If no namespace is
+provided, the project is created in the authenticated user's personal namespace.
+
+| Parameter              | Type             | Required | Description |
+|------------------------|------------------|----------|-------------|
+| `name`                 | string           | Yes      | Name of the project. |
+| `path`                 | string           | No       | URL slug for the project. Defaults to a slugified name. |
+| `namespace_id`         | integer          | No       | ID of the namespace (group or user) to create the project in. |
+| `namespace_path`       | string           | No       | Full path of the namespace. Alternative to `namespace_id`; provide one or the other. |
+| `description`          | string           | No       | Description of the project. |
+| `visibility`           | string           | No       | Visibility level: `private`, `internal`, or `public`. Defaults to the instance's default project visibility. |
+| `initialize_with_readme` | boolean        | No       | Create an initial README.md file. |
+| `default_branch`       | string           | No       | Default branch name. Defaults to the instance default. |
+| `topics`               | array of strings | No       | List of topics (tags) for the project. |
+| `template_name`        | string           | No       | Name of a project template. For built-in templates (like `rails`, `spring`, `express`), use alone. For custom templates, use with `use_custom_template`. |
+| `template_project_id`  | integer          | No       | Project ID of a custom template. Alternative to `template_name`. Use with `use_custom_template`. Premium and Ultimate only. |
+| `use_custom_template`  | boolean          | No       | Use a custom project template. Requires `template_name` or `template_project_id`. Premium and Ultimate only. |
+| `group_with_project_templates_id` | integer | No    | Group ID that serves as the template source for group-level templates. Optional for instance-level templates. Premium and Ultimate only. |
+
+Example:
+
+```plaintext
+Create a new private project called "my-app" in the gitlab-org group
 ```
 
 ## `add_commit`
@@ -1299,10 +1330,12 @@ Examples:
 ## `get_artifact_file`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
+- `file_type` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/632278) in GitLab 19.6.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
-Reads a file from inside the artifacts archive of a CI/CD job as text. To discover what a job or
+Reads a file from the artifacts of a CI/CD job as text: either a file inside the artifacts archive, or a
+report artifact stored as its own file, such as a `junit` or `sast` report. To discover what a job or
 pipeline produced, use the `get_job` or `get_pipeline` tool with `include: artifacts`.
 
 | Parameter       | Type    | Required | Description |
@@ -1310,12 +1343,13 @@ pipeline produced, use the `get_job` or `get_pipeline` tool with `include: artif
 | `url`           | string  | No       | URL of the job. Provide this, or `project_id` and `job_id`. |
 | `project_id`    | string  | No       | ID or full path of the project. Required if `url` is not provided. |
 | `job_id`        | integer | No       | ID of the job. Required if `url` is not provided. |
-| `artifact_path` | string  | Yes      | Path of the file inside the artifacts archive, for example `coverage/index.html`. |
+| `artifact_path` | string  | No       | Path of the file inside the artifacts archive, for example `coverage/index.html`. Required when `file_type` is archive. |
+| `file_type`     | string  | No       | Type of artifact to read. Default is `archive`. For a report stored as its own file, set the `artifacts:reports` type, for example `junit` or `sast`. `artifact_path` is then not needed. |
 | `byte_offset`   | integer | No       | Byte offset to start reading the file from. Default is `0`. |
 | `byte_limit`    | integer | No       | Maximum number of bytes to return. Default and maximum is `1048576` (1 MB). |
 
-The tool reads from the archive artifact only. Report artifacts stored as separate files, such as
-`junit` or `dotenv` artifacts, are not part of the archive and cannot be read with this tool.
+Report artifacts from `artifacts:reports` are stored as separate files, not inside the archive. To read
+one, set `file_type` to the report type. Compressed reports are decompressed before they are returned.
 
 When the file is longer than `byte_limit`, the response reports the total size and tells you the
 `byte_offset` to use for the next window. Binary files are not returned; the error names the file,
@@ -1333,6 +1367,12 @@ Examples:
 
   ```plaintext
   Find the JUnit report in the artifacts of job 88 in gitlab-org/gitlab and summarize the failures
+  ```
+
+- Read a report artifact that is not in the archive:
+
+  ```plaintext
+  Read the sast report of job 88 in gitlab-org/gitlab
   ```
 
 ## `get_pages_content`
@@ -1791,6 +1831,7 @@ Create a task "Update the onboarding guide" in project gitlab-org/gitlab and ass
 ## `list_work_items`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605850) in GitLab 19.4.
+- `parent_iid` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/635909) in GitLab 19.6.
 
 This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1813,6 +1854,7 @@ Use `get_work_item` to read one work item in depth.
 | `milestone_title`       | array   | No       | Milestone titles. Cannot be combined with `milestone_wildcard_id`. Maximum 100 values. |
 | `milestone_wildcard_id` | string  | No       | `NONE`, `ANY`, `STARTED`, or `UPCOMING`. Cannot be combined with `milestone_title`. |
 | `types`                 | array   | No       | Work item types to include, for example `["ISSUE", "TASK"]`. |
+| `parent_iid`            | integer | No       | IID of a parent work item in the given project or group. Returns its direct children. |
 | `created_after`         | string  | No       | Created after this time (ISO 8601; date-only means start of day, offsets honored). |
 | `created_before`        | string  | No       | Created before this time (ISO 8601; date-only means start of day, offsets honored). |
 | `updated_after`         | string  | No       | Updated after this time (ISO 8601; date-only means start of day, offsets honored). |

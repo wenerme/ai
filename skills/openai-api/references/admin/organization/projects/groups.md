@@ -14,6 +14,8 @@ Grants a group access to a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `group_id: string`
 
   Identifier of the group to add to the project.
@@ -491,6 +493,8 @@ Assigns a project role to a group within a project.
   The ID of the group that should receive the project role.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role_id: string`
 

@@ -28,7 +28,7 @@ Alibaba's Qwen Image 3.0 Pro generates images from text prompts with a focus on 
 | --- | --- |
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
-| Pricing | <ul><li>Per image$0.04</li><li>output size 1k$0.04</li><li>output size 2k$0.07</li><li>Default (per second)$0.04</li></ul> |
+| Pricing | <ul><li>Per image$0.04</li><li>output size 1k$0.04</li><li>output size 2k$0.07</li></ul> |
 
 ## Usage
 

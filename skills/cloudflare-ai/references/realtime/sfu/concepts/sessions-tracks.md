@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/o
 
 # Sessions and tracks
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Applications group your SFU resources. Sessions represent WebRTC connections. Media tracks carry audio or video, and DataChannels carry application messages.
 
@@ -32,9 +32,7 @@ A participant does not have to correspond to exactly one session. The [video-roo
 
 Calling `POST /sessions/new` with no request body returns a `sessionId`, but does not establish the WebRTC connection. Follow a [connection recipe](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/) to complete the offer/answer exchange, then wait for the endpoint's connection state to become `connected`.
 
-Create each session when ready to begin negotiation. An unconnected session can expire before its first track or DataChannel operation. Activity on another session does not keep it alive.
-
-If setup expires, later operations can return HTTP `410` with `session_error`. Create a new session and repeat connection setup.
+Create each session when the endpoint is ready to negotiate. If setup fails or the PeerConnection closes, create a new session and repeat connection setup.
 
 Follow [per-session mutation ordering](https://developers.cloudflare.com/realtime/sfu/concepts/negotiation/#serialize-mutations-per-session) during setup and later updates.
 
@@ -87,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#page","headline":"Sessions and tracks","description":"Understand Realtime SFU applications, PeerConnection sessions, track names, and publication and subscription.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/og.png?v=3dcf0ce2ac231f0d","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/#page","headline":"Sessions and tracks","description":"Understand Realtime SFU applications, PeerConnection sessions, track names, and publication and subscription.","url":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/og.png?v=3dcf0ce2ac231f0d","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

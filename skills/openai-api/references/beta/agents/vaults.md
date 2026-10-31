@@ -8,6 +8,8 @@ Creates a vault for the current project. See [vaults](/api/docs/guides/agents-ap
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: optional map[string] or null`
 
   Key-value pairs to associate with the vault, such as an application or team identifier.
@@ -360,6 +362,8 @@ Updates the name or metadata of an active vault. Omitted fields remain unchanged
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: optional map[string]`
 
   Replaces all metadata. Omit to leave unchanged, or pass {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
@@ -535,6 +539,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `auth: CredentialAuthCreateParam`
 
@@ -1641,6 +1647,8 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
   `minLength: 0`, `maxLength: 1048576`
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `auth: optional CredentialAuthRotateParam`
 

@@ -18,6 +18,8 @@ Creates an API key for a service account in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_in_seconds: optional integer or null`
 
   Number of seconds until the API key expires.

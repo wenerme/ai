@@ -14,6 +14,8 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `auth: CredentialAuthCreateParam`
 
   The authentication method and write-only secret values to store.

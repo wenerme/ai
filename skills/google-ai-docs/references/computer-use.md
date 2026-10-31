@@ -120,7 +120,7 @@ Here's a minimal example of initializing the client and sending a prompt to the 
 <br />
 
 > [!NOTE]
-> **Note:** As a Preview capability, Computer Use may contain errors and security vulnerabilities. We recommend supervising closely for important tasks, and that you avoid using the Computer Use capability for tasks involving critical decisions, sensitive data, or actions where serious errors cannot be corrected. We encourage you to review the [Safety best practices](https://ai.google.dev/gemini-api/docs/computer-use#safety-best-practices), the [Prohibited Use
+> **Note:** Computer Use may contain errors and security vulnerabilities. We recommend supervising closely for important tasks, and that you avoid using the Computer Use capability for tasks involving critical decisions, sensitive data, or actions where serious errors cannot be corrected. We encourage you to review the [Safety best practices](https://ai.google.dev/gemini-api/docs/computer-use#safety-best-practices), the [Prohibited Use
 > Policy](https://policies.google.com/terms/generative-ai/use-policy) and [Gemini
 > API Additional Terms of Service](https://ai.google.dev/terms).
 
@@ -314,7 +314,7 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
 Use curl to send a request:
 
     curl -X POST \
-      "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      "https://generativelanguage.googleapis.com/v1/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
@@ -1699,7 +1699,7 @@ in your Computer Use tool configuration:
 
 ### cURL
 
-    curl "https://generativelanguage.googleapis.com/v1beta/interactions?key=${GEMINI_API_KEY}" \
+    curl "https://generativelanguage.googleapis.com/v1/interactions?key=${GEMINI_API_KEY}" \
     -H 'Content-Type: application/json' \
     -d '{
       "model": "gemini-3.8-flash",

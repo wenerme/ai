@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/logpush/og.png?v=7891593910363aac
 
 # Logpush
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush delivers logs in batches as quickly as possible, with no minimum batch size, potentially delivering files more than once per minute. This capability enables Cloudflare to provide information almost in real time, in smaller file sizes.
 
@@ -49,7 +49,16 @@ For precise estimates, you can [sample your logs via Logpull](https://developers
 
 ## Limits
 
-There is currently a max limit of **4 Logpush jobs per zone**. Trying to create a job once the limit has been reached will result in an error message: `creating a new job is not allowed: exceeded max jobs allowed`.
+Logpush job limits depend on your plan, dataset, and job scope:
+
+| Scope | Free, Pro, and Business | Enterprise |
+| --- | --- | --- |
+| All jobs in an account | 1,000 | No account-level limit |
+| Each entitled dataset in an account or zone | Generally 1,000 | Generally 1,000 for new customers |
+
+Existing Enterprise customers may retain a default limit of four jobs per dataset. Cloudflare can adjust this limit manually. Dataset-specific entitlements may also set different limits. Instant Logs supports two jobs per zone.
+
+If you reach a limit, the API returns `creating a new job is not allowed: exceeded max jobs allowed`.
 
 ## Availability
 
@@ -70,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/#page","headline":"Logpush","description":"Push logs in near real-time to storage or SIEM.","url":"https://developers.cloudflare.com/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/og.png?v=7891593910363aac","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/#page","headline":"Logpush","description":"Push logs in near real-time to storage or SIEM.","url":"https://developers.cloudflare.com/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/og.png?v=7891593910363aac","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,6 +16,8 @@ Returns the created Realtime session object, plus an ephemeral key.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `client_secret: object { expires_at, value }`
 
   Ephemeral key returned by the API.

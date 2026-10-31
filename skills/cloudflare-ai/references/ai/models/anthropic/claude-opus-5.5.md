@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `anthropic/claude-opus-5.5`
 
 - Third-party
+- Zero data retention
 
 Claude Opus 5.5 is Anthropic's model for long-running agentic coding and knowledge work. It combines a one million token context window with adaptive thinking that is always on, a 128K token maximum output, and a medium default effort level.
 
@@ -29,8 +30,9 @@ Claude Opus 5.5 is Anthropic's model for long-running agentic coding and knowled
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/opus-5-5/overview) |
+| Zero data retention | Yes |
 | Request formats | Anthropic Messages |
-| Pricing | <ul><li>Input (per 1M tokens)$4.00</li><li>Output (per 1M tokens)$20.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$5.00</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$4.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Output (per 1M tokens)$20.00</li><li>Cache creation (per 1M tokens)$5.00</li></ul> |
 
 ## Usage
 
@@ -579,9 +581,9 @@ max\_tokens
 
 `number`requiredexclusiveMinimum: 0
 
-system
+▶system
 
-`string`
+`one of`
 
 stream
 

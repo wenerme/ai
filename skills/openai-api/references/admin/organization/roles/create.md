@@ -6,6 +6,8 @@ Creates a custom role for the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `permissions: array of string`
 
   Permissions to grant to the role.

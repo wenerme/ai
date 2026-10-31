@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/
 
 # Deploy a Browser Run Worker with Durable Objects
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker that uses the Browser Run API along with [Durable Objects](https://developers.cloudflare.com/durable-objects/) to take screenshots from web pages and store them in [R2](https://developers.cloudflare.com/r2/).
 
@@ -113,7 +113,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-10-31",
 	"compatibility_flags": ["nodejs_compat"],
 	"account_id": "<ACCOUNT_ID>",
 	// Browser Run API binding
@@ -155,7 +155,7 @@ name = "rendering-api-demo"
 main = "src/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-10-31"
 compatibility_flags = [ "nodejs_compat" ]
 account_id = "<ACCOUNT_ID>"
 
@@ -223,7 +223,7 @@ export class Browser extends DurableObject {
 		const folder = roundedDate.split(" GMT")[0];
 
 		// If there is a browser session open, re-use it
-		if (!this.browser || !this.browser.isConnected()) {
+		if (!this.browser || !this.browser.connected) {
 			console.log(`Browser DO: Starting new instance`);
 			try {
 				this.browser = await puppeteer.launch(this.env.MYBROWSER);
@@ -295,7 +295,7 @@ export class Browser extends DurableObject {
 }
 ```
 
-[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwBGAMwAmUQE4RAFgBswgKwAuFizbAOcLjT4CRE6XMVKAsACgAwuioQApnewARKAGcY6N1Gi2VJTTwCYhIqOGB7BgAiKBp7AA8AOgArNyjSVCgwR3DImLik1KjLGztHCGwAFToYe384GBgwPgIoW2RkuAA3ODdeBFgIAGpgdFxwe0tLKGBPJBIAbxJnEAQ4MmyAeTJk+14IEgBfAIR0YBIo3jBKXFQwRDqAd0wAa3sENKILGbmDgCoSL0SDAQI17A53iczhcAAJXG53B7IEFgiEIdIWCwJX4kXD2VBwcAHBYWACQvToVF4AXBvAAFgAKBD2ACOIHsbggABoSI4ugBKRZk0m8WyckjoHYkBi8qhdRIAIQASpsAOoAZQAokrEgBzcEKugAOVyDKiZFOjzc7yi-K+wuQyBI6scuEBJGZbI5Bwg6BIEDp9mWq3W2RI212+x5AccgMecB8JB8bg9HM8VGtwtFGYOzI80rjCYOkuSiVQtMZnvZnLtmNJpOZEFWVFTHi+pMOXIsh3t2fFAGlNZqAAoAfWVaq1StHAEEADIASQAaprRwujaOtVZNkbnOqC-JBPbsZgDldeimFZbrQhefEHDQUys1ht7BG9sSyRb0Fb3u23jAEAzs0XT2AuVAutmuApjKR5kpymBwPq9oimKEAICA+yYAynIEPYPJ8oKJL1m4oLvDhhAOARcq1vWAbuIkCFrPqBa4Q4jG+sx9jtocdYUlSNIQPSTKstWEBEQ6Trqv09ixnm6BgCAvgZv6foOOKlAQFmaEkI8UC4AGBYANrCFI4iCDyYjyPIllKKINkkPZFkkLIwiyAAuu2qE5iQgZQLqdIHDKJmCAAHM5ADs8ihTyoXyLIPLxc5oVSPInl1qSjokAAqta-qBiQvCrMydi4nhgI0P6MxBr6hXMuVcABApeK3pyGH7KsQZsCQSriNpPlUD+zjlTKVD2I8yx4QytHeeKor4qgBbCIIK0kACh5rSQSheX2uaUHEuDDQ4BZjRNR32AywqkgAsgQdKJKc3AMoNjznXq4KVNV00kE682oKggoAn9qBdvW-KJL66robEurTTtOkYGALUFo9B1vR4zQQGaJAAOLXZUtpGYI6WSSQC6LTGzJJimjXfr+rUct4tgSrUVA8syXB5T4wpQItDIAIT0W4iR0zeJAAD7iyQgt0gxovvIk7ilGN+z2Lg00SfWs0KfYiTXLDAAGV4-mLzibP4UOINAVC6qE41JjmcBUvYBszaS6F0EKWvu7Lwvy7eMpwPGiYorUaJ64SVKMkLiR8ok10AJoThq2pu8cvAEPSJAMvYmta32Ot6+gsNXfWRvXpCZv+DY4BuoNBy4fM-sO7hzuJCQmoIKcCD+AAJAs9iHAboNa2nwq8aTSocuCJAAUBIFBnAqAOLe9hwFnGdgGAqn5UGZvCjHc-AVAoHgZBtjQQWcGk1Yga8C8SaLc3CTuBAKZkPimBBugrMw8CSH2B5nzGWcsK4IH5FdRszY7YTSnh4MUF0ojG3piQe41As4EiyGrKIPIlhsRAG4fwShVqHFrP1cU8AWKB2Dj6X2IswGJFOsOABcMMpZUqHAN4JA+jMkcG4Ok6A34SkWmvLOPDZItm8AAL0AfWbqDJsgHCgFfUgyiAA8ul9IBj1o4XUAZVFDCGHnckND-76kYuCJcUBxq-AZEsPSBk6T+AcQGIyUB3I8j8gFCA-gvGBTce5I4bsg5FjMbrXUgj0BmkChAGAhDHTPAQG8D4iR4QgFuPcZkqSzjIFtF5WaBxMjZBNBEAsBtxF8IERAUc-cXF0gCYceI-c-EQAaQbfJu1uHUmoaEyhusKkZiqawq6ITEwxzjgqbKVhByVESCCLGBt+6IxaocZASysElMHikGAuph5dJmhPesWUrDXDyoQMgulAwtkpkGdwoQ-SjCpokh+tUP64lsN-a5BU+nClGQcPpqTTkXTIUcp0cCZ5HwXoCZekJagIE0H-QgbgXgplqjGZYmwD50MhSfMCEE9gXxgiQa+oLnQz3RZkD4Bw4CZPOLVN49gYAYsBAvchZ5irlGAogc4PSxl0KYgA9689uWsPrLzbORUu6ctpdKUa4AwDGILtkIuhtkGm3Ntw8E1tbY0u5a7DpOlKiag3FuHce4lqCE2stFa+S-n5QYgK8x1phVYAZG9F630hgkCNSazU25dzqgORlKBCAWynR6mmBBZpSK8F4IzPJZJDn8WpLq11edD6Mvnris+BLHwkCGDKZaKFMpOk1PeV05AwHMuaOWIB2cM2AWPqffFUEUwaMHCOccKoU7TnnMuVc65Nx+rNYGr29YlW631pdb25cTaVw1XSIEH9YxzxZbipqt5+4Nqzc28+j5jjWlbe3MtD4eA21QbzNMTtEjDyusE0xMdHX9PBFy117qfyepIMtK1K1BBuyygnSghUnaylIlTdFVpCq2BVspams9M1rtAuQT2VZvR-zcGccEssbZXSypgEgyQCEHEUUmM8QLARKTOK0TeYBPaPCubvKmdzBq6VeDvN5uAPm4adN1BI4Qmj4RIAbO1Md-aJFAh8NoVBpoG3HryMAeViLjrFIXKdpdZ0oKrneONas1YXvLMIkg-cO1jmTlOWci4Vxrl9f6vchxha3tHvk8VDJRNgOMdrZVU6DYnK8H-MT+rS4iboWJ+E1pRX1l4pFxN3YLCWHUMwTQ2hdA8H4EIMQkgZBuVMCUWwD4KiuHgd4ZS-hAjaFIGECI0QIiEG0OkAIWDKt5A2JKYo1g8vlCqDUOogJGjNAzspDoGGqBTAsAsKIwAExUFHKMcY2QogqHyHiQoaRDjxYS0l4IKX9DpaMFlhQyhmCWCAA)
+[Run Worker in Playground](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYZb6HbW5QDGU2AAwB2AJwBGCQFYALDIAcAJgDMALhYs2wDnC40+AkROlylygLAAoAMLoqEAKb3sAESgBnGOndRod1SRaeATEJFRwwA4MAERQNA4AHgB0AFbu0aSoUGBOEVGx8clp0Va29k4Q2AAqdDAOAXAwMGB8BFB2yClwAG5w7rwIsBAA1MDouOAOVlZQwF5IJADeJC4gCHBkOQDyZCkOvBAkAL6BCOjAJNG8YJS4qGCI9QDumADWDgjpRJaz84cAVCQ+iQYCAmg5HB9TudLgABa63e6PZCg8GQhAZSyWRJ-Ei4ByoODgQ6LSwASD6dCovECEN4AAsABQIBwARxADncEAANCQnN0AJRLclk3h2LkkdC7EgMPlUbpJABCACUtgB1ADKAFFlUkAOYQxV0AByeUZ0TIZye7g+0QF3xFyGQJA1TlwQJILPZnMOEHQJAg9IcKzWGxyJB2ewOvMDTiBTzgvhIvncns5XioNpFYszhxZnhl8cThylKSSqDpTK9HK59qxZLJLIgayoac83zJR25liODpzEoA0lqtQAFAD6KvV2uVY4AggAZACSADUtWPF8ax9rrFtjS4NYWAGyCB04zCHa59VOKq02hB8hKOGip1brTYOSP7Enky3oa0fDt3hgCBZxaboHEXKhXRzXBU1lE9yS5TA4ANB1RXFCAEBAA5MEZLkCAcXl+SFUkG3cMEPjwwhHCI+U6wbQMPCSJD1gNQt8McZi-VYhwOyOetKWpWkIAZZk2RrCASMdZ0NQGBw43zdAwBAPxMwDf1HAlSgIGzDCSCeKBcEDQsAG1JEUQReXEZRD0PKypBs3kbMskgZHEGQAF0O3Q3MSCDKA9XpQ5ZTMwR5Bc4RD3kXl5EPGReTilz5FEQ8vPrMknRIABVG0AyDEheDWFl7DxAigRoANZmDP0CpZMq4ECJT8XvLksIONZgzYEhlUUXTfKoP8XDK2UqAcJ4VgIxl6J8iUxQJVBC3EQRlpIQFj1WkgpG8-s80oeJcCGxxC1G8bDocRkRTJABZAh6SSM5uEZAanjO-UISqKqppIZ05tQVAhUBX7UG7BsBSSP0NUwuI9Sm7a9IwMBmsLB79tezwWggc0SAAcSuqo7RMwQ0ukkhFwW2MWWTVMGt-f8Ws5Hw7ElOoqF5FkuFy3wRSgBbGQAQkY9wklpu8SAAHzFkgBfpJiRY+JIc1Gg4HFwKSGxmpSHCSG4YYAAxvP9RZcLYAkhxBoCoPUwjG5NczgakHF16ayUwuhhXVl2ZaFuX71lOAEyTVE6nRbWiWpJlBaSfkkiugBNSdNR1Z2Tl4AgGRIRkHDV9X+017X0Bhy6G3128oWNgJbHAd0BsOfCFh9238IdpISC1BAzgQAIABJFgcI5dZB9Xk5FfiSeVTkIRIICQLA4M4FQRx7wcOB09TsAwHUvLg2NkVI+n0CoHAyDoLsWDCwQknrCDXhXmTBaG8SDwIFTMgCUwYN0BZ6GQRQhxud56WstS4IAFJdJsLZrbjXHp4cU51ogGzpiQB41B06EmyCraIvJlgcRAO4AIUgVpHDrH1CU8A2J+wDr6L2wtgFJBOiOX+sN0qZSqHAd4JB+gsicO4ek6Bn6SgWsvdOnD5Kth8AALz-g2LqjIciHCgOfUgCiAA8+lDKBm1k4PUgYlHDGGNnCklCf4GmYhCZcUAxp-EZMsAyRl6QBFsYGEyUAPK8n8oFCAAR3FBWcR5Y4zt-bFmMVrPUfD0DmiChAGAeCnQvAQO8T4CsbggDuA8FkCtzjIDtN5Gahwsg5FNJEQsusRHcN4RAMcPdHH0l8UcBIPdvEQFqbrHJO0OE0goUEshWtSmZnKUwy6gSkyR2joqLK1ghxVCSKCTGuse4I2akcZA8z0GFL7qkGAeoB7tOmqPBsmVrA3FyoQMg+kgytgpsGDwYR-RjEpnE2+NVX54jsB-C5+VukiiGYcbpSTvDnWIfs500DJ771nkCBeUI6gIC0N-Qg7hXiphqrGFYWxd7ULBYfCCUF9inzgiQC+QKXSTxRVkT4hw4BpIuDVd4DgYCoqBLPEhF4ioVFAogC4nThnUJYr-N6M8OVMIbDzDOhV25sqpTKEa4AwAGNzjkfOesEFGxNhwiEFsraUo5U7Vpekqhak3NuXc+5FqCA2ktZaOTvl5SYrykxNoBVYEZK9Z6X1hgkH1YarUO49wal2elcBCBWwnW6umWB5pyK8F4AzbJ5I9mCRpFqp12c950pnli4+uLnwkGGLKJaaEMrOi1I+N05BgEMpaBWf+GdU3AQPkfHFMFUyqKHKOCcqpE4zgXCuNcG4tzeuNX692DZ5Vax1hdD2JdDZl1VfSYEr84zT0ZVixq94e61vTQ2k+z4Tg2ibS3YtT4eCWyQTzdM9skgD0ugEoxkc7U9IhOyp1Lq-xupIEtc1y1BDO0yrHSgBV7ZynIpTFF1oCp2CVqpKmU803LvAuQN21YfTf3cOcCEMtLaXUypgEgKRcGHDkcmC8Ry54qXOG0NeYA3ZPHOVvSm1yBr6TeJvZ5uBXlYedF1RIERmiERILra1kcfZJHAp8doVApq6xHnyMAuVSIjvFHncdRcp2IPLg+aNKsVanorAIkgPdW3jgTtOOcS5Vzri9T6-cRwhZXqHjkkVjIhPAIMRrBV47daHO8N-YTOqi6CeocJhENohUNn4mFuNPZLBWA0MwLQOg9A8H4EIMQkhxCyAUCoUodgnyVDcDAnwqkAhBB0KQcIkQYiREIDoDIgR0HlfyJsKUJQbA5YqNUWo9QgRNBaKnVSnRUNUGmJYRY0RgCJioGOMYEwcjRFUAUfERR0hHBi7F+LIREsGBS8YdLpgVDMCsEAA)
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -344,7 +344,7 @@ export class Browser extends DurableObject<Env> {
 		const folder = roundedDate.split(" GMT")[0];
 
 		// If there is a browser session open, re-use it
-		if (!this.browser || !this.browser.isConnected()) {
+		if (!this.browser || !this.browser.connected) {
 			console.log(`Browser DO: Starting new instance`);
 			try {
 				this.browser = await puppeteer.launch(this.env.MYBROWSER);
@@ -443,5 +443,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/#page","headline":"Deploy a Browser Run Worker with Durable Objects","description":"Use the Browser Run API along with Durable Objects to take screenshots from web pages and store them in R2.","url":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/og.png?v=33efece5ee628220","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/#page","headline":"Deploy a Browser Run Worker with Durable Objects","description":"Use the Browser Run API along with Durable Objects to take screenshots from web pages and store them in R2.","url":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/og.png?v=33efece5ee628220","dateModified":"2026-10-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

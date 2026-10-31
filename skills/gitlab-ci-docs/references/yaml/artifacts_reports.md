@@ -109,7 +109,7 @@ GitLab can display the results of one or more reports in:
 
 - The merge request [security scan report](../../user/project/merge_requests/reports.md#security-scan-report).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [security dashboard](../../user/application_security/api_fuzzing/configuration/enabling_the_analyzer.md#security-dashboard).
 
 ## `artifacts:reports:browser_performance`
@@ -179,7 +179,7 @@ The collected container scanning report uploads to GitLab as an artifact.
 GitLab can display the results of one or more reports in:
 
 - The merge request [container scanning widget](../../user/application_security/container_scanning/_index.md).
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [security dashboard](../../user/application_security/security_dashboard/_index.md).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
 
@@ -192,7 +192,7 @@ The collected coverage fuzzing report uploads to GitLab as an artifact.
 GitLab can display the results of one or more reports in:
 
 - The merge request [security scan report](../../user/project/merge_requests/reports.md#security-scan-report).
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
 - The [security dashboard](../../user/application_security/security_dashboard/_index.md).
 
@@ -231,7 +231,7 @@ report uploads to GitLab as an artifact.
 GitLab can display the results of one or more reports in:
 
 - The merge request [security scan report](../../user/project/merge_requests/reports.md#security-scan-report).
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
 - The [security dashboard](../../user/application_security/security_dashboard/_index.md).
 
@@ -245,7 +245,7 @@ The collected dependency scanning report uploads to GitLab as an artifact.
 GitLab can display the results of one or more reports in:
 
 - The merge request [dependency scanning widget](../../user/application_security/dependency_scanning/_index.md).
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [security dashboard](../../user/application_security/security_dashboard/_index.md).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
 - The [dependency list](../../user/application_security/dependency_list/_index.md).
@@ -279,8 +279,8 @@ rspec:
 
 GitLab can display the results of one or more reports in:
 
-- The merge request [**Test summary** panel](../testing/unit_test_reports.md#view-test-results-in-merge-requests).
-- The [pipeline **Tests** tab](../testing/unit_test_reports.md#view-test-results-in-pipelines).
+- The merge request [ panel](../testing/unit_test_reports.md#view-test-results-in-merge-requests).
+- The [pipeline  tab](../testing/unit_test_reports.md#view-test-results-in-pipelines).
 
 Some JUnit tools export to multiple XML files. You can specify multiple test report paths in a single job to
 concatenate them into a single file. Use either:
@@ -340,7 +340,7 @@ such as Semgrep, ESLint security plugins, or GitHub Advanced Security tools.
 
 GitLab can display the results of one or more reports in:
 
-- The pipeline [**Security** tab](../../user/application_security/detect/security_scanning_results.md).
+- The pipeline [ tab](../../user/application_security/detect/security_scanning_results.md).
 - The [security dashboard](../../user/application_security/security_dashboard/_index.md).
 - The [Project Vulnerability report](../../user/application_security/vulnerability_report/_index.md).
 

@@ -30,7 +30,7 @@ Recraft V4.1 Utility is a general-purpose text-to-image model balancing quality 
 | Terms and License | [link ↗](https://www.recraft.ai/terms) |
 | More information | [link ↗](https://www.recraft.ai/) |
 | Zero data retention | Yes |
-| Pricing | <ul><li>Per image$0.04</li></ul> |
+| Pricing | <ul><li>Per image$0.035</li></ul> |
 
 ## Usage
 

@@ -298,6 +298,7 @@ specific to container scanning. You can also use any of the [predefined CI/CD va
 | `CI_APPLICATION_REPOSITORY`              | `$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG`                                        | Docker repository URL for the image to be scanned.                                                                                                                                                                                                                                                                                                                                            |
 | `CI_APPLICATION_TAG`                     | `$CI_COMMIT_SHA`                                                                | Docker repository tag for the image to be scanned.                                                                                                                                                                                                                                                                                                                                            |
 | `CS_ANALYZER_IMAGE`                      | `registry.gitlab.com/security-products/container-scanning:8`                    | Docker image of the analyzer. Do not use the `:latest` tag with analyzer images provided by GitLab.                                                                                                                                                                                                                                                                                           |
+| `CS_BINARY_SCAN`                         | `"false"`                                                                       | Experiment. Report vulnerabilities in runtimes and programs that were not installed by a package manager. Ultimate only. For more information, see [binary scanning](#binary-scanning). |
 | `CS_DEFAULT_BRANCH_IMAGE`                | `""`                                                                            | The name of the `CS_IMAGE` on the default branch. See [Setting the default branch image](#setting-the-default-branch-image) for more details.                                                                                                                                                                                                                                                 |
 | `CS_DISABLE_DEPENDENCY_LIST`             | `"false"`                                                                       |  **[Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/439782)** in GitLab 17.0.                                                                                                                                                                                                                                                                               |
 | `CS_DISABLE_LANGUAGE_VULNERABILITY_SCAN` | `"true"`                                                                        | Disable scanning for language-specific packages installed in the scanned image.                                                                                                                                                                                                                                                                                                               |
@@ -952,6 +953,42 @@ Container scanning includes the ability to detect and report when your container
 The EOL detection feature uses Trivy to identify operating systems that are no longer supported by their respective distributions. When an EOL operating system is detected, it's reported as a vulnerability in your container scanning report alongside other security findings.
 
 To enable EOL detection, set `CS_REPORT_OS_EOL` to `"true"`.
+
+## Binary scanning
+
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635707) as an [experiment](../../../policy/development_stages_support.md#experiment) in Container Scanning [v8.7.0](https://gitlab.com/gitlab-org/security-products/analyzers/container-scanning/-/releases/v8.7.0), during the GitLab 19.6 release.
+
+> [!warning]
+> This feature can be removed or changed at any time without notice.
+
+Trivy does not report vulnerabilities in runtimes and programs that were installed without a package manager, for example, compiled from source or extracted from an archive. Binary scanning adds findings for them. For example, the official PHP images build PHP from source, so without binary scanning, no finding is reported for PHP itself.
+
+Binary scanning covers runtimes and programs such as PHP, Node.js, Python, Go, Ruby, Perl, OpenSSL,
+curl, NGINX, Java runtimes, PostgreSQL, and Redis.
+
+To turn on binary scanning, set `CS_BINARY_SCAN` to `"true"`:
+
+```yaml
+include:
+  - template: Jobs/Container-Scanning.gitlab-ci.yml
+
+container_scanning:
+  variables:
+    CS_BINARY_SCAN: "true"
+```
+
+Requires Container Scanning [v8.7.0](https://gitlab.com/gitlab-org/security-products/analyzers/container-scanning/-/releases/v8.7.0) and later.
+
+You can also enforce `CS_BINARY_SCAN` with a
+scan execution policy or a [pipeline execution policy](../policies/pipeline_execution_policies.md).
+
+Binary scanning adds the duration of the binary scan to the container scanning job.
+
+If the binary scan fails, the job result is unaffected and the report contains only findings from Trivy.
 
 ## Container scanning for registry
 

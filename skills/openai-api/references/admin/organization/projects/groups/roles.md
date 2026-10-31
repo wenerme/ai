@@ -18,6 +18,8 @@ Assigns a project role to a group within a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `role_id: string`
 
   Identifier of the role to assign.

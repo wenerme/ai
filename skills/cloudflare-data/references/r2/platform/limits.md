@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/r2/platform/limits/og.png?v=9931fea88af
 
 # Limits
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 | Feature | Limit |
 | --- | --- |
 | Data storage per bucket | Unlimited |
 | Number of objects per bucket | Unlimited |
-| Maximum number of buckets per account | 1,000,000 |
+| Maximum number of buckets per account | Unlimited, with a default limit of 100,000. Each bucket above 100,000 costs [$0.10 per month](https://developers.cloudflare.com/r2/pricing/#r2-pricing). |
 | Maximum rate of bucket management operations per bucket <sup>[1](#user-content-fn-1)</sup> | 50 per second |
 | Number of custom domains per bucket | 100 |
 | Object key length | 1,024 bytes |
@@ -66,5 +66,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/limits/#page","headline":"Limits","description":"Account, bucket, and object limits for Cloudflare R2 storage.","url":"https://developers.cloudflare.com/r2/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/platform/limits/og.png?v=9931fea88af8d800","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/platform/limits/#page","headline":"Limits","description":"Account, bucket, and object limits for Cloudflare R2 storage.","url":"https://developers.cloudflare.com/r2/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/platform/limits/og.png?v=9931fea88af8d800","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

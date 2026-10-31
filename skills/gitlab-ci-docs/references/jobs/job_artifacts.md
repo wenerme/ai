@@ -180,10 +180,10 @@ pdf:
     expire_in: 1 week
 ```
 
-If `expire_in` is not defined, the [**Default artifacts expiration**](../../administration/settings/continuous_integration.md#set-default-artifacts-expiration)
+If `expire_in` is not defined, the [](../../administration/settings/continuous_integration.md#set-default-artifacts-expiration)
 instance setting is used.
 
-To prevent artifacts from expiring, you can select **Keep** from the job details page.
+To prevent artifacts from expiring, you can select  from the job details page.
 The option is not available when an artifact has no expiry set.
 
 By default, artifacts from the most recently completed pipeline and the most recent
@@ -316,7 +316,7 @@ job:
 
 ## View all job artifacts in a project
 
-You can view all artifacts stored in a project from the **Build** > **Artifacts** page.
+You can view all artifacts stored in a project from the  >  page.
 This list displays all jobs and their associated artifacts. Expand an entry to access
 all artifacts associated with a job, including:
 
@@ -336,12 +336,12 @@ From the GitLab UI:
 
 | Location                          | Select                                                        | Use this when                                                                                                                       |
 |-----------------------------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Any **Pipelines** list            | **Download artifacts** ()         | You don't yet know which job's artifacts you want. When you select this, GitLab opens a list of the pipeline's jobs to choose from. |
-| Any **Jobs** list                 | **Download artifacts** ()         | You're scanning multiple jobs and want to download from one without opening it.                                                     |
-| A job's detail page               | **Download**                                                  | You're reading that job's log, for example while investigating a failure.                                                           |
-| A merge request **Overview** page | **Artifacts** ()                  | You want artifacts from the merge request's latest pipeline.                                                                        |
-| The **Artifacts** page            | **Download** ()                   | You're browsing the full list of artifacts in the project.                                                                          |
-| The artifacts browser             | **Download artifacts archive** () | You're browsing an archive's contents and want to download the whole archive.                                                       |
+| Any  list            |  ()         | You don't yet know which job's artifacts you want. When you select this, GitLab opens a list of the pipeline's jobs to choose from. |
+| Any  list                 |  ()         | You're scanning multiple jobs and want to download from one without opening it.                                                     |
+| A job's detail page               |                                                   | You're reading that job's log, for example while investigating a failure.                                                           |
+| A merge request  page |  ()                  | You want artifacts from the merge request's latest pipeline.                                                                        |
+| The  page            |  ()                   | You're browsing the full list of artifacts in the project.                                                                          |
+| The artifacts browser             |  () | You're browsing an archive's contents and want to download the whole archive.                                                       |
 
 To restrict who can download job artifacts, use the `artifacts:access` keyword in your `.gitlab-ci.yml` file. For example:
 
@@ -419,9 +419,9 @@ To fetch artifacts from a job in the same pipeline, use the `needs:artifacts` ke
 You can browse the contents of the artifacts from the UI without downloading the artifact locally,
 from:
 
-- Any **Jobs** list. On the right of the job, select **Browse** ().
-- A job's detail page. On the right of the page, select **Browse**.
-- The **Artifacts** page. On the right of the job, select **Browse** ().
+- Any  list. On the right of the job, select  ().
+- A job's detail page. On the right of the page, select .
+- The  page. On the right of the job, select  ().
 
 If GitLab Pages is enabled globally, even if it is disabled in the project settings,
 you can preview some artifacts file extensions directly in your browser. If the project
@@ -470,11 +470,11 @@ You can configure artifact size limits for:
 
 To change the maximum artifact size for a group or project:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Change the value of **Maximum artifacts size** (in MB).
-1. Select **Save changes**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Change the value of  (in MB).
+1. Select .
 
 ## Delete job log and artifacts
 
@@ -492,18 +492,18 @@ Prerequisites:
 To delete a job:
 
 1. Go to a job's detail page.
-1. In the upper-right corner of the job's log, select **Erase job log and artifacts** ().
+1. In the upper-right corner of the job's log, select  ().
 
-You can also delete individual artifacts from the **Artifacts** page.
+You can also delete individual artifacts from the  page.
 
 ### Bulk delete artifacts
 
 You can delete multiple artifacts at the same time:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Artifacts**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the checkboxes next to the artifacts you want to delete. You can select up to 100 artifacts.
-1. Select **Delete selected**.
+1. Select .
 
 ## Link to job artifacts in the merge request UI
 
@@ -519,7 +519,7 @@ test:
     paths: ['file.txt']
 ```
 
-With this configuration, the **View exposed artifact** section displays a link to `file.txt` labeled **artifact 1**.
+With this configuration, the  section displays a link to `file.txt` labeled **artifact 1**.
 
 [A merge request widget that links to exposed artifacts.]
 
@@ -548,17 +548,17 @@ Keeping the latest artifacts can use a large amount of storage space in projects
 with a lot of jobs or large artifacts. If the latest artifacts are not needed in
 a project, you can disable this behavior to save space:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Artifacts**.
-1. Clear the **Keep artifacts from most recent successful jobs** checkbox.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Clear the  checkbox.
 
 After disabling this setting, all new artifacts expire according to the `expire_in` configuration.
 Artifacts in old pipelines continue to be kept until a new pipeline runs for the same ref.
 Then the artifacts in the earlier pipeline for that ref are allowed to expire too.
 
 You can disable this behavior for all projects on GitLab Self-Managed with the
-[**Keep artifacts from latest successful pipelines**](../../administration/settings/continuous_integration.md#keep-artifacts-from-latest-successful-pipelines) instance setting.
+[](../../administration/settings/continuous_integration.md#keep-artifacts-from-latest-successful-pipelines) instance setting.
 
 ## Related topics
 

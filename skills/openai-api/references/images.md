@@ -6,6 +6,74 @@
 
 This endpoint is retired and no longer available. Use the image edits endpoint with a GPT Image model and a prompt to create a variation of an image. The request and response schemas below describe the legacy contract.
 
+### Body Parameters
+
+Content type: `multipart/form-data`
+
+- `image: string`
+
+  The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square.
+
+- `model: optional string or ImageModel or null (default: "dall-e-2")`
+
+  The legacy model used by the retired image variations endpoint. This endpoint no longer accepts requests.
+
+  - `string`
+
+  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 9 more`
+
+    - `"gpt-image-1.5"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
+
+    - `"gpt-image-2.5-sunburst"`
+
+    - `"gpt-image-2.5-sunburst-2026-09-08"`
+
+    - `"gpt-image-2.5-flare"`
+
+    - `"gpt-image-2.5-flare-2026-09-08"`
+
+    - `"gpt-image-1"`
+
+    - `"gpt-image-1-mini"`
+
+    - `"chatgpt-image-latest"`
+
+    - `"dall-e-2"`
+
+    - `"dall-e-3"`
+
+- `n: optional integer or null (default: 1)`
+
+  The number of images to generate. Must be between 1 and 10.
+
+  `minimum: 1`, `maximum: 10`
+
+- `response_format: optional "url" or "b64_json" or null (default: "url")`
+
+  The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated.
+
+  - `"url"`
+
+  - `"b64_json"`
+
+- `size: optional "256x256" or "512x512" or "1024x1024" or null (default: "1024x1024")`
+
+  The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`.
+
+  - `"256x256"`
+
+  - `"512x512"`
+
+  - `"1024x1024"`
+
+- `user: optional string`
+
+  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+
 ### Returns
 
 - `ImagesResponse object { created, background, data, 5 more }`
@@ -208,6 +276,8 @@ curl https://api.openai.com/v1/images/variations \
 Creates an edited or extended image given one or more source images and a prompt. This endpoint supports GPT Image models.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `images: array of object { file_id, image_url }`
 
@@ -673,6 +743,8 @@ data: {"type":"image_edit.completed","b64_json":"...","usage":{"total_tokens":10
 Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/guides/images-vision).
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `model: string or ImageModel`
 

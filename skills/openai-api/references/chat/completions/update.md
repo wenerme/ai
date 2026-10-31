@@ -14,6 +14,8 @@ the only supported modification is to update the `metadata` field.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be

@@ -39,7 +39,7 @@ app.post(
 
 ###  maxSize: `number`
 
-The maximum file size of the file you want to limit. The default is `100 * 1024` - `100kb`.
+The maximum file size of the file you want to limit.
 
 ###  onError: `OnError`
 

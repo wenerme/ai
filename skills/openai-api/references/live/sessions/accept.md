@@ -12,6 +12,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `session: object { model, type, audio, 5 more }`
 
   Model and startup configuration for the Live session that answers the incoming SIP call.

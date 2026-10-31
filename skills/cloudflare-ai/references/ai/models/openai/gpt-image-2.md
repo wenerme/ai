@@ -30,7 +30,7 @@ OpenAI's next-generation image model that creates and edits images from text pro
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
-| Pricing | <ul><li>Cached input image (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$1.25</li><li>Input image (per 1M tokens)$8.00</li><li>Input (per 1M tokens)$5.00</li><li>Output image (per 1M tokens)$30.00</li><li>Output (per 1M tokens)$10.00</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$5.00</li><li>Input image (per 1M tokens)$8.00</li><li>Cached input (per 1M tokens)$1.25</li><li>Cached input image (per 1M tokens)$2.00</li><li>Output image (per 1M tokens)$30.00</li><li>Output (per 1M tokens)$10.00</li></ul> |
 
 ## Usage
 
@@ -332,7 +332,7 @@ quality
 
 size
 
-`string`enum: 1024x1024, 1024x1536, 1536x1024, autoSize of the generated image
+`string`pattern: ^(?:auto|\\d+x\\d+)$Size of the generated image: auto or WIDTHxHEIGHT. Each edge must be at most 3840 pixels, both dimensions must be multiples of 16, the aspect ratio must be between 1:3 and 3:1, and total pixels must be between 655,360 and 8,294,400.
 
 background
 

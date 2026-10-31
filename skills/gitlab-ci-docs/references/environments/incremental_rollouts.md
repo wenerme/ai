@@ -61,7 +61,7 @@ rollout 10%:
     ROLLOUT_PERCENTAGE: 10
 ```
 
-After the jobs are built, select **Run** () next to the job's name
+After the jobs are built, select  () next to the job's name
 to release each stage of pods. You can also roll back by running a lower percentage job. After 100%
 is reached, you cannot roll back using this method. To roll back a deployment, see [retry or roll back a deployment](deployments.md#retry-or-roll-back-a-deployment).
 

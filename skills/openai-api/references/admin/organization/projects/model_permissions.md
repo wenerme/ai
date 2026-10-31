@@ -152,6 +152,8 @@ Updates model permissions for a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `mode: "allow_list" or "deny_list"`
 
   The model permissions mode to apply.

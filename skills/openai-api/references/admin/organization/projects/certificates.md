@@ -16,6 +16,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `certificate_ids: array of string`
 
   `minItems: 1`, `maxItems: 10`
@@ -159,6 +161,8 @@ idempotently deactivate up to 10 certificates at a time.
   The ID of the project.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `certificate_ids: array of string`
 

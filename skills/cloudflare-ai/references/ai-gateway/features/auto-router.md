@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?
 
 # Auto Router
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/auto-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/auto-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway Auto Router automatically selects an AI model for each request. It helps reduce costs while maintaining the quality of responses by matching requests with the model best suited to the task.
 
@@ -48,7 +48,7 @@ curl -i -X POST "https://gateway.ai.cloudflare.com/v1/$CLOUDFLARE_ACCOUNT_ID/$CL
 The response headers show which model Auto Router selected:
 
 ```txt
-cf-aig-routed-model: openai/gpt-5.6-luna
+cf-aig-routed-model: openai/gpt-6-luna
 cf-aig-routing-reason: cost_optimal_within_pool
 cf-aig-routing-decision-id: 91e0b970-33f0-4921-b8dc-127412e7b103
 ```
@@ -131,7 +131,7 @@ The response includes headers that describe the routing decision. These headers 
 
 | Header | Description |
 | --- | --- |
-| `cf-aig-routed-model` | The model that served the request, for example `anthropic/claude-sonnet-5`. |
+| `cf-aig-routed-model` | The model that served the request, for example `anthropic/claude-sonnet-5.5`. |
 | `cf-aig-routing-reason` | Why that model was selected. Refer to [Routing reasons](#routing-reasons). |
 | `cf-aig-routing-decision-id` | The routing decision identifier. |
 | `cf-aig-request-id` | The request identifier. |
@@ -161,13 +161,14 @@ By default, Auto Router selects from the following models. To provide your own s
 
 | Model | Provider |
 | --- | --- |
-| `anthropic/claude-fable-5` | `anthropic` |
-| `anthropic/claude-opus-5` | `anthropic` |
-| `anthropic/claude-sonnet-5` | `anthropic` |
-| `openai/gpt-5.6-luna` | `openai` |
-| `openai/gpt-5.6-sol` | `openai` |
-| `openai/gpt-5.6-terra` | `openai` |
-| `xai/grok-4.5` | `xai` |
+| `@cf/deepseek-ai/deepseek-v4-flash-0731` | `workers-ai` |
+| `anthropic/claude-haiku-5.5` | `anthropic` |
+| `anthropic/claude-opus-5.5` | `anthropic` |
+| `anthropic/claude-sonnet-5.5` | `anthropic` |
+| `moonshotai/kimi-k3` | `workers-ai` |
+| `openai/gpt-6-luna` | `openai` |
+| `openai/gpt-6.1-sol` | `openai` |
+| `xai/grok-4.7` | `xai` |
 
 ### Additional models
 
@@ -183,7 +184,6 @@ Additional models
 
 | Model | Provider |
 | --- | --- |
-| <code>@cf/deepseek-ai/deepseek-v4-flash-0731</code> | <code>workers-ai</code> |
 | <code>@cf/deepseek-ai/deepseek-v4-pro-0813</code> | <code>workers-ai</code> |
 | <code>@cf/google/gemma-4-26b-a4b-it</code> | <code>workers-ai</code> |
 | <code>@cf/moonshotai/kimi-k2.7-code</code> | <code>workers-ai</code> |
@@ -191,17 +191,23 @@ Additional models
 | <code>@cf/qwen/qwen3.8-27b</code> | <code>workers-ai</code> |
 | <code>@cf/zai-org/glm-5.2</code> | <code>workers-ai</code> |
 | <code>alibaba/qwen3.8-max</code> | <code>alibaba</code> |
+| <code>anthropic/claude-fable-5</code> | <code>anthropic</code> |
 | <code>anthropic/claude-fable-5.1</code> | <code>anthropic</code> |
 | <code>anthropic/claude-opus-4.8</code> | <code>anthropic</code> |
-| <code>anthropic/claude-opus-5.5</code> | <code>anthropic</code> |
+| <code>anthropic/claude-opus-5</code> | <code>anthropic</code> |
 | <code>anthropic/claude-sonnet-4.6</code> | <code>anthropic</code> |
+| <code>anthropic/claude-sonnet-5</code> | <code>anthropic</code> |
 | <code>fireworks/glm-5.3</code> | <code>fireworks</code> |
 | <code>fireworks/glm-5.3-flash</code> | <code>fireworks</code> |
+| <code>google/gemini-3.8-flash</code> | <code>google-vertex-ai</code> |
 | <code>minimax/m3</code> | <code>minimax</code> |
 | <code>openai/gpt-5.5</code> | <code>openai</code> |
+| <code>openai/gpt-5.6-luna</code> | <code>openai</code> |
+| <code>openai/gpt-5.6-sol</code> | <code>openai</code> |
+| <code>openai/gpt-5.6-terra</code> | <code>openai</code> |
 | <code>openai/gpt-6-astra</code> | <code>openai</code> |
-| <code>openai/gpt-6-luna</code> | <code>openai</code> |
 | <code>openai/gpt-6-sol</code> | <code>openai</code> |
+| <code>xai/grok-4.5</code> | <code>xai</code> |
 | <code>xai/grok-4.6</code> | <code>xai</code> |
 
 </details>
@@ -279,5 +285,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/auto-router/#page","headline":"Auto Router","description":"Automatically select a model for each request that balances response quality and cost.","url":"https://developers.cloudflare.com/ai-gateway/features/auto-router/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?v=2485574d63144221","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/auto-router/#page","headline":"Auto Router","description":"Automatically select a model for each request that balances response quality and cost.","url":"https://developers.cloudflare.com/ai-gateway/features/auto-router/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?v=2485574d63144221","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

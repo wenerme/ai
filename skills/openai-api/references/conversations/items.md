@@ -37,6 +37,8 @@ Create items in a conversation with the given ID.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `items: array of EasyInputMessage or Message { content, role, status, type }  or ResponseOutputMessage or 30 more`
 
   The items to add to the conversation. You may add up to 20 items at a time.

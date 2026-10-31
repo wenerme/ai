@@ -71,10 +71,10 @@ The instance of `Hono` is used in your application.
 Form key with a value containing the method name.
 The default is `_method`.
 
-###  header: `boolean`
+###  header: `string`
 
 Header name with a value containing the method name.
 
-###  query: `boolean`
+###  query: `string`
 
 Query parameter key with a value containing the method name.

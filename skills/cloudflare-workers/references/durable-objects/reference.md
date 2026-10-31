@@ -19,7 +19,6 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Data security](https://developers.cloudflare.com/durable-objects/reference/data-security/)
 - [Data location](https://developers.cloudflare.com/durable-objects/reference/data-location/)
 - [Environments](https://developers.cloudflare.com/durable-objects/reference/environments/)
-- [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#gradual-deployments-for-durable-objects)
 - [FAQs](https://developers.cloudflare.com/durable-objects/reference/faq/)
 - [Glossary](https://developers.cloudflare.com/durable-objects/reference/glossary/)
 - [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/)

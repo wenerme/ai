@@ -8,6 +8,8 @@ Creates a custom role for the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `permissions: array of string`
 
   Permissions to grant to the role.
@@ -430,6 +432,8 @@ Updates an existing organization role.
   The ID of the role to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `description: optional string or null`
 

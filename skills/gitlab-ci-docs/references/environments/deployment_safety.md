@@ -74,7 +74,7 @@ This creates a race condition where the older deployment finishes later,
 overwriting the "newer" deployment.
 
 You can prevent older deployment jobs from running when a newer deployment
-job is started with the [**Prevent outdated deployment jobs**](../pipelines/settings.md#prevent-outdated-deployment-jobs) setting.
+job is started with the [](../pipelines/settings.md#prevent-outdated-deployment-jobs) setting.
 
 When an older deployment job starts, it fails and is labeled:
 
@@ -82,7 +82,7 @@ When an older deployment job starts, it fails and is labeled:
 - `The deployment job is older than the latest deployment, and therefore failed.`
   when viewing the completed job.
 
-When an older deployment job is manual, the **Run** () button is disabled with a message
+When an older deployment job is manual, the  () button is disabled with a message
 `This deployment job does not run automatically and must be started manually, but it's older than the latest deployment, and therefore can't run.`.
 
 Job age is determined by the job start time, not the commit time, so a newer commit might be prevented in some circumstances.
@@ -94,13 +94,13 @@ job after you create pipeline B, pipeline B's manual deploy job is blocked as ou
 You might need to quickly roll back to a stable, outdated deployment.
 By default, pipeline job retries for [deployment rollback](deployments.md#deployment-rollback) are enabled.
 
-To disable pipeline retries, clear the **Allow job retries for rollback deployments** checkbox. You should disable pipeline retries in sensitive projects.
+To disable pipeline retries, clear the  checkbox. You should disable pipeline retries in sensitive projects.
 
 When a rollback is required, you must run a new pipeline with a previous commit.
 
 ### Example
 
-Example of a problematic pipeline flow with the **Prevent outdated deployment jobs** setting disabled:
+Example of a problematic pipeline flow with the  setting disabled:
 
 1. Pipeline-A is created on the default branch.
 1. Later, Pipeline-B is created on the default branch (with a newer commit SHA).

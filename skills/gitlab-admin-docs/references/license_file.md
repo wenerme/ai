@@ -72,7 +72,9 @@ following month after you submit your license usage data.
 
 ## What happens when your license expires
 
-Fifteen days before the license expires, a notification banner with the upcoming expiration
+- Expiration notification banner [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266547) from 15 to 30 days before the license expires in GitLab 19.6.
+
+Thirty days before the license expires, a notification banner with the upcoming expiration
 date displays to GitLab administrators.
 
 Licenses expire at the start of the expiration date, 00:00 server time.

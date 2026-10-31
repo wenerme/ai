@@ -189,6 +189,8 @@ Create or replace a project's hard spend limit.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `currency: "USD"`
 
   The currency for the threshold amount. Currently, only `USD` is supported.

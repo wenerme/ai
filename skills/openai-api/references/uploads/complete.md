@@ -19,6 +19,8 @@ Returns the Upload object with status `completed`, including an additional `file
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `part_ids: array of string`
 
   The ordered list of Part IDs.

@@ -213,7 +213,7 @@ To purchase additional storage for your group on GitLab.com:
 ### Billing account manager
 
 1. Go to [Customers Portal](https://customers.gitlab.com/customers/sign_in).
-1. On the subscription card, select the vertical ellipsis () and then **Buy more storage**.
+1. By the relevant subscription, select the vertical ellipsis () and then **Buy more storage**.
 1. In the **Subscription details** section, in the **Quantity** field enter, the desired quantity of storage packs.
 1. In the **Customer information** section, verify your address.
 1. In the **Billing information** section, select a payment method from the dropdown list.

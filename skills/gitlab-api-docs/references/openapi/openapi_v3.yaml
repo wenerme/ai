@@ -3766,6 +3766,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -3916,6 +3918,98 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4AiDuoWorkflowsWorkflowsWorkflowIdExecuteRequest"
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/session_files/authorize":
+    post:
+      operationId: postApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFilesAuthorize
+      summary: Workhorse authorize a session file upload
+      description: Workhorse pre-authorization endpoint for uploading a session file.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: ID of the workflow.
+        schema:
+          type: string
+        in: path
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/session_files":
+    post:
+      operationId: postApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFiles
+      summary: Upload a session file
+      description: Uploads an image the user attached to the session.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Validation failed
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: workflow_id
+        required: true
+        description: ID of the workflow.
+        schema:
+          type: string
+        in: path
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              "$ref": "#/components/schemas/postApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFilesRequest"
+      x-gitlab-lifecycle: experiment
+  "/api/v4/ai/duo_workflows/workflows/{workflow_id}/session_files/{file_id}":
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFilesFileId
+      summary: Get a session file with its contents
+      description: Returns a file the user attached to the session, with its contents
+        base64 encoded.
+      tags:
+      - GitLab Duo workflows
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: workflow_id
+        required: true
+        description: ID of the workflow.
+        schema:
+          type: string
+        in: path
+      - name: file_id
+        required: true
+        description: ID of the session file.
+        schema:
+          type: integer
+        in: path
+        example: 1
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/workflows/{workflow_id}/resume":
     post:
@@ -104709,6 +104803,16 @@ components:
             and keep it going after the request ends.
           example: true
           nullable: true
+    postApiV4AiDuoWorkflowsWorkflowsWorkflowIdSessionFilesRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: The image file to upload
+          nullable: true
+      required:
+      - file
     postApiV4AiDuoWorkflowsWorkflowsWorkflowIdResumeRequest:
       type: object
       properties:

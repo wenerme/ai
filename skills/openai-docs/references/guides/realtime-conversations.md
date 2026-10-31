@@ -120,6 +120,49 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+```go
+// Replace pmpt_123 and 89 with an existing saved prompt and version.
+// The saved prompt must define the city variable.
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfSessionUpdate(realtime.RealtimeSessionCreateRequestParam{
+	Model: "gpt-realtime-2.1",
+	Prompt: responses.ResponsePromptParam{
+		ID:      "pmpt_123",
+		Version: openai.String("89"),
+		Variables: map[string]responses.ResponsePromptVariableUnionParam{
+			"city": {
+				OfString: openai.String("Paris"),
+			},
+		},
+	},
+	OutputModalities: []string{"audio"},
+	Instructions:     openai.String("Speak clearly and briefly. Confirm before taking action."),
+	Audio: realtime.RealtimeAudioConfigParam{
+		Input: realtime.RealtimeAudioConfigInputParam{
+			Format: realtime.RealtimeAudioFormatsUnionParam{
+				OfAudioPCM: &realtime.RealtimeAudioFormatsAudioPCMParam{
+					Rate: 24000,
+				},
+			},
+			TurnDetection: realtime.RealtimeAudioInputTurnDetectionUnionParam{
+				OfSemanticVad: &realtime.RealtimeAudioInputTurnDetectionSemanticVadParam{},
+			},
+		},
+		Output: realtime.RealtimeAudioConfigOutputParam{
+			Format: realtime.RealtimeAudioFormatsUnionParam{
+				OfAudioPCM: &realtime.RealtimeAudioFormatsAudioPCMParam{
+					Rate: 24000,
+				},
+			},
+			Voice: realtime.RealtimeAudioConfigOutputVoiceUnionParam{
+				OfString: openai.String("marin"),
+			},
+		},
+	},
+})); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -267,6 +310,19 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCreate(realtime.RealtimeConversationItemUserMessageParam{
+	Content: []realtime.RealtimeConversationItemUserMessageContentParam{
+		{
+			Text: openai.String("What Prince album sold the most copies?"),
+			Type: "input_text",
+		},
+	},
+})); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -339,6 +395,18 @@ ws.send(JSON.stringify(event));
 ```python
 event = {"type": "response.create", "response": {"output_modalities": ["text"]}}
 ws.send(json.dumps(event))
+```
+
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			OutputModalities: []string{"text"},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```java
@@ -418,6 +486,40 @@ def on_message(ws, message):
     server_event = json.loads(message)
     if server_event["type"] == "response.done":
         print(server_event["response"]["output"][0])
+```
+
+```go
+func receiveUntil(ctx context.Context, conn *realtime.RealtimeConnection, terminal string) (realtime.RealtimeServerEventUnion, error) {
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return event, fmt.Errorf("waiting for %s: %w", terminal, err)
+		}
+		if event.Type == "error" {
+			return event, fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+		if event.Type == "response.done" && event.OfResponseDoneEvent.Response.Status != "completed" {
+			return event, fmt.Errorf("response ended with status %s", event.OfResponseDoneEvent.Response.Status)
+		}
+		if event.Type == "response.done" {
+			response := event.OfResponseDoneEvent.Response
+			fmt.Println("Response status:", response.Status)
+			for _, output := range response.Output {
+				item := output.OfRealtimeConversationItemAssistantMessage
+				if item.Type == "message" {
+					for _, content := range item.Content {
+						if content.Type == "output_text" {
+							fmt.Print(content.Text)
+						}
+					}
+				}
+			}
+		}
+		if event.Type == terminal {
+			return event, nil
+		}
+	}
+}
 ```
 
 ```java
@@ -797,6 +899,16 @@ for filename in files:
     ws.send(json.dumps(event))
 ```
 
+```go
+// audio contains mono PCM16 samples at 24 kHz.
+for start := 0; start < len(audio); start += 9600 {
+	end := min(start+9600, len(audio))
+	if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfInputAudioBufferAppend(base64.StdEncoding.EncodeToString(audio[start:end]))); err != nil {
+		return err
+	}
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -896,6 +1008,19 @@ event = {
 }
 
 ws.send(json.dumps(event))
+```
+
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCreate(realtime.RealtimeConversationItemUserMessageParam{
+	Content: []realtime.RealtimeConversationItemUserMessageContentParam{
+		{
+			Audio: openai.String(base64.StdEncoding.EncodeToString(audio)),
+			Type:  "input_audio",
+		},
+	},
+})); err != nil {
+	return err
+}
 ```
 
 ```java
@@ -1011,6 +1136,33 @@ def on_message(ws, message):
         print(server_event["delta"])
 ```
 
+```go
+func receiveUntil(ctx context.Context, conn *realtime.RealtimeConnection, terminal string) (realtime.RealtimeServerEventUnion, error) {
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return event, fmt.Errorf("waiting for %s: %w", terminal, err)
+		}
+		if event.Type == "response.output_audio.delta" {
+			audio, err := base64.StdEncoding.DecodeString(event.OfResponseAudioDeltaEvent.Delta)
+			if err != nil {
+				return event, err
+			}
+			fmt.Printf("Received %d audio bytes\n", len(audio))
+		}
+		if event.Type == "error" {
+			return event, fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+		if event.Type == "response.done" && event.OfResponseDoneEvent.Response.Status != "completed" {
+			return event, fmt.Errorf("response ended with status %s", event.OfResponseDoneEvent.Response.Status)
+		}
+		if event.Type == terminal {
+			return event, nil
+		}
+	}
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -1078,6 +1230,33 @@ const event = {
 
 // WebRTC data channel and WebSocket both have .send()
 dataChannel.send(JSON.stringify(event));
+```
+
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCreate(realtime.RealtimeConversationItemUserMessageParam{
+	Content: []realtime.RealtimeConversationItemUserMessageContentParam{
+		{
+			ImageURL: openai.String("data:image/png;base64," + base64.StdEncoding.EncodeToString(image)),
+			Type:     "input_image",
+		},
+		{
+			Text: openai.String("Describe this image."),
+			Type: "input_text",
+		},
+	},
+})); err != nil {
+	return err
+}
+
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			OutputModalities: []string{"text"},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```ruby
@@ -1191,6 +1370,23 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			Instructions: openai.String("\nAnalyze the conversation so far. If it is related to support, output\n\"support\". If it is related to sales, output \"sales\".\n"),
+			Metadata: shared.Metadata{
+				"topic": "classification",
+			},
+			Conversation:     "none",
+			OutputModalities: []string{"text"},
+		},
+	},
+}); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -1301,6 +1497,43 @@ def on_message(ws, message):
             f"Classification response ended with status {response['status']}"
         )
     print(response["output"][0])
+```
+
+```go
+func receiveUntil(ctx context.Context, conn *realtime.RealtimeConnection, terminal string) (realtime.RealtimeServerEventUnion, error) {
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return event, fmt.Errorf("waiting for %s: %w", terminal, err)
+		}
+		if event.Type == "error" {
+			return event, fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+		if event.Type == "response.done" && event.OfResponseDoneEvent.Response.Metadata["topic"] != "classification" {
+			continue
+		}
+		if event.Type == "response.done" && event.OfResponseDoneEvent.Response.Status != "completed" {
+			return event, fmt.Errorf("response ended with status %s", event.OfResponseDoneEvent.Response.Status)
+		}
+		if event.Type == "response.done" {
+			response := event.OfResponseDoneEvent.Response
+			fmt.Println("Response status:", response.Status)
+			for _, output := range response.Output {
+				item := output.OfRealtimeConversationItemAssistantMessage
+				if item.Type == "message" {
+					for _, content := range item.Content {
+						if content.Type == "output_text" {
+							fmt.Print(content.Text)
+						}
+					}
+				}
+			}
+		}
+		if event.Type == terminal {
+			return event, nil
+		}
+	}
+}
 ```
 
 ```java
@@ -1550,6 +1783,20 @@ event = {
 }
 
 ws.send(json.dumps(event))
+```
+
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			Instructions:     openai.String("\nSay exactly the following:\nI'm a little teapot, short and stout!\nThis is my handle, this is my spout!\n"),
+			Input:            []realtime.ConversationItemUnionParam{},
+			OutputModalities: []string{"text"},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```java

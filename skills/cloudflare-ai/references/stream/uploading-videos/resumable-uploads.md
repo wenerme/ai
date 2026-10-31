@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/stream/uploading-videos/resumable-uploa
 
 # Resumable and large files (tus)
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you need to upload a video that is over 200 MB, you must use the [tus protocol ↗︎](https://tus.io/). Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
 
@@ -24,7 +24,7 @@ If your video is under 200 MB and your connection is reliable, you can use a bas
 
 - Resumable uploads require a minimum chunk size of 5,242,880 bytes unless the entire file is less than this amount. For better performance when the client connection is expected to be reliable, increase the chunk size to 52,428,800 bytes.
 - Maximum chunk size is 209,715,200 bytes.
-- Chunk size must be divisible by 256 KiB (256x1024 bytes). Round your chunk size to the nearest multiple of 256 KiB. Note that the final chunk of an upload that fits within a single chunk is exempt from this requirement.
+- Chunk sizes must be be consistent across the entire upload and divisible by 256 KiB (256x1024 bytes). Only the final chunk of an upload that fits within a single chunk is exempt from this requirement.
 
 ## Prerequisites
 
@@ -247,5 +247,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus)","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/og.png?v=717930da081a0b42","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus)","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/og.png?v=717930da081a0b42","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

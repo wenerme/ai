@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/platform/limits/og.png?v=
 
 Email sending quotas, rate limits, and how to request higher limits for production use
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) unless noted otherwise.
 
@@ -36,8 +36,7 @@ Sends to verified destination addresses are always free: they do not count towar
 | --- | --- | --- |
 | **Recipients (to, cc, bcc)** | 50 per email | Combined across all recipient fields |
 | **Subject line** | 998 characters | RFC 5322 compliant |
-| **Total message size** | 5 MiB | Including attachments |
-| **Total message size** | 25 MiB | For [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) only |
+| **Total message size** | 25 MiB | Including attachments |
 | **Header size** | 16 KB | All custom headers combined |
 
 ## Suppression list limits
@@ -104,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/platform/limits/#page","headline":"Limits","description":"Email Service sending quotas, rate limits, message size limits, and compliance requirements.","url":"https://developers.cloudflare.com/email-service/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/platform/limits/og.png?v=6630ae5a023cafad","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/platform/limits/#page","headline":"Limits","description":"Email Service sending quotas, rate limits, message size limits, and compliance requirements.","url":"https://developers.cloudflare.com/email-service/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/platform/limits/og.png?v=6630ae5a023cafad","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

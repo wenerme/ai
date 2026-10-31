@@ -270,7 +270,7 @@ prompt
 
 thinking\_mode
 
-`string`enum: fast, highHow much Krea reasons about the request before generating.
+`string`enum: fast, high, ultraHow much Krea reasons about the request before generating.
 
 resolution
 

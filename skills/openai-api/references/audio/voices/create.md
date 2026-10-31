@@ -10,6 +10,8 @@ Returns the saved voice's metadata. Voices created from text prompts are support
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The name of the new voice.

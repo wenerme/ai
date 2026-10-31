@@ -45,7 +45,7 @@ The following table describes Cache Response Rules availability per plan.
 
 ## Troubleshooting
 
-When troubleshooting Cache Response Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+When troubleshooting Cache Response Rules, use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to determine if a rule is triggering for a specific URL.
 
 ## Relationship with Cache Rules
 

@@ -92,7 +92,7 @@ Using Cloudflare challenges along with Rules features may cause challenge loops.
 
 ## Troubleshooting
 
-When troubleshooting Request Header Transform Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+When troubleshooting Request Header Transform Rules, use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to determine if a rule is triggering for a specific URL.
 
 Was this helpful?
 

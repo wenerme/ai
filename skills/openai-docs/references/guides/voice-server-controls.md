@@ -296,6 +296,40 @@ ws.on("message", function incoming(message) {
 ```
 
 
+In Go, pass the call ID to your server-side session update function:
+
+```go
+func updateSession(ctx context.Context, client openai.Client, callID string) error {
+	conn, err := client.Realtime.Connect(ctx, realtime.RealtimeConnectionOptions{}, option.WithQuery("call_id", callID))
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfSessionUpdate(realtime.RealtimeSessionCreateRequestParam{
+		Instructions: openai.String("Be extra nice today!"),
+	})); err != nil {
+		return err
+	}
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return err
+		}
+		if event.Type == "error" {
+			return fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+		if event.Type == "session.updated" {
+			if event.OfSessionUpdatedEvent.Session.OfRealtimeSessionCreateRequest.Instructions != "Be extra nice today!" {
+				return fmt.Errorf("session update was not applied")
+			}
+			fmt.Println("session.updated")
+			return nil
+		}
+	}
+}
+```
+
+
 In this way, you are able to add tools, monitor sessions, and carry out business logic on the server instead of needing to configure those actions on the client.
 
 ## With SIP

@@ -16,6 +16,8 @@ Updates an existing project role.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `description: optional string or null`
 
   New description for the role.

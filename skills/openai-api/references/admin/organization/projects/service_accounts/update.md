@@ -16,6 +16,8 @@ Updates a service account in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: optional string`
 
   The updated service account name.

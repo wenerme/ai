@@ -106,12 +106,11 @@ supplies the following:
 
 ### Organization security dashboard
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245508) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `organization_security_dashboard`. Disabled by default.
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
 
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245508) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `organization_security_dashboard`. Disabled by default.
 
 The organization security dashboard provides an overview of vulnerabilities found in the default
 branches of all projects in the organization. The dashboard includes:
@@ -127,6 +126,12 @@ branches of all projects in the organization. The dashboard includes:
 > The [SAST triage and remediation funnel](#sast-triage-and-remediation-funnel) chart and the
 > [Export as PDF](#export-as-pdf) option are not available on the organization security
 > dashboard.
+
+The organization security dashboard requires the [organizations](../../organization/_index.md) feature:
+
+- On GitLab.com, the organizations feature is in closed beta and available by invitation only.
+- On GitLab Self-Managed, you can enable the organizations feature with a feature flag.
+- On GitLab Dedicated, the organizations feature is not yet available.
 
 ### Charts
 

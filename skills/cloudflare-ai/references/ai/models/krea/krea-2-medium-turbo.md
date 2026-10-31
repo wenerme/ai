@@ -28,7 +28,7 @@ The fastest Krea 2 model, built for low-cost iteration on expressive illustratio
 | --- | --- |
 | Terms and License | [link ↗](https://www.krea.ai/terms) |
 | More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium-turbo) |
-| Pricing | <ul><li>Default (per second)$0.015</li><li>Per image$0.015</li></ul> |
+| Pricing | <ul><li>Per image$0.015</li></ul> |
 
 ## Usage
 

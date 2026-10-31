@@ -105,15 +105,15 @@ Prerequisites:
 
 To add a `Coverage-Check` approval rule:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Merge requests**.
-1. Under **Merge request approvals**, do one of the following:
-   - Next to the `Coverage-Check` approval rule, select **Enable**.
-   - For manual setup, select **Add approval rule**, then enter `Coverage-Check` as the **Rule name**.
-1. Select a **Target branch**.
-1. Set the number of **Required number of approvals**.
-1. Select the **Users** or **Groups** to provide approval.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Under , do one of the following:
+   - Next to the `Coverage-Check` approval rule, select .
+   - For manual setup, select , then enter `Coverage-Check` as the .
+1. Select a .
+1. Enter the .
+1. Select the  or  to provide approval.
+1. Select .
 
 > [!note]
 > The `Coverage-Check` approval rule requires approval when the merge base pipeline contains
@@ -125,18 +125,18 @@ You can track coverage trends for your project or group over time.
 
 ### For a project
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Analyze** > **Repository analytics**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. From the dropdown list, select the job you want to view historical data for.
-1. Optional. To download the data, select **Download raw data (.csv)**.
+1. Optional. To download the data, select .
 
 ### For a group
 
 - Tier: Premium, Ultimate
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Analyze** > **Repository analytics**.
-1. Optional. To download the data, select **Download historic test coverage data (.csv)**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Optional. To download the data, select .
 
 ## Display coverage badges
 

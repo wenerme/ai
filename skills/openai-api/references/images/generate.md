@@ -6,6 +6,8 @@ Creates an image given a prompt using a GPT Image model. [Learn more](/api/docs/
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `model: string or ImageModel`
 
   The GPT image model to use for image generation. Specify a model explicitly.

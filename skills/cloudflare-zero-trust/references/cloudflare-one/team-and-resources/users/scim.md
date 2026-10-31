@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users
 
 # SCIM provisioning
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 System for Cross-domain Identity Management (SCIM) is an open standard protocol that allows identity providers to synchronize user identity information with cloud applications and services. After configuring SCIM, user identities that you create, edit, or delete in the identity provider are automatically updated across all supported applications. This makes it easier for IT admins to onboard new users, update their groups and permissions, and revoke access in the event of an employee termination or security breach.
 
@@ -26,6 +26,8 @@ Users provisioned via the [Zero Trust SCIM integration](#sync-users-and-groups-i
 
 Cloudflare One supports SCIM provisioning for all SAML and OIDC identity providers that use SCIM version `2.0`.
 
+For Google's built-in SCIM provisioning, you must use a [Google Workspace (SAML/SCIM) integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/), not the dedicated Google Workspace integration. Google's custom SCIM profiles are in beta and provision users; configure [SAML group membership mapping](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/#1-create-a-custom-saml-app-in-google-workspace) separately to send groups during authentication.
+
 ## Sync users and groups in Zero Trust policies
 
 Cloudflare Access can automatically deprovision users from Zero Trust after they are deactivated in the identity provider and display synchronized group names in the Access and Gateway policy builders. Cloudflare does not provision new users in Zero Trust when they are added to the identity provider -- users must first register a device with the Cloudflare One Client or authenticate to an Access application.
@@ -38,6 +40,10 @@ Gateway evaluates identity-based policies against the [User Registry identity](h
 
 To set up SCIM for Zero Trust, refer to our [SSO integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) guides.
 
+## View provisioned users and groups
+
+Use the [SCIM population viewer](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/) to inspect users and groups provisioned through each identity provider. You can search for resources, inspect their attributes and group membership, and compare resource IDs with SCIM provisioning logs.
+
 ## Common provider-specific issues
 
 SCIM behavior depends on the identity provider configuration as well as Cloudflare.
@@ -46,6 +52,7 @@ Common issues include:
 
 - **Okta**: User sync and group sync are separate. Make sure **Push Groups** is configured if you expect groups to appear in Zero Trust policies.
 - **Microsoft Entra ID**: Group sync only occurs for groups included in the provisioning scope. The `userName` attribute should match the user's email address in Cloudflare One.
+- **Google Workspace**: SCIM requires a generic SAML integration. Selecting Google groups as a provisioning scope limits which users are provisioned; it does not send group membership. Configure the SAML app to send a `groups` attribute for group-based policies.
 
 If users appear but groups do not, verify the IdP-side SCIM app first before troubleshooting Cloudflare policy behavior.
 
@@ -58,5 +65,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/#page","headline":"SCIM provisioning","description":"How SCIM provisioning works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/og.png?v=8827d86256e0c19d","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/#page","headline":"SCIM provisioning","description":"How SCIM provisioning works in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/og.png?v=8827d86256e0c19d","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SCIM"]}
 ```

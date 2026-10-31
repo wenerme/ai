@@ -8,6 +8,8 @@ Create Container
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   Name of the container to create.
@@ -958,6 +960,8 @@ You can send either a multipart/form-data request with the raw file content, or 
 - `container_id: string`
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `file: optional string`
 

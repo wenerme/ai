@@ -12,6 +12,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 
   Details about the run's data source.

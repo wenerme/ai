@@ -1,5 +1,5 @@
 ---
-description: Vectorize pricing based on queried and stored vector dimensions.
+description: Vectorize pricing for indexes above the included allocation and queried and stored vector dimensions.
 title: Pricing
 image: https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae943fbd0e81b00c
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae9
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize is now Generally Available
 
@@ -22,8 +22,9 @@ Vectorize bills are based on:
 
 - **Queried Vector Dimensions**: The total number of vector dimensions queried. If you have 10,000 vectors with 384-dimensions in an index, and make 100 queries against that index, your total queried vector dimensions would sum to 3.878 million ( `(10000 + 100) * 384`).
 - **Stored Vector Dimensions**: The total number of vector dimensions stored. If you have 1,000 vectors with 1536-dimensions in an index, your stored vector dimensions would sum to 1.536 million ( `1000 * 1536`).
+- **Indexes**: The Workers Paid plan includes 50,000 indexes per account. Each additional index costs $0.10 per month.
 
-You are not billed for CPU, memory, "active index hours", or the number of indexes you create. If you are not issuing queries against your indexes, you are not billed for queried vector dimensions.
+You are not billed for CPU, memory, or "active index hours". If you are not issuing queries against your indexes, you are not billed for queried vector dimensions.
 
 ## Billing metrics
 
@@ -31,6 +32,7 @@ You are not billed for CPU, memory, "active index hours", or the number of index
 | --- | --- | --- |
 | **Total queried vector dimensions** | 30 million queried vector dimensions / month | First 50 million queried vector dimensions / month included + $0.01 per million |
 | **Total stored vector dimensions** | 5 million stored vector dimensions | First 10 million stored vector dimensions + $0.05 per 100 million |
+| Indexes | 100 | Unlimited, with a default limit of 50,000. First 50,000 included + $0.10 per additional index per month. |
 
 ### Calculating vector dimensions
 
@@ -79,6 +81,8 @@ Yes: any queries you issue against your index, including from the Workers API, H
 
 No. Empty indexes do not count as stored vector dimensions.
 
+Empty indexes still count toward your account's index allocation. Each index above the Workers Paid allocation costs $0.10 per month.
+
 Was this helpful?
 
 YesNo
@@ -88,5 +92,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/pricing/#page","headline":"Pricing","description":"Vectorize pricing based on queried and stored vector dimensions.","url":"https://developers.cloudflare.com/vectorize/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae943fbd0e81b00c","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/pricing/#page","headline":"Pricing","description":"Vectorize pricing for indexes above the included allocation and queried and stored vector dimensions.","url":"https://developers.cloudflare.com/vectorize/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/vectorize/platform/pricing/og.png?v=ae943fbd0e81b00c","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

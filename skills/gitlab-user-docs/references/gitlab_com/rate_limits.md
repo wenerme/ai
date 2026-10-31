@@ -45,9 +45,13 @@ Some unauthenticated requests do not count against the unauthenticated limit of 
 each hour from an IP address:
 
 - Git over HTTPS requests
-- Container image requests to the [dependency proxy](../packages/dependency_proxy/_index.md)
+- Requests to the home page (`/`)
 - Sign-in requests, including [SAML SSO](../group/saml_sso/_index.md) and sign-in with a
   third-party provider such as Google or GitHub
+- Sign-up requests, including username availability checks and identity verification
+- Requests to reset a password, confirm an email address, or unlock an account
+- Free trial sign-up requests
+- Container image requests to the [dependency proxy](../packages/dependency_proxy/_index.md)
 - [OAuth 2.0](../../api/oauth2.md) authorization, access token, device authorization, and dynamic client
   registration requests
 - [OpenID Connect](../../integration/openid_connect_provider.md) discovery requests, such as the ones
@@ -60,6 +64,8 @@ each hour from an IP address:
 - [SCIM](../group/saml_sso/scim_setup.md) provisioning requests from an identity provider
 - Requests that Jira Cloud sends to the [GitLab for Jira Cloud app](../../integration/jira/connect-app.md),
   such as searching for and linking repositories
+- Create-branch links from Jira that GitLab.com
+  [redirects to a GitLab Self-Managed or GitLab Dedicated instance](../../administration/settings/jira_cloud_app.md#gitlabcom-handling-of-branch-creation)
 - Requests from the [GitLab for Slack app](../project/integrations/gitlab_slack_application.md)
 - Requests that [trigger a pipeline with a pipeline trigger token](../../ci/triggers/_index.md)
 - [Alerts](../../operations/incident_management/integrations.md) that monitoring tools send to an
@@ -168,6 +174,7 @@ the burst limit is also 2,000 requests each minute, so the two limits are the sa
 | GitLab Pages TLS connections for a GitLab Pages domain                                                        | 400 requests every 10 seconds   |
 | Pipeline creation requests for a project, user, or commit                                                     | 25 requests each minute         |
 | Pipeline creation requests for a user                                                                         | 2,000 requests each minute      |
+| [CI Lint](../../ci/yaml/lint.md) requests for a user                                                          | 400 requests each minute        |
 | Alert integration endpoint requests for a project                                                             | 3,600 requests every hour       |
 | GitLab Duo `aiAction` requests                                                                                | 160 requests every 8 hours      |
 | [Pull mirroring](../project/repository/mirror/pull.md) intervals                                              | 5 minutes                       |

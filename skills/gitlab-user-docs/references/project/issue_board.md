@@ -60,7 +60,7 @@ the software development lifecycle.
 
 Using the search box at the top of the menu, you can filter the listed boards.
 
-When you have ten or more boards available, a **Recent** section is also shown in the menu, with
+When you have ten or more boards available, a  section is also shown in the menu, with
 shortcuts to your last four visited boards.
 
 [Multiple issue boards.]
@@ -77,9 +77,9 @@ Prerequisites:
 To create a new issue board:
 
 1. In the upper-left corner of the issue board page, select the dropdown list with the current board name.
-1. Select **Create new board**.
+1. Select .
 1. Enter the new board's name and select its scope: milestone, iteration, labels, assignee, or weight.
-1. Select **Create board**
+1. Select .
 
 ### Delete an issue board
 
@@ -89,9 +89,9 @@ Prerequisites:
 
 To delete the open issue board:
 
-1. In the upper-right corner of the issue board page, select **Configure board** ().
-1. Select **Delete board**.
-1. Select **Delete** to confirm.
+1. In the upper-right corner of the issue board page, select  ().
+1. Select .
+1. Select  to confirm.
 
 If the board you've deleted was the last one, a new `Development` board is created.
 
@@ -147,7 +147,7 @@ In addition to the default "Open" and "Closed" lists, each additional list shows
 your chosen label, assignee, or milestone. At the top of each list you can see the number of issues
 that belong to it. Types of lists include:
 
-- **Open** (default): all open issues that do not belong to one of the other lists.
+-  (default): all open issues that do not belong to one of the other lists.
   Always appears as the leftmost list.
 - **Closed** (default): all closed issues. Always appears as the rightmost list.
 - **Label list**: all open issues for a label.
@@ -202,7 +202,7 @@ and vice versa.
 ## Focus mode
 
 In focus mode, the navigation UI is hidden, allowing you to focus on issues in the board.
-To turn focus mode on or off, in the upper-right corner, select **Toggle focus mode** ().
+To turn focus mode on or off, in the upper-right corner, select  ().
 
 ## Group issue boards
 
@@ -228,13 +228,13 @@ With these filters, you can create unique boards according to your team's needs.
 
 [Create scoped board.]
 
-You can define the scope of your board when creating it or by selecting the **Configure board** () button.
+You can define the scope of your board when creating it or by selecting the  () button.
 After a milestone, iteration, assignee, or weight is assigned to an issue board, you can no longer
 filter through these in the search bar. To do that, you need to remove the desired scope
 (for example, milestone, assignee, or weight) from the issue board.
 
 If you don't have editing permission in a board, you can still see the configuration by
-selecting **Board configuration** ().
+selecting  ().
 
 ### Assignee lists
 
@@ -251,10 +251,10 @@ Prerequisites:
 
 To add an assignee list:
 
-1. Select **New list**.
-1. Select **Assignee**.
+1. Select .
+1. Select .
 1. In the dropdown list, select a user.
-1. Select **Add to board**.
+1. Select .
 
 Now that the assignee list is added, you can assign or unassign issues to that user
 by [moving issues](#move-issues-and-lists) to and from an assignee list.
@@ -276,10 +276,10 @@ Prerequisites:
 
 To add a milestone list:
 
-1. Select **New list**.
-1. Select **Milestone**.
+1. Select .
+1. Select .
 1. In the dropdown list, select a milestone.
-1. Select **Add to board**.
+1. Select .
 
 To change the milestone of issues, [drag issue cards](#move-issues-and-lists) to and from a milestone list.
 
@@ -298,10 +298,10 @@ Prerequisites:
 
 To add an iteration list:
 
-1. Select **New list**.
-1. Select **Iteration**.
+1. Select .
+1. Select .
 1. In the dropdown list, select an iteration.
-1. Select **Add to board**.
+1. Select .
 
 To change the iteration of issues, [drag issue cards](#move-issues-and-lists) to and from an iteration list.
 
@@ -331,10 +331,10 @@ Prerequisites:
 
 To add a status list:
 
-1. Select **New list**.
-1. Select **Status**.
+1. Select .
+1. Select .
 1. From the dropdown list, select the status.
-1. Select **Add to board**.
+1. Select .
 
 The status list is added to the board and displays issues with that status.
 
@@ -357,8 +357,8 @@ Prerequisites:
 
 To group issues by epic in an issue board:
 
-1. Select **View options** ().
-1. Select **Epic swimlanes**.
+1. Select  ().
+1. Select .
 
 [Epics Swimlanes]
 
@@ -367,7 +367,7 @@ them to change their position and epic assignment:
 
 - To reorder an issue, drag it to the new position in a list.
 - To assign an issue to another epic, drag it to the epic's horizontal lane.
-- To remove an issue from an epic, drag it to the **Issues with no epic assigned** lane.
+- To remove an issue from an epic, drag it to the  lane.
 - To move an issue to another epic and another list, at the same time, drag the issue diagonally.
 
 [Drag issues between swimlanes.]
@@ -394,20 +394,20 @@ You can set a work in progress (WIP) limit for each issue list on an issue board
 When a limit is set, the current state and configured limit are shown in the board list header.
 
 A line in the list separates items that are inside the limit from those that exceed it.
-You cannot set a WIP limit on the default lists (**Open** and **Closed**).
+You cannot set a WIP limit on the default lists ( and **Closed**).
 
 #### Types of limits
 
 GitLab supports two types of WIP limits:
 
-- **Items**: Limits the number of issues in a list regardless of their weight.
+- : Limits the number of issues in a list regardless of their weight.
   The board header shows the number of issues in the list and the item limit.
 
   For example, if there are 4 issues and an item limit of 3, the header shows **4/3**.
 
   [Work-in-progress item limit on an issue board]
 
-- **Weight**: Limits the total weight of issues in a list.
+- : Limits the total weight of issues in a list.
   The board header shows the total weight of issues in the list and the weight limit.
 
   For example, if there are issues with weights adding up to 8 and a weight limit of 5, the header shows **8/5**.
@@ -430,16 +430,16 @@ Prerequisites:
 
 To set a WIP limit for a list, in an issue board:
 
-1. At the top of the list you want to edit, select **Edit list settings** ().
+1. At the top of the list you want to edit, select  ().
    The list settings sidebar opens on the right.
-1. Next to **Work in progress limit**, select **Edit**.
+1. Next to , select .
 1. Choose the limit type from the dropdown list:
-   - **Items**: To limit by the number of issues.
-   - **Weight**: To limit by the total weight of issues.
+   - : To limit by the number of issues.
+   - : To limit by the total weight of issues.
 1. Enter the maximum number of items or maximum weight.
 1. Press <kbd>Enter</kbd> to save.
 
-To remove a WIP limit, select **Remove limit**.
+To remove a WIP limit, select .
 
 ### Blocked issues
 
@@ -500,22 +500,22 @@ You can create a new list between two existing lists or at the right of an issue
 
 To create a new list between two lists:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Issue boards**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Hover or move keyboard focus between two lists.
-1. Select **New list**.
+1. Select .
    The new list panel opens.
 
    [creating a new list between two lists in an issue board]
 
 1. Choose the label, user, milestone, iteration, or status to base the new list on.
-1. Select **Add to board**.
+1. Select .
 
 The new list is inserted in the same position on the board as the new list panel.
 
 To move and reorder lists, drag them around.
 
-Alternatively, you can select the **New list** at the right end of the board.
+Alternatively, you can select  at the right end of the board.
 The new list is inserted at the right end of the lists, before **Closed**.
 
 ### Remove a list
@@ -529,10 +529,10 @@ Prerequisites:
 
 To remove a list from an issue board:
 
-1. At the top of the list you want to remove, select **Edit list settings** ().
+1. At the top of the list you want to remove, select  ().
    The list settings sidebar opens on the right.
-1. Select **Remove list**.
-1. On the confirmation dialog, select **Remove list** again.
+1. Select .
+1. On the confirmation dialog, select .
 
 ### Add issues to a list
 
@@ -609,7 +609,7 @@ To move an issue, select the issue card and drag it to another position in its c
 into a different list. Learn about the possible effects in [dragging issues between lists](#dragging-issues-between-lists).
 
 To move a list, select its top bar, and drag it horizontally.
-You can't move the **Open** and **Closed** lists, but you can hide them when editing an issue board.
+You can't move the  and **Closed** lists, but you can hide them when editing an issue board.
 
 #### Move an issue to the start of the list
 
@@ -624,7 +624,7 @@ Prerequisites:
 To move an issue to the start of the list:
 
 1. In an issue board, hover over the card of the issue you want to move.
-1. Select **Card options** (), then **Move to start of list**.
+1. Select  (), then .
 
 #### Move an issue to the end of the list
 
@@ -639,7 +639,7 @@ Prerequisites:
 To move an issue to the end of the list:
 
 1. In an issue board, hover over the card of the issue you want to move.
-1. Select **Card options** (), then **Move to end of list**.
+1. Select  (), then .
 
 #### Dragging issues between lists
 

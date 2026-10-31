@@ -22,8 +22,8 @@ On the top of each list, you can see the number of epics in the list () and the 
 
 To view an epic board:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Epic boards**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
 
 [An epic board displaying epics in lists.]
 
@@ -35,17 +35,17 @@ Prerequisites:
 
 To create a new epic board:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Epic boards**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
 1. In the upper-left corner, select the dropdown list with the current board name.
-1. Select **Create new board**.
+1. Select .
 1. Enter the new board's title.
-1. Optional. To hide the Open or Closed lists, clear the **Show the Open list** and
-   **Show the Closed list** checkboxes.
+1. Optional. To hide the Open or Closed lists, clear the  and
+    checkboxes.
 1. Optional. Set board scope:
-   1. Next to **Scope**, select **Expand**.
-   1. Next to **Labels**, select **Edit** and select the labels to use as board scope.
-1. Select **Create board**.
+   1. Next to , select .
+   1. Next to , select  and select the labels to use as board scope.
+1. Select .
 
 Now you can [add some lists](#create-a-new-list).
 To change these options later, [edit the board](#edit-the-scope-of-an-epic-board).
@@ -60,8 +60,8 @@ Prerequisites:
 To delete the active epic board:
 
 1. In the upper-left corner of the epic board page, select the dropdown list.
-1. Select **Delete board**.
-1. Select **Delete**.
+1. Select .
+1. Select .
 
 ## Actions you can take on an epic board
 
@@ -84,23 +84,23 @@ Prerequisites:
 
 To create a new list:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Epic boards**.
-1. In the upper-right corner, select **New list**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. In the upper-right corner, select .
 1. Hover or move keyboard focus between two lists.
-1. Select **New list**.
+1. Select .
    The new list panel opens.
 
    [The new list panel inserted between two existing lists.]
-1. In the **New list** column expand the **Select a label** dropdown list and select the label to use as
+1. In the  column expand the  dropdown list and select the label to use as
    list scope.
-1. Select **Add to board**.
+1. Select .
 
 The new list is inserted in the same position on the board as the new list panel.
 
 To move and reorder lists, drag them around.
 
-Alternatively, you can select the **New list** at the right end of the board.
+Alternatively, you can select  at the right end of the board.
 The new list is inserted at the right end of the lists, before **Closed**.
 
 ### Remove a list
@@ -114,10 +114,10 @@ Prerequisites:
 
 To remove a list from an epic board:
 
-1. On the top of the list you want to remove, select the **List settings** icon ().
+1. On the top of the list you want to remove, select the  icon ().
    The list settings sidebar opens on the right.
-1. Select **Remove list**.
-1. On the confirmation dialog, select **OK**.
+1. Select .
+1. On the confirmation dialog, select .
 
 ### Create an epic from an epic board
 
@@ -128,9 +128,9 @@ Prerequisites:
 
 To create an epic from a list in epic board:
 
-1. On the top of a list, select the **New epic** () icon.
+1. On the top of a list, select the  () icon.
 1. Enter the new epic's title.
-1. Select **Create epic**.
+1. Select .
 
 [The inline form used to create a new epic on a board list.]
 
@@ -169,7 +169,7 @@ To move an epic, select the epic card and drag it to another position in its cur
 into another list. Learn about possible effects in [Dragging epics between lists](#dragging-epics-between-lists).
 
 To move a list, select its top bar, and drag it horizontally.
-You can't move the **Open** and **Closed** lists, but you can hide them when editing an epic board.
+You can't move the  and **Closed** lists, but you can hide them when editing an epic board.
 
 #### Move an epic to the start of the list
 
@@ -185,7 +185,7 @@ Prerequisites:
 To move an epic to the start of the list:
 
 1. In an epic board, hover over the card of the epic you want to move.
-1. Select **Card options** (), then **Move to start of list**.
+1. Select  (), then .
 
 #### Move an epic to the end of the list
 
@@ -201,7 +201,7 @@ Prerequisites:
 To move an epic to the end of the list:
 
 1. In an epic board, hover over the card of the epic you want to move.
-1. Select **Card options** (), then **Move to end of list**.
+1. Select  (), then .
 
 #### Dragging epics between lists
 
@@ -222,9 +222,9 @@ Prerequisites:
 
 To edit the scope of an epic board:
 
-1. In the upper-right corner, select **Configure board** ().
+1. In the upper-right corner, select  ().
 1. Optional:
    - Edit the board's title.
    - Show or hide the Open and Closed columns.
    - Select other labels as the board's scope.
-1. Select **Save changes**.
+1. Select .

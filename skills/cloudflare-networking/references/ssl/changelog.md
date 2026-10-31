@@ -16,6 +16,36 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ssl.xml)
 
+## 2026-10-30
+
+
+**Keyless SSL supports TLS 1.3 with ECDSA certificates**
+
+[Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/) supports TLS 1.3 for ECDSA certificates. When [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/) is enabled on your zone, visitors connecting to a hostname that serves a Keyless ECDSA certificate negotiate TLS 1.3, and your private keys stay on your own key server.
+
+Keyless SSL connections that use RSA certificates continue to negotiate up to TLS 1.2.
+
+For details, refer to the [Keyless SSL limitations](https://developers.cloudflare.com/ssl/keyless-ssl/#limitations).
+
+## 2026-10-29
+
+
+**View your data localization settings in one dashboard page**
+
+The Cloudflare dashboard now includes a **Data Localization Suite** Overview, a read-only view of the data localization settings on your account. It shows your Regional Services, Customer Metadata Boundary, and Geo Key Manager settings in one place, so you no longer need to check several dashboard pages and APIs to see where your traffic is processed and where your logs and private keys are stored.
+
+To find it, go to **Application Security** > **Data Localization Suite**, or search for "DLS" in the dashboard.
+
+The Overview has a tab for each product:
+
+- **Regional Services**: regionalized hostnames (filter by region or zone), regionalized IP bindings, and regionalized Spectrum applications, each with its region.
+- **Customer Metadata Boundary**: whether the boundary is on, the region (US or EU), and whether out-of-region access is allowed.
+- **Geo Key Manager**: every custom certificate with a geo policy, with its hostname, zone, region, and status.
+
+Each item links to the dashboard page where you change its setting, and each tab links to the product's documentation.
+
+To learn more, refer to the [Data Localization Suite documentation](https://developers.cloudflare.com/data-localization/).
+
 ## 2026-08-13
 
 

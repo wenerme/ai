@@ -14,23 +14,23 @@ To change how a list is sorted, see [sort work items](../../work_items/_index.md
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-When you sort by **Blocking**, the issue list changes to sort descending by the
+When you sort by , the issue list changes to sort descending by the
 number of issues each issue is [blocking](related_issues.md#blocking-issues).
 
 ## Sorting by created, updated, or closed date
 
-When you sort by **Created**, **Updated**, or **Closed date**, the issue list changes to
+When you sort by , , or , the issue list changes to
 sort descending by the respective date and timestamp. Issues created, updated, or closed most recently are first.
 
 ## Sorting by due date
 
-When you sort by **Due date**, the issue list changes to sort ascending by the issue
+When you sort by , the issue list changes to sort ascending by the issue
 [due date](due_dates.md). Issues with the earliest due date are first,
 and issues without a due date are last.
 
 ## Sorting by label priority
 
-When you sort by **Label priority**, the issue list changes to sort descending.
+When you sort by , the issue list changes to sort descending.
 Issues with the highest priority label are first, then all other issues.
 
 Ties are broken arbitrarily. Only the highest prioritized label is checked,
@@ -41,7 +41,7 @@ For more information, see [label priority](../labels.md#set-label-priority).
 
 ## Manual sorting
 
-When you sort by **Manual** order, you can change
+When you sort by  order, you can change
 the order by dragging and dropping the issues. The changed order persists, and
 everyone who visits the same list sees the updated issue order, with some exceptions.
 
@@ -60,13 +60,13 @@ and the other way around.
 
 ## Sorting by milestone due date
 
-When you sort by **Milestone due date**, the issue list changes to sort ascending by the
+When you sort by , the issue list changes to sort ascending by the
 assigned milestone due date. Issues with milestones with the earliest due date are first,
 then issues with a milestone without a due date.
 
 ## Sorting by popularity
 
-When you sort by **Popularity**, the issue order changes to sort descending by the
+When you sort by , the issue order changes to sort descending by the
 number of upvotes ([emoji reactions](../../emoji_reactions.md) with the "thumbs up")
 on each issue. You can use this to identify issues that are in high demand.
 
@@ -76,7 +76,7 @@ downvotes.
 
 ## Sorting by priority
 
-When you sort by **Priority**, the issue order changes to sort in this order:
+When you sort by , the issue order changes to sort in this order:
 
 1. Issues with milestones that have due dates, where the soonest assigned milestone is listed first.
 1. Issues with milestones with no due dates.
@@ -89,7 +89,7 @@ For more information, see [label priority](../labels.md#set-label-priority).
 
 ## Sorting by title
 
-When you sort by **Title**, the issue order changes to sort alphabetically by the issue
+When you sort by , the issue order changes to sort alphabetically by the issue
 title in this order:
 
 - Emoji
@@ -102,18 +102,18 @@ title in this order:
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-When you sort by **Health**, the issue list changes to sort by the
+When you sort by , the issue list changes to sort by the
 [health status](managing_issues.md#health-status) of the issues.
 When in descending order, the issues are shown in the following order:
 
-1. **At risk** issues
-1. **Needs attention** issues
-1. **On track** issues
+1.  issues
+1.  issues
+1.  issues
 1. All other issues
 
 ## Sorting by weight
 
-When you sort by **Weight**, the issue list changes to sort ascending by the
+When you sort by , the issue list changes to sort ascending by the
 [issue weight](../../work_items/weight.md).
 Issues with lowest weight are first, and issues without a weight are last.
 
@@ -125,6 +125,6 @@ Issues with lowest weight are first, and issues without a weight are last.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/550262) in GitLab 18.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `work_item_status_mvc2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/576610) in GitLab 18.6. Feature flag `work_item_status_mvc2` removed.
 
-When you sort by **Status**, the issue list changes to sort ascending by the
+When you sort by , the issue list changes to sort ascending by the
 [issue status](../../work_items/status.md).
 Issues are first sorted by their status category. If two issues share the same category, the system falls back to sorting by issue ID.

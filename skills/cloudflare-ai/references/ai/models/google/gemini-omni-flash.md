@@ -27,7 +27,7 @@ Preview high-performance multimodal video generation and editing model with conv
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
-| Pricing | <ul><li>Input text (per 1M tokens)$1.50</li><li>Input image (per 1M tokens)$1.50</li><li>Input audio (per 1M tokens)$1.50</li><li>Input video (per 1M tokens)$1.50</li><li>Output text (per 1M tokens)$9.00</li><li>Reasoning (per 1M tokens)$9.00</li><li>Output video (per 1M tokens)$17.50</li><li>Default (per second)$1.50</li></ul> |
+| Pricing | <ul><li>Input text (per 1M tokens)$1.50</li><li>Input image (per 1M tokens)$1.50</li><li>Input audio (per 1M tokens)$1.50</li><li>Input video (per 1M tokens)$1.50</li><li>Output text (per 1M tokens)$9.00</li><li>Reasoning (per 1M tokens)$9.00</li><li>Output video (per 1M tokens)$17.50</li></ul> |
 
 ## Usage
 

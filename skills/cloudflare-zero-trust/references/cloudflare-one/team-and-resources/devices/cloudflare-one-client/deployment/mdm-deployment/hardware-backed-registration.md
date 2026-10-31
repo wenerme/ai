@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Hardware-backed registration
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -29,7 +29,7 @@ Feature availability
 | System | Availability | Minimum WARP version |
 | --- | --- | --- |
 | Windows | ✅ | 2026.6.0 |
-| macOS | ✅ | 2026.6.0 |
+| macOS | ✅ (Apple silicon only) | 2026.6.0 |
 | Linux | ✅ | 2026.6.0 |
 | iOS | ❌ | N/A |
 | Android | ❌ | N/A |
@@ -67,7 +67,7 @@ Hardware-backed registration uses the security hardware available on each deskto
 | Operating system | Hardware |
 | --- | --- |
 | Windows | TPM 2.0 |
-| macOS | Secure Enclave (T2 or Apple silicon) |
+| macOS | Secure Enclave (Apple silicon) |
 | Linux | TPM 2.0 |
 
 Devices without a supported security module cannot complete a hardware-backed registration.
@@ -102,7 +102,7 @@ The following example turns on hardware-backed registration for the `example-tea
 
 ## Limitations
 
-Hardware-backed registration is available on Windows, macOS, and Linux only. Mobile platforms (iOS, Android, and ChromeOS) are not supported. The feature applies only to Zero Trust registrations that use an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) or a [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Consumer registrations are not supported.
+Hardware-backed registration is available on Windows, macOS on Apple silicon, and Linux only. Intel-based Macs are not supported. Mobile platforms (iOS, Android, and ChromeOS) are not supported. The feature applies only to Zero Trust registrations that use an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) or a [service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). Consumer registrations are not supported.
 
 Was this helpful?
 
@@ -113,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/#page","headline":"Hardware-backed registration","description":"Hardware-backed registration binds a Cloudflare One Client registration to a Secure Enclave or TPM key and authenticates API requests with mTLS.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/og.png?v=a545905c62b7852f","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TPM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/#page","headline":"Hardware-backed registration","description":"Hardware-backed registration binds a Cloudflare One Client registration to a Secure Enclave or TPM key and authenticates API requests with mTLS.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/og.png?v=a545905c62b7852f","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS","TPM"]}
 ```

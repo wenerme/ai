@@ -358,7 +358,7 @@ You can now see the exact cache key generated for any request directly in Cloudf
 
 Previously, diagnosing caching behavior required inferring the key from configuration settings. Now, you can confirm that your custom logic for headers, query strings, and device types is correctly applied.
 
-Access Trace via the [dashboard](https://developers.cloudflare.com/rules/trace-request/how-to/#use-trace-in-the-dashboard) or [API](https://developers.cloudflare.com/api/resources/request_tracer/methods/trace/), either manually for ad-hoc debugging or automated as part of your quality-of-service monitoring.
+Access Trace via the [dashboard](https://developers.cloudflare.com/rules/simulator/how-to/#use-rules-simulator-in-the-dashboard) or [API](https://developers.cloudflare.com/api/resources/request_tracer/methods/trace/), either manually for ad-hoc debugging or automated as part of your quality-of-service monitoring.
 
 #### Example scenario
 
@@ -386,7 +386,7 @@ The Trace response includes the cache key in the `cache` object:
 
 #### Get started
 
-To learn more, refer to the [Trace documentation](https://developers.cloudflare.com/rules/trace-request/) and our guide on [Custom Cache Keys](https://developers.cloudflare.com/cache/how-to/cache-keys/).
+To learn more, refer to the [Rules simulator documentation](https://developers.cloudflare.com/rules/simulator/) and our guide on [Custom Cache Keys](https://developers.cloudflare.com/cache/how-to/cache-keys/).
 
 ## 2025-08-29
 

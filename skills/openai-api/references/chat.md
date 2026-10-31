@@ -27,6 +27,8 @@ chunk objects if the request is streamed.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `messages: array of ChatCompletionMessageParam`
 
   A list of messages comprising the conversation so far. Depending on the
@@ -4250,6 +4252,8 @@ the only supported modification is to update the `metadata` field.
   The ID of the chat completion to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `metadata: Metadata or null`
 

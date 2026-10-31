@@ -6,6 +6,8 @@ Create Container
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   Name of the container to create.

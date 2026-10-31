@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `openai/gpt-6-sol`
 
 - Third-party
+- Zero data retention
 
 GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and agentic workflows.
 
@@ -29,6 +30,7 @@ GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and ag
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-6-sol) |
+| Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
 | Pricing | <ul><li>Short-context input (per 1M)$2.00</li><li>Short-context cached input (per 1M)$0.20</li><li>Short-context cache write (per 1M)$2.50</li><li>Short-context output (per 1M)$10.00</li><li>Long-context input (per 1M)$4.00</li><li>Long-context cached input (per 1M)$0.40</li><li>Long-context cache write (per 1M)$5.00</li><li>Long-context output (per 1M)$15.00</li></ul> |
 

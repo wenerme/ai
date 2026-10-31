@@ -6,6 +6,8 @@ Creates a new group in the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   Human readable name for the group.

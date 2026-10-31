@@ -688,7 +688,11 @@ Fast mode is available or in research preview on select models and eligible for 
 
 Fast mode is available only on the following models. If you were using fast mode on an earlier model, [migrate to a model that supports fast mode](https://platform.claude.com/docs/en/models/opus-5-5/migration-guide).
 
-To access fast mode on Claude Opus 5 or Claude Opus 4.8, contact your account manager or [join the waitlist](https://claude.com/fast-mode).
+To access fast mode on Claude Opus 5, contact your account manager or [join the waitlist](https://claude.com/fast-mode).
+
+<Warning>
+  Fast mode on Claude Opus 4.8 is deprecated and will be removed on November 30, 2026. After removal, requests to `claude-opus-4-8` with `speed: "fast"` will return an error. To continue using fast mode, migrate to Claude Opus 5.5. See [Migrating to Claude Opus 5.5 from Claude Opus 4.8](https://platform.claude.com/docs/en/models/opus-5-5/migration-guide#migrating-from-claude-opus-4-8).
+</Warning>
 
 #### [Messages API](https://platform.claude.com/docs/en/build-with-claude/working-with-messages)
 

@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 267 modelsClear filters
+We found 272 modelsClear filters
 
 ## Compare models
 
@@ -192,6 +192,7 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-opus-5.5</h3>AnthropicText Generation Claude Opus 5.5 is Anthropic's model for long-running agentic coding and knowledge work. It combines a one million token context window with adaptive thinking that is always on, a 128K token maximum output, and a medium default effort level.](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5.5/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -497,6 +498,7 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-4-argon</h3>GoogleText Generation Google's frontier model for deep work on complex, real-world tasks across coding, finance, legal, cybersecurity and science. The first model in the Gemini 4 family.](https://developers.cloudflare.com/ai/models/google/gemini-4-argon/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -641,7 +643,7 @@ Compare
 
 Compare
 
-[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-open</h3>MetaText Generation Meta's most capable open-weight model, built for agentic coding. Show it a screenshot, chart, or photo alongside your request and it reasons over both to write working code, call tools, and carry multi-step tasks across a 1M-token context.](https://developers.cloudflare.com/ai/models/meta/muse-spark-open/)
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-spark-open</h3>MetaText Generation Muse Spark Open is Meta's open-weights reasoning model for coding and agentic workflows. It supports native image understanding and function calling, and is served through Fireworks serverless inference.](https://developers.cloudflare.com/ai/models/meta/muse-spark-open/)
 
 - Third-party
 
@@ -654,6 +656,18 @@ Compare
 Compare
 
 [![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3</h3>MiniMaxText-to-Video A multimodal video generation model supporting text-to-video, first and last frame image-to-video, and reference-to-video generation with 768P and 2K output.](https://developers.cloudflare.com/ai/models/minimax/h3/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-highspeed</h3>MiniMaxText-to-Video A multimodal video generation model that balances quality and speed, supporting text-to-video, first and last frame image-to-video, and reference-to-video generation at 768P.](https://developers.cloudflare.com/ai/models/minimax/h3-highspeed/)
+
+- Third-party
+
+Compare
+
+[![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.B0Y99aoe.svg)<h3>h3-lite</h3>MiniMaxText-to-Video A lightweight multimodal video generation model supporting text-to-video, first and last frame image-to-video, and reference-to-video generation at 480P and 768P.](https://developers.cloudflare.com/ai/models/minimax/h3-lite/)
 
 - Third-party
 
@@ -853,6 +867,7 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-5.6-sol</h3>OpenAIText Generation GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -877,12 +892,14 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-sol</h3>OpenAIText Generation GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and agentic workflows.](https://developers.cloudflare.com/ai/models/openai/gpt-6-sol/)
 
 - Third-party
+- +1
 
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6.1-sol</h3>OpenAIText Generation GPT-6.1 Sol is OpenAI's newest Sol model, delivering near-Astra performance at a lower cost for complex coding, computer use, and professional work.](https://developers.cloudflare.com/ai/models/openai/gpt-6.1-sol/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -948,6 +965,13 @@ Compare
 Compare
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>tts-1-hd</h3>OpenAIText-to-Speech OpenAI's high-definition text-to-speech model producing higher quality audio output.](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/)
+
+- Third-party
+- +1
+
+Compare
+
+[p<h3>particle-1</h3>particleText Generation Particle-1 is Particle AI's reasoning model for chat, agentic coding, and tool use. It accepts text and images, with a 1,048,576-token context window, streaming responses, and configurable reasoning effort.](https://developers.cloudflare.com/ai/models/particle/particle-1/)
 
 - Third-party
 - +1
@@ -1116,6 +1140,7 @@ Compare
 [r<h3>beam-1.0-501b-a23b</h3>reflection-aiText Generation Beam-1.0-501B-A23B is Reflection AI's open-weights mixture-of-experts model with 501B total parameters and 23B active parameters, built for coding, reasoning, and agentic workloads.](https://developers.cloudflare.com/ai/models/reflection-ai/beam-1.0-501b-a23b/)
 
 - Third-party
+- +1
 
 Compare
 
@@ -1143,6 +1168,18 @@ Compare
 
 Compare
 
+[t<h3>gigapixel-high-fidelity-3</h3>topazImage-to-Image Topaz Labs Gigapixel High Fidelity 3 is a precision image upscaler tuned for high-resolution sources and professional photography, preserving fine texture and detail with minimal alteration. It adds recovery-strength and opacity controls over High Fidelity 2.](https://developers.cloudflare.com/ai/models/topaz/gigapixel-high-fidelity-3/)
+
+- Third-party
+
+Compare
+
+[t<h3>gigapixel-standard-2</h3>topazImage-to-Image Topaz Labs Gigapixel Standard 2 is a general-purpose precision image upscaler that balances detail, sharpness, and noise reduction while staying true to the source. It is the recommended default for photos, graphics, and print, with optional face recovery.](https://developers.cloudflare.com/ai/models/topaz/gigapixel-standard-2/)
+
+- Third-party
+
+Compare
+
 [t<h3>starlight-fast-2</h3>topazvideo-to-video Topaz Labs Starlight Fast 2 (slf-2) enhances and upscales source video to 1080p or 4K with faster processing than Starlight Precise. It is designed for video restoration workflows where turnaround time is important.](https://developers.cloudflare.com/ai/models/topaz/starlight-fast-2/)
 
 - Third-party
@@ -1155,7 +1192,7 @@ Compare
 
 Compare
 
-[t<h3>jev</h3>typesafeText Generation Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.](https://developers.cloudflare.com/ai/models/typesafe/jev/)
+[t<h3>jev</h3>typesafeText Generation Jev 1.13 is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. Image inputs are beta and dreamer-ready, not recommended for production.](https://developers.cloudflare.com/ai/models/typesafe/jev/)
 
 - Third-party
 - +1

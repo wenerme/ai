@@ -20,7 +20,7 @@ appropriate privileges can deploy to it, keeping the environment safe.
 
 To protect or unprotect an environment, you need at least the Maintainer role.
 Additionally, to update environment attributes such as `external_url`, `tier`, or `description`,
-you must also be in the **Allowed to deploy** list.
+you must also be in the  list.
 
 > [!note]
 > Protected environments are part of CI/CD settings. If
@@ -33,43 +33,43 @@ you must also be in the **Allowed to deploy** list.
 
 Prerequisites:
 
-- When granting the **Allowed to deploy** permission to an approver group, the user configuring the protected environment must be a direct member of the approver group to be added. Otherwise, the group or subgroup does not show up in the dropdown list. For more information see [issue #345140](https://gitlab.com/gitlab-org/gitlab/-/issues/345140).
-- When granting **Approvers** permissions to an approver group or project, by default only direct members of the approver group or project receive these permissions. To also grant these permissions to inherited members of the approver group or project:
-  - Select the **Enable group inheritance** checkbox.
+- When granting the  permission to an approver group, the user configuring the protected environment must be a direct member of the approver group to be added. Otherwise, the group or subgroup does not show up in the dropdown list. For more information see [issue #345140](https://gitlab.com/gitlab-org/gitlab/-/issues/345140).
+- When granting  permissions to an approver group or project, by default only direct members of the approver group or project receive these permissions. To also grant these permissions to inherited members of the approver group or project:
+  - Select the  checkbox.
   - [Use the API](../../api/protected_environments.md#group-inheritance-types).
 
 To protect an environment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Protected environments**.
-1. Select **Protect an environment**.
-1. From the **Environment** list, select the environment you want to protect.
-1. In the **Allowed to deploy** list, select the role, users, or groups you
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select .
+1. From the  list, select the environment you want to protect.
+1. In the  list, select the role, users, or groups you
    want to give deploy access to. Keep in mind that:
    - You can choose from two roles:
      - **Maintainers**: Allows access to all of the project's users with the Maintainer role.
-     - **Developers**: Allows access to all of the project's users with the Maintainer and Developer roles.
+     - **Developers + Maintainers**: Allows access to all of the project's users with the Maintainer and Developer roles.
    - You can also select groups that are already [invited](../../user/project/members/sharing_projects_groups.md#invite-a-group-to-a-project) to the project. Invited groups added to the project with the Reporter role appear in the dropdown list for [deployment-only access](#deployment-only-access-to-protected-environments).
    - You can also select specific users. The users must have the Developer, Maintainer, or Owner role to appear in
-     the **Allowed to deploy** list.
-1. In the **Approvers** list, select the role, users, or groups you
+     the  list.
+1. In the  list, select the role, users, or groups you
    want to give deploy access to. Keep in mind that:
 
    - You can choose from two roles:
      - **Maintainers**: Allows access to all of the project's users with the Maintainer role.
-     - **Developers**: Allows access to all of the project's users with the Maintainer and Developer roles.
+     - **Developers + Maintainers**: Allows access to all of the project's users with the Maintainer and Developer roles.
    - You can only select groups that are already [invited](../../user/project/members/sharing_projects_groups.md#invite-a-group-to-a-project) to the project.
    - Users must have the Developer, Maintainer, or Owner role to appear in
-     the **Approvers** list.
+     the  list.
 
-1. In the **Approval rules** section:
+1. In the  section:
 
    - Ensure that this number is less than or equal to the number of members in
      the rule.
    - See [Deployment Approvals](deployment_approvals.md) for more information about this feature.
 
-1. Select **Protect**.
+1. Select .
 
 The protected environment now appears in the list of protected environments.
 
@@ -169,11 +169,11 @@ To add deployment-only access:
 
 Maintainers can:
 
-- Update protection settings, including the **Allowed to deploy** list and approval rules, at any time.
-- Unprotect a protected environment by selecting **Unprotect** for that environment.
+- Update protection settings, including the  list and approval rules, at any time.
+- Unprotect a protected environment by selecting  for that environment.
 
 To update environment attributes such as `external_url`, `tier`, or `description` on a protected
-environment, the user must also be in the **Allowed to deploy** list.
+environment, the user must also be in the  list.
 
 After an environment is unprotected, all access entries are deleted and must
 be re-entered if the environment is re-protected.
@@ -261,12 +261,13 @@ To protect an environment for a group, make sure your environments have the corr
 
 #### Using the UI
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Protected environments**.
-1. From the **Environment** list, select the [deployment tier of environments](_index.md#deployment-tier-of-environments) you want to protect.
-1. In the **Allowed to deploy** list, select the [subgroups](../../user/group/subgroups/_index.md) you want to give deploy access to.
-1. Select **Protect**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select .
+1. From the  list, select the [deployment tier of environments](_index.md#deployment-tier-of-environments) you want to protect.
+1. In the  list, select the [subgroups](../../user/group/subgroups/_index.md) you want to give deploy access to.
+1. Select .
 
 #### Using the API
 

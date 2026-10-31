@@ -710,6 +710,7 @@ It is possible to use WebSocket in browsers with an ephemeral API token as shown
     { value: "python", label: "websocket-client (Python)" },
     { value: "ruby", label: "OpenAI SDK (Ruby)" },
     { value: "java", label: "OpenAI SDK (Java)" },
+    { value: "go", label: "OpenAI SDK (Go)" },
     { value: "csharp", label: "OpenAI SDK (.NET)" },
     { value: "websocket", label: "WebSocket (browsers)" },
   ]}
@@ -717,7 +718,9 @@ It is possible to use WebSocket in browsers with an ephemeral API token as shown
   
 
     
-ws module (Node.js)
+
+      `ws` module (Node.js)
+    
 
     Connect using the ws module (Node.js)
 
@@ -879,6 +882,34 @@ try (http;
     }
   }
 }
+```
+
+  
+
+  
+
+    
+OpenAI SDK (Go)
+
+    
+
+      Use Go 1.26 or later and install the SDK with 
+      `go get github.com/openai/openai-go/v3@v3.85.1`. The SDK
+      manages the socket transport. Your application handles events, captures
+      and plays audio, and restores session state after a reconnect.
+    
+
+    Connect with the OpenAI SDK (Go)
+
+```go
+ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+defer cancel()
+client := openai.NewClient()
+conn, err := client.Realtime.Connect(ctx, realtime.RealtimeConnectionOptions{}, option.WithQuery("model", "gpt-realtime-2.1"), option.WithHeader("OpenAI-Safety-Identifier", "hashed-user-id"))
+if err != nil {
+	return err
+}
+defer conn.Close()
 ```
 
   
