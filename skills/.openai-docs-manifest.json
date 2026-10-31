@@ -1836,10 +1836,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"99fe50aa17296539d060ae06d35c4e51\"",
-    "lastModified": "Sat, 31 Oct 2026 00:23:29 GMT",
-    "size": 23122,
-    "updatedAt": "2026-10-31T00:41:25.567Z"
+    "etag": "W/\"fa18b105e27a1efc5d6b56858deb8f55\"",
+    "lastModified": "Sat, 31 Oct 2026 08:43:28 GMT",
+    "size": 23502,
+    "updatedAt": "2026-10-31T10:20:40.937Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",

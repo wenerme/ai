@@ -3,7 +3,7 @@ title: Multilingual support
 url: https://platform.claude.com/docs/en/build-with-claude/multilingual-support
 description: Claude excels at tasks across multiple languages, maintaining strong cross-lingual performance relative to English.
 featureMetadata:
-  status: ga
+  status: stable
   supportedModels:
     - claude-fable-5-1
     - claude-mythos-5-1
@@ -23,12 +23,12 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Amazon Bedrock: ga
-    Amazon Bedrock (InvokeModel): ga
-    Claude Models on Google Cloud (Google managed): ga
-    Microsoft Foundry: ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Amazon Bedrock: stable
+    Amazon Bedrock (InvokeModel): stable
+    Claude Models on Google Cloud (Google managed): stable
+    Microsoft Foundry: stable
 ---
 
 ## Overview

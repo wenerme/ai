@@ -12,9 +12,9 @@ featureMetadata:
     - claude-opus-5
     - claude-opus-4-8
   supportedPlatforms:
-    Claude API: ga
-    Claude Models on Google Cloud (Anthropic managed): ga
-    Microsoft Foundry (hosted on Azure): ga
+    Claude API: stable
+    Claude Models on Google Cloud (Anthropic managed): stable
+    Microsoft Foundry (hosted on Azure): stable
   details:
     - Fast mode on Claude Opus 5 and Claude Opus 4.8 is in research preview and needs the `fast-mode-2026-02-01` beta header.
 ---

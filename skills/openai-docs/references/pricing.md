@@ -218,7 +218,7 @@ Short context: ≤272K input tokens. Long context: >272K input tokens.
   
 
 
-Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. FedRAMP endpoints are also charged a 10% uplift. Priority processing was renamed Fast mode on July 30, 2026. GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026.
+Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. Starting Nov 1, 2026, FedRAMP endpoints are also charged a 10% uplift. Priority processing was renamed Fast mode on July 30, 2026. GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026.
 
   
 
@@ -276,6 +276,30 @@ Our latest Rosalind models.
 | gpt-rosalind-discovery | $5.00 | $25.00 | $0.50 | - | - | - | - | - | - | - |
 
 Access is limited to approved internal research through the [trusted-access program](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research). All eligible organizations will continue to get access to the latest GPT-Rosalind models as they’re released. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
+
+
+
+  
+
+Legal model configurations
+
+
+  
+Our latest legal model configurations.
+
+  
+Prices per 1M tokens.
+
+
+
+
+### Grouped Pricing Table data
+
+| Model configuration | Input | Output | Cached input |
+| --- | --- | --- | --- |
+| gpt-6-astra-law | $10.00 | $50.00 | $1.00 |
+
+GPT-6 Astra for Law promotional pricing is available at least through December 31, 2026.
 
 
 

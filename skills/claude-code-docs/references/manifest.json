@@ -85,9 +85,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"bd3ac4bf72594588a8fdd744663c2096da513d94ced16c0ff80cba24a5bb403d\"",
-    "size": 1120865,
-    "updatedAt": "2026-10-30T10:17:34.305Z"
+    "etag": "W/\"5d9d662990bd5d9ef938ead6eec4444af0459ba7eb9503a9d1c53e2520922970\"",
+    "size": 1129530,
+    "updatedAt": "2026-10-31T10:14:15.581Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",

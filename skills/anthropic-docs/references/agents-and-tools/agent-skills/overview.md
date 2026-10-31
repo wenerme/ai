@@ -3,7 +3,7 @@ title: Agent Skills
 url: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
 description: Agent Skills are modular capabilities that extend Claude's functionality. Each Skill packages instructions, metadata, and optional resources (scripts, templates) that Claude uses automatically when relevant.
 featureMetadata:
-  status: ga
+  status: stable
   zdr:
     eligibility: not-eligible
     note: Skill data retained according to standard policy.
@@ -26,11 +26,11 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
-    Claude Platform on AWS: ga
-    Claude Models on Google Cloud (Anthropic managed): ga
+    Claude API: stable
+    Claude Platform on AWS: stable
+    Claude Models on Google Cloud (Anthropic managed): stable
     Microsoft Foundry (hosted on Anthropic):
-      availability: ga
+      availability: stable
       note: Hosted on Anthropic deployments only; the skill version download endpoint (`GET /v1/skills/{skill_id}/versions/{version}/content`) is not supported on Foundry.
 ---
 

@@ -93,7 +93,7 @@ The Claude Platform release notes list changes to the Claude API, the client SDK
 ### October 1, 2026
 
 * We’ve added a `line` field to the [Models API](https://platform.claude.com/docs/en/api/models/list). `GET /v1/models` and `GET /v1/models/{model_id}` now return the model line each model belongs to. Claude Opus 4.5 and Claude Opus 4.6 both report `opus`, for example. Use `line` to group models without parsing their IDs. `line` is `null` for a model that belongs to no line. See [Using the Models API](https://platform.claude.com/docs/en/models/overview#using-the-models-api).
-* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Opus 5.5, Claude Fable 5.1, and Claude Sonnet 5.5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#limits).
+* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Opus 5.5, Claude Fable 5.1, and Claude Sonnet 5.5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#feature-availability).
 
 ### September 30, 2026
 
@@ -220,7 +220,7 @@ The Claude Platform release notes list changes to the Claude API, the client SDK
 
 ### August 1, 2026
 
-* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Opus 5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#limits).
+* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Opus 5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#feature-availability).
 
 ### July 24, 2026
 
@@ -254,7 +254,7 @@ The Claude Platform release notes list changes to the Claude API, the client SDK
 
 ### July 10, 2026
 
-* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Fable 5 and Claude Sonnet 5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#limits).
+* [Dreams](https://platform.claude.com/docs/en/managed-agents/dreams) (research preview) now supports Claude Fable 5 and Claude Sonnet 5. See [Supported models](https://platform.claude.com/docs/en/managed-agents/dreams#feature-availability).
 * We’ve expanded the [Access Transparency](https://platform.claude.com/docs/en/manage-claude/access-transparency) documentation of `cmek_preserve` events with a filter example, an example event payload, and two preservation reason codes (`policy_violation_investigation`, `csae_report`). The documentation now also clarifies that a preservation event is written whether the preservation was initiated by a human reviewer or an automated safety pipeline. See [CMEK content preservation](https://platform.claude.com/docs/en/manage-claude/access-transparency#cmek-content-preservation).
 
 ### July 8, 2026

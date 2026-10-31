@@ -3,7 +3,7 @@ title: OpenAI SDK compatibility
 url: https://platform.claude.com/docs/en/cli-sdks-libraries/libraries/openai-sdk
 description: Anthropic provides a compatibility layer that lets you use the OpenAI SDK to test the Claude API. With a few code changes, you can evaluate Anthropic model capabilities.
 featureMetadata:
-  status: ga
+  status: stable
   supportedModels:
     - claude-fable-5-1
     - claude-mythos-5-1
@@ -23,7 +23,7 @@ featureMetadata:
     - claude-opus-4-5-20251101
     - claude-sonnet-4-5-20250929
   supportedPlatforms:
-    Claude API: ga
+    Claude API: stable
 ---
 
 <Note>
