@@ -16,6 +16,8 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `role: optional string or null`
 
   `owner` or `member`

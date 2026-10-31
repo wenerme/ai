@@ -29,7 +29,7 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [Google Maps Grounding](https://ai.google.dev/gemini-api/docs/maps-grounding) | Yes | Yes |
 | [URL Context Tool](https://ai.google.dev/gemini-api/docs/url-context) | Yes | Yes |
 | [File Search Tool](https://ai.google.dev/gemini-api/docs/file-search) | Yes | Yes |
-| [Computer Use Tool](https://ai.google.dev/gemini-api/docs/computer-use) |   | Yes |
+| [Computer Use Tool](https://ai.google.dev/gemini-api/docs/computer-use) | Yes | Yes |
 | [MCP Servers Tool](https://ai.google.dev/gemini-api/docs/function-calling#mcp) |   | Yes |
 | **Realtime APIs** |   |   |
 | [Live API (WebSockets)](https://ai.google.dev/gemini-api/docs/live-api) |   | Yes |

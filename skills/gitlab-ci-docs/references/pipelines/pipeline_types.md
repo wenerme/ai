@@ -12,7 +12,7 @@ Multiple types of pipelines can run in a project, including:
 - Merge trains
 - Workload pipelines (for the GitLab Duo Agent Platform only)
 
-These types of pipelines all appear on the **Pipelines** tab of a merge request.
+These types of pipelines all appear on the  tab of a merge request.
 
 ## Branch pipeline
 

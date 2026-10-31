@@ -12,6 +12,8 @@ Run a grader.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
 
   The grader used for the fine-tuning job.
@@ -807,6 +809,8 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
 Validate a grader.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
 
@@ -2430,6 +2434,8 @@ This enables organization owners to share fine-tuned models with other projects 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `project_ids: array of string`
 
   The project identifiers to grant access to.
@@ -3999,6 +4005,8 @@ Response includes details of the enqueued job including job status and the name 
 [Learn more about fine-tuning](/api/docs/guides/model-optimization)
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 

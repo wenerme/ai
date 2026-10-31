@@ -42,7 +42,7 @@ When using Cloudflare Images, you can use URL Rewrite Rules to serve images from
 
 ## Troubleshooting
 
-When troubleshooting URL Rewrite Rules, use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+When troubleshooting URL Rewrite Rules, use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to determine if a rule is triggering for a specific URL.
 
 ## Important remarks
 

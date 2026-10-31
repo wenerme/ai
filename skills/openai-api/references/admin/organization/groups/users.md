@@ -14,6 +14,8 @@ Adds a user to a group.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `user_id: string`
 
   Identifier of the user to add to the group.

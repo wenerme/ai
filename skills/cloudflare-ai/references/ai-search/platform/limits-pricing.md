@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.pn
 
 # Limits & pricing
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Limits
 
@@ -20,7 +20,7 @@ The following limits apply based on your [Workers plan](https://developers.cloud
 
 | Limit | Workers Free | Workers Paid |
 | --- | --- | --- |
-| AI Search instances per account | 100 | 5,000 |
+| AI Search instances per account | 100 | Unlimited, with a default limit of 5,000. Each instance above 5,000 costs [$0.10 per month](#pricing). |
 | Namespaces per account | 100 | 100 |
 | Files per instance | 100,000 | 1M or 500K for hybrid search |
 | Pages per crawl, `discover` parse type | 100,000 | 100,000 |
@@ -53,6 +53,12 @@ Every account receives the following included usage each month:
 - 10 GB-month of storage
 - 1,000 semantic queries
 - 1,000 full-text queries
+
+| Resource | Workers Free | Workers Paid |
+| --- | --- | --- |
+| AI Search instances per account | 100 | Unlimited, with a default limit of 5,000. First 5,000 included + $0.10 per additional instance per month. |
+
+The instance allowance counts instances across all namespaces in your account. Namespaces group instances and do not incur an additional resource charge. To create more than the default limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/wnizxrEUW33Y15CT8).
 
 Usage beyond the included amounts is billed at these rates:
 
@@ -91,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"Review AI Search limits, included monthly usage, and usage-based pricing.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"Review AI Search limits, included monthly usage, and usage-based pricing.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

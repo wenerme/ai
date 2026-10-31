@@ -710,7 +710,7 @@ What's new:
 - **Snippets are now GA** – Available at no extra cost on all Pro, Business, and Enterprise plans.
 - **Ready for production** – Snippets deliver a production-grade experience built for scale.
 - **Part of the Cloudflare Rules platform** – Snippets inherit request modifications from other Cloudflare products and support sequential execution, allowing you to run multiple Snippets on the same request and apply custom modifications step by step.
-- **Trace integration** – Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
+- **Trace integration** – Use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
 
 Learn more in the [launch blog post ↗︎](https://blog.cloudflare.com/snippets/).
 
@@ -825,7 +825,7 @@ What you can do:
 - **See all your rules in one place** – No more clicking around.
 - **Find rules faster** – Search by name.
 - **Understand execution order** – See how rules run in sequence.
-- **Debug easily** – Use [Trace](https://developers.cloudflare.com/rules/trace-request/) without switching tabs.
+- **Debug easily** – Use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) without switching tabs.
 
 Check it out in [Rules > Overview ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview).
 

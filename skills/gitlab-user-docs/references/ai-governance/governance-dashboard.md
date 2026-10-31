@@ -142,7 +142,7 @@ Select **View tool registry** to open the **Tool management** tab.
 
 ### Recent agent sessions
 
-The **Recent agent sessions** card lists the latest agent sessions, newest first.
+The **Recent agent sessions** card lists the latest agent sessions from the last 180 days, newest first.
 It ignores the date range. It follows the **Show** control.
 
 The card lists sessions from GitLab Duo and from connected agents. Each row

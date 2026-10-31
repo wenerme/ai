@@ -634,6 +634,7 @@ Type of AI usage event.
 | `AGENT_PLATFORM_SESSION_CREATED` | Agent platform session was created. |
 | `AGENT_PLATFORM_SESSION_DROPPED` | Agent platform session was dropped. |
 | `AGENT_PLATFORM_SESSION_FINISHED` | Agent platform session was finished. |
+| `AGENT_PLATFORM_SESSION_INPUT_REQUIRED` | Agent platform session paused to wait for user input. |
 | `AGENT_PLATFORM_SESSION_RESUMED` | Agent platform session was resumed. |
 | `AGENT_PLATFORM_SESSION_STARTED` | Agent platform session was started. |
 | `AGENT_PLATFORM_SESSION_STOPPED` | Agent platform session was stopped. |
@@ -696,6 +697,8 @@ Values for sorting AI user metrics.
 | `AGENT_PLATFORM_SESSION_DROPPED_DESC` | Agent Platform Session Dropped event count in descending order. |
 | `AGENT_PLATFORM_SESSION_FINISHED_ASC` | Agent Platform Session Finished event count in ascending order. |
 | `AGENT_PLATFORM_SESSION_FINISHED_DESC` | Agent Platform Session Finished event count in descending order. |
+| `AGENT_PLATFORM_SESSION_INPUT_REQUIRED_ASC` | Agent Platform Session Input Required event count in ascending order. |
+| `AGENT_PLATFORM_SESSION_INPUT_REQUIRED_DESC` | Agent Platform Session Input Required event count in descending order. |
 | `AGENT_PLATFORM_SESSION_RESUMED_ASC` | Agent Platform Session Resumed event count in ascending order. |
 | `AGENT_PLATFORM_SESSION_RESUMED_DESC` | Agent Platform Session Resumed event count in descending order. |
 | `AGENT_PLATFORM_SESSION_STARTED_ASC` | Agent Platform Session Started event count in ascending order. |

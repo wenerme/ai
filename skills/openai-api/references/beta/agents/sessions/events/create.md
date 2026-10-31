@@ -20,6 +20,8 @@ Submits message, cancellation, tool-result, or computer-use approval-response ev
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `events: array of AgentSessionInputParam`
 
   The input events to submit to the session.

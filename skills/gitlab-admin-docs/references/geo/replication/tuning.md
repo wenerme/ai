@@ -21,6 +21,8 @@ On the primary site:
    - Container repositories synchronization concurrency limit
    - Verification concurrency limit
 
+After you save, the secondary site can take up to 2 minutes, plus any database replication lag, to start using the new settings.
+
 Increasing the concurrency values increases the number of jobs that are scheduled.
 However, this may not lead to more downloads in parallel unless the number of
 available Sidekiq threads is also increased. For example, if repository synchronization

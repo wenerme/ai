@@ -62,6 +62,8 @@ To enable GitLab replication:
 1. In the **Synchronization Settings** section, find the **Allow this secondary site to replicate content on Object Storage**
    checkbox to enable it.
 
+After you save, the secondary site can take up to 2 minutes, plus any database replication lag, to start using the new setting.
+
 For LFS, follow the documentation to
 [set up LFS object storage](../../lfs/_index.md#storing-lfs-objects-in-remote-object-storage).
 

@@ -12,6 +12,8 @@ Update certain properties of an evaluation.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be

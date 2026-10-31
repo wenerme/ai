@@ -8,6 +8,8 @@ Add an external key config for an organization
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `body: Aws { external_id, kms_arn, name, 3 more }  or Gcp { audience, kms_key_location, kms_key_name, 9 more }  or Azure { key_name, name, tenant_id, 4 more }`
 
   - `Aws object { external_id, kms_arn, name, 3 more }`

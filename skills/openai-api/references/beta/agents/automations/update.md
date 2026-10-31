@@ -12,6 +12,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expression: optional string`
 
   Only accepted for periodic automations.
@@ -241,8 +243,6 @@ Updates supplied fields; target and metadata replace the whole field.
               The archive media type, always `application/zip`.
 
               - `"application/zip"`
-
-                A ZIP archive.
 
             - `type: "base64" (default: "base64")`
 

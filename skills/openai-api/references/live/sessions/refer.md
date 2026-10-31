@@ -12,6 +12,8 @@ Transfer a SIP call to another destination. Supply a nonblank target_uri for the
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `target_uri: string`
 
   Nonblank URI for the SIP Refer-To header, such as tel:+14155550123 or sip:agent@example.com.

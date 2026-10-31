@@ -21,18 +21,16 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `google/gemini-4-argon`
 
 - Third-party
+- Zero data retention
 
 Google's frontier model for deep work on complex, real-world tasks across coding, finance, legal, cybersecurity and science. The first model in the Gemini 4 family.
-
-Tip
-
-**50% off through November 30:** Gemini 4 Argon is 50% off through November 30, 2026: $2.00 input, $0.10 cached input, and $10.00 output per 1M tokens. Starting December 1, 2026, pricing returns to $4.00 input, $0.20 cached input, and $20.00 output per 1M tokens.
 
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-argon) |
+| Zero data retention | Yes |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.10</li><li>Output (per 1M tokens)$10.00</li></ul> |
 

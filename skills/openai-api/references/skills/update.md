@@ -12,6 +12,8 @@ Update the default version pointer for a skill.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `default_version: string`
 
   The skill version number to set as default.

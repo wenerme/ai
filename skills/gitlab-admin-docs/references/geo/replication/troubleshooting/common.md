@@ -496,7 +496,12 @@ dashboard.
 
 If the name does not match the **Name** of any Geo site, administrators see a banner
 on the affected site. The banner shows the configured name and links to this section.
-After you correct the name, [restart GitLab](../../../restart_gitlab.md) to clear the banner.
+
+Up to 2 minutes after you rename a site to a **Name** that does not match, Geo no longer
+detects the current site. A primary site then no longer creates replication events.
+
+After you correct the **Name** in the dashboard, the banner can take up to 2 minutes to clear.
+If you change the configured name instead, [restart GitLab](../../../restart_gitlab.md).
 
 To check if the current machine has a site name that matches a site in the
 database, run the check task:

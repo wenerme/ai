@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/queues/platform/pricing/og.png?v=f8e8dd
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Queues charges for the total number of operations against each of your queues during a given month.
+Cloudflare Queues charges for operations and for queues above the included amount on the Workers Paid plan.
 
 - An operation is counted for each 64 KB of data that is written, read, or deleted.
 - Messages larger than 64 KB are charged as if they were multiple messages: for example, a 65 KB message and a 127 KB message would both incur two operation charges when written, read, or deleted.
@@ -25,9 +25,12 @@ Cloudflare Queues charges for the total number of operations against each of you
 |  | Workers Free | Workers Paid |
 | --- | --- | --- |
 | Standard operations | 10,000 operations/day included | 1,000,000 operations/month included + $0.40/million operations |
+| Queues per account | 10,000 | Unlimited, with a default limit of 10,000. First 10,000 included + $0.10 per additional queue per month. |
 | Message retention | 24 hours (non-configurable) | 4 days default, configurable up to 14 days |
 
-In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly bill:
+Refer to [Queues limits](https://developers.cloudflare.com/queues/platform/limits/) for queue creation limits and how to request a limit increase.
+
+In most cases, it takes 3 operations to deliver a message: 1 write, 1 read, and 1 delete. Therefore, you can use the following formula to estimate your monthly operations charges, excluding charges for additional queues:
 
 ```txt
 ((Number of Messages * 3) - 1,000,000) / 1,000,000  * $0.40
@@ -66,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/pricing/#page","headline":"Pricing","description":"Cloudflare Queues pricing for standard operations with included free usage.","url":"https://developers.cloudflare.com/queues/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/queues/platform/pricing/og.png?v=f8e8dd0441bcf01e","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/pricing/#page","headline":"Pricing","description":"Cloudflare Queues pricing for standard operations with included free usage.","url":"https://developers.cloudflare.com/queues/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/queues/platform/pricing/og.png?v=f8e8dd0441bcf01e","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

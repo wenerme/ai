@@ -10,7 +10,7 @@ A job log displays the full execution history of a [CI/CD job](_index.md).
 To view job logs:
 
 1. Select the project for which you want to view job logs.
-1. In the left sidebar, select **CI/CD** > **Pipelines**.
+1. In the left sidebar, select  > .
 1. Select the pipeline you want to inspect.
 1. In the pipeline view, in the list of jobs, select a job to view the job logs page.
 
@@ -18,7 +18,7 @@ To view detailed information about the job and its log output, scroll through th
 
 ## View job logs in full screen mode
 
-You can view the contents of a job log in full screen mode by clicking **Show full screen**.
+You can view the contents of a job log in full screen mode by clicking .
 
 To use full screen mode, your web browser must also support it. If your web browser does not support full screen mode, then the option is not available.
 
@@ -63,7 +63,7 @@ In the example above:
   of letters, numbers, and the `_`, `.`, or `-` characters.
 - `\r\e[0K`: Escape sequence that prevents the section markers from displaying in the
   rendered (colored) job log. They are displayed when viewing the raw job log, accessed
-  in the upper-right corner of the job log by selecting **Show complete raw** ().
+  in the upper-right corner of the job log by selecting  ().
   - `\r`: carriage return (returns the cursor to the start of the line).
   - `\e[0K`: ANSI escape code to clear the line from the cursor position to the end of the line.
     (`\e[K` alone does not work; the `0` must be included).

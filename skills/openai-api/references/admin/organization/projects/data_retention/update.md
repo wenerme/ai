@@ -12,6 +12,8 @@ Updates project data retention controls.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `retention_type: "organization_default" or "none" or "zero_data_retention" or 3 more`
 
   The desired project data retention type.

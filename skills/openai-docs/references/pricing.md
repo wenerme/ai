@@ -260,20 +260,22 @@ Life sciences models
   
 Our latest Rosalind models.
 
-  
-Prices per 1M tokens.
 
 
 
 
-### Grouped Pricing Table data
+  Prices per 1M tokens.
 
-| Model | Input | Output | Cached input |
-| --- | --- | --- | --- |
-| gpt-rosalind-research | $5.00 | $25.00 | $0.50 |
-| gpt-rosalind-discovery | $5.00 | $25.00 | $0.50 |
 
-Billing for `gpt-rosalind-research` begins on October 5, 2026. Cache-write pricing does not apply to this model. Access is limited to approved internal research through the [trusted-access program](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research). All eligible organizations will continue to get access to the latest GPT-Rosalind models as they’re released. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
+### Standard pricing data
+
+| Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6-rosalind | $15.00 | $75.00 | $1.50 | $18.75 | $37.50 | $30.00 | $112.50 | $3.00 | $37.50 | $75.00 |
+| gpt-rosalind-research | $5.00 | $25.00 | $0.50 | - | - | - | - | - | - | - |
+| gpt-rosalind-discovery | $5.00 | $25.00 | $0.50 | - | - | - | - | - | - | - |
+
+Access is limited to approved internal research through the [trusted-access program](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research). All eligible organizations will continue to get access to the latest GPT-Rosalind models as they’re released. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
 
 
 

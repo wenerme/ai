@@ -169,6 +169,8 @@ Updates a project rate limit.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `batch_1_day_max_input_tokens: optional integer`
 
   The maximum batch input tokens per day. Only relevant for certain models.

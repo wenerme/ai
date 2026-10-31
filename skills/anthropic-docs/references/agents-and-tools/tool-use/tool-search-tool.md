@@ -759,12 +759,12 @@ When a tool search operation fails during execution, the API returns a 200 respo
 }
 ```
 
-The `error_code` field has four possible values:
+The API defines these `error_code` values:
 
 * `invalid_tool_input`: the search input was invalid, for example a malformed regex pattern or a pattern over the 200-character limit
 * `unavailable`: the search couldn’t run, for example because it timed out or the service was unavailable
 * `too_many_requests`: rate limit exceeded for tool search operations
-* `execution_time_exceeded`: the search exceeded its execution time limit
+* `execution_time_exceeded`: not returned by tool search, which reports a timeout as `unavailable`
 
 ### Common mistakes
 

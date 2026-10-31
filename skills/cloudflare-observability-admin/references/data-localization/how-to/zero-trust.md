@@ -1,7 +1,7 @@
 ---
-description: Use Zero Trust products with the Data Localization Suite, including Gateway and CASB.
-title: Zero Trust
-image: https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.png?v=248d5d00fe0ffd4e
+description: Configure data localization controls for Cloudflare One traffic, private keys, and supported logs.
+title: Data residency for Cloudflare One
+image: https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.png?v=fc232a5634433dfc
 ---
 
 [Skip to content](#main-content)
@@ -10,78 +10,150 @@ image: https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Zero Trust
+# Data residency for Cloudflare One
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The following sections describe how to configure Zero Trust products with the Data Localization Suite, including which features support Regional Services and Customer Metadata Boundary.
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) provides separate controls for where Cloudflare processes supported traffic and where Cloudflare stores supported logs. These controls have different settings and supported regions.
 
-## Gateway
+| Control | What it controls | Current availability |
+| --- | --- | --- |
+| [Processing region (Regional Services for Gateway)](#processing-region-for-gateway) | Where Gateway decrypts HTTPS traffic and performs HTTP inspection | Available for [supported on-ramps and regions](#processing-region-for-gateway) |
+| [Connection locations](#connection-locations) | Where `cloudflared`, the Cloudflare One Client, and Direct CNI connect | Earth, United States, or FedRAMP High |
+| [Processing region for Access](#access) | Where Cloudflare processes reverse proxy requests for Access-protected applications | Team domain: FedRAMP Moderate Compliant (Domestic). Public hostnames: any managed region available for Regional Hostnames |
+| [Processing region for Browser Isolation](#browser-isolation) | Where Cloudflare processes supported Browser Isolation traffic | US FedRAMP region only |
+| [Log region (Customer Metadata Boundary)](#log-region) | Where Cloudflare stores supported Customer Logs | European Union and United States for selected datasets |
+| [Email Security regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) | Where Email Security examines messages for supported deployment types | Refer to the [Email Security documentation](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) |
 
-Regional Services can be used with Gateway in all [supported regions](https://developers.cloudflare.com/data-localization/region-support/). Be aware that Regional Services only apply when using the Cloudflare One Client in Traffic and DNS mode.
+This guide describes the current scope of Cloudflare One data residency controls.
 
-### Egress policies
+## FedRAMP environments
 
-Enterprise customers can purchase a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) (IPv4 and IPv6) or range of IPs geolocated to one or more Cloudflare network locations. This allows your egress traffic to geolocate to the city selected in your [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
+Customers that require a FedRAMP-authorized Cloudflare One deployment should use the applicable [Cloudflare One FedRAMP environment ↗︎](https://www.cloudflare.com/cloudflare-for-government/). Product and feature availability varies between FedRAMP environments. Contact your account team to select and configure the appropriate environment.
 
-Zero Trust [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) control the IPs used by WARP and Gateway traffic when it leaves Cloudflare toward the Internet. They are different from [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), which control the IPs used by the Cloudflare CDN when connecting to your origin server. For guaranteed egress IP geolocation from the Cloudflare CDN to your origin, refer to the [Cache](https://developers.cloudflare.com/data-localization/how-to/cache/#egress-to-origin) guide.
+## Processing region for Gateway
 
-### HTTP policies
+Processing region (Regional Services for Gateway) controls where Cloudflare Gateway decrypts HTTPS traffic and performs HTTP inspection. Gateway HTTP inspection requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/tls-decryption/).
 
-As part of Regional Services, Cloudflare Gateway will only perform [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) when using the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (in default [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/)).
+Processing region for Gateway does not apply to Gateway DNS or network policy processing. Gateway DNS or network policy processing occurs at the Cloudflare data center where traffic is received.
 
-#### Data Loss Prevention (DLP)
+Processing region for Gateway is configured at the Cloudflare One account level. The selected region applies to Gateway HTTP traffic from supported on-ramps for the account.
 
-You are able to [log the payload of matched DLP rules](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules) and encrypt them with your public key so that only you can examine them later.
+### Supported on-ramps
 
-[Cloudflare cannot decrypt encrypted payloads](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#data-privacy).
+Cloudflare One applies this behavior to traffic sent to Gateway through these on-ramps:
 
-### DNS policies
+- [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default)
+- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)
+- [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) connected through IPsec, GRE, or Direct CNI
 
-Regional Services controls where Cloudflare decrypts traffic. Because most DNS traffic is not encrypted, Gateway DNS (domain name filtering) cannot be regionalized using Regional Services.
+Cloudflare WAN requires [unified routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode) for this support.
 
-Refer to the [Cloudflare One Client settings](https://developers.cloudflare.com/data-localization/how-to/zero-trust/#cloudflare-one-client-settings) section below for more information.
+### Connection termination is separate from inspection location
 
-### Custom certificates
+These on-ramps create a connection that may terminate at a Cloudflare data center outside the selected region (for example, Cloudflare One Client creates a MASQUE tunnel that may terminate outside the region). HTTPS traffic carried inside the connection remains encrypted until Gateway forwards it to the selected region for TLS decryption and HTTP inspection.
 
-You can [bring your own certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) to Gateway but these cannot yet be restricted to a specific region.
+For connection termination locations, refer to [Connection locations](#connection-locations).
 
-### Logs and Analytics
+### Available regions
 
-By default, Cloudflare will store and deliver logs from data centers across our global network. To maintain regional control over your data, you can use [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) and restrict data storage to a specific geographic region. For more information refer to the section about [Logpush datasets supported](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/).
+Processing region for Gateway is available in these regions:
 
-Customers also have the option to reduce the logs that Cloudflare stores:
+- European Union
+- Exclusive of Hong Kong and Macau
+- Exclusive of Russia and Belarus
+- FedRAMP Moderate Compliant (Domestic)
+- FedRAMP Moderate Compliant (International)
+- IRAP Protected
+- NATO
+- Schengen Area
+- United States of America
 
-- You can [exclude PII from logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
-- You can [disable logging, or only log blocked requests](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#selective-logging).
+Refer to [Region support](https://developers.cloudflare.com/data-localization/region-support/) for region definitions. Contact your account team to configure or inquire about the availability of other regions.
 
-#### Verify regional map application
+### Gateway limitations
 
-To verify that your regional map is being applied correctly, check the `IngressColoName` field in your [Zero Trust Network Session logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/#ingresscoloname). This field shows the name of the Cloudflare data center where traffic ingressed. Since regionalization is applied upstream from Gateway, the ingress data center will be located within your configured regional map, confirming that traffic is being processed in the correct region.
+You can [bring your own certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/) to Gateway, but the certificate cannot be restricted to a specific region.
+
+[File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/file-sandboxing/) processes quarantined files in the United States, regardless of the selected Gateway processing region. Using File Sandboxing with a non-US processing region sends those files outside the selected region.
+
+Processing region for Gateway supports [predefined and custom DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) that do not use [EDM, custom wordlists, document entries, or AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/), or [pattern entries with custom functions](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/custom-validation-workers/). [AI context analysis and OCR](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/) are also unsupported.
+
+Feature availability in dedicated FedRAMP environments may differ from these Gateway limitations. Contact your account team for current FedRAMP feature support.
+
+### Egress traffic
+
+Regional Services and egress policies are separate controls. Regional Services controls where Gateway decrypts HTTPS traffic and performs HTTP inspection. Dedicated egress IPs provide predictable, account-specific source IP addresses after traffic leaves Gateway for its destination. Customers can use them for origin allowlisting or to associate Gateway traffic with a selected IP geolocation.
+
+Use [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/dedicated-egress-ips/) and [Gateway egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/egress-policies/) to select these source IP addresses for Gateway traffic.
+
+## Connection locations
+
+The following connection locations are separate from processing region:
+
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) connects globally by default. The `--region us` option restricts tunnel connections to data centers in the United States. In FedRAMP High environments, the tunnel token automatically routes `cloudflared` to FedRAMP data centers and no `--region` flag is required.
+- [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#environment) connects to the global environment by default. The `fedramp_high` setting connects the client to the FedRAMP High environment.
+- [Direct CNI](https://developers.cloudflare.com/network-interconnect/) terminates a physical connection at the facility selected during provisioning. This is a physical topology choice that is made by the customer.
 
 ## Access
 
-To ensure that all reverse proxy requests for applications protected by Cloudflare Access will only occur in FedRAMP-compliant data centers, you should use [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/) with the region set to FedRAMP.
+Cloudflare Access uses different connection paths depending on the application type:
 
-## Cloudflare Tunnel
+1. The user connects to the [Access team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name), such as `<team>.cloudflareaccess.com`, to authenticate.
+2. For a public application, the user connects to the protected application hostname, such as `app.example.com`, to access the application.
+3. For a private application, the user reaches the application's private IP or hostname through the Cloudflare One Client, Cloudflare WAN, or Browser Isolation. Cloudflare evaluates the Access application policies before allowing traffic to reach the application.
 
-The [`--region` parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services, which controls where user traffic is decrypted and processed.
+### Processing region
 
-For public hostnames served through a tunnel, Regional Services is configured at the DNS record level. The tunnel connector region and the Regional Services region operate independently.
+The Access team domain supports processing in the FedRAMP Moderate Compliant (Domestic) region. Contact your account team to configure the Access team domain as regionalized.
 
-## Cloudflare One Client settings
+A public application hostname can use any managed region available for Regional Hostnames. Configure the region on the proxied DNS hostname using one of the documented [ways to use Regional Services](https://developers.cloudflare.com/data-localization/regional-services/#ways-to-use-regional-services).
 
-### Local Domain Fallback
+For a private application hostname reached through Cloudflare Tunnel, the [`cloudflared --region us` setting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) restricts the connector's Cloudflare connections to data centers in the United States. In FedRAMP High environments, the tunnel token routes `cloudflared` to FedRAMP data centers and no `--region` flag is required. The Tunnel region setting is configured separately from the processing region for eligible Gateway HTTP traffic.
 
-You can use the WARP setting [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) in order to use a private DNS resolver, which you can manage yourself.
+### Log region
 
-### Split Tunnels
+When Customer Metadata Boundary is set to the European Union, Access does not store Access User Logs and the dashboard appears empty. Use [Logpush](https://developers.cloudflare.com/logs/logpush/) to retain these logs. For more information, refer to [Log region](#log-region).
 
-[Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) allow you to decide which IP addresses/ranges and/or domains are routed through or excluded from Cloudflare.
+### Geo Key Manager
 
-Caution
+If the protected application hostname uses a supported custom certificate, [configure Geo Key Manager](https://developers.cloudflare.com/ssl/edge-certificates/geokey-manager/setup/) to restrict where Cloudflare stores the private TLS key for that hostname. This setting applies to the hostname's TLS certificate, not to Cloudflare One.
 
-Gateway policies will not apply for excluded traffic.
+## Browser Isolation
+
+Processing region does not control where [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) sessions run. Browser Isolation supports regional processing only in the US FedRAMP region. Contact your account team to set up a FedRAMP account.
+
+## CASB
+
+CASB does not support regional processing through Regional Services or regional log storage through Customer Metadata Boundary.
+
+## Log region
+
+[Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) is an account-level setting that stores supported Customer Logs in the European Union or United States. It is configured independently from the processing region.
+
+Support varies by dataset. In the [CMB-supported Logpush dataset list](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/), Respects CMB indicates whether the dataset's logs are stored only in the selected region. If a dataset is unavailable in the selected CMB region, Logpush does not deliver data for that dataset.
+
+For datasets marked as respecting CMB, Cloudflare stores the logs and initiates Logpush delivery from the selected CMB region to a destination you control. CMB does not restrict the destination's location.
+
+Refer to the current lists of [CMB-supported Logpush datasets](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/) and [CMB-supported GraphQL datasets](https://developers.cloudflare.com/data-localization/metadata-boundary/graphql-datasets/) for coverage.
+
+Some Cloudflare One products provide additional product-specific controls for reducing or protecting logged data.
+
+### Gateway logs
+
+Use Gateway logging controls to [exclude supported personally identifiable information fields](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/) or [select which events appear in Cloudflare One activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#selective-logging).
+
+Gateway activity logs are unavailable in the dashboard when Customer Metadata Boundary is enabled. Enterprise users can still export logs through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+
+### DLP payload and AI prompt logging
+
+Gateway DLP inspection applies to HTTP traffic through [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/) and requires TLS decryption.
+
+[Configure DLP payload and AI prompt logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/) to encrypt matched content with a customer-provided public key. Only the customer holds the private key required to decrypt the protected content.
+
+### SSH command logs
+
+[SSH command logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/ssh-command-logs/) can encrypt downloadable logs with a customer-provided public key for local decryption. This encryption only applies to downloadable SSH logs, not to logs exported through Logpush.
 
 Was this helpful?
 
@@ -92,5 +164,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/#page","headline":"Zero Trust","description":"Use Zero Trust products with the Data Localization Suite, including Gateway and CASB.","url":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.png?v=248d5d00fe0ffd4e","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/#page","headline":"Data residency for Cloudflare One","description":"Configure data localization controls for Cloudflare One traffic, private keys, and supported logs.","url":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/og.png?v=fc232a5634433dfc","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SSH"]}
 ```

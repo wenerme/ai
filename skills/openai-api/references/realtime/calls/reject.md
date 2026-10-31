@@ -14,6 +14,8 @@ Decline an incoming SIP call by returning a SIP status code to the caller.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `status_code: optional integer`
 
   SIP response code to send back to the caller. Defaults to `603` (Decline)

@@ -8,6 +8,8 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.

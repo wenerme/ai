@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/websocke
 
 # Use WebSockets
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can act as WebSocket servers that connect thousands of clients per instance. You can also use WebSockets as a client to connect to other servers or Durable Objects.
 
@@ -756,9 +756,13 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 A full example is available in [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/).
 
-WebSocket disconnection on deploy
+WebSocket disconnection during code updates
 
-Code updates disconnect all WebSockets. Deploying a new version restarts every Durable Object, which disconnects any existing connections.
+Connections accepted with the WebSocket Hibernation API remain connected when a Durable Object adopts new code after hibernating.
+
+A forced code update disconnects WebSockets attached to the running instance. This happens when a `deferred` code update's `max_delay` is reached before hibernation, or when the code update strategy is set to `immediate`. The Web Standard WebSocket API prevents hibernation, so its connections are disconnected when the code update is applied.
+
+Refer to [Durable Objects code updates](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/) for more information.
 
 ## Related resources
 
@@ -780,5 +784,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/#page","headline":"Use WebSockets","description":"Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.","url":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/og.png?v=f6ee405dcdefa97c","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/#page","headline":"Use WebSockets","description":"Serve WebSocket connections from Durable Objects, including the standard and Hibernation APIs.","url":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/websockets/og.png?v=f6ee405dcdefa97c","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

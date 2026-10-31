@@ -106,6 +106,55 @@ A completion event contains the final transcript for the committed item:
 
 Ordering between completion events from different speech turns isn't guaranteed. Use `item_id` to match transcription events to committed input items.
 
+After configuring a transcription session, use this Go function to send mono PCM16 audio at 24 kHz, commit the turn, and match the final transcript to the committed item:
+
+```go
+func transcribeTurn(ctx context.Context, conn *realtime.RealtimeConnection, audio []byte) error {
+	for start := 0; start < len(audio); start += 9600 {
+		end := min(start+9600, len(audio))
+		if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfInputAudioBufferAppend(base64.StdEncoding.EncodeToString(audio[start:end]))); err != nil {
+			return err
+		}
+	}
+	if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+		OfInputAudioBufferCommit: &realtime.InputAudioBufferCommitEventParam{},
+	}); err != nil {
+		return err
+	}
+	// Match the final transcript to the committed item, not event arrival order.
+	var itemID string
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return err
+		}
+		switch event.Type {
+		case "input_audio_buffer.committed":
+			itemID = event.OfInputAudioBufferCommittedEvent.ItemID
+		case "conversation.item.input_audio_transcription.delta":
+			delta := event.OfConversationItemInputAudioTranscriptionDeltaEvent
+			if itemID != "" && delta.ItemID == itemID {
+				fmt.Fprintf(os.Stderr, "Partial transcript (%s): %s\n", delta.ItemID, delta.Delta)
+			}
+		case "conversation.item.input_audio_transcription.completed":
+			completed := event.OfConversationItemInputAudioTranscriptionCompletedEvent
+			if itemID == "" || completed.ItemID != itemID {
+				continue
+			}
+			fmt.Println("Final transcript:", completed.Transcript)
+			return nil
+		case "conversation.item.input_audio_transcription.failed":
+			if itemID != "" && event.OfConversationItemInputAudioTranscriptionFailedEvent.ItemID == itemID {
+				return fmt.Errorf("transcription failed")
+			}
+		case "error":
+			return fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+	}
+}
+```
+
+
 ## Add transcription context
 
 Add context when the audio contains specialized vocabulary or more than one expected language. Send another `session.update` event to change the transcription configuration during an existing session.

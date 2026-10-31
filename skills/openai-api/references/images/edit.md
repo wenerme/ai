@@ -6,6 +6,8 @@ Creates an edited or extended image given one or more source images and a prompt
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `images: array of object { file_id, image_url }`
 
   Input image references to edit.

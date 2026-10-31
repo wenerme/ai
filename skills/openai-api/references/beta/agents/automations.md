@@ -8,6 +8,8 @@ Saves an active automation without invoking it immediately.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `create_automation_params: AutomationScheduleParam`
 
   Creates an automation without invoking it immediately.
@@ -235,8 +237,6 @@ Saves an active automation without invoking it immediately.
                   The archive media type, always `application/zip`.
 
                   - `"application/zip"`
-
-                    A ZIP archive.
 
                 - `type: "base64" (default: "base64")`
 
@@ -6041,6 +6041,8 @@ Updates supplied fields; target and metadata replace the whole field.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expression: optional string`
 
   Only accepted for periodic automations.
@@ -6270,8 +6272,6 @@ Updates supplied fields; target and metadata replace the whole field.
               The archive media type, always `application/zip`.
 
               - `"application/zip"`
-
-                A ZIP archive.
 
             - `type: "base64" (default: "base64")`
 
@@ -9723,8 +9723,6 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
                   - `"application/zip"`
 
-                    A ZIP archive.
-
                 - `type: "base64" (default: "base64")`
 
                   The type of the object. Always `base64`.
@@ -11352,8 +11350,6 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               The archive media type, always `application/zip`.
 
               - `"application/zip"`
-
-                A ZIP archive.
 
             - `type: "base64" (default: "base64")`
 

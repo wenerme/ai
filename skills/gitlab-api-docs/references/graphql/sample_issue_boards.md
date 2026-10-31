@@ -39,7 +39,7 @@ You can use GraphiQL to list the issue boards for a project.
    }
    ```
 
-1. Select **Play**.
+1. Select .
 
 To view one of these issue boards, copy a numeric identifier from the output.
 For example, if the identifier is `7174622`, use this URL to go to the issue board:

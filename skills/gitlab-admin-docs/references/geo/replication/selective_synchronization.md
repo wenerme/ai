@@ -44,6 +44,8 @@ By default, selective synchronization is disabled. To enable it:
 1. Depending on your selection, configure **Groups to synchronize** or **Shards to synchronize**.
 1. Select **Save changes**.
 
+After you save, the secondary site can take up to 2 minutes, plus any database replication lag, to start using the new settings.
+
 ## Promoting a secondary site with selective synchronization enabled
 
 > [!warning]

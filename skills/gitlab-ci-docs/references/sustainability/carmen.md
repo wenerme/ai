@@ -131,7 +131,7 @@ To view results:
 
 1. Go to your pipeline.
 1. Select the `carbon-report` job.
-1. Under **Job artifacts**, select **Browse**.
+1. Under , select .
 1. Open the `CO2_<date>.csv` file.
 
 The report includes the following fields:

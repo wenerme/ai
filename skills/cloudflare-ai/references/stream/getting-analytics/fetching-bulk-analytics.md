@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-
 
 # GraphQL Analytics API
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream provides analytics about both live video and video uploaded to Stream, via the GraphQL API described below, as well as on the Stream **Analytics** page of the Cloudflare dashboard.
 
@@ -53,8 +53,6 @@ The dataset supports these filters and grouping dimensions:
 | `uid` | Video ID (for HLS/DASH) or Input ID (for WebRTC/WHEP) |
 | `clientCountryName` | ISO 3166-1 alpha-2 country code for the viewer |
 | `creator` | [Creator ID](https://developers.cloudflare.com/stream/manage-video-library/creator-id/) associated with the video, if set |
-
-@TODO: NOTE -- INPUT ID LINKS FOR WHEP
 
 Some filters, like `date`, can be used with operators, such as `gt` (greater than) and `lt` (less than), as shown in the example query below. For more advanced filtering options, refer to [filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/).
 
@@ -391,5 +389,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/#page","headline":"GraphQL Analytics API","description":"Query Cloudflare Stream video metrics and viewer data using the GraphQL Analytics API.","url":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/og.png?v=2da756861baa600d","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/#page","headline":"GraphQL Analytics API","description":"Query Cloudflare Stream video metrics and viewer data using the GraphQL Analytics API.","url":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/og.png?v=2da756861baa600d","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

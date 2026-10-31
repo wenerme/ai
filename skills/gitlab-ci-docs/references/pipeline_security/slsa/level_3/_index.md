@@ -84,8 +84,8 @@ build-dockerhub:
 
 Successful attestations are stored in the attestations page. To view the attestations:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Attestations**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 
 If the attestation is not successful, the CI/CD job log shows an error.
 

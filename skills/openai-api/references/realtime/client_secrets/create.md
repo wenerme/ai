@@ -18,6 +18,8 @@ Returns the created client secret and the effective session object. The client s
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_after: optional object { anchor, seconds }`
 
   Configuration for the client secret expiration. Expiration refers to the time after which
@@ -98,11 +100,19 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcma"`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { strength, type }`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
           Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
           Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+
+          - `strength: optional number (default: 1)`
+
+            Input noise suppression strength. Higher values apply more suppression.
+            Defaults to 1 when noise reduction is first enabled. Omitting strength
+            from a session update preserves the current strength.
+
+            `minimum: 0`, `maximum: 1`
 
           - `type: optional NoiseReductionType`
 
@@ -948,11 +958,19 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { strength, type }`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
           Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
           Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+
+          - `strength: optional number (default: 1)`
+
+            Input noise suppression strength. Higher values apply more suppression.
+            Defaults to 1 when noise reduction is first enabled. Omitting strength
+            from a session update preserves the current strength.
+
+            `minimum: 0`, `maximum: 1`
 
           - `type: optional NoiseReductionType`
 
@@ -1146,11 +1164,19 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcma"`
 
-        - `noise_reduction: optional object { type }  or null (default: null)`
+        - `noise_reduction: optional object { strength, type }  or null (default: null)`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
           Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
           Filtering the audio can improve VAD and turn detection accuracy (reducing false positives) and model performance by improving perception of the input audio.
+
+          - `strength: optional number (default: 1)`
+
+            Input noise suppression strength. Higher values apply more suppression.
+            Defaults to 1 when noise reduction is first enabled. Omitting strength
+            from a session update preserves the current strength.
+
+            `minimum: 0`, `maximum: 1`
 
           - `type: optional NoiseReductionType`
 
@@ -1979,9 +2005,17 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `noise_reduction: optional object { type }  or null`
+        - `noise_reduction: optional object { strength, type }  or null`
 
           Configuration for input audio noise reduction.
+
+          - `strength: optional number (default: 1)`
+
+            Input noise suppression strength. Higher values apply more suppression.
+            Defaults to 1 when noise reduction is first enabled. Omitting strength
+            from a session update preserves the current strength.
+
+            `minimum: 0`, `maximum: 1`
 
           - `type: optional NoiseReductionType`
 
@@ -2105,6 +2139,7 @@ curl https://api.openai.com/v1/realtime/client_secrets \
           "type": "audio/pcm"
         },
         "noise_reduction": {
+          "strength": 0,
           "type": "near_field"
         },
         "transcription": {

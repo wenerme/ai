@@ -1537,6 +1537,31 @@ Deletes a manifest, identified by its digest. Applies only to Docker or OCI cont
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `repository` | [`ArtifactRegistryRepository`](objects.md#artifactregistryrepository) | Repository holding the deleted manifest. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not accepted. |
 
+## `artifactRegistryManifestsBulkDelete`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Deletes up to 1000 manifests of one image, by digest. Applies to Docker and OCI repositories only. Permanently deletes manifests on a hosted repository and evicts cached copies on a remote repository. A virtual repository holds no manifests, so the mutation returns not found in `errors`. Deleting a manifest removes its tags. Artifact Registry applies the batch in the background, so the mutation reports acceptance, not completion, and a manifest can still be listed until the batch reaches it. Only the named manifests are deleted: deleting an index leaves the manifests it indexes. A manifest that an index outside the batch references is skipped and not reported. Does not delete manifests if the `artifact_registry_ui` feature flag is disabled.
+
+**Input type:** `ArtifactRegistryManifestsBulkDeleteInput`
+
+### `artifactRegistryManifestsBulkDelete` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `ids` | [`[String!]!`](scalars.md#string) | Content-addressable digests of the manifests to delete, as returned by the `digest` field on a manifest: `sha256:` followed by 64 lowercase hexadecimal characters. Takes 1 to 1000 entries, and a repeated digest counts toward the limit. A digest that names no manifest is ignored. Pass the list as a variable: the query text is limited to 10,000 characters. |
+| `imageId` | [`ID!`](scalars.md#id) | ID of the image holding the manifests in Artifact Registry, as returned by the `id` field on an image. Not a GitLab global ID. |
+| `name` | [`String!`](scalars.md#string) | Name of the repository holding the image, unique within the organization. |
+
+### `artifactRegistryManifestsBulkDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `repository` | [`ArtifactRegistryRepository`](objects.md#artifactregistryrepository) | Repository holding the deleted manifests. Counters were read before the deletion applied, so they can lag its result. Null when the batch was refused or not accepted. |
+
 ## `artifactRegistryNpmDistTagDelete`
 
 - Status: Experiment
@@ -12520,6 +12545,30 @@ Detaches a security scan profile from projects and groups. All projects and grou
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `training` | [`ProjectSecurityTraining`](objects.md#projectsecuritytraining) | Represents the training entity subject to mutation. |
 
+## `securityUpdateTrackedContextQuota`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Updates the tracked security context quota for an organization.
+
+**Input type:** `SecurityUpdateTrackedContextQuotaInput`
+
+### `securityUpdateTrackedContextQuota` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `organizationId` | [`OrganizationsOrganizationID!`](scalars.md#organizationsorganizationid) | Organization to update the quota for. |
+| `quota` | [`Int!`](scalars.md#int) | New tracked security context quota limit for the organization. |
+
+### `securityUpdateTrackedContextQuota` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `quotaInfo` | [`SecurityTrackedContextQuota`](objects.md#securitytrackedcontextquota) | Updated tracked security context quota information. |
+
 ## `setContainerScanningForRegistry`
 
 Enable/disable container scanning for registry for the given project.
@@ -14365,6 +14414,27 @@ Bulk upsert per-user budget cap overrides.
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `userCallout` | [`UserCallout!`](objects.md#usercallout) | User callout dismissed. |
+
+## `userCalloutDelete`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `UserCalloutDeleteInput`
+
+### `userCalloutDelete` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `featureName` | [`String!`](scalars.md#string) | Feature name of the callout dismissal to delete. |
+
+### `userCalloutDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `userCallout` | [`UserCallout`](objects.md#usercallout) | User callout deleted. Null if the callout was not dismissed. |
 
 ## `userCustomAttributeSet`
 

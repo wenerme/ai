@@ -18,6 +18,7 @@ Manage users in your Zero Trust organization.
 
 - [Seat management](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/)
 - [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/)
+- [View SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/)
 - [User logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/)
 - [Risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
 

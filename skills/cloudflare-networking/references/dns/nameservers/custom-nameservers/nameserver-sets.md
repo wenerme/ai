@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/name
 
 # Nameserver sets
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A nameserver set is an account-level group of two to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account. Each set has a name to identify it.
 
@@ -20,7 +20,7 @@ Nameserver sets are a separate configuration from [zone](https://developers.clou
 
 ## Availability
 
-Nameserver sets are in beta and available to Enterprise customers through the API only.
+Nameserver sets are in beta and available to Enterprise customers via API or on the dashboard.
 
 To use a nameserver set, a zone must be in the same account as the set.
 
@@ -64,7 +64,11 @@ Set names must be unique within an account.
 
 ## Create a nameserver set
 
-To create a set, use the [Create Custom Nameserver Set](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/nameserver_sets/methods/create/) endpoint.
+In the Cloudflare dashboard, create and manage sets under **Nameserver sets** on the account **DNS Settings** page.
+
+[Go to **DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/configurations/dns-settings)
+
+To create a set via API, use the [Create Custom Nameserver Set](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/subresources/nameserver_sets/methods/create/) endpoint.
 
 Include a top-level `name` to identify the set. Each nameserver name in `nameservers` must be unique within the set and lowercase. Internationalized domain names must use Punycode.
 
@@ -245,7 +249,11 @@ Cloudflare does not create these records for you, even if the nameserver names b
 
 ## Assign a nameserver set to a zone
 
-To assign a set to a zone, use the [Update DNS Settings for a Zone](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint:
+In the Cloudflare dashboard, assign a set under **Nameserver sets** on the zone **DNS Settings** page.
+
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+
+To assign a set via API, use the [Update DNS Settings for a Zone](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint:
 
 <details>
 
@@ -353,5 +361,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

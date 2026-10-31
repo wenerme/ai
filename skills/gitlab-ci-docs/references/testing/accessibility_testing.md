@@ -18,7 +18,7 @@ Pa11y uses [WCAG 2.1 rules](https://www.w3.org/TR/WCAG21/#new-features-in-wcag-2
 
 ## Accessibility merge request widget
 
-GitLab displays an **Accessibility Report** in the merge request widget area:
+GitLab displays an accessibility report in the merge request widget area:
 
 [Accessibility merge request widget]
 

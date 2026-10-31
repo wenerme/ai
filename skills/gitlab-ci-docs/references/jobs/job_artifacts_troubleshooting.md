@@ -57,7 +57,7 @@ test-job:
 ## Job artifacts do not expire
 
 If some job artifacts are not expiring as expected, check if the
-[**Keep artifacts from most recent successful jobs**](job_artifacts.md#keep-artifacts-from-most-recent-successful-jobs)
+[](job_artifacts.md#keep-artifacts-from-most-recent-successful-jobs)
 setting is enabled.
 
 When this setting is enabled, job artifacts from the latest completed pipeline and

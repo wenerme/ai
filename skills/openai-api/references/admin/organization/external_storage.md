@@ -8,6 +8,8 @@ Register one customer-managed external storage configuration.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `project_id: string`
 
 - `provider: Aws { bucket, role_arn, type }  or Azure { account_name, container, resource_group, 3 more }  or Gcp { bucket, type, workload_identity_pool_id, 2 more }  or Oci { bucket, region, tenancy_ocid, type }`

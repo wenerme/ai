@@ -6,6 +6,8 @@ Creates and executes a batch from an uploaded file of requests
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `completion_window: "24h"`
 
   The time frame within which the batch should be processed. Currently only `24h` is supported.

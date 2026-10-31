@@ -8,6 +8,8 @@ Create a conversation.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `items: optional array of EasyInputMessage or Message { content, role, status, type }  or ResponseOutputMessage or 30 more or null`
 
   Initial items to include in the conversation context. You may add up to 20 items at a time.
@@ -4869,6 +4871,8 @@ Update a conversation
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `metadata: Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be         useful for storing additional information about the object in a structured         format, and querying for objects via API or the dashboard.
@@ -5538,6 +5542,8 @@ Create items in a conversation with the given ID.
   - `"message.output_text.logprobs"`
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `items: array of EasyInputMessage or Message { content, role, status, type }  or ResponseOutputMessage or 30 more`
 

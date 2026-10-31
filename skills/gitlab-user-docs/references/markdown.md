@@ -1353,6 +1353,8 @@ The following embed providers are available:
 | Figma    | `figma`   | No                  | `https://www.figma.com/<type>/<id>` or `https://embed.figma.com/<type>/<id>`, where `<type>` is `proto`, `design`, `board`, `file`, or `slides` |
 
 On GitLab.com, all of these embed providers are allowed.
+To add embedded content in the rich text editor, see
+[embed external content](rich_text_editor.md#embed-external-content).
 
 For example, if the YouTube provider is allowed:
 

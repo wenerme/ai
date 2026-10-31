@@ -71,6 +71,8 @@ On the primary site:
 1. Select **Edit** for the primary site to customize the minimum
    re-verification interval.
 
+A new interval can take up to 2 minutes to take effect.
+
 ## Reset verification for projects where verification has failed
 
 Geo actively tries to correct verification failures marking the repository to

@@ -12,6 +12,8 @@ as input for the model's response.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `access_programs: optional object { cyber }`
 
   Domain-specific access programs to use for this request.

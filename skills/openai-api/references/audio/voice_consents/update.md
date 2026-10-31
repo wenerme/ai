@@ -12,6 +12,8 @@ Updates a voice consent recording (metadata only).
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The updated label for this consent recording.

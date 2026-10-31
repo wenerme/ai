@@ -6,6 +6,8 @@ Create a vector store.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `chunking_strategy: optional AutoFileChunkingStrategyParam or StaticFileChunkingStrategyObjectParam`
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.

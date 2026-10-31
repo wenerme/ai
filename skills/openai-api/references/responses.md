@@ -10438,6 +10438,8 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
@@ -19970,6 +19972,8 @@ or [file search](/api/docs/guides/tools-file-search) to use your own data
 as input for the model's response.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `access_programs: optional object { cyber }`
 
@@ -155465,11 +155469,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Responses Client Event
 
-- `ResponsesClientEvent = ResponseCreate { type, access_programs, background, 31 more }  or ResponseSteerEvent`
+- `ResponsesClientEvent = ResponseCreate { type, access_programs, background, 32 more }  or ResponseSteerEvent`
 
   Client events accepted by the Responses WebSocket server.
 
-  - `ResponseCreate object { type, access_programs, background, 31 more }`
+  - `ResponseCreate object { type, access_programs, background, 32 more }`
 
     Client event for creating a response over a persistent WebSocket connection.
     This payload uses the same top-level fields as `POST /v1/responses`, plus
@@ -155538,6 +155542,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `id: string`
 
           The unique ID of the conversation.
+
+    - `generate: optional boolean`
+
+      Whether to generate output for this response. Defaults to true when omitted.
+      Set to false to prepare request state without model output; the response
+      ID can be used as previous_response_id on a later turn.
 
     - `include: optional array of ResponseIncludable or null`
 
@@ -172853,6 +172863,8 @@ Returns input token counts of the request.
 Returns an object with `object` set to `response.input_tokens` and an `input_tokens` count.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `conversation: optional string or ResponseConversationParam or null`
 

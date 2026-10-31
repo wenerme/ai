@@ -41,25 +41,25 @@ Claude is capable in many languages beyond those benchmarked in the following ta
 
 The following table shows zero-shot chain-of-thought evaluation scores for Claude models across languages, expressed as a percentage relative to English performance (100%):
 
-| Language                          | Claude Sonnet 4.5 (deprecated)1 | Claude Haiku 4.51 |
-| --------------------------------- | ------------------------------- | ----------------- |
-| English (baseline, fixed to 100%) | 100%                            | 100%              |
-| Spanish                           | 98.2%                           | 96.4%             |
-| Portuguese (Brazil)               | 97.8%                           | 96.1%             |
-| Italian                           | 97.9%                           | 96.0%             |
-| French                            | 97.5%                           | 95.7%             |
-| Indonesian                        | 97.3%                           | 94.2%             |
-| German                            | 97.0%                           | 94.3%             |
-| Arabic                            | 97.2%                           | 92.5%             |
-| Chinese (Simplified)              | 96.9%                           | 94.2%             |
-| Korean                            | 96.7%                           | 93.3%             |
-| Japanese                          | 96.8%                           | 93.5%             |
-| Hindi                             | 96.7%                           | 92.4%             |
-| Bengali                           | 95.4%                           | 90.4%             |
-| Swahili                           | 91.1%                           | 78.3%             |
-| Yoruba                            | 79.7%                           | 52.7%             |
+| Language                          | Claude Sonnet 4.5 (deprecated)<sup>1</sup> | Claude Haiku 4.5<sup>1</sup> |
+| --------------------------------- | ------------------------------------------ | ---------------------------- |
+| English (baseline, fixed to 100%) | 100%                                       | 100%                         |
+| Spanish                           | 98.2%                                      | 96.4%                        |
+| Portuguese (Brazil)               | 97.8%                                      | 96.1%                        |
+| Italian                           | 97.9%                                      | 96.0%                        |
+| French                            | 97.5%                                      | 95.7%                        |
+| Indonesian                        | 97.3%                                      | 94.2%                        |
+| German                            | 97.0%                                      | 94.3%                        |
+| Arabic                            | 97.2%                                      | 92.5%                        |
+| Chinese (Simplified)              | 96.9%                                      | 94.2%                        |
+| Korean                            | 96.7%                                      | 93.3%                        |
+| Japanese                          | 96.8%                                      | 93.5%                        |
+| Hindi                             | 96.7%                                      | 92.4%                        |
+| Bengali                           | 95.4%                                      | 90.4%                        |
+| Swahili                           | 91.1%                                      | 78.3%                        |
+| Yoruba                            | 79.7%                                      | 52.7%                        |
 
-1 With [extended thinking](https://platform.claude.com/docs/en/build-with-claude/extended-thinking).
+<sup>1</sup> With [extended thinking](https://platform.claude.com/docs/en/build-with-claude/extended-thinking).
 
 <Note>
   These metrics are based on [MMLU (Massive Multitask Language Understanding)](https://en.wikipedia.org/wiki/MMLU) English test sets that were translated into 14 additional languages by professional human translators, as documented in [OpenAI’s simple-evals repository](https://github.com/openai/simple-evals/blob/main/multilingual_mmlu_benchmark_results.md). The use of human translators for this evaluation ensures high-quality translations, particularly important for languages with fewer digital resources.

@@ -27,7 +27,7 @@ ByteDance's compact, cost-efficient video generation model from the Seedance 2.0
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedance) |
-| Pricing | <ul><li>Default (per second)$0.09</li><li>@480p video input (per second)$0.084</li><li>@720p video input (per second)$0.182</li><li>@480p non-video input (per second)$0.04</li><li>@720p non-video input (per second)$0.09</li></ul> |
+| Pricing | <ul><li>@480p non-video input (per second)$0.04</li><li>@480p video input (per second)$0.084</li><li>@720p non-video input (per second)$0.09</li><li>@720p video input (per second)$0.182</li><li>Default (per second)$0.09</li></ul> |
 
 ## Usage
 
@@ -230,7 +230,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 prompt
 
-`string`requiredmaxLength: 2000Text prompt describing the video to generate
+`string`requiredmaxLength: 10000Text prompt describing the video to generate
 
 image
 

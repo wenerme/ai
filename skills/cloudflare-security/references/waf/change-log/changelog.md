@@ -1,5 +1,5 @@
 ---
-description: This emergency release will add two rules related to the Brotli vulnerability CVE-2026-111497 to the Cloudflare Managed Ruleset. Both rules will be enabled by default with their action set to Log, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.
+description: This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabled by default, for a vulnerability in Nuxt Image and IPX. The rule offers partial coverage. Please follow the advisory and patch to the latest version.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,44 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-10-30
+
+
+**WAF Release - 2026-10-30 - Emergency**
+
+This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabled by default, for a vulnerability in Nuxt Image and IPX. The rule offers partial coverage. Please follow the advisory and patch to the latest version.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...5b82bffe | N/A | Nuxt Image / IPX - Explicit GIF or Animation Modifier Exposure | N/A | Disabled | This is a new detection. |
+
+## 2026-10-30
+
+
+**WAF Release - 2026-10-30**
+
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
+| Cloudflare Response Ruleset | ...48d2242a | N/A | Default block for High confidence Signatures | Block | Block | Rule detection updated. |
+
+## 2026-10-28
+
+
+**WAF Release - 2026-10-28**
+
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | Block | Rule detection updated. |
 
 ## 2026-10-25
 
@@ -412,63 +450,8 @@ Next.js recommends updating to version 16.3.3 or 15.5.24 to address these vulner
 | Cloudflare Managed Ruleset | ...2ca6cce3 | N/A | Next.js - Remote Code Execution - CVE:CVE-2026-75604 | Block | N/A | Rule metadata description refined. Detection unchanged. |
 | Cloudflare Managed Ruleset | ...80256efe | N/A | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF | N/A | Block | This is a new detection. |
 
-## 2026-08-25
-
-
-**WAF Release - 2026-08-25**
-
-This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode.
-
-**Key Findings**
-
-- Four new detections move from Log to Block: HTTP/2 Request Smuggling - Request Body Anomaly and XSS - JavaScript Event Handler Coercion across Headers, Body, and URI.
-- The XSS, HTML Injection - Script Tag - Beta rule is merged into the original rule.
-- A Generic Rules - Remote Code Execution detection is added in Block mode.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...1489d892 | N/A | HTTP/2 Request Smuggling - Request Body Anomaly | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...20646260 | N/A | XSS - JavaScript Event Handler Coercion - Headers | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...d706d517 | N/A | XSS - JavaScript Event Handler Coercion - Body | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...660886c8 | N/A | XSS - JavaScript Event Handler Coercion - URI | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...c293b926 | N/A | XSS, HTML Injection - Script Tag - Beta | Log | Block | This rule is merged into the original rule "XSS, HTML Injection - Script Tag" (ID: ...7b58420b). |
-| Cloudflare Managed Ruleset | ...2ca6cce3 | N/A | Generic Rules - Remote Code Execution | N/A | Block | This is a new detection. |
-
-## 2026-08-20
-
-
-**Leaked credentials detection now scans Authorization headers**
-
-[Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) now scans the `Authorization` request header for Basic Authentication credentials. Previously, the detection only inspected request bodies, query strings, and headers for well-known web applications or custom detection locations, which meant credentials sent through HTTP Basic Authentication were not covered by default.
-
-This new default scan location decodes the `Authorization: Basic <credentials>` header and compares the extracted username and password against Cloudflare's database of leaked credentials, the same way as other default scan locations. Matches populate the existing [leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields), such as `cf.waf.credential_check.password_leaked`, and trigger the [`Exposed-Credential-Check` managed transform header](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/#add-leaked-credentials-checks-header) if configured, so you can reuse existing [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) without changes.
-
-This change was applied automatically for zones with leaked credentials detection enabled. No configuration changes are required.
-
-For more information, refer to [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/).
-
-## 2026-08-17
-
-
-**WAF Release - 2026-08-17**
-
-This release updates WordPress remote code execution rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify CVE-2026-65640.
-
-**Key Findings**
-
-- CVE-2026-65640: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
-
-**Impact**
-
-The WordPress changes update rule metadata only; detection behavior and actions remain unchanged.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...3590a4ad | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Free Ruleset | ...cfe1a93c | N/A | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release will add two rules related to the Brotli vulnerability CVE-2026-111497 to the Cloudflare Managed Ruleset. Both rules will be enabled by default with their action set to Log, providing visibility into matching requests so customers can evaluate the impact before choosing to block them.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabled by default, for a vulnerability in Nuxt Image and IPX. The rule offers partial coverage. Please follow the advisory and patch to the latest version.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

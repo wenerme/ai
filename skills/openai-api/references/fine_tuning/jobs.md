@@ -1038,6 +1038,8 @@ Response includes details of the enqueued job including job status and the name 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
   The name of the model to fine-tune. You can select one of the

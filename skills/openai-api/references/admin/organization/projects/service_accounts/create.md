@@ -12,6 +12,8 @@ Creates a new service account in the project. By default, this also returns an u
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The name of the service account being created.

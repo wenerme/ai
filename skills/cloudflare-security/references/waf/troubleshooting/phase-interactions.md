@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/
 
 # Rule phase interactions
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare evaluates request processing features in [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/). A rule that appears correct in isolation can behave differently when another product has already modified or terminated the request.
 
@@ -29,7 +29,7 @@ This means that:
 
 ### Resolution
 
-When troubleshooting a custom rule, check whether a rewrite rule already changed the URL before WAF evaluation. You can use [Trace](https://developers.cloudflare.com/rules/trace-request/) to check the evaluation order of your rules based on an example request.
+When troubleshooting a custom rule, check whether a rewrite rule already changed the URL before WAF evaluation. You can use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) to check the evaluation order of your rules based on an example request.
 
 For more information, refer to the request execution order in [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#application-layer).
 
@@ -85,7 +85,7 @@ When a WAF decision looks incorrect:
 2. Check for matching IP Access rules.
 3. Confirm whether the request was expected to stop in the custom rules phase or skip later phases.
 4. Review whether a managed rule still ran after a custom rule match.
-5. Use [Trace](https://developers.cloudflare.com/rules/trace-request/) when available to confirm the actual phase-by-phase result.
+5. Use [Rules simulator](https://developers.cloudflare.com/rules/simulator/) when available to confirm the actual phase-by-phase result.
 
 Was this helpful?
 
@@ -96,5 +96,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/og.png?v=ee43b8f5d2fb685d","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/#page","headline":"Rule phase interactions","description":"Understand how request rewrites, IP Access rules, custom rules, and managed rules interact across WAF phases.","url":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/troubleshooting/phase-interactions/og.png?v=ee43b8f5d2fb685d","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

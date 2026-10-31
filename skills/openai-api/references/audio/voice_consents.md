@@ -6,6 +6,25 @@
 
 Upload a voice consent recording.
 
+### Body Parameters
+
+Content type: `multipart/form-data`
+
+- `language: string`
+
+  The BCP 47 language tag for the consent phrase (for example, `en-US`).
+
+- `name: string`
+
+  The label to use for this consent recording.
+
+- `recording: string`
+
+  The consent audio recording file. Maximum size is 10 MiB.
+
+  Supported MIME types:
+  `audio/mpeg`, `audio/wav`, `audio/x-wav`, `audio/ogg`, `audio/aac`, `audio/flac`, `audio/webm`, `audio/mp4`.
+
 ### Returns
 
 - `VoiceConsent object { id, created_at, language, 2 more }`
@@ -291,6 +310,8 @@ Updates a voice consent recording (metadata only).
   The ID of the consent recording to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `name: string`
 

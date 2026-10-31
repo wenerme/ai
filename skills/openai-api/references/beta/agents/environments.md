@@ -14,6 +14,8 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `environment: object { type, capability_directories, desktop, 8 more }`
 
   The required hosting type and its configuration.
@@ -185,8 +187,6 @@ Creates an OpenAI-hosted environment before creating a session. Requires access 
         The archive media type, always `application/zip`.
 
         - `"application/zip"`
-
-          A ZIP archive.
 
       - `type: "base64" (default: "base64")`
 
@@ -1328,6 +1328,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `hosted_environment_file_param: HostedEnvironmentFileParam`
 
   A file materialized in an OpenAI-hosted execution environment.
@@ -1588,6 +1590,8 @@ Creates reusable environment configuration without returning confidential setup 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `capability_directories: optional array of string or null`
 
   Directories that contain capabilities exposed to the agent. Defaults to an empty list.
@@ -1749,8 +1753,6 @@ Creates reusable environment configuration without returning confidential setup 
       The archive media type, always `application/zip`.
 
       - `"application/zip"`
-
-        A ZIP archive.
 
     - `type: "base64" (default: "base64")`
 
@@ -2844,6 +2846,8 @@ Updates reusable environment configuration without returning confidential values
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `capability_directories: optional array of string or null`
 
   Directories that expose capabilities to the agent.
@@ -3005,8 +3009,6 @@ Updates reusable environment configuration without returning confidential values
       The archive media type, always `application/zip`.
 
       - `"application/zip"`
-
-        A ZIP archive.
 
     - `type: "base64" (default: "base64")`
 

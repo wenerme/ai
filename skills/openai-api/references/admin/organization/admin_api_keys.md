@@ -8,6 +8,8 @@ Create an organization admin API key
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
 - `expires_in_seconds: optional integer`

@@ -12,6 +12,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `query: string or array of string`
 
   A query string for a search

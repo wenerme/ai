@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/observability/og.png?v=533
 
 # Observability
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Separate application requests, WebRTC connection state, and media delivery when diagnosing an SFU integration. A successful backend response does not by itself prove that media is arriving.
 
@@ -20,7 +20,7 @@ For a returned API error, use the [Error codes reference](https://developers.clo
 
 ## Record useful context
 
-Record the operation, time, application resource ID, SFU session or adapter ID, HTTP status, and per-item error codes. On the endpoint, record signaling, connection, and DataChannel state transitions.
+Record the operation, UTC timestamp, App ID, target SFU session or adapter ID, HTTP status, `cf-ray` response header, and per-item error codes. On the endpoint, record signaling, connection, and DataChannel state transitions.
 
 Keep App Secrets, endpoint tokens, SDP, ICE credentials, and media payloads out of logs. Sanitize errors before returning them to untrusted clients.
 
@@ -91,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/#page","headline":"Observability","description":"Diagnose Realtime SFU setup, negotiation, media, DataChannel, and adapter problems using endpoint and backend observations.","url":"https://developers.cloudflare.com/realtime/sfu/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/og.png?v=533816c5c07b4fa8","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/#page","headline":"Observability","description":"Diagnose Realtime SFU setup, negotiation, media, DataChannel, and adapter problems using endpoint and backend observations.","url":"https://developers.cloudflare.com/realtime/sfu/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/og.png?v=533816c5c07b4fa8","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

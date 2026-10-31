@@ -18,6 +18,19 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 
 [Subscribe to RSS](https://developers.cloudflare.com/browser-run/changelog/index.xml)
 
+## 2026-10-30
+
+**Chrome 152 and Quick Actions improvements**
+
+- Upgraded the default browser to Chrome 152.
+- The default User-Agent for [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) now reports Chrome 152 instead of Chrome 119. If you allowlist or match the Browser Run User-Agent, update your rules. Refer to [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent).
+- Quick Actions requests now look more like requests from a regular Chrome browser, so fewer sites block them.
+- Pages that return large response headers now load correctly.
+- Removed distrusted root certificates from the Browser Run trust store.
+- [`/links`](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/) now returns absolute URLs, and links-only [crawls](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) now follow relative links.
+- [`/markdown`](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) and crawl Markdown output now keep code block languages.
+- Quick Actions that time out now return a consistent error, and [outbound Workers](https://developers.cloudflare.com/browser-run/features/outbound-workers/) that throw an exception now return an HTTP error to the browser.
+
 ## 2026-09-21
 
 **Browser binding session and DevTools methods**

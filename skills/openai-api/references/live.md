@@ -43,6 +43,8 @@ retry can place another call.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `session: MediaSessionConfig`
 
   Startup configuration for the Live session.
@@ -41977,6 +41979,8 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `session: object { model, type, audio, 5 more }`
 
   Model and startup configuration for the Live session that answers the incoming SIP call.
@@ -43202,6 +43206,8 @@ Fork a stored Live session onto a new WebRTC connection.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `transport: object { sdp, type }`
 
   WebRTC transport with an SDP offer for the new connection to the forked session.
@@ -43995,6 +44001,8 @@ Transfer a SIP call to another destination. Supply a nonblank target_uri for the
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `target_uri: string`
 
   Nonblank URI for the SIP Refer-To header, such as tel:+14155550123 or sip:agent@example.com.
@@ -44025,6 +44033,8 @@ Reject an incoming SIP call. Send a required SIP rejection status_code between 3
   Opaque Live session identifier from the creation response or incoming-call webhook. Preserve the returned value unchanged, including its prefix.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `status_code: integer`
 

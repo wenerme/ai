@@ -12,6 +12,8 @@ Modifies a user's role in the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `developer_persona: optional string or null`
 
   Developer persona metadata.

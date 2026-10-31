@@ -6,6 +6,8 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `environment: EnvironmentParam`
 
   An inline execution environment or a reference to an environment template.
@@ -207,8 +209,6 @@ Creates a managed agent session, optionally submits initial input, and returns t
           The archive media type, always `application/zip`.
 
           - `"application/zip"`
-
-            A ZIP archive.
 
         - `type: "base64" (default: "base64")`
 

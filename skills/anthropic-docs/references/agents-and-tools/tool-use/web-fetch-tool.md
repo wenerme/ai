@@ -495,11 +495,9 @@ On [Claude Managed Agents](https://platform.claude.com/docs/en/managed-agents/ov
 
 ### Content limits
 
-The `max_content_tokens` parameter limits the amount of content included in the context. If the fetched content exceeds this limit, the tool truncates it. This helps control token usage when fetching large documents. The limit applies to text content, not to binary content such as PDFs.
+The `max_content_tokens` parameter limits the amount of content included in the context. If the fetched content exceeds this limit, the tool truncates it. This helps control token usage when fetching large documents. The limit is approximate: the actual number of input tokens used can vary by a small amount. The limit applies to text content, not to binary content such as PDFs.
 
-<Note>
-  The `max_content_tokens` parameter limit is approximate. The actual number of input tokens used can vary by a small amount.
-</Note>
+If a fetched PDF would make the request exceed the [PDF page or size limits](https://platform.claude.com/docs/en/build-with-claude/pdf-support#check-pdf-requirements), the `web_fetch_tool_result` is an error with the `content_too_large` error code. PDFs and images already in the conversation count toward those limits, so removing them can let the fetch succeed.
 
 On Claude Managed Agents, the `web_fetch` entry of the agent toolset also accepts `max_content_tokens`; see the [web tool settings](https://platform.claude.com/docs/en/managed-agents/tools-web-restrictions#settings).
 
@@ -684,6 +682,7 @@ These are the possible error codes:
 * `url_not_accessible`: Failed to fetch content (HTTP error)
 * `too_many_requests`: Rate limit exceeded
 * `unsupported_content_type`: Content type not supported (only text, HTML, and PDF)
+* `content_too_large`: Fetched PDF would make the request exceed the PDF page or size limits (see [Content limits](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool#content-limits))
 * `max_uses_exceeded`: Maximum web fetch tool uses exceeded
 * `unavailable`: An internal error occurred
 

@@ -24,6 +24,8 @@ Returns the Upload object with status `pending`.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `bytes: integer`
 
   The number of bytes in the file you are uploading.

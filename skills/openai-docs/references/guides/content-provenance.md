@@ -264,14 +264,14 @@ either field can be `null`.
 
 By default, the API supports the following file formats:
 
-- **Images:** PNG, JPEG, and WebP.
+- **Images:** PNG, JPEG, WebP, and GIF.
 - **Audio:** MP3, Opus, AAC, FLAC, WAV, and PCM.
 
 Limit each uploaded file to 50 MiB. Audio must be 60 seconds or shorter after
 decoding.
 
-Set the uploaded `file` part's media type. For example, use `image/png` for a PNG
-image or `audio/ogg` for Opus audio. Don't add a separate `type` field or
+Set the uploaded `file` part's media type. Use `image/gif` for a GIF, `image/png`
+for a PNG image, or `audio/ogg` for Opus audio. Don't add a separate `type` field or
 manually set the `multipart/form-data` request header. The `curl` `-F` option
 sets the request content type and multipart boundary. Send one file per request.
 

@@ -6,6 +6,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The friendly name of the project, this name appears in reports.

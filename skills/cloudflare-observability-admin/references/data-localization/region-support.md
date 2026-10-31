@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/data-localization/region-support/og.png
 
 # Region support
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/region-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/region-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Data Localization Suite allows you to restrict where your data is processed and stored. The table below shows which regions are available for each DLS feature:
 
@@ -40,6 +40,7 @@ Some regions are defined by geography (for example, "Germany"), while others are
 
 - **FedRAMP Moderate** — the US Federal Risk and Authorization Management Program, a government security certification standard. "Domestic" means only US-based certified data centers. "International" includes certified data centers outside the US.
 - **IRAP Protected** — the Australian government's Information Security Registered Assessors Program. This region includes IRAP-assessed data centers, which may be located outside Australia.
+- **C5:2020 (Germany)**, **ENS (Spain)**, and **ISMAP** — restrict traffic to data centers located within Germany, Spain, and Japan, respectively. These regions are named after the related compliance frameworks. Selecting a region does not make your deployment compliant with that framework.
 - **ISO 27001 Certified European Union** — restricts traffic to EU data centers that hold ISO 27001 certification, an international standard for information security management.
 - **Cloudflare Green Energy** — restricts traffic to data centers powered by renewable energy sources. This is an energy-sourcing constraint, not a geographic one.
 
@@ -56,8 +57,10 @@ Support by product and region is summarized in the following table. In the **Cus
 | Australia | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
 | Austria | ✘ | ✅ | Can use EU metadata boundary. |
 | Brazil | ✘ | ✅ | ✘ |
+| C5:2020 (Germany) | ✘ | ✅ | Can use EU metadata boundary. |
 | Canada | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
 | Cloudflare Green Energy | ✘ | ✅ | ✘ |
+| ENS (Spain) | ✘ | ✅ | Can use EU metadata boundary. |
 | European Union | ✅ | ✅ | ✅ |
 | Exclusive of Hong Kong and Macau | ✘ | ✅ | ✘ |
 | Exclusive of Russia and Belarus | ✘ | ✅ | ✘ |
@@ -68,6 +71,7 @@ Support by product and region is summarized in the following table. In the **Cus
 | Hong Kong | ✘ | ✅ | ✘ |
 | India | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
 | [IRAP ↗︎](https://www.cloudflare.com/cloudflare-for-government/australia/irap/) Protected | ✘ | ✅ | ✘ |
+| ISMAP | ✘ | ✅ | ✘ |
 | ISO 27001 Certified European Union | ✘ | ✅ | Can use EU metadata boundary. |
 | Italy | ✘ | ✅ | Can use EU metadata boundary. |
 | Japan | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
@@ -75,6 +79,7 @@ Support by product and region is summarized in the following table. In the **Cus
 | Netherlands | ✘ | ✅ | Can use EU metadata boundary. |
 | Russia | ✘ | ✅ | ✘ |
 | Saudi Arabia | ✘ | ✅ | ✘ |
+| Schengen Area | ✘ | ✅ | ✘ |
 | Singapore | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
 | South Africa | ✘ | ✅ | ✘ |
 | South Korea | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
@@ -96,8 +101,10 @@ Refer to the table below for the complete list of available regions and their de
 | Australia | Cloudflare will only use data centers that are physically located within Australia to decrypt and service HTTPS traffic. |
 | Austria | Cloudflare will only use data centers that are physically located within Austria to decrypt and service HTTPS traffic. |
 | Brazil | Cloudflare will only use data centers that are physically located within Brazil to decrypt and service HTTPS traffic. |
+| C5:2020 (Germany) | Cloudflare will only use data centers that are physically located within Germany to decrypt and service HTTPS traffic. |
 | Canada | Cloudflare will only use data centers that are physically located within Canada to decrypt and service HTTPS traffic. |
 | Cloudflare Green Energy | Cloudflare will only use data centers that are committed to powering their operations with [renewable energy ↗︎](https://www.cloudflare.com/impact/). |
+| ENS (Spain) | Cloudflare will only use data centers that are physically located within Spain to decrypt and service HTTPS traffic. |
 | European Union | Cloudflare will only use data centers that are physically located within the European Union. For more details, refer to the [list of European Union countries ↗︎](https://european-union.europa.eu/principles-countries-history/country-profiles_en). |
 | Exclusive of Hong Kong and Macau | Cloudflare will only use data centers that are NOT physically located within Hong Kong and Macau to decrypt and service HTTPS traffic. |
 | Exclusive of Russia and Belarus | Cloudflare will only use data centers that are NOT physically located within Russia and Belarus to decrypt and service HTTPS traffic. |
@@ -109,12 +116,14 @@ Refer to the table below for the complete list of available regions and their de
 | India | Cloudflare will only use data centers that are physically located within India to decrypt and service HTTPS traffic. |
 | ISO 27001 Certified European Union | Cloudflare will only use data centers that are physically located within the [European Union ↗︎](https://european-union.europa.eu/principles-countries-history/country-profiles_en) and that adhere to the ISO 27001 certification. |
 | IRAP Protected | Cloudflare will only use data centers that are IRAP protected, including certified locations outside Australia. |
+| ISMAP | Cloudflare will only use data centers that are physically located within Japan to decrypt and service HTTPS traffic. |
 | Italy | Cloudflare will only use data centers that are physically located within Italy to decrypt and service HTTPS traffic. |
 | Japan | Cloudflare will only use data centers that are physically located within Japan to decrypt and service HTTPS traffic. |
 | NATO | Cloudflare will only use data centers that are physically located within North Atlantic Treaty Organization (NATO) countries. For more details, refer to the [list of NATO countries ↗︎](https://www.nato.int/nato-welcome/). |
 | Netherlands | Cloudflare will only use data centers that are physically located within the Netherlands to decrypt and service HTTPS traffic. |
 | Russia | Cloudflare will only use data centers that are physically located within Russia to decrypt and service HTTPS traffic. |
 | Saudi Arabia | Cloudflare will only use data centers that are physically located within Saudi Arabia to decrypt and service HTTPS traffic. |
+| Schengen Area | Cloudflare will only use data centers that are physically located within the [Schengen Area ↗︎](https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en). |
 | Singapore | Cloudflare will only use data centers that are physically located within Singapore to decrypt and service HTTPS traffic. |
 | South Africa | Cloudflare will only use data centers that are physically located within South Africa to decrypt and service HTTPS traffic. |
 | South Korea | Cloudflare will only use data centers that are physically located within South Korea to decrypt and service HTTPS traffic. |
@@ -142,5 +151,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/region-support/og.png?v=71aa7f8656f36217","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/region-support/#page","headline":"Region support","description":"Supported regions for Geo Key Manager, Regional Services, and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/region-support/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/region-support/og.png?v=71aa7f8656f36217","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

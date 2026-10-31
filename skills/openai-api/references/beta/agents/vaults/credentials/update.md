@@ -20,6 +20,8 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `auth: optional CredentialAuthRotateParam`
 
   Replacement values for the credential's existing authentication method.

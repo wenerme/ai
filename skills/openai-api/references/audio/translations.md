@@ -12,6 +12,56 @@ and scheduled to shut down on February 26, 2027. Migrate to
 [deprecation schedule](https://developers.openai.com/api/docs/deprecations)
 for details.
 
+### Body Parameters
+
+Content type: `multipart/form-data`
+
+- `file: string`
+
+  The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm. The request must include enough format metadata for the file to be identified. We recommend an extension-bearing filename and an appropriate content type.
+
+- `model: string or AudioModel`
+
+  ID of the model to use. Only `whisper-1` (which is powered by our open source Whisper V2 model) is currently available.
+
+  - `string`
+
+  - `AudioModel = "whisper-1" or "gpt-transcribe" or "gpt-4o-transcribe" or 3 more`
+
+    - `"whisper-1"`
+
+    - `"gpt-transcribe"`
+
+    - `"gpt-4o-transcribe"`
+
+    - `"gpt-4o-mini-transcribe"`
+
+    - `"gpt-4o-mini-transcribe-2025-12-15"`
+
+    - `"gpt-4o-transcribe-diarize"`
+
+- `prompt: optional string`
+
+  An optional text to guide the model's style or continue a previous audio segment. The [prompt](/api/docs/guides/speech-to-text#prompting) should be in English.
+
+- `response_format: optional "json" or "text" or "srt" or 2 more (default: "json")`
+
+  The format of the output, in one of these options: `json`, `text`, `srt`, `verbose_json`, or `vtt`.
+
+  - `"json"`
+
+  - `"text"`
+
+  - `"srt"`
+
+  - `"verbose_json"`
+
+  - `"vtt"`
+
+- `temperature: optional number (default: 0)`
+
+  The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.
+
 ### Returns
 
 - `Translation object { text }`

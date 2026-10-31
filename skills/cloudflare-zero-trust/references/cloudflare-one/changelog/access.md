@@ -16,6 +16,41 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-10-30
+
+
+**Inspect provisioned users and groups with the SCIM population viewer**
+
+The SCIM population viewer lets you inspect the users and groups provisioned to Cloudflare One by each identity provider. You can check which resources Cloudflare has received without making API requests or opening a support ticket.
+
+In **Zero Trust** > **Integrations** > **Identity providers**, select a user or group count in **SCIM resources** to open the viewer. You can:
+
+- Search users by username, email, name, or resource ID, and groups by name or resource ID.
+- Inspect resource attributes in formatted or JSON views.
+- View group members and compare Cloudflare and IdP resource IDs with provisioning logs.
+- Delete individual resources from the Cloudflare SCIM population when you have edit permission.
+
+![SCIM users table with search controls and blurred personal information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=960,format=webp/_astro/scim-population-viewer.CFxa6Ccp.png)
+
+The viewer shows provisioned resources rather than provisioning event history. Use [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) to investigate failed requests. Existing SCIM deprovisioning and policy behavior remain unchanged.
+
+For dashboard instructions and API examples, refer to [View SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/).
+
+## 2026-10-28
+
+
+**Google Workspace SCIM user provisioning through generic SAML**
+
+System for Cross-domain Identity Management (SCIM) is an open standard that synchronizes user identities between an identity provider and a service. For more information, refer to [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/). Google Workspace is rolling out custom SCIM profiles in beta. Organizations with access to the feature can use Google's built-in provisioning service to send user updates and deprovisioning events to Cloudflare One.
+
+**You must use a generic SAML identity provider in Cloudflare One.** The dedicated Google Workspace integration does not support SCIM. Configure a SAML app in Google, then enter the Cloudflare SCIM endpoint and secret in the app's autoprovisioning settings. Turn on **Enable user deprovisioning** in Cloudflare One to revoke active Access sessions when Google deprovisions a user. Google's configured deprovisioning delay still applies. Support for the existing Google Workspace OIDC client will be added once Google adds support for OIDC + SCIM.
+
+Group membership is configured separately. Have the Google SAML app send a `groups` attribute to include the user's selected Google groups during authentication. Selecting groups as a SCIM provisioning scope does not synchronize group membership, Google is still adding support for this in their SCIM provider.
+
+Cloudflare One users must first authenticate to Access or register a device with the Cloudflare One Client before SCIM updates can apply. Availability of custom SCIM profiles depends on Google's beta rollout.
+
+For setup instructions, refer to [Google Workspace (SAML/SCIM)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/).
+
 ## 2026-10-28
 
 

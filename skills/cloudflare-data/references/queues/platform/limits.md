@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/queues/platform/limits/og.png?v=023a88e
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
-The following limits apply to both Workers Paid and Workers Free plans with the exception of **Message Retention**, which is non-configurable at 24 hours for the Workers Free plan.
+The following limits apply to both Workers Paid and Workers Free plans except for queue counts and **Message Retention**, which is non-configurable at 24 hours for the Workers Free plan.
 
 | Feature | Limit |
 | --- | --- |
-| Queues | 10,000 per account |
+| Queues | Workers Paid: Unlimited, with a default limit of 10,000 per account. Each queue above 10,000 costs [$0.10 per month](https://developers.cloudflare.com/queues/platform/pricing/). Workers Free: 10,000 per account. |
 | Message size | 128 KB <sup>1</sup> |
 | Message retries | 100 |
 | Maximum consumer batch size | 100 messages |
@@ -96,5 +96,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/limits/#page","headline":"Limits","description":"Cloudflare Queues account limits for message size, throughput, retention, and concurrency.","url":"https://developers.cloudflare.com/queues/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/queues/platform/limits/og.png?v=023a88e77a517650","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/platform/limits/#page","headline":"Limits","description":"Cloudflare Queues account limits for message size, throughput, retention, and concurrency.","url":"https://developers.cloudflare.com/queues/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/queues/platform/limits/og.png?v=023a88e77a517650","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

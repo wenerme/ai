@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `openai/gpt-5.6-sol`
 
 - Third-party
+- Zero data retention
 
 GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.
 
@@ -33,8 +34,9 @@ GPT-5.6 Sol is 50% off through Sept 18
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
 | Request formats | Responses |
-| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$10.00</li><li>Cached input (per 1M tokens)$0.25</li><li>Cache creation (per 1M tokens)$3.125</li></ul> |
+| Pricing | <ul><li>Short-context input (per 1M)$4.00</li><li>Short-context cached input (per 1M)$0.40</li><li>Short-context cache write (per 1M)$5.00</li><li>Short-context output (per 1M)$20.00</li><li>Long-context input (per 1M)$8.00</li><li>Long-context cached input (per 1M)$0.80</li><li>Long-context cache write (per 1M)$10.00</li><li>Long-context output (per 1M)$30.00</li></ul> |
 
 ## Usage
 

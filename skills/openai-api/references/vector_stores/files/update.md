@@ -16,6 +16,8 @@ Update attributes on a vector store file.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `attributes: map[string or number or boolean] or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be

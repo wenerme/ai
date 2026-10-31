@@ -10,6 +10,8 @@ For more information, see the [Evals guide](/api/docs/guides/evals).
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `data_source_config: CustomDataSourceConfig { item_schema, type, include_sample_schema }  or LogsDataSourceConfig { type, metadata }  or StoredCompletionsDataSourceConfig { type, metadata }`
 
   The configuration for the data source used for the evaluation runs. Dictates the schema of the data used in the evaluation.
@@ -2065,6 +2067,8 @@ Update certain properties of an evaluation.
   The ID of the evaluation to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `metadata: optional Metadata or null`
 
@@ -6657,6 +6661,8 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
   The ID of the evaluation to create a run for.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `data_source: CreateEvalJSONLRunDataSource or CreateEvalCompletionsRunDataSource or ResponsesRunDataSource { source, type, input_messages, 2 more }`
 

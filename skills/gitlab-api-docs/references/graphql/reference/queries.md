@@ -1003,7 +1003,7 @@ Get GitLab Duo settings.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
-The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an error unless the message is on the current branch of the session. Returns an empty list if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints.
+The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an error unless the message is on the current branch of the session. Returns an empty list if the session does not store incremental checkpoints.
 
 **Returns:** [`[DuoWorkflowBranch!]`](objects.md#duoworkflowbranch)
 

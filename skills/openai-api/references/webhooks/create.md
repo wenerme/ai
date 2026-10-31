@@ -6,6 +6,8 @@ Creates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The event types that trigger deliveries to this endpoint.

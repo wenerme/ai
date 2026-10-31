@@ -16,6 +16,79 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-10-30
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Inspect provisioned users and groups with the SCIM population viewer**
+
+The SCIM population viewer lets you inspect the users and groups provisioned to Cloudflare One by each identity provider. You can check which resources Cloudflare has received without making API requests or opening a support ticket.
+
+In **Zero Trust** > **Integrations** > **Identity providers**, select a user or group count in **SCIM resources** to open the viewer. You can:
+
+- Search users by username, email, name, or resource ID, and groups by name or resource ID.
+- Inspect resource attributes in formatted or JSON views.
+- View group members and compare Cloudflare and IdP resource IDs with provisioning logs.
+- Delete individual resources from the Cloudflare SCIM population when you have edit permission.
+
+![SCIM users table with search controls and blurred personal information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=960,format=webp/_astro/scim-population-viewer.CFxa6Ccp.png)
+
+The viewer shows provisioned resources rather than provisioning event history. Use [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/) to investigate failed requests. Existing SCIM deprovisioning and policy behavior remain unchanged.
+
+For dashboard instructions and API examples, refer to [View SCIM users and groups](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim-population-viewer/).
+
+## 2026-10-30
+
+[Data Localization Suite](https://developers.cloudflare.com/data-localization/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Cloudflare WAN supports regional Gateway HTTP inspection**
+
+Cloudflare WAN traffic can now use a Gateway processing region with Regional Services. HTTPS traffic enters a Cloudflare data center (that may be outside the selected region) via an IPsec or GRE tunnel, or through Direct CNI, and remains encrypted until Gateway forwards it to the selected region for TLS decryption and HTTP inspection. This feature gives organizations control over where their sensitive traffic is processed, supporting their data sovereignty goals.
+
+This feature requires [unified routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode). The processing region applies to Gateway HTTP traffic and does not apply to Gateway DNS or network policy processing.
+
+Contact your account team to configure a processing region. For supported regions, configuration details, and limitations, refer to [Data residency for Cloudflare One](https://developers.cloudflare.com/data-localization/how-to/zero-trust/#processing-region-for-gateway).
+
+## 2026-10-29
+
+[Data Localization Suite](https://developers.cloudflare.com/data-localization/) [SSL/TLS](https://developers.cloudflare.com/ssl/)
+
+
+**View your data localization settings in one dashboard page**
+
+The Cloudflare dashboard now includes a **Data Localization Suite** Overview, a read-only view of the data localization settings on your account. It shows your Regional Services, Customer Metadata Boundary, and Geo Key Manager settings in one place, so you no longer need to check several dashboard pages and APIs to see where your traffic is processed and where your logs and private keys are stored.
+
+To find it, go to **Application Security** > **Data Localization Suite**, or search for "DLS" in the dashboard.
+
+The Overview has a tab for each product:
+
+- **Regional Services**: regionalized hostnames (filter by region or zone), regionalized IP bindings, and regionalized Spectrum applications, each with its region.
+- **Customer Metadata Boundary**: whether the boundary is on, the region (US or EU), and whether out-of-region access is allowed.
+- **Geo Key Manager**: every custom certificate with a geo policy, with its hostname, zone, region, and status.
+
+Each item links to the dashboard page where you change its setting, and each tab links to the product's documentation.
+
+To learn more, refer to the [Data Localization Suite documentation](https://developers.cloudflare.com/data-localization/).
+
+## 2026-10-28
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Google Workspace SCIM user provisioning through generic SAML**
+
+System for Cross-domain Identity Management (SCIM) is an open standard that synchronizes user identities between an identity provider and a service. For more information, refer to [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/). Google Workspace is rolling out custom SCIM profiles in beta. Organizations with access to the feature can use Google's built-in provisioning service to send user updates and deprovisioning events to Cloudflare One.
+
+**You must use a generic SAML identity provider in Cloudflare One.** The dedicated Google Workspace integration does not support SCIM. Configure a SAML app in Google, then enter the Cloudflare SCIM endpoint and secret in the app's autoprovisioning settings. Turn on **Enable user deprovisioning** in Cloudflare One to revoke active Access sessions when Google deprovisions a user. Google's configured deprovisioning delay still applies. Support for the existing Google Workspace OIDC client will be added once Google adds support for OIDC + SCIM.
+
+Group membership is configured separately. Have the Google SAML app send a `groups` attribute to include the user's selected Google groups during authentication. Selecting groups as a SCIM provisioning scope does not synchronize group membership, Google is still adding support for this in their SCIM provider.
+
+Cloudflare One users must first authenticate to Access or register a device with the Cloudflare One Client before SCIM updates can apply. Availability of custom SCIM profiles depends on Google's beta rollout.
+
+For setup instructions, refer to [Google Workspace (SAML/SCIM)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace-saml/).
+
 ## 2026-10-28
 
 [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)

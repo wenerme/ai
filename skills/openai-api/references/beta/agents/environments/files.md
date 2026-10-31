@@ -16,6 +16,8 @@ Copies inline bytes or a Files API file into a connected execution environment, 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `hosted_environment_file_param: HostedEnvironmentFileParam`
 
   A file materialized in an OpenAI-hosted execution environment.

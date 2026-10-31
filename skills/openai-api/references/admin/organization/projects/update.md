@@ -12,6 +12,8 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `external_key_id: optional string or null`
 
   External key ID to associate with the project.

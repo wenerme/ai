@@ -44,7 +44,7 @@ To continue using registration tokens after GitLab 17.0:
 - On GitLab.com, you can manually [enable the legacy runner registration process](runners_scope.md#enable-use-of-runner-registration-tokens-in-projects-and-groups)
   in the top-level group settings.
 - On GitLab Self-Managed, you can manually [enable the legacy runner registration process](../../administration/settings/continuous_integration.md#control-runner-registration)
-  in the **Admin** area settings.
+  in the  area settings.
 
 ## Impact on existing runners
 
@@ -56,7 +56,7 @@ For these runners, [enable legacy runner registration](#using-registration-token
 ## Changes to the `gitlab-runner register` command syntax
 
 The `gitlab-runner register` command accepts runner authentication tokens instead of registration tokens.
-You can generate tokens from the **Runners** page in the **Admin** area.
+You can generate tokens from the  page in the  area.
 The runner authentication tokens are recognizable by their `glrt-` prefix.
 
 When you create a runner in the GitLab UI, you specify configuration values that were previously command-line options

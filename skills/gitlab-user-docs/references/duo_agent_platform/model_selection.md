@@ -21,6 +21,7 @@ For some features, you can select a different model, which persists until you ch
 - [Separate model setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258913) for Recommend Reviewers Flow introduced in GitLab 19.5.
 - Default LLM for GitLab Duo Agentic Chat, GitLab Duo Developer, and all other agents [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7346) to Claude Sonnet 5.5 Gemini Enterprise Agent Platform on October 7, 2026.
 - Default LLM for Recommend Reviewers Flow [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) to Claude Haiku 5.5 Gemini Enterprise Agent Platform on October 8, 2026.
+- Default LLM for Business Logic Security Scan [updated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7534) to Claude Sonnet 5.5 Gemini Enterprise Agent Platform on October 19, 2026.
 
 This table lists the default model for each feature in the Agent Platform.
 
@@ -29,7 +30,7 @@ This table lists the default model for each feature in the Agent Platform.
 | GitLab Duo Agentic Chat | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Code Review Flow[^earlier-code-review] | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
-| Business Logic Security Scan | Claude Sonnet 5 Gemini Enterprise Agent Platform |
+| Business Logic Security Scan | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | Recommend Reviewers Flow | Claude Haiku 5.5 Gemini Enterprise Agent Platform |
 | GitLab Duo Developer | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
 | All other agents | Claude Sonnet 5.5 Gemini Enterprise Agent Platform |
@@ -51,6 +52,9 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model for GitLab Duo Agentic Chat and all other agents on October 7, 2026.
 - Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7370) as a supported model for Recommend Reviewers Flow on October 8, 2026.
 - Gemini 4 Argon [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7445) as a supported model for GitLab Duo Agentic Chat and all other agents on October 13, 2026.
+- Claude Opus 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7475) as a supported model for Security Review Flow on October 15, 2026.
+- Claude Opus 5.5 and Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7279) as supported models for Business Logic Security Scan on October 15, 2026.
+- Claude Mythos 5.1 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7628) as a supported model for Business Logic Security Scan on October 23, 2026.
 - GPT-6.1 Terra [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7672) as a supported model for GitLab Duo Agentic Chat and all other agents on October 26, 2026.
 
 This table lists the models you can select for features
@@ -64,10 +68,11 @@ For information about model availability during trials, see
 |-----------------------------|-------------------------|------------------|----------------------|------------------------------|--------------------------|------------------|
 | Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | No                   | No               | Yes      |
+| Claude Mythos 5.1[^model-subject-limited], [^mythos-availability] | No              | No       | No           | Yes                  | No               | No       |
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | No                   | No               | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes                  | No               | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes                  | Yes              | Yes      |
-| Claude Sonnet 5.5           | Yes             | Yes       | No           | No                   | Yes              | Yes      |
+| Claude Sonnet 5.5           | Yes             | Yes       | No           | Yes                  | Yes              | Yes      |
 | Claude Haiku 4.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
 | Claude Haiku 5.5            | Yes             | No       | No           | No                   | Yes              | Yes      |
 | Claude Opus 4.5             | Yes             | No       | No           | No                   | No               | Yes      |
@@ -75,7 +80,7 @@ For information about model availability during trials, see
 | Claude Opus 4.7             | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Opus 4.8             | Yes             | No       | No           | No                   | No               | Yes      |
 | Claude Opus 5               | Yes             | No       | No           | No                   | No               | Yes      |
-| Claude Opus 5.5             | Yes             | No       | No           | No                   | No               | Yes      |
+| Claude Opus 5.5             | Yes             | No       | Yes          | Yes                  | No               | Yes      |
 | Gemini 3.5 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
 | Gemini 3.6 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
 | Gemini 3.7 Flash            | Yes             | No       | No           | No                   | No               | Yes      |
@@ -106,6 +111,8 @@ For information about model availability during trials, see
 [^supported-models-earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
     for GitLab Duo Code Review, the non-agentic version.
 [^model-subject-limited]: This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
+[^mythos-availability]: Available only for top-level groups that GitLab has enabled. For more information, see
+    [business logic scanning](../application_security/business_logic_scanning/_index.md).
 
 ## Select a model for a feature
 

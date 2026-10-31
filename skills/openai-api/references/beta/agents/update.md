@@ -14,6 +14,8 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `compaction: optional object { async }  or null`
 
   Context compaction settings. Omit to keep the current settings. A supplied object replaces the settings; null or an empty object enables background compaction.

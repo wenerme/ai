@@ -240,9 +240,9 @@ max\_tokens
 
 `number`requiredexclusiveMinimum: 0
 
-system
+▶system
 
-`string`
+`one of`
 
 temperature
 

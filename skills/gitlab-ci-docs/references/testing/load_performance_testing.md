@@ -28,11 +28,11 @@ target branches, and shows the results in the merge request.
 
 The key metrics shown in the merge request widget are:
 
-- **Checks**: The percentage pass rate of the [checks](https://grafana.com/docs/k6/latest/using-k6/checks/) configured in the k6 test.
-- **TTFB P90**: The 90th percentile of how long it took to start receiving responses,
+- : The percentage pass rate of the [checks](https://grafana.com/docs/k6/latest/using-k6/checks/) configured in the k6 test.
+- : The 90th percentile of how long it took to start receiving responses,
   also known as [Time to First Byte](https://en.wikipedia.org/wiki/Time_to_first_byte) (TTFB).
-- **TTFB P95**: The 95th percentile for TTFB.
-- **RPS**: The average requests per second (RPS) rate the test achieves.
+- : The 95th percentile for TTFB.
+- : The average requests per second (RPS) rate the test achieves.
 
 > [!note]
 > The widget doesn't display until the job has run at least once on the target branch.

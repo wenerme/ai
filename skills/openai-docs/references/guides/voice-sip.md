@@ -484,6 +484,113 @@ if __name__ == "__main__":
     app.run(port=8000)
 ```
 
+```go
+func handler(client openai.Client) http.Handler {
+	var mu sync.Mutex
+	type acceptance struct {
+		done chan struct{}
+		err  error
+	}
+	calls := make(map[string]*acceptance)
+	mux := http.NewServeMux()
+	mux.HandleFunc("POST /webhook", func(w http.ResponseWriter, r *http.Request) {
+		body, err := io.ReadAll(http.MaxBytesReader(w, r.Body, 1<<20))
+		if err != nil {
+			http.Error(w, "Invalid webhook body", 400)
+			return
+		}
+		event, err := client.Webhooks.Unwrap(body, r.Header)
+		if err != nil {
+			http.Error(w, "Invalid webhook signature", 400)
+			return
+		}
+		if event.Type != "realtime.call.incoming" {
+			w.WriteHeader(200)
+			return
+		}
+		callID := event.Data.CallID
+		mu.Lock()
+		attempt, exists := calls[callID]
+		if !exists {
+			attempt = &acceptance{done: make(chan struct{})}
+			calls[callID] = attempt
+		}
+		mu.Unlock()
+		if exists {
+			select {
+			case <-attempt.done:
+			case <-r.Context().Done():
+				http.Error(w, "Request canceled", http.StatusRequestTimeout)
+				return
+			}
+		} else {
+			// Share this attempt's result only with retries of the same call.
+			// Persist accepted call IDs in production for deduplication across restarts.
+			attempt.err = client.Realtime.Calls.Accept(r.Context(), callID, realtime.CallAcceptParams{
+				RealtimeSessionCreateRequest: realtime.RealtimeSessionCreateRequestParam{
+					Model:        "gpt-realtime-2.1",
+					Instructions: openai.String("You are a helpful support agent."),
+				},
+			})
+			mu.Lock()
+			if attempt.err != nil {
+				delete(calls, callID) // Allow a later delivery to retry a failed attempt.
+			}
+			close(attempt.done)
+			mu.Unlock()
+			if attempt.err == nil {
+				go func() {
+					if err := greetCaller(client, callID); err != nil {
+						log.Print("Call greeting failed: ", err)
+					}
+				}()
+			}
+		}
+		if attempt.err != nil {
+			http.Error(w, "Could not accept call", 502)
+			return
+		}
+		w.WriteHeader(200)
+	})
+	return mux
+}
+
+func greetCaller(client openai.Client, callID string) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+	defer cancel()
+	conn, err := client.Realtime.Connect(ctx, realtime.RealtimeConnectionOptions{}, option.WithQuery("call_id", callID))
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+		OfResponseCreate: &realtime.ResponseCreateEventParam{
+			Response: realtime.RealtimeResponseCreateParams{
+				Instructions:     openai.String("Thank the caller and ask how you can help."),
+				OutputModalities: []string{"audio"},
+			},
+		},
+	}); err != nil {
+		return err
+	}
+	for {
+		event, err := conn.Recv(ctx)
+		if err != nil {
+			return err
+		}
+		if event.Type == "error" {
+			return fmt.Errorf("Realtime API error: %s", event.OfRealtimeErrorEvent.Error.Message)
+		}
+		if event.Type == "response.done" {
+			if event.OfResponseDoneEvent.Response.Status != "completed" {
+				return fmt.Errorf("greeting did not complete")
+			}
+			return nil
+		}
+	}
+}
+```
+
 ```ruby
 require "openai"
 require "webrick"

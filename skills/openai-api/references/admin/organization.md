@@ -10,6 +10,8 @@ Create an organization admin API key
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
 - `expires_in_seconds: optional integer`
@@ -4163,6 +4165,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `certificate_ids: array of string`
 
   `minItems: 1`, `maxItems: 10`
@@ -4302,6 +4306,8 @@ Organizations can upload up to 50 certificates.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `certificate: string`
 
   The certificate content in PEM format
@@ -4430,6 +4436,8 @@ Deactivate certificates at the organization level.
 You can atomically and idempotently deactivate up to 10 certificates at a time.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `certificate_ids: array of string`
 
@@ -4896,6 +4904,8 @@ Modify a certificate. Note that only the name can be modified.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: optional string`
 
   The updated name for the certificate
@@ -5285,6 +5295,8 @@ Updates organization data retention controls.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `retention_type: "zero_data_retention" or "modified_abuse_monitoring" or "enhanced_zero_data_retention" or "enhanced_modified_abuse_monitoring"`
 
   The desired organization data retention type.
@@ -5396,6 +5408,8 @@ curl -X POST https://api.openai.com/v1/organization/data_retention \
 Add an external key config for an organization
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `body: Aws { external_id, kms_arn, name, 3 more }  or Gcp { audience, kms_key_location, kms_key_name, 9 more }  or Azure { key_name, name, tenant_id, 4 more }`
 
@@ -6087,6 +6101,8 @@ curl https://api.openai.com/v1/organization/external_keys/$EXTERNAL_KEY_ID/valid
 Register one customer-managed external storage configuration.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `project_id: string`
 
@@ -7251,6 +7267,8 @@ Creates a new group in the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   Human readable name for the group.
@@ -7623,6 +7641,8 @@ Updates a group's information.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   New display name for the group.
@@ -7786,6 +7806,8 @@ Assigns an organization role to a group within the organization.
   The ID of the group that should receive the organization role.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role_id: string`
 
@@ -8565,6 +8587,8 @@ Adds a user to a group.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `user_id: string`
 
   Identifier of the user to add to the group.
@@ -8988,6 +9012,8 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/use
 Create an invite for a user to the organization. The invite must be accepted by the user before they have access to the organization.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `email: string`
 
@@ -9765,6 +9791,8 @@ Create a new project in the organization. Projects can be created and archived, 
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: string`
 
   The friendly name of the project, this name appears in reports.
@@ -10239,6 +10267,8 @@ Modifies a project in the organization.
   The ID of the project.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `external_key_id: optional string or null`
 
@@ -11003,6 +11033,8 @@ the new request. The response contains only the redacted key, not its secret.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_in_seconds: optional integer`
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.
@@ -11338,6 +11370,8 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `certificate_ids: array of string`
 
   `minItems: 1`, `maxItems: 10`
@@ -11481,6 +11515,8 @@ idempotently deactivate up to 10 certificates at a time.
   The ID of the project.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `certificate_ids: array of string`
 
@@ -11978,6 +12014,8 @@ Updates project data retention controls.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `retention_type: "organization_default" or "none" or "zero_data_retention" or 3 more`
 
   The desired project data retention type.
@@ -12107,6 +12145,8 @@ Grants a group access to a project.
   The ID of the project to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `group_id: string`
 
@@ -12585,6 +12625,8 @@ Assigns a project role to a group within a project.
   The ID of the group that should receive the project role.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role_id: string`
 
@@ -13493,6 +13535,8 @@ Updates hosted tool permissions for a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `code_interpreter: optional object { enabled }  or null`
 
   The code interpreter permission update.
@@ -13850,6 +13894,8 @@ Updates model permissions for a project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `mode: "allow_list" or "deny_list"`
 
   The model permissions mode to apply.
@@ -14151,6 +14197,8 @@ Updates a project rate limit.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `batch_1_day_max_input_tokens: optional integer`
 
   The maximum batch input tokens per day. Only relevant for certain models.
@@ -14342,6 +14390,8 @@ Creates a custom role for a project.
   The ID of the project to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `permissions: array of string`
 
@@ -14784,6 +14834,8 @@ Updates an existing project role.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `description: optional string or null`
 
   New description for the role.
@@ -14927,6 +14979,8 @@ Creates a new service account in the project. By default, this also returns an u
   The ID of the project.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `name: string`
 
@@ -15344,6 +15398,8 @@ Updates a service account in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `name: optional string`
 
   The updated service account name.
@@ -15555,6 +15611,8 @@ Creates an API key for a service account in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_in_seconds: optional integer or null`
 
   Number of seconds until the API key expires.
@@ -15697,6 +15755,8 @@ Creates a project spend alert.
   The ID of the project to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `currency: "USD"`
 
@@ -16235,6 +16295,8 @@ Updates a project spend alert.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `currency: "USD"`
 
   The currency for the threshold amount.
@@ -16657,6 +16719,8 @@ Create or replace a project's hard spend limit.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `currency: "USD"`
 
   The currency for the threshold amount. Currently, only `USD` is supported.
@@ -16878,6 +16942,8 @@ Adds a user to the project. Users must already be members of the organization to
   The ID of the project.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role: string`
 
@@ -17266,6 +17332,8 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `role: optional string or null`
 
   `owner` or `member`
@@ -17417,6 +17485,8 @@ Assigns a project role to a user within a project.
   The ID of the user that should receive the project role.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role_id: string`
 
@@ -18392,6 +18462,8 @@ Creates a custom role for the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `permissions: array of string`
 
   Permissions to grant to the role.
@@ -18815,6 +18887,8 @@ Updates an existing organization role.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `description: optional string or null`
 
   New description for the role.
@@ -18988,6 +19062,8 @@ curl -X POST https://api.openai.com/v1/organization/roles/role_01J1F8ROLE01 \
 Creates an organization spend alert.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `currency: "USD"`
 
@@ -19508,6 +19584,8 @@ Updates an organization spend alert.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `currency: "USD"`
 
   The currency for the threshold amount.
@@ -19911,6 +19989,8 @@ curl https://api.openai.com/v1/organization/spend_limit \
 Create or replace the organization's hard spend limit.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `currency: "USD"`
 
@@ -33328,6 +33408,8 @@ Modifies a user's role in the organization.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `developer_persona: optional string or null`
 
   Developer persona metadata.
@@ -33667,6 +33749,8 @@ Assigns an organization role to a user within the organization.
   The ID of the user that should receive the organization role.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `role_id: string`
 

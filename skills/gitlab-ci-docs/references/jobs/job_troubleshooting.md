@@ -209,10 +209,10 @@ If the error persists, inspect the job in the
 
 ## Error: `You are not authorized to run this manual job`
 
-You might get this message with **Run** disabled when trying to run a manual job if:
+You might get this message with  disabled when trying to run a manual job if:
 
 - The target environment is a [protected environment](../environments/protected_environments.md)
-  and your account is not included in the **Allowed to deploy** list.
+  and your account is not included in the  list.
 - The setting to [prevent outdated deployment jobs](../environments/deployment_safety.md#prevent-outdated-deployment-jobs)
   is enabled and running the job would overwrite the latest deployment.
 

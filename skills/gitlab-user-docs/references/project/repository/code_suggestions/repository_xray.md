@@ -44,6 +44,8 @@ The Repository X-Ray service is automatically enabled if your project has access
 
 ## Supported languages and dependency managers
 
+- Maximum number of Python Pip configuration files [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/636137) in GitLab 19.6.
+
 The Repository X-Ray searches a maximum of two directory levels from the repository's root. For example, it supports `Gemfile.lock`, `api/Gemfile.lock`, or `api/client/Gemfile.lock`, but not `api/v1/client/Gemfile.lock`. For each language, only the first matching dependency manager is processed. Where available, lock files take precedence over their non-lock file counterparts.
 
 | Language   | Dependency manager | Configuration file                  | GitLab version |
@@ -63,4 +65,4 @@ The Repository X-Ray searches a maximum of two directory levels from the reposit
 | Python     | Poetry             | `poetry.lock`, `pyproject.toml`     | 17.5 or later  |
 | Ruby       | RubyGems           | `Gemfile.lock`                      | 17.4 or later  |
 
-[^pip-configuration-files]: For Python Pip, all configuration files matching the `*requirements*.txt` glob pattern are processed.
+[^pip-configuration-files]: For Python Pip, Repository X-Ray processes up to 10 configuration files that match the `*requirements*.txt` glob pattern, starting with the files nearest the repository root.

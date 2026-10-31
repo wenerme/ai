@@ -16,7 +16,7 @@ Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Learn how to configure Cloudflare products with the Data Localization Suite, including Regional Services (which controls where traffic is decrypted and processed) and Customer Metadata Boundary (which controls where logs are stored).
 
-- [Zero Trust](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)
+- [Data residency for Cloudflare One](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)
 - [Pages](https://developers.cloudflare.com/data-localization/how-to/pages/)
 - [Cache](https://developers.cloudflare.com/data-localization/how-to/cache/)
 - [Load Balancing](https://developers.cloudflare.com/data-localization/how-to/load-balancing/)

@@ -1036,6 +1036,7 @@ Audit event types belong to the following product categories.
 | [`duo_secret_detection_fp_detection_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243208) | GitLab Duo Secret Detection False Positive Detection Feature enabled setting on project changed by Security Manager | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/work_items/603477) | Project |
 | [`project_feature_infrastructure_access_level_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/106919) | A project's infrastructure access level setting is updated | Yes | GitLab [15.7](https://gitlab.com/gitlab-org/gitlab/-/issues/369305) | Project |
 | [`remove_vulnerability_false_positive_flag`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/213091) | A user removes a false positive flag from a vulnerability. | Yes | GitLab [18.7](https://gitlab.com/gitlab-org/gitlab/-/issues/578903) | Project |
+| [`security_tracked_context_quota_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239796) | The tracked security context quota for an organization is updated | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/585972) | Instance |
 
 ### Webhooks
 

@@ -85,6 +85,36 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfSessionUpdate(realtime.RealtimeSessionCreateRequestParam{
+	Model: "gpt-realtime-2.1",
+	ToolChoice: realtime.RealtimeToolChoiceConfigUnionParam{
+		OfToolChoiceMode: param.NewOpt[responses.ToolChoiceOptions]("auto"),
+	},
+	Tools: realtime.RealtimeToolsConfigParam{
+		realtime.RealtimeToolsConfigUnionParam{
+			OfFunction: &realtime.RealtimeFunctionToolParam{
+				Description: openai.String("Look up an order by its order number."),
+				Name:        openai.String("lookup_order"),
+				Parameters: map[string]any{
+					"properties": map[string]any{
+						"order_number": map[string]any{
+							"description": "The customer-facing order number.",
+							"type":        "string",
+						},
+					},
+					"required": []any{"order_number"},
+					"type":     "object",
+				},
+				Type: "function",
+			},
+		},
+	},
+})); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -223,6 +253,29 @@ event = {
 
 ws.send(json.dumps(event))
 ws.send(json.dumps({"type": "response.create"}))
+```
+
+```go
+// callID comes from the model's function_call item.
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCreate(realtime.RealtimeConversationItemFunctionCallOutputParam{
+	CallID: callID,
+	Output: "{\"status\":\"shipped\",\"delivery_date\":\"2026-05-09\"}",
+})); err != nil {
+	return err
+}
+
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			OutputModalities: []string{"text"},
+			ToolChoice: realtime.RealtimeResponseCreateParamsToolChoiceUnion{
+				OfToolChoiceMode: param.NewOpt[responses.ToolChoiceOptions]("none"),
+			},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```java
@@ -374,6 +427,29 @@ event = {
 ws.send(json.dumps(event))
 ```
 
+```go
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfSessionUpdate(realtime.RealtimeSessionCreateRequestParam{
+	Model:            "gpt-realtime-2.1",
+	OutputModalities: []string{"text"},
+	Tools: realtime.RealtimeToolsConfigParam{
+		{
+			OfMcp: &realtime.RealtimeToolsConfigUnionMcpParam{
+				ServerLabel: "openai_docs",
+				ServerURL:   openai.String("https://developers.openai.com/mcp"),
+				AllowedTools: realtime.RealtimeToolsConfigUnionMcpAllowedToolsParam{
+					OfMcpAllowedTools: []string{"search_openai_docs", "fetch_openai_doc"},
+				},
+				RequireApproval: realtime.RealtimeToolsConfigUnionMcpRequireApprovalParam{
+					OfMcpToolApprovalSetting: openai.String("never"),
+				},
+			},
+		},
+	},
+})); err != nil {
+	return err
+}
+```
+
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
@@ -517,6 +593,35 @@ event = {
 }
 
 ws.send(json.dumps(event))
+```
+
+```go
+accessToken := os.Getenv("OPENAI_MCP_ACCESS_TOKEN")
+if accessToken == "" {
+	return fmt.Errorf("OPENAI_MCP_ACCESS_TOKEN is required")
+}
+
+if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfSessionUpdate(realtime.RealtimeSessionCreateRequestParam{
+	Model:            "gpt-realtime-1.5",
+	OutputModalities: []string{"text"},
+	Tools: realtime.RealtimeToolsConfigParam{
+		{
+			OfMcp: &realtime.RealtimeToolsConfigUnionMcpParam{
+				ServerLabel:   "google_calendar",
+				ConnectorID:   "connector_googlecalendar",
+				Authorization: param.NewOpt(accessToken),
+				AllowedTools: realtime.RealtimeToolsConfigUnionMcpAllowedToolsParam{
+					OfMcpAllowedTools: []string{"search_events", "read_event"},
+				},
+				RequireApproval: realtime.RealtimeToolsConfigUnionMcpRequireApprovalParam{
+					OfMcpToolApprovalSetting: openai.String("never"),
+				},
+			},
+		},
+	},
+})); err != nil {
+	return err
+}
 ```
 
 ```java
@@ -776,6 +881,27 @@ def on_message(ws, message):
         print("Realtime turn complete.")
 ```
 
+```go
+// Call for each received event. Tool results can arrive after response.done.
+func logMCPEvent(event realtime.RealtimeServerEventUnion) error {
+	switch e := event.AsAny().(type) {
+	case realtime.RealtimeErrorEvent:
+		return fmt.Errorf("Realtime API error: %s", e.Error.Message)
+	case realtime.McpListToolsFailed, realtime.ResponseMcpCallFailed:
+		return fmt.Errorf("MCP failed: %s", event.Type)
+	case realtime.ResponseOutputItemDoneEvent:
+		item := e.Item.OfRealtimeMcpToolCall
+		if item.Type == "mcp_call" {
+			if item.JSON.Error.Valid() || !item.JSON.Output.Valid() {
+				return fmt.Errorf("MCP call failed or has no output")
+			}
+			fmt.Fprintln(log.Writer(), "Tool output:", item.Output)
+		}
+	}
+	return nil
+}
+```
+
 ```ruby
 completed_events = {}
 expected_calls = []
@@ -902,6 +1028,27 @@ def approve_mcp_request(ws, approval_request_id):
     }
 
     ws.send(json.dumps(event))
+```
+
+```go
+// Call with the approval request received in conversation.item.done.
+func approveDocumentationSearch(
+	ctx context.Context,
+	conn *realtime.RealtimeConnection,
+	request realtime.RealtimeMcpApprovalRequest,
+) error {
+	// This example permits only a read-only search of the OpenAI documentation.
+	if request.ID == "" || request.ServerLabel != "openai_docs" || request.Name != "search_openai_docs" {
+		return fmt.Errorf("unapproved tool requested")
+	}
+	// Derive a distinct item ID within the API's 32-character limit.
+	approvalID := sha256.Sum256([]byte(request.ID))
+	return conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCreate(realtime.RealtimeMcpApprovalResponseParam{
+		ID:                fmt.Sprintf("%x", approvalID[:16]),
+		ApprovalRequestID: request.ID,
+		Approve:           true,
+	}))
+}
 ```
 
 ```java
@@ -1043,6 +1190,38 @@ event = {
 }
 
 ws.send(json.dumps(event))
+```
+
+```go
+// input contains the conversation items for this response.
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			ParallelToolCalls: openai.Bool(false),
+			Input:             input,
+			OutputModalities:  []string{"text"},
+			ToolChoice: realtime.RealtimeResponseCreateParamsToolChoiceUnion{
+				OfToolChoiceMode: param.NewOpt[responses.ToolChoiceOptions]("required"),
+			},
+			Tools: []realtime.RealtimeResponseCreateParamsToolUnion{
+				{
+					OfMcp: &realtime.RealtimeResponseCreateMcpToolParam{
+						ServerLabel: "openai_docs",
+						ServerURL:   openai.String("https://developers.openai.com/mcp"),
+						AllowedTools: realtime.RealtimeResponseCreateMcpToolAllowedToolsUnionParam{
+							OfMcpAllowedTools: []string{"search_openai_docs", "fetch_openai_doc"},
+						},
+						RequireApproval: realtime.RealtimeResponseCreateMcpToolRequireApprovalUnionParam{
+							OfMcpToolApprovalSetting: openai.String("never"),
+						},
+					},
+				},
+			},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```java
@@ -1229,6 +1408,30 @@ event = {
 }
 
 ws.send(json.dumps(event))
+```
+
+```go
+// input contains the conversation items for this response.
+if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
+	OfResponseCreate: &realtime.ResponseCreateEventParam{
+		Response: realtime.RealtimeResponseCreateParams{
+			OutputModalities: []string{"text"},
+			Input:            input,
+			Tools: []realtime.RealtimeResponseCreateParamsToolUnion{
+				{
+					OfMcp: &realtime.RealtimeResponseCreateMcpToolParam{
+						ServerLabel: "google_calendar",
+					},
+				},
+			},
+			ToolChoice: realtime.RealtimeResponseCreateParamsToolChoiceUnion{
+				OfToolChoiceMode: param.NewOpt(responses.ToolChoiceOptions("required")),
+			},
+		},
+	},
+}); err != nil {
+	return err
+}
 ```
 
 ```java

@@ -529,6 +529,8 @@ the new request. The response contains only the redacted key, not its secret.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `expires_in_seconds: optional integer`
 
   Number of seconds from this request until the API key expires. Must comply with the organization and project expiry policies. Expired keys cannot be updated. Retrying resets the expiry relative to the new request. Omit to keep the current expiration.

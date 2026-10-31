@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `reflection-ai/beam-1.0-501b-a23b`
 
 - Third-party
+- Zero data retention
 
 Beam-1.0-501B-A23B is Reflection AI's open-weights mixture-of-experts model with 501B total parameters and 23B active parameters, built for coding, reasoning, and agentic workloads.
 
@@ -29,6 +30,7 @@ Beam-1.0-501B-A23B is Reflection AI's open-weights mixture-of-experts model with
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://developers.reflection.ai/introduction) |
 | More information | [link ↗](https://developers.reflection.ai/models) |
+| Zero data retention | Yes |
 | Request formats | Chat Completions |
 | Pricing | <ul><li>Input (per 1M tokens)$0.00</li><li>Cached input (per 1M tokens)$0.00</li><li>Output (per 1M tokens)$0.00</li></ul> |
 

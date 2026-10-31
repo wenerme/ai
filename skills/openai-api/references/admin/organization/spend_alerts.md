@@ -8,6 +8,8 @@ Creates an organization spend alert.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `currency: "USD"`
 
   The currency for the threshold amount.
@@ -526,6 +528,8 @@ Updates an organization spend alert.
   The ID of the spend alert to update.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `currency: "USD"`
 

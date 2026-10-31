@@ -6,6 +6,8 @@ Create a conversation.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `items: optional array of EasyInputMessage or Message { content, role, status, type }  or ResponseOutputMessage or 30 more or null`
 
   Initial items to include in the conversation context. You may add up to 20 items at a time.

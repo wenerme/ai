@@ -188,7 +188,7 @@ types the variables can control for:
 - Branch pipelines that run for Git `push` events to a branch, like new commits or tags.
 - Tag pipelines that run only when a new Git tag is pushed to a branch.
 - Merge request pipelines that run for changes to a merge request, like new commits or
-  selecting **Run pipeline** in a merge request's pipelines tab.
+  selecting  in a merge request's pipelines tab.
 - Scheduled pipelines.
 
 | Variables                                  | Branch | Tag | Merge request | Scheduled |
@@ -233,7 +233,7 @@ Use the `CI_PIPELINE_SOURCE` variable to control when to add jobs for these pipe
 | `schedule`                      | For [scheduled pipelines](../pipelines/schedules.md). |
 | `security_orchestration_policy` | For [scheduled scan execution policies](../../user/application_security/policies/scan_execution_policies.md) pipelines. |
 | `trigger`                       | For pipelines created by using a [trigger token](../triggers/_index.md#configure-cicd-jobs-to-run-in-triggered-pipelines). |
-| `web`                           | For pipelines created by selecting **New pipeline** in the GitLab UI, from the project's **Build** > **Pipelines** section. |
+| `web`                           | For pipelines created by selecting  in the GitLab UI, from the project's  >  section. |
 | `webide`                        | For pipelines created by using the [Web IDE](../../user/project/web_ide/_index.md). |
 
 These values are the same as returned for the `source` parameter when using the

@@ -12,6 +12,8 @@ Reject an incoming SIP call. Send a required SIP rejection status_code between 3
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `status_code: integer`
 
   SIP rejection status sent to the caller. This field is required.

@@ -30,7 +30,7 @@ Claude Sonnet 5.5 offers the best combination of speed and intelligence, with ad
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/sonnet-5-5/overview) |
 | Request formats | Anthropic Messages |
-| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$2.50</li><li>Output (per 1M tokens)$10.00</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.10</li><li>Cache creation (per 1M tokens)$2.50</li><li>Output (per 1M tokens)$10.00</li></ul> |
 
 ## Usage
 
@@ -418,9 +418,9 @@ max\_tokens
 
 `number`requiredexclusiveMinimum: 0
 
-system
+▶system
 
-`string`
+`one of`
 
 stream
 

@@ -96,7 +96,6 @@ nested configuration objects. For example:
   - `diff.removed`: Background for removed lines in diffs.
 - **`border`**: Defines border colors.
   - `default`: The standard border color.
-  - `focused`: Border color when an element is focused.
 - **`status`**: Colors for status indicators.
   - `success`: Used for successful operations.
   - `warning`: Used for warnings.
@@ -104,6 +103,9 @@ nested configuration objects. For example:
 - **`ui`**: Other UI elements.
   - `comment`: Color for code comments.
   - `symbol`: Color for code symbols and operators.
+  - `active`: Border and text color for active or running elements.
+  - `focus`: Color for focused elements, such as selected menu items and focused
+    borders.
   - `gradient`: An array of colors used for gradient effects.
 
 **Required properties:**
@@ -165,8 +167,7 @@ custom theme defined in `settings.json`.
     "accent": "#d3869b"
   },
   "border": {
-    "default": "#3c3836",
-    "focused": "#458588"
+    "default": "#3c3836"
   },
   "status": {
     "success": "#b8bb26",
@@ -176,6 +177,8 @@ custom theme defined in `settings.json`.
   "ui": {
     "comment": "#928374",
     "symbol": "#8ec07c",
+    "active": "#83a598",
+    "focus": "#b8bb26",
     "gradient": ["#cc241d", "#d65d0e", "#d79921"]
   }
 }

@@ -12,6 +12,8 @@ Create a vector store file batch.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `attributes: optional map[string or number or boolean] or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be

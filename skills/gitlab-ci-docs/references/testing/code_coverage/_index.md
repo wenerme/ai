@@ -25,9 +25,9 @@ powers every output except diff annotations.
 | Line-by-line annotations                                | MR diff, changed files only                  | `artifacts:reports:coverage_report` | Free |
 | Per-job coverage percentage                             | Pipeline and job lists                       | `coverage`                          | Free |
 | Coverage badge                                          | Anywhere you embed the badge URL             | `coverage`                          | Free |
-| Coverage history and CSV export                         | **Analyze > Repository analytics** (project) | `coverage`                          | Free |
-| Group coverage history and CSV export                   | **Analyze > Repository analytics** (group)   | `coverage`                          | Premium and Ultimate |
-| `Coverage-Check` approval rule                          | **Settings > Merge requests**                | `coverage`                          | Premium and Ultimate |
+| Coverage history and CSV export                         |  >  (project) | `coverage`                          | Free |
+| Group coverage history and CSV export                   |  >  (group)   | `coverage`                          | Premium and Ultimate |
+| `Coverage-Check` approval rule                          |  >  | `coverage`                          | Premium and Ultimate |
 
 ## Choose an approach
 
@@ -57,7 +57,7 @@ GitLab displays this value in:
 
 - The MR widget, including the delta compared to the target branch.
 - The pipeline job list.
-- Per-project and per-group coverage history graphs in **Analyze** > **Repository analytics**.
+- Per-project and per-group coverage history graphs in  > .
 - Coverage badges.
 - The `Coverage-Check` approval rule (Premium and Ultimate), which can require approval
   when coverage drops.

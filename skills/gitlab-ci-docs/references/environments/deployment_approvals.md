@@ -92,10 +92,10 @@ A GitLab administrator can approve or reject all deployments.
 
 To allow self-approval of a deployment job:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Protected environments**.
-1. From the **Approval options**, select the **Allow pipeline triggerer to approve deployment** checkbox.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. From the , select the  checkbox.
 
 ## Approve or reject a deployment
 
@@ -110,12 +110,12 @@ Prerequisites:
 
 To approve or reject a deployment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment's name.
 1. Find the deployment and select its **Status badge**.
 1. Optional. Add a comment which describes your reason for approving or rejecting the deployment.
-1. Select **Approve** or **Reject**.
+1. Select  or .
 
 You can also [use the API](../../api/deployments.md#approve-or-reject-a-deployment).
 
@@ -137,8 +137,8 @@ granted.
 
 To view the approval details of a deployment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment's name.
 1. Find the deployment and select its **Status badge**.
 
@@ -155,8 +155,8 @@ Review the status of your deployments, including whether a deployment is blocked
 
 To view your deployments:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Operate** > **Environments**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select the environment being deployed to.
 
 A deployment with the **blocked** label is blocked.

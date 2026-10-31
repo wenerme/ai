@@ -8,6 +8,8 @@ Create a vector store.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `chunking_strategy: optional AutoFileChunkingStrategyParam or StaticFileChunkingStrategyObjectParam`
 
   The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy. Only applicable if `file_ids` is non-empty.
@@ -749,6 +751,8 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `query: string or array of string`
 
   A query string for a search
@@ -1039,6 +1043,8 @@ Modifies a vector store.
   The ID of the vector store to modify.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `expires_after: optional object { anchor, days }  or null`
 
@@ -1681,6 +1687,8 @@ Create a vector store file batch.
   The ID of the vector store for which to create a File Batch.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `attributes: optional map[string or number or boolean] or null`
 
@@ -2458,6 +2466,8 @@ Create a vector store file by attaching a [File](/api/reference/resources/files)
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `file_id: string`
 
   A [File](/api/reference/resources/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/api/reference/resources/vector_stores/subresources/file_batches/methods/create) to minimize per-vector-store write requests.
@@ -3210,6 +3220,8 @@ Update attributes on a vector store file.
   The ID of the file to update attributes.
 
 ### Body Parameters
+
+Content type: `application/json`
 
 - `attributes: map[string or number or boolean] or null`
 

@@ -12,6 +12,8 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
+Content type: `application/json`
+
 - `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 24 more`
 
   The event type to send as a sample delivery.
