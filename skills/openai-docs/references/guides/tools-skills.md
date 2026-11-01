@@ -409,7 +409,8 @@ response = client.responses.create(
     input="Use the csv-insights skill and run locally to summarize today's CSV reports in this repo.",
 )
 
-print(response.output_text)
+# Execute returned shell calls locally and submit their shell_call_output to continue.
+print(response.output)
 ```
 
 ```go

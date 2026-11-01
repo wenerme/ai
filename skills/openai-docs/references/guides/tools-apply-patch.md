@@ -238,26 +238,37 @@ for (const [path, content] of Object.entries(files)) {
 ```python
 from apply_patch_harness import apply_operation  # your implementation
 
-results = []
-for call in patch_calls:
-    op = call["operation"]
-    success, maybe_log_output = apply_operation(op)
+for turn in range(9):
+    if response.status != "completed":
+        raise RuntimeError(f"Patch response ended with status {response.status}")
+    if not patch_calls:
+        break
+    if turn == 8:
+        raise RuntimeError("Patch workflow exceeded eight tool turns")
 
-    results.append(
-        {
-            "type": "apply_patch_call_output",
-            "call_id": call["call_id"],
-            "status": "completed" if success else "failed",
-            "output": maybe_log_output,
-        }
+    results = []
+    for call in patch_calls:
+        success, log_output = apply_operation(call["operation"])
+        results.append(
+            {
+                "type": "apply_patch_call_output",
+                "call_id": call["call_id"],
+                "status": "completed" if success else "failed",
+                "output": log_output,
+            }
+        )
+
+    response = client.responses.create(
+        model="gpt-6-astra",
+        previous_response_id=response.id,
+        input=results,
+        tools=[{"type": "apply_patch"}],
     )
+    patch_calls = [
+        item.model_dump() for item in response.output if item.type == "apply_patch_call"
+    ]
 
-followup = client.responses.create(
-    model="gpt-6-astra",
-    previous_response_id=response.id,
-    input=results,
-    tools=[{"type": "apply_patch"}],
-)
+print(response.output_text)
 ```
 
 ```go
@@ -471,26 +482,39 @@ console.log(`\nFinal response:\n${result.finalOutput}`);
 ```
 
 ```python
+from pathlib import Path
+
 from agents import Agent, ApplyPatchTool, Runner, apply_diff
 
 
 class WorkspaceEditor:
+    def __init__(self, root="workspace"):
+        self.root = Path(root).resolve()
+        self.root.mkdir(parents=True, exist_ok=True)
+
+    def _path(self, name):
+        path = self.root / name
+        resolved = path.resolve()
+        if resolved == self.root or not resolved.is_relative_to(self.root):
+            raise ValueError("Patch paths must stay inside the workspace")
+        return path
+
     async def create_file(self, operation):
-        # convert the diff to the file content
         content = apply_diff("", operation.diff, mode="create")
-        # write the file content to the file system
+        path = self._path(operation.path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("x", encoding="utf-8") as file:
+            file.write(content)
         return {"status": "completed", "output": f"Created {operation.path}"}
 
     async def update_file(self, operation):
-        # read the file content from the file system
-        current = ""
-        # convert the diff to the new file content
-        new_content = apply_diff(current, operation.diff)
-        # write the updated file content to the file system
+        path = self._path(operation.path)
+        content = apply_diff(path.read_text(encoding="utf-8"), operation.diff)
+        path.write_text(content, encoding="utf-8")
         return {"status": "completed", "output": f"Updated {operation.path}"}
 
     async def delete_file(self, operation):
-        # delete the file from the file system
+        self._path(operation.path).unlink()
         return {"status": "completed", "output": f"Deleted {operation.path}"}
 
 
@@ -499,7 +523,7 @@ editor = WorkspaceEditor()
 agent = Agent(
     name="Patch Assistant",
     model="gpt-6-astra",
-    instructions="You can edit files inside the /tmp directory using the apply_patch tool.",
+    instructions="Use apply_patch to edit files in the workspace. Supply paths relative to that workspace.",
     tools=[
         ApplyPatchTool(
             editor=editor,

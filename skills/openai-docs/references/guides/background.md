@@ -469,14 +469,21 @@ stream = client.responses.create(
 )
 
 cursor = None
+response_id = None
 for event in stream:
     print(event)
-    cursor = event.sequence_number
+    if event.type == "response.created":
+        response_id = event.response.id
+    # Keepalives use connection counters, not stored-event resume positions.
+    if event.type != "keepalive":
+        cursor = event.sequence_number
 
-# If your connection drops, the response continues running and you can reconnect:
-# SDK support for resuming the stream is coming soon.
-# for event in client.responses.stream(resp.id, starting_after=cursor):
-#     print(event)
+    # If your connection drops, the response continues running and you can reconnect:
+    # with client.responses.stream(response_id=response_id, starting_after=cursor) as resumed:
+    #     for event in resumed:
+    #         print(event)
+    if event.type == "response.created":
+        response_id = event.response.id
 ```
 
 ```go

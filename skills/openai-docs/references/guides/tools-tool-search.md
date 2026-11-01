@@ -540,8 +540,8 @@ loaded_tools = [
 
 second_response = client.responses.create(
     model="gpt-6-astra",
+    previous_response_id=first_response.id,
     input=[
-        *first_response.output,
         {
             # highlight-start:subtle
             "type": "tool_search_output",

@@ -335,7 +335,7 @@ def create_server():
             file_content = "No content available"
 
         # Use filename as title and create proper URL for citations
-        filename = getattr(file_info, "filename", f"Document {id}")
+        filename = openai_client.files.retrieve(file_id=id).filename
 
         result = FetchOutput(
             id=id,

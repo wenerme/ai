@@ -2568,7 +2568,7 @@ try:
                 },
             },
         },
-        max_output_tokens=50,
+        max_output_tokens=1024,
     )
 
     if (

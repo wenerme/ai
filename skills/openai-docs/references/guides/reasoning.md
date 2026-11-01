@@ -768,7 +768,7 @@ first = client.responses.create(
 )
 
 # Keep every output item, including encrypted reasoning and assistant phase.
-history.extend(item.model_dump() for item in first.output)
+history.extend(item.to_dict() for item in first.output)
 history.append(
     {
         "role": "user",

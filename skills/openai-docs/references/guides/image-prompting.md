@@ -1348,7 +1348,7 @@ Fully transparent background. Deliver a single centered logo with generous paddi
 """
 
 result = client.images.generate(
-    model="gpt-image-2",
+    model="gpt-image-2.5-sunburst",
     prompt=prompt,
     size="1024x1536",
     quality="medium",
@@ -1359,7 +1359,7 @@ result = client.images.generate(
 
 # Preserve the returned PNG bytes, including the alpha channel.
 for index, item in enumerate(result.data, start=1):
-    Path(f"logo-generation-{index}-gpt-image-2.png").write_bytes(
+    Path(f"logo-generation-{index}-gpt-image-2.5-sunburst.png").write_bytes(
         base64.b64decode(item.b64_json)
     )
 
@@ -1373,9 +1373,9 @@ Do not restyle the product; remove the background and preserve clean alpha trans
 """
 
 result = client.images.edit(
-    model="gpt-image-2",
+    model="gpt-image-2.5-sunburst",
     image=[
-        Path("input_images/shampoo.webp"),
+        ("shampoo.webp", Path("input_images/shampoo.webp"), "image/webp"),
     ],
     prompt=prompt,
     size="1024x1536",
@@ -1384,7 +1384,7 @@ result = client.images.edit(
     output_format="png",
 )
 
-Path("extract-product-gpt-image-2.png").write_bytes(
+Path("extract-product-gpt-image-2.5-sunburst.png").write_bytes(
     base64.b64decode(result.data[0].b64_json)
 )
 ```

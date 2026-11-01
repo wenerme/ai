@@ -168,7 +168,10 @@ To choose between the eligible approvers for a rule, the flow considers the
 following for each approver:
 
 - Availability, based on their [status](../../../profile/_index.md#set-your-status).
-- Review workload, based on the number of open merge requests waiting for their review.
+- Review workload, based on the number of open merge requests where they are a reviewer.
+  A merge request counts half as much after they review it, approve it, or request changes.
+  When you select **Generate** or **Refresh**, these merge requests count only if the flow
+  counted them in the last hour.
 - Local time, based on the time zone in their profile.
 - Most recent activity.
 

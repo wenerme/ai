@@ -332,7 +332,10 @@ tools = [
 history = [
     {
         "role": "user",
-        "content": "Compare proposal alpha and proposal beta.",
+        "content": (
+            "Use two subagents, one for proposal alpha and one for proposal beta. "
+            "Have each call get_proposal, then compare their findings."
+        ),
     }
 ]
 

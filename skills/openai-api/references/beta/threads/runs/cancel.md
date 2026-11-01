@@ -745,6 +745,10 @@ conversations_by_session: dict[str, str] = {}
 
 @app.post("/messages")
 async def message(message: Message):
+    if not message.session_id.strip() or not message.content.strip():
+        raise HTTPException(
+            status_code=400, detail="session_id and content are required"
+        )
     conversation_id = conversations_by_session.get(message.session_id)
     if conversation_id is None:
         conversation_id = openai.conversations.create().id

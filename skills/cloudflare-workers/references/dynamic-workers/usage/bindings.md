@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v
 
 # Bindings
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bindings let you control what a Dynamic Worker can access. When you create a Dynamic Worker, you decide exactly what resources and operations it can use.
 
@@ -21,6 +21,8 @@ This allows you to:
 - **Give each Dynamic Worker its own resources**: Partition a [KV](https://developers.cloudflare.com/kv/) namespace, [R2](https://developers.cloudflare.com/r2/) bucket, or database so each Dynamic Worker only sees its own data.
 - **Expose custom capabilities**: Define your own methods that Dynamic Workers can call, such as posting to a chat room, sending an email, or querying an internal service. You design the interface, and the Dynamic Worker calls it.
 - **Restrict and control access**: Inspect, transform, or reject calls before they reach the underlying resource.
+
+For apps with public and private routes, refer to [Authentication and authorization](https://developers.cloudflare.com/dynamic-workers/usage/authentication/). The guide checks requests before invocation and permissions inside platform-owned operations.
 
 ## Custom bindings with Dynamic Workers
 
@@ -231,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v=439992d543a1e32f","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/#page","headline":"Bindings","description":"Give Dynamic Workers access to external APIs.","url":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/dynamic-workers/usage/bindings/og.png?v=439992d543a1e32f","dateModified":"2026-10-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

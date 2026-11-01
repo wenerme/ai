@@ -433,7 +433,10 @@ from agents.sandbox.sandboxes.docker import (
 docker_run_config = RunConfig(
     sandbox=SandboxRunConfig(
         client=DockerSandboxClient(docker_from_env()),
-        options=DockerSandboxClientOptions(image=DEFAULT_PYTHON_SANDBOX_IMAGE),
+        options=DockerSandboxClientOptions(
+            image=DEFAULT_PYTHON_SANDBOX_IMAGE,
+            network_mode="none",
+        ),
     ),
     workflow_name="Docker sandbox review",
 )
@@ -443,6 +446,8 @@ result = await Runner.run(
     "Summarize the renewal blockers and recommend the next two actions.",
     run_config=docker_run_config,
 )
+
+print(result.final_output)
 ```
 
 
@@ -548,7 +553,8 @@ try {
 async with session:
     first_result = await Runner.run(
         agent,
-        "Build the first version of the app.",
+        "Create app.py with an add(a, b) function that returns their sum. "
+        "Run it once to check that add(2, 3) equals 5.",
         max_turns=20,
         run_config=RunConfig(
             sandbox=SandboxRunConfig(session=session),
@@ -564,7 +570,11 @@ frozen_session_state = client.deserialize_session_state(
 conversation.append(
     {
         "role": "user",
-        "content": "Continue from the existing workspace and add tests.",
+        "content": (
+            "Read the existing app.py without replacing it. Add test_app.py with "
+            "two unittest tests: one for positive inputs and one for negative "
+            "inputs. Run both tests."
+        ),
     }
 )
 
@@ -582,6 +592,8 @@ try:
         )
 finally:
     await client.delete(resumed_session)
+
+print(second_result.final_output)
 ```
 
 

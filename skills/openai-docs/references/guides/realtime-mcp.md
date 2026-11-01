@@ -252,7 +252,14 @@ event = {
 }
 
 ws.send(json.dumps(event))
-ws.send(json.dumps({"type": "response.create"}))
+ws.send(
+    json.dumps(
+        {
+            "type": "response.create",
+            "response": {"output_modalities": ["text"], "tool_choice": "none"},
+        }
+    )
+)
 ```
 
 ```go
@@ -1020,7 +1027,6 @@ def approve_mcp_request(ws, approval_request_id):
     event = {
         "type": "conversation.item.create",
         "item": {
-            "id": f"mcp_approval_{approval_request_id}",
             "type": "mcp_approval_response",
             "approval_request_id": approval_request_id,
             "approve": True,
@@ -1165,6 +1171,8 @@ event = {
     "type": "response.create",
     "response": {
         "output_modalities": ["text"],
+        "tool_choice": "required",
+        "parallel_tool_calls": False,
         "input": [
             {
                 "type": "message",

@@ -207,12 +207,11 @@ grader = {
         },
     ],
     "pass_threshold": 0.5,
-    "model": "o4-mini-2025-04-16",
+    "model": "gpt-4.1-2025-04-14",
     "range": [0, 1],
     "sampling_params": {
         "max_completions_tokens": 32768,
         "top_p": 1,
-        "reasoning_effort": "medium",
     },
 }
 

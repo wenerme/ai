@@ -1,6 +1,6 @@
 ---
 comments: true
-description: Learn how to ensure thread-safe YOLO model inference in Python. Avoid race conditions and run your multi-threaded tasks reliably with best practices.
+description: Run thread-safe Ultralytics YOLO inference in Python by giving each thread its own model instance, or share one with the ThreadingLocked decorator.
 keywords: YOLO models, thread-safe, Python threading, model inference, concurrency, race conditions, multi-threaded, parallelism, Python GIL
 ---
 
@@ -23,7 +23,7 @@ Jump to [why sharing a model fails](#the-danger-of-shared-model-instances), the 
 
 ## Understanding Python Threading
 
-Python threads are a form of parallelism that allow your program to run multiple operations at once. However, Python's Global Interpreter Lock (GIL) means that only one thread can execute Python bytecode at a time.
+Python threads let your program run multiple operations concurrently. However, Python's Global Interpreter Lock (GIL) means that only one thread can execute Python bytecode at a time.
 
 <p align="center">
   [Single-thread vs multi-thread inference]
@@ -115,7 +115,7 @@ In this example, each thread creates its own `YOLO` instance. This prevents any 
 
 ## Using the ThreadingLocked Decorator
 
-Ultralytics provides a [`ThreadingLocked`](../reference/utils/__init__.md) decorator that can be used to ensure thread-safe execution of functions. This decorator uses a lock to ensure that only one thread at a time can execute the decorated function.
+Ultralytics provides a [`ThreadingLocked`](../reference/utils/__init__.md#ultralytics.utils.__init__.ThreadingLocked) decorator that can be used to ensure thread-safe execution of functions. This decorator uses a lock to ensure that only one thread at a time can execute the decorated function.
 
 ```python
 from ultralytics import YOLO
@@ -150,7 +150,7 @@ For more advanced scenarios and to further optimize your multi-threaded inferenc
 
 ### How can I avoid race conditions when using YOLO models in a multi-threaded Python environment?
 
-To prevent race conditions when using Ultralytics YOLO models in a multi-threaded Python environment, instantiate a separate YOLO model within each thread. This ensures that each thread has its own isolated model instance, avoiding concurrent modification of the model state.
+To prevent race conditions when using Ultralytics YOLO models in a multi-threaded Python environment, [instantiate a separate YOLO model within each thread](#thread-safe-inference). This ensures that each thread has its own isolated model instance, avoiding concurrent modification of the model state.
 
 Example:
 
@@ -168,8 +168,6 @@ def thread_safe_predict(image_path):
 Thread(target=thread_safe_predict, args=("image1.jpg",)).start()
 Thread(target=thread_safe_predict, args=("image2.jpg",)).start()
 ```
-
-For more information on ensuring thread safety, visit the [Thread-Safe Inference with YOLO Models](#thread-safe-inference).
 
 ### What are the best practices for running multi-threaded YOLO model inference in Python?
 
@@ -215,5 +213,3 @@ For more about threading in Python, see the [Understanding Python Threading](#un
 ### Is it safer to use process-based parallelism instead of threading for YOLO model inference?
 
 Yes, using Python's `multiprocessing` module is safer and often more efficient for running YOLO model inference in parallel. Process-based parallelism creates separate memory spaces, avoiding the Global Interpreter Lock (GIL) and reducing the risk of concurrency issues. Each process will operate independently with its own YOLO model instance.
-
-For further details on process-based parallelism with YOLO models, refer to the page on [Thread-Safe Inference](#thread-safe-inference).

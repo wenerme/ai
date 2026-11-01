@@ -22,7 +22,7 @@ Use input guardrails when you want a fast validation step to run before the expe
 
 Block a request with an input guardrail
 
-```typescript
+```javascript
 import { Agent, InputGuardrailTripwireTriggered, run } from "@openai/agents";
 import { z } from "zod";
 
@@ -90,7 +90,8 @@ guardrail_agent = Agent(
 )
 
 
-@input_guardrail
+# Validate input before starting the support agent.
+@input_guardrail(run_in_parallel=False)
 async def math_guardrail(
     ctx: RunContextWrapper[None],
     agent: Agent,
@@ -130,7 +131,7 @@ Approvals are the human-in-the-loop path for tool calls. The model can still dec
 
 Pause for approval before a sensitive action
 
-```typescript
+```javascript
 import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
 
@@ -176,7 +177,7 @@ async def cancel_order(order_id: int) -> str:
 
 agent = Agent(
     name="Support agent",
-    instructions="Handle support requests and ask for approval when needed.",
+    instructions="Use cancel_order to handle cancellation requests.",
     tools=[cancel_order],
 )
 
@@ -187,6 +188,7 @@ async def main() -> None:
     if result.interruptions:
         state = result.to_state()
         for interruption in result.interruptions:
+            print("Approval required:", interruption.name)
             state.approve(interruption)
         result = await Runner.run(agent, state)
 

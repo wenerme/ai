@@ -154,6 +154,7 @@ async def main():
     async with client.responses.connect() as connection:
         await connection.response.create(
             model="gpt-6-astra",
+            store=False,
             reasoning={"effort": "medium"},
             input="Draft a project plan for building a task-tracking app.",
         )

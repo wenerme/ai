@@ -231,10 +231,12 @@ await openai.vectorStores.files.create(vectorStore.id, {
 ```
 
 ```python
-result = client.vector_stores.files.create(
+result = client.vector_stores.files.create_and_poll(
     vector_store_id=vector_store.id,
     file_id=file_id,
 )
+if result.status != "completed":
+    raise RuntimeError(f"File indexing ended with status: {result.status}")
 print(result)
 ```
 
@@ -300,7 +302,17 @@ console.log(result.data);
 ```
 
 ```python
-result = client.vector_stores.files.list(vector_store_id=vector_store.id)
+import time
+
+# Listing visibility can lag behind completed indexing.
+deadline = time.monotonic() + 60
+while True:
+    result = client.vector_stores.files.list(vector_store_id=vector_store.id)
+    if any(file.id == file_id and file.status == "completed" for file in result.data):
+        break
+    if time.monotonic() >= deadline:
+        raise TimeoutError("The indexed file is not visible in the listing yet.")
+    time.sleep(1)
 print(result)
 ```
 

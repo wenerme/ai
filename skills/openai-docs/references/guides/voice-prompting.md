@@ -1424,6 +1424,7 @@ If you want to control more closely what type of phrases the model outputs at th
 ```python
 tools = [
     {
+        "type": "function",
         "name": "lookup_account",
         "description": """Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.
 
@@ -1442,6 +1443,7 @@ Preamble sample phrases:
         },
     },
     {
+        "type": "function",
         "name": "check_outage",
         "description": """Check for network outages affecting a given service address and return status and ETA if applicable.
 
@@ -2038,6 +2040,7 @@ def build_session_update(state: State) -> dict:
     return {
         "type": "session.update",
         "session": {
+            "type": "realtime",
             "instructions": INSTRUCTIONS_BY_STATE[state],
             "tools": TOOLS_BY_STATE[state] + [build_state_change_tool(state)],
         },

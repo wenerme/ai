@@ -114,11 +114,15 @@ while keep_going:
 
     conversation.extend(response.output)
 
+    try:
+        next_input = get_next_user_input()
+    except EOFError:
+        break
     conversation.append(
         {
             "type": "message",
             "role": "user",
-            "content": get_next_user_input(),
+            "content": next_input,
         }
     )
 ```

@@ -1210,9 +1210,9 @@ from openai import OpenAI
 client = OpenAI()
 container_id = "cntr_123"
 
-deleted = client.containers.delete(container_id)
+client.containers.delete(container_id)
 
-print(deleted)
+print("Container deleted")
 ```
 
 ```go

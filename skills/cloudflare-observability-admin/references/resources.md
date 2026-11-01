@@ -14,6 +14,8 @@ Products
 
 1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
 
+[**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
+
 [**Build a coding agent runner** Build a Worker that clones a GitHub repository into a Linux sandbox, runs Claude Code on a task in the background, and returns its changes as a diff.](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/)
 
 [**Build an AI code interpreter** Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/)
@@ -25,8 +27,6 @@ Products
 [**Detect MCP traffic in Gateway logs** Scan Gateway logs for unauthorized MCP traffic.](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/)
 
 [**Build a Comments API** Use D1 to add comments to a static blog site. Create a D1 database and build a JSON API with Hono that allows the creation and retrieval of comments.](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)
-
-[**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
 
 [**AI Security for Apps Reference Architecture** This article highlights how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications.](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/)
 
@@ -426,6 +426,8 @@ Products
 
 [**Use BYOIP with Magic Transit and CDN** Service bindings allow BYOIP customers to selectively route traffic on a per-IP address basis to the CDN pipeline. It is important to note that traffic routed to the CDN pipeline is protected at Layers 3 and 4 by the inherent DDoS protection capabilities.](https://developers.cloudflare.com/byoip/service-bindings/magic-transit-with-cdn/)
 
+[**Authentication and authorization** Authenticate requests in a dispatch Worker and authorize data access outside customer app code with Workers for Platforms.](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/authentication/)
+
 [**Business Continuity Guide** Build a business continuity strategy for the Cloudflare One Client using available disconnection mechanisms and decision guidance for service degradation scenarios.](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/business-continuity/)
 
 [**Display a coaching page** Return a custom explanatory HTML page from a Gateway Worker without forwarding the request upstream.](https://developers.cloudflare.com/cloudflare-one/traffic-controls/integrate-workers/worker-templates/coaching-page/)
@@ -469,6 +471,8 @@ Products
 [**Set up outgoing zone transfers (Cloudflare as Primary)** With outgoing zone transfers, you can keep Cloudflare as your primary DNS provider and use one or more secondary providers for increased availability.](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/setup/)
 
 [**Set up incoming zone transfers (Cloudflare as Secondary)** With incoming zone transfers, you can keep your primary DNS provider and use Cloudflare as a secondary DNS provider.](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/)
+
+[**Authentication and authorization** Authenticate requests in a loader Worker and authorize data access outside customer app code with Dynamic Workers.](https://developers.cloudflare.com/dynamic-workers/usage/authentication/)
 
 [**Onboard a domain** Learn how to onboard your domain to Cloudflare, to speed up and protect your website or application.](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 

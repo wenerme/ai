@@ -783,10 +783,9 @@ session_created = False
 def on_message(ws, message):
     global session_created
     data = json.loads(message)
-    print("Received event:", json.dumps(data, indent=2))
     if data["type"] == "session.created":
         session_created = True
-        print("Connected to the Realtime API.")
+        print("Connected to the Realtime API:", data["session"]["id"])
         ws.close()
     elif data["type"] == "error":
         ws.close()
