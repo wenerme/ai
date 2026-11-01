@@ -72,7 +72,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 from collections import deque
 from html.parser import HTMLParser
-from urllib.parse import urlparse
+from urllib.parse import urldefrag, urljoin, urlparse
 import os
 
 # Regex pattern to match a URL
@@ -130,32 +130,15 @@ The goal is to crawl through and index only the content that lives under the Ope
 ```python
 # Function to get the hyperlinks from a URL that are within the same domain
 def get_domain_hyperlinks(local_domain, url):
-    clean_links = []
-    for link in set(get_hyperlinks(url)):
-        clean_link = None
-
-        # If the link is a URL, check if it is within the same domain
-        if re.search(HTTP_URL_PATTERN, link):
-            # Parse the URL and check if the domain is the same
-            url_obj = urlparse(link)
-            if url_obj.netloc == local_domain:
-                clean_link = link
-
-        # If the link is not a URL, check if it is a relative link
-        else:
-            if link.startswith("/"):
-                link = link[1:]
-            elif link.startswith("#") or link.startswith("mailto:"):
-                continue
-            clean_link = "https://" + local_domain + "/" + link
-
-        if clean_link is not None:
-            if clean_link.endswith("/"):
-                clean_link = clean_link[:-1]
-            clean_links.append(clean_link)
-
-    # Return the list of hyperlinks that are within the same domain
-    return list(set(clean_links))
+    links = set()
+    for link in get_hyperlinks(url):
+        if not link or link.startswith("#"):
+            continue
+        candidate, _ = urldefrag(urljoin(url, link))
+        parsed = urlparse(candidate)
+        if parsed.scheme in {"http", "https"} and parsed.netloc == local_domain:
+            links.add(candidate)
+    return list(links)
 ```
 
 
@@ -164,7 +147,9 @@ The `crawl` function is the final step in the web scraping task setup. It keeps 
 ```python
 def crawl(url):
     # Parse the URL and get the domain
-    local_domain = urlparse(url).netloc
+    parsed = urlparse(url)
+    local_domain = parsed.netloc
+    url = parsed._replace(path=parsed.path or "/").geturl()
 
     # Create a queue to store the URLs to crawl
     queue = deque([url])
@@ -353,36 +338,30 @@ max_tokens = 500
 
 # Function to split the text into chunks of a maximum number of tokens
 def split_into_many(text, max_tokens=max_tokens):
+    if max_tokens < 1:
+        raise ValueError("max_tokens must be positive.")
+    if not text.strip():
+        return []
 
-    # Split the text into sentences
     sentences = text.split(". ")
-
-    # Get the number of tokens for each sentence
-    n_tokens = [len(tokenizer.encode(" " + sentence)) for sentence in sentences]
-
     chunks = []
-    tokens_so_far = 0
-    chunk = []
+    chunk = ""
+    for index, sentence in enumerate(sentences):
+        if index < len(sentences) - 1:
+            sentence += "."
+        # Do not silently discard a sentence that needs finer-grained splitting.
+        if len(tokenizer.encode(sentence)) > max_tokens:
+            raise ValueError("A sentence exceeds max_tokens; split it before chunking.")
 
-    # Loop through the sentences and tokens joined together in a tuple
-    for sentence, token in zip(sentences, n_tokens):
-        # If the number of tokens so far plus the number of tokens in the current sentence is greater
-        # than the max number of tokens, then add the chunk to the list of chunks and reset
-        # the chunk and tokens so far
-        if tokens_so_far + token > max_tokens:
-            chunks.append(". ".join(chunk) + ".")
-            chunk = []
-            tokens_so_far = 0
+        candidate = f"{chunk} {sentence}" if chunk else sentence
+        if len(tokenizer.encode(candidate)) > max_tokens:
+            chunks.append(chunk)
+            chunk = sentence
+        else:
+            chunk = candidate
 
-        # If the number of tokens in the current sentence is greater than the max number of
-        # tokens, go to the next sentence
-        if token > max_tokens:
-            continue
-
-        # Otherwise, add the sentence to the chunk and add the number of tokens to the total
-        chunk.append(sentence)
-        tokens_so_far += token + 1
-
+    if chunk:
+        chunks.append(chunk)
     return chunks
 
 
@@ -471,10 +450,11 @@ This should take about 3-5 minutes but after you will have your embeddings ready
 Turning the embeddings into a NumPy array is the first step, which will provide more flexibility in how to use it given the many functions available that operate on NumPy arrays. It will also flatten the dimension to 1-D, which is the required format for many subsequent operations.
 
 ```python
+from ast import literal_eval
 import numpy as np
 
 df = pd.read_csv("processed/embeddings.csv", index_col=0)
-df["embeddings"] = df["embeddings"].apply(eval).apply(np.array)
+df["embeddings"] = df["embeddings"].apply(literal_eval).apply(np.array)
 
 df.head()
 ```

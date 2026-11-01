@@ -296,9 +296,11 @@ class EditorDriver:
         )
 
     def keypress(self, action):
-        keys = tuple(action.keys)
+        keys = tuple(key.upper() for key in action.keys)
         if keys not in (("CTRL", "A"), ("CTRL", "S")):
-            raise ValueError("Only Select All and Save are allowed.")
+            raise ValueError(
+                f"Only Select All and Save are allowed; received {action.keys!r}."
+            )
         self.focus_editor()
         desktop("xdotool", "key", "--clearmodifiers", "ctrl+" + keys[1].lower())
 
@@ -446,7 +448,7 @@ from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
     browser = p.chromium.launch(
-        headless=False,
+        headless=True,
         chromium_sandbox=True,
         env={},
         args=["--disable-extensions", "--disable-file-system"],

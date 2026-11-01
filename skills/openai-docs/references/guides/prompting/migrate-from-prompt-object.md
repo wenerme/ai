@@ -41,7 +41,7 @@ prompt_id = "pmpt_123"
 
 response = client.responses.create(
     prompt={
-        "prompt_id": prompt_id,
+        "id": prompt_id,
         "version": "1",
         "variables": {
             "customer_name": "Acme",

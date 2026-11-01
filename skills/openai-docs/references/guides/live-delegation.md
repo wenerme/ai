@@ -456,10 +456,11 @@ from openai.resources.live.sideband import AsyncSidebandConnection
 
 async def send_update(
     connection: AsyncLiveConnection | AsyncSidebandConnection,
+    delegation_id: str,
 ) -> None:
     await connection.session.commentary.append(
         event_id="result_123",
-        delegation_id="item_9tA2bF3h7K9m2P5q8R1s4",
+        delegation_id=delegation_id,
         content="The order shipped today and should arrive tomorrow.",
     )
 ```
@@ -573,10 +574,11 @@ from openai.resources.live.sideband import AsyncSidebandConnection
 
 async def send_update(
     connection: AsyncLiveConnection | AsyncSidebandConnection,
+    delegation_id: str,
 ) -> None:
     await connection.session.thinking.append(
         event_id="availability_progress",
-        delegation_id="item_123",
+        delegation_id=delegation_id,
         content="Checking Thursday availability. No appointment has been booked.",
     )
 ```
@@ -640,10 +642,11 @@ from openai.resources.live.sideband import AsyncSidebandConnection
 
 async def send_update(
     connection: AsyncLiveConnection | AsyncSidebandConnection,
+    delegation_id: str,
 ) -> None:
     await connection.session.commentary.append(
         event_id="appointment_result",
-        delegation_id="item_123",
+        delegation_id=delegation_id,
         content="Your appointment is confirmed for Thursday at 2:00 PM",
     )
 ```

@@ -566,7 +566,7 @@ internal static void HandleEvent(RealtimeServerUpdate update)
 ```
 
 ```ruby
-connection.each do |event|
+response_done = connection.find do |event|
   next unless event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
 
   puts("Response status: #{event.response.status}")
@@ -577,8 +577,9 @@ connection.each do |event|
       puts(content.text) if content.type == :output_text
     end
   end
-  break
+  true
 end
+raise "Connection closed before the response completed" unless response_done
 ```
 
 
@@ -876,7 +877,7 @@ from websocket import create_connection
 
 def float_to_16bit_pcm(float32_array):
     clipped = [max(-1.0, min(1.0, x)) for x in float32_array]
-    pcm16 = b"".join(struct.pack("<h", int(x * 32767)) for x in clipped)
+    pcm16 = b"".join(struct.pack("<h", min(32767, int(x * 32768))) for x in clipped)
     return pcm16
 
 
@@ -1581,7 +1582,7 @@ internal static bool HandleEvent(RealtimeServerUpdate update)
 ```
 
 ```ruby
-connection.each do |event|
+response_done = connection.find do |event|
   next unless event.is_a?(OpenAI::Realtime::ResponseDoneEvent)
   next unless event.response.metadata&.fetch(:topic, nil) == "classification"
 
@@ -1593,8 +1594,9 @@ connection.each do |event|
       puts("Classification: #{content.text}") if content.type == :output_text
     end
   end
-  break
+  true
 end
+raise "Connection closed before the response completed" unless response_done
 ```
 
 
@@ -1776,6 +1778,7 @@ This is my handle, this is my spout!
 event = {
     "type": "response.create",
     "response": {
+        "output_modalities": ["text"],
         # An empty input array removes all prior context
         "input": [],
         "instructions": prompt,

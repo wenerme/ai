@@ -17,6 +17,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 This section covers the main runtime controls for Dynamic Workers.
 
 - [Bindings](https://developers.cloudflare.com/dynamic-workers/usage/bindings/)
+- [Authentication and authorization](https://developers.cloudflare.com/dynamic-workers/usage/authentication/)
 - [Static assets](https://developers.cloudflare.com/dynamic-workers/usage/static-assets/)
 - [Egress control](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)
 - [Observability](https://developers.cloudflare.com/dynamic-workers/usage/observability/)

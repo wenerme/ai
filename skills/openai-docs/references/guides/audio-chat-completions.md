@@ -260,6 +260,7 @@ encoded_string = base64.b64encode(wav_data).decode("utf-8")
 
 completion = client.chat.completions.create(
     model="gpt-audio-1.5",
+    store=False,
     modalities=["text", "audio"],
     audio={"voice": "alloy", "format": "wav"},
     messages=[

@@ -54,7 +54,7 @@ class MyChatKitServer(ChatKitServer[RequestContext]):
             await self.store.add_thread_item(
                 thread.id,
                 HiddenContextItem(
-                    id="item_123",
+                    id=self.store.generate_item_id("message", thread, context),
                     thread_id=thread.id,
                     created_at=datetime.now(),
                     content="<USER_ACTION>The user did a thing</USER_ACTION>",
@@ -175,7 +175,6 @@ Form values are keyed in the `payload` by their `name` e.g.
 ```python
 form = Form(
     direction="col",
-    validation="native",
     onSubmitAction=ActionConfig(
         type="update_todo",
         payload={"id": todo.id},

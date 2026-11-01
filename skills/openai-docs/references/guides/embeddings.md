@@ -216,6 +216,8 @@ await writeFile(
 ```
 
 ```python
+from pathlib import Path
+
 from openai import OpenAI
 
 client = OpenAI()
@@ -229,6 +231,7 @@ def get_embedding(text, model="text-embedding-3-small"):
 df["ada_embedding"] = df.combined.apply(
     lambda x: get_embedding(x, model="text-embedding-3-small")
 )
+Path("output").mkdir(exist_ok=True)
 df.to_csv("output/embedded_1k_reviews.csv", index=False)
 ```
 
@@ -395,10 +398,11 @@ end
 To load the data from a saved file, you can run the following:
 
 ```python
+from ast import literal_eval
 import pandas as pd
 
 df = pd.read_csv("output/embedded_1k_reviews.csv")
-df["ada_embedding"] = df.ada_embedding.apply(eval).apply(np.array)
+df["ada_embedding"] = df.ada_embedding.apply(literal_eval).apply(np.array)
 ```
 
 
@@ -1522,6 +1526,7 @@ We color the individual reviews based on the star rating which the reviewer has 
 The visualization seems to have produced roughly 3 clusters, one of which has mostly negative reviews.
 
 ```python
+from ast import literal_eval
 import numpy as np
 import pandas as pd
 from sklearn.manifold import TSNE
@@ -1529,7 +1534,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 
 df = pd.read_csv("output/embedded_1k_reviews.csv")
-matrix = np.array(df.ada_embedding.apply(eval).to_list())
+matrix = np.array(df.ada_embedding.apply(literal_eval).to_list())
 
 # Create a t-SNE model and transform the data
 tsne = TSNE(

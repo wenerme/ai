@@ -1357,8 +1357,10 @@ client.vector_stores.file_batches.create_and_poll(
             "file_id": "file_456",
             "chunking_strategy": {
                 "type": "static",
-                "max_chunk_size_tokens": 1200,
-                "chunk_overlap_tokens": 200
+                "static": {
+                    "max_chunk_size_tokens": 1200,
+                    "chunk_overlap_tokens": 200
+                }
             }
         }
     ]

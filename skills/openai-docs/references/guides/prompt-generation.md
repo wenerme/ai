@@ -2114,72 +2114,65 @@ console.log(
 
 ```python
 from openai import OpenAI
+from jsonschema import Draft202012Validator, ValidationError
 import json
 
 client = OpenAI()
 
+SCHEMA_DEFINITION = {
+    "type": "object",
+    "properties": {
+        "description": {"type": "string"},
+        "type": {
+            "type": "string",
+            "enum": ["object", "array", "string", "number", "boolean", "null"],
+        },
+        "properties": {
+            "type": "object",
+            "additionalProperties": {"$ref": "#/$defs/schema_definition"},
+        },
+        "items": {
+            "anyOf": [
+                {"$ref": "#/$defs/schema_definition"},
+                {"type": "array", "items": {"$ref": "#/$defs/schema_definition"}},
+            ]
+        },
+        "required": {"type": "array", "items": {"type": "string"}},
+        "additionalProperties": {"type": "boolean"},
+        "enum": {"type": "array", "minItems": 1, "uniqueItems": True},
+        "$ref": {"type": "string"},
+        "$defs": {
+            "type": "object",
+            "additionalProperties": {"$ref": "#/$defs/schema_definition"},
+        },
+        "anyOf": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"$ref": "#/$defs/schema_definition"},
+        },
+    },
+    "additionalProperties": False,
+    "if": {"required": ["type"], "properties": {"type": {"const": "object"}}},
+    "then": {"required": ["properties"]},
+}
+
 META_SCHEMA = {
     "name": "metaschema",
     "schema": {
-        "type": "object",
+        **SCHEMA_DEFINITION,
+        "required": ["type"],
         "properties": {
             "name": {"type": "string", "description": "The name of the schema"},
-            "type": {
-                "type": "string",
-                "enum": ["object", "array", "string", "number", "boolean", "null"],
-            },
-            "properties": {
-                "type": "object",
-                "additionalProperties": {"$ref": "#/$defs/schema_definition"},
-            },
-            "items": {
-                "anyOf": [
-                    {"$ref": "#/$defs/schema_definition"},
-                    {"type": "array", "items": {"$ref": "#/$defs/schema_definition"}},
-                ]
-            },
-            "required": {"type": "array", "items": {"type": "string"}},
-            "additionalProperties": {"type": "boolean"},
+            **SCHEMA_DEFINITION["properties"],
         },
-        "required": ["type"],
-        "additionalProperties": False,
-        "if": {"properties": {"type": {"const": "object"}}},
-        "then": {"required": ["properties"]},
         "$defs": {
             "schema_definition": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "enum": [
-                            "object",
-                            "array",
-                            "string",
-                            "number",
-                            "boolean",
-                            "null",
-                        ],
-                    },
-                    "properties": {
-                        "type": "object",
-                        "additionalProperties": {"$ref": "#/$defs/schema_definition"},
-                    },
-                    "items": {
-                        "anyOf": [
-                            {"$ref": "#/$defs/schema_definition"},
-                            {
-                                "type": "array",
-                                "items": {"$ref": "#/$defs/schema_definition"},
-                            },
-                        ]
-                    },
-                    "required": {"type": "array", "items": {"type": "string"}},
-                    "additionalProperties": {"type": "boolean"},
-                },
-                "required": ["type"],
-                "additionalProperties": False,
-                "if": {"properties": {"type": {"const": "object"}}},
-                "then": {"required": ["properties"]},
+                **SCHEMA_DEFINITION,
+                "anyOf": [
+                    {"required": ["type"]},
+                    {"required": ["$ref"]},
+                    {"required": ["anyOf"]},
+                ],
             }
         },
     },
@@ -2353,22 +2346,43 @@ Output: {
 
 
 def generate_schema(description: str):
-    completion = client.chat.completions.create(
-        model="gpt-5.6-terra",
-        response_format={"type": "json_schema", "json_schema": META_SCHEMA},
-        messages=[
-            {
-                "role": "system",
-                "content": META_PROMPT,
-            },
-            {
-                "role": "user",
-                "content": "Description:\n" + description,
-            },
-        ],
-    )
-
-    return json.loads(completion.choices[0].message.content)
+    messages = [
+        {"role": "system", "content": META_PROMPT},
+        {"role": "user", "content": "Description:\n" + description},
+    ]
+    validator = Draft202012Validator(META_SCHEMA["schema"])
+    # Generation is non-strict. Validate locally and allow one correction.
+    for attempt in range(2):
+        completion = client.chat.completions.create(
+            model="gpt-5.6-terra",
+            response_format={"type": "json_schema", "json_schema": META_SCHEMA},
+            messages=messages,
+        )
+        choice = completion.choices[0]
+        if choice.finish_reason != "stop" or choice.message.refusal:
+            raise ValueError("Schema generation did not complete successfully")
+        content = choice.message.content
+        schema = json.loads(content)
+        try:
+            validator.validate(schema)
+        except ValidationError as error:
+            if attempt == 1:
+                raise
+            messages.extend(
+                [
+                    {"role": "assistant", "content": content},
+                    {
+                        "role": "user",
+                        "content": (
+                            "Correct the schema to satisfy the original meta-schema. "
+                            f"Validation error at {error.json_path}: {error.message}. "
+                            "Return only the corrected JSON."
+                        ),
+                    },
+                ]
+            )
+        else:
+            return schema
 ```
 
 ```go
@@ -2561,6 +2575,9 @@ func run() error {
       "type": "string",
       "description": "The name of the schema"
     },
+    "description": {
+      "type": "string"
+    },
     "type": {
       "type": "string",
       "enum": [
@@ -2599,13 +2616,34 @@ func run() error {
     },
     "additionalProperties": {
       "type": "boolean"
+    },
+    "enum": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "$ref": {
+      "type": "string"
+    },
+    "$defs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/schema_definition"
+      }
+    },
+    "anyOf": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/schema_definition"
+      }
     }
   },
-  "required": [
-    "type"
-  ],
   "additionalProperties": false,
   "if": {
+    "required": [
+      "type"
+    ],
     "properties": {
       "type": {
         "const": "object"
@@ -2617,6 +2655,9 @@ func run() error {
       "properties"
     ]
   },
+  "required": [
+    "type"
+  ],
   "$defs": {
     "schema_definition": {
       "type": "object",
@@ -2662,13 +2703,34 @@ func run() error {
         },
         "additionalProperties": {
           "type": "boolean"
+        },
+        "enum": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "$ref": {
+          "type": "string"
+        },
+        "$defs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/schema_definition"
+          }
+        },
+        "anyOf": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/schema_definition"
+          }
         }
       },
-      "required": [
-        "type"
-      ],
       "additionalProperties": false,
       "if": {
+        "required": [
+          "type"
+        ],
         "properties": {
           "type": {
             "const": "object"
@@ -2679,7 +2741,24 @@ func run() error {
         "required": [
           "properties"
         ]
-      }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "type"
+          ]
+        },
+        {
+          "required": [
+            "$ref"
+          ]
+        },
+        {
+          "required": [
+            "anyOf"
+          ]
+        }
+      ]
     }
   }
 }`), &schema); err != nil {
@@ -3350,112 +3429,107 @@ Console.WriteLine(parsed.RootElement);
 require "openai"
 require "json"
 
+SCHEMA_DEFINITION = {
+  "type" => "object",
+  "properties" => {
+    "description" => {
+      "type" => "string"
+    },
+    "type" => {
+      "type" => "string",
+      "enum" => [
+        "object",
+        "array",
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
+    },
+    "properties" => {
+      "type" => "object",
+      "additionalProperties" => {
+        "$ref" => "#/$defs/schema_definition"
+      }
+    },
+    "items" => {
+      "anyOf" => [
+        {
+          "$ref" => "#/$defs/schema_definition"
+        },
+        {
+          "type" => "array",
+          "items" => {
+            "$ref" => "#/$defs/schema_definition"
+          }
+        }
+      ]
+    },
+    "required" => {
+      "type" => "array",
+      "items" => {
+        "type" => "string"
+      }
+    },
+    "additionalProperties" => {
+      "type" => "boolean"
+    },
+    "enum" => {
+      "type" => "array",
+      "minItems" => 1,
+      "uniqueItems" => true
+    },
+    "$ref" => {
+      "type" => "string"
+    },
+    "$defs" => {
+      "type" => "object",
+      "additionalProperties" => {
+        "$ref" => "#/$defs/schema_definition"
+      }
+    },
+    "anyOf" => {
+      "type" => "array",
+      "minItems" => 1,
+      "items" => {
+        "$ref" => "#/$defs/schema_definition"
+      }
+    }
+  },
+  "additionalProperties" => false,
+  "if" => {
+    "required" => [
+      "type"
+    ],
+    "properties" => {
+      "type" => {
+        "const" => "object"
+      }
+    }
+  },
+  "then" => {
+    "required" => [
+      "properties"
+    ]
+  }
+}
+
 META_SCHEMA = {
   "name" => "metaschema",
-  "schema" => {
-    "type" => "object",
-    "properties" => {
-      "description" => { "type" => "string" },
+  "schema" => SCHEMA_DEFINITION.merge(
+    "required" => ["type"],
+    "properties" => SCHEMA_DEFINITION.fetch("properties").merge(
       "name" => {
         "type" => "string",
         "description" => "The name of the schema"
-      },
-      "type" => {
-        "type" => "string",
-        "enum" => ["object", "array", "string", "number", "boolean", "null"]
-      },
-      "properties" => {
-        "type" => "object",
-        "additionalProperties" => {
-          "$ref" => "#/$defs/schema_definition"
-        }
-      },
-      "items" => {
-        "anyOf" => [
-          {
-            "$ref" => "#/$defs/schema_definition"
-          }, {
-            "type" => "array",
-            "items" => {
-              "$ref" => "#/$defs/schema_definition"
-            }
-          }
-        ]
-      },
-      "required" => {
-        "type" => "array",
-        "items" => {
-          "type" => "string"
-        }
-      },
-      "additionalProperties" => {
-        "type" => "boolean"
       }
-    },
-    "required" => ["type"],
-    "additionalProperties" => false,
-    "if" => {
-      "properties" => {
-        "type" => {
-          "const" => "object"
-        }
-      }
-    },
-    "then" => {
-      "required" => ["properties"]
-    },
+    ),
     "$defs" => {
-      "schema_definition" => {
-        "type" => "object",
-        "properties" => {
-          "description" => { "type" => "string" },
-          "type" => {
-            "type" => "string",
-            "enum" => ["object", "array", "string", "number", "boolean", "null"]
-          },
-          "properties" => {
-            "type" => "object",
-            "additionalProperties" => {
-              "$ref" => "#/$defs/schema_definition"
-            }
-          },
-          "items" => {
-            "anyOf" => [
-              {
-                "$ref" => "#/$defs/schema_definition"
-              }, {
-                "type" => "array",
-                "items" => {
-                  "$ref" => "#/$defs/schema_definition"
-                }
-              }
-            ]
-          },
-          "required" => {
-            "type" => "array",
-            "items" => {
-              "type" => "string"
-            }
-          },
-          "additionalProperties" => {
-            "type" => "boolean"
-          }
-        },
-        "required" => ["type"],
-        "additionalProperties" => false,
-        "if" => {
-          "properties" => {
-            "type" => {
-              "const" => "object"
-            }
-          }
-        },
-        "then" => {
-          "required" => ["properties"]
-        }
-      }
+      "schema_definition" => SCHEMA_DEFINITION.merge(
+        "anyOf" => [{ "required" => ["type"] }, { "required" => ["$ref"] }, { "required" => ["anyOf"] }]
+      )
     }
-  }
+  )
 }
 
 META_PROMPT = <<~PROMPT.strip
@@ -3922,6 +3996,8 @@ META_SCHEMA = {
             "schema_definition": {
                 "type": "object",
                 "properties": {
+                    "description": {"type": "string"},
+                    "enum": {"type": "array", "minItems": 1, "uniqueItems": True},
                     "type": {
                         "type": "string",
                         "enum": [
@@ -4316,6 +4392,11 @@ func run() error {
         },
         "additionalProperties": {
           "type": "boolean"
+        },
+        "enum": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
@@ -4827,6 +4908,11 @@ META_SCHEMA = {
         "type" => "object",
         "properties" => {
           "description" => { "type" => "string" },
+          "enum" => {
+            "type" => "array",
+            "minItems" => 1,
+            "uniqueItems" => true
+          },
           "type" => {
             "type" => "string",
             "enum" => ["object", "array", "string", "number", "boolean", "null"]

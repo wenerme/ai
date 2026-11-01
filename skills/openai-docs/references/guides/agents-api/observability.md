@@ -309,14 +309,29 @@ console.log(turn.subagent_id || "main agent");
 # Replace the illustrative IDs and URLs below with your own resource values.
 from openai import OpenAI
 
-client = OpenAI()
 
-session_id = "sess_123"
-turns = client.beta.agents.sessions.turns.list(session_id, limit=20, order="desc")
-print(turns.to_json())
-turn_id = "turn_123"
-turn = client.beta.agents.sessions.turns.retrieve(turn_id, session_id=session_id)
-print(turn.subagent_id)
+def find_turn(client, session_id, turn_id):
+    # Native SDK pagination searches every page for the owning agent.
+    for turn in client.beta.agents.sessions.turns.list(session_id, limit=100):
+        if turn.id == turn_id:
+            return client.beta.agents.sessions.turns.retrieve(
+                turn_id, session_id=session_id
+            )
+
+    for subagent in client.beta.agents.sessions.subagents.list(session_id, limit=100):
+        turns = client.beta.agents.sessions.subagents.turns.list(
+            subagent.id, session_id=session_id, limit=100
+        )
+        for turn in turns:
+            if turn.id == turn_id:
+                return client.beta.agents.sessions.subagents.turns.retrieve(
+                    turn_id, session_id=session_id, subagent_id=subagent.id
+                )
+    raise ValueError(f"Turn {turn_id} not found in session {session_id}")
+
+
+turn = find_turn(OpenAI(), "sess_123", "turn_123")
+print(turn.subagent_id or "main agent")
 ```
 
 ```go

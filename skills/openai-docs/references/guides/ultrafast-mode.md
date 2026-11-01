@@ -94,6 +94,7 @@ with client.responses.connect() as connection:
         connection.response.create(
             model="gpt-6-astra",
             service_tier="ultrafast",
+            store=False,  # Keep this conversation on the current connection.
             previous_response_id=previous_response_id,
             input=prompt,
         )
