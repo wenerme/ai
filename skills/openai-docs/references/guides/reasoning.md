@@ -952,8 +952,8 @@ Check out [this guide](https://developers.openai.com/api/docs/guides/conversatio
 
 Use `configuration_update` to increase reasoning effort for difficult work or reduce it for routine follow-ups. Add the update between responses while leaving the request-level `reasoning.effort` unchanged. This preserves the original prompt prefix for [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 
-Configuration updates are supported by the GPT-6 model family in standard,
-  single-agent mode. They change only reasoning effort.
+On supported GPT-6 and later models, you can update reasoning effort and
+  response format in standard, single-agent mode.
 
 Add the following item before the next user message in the `input` array of an HTTP Responses request or a WebSocket `response.create` request:
 
@@ -1160,11 +1160,11 @@ puts(response.output_text)
 
 Preserve updates with `previous_response_id`, or replay them in their original positions when [managing conversation history manually](https://developers.openai.com/api/docs/guides/conversation-state#manually-manage-conversation-state). The response's `reasoning.effort` continues to report the request-level setting, not the effort selected by the update.
 
-Do not place two `configuration_update` items directly next to each other in the conversation history; the API rejects adjacent updates.
+You can set `reasoning.effort` and [`text.format`](https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses#change-the-response-format-mid-conversation) in the same `configuration_update` item. An update to either setting alone preserves the other.
 
 Do not combine configuration updates with automatic compaction or automatic truncation. The standalone `/responses/compact` endpoint also rejects histories containing these updates.
 
-You can still explicitly compact history by including a `compaction_trigger` item in a `/responses` request. After compaction, add a fresh `configuration_update` with the desired effort before the next user message.
+You can still explicitly compact history by including a `compaction_trigger` item in a `/responses` request. After compaction, add a fresh `configuration_update` before the next user message. Restate each setting you changed, including the format if you changed it.
 
 Normal prompt caching requirements still apply. To send user instructions while a response is running, use [Mid-turn steering](https://developers.openai.com/api/docs/guides/steering).
 

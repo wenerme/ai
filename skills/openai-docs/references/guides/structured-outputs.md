@@ -2902,6 +2902,300 @@ end
 
 
 
+Change the response format mid-conversation
+
+
+
+To switch to a new schema between responses, append a `configuration_update` item to `input` before the next user message. Keep the original top-level `text.format` on each request so the earlier prompt prefix stays eligible for [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
+
+Response format updates are available on supported GPT-6 and later models in
+  standard, single-agent mode.
+
+Suppose the previous turn described a shipment with 17 red crates and 26 blue crates in plain text. Continue the conversation with `previous_response_id` and pass the following array as `input`.
+
+Switch from plain text to a structured crate count
+
+```javascript
+import OpenAI from "openai";
+import { zodTextFormat } from "openai/helpers/zod";
+import { z } from "zod";
+
+const client = new OpenAI();
+const model = "gpt-6-astra";
+const CrateCount = z.object({ total_crates: z.number().int() });
+
+const first = await client.responses.create({
+  model,
+  input:
+    "Summarize this shipment in one sentence: 17 red crates and 26 blue crates.",
+  store: true,
+});
+
+const format = zodTextFormat(CrateCount, "crate_count");
+const second = await client.responses.parse({
+  model,
+  previous_response_id: first.id,
+  input: [
+    { type: "configuration_update", text: { format } },
+    { role: "user", content: "How many crates are in the shipment?" },
+  ],
+});
+
+if (second.status === "completed" && second.output_parsed) {
+  console.log(second.output_parsed.total_crates);
+}
+```
+
+```python
+from openai import OpenAI
+from pydantic import BaseModel, ConfigDict
+
+
+class CrateCount(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    total_crates: int
+
+
+client = OpenAI()
+model = "gpt-6-astra"
+
+first = client.responses.create(
+    model=model,
+    input="Summarize this shipment in one sentence: 17 red crates and 26 blue crates.",
+    store=True,
+)
+
+second = client.responses.parse(
+    model=model,
+    previous_response_id=first.id,
+    input=[
+        {
+            "type": "configuration_update",
+            "text": {
+                "format": {
+                    "type": "json_schema",
+                    "name": "crate_count",
+                    "schema": CrateCount.model_json_schema(),
+                    "strict": True,
+                }
+            },
+        },
+        {"role": "user", "content": "How many crates are in the shipment?"},
+    ],
+    parse_as=CrateCount,
+)
+
+if second.status == "completed" and second.output_parsed is not None:
+    print(second.output_parsed.total_crates)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	ctx := context.Background()
+	const model = "gpt-6-astra"
+	first, err := client.Responses.New(ctx, responses.ResponseNewParams{
+		Model: model,
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Summarize this shipment in one sentence: 17 red crates and 26 blue crates."),
+		},
+		Store: openai.Bool(true),
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	format := responses.ResponseFormatTextJSONSchemaConfigParam{
+		Name: "crate_count",
+		Schema: map[string]any{
+			"type":                 "object",
+			"properties":           map[string]any{"total_crates": map[string]any{"type": "integer"}},
+			"required":             []string{"total_crates"},
+			"additionalProperties": false,
+		},
+		Strict: openai.Bool(true),
+	}
+	second, err := client.Responses.New(ctx, responses.ResponseNewParams{
+		Model:              model,
+		PreviousResponseID: openai.String(first.ID),
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			{OfConfigurationUpdate: &responses.ResponseConfigurationUpdateItemParam{
+				Text: responses.ResponseConfigurationUpdateItemParamText{
+					Format: responses.ResponseConfigurationUpdateItemParamTextFormatUnion{OfJSONSchema: &format},
+				},
+			}},
+			responses.ResponseInputItemParamOfMessage("How many crates are in the shipment?", responses.EasyInputMessageRoleUser),
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	if second.Status != responses.ResponseStatusCompleted {
+		return
+	}
+	for _, item := range second.Output {
+		if item.Type != "message" || (item.Phase != "" && item.Phase != responses.ResponseOutputMessagePhaseFinalAnswer) {
+			continue
+		}
+		for _, part := range item.Content {
+			if part.Type == "output_text" {
+				fmt.Println(part.Text)
+			}
+		}
+	}
+}
+```
+
+```java
+import com.openai.core.JsonValue;
+import com.openai.models.responses.EasyInputMessage;
+import com.openai.models.responses.ResponseConfigurationUpdateItemParam;
+import com.openai.models.responses.ResponseCreateParams;
+import com.openai.models.responses.ResponseFormatTextJsonSchemaConfig;
+import com.openai.models.responses.ResponseInputItem;
+import com.openai.models.responses.ResponseOutputMessage;
+import com.openai.models.responses.ResponseStatus;
+import java.util.List;
+import java.util.Map;
+
+String model = "gpt-6-astra";
+
+var first =
+    client
+        .responses()
+        .create(
+            ResponseCreateParams.builder()
+                .model(model)
+                .input(
+                    "Summarize this shipment in one sentence: 17 red crates and 26 blue crates.")
+                .store(true)
+                .build());
+
+var schema =
+    Map.of(
+        "type",
+        "object",
+        "properties",
+        Map.of("total_crates", Map.of("type", "integer")),
+        "required",
+        List.of("total_crates"),
+        "additionalProperties",
+        false);
+var format =
+    ResponseFormatTextJsonSchemaConfig.builder()
+        .name("crate_count")
+        .schema(JsonValue.from(schema).convert(ResponseFormatTextJsonSchemaConfig.Schema.class))
+        .strict(true)
+        .build();
+var update =
+    ResponseConfigurationUpdateItemParam.builder()
+        .text(ResponseConfigurationUpdateItemParam.Text.builder().format(format).build())
+        .build();
+var question =
+    EasyInputMessage.builder()
+        .role(EasyInputMessage.Role.USER)
+        .content("How many crates are in the shipment?")
+        .build();
+
+var second =
+    client
+        .responses()
+        .create(
+            ResponseCreateParams.builder()
+                .model(model)
+                .previousResponseId(first.id())
+                .inputOfResponse(
+                    List.of(
+                        ResponseInputItem.ofConfigurationUpdate(update),
+                        ResponseInputItem.ofEasyInputMessage(question)))
+                .build());
+if (!ResponseStatus.COMPLETED.equals(second.status().orElse(null))) {
+  return;
+}
+second.output().stream()
+    .flatMap(item -> item.message().stream())
+    .filter(
+        message ->
+            message.phase().map(ResponseOutputMessage.Phase.FINAL_ANSWER::equals).orElse(true))
+    .flatMap(message -> message.content().stream())
+    .flatMap(content -> content.outputText().stream())
+    .forEach(text -> System.out.println(text.text()));
+```
+
+```ruby
+# gem install openai sorbet-runtime
+require "openai"
+require "openai/helpers/sorbet"
+
+class CrateCount < T::Struct
+  const :total_crates, Integer
+end
+
+client = OpenAI::Client.new
+model = "gpt-6-astra"
+
+first = client.responses.create(
+  model: model,
+  input: "Summarize this shipment in one sentence: 17 red crates and 26 blue crates.",
+  store: true
+)
+
+second = client.responses.create(
+  model: model,
+  previous_response_id: first.id,
+  input: [
+    {
+      type: :configuration_update,
+      text: {
+        format: {
+          type: :json_schema,
+          name: "crate_count",
+          schema: OpenAI::StructuredOutput.from_sorbet(CrateCount),
+          strict: true
+        }
+      }
+    },
+    {
+      role: :user,
+      content: "How many crates are in the shipment?"
+    }
+  ]
+)
+
+if second.status == OpenAI::Responses::ResponseStatus::COMPLETED
+  second.output.grep(OpenAI::Responses::ResponseOutputMessage).each do |message|
+    next unless message.phase.nil? || message.phase == :final_answer
+
+    message.content.grep(OpenAI::Responses::ResponseOutputText).each do |part|
+      count = part.parsed
+      case count
+      when CrateCount
+        puts count.total_crates
+      end
+    end
+  end
+end
+```
+
+
+The expected answer is `{"total_crates":43}`. The response object's `text.format` still reports the original request-level format. After checking for refusals and incomplete responses, parse the answer with the schema from the latest format update.
+
+Each format update replaces the whole format. It stays in effect across turns, including when you update only `reasoning.effort`. To switch back to plain text, append `{"type":"configuration_update","text":{"format":{"type":"text"}}}`. Updates accept `json_schema` and `text` only.
+
+If you replay history manually, keep each update in its original position. After explicit compaction, restate each setting you changed. See [configuration update compatibility](https://developers.openai.com/api/docs/guides/reasoning?api-mode=responses#change-reasoning-mid-conversation).
+
+
+
 
 
 Refusals with Structured Outputs
