@@ -730,10 +730,10 @@
   "openai-docs/guides/decisions.md": {
     "url": "https://developers.openai.com/api/docs/guides/decisions.md",
     "skill": "openai-docs",
-    "etag": "W/\"1b4633f6e0d87a69197cc49815274b92\"",
-    "lastModified": "Thu, 22 Oct 2026 21:27:47 GMT",
-    "size": 37324,
-    "updatedAt": "2026-10-23T01:00:31.557Z"
+    "etag": "W/\"f40c970ce259202cd3efbc2310f39679\"",
+    "lastModified": "Sun, 01 Nov 2026 04:13:59 GMT",
+    "size": 37786,
+    "updatedAt": "2026-11-01T10:20:27.808Z"
   },
   "openai-docs/guides/deep-research.md": {
     "url": "https://developers.openai.com/api/docs/guides/deep-research.md",
@@ -1082,10 +1082,10 @@
   "openai-docs/guides/prompt-caching.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching.md",
     "skill": "openai-docs",
-    "etag": "W/\"638f2081b60426e3e809e2e46a254da7\"",
-    "lastModified": "Tue, 27 Oct 2026 00:44:35 GMT",
-    "size": 56591,
-    "updatedAt": "2026-10-27T00:57:12.936Z"
+    "etag": "W/\"b2f6e83e6e663087f696b421bd9947b7\"",
+    "lastModified": "Sun, 01 Nov 2026 04:12:56 GMT",
+    "size": 56550,
+    "updatedAt": "2026-11-01T10:20:38.455Z"
   },
   "openai-docs/guides/prompt-caching/diagnostics.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics.md",
@@ -1242,10 +1242,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"e9b54fb7b3b54132498a344a10309747\"",
-    "lastModified": "Sat, 31 Oct 2026 23:34:11 GMT",
-    "size": 70736,
-    "updatedAt": "2026-11-01T00:47:55.448Z"
+    "etag": "W/\"36dd9d4afb0f57b029b82b0db1d3b8f7\"",
+    "lastModified": "Sun, 01 Nov 2026 04:12:21 GMT",
+    "size": 70917,
+    "updatedAt": "2026-11-01T10:20:43.593Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",
@@ -1378,10 +1378,10 @@
   "openai-docs/guides/structured-outputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/structured-outputs.md",
     "skill": "openai-docs",
-    "etag": "W/\"04b3808bae6c15596b1e4566bfa0cb42\"",
-    "lastModified": "Sat, 31 Oct 2026 23:33:34 GMT",
-    "size": 136312,
-    "updatedAt": "2026-11-01T00:47:59.588Z"
+    "etag": "W/\"1dd1868c5c02bc839dca2927e67d9b9b\"",
+    "lastModified": "Sun, 01 Nov 2026 08:37:58 GMT",
+    "size": 145383,
+    "updatedAt": "2026-11-01T10:20:47.764Z"
   },
   "openai-docs/guides/supervised-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning.md",
