@@ -28,45 +28,45 @@ With the Pages UI, you can deploy a static site or framework-based application.
     like [Eleventy](https://www.11ty.dev), [Astro](https://astro.build), or [Jekyll](https://jekyllrb.com).
   - Contains a framework configured for static output, such as [Next.js](https://nextjs.org),
     [Nuxt](https://nuxt.com), or [SvelteKit](https://kit.svelte.dev).
-- GitLab Pages must be turned on for the project. (To turn it on, go to **Settings** > **General**,
-  expand **Visibility, project features, permissions**, and turn on the **Pages** toggle.)
+- GitLab Pages must be turned on for the project. (To turn it on, go to  > ,
+  expand , and turn on the  toggle.)
 
 ## Create the Pages deployment
 
 To complete the setup and generate a GitLab Pages deployment:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 
-   A **Get Started with Pages** form appears. If this form is not available,
-   see [Troubleshooting](#if-the-get-started-with-pages-form-is-not-available).
+   A **Get started with GitLab Pages** form appears. If this form is not available,
+   see [Troubleshooting](#if-the-get-started-with-gitlab-pages-form-is-not-available).
 1. For **Step 1**, enter an image name. You can also [set a custom folder to be deployed with Pages](../introduction.md#customize-the-default-folder).
-1. Select **Next**.
+1. Select .
 1. For **Step 2**, enter your installation steps. If your framework's build process does not
    need one of the provided build commands, you can either:
-   - Skip the step by selecting **Next**.
+   - Skip the step by selecting .
    - Enter `:` (the bash "do nothing" command) if you still want to incorporate that
      step's boilerplate into your `.gitlab-ci.yml` file.
-1. Select **Next**.
+1. Select .
 1. For **Step 3**, enter scripts that indicate how to build your application.
-1. Select **Next**.
+1. Select .
 1. Optional. Edit the generated `.gitlab-ci.yml` file as needed.
-1. For **Step 4**, add a commit message and select **Commit**. This commit triggers your first
+1. For **Step 4**, add a commit message and select . This commit triggers your first
    GitLab Pages deployment.
 
-To view the running pipeline, go to **Build** > **Pipelines**. When the pipeline succeeds,
+To view the running pipeline, go to  > . When the pipeline succeeds,
 your Pages site is deployed and accessible.
 
 To view the artifacts that were created during the deployment, view the job,
-and on the right side, select **Download artifacts**.
+and on the right side, select .
 
 ## View deployment URL
 
 After your pipeline completes successfully:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. In **Deployments**, you can view your active deployment URL.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In , you can view your active deployment URL.
 1. To visit your deployed GitLab Pages site, select the URL.
 
 > [!note]
@@ -74,16 +74,16 @@ After your pipeline completes successfully:
 
 ## Troubleshooting
 
-### If the `Get Started with Pages` form is not available
+### If the `Get started with GitLab Pages` form is not available
 
-The `Get Started with Pages` form is not available if you:
+The `Get started with GitLab Pages` form is not available if you:
 
 - Deployed a GitLab Pages site before.
 - Committed `.gitlab-ci.yml` through the forms at least one time.
 
 To fix this issue:
 
-- If the message **Waiting for the Pages Pipeline to complete** appears, select
-  **Start over** to start the form again.
+- If the message  appears, select
+   to start the form again.
 - If your project has previously deployed GitLab Pages successfully,
   [manually update](pages_from_scratch.md) your `.gitlab-ci.yml` file.

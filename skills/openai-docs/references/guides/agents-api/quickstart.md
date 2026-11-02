@@ -206,9 +206,9 @@ Save the example as `src/main/java/AgentsApiSessionsStreamConversationExample.ja
 Create and run tree.py
 
 ```java
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.ObjectMappers;
 import com.openai.core.http.StreamResponse;
 import com.openai.models.beta.agents.AgentSessionEvent;
 import com.openai.models.beta.agents.EnvironmentParam;
@@ -216,7 +216,7 @@ import com.openai.models.beta.agents.sessions.SessionCreateParams;
 import com.openai.services.beta.agents.AgentTurnResults;
 
 OpenAIClient client = OpenAIOkHttpClient.fromEnv();
-var json = new JsonMapper();
+var json = ObjectMappers.jsonMapper();
 try (StreamResponse<AgentSessionEvent> events =
     client
         .beta()

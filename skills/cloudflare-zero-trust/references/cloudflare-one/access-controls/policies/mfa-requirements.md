@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Enforce MFA
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
@@ -35,9 +35,9 @@ IdP-based MFA enforcement is only available with the following identity provider
 To enforce an IdP MFA requirement on an application:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
-2. Find the application for which you want to enforce MFA and select **Configure**. Alternatively, [create a new application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
+2. Find the application for which you want to enforce MFA and select **Edit**. Alternatively, [create a new application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
 3. Go to **Policies**.
-4. If your application already has a policy containing an identity requirement, find it and select **Configure**.
+4. If your application already has a policy containing an identity requirement, find it and select **Edit**.
 
    Note
 
@@ -96,8 +96,8 @@ Each application has three MFA options:
 To configure MFA for an application:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
-2. Find the application you want to configure and select **Configure**.
-3. Scroll down to **Authentication** and select the **MFA**.tab.
+2. Find the application you want to configure and select **Edit**.
+3. Scroll down to **Authentication** and select the **MFA** tab.
 4. Select one of the following options:
    - To inherit the organization setting, select **Respect global enforcement setting**.
    - To set custom requirements, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
@@ -111,7 +111,7 @@ To configure MFA for an infrastructure application, refer to [Infrastructure app
 Each policy has the same three MFA options described in [Configure independent MFA for an application](#configure-independent-mfa-for-an-application). Policy-level settings override application-level settings.
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
-2. Choose an **Allow** policy and select **Configure**.
+2. Choose an **Allow** policy and select **Edit**.
 3. Under **Multi-factor authentication (MFA)**, select an option:
    - To inherit the application or organization setting, select **Respect global enforcement setting**.
    - To set custom requirements for users who match this policy, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
@@ -135,8 +135,8 @@ Access checks MFA sessions from most specific to least specific:
 To require MFA every time a user logs in to an application, set the authentication duration to **Require every login**. This prevents Access from caching a successful MFA session.
 
 - **Organization** — Go to **Zero Trust** > **Access controls** > **Access settings** > **Allow multi-factor authentication (MFA)**. Set **Authentication duration** to **Require every login**. This applies to all applications unless overridden at the application or policy level. For more details, refer to [independent MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
-- **Application** — Go to **Zero Trust** > **Access controls** > **Applications** > select your application > **Configure** > **Authentication** > **MFA** tab. Select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
-- **Policy** — Go to **Zero Trust** > **Access controls** > **Policies** > select your policy > **Configure**. Under **Multi-factor authentication (MFA)**, select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+- **Application** — Go to **Zero Trust** > **Access controls** > **Applications** > select your application > **Edit** > **Authentication** > **MFA** tab. Select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+- **Policy** — Go to **Zero Trust** > **Access controls** > **Policies** > select your policy > **Edit**. Under **Multi-factor authentication (MFA)**, select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
 
 To configure this for an application via the API, first send a `GET` request to retrieve the full application configuration, then send a `PUT` request with the complete application body including the updated `mfa_config`. Set `session_duration` to `"0m"`:
 
@@ -216,7 +216,7 @@ Dashboard
 </summary>
 
 1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
-2. Find your infrastructure application and select **Configure**.
+2. Find your infrastructure application and select **Edit**.
 3. Go to the **Authentication** tab and select **MFA**.
 4. Select one of the following options:
    - **Respect global enforcement setting** — Uses the <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/">organization-level</a> MFA configuration. This is the default.
@@ -271,7 +271,7 @@ Dashboard
 </summary>
 
 1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
-2. Find your infrastructure application and select **Configure**.
+2. Find your infrastructure application and select **Edit**.
 3. Go to **Policies** and select the policy you want to configure.
 4. Under **Multi-factor authentication (MFA)**, select an option:
    - **Respect global enforcement setting** — Inherits the application or organization setting.
@@ -358,5 +358,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/og.png?v=61e0d7bebea2f7d2","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/og.png?v=61e0d7bebea2f7d2","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
 ```

@@ -149,7 +149,7 @@ Here’s an example of an `openaiFileResponse` array with two elements:
 
 Here’s an example of the required headers for each URL:
 
-```
+```text
 Content-Type: application/pdf
 Content-Disposition: attachment; filename="example_document.pdf"
 ```

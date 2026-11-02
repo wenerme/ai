@@ -521,6 +521,8 @@ The following features work on Claude Models on Google Cloud (Anthropic managed)
 
   * [Prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
   * [Extended thinking](https://platform.claude.com/docs/en/build-with-claude/thinking)
+  * [Adaptive thinking](https://platform.claude.com/docs/en/build-with-claude/thinking#configuring-thinking)
+  * [Effort](https://platform.claude.com/docs/en/build-with-claude/effort)
   * [Server-side fallback](https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback#server-side-fallback)
   * [Streaming](https://platform.claude.com/docs/en/build-with-claude/streaming)
   * [Structured outputs](https://platform.claude.com/docs/en/build-with-claude/structured-outputs)

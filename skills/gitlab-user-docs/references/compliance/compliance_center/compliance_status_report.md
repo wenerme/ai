@@ -6,8 +6,7 @@
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/186525) in GitLab 17.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `enable_standards_adherence_dashboard_v2`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/535563) in GitLab 18.3. Feature flag `enable_standards_adherence_dashboard_v2` removed.
 
-The compliance status report displays the most recent instances where projects do not adhere to [compliance framework requirements](../compliance_frameworks/_index.md#requirements). It is part of the
-compliance center, and helps you quickly identify and remediate gaps in control implementation across your projects.
+The compliance status report is part of the compliance center. It helps you monitor compliance across your groups.
 
 ## Scan timing and triggers
 
@@ -35,8 +34,11 @@ To view the compliance status report:
 
 ## Report details
 
-The compliance status report shows the latest instance where a project is adhering or not adhering to a framework control. Each row provides details
+The compliance status report shows the latest status of framework controls for each project. Each row provides details
 about the current status of a control in a specific project, helping you monitor compliance across your group.
+
+A requirement displays as **Not applicable** when all its controls have the `not_applicable` status.
+These controls don't count as passed or failed.
 
 You can:
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Mutual TLS
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -96,7 +96,7 @@ The mTLS certificate is used only to verify the client certificate. It does not 
    | --- | --- | --- | --- |
    | Service Auth | Include | Common Name | `John Doe` |
 10. Save the policy, then go to **Access controls** > **Applications**.
-11. Select the application you would like to enforce mTLS on and select **Configure**. The application must be included in the **Associated hostnames** list from Step 5.
+11. Select the application you would like to enforce mTLS on and select **Edit**. The application must be included in the **Associated hostnames** list from Step 5.
 12. In the **Policies** tab, add your mTLS policy.
 13. Save the application.
 
@@ -125,7 +125,7 @@ When the authentication process completes successfully, a `CF_Authorization Set-
 
 Caution
 
-Cloudflare Gateway cannot inspect traffic to mTLS-protected domains. If a device has the Cloudflare One Client turned on and passes HTTP requests through Gateway, access will be blocked unless you [bypass HTTP inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for the domain.
+Cloudflare Gateway cannot inspect traffic to mTLS-protected domains. If a device has the Cloudflare One Client turned on and passes HTTP requests through Gateway, access will be blocked unless you [bypass HTTP inspection](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#do-not-inspect) for the domain.
 
 ### Test in a browser
 
@@ -601,5 +601,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/og.png?v=4995f0947e238005","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/og.png?v=4995f0947e238005","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

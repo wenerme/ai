@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Isolate self-hosted application
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 Requires [Cloudflare Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/).
 
-With Access policies, you can require users to open self-hosted applications in a secure [remote browser](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Because the remote browser is directly integrated into our Secure Web Gateway platform, [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) can be applied to isolated applications without needing to install the Cloudflare One Client. This allows you to distribute internal applications to unmanaged users while retaining control over sensitive data.
+With Access policies, you can require users to open self-hosted applications in a secure [remote browser](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Because the remote browser is directly integrated into our Secure Web Gateway platform, [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/) can be applied to isolated applications without needing to install the Cloudflare One Client. This allows you to distribute internal applications to unmanaged users while retaining control over sensitive data.
 
 ## Prerequisites
 
@@ -30,9 +30,9 @@ Your browser must [allow third-party cookies](https://developers.cloudflare.com/
 2. Turn on **Allow users to open a remote browser without the device client**.
 
 3. Go to **Access controls** > **Applications**.
-4. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Configure**.
+4. Choose a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and select **Edit**.
 5. Go to **Policies**.
-6. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Configure**.
+6. Choose an [Allow policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and select **Edit**.
 7. Under **Additional settings**, turn on **Isolate application**.
 8. Save the policy.
 
@@ -42,9 +42,9 @@ You can optionally add another Allow policy for users on managed devices who do 
 
 ## Policies for isolated applications
 
-Traffic to the isolated Access application is filtered by your Gateway [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). Useful policies include:
+Traffic to the isolated Access application is filtered by your Gateway [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/). Useful policies include:
 
-- [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) to allow or block requests based on user identity.
+- [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/) to allow or block requests based on user identity.
 - [Data Loss Prevention policies](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) to log or block transmission of sensitive data.
 - [Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) to disable browser actions such as copy/paste, printing, or file downloads.
 
@@ -68,5 +68,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/#page","headline":"Isolate self-hosted application","description":"Isolate self-hosted application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/og.png?v=3b26961cbe3b0ec5","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/#page","headline":"Isolate self-hosted application","description":"Isolate self-hosted application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/og.png?v=3b26961cbe3b0ec5","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

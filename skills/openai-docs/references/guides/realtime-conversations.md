@@ -326,6 +326,7 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCrea
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
 import com.openai.helpers.RealtimeConnection;
 import com.openai.helpers.RealtimeWebSocketOptions;
 import com.openai.models.realtime.*;
@@ -335,6 +336,7 @@ connection.send(
         ConversationItemCreateEvent.builder()
             .item(
                 RealtimeConversationItemUserMessage.builder()
+                    .object_(JsonMissing.of())
                     .addContent(
                         RealtimeConversationItemUserMessage.Content.builder()
                             .type(RealtimeConversationItemUserMessage.Content.Type.INPUT_TEXT)
@@ -1027,6 +1029,7 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventParamOfConversationItemCrea
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
 import com.openai.helpers.RealtimeConnection;
 import com.openai.helpers.RealtimeWebSocketOptions;
 import com.openai.models.realtime.*;
@@ -1040,6 +1043,7 @@ static void sendAudioItem(RealtimeConnection connection, byte[] pcmAudio) throws
           ConversationItemCreateEvent.builder()
               .item(
                   RealtimeConversationItemUserMessage.builder()
+                      .object_(JsonMissing.of())
                       .addContent(
                           RealtimeConversationItemUserMessage.Content.builder()
                               .type(RealtimeConversationItemUserMessage.Content.Type.INPUT_AUDIO)
@@ -1815,6 +1819,7 @@ connection.send(
         ResponseCreateEvent.builder()
             .response(
                 RealtimeResponseCreateParams.builder()
+                    .addOutputModality(RealtimeResponseCreateParams.OutputModality.TEXT)
                     .input(List.of())
                     .instructions(
                         "Say exactly the following: I'm a little teapot, short and stout! This is my handle, this is my spout!")

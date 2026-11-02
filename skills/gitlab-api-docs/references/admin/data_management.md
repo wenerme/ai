@@ -32,7 +32,6 @@ The `:model_name` parameter must be one of:
 - `design_management_repositories`
 - `geo_abuse_report_uploads`
 - `geo_achievement_uploads`
-- `geo_ai_vectorizable_file_uploads`
 - `geo_alert_management_metric_image_uploads`
 - `geo_appearance_uploads`
 - `geo_bulk_import_export_upload_uploads`

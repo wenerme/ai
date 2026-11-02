@@ -767,7 +767,7 @@ Few-shot learning lets you steer a large language model toward a new task by inc
 
 Typically, you will provide examples as part of a `developer` message in your API request. Here's an example `developer` message containing examples that show a model how to classify positive or negative customer service reviews.
 
-```
+```text
 # Identity
 
 You are a helpful assistant that labels short product reviews as
@@ -925,7 +925,7 @@ For agentic and long-running rollouts with `gpt-6-astra`, focus your prompts on 
 **Planning and persistence**
 Instruct the model to resolve the full query before yielding control, decomposing it into sub-tasks and reflecting after each tool call to confirm completeness.
 
-```
+```text
 Remember, you are an agent - please keep going until the user's
 query is completely resolved, before ending your turn and yielding
 back to the user. Decompose the user's query into all required
@@ -946,7 +946,7 @@ are completely resolved.
 
 Ask the model to explain why it is calling a tool, but only at notable steps.
 
-```
+```text
 Before you call a tool explain why you are calling it
 ```
 

@@ -219,9 +219,11 @@ Sample response:
 
 Tracks internal events in the GitLab instance.
 
-The `/track_events` endpoint is rate limited for each user. The limit is
-200 events every minute. Each event in a request counts toward the limit
-individually. When you exceed the limit, the endpoint returns
+The `/track_event` and `/track_events` endpoints share a single rate limit for each user.
+The limit is 200 events every minute.
+Each event counts toward the limit individually,
+so a `/track_events` request counts one unit for each event in the array.
+When you exceed the limit, the endpoint returns
 [`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 Prerequisites:

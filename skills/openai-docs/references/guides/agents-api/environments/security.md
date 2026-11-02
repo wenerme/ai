@@ -25,6 +25,14 @@ Configure network access based on where each tool connection runs:
 
 See [MCP tools](https://developers.openai.com/api/docs/guides/agents-api/tools/mcp) for connection options.
 
+## Review agent actions
+
+Enable [automatic review](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals) with the session-level `review: "auto_review"` setting to automatically approve or deny supported approval requests. Keep the environment's network restrictions and credential controls in place; automatic review does not replace them.
+
+Automatic review applies a permission profile with a workspace-write baseline and restricted network access. If you run the standard executor, your container must support sandboxing and permit Codex to create a sandbox. See [execution environment prerequisites](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals#prepare-the-execution-environment).
+
+Browser origin approvals and sign-in still require your application's existing handlers. See [Computer use](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use#handle-origin-access) for those workflows.
+
 
 
 

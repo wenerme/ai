@@ -40,12 +40,12 @@ For an overview on DNS records, see [GitLab Pages DNS records](dns_concepts.md).
 
 To add your custom domain to GitLab Pages:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. In the upper-right corner, select **New Domain**.
-1. In **Domain**, enter the domain name.
-1. Optional. In **Certificate**, turn off the **Automatic certificate management using Let's Encrypt** toggle to add an [SSL/TLS certificate](#add-an-ssltls-certificate-to-pages). You can also add the certificate and key later.
-1. Select **Create New Domain**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the upper-right corner, select .
+1. In , enter the domain name.
+1. Optional. In , turn off the  toggle to add an [SSL/TLS certificate](#add-an-ssltls-certificate-to-pages). You can also add the certificate and key later.
+1. Select .
 
 ### Step 2: Get the verification code
 
@@ -159,10 +159,10 @@ Additionally:
 
 After you have added all the DNS records:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Edit** ().
-1. In **Verification status**, select **Retry verification** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select  ().
+1. In , select  ().
 
 [GitLab Pages settings showing the Retry verification option for a domain.]
 
@@ -189,7 +189,7 @@ Additionally:
 You can add more than one alias (custom domains and subdomains) to the same project.
 An alias can be understood as having many doors leading to the same room.
 
-All the aliases you've set to your site are listed on **Settings** > **Pages**.
+All the aliases you've set to your site are listed on  > .
 From that page, you can view, add, and remove them.
 
 ## Redirect `www.domain.com` to `domain.com` with Cloudflare
@@ -205,11 +205,11 @@ without adding both domains to GitLab:
 1. In GitLab, verify your domain.
 1. In Cloudflare, create a DNS `CNAME` record pointing `www` to `domain.com`.
 1. In Cloudflare, add a Page Rule pointing `www.domain.com` to `domain.com`:
-   1. Go to your domain's dashboard. On the top navigation, select **Page Rules**.
-   1. Select **Create Page Rule**.
-   1. Enter the domain `www.domain.com` and select **+ Add a Setting**.
-   1. From the dropdown list, choose **Forwarding URL**, then select the
-      status code **301 - Permanent Redirect**.
+   1. Go to your domain's dashboard. On the top navigation, select .
+   1. Select .
+   1. Enter the domain `www.domain.com` and select .
+   1. From the dropdown list, choose , then select the
+      status code .
    1. Enter the destination URL `https://domain.com`.
 
 ## Add an SSL/TLS certificate to Pages
@@ -238,26 +238,26 @@ Prerequisites:
 
 To add a certificate when you create a new domain:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. In the upper-right corner, select **New Domain**.
-1. In **Domain**, enter the domain name.
-1. In **Certificate**, turn off the **Automatic certificate management using Let's Encrypt** toggle.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the upper-right corner, select .
+1. In , enter the domain name.
+1. In , turn off the  toggle.
 1. Complete the certificate fields.
-1. Select **Create New Domain**.
+1. Select .
 
 To add a certificate to an existing domain:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Edit** ().
-1. In **Certificate**, turn off the **Automatic certificate management using Let's Encrypt** toggle.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select  ().
+1. In , turn off the  toggle.
 1. Complete the certificate fields.
-1. Select **Save changes**.
+1. Select .
 
 When you complete the certificate fields:
 
-- In **Certificate (PEM)**, paste the PEM certificate. If your certificate requires
+- In , paste the PEM certificate. If your certificate requires
   a separate intermediate certificate, paste it in the same field, separated by a blank line.
   For more information, see
   [setting up GitLab Pages with Cloudflare certificates](https://about.gitlab.com/blog/setting-up-gitlab-pages-with-cloudflare-certificates/).
@@ -275,10 +275,10 @@ with a valid certificate.
 
 To force HTTPS:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Select the **Force HTTPS (requires valid certificates)** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the  checkbox.
+1. Select .
 
 If you use Cloudflare CDN in front of GitLab Pages, set the SSL connection setting to
 `full` instead of `flexible`. For more information, see the
@@ -296,9 +296,9 @@ You can edit a custom domain to:
 
 To edit a custom domain:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Edit** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select  ().
 
 ## Delete a custom domain
 
@@ -306,10 +306,10 @@ After a custom domain is deleted, the domain is no longer verified in GitLab and
 
 To delete and remove a custom domain:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Remove domain** ().
-1. When prompted, select **Remove domain**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select  ().
+1. When prompted, select .
 
 ## Troubleshooting
 

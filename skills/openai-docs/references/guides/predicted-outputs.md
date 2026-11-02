@@ -604,7 +604,7 @@ serve({
 
 You could prompt the model to regenerate the file with a prompt like:
 
-```
+```text
 Add a get route to this application that responds with
 the text "hello world". Generate the entire application
 file again with this route added, and with no other

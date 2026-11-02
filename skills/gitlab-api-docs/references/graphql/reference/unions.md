@@ -225,7 +225,6 @@ Represents specific policy types. Its fields depend on the policy type.
 
 - [`AbuseReportUploadRegistry`](objects.md#abusereportuploadregistry)
 - [`AchievementUploadRegistry`](objects.md#achievementuploadregistry)
-- [`AiVectorizableFileUploadRegistry`](objects.md#aivectorizablefileuploadregistry)
 - [`AlertManagementMetricImageUploadRegistry`](objects.md#alertmanagementmetricimageuploadregistry)
 - [`AppearanceUploadRegistry`](objects.md#appearanceuploadregistry)
 - [`BulkImportExportUploadUploadRegistry`](objects.md#bulkimportexportuploaduploadregistry)

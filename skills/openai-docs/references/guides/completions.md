@@ -125,7 +125,7 @@ Note: if all the returned samples have `finish_reason` == "length", it's likely 
 
 An example completions API response looks as follows:
 
-```
+```text
 {
   "choices": [
     {
@@ -194,13 +194,13 @@ Note: if all the returned samples have `finish_reason` == "length", it's likely 
 
 The Chat Completions format can be made similar to the completions format by constructing a request using a single user message. For example, one can translate from English to French with the following completions prompt:
 
-```
+```text
 Translate the following English text to French: "{text}"
 ```
 
 And an equivalent chat prompt would be:
 
-```
+```text
 [{"role": "user", "content": 'Translate the following English text to French: "{text}"'}]
 ```
 

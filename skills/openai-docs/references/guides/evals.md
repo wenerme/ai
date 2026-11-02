@@ -665,6 +665,7 @@ print(run)
 
 ```java
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.ReasoningEffort;
 import com.openai.models.evals.runs.*;
 
 // Replace these illustrative IDs with your eval and uploaded dataset file.
@@ -682,6 +683,11 @@ var run =
                             RunCreateParams.DataSource.CreateEvalResponsesRunDataSource.Type
                                 .RESPONSES)
                         .model("gpt-6-astra")
+                        .samplingParams(
+                            RunCreateParams.DataSource.CreateEvalResponsesRunDataSource
+                                .SamplingParams.builder()
+                                .reasoningEffort(ReasoningEffort.LOW)
+                                .build())
                         .inputMessages(
                             RunCreateParams.DataSource.CreateEvalResponsesRunDataSource
                                 .InputMessages.Template.builder()

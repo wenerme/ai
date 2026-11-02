@@ -250,7 +250,7 @@ ProjectSpendAlert spendAlert =
                 .notificationChannel(
                     SpendAlertCreateParams.NotificationChannel.builder()
                         .addRecipient("billing@example.com")
-                        .subjectPrefix("[OpenAI spend]")
+                        .subjectPrefix("OpenAI spend")
                         .build())
                 .thresholdAmount(50000L)
                 .build());

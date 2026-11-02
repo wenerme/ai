@@ -64,6 +64,29 @@ Set the limit to `0` to disable it. Defaults to `20`.
 
 You can also set this limit by using the [Plan limits API](../../api/plan_limits.md).
 
+## Limit pipeline variables
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6.
+
+You can limit the number of [pipeline variables](../../ci/variables/_index.md#pipeline-variable-limits)
+in a pipeline, and the size of each variable value.
+These limits are checked every time a pipeline is created.
+
+To configure these limits:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Under **CI/CD limits**, set a value for any of:
+   - **Maximum number of pipeline variables in a single pipeline**.
+   - **Maximum size of a pipeline variable value in bytes**.
+   - **Maximum size of a file type pipeline variable value in bytes**.
+1. Select **Save changes**.
+
+These limits are not set by default. Set a limit to `0` to disable it.
+
+You can also set these limits by using the [Plan limits API](../../api/plan_limits.md).
+
 ## Limit CycloneDX artifact size
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248527) in GitLab 19.3.
@@ -514,10 +537,7 @@ To configure the per user and project limit:
 
 ## Job cancellation rate limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `rate_limit_job_cancel`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6.
 
 A single user who sends many cancel requests can put significant load on your instance.
 To protect against this, you can limit how many cancel requests each user can send.

@@ -271,6 +271,79 @@ Event type filters are removed if:
 - The returned `errors` object is empty.
 - The API responds with `200 OK`.
 
+### Excluded event types
+
+- Status: Experiment
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265150) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Exclude event types from a streaming destination to stop streaming them to that destination.
+If the destination has no event type filters, it still receives all other audit events.
+Use excluded event types to stop streaming a high-volume event type, such as `repository_git_operation`,
+without listing every other event type in an event type filter.
+
+An event type can be either an event type filter or an excluded event type for a destination, but not both.
+
+These mutations use the IDs of destinations returned by the `auditEventsInstanceStreamingDestinations` query.
+To get the ID and name of each destination:
+
+```graphql
+query {
+  auditEventsInstanceStreamingDestinations {
+    nodes {
+      id
+      name
+    }
+  }
+}
+```
+
+#### Use the API to exclude event types
+
+Prerequisites:
+
+- Administrator access on the instance.
+
+To exclude a list of event types, use the `auditEventsInstanceDestinationDenylistEventsAdd` mutation:
+
+```graphql
+mutation {
+  auditEventsInstanceDestinationDenylistEventsAdd(input: {
+    destinationId: "gid://gitlab/AuditEvents::Instance::ExternalStreamingDestination/1",
+    eventTypeFilters: ["repository_git_operation"]
+  }) {
+    errors
+    eventTypeFilters
+  }
+}
+```
+
+The event types are excluded if the returned `errors` object is empty.
+The `eventTypeFilters` field in the response lists all excluded event types for the destination.
+
+#### Use the API to stop excluding event types
+
+Prerequisites:
+
+- Administrator access on the instance.
+
+To stream a list of excluded event types to the destination again, use the
+`auditEventsInstanceDestinationDenylistEventsDelete` mutation:
+
+```graphql
+mutation {
+  auditEventsInstanceDestinationDenylistEventsDelete(input: {
+    destinationId: "gid://gitlab/AuditEvents::Instance::ExternalStreamingDestination/1",
+    eventTypeFilters: ["repository_git_operation"]
+  }) {
+    errors
+  }
+}
+```
+
+The event types are no longer excluded if the returned `errors` object is empty.
+If any event type in the list is not excluded for the destination, no event types are removed.
+
 ## Google Cloud Logging destinations
 
 Manage Google Cloud Logging destinations for an entire instance.

@@ -1088,7 +1088,7 @@ var container =
                 .addSkill(
                     InlineSkill.builder()
                         .name("csv-insights")
-                        .description("Summarize CSV files and produce a markdown report.")
+                        .description("Summarize CSV files.")
                         .source(InlineSkillSource.builder().data(inlineZip).build())
                         .build())
                 .build());
@@ -1438,9 +1438,11 @@ ResponseCreateParams params =
     ResponseCreateParams.builder()
         .model("gpt-6-astra")
         .input(
-            "Use curl to call https://httpbin.org/status/204 with an "
-                + "Authorization: Bearer $API_KEY header. Print only the HTTP status code; "
-                + "never print request headers or secret values.")
+            "Run exactly this one shell command, without additional commands:\n"
+                + "curl -q -sS -o /dev/null -w '%{http_code}' "
+                + "-H 'Authorization: Bearer $API_KEY' https://httpbin.org/status/204\n"
+                + "Keep the header single-quoted so $API_KEY remains literal. "
+                + "Return only the HTTP status code. Never print request headers or secret values.")
         .toolChoice(ToolChoiceOptions.REQUIRED)
         .addTool(
             FunctionShellTool.builder()

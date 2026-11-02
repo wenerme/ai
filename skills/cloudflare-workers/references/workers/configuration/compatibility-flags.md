@@ -137,6 +137,38 @@ When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
 
+### Enable the Temporal API
+
+| **Default as of** | 2026-12-01 |
+| --- | --- |
+| **Flag to enable** | `temporal` |
+| **Flag to disable** | `no_temporal` |
+
+Makes the [Temporal API ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) available in your Worker. Temporal is the modern JavaScript standard for working with dates and times, and replaces many of the uses of `Date` and of date libraries such as Moment.js, Luxon, or date-fns.
+
+With Temporal you can:
+
+- Convert between time zones, with daylight saving time handled for you.
+- Work with plain dates and times, such as a birthday or an opening hour, without a time zone getting in the way.
+- Add and subtract durations like "1 month and 3 days" and get calendar-correct results.
+- Compare and sort dates and times, and format them for any locale.
+
+Temporal objects are immutable, so a value never changes after you create it.
+
+```js
+const meeting = Temporal.ZonedDateTime.from(
+	"2026-12-15T09:30[America/New_York]",
+);
+
+meeting.withTimeZone("Europe/London").toString();
+// "2026-12-15T14:30:00+00:00[Europe/London]"
+
+meeting.add({ months: 1 }).toPlainDate().toString();
+// "2027-01-15"
+```
+
+`Temporal.Now` returns the same time as `Date.now()`. For more information, refer to [Performance and timers](https://developers.cloudflare.com/workers/runtime-apis/performance/).
+
 ### Name WebAssembly modules after their module in stack traces
 
 | **Default as of** | 2026-12-01 |
@@ -191,6 +223,28 @@ const response = await fetch("https://example.com", {
 });
 ```
 
+### New module registry
+
+| **Default as of** | 2026-11-17 |
+| --- | --- |
+| **Flag to enable** | `new_module_registry` |
+| **Flag to disable** | `legacy_module_registry` |
+
+For compatibility dates on or after November 17, 2026, JavaScript Workers use the new module registry by default. For earlier dates, add `new_module_registry` to opt in. Add `legacy_module_registry` to retain the legacy registry with a later compatibility date. Python Workers continue to use the legacy registry.
+
+The registry resolves and loads the modules uploaded with your Worker and the runtime's built-in modules. It provides `import.meta.url`, `import.meta.main`, and `import.meta.resolve()`, and resolves module specifiers as URLs. Different query strings or fragments create separate module instances, even when they refer to the same source.
+
+Review these differences before changing your compatibility date:
+
+- Import attributes are validated. Unknown attribute keys, unsupported types, and types that do not match the imported module throw errors.
+- `require()` of an ES module returns its namespace unless it exports a value named `"module.exports"`. Workers' built-in `node:` modules return their default export. The `__cjsUnwrapDefault` marker in existing bundles still unwraps the default export.
+- `require()` rejects module graphs containing top-level `await`, even if the graph has already finished evaluating. Use dynamic `import()` for these modules.
+- The legacy-registry flags `export_commonjs_default`, `require_returns_default_export`, `throw_on_unrecognized_import_assertion`, and `disable_top_level_await_in_require` do not control the new registry.
+
+The registry does not download modules from arbitrary URLs or install npm dependencies. Your build tooling still determines which modules are uploaded and may transform imports or `import.meta` before deployment. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#runtime-module-loading) and [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/).
+
+For background and examples, refer to [How we rebuilt Cloudflare Workers' module registry for Node.js compatibility ↗︎](https://blog.cloudflare.com/workers-module-registry-nodejs/).
+
 ### Backward error and close propagation in pipeTo()
 
 | **Default as of** | 2026-11-17 |
@@ -203,6 +257,19 @@ When the `pipe_to_backward_propagation` flag is enabled, `pipeTo()` and `pipeThr
 If the destination errors or closes while the pipe is waiting to read from the source, the pipe cancels the source (unless `preventCancel` is set), then rejects with the destination's error, or with a `TypeError` if the destination closed. If canceling the source fails, the pipe rejects with the cancel error instead.
 
 Without the flag, the pipe still cancels the source in this case, but its promise resolves instead of rejecting. With `preventCancel: true`, the promise never settles. A failed cancel is not reported.
+
+### Enable `Request.signal` for incoming requests
+
+| **Default as of** | 2026-11-17 |
+| --- | --- |
+| **Flag to enable** | `enable_request_signal` |
+| **Flag to disable** | `disable_request_signal` |
+
+For compatibility dates on or after November 17, 2026, incoming [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) objects provide an [`AbortSignal` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request/signal) that fires an `abort` event when the client disconnects. You can listen for this event to perform cleanup or write logs before the invocation ends.
+
+For earlier compatibility dates, add `enable_request_signal` to opt in. Add `disable_request_signal` to opt out, including with later compatibility dates.
+
+This flag does not change `request_signal_passthrough`. Pass `request.signal` explicitly to APIs that accept a signal, such as [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/), to cancel that work when the client disconnects.
 
 ### Durable Object I/O tasks prevent eviction
 
@@ -1133,14 +1200,6 @@ When the `ignore_unrecognized_import_assertion` flag is set, Workers will ignore
 When the `allow_eval_during_startup` flag is set, Workers can use `eval()` and `new Function(text)` during the startup phase of a Worker script. This allows for dynamic code execution at the beginning of a Worker lifecycle.
 
 When the `disallow_eval_during_startup` flag is set, using `eval()` or `new Function(text)` during the startup phase will throw an error.
-
-### Enable `Request.signal` for incoming requests
-
-| **Flag to enable** | `enable_request_signal` |
-| --- | --- |
-| **Flag to disable** | `disable_request_signal` |
-
-When you use the `enable_request_signal` compatibility flag, you can attach an event listener to [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) objects, using the [`signal` property ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request/signal). This allows you to perform tasks when the request to your Worker is canceled by the client.
 
 ### Cache API request `cf` overrides cache rules
 

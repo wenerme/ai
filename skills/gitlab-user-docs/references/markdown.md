@@ -1493,9 +1493,9 @@ The three previous examples render as:
 
 ### Syntax highlighting
 
-GitLab uses the [Rouge Ruby library](https://github.com/rouge-ruby/rouge) for more colorful syntax
+GitLab uses the [Rouge Ruby library](https://codeberg.org/rouge-ruby/rouge) for more colorful syntax
 highlighting in code blocks. For a list of supported languages visit the
-[Rouge project wiki](https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers).
+[Rouge project](https://codeberg.org/rouge-ruby/rouge/src/branch/main/docs/Languages.md).
 Syntax highlighting is supported only in code blocks, so you can't highlight inline code.
 
 To fence and apply syntax highlighting to a block of code, append the code language

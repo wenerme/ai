@@ -90,7 +90,7 @@ To customize the syntax highlighting theme, you can also [use the Application se
 granular level.
 
 If these steps do not work, your programming language might not be supported by the syntax highlighters.
-For more information, view [Rouge Ruby Library](https://github.com/rouge-ruby/rouge) for guidance on code files and Snippets. View [Monaco Editor](https://microsoft.github.io/monaco-editor/) and [Monarch](https://microsoft.github.io/monaco-editor/monarch.html) for guidance on the Web IDE.
+For more information, view [Rouge Ruby Library](https://codeberg.org/rouge-ruby/rouge) for guidance on code files and Snippets. View [Monaco Editor](https://microsoft.github.io/monaco-editor/) and [Monarch](https://microsoft.github.io/monaco-editor/monarch.html) for guidance on the Web IDE.
 
 ### Change the diff colors
 

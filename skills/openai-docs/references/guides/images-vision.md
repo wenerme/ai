@@ -1143,13 +1143,13 @@ Some models tokenize images by covering them with 32px x 32px patches. Many mode
 
 A. Compute how many 32px x 32px patches are needed to cover the image after applying the pixel-dimension limit. A patch may extend beyond the image boundary.
 
-```
+```text
 patch_count = ceil(width/32)×ceil(height/32)
 ```
 
 B. When the selected model and detail level specify a resizing patch budget, scale the image down proportionally if it exceeds that budget. Otherwise, skip this step. Adjust the scale to stay within budget after converting to integer pixel dimensions and computing patch coverage. Keep full precision until calculating the final dimensions.
 
-```
+```text
 shrink_factor = sqrt((32^2 * patch_budget) / (width * height))
 adjusted_shrink_factor = shrink_factor * min(
   floor(width * shrink_factor / 32) / (width * shrink_factor / 32),
@@ -1159,7 +1159,7 @@ adjusted_shrink_factor = shrink_factor * min(
 
 C. If step B resized the image, round down the final scaled width and height to integer pixels. Compute the patches needed to cover the resulting image. This is the image-token count before applying the model multiplier. When a patch budget applies, this count stays within that budget.
 
-```
+```text
 resized_patch_count = ceil(resized_width/32)×ceil(resized_height/32)
 ```
 

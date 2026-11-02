@@ -223,7 +223,7 @@ your webhook will be fired. The event fired will be a
 [`realtime.call.incoming`](https://developers.openai.com/api/reference/resources/webhooks) event,
 like the example below:
 
-```
+```text
 POST https://my_website.com/webhook_endpoint
 user-agent: OpenAI/1.0 (+https://platform.openai.com/docs/webhooks)
 content-type: application/json

@@ -50,13 +50,13 @@ Only connect to MCP servers you trust. An untrusted server may access or steal i
 
   Examples:
 
-```
+```text
   Schedule a 30‑minute meeting tomorrow at 3pm PT with
   alice@example.com and bob@example.com using "Calendar.create_event".
   Do not use any other scheduling tools.
 ```
 
-```
+```text
   Create a pull request using "GitHub.open_pull_request" from branch
   "feat-retry" into "main" with title "Add retry logic" and body "…".
   Do not push directly to main.

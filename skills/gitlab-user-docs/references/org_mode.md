@@ -387,9 +387,9 @@ When rendered, the example looks similar to:
 > data = requests.get("https://jsonplaceholder.typicode.com/users/1").json()
 > ```
 
-GitLab uses the [Rouge Ruby library](https://github.com/rouge-ruby/rouge) for syntax highlighting.
+GitLab uses the [Rouge Ruby library](https://codeberg.org/rouge-ruby/rouge) for syntax highlighting.
 For a list of supported languages, see the
-[Rouge project wiki](https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers).
+[Rouge project](https://codeberg.org/rouge-ruby/rouge/src/branch/main/docs/Languages.md).
 
 Adding `:exports both` to the block header includes the execution results (`#+RESULTS:`)
 of a source block in the rendered output:

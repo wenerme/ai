@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # PingFederate
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The PingFederate offering from PingIdentity provides SSO identity management. Cloudflare Access supports PingFederate as a SAML identity provider.
 
@@ -58,7 +58,7 @@ You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cl
 15. Fill the other fields with values from your Ping dashboard.
 16. Select **Save**.
 
-To test that your connection is working, go to **Authentication** > **Login methods** and select **Test** next to the login method you want to test.
+To test the connection, go to **Integrations** > **Identity providers** and select **Test** next to the login method.
 
 ## Example API configuration
 
@@ -86,5 +86,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/#page","headline":"PingFederate","description":"PingFederate in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/og.png?v=6c7b746fc371baed","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/#page","headline":"PingFederate","description":"PingFederate in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/og.png?v=6c7b746fc371baed","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

@@ -14,19 +14,19 @@ Use a `.gitlab-ci.yml` template when you have an existing project that you want 
 Your GitLab repository should contain files specific to an SSG, or plain HTML. After you complete
 these steps, you might have to do additional configuration for the Pages site to generate properly.
 
-1. In the top bar, select **Search or go to** and find your project.
-1. From the **Add** () dropdown list, select **New file**.
+1. In the top bar, select  and find your project.
+1. From the  () dropdown list, select .
 1. In the **Filename** text box, enter `.gitlab-ci.yml`. A dropdown list appears to the right of the text box.
-1. From the **Apply a template** dropdown list, in the **Pages** section, select the name of your SSG.
+1. From the  dropdown list, in the **Pages** section, select the name of your SSG.
    For plain HTML, select **HTML**.
-1. In the **Commit message** text box, type the commit message.
-1. Select **Commit changes**.
+1. In the  text box, type the commit message.
+1. Select .
 
 If everything is configured correctly, the site can take approximately 30 minutes to deploy.
 
-To view the pipeline, go to **Build** > **Pipelines**.
+To view the pipeline, go to  > .
 
-When the pipeline is finished, go to **Deploy** > **Pages** to find the link to
+When the pipeline is finished, go to  >  to find the link to
 your Pages website.
 
 For every change pushed to your repository, GitLab CI/CD runs a new pipeline

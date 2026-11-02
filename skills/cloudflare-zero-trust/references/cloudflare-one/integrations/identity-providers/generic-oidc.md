@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Generic OIDC
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you integrate IdPs not already set in Access.
 
@@ -117,7 +117,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 
 ## 3. Test the connection
 
-To test that your connection is working, go to **Authentication** > **Login methods** and select **Test** next to the login method you want to test. On success, a confirmation screen displays.
+To test the connection, go to **Integrations** > **Identity providers** and select **Test** next to the login method. A confirmation screen displays when the test succeeds.
 
 ## Synchronize users and groups
 
@@ -175,7 +175,7 @@ New users must first [register the Cloudflare One Client](https://developers.clo
 
 ### Custom OIDC claims
 
-All OIDC IdP integrations support the use of custom OIDC claims. Once configured, Access will add the claims to the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) for consumption by your origin services. You can reference the custom OIDC claims in [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#oidc-claims), offering a means to control user access to applications based on custom identity attributes.
+All OIDC IdP integrations support the use of custom OIDC claims. Once configured, Access will add the claims to the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) for consumption by your origin services. You can reference the custom OIDC claims in [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#oidc-claims), offering a means to control user access to applications based on custom identity attributes.
 
 To add a custom OIDC claim to an IdP integration:
 
@@ -192,7 +192,7 @@ To add a custom OIDC claim to an IdP integration:
    	},
    ```
 
-You can now build an Access policy for the custom claim using the **OIDC Claim** or **IdP OIDC Claim** selector. You can also use custom OIDC claims as [identity-based selectors in Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#oidc-claims). The custom claim will be passed to origins behind Access in a [JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#custom-saml-attributes-and-oidc-claims).
+You can now build an Access policy for the custom claim using the **OIDC Claim** or **IdP OIDC Claim** selector. You can also use custom OIDC claims as [identity-based selectors in Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#oidc-claims). The custom claim will be passed to origins behind Access in a [JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#custom-saml-attributes-and-oidc-claims).
 
 #### Email claim
 
@@ -224,5 +224,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/og.png?v=d92fd754c60f23ec","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#page","headline":"Generic OIDC","description":"Generic OIDC in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/og.png?v=d92fd754c60f23ec","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}
 ```

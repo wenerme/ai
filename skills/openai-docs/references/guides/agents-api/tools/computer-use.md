@@ -142,16 +142,21 @@ fmt.Println("Session ID:", session.ID)
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.agents.AgentBrowserAuthenticationCancelParam;
+import com.openai.models.beta.agents.AgentBrowserOriginAccessParam;
 import com.openai.models.beta.agents.AgentSession;
 import com.openai.models.beta.agents.AgentSessionInputMessageParam;
 import com.openai.models.beta.agents.AgentSessionInputParam;
 import com.openai.models.beta.agents.AgentSessionInputParam.AgentSessionInputComputerUseApprovalRequestResult;
-import com.openai.models.beta.agents.AgentSessionInputParam.AgentSessionInputComputerUseApprovalRequestResult.Response;
 import com.openai.models.beta.agents.AgentToolParam;
 import com.openai.models.beta.agents.EnvironmentParam;
 import com.openai.models.beta.agents.sessions.SessionCreateParams;
 import com.openai.models.beta.agents.sessions.events.EventCreateParams;
 import com.openai.models.beta.agents.sessions.items.ItemListParams;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Base64;
 import java.util.HashSet;
@@ -252,6 +257,10 @@ puts "Session ID: #{session.id}"
 The browser requires the user's approval before accessing each new website
 origin, including public websites. Enabling network access does not approve
 these requests.
+
+Enabling [automatic review](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals)
+also preserves browser origin approvals and [sign-in](#handle-sign-in)
+requests. Continue handling them in your application.
 
 To handle an origin approval:
 
@@ -441,35 +450,33 @@ func respondToOriginApproval(ctx context.Context, client *openai.Client, session
 static void respondToOriginApproval(
     OpenAIClient client,
     String sessionId,
-    AgentSession.RequiredAction.ComputerUseApprovalRequest approval) {
-  var console = System.console();
-  if (console == null)
-    throw new IllegalStateException("Run this example in an interactive terminal.");
+    AgentSession.RequiredAction.ComputerUseApprovalRequest approval,
+    BufferedReader approvals)
+    throws IOException {
   var result =
       AgentSessionInputComputerUseApprovalRequestResult.builder().requestId(approval.requestId());
   if (approval.request().browserOriginAccess().isPresent()) {
     var request = approval.request().browserOriginAccess().get();
-    console.printf("Origin: %s%n", request.origin());
-    console.printf("Reason: %s%n", request.reason().orElse("Not supplied"));
+    System.out.printf("Origin: %s%n", request.origin());
+    System.out.printf("Reason: %s%n", request.reason().orElse("Not supplied"));
     String decision;
     while (true) {
-      String input =
-          console.readLine("Allow browser access? [approve/deny/cancel; default deny] ");
+      System.out.print("Allow browser access? [approve/deny/cancel; default deny] ");
+      System.out.flush();
+      String input = approvals.readLine();
       if (input == null) throw new IllegalStateException("Approval input closed.");
       decision = input.strip().toLowerCase(java.util.Locale.ROOT);
       if (decision.isEmpty()) decision = "deny";
       if (List.of("approve", "deny", "cancel").contains(decision)) break;
-      console.printf("Enter approve, deny, or cancel.%n");
+      System.out.printf("Enter approve, deny, or cancel.%n");
     }
     result.response(
-        Response.BrowserOriginAccess.builder()
-            .decision(Response.BrowserOriginAccess.Decision.of(decision))
+        AgentBrowserOriginAccessParam.builder()
+            .decision(AgentBrowserOriginAccessParam.Decision.of(decision))
             .build());
   } else if (approval.request().browserAuthentication().isPresent()) {
-    console.printf("Sign-in is outside this public-page task; cancelling the request.%n");
-    result.response(
-        Response.BrowserAuthentication.ofCancel(
-            Response.BrowserAuthentication.Cancel.builder().build()));
+    System.out.printf("Sign-in is outside this public-page task; cancelling the request.%n");
+    result.response(AgentBrowserAuthenticationCancelParam.builder().build());
   } else {
     throw new IllegalStateException("Unsupported computer-use approval request.");
   }
@@ -890,6 +897,7 @@ eventLoop:
 ```
 
 ```java
+var approvals = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
 byte[] lastScreenshot = null;
 var handledRequests = new HashSet<String>();
 try (var events = client.beta().agents().sessions().events().streamStreaming(session.id())) {
@@ -922,7 +930,7 @@ try (var events = client.beta().agents().sessions().events().streamStreaming(ses
         if (action.computerUseApprovalRequest().isEmpty()) continue;
         var approval = action.computerUseApprovalRequest().get();
         if (!handledRequests.contains(approval.requestId())) {
-          respondToOriginApproval(client, session.id(), approval);
+          respondToOriginApproval(client, session.id(), approval, approvals);
           handledRequests.add(approval.requestId());
         }
       }
@@ -2009,11 +2017,13 @@ collectFields:
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.beta.agents.AgentBrowserAuthenticationCancelParam;
+import com.openai.models.beta.agents.AgentBrowserAuthenticationSubmitParam;
+import com.openai.models.beta.agents.AgentBrowserOriginAccessParam;
 import com.openai.models.beta.agents.AgentSession;
 import com.openai.models.beta.agents.AgentSessionInputMessageParam;
 import com.openai.models.beta.agents.AgentSessionInputParam;
 import com.openai.models.beta.agents.AgentSessionInputParam.AgentSessionInputComputerUseApprovalRequestResult;
-import com.openai.models.beta.agents.AgentSessionInputParam.AgentSessionInputComputerUseApprovalRequestResult.Response;
 import com.openai.models.beta.agents.AgentToolParam;
 import com.openai.models.beta.agents.EnvironmentParam;
 import com.openai.models.beta.agents.sessions.SessionCreateParams;
@@ -2026,9 +2036,7 @@ static void cancelAuthentication(OpenAIClient client, String sessionId, String r
   var cancellation =
       AgentSessionInputComputerUseApprovalRequestResult.builder()
           .requestId(requestId)
-          .response(
-              Response.BrowserAuthentication.ofCancel(
-                  Response.BrowserAuthentication.Cancel.builder().build()))
+          .response(AgentBrowserAuthenticationCancelParam.builder().build())
           .build();
   client
       .withOptions(options -> options.maxRetries(0))
@@ -2063,8 +2071,8 @@ static void respondToComputerUseApproval(
       console.printf("Enter approve, deny, or cancel.%n");
     }
     result.response(
-        Response.BrowserOriginAccess.builder()
-            .decision(Response.BrowserOriginAccess.Decision.of(decision))
+        AgentBrowserOriginAccessParam.builder()
+            .decision(AgentBrowserOriginAccessParam.Decision.of(decision))
             .build());
   } else if (approval.request().browserAuthentication().isPresent()) {
     var challenge = approval.request().browserAuthentication().get();
@@ -2077,7 +2085,7 @@ static void respondToComputerUseApproval(
       cancelAuthentication(client, sessionId, approval.requestId());
       return;
     }
-    var response = Response.BrowserAuthentication.Submit.builder().fields(List.of());
+    var response = AgentBrowserAuthenticationSubmitParam.builder().fields(List.of());
     var activeFields = challenge.fields();
     if (!challenge.options().isEmpty()) {
       for (int i = 0; i < challenge.options().size(); i++) {
@@ -2143,7 +2151,7 @@ static void respondToComputerUseApproval(
             continue;
           }
           response.addField(
-              Response.BrowserAuthentication.Submit.Field.builder()
+              AgentBrowserAuthenticationSubmitParam.Field.builder()
                   .fieldId(field.id())
                   .value(value)
                   .build());
@@ -2154,7 +2162,7 @@ static void respondToComputerUseApproval(
       if (!challenge.options().isEmpty() || activeFields.isEmpty() || fieldsSubmitted > 0) break;
       console.printf("Enter at least one field to submit this form, or cancel.%n");
     }
-    result.response(Response.BrowserAuthentication.ofSubmit(response.build()));
+    result.response(response.build());
   } else {
     throw new IllegalStateException("Unsupported computer-use approval request.");
   }

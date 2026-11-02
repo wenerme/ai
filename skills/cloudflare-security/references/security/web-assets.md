@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/security/web-assets/og.png?v=726814c6b3
 
 # Web Assets
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
@@ -72,6 +72,10 @@ Cloudflare defines managed labels. Some managed labels can be discovered automat
 
 Custom labels let you organize operations for your own workflows. They do not replace managed labels for Cloudflare security detections.
 
+## Configure field extraction
+
+[Field extraction](https://developers.cloudflare.com/security/web-assets/field-extraction/) tells Cloudflare where to find application data that security products should inspect. Currently, you can define custom LLM prompt locations for [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/).
+
 ## Define security protections
 
 Security detections can use Web Assets to focus on the operations where their signals matter. For example, [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) uses the `cf-llm` managed label to scan requests to AI-powered operations. For more information, refer to [Define security protections](https://developers.cloudflare.com/security/web-assets/define-security-protections/).
@@ -89,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/security/web-assets/og.png?v=726814c6b39b692c","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/security/web-assets/og.png?v=726814c6b39b692c","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

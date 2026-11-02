@@ -2790,6 +2790,7 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.JsonValue;
 import com.openai.models.chat.completions.ChatCompletionCreateParams;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -2960,148 +2961,71 @@ String metaPrompt =
     }
     """
         .strip();
-Map<String, Object> metaSchema =
+// The same recursive grammar governs properties, arrays, references, and unions.
+Map<String, Object> schemaRef = Map.of("$ref", "#/$defs/schema_definition");
+Map<String, Object> schemaProperties =
     Map.ofEntries(
-        Map.entry("name", "metaschema"),
+        Map.entry("description", Map.of("type", "string")),
         Map.entry(
-            "schema",
-            Map.ofEntries(
-                Map.entry("type", "object"),
-                Map.entry(
-                    "properties",
-                    Map.ofEntries(
-                        Map.entry(
-                            "name",
-                            Map.ofEntries(
-                                Map.entry("type", "string"),
-                                Map.entry("description", "The name of the schema"))),
-                        Map.entry(
-                            "type",
-                            Map.ofEntries(
-                                Map.entry("type", "string"),
-                                Map.entry(
-                                    "enum",
-                                    List.of(
-                                        "object", "array", "string", "number", "boolean",
-                                        "null")))),
-                        Map.entry(
-                            "properties",
-                            Map.ofEntries(
-                                Map.entry("type", "object"),
-                                Map.entry(
-                                    "additionalProperties",
-                                    Map.ofEntries(
-                                        Map.entry("$ref", "#/$defs/schema_definition"))))),
-                        Map.entry(
-                            "items",
-                            Map.ofEntries(
-                                Map.entry(
-                                    "anyOf",
-                                    List.of(
-                                        Map.ofEntries(
-                                            Map.entry("$ref", "#/$defs/schema_definition")),
-                                        Map.ofEntries(
-                                            Map.entry("type", "array"),
-                                            Map.entry(
-                                                "items",
-                                                Map.ofEntries(
-                                                    Map.entry(
-                                                        "$ref",
-                                                        "#/$defs/schema_definition")))))))),
-                        Map.entry(
-                            "required",
-                            Map.ofEntries(
-                                Map.entry("type", "array"),
-                                Map.entry(
-                                    "items", Map.ofEntries(Map.entry("type", "string"))))),
-                        Map.entry(
-                            "additionalProperties",
-                            Map.ofEntries(Map.entry("type", "boolean"))))),
-                Map.entry("required", List.of("type")),
-                Map.entry("additionalProperties", false),
-                Map.entry(
-                    "if",
-                    Map.ofEntries(
-                        Map.entry(
-                            "properties",
-                            Map.ofEntries(
-                                Map.entry(
-                                    "type", Map.ofEntries(Map.entry("const", "object"))))))),
-                Map.entry("then", Map.ofEntries(Map.entry("required", List.of("properties")))),
-                Map.entry(
-                    "$defs",
-                    Map.ofEntries(
-                        Map.entry(
-                            "schema_definition",
-                            Map.ofEntries(
-                                Map.entry("type", "object"),
-                                Map.entry(
-                                    "properties",
-                                    Map.ofEntries(
-                                        Map.entry(
-                                            "type",
-                                            Map.ofEntries(
-                                                Map.entry("type", "string"),
-                                                Map.entry(
-                                                    "enum",
-                                                    List.of(
-                                                        "object", "array", "string", "number",
-                                                        "boolean", "null")))),
-                                        Map.entry(
-                                            "properties",
-                                            Map.ofEntries(
-                                                Map.entry("type", "object"),
-                                                Map.entry(
-                                                    "additionalProperties",
-                                                    Map.ofEntries(
-                                                        Map.entry(
-                                                            "$ref",
-                                                            "#/$defs/schema_definition"))))),
-                                        Map.entry(
-                                            "items",
-                                            Map.ofEntries(
-                                                Map.entry(
-                                                    "anyOf",
-                                                    List.of(
-                                                        Map.ofEntries(
-                                                            Map.entry(
-                                                                "$ref",
-                                                                "#/$defs/schema_definition")),
-                                                        Map.ofEntries(
-                                                            Map.entry("type", "array"),
-                                                            Map.entry(
-                                                                "items",
-                                                                Map.ofEntries(
-                                                                    Map.entry(
-                                                                        "$ref",
-                                                                        "#/$defs/schema_definition")))))))),
-                                        Map.entry(
-                                            "required",
-                                            Map.ofEntries(
-                                                Map.entry("type", "array"),
-                                                Map.entry(
-                                                    "items",
-                                                    Map.ofEntries(
-                                                        Map.entry("type", "string"))))),
-                                        Map.entry(
-                                            "additionalProperties",
-                                            Map.ofEntries(Map.entry("type", "boolean"))))),
-                                Map.entry("required", List.of("type")),
-                                Map.entry("additionalProperties", false),
-                                Map.entry(
-                                    "if",
-                                    Map.ofEntries(
-                                        Map.entry(
-                                            "properties",
-                                            Map.ofEntries(
-                                                Map.entry(
-                                                    "type",
-                                                    Map.ofEntries(
-                                                        Map.entry("const", "object"))))))),
-                                Map.entry(
-                                    "then",
-                                    Map.ofEntries(
-                                        Map.entry("required", List.of("properties")))))))))));
+            "type",
+            Map.of(
+                "type",
+                "string",
+                "enum",
+                List.of("object", "array", "string", "number", "boolean", "null"))),
+        Map.entry("properties", Map.of("type", "object", "additionalProperties", schemaRef)),
+        Map.entry(
+            "items",
+            Map.of("anyOf", List.of(schemaRef, Map.of("type", "array", "items", schemaRef)))),
+        Map.entry("required", Map.of("type", "array", "items", Map.of("type", "string"))),
+        Map.entry("additionalProperties", Map.of("type", "boolean")),
+        Map.entry("enum", Map.of("type", "array", "minItems", 1, "uniqueItems", true)),
+        Map.entry("$ref", Map.of("type", "string")),
+        Map.entry("$defs", Map.of("type", "object", "additionalProperties", schemaRef)),
+        Map.entry("anyOf", Map.of("type", "array", "minItems", 1, "items", schemaRef)));
+Map<String, Object> objectCondition =
+    Map.of(
+        "required", List.of("type"), "properties", Map.of("type", Map.of("const", "object")));
+Map<String, Object> objectRequirements = Map.of("required", List.of("properties"));
+Map<String, Object> schemaDefinition =
+    Map.of(
+        "type",
+        "object",
+        "properties",
+        schemaProperties,
+        "additionalProperties",
+        false,
+        "if",
+        objectCondition,
+        "then",
+        objectRequirements,
+        "anyOf",
+        List.of(
+            Map.of("required", List.of("type")),
+            Map.of("required", List.of("$ref")),
+            Map.of("required", List.of("anyOf"))));
+var rootProperties = new LinkedHashMap<>(schemaProperties);
+rootProperties.put("name", Map.of("type", "string", "description", "The name of the schema"));
+Map<String, Object> metaSchema =
+    Map.of(
+        "name",
+        "metaschema",
+        "schema",
+        Map.of(
+            "type",
+            "object",
+            "properties",
+            rootProperties,
+            "required",
+            List.of("type"),
+            "additionalProperties",
+            false,
+            "if",
+            objectCondition,
+            "then",
+            objectRequirements,
+            "$defs",
+            Map.of("schema_definition", schemaDefinition)));
 
 ChatCompletionCreateParams params =
     ChatCompletionCreateParams.builder()
@@ -4582,30 +4506,36 @@ Map<String, Object> schemaDefinition =
         "type", "object",
         "properties",
             Map.of(
+                "enum",
+                Map.of("type", "array", "minItems", 1, "uniqueItems", true),
+                "description",
+                Map.of("type", "string"),
                 "type",
-                    Map.of(
-                        "type",
-                        "string",
-                        "enum",
-                        List.of("object", "array", "string", "number", "boolean", "null")),
+                Map.of(
+                    "type",
+                    "string",
+                    "enum",
+                    List.of("object", "array", "string", "number", "boolean", "null")),
                 "properties",
-                    Map.of(
-                        "type",
-                        "object",
-                        "additionalProperties",
-                        Map.of("$ref", "#/$defs/schema_definition")),
+                Map.of(
+                    "type",
+                    "object",
+                    "additionalProperties",
+                    Map.of("$ref", "#/$defs/schema_definition")),
                 "items",
-                    Map.of(
-                        "anyOf",
-                        List.of(
-                            Map.of("$ref", "#/$defs/schema_definition"),
-                            Map.of(
-                                "type",
-                                "array",
-                                "items",
-                                Map.of("$ref", "#/$defs/schema_definition")))),
-                "required", Map.of("type", "array", "items", Map.of("type", "string")),
-                "additionalProperties", Map.of("type", "boolean")),
+                Map.of(
+                    "anyOf",
+                    List.of(
+                        Map.of("$ref", "#/$defs/schema_definition"),
+                        Map.of(
+                            "type",
+                            "array",
+                            "items",
+                            Map.of("$ref", "#/$defs/schema_definition")))),
+                "required",
+                Map.of("type", "array", "items", Map.of("type", "string")),
+                "additionalProperties",
+                Map.of("type", "boolean")),
         "required", List.of("type"),
         "additionalProperties", false,
         "if", Map.of("properties", Map.of("type", Map.of("const", "object"))),

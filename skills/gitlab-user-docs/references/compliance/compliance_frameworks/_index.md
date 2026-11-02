@@ -401,6 +401,7 @@ Combine GitLab compliance controls to help you meet
 ### External controls
 
 - External control name [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192177) in GitLab 18.1.
+- `not_applicable` status [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259352) in GitLab 19.5.
 
 External controls are API calls to external systems that request the status of an external control or requirement.
 
@@ -434,13 +435,13 @@ To add an external control when creating or editing a framework:
 
 The **Ping enabled** setting controls whether GitLab requests external control status updates from external systems every 12 hours.
 
-- Enabled (default): GitLab automatically sends HTTP requests to the external service URL every 12 hours and updates the external control status based on the response.
+- Enabled (default): GitLab sends an HTTP request to the external service URL every 12 hours to request a status update.
 - Disabled: GitLab does not send notifications to the external service and the external control displays a **Disabled** badge in the compliance framework UI. To request
   the status of an external control, you must manually use the [External Controls API](../../../api/external_controls.md).
 
 #### External control lifecycle
 
-External controls have an asynchronous workflow. [Compliance scans](../compliance_center/compliance_status_report.md#scan-timing-and-triggers) emit a payload to an external service whenever.
+External controls have an asynchronous workflow. [Compliance scans](../compliance_center/compliance_status_report.md#scan-timing-and-triggers) send a payload to an external service when they run.
 
 ```mermaid
 %%{init: { "fontFamily": "GitLab Sans" }}%%
@@ -453,18 +454,20 @@ sequenceDiagram
     Note over External service,GitLab: Response includes SHA at HEAD
 ```
 
-After the payload is received, the external service can run any required processes. The external service can then post
-its response back to the merge request by using the REST API.
+After the external service receives the payload, it can run any required processes and set the control status through the REST API.
 
-External controls can have one of three statuses.
+External controls can have one of four statuses.
 
-| Status    | Description |
-|:----------|:------------|
-| `pending` | Default status. No response received from the external service. |
-| `pass`  | Response received from the external service and the external control was approved by the external service. |
-| `fail`  | Response received from the external service and the external control was denied by the external service. |
+| Status           | Description |
+|:-----------------|:------------|
+| `pending`        | Default status. No response received from the external service. |
+| `pass`           | Response received from the external service and the external control was approved by the external service. |
+| `fail`           | Response received from the external service and the external control was denied by the external service. |
+| `not_applicable` | The external service reports that the control does not apply to the project. This status is not counted as passed or failed. |
 
-If something changes outside of GitLab, you can set the [status of an external control by using the API](../../../api/external_controls.md). You don't need to wait for a payload to be sent first.
+The external service can set `pass`, `fail`, or `not_applicable` through the [External Controls API](../../../api/external_controls.md).
+A ping requests a status update but does not set `not_applicable` itself.
+You can set a status through the API without waiting for a ping.
 
 #### External control payload example
 

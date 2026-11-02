@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # Secure MCP servers
 
-Last updated Oct 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can secure [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) with Cloudflare Access. Choose an approach based on who manages the MCP server code and hostname:
 
@@ -26,7 +26,7 @@ You can secure [Model Context Protocol (MCP) servers ↗︎](https://www.cloudfl
 Use this setup when the MCP server runs on a hostname you control in Cloudflare, but the server code is managed by a third party and already handles its own OAuth flow. In this setup, do not enable Access Managed OAuth. You also do not need to add the MCP server hostname as a public hostname on the generated Access application.
 
 1. Ensure the MCP server hostname has **Proxy status** turned on in Cloudflare DNS.
-2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 3. Go to the **MCP servers** tab.
 4. Select **Add an MCP server**.
 5. Enter a name for the server.
@@ -294,5 +294,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/#page","headline":"Secure MCP servers","description":"Secure MCP servers with Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/og.png?v=c1144e27be33fe5f","dateModified":"2026-10-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/#page","headline":"Secure MCP servers","description":"Secure MCP servers with Cloudflare Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/og.png?v=c1144e27be33fe5f","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

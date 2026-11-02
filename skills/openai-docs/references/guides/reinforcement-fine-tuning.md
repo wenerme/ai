@@ -102,7 +102,7 @@ To demonstrate reinforcement fine-tuning below, we'll fine-tune an [o4-mini](htt
 
 Example input question:
 
-```
+```text
 Do you have a dedicated security team?
 ```
 
@@ -298,7 +298,7 @@ Below, find some JSONL data you can use for both training and testing when you c
 
 **Training set**
 
-```
+```text
 {"messages":[{"role":"user","content":"Do you have a dedicated security team?"}],"compliant":"yes","explanation":"A dedicated security team follows strict protocols for handling incidents."}
 {"messages":[{"role":"user","content":"Have you undergone third-party security audits or penetration testing in the last 12 months?"}],"compliant":"needs review","explanation":"The policy does not explicitly mention undergoing third-party security audits or penetration testing. It only mentions SOC 2 and GDPR compliance."}
 {"messages":[{"role":"user","content":"Is your software SOC 2, ISO 27001, or similarly certified?"}],"compliant":"yes","explanation":"The policy explicitly mentions SOC 2 compliance."}
@@ -306,7 +306,7 @@ Below, find some JSONL data you can use for both training and testing when you c
 
 **Test set**
 
-```
+```text
 {"messages":[{"role":"user","content":"Will our data be encrypted at rest?"}],"compliant":"yes","explanation":"Copernicus utilizes cloud-based storage with strong encryption (AES-256) and strict access controls."}
 {"messages":[{"role":"user","content":"Will data transmitted to/from your services be encrypted in transit?"}],"compliant":"needs review","explanation":"The policy does not explicitly mention encryption of data in transit. It focuses on encryption in cloud storage."}
 {"messages":[{"role":"user","content":"Do you enforce multi-factor authentication (MFA) internally?"}],"compliant":"yes","explanation":"The policy explicitly mentions role-based authentication with multi-factor security."}

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Oct 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -186,7 +186,7 @@ The MCP server status indicates the server's connection and tool and prompt sync
 
 #### Error details
 
-When an MCP server is in the **Error** or **Sync Required** state, hover over its status in the dashboard to view available diagnostic information. The API returns these details in the `error_details` object:
+When an MCP server is in the **Error** or **Sync required** state, hover over its status in the dashboard to view available diagnostic information. The API returns these details in the `error_details` object:
 
 | Field | Description |
 | --- | --- |
@@ -204,8 +204,7 @@ To reauthenticate an MCP server in Cloudflare Access:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab.
-3. Select the server that you want to reauthenticate, then select **Edit**.
-4. Select **Authenticate server**.
+3. Find the server that you want to reauthenticate, select the three dots, and select **Re-authenticate server**.
 
 You will be redirected to log in to your OAuth provider. The account used to authenticate will serve as the new admin credential for this MCP server.
 
@@ -217,7 +216,7 @@ Resources are not synchronized or stored. When an MCP client sends a `resources/
 
 Note
 
-Synchronization uses the admin credential, not individual user credentials. If the admin credential's refresh token has expired or been revoked, the [server status](#server-status) will change to **Sync Required** and you will need to [reauthenticate the server](#reauthenticate-the-mcp-server). This will not impact end users' ability to connect to the MCP server. It will impact the ability to fetch tool and prompt information or additions and removals.
+Synchronization uses the admin credential, not individual user credentials. If the admin credential's refresh token has expired or been revoked, the [server status](#server-status) will change to **Sync required** and you will need to [reauthenticate the server](#reauthenticate-the-mcp-server). This will not impact end users' ability to connect to the MCP server. It will impact the ability to fetch tool and prompt information or additions and removals.
 
 To manually refresh the MCP server in Zero Trust:
 
@@ -298,7 +297,7 @@ To turn on the setting, go to **Zero Trust** > **Access controls** > **MCP Porta
 To create an MCP server portal:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
-2. Select **Add MCP server portal**.
+2. Select **Add server portal**.
 3. Enter any name for the portal.
 4. Under **Custom domain**, select a domain from an active zone in your account. You can optionally specify a subdomain.
 5. [Add MCP servers](#add-an-mcp-server) to the portal.
@@ -309,7 +308,7 @@ To create an MCP server portal:
    Caution
 
    [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa), [purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/), and [temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/) will not be enforced for MCP servers that are authorized through an MCP portal. For example, if independent MFA is enabled on a policy assigned to a server, users will not be prompted to perform MFA to authorize the server after authenticating to the portal. Refer to [Policy limitations](#policy-limitations) for details.
-9. Select **Add an MCP server portal**.
+9. Select **Save portal**.
 10. (Optional) [Customize the login experience](#customize-login-settings) for the portal.
 
 Users can now [connect to the portal](#connect-to-a-portal) at `https://<subdomain>.<domain>/mcp` using an MCP client.
@@ -936,7 +935,7 @@ To route traffic from every MCP server in a portal through Gateway:
 
 To route traffic from one MCP server through Gateway without enabling Gateway routing for the entire portal:
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Find the server you want to configure, then select the three dots > **Edit**.
 4. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
@@ -1242,7 +1241,7 @@ MCP server portals have the following known limitations:
 - **Only remote HTTP MCP servers are supported.** MCP servers that use [stdio transport only ↗︎](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) (for example, `github/github-mcp-server`) do not expose a remote HTTP endpoint and cannot be added to an MCP server portal. To use a stdio-only server, you must self-host it behind an HTTP endpoint and authenticate with a [bearer token or custom headers](#create-an-mcp-server).
 - **Some MCP servers block proxy-based clients.** Certain MCP servers reject requests from proxy-based clients like MCP server portals, returning a `403` error on the registration endpoint. These servers are not compatible with MCP server portals until those providers add Cloudflare as a supported MCP client.
 - **Manual OAuth capabilities are captured during the first user authorization.** Servers configured with [manual OAuth credentials](#configure-manual-oauth-credentials) remain in **Waiting** status until a user completes upstream OAuth. Cloudflare stores the tools and prompts returned during that connection. Background and manual capability synchronization do not refresh them.
-- **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync Required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
+- **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
 - **Each portal supports up to 80 MCP servers.**
 
 ## Policy limitations
@@ -1268,7 +1267,7 @@ Cloudflare creates a custom hostname for each portal custom domain. Portal creat
 ### After authenticating to the portal, my user receives the error `No allowed servers available, check your Zero Trust Policies`.
 
 1. An MCP portal and server must both have an attached Access policy. Ensure that all MCP servers assigned to the portal have their own associated policy.
-2. The server's admin authentication may be expired. Check that the [server's status](#server-status) is **Ready**. If the status shows **Error** or **Sync Required**, [reauthenticate the server](#reauthenticate-the-mcp-server).
+2. The server's admin authentication may be expired. Check that the [server's status](#server-status) is **Ready**. If the status shows **Error** or **Sync required**, [reauthenticate the server](#reauthenticate-the-mcp-server).
 
 ### The portal URL does not prompt for authentication when it is added to an MCP client.
 
@@ -1301,7 +1300,7 @@ To resolve this, [reauthenticate the server](#reauthenticate-the-mcp-server) wit
 ### Tool calls fail with an `unauthorized` error.
 
 1. If the server uses per-user OAuth (**Require user auth** is turned on), the user's OAuth token may have expired. Ask the user to [reauthenticate the server](#reauthenticate-a-server) from their MCP client.
-2. If the server uses admin credentials, check the [server status](#server-status). A status of **Error** or **Sync Required** indicates the admin credential needs to be refreshed.
+2. If the server uses admin credentials, check the [server status](#server-status). A status of **Error** or **Sync required** indicates the admin credential needs to be refreshed.
 3. If the user recently changed permissions on the upstream service (for example, revoked OAuth scopes), they will need to reauthenticate.
 
 ### OAuth authentication fails with a redirect URI error when connecting to an upstream MCP server.
@@ -1338,5 +1337,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-10-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

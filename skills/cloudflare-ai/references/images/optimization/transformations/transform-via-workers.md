@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/images/optimization/transformations/tra
 
 # Transform via fetch
 
-Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers lets you optimize images with a custom URL scheme.
 
@@ -199,6 +199,35 @@ export default {
 
 When testing image resizing, please deploy the script first. Resizing will not be active in the online editor in the dashboard.
 
+## Unsupported fetch options
+
+Some [`cf` properties](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) that work on a regular `fetch()` subrequest are not applied when the same subrequest also sets `cf.image`.
+
+### `resolveOverride`
+
+[`resolveOverride`](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) is ignored on a `fetch()` subrequest that includes `cf.image`. Cloudflare fetches the original image using the hostname in the image URL, not the hostname set in `resolveOverride`.
+
+```js
+// resolveOverride is ignored because cf.image is set.
+// The original image is fetched from images.example.com, not origin.example.com.
+fetch("https://images.example.com/photo.jpg", {
+	cf: {
+		image: { width: 800 },
+		resolveOverride: "origin.example.com",
+	},
+});
+```
+
+To fetch the original image from a different origin, use a hostname that resolves to that origin in the image URL itself. The request to the origin then uses that hostname in the `Host` header.
+
+```js
+fetch("https://origin.example.com/photo.jpg", {
+	cf: {
+		image: { width: 800 },
+	},
+});
+```
+
 ## Warning about `cacheKey`
 
 Resized images are always cached. They are cached as additional variants under a cache entry for the URL of the full-size source image in the `fetch` subrequest. Do not worry about using many different Workers or many external URLs — they do not influence caching of resized images, and you do not need to do anything for resized images to be cached correctly.
@@ -214,5 +243,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/og.png?v=eb03eb6f735ce26b","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/#page","headline":"Transform via fetch","description":"Use cf.image options on a fetch() subrequest in a Worker to programmatically resize, format, and optimize remote images.","url":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/og.png?v=eb03eb6f735ce26b","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

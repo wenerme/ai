@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/bundling/og.png?v=c66f
 
 # Bundling
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/bundling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/bundling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Wrangler bundles your Worker code using [`esbuild` ↗︎](https://esbuild.github.io/). This means that Wrangler has built-in support for importing modules from [npm ↗︎](https://www.npmjs.com/) defined in your `package.json`. To review the exact code that Wrangler will upload to Cloudflare, run `npx wrangler deploy --dry-run --outdir dist`, which will show your Worker code after Wrangler's bundling.
 
@@ -29,6 +29,12 @@ Wrangler uses <code>esbuild</code>. We periodically update the <code>esbuild</co
 Note
 
 Wrangler's inbuilt bundling usually provides the best experience, but we understand there are cases where you will need more flexibility. You can provide `rules` and set `find_additional_modules` in your configuration to control which files are included in the deployed Worker but not bundled into the entry-point file. Furthermore, we have an escape hatch in the form of [Custom Builds](https://developers.cloudflare.com/workers/wrangler/custom-builds/), which lets you run your own build before Wrangler's built-in one.
+
+## Runtime module loading
+
+The runtime's module registry resolves and loads the modules that your build uploads. For compatibility dates on or after November 17, 2026, JavaScript Workers use the [new module registry](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#new-module-registry) by default. With earlier dates, add `new_module_registry` to opt in. Use `legacy_module_registry` to opt out with a later date.
+
+The new registry supports `import.meta.url`, `import.meta.main`, and `import.meta.resolve()`, URL-based module resolution, and validated import attributes. Your bundler may transform these expressions before the runtime receives your code. To preserve your module graph, use [unbundled deployments](https://developers.cloudflare.com/workers/wrangler/configuration/#bundling) or configure [additional modules](#find-additional-modules).
 
 ## Including non-JavaScript modules
 
@@ -145,5 +151,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/bundling/#page","headline":"Bundling","description":"Review Wrangler's default bundling.","url":"https://developers.cloudflare.com/workers/wrangler/bundling/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/bundling/og.png?v=c66f374f4eeea5c3","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/bundling/#page","headline":"Bundling","description":"Review Wrangler's default bundling.","url":"https://developers.cloudflare.com/workers/wrangler/bundling/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/bundling/og.png?v=c66f374f4eeea5c3","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

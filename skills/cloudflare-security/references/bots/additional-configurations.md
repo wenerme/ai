@@ -21,7 +21,7 @@ Refer to the following pages for more information on additional bot management c
 - [JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/)
 - [Sequence rules](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/)
 - [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/)
-- [Block AI Bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/)
+- [AI Crawler and Agent access policies](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/)
 - [Custom rules](https://developers.cloudflare.com/bots/additional-configurations/custom-rules/)
 - [robots.txt setting](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)
 - [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/)

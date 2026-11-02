@@ -55,7 +55,7 @@ Prompt
 
 > Below is a piece of example data provided.
 
-```
+```text
 [
     {“name”: “BLOCK_SIZE”, “value”: “8”},
     {“name”: “ADDR_WIDTH”, “value”: “4”}
@@ -224,7 +224,7 @@ Prompt
 
     
 
-```
+```text
 ## Instructions
 You will be provided with a question and a text excerpt. Identify any passages in the text that are directly relevant to answering the question.
 - If there are no relevant passages, return an empty list.
@@ -349,7 +349,7 @@ Grader code
 
     
 
-```
+```text
 [+0.05] For correctly identifying Alex (33.33%), Barbara (33.33% → 20%), Chris (33.33%), and Dana (13.33%) ownership percentages
 [+0.1] For correctly calculating Barbara's annual allocation as 26.67% and Dana's as 6.67% without closing of books
 [+0.15] For properly allocating Alex ($300,000), Barbara ($240,030), Chris ($300,000), and Dana ($60,030) ordinary income

@@ -490,7 +490,7 @@ Example responses:
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179).
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
-- `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_cancel`. Disabled by default.
+- `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6.
 - `duo_token_usage_tracking_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259436) in GitLab 19.6.
 - `o11y_provisioner_api_key` and `o11y_provisioner_url` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262322) in GitLab 19.6.
 - `default_remove_source_branch_after_merge` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260680) in GitLab 19.6.
@@ -864,6 +864,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `raw_blob_request_limit_unauthenticated` | integer          | no                                   | Maximum number of unauthenticated requests every minute across all raw paths in a project (default is `800`). Set to `0` to disable throttling. |
 | `search_rate_limit`                      | integer          | no                                   | Maximum number of requests every minute for performing a search while authenticated. Default: 30. To disable throttling, set to 0. |
 | `search_rate_limit_unauthenticated`      | integer          | no                                   | Maximum number of requests every minute for performing a search while unauthenticated. Default: 10. To disable throttling, set to 0. |
+| `search_rate_limit_allowlist_raw`        | string           | no                                   | Raw newline-, comma-, or whitespace-separated list of usernames excluded from the `search_rate_limit` rate limit. Maximum: 100 usernames. |
 | `recaptcha_enabled`                      | boolean          | no                                   | (**If enabled, requires**: `recaptcha_private_key` and `recaptcha_site_key`) Enable reCAPTCHA. |
 | `login_recaptcha_protection_enabled`     | boolean          | no                                   | Enable reCAPTCHA for login. |
 | `recaptcha_private_key`                  | string           | required by: `recaptcha_enabled`     | Private key for reCAPTCHA. |

@@ -62,12 +62,10 @@ The viewer has two resizable panes:
 - **Step list** (left) shows every recorded action, assertion, mark, and lifecycle entry, with its name, timing, selector, and source location. Failed actions and assertions are highlighted in red.
 - **DOM snapshot** (right) shows the page at the selected step, with the interacted element highlighted in blue. When only failed tests are recorded, the snapshot is taken at the end of the test.
 
-Selecting a step also opens its source location in the Editor tab when that location is available.
+Selecting a step also opens its source location in the Code tab when that location is available.
 
-[Vitest UI trace viewer showing step list and DOM snapshot]
-[Vitest UI trace viewer showing step list and DOM snapshot]
-
-<small>Example replay uses [Vuetify's](https://github.com/vuetifyjs/vuetify) `VDateInput` component.</small>
+[HTML report trace viewer showing step list and DOM snapshot]
+[HTML report trace viewer showing step list and DOM snapshot]
 
 ## Recorded Steps
 
@@ -78,6 +76,8 @@ Vitest records a step for:
 - Test runner lifecycle events, such as `vitest:onAfterRetryTask` after each test and retry run
 
 Each step records its timing, selector, and the source location that triggered it.
+
+Tests outside browser mode can print the same timeline for their `expect.poll`, `vi.waitFor`, and `vi.waitUntil` steps with [`experimental.traceTimeline`](/config/experimental#experimental-tracetimeline).
 
 ## Custom Trace Entries
 
@@ -124,6 +124,9 @@ Each retry or repeat of a test is recorded as a separate trace. The viewer opens
 ## Accessibility Tree <Version>5.1.0</Version> {#accessibility-tree}
 
 Trace view also captures the page's accessibility tree with each snapshot. The view selector in the trace viewer header switches the snapshot pane between **DOM** and **Aria**. The Aria view lists the roles, accessible names, and states that role-based locators such as `getByRole()` see, in the same format as [aria snapshots](/guide/browser/aria-snapshots). Set [`traceView.ariaSnapshot`](/config/browser/traceview#traceview-ariasnapshot) to `false` to disable it.
+
+[HTML report trace viewer showing step list and Aria snapshot]
+[HTML report trace viewer showing step list and Aria snapshot]
 
 ## What Snapshots Capture
 

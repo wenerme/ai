@@ -795,7 +795,7 @@ The `max_output_tokens` and `max_completion_tokens` parameters limit all tokens 
 
 For full parameters and response shape, see the [Count input tokens API reference](https://developers.openai.com/api/reference/resources/responses/subresources/input_tokens/methods/count). The endpoint is:
 
-```
+```text
 POST /v1/responses/input_tokens
 ```
 
