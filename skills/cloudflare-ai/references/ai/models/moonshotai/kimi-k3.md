@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `moonshotai/kimi-k3`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta Attention (a hybrid linear attention mechanism) with Attention Residuals. It offers native visual understanding, always-on reasoning, and a 1M-token context window for long-horizon coding, knowledge work, and deep reasoning tasks.
@@ -29,7 +33,7 @@ Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | More information | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart) |
 | Request formats | Chat Completions |
-| Pricing | <ul><li>Input (per 1M tokens)$3.00</li><li>Output (per 1M tokens)$15.00</li><li>Cached input (per 1M tokens)$0.30</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$3.00</li><li>Cached input (per 1M tokens)$0.30</li><li>Output (per 1M tokens)$15.00</li></ul> |
 
 ## Usage
 

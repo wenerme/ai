@@ -4101,6 +4101,15 @@ Values for sorting members.
 | `updated_asc` | Deprecated in GitLab 13.5. Renamed. Use `UPDATED_ASC` instead. |
 | `updated_desc` | Deprecated in GitLab 13.5. Renamed. Use `UPDATED_DESC` instead. |
 
+## `MergeRequestConflictSide`
+
+Side of a conflict to keep.
+
+| Value | Description |
+| ----- | ----------- |
+| `OURS` | Keep the lines of the source branch, as `ourLines` of the section lists them. |
+| `THEIRS` | Keep the lines of the target branch, as `theirLines` of the section lists them. |
+
 ## `MergeRequestConflictStatus`
 
 Status of conflict file availability for a merge request.

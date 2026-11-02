@@ -226,7 +226,7 @@ Each preset configures the flows as follows:
 | [SAST false positive detection](../vulnerabilities/false_positive_detection.md) | `high` and above, on demand | `medium` and above, automatic | `info` and above, automatic |
 | [SAST vulnerability resolution](../vulnerabilities/agentic_vulnerability_resolution.md) | `high` and above, on demand, up to five open merge requests | `medium` and above, automatic, up to 15 open merge requests | `info` and above, automatic, no merge request limit |
 | [Secret detection false positive detection](../vulnerabilities/secret_false_positive_detection.md) | `high` and above, on demand | `medium` and above, automatic | `info` and above, automatic |
-| [Dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md) | `high` and above, minor version upgrades, up to five open merge requests, skips fix versions from the last seven days | `high` and above, minor version upgrades, up to 10 open merge requests, skips fix versions from the last seven days | `info` and above, major version upgrades, up to 10 open merge requests, skips fix versions from the last seven days |
+| [Dependency scanning auto-remediation](../remediate/dependency_scanning_auto_remediation.md) | `high` and above, minor version upgrades, up to five open merge requests, skips fix versions from the last seven days | `high` and above, minor version upgrades, up to 30 open merge requests, skips fix versions from the last seven days | `info` and above, major version upgrades, up to 30 open merge requests, skips fix versions from the last seven days |
 
 ### Business logic profile
 

@@ -1,84 +1,50 @@
-# GitLab Duo Agent Platform contextual awareness
+# GitLab Duo Agent Platform context
 
-Understand what context is available to GitLab Duo features and how to control what information they can access.
+Understand what context GitLab Duo features can use, and exclude project content from that context.
 
-Different information is available to help GitLab Duo make decisions and offer suggestions.
+GitLab Duo uses context to make decisions and offer suggestions.
+Context can be available in these ways:
 
-Information can be available:
+- Always
+- Based on your location, so the context changes when you go to another page.
+- When referenced explicitly, for example when you mention the information by URL, ID, or file path.
 
-- Always.
-- Based on your location (the context changes when you navigate).
-- When referenced explicitly. For example, you mention the information by URL, ID, or file path.
+You can also [manage context exclusions](#manage-context-exclusions) to keep project content out of that context.
 
-## GitLab Duo Agentic Chat
+## Context available to GitLab Duo
 
-- Current page title and URL [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209186) in GitLab 18.6.
+- Page title and URL [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209186) to Agentic Chat context in GitLab 18.6.
 
-The following context is available to GitLab Duo Agentic Chat.
+The following table shows when each type of context is available:
 
-### Always available
+| Context | GitLab Duo Agentic Chat | Software development flow |
+|---------|-------------------------|---------------------------|
+| GitLab documentation | Always | Not available |
+| General programming knowledge, best practices, and language specifics | Always | Always |
+| Files in your project that Git tracks | Always | Always |
+| Results from the [Search API](../../api/search.md) | Always | Always |
+| Current page title and URL in the GitLab UI | Based on location | Not available |
+| Files open in your IDE[^open] | Based on location | Based on location |
+| Files, including images[^ide] (PNG, JPEG, WebP) | When referenced | When referenced |
+| Images attached to issues and merge requests[^ide] | When referenced | When referenced |
+| Epics, issues, and merge requests | When referenced | When referenced |
+| Pipelines | When referenced, including job logs | When referenced, for the merge request pipeline status only |
+| Commits | When referenced | Not available |
+| Work items | When referenced | When referenced |
+| Wiki pages | When referenced | Not available |
 
-- GitLab documentation.
-- General programming knowledge, best practices, and language specifics.
-- Your entire project and all of its files that are tracked by Git.
-- The GitLab [Search API](../../api/search.md), which Chat uses to find related issues or merge requests.
-- When using Chat in the GitLab UI, the current page title and URL.
+[^ide]: Images are available only in your IDE. For attached images, give the upload reference
+    as it appears in the Markdown. For more information, see
+    [image requirements](../project/merge_requests/developer.md#image-requirements).
 
-Chat will automatically look up the necessary context from
-SDLC data, [GitLab Orbit](https://docs.gitlab.com/orbit/), [MCP Clients](../gitlab_duo/model_context_protocol/mcp_clients.md) and [custom instructions](customize/_index.md).
+[^open]: To stop GitLab Duo from using a file as context, close the file in your IDE.
 
-### Based on location
+Unlike GitLab Duo Non-Agentic Chat, Agentic Chat can search for referenced resources without exact IDs or URLs.
+For example, you can ask "Find the merge request about authentication" and Agentic Chat searches for relevant merge requests.
 
-- In your IDE, files you have open. You can close those files if you do not want them used for context.
-- In the GitLab UI, the current page context (for example, when viewing a merge request or issue).
+Agentic Chat also looks up the context it needs from SDLC data, GitLab Orbit, MCP clients, and custom instructions.
 
-### When referenced explicitly
-
-GitLab Duo Agentic Chat can autonomously retrieve and use:
-
-- Files, including images (PNG, JPEG, WebP) when you use Chat in your IDE, by searching your project or when you provide file paths
-- Images attached to issues and merge requests in the project, when you use Chat in your IDE and give the upload reference as it appears in the Markdown
-- Epics
-- Issues
-- Merge requests
-- CI/CD pipelines and job logs
-- Commits
-- Work items
-
-Unlike non-agentic Chat, agentic Chat can search for these resources without requiring you to specify exact IDs or URLs. For example, you can ask "Find the merge request about authentication" and Chat searches for relevant merge requests.
-
-For image requirements, see [Image requirements](../project/merge_requests/developer.md#image-requirements).
-
-### Extended context
-
-- To connect Chat to external data sources and tools, use the [Model Context Protocol (MCP)](../gitlab_duo/model_context_protocol/_index.md).
-- To provide project-specific context, coding standards, and team practices,
-  use [custom rules](customize/custom_rules.md) or [AGENTS.md](customize/agents_md.md) in Chat, agents, and flows.
-
-## Software development flow
-
-The following context is available to the software development flow in GitLab Duo Agent Platform.
-
-### Always available
-
-- General programming knowledge, best practices, and language specifics.
-- Your entire project and all of its files that are tracked by Git.
-- The GitLab [Search API](../../api/search.md), which is used to find related issues or merge requests.
-
-### Based on location
-
-- Files you have open in the IDE (close files if you do not want them used for context).
-
-### When referenced explicitly
-
-- Files, including images (PNG, JPEG, WebP)
-- Images attached to issues and merge requests in the project
-- Epics
-- Issues
-- Merge requests
-- The merge request's pipelines
-
-## Exclude context from GitLab Duo
+## Manage context exclusions
 
 - Tier: Premium, Ultimate
 
@@ -87,22 +53,15 @@ The following context is available to the software development flow in GitLab Du
 - Enabled by default in GitLab 18.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/589801) in GitLab 18.10.
 
-You can control which project content is excluded as context for GitLab Duo.
-Use this feature to reduce the exposure of sensitive information, like password and configuration files.
+Use context exclusions to reduce the exposure of sensitive information, like password and configuration files.
 
-Context exclusions are designed for code suggestions and chat context, where GitLab Duo
-controls which files are read. For these features, excluded files are not used as context.
+Context exclusions apply to code suggestions and chat, where GitLab Duo controls which files are read.
+When an agent runs, context exclusions are best-effort only. For more information, see
+[context exclusion limitations](#context-exclusion-limitations).
 
-When an agent runs, exclusions are best-effort only.
-For example:
+Prerequisites:
 
-- Exclusions do not apply to shell commands.
-- The `grep` tool might return content from excluded files.
-- On case-insensitive file systems, like the defaults on Windows and macOS, a path with different capitalization might not match an exclusion.
-
-For limitations specific to the GitLab MCP server, see Known issues.
-
-### Manage GitLab Duo context exclusions
+- The Maintainer or Owner role for the project.
 
 To specify content that GitLab Duo excludes:
 
@@ -115,18 +74,23 @@ To specify content that GitLab Duo excludes:
 
 The exclusions for a project can be up to 64 KiB in total.
 
-### Known issues
+## Context exclusion limitations
 
-The following are known issues for context exclusions in the [GitLab MCP server](../model_context_protocol/mcp_server.md):
+| Tool or environment | Limitation |
+|---------------------|------------|
+| Agent shell commands | Exclusions do not apply to shell commands. |
+| `grep` tool | The tool might return content from excluded files. |
+| Case-insensitive file systems, like the defaults on Windows and macOS | A path with different capitalization might not match an exclusion. |
+| `get_merge_request` tool in the [GitLab MCP server](../model_context_protocol/mcp_server.md) | The tool might return commit diffs that include content from excluded files. The server does not check for exclusions when it fetches diffs. |
+| `add_commit` tool in the GitLab MCP server | The `move` action does not apply the exclusion check to the source path. An agent with push access could move an excluded file to a non-excluded path and then read it. |
 
-- The `get_merge_request` tool might return commit diffs that include
-  content from excluded files.
-  The GitLab MCP server does not check for exclusions when it fetches diffs.
-- The `add_commit` tool has a `move` action that
-  copies a file from one path to another. If the source file is excluded, the exclusion
-  check is not applied to the source path. An agent with push access could move an
-  excluded file to a non-excluded path and then read its content.
-
-These known issues are tracked in
+The GitLab MCP server limitations are tracked in
 [issue 628141](https://gitlab.com/gitlab-org/gitlab/-/work_items/628141).
-To ensure protection of sensitive information, review which tools and permissions are granted to MCP clients that access sensitive projects.
+To protect sensitive information, review which tools and permissions you grant to MCP clients that access sensitive projects.
+
+## Related topics
+
+- [Customize GitLab Duo Agent Platform](customize/_index.md)
+- [Model Context Protocol](../gitlab_duo/model_context_protocol/_index.md)
+- [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)
+- [GitLab Orbit](https://docs.gitlab.com/orbit/)

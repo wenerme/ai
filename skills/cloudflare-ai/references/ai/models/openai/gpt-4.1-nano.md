@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `openai/gpt-4.1-nano`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 - Zero data retention
 
@@ -31,7 +35,7 @@ GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for 
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
-| Request formats | Responses, Chat Completions |
+| Request formats | Chat Completions, Responses |
 | Pricing | <ul><li>Input (per 1M tokens)$0.10</li><li>Output (per 1M tokens)$0.40</li><li>Cached input (per 1M tokens)$0.025</li></ul> |
 
 ## Usage
@@ -601,45 +605,7 @@ In this example:
 
 Schema variant
 
-ResponsesChat Completions
-
-▶input
-
-`one of`required
-
-instructions
-
-`string`
-
-temperature
-
-`number`minimum: 0maximum: 2
-
-max\_output\_tokens
-
-`number`exclusiveMinimum: 0
-
-top\_p
-
-`number`minimum: 0maximum: 1
-
-stream
-
-`boolean`
-
-▶tools\[]
-
-`array`
-
-tool\_choice
-
-▶text{}
-
-`object`
-
-▶reasoning{}
-
-`object`
+Chat CompletionsResponses
 
 ▶messages\[]
 
@@ -697,6 +663,68 @@ reasoning\_effort
 
 `string`Optional reasoning control; availability and accepted values are model-dependent.
 
+▶input
+
+`one of`required
+
+instructions
+
+`string`
+
+temperature
+
+`number`minimum: 0maximum: 2
+
+max\_output\_tokens
+
+`number`exclusiveMinimum: 0
+
+top\_p
+
+`number`minimum: 0maximum: 1
+
+stream
+
+`boolean`
+
+▶tools\[]
+
+`array`
+
+tool\_choice
+
+▶text{}
+
+`object`
+
+▶reasoning{}
+
+`object`
+
+id
+
+`string`
+
+object
+
+`string`
+
+created
+
+`number`
+
+model
+
+`string`
+
+▶choices\[]
+
+`array`
+
+▶usage{}
+
+`object`
+
 id
 
 `string`
@@ -724,30 +752,6 @@ output\_text
 status
 
 `string`enum: in\_progress, completed, failed, incomplete
-
-▶usage{}
-
-`object`
-
-id
-
-`string`
-
-object
-
-`string`
-
-created
-
-`number`
-
-model
-
-`string`
-
-▶choices\[]
-
-`array`
 
 ▶usage{}
 

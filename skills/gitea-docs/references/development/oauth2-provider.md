@@ -99,6 +99,9 @@ Gitea token scopes are as follows:
 | **admin** | `/admin/*` API routes: Site-wide administrative operations (hidden for non-admin accounts).                                                          |
 | &nbsp;&nbsp;&nbsp; **read:admin** | Grants read access for admin operations, such as getting cron jobs or registered user emails.                                                        |
 | &nbsp;&nbsp;&nbsp; **write:admin** | Grants read/write/delete access for admin operations, such as running cron jobs or updating user accounts.                                           |
+| **commitstatus** | `/repos/{owner}/{repo}/statuses/{sha}` and `/repos/{owner}/{repo}/commits/{ref}/status(es)` API routes: Commit status operations.                        |
+| &nbsp;&nbsp;&nbsp; **read:commitstatus** | Grants read access to commit statuses. Included in `read:repository`.                                                                                |
+| &nbsp;&nbsp;&nbsp; **write:commitstatus** | Grants read/write access to commit statuses, such as reporting CI results. Included in `write:repository`.                                           |
 | **issue** | `issues/*`, `labels/*`, `milestones/*` API routes: Issue-related operations.                                                                         |
 | &nbsp;&nbsp;&nbsp; **read:issue** | Grants read access for issues operations, such as getting issue comments, issue attachments, and milestones.                                         |
 | &nbsp;&nbsp;&nbsp; **write:issue** | Grants read/write/delete access for issues operations, such as posting or editing an issue comment or attachment, and updating milestones.           |
@@ -129,7 +132,9 @@ Gitea creates OAuth applications for the following services by default on startu
 |-----------|-----------|---------|
 |[git-credential-oauth](https://github.com/hickford/git-credential-oauth)|Git credential helper|`a4792ccc-144e-407e-86c9-5e7d8d9c3269`|
 |[Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)|Git credential helper|`e90ee53c-94e2-48ac-9358-a874fb9e0662`|
-|[tea](https://gitea.com/gitea/tea)|tea|`d57cb8c4-630c-4168-8324-ec79935e18d4`|
+|[Gitea CLI](https://gitea.com/gitea/cli)|Gitea CLI|`d57cb8c4-630c-4168-8324-ec79935e18d4`|
+|Gitea App|Official Gitea mobile app|`b757811a-05c8-4c76-8d74-a5ee3d2073f2`|
+|[gitea-vscode](https://gitea.com/gitea/gitea-vscode)|VS Code extension|`75a9ec3e-42b5-40cb-9144-9ea96ecd56a6`|
 
 To prevent unexpected behavior, they are being displayed as locked in the UI and their creation can instead be controlled by the `DEFAULT_APPLICATIONS` parameter in `app.ini`.
 

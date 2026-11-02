@@ -538,16 +538,17 @@ secret_detection:
     SECRET_DETECTION_LOG_OPTIONS: "--since=2.weeks"
 ```
 
-To scan only commits from `HEAD~10` to `HEAD`:
+To scan the 10 most recent commits using a range:
 
 ```yaml
 secret_detection:
   variables:
-    # Scan commits from HEAD~10 to HEAD
+    # Scan the 10 commits after HEAD~10, up to and including HEAD
     SECRET_DETECTION_LOG_OPTIONS: "HEAD~10..HEAD"
 ```
 
 For a full list of options, see the [Git log options](https://git-scm.com/docs/git-log) documentation.
+For range syntax, see [scan a commit range](configure.md#scan-a-commit-range).
 
 #### Force push detection
 

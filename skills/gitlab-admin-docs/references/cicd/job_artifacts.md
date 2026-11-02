@@ -317,7 +317,7 @@ For more information, see
 ## Set the maximum file size of the artifacts
 
 If artifacts are enabled, you can change the maximum file size of the
-artifacts through the [**Admin** area settings](limits.md#maximum-artifacts-size).
+artifacts through the [ area settings](limits.md#maximum-artifacts-size).
 
 ## Storage statistics
 
@@ -325,7 +325,7 @@ You can view the total storage used for job artifacts for groups and projects.
 
 To find which groups or projects use the most storage:
 
-- In the **Admin** area, go to **Overview** > **Projects** and sort by **Storage size**.
+- In the  area, go to  >  and sort by .
 - Use the [groups](../../api/groups.md) and [projects](../../api/projects.md) APIs
   to return storage statistics for each group or project.
 

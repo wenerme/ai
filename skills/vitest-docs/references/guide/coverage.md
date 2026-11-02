@@ -504,6 +504,24 @@ export function ignored() { // [!code error]
 
 If code coverage generation is slow on your project, see [Profiling Test Performance | Code coverage](/guide/profiling-test-performance#code-coverage).
 
+## HTML Report Theme
+
+By default Vitest's HTML coverage report uses Vitest-styled themes. The color theme, dark or light, is set by following order:
+
+- [Reporter options](/config/coverage#coverage-reporter): `coverage.reporter: [['html', { theme: 'light' | 'dark' | 'legacy' }]]`
+- Your previous selection from the theme picker
+- OS color preference
+
+When coverage report is viewed through Vitest UI, it will inherit the UI's color theme. Setting explicit reporter option can override this.
+
+If you do not want to use Vitest-styled reports, you can always set `coverage.reporter: [['html', { theme: 'legacy' }]]` to force the original Istanbul themed styles.
+
+[HTML coverage report in light theme]
+
+[HTML coverage report in dark theme]
+
+[HTML coverage report in legacy istanbuljs theme]
+
 ## Vitest UI
 
 You can check your coverage report in [Vitest UI](/guide/ui) and [HTML reporter](/guide/reporters#html-reporter).

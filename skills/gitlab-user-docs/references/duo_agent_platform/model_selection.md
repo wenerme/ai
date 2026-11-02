@@ -111,7 +111,10 @@ For information about model availability during trials, see
 [^supported-models-earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
     for GitLab Duo Code Review, the non-agentic version.
 [^model-subject-limited]: This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
-[^mythos-availability]: Available only for top-level groups that GitLab has enabled. For more information, see
+[^mythos-availability]: Available only for top-level groups that GitLab has enabled.
+    If this model is not listed for your group, it is not enabled.
+    To request access, contact your GitLab account team.
+    To set up the scan, see
     [business logic scanning](../application_security/business_logic_scanning/_index.md).
 
 ## Select a model for a feature

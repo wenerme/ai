@@ -983,6 +983,30 @@ Defines which user roles, users, or groups can merge into a protected branch.
 | `memberRoleId` | [`MemberRoleID`](scalars.md#memberroleid) | Custom member role associated with the access level. |
 | `userId` | [`UserID`](scalars.md#userid) | User associated with the access level. |
 
+## `MergeRequestConflictFileResolutionInput`
+
+Resolution of one file with conflicts: either a side for each conflict, or the resolved content.
+
+### `MergeRequestConflictFileResolutionInput` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `content` | [`String`](scalars.md#string) | Full resolved content of the file. |
+| `ourPath` | [`String!`](scalars.md#string) | Path of the file on the source branch, as `ourPath` in `MergeRequest.conflictFiles` returns it. |
+| `sections` | [`[MergeRequestConflictSectionResolutionInput!]`](#mergerequestconflictsectionresolutioninput) | Side to keep for every conflict in the file. Maximum is 1000 sections. |
+| `theirPath` | [`String!`](scalars.md#string) | Path of the file on the target branch, as `theirPath` in `MergeRequest.conflictFiles` returns it. |
+
+## `MergeRequestConflictSectionResolutionInput`
+
+Side to keep for one conflict in a file.
+
+### `MergeRequestConflictSectionResolutionInput` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `resolution` | [`MergeRequestConflictSide!`](enums.md#mergerequestconflictside) | Side of the conflict to keep. |
+| `sectionId` | [`String!`](scalars.md#string) | ID of the section, as `sectionId` in `MergeRequest.conflictFiles` returns it. |
+
 ## `MergeRequestSavedViewFilterInput`
 
 Merge request filter values that can be stored in a saved view.

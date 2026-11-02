@@ -898,10 +898,10 @@
   "openai-docs/guides/ip-addresses.md": {
     "url": "https://developers.openai.com/api/docs/guides/ip-addresses.md",
     "skill": "openai-docs",
-    "etag": "W/\"33b2b19263b2531540a9e25d6453273c\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:28 GMT",
-    "size": 1615,
-    "updatedAt": "2026-07-28T03:28:28.378Z"
+    "etag": "W/\"6cbd0e27f53cc07f226200617c71bf8d\"",
+    "lastModified": "Mon, 02 Nov 2026 05:08:42 GMT",
+    "size": 1846,
+    "updatedAt": "2026-11-02T05:47:31.705Z"
   },
   "openai-docs/guides/ip-allowlist.md": {
     "url": "https://developers.openai.com/api/docs/guides/ip-allowlist.md",
@@ -1066,10 +1066,10 @@
   "openai-docs/guides/private-safety-processing.md": {
     "url": "https://developers.openai.com/api/docs/guides/private-safety-processing.md",
     "skill": "openai-docs",
-    "etag": "W/\"eb3ce8c8c31e2bc2aa7a62706f598814\"",
-    "lastModified": "Wed, 28 Oct 2026 00:48:46 GMT",
-    "size": 43334,
-    "updatedAt": "2026-10-28T00:48:46.140Z"
+    "etag": "W/\"781d74aa5d0cef79d2197c55b35bf098\"",
+    "lastModified": "Mon, 02 Nov 2026 05:08:50 GMT",
+    "size": 44426,
+    "updatedAt": "2026-11-02T05:47:36.224Z"
   },
   "openai-docs/guides/production-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/production-best-practices.md",

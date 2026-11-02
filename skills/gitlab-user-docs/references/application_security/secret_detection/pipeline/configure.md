@@ -104,7 +104,53 @@ Change the behavior of pipeline secret detection by defining available CI/CD var
 | `SECRET_DETECTION_EXCLUDED_PATHS` | ""            | Exclude vulnerabilities from output based on the paths. The paths are a comma-separated list of patterns. Patterns can be globs (see [`doublestar.Match`](https://pkg.go.dev/github.com/bmatcuk/doublestar/v4@v4.0.2#Match) for supported patterns), or file or folder paths (for example, `doc,spec` ). Parent directories also match patterns. Detected secrets previously added to the vulnerability report are not removed. |
 | `SECRET_DETECTION_HISTORIC_SCAN`  | false         | Flag to enable a historic Gitleaks scan. |
 | `SECRET_DETECTION_IMAGE_SUFFIX`   | "" | Suffix added to the image name. If set to `-fips`, `FIPS-enabled` images are used for scan. See [Use FIPS-enabled images](_index.md#fips-enabled-images) for more details. |
-| `SECRET_DETECTION_LOG_OPTIONS`  | ""        | Flag to specify a commit range to scan. Gitleaks uses [`git log`](https://git-scm.com/docs/git-log) to determine the commit range. When defined, pipeline secret detection attempts to fetch all commits in the branch. If the analyzer can't access every commit, it continues with the already checked out repository. For more information, see [how the analyzer fetches commits](_index.md#how-the-analyzer-fetches-commits). |
+| `SECRET_DETECTION_LOG_OPTIONS`  | ""        | Flag to specify a commit range to scan. Gitleaks uses [`git log`](https://git-scm.com/docs/git-log) to determine the commit range. For syntax and examples, see [scan a commit range](#scan-a-commit-range). If the analyzer can't access every commit, it continues with the already checked out repository. For more information, see [how the analyzer fetches commits](_index.md#how-the-analyzer-fetches-commits).|
+
+### Scan a commit range
+
+To limit the scan to specific commits, use the `SECRET_DETECTION_LOG_OPTIONS` variable.
+The value uses `git log` syntax.
+
+In a range written as `<older>..<newer>`, the scan includes the commits after `<older>`,
+up to and including `<newer>`.
+The `<older>` commit is not scanned.
+
+For example, to scan the commits after `126ca16b`, up to and including `295e57e8`:
+
+```yaml
+secret_detection:
+  variables:
+    SECRET_DETECTION_LOG_OPTIONS: "126ca16b..295e57e8"
+```
+
+You can also use references like `HEAD`, combined with modifiers like `~` to count back from a commit.
+For example, to scan `HEAD` and the three commits before it:
+
+```yaml
+secret_detection:
+  variables:
+    SECRET_DETECTION_LOG_OPTIONS: "HEAD~4..HEAD"
+```
+
+Scan execution policies that run scheduled scans set this variable to the range between the
+last run and the current commit.
+For more information, see [scan execution policies](../../policies/scan_execution_policies.md).
+
+#### Older secrets reported as new findings
+
+The analyzer might fetch only part of the repository history.
+If a commit in your range has a parent that was not fetched, Git treats the commit as the start
+of the history.
+The scan then checks the full repository snapshot at that commit, and reports secrets that were
+already in the repository as new findings.
+
+For example, a parent might not be fetched in merge request pipelines when a commit in the range
+has a parent with a committer date earlier than the date of the range's base commit.
+For more information, see [issue 604889](https://gitlab.com/gitlab-org/gitlab/-/work_items/604889).
+
+As a workaround, [enable a historic scan](#enable-historic-scan).
+A historic scan covers the full history, so it reports every secret in the repository, not only
+the secrets in your range.
 
 ## Customize analyzer rulesets
 

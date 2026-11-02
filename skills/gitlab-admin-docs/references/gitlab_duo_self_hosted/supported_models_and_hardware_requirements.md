@@ -42,40 +42,40 @@ after validation with each supported platform (such as AWS Bedrock,
 Gemini Enterprise Agent Platform, and Azure OpenAI).
 Any models supported on GitLab.com should also work on GitLab Duo Self-Hosted.
 
-| Model family | Model | Code completion | Code generation | GitLab Duo Non-Agentic Chat | GitLab Duo Agent Platform |
-|--------------|-------|-----------------|-----------------|---------------------------|---------------------------|
-| Claude 4 | [Claude 4 Sonnet](https://www.anthropic.com/news/claude-4) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Claude 4 | [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Claude 4 | [Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Claude 4 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Claude 5 | [Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Claude 5 | [Claude Haiku 5.5](https://www.anthropic.com/claude-haiku-5-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
-| GLM | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
-| GPT | [GPT-4o](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| GPT | [GPT-4o-mini](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
-| GPT | [GPT-5](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-5 Codex](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-5 Mini](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) |  Full functionality |  Full functionality |  Full functionality |  Partial functionality |
-| GPT | [GPT-5.1](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-51) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-5.2](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-52) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| GPT | [GPT-oss-120B](https://huggingface.co/openai/gpt-oss-120b) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| Kimi | [Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
-| Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| Kimi | [Kimi-K3](https://huggingface.co/moonshotai/Kimi-K3) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| Llama | [Llama 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
-| Llama | [Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
-| Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
-| Llama | [Llama 3.1 70B](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| Llama | [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| MiniMax | [MiniMax-M3](https://huggingface.co/MiniMaxAI/MiniMax-M3) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
-| Mistral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
-| Mistral | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
-| Nemotron | [Nemotron 3 Ultra 550B-A55B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
-| Qwen | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| Model series | Model name | Model family | Code completion | Code generation | GitLab Duo Non-Agentic Chat | GitLab Duo Agent Platform |
+|--------------|-------|------------------|-----------------|-----------------|---------------------------|---------------------------|
+| Claude 4 | [Claude 4 Sonnet](https://www.anthropic.com/news/claude-4) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Haiku 4.5](https://www.anthropic.com/news/claude-haiku-4-5) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 4 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 5 | [Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 5 | [Claude Haiku 5.5](https://www.anthropic.com/claude-haiku-5-5) | Claude |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) | General |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
+| GLM | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) | General |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4) | GPT |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| GPT | [GPT-4o](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) | GPT |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| GPT | [GPT-4o-mini](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4o-and-gpt-4-turbo) | GPT |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| GPT | [GPT-5](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) | GPT |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5 Codex](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) | GPT |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5 Mini](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-5) | GPT |  Full functionality |  Full functionality |  Full functionality |  Partial functionality |
+| GPT | [GPT-5.1](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-51) | GPT |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-5.2](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-52) | GPT |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| GPT | [GPT-oss-120B](https://huggingface.co/openai/gpt-oss-120b) | GPT |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Kimi | [Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| Kimi | [Kimi-K3](https://huggingface.co/moonshotai/Kimi-K3) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| Llama | [Llama 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) | Llama 3 |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
+| Llama | [Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) | Llama 3 |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
+| Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) | Llama 3 |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| Llama | [Llama 3.1 70B](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct) | Llama 3 |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Llama | [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct) | Llama 3 |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| MiniMax | [MiniMax-M3](https://huggingface.co/MiniMaxAI/MiniMax-M3) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| Mistral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) | Mistral Codestral |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
+| Mistral | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) | Mistral |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) | Mistral |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
+| Nemotron | [Nemotron 3 Ultra 550B-A55B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16) | General |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| Qwen | [Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B) | Qwen |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 
 ### Compatible models
 
@@ -83,7 +83,11 @@ Any models supported on GitLab.com should also work on GitLab Duo Self-Hosted.
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/18556) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta).
 
-You can use your own compatible models and platform with GitLab Duo Agent Platform and GitLab Duo features. For compatible models not included in supported model families, use the general model family. This includes models that you host yourself (for example, served through vLLM or LiteLLM), with the requirement that they are exposed through an OpenAI API-compatible `/v1` endpoint.
+You can use your own compatible models and platform with GitLab Duo Agent Platform and GitLab Duo features.
+These models include ones you host yourself (for example, served through vLLM or LiteLLM),
+provided that they're exposed through an OpenAI API-compatible `/v1` endpoint.
+For compatible models and for supported models without their own family
+(for example, GLM, Kimi, MiniMax, and Nemotron), select the **General** model family.
 
 Compatible models are excluded from the definition of Customer Integrated Models in the [AI Functionality Terms](https://handbook.gitlab.com/handbook/legal/ai-functionality-terms/). Compatible models and platforms must adhere to the OpenAI API specification. Models and platforms that have
 previously been marked as experimental or beta are now considered compatible models.
@@ -96,7 +100,7 @@ This feature is in beta and is therefore subject to change as we gather feedback
 
 #### GitLab Duo
 
-| Model family   | Model |
+| Model family   | Model name |
 |----------------|-------|
 | General        | Any model compatible with the [OpenAI API specification](https://platform.openai.com/docs/api-reference) |
 | CodeGemma      | [CodeGemma 2b](https://huggingface.co/google/codegemma-2b) |
@@ -108,13 +112,13 @@ This feature is in beta and is therefore subject to change as we gather feedback
 
 #### GitLab Duo Agent Platform
 
-| Model family   | Model |
+| Model family   | Model name |
 |----------------|-------|
 | General        | Any model compatible with the [OpenAI API specification](https://platform.openai.com/docs/api-reference) |
 | Gemini         | [Gemini 3.1 Pro](https://deepmind.google/models/gemini/pro/) |
 | Gemini         | [Gemini 3.0 Flash](https://deepmind.google/models/gemini/flash/) |
-| Gemma 4        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
-| Qwen 3.6       | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
+| General        | [Gemma-4-31B-IT](https://huggingface.co/google/gemma-4-31B-it) |
+| Qwen           | [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B) |
 
 #### Context window requirements
 

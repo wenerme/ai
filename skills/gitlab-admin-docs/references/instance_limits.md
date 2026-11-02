@@ -28,8 +28,8 @@ information that is relevant to them.
 
 To visit the instance configuration page:
 
-1. In the left sidebar, select **Help** () > **Help**.
-1. On the Help page, select **Check the current instance configuration**.
+1. In the left sidebar, select  () > .
+1. On the Help page, select
 
 The direct URL is `<gitlab_url>/help/instance_configuration`. For GitLab.com,
 you can visit <https://gitlab.com/help/instance_configuration>.
@@ -568,7 +568,7 @@ The [minimum wait time between pull refreshes](../user/project/repository/mirror
 defaults to 300 seconds (5 minutes). For example, a pull refresh only runs once in a given 300 second period, regardless of how many times you trigger it.
 
 This setting applies in the context of pull refreshes invoked by using the [projects API](../api/project_pull_mirroring.md#start-the-pull-mirroring-process-for-a-project),
-or when forcing an update by selecting **Update now** () in **Settings** > **Repository** > **Mirroring repositories**.
+or when forcing an update by selecting  () in  >  > .
 This setting has no effect on the automatic 30 minute interval schedule used by Sidekiq for [pull mirroring](../user/project/repository/mirror/pull.md).
 
 To change this limit for a GitLab Self-Managed instance, run the following in the
@@ -629,7 +629,7 @@ The total number of custom domains per GitLab Pages website is limited to `150` 
 
 The default limit for [GitLab Self-Managed](../subscriptions/manage_subscription.md) is `0` (unlimited).
 To set a limit on your instance, use the
-[**Admin** area](pages/_index.md#set-maximum-number-of-gitlab-pages-custom-domains-for-a-project).
+[ area](pages/_index.md#set-maximum-number-of-gitlab-pages-custom-domains-for-a-project).
 
 ### Number of parallel Pages deployments
 
@@ -828,7 +828,7 @@ The default maximum file size for a package that's uploaded to the [GitLab packa
 The [maximum file sizes on GitLab.com](../user/gitlab_com/_index.md#package-registry-limits)
 might be different.
 
-To set these limits for a GitLab Self-Managed instance, you can do it [through the **Admin** area](settings/continuous_integration.md#set-package-file-size-limits)
+To set these limits for a GitLab Self-Managed instance, you can do it [through the  area](settings/continuous_integration.md#set-package-file-size-limits)
 or run the following in the
 [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 

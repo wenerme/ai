@@ -213,23 +213,14 @@ go_cloud_url = "s3://<bucket>?region=us-west-1"
 S3-compatible servers are configured similarly to S3 with the
 addition of the `endpoint` parameter.
 
-The following parameters are supported:
+The following parameters are commonly used:
 
 - `region`: The AWS region.
-- `endpoint`: The endpoint URL.
-- `disableSSL`: Set to `true` to disable SSL. Available for GitLab 17.4.0 and earlier. For GitLab versions after 17.4.0, use `disable_https`.
-- `disable_https`: Set to `true` to disable HTTPS in the endpoint options.
-- `s3ForcePathStyle`: Set to `true` to force path-style URLs for S3 objects. Unavailable in GitLab versions 17.4.0 to 17.4.3. In those versions, use `use_path_style` instead.
-- `use_path_style`: Set to `true` to enable path-style S3 URLs (`https://<host>/<bucket>` instead of `https://<bucket>.<host>`).
-- `awssdk`: Force a particular version of AWS SDK. Set to `v1` to force AWS SDK v1 or `v2` to force AWS SDK v2. If:
-  - Set to `v1`, you must use `disableSSL` instead of `disable_https`.
-  - Not set, defaults to `v2`.
+- `endpoint`: The endpoint URL, including the scheme (for example, `https://s3.example.com:9000`). Use `http://` for plain HTTP (SSL disabled).
+- `use_path_style`: A value of `true` forces path-style addressing. This parameter is required for S3-compatible servers that do not support virtual-hosted-style addressing, or for buckets whose names contain characters that are not valid DNS labels (for example, `_`).
+- `disable_https`: Set to `true` to force plain HTTP against the endpoint. In most cases, prefer putting `http://` in the `endpoint` URL instead, which has the same effect. `disable_https=true` is still accepted by the s3blob driver (AWS SDK for Go v2) and remains useful when the endpoint URL cannot carry a scheme.
 
-`use_path_style` was introduced when the Go Cloud Development Kit dependency was updated from v0.38.0 to v0.39.0, which switched from AWS SDK v1 to v2. However, the `s3ForcePathStyle` parameter was restored in GitLab 17.4.4 after the gocloud.dev maintainers added backward compatibility support. For more information, see [issue 6489](https://gitlab.com/gitlab-org/gitaly/-/issues/6489).
-
-`disable_https` was introduced in the Go Cloud Development Kit v0.40.0 (AWS SDK v2).
-
-`awssdk` was introduced in the Go Cloud Development Kit v0.24.0.
+For the authoritative list of parameters, see the [Gitaly `gitaly-backup` documentation](https://gitlab.com/gitlab-org/gitaly/-/blob/master/doc/gitaly-backup.md#object-storage) and the [`gocloud.dev` `s3blob` package](https://pkg.go.dev/gocloud.dev/blob/s3blob#hdr-URLs).
 
 ### Linux package (Omnibus)
 
@@ -242,7 +233,7 @@ gitaly['env'] = {
 }
 gitaly['configuration'] = {
     bundle_uri: {
-        go_cloud_url: 's3://<bucket>?region=us-east-1&endpoint=s3.example.com:9000&disable_https=true&use_path_style=true'
+        go_cloud_url: 's3://<bucket>?region=us-east-1&endpoint=https://s3.example.com:9000&use_path_style=true'
     }
 }
 ```
@@ -253,7 +244,7 @@ Edit `/home/git/gitaly/config.toml` and configure `go_cloud_url`:
 
 ```toml
 [bundle_uri]
-go_cloud_url = "s3://<bucket>?region=us-east-1&endpoint=s3.example.com:9000&disable_https=true&use_path_style=true"
+go_cloud_url = "s3://<bucket>?region=us-east-1&endpoint=https://s3.example.com:9000&use_path_style=true"
 ```
 
 ## Generating bundles

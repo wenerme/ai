@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `black-forest-labs/flux-3-video`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.
@@ -28,7 +32,7 @@ FLUX 3 Video is Black Forest Labs' video generation model. It generates video fr
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://blackforestlabs.ai/) |
-| Pricing | <ul><li>hd$0.17</li><li>fhd$0.29</li><li>v2v hd$0.41</li><li>v2v fhd$0.53</li><li>hd draft$0.06</li><li>v2v hd draft$0.12</li></ul> |
+| Pricing | <ul><li>hd$0.15</li><li>fhd$0.24</li><li>v2v hd$0.21</li><li>v2v fhd$0.27</li><li>hd draft$0.06</li><li>v2v hd draft$0.12</li></ul> |
 
 ## Usage
 

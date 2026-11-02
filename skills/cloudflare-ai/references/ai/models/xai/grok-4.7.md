@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `xai/grok-4.7`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 - Zero data retention
 
@@ -32,7 +36,7 @@ xAI's Grok 4.7, a frontier reasoning model for coding, agentic tasks, and knowle
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-4.7) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | <ul><li>Input <200k (per 1M)$2.00</li><li>Cached input <200k (per 1M)$0.50</li><li>Output <200k (per 1M)$6.00</li><li>Input >=200k (per 1M)$4.00</li><li>Cached input >=200k (per 1M)$1.00</li><li>Output >=200k (per 1M)$12.00</li></ul> |
+| Pricing | <ul><li>Input <200k (per 1M)$2.00</li><li>Cached input <200k (per 1M)$0.50</li><li>Output <200k (per 1M)$6.00</li><li>Input >=200k (per 1M)$4.00</li><li>Output >=200k (per 1M)$12.00</li><li>Cached input >=200k (per 1M)$1.00</li></ul> |
 
 ## Usage
 
