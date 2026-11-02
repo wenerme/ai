@@ -329,7 +329,7 @@ what you're configuring and why.
 
    If you want to ask Chat what to adjust, do so in the IDE in the `setup.py`
    file, instead of in the GitLab UI. This provides Chat with
-   [the context you're working in](../../duo_agent_platform/context.md#gitlab-duo-agentic-chat),
+   [the context you're working in](../../duo_agent_platform/context.md#context-available-to-gitlab-duo),
    including the `setup.py` file you just created.
 
    ```plaintext

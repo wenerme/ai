@@ -6,6 +6,28 @@ li+li]:mt-2! [&_ul>li>p]:my-0! [&_#built-with-three-principles+ol>li+li]:mt-2! [
 
 Zero Data Retention with Private Safety Processing (ZDR with PSP) enables offline, automated safety review without OpenAI retaining customer prompts or responses. This guide provides an overview of how ZDR with PSP works and your operating responsibilities. For the full architecture and security model, see the [Private Safety Processing technical white paper](https://openaiassets.blob.core.windows.net/$web/pdf/c7284810-2252-462f-803e-075b0c95bccb/psp-whitepaper.pdf).
 
+<figure>
+  <video
+    controls
+    playsInline
+    preload="metadata"
+    aria-label="Private Safety Processing overview"
+    style={{ width: "100%", height: "auto" }}
+  >
+    <source
+      src="https://cdn.openai.com/devhub/docs/api/private-safety-processing/private-safety-processing-overview-v9-1080p.webm"
+      type="video/webm"
+    />
+    <track
+      kind="captions"
+      src="/captions/platform/private-safety-processing-overview-v9.vtt"
+      srcLang="en"
+      label="English"
+    />
+  </video>
+  <figcaption>Private Safety Processing overview (1 min 31 sec).</figcaption>
+</figure>
+
 ## Built with Three Principles
 
 1. **Customers control their content**
@@ -81,7 +103,7 @@ Each stored record is doubly encrypted when it is retained in customer storage:
 
 OpenAI’s inner decryption key is not enough to decrypt a stored record when EKM is enabled: your customer-managed key authorization is also required. Revoking that authorization prevents decryption of retained records, but does not delete them or undo completed processing.
 
-We recommend enabling EKM for this additional control. See the [EKM technical FAQ](https://help.openai.com/en/articles/20000945-ekm-technical-faq) for authorization and revocation, and the [technical whitepaper](https://openaiassets.blob.core.windows.net/$web/pdf/c7284810-2252-462f-803e-075b0c95bccb/psp-whitepaper.pdf) for encryption, confidential computing, guardrails, and transparency.
+We recommend enabling EKM for this additional control. The KMS that holds your EKM key can be in a different region from your configured storage. See the [EKM technical FAQ](https://help.openai.com/en/articles/20000945-ekm-technical-faq) for authorization and revocation, and the [technical whitepaper](https://openaiassets.blob.core.windows.net/$web/pdf/c7284810-2252-462f-803e-075b0c95bccb/psp-whitepaper.pdf) for encryption, confidential computing, guardrails, and transparency.
 
 
 
@@ -118,9 +140,7 @@ API_BASE="https://api.openai.com/v1"
 ORG_ID="<OPENAI_ORG_ID>"
 PROJECT_ID="<CUSTOMER_PROJECT_ID>"
 KEY_ID="<EXTERNAL_KEY_ID>"
-
-: "${OPENAI_ADMIN_KEY:?Load your organization admin key securely}"
-
+OPENAI_ADMIN_KEY="<OPENAI_ADMIN_KEY>"
 PROJECTS_URL="$API_BASE/organization/projects"
 ```
 
@@ -160,7 +180,7 @@ Project lists also return `psp_decryption_key_id`. The registration's `api_proje
 
 First set the API variables shown in [Select a key for PSP decryption](#select-a-key-for-psp-decryption).
 
-Send `null` to clear the selection. Omitting the field leaves it unchanged. Repeating a clear is supported.
+Send `null` to clear the selection. Omitting the field leaves it unchanged.
 
 ```bash
 curl --fail-with-body -sS "$PROJECTS_URL/$PROJECT_ID" \
@@ -199,7 +219,7 @@ ZDR with PSP is enabled per project. Once enabled, the PSP policy applies to all
 ### Before you start
 
 - Organizations already approved for Zero Data Retention can set up ZDR with PSP directly in the API console. If your organization isn't approved for ZDR, see the [eligibility and approval requirements](https://developers.openai.com/api/docs/guides/your-data#data-retention-controls-for-abuse-monitoring).
-- Choose a storage region that matches your project's data residency. You need permission to create storage and delegate access in your cloud account.
+- You can choose any supported storage region that meets your project's data residency requirements. You need permission to create storage and delegate access in your cloud account.
 - Have an organization administrator register and validate storage in the API console. For the Management API, use an OpenAI organization Admin API key. Project administrators can view guidance and status; a project inference key won't work for the Management API calls.
 
 ### Open storage setup in the API console
@@ -246,7 +266,7 @@ Complete these steps if you're using AWS. For other clouds, skip to **Azure Blob
 
 #### 1. Create the bucket
 
-Create a dedicated S3 bucket in a region compatible with your project's data residency. If Data Residency is off, the recommended region is us-west-1.
+Create a dedicated S3 bucket in a region compatible with your project's data residency. If Data Residency is off, you can choose any region for your bucket.
 
 - Keep **ACLs disabled**.
 - Turn on **Block all Public Access**.
@@ -362,9 +382,11 @@ Confirm the network setting meets your cloud requirements. Use the account's pri
 
 #### 2. Create the container
 
-Create a private container in **Storage Account > Data Storage > Containers > Add Container**. Add this container metadata in **Container > Settings > Metadata** with your exact OpenAI organization ID:
+Create a private container in **Storage Account > Data Storage > Containers > Add Container**. Open **Container > Settings > Metadata** and set `openai_organization_id` to your exact OpenAI organization ID. This field is required.
 
-- `openai_organization_id`: your OpenAI organization ID
+To restrict the container to one OpenAI project, also set `openai_project_id` to the exact project ID. This field is optional. Only the matching project can register or validate the container, read from it, or write to it.
+
+Two OpenAI projects in the same organization can share the container if you omit `openai_project_id` and the storage region meets both projects' data residency requirements. Register and validate the container for each project.
 
 Add the metadata to the container, not the storage account or individual blobs.
 
@@ -528,10 +550,9 @@ In the OCI Console, open **Storage > Object Storage & Archive Storage > Buckets*
 
 Use these bucket settings:
 
-- **Storage tier:** Standard
+- **Storage tier:** Standard with automatic tiering disabled
 - **Visibility:** Private
 - **Object versioning:** Disabled
-- **Auto-tiering:** Disabled
 
 Keep replication disabled. Record the bucket name and region identifier as `CUSTOMER_BUCKET_NAME` and `CUSTOMER_OCI_REGION`. Open **Profile**, select **Tenancy** followed by your tenancy's name, and copy its OCID as `CUSTOMER_TENANCY_OCID`. Your tenancy must be subscribed to the bucket's region.
 
@@ -546,11 +567,11 @@ Add these tags during bucket creation, or open the bucket's **Tags** tab and sel
 
 Use the same IDs in the access policy and storage registration. Each bucket is bound to one OpenAI organization and project.
 
-![OCI bucket creation form showing the openai_organization_id and openai_project_id freeform tags with example values.](https://developers.openai.com/images/platform/guides/private-safety-processing/setup-oci-bucket-tags.webp)
+![OCI bucket creation form with example values for the OpenAI organization and project ID tags.](https://developers.openai.com/images/platform/guides/private-safety-processing/setup-oci-bucket-tags.webp)
 
 #### 3. Grant OpenAI access
 
-In **Identity & Security > Policies**, select your tenancy's root compartment and create a policy named `psp-storage-access`. Turn on **Show manual editor** and enter these statements with your bucket name, region, and OpenAI organization and project IDs in the `CUSTOMER_...` placeholders. Keep OpenAI's tenancy and group OCIDs unchanged.
+In **Identity & Security > Policies**, select your tenancy's root compartment and create a policy named `psp-storage-access`. Turn on **Show manual editor** and enter these statements with your bucket name, region, and OpenAI organization and project IDs in the `CUSTOMER_...` placeholders. Keep the OCID values for OpenAI's tenancy and group unchanged.
 
 ```text
 Define tenancy OpenAICSG as ocid1.tenancy.oc1..aaaaaaaa4kzwe5jdr4gsxft7dfnwbnp3aozhxeskabsqo7czdkbp6fkh3uha
@@ -561,7 +582,7 @@ Admit group OpenAICSGProduction of tenancy OpenAICSG to {OBJECT_READ, OBJECT_CRE
 Allow service objectstorage-CUSTOMER_OCI_REGION to {BUCKET_INSPECT, BUCKET_READ, OBJECT_INSPECT, OBJECT_DELETE} in tenancy where target.bucket.name = 'CUSTOMER_BUCKET_NAME'
 ```
 
-The policy lets OpenAI look up your Object Storage namespace, read bucket configuration, and read and write objects under your project's prefix. Namespace lookup requires the tenancy-level permission without a bucket condition. The last statement lets Oracle's regional Object Storage service delete expired objects; for Ashburn, the service name is `objectstorage-us-ashburn-1`.
+The policy lets OpenAI look up your Object Storage namespace, read bucket configuration, and read and write objects under your project's prefix. Namespace lookup requires the tenancy-level permission without a bucket condition. The last statement lets Oracle's regional Object Storage service delete expired objects. For the `us-ashburn-1` region, use `objectstorage-us-ashburn-1` as the service name.
 
 Save the policy. OpenAI manages its credentials; you don't need to create or share an API signing key or access key.
 
@@ -832,11 +853,10 @@ If you're using AWS's project-based **[Sign up for AWS (new)](https://docs.aws.a
 
 After fixing the configuration, open **Connect storage** for the project and run the validation command with an organization Admin API key. Retrieve the registration or select **Refresh** to confirm **Validated**. Refresh alone doesn't run validation.
 
-### Contact support
 
-If storage or validation issues persist after troubleshooting, [contact OpenAI Support](https://help.openai.com/en/).
 
-### Change or stop your setup
+
+### Remove Storage
 
 To disconnect storage, open **Project Settings > Data retention**. Under **External storage**, select the trash icon beside the connection, then confirm with **Disconnect storage**.
 
@@ -874,3 +894,7 @@ Customers using ZDR with PSP are required to:
     {" - Supported regions and processing boundaries."}
   </li>
 </ul>
+
+## Contact support
+
+If storage or validation issues persist after troubleshooting, [contact OpenAI Support](https://help.openai.com/en/).

@@ -269,7 +269,7 @@ Merge request notifications are sent for the following notification levels:
 | Conflict                                               | Yes   |             |            |            |          | Author and any user that has set the merge request to auto-merge. |
 | [Marked as ready](../project/merge_requests/drafts.md) | Yes   | Yes         |            |            | Yes      |                    |
 | Merged                                                 | Yes   | Yes         |            | Yes        | If **Merge request is merged** is selected |                    |
-| Set to auto-merge                                      | Yes   | Yes         |            | Yes        | If **Merge request is set to auto-merge** is selected | Custom notification level is ignored for author, watcher, and subscribers. |
+| Set to auto-merge                                      | Yes   | Yes         |            | Yes        | If **Merge request is set to auto-merge** is selected | Also sent when a merge request is added to a [merge train](../../ci/pipelines/merge_trains.md). Custom notification level is ignored for author, watcher, and subscribers. |
 | Milestone changed                                      | Yes   | Yes         |            | Yes        | Yes      |                    |
 | Milestone removed                                      | Yes   | Yes         |            | Yes        | Yes      |                    |
 | New merge request                                      | Yes   | Yes         | Yes        |            | If **Merge request is created** is selected | Anyone mentioned by username in the description. |

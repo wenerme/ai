@@ -5,13 +5,16 @@ an expression that is evaluated with recipe arguments in scope and whose
 evaluated elements are paths. Paths may be absolute or relative to the recipe's
 working directory.
 
-Outputs are not part of the cache key.
+After an invocation, the current state of outputs is recorded in the
+invocation's cache entry. This includes whether they are files or directories,
+and for files, the BLAKE3 hash of their contents.
 
-All output files must exist for an invocation to be skipped, and after an
-invocation runs successfully, it is an error if any output file does not exist.
+All outputs must exist and match their recorded state in the cache entry for an
+invocation to be skipped, and after an invocation runs successfully, it is an
+error if any outputs do not exist.
 
-In this example, `build` re-runs whenever `main` is missing, and errors if it
-runs without producing `main`:
+In this example, `build` re-runs whenever `main` is missing or modified, and
+errors if it runs without producing `main`:
 
 ```just
 set unstable

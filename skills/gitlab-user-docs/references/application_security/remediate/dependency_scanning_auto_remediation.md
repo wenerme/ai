@@ -88,7 +88,7 @@ profile:
 - Cooldown period: GitLab excludes fix versions released in the last seven days.
 - Upgrade policy: GitLab proposes only patch and minor version bumps, unless
   [agentic breaking-change resolution](#enable-agentic-breaking-change-resolution) is enabled.
-- Open merge request limit: A maximum of 10 auto-remediation merge requests can be open
+- Open merge request limit: A maximum of 30 auto-remediation merge requests can be open
   per project at a time. GitLab does not create new merge requests until existing ones are
   merged or closed.
 

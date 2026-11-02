@@ -21,7 +21,7 @@ Information can be available:
 
 ## Based on location
 
-When you have any of these resources open, GitLab Duo knows about them.
+When you have any of these resources open, GitLab Duo knows about them:
 
 - Files you've told Chat about, by either:
   - Providing a direct file path.
@@ -55,14 +55,5 @@ are also available when you refer to them explicitly by their ID or URL.
 - Changed to beta in GitLab 18.4.
 - Enabled by default in GitLab 18.5.
 
-You can exclude the project content used as context by Code Review.
-Exclude context to protect sensitive information, like password and configuration files.
-
-To specify content that Code Review excludes:
-
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Under **GitLab Duo**, in the **GitLab Duo context exclusions** section, select **Manage exclusions**.
-1. Specify which project files and directories are excluded from GitLab Duo context, and select **Save exclusions**.
-1. Optional. To delete an existing exclusion, select **Delete** () for the appropriate exclusion.
-1. Select **Save changes**.
+You can exclude project content from the context that Code Review uses.
+For more information, see [manage context exclusions](../duo_agent_platform/context.md#manage-context-exclusions).

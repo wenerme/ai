@@ -36,7 +36,9 @@ configuration file.
 
 To pass a token on standard input, use `--stdin`.
 
-To configure glab as the Git credential helper for the host without a prompt, for example in a CI/CD job, use `--setup-git-credential-helper`.
+On instances where personal access tokens are disabled, sign in with OAuth and use glab as the Git credential helper instead of Git Credential Manager. glab automatically refreshes the OAuth token for Git and doesn't need an OAuth client secret.
+
+To configure glab as the Git credential helper non-interactively (for example, in a CI/CD job), use `--setup-git-credential-helper`.
 
 In interactive mode, glab detects GitLab instances from your Git remotes
 and lists them as options, so you do not have to type the hostname manually.
@@ -99,6 +101,10 @@ glab auth login --hostname $CI_SERVER_FQDN --job-token $CI_JOB_TOKEN --api-proto
 
 # Non-interactive setup that also lets Git push and pull with the same token
 glab auth login --hostname $CI_SERVER_FQDN --token $GITLAB_TOKEN --setup-git-credential-helper
+
+# Sign in with OAuth and configure glab as the Git credential helper (recommended when personal access tokens are disabled)
+glab config set client_id <CLIENT_ID> --host gitlab.example.com
+glab auth login --hostname gitlab.example.com --web --setup-git-credential-helper
 
 ```
 

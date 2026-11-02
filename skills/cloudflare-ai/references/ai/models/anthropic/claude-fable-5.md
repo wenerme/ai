@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `anthropic/claude-fable-5`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 Claude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.

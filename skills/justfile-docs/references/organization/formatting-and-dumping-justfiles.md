@@ -57,9 +57,9 @@ attribute<sup>1.54.0</sup> if it finds an entry matching the invocation in the
 cache. The `[cache]` attribute may only be used with script recipes and is
 currently unstable.
 
-For example, this recipe will be skipped if `image.jpg` exists and the contents
-of `image.png` and the output of `convert -version` haven't changed since the
-last run:
+For example, this recipe will be skipped if the contents of `image.png` and
+`image.jpg` and the output of `convert -version` haven't changed since the last
+run:
 
 ```just
 set unstable

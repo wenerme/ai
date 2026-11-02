@@ -7,6 +7,7 @@ REST API to register and unregister mobile devices for push notifications.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248023) in GitLab 19.3 [with a flag](../administration/feature_flags/_index.md) named `mobile_push_registration_api`. Disabled by default.
 - Notification delivery [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248026) in GitLab 19.3 [with flags](../administration/feature_flags/_index.md) named `mobile_push_notifications_dispatch` and `mobile_push_notifications`. Disabled by default.
+- Badge-only updates [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263212) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `mobile_push_badge_sync`. Disabled by default.
 - Feature flag `mobile_push_notifications` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/607603) in GitLab 19.6.
 
 Register mobile devices to receive push notifications for the authenticated
@@ -15,6 +16,14 @@ to-do item.
 Registering a device does not deliver notifications by itself: delivery is
 enabled separately for the instance with the `mobile_push_notifications_dispatch`
 feature flag.
+
+Every notification carries the user's pending to-do count as the app badge.
+When the `mobile_push_badge_sync` feature flag is also enabled, a change to
+that count that creates no to-do item (marking to-do items as done or
+restoring them, snoozing them, or deleting their target) sends a badge-only
+notification a few seconds later: no alert text and no sound, only the new
+count. One badge-only notification is sent per user and change window, however
+many to-do items the change affected.
 
 ## Register a device
 

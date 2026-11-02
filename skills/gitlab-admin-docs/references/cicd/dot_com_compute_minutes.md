@@ -16,12 +16,12 @@ Prerequisites:
 
 To set cost factors for a runner:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **CI/CD** > **Runners**.
-1. For the runner you want to update, select **Edit** ().
-1. In the **Public projects compute cost factor** text box, enter the public cost factor.
-1. In the **Private projects compute cost factor** text box, enter the private cost factor.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. For the runner you want to update, select  ().
+1. In the  text box, enter the public cost factor.
+1. In the  text box, enter the private cost factor.
+1. Select .
 
 ## Reduce cost factors for community contributions
 

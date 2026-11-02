@@ -87,7 +87,7 @@ ps = Ci::CreatePipelineService.new(schedule.project, user, ref: schedule.ref).ex
 
 Prerequisites:
 
-- Runner registration tokens must be [enabled](../settings/continuous_integration.md#control-runner-registration) in the **Admin** area.
+- Runner registration tokens must be [enabled](../settings/continuous_integration.md#control-runner-registration) in the  area.
 
 ```ruby
 Gitlab::CurrentSettings.current_application_settings.runners_registration_token

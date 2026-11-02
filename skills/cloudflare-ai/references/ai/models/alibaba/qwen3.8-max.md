@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `alibaba/qwen3.8-max`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 Alibaba's Qwen 3.8 Max is a 2.4-trillion-parameter MoE flagship built for professional-grade coding and long-horizon autonomous work, capable of delivering complete, production-grade projects spanning 10+ days across legal, financial, design, and other specialized domains. Native visual understanding of images and extended video runs through the full plan-execute-verify cycle, served via DashScope's OpenAI-compatible endpoint.
@@ -29,7 +33,7 @@ Alibaba's Qwen 3.8 Max is a 2.4-trillion-parameter MoE flagship built for profes
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.qwencloud.com/models/qwen3.8-max) |
 | Request formats | Chat Completions, Responses |
-| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$6.00</li><li>Cached input (per 1M tokens)$0.25</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.25</li><li>Output (per 1M tokens)$6.00</li></ul> |
 
 ## Usage
 

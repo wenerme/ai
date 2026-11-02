@@ -155,7 +155,7 @@ This can occur when the pre-scan results exceed the
 To improve the review:
 
 - Split the merge request into smaller merge requests.
-- [Exclude context](../../../context.md#exclude-context-from-gitlab-duo) for files that are not
+- [Exclude context](../../../context.md#manage-context-exclusions) for files that are not
   relevant to the review.
 - Ask a group Owner or instance administrator to select a different model for
   [GitLab.com](../../../model_selection.md#select-a-model-for-a-feature)

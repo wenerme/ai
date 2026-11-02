@@ -38,11 +38,11 @@ Prerequisites:
 
 To change the default quota that applies to all namespaces:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Continuous Integration and Deployment**.
-1. In the **Compute quota** box, enter a limit.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  box, enter a limit.
+1. Select .
 
 If a quota is already defined for a specific namespace, this value does not change that quota.
 
@@ -57,11 +57,11 @@ Prerequisites:
 
 To set a compute quota for a group or namespace:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Overview** > **Groups**.
-1. For the group you want to update, select **Edit**.
-1. In the **Compute quota** box, enter the maximum number of compute minutes.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. For the group you want to update, select .
+1. In the  box, enter the maximum number of compute minutes.
+1. Select .
 
 You can also use the [update group API](../../api/groups.md#update-group-attributes) or the
 [update user API](../../api/users.md#modify-a-user) instead.
@@ -72,12 +72,12 @@ An administrator can reset the compute usage for a namespace for the current mon
 
 ### Reset usage for a personal namespace
 
-1. Find the [user in the **Admin** area](../admin_area.md#administering-users).
-1. Select **Edit**.
-1. In **Limits**, select **Reset compute usage**.
+1. Find the [user in the  area](../admin_area.md#administering-users).
+1. Select .
+1. In , select .
 
 ### Reset usage for a group namespace
 
-1. Find the [group in the **Admin** area](../admin_area.md#administering-groups).
-1. Select **Edit**.
-1. In **Permissions and group features**, select **Reset compute usage**.
+1. Find the [group in the  area](../admin_area.md#administering-groups).
+1. Select .
+1. In , select .

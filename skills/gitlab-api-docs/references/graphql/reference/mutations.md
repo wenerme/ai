@@ -9045,6 +9045,32 @@ Removes relations between a merge request and work items.
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `mergeRequest` | [`MergeRequest`](objects.md#mergerequest) | Merge request after mutation. |
 
+## `mergeRequestResolveConflicts`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Resolves the conflicts of a merge request the way the web UI does: commits a merge of the target branch into the source branch.
+
+**Input type:** `MergeRequestResolveConflictsInput`
+
+### `mergeRequestResolveConflicts` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `commitMessage` | [`String`](scalars.md#string) | Message of the merge commit. Defaults to the message the web UI uses. |
+| `files` | [`[MergeRequestConflictFileResolutionInput!]!`](input_objects.md#mergerequestconflictfileresolutioninput) | Resolution of every file in `MergeRequest.conflictFiles`. Maximum is 1000 files. |
+| `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
+| `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
+
+### `mergeRequestResolveConflicts` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `mergeRequest` | [`MergeRequest`](objects.md#mergerequest) | Merge request after mutation. |
+
 ## `mergeRequestResyncSecurityPolicies`
 
 - Status: Experiment

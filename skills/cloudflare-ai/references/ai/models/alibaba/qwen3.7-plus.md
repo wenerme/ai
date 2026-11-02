@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `alibaba/qwen3.7-plus`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 Alibaba's Qwen 3.7 Plus is the cost-effective member of the Qwen3.7 series, pairing strong text capabilities with image and video understanding and full-stack agent-level intelligence for coding, tool use, and GUI-based automation, served via DashScope's OpenAI-compatible endpoint.
@@ -29,7 +33,7 @@ Alibaba's Qwen 3.7 Plus is the cost-effective member of the Qwen3.7 series, pair
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.qwencloud.com/models/qwen3.7-plus) |
 | Request formats | Chat Completions, Responses |
-| Pricing | <ul><li>Input (per 1M tokens)$0.32</li><li>Output (per 1M tokens)$1.28</li><li>Cached input (per 1M tokens)$0.064</li></ul> |
+| Pricing | <ul><li>Input (per 1M tokens)$0.32</li><li>Cached input (per 1M tokens)$0.064</li><li>Output (per 1M tokens)$1.28</li></ul> |
 
 ## Usage
 

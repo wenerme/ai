@@ -383,7 +383,8 @@ default:
   image: ruby:3.2
   before_script:
     - gem install bundler
-    - bundle install --path vendor
+    - bundle config set path 'vendor'
+    - bundle install
   cache:
     paths:
       - vendor/

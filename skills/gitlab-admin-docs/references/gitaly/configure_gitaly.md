@@ -1524,12 +1524,15 @@ go_cloud_url = "s3://<bucket>?region=us-west-1"
 
 S3-compatible servers are configured similarly to S3 with the addition of the `endpoint` parameter.
 
-The following parameters are supported:
+The following parameters are commonly used:
 
 - `region`: The AWS region.
-- `endpoint`: The endpoint URL.
-- `disabledSSL`: A value of `true` disables SSL.
-- `s3ForcePathStyle`: A value of `true` forces path-style addressing.
+- `endpoint`: The endpoint URL, including the scheme (for example, `https://s3.example.com:9000`). Use `http://` for plain HTTP (SSL disabled).
+- `use_path_style`: A value of `true` forces path-style addressing. This parameter is required for S3-compatible servers that do not support virtual-hosted-style addressing, or for buckets whose names contain characters that are not valid DNS labels (for example, `_`).
+- `disable_https`: Set to `true` to force plain HTTP against the endpoint. In most cases, prefer putting `http://` in the `endpoint` URL instead, which has the same effect. `disable_https=true` is still accepted by the s3blob driver (AWS SDK for Go v2) and remains useful when the endpoint URL cannot carry a scheme.
+- `request_checksum_calculation`: Controls flexible-checksum behavior. For `endpoint`-based URLs, Gitaly defaults this to `when_required`, which is suitable for most S3-compatible backends. To enable S3 Object Lock on third-party providers, set this to `when_supported`.
+
+For the authoritative list of parameters, see the [Gitaly `gitaly-backup` documentation](https://gitlab.com/gitlab-org/gitaly/-/blob/master/doc/gitaly-backup.md#object-storage) and the [`gocloud.dev` `s3blob` package](https://pkg.go.dev/gocloud.dev/blob/s3blob#hdr-URLs).
 
 ### Helm chart (Kubernetes)
 
@@ -1547,7 +1550,7 @@ gitaly['env'] = {
 }
 gitaly['configuration'] = {
     backup: {
-        go_cloud_url: 's3://<bucket>?region=us-east-1&endpoint=s3.example.com:9000&disableSSL=true&s3ForcePathStyle=true'
+        go_cloud_url: 's3://<bucket>?region=us-east-1&endpoint=https://s3.example.com:9000&use_path_style=true'
     }
 }
 ```
@@ -1558,5 +1561,5 @@ Edit `/home/git/gitaly/config.toml` and configure `go_cloud_url`:
 
 ```toml
 [backup]
-go_cloud_url = "s3://<bucket>?region=us-east-1&endpoint=s3.example.com:9000&disableSSL=true&s3ForcePathStyle=true"
+go_cloud_url = "s3://<bucket>?region=us-east-1&endpoint=https://s3.example.com:9000&use_path_style=true"
 ```

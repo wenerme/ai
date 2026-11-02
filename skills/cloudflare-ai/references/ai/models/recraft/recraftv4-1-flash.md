@@ -20,6 +20,10 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 `recraft/recraftv4-1-flash`
 
+Note
+
+Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+
 - Third-party
 
 Recraft V4.1 Flash is Recraft's fastest and lowest-cost image model, generating a 1K raster image in about 1.3 seconds with quality close to Recraft V4.1. Built for high-volume generation and rapid iteration, with strong results for photography, portraits, atmospheric scenes, mixed media, and logo concepts. It outputs raster images only and does not support styles.

@@ -239,7 +239,7 @@ Code Review Flow runs in two stages:
    - Custom review instructions.
 
 To specify content to exclude, see
-[exclude context from GitLab Duo](../../../context.md#exclude-context-from-gitlab-duo).
+[manage context exclusions](../../../context.md#manage-context-exclusions).
 
 ### File and context limits
 
@@ -256,7 +256,7 @@ For very large merge requests, the review might miss context that was truncated.
 risk:
 
 - Split the merge request into smaller merge requests.
-- [Exclude context](../../../context.md#exclude-context-from-gitlab-duo) for files that are not
+- [Exclude context](../../../context.md#manage-context-exclusions) for files that are not
   relevant to the review.
 - Ask a group Owner or instance administrator to select a different model for
   [GitLab.com](../../../model_selection.md#select-a-model-for-a-feature)

@@ -8,9 +8,12 @@ An IP allowlist identifies traffic from an OpenAI-operated network, not a specif
 
 ## Outbound IP addresses
 
-| Product              | Used for                                                | Published ranges                                                 |
-| -------------------- | ------------------------------------------------------- | ---------------------------------------------------------------- |
-| ChatGPT integrations | Plugins, connectors, GPT Actions, and agentic commerce  | [ChatGPT connectors](https://openai.com/chatgpt-connectors.json) |
-| Codex cloud          | Connections from Codex cloud to services such as GitHub | [ChatGPT agents](https://openai.com/chatgpt-agents.json)         |
+| Product                         | Used for                                                | Published ranges                                         |
+| ------------------------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+| ChatGPT integrations            | Plugins, connectors, GPT Actions, and agentic commerce  | [ChatGPT connectors]                                     |
+| Codex cloud                     | Connections from Codex cloud to services such as GitHub | [ChatGPT agents](https://openai.com/chatgpt-agents.json) |
+| Private Safety Processing (PSP) | Writing to and reading from customer configured storage | [PSP connectors][ChatGPT connectors]                     |
 
 Each JSON file includes a `creationTime` and a `prefixes` array. The ranges can change as OpenAI infrastructure changes. Fetch the relevant file regularly and update your allowlist automatically.
+
+[ChatGPT connectors]: https://openai.com/chatgpt-connectors.json

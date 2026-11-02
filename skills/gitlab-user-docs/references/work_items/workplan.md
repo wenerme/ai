@@ -310,6 +310,25 @@ To implement a workplan with GitLab Duo, use one of the following methods:
   1. On the work item, in the  widget, select .
   1. In the panel, select .
 
+### Implement a work item without a workplan
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632233) in GitLab 19.6.
+
+For a small or well-understood change, GitLab Duo can implement the work item without a workplan.
+GitLab Duo starts the Developer Flow with the work item as context, and planning stays off.
+
+Prerequisites:
+
+- GitLab Duo Agent Platform remote flows turned on.
+- [Developer Flow](../project/merge_requests/developer.md) turned on for the top-level
+  group and the project. For more information, see
+  [turn foundational flows on or off](../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
+
+To implement a work item without a workplan:
+
+- On a work item without planning turned on, next to ,
+  select the down arrow () > .
+
 ## Related topics
 
 - [GitLab Duo Agent Platform](../duo_agent_platform/_index.md)

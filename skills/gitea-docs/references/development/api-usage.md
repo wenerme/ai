@@ -71,6 +71,7 @@ By default, this creates a token with very limited permissions. To complete your
 
 - `activitypub`
 - `admin`
+- `commitstatus` (included in `repository`)
 - `issue`
 - `misc`
 - `notification`
