@@ -542,10 +542,13 @@ func main() {
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.core.RequestOptions;
 import com.openai.core.http.StreamResponse;
+import com.openai.errors.OpenAIIoException;
 import com.openai.models.responses.ResponseCreateParams;
 import com.openai.models.responses.ResponseRetrieveParams;
 import com.openai.models.responses.ResponseStreamEvent;
+import java.time.Duration;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.AtomicReference;
@@ -561,11 +564,24 @@ AtomicLong lastSequenceNumber = new AtomicLong(-1);
 AtomicReference<String> responseId = new AtomicReference<>("");
 AtomicBoolean streamCompleted = new AtomicBoolean(false);
 JsonMapper json = new JsonMapper();
-try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStreaming(params)) {
+// This long-running response can exceed the SDK's default request deadline.
+RequestOptions streamOptions = RequestOptions.builder().timeout(Duration.ofMinutes(30)).build();
+try (StreamResponse<ResponseStreamEvent> stream =
+    client.responses().createStreaming(params, streamOptions)) {
   stream.stream()
       .forEach(
           event -> {
-            lastSequenceNumber.set(json.valueToTree(event).path("sequence_number").asLong());
+            if (event.failed().isPresent()
+                || event.incomplete().isPresent()
+                || event.error().isPresent()) {
+              throw new IllegalStateException("Background response did not complete");
+            }
+            var data = json.valueToTree(event);
+            // Keepalives count connection traffic, not stored response events.
+            if (data.path("type").asText().startsWith("response.")
+                && data.path("sequence_number").isIntegralNumber()) {
+              lastSequenceNumber.set(data.path("sequence_number").asLong());
+            }
             event
                 .created()
                 .ifPresent(
@@ -587,10 +603,23 @@ try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStrea
                       System.out.println("response.completed");
                     });
           });
+} catch (OpenAIIoException error) {
+  // Resume an interrupted stream once, from its stored-event checkpoint.
+  if (Thread.currentThread().isInterrupted()
+      || streamCompleted.get()
+      || responseId.get().isBlank()
+      || lastSequenceNumber.get() < 0) {
+    throw error;
+  }
 }
 System.out.println(
     "Response " + responseId.get() + "; last sequence number " + lastSequenceNumber.get());
 if (!streamCompleted.get()) {
+  if (Thread.currentThread().isInterrupted()
+      || responseId.get().isBlank()
+      || lastSequenceNumber.get() < 0) {
+    throw new IllegalStateException("Stream ended without a resumable checkpoint");
+  }
   try (StreamResponse<ResponseStreamEvent> resumed =
       client
           .responses()
@@ -598,11 +627,22 @@ if (!streamCompleted.get()) {
               ResponseRetrieveParams.builder()
                   .responseId(responseId.get())
                   .startingAfter(lastSequenceNumber.get())
-                  .build())) {
+                  .build(),
+              streamOptions)) {
     resumed.stream()
         .forEach(
-            event ->
-                event.outputTextDelta().ifPresent(delta -> System.out.println(delta.delta())));
+            event -> {
+              if (event.failed().isPresent()
+                  || event.incomplete().isPresent()
+                  || event.error().isPresent()) {
+                throw new IllegalStateException("Resumed response did not complete");
+              }
+              event.outputTextDelta().ifPresent(delta -> System.out.println(delta.delta()));
+              event.completed().ifPresent(completed -> streamCompleted.set(true));
+            });
+  }
+  if (!streamCompleted.get()) {
+    throw new IllegalStateException("Resumed response did not complete");
   }
 }
 ```

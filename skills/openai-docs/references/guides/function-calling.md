@@ -70,7 +70,7 @@ To complete our weather example:
 
 We then send all of the tool definition, the original prompt, the model's tool call, and the tool call output back to the model to finally receive a text response like:
 
-```
+```text
 The weather in Paris today is 25C.
 ```
 
@@ -704,6 +704,7 @@ for _, output := range response.Output {
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.JsonValue;
+import com.openai.core.ObjectMappers;
 import com.openai.models.responses.EasyInputMessage;
 import com.openai.models.responses.FunctionTool;
 import com.openai.models.responses.ResponseCreateParams;
@@ -715,39 +716,40 @@ import java.util.Map;
 response.output().stream()
     .map(item -> JsonValue.from(item).convert(ResponseInputItem.class))
     .forEach(input::add);
-response.output().stream()
-    .flatMap(item -> item.functionCall().stream())
-    .forEach(
-        call -> {
-          String result;
-          if (call.name().equals("get_weather")) {
-            record Coordinates(double latitude, double longitude) {}
+for (var item : response.output()) {
+  if (item.functionCall().isEmpty()) continue;
+  var call = item.functionCall().get();
+  String result;
+  if (call.name().equals("get_weather")) {
+    record Coordinates(double latitude, double longitude) {}
 
-            Coordinates coordinates = call.arguments(Coordinates.class);
-            result =
-                JsonValue.from(
-                        Map.of(
-                            "latitude", coordinates.latitude(),
-                            "longitude", coordinates.longitude(),
-                            "temperature_c", 18))
-                    .toString();
-          } else if (call.name().equals("send_email")) {
-            record Email(String to, String body) {}
+    Coordinates coordinates = call.arguments(Coordinates.class);
+    result =
+        ObjectMappers.jsonMapper()
+            .writeValueAsString(
+                Map.of(
+                    "latitude", coordinates.latitude(),
+                    "longitude", coordinates.longitude(),
+                    "temperature_c", 18));
+  } else if (call.name().equals("send_email")) {
+    record Email(String to, String body) {}
 
-            Email message = call.arguments(Email.class);
-            result = JsonValue.from(Map.of("to", message.to(), "status", "sent")).toString();
-          } else {
-            throw new IllegalArgumentException("Unknown function: " + call.name());
-          }
-          var output =
-              ResponseInputItem.ofFunctionCallOutput(
-                  ResponseInputItem.FunctionCallOutput.builder()
-                      .callId(call.callId())
-                      .output(result)
-                      .build());
-          input.add(output);
-          System.out.println(call.callId() + " " + result);
-        });
+    Email message = call.arguments(Email.class);
+    result =
+        ObjectMappers.jsonMapper()
+            .writeValueAsString(Map.of("to", message.to(), "status", "sent"));
+  } else {
+    throw new IllegalArgumentException("Unknown function: " + call.name());
+  }
+  var output =
+      ResponseInputItem.ofFunctionCallOutput(
+          ResponseInputItem.FunctionCallOutput.builder()
+              .callId(call.callId())
+              .output(result)
+              .build());
+  input.add(output);
+}
+System.out.println(ObjectMappers.jsonMapper().writeValueAsString(input));
 ```
 
 ```ruby
@@ -1347,19 +1349,7 @@ ResponseCreateParams params =
         .build();
 
 try (StreamResponse<ResponseStreamEvent> stream = client.responses().createStreaming(params)) {
-  stream.stream()
-      .forEach(
-          event -> {
-            System.out.println(event);
-            event
-                .outputItemAdded()
-                .ifPresent(added -> System.out.println("response.output_item.added: " + added));
-            event
-                .functionCallArgumentsDelta()
-                .ifPresent(
-                    delta ->
-                        System.out.println("response.function_call_arguments.delta: " + delta));
-          });
+  stream.stream().forEach(System.out::println);
 }
 ```
 
@@ -2013,14 +2003,14 @@ Lark grammars can be tricky to perfect. While less complex grammars perform most
 
 Correct (single, bounded terminal):
 
-```
+```text
 start: SENTENCE
 SENTENCE: /[A-Za-z, ]*(the hero|a dragon|an old man|the princess)[A-Za-z, ]*(fought|saved|found|lost)[A-Za-z, ]*(a treasure|the kingdom|a secret|his way)[A-Za-z, ]*\./
 ```
 
 Do NOT do this (splitting across rules/terminals). This attempts to let rules partition free text between terminals. The lexer will greedily match the free-text pieces and you'll lose control:
 
-```
+```text
 start: sentence
 sentence: /[A-Za-z, ]+/ subject /[A-Za-z, ]+/ verb /[A-Za-z, ]+/ object /[A-Za-z, ]+/
 ```
@@ -2055,7 +2045,7 @@ Favor explicit character classes and bounded quantifiers (`{0,10}`, not unbounde
 
 Good rule usage example:
 
-```
+```text
 start: expr
 NUMBER: /[0-9]+/
 PLUS: "+"

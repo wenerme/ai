@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/dns/nameservers/custom-nameservers/name
 
 # Nameserver sets
 
-Last updated Oct 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A nameserver set is an account-level group of two to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account. Each set has a name to identify it.
+A nameserver set is an account-level group of up to five custom nameserver names, together with the IP addresses that Cloudflare assigns to those names. You create a set once and then assign it to zones in the same account. Each set has a name to identify it.
 
 Nameserver sets are a separate configuration from [zone](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/), [account](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/), and [tenant](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/tenant-custom-nameservers/) custom nameservers. A zone uses either a nameserver set or one of those configurations, never both. Existing configurations cannot be converted into nameserver sets.
 
@@ -51,10 +51,16 @@ The following limits apply to nameserver sets:
 
 | Item | Limit |
 | --- | --- |
-| Nameserver names per set | 2 to 5 |
+| Nameserver names per set | 1 to 5 |
 | IPv4 and IPv6 addresses per nameserver name | 1 to 3 each (`ip_count`, defaults to 1) |
 
 All nameserver names in an Advanced set must use the same `ip_count` value.
+
+Caution
+
+A zone should have at least two listed authoritative nameservers. For details, refer to [RFC 2182, section 5 ↗︎](https://www.rfc-editor.org/rfc/rfc2182.html#section-5).
+
+Single-name sets are intended only for [multi-provider DNS setups](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns). In these setups, another provider supplies additional authoritative nameservers.
 
 ### Set names
 
@@ -361,5 +367,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-10-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/#page","headline":"Nameserver sets","description":"Create standard or Advanced Custom Nameserver sets and assign them to zones in your account.","url":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/nameservers/custom-nameservers/nameserver-sets/og.png?v=a859fd553ad70352","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

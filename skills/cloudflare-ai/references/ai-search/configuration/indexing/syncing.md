@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/syncin
 
 # Syncing
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search automatically indexes your content for search. How indexing works depends on your data source.
 
 ## External data sources
 
-For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) or [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), AI Search creates jobs to sync your data source. Jobs run automatically on a schedule, every 6 hours by default, and process new, modified, or deleted files to keep your search index up to date.
+For instances connected to a [website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) or [R2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/), AI Search creates jobs to sync your data source. Jobs run automatically on a schedule, every 24 hours by default, and process new, modified, or deleted files to keep your search index up to date.
 
 You can view job status and history in the **Jobs** tab in the dashboard or using the [Instances API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
 
 ### Sync interval
 
-By default, AI Search runs a sync job every 6 hours. To change how often scheduled syncs run, use the **Sync interval** setting in the dashboard, or set the `sync_interval` field when you [create](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#create) or [update](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) an instance through the Workers binding or [REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
+By default, AI Search runs a sync job every 24 hours. To change how often scheduled syncs run, use the **Sync interval** setting in the dashboard, or set the `sync_interval` field when you [create](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#create) or [update](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) an instance through the Workers binding or [REST API](https://developers.cloudflare.com/ai-search/api/instances/rest-api/).
 
-The interval can be 15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 12 hours, or 24 hours. In the API, `sync_interval` is specified in seconds. The allowed values are `900`, `1800`, `3600`, `7200`, `14400`, `21600` (the default), `43200`, and `86400`.
+The interval can be 15 minutes, 30 minutes, 1 hour, 2 hours, 4 hours, 6 hours, 12 hours, or 24 hours. In the API, `sync_interval` is specified in seconds. The allowed values are `900`, `1800`, `3600`, `7200`, `14400`, `21600`, `43200`, and `86400` (the default).
 
 ### Trigger syncs from automated pipelines
 
@@ -87,5 +87,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/og.png?v=ac4e94456e06d7cd","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/#page","headline":"Syncing","description":"Understand how AI Search automatically syncs and indexes content from connected data sources.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/syncing/og.png?v=ac4e94456e06d7cd","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

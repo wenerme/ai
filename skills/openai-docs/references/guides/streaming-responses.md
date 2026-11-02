@@ -222,7 +222,7 @@ If you're using our SDK, every event is a typed instance. You can also identity 
 
 Some key lifecycle events are emitted only once, while others are emitted multiple times as the response is generated. Common events to listen for when streaming text are:
 
-```
+```text
 - `response.created`
 - `response.output_text.delta`
 - `response.completed`

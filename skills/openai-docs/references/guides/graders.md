@@ -315,13 +315,13 @@ Then you can automatically evaluate how effectively the model grader distinguish
 
 For example, say you know from your human experts which answers are best:
 
-```
+```text
 answer_1 > answer_2 > answer_3
 ```
 
 Verify that the model grader's answers match that:
 
-```
+```text
 model_grader(answer_1, reference_answer) > model_grader(answer_2, reference_answer) > model_grader(answer_3, reference_answer)
 ```
 
@@ -462,7 +462,7 @@ This will automatically use the entire source code of your `grader.py` file as t
 
 The following third-party packages are available at execution time for the image tag `2025-05-08`
 
-```
+```text
 numpy==2.2.4
 scipy==1.15.2
 sympy==1.13.3
@@ -483,7 +483,7 @@ ast-grep-py==0.36.2
 
 Additionally, the following NLTK corpora are available:
 
-```
+```text
 punkt
 stopwords
 wordnet

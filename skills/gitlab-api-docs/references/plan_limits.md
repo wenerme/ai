@@ -36,6 +36,9 @@ Example response:
 {
   "ci_instance_level_variables": 25,
   "ci_pipeline_size": 0,
+  "ci_pipeline_variables_count": 0,
+  "ci_variable_value_size": 0,
+  "ci_variable_file_value_size": 0,
   "ci_active_jobs": 0,
   "ci_project_subscriptions": 2,
   "ci_pipeline_schedules": 10,
@@ -77,6 +80,9 @@ PUT /application/plan_limits
 | `plan_name`                       | string  | yes      | Name of the plan to update. |
 | `ci_instance_level_variables`     | integer | no       | Maximum number of Instance-level CI/CD variables that can be defined. |
 | `ci_pipeline_size`                | integer | no       | Maximum number of jobs in a single pipeline. |
+| `ci_pipeline_variables_count`     | integer | no       | Maximum number of pipeline variables in a single pipeline. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
+| `ci_variable_value_size`          | integer | no       | Maximum size of a pipeline variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
+| `ci_variable_file_value_size`     | integer | no       | Maximum size of a file type pipeline variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
 | `ci_active_jobs`                  | integer | no       | Total number of jobs in currently active pipelines. |
 | `ci_project_subscriptions`        | integer | no       | Maximum number of pipeline subscriptions to and from a project. |
 | `ci_pipeline_schedules`           | integer | no       | Maximum number of pipeline schedules. |
@@ -116,6 +122,9 @@ Example response:
 {
   "ci_instance_level_variables": 25,
   "ci_pipeline_size": 0,
+  "ci_pipeline_variables_count": 0,
+  "ci_variable_value_size": 0,
+  "ci_variable_file_value_size": 0,
   "ci_active_jobs": 0,
   "ci_project_subscriptions": 2,
   "ci_pipeline_schedules": 10,

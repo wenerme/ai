@@ -297,7 +297,7 @@ With your webhook endpoint created, you'll next set up a server-side endpoint to
 
 When an event happens that you're subscribed to, your webhook URL will receive an HTTP POST request like this:
 
-```
+```text
 POST https://yourserver.com/webhook
 user-agent: OpenAI/1.0 (+https://platform.openai.com/docs/webhooks)
 content-type: application/json
@@ -331,7 +331,7 @@ While you can receive webhook events from OpenAI and process the results without
 
 When you create a webhook endpoint in the OpenAI dashboard, you'll be given a signing secret that you should make available on your server as an environment variable:
 
-```
+```bash
 export OPENAI_WEBHOOK_SECRET="<your secret here>"
 ```
 

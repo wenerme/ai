@@ -109,6 +109,8 @@ GitLab. Use it to apply, remove, or check the status of a profile for a single p
 
 - Status: Experiment
 
+- `mode` argument [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262310) in GitLab 19.6.
+
 Use the [GraphQL API](../../../api/graphql/getting_started.md) to apply profiles to subgroups and projects.
 When you apply a profile to a group, GitLab applies it to every project in the group and its subgroups.
 
@@ -133,6 +135,21 @@ To apply a profile:
 
 All projects and groups in one mutation must belong to the same top-level group.
 Each mutation accepts up to 100 project and group IDs combined.
+
+By default, the profile replaces any other profile of the same scan type on every target project.
+To change this behavior, set the `mode` argument of the `securityScanProfileAttach` mutation to a
+[`SecurityScanProfileAttachMode`](../../../api/graphql/reference/enums.md#securityscanprofileattachmode) value.
+For example, to apply a profile only to projects that don't have one yet, use `FILL_PROFILE_GAPS`.
+
+In `FILL_SCAN_GAPS` mode, a project has scan coverage for a scan type when it has an
+[`analyzerStatuses`](../../../api/graphql/reference/objects.md#analyzerprojectstatustype) entry for
+that `analyzerType` with a `status` other than `NOT_CONFIGURED`.
+A project with no entry for the type, or with a `NOT_CONFIGURED` entry, has no coverage.
+For secret detection and container scanning, only pipeline-based scans count as coverage.
+Secret push protection and container registry scanning do not stop the profile from applying.
+
+`FILL_SCAN_GAPS` is not available for profiles of a scan type that has no analyzer status, like
+automated triage and remediation.
 
 To remove a profile, use the
 [`securityScanProfileDetach`](../../../api/graphql/reference/mutations.md#securityscanprofiledetach) mutation.

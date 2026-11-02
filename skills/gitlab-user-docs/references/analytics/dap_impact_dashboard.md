@@ -99,6 +99,18 @@ The **Capability outcomes** section displays the following metrics:
 - **Canceled**: Number of canceled sessions of the Developer flow.
 - **Failed**: Number of failed sessions of the Developer flow.
 - **Agentic Developer sessions over time**: Number of completed, paused, canceled, and failed sessions of the Developer flow over the selected period.
+- **Failed by reason**: Number of failed sessions of the Developer flow, grouped by the reason recorded when the session failed:
+
+  - **no_activity**: The session was stopped by the stuck-session cleanup.
+  - **no_status_reported**: The CI workload ended without reporting a final status.
+  - **job_failed**: A CI job did not succeed.
+  - **workload_not_created**: The CI workload for the session could not be created.
+  - **preconditions_not_met**: A requirement for starting the session was not met, for example no eligible runner was available.
+  - **start_failed**: The session could not start.
+  - **api_reported**: The agent reported an error.
+  - **token_rejected**: The GitLab Duo Workflow Service rejected the session's token and did not run the session.
+  - **Unknown**: No reason was recorded. This mostly affects sessions that failed before reasons were recorded.
+
 - **Agentic Fix Pipeline sessions**: Number of sessions of the Fix Pipeline flow.
 - **Suggestions posted**: Number of fix suggestions posted by GitLab Duo on failed pipelines.
 - **Suggestions applied**: Number of applied fix suggestions posted by GitLab Duo on failed pipelines.

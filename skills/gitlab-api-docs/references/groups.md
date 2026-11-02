@@ -1359,7 +1359,7 @@ Parameters:
 | `emails_enabled`                     | boolean | no       | Enable email notifications. |
 | `lfs_enabled`                        | boolean | no       | Enable/disable Large File Storage (LFS) for the projects in this group. |
 | `mentions_disabled`                  | boolean | no       | Disable the capability of a group from getting mentioned. |
-| `organization_id`                    | integer | no       | The organization ID for the group. |
+| `organization_id`                    | integer | no       | The organization ID for the group. Defaults to the organization of the parent group if `parent_id` is provided, otherwise the current organization. |
 | `parent_id`                          | integer | no       | The parent group ID for creating a nested group. |
 | `project_creation_level`             | string  | no       | Determine if developers can create projects in the group. Can be `administrator` (users with Admin Mode enabled), `noone` (No one), `maintainer` (users with the Maintainer role), or `developer` (users with the Developer or Maintainer role). |
 | `request_access_enabled`             | boolean | no       | Allow users to request member access. |

@@ -1,7 +1,7 @@
 # SLSA provenance specification
 
 - Tier: Ultimate
-- Offering: GitLab.com
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/547865) in GitLab 18.3 [with a feature flag](../../../../administration/feature_flags/_index.md) named `slsa_provenance_statement`. Disabled by default.

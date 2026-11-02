@@ -466,7 +466,7 @@ To fix this problem:
 1. In the left sidebar, select **Code** > **Branches**.
 1. Search for a branch named `HEAD`.
 1. Make sure the branch has no uncommitted changes.
-1. Select **Delete branch**, then **Yes, delete branch**.
+1. Select **Delete branch**. On the confirmation dialog, select **Delete branch** again.
 
 Git versions [2.16.0 and later](https://github.com/git/git/commit/a625b092cc59940521789fe8a3ff69c8d6b14eb2),
 prevent you from creating a branch with this name.

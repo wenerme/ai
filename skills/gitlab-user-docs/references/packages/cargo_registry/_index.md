@@ -20,6 +20,31 @@ The Cargo registry is available for projects only.
 There is no group or instance registry.
 GitLab supports the sparse index protocol only.
 
+## Enable the Cargo registry
+
+On GitLab Self-Managed, enable the Cargo registry before you publish or install crates.
+Until you enable it, requests to the project's Cargo registry return `404 Not Found`.
+
+Prerequisites:
+
+- Administrator access.
+
+To enable the Cargo registry for a project:
+
+- In the [Rails console](../../../administration/feature_flags/_index.md#start-the-gitlab-rails-console), run:
+
+  ```ruby
+  Feature.enable(:package_registry_cargo_support, Project.find(<project_id>))
+  ```
+
+  Replace `<project_id>` with your project ID.
+
+To enable the Cargo registry for all projects on the instance, run:
+
+```ruby
+Feature.enable(:package_registry_cargo_support)
+```
+
 ## Authenticate to the package registry
 
 Before you can interact with the package registry, you must authenticate to it.

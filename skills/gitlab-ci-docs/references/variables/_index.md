@@ -539,6 +539,24 @@ The total size of all pipeline variables in a pipeline, including keys and value
 If the pipeline variables exceed this limit, the pipeline is not created and fails with the error
 `Failed to build pipeline variables: total size exceeds the limit of 10 MiB`.
 
+### Pipeline variable limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6.
+
+Pipeline variables have [limits](../../administration/cicd/limits.md#limit-pipeline-variables),
+separate from project, group, and instance variable limits.
+Variables defined in the `.gitlab-ci.yml` file are not checked, except when a trigger job passes them to a
+[downstream pipeline](../pipelines/downstream_pipelines.md#pass-cicd-variables-to-a-downstream-pipeline).
+All variables that a trigger job passes downstream count as pipeline variables of the downstream pipeline.
+For pipelines created with the trigger API, the [`TRIGGER_PAYLOAD`](../triggers/_index.md#access-webhook-payload)
+variable also counts toward these limits.
+
+| Limit                           | GitLab.com | Default (GitLab Self-Managed and GitLab Dedicated) |
+|---------------------------------|------------|----------------------------------------------------|
+| Variables per pipeline          | 1200       | Not set                                            |
+| Value size                      | 128 KiB    | Not set                                            |
+| Value size, file type variables | 1 MiB      | Not set                                            |
+
 ### Restrict pipeline variables
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/440338) in GitLab 17.1.

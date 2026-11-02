@@ -39,14 +39,14 @@ For **GitLab Self-Managed** instances, make sure your administrator has
 
 After you've met the requirements, turn on Let's Encrypt integration:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Edit** ().
-1. Turn on the **Automatic certificate management using Let's Encrypt** toggle.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select  ().
+1. Turn on the  toggle.
 
    [The Let's Encrypt toggle in the custom domain settings.]
 
-1. Select **Save changes**.
+1. Select .
 
 After you turn it on, GitLab obtains a Let's Encrypt certificate and adds it to the
 associated Pages domain. GitLab also renews it automatically.
@@ -61,19 +61,19 @@ associated Pages domain. GitLab also renews it automatically.
 
 ### Something went wrong while obtaining the Let's Encrypt certificate
 
-You might get an error that states **Something went wrong while obtaining the Let's Encrypt certificate**.
+You might get an error that states
 
 This issue occurs when Let's Encrypt cannot reach or validate your domain.
 
 To resolve this issue:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. Under **Pages**, from the dropdown list, select **Everyone With Access**.
-1. Select **Deploy** > **Pages** > **Domains & settings**.
-1. Next to the domain name, select **Edit** ().
-1. In **Verification status**, select **Retry verification** ().
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , from the dropdown list, select .
+1. Select  >  > .
+1. Next to the domain name, select  ().
+1. In , select  ().
 
 If you get the same error, check the following:
 
@@ -86,7 +86,7 @@ If you get the same error, check the following:
   deployment has an empty `path_prefix`. A non-empty `path_prefix` (for example, `latest`)
   prevents the `/.well-known/acme-challenge` path from being served.
 
-Go back to the **Deploy** > **Pages** settings, and retry the verification.
+Go back to the  >  settings, and retry the verification.
 
 ### Obtaining a certificate hangs for more than an hour
 
@@ -99,9 +99,9 @@ This process can take some time. Please try again later.
 
 Remove and add the domain for GitLab Pages again by following these steps:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Deploy** > **Pages**.
-1. Next to the domain name, select **Remove**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Next to the domain name, select .
 1. [Add the domain again, and verify it](_index.md#step-1-add-a-custom-domain).
 1. [Turn on Let's Encrypt integration for your domain](#enabling-lets-encrypt-integration-for-your-custom-domain).
 1. If you're still getting the same error:

@@ -32,19 +32,24 @@ Some integrations require one combined field-trial string:
 WebRTC-ForceDtls13/Enabled/WebRTC-Sctp-Snap/Enabled/WebRTC-IceHandshakeDtls/Enabled/
 ```
 
-Initialize the field trials before creating the peer connection factory. For example, a Rust integration can enable all three trials together:
+Initialize field trials before creating the peer connection factory. Wrappers can expose narrower options. For example, `webrtc-sys` 0.3.51 enables SPED on the factory and SNAP through the connection configuration:
 
 ```rust
-const WARP_FIELD_TRIALS: &str = concat!(
-    "WebRTC-ForceDtls13/Enabled/",
-    "WebRTC-Sctp-Snap/Enabled/",
-    "WebRTC-IceHandshakeDtls/Enabled/",
-);
+use webrtc_sys::peer_connection::ffi::{
+    ContinualGatheringPolicy, IceTransportsType, RtcConfiguration,
+};
+use webrtc_sys::peer_connection_factory::ffi::create_peer_connection_factory_with_options;
 
-webrtc_sys::peer_connection_factory::ffi::initialize_field_trials(
-    WARP_FIELD_TRIALS.to_string(),
-);
+// The wrapper enables SPED on the factory; SNAP is an immutable connection option.
+let factory = create_peer_connection_factory_with_options(false, true);
+let configuration = RtcConfiguration {
+    ice_servers: vec![],
+    continual_gathering_policy: ContinualGatheringPolicy::GatherOnce,
+    ice_transport_type: IceTransportsType::All,
+    enable_sctp_snap: true,
+};
 ```
+
 
 If you use an SDK that wraps `libwebrtc`, such as a native LiveKit SDK, pass the same field-trial string through its WebRTC configuration or initialization options. If the SDK doesn't expose field trials, initialize the underlying `libwebrtc` instance before the SDK creates its peer connection factory, or update to a wrapper that provides this configuration.
 

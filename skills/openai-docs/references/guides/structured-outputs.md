@@ -1301,8 +1301,40 @@ import com.openai.models.responses.ResponseCreateParams;
 import com.openai.models.responses.ResponseFormatTextJsonSchemaConfig;
 import com.openai.models.responses.ResponseInputItem;
 import com.openai.models.responses.ResponseTextConfig;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+Map<String, Object> attributeProperties = new LinkedHashMap<>();
+attributeProperties.put("name", Map.of("type", "string"));
+attributeProperties.put("value", Map.of("type", "string"));
+
+// Structured Outputs preserves the order of the schema's properties.
+Map<String, Object> properties = new LinkedHashMap<>();
+properties.put(
+    "type",
+    Map.of(
+        "type",
+        "string",
+        "enum",
+        List.of("div", "button", "header", "section", "field", "form")));
+properties.put("label", Map.of("type", "string"));
+properties.put("children", Map.of("type", "array", "items", Map.of("$ref", "#")));
+properties.put(
+    "attributes",
+    Map.of(
+        "type",
+        "array",
+        "items",
+        Map.of(
+            "type",
+            "object",
+            "properties",
+            attributeProperties,
+            "required",
+            List.of("name", "value"),
+            "additionalProperties",
+            false)));
 
 ResponseCreateParams params =
     ResponseCreateParams.builder()
@@ -1329,41 +1361,7 @@ ResponseCreateParams params =
                         .schema(
                             ResponseFormatTextJsonSchemaConfig.Schema.builder()
                                 .putAdditionalProperty("type", JsonValue.from("object"))
-                                .putAdditionalProperty(
-                                    "properties",
-                                    JsonValue.from(
-                                        Map.of(
-                                            "type",
-                                                Map.of(
-                                                    "type",
-                                                    "string",
-                                                    "enum",
-                                                    List.of(
-                                                        "div", "button", "header", "section",
-                                                        "field", "form")),
-                                            "label", Map.of("type", "string"),
-                                            "children",
-                                                Map.of(
-                                                    "type",
-                                                    "array",
-                                                    "items",
-                                                    Map.of("$ref", "#")),
-                                            "attributes",
-                                                Map.of(
-                                                    "type",
-                                                    "array",
-                                                    "items",
-                                                    Map.of(
-                                                        "type",
-                                                        "object",
-                                                        "properties",
-                                                        Map.of(
-                                                            "name", Map.of("type", "string"),
-                                                            "value", Map.of("type", "string")),
-                                                        "required",
-                                                        List.of("name", "value"),
-                                                        "additionalProperties",
-                                                        false)))))
+                                .putAdditionalProperty("properties", JsonValue.from(properties))
                                 .putAdditionalProperty(
                                     "required",
                                     JsonValue.from(

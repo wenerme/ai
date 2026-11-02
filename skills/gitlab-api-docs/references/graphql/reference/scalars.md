@@ -716,12 +716,6 @@ A `GeoAchievementUploadRegistryID` is a global ID. It is encoded as a string.
 
 An example `GeoAchievementUploadRegistryID` is: `"gid://gitlab/Geo::AchievementUploadRegistry/1"`.
 
-## `GeoAiVectorizableFileUploadRegistryID`
-
-A `GeoAiVectorizableFileUploadRegistryID` is a global ID. It is encoded as a string.
-
-An example `GeoAiVectorizableFileUploadRegistryID` is: `"gid://gitlab/Geo::AiVectorizableFileUploadRegistry/1"`.
-
 ## `GeoAlertManagementMetricImageUploadRegistryID`
 
 A `GeoAlertManagementMetricImageUploadRegistryID` is a global ID. It is encoded as a string.

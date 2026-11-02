@@ -485,7 +485,7 @@ branches by using the GitLab web interface:
 1. In the left sidebar, select **Code** > **Branches**.
 1. Next to the branch you want to delete, select **More actions** ().
 1. Select **Delete protected branch**.
-1. On the confirmation dialog, enter the branch name and select **Yes, delete protected branch**.
+1. On the confirmation dialog, enter the branch name and select **Delete protected branch**.
    Branch names are case-sensitive.
 
 You can only delete protected branches with the GitLab UI or API.

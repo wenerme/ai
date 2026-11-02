@@ -1,10 +1,12 @@
 # SLSA level 3 provenance attestations
 
 - Tier: Ultimate
-- Offering: GitLab.com
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Experiment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/547865) in GitLab 18.3 [with a feature flag](../../../../administration/feature_flags/_index.md) named `slsa_provenance_statement`. Disabled by default.
+- `LOCAL_CA` attestation method and support for GitLab Self-Managed and GitLab Dedicated [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264318) in GitLab 19.6.
+- Support for private and internal projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265489) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -20,10 +22,50 @@ For the details of attestations, see the GitLab [SLSA provenance specification](
 
 These conditions need to be met for the attestation of any container or artifact:
 
-- The project associated with the build is public. This requirement is enforced to prevent accidental
-  disclosure of information to [Rekor](https://docs.sigstore.dev/logging/overview/).
+- For private and internal projects, the build must use the `LOCAL_CA` [attestation method](#attestation-methods).
 - The build must use the `build` stage.
 - The `slsa_provenance_statement` feature flag must be enabled for the project.
+
+## Attestation methods
+
+GitLab signs each attestation with one of these methods:
+
+`SIGSTORE`
+: Signs the attestation with the public Sigstore service and records the signing event in the public
+  [Rekor](https://docs.sigstore.dev/logging/overview/) transparency log.
+  To prevent accidental disclosure of project information, GitLab does not generate `SIGSTORE`
+  attestations for private or internal projects.
+  The public Sigstore service trusts only GitLab.com pipelines, so this method works only on GitLab.com.
+
+`LOCAL_CA`
+: Signs the attestation with a certificate from a certificate authority (CA) that GitLab creates
+  for the project.
+  GitLab does not send the attestation to Sigstore or Rekor.
+
+By default, public projects on GitLab.com use `SIGSTORE`.
+All other projects use `LOCAL_CA`, including all projects on GitLab Self-Managed.
+
+### Select an attestation method
+
+Select an attestation method to control how GitLab signs the attestations for a pipeline or job.
+
+To select an attestation method:
+
+- In the `.gitlab-ci.yml` file, use the [`variables`](../../../yaml/_index.md#variables) keyword
+  to set `ATTEST_METHOD` to `SIGSTORE` or `LOCAL_CA`.
+
+For example, to use `LOCAL_CA` for every job in the pipeline:
+
+```yaml
+variables:
+  ATTEST_METHOD: LOCAL_CA
+```
+
+The value is not case-sensitive.
+If the value is not `SIGSTORE` or `LOCAL_CA`, GitLab uses the default method.
+GitLab reads `ATTEST_METHOD` only from the `.gitlab-ci.yml` file and ignores values from other places,
+such as [CI/CD variables defined in the UI](../../../variables/_index.md#define-a-cicd-variable-in-the-ui)
+and pipeline variables.
 
 ## Generate an attestation for artifacts
 
@@ -94,6 +136,8 @@ You can also fetch successful attestations with the [Attestations API](../../../
 ## Verifying attestations
 
 You can verify both artifacts and containers by using the `glab` command-line interface.
+The `glab` CLI verifies only `SIGSTORE` attestations, not `LOCAL_CA` attestations.
+
 For example:
 
 - A successful verification:

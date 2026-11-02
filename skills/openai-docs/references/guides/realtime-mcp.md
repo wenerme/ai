@@ -288,6 +288,7 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
 import com.openai.core.JsonValue;
 import com.openai.helpers.RealtimeConnection;
 import com.openai.helpers.RealtimeWebSocketOptions;
@@ -304,6 +305,7 @@ static void sendFunctionCallOutput(RealtimeConnection connection, String callId)
           ConversationItemCreateEvent.builder()
               .item(
                   RealtimeConversationItemFunctionCallOutput.builder()
+                      .object_(JsonMissing.of())
                       .callId(callId)
                       .output("{\"status\":\"shipped\",\"delivery_date\":\"2026-05-09\"}")
                       .build())
@@ -319,6 +321,7 @@ static void sendFunctionCallOutput(RealtimeConnection connection, String callId)
                               .putAdditionalProperty(
                                   "topic", JsonValue.from("lookup_order_followup"))
                               .build())
+                      .addOutputModality(RealtimeResponseCreateParams.OutputModality.TEXT)
                       .toolChoice(ToolChoiceOptions.NONE)
                       .build())
               .build()));
@@ -1060,6 +1063,7 @@ func approveDocumentationSearch(
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
 import com.openai.helpers.RealtimeConnection;
 import com.openai.helpers.RealtimeWebSocketOptions;
 import com.openai.models.realtime.*;
@@ -1075,7 +1079,7 @@ static void approveMcpRequest(RealtimeConnection connection, String approvalRequ
           ConversationItemCreateEvent.builder()
               .item(
                   RealtimeMcpApprovalResponse.builder()
-                      .id("mcp_approval_" + approvalRequestId)
+                      .id(java.util.UUID.randomUUID().toString().replace("-", ""))
                       .approvalRequestId(approvalRequestId)
                       .approve(true)
                       .build())
@@ -1235,6 +1239,7 @@ if err := conn.Send(ctx, realtime.RealtimeClientEventUnionParam{
 ```java
 import com.openai.client.okhttp.OkHttpClient;
 import com.openai.core.ClientOptions;
+import com.openai.core.JsonMissing;
 import com.openai.helpers.RealtimeConnection;
 import com.openai.helpers.RealtimeWebSocketOptions;
 import com.openai.models.realtime.*;
@@ -1255,6 +1260,7 @@ connection.send(
                     .addOutputModality(RealtimeResponseCreateParams.OutputModality.TEXT)
                     .addInput(
                         RealtimeConversationItemUserMessage.builder()
+                            .object_(JsonMissing.of())
                             .addContent(
                                 RealtimeConversationItemUserMessage.Content.builder()
                                     .type(

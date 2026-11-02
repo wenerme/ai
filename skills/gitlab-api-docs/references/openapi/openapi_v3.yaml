@@ -28310,6 +28310,98 @@ paths:
         schema:
           type: integer
         in: path
+  "/api/v4/admin/sidekiq/concurrency_limits/{worker_class}":
+    get:
+      operationId: getApiV4AdminSidekiqConcurrencyLimitsWorkerClass
+      summary: Get a Sidekiq worker concurrency limit
+      description: Returns concurrency limits, override expiry and job counts.
+      tags:
+      - Sidekiq
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesSidekiqConcurrencyLimit"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Administrator access required
+        '404':
+          description: Worker not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: worker_class
+        required: true
+        description: Registered Sidekiq worker class name.
+        schema:
+          type: string
+        in: path
+    put:
+      operationId: putApiV4AdminSidekiqConcurrencyLimitsWorkerClass
+      summary: Update a Sidekiq worker concurrency limit override
+      description: Overrides adaptive throttling until the TTL expires or the override
+        is deleted.
+      tags:
+      - Sidekiq
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesSidekiqConcurrencyLimit"
+        '400':
+          description: Invalid override
+        '401':
+          description: Unauthorized
+        '403':
+          description: Administrator access required
+        '404':
+          description: Worker not found
+      parameters:
+      - name: worker_class
+        required: true
+        description: Registered Sidekiq worker class name.
+        schema:
+          type: string
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/putApiV4AdminSidekiqConcurrencyLimitsWorkerClassRequest"
+    delete:
+      operationId: deleteApiV4AdminSidekiqConcurrencyLimitsWorkerClass
+      summary: Delete a Sidekiq worker concurrency limit override
+      description: Restores the adaptive limit if present, otherwise the worker default.
+      tags:
+      - Sidekiq
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesSidekiqConcurrencyLimit"
+        '401':
+          description: Unauthorized
+        '403':
+          description: Administrator access required
+        '404':
+          description: Worker not found
+        '400':
+          description: Bad Request
+      parameters:
+      - name: worker_class
+        required: true
+        description: Registered Sidekiq worker class name.
+        schema:
+          type: string
+        in: path
   "/api/v4/admin/sidekiq/queues/{queue_name}":
     delete:
       operationId: deleteApiV4AdminSidekiqQueuesQueueName
@@ -87700,28 +87792,6 @@ components:
           type: string
         achievement_uploads_oldest_unsynced_time:
           type: string
-        ai_vectorizable_file_uploads_count:
-          type: string
-        ai_vectorizable_file_uploads_checksum_total_count:
-          type: string
-        ai_vectorizable_file_uploads_checksummed_count:
-          type: string
-        ai_vectorizable_file_uploads_checksum_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_synced_count:
-          type: string
-        ai_vectorizable_file_uploads_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_registry_count:
-          type: string
-        ai_vectorizable_file_uploads_verification_total_count:
-          type: string
-        ai_vectorizable_file_uploads_verified_count:
-          type: string
-        ai_vectorizable_file_uploads_verification_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_oldest_unsynced_time:
-          type: string
         alert_management_metric_image_uploads_count:
           type: string
         alert_management_metric_image_uploads_checksum_total_count:
@@ -88644,10 +88714,6 @@ components:
           type: string
         achievement_uploads_verified_in_percentage:
           type: string
-        ai_vectorizable_file_uploads_synced_in_percentage:
-          type: string
-        ai_vectorizable_file_uploads_verified_in_percentage:
-          type: string
         alert_management_metric_image_uploads_synced_in_percentage:
           type: string
         alert_management_metric_image_uploads_verified_in_percentage:
@@ -88812,6 +88878,34 @@ components:
           type: string
         vulnerability_remediation_uploads_verified_in_percentage:
           type: string
+        ai_vectorizable_file_uploads_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksum_total_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksummed_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksum_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_synced_count:
+          type: integer
+        ai_vectorizable_file_uploads_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_registry_count:
+          type: integer
+        ai_vectorizable_file_uploads_verification_total_count:
+          type: integer
+        ai_vectorizable_file_uploads_verified_count:
+          type: integer
+        ai_vectorizable_file_uploads_verification_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_oldest_unsynced_time:
+          type: integer
+        ai_vectorizable_file_uploads_synced_in_percentage:
+          type: string
+          example: 0.00%
+        ai_vectorizable_file_uploads_verified_in_percentage:
+          type: string
+          example: 0.00%
         repositories_count:
           type: string
         replication_slots_count:
@@ -88975,28 +89069,6 @@ components:
           type: string
         achievement_uploads_oldest_unsynced_time:
           type: string
-        ai_vectorizable_file_uploads_count:
-          type: string
-        ai_vectorizable_file_uploads_checksum_total_count:
-          type: string
-        ai_vectorizable_file_uploads_checksummed_count:
-          type: string
-        ai_vectorizable_file_uploads_checksum_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_synced_count:
-          type: string
-        ai_vectorizable_file_uploads_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_registry_count:
-          type: string
-        ai_vectorizable_file_uploads_verification_total_count:
-          type: string
-        ai_vectorizable_file_uploads_verified_count:
-          type: string
-        ai_vectorizable_file_uploads_verification_failed_count:
-          type: string
-        ai_vectorizable_file_uploads_oldest_unsynced_time:
-          type: string
         alert_management_metric_image_uploads_count:
           type: string
         alert_management_metric_image_uploads_checksum_total_count:
@@ -89919,10 +89991,6 @@ components:
           type: string
         achievement_uploads_verified_in_percentage:
           type: string
-        ai_vectorizable_file_uploads_synced_in_percentage:
-          type: string
-        ai_vectorizable_file_uploads_verified_in_percentage:
-          type: string
         alert_management_metric_image_uploads_synced_in_percentage:
           type: string
         alert_management_metric_image_uploads_verified_in_percentage:
@@ -90087,6 +90155,34 @@ components:
           type: string
         vulnerability_remediation_uploads_verified_in_percentage:
           type: string
+        ai_vectorizable_file_uploads_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksum_total_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksummed_count:
+          type: integer
+        ai_vectorizable_file_uploads_checksum_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_synced_count:
+          type: integer
+        ai_vectorizable_file_uploads_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_registry_count:
+          type: integer
+        ai_vectorizable_file_uploads_verification_total_count:
+          type: integer
+        ai_vectorizable_file_uploads_verified_count:
+          type: integer
+        ai_vectorizable_file_uploads_verification_failed_count:
+          type: integer
+        ai_vectorizable_file_uploads_oldest_unsynced_time:
+          type: integer
+        ai_vectorizable_file_uploads_synced_in_percentage:
+          type: string
+          example: 0.00%
+        ai_vectorizable_file_uploads_verified_in_percentage:
+          type: string
+          example: 0.00%
         repositories_count:
           type: string
         replication_slots_count:
@@ -94213,12 +94309,6 @@ components:
           type: string
         repository_size_limit:
           type: string
-        search_max_shard_size_gb:
-          type: string
-        search_max_docs_denominator:
-          type: string
-        search_min_docs_before_rollover:
-          type: string
         secret_detection_token_revocation_enabled:
           type: string
         secret_detection_token_revocation_url:
@@ -94861,6 +94951,49 @@ components:
           type: boolean
         notes:
           "$ref": "#/components/schemas/APIEntitiesNote"
+    APIEntitiesSidekiqConcurrencyLimit:
+      type: object
+      properties:
+        worker_class:
+          type: string
+          example: AuthorizedProjectsWorker
+        class_limit:
+          type: integer
+          description: Explicit class limit. null when the worker has no explicit
+            limit.
+          example: 10
+        effective_limit:
+          type: integer
+          description: Effective limit. Zero means unlimited. Negative values mean
+            paused. null means unknown without shard context.
+          example: 20
+        adaptive_limit:
+          type: integer
+          description: Stored adaptive limit, or null when absent.
+          example: 5
+        default_limit_requires_shard_context:
+          type: boolean
+          example: false
+        middleware_enabled:
+          type: boolean
+          example: true
+        disabled_for_worker:
+          type: boolean
+          example: false
+        override_limit:
+          type: integer
+          description: Temporary override, or null when absent.
+          example: 20
+        override_ttl:
+          type: integer
+          description: Remaining override lifetime in seconds, or null when absent.
+          example: 1800
+        running_jobs:
+          type: integer
+          example: 8
+        deferred_jobs:
+          type: integer
+          example: 1000
     APIEntitiesWikiPageBasic:
       type: object
       properties:
@@ -102248,6 +102381,13 @@ components:
           type: string
         stage:
           type: string
+        tag_list:
+          type: array
+          example:
+          - docker
+          - ruby
+          items:
+            type: string
         pipeline_id:
           type: string
         project_id:
@@ -103145,6 +103285,15 @@ components:
         ci_pipeline_size:
           type: integer
           example: 0
+        ci_pipeline_variables_count:
+          type: integer
+          example: 1200
+        ci_variable_value_size:
+          type: integer
+          example: 131072
+        ci_variable_file_value_size:
+          type: integer
+          example: 1048576
         ci_active_jobs:
           type: integer
           example: 0
@@ -113971,15 +114120,6 @@ components:
         model_prompt_cache_enabled:
           type: string
           nullable: true
-        search_max_shard_size_gb:
-          type: string
-          nullable: true
-        search_max_docs_denominator:
-          type: string
-          nullable: true
-        search_min_docs_before_rollover:
-          type: string
-          nullable: true
         secret_detection_token_revocation_token:
           type: string
           nullable: true
@@ -115946,6 +116086,21 @@ components:
           nullable: true
       required:
       - position
+    putApiV4AdminSidekiqConcurrencyLimitsWorkerClassRequest:
+      type: object
+      properties:
+        limit:
+          type: integer
+          description: Positive concurrency limit.
+          nullable: true
+        ttl:
+          type: integer
+          minimum: 1
+          maximum: 86400
+          description: Override lifetime in seconds.
+          default: 1800
+      required:
+      - limit
     postApiV4GroupsIdWikisRequest:
       type: object
       properties:
@@ -131890,7 +132045,10 @@ components:
           nullable: true
         organization_id:
           type: integer
-          description: 'The ID of the organization that the group will be part of. '
+          description: The ID of the organization that the group will be part of.
+            Defaults to the organization of the parent group if `parent_id` is provided,
+            otherwise the current organization.
+          nullable: true
       required:
       - path
       - name
@@ -135142,7 +135300,10 @@ components:
           nullable: true
         organization_id:
           type: integer
-          description: The organization id for the group
+          description: The organization id for the group. Defaults to the organization
+            of the parent group if `parent_id` is provided, otherwise the current
+            organization.
+          nullable: true
         description:
           type: string
           description: The description of the group
@@ -136627,6 +136788,18 @@ components:
         ci_pipeline_size:
           type: integer
           description: Maximum number of jobs in a single pipeline.
+          nullable: true
+        ci_pipeline_variables_count:
+          type: integer
+          description: Maximum number of pipeline variables in a single pipeline.
+          nullable: true
+        ci_variable_value_size:
+          type: integer
+          description: Maximum size of a pipeline variable value in bytes.
+          nullable: true
+        ci_variable_file_value_size:
+          type: integer
+          description: Maximum size of a file type pipeline variable value in bytes.
           nullable: true
         ci_active_jobs:
           type: integer

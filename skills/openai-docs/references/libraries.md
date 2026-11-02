@@ -134,7 +134,7 @@ Execute the code with `python example.py`. In a few moments, you should see the 
 
 In collaboration with Microsoft, OpenAI provides an officially supported API client for C#. You can install it with the .NET CLI from [NuGet](https://www.nuget.org/).
 
-```
+```bash
 dotnet add package OpenAI
 ```
 
@@ -173,7 +173,7 @@ OpenAI provides an API helper for the Java programming language, currently in be
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.57.0</version>
+  <version>4.96.0</version>
 </dependency>
 ```
 

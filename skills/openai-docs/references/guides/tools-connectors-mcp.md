@@ -1327,7 +1327,7 @@ For testing purposes, you can use Google's [OAuth 2.0 Playground](https://develo
 
 To use the playground to test the connectors API functionality, start by entering:
 
-```
+```text
 https://www.googleapis.com/auth/calendar.events
 ```
 

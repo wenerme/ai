@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/policies
 
 # Manage Access policies
 
-Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access policies define the users who can log in to your Access applications. You can create, edit, or delete policies at any time and reuse policies across multiple applications.
 
@@ -40,7 +40,7 @@ You can now add this policy to an [Access application](https://developers.cloudf
 To make changes to an existing Access policy:
 
 1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
-2. Locate the policy you want to update and select **Configure**.
+2. Locate the policy you want to update and select **Edit**.
 3. Once you have made the necessary changes, select **Save**.
 
 The updated policy is now in effect for all associated Access applications.
@@ -67,7 +67,7 @@ The Access policy builder allows you to test your rules before saving any change
 To test an individual Access policy:
 
 1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
-2. Locate the policy you want to test and select **Configure**.
+2. Locate the policy you want to test and select **Edit**.
 3. Go to **Policy tester** and select **Test policies**.
 
 The policy tester reports the percentage of active users who are allowed or denied access to an application based on this policy. You can expand the test results to view a list of allowed or blocked users.
@@ -79,7 +79,7 @@ You can test your Access application policies against your user population befor
 To test if users have access to an application:
 
 1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
-2. Locate the application you want to test and select **Configure**.
+2. Locate the application you want to test and select **Edit**.
 3. Go to **Policies** > **Policy tester**.
 4. To test all active users in your organization, select **Test policies**.
 
@@ -147,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#page","headline":"Manage Access policies","description":"Manage Access policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/og.png?v=f6cd40ff6b33ae0f","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#page","headline":"Manage Access policies","description":"Manage Access policies in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/og.png?v=f6cd40ff6b33ae0f","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

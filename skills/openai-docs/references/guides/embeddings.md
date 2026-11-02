@@ -474,7 +474,8 @@ import com.openai.models.embeddings.EmbeddingCreateParams;
 import java.util.List;
 
 private static List<Double> normalizeL2(List<Float> embedding) {
-  double norm = Math.sqrt(embedding.stream().mapToDouble(value -> value * value).sum());
+  double norm =
+      Math.sqrt(embedding.stream().mapToDouble(value -> value.doubleValue() * value).sum());
   return embedding.stream().map(value -> norm == 0 ? 0.0 : value / norm).toList();
 }
 
@@ -1413,9 +1414,11 @@ var nearestNeighbors =
                   double queryMagnitude = 0;
                   double candidateMagnitude = 0;
                   for (int dimension = 0; dimension < query.size(); dimension++) {
-                    dotProduct += query.get(dimension) * candidate.get(dimension);
-                    queryMagnitude += query.get(dimension) * query.get(dimension);
-                    candidateMagnitude += candidate.get(dimension) * candidate.get(dimension);
+                    double queryValue = query.get(dimension);
+                    double candidateValue = candidate.get(dimension);
+                    dotProduct += queryValue * candidateValue;
+                    queryMagnitude += queryValue * queryValue;
+                    candidateMagnitude += candidateValue * candidateValue;
                   }
                   return 1 - dotProduct / Math.sqrt(queryMagnitude * candidateMagnitude);
                 }))

@@ -470,6 +470,30 @@ to the Chat Completions API. These deployments then reject the requests.
 To resolve this issue, change the model identifier to the `azure/responses/<deployment name>` format.
 For more information, see [use the Responses API](supported_llm_serving_platforms.md#use-the-responses-api).
 
+## Azure OpenAI endpoint with the `/openai/v1` suffix returns an error
+
+When you use an Azure OpenAI model, a flow or agent might fail with an error similar to:
+
+```plaintext
+ModelError: Invalid value: 'any'. Supported values are: 'none', 'auto', and 'required'.
+```
+
+This error occurs when the model endpoint includes the `/openai/v1` suffix
+(for example, `https://<resource-name>.openai.azure.com/openai/v1`).
+
+To resolve this issue:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Configure models for GitLab Duo**.
+1. Edit the relevant self-hosted model.
+1. For **Endpoint**, use the `https://<resource-name>.openai.azure.com` format instead.
+1. For **Model identifier**, use the `azure/responses/<deployment name>` format
+   (for example, `azure/responses/gpt-5.3-codex`).
+1. Select **Save changes**.
+
+For more information, see [configure Azure OpenAI](supported_llm_serving_platforms.md#configure-azure-openai).
+
 ## Feature not accessible or feature button not visible
 
 If a feature is not working or a feature button (for example, **`/troubleshoot`**) is not visible:

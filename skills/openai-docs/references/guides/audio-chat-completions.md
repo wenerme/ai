@@ -123,7 +123,7 @@ ChatCompletionCreateParams params =
                 .voice("alloy")
                 .format(ChatCompletionAudioParam.Format.WAV)
                 .build())
-        .store(true)
+        .store(false)
         .build();
 
 var message = client.chat().completions().create(params).choices().get(0).message();
@@ -369,7 +369,7 @@ ChatCompletionCreateParams params =
                 .voice("alloy")
                 .format(ChatCompletionAudioParam.Format.WAV)
                 .build())
-        .store(true)
+        .store(false)
         .build();
 
 client.chat().completions().create(params).choices().stream()

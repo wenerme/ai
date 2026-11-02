@@ -31,6 +31,8 @@ Automatically open merge requests to fix vulnerable dependencies.
 - Feature flag `enable_dependency_bump_breaking_changes`
   [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/604558) in GitLab 19.4.
 - Runner tags for auto-remediation jobs [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627504) in GitLab 19.6.
+- Swift Package Manager support [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604605)
+  in GitLab 19.6.
 - Conventional Commits format for merge request titles and commit messages
   [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/631539) in GitLab 19.6
   [with a feature flag](../../../administration/feature_flags/_index.md) named
@@ -253,6 +255,7 @@ Dependency scanning auto-remediation supports the following package managers:
 | Rust                    | Cargo                               | `Cargo.toml`, `Cargo.lock`                                                     |
 | .NET                    | NuGet                               | `*.csproj`, `packages.lock.json`                                               |
 | Dart and Flutter        | Pub                                 | `pubspec.yaml`, `pubspec.lock`                                                 |
+| Swift                   | Swift Package Manager               | `Package.swift`, `Package.resolved`                                            |
 
 Support for additional ecosystems is proposed in
 [epic 19244](https://gitlab.com/groups/gitlab-org/-/work_items/19244).
@@ -269,6 +272,13 @@ auto-remediation has nothing to act on. Generate the lock file by running
 `dart pub get` or `flutter pub get`, and commit the result. Pub auto-remediation
 jobs also take several minutes longer than other ecosystems, because the updater
 sets up a Flutter SDK before resolving dependencies, even for pure-Dart projects.
+
+For Swift, dependency scanning only detects dependencies from a committed
+`Package.resolved`. Projects without one produce no Swift findings, so
+auto-remediation has nothing to act on. Generate the lock file by running
+`swift package resolve`, and commit the result. Auto-remediation skips
+dependencies pinned to a branch or a commit, because `Package.resolved`
+records no version for them.
 
 ## Service account permissions
 

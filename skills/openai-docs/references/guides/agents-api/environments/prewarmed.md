@@ -470,7 +470,7 @@ var environments =
                 .limit(20L)
                 .order(EnvironmentListParams.Order.DESC)
                 .build());
-System.out.println(environments);
+System.out.println(environments.items());
 ```
 
 ```ruby

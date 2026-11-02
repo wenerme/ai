@@ -2248,6 +2248,49 @@ Deprecated in GitLab 18.10. Use `instanceAuditEventStreamingDestinationsUpdate` 
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `instanceAmazonS3Configuration` | [`InstanceAmazonS3ConfigurationType`](objects.md#instanceamazons3configurationtype) | Updated instance-level Amazon S3 configuration. |
 
+## `auditEventsInstanceDestinationDenylistEventsAdd`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `AuditEventsInstanceDestinationDenylistEventsAddInput`
+
+### `auditEventsInstanceDestinationDenylistEventsAdd` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `destinationId` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | Destination id. |
+| `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to add to the denylist (maximum is 1000). |
+
+### `auditEventsInstanceDestinationDenylistEventsAdd` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `eventTypeFilters` | [`[String!]`](scalars.md#string) | List of denylisted event type filters for the audit event external destination. |
+
+## `auditEventsInstanceDestinationDenylistEventsDelete`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+**Input type:** `AuditEventsInstanceDestinationDenylistEventsDeleteInput`
+
+### `auditEventsInstanceDestinationDenylistEventsDelete` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `destinationId` | [`AuditEventsInstanceExternalStreamingDestinationID!`](scalars.md#auditeventsinstanceexternalstreamingdestinationid) | Destination id. |
+| `eventTypeFilters` | [`[String!]!`](scalars.md#string) | List of event type filters to remove from the denylist (maximum is 1000). |
+
+### `auditEventsInstanceDestinationDenylistEventsDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
 ## `auditEventsInstanceDestinationEventsAdd`
 
 - Status: Experiment

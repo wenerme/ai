@@ -173,6 +173,18 @@ Available configuration options include:
 By default, hosted runners are available for all projects and groups in your GitLab Dedicated instance.
 GitLab maintainers can disable hosted runners for a [project](../../ci/runners/runners_scope.md#disable-instance-runners-for-a-project) or a [group](../../ci/runners/runners_scope.md#disable-instance-runners-for-a-group).
 
+### Rotate a hosted runner authentication token
+
+GitLab manages the authentication tokens of hosted runners.
+Administrators cannot reset these tokens with the
+[runners API](../../api/runners.md#reset-runners-authentication-token-by-using-the-runner-id)
+or the [token revocation API](../../api/admin/token.md#revoke-a-token).
+
+If you think a hosted runner token was exposed:
+
+1. [Pause the runner](../../ci/runners/runners_scope.md#pause-or-resume-an-instance-runner) to stop it from picking up new jobs.
+1. Contact [GitLab Support](https://about.gitlab.com/support/) to rotate the token.
+
 ## Security and Network
 
 Hosted runners for GitLab Dedicated have built-in layers that harden the security of the GitLab Runner build environment:

@@ -220,7 +220,7 @@ To delete a protected tag:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Code** > **Tags**.
 1. Next to the tag you want to delete, select **Delete** ().
-1. On the confirmation dialog, enter the tag name and select **Yes, delete protected tag**.
+1. In the confirmation dialog, enter the tag name and select **Delete protected tag**.
 
 Protected tags can only be deleted by using GitLab either from the UI or API.
 These protections prevent you from accidentally deleting a tag through local

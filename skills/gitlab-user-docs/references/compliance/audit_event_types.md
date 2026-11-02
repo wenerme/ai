@@ -124,8 +124,8 @@ Audit event types belong to the following product categories.
 | [`deleted_instance_namespace_filter`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/153156) | A namespace filter for an external audit event destination for a GitLab instance is deleted | Yes | GitLab [17.2](https://gitlab.com/gitlab-org/gitlab/-/issues/436613) | Instance |
 | [`destroy_event_streaming_destination`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/74632) | An external audit event destination is deleted | Yes | GitLab [14.6](https://gitlab.com/gitlab-org/gitlab/-/issues/344664) | Group |
 | [`destroy_instance_event_streaming_destination`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/125846) | An instance level external audit event destination is deleted | Yes | GitLab [16.2](https://gitlab.com/gitlab-org/gitlab/-/issues/404730) | Instance |
-| [`event_type_filters_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113081) | A new audit events streaming event type filter is created | Yes | GitLab [15.10](https://gitlab.com/gitlab-org/gitlab/-/issues/344848) | Group |
-| [`event_type_filters_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113489) | An audit events streaming event type filter is deleted | Yes | GitLab [15.10](https://gitlab.com/gitlab-org/gitlab/-/issues/344848) | Group |
+| [`event_type_filters_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113081) | A new audit events streaming event type filter is created | Yes | GitLab [15.10](https://gitlab.com/gitlab-org/gitlab/-/issues/344848) | Group, Instance |
+| [`event_type_filters_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/113489) | An audit events streaming event type filter is deleted | Yes | GitLab [15.10](https://gitlab.com/gitlab-org/gitlab/-/issues/344848) | Group, Instance |
 | [`google_cloud_logging_configuration_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/122025) | Google Cloud Logging configuration is created | Yes | GitLab [16.1](https://gitlab.com/gitlab-org/gitlab/-/issues/409422) | Group |
 | [`google_cloud_logging_configuration_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/122025) | Google Cloud Logging configuration is deleted | Yes | GitLab [16.1](https://gitlab.com/gitlab-org/gitlab/-/issues/409422) | Group |
 | [`google_cloud_logging_configuration_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/122025) | Google Cloud Logging configuration is updated | Yes | GitLab [16.1](https://gitlab.com/gitlab-org/gitlab/-/issues/409422) | Group |
@@ -558,6 +558,13 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`terraform_state_permanently_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262900) | Terraform state permanently deleted before the end of the grace period | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/621470) | Project |
 | [`terraform_state_restored`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259091) | Terraform state restored from soft deletion | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/621469) | Project |
+
+### Integrations
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`duo_in_slack_disabled`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265962) | GitLab Duo is turned off for a Slack workspace, by an Owner, an administrator, or the system when the claim is no longer valid. | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/633566) | Group |
+| [`duo_in_slack_enabled`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265962) | An Owner or administrator turns on GitLab Duo in Slack for a Slack workspace, so that its sessions run in the group. | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/633566) | Group |
 
 ### Knowledge graph
 

@@ -937,7 +937,7 @@ Organizing your prompt makes it easier for the model to understand context and s
 
 Example
 
-```
+```text
 # Role & Objective        — who you are and what “success” means
 # Personality & Tone      — the voice and style to maintain
 # Context                 — retrieved context, relevant info
@@ -958,7 +958,7 @@ This section defines who the agent is and what “done” means. The examples sh
 
 #### Example (model takes on a specific accent)
 
-```
+```text
 # Role & Objective
 You are a Quebecois French-speaking customer service bot. Your task is to answer the user's question.
 ```
@@ -973,7 +973,7 @@ Earlier realtime preview:
 
   #### Example (model takes on a character)
 
-```
+```text
 # Role & Objective
 You are a high-energy game-show host guiding the caller to guess a secret number from 1 to 100 to win 1,000,000$.
 ```
@@ -998,7 +998,7 @@ Earlier realtime preview:
 
 #### Example
 
-```
+```text
 # Personality & Tone
 ## Personality
 - Friendly, calm and approachable expert customer service assistant.
@@ -1012,7 +1012,7 @@ Earlier realtime preview:
 
 #### Example (multi-emotion)
 
-```
+```text
 # Personality & Tone
 - Start your response very happy
 - Midway, change to sad
@@ -1035,7 +1035,7 @@ In the Realtime API, the `speed` parameter changes playback rate, not how the mo
 
 #### Example
 
-```
+```text
 # Personality & Tone
 ## Personality
 - Friendly, calm and approachable expert customer service assistant.
@@ -1071,7 +1071,7 @@ Language constraints ensure the model consistently responds in the intended lang
 
 #### Example (pinning to one language)
 
-```
+```text
 # Personality & Tone
 ## Personality
 - Friendly, calm and approachable expert customer service assistant.
@@ -1094,7 +1094,7 @@ These are the responses after applying the instruction using `gpt-realtime-1.5`.
 
 #### Example (model teaches a language)
 
-```
+```text
 # Role & Objective
 - You are a friendly, knowledgeable voice tutor for French learners.
 - Your goal is to help the user improve their French speaking and listening skills through engaging conversation and clear explanations.
@@ -1134,7 +1134,7 @@ The realtime model can follow sample phrases closely to stay on-brand, but it ma
 
 #### Example
 
-```
+```text
 # Personality & Tone
 ## Personality
 - Friendly, calm and approachable expert customer service assistant.
@@ -1175,7 +1175,7 @@ This section covers how to ensure the model pronounces important words, numbers,
 
 #### Example
 
-```
+```text
 # Reference Pronunciations
 When voicing these words, use the respective pronunciations:
 - Pronounce “SQL” as “sequel.”
@@ -1203,7 +1203,7 @@ Realtime S2S can blur or merge digits/letters when reading back key info (phone,
 
 #### Example (general instruction section)
 
-```
+```text
 # Instructions/Rules
 - When reading numbers or codes, speak each character separately, separated by hyphens (e.g., 4-1-5).
 - Repeat EXACTLY the provided number; do not omit any digits.
@@ -1261,7 +1261,7 @@ Like GPT-4.1 and GPT-5, if the instructions are conflicting, ambiguous, or uncle
 
 Use the following prompt with GPT-5 to identify problematic areas in your prompt that you can fix.
 
-```
+```text
 ## Role & Objective
 You are a **Prompt-Critique Expert**.
 Examine a user-supplied LLM prompt and surface any weaknesses following the instructions below.
@@ -1297,7 +1297,7 @@ Review the prompt that is meant for an LLM to follow and identify the following 
 
 This meta-prompt helps you improve your base system prompt by targeting a specific failure mode. Provide the current prompt and describe the issue you’re seeing, the model (GPT-5) will suggest refined variants that tighten constraints and reduce the problem.
 
-```
+```text
 Here's my current prompt to an LLM:
 [BEGIN OF CURRENT PROMPT]
 {CURRENT_PROMPT}
@@ -1320,7 +1320,7 @@ Sometimes the model thinks it hears something and tries to respond. You can add 
 
 #### Example (coughing and unclear audio)
 
-```
+```text
 # Instructions/Rules
 ...
 
@@ -1347,7 +1347,7 @@ Occasionally, the model may generate unintended background music, humming, rhyth
 
 #### Example
 
-```
+```text
 # Instructions/Rules
 ...
 - Do not include any sound effects or onomatopoeic expressions in your responses.
@@ -1366,7 +1366,7 @@ Use this section to tell the model how to use your functions and tools. Spell ou
 
 #### Example
 
-```
+```text
 # Tools
 ## lookup_account(email_or_phone)
 ...
@@ -1404,7 +1404,7 @@ Some use cases could benefit from the Realtime model providing an audio response
 
 #### Example
 
-```
+```text
 # Tools
 - Before any tool call, say one short line like “I’m checking that now.” Then call the tool immediately.
 ```
@@ -1474,7 +1474,7 @@ Sometimes the model might ask for confirmation before a tool call. For some use 
 
 #### Example
 
-```
+```text
 # Tools
 - When calling a tool, do not ask for any user confirmation. Be proactive
 ```
@@ -1496,7 +1496,7 @@ As use cases grow more complex and the number of available tools increases, it b
 
 #### Example
 
-```
+```text
 # Tools
 - When you call any tools, you must output at the same time a response letting the user know that you are calling the tool.
 
@@ -1535,7 +1535,7 @@ You can fine-tune how the model behaves for specific tools instead of applying o
 
 #### Example
 
-```
+```text
 # TOOLS
 - For the tools marked PROACTIVE: do not ask for confirmation from the user and do not output a preamble.
 - For the tools marked as CONFIRMATION FIRST: always ask for confirmation to the user.
@@ -1629,7 +1629,7 @@ In many voice setups, the realtime model acts as the responder (speaks to the us
 
 #### Example
 
-```
+```text
 # Tools
 ## Supervisor Tool
 Name: getNextResponseFromSupervisor(relevantContextFromLastUserMessage: string)
@@ -1680,7 +1680,7 @@ Below are some of the important common tools that the model has been trained on:
 
 #### Example
 
-```
+```text
 # answer(question: string)
 Description: Call this when the customer asks a question that you don't have an answer to or asks to perform an action.
 
@@ -1705,7 +1705,7 @@ As well, by organizing your prompt into various conversation states, it becomes 
 
 #### Example
 
-```
+```text
 # Conversation Flow
 ## 1) Greeting
 Goal: Set tone and invite the reason for calling.
@@ -1769,7 +1769,7 @@ Sample phrases act as “anchor examples” for the model. They show the style, 
 
 #### Example
 
-```
+```text
 # Sample Phrases
 - Below are sample examples that you should use for inspiration. DO NOT ALWAYS USE THESE EXAMPLES, VARY YOUR RESPONSES.
 
@@ -1788,7 +1788,7 @@ It is a useful pattern to add sample phrases in the different conversation flow 
 
 #### Example
 
-```
+```text
 # Conversation Flow
 ## 1) Greeting
 Goal: Set tone and invite the reason for calling.
@@ -2058,7 +2058,7 @@ Often with Realtime voice agents, having a reliable way to escalate to a human i
 
 #### Example
 
-```
+```text
 # Safety & Escalation
 When to escalate (no extra troubleshooting):
 - Safety risk (self-harm, threats, harassment)

@@ -134,6 +134,18 @@ the `TRIGGER_PAYLOAD` [predefined CI/CD variable](../variables/predefined_variab
 The payload is exposed as a [file-type variable](../variables/_index.md#use-file-type-cicd-variables),
 so you can access the data with `cat $TRIGGER_PAYLOAD` or a similar command.
 
+`TRIGGER_PAYLOAD` contains the whole request: the webhook body, and the `variables` and `inputs` of the API call.
+The [pipeline variable limits](../variables/_index.md#pipeline-variable-limits) apply to it like to
+any other file-type variable.
+If the payload is larger than the limit for file-type variables, the pipeline is not created.
+
+To stay under the limit:
+
+- Reduce the size of the webhook body, if the sender supports it.
+- Use the [pipelines API](../../api/pipelines.md#create-a-new-pipeline) instead.
+  It does not add `TRIGGER_PAYLOAD` and supports file-type variables,
+  but it requires an access token instead of a pipeline trigger token.
+
 ### Pass CI/CD variables in the API call
 
 You can pass any number of [CI/CD variables](../variables/_index.md) in the trigger API call,
@@ -142,6 +154,9 @@ offers improved security and flexibility over CI/CD variables.
 
 These variables have the [highest precedence](../variables/_index.md#cicd-variable-precedence),
 and override all variables with the same name.
+
+The variables are also included in [`TRIGGER_PAYLOAD`](#access-webhook-payload),
+so they count toward its size limit.
 
 The parameter is of the form `variables[key]=value`, for example:
 

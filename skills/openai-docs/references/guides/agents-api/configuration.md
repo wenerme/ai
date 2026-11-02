@@ -479,6 +479,14 @@ Updating a session does not change the saved agent or other sessions. Later save
 
 You cannot update `reasoning.summary`, `text`, `tools`, `instructions`, or `multi_agent` through this endpoint. Create a new session to change those settings.
 
+## Automatic action review
+
+Set the session-level `review` field to `"auto_review"` to automatically review supported approval requests. Set it alongside `agent` or `agent_id`, rather than inside the agent configuration. If you omit `review` when creating a session, the value defaults to `"none"`.
+
+Automatic review also changes execution permissions. Check the [environment prerequisites](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals#prepare-the-execution-environment) before enabling it.
+
+You can update `review` when the main task is idle and input submission has settled. Subsequent execution and recovery use the new setting. A request to change the mode before those conditions are met returns `409 Conflict` and applies no changes. Use a project with automatic review enabled and a session that supports it. See [Automatic review](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals) for configuration and approval handling.
+
 ## Environment settings
 
 Set `environment` alongside `agent` when creating a session. It determines where the agent runs commands and works with files.

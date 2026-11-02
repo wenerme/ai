@@ -35,6 +35,8 @@ The executor registers with the API using an environment ID and a restricted API
 
 Prepare the files and dependencies your agent needs. Isolate environments by user or workload. Agents that share an environment can access the same files, credentials, and other resources.
 
+To enable automatic review with `review: "auto_review"`, run the standard executor in a container that supports sandboxing and permits Codex to create a sandbox. Automatic review applies a permission profile with a workspace-write baseline and restricted network access. Check the [automatic review prerequisites](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals#prepare-the-execution-environment) before enabling it.
+
 Create the working directory and install the Codex CLI inside the environment. This example uses `/workspace`:
 
 ```bash

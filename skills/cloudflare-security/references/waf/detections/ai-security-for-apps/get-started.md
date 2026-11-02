@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get
 
 # Get started with AI Security for Apps
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1. Turn on AI Security for Apps
 
@@ -70,7 +70,13 @@ Add the `cf-llm` label to the endpoint you added:
 
 Once you add a label to the endpoint, Cloudflare will start labeling incoming traffic for the endpoint with the label you selected.
 
-## 4. (Optional) Generate API traffic
+## 4. (Optional) Configure custom prompt extraction
+
+AI Security for Apps extracts prompts from common JSON request structures. If your application stores prompts in another supported request field or location, configure field extraction before generating test traffic.
+
+Field extraction lets you define expressions that return prompt values from supported request fields or locations. For instructions, refer to [Configure field extraction](https://developers.cloudflare.com/security/web-assets/field-extraction/).
+
+## 5. (Optional) Generate API traffic
 
 You may need to issue some `POST` requests to the endpoint so that there is some labeled traffic to review in the following step.
 
@@ -84,7 +90,7 @@ curl "https://<YOUR_HOSTNAME>/v1/messages" \
 
 The PII category for this request would be `EMAIL_ADDRESS`.
 
-## 5. Review labeled traffic and detection behavior
+## 6. Review labeled traffic and detection behavior
 
 Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to validate that Cloudflare is correctly labeling traffic for the endpoint.
 
@@ -106,7 +112,7 @@ Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/securit
 
 Alternatively, you can also create a custom rule with a *Log* action (only available on Enterprise plans) to check for potentially harmful traffic related to LLM prompts. This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your AI Security for Apps configuration.
 
-## 6. Mitigate harmful requests
+## 7. Mitigate harmful requests
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that blocks requests where Cloudflare detected personally identifiable information (PII) in the incoming request (as part of an LLM prompt), returning a custom JSON body:
 
@@ -162,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/og.png?v=1f217acadbe63f59","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/og.png?v=1f217acadbe63f59","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

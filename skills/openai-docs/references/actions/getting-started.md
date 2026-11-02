@@ -210,7 +210,7 @@ Typically, there are three sections:
 
 Here’s an example of the instructions for the Weather GPT. Notice how the instructions refer to the API action name and json parameters from the Open API schema.
 
-```
+```text
 **Context**: A user needs information related to a weather forecast of a specific location.
 
 **Instructions**:

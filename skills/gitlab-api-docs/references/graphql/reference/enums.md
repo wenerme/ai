@@ -167,7 +167,8 @@ Ways an AI Catalog item can be enabled in a group.
 | Value | Description |
 | ----- | ----------- |
 | `INHERITANCE` | Enabled for all projects in the group through group inheritance. Only top-level groups can enable items this way. Matches no items unless the `ai_catalog_group_inherited_consumers` feature flag is enabled. |
-| `PROJECT_DIRECT` | Enabled directly in any descendant project in the group. |
+| `NONE` | Not enabled in any of the other ways. |
+| `PROJECT_DIRECT` | Enabled directly in at least one project in the group, including projects in subgroups. Only top-level groups can match, and project configurations that are not linked to a group configuration of the item are not included. |
 
 ## `AiCatalogItemConsumerKind`
 
@@ -3057,7 +3058,6 @@ Geo registry class.
 | ----- | ----------- |
 | `ABUSE_REPORT_UPLOAD_REGISTRY` | Geo::AbuseReportUploadRegistry registry class. |
 | `ACHIEVEMENT_UPLOAD_REGISTRY` | Geo::AchievementUploadRegistry registry class. |
-| `AI_VECTORIZABLE_FILE_UPLOAD_REGISTRY` | Geo::AiVectorizableFileUploadRegistry registry class. |
 | `ALERT_MANAGEMENT_METRIC_IMAGE_UPLOAD_REGISTRY` | Geo::AlertManagementMetricImageUploadRegistry registry class. |
 | `APPEARANCE_UPLOAD_REGISTRY` | Geo::AppearanceUploadRegistry registry class. |
 | `BULK_IMPORT_EXPORT_UPLOAD_UPLOAD_REGISTRY` | Geo::BulkImportExportUploadUploadRegistry registry class. |

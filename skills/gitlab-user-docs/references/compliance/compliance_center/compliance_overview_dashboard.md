@@ -47,23 +47,29 @@ Below the summary metrics, you can see individual framework coverage including:
 
 ## Failed requirements chart
 
+- **Not applicable** status [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265002) in GitLab 19.6.
+
 The failed requirements chart visualizes the compliance status of requirements across your frameworks.
 
-The failed requirements chart displays three categories:
+The failed requirements chart displays the following categories:
 
 - **Passed**: Requirements that are fully compliant (shown in blue).
 - **Pending**: Requirements under review (shown in orange).
 - **Failed**: Requirements not meeting compliance standards (shown in magenta).
+- **Not applicable**: Requirements whose controls are all marked **Not applicable** (shown in neutral gray).
 
 ## Failed controls chart
 
+- **Not applicable** status [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265002) in GitLab 19.6.
+
 The failed controls chart provides a visual representation of control compliance status across your organization.
 
-The failed controls chart displays three categories:
+The failed controls chart displays the following categories:
 
 - **Passed**: Controls that meet compliance requirements (shown in blue).
 - **Pending**: Controls awaiting evaluation (shown in orange).
-- **Failed**: Controls that don't meet compliance requirements (shown in magenta).
+- **Failed**: Controls that do not meet compliance requirements (shown in magenta).
+- **Not applicable**: Controls that do not apply to the project (shown in neutral gray).
 
 ## Frameworks table
 

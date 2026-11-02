@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/access-s
 
 # Session management
 
-Last updated Oct 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A user session determines how long a user can access an Access application without re-authenticating.
 
@@ -64,7 +64,7 @@ By default, the policy session duration is equal to the [application session dur
 To set the policy session duration:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
-2. Choose a policy and select **Configure**.
+2. Choose a policy and select **Edit**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the policy.
 
@@ -77,7 +77,7 @@ The application session duration is the default [policy session duration](#polic
 To set the application session duration:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
-2. Choose an application and select **Configure**.
+2. Choose an application and select **Edit**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the application.
 
@@ -121,10 +121,10 @@ The following flowchart illustrates how Access enforces user sessions for a self
 
 | Flowchart setting | Dashboard location |
 | --- | --- |
-| Authenticate with Cloudflare One Client | **Access controls** > **Applications** > select an application > **Configure** > **Authentication** > **Authenticate with Cloudflare One Client** |
+| Authenticate with Cloudflare One Client | **Access controls** > **Applications** > select an application > **Edit** > **Authentication** > **Authenticate with Cloudflare One Client** |
 | Cloudflare One Client session duration | **Access controls** > **Access settings** > **Cloudflare One Client authentication** > **Session duration** |
-| Policy session duration | **Access controls** > **Policies** > select a policy > **Configure** > **Session duration** |
-| Application session duration | **Access controls** > **Applications** > select an application > **Configure** > **Overview** > **Session Duration** |
+| Policy session duration | **Access controls** > **Policies** > select a policy > **Edit** > **Session duration** |
+| Application session duration | **Access controls** > **Applications** > select an application > **Edit** > **Overview** > **Session Duration** |
 | Global session duration | **Access controls** > **Access settings** > **Set your global session duration** |
 
 ```
@@ -162,7 +162,7 @@ Access provides two options for revoking user sessions: per-application and per-
 To immediately terminate all active sessions for a specific application:
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
-2. Locate the application for which you would like to revoke active sessions and select **Configure**.
+2. Locate the application for which you would like to revoke active sessions and select **Edit**.
 3. Select **Revoke existing tokens**.
 
 Unless there are changes to rules in the policy, users can start a new session if their profile in your identity provider is still active.
@@ -218,5 +218,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/og.png?v=798372700edbbe03","dateModified":"2026-10-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/og.png?v=798372700edbbe03","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

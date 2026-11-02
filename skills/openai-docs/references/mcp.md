@@ -404,7 +404,7 @@ On free Replit accounts, server URLs are active for as long as the editor is act
 
 In the long dev URL, ensure it ends with `/sse/`, which is the server-sent events (streaming) interface to the MCP server. This is the URL you will use to connect your app in ChatGPT and call it via API. An example Replit URL looks like:
 
-```
+```text
 https://777xxx.janeway.replit.dev/sse/
 ```
 
