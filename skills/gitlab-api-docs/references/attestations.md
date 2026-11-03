@@ -15,10 +15,10 @@ Use this API to interact with [provenance attestations](../ci/pipeline_security/
 
 ## Provenance attestations
 
-Some endpoints return [Sigstore bundles](https://docs.sigstore.dev/about/bundle/) as part of the response. You
-can verify these using [glab](https://docs.gitlab.com/cli/) or
-[cosign](https://github.com/sigstore/cosign). For more information on
-provenance, see [SLSA provenance specification](../ci/pipeline_security/slsa/level_3/provenance_v1.md)
+Some endpoints return [Sigstore bundles](https://docs.sigstore.dev/about/bundle/) as part of the response.
+For attestations that use the `SIGSTORE` [attestation method](../ci/pipeline_security/slsa/level_3/_index.md#attestation-methods),
+you can verify these bundles with [glab](https://docs.gitlab.com/cli/) or [cosign](https://github.com/sigstore/cosign).
+For more information on provenance, see [SLSA provenance specification](../ci/pipeline_security/slsa/level_3/provenance_v1.md).
 
 ## List all attestations
 

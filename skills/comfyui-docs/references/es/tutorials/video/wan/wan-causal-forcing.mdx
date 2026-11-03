@@ -1,16 +1,17 @@
 ---
 title: "Causal Forcing en ComfyUI: imagen a video con Wan2.1 en 1 a 4 pasos"
 description: "Genera video temporalmente consistente desde una sola imagen en ComfyUI con Causal Forcing o Causal Forcing++ sobre Wan2.1, usando tan solo 1 a 4 pasos."
-translationSourceHash: 4cd31faf
+translationSourceHash: e94bf5dc
 translationFrom: tutorials/video/wan/wan-causal-forcing.mdx
 translationBlockHashes:
   "_intro": 3da76367
   "How it works": a3348b35
   "Using the workflow": 5e6245a2
   "Steps to run": 3202924b
+  "Model downloads": c6ce079e
 ---
 
-**Causal Forcing** es una técnica de generación de video que aplica **conditioning recurrente** durante la inferencia, en la que cada fotograma generado se devuelve al modelo para predecir el siguiente fotograma. Así se obtienen videos suaves y coherentes en el tiempo a partir de una sola imagen inicial en tan solo **1 a 4 pasos de inferencia**.
+**Causal Forcing** es una técnica de generación de video que aplica **acondicionamiento recurrente** durante la inferencia, donde cada fotograma generado se devuelve al modelo para predecir el siguiente fotograma. Esto produce videos suaves y coherentes en el tiempo a partir de una sola imagen inicial en tan solo **1 a 4 pasos de inferencia**.
 
 Este flujo de trabajo usa **Wan2.1** y admite tanto el modo **Causal Forcing** (estándar) como **Causal Forcing++** (mejorado).
 
@@ -26,7 +27,7 @@ Este flujo de trabajo usa **Wan2.1** y admite tanto el modo **Causal Forcing** (
 **Materiales de entrada**
 
   
-    Imagen de entrada para el primer fotograma. Descárgala y úsala, o reemplázala por una tuya.
+    Imagen de entrada para el primer fotograma. Descarga y usa esta imagen, o reemplázala con una tuya.
   
 
 ## Cómo funciona
@@ -46,8 +47,8 @@ Este enfoque recurrente crea una **fuerte consistencia temporal**: cada fotogram
 
 | Modo | Descripción |
 |---|---|
-| **Causal Forcing** | conditioning recurrente estándar. Buena calidad con 2–4 pasos. |
-| **Causal Forcing++** | Modo mejorado que aplica conditioning adicional para una mejor coherencia temporal. Funciona bien con solo 1–2 pasos. |
+| **Causal Forcing** | Acondicionamiento recurrente estándar. Buena calidad con 2–4 pasos. |
+| **Causal Forcing++** | Modo mejorado que aplica acondicionamiento adicional para una mejor coherencia temporal. Funciona bien con solo 1–2 pasos. |
 
 ## Usar el flujo de trabajo
 
@@ -58,12 +59,12 @@ El flujo de trabajo acepta una sola imagen de entrada (el primer fotograma) y un
 | Ajuste | Descripción |
 |---|---|
 | **first_frame** (requerido) | La imagen inicial del video. Carga un PNG/JPG con el nodo **LoadImage**. |
-| **positive_prompt** (opcional) | Una descripción de texto del contenido de video deseado. Déjalo vacío para no aplicar conditioning. |
+| **positive_prompt** (opcional) | Una descripción de texto del contenido de video deseado. Déjalo vacío para no aplicar acondicionamiento. |
 | **duration** (opcional) | El número de fotogramas a generar. Predeterminado: el número de fotogramas de la salida esperada del modelo. |
 
 ### Parámetros del subgrafo WAN I2V
 
-Se exponen como controles en el nodo del subgrafo del plano:
+El nodo del subgrafo del plano los expone como controles:
 
 | Parámetro | Predeterminado | Descripción |
 |---|---|---|
@@ -77,15 +78,15 @@ Se exponen como controles en el nodo del subgrafo del plano:
 ## Pasos para ejecutar
 
 1. **Carga una imagen**: usa el nodo **LoadImage** para cargar tu fotograma inicial
-2. **Escribe un prompt** (opcional): describe el contenido de video que deseas
+2. **Escribe un prompt** (opcional): describe el contenido del video que deseas
 3. **Establece la duración**: cuántos fotogramas generar
 4. **Selecciona los modelos**: elige el checkpoint, CLIP y VAE de Wan2.1 I2V
 5. **Elige el modo**: Causal Forcing o Causal Forcing++ (configúralo mediante la configuración interna del subgrafo o una entrada específica de Causal Forcing si está disponible)
 6. **Ejecuta**: los fotogramas se generarán de forma secuencial y se guardarán en `ComfyUI/output/`
 
-## Descarga de modelos
+## Descargas de modelos
 
-Descarga el modelo Wan2.1 I2V y los archivos necesarios. Colócalos en los subdirectorios correspondientes de `models/`.
+Descarga el modelo Wan2.1 I2V y los archivos requeridos. Colócalos en las subcarpetas correspondientes de `models/`.
 
 ### Wan2.1 I2V
 
@@ -105,7 +106,7 @@ Descarga el modelo Wan2.1 I2V y los archivos necesarios. Colócalos en los subdi
     Wan2.1_VAE_bf16.safetensors - VAE de Wan2.1
   
 
-### Ubicación de almacenamiento de modelos
+### Ubicación de almacenamiento de los modelos
 
 ```
 📂 ComfyUI/

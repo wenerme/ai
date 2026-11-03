@@ -148,6 +148,7 @@ When additional commits are needed beyond this initial clone, the analyzer autom
 
   In analyzer version `v7.41.0` and later, a merge commit in the range can bring in commits that are older than
   the base commit. To include them, the analyzer fetches up to 1023 older commits from the project repository.
+  In analyzer version `v7.41.1` and later, the analyzer stops fetching older commits after 1 minute.
 - During a historic scan, the analyzer fetches the complete repository history. If the repository was shallowly cloned, the analyzer uses the `--unshallow` option.
 
 If the analyzer cannot fetch the required commits, it falls back to scanning available data:
@@ -156,8 +157,8 @@ If the analyzer cannot fetch the required commits, it falls back to scanning ava
 - If there are network failures, the analyzer scans commits available after the initial clone.
 - If there are timeouts, the analyzer continues the scan with a partial commit history.
 - If a commit range still has missing commits after the analyzer fetches 1023 older commits from the project
-  repository, it scans only the latest commit. If the latest commit is a merge commit, the scan also includes the
-  commits of the merged branch that the analyzer fetched.
+  repository, the analyzer scans only the latest commit. It does the same when it reaches the time limit.
+  If the latest commit is a merge commit, the scan also includes the commits of the merged branch that the analyzer fetched.
   For a range between two commit SHAs in `SECRET_DETECTION_LOG_OPTIONS`, the analyzer instead
   [scans only the first-parent history](#warning-gaps-remain-in-commit-range) of the range.
 

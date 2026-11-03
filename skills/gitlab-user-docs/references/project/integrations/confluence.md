@@ -10,13 +10,13 @@ GitLab does not display your Confluence content.
 
 When you turn on the integration:
 
-- A new menu item is added to the left sidebar: **Plan** > **Confluence**.
+- A new menu item is added to the left sidebar:  > .
   It links to your Confluence wiki.
-- The **Plan** > **Wiki** menu item is hidden.
+- The  >  menu item is hidden.
 
   To access the GitLab wiki for the project, use its URL:
   `<example_project_URL>/-/wikis/home`.
-  To bring back the **Plan** > **Wiki** menu item, turn off this integration.
+  To bring back the  >  menu item, turn off this integration.
 
 Creating a more comprehensive integration with Confluence Cloud is tracked in
 [epic 3629](https://gitlab.com/groups/gitlab-org/-/epics/3629).
@@ -34,12 +34,12 @@ Prerequisites:
 
 To set up the integration for your project or group:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Settings** > **Integrations**.
-1. Next to **Confluence Workspace**, select **Configure**.
-1. Under **Enable integration**, select the **Active** checkbox.
-1. In **Confluence Workspace URL**, enter your Confluence Workspace URL.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Next to , select .
+1. Under , select the  checkbox.
+1. In , enter your Confluence Workspace URL.
+1. Select .
 
 If the integration has been turned on for the group, you can still turn it off for individual projects.
 
@@ -54,12 +54,12 @@ Prerequisites:
 
 To set up the integration for your instance:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **Integrations**.
-1. Next to **Confluence Workspace**, select **Configure**.
-1. Under **Enable integration**, select the **Active** checkbox.
-1. In **Confluence Workspace URL**, enter your Confluence Workspace URL.
-1. Select **Save changes**.
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Next to , select .
+1. Under , select the  checkbox.
+1. In , enter your Confluence Workspace URL.
+1. Select .
 
 ## Access your Confluence Workspace from GitLab
 
@@ -70,6 +70,6 @@ Prerequisites:
 
 To access your Confluence Workspace from a GitLab project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Confluence**.
-1. Select **Go to Confluence**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .

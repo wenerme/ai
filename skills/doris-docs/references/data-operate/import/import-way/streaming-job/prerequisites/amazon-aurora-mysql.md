@@ -16,6 +16,10 @@
 }
 ---
 
+> **caution**: Experimental feature
+
+Doris continuous load is experimental and supported starting with Doris 4.1.5.
+
 Doris streaming ingestion supports Amazon Aurora MySQL-Compatible Edition versions **5.6, 5.7, and 8.0.x**. Because Aurora MySQL does not enable Binlog by default, you must first complete prerequisite work on the Aurora cluster before syncing data: enable and configure Binlog, create a sync user, and set the Binlog retention period.
 
 This document is intended for users who plan to onboard Aurora MySQL data into Doris streaming ingestion. It provides an end-to-end configuration workflow.

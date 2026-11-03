@@ -1,3 +1,10 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Long context
+
 Many Gemini models come with large context windows of 1 million or more tokens.
 Historically, large language models (LLMs) were significantly limited by
 the amount of text (or tokens) that could be passed to the model at one time.
@@ -5,8 +12,9 @@ The Gemini long context window unlocks many new use cases and developer
 paradigms.
 
 The code you already use for cases like [text
-generation](https://ai.google.dev/gemini-api/docs/text-generation) or [multimodal
-inputs](https://ai.google.dev/gemini-api/docs/vision) will work without any changes with long context.
+generation](/docs/text-generation) or [multimodal
+inputs](/docs/image-understanding) will work without any changes with long
+context.
 
 This document gives you an overview of what you can achieve using models with
 context windows of 1M and more tokens. The page gives a brief overview of
@@ -15,9 +23,9 @@ various real world use cases for long context, and ways to optimize the usage
 of long context.
 
 For the context window sizes of specific models, see the
-[Models](https://ai.google.dev/gemini-api/docs/models) page.
+[Models](/docs/models) page.
 
-## What is a context window?
+## What is a context window?  {% id="what-is-context-window" %}
 
 The basic way you use the Gemini models is by passing information (context)
 to the model, which will subsequently generate a response. An analogy for the
@@ -25,12 +33,12 @@ context window is short term memory. There is a limited amount of information
 that can be stored in someone's short term memory, and the same is true for
 generative models.
 
-In Gemini 4 (`gemini-4-argon`), the 1M-token context window is **shared across input, thinking, and output tokens** , and the model can generate up to 1M output tokens using [long decode](https://ai.google.dev/gemini-api/docs/long-decode). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens). Earlier Gemini 3 and 2.5 models use separate 1M input and 64K output budgets.
+In Gemini 4 (`gemini-4-argon`), the 1M-token context window is **shared across input, thinking, and output tokens**, and the model can generate up to 1M output tokens using [long decode](/docs/long-decode). If your input tokens plus `max_output_tokens` exceed 1,048,576 tokens, the API automatically caps the output limit to the remaining space in the context window (`1,048,576` minus your input tokens). Earlier Gemini 3 and 2.5 models use separate 1M input and 64K output budgets.
 
-You can read more about how models work under the hood in our [generative models
-guide](https://ai.google.dev/gemini-api/docs/prompting-strategies#under-the-hood).
+You can read more about how models work in our [generative models
+guide](/docs/prompting-strategies).
 
-## Getting started with long context
+## Getting started with long context  {% id="getting-started-with-long-context" %}
 
 Earlier versions of generative models were only able to process 8,000
 tokens at a time. Newer models pushed this further by accepting 32,000 or even
@@ -54,21 +62,21 @@ context capabilities, they demonstrate powerful in-context learning. For
 example, using only in-context instructional materials (a 500-page reference
 grammar, a dictionary, and ≈400 parallel sentences), Gemini
 [learned to translate](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf)
-from English to Kalamang---a Papuan language with
-fewer than 200 speakers---with quality similar to a human learner using the same
+from English to Kalamang—a Papuan language with
+fewer than 200 speakers—with quality similar to a human learner using the same
 materials. This illustrates the paradigm shift enabled by Gemini's long context,
 empowering new possibilities through robust in-context learning.
 
-## Long context use cases
+## Long context use cases  {% id="long-context-use-cases" %}
 
 While the standard use case for most generative models is still text input, the
 Gemini model family enables a new paradigm of multimodal use cases. These
 models can natively understand text, video, audio, and images. They are
 accompanied by the [Gemini API that takes in multimodal file
-types](https://ai.google.dev/gemini-api/docs/prompting_with_media) for
+types](/docs/files#prompt-guide) for
 convenience.
 
-### Long form text
+### Long form text  {% id="long-form-text" %}
 
 Text has proved to be the layer of intelligence underpinning much of the
 momentum around LLMs. As mentioned earlier, much of the practical limitation of
@@ -80,12 +88,23 @@ new techniques becoming available which unlock new use cases.
 
 Some emerging and standard use cases for text based long context include:
 
-- Summarizing large corpuses of text
-  - Previous summarization options with smaller context models would require a sliding window or another technique to keep state of previous sections as new tokens are passed to the model
-- Question and answering
-  - Historically this was only possible with RAG given the limited amount of context and models' factual recall being low
-- Agentic workflows
-  - Text is the underpinning of how agents keep state of what they have done and what they need to do; not having enough information about the world and the agent's goal is a limitation on the reliability of agents
+-   Summarizing large corpuses of text
+
+  -   Previous summarization options with smaller context models would require
+    a sliding window or another technique to keep state of previous sections
+    as new tokens are passed to the model
+
+-   Question and answering
+
+  -   Historically this was only possible with RAG given the limited amount of
+    context and models' factual recall being low
+
+-   Agentic workflows
+
+  -   Text is the underpinning of how agents keep state of what they have done
+    and what they need to do; not having enough information about the world
+    and the agent's goal is a limitation on the reliability of agents
+
 
 [Many-shot in-context learning](https://arxiv.org/pdf/2404.11018) is one of the
 most unique capabilities unlocked by long context models. Research has shown
@@ -100,7 +119,7 @@ long context optimization section, context caching makes this type of high input
 token workload much more economically feasible and even lower latency in some
 cases.
 
-### Long form video
+### Long form video  {% id="long-form-video" %}
 
 Video content's utility has long been constrained by the lack of accessibility
 of the medium itself. It was hard to skim the content, transcripts often failed
@@ -111,20 +130,31 @@ sustained performance.
 
 Some emerging and standard use cases for video long context include:
 
-- Video question and answering
-- Video memory, as shown with [Google's Project Astra](https://deepmind.google/technologies/gemini/project-astra/)
-- Video captioning
-- Video recommendation systems, by enriching existing metadata with new multimodal understanding
-- Video customization, by looking at a corpus of data and associated video metadata and then removing parts of videos that are not relevant to the viewer
-- Video content moderation
-- Real-time video processing
+-   Video question and answering
+
+-   Video memory, as shown with [Google's Project Astra](https://deepmind.google/technologies/gemini/project-astra/)
+
+-   Video captioning
+
+-   Video recommendation systems, by enriching existing metadata with new
+  multimodal understanding
+
+-   Video customization, by looking at a corpus of data and associated video
+  metadata and then removing parts of videos that are not relevant to the
+  viewer
+
+-   Video content moderation
+
+-   Real-time video processing
+
 
 When working with videos, it is important to consider how the [videos are
-processed into tokens](https://ai.google.dev/gemini-api/docs/tokens#video), which affects
+processed into tokens](/docs/tokens#video), which affects
 billing and usage limits. You can learn more about prompting with video files in
-the [Prompting guide](https://ai.google.dev/gemini-api/docs/files#prompt-guide).
+the [Prompting
+guide](/docs/files#prompt-guide).
 
-### Long form audio
+### Long form audio  {% id="long-form-audio" %}
 
 The Gemini models were the first natively multimodal large language models
 that could understand audio. Historically, the typical developer workflow would
@@ -142,13 +172,13 @@ Some emerging and standard use cases for audio context include:
 - Voice assistants
 
 You can learn more about prompting with audio files in the [Prompting
-guide](https://ai.google.dev/gemini-api/docs/files#prompt-guide).
+guide](/docs/files#prompt-guide).
 
-## Long context optimizations
+## Long context optimizations  {% id="long-context-optimizations" %}
 
 The primary optimization when working with long context and the Gemini
 models is to use [context
-caching](https://ai.google.dev/gemini-api/docs/caching). Beyond the previous
+caching](/docs/caching). Beyond the previous
 impossibility of processing lots of tokens in a single request, the other main
 constraint was the cost. If you have a "chat with your data" app where a user
 uploads 10 PDFs, a video, and some work documents, you would historically have
@@ -156,12 +186,12 @@ to work with a more complex retrieval augmented generation (RAG) tool /
 framework in order to process these requests and pay a significant amount for
 tokens moved into the context window. Now, you can cache the files the user
 uploads and pay to store them on a per hour basis. The input / output cost per
-request with Gemini Flash for example is \~4x less than the standard
+request with Gemini Flash for example is ~4x less than the standard
 input / output cost, so if
 the user chats with their data enough, it becomes a huge cost saving for you as
 the developer.
 
-## Long context limitations
+## Long context limitations  {% id="long-context-limitations" %}
 
 In various sections of this guide, we talked about how Gemini models achieve
 high performance across various needle-in-a-haystack retrieval evals. These
@@ -170,22 +200,22 @@ looking for. In cases where you might have multiple "needles" or specific pieces
 of information you are looking for, the model does not perform with the same
 accuracy. Performance can vary to a wide degree depending on the context. This
 is important to consider as there is an inherent tradeoff between getting the
-right information retrieved and cost. You can get \~99% on a single query, but
+right information retrieved and cost. You can get ~99% on a single query, but
 you have to pay the input token cost every time you send that query. So for 100
 pieces of information to be retrieved, if you needed 99% performance, you would
 likely need to send 100 requests. This is a good example of where context
 caching can significantly reduce the cost associated with using Gemini models
 while keeping the performance high.
 
-## FAQs
+## FAQs  {% id="faqs" %}
 
-### Where is the best place to put my query in the context window?
+### Where is the best place to put my query in the context window?  {% id="where-is-the-best-place-to-put-my-query-in-the-context-window" %}
 
 In most cases, especially if the total context is long, the model's
 performance will be better if you put your query / question at the end of the
 prompt (after all the other context).
 
-### Do I lose model performance when I add more tokens to a query?
+### Do I lose model performance when I add more tokens to a query?  {% id="do-i-lose-model-performance-when-i-add-more-tokens-to-a-query" %}
 
 Generally, if you don't need tokens to be passed to the model, it is best to
 avoid passing them. However, if you have a large chunk of tokens with some
@@ -193,14 +223,15 @@ information and want to ask questions about that information, the model is
 highly capable of extracting that information (up to 99% accuracy in many
 cases).
 
-### How can I lower my cost with long-context queries?
+### How can I lower my cost with long-context queries?  {% id="how-can-i-lower-my-cost-with-long-context-queries" %}
 
 If you have a similar set of tokens / context that you want to re-use many
-times, [context caching](https://ai.google.dev/gemini-api/docs/caching) can help reduce the costs
+times, [context caching](/docs/caching) can help reduce the costs
 associated with asking questions about that information.
 
-### Does the context length affect the model latency?
+### Does the context length affect the model latency?  {% id="does-the-context-length-affect-the-model-latency" %}
 
 There is some fixed amount of latency in any given request, regardless of the
 size, but generally longer queries will have higher latency (time to first
 token).
+

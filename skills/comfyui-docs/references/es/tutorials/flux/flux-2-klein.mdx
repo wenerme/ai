@@ -1,25 +1,27 @@
 ---
 title: "Guía de ComfyUI FLUX.2 Klein 4B"
 description: "Introducción rápida a FLUX.2 [klein] 4B y cómo ejecutar flujos de trabajo de texto a imagen y edición de imágenes en ComfyUI."
-translationSourceHash: c108dbe5
+translationSourceHash: 98542515
 translationFrom: tutorials/flux/flux-2-klein.mdx
 translationBlockHashes:
   "_intro": 980a68e5
   "About FLUX.2 [klein]": 556eac08
   "FLUX.2 Klein 4B Workflows": 8095f2bc
+  "FLUX.2 Klein 4B Model Downloads": f8158c6b
   "FLUX.2 Klein 9B Workflows": 99d18075
+  "FLUX.2 Klein 9B Model Downloads": 0407c874
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Y9foxm9OYEU?si=FeueXTTBoIkydjk7" title="Reproductor de video de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Acerca de FLUX.2 [klein]
 
-FLUX.2 [Klein] es el modelo más rápido de la familia FLUX: unifica texto a imagen y edición de imágenes en una sola arquitectura compacta. Está diseñado para flujos de trabajo interactivos, vistas previas inmediatas y aplicaciones donde la latencia es crítica, con variantes destiladas que ofrecen una inferencia de extremo a extremo en torno a un segundo y mantienen una gran calidad en la edición con una o varias referencias.
+FLUX.2 [Klein] es el modelo más rápido de la familia FLUX y unifica texto a imagen y edición de imágenes en una sola arquitectura compacta. Está pensado para flujos de trabajo interactivos, vistas previas inmediatas y aplicaciones donde la latencia es crítica, con variantes destiladas que ofrecen una inferencia de extremo a extremo en torno a un segundo y mantienen una gran calidad en la edición con una o varias referencias.
 
 **Aspectos destacados del modelo:**
 - Dos tipos de 4B: Base (sin destilar) para máxima flexibilidad y ajuste fino; Distilled (4 pasos) para despliegues que priorizan la velocidad
 - Rendimiento: destilado ~1.2s (5090) · 8.4GB VRAM; base ~17s (5090) · 9.2GB VRAM
-- Soporte de edición: transformaciones de estilo, ediciones semánticas, reemplazo y eliminación de objetos, composición con varias referencias, ediciones iterativas
+- Soporte de edición: transformaciones de estilo, ediciones semánticas, reemplazo y eliminación de objetos, composición con varias referencias y ediciones iterativas
 
 ## Flujos de trabajo de FLUX.2 Klein 4B
 
@@ -69,15 +71,15 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
 
 ![Ejemplo de edición de imagen base de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_4b_base.png)
 
-### FLUX.2 [Klein] 4B destilado: Edición de imagen {#image_flux2_klein_image_edit_4b_distilled}
+### FLUX.2 [Klein] 4B Distilled: Edición de imagen {#image_flux2_klein_image_edit_4b_distilled}
 
-[Vista previa del flujo de trabajo de edición de imagen destilado de FLUX.2 Klein 4B]
+[Vista previa del flujo de trabajo de edición de imagen Distilled de FLUX.2 Klein 4B]
 
   
     Ejecuta este flujo de trabajo en Comfy Cloud
   
   
-    Descarga el flujo de trabajo rápido de edición de imagen 4B destilado.
+    Descarga el flujo de trabajo rápido y destilado de edición de imagen 4B.
   
 
 **Materiales de entrada**
@@ -98,9 +100,9 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
 
 **Salida de ejemplo**
 
-![Ejemplo de edición de imagen destilado de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
+![Ejemplo de edición de imagen Distilled de FLUX.2 Klein 4B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_4b_distilled.png)
 
-## Descargas de modelos de FLUX.2 Klein 4B
+## Descargas del modelo FLUX.2 Klein 4B
 
     Codificador de texto para modelos 4B.
   
@@ -114,7 +116,7 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
     VAE para modelos 4B.
   
 
-**Ubicación de almacenamiento de los modelos 4B**
+**Ubicación de almacenamiento del modelo 4B**
 
 ```
 📂 ComfyUI/
@@ -132,13 +134,13 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
 
 ### FLUX.2 [Klein] 9B: Texto a imagen {#image_flux2_text_to_image_9b}
 
-[Vista previa del flujo de trabajo texto a imagen de FLUX.2 Klein 9B]
+[Vista previa del flujo de trabajo de texto a imagen de FLUX.2 Klein 9B]
 
   
     Ejecuta este flujo de trabajo en Comfy Cloud
   
   
-    Descarga el flujo de trabajo texto a imagen de FLUX.2 Klein 9B.
+    Descarga el flujo de trabajo de texto a imagen para FLUX.2 Klein 9B.
   
 
 **Salida de ejemplo**
@@ -174,7 +176,7 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
 
 **Salida de ejemplo**
 
-![Ejemplo base de edición de imagen de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
+![Ejemplo de edición de imagen base de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/image_flux2_klein_image_edit_9b_base.png)
 
 ### FLUX.2 [Klein] 9B destilado: Edición de imagen {#image_flux2_klein_image_edit_9b_distilled}
 
@@ -184,7 +186,7 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
     Ejecuta este flujo de trabajo en Comfy Cloud
   
   
-    Descarga el flujo de trabajo rápido destilado de edición de imagen 9B.
+    Descarga el flujo de trabajo rápido y destilado de edición de imagen 9B.
   
 
 **Materiales de entrada**
@@ -205,9 +207,9 @@ Sube estos archivos a los nodos `LoadImage` correspondientes:
 
 **Salida de ejemplo**
 
-![Ejemplo destilado de edición de imagen de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
+![Ejemplo de edición de imagen destilada de FLUX.2 Klein 9B](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_klein_image_edit_9b_distilled.png)
 
-## Descargas de modelos de FLUX.2 Klein 9B
+## Descargas del modelo FLUX.2 Klein 9B
 
 Para los modelos de difusión, visita el repositorio de BFL, acepta el acuerdo y luego descarga los modelos.
 
@@ -217,10 +219,10 @@ Para los modelos de difusión, visita el repositorio de BFL, acepta el acuerdo y
     Modelo de difusión (9B destilado).
   
 
-    Codificador de texto para modelos 9B.
+    Codificador de texto para los modelos 9B.
   
 
-    VAE para modelos 9B.
+    VAE para los modelos 9B.
   
 
 **Ubicación de almacenamiento de los modelos 9B**

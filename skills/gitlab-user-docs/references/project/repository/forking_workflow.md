@@ -119,6 +119,9 @@ To update your fork from the GitLab UI:
    - If your fork contains merge conflicts, GitLab shows a step-by-step guide to update
      your fork from the command line.
 
+You can update a fork from the UI up to 10 times every 30 minutes.
+For more information, see [non-configurable rate limits](../../../rate_limits/non_configurable.md).
+
 ### From the command line
 
 You can also update your fork from the command line.

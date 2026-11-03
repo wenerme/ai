@@ -915,7 +915,7 @@ Find custom dashboards for an organization. This field is a [connection](objects
 | ---- | ---- | ----------- | ------- |
 | `createdById` | [`UserID`](scalars.md#userid) | Filter by dashboard creator. |  |
 | `namespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Filter by namespace. |  |
-| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization ID to filter dashboards. Defaults to the current organization if not provided. |  |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization ID to filter dashboards. Must be the current organization, which is used when not provided. |  |
 | `scope` | [`CustomDashboardScope`](enums.md#customdashboardscope) | Filter dashboards by scope. | `ALL` |
 | `search` | [`String`](scalars.md#string) | Filter dashboards by name. |  |
 

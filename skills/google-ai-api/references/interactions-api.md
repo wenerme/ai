@@ -1,4728 +1,8414 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Gemini Interactions API
+
+{% callout type="note" %}
+  **Recommended:** The **Interactions API** is the recommended standard API for all new projects and applications using Gemini. It is optimized for agentic workflows, server-side state management, and real-time conversations.
+
+{% /callout %}
+
+{% callout type="note" %}
+  You are viewing the beta version of the Interactions API. Endpoints are under `/v1beta/`. The stable [v1 version](/api-reference/interactions-api?api-version=v1) is also available.
+
+{% /callout %}
+
 The Gemini Interactions API allows developers to build generative AI applications using Gemini models. Gemini is our most capable model, built from the ground up to be multimodal. It can generalize and seamlessly understand, operate across, and combine different types of information including language, images, audio, video, and code. You can use the Gemini API for use cases like reasoning across text and images, content generation, dialogue agents, summarization and classification systems, and more.
-[View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
 
-> [!NOTE]
-> **Beta** : You are viewing the beta version of the Interactions API. Endpoints are under `/v1beta/`. The stable [v1 version](https://ai.google.dev/api/interactions-api-v1) is also available.
+## Methods  {% id="methods" %}
 
-API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
+{% table %}
+  * Method
+  * HTTP request
 
-## Creating an interaction
+  ---
 
-post https://generativelanguage.googleapis.com/v1beta/interactions Creates a new interaction.
-- [Request body](https://ai.google.dev/api/interactions-api#CreateInteraction.request_body)
-- [Response](https://ai.google.dev/api/interactions-api#CreateInteraction.response)
+  * [Creating an interaction](/api-reference/interactions-api/create-interaction)
+  *     {% mark class="http-post" %}{% icon name="north_east" /%}`POST`{% /mark %} `/v1beta/interactions`
 
-### Request body
+    Creates a new interaction.
 
-The request body contains data with the following structure:
-model ModelOption (optional) The name of the \`Model\` used for generating the interaction.   
-**Required if \`agent\` is not provided.**
-The model that will complete your prompt.\\n\\nSee \[models\](https://aistudio.google.com/docs/models) for additional details.
 
-#### Possible values
+  ---
 
-- `gemma-4-26b-a4b-it`
+  * [Canceling an interaction](/api-reference/interactions-api/cancel-interaction-by-id)
+  *     {% mark class="http-post" %}{% icon name="north_east" /%}`POST`{% /mark %} `/v1beta/interactions/{id}/cancel`
 
-  Gemma 4 26B A4B IT
-- `gemma-4-31b-it`
+    Cancels an interaction by id.
 
-  Gemma 4 31B IT
-- `gemini-flash-latest`
 
-  Latest release of Gemini Flash
-- `gemini-flash-lite-latest`
+  ---
 
-  Latest release of Gemini Flash-Lite
-- `gemini-pro-latest`
+  * [Getting an interaction](/api-reference/interactions-api/get-interaction-by-id)
+  *     {% mark class="http-get" %}{% icon name="south_west" /%}`GET`{% /mark %} `/v1beta/interactions/{id}`
 
-  Latest release of Gemini Pro
-- `gemini-2.5-flash`
+    Retrieves the full details of a single interaction based on its `Interaction.id`.
 
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-pro`
 
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-flash-lite`
+  ---
 
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-3.5-flash-lite`
+  * [Deleting an interaction](/api-reference/interactions-api/delete-interaction)
+  *     {% mark class="http-delete" %}{% icon name="close" /%}`DELETE`{% /mark %} `/v1beta/interactions/{id}`
 
-  Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
-- `gemini-2.5-flash-image`
+    Deletes the interaction by id.
 
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-3-flash-preview`
+{% /table %}
 
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.1-pro-preview`
+## Resources  {% id="resources" %}
 
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-pro-preview-customtools`
-
-  Gemini 3.1 Pro Preview optimized for custom tool usage
-- `gemini-3.1-flash-lite`
-
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-image`
-
-  Gemini 3.1 Flash Lite Image.
-- `gemini-3-pro-image`
-
-  Gemini 3 Pro Image
-- `nano-banana-pro-preview`
-
-  Gemini 3 Pro Image Preview
-- `gemini-3.1-flash-image`
-
-  Gemini 3.1 Flash Image.
-- `gemini-nano-banana-2.1`
-
-  Gemini Nano Banana 2.1.
-- `gemini-3.1-flash-tts-preview`
-
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-3.5-flash`
-
-  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
-- `gemini-3.6-flash`
-
-  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
-- `gemini-3.7-flash`
-
-  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
-- `gemini-3.8-flash`
-
-  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-- `gemini-3.8-flash-tts`
-
-  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
-- `gemini-3.8-flash-lite-tts`
-
-  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
-- `lyria-3-clip-preview`
-
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `lyria-3-pro-preview`
-
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-robotics-er-1.6-preview`
-
-  Gemini Robotics-ER 1.6 Preview
-- `gemini-robotics-er-2-preview`
-
-  Gemini Robotics Embodied Reasoning 2 Preview
-- `lyria-3.5`
-
-  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
-- `gemini-omni-1.1-flash`
-
-  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
-- `gemini-omni-flash-preview`
-
-  Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
-agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.   
-**Required if \`model\` is not provided.**
-The agent to interact with.
-
-#### Possible values
-
-- `deep-research-preview-04-2026`
-
-  Gemini Deep Research Agent
-- `deep-research-max-preview-04-2026`
-
-  Gemini Deep Research Max Agent
-- `antigravity-preview-05-2026`
-
-  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (required) The inputs for the interaction (common to both Model and Agent).
-generation_config GenerationConfig (optional) **Model Configuration**   
-Configuration parameters for the model interaction.   
-*Alternative to \`agent_config\`. Only applicable when \`model\` is set.*
-Configuration parameters for model interactions.
-
-#### Fields
-
-seed integer (optional) Seed used in decoding for reproducibility.
-stop_sequences array (string) (optional) A list of character sequences that will stop output interaction.
-tool_choice [ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) or enum (string) (optional) The tool choice configuration.
-
-#### Possible Types
-
-[ToolChoiceConfig](https://ai.google.dev/api/interactions-api#Resource:ToolChoiceConfig) The tool choice configuration containing allowed tools.
-allowed_tools AllowedTools (optional) The allowed tools.
-The configuration for allowed tools.
-
-#### Fields
-
-mode enum (string) (optional) The mode of the tool choice.
-
-Possible
-values:
-
-- `auto`
-
-  Auto tool choice.
-- `any`
-
-  Any tool choice.
-- `none`
-
-  No tool choice.
-- `validated`
-
-  Validated tool choice.
-tools array (string) (optional) The names of the allowed tools.
-enum (string)
-- `auto`: Auto tool choice.
-- `any`: Any tool choice.
-- `none`: No tool choice.
-- `validated`: Validated tool choice.
-thinking_level ThinkingLevel (optional) The level of thought tokens that the model should generate.
-<br />
-
-#### Possible values
-
-- `minimal`
-
-  Little to no thinking.
-- `low`
-
-  Low thinking level.
-- `medium`
-
-  Medium thinking level.
-- `high`
-
-  High thinking level.
-thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-<br />
-
-#### Possible values
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-max_output_tokens integer (optional) The maximum number of tokens to include in the response.
-video_config VideoConfig (optional) Configuration for video generation.
-Configuration options for video generation.
-
-#### Fields
-
-task enum (string) (optional) Optional task mode for video generation. If not specified, the model
-automatically determines the appropriate mode based on the provided text
-prompt and input media.
-
-Possible
-values:
-
-- `text_to_video`
-
-  Generates video solely from a text prompt.
-- `image_to_video`
-
-  Generates video from one or two source images. The first image defines
-  the starting frame, and the optional second image defines the ending
-  frame.
-- `reference_to_video`
-
-  Generates video using reference media (such as images, audio, or video).
-- `edit`
-
-  Modifies an existing input video.
-- `extend`
-
-  Extends an existing input video.
-transcription_config TranscriptionConfig (optional) Optional. Configuration for speech recognition (transcription). If present, ASR is
-enabled.
-Configuration for speech recognition (transcription).
-
-#### Fields
-
-language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
-audio. If omitted or empty, defaults to automatic language detection.
-custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
-toward recognizing specific terms.
-mode TranscriptionMode or enum (string) (optional) Discriminated transcription mode options or enum.
-
-#### Possible Types
-
-SmartTranscriptionMode Configuration for smart transcription mode.
-type object (required) No description provided.
-
-Always set to `"smart"`.
-VerbatimTranscriptionMode Configuration for verbatim transcription mode.
-type object (required) No description provided.
-
-Always set to `"verbatim"`.
-timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
-Supported values: "word". If empty, no timestamps are generated.
-diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
-enum (string)
-- `verbatim`: Verbatim transcription mode.
-- `smart`: Smart transcription mode.
-structured_speech_config SpeakerConfig or array (SpeechConfig) (optional) Speech and multi-speaker configuration.
-
-#### Possible Types
-
-SpeakerConfig Configuration for multi-speaker and speech generation.
-speakers array (SpeechConfig) (optional) Individual speaker configurations.
-The configuration for speech interaction.
-
-#### Fields
-
-voice string (optional) The voice of the speaker.
-language string (optional) The language of the speech.
-speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
-array (SpeechConfig) The configuration for speech interaction.
-voice string (optional) The voice of the speaker.
-language string (optional) The language of the speech.
-speaker string (optional) The speaker's name, it should match the speaker name given in the prompt.
-agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) **Agent Configuration**   
-Configuration for the agent.   
-*Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
-
-#### Possible Types
-
-AntigravityAgentConfig Configuration for the Antigravity agent runtime.
-Provides server-side control over the agent's execution environment
-and tool configuration.
-type object (required) No description provided.
-
-Always set to `"antigravity"`.
-model string (optional) The model to use for agent reasoning.
-max_total_tokens string (optional) Max total tokens for the agent run.
-DeepResearchAgentConfig Configuration for the Deep Research agent.
-type object (required) No description provided.
-
-Always set to `"deep-research"`.
-thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-<br />
-
-#### Possible values
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-visualization enum (string) (optional) Whether to include visualizations in the response.
-
-Possible
-values:
-
-- `off`
-
-  Do not include visualizations.
-- `auto`
-
-  Automatically include visualizations.
-collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
-true, the Deep Research agent will provide a research plan in its response.
-The agent will then proceed only if the user confirms the plan in the next
-turn.
-DynamicAgentConfig Configuration for dynamic agents.
-type object (required) No description provided.
-
-Always set to `"dynamic"`.
-system_instruction string (optional) System instruction for the interaction.
-tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
-
-#### Possible Types
-
-[ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) This type has no specific fields.
-array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) A list where each item is one of: \`AudioResponseFormat\`, \`ImageResponseFormat\`, \`TextResponseFormat\`, \`VideoResponseFormat\`.
-
-This type has no specific fields.
-previous_interaction_id string (optional) The ID of the previous interaction, if any.
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
-
-#### Possible Types
-
-[EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) Configuration for a custom environment.
-type object (required) No description provided.
-
-Always set to `"remote"`.
-sources array (Source) (optional) No description provided.
-A source to be mounted into the environment.
-
-#### Fields
-
-type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `gcs`
-
-  A Cloud Storage bucket.
-- `inline`
-
-  Inline content.
-- `repository`
-
-  A generic repository. The protocol prefix in the source URL
-  identifies the provider (e.g., github://, gcs://).
-source string (optional) The source of the environment.
-For Cloud Storage, this is the Cloud Storage path.
-For GitHub, this is the GitHub path.
-target string (optional) Where the source should appear in the environment.
-content string (optional) The inline content if \`type\` is \`INLINE\`.
-encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
-network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
-
-#### Possible Types
-
-[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
-allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
-to block all network egress.
-
-#### Possible Types
-
-array (EgressRule) A single domain allowlist rule with optional header injection.
-domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
-'\*.googleapis.com'). Use '\*' to allow all domains.
-transform object (optional) Headers to inject into requests matching this rule.
-Key: header name (e.g., "Authorization").
-Value: header value (e.g., "Bearer your-token").
-credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
-enum (string)
-- `disabled`: All network egress is blocked.
-enum (string)
-- `disabled`: All network egress is blocked.
-environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
-update the existing environment instead of creating a new one.
-env object or string (optional) Environment variables to set in the sandbox environment.
-
-#### Possible Types
-
-string A direct string value.
-
-This type has no specific fields.
-string A direct string value.
-
-This type has no specific fields.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
-interaction completes.
-Message for configuring webhook events for a request.
-
-#### Fields
-
-uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
-registered webhooks.
-user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
-webhooks.
-safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-type HarmCategory (required) Required. The type of harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
-threshold enum (string) (required) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-labels object (optional) The labels with user-defined metadata for the request.
-
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
-token back unchanged in CreateInteraction to continue decoding.
-stream boolean (optional) Input only. Whether the interaction will be streamed.
-store boolean (optional) Input only. Whether to store the response and request for later retrieval.
-background boolean (optional) Input only. Whether to run the model interaction in the background.
-
-### Response
-
-Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) resource.
-
-### Simple Request
-
-<iframe src="https:///frame/api/interactions-api_330bf49fd6136915771920d432cc9c8af440fd29c7d90a84874f86ef12791a42.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:25:15Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "Hello! I'm functioning perfectly and ready to assist you.\n\nHow are you doing today?"
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:25:15Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 7
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 7,
-    "total_output_tokens": 20,
-    "total_thought_tokens": 22,
-    "total_tokens": 49,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### Multi-turn
-
-<iframe src="https:///frame/api/interactions-api_9e03349870895b48a85dea94d0c73c0a95afcf84095cdd7695278a11454e97d3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:22:47Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "The capital of France is Paris."
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:22:47Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 50
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 50,
-    "total_output_tokens": 10,
-    "total_thought_tokens": 0,
-    "total_tokens": 60,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### Image Input
-
-<iframe src="https:///frame/api/interactions-api_a2f548e57aade37d427b03255df1ddaad5edae2094b4d958fe5f7694dde20b1f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:22:47Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "A white humanoid robot with glowing blue eyes stands holding a red skateboard."
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:22:47Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 10
-      },
-      {
-        "modality": "image",
-        "tokens": 258
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 268,
-    "total_output_tokens": 20,
-    "total_thought_tokens": 0,
-    "total_tokens": 288,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### Function Calling
-
-<iframe src="https:///frame/api/interactions-api_b9207cd8f7b4d604fdd08de84cd6bff6d9a451ea512c1e5f243ad7e7fc9a79a1.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:22:47Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "requires_action",
-  "steps": [
-    {
-      "name": "get_weather",
-      "type": "function_call",
-      "arguments": {
-        "location": "Boston, MA"
-      },
-      "id": "gth23981"
-    }
-  ],
-  "updated": "2025-11-26T12:22:47Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 100
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 100,
-    "total_output_tokens": 25,
-    "total_thought_tokens": 0,
-    "total_tokens": 125,
-    "total_tool_use_tokens": 50
-  }
-}
-```
-
-### Deep Research
-
-<iframe src="https:///frame/api/interactions-api_7d89464cee88871b95f9f8b7ee3ef608f0ec54449479fc8cbca8b07428444c91.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "agent": "deep-research-preview-04-2026",
-  "created": "2025-11-26T12:22:47Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "Here is a comprehensive research report on the current state of cancer research..."
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:22:47Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 20
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 20,
-    "total_output_tokens": 1000,
-    "total_thought_tokens": 500,
-    "total_tokens": 1520,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### Antigravity Agent
-
-<iframe src="https:///frame/api/interactions-api_ce871a0a590fa28114b8c705a955bb3423dbd71420b884723a2f7a7c0aff3f4a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "agent": "antigravity-preview-05-2026",
-  "created": "2025-11-26T12:22:47Z",
-  "environment_id": "env_abc123",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "I've summarized the top 5 Hacker News stories and saved the results to /workspace/summary.md."
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:22:47Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 50
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 50,
-    "total_output_tokens": 500,
-    "total_thought_tokens": 200,
-    "total_tokens": 750,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### Reuse Environment
-
-<iframe src="https:///frame/api/interactions-api_969b0a96c69f5fdda6afeccf1b51492bdb8947c407f4294b6b9b5041d4d70acf.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "agent": "antigravity-preview-05-2026",
-  "created": "2025-11-26T12:23:00Z",
-  "environment_id": "env_abc123",
-  "id": "v1_Chd2ZTJhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ejAxMjM0NTY3ODkwMTIzNDU2Nzg",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "I've updated /workspace/hello.py to accept a name argument and greet the user."
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:23:00Z",
-  "usage": {
-    "input_tokens_by_modality": [
-      {
-        "modality": "text",
-        "tokens": 80
-      }
-    ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 80,
-    "total_output_tokens": 200,
-    "total_thought_tokens": 100,
-    "total_tokens": 380,
-    "total_tool_use_tokens": 0
-  }
-}
-```
-
-### With Sources
-
-<iframe src="https:///frame/api/interactions-api_fc7a479afba8ce6ab0e0d01df0b9cd275b3c951db5518fb701758442defffe7e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### Custom Agent
-
-<iframe src="https:///frame/api/interactions-api_a19caebcec70e58c6bf8fe3d0e37413ecbb7bdbdcd4e436b87ecef278d5a989d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-## Canceling an interaction
-
-post https://generativelanguage.googleapis.com/v1beta/interactions/{id}/cancel Cancels an interaction by id. This only applies to background interactions that are still running.
-- [Path / Query parameters](https://ai.google.dev/api/interactions-api#cancelInteractionById.PATH_PARAMETERS)
-- [Response](https://ai.google.dev/api/interactions-api#cancelInteractionById.response)
-
-### Path / Query Parameters
-
-api_version string (required) API version for request routing.
-id string (required) The unique identifier of the interaction to cancel.
-
-### Response
-
-Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) resource.
-
-### Cancel Interaction
-
-<iframe src="https:///frame/api/interactions-api_e801fc284b6f929c9f1cfbebe89076a30734fa318f49ae2e0349361e28ad4dbe.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:25:15Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "cancelled",
-  "updated": "2025-11-26T12:25:15Z"
-}
-```
-
-## Retrieving an interaction
-
-get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves the full details of a single interaction based on its \`Interaction.id\`.
-- [Path / Query parameters](https://ai.google.dev/api/interactions-api#getInteractionById.PATH_PARAMETERS)
-- [Response](https://ai.google.dev/api/interactions-api#getInteractionById.response)
-
-### Path / Query Parameters
-
-api_version string (required) API version for request routing.
-id string (required) The unique identifier of the interaction to retrieve.
-last_event_id string (optional) Optional. If set, resumes the interaction stream from the next chunk after the event marked by the event id. Can only be used if \`stream\` is true.
-stream boolean (optional) If set to true, the generated content will be streamed incrementally.
-
-*Defaults to: `False`*
-
-### Response
-
-Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) resource.
-
-### Get Interaction
-
-<iframe src="https:///frame/api/interactions-api_f3543e07bd79000c392fd227b4e47c0153c3da15eb93258e704421a0cf9accda.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "created": "2025-11-26T12:25:15Z",
-  "id": "v1_ChdPU0F4YWFtNkFwS2kxZThQZ05lbXdROBIXT1NBeGFhbTZBcEtpMWU4UGdOZW13UTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "I'm doing great, thank you for asking! How can I help you today?"
-        }
-      ]
-    }
-  ],
-  "updated": "2025-11-26T12:25:15Z"
-}
-```
-
-## Deleting an interaction
-
-delete https://generativelanguage.googleapis.com/v1beta/interactions/{id} Deletes the interaction by id.
-- [Path / Query parameters](https://ai.google.dev/api/interactions-api#deleteInteraction.PATH_PARAMETERS)
-- [Response](https://ai.google.dev/api/interactions-api#deleteInteraction.response)
-
-### Path / Query Parameters
-
-api_version string (required) API version for request routing.
-id string (required) The unique identifier of the interaction to delete.
-interactionsId string (required) Required. The name of the interaction to delete.
-
-### Response
-
-If successful, the response is empty.
-
-### Delete
-
-<iframe src="https:///frame/api/interactions-api_5743367a43207a9126105f0afee35b2427dd61081f8b09336437c37b743d22ff.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-## Resources
-
-### Interaction
+### Interaction  {% id="Resource:Interaction" %}
 
 The Interaction resource.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-id string (required) Required. Output only. A unique identifier for the interaction completion.
-status enum (string) (required) Required. Output only. The status of the interaction.
+  **id**: {% mark %}required{% /mark %} `string`
 
-Possible
-values:
+  Output only. A unique identifier for the interaction completion.
 
-- `in_progress`
+  {% hr /%}
 
-  The interaction is in progress.
-- `requires_action`
+  {% details %}
+  {% summary %}
+  **status**: {% mark %}required{% /mark %} `enum (string)`
 
-  The interaction requires action/input from the user.
-- `completed`
+  Output only. The status of the interaction.
 
-  The interaction is completed.
-- `failed`
+  {% /summary %}
 
-  The interaction failed.
-- `cancelled`
+  Possible values:
 
-  The interaction was cancelled.
-- `incomplete`
+  - `in_progress`: The interaction is in progress.
+  - `requires_action`: The interaction requires action/input from the user.
+  - `completed`: The interaction is completed.
+  - `failed`: The interaction failed.
+  - `cancelled`: The interaction was cancelled.
+  - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+  - `requires_continuation`: The interaction requires at least one more request for it to be completed. The next request should set the continuation_token to the one returned by this request.
 
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `requires_continuation`
+  {% /details %}
 
-  The interaction requires at least one more request for it to be
-  completed. The next request should set the continuation_token to the one
-  returned by this request.
-created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
-updated string (required) Required. Output only. The time at which the response was last updated in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (required) Required. Output only. The steps that make up the interaction, when included in the response.
-model ModelOption (optional) The name of the \`Model\` used for generating the interaction.
-The model that will complete your prompt.\\n\\nSee \[models\](https://aistudio.google.com/docs/models) for additional details.
+  {% hr /%}
 
-#### Possible values
+  **created**: {% mark %}required{% /mark %} `string`
 
-- `gemma-4-26b-a4b-it`
+  Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-  Gemma 4 26B A4B IT
-- `gemma-4-31b-it`
+  {% hr /%}
 
-  Gemma 4 31B IT
-- `gemini-flash-latest`
+  **updated**: {% mark %}required{% /mark %} `string`
 
-  Latest release of Gemini Flash
-- `gemini-flash-lite-latest`
+  Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-  Latest release of Gemini Flash-Lite
-- `gemini-pro-latest`
+  {% hr /%}
 
-  Latest release of Gemini Pro
-- `gemini-2.5-flash`
+  **steps**: {% mark %}required{% /mark %} `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
 
-  Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
-- `gemini-2.5-pro`
+  Output only. The steps that make up the interaction, when included in the response.
 
-  Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
-- `gemini-2.5-flash-lite`
+  {% hr /%}
 
-  Our smallest and most cost effective model, built for at scale usage.
-- `gemini-3.5-flash-lite`
+  {% details %}
+  {% summary %}
+  **model**: `ModelOption`
 
-  Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
-- `gemini-2.5-flash-image`
+  The name of the `Model` used for generating the interaction.
 
-  Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
-- `gemini-3-flash-preview`
+  {% /summary %}
 
-  Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
-- `gemini-3.1-pro-preview`
+  Possible values:
 
-  Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
-- `gemini-3.1-pro-preview-customtools`
+  - `gemma-4-26b-a4b-it`: Gemma 4 26B A4B IT
+  - `gemma-4-31b-it`: Gemma 4 31B IT
+  - `gemini-flash-latest`: Latest release of Gemini Flash
+  - `gemini-flash-lite-latest`: Latest release of Gemini Flash-Lite
+  - `gemini-pro-latest`: Latest release of Gemini Pro
+  - `gemini-2.5-flash`: Our first hybrid reasoning model which supports a 1M token context window and has thinking budgets.
+  - `gemini-2.5-pro`: Our state-of-the-art multipurpose model, which excels at coding and complex reasoning tasks.
+  - `gemini-2.5-flash-lite`: Our smallest and most cost effective model, built for at scale usage.
+  - `gemini-3.5-flash-lite`: Gemini 3.5 Flash-Lite - Our fastest, most cost-effective 3.5 model for high-throughput execution.
+  - `gemini-2.5-flash-image`: Our native image generation model, optimized for speed, flexibility, and contextual understanding. Text input and output is priced the same as 2.5 Flash.
+  - `gemini-3-flash-preview`: Our most intelligent model built for speed, combining frontier intelligence with superior search and grounding.
+  - `gemini-3.1-pro-preview`: Our latest SOTA reasoning model with unprecedented depth and nuance, and powerful multimodal understanding and coding capabilities.
+  - `gemini-3.1-pro-preview-customtools`: Gemini 3.1 Pro Preview optimized for custom tool usage
+  - `gemini-3.1-flash-lite`: Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
+  - `gemini-3.1-flash-lite-image`: Gemini 3.1 Flash Lite Image.
+  - `gemini-3-pro-image`: Gemini 3 Pro Image
+  - `nano-banana-pro-preview`: Gemini 3 Pro Image Preview
+  - `gemini-3.1-flash-image`: Gemini 3.1 Flash Image.
+  - `gemini-nano-banana-2.1`: Gemini Nano Banana 2.1.
+  - `gemini-3.1-flash-tts-preview`: Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
+  - `gemini-3.5-flash`: Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
+  - `gemini-3.6-flash`: Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
+  - `gemini-3.7-flash`: Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
+  - `gemini-3.8-flash`: Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+  - `gemini-3.8-flash-tts`: Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
+  - `gemini-3.8-flash-lite-tts`: Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
+  - `lyria-3-clip-preview`: Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
+  - `lyria-3-pro-preview`: Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
+  - `gemini-robotics-er-1.6-preview`: Gemini Robotics-ER 1.6 Preview
+  - `gemini-robotics-er-2-preview`: Gemini Robotics Embodied Reasoning 2 Preview
+  - `lyria-3.5`: Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+  - `gemini-omni-1.1-flash`: Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+  - `gemini-omni-flash-preview`: Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
 
-  Gemini 3.1 Pro Preview optimized for custom tool usage
-- `gemini-3.1-flash-lite`
+  {% /details %}
 
-  Our most cost-efficient model, optimized for high-volume agentic tasks, translation, and simple data processing.
-- `gemini-3.1-flash-lite-image`
+  {% hr /%}
 
-  Gemini 3.1 Flash Lite Image.
-- `gemini-3-pro-image`
+  {% details %}
+  {% summary %}
+  **generation_config**: `GenerationConfig`
 
-  Gemini 3 Pro Image
-- `nano-banana-pro-preview`
+  Input only. Configuration parameters for the model interaction.
 
-  Gemini 3 Pro Image Preview
-- `gemini-3.1-flash-image`
+  {% /summary %}
 
-  Gemini 3.1 Flash Image.
-- `gemini-nano-banana-2.1`
+  **seed**: `integer`
 
-  Gemini Nano Banana 2.1.
-- `gemini-3.1-flash-tts-preview`
+  Seed used in decoding for reproducibility.
 
-  Gemini 3.1 Flash TTS: Powerful, low-latency speech generation. Enjoy natural outputs, steerable prompts, and new expressive audio tags for precise narration control.
-- `gemini-3.5-flash`
+  **stop_sequences**: `array (string)`
 
-  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
-- `gemini-3.6-flash`
+  A list of character sequences that will stop output interaction.
 
-  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
-- `gemini-3.7-flash`
+  {% details %}
+  {% summary %}
+  **tool_choice**: [`ToolChoiceConfig`](/api-reference/interactions-api#Resource:ToolChoiceConfig) or `enum (string)`
 
-  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
-- `gemini-3.8-flash`
+  The tool choice configuration.
 
-  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
-- `gemini-3.8-flash-tts`
+  {% /summary %}
 
-  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
-- `gemini-3.8-flash-lite-tts`
+  **Possible Types:**
 
-  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
-- `lyria-3-clip-preview`
+  {% details %}
+  {% summary %}
+  **[ToolChoiceConfig](/api-reference/interactions-api#Resource:ToolChoiceConfig)**
 
-  Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
-- `lyria-3-pro-preview`
+  {% /summary %}
 
-  Our advanced, full-song generative model with deep compositional understanding, optimized for precise structural control and complex transitions across diverse musical styles.
-- `gemini-robotics-er-1.6-preview`
+  The tool choice configuration containing allowed tools.
 
-  Gemini Robotics-ER 1.6 Preview
-- `gemini-robotics-er-2-preview`
+  {% details %}
+  {% summary %}
+  **allowed_tools**: `AllowedTools`
 
-  Gemini Robotics Embodied Reasoning 2 Preview
-- `lyria-3.5`
+  The allowed tools.
 
-  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
-- `gemini-omni-1.1-flash`
+  {% /summary %}
 
-  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
-- `gemini-omni-flash-preview`
+  {% details %}
+  {% summary %}
+  **mode**: `enum (string)`
 
-  Preview release of our multimodal model for conversational video generation, editing, and cinematic control.
-system_instruction string (optional) System instruction for the interaction.
-tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
-usage Usage (optional) Output only. Statistics on the interaction request's token usage.
-Statistics on the interaction request's token usage.
+  The mode of the tool choice.
 
-#### Fields
+  {% /summary %}
 
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
+  Possible values:
 
-#### Fields
+  - `auto`: Auto tool choice.
+  - `any`: Any tool choice.
+  - `none`: No tool choice.
+  - `validated`: Validated tool choice.
 
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
+  {% /details %}
 
-#### Possible values
+  **tools**: `array (string)`
 
-- `text`
+  The names of the allowed tools.
 
-  Indicates the model should return text.
-- `image`
+  {% /details %}
 
-  Indicates the model should return images.
-- `audio`
+  {% /details %}
 
-  Indicates the model should return audio.
-- `video`
+  {% details %}
+  {% summary %}
+  **enum (string)**
 
-  Indicates the model should return video.
-- `document`
+  {% /summary %}
 
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
+  Possible values:
 
-#### Fields
+  - `auto`: Auto tool choice.
+  - `any`: Any tool choice.
+  - `none`: No tool choice.
+  - `validated`: Validated tool choice.
 
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
+  {% /details %}
 
-#### Possible values
+  {% /details %}
 
-- `text`
+  {% details %}
+  {% summary %}
+  **thinking_level**: `ThinkingLevel`
 
-  Indicates the model should return text.
-- `image`
+  The level of thought tokens that the model should generate.
 
-  Indicates the model should return images.
-- `audio`
+  {% /summary %}
 
-  Indicates the model should return audio.
-- `video`
+  Possible values:
 
-  Indicates the model should return video.
-- `document`
+  - `minimal`: Little to no thinking.
+  - `low`: Low thinking level.
+  - `medium`: Medium thinking level.
+  - `high`: High thinking level.
 
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
+  {% /details %}
 
-#### Fields
+  {% details %}
+  {% summary %}
+  **thinking_summaries**: `ThinkingSummaries`
 
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
+  Whether to include thought summaries in the response.
 
-#### Possible values
+  {% /summary %}
 
-- `text`
+  Possible values:
 
-  Indicates the model should return text.
-- `image`
+  - `auto`: Auto thinking summaries.
+  - `none`: No thinking summaries.
 
-  Indicates the model should return images.
-- `audio`
+  {% /details %}
 
-  Indicates the model should return audio.
-- `video`
+  **max_output_tokens**: `integer`
 
-  Indicates the model should return video.
-- `document`
+  The maximum number of tokens to include in the response.
 
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
+  {% details %}
+  {% summary %}
+  **video_config**: `VideoConfig`
 
-#### Fields
+  Configuration for video generation.
 
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
+  {% /summary %}
 
-#### Possible values
+  {% details %}
+  {% summary %}
+  **task**: `enum (string)`
 
-- `text`
+  Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
 
-  Indicates the model should return text.
-- `image`
+  {% /summary %}
 
-  Indicates the model should return images.
-- `audio`
+  Possible values:
 
-  Indicates the model should return audio.
-- `video`
+  - `text_to_video`: Generates video solely from a text prompt.
+  - `image_to_video`: Generates video from one or two source images. The first image defines the starting frame, and the optional second image defines the ending frame.
+  - `reference_to_video`: Generates video using reference media (such as images, audio, or video).
+  - `edit`: Modifies an existing input video.
+  - `extend`: Extends an existing input video.
 
-  Indicates the model should return video.
-- `document`
+  {% /details %}
 
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
+  {% /details %}
 
-#### Fields
+  {% details %}
+  {% summary %}
+  **transcription_config**: `TranscriptionConfig`
 
-type enum (string) (optional) The grounding tool type associated with the count.
+  Optional. Configuration for speech recognition (transcription). If present, ASR is enabled.
 
-Possible
-values:
+  {% /summary %}
 
-- `google_search`
+  **language_codes**: `array (string)`
 
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
+  Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
 
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
-the JSON schema specified in this field.
+  **custom_vocabulary**: `array (string)`
 
-#### Possible Types
+  Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
 
-[ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) This type has no specific fields.
-array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) A list where each item is one of: \`AudioResponseFormat\`, \`ImageResponseFormat\`, \`TextResponseFormat\`, \`VideoResponseFormat\`.
+  {% details %}
+  {% summary %}
+  **mode**: `TranscriptionMode` or `enum (string)`
 
-This type has no specific fields.
-previous_interaction_id string (optional) The ID of the previous interaction, if any.
-environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
-specifying remote environment sources or a string referencing an existing
-environment ID.
+  Discriminated transcription mode options or enum.
 
-#### Possible Types
+  {% /summary %}
 
-[EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) Configuration for a custom environment.
-type object (required) No description provided.
+  **Possible Types:**
 
-Always set to `"remote"`.
-sources array (Source) (optional) No description provided.
-A source to be mounted into the environment.
+  {% details %}
+  {% summary %}
+  **SmartTranscriptionMode**
 
-#### Fields
+  {% /summary %}
 
-type enum (string) (optional) No description provided.
+  Configuration for smart transcription mode.
 
-Possible
-values:
+  **type**: {% mark %}required{% /mark %} `object`
 
-- `gcs`
+  Value: `smart`
 
-  A Cloud Storage bucket.
-- `inline`
+  {% /details %}
 
-  Inline content.
-- `repository`
+  {% details %}
+  {% summary %}
+  **VerbatimTranscriptionMode**
 
-  A generic repository. The protocol prefix in the source URL
-  identifies the provider (e.g., github://, gcs://).
-source string (optional) The source of the environment.
-For Cloud Storage, this is the Cloud Storage path.
-For GitHub, this is the GitHub path.
-target string (optional) Where the source should appear in the environment.
-content string (optional) The inline content if \`type\` is \`INLINE\`.
-encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
-network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
+  {% /summary %}
 
-#### Possible Types
+  Configuration for verbatim transcription mode.
 
-[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
-allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
-to block all network egress.
+  **type**: {% mark %}required{% /mark %} `object`
 
-#### Possible Types
+  Value: `verbatim`
 
-array (EgressRule) A single domain allowlist rule with optional header injection.
-domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
-'\*.googleapis.com'). Use '\*' to allow all domains.
-transform object (optional) Headers to inject into requests matching this rule.
-Key: header name (e.g., "Authorization").
-Value: header value (e.g., "Bearer your-token").
-credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
-enum (string)
-- `disabled`: All network egress is blocked.
-enum (string)
-- `disabled`: All network egress is blocked.
-environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
-update the existing environment instead of creating a new one.
-env object or string (optional) Environment variables to set in the sandbox environment.
+  **timestamp_granularities**: `array (string)`
 
-#### Possible Types
+  Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
 
-string A direct string value.
+  **diarization_mode**: `string`
 
-This type has no specific fields.
-string A direct string value.
+  Optional. Configures speaker diarization. Supported values: "speaker".
 
-This type has no specific fields.
-environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
-config is set in the request.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
+  {% /details %}
 
-#### Possible values
+  {% details %}
+  {% summary %}
+  **enum (string)**
 
-- `flex`
+  {% /summary %}
 
-  Flex service tier.
-- `standard`
+  Possible values:
 
-  Standard service tier.
-- `priority`
+  - `verbatim`: Verbatim transcription mode.
+  - `smart`: Smart transcription mode.
 
-  Priority service tier.
-webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
-interaction completes.
-Message for configuring webhook events for a request.
+  {% /details %}
 
-#### Fields
+  {% /details %}
 
-uris array (string) (optional) Optional. If set, these webhook URIs will be used for webhook events instead of the
-registered webhooks.
-user_metadata object (optional) Optional. The user metadata that will be returned on each event emission to the
-webhooks.
-safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
+  {% /details %}
 
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
+  {% details %}
+  {% summary %}
+  **structured_speech_config**: `SpeakerConfig` or `array (SpeechConfig)`
 
-#### Fields
+  Speech and multi-speaker configuration.
 
-type HarmCategory (required) Required. The type of harm category to be blocked.
-<br />
+  {% /summary %}
 
-#### Possible values
+  **Possible Types:**
 
-- `hate_speech`
+  {% details %}
+  {% summary %}
+  **SpeakerConfig**
 
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
+  {% /summary %}
 
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
+  Configuration for multi-speaker and speech generation.
 
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
+  {% details %}
+  {% summary %}
+  **speakers**: `array (SpeechConfig)`
 
-  Content that contains sexually explicit material.
-- `jailbreak`
+  Individual speaker configurations.
 
-  Prompts designed to bypass safety filters.
-threshold enum (string) (required) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
+  {% /summary %}
 
-Possible
-values:
+  **voice**: `string`
 
-- `block_low_and_above`
+  The voice of the speaker.
 
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
+  **language**: `string`
 
-  Block content with a medium harm probability or higher.
-- `block_only_high`
+  The language of the speech.
 
-  Block content with a high harm probability.
-- `off`
+  **speaker**: `string`
 
-  Turn off the safety filter entirely.
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
+  The speaker's name, it should match the speaker name given in the prompt.
 
-Possible
-values:
+  {% /details %}
 
-- `severity`
+  {% /details %}
 
-  The harm block method uses both probability and severity scores.
-- `probability`
+  {% details %}
+  {% summary %}
+  **array (SpeechConfig)**
 
-  The harm block method uses the probability score.
-labels object (optional) The labels with user-defined metadata for the request.
+  {% /summary %}
 
-Label keys and values can be no longer than 63 characters
-(Unicode codepoints) and can only contain lowercase letters, numeric
-characters, underscores, and dashes. International characters are allowed.
-Label values are optional. Label keys must start with a letter.
-errors array (Error) (optional) Output only. Diagnostic faults / platform errors recorded on the interaction.
-Error message from an interaction.
+  The configuration for speech interaction.
 
-#### Fields
+  **voice**: `string`
 
-code string (optional) A URI that identifies the error type.
-message string (optional) A human-readable error message.
-continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
-REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest
-token back unchanged in CreateInteraction to continue decoding.
-agent AgentOption (optional) The name of the \`Agent\` used for generating the interaction.
-The agent to interact with.
+  The voice of the speaker.
 
-#### Possible values
+  **language**: `string`
 
-- `deep-research-preview-04-2026`
+  The language of the speech.
 
-  Gemini Deep Research Agent
-- `deep-research-max-preview-04-2026`
+  **speaker**: `string`
 
-  Gemini Deep Research Max Agent
-- `antigravity-preview-05-2026`
+  The speaker's name, it should match the speaker name given in the prompt.
 
-  Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-agent_config AntigravityAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+  {% /details %}
 
-#### Possible Types
+  {% /details %}
 
-AntigravityAgentConfig Configuration for the Antigravity agent runtime.
-Provides server-side control over the agent's execution environment
-and tool configuration.
-type object (required) No description provided.
+  {% /details %}
 
-Always set to `"antigravity"`.
-model string (optional) The model to use for agent reasoning.
-max_total_tokens string (optional) Max total tokens for the agent run.
-DeepResearchAgentConfig Configuration for the Deep Research agent.
-type object (required) No description provided.
+  {% hr /%}
 
-Always set to `"deep-research"`.
-thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-<br />
+  **system_instruction**: `string`
 
-#### Possible values
+  System instruction for the interaction.
 
-- `auto`
+  {% hr /%}
 
-  Auto thinking summaries.
-- `none`
+  **tools**: `array (`[`Tool`](/api-reference/interactions-api#Resource:Tool)`)`
 
-  No thinking summaries.
-visualization enum (string) (optional) Whether to include visualizations in the response.
+  A list of tool declarations the model may call during interaction.
 
-Possible
-values:
+  {% hr /%}
 
-- `off`
+  **input**: [`Content`](/api-reference/interactions-api#Resource:Content) or `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)` or `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)` or `string`
 
-  Do not include visualizations.
-- `auto`
+  The input for the interaction.
 
-  Automatically include visualizations.
-collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
-true, the Deep Research agent will provide a research plan in its response.
-The agent will then proceed only if the user confirms the plan in the next
-turn.
-DynamicAgentConfig Configuration for dynamic agents.
-type object (required) No description provided.
+  {% hr /%}
 
-Always set to `"dynamic"`.
-max_total_tokens string (optional) Max total tokens for the agent run.
+  {% details %}
+  {% summary %}
+  **usage**: `Usage`
 
-### Examples
+  Output only. Statistics on the interaction request's token usage.
 
-### Example
+  {% /summary %}
 
-```bash
-{
-  "created": "2025-12-04T15:01:45Z",
-  "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-  "model": "gemini-3.6-flash",
-  "object": "interaction",
-  "status": "completed",
-  "steps": [
-    {
-      "type": "model_output",
-      "content": [
-        {
-          "type": "text",
-          "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-        }
-      ]
-    }
-  ],
-  "updated": "2025-12-04T15:01:45Z",
-  "usage": {
-    "input_tokens_by_modality": [
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **response_format**: [`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat) or `array (`[`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat)`)`
+
+  Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **[ResponseFormat](/api-reference/interactions-api#Resource:ResponseFormat)**
+
+  {% /summary %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **array ([ResponseFormat](/api-reference/interactions-api#Resource:ResponseFormat))**
+
+  {% /summary %}
+
+  A list where each item is one of: `AudioResponseFormat`, `ImageResponseFormat`, `TextResponseFormat`, `VideoResponseFormat`.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **previous_interaction_id**: `string`
+
+  The ID of the previous interaction, if any.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **environment**: [`EnvironmentConfig`](/api-reference/interactions-api#Resource:EnvironmentConfig) or `string`
+
+  The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **[EnvironmentConfig](/api-reference/interactions-api#Resource:EnvironmentConfig)**
+
+  {% /summary %}
+
+  Configuration for a custom environment.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `remote`
+
+  {% details %}
+  {% summary %}
+  **sources**: `array (Source)`
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `gcs`: A Cloud Storage bucket.
+  - `inline`: Inline content.
+  - `repository`: A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
+
+  {% /details %}
+
+  **source**: `string`
+
+  The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
+
+  **target**: `string`
+
+  Where the source should appear in the environment.
+
+  **content**: `string`
+
+  The inline content if `type` is `INLINE`.
+
+  **encoding**: `string`
+
+  Optional encoding for inline content (e.g. `base64`).
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `enum (string)`
+
+  Network configuration for the environment.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **[EnvironmentNetworkEgressAllowlist](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist)**
+
+  {% /summary %}
+
+  Network egress configuration for the environment.
+
+  {% details %}
+  {% summary %}
+  **allowlist**: `array (EgressRule)` or `enum (string)`
+
+  List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array (EgressRule)**
+
+  {% /summary %}
+
+  A single domain allowlist rule with optional header injection.
+
+  **domain**: {% mark %}required{% /mark %} `string`
+
+  Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+
+  **transform**: `object`
+
+  Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
+
+  **credential**: `string`
+
+  Optional. Reference to a server-managed Credential resource by ID.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `disabled`: All network egress is blocked.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `disabled`: All network egress is blocked.
+
+  {% /details %}
+
+  {% /details %}
+
+  **environment_id**: `string`
+
+  Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
+
+  {% details %}
+  {% summary %}
+  **env**: `object` or `string`
+
+  Environment variables to set in the sandbox environment.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **environment_id**: `string`
+
+  Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **service_tier**: `ServiceTier`
+
+  The service tier for the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `flex`: Flex service tier.
+  - `standard`: Standard service tier.
+  - `priority`: Priority service tier.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **webhook_config**: `WebhookConfig`
+
+  Optional. Webhook configuration for receiving notifications when the interaction completes.
+
+  {% /summary %}
+
+  **uris**: `array (string)`
+
+  Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
+
+  **user_metadata**: `object`
+
+  Optional. The user metadata that will be returned on each event emission to the webhooks.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **safety_settings**: `array (SafetySetting)`
+
+  Safety settings for the interaction.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: {% mark %}required{% /mark %} `HarmCategory`
+
+  The type of harm category to be blocked.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `hate_speech`: Content that promotes violence or incites hatred against individuals or groups based on certain attributes.
+  - `dangerous_content`: Content that promotes, facilitates, or enables dangerous activities.
+  - `harassment`: Abusive, threatening, or content intended to bully, torment, or ridicule.
+  - `sexually_explicit`: Content that contains sexually explicit material.
+  - `jailbreak`: Prompts designed to bypass safety filters.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **threshold**: {% mark %}required{% /mark %} `enum (string)`
+
+  The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `block_low_and_above`: Block content with a low harm probability or higher.
+  - `block_medium_and_above`: Block content with a medium harm probability or higher.
+  - `block_only_high`: Block content with a high harm probability.
+  - `off`: Turn off the safety filter entirely.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **method**: `enum (string)`
+
+  Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `severity`: The harm block method uses both probability and severity scores.
+  - `probability`: The harm block method uses the probability score.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **labels**: `object`
+
+  The labels with user-defined metadata for the request. Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **errors**: `array (Error)`
+
+  Output only. Diagnostic faults / platform errors recorded on the interaction.
+
+  {% /summary %}
+
+  **code**: `string`
+
+  A URI that identifies the error type.
+
+  **message**: `string`
+
+  A human-readable error message.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **continuation_token**: `string`
+
+  Opaque token to resume a long decode. Output: set when status is REQUIRES_CONTINUATION and decoding can be resumed. Input: pass the latest token back unchanged in CreateInteraction to continue decoding.
+
+  {% hr /%}
+
+  **stream**: `boolean`
+
+  Input only. Whether the interaction will be streamed.
+
+  {% hr /%}
+
+  **store**: `boolean`
+
+  Input only. Whether to store the response and request for later retrieval.
+
+  {% hr /%}
+
+  **background**: `boolean`
+
+  Input only. Whether to run the model interaction in the background.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **agent**: `AgentOption`
+
+  The name of the `Agent` used for generating the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `deep-research-preview-04-2026`: Gemini Deep Research Agent
+  - `deep-research-max-preview-04-2026`: Gemini Deep Research Max Agent
+  - `antigravity-preview-05-2026`: Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **agent_config**: `AntigravityAgentConfig` or `DeepResearchAgentConfig` or `DynamicAgentConfig`
+
+  Configuration parameters for the agent interaction.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **AntigravityAgentConfig**
+
+  {% /summary %}
+
+  Configuration for the Antigravity agent runtime. Provides server-side control over the agent's execution environment and tool configuration.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `antigravity`
+
+  **model**: `string`
+
+  The model to use for agent reasoning.
+
+  **max_total_tokens**: `string`
+
+  Max total tokens for the agent run.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **DeepResearchAgentConfig**
+
+  {% /summary %}
+
+  Configuration for the Deep Research agent.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `deep-research`
+
+  {% details %}
+  {% summary %}
+  **thinking_summaries**: `ThinkingSummaries`
+
+  Whether to include thought summaries in the response.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `auto`: Auto thinking summaries.
+  - `none`: No thinking summaries.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **visualization**: `enum (string)`
+
+  Whether to include visualizations in the response.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `off`: Do not include visualizations.
+  - `auto`: Automatically include visualizations.
+
+  {% /details %}
+
+  **collaborative_planning**: `boolean`
+
+  Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **DynamicAgentConfig**
+
+  {% /summary %}
+
+  Configuration for dynamic agents.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `dynamic`
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **max_total_tokens**: `string`
+
+  Max total tokens for the agent run.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  ```json
+  {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "object": "interaction",
+    "status": "completed",
+    "steps": [
       {
-        "modality": "text",
-        "tokens": 7
+        "type": "model_output",
+        "content": [
+          {
+            "type": "text",
+            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
+          }
+        ]
       }
     ],
-    "total_cached_tokens": 0,
-    "total_input_tokens": 7,
-    "total_output_tokens": 23,
-    "total_thought_tokens": 49,
-    "total_tokens": 79,
-    "total_tool_use_tokens": 0
+    "updated": "2025-12-04T15:01:45Z",
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 7
+        }
+      ],
+      "total_cached_tokens": 0,
+      "total_input_tokens": 7,
+      "total_output_tokens": 23,
+      "total_thought_tokens": 49,
+      "total_tokens": 79,
+      "total_tool_use_tokens": 0
+    }
   }
-}
-```
+  ```
 
-## Data Models
+  {% /right-column %}
 
-### Content
+{% /two-column-layout %}
+
+## Data Models  {% id="data-models" %}
+
+### Content  {% id="Resource:Content" %}
 
 The content of the response.
 
-### Possible Types
+**Polymorphic Types:**
 
-AudioContent An audio content block.
-type object (required) No description provided.
+{% details %}
+  {% summary %}
+  **AudioContent**
 
-Always set to `"audio"`.
-data string (optional) The audio content.
-uri string (optional) The URI of the audio.
-channels integer (optional) The number of audio channels.
-sample_rate integer (optional) The sample rate of the audio.
-mime_type enum (string) (optional) The mime type of the audio.
+  {% /summary %}
 
-Possible
-values:
+  An audio content block.
 
-- `audio/wav`
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
 
-  WAV audio format
-- `audio/mp3`
+  Value: `audio`
 
-  MP3 audio format
-- `audio/aiff`
+  {% hr /%}
 
-  AIFF audio format
-- `audio/aac`
+  **data**: `string`
 
-  AAC audio format
-- `audio/ogg`
+  The audio content.
 
-  OGG audio format
-- `audio/flac`
+  {% hr /%}
 
-  FLAC audio format
-- `audio/mpeg`
+  **uri**: `string`
 
-  MPEG audio format
-- `audio/m4a`
+  The URI of the audio.
 
-  M4A audio format
-- `audio/l16`
+  {% hr /%}
 
-  L16 audio format
-- `audio/opus`
+  **channels**: `integer`
 
-  OPUS audio format
-- `audio/alaw`
+  The number of audio channels.
 
-  ALAW audio format
-- `audio/mulaw`
+  {% hr /%}
 
-  MULAW audio format
-- `audio/webm`
+  **sample_rate**: `integer`
 
-  WEBM audio format
-DocumentContent A document content block.
-type object (required) No description provided.
+  The sample rate of the audio.
 
-Always set to `"document"`.
-data string (optional) The document content.
-uri string (optional) The URI of the document.
-mime_type enum (string) (optional) The mime type of the document.
+  {% hr /%}
 
-Possible
-values:
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
 
-- `application/pdf`
+  The mime type of the audio.
 
-  PDF document format
-- `text/csv`
+  {% /summary %}
 
-  CSV document format
-[ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) An image content block.
-type object (required) No description provided.
+  Possible values:
 
-Always set to `"image"`.
-data string (optional) The image content.
-uri string (optional) The URI of the image.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
+  - `audio/wav`: WAV audio format
+  - `audio/mp3`: MP3 audio format
+  - `audio/aiff`: AIFF audio format
+  - `audio/aac`: AAC audio format
+  - `audio/ogg`: OGG audio format
+  - `audio/flac`: FLAC audio format
+  - `audio/mpeg`: MPEG audio format
+  - `audio/m4a`: M4A audio format
+  - `audio/l16`: L16 audio format
+  - `audio/opus`: OPUS audio format
+  - `audio/alaw`: ALAW audio format
+  - `audio/mulaw`: MULAW audio format
+  - `audio/webm`: WEBM audio format
 
-#### Possible values
+  {% /details %}
 
-- `low`
+  {% /left-column %}
 
-  Low resolution.
-- `medium`
+  {% right-column class="sticky" %}
+  **Example**
 
-  Medium resolution.
-- `high`
+  **Audio**
 
-  High resolution.
-- `ultra_high`
+  ```json
+  {
+    "type": "audio",
+    "data": "BASE64_ENCODED_AUDIO",
+    "mime_type": "audio/wav"
+  }
+  ```
 
-  Ultra high resolution.
-mime_type enum (string) (optional) The mime type of the image.
+  {% /right-column %}
 
-Possible
-values:
+  {% /two-column-layout %}
 
-- `image/png`
+{% /details %}
 
-  PNG image format
-- `image/jpeg`
-
-  JPEG image format
-- `image/webp`
-
-  WebP image format
-- `image/heic`
-
-  HEIC image format
-- `image/heif`
-
-  HEIF image format
-- `image/gif`
-
-  GIF image format
-- `image/bmp`
-
-  BMP image format
-- `image/tiff`
-
-  TIFF image format
-[TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent) A text content block.
-text string (required) Required. The text content.
-type object (required) No description provided.
-
-Always set to `"text"`.
-annotations array (Annotation) (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-FileCitation A file citation annotation.
-type object (required) No description provided.
-
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-SpeechAnnotation Speech annotation for text content.
-type object (required) No description provided.
-
-Always set to `"speech_metadata"`.
-speaker string (optional) The speaker to associate with this turn.
-style string (optional) Style instruction for the speech synthesis.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
+{% details %}
+  {% summary %}
+  **DocumentContent**
 
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  {% /summary %}
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-WordInfo Word-level ASR annotation for transcription output.
-Carries the word text, optional timing, and optional speaker attribution.
-type object (required) No description provided.
+  A document content block.
 
-Always set to `"word_info"`.
-text string (optional) The transcribed word.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-end_offset string (optional) End offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
-Present when diarization_mode is set in TranscriptionConfig.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-VideoContent A video content block.
-type object (required) No description provided.
-
-Always set to `"video"`.
-data string (optional) The video content.
-uri string (optional) The URI of the video.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
 
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
-
-#### Possible Types
-
-MediaProcessing type object (required) No description provided.
-
-Always set to `"static"`.
-start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
-by an 's' suffix, e.g., "10.5s". Must be non-negative.
-end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
-by an 's' suffix, e.g., "30s". Must be non-negative and greater than
-\`start_offset\` if \`start_offset\` is set.
-fps number (optional) Optional. Video frame-rate sampling density.
-enum (string)
-- `static`: Fixed-rate frame extraction. All frames placed in context.
-- `agentic`: Model-driven dynamic navigation.
-name string (optional) A user-defined name for this content block. Can be referenced by the model
-in the final response.
-mime_type enum (string) (optional) The mime type of the video.
-
-Possible
-values:
-
-- `video/mp4`
-
-  MP4 video format
-- `video/mpeg`
-
-  MPEG video format
-- `video/mpg`
-
-  MPG video format
-- `video/mov`
-
-  MOV video format
-- `video/avi`
-
-  AVI video format
-- `video/x-flv`
-
-  FLV video format
-- `video/webm`
-
-  WebM video format
-- `video/wmv`
-
-  WMV video format
-- `video/3gpp`
-
-  3GPP video format
-
-### Examples
-
-### Audio
-
-```json
-{
-  "type": "audio",
-  "data": "BASE64_ENCODED_AUDIO",
-  "mime_type": "audio/wav"
-}
-```
-
-### Document
-
-```json
-{
-  "type": "document",
-  "data": "BASE64_ENCODED_DOCUMENT",
-  "mime_type": "application/pdf"
-}
-```
-
-### Image
-
-```json
-{
-  "type": "image",
-  "data": "BASE64_ENCODED_IMAGE",
-  "mime_type": "image/png"
-}
-```
-
-### Text
-
-```json
-{
-  "type": "text",
-  "text": "Hello, how are you?"
-}
-```
-
-### Video
-
-```json
-{
-  "type": "video",
-  "uri": "https://www.youtube.com/watch?v=9hE5-98ZeCg"
-}
-```
-
-### Tool
+  Value: `document`
+
+  {% hr /%}
+
+  **data**: `string`
+
+  The document content.
+
+  {% hr /%}
+
+  **uri**: `string`
+
+  The URI of the document.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The mime type of the document.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `application/pdf`: PDF document format
+  - `text/csv`: CSV document format
+  - `application/vnd.openxmlformats-officedocument.presentationml.presentation`: PPTX presentation format
+  - `application/vnd.ms-powerpoint`: PPT presentation format
+  - `application/vnd.oasis.opendocument.presentation`: ODP presentation format
+  - `application/vnd.openxmlformats-officedocument.wordprocessingml.document`: DOCX document format
+  - `application/msword`: DOC document format
+  - `application/vnd.openxmlformats-officedocument.wordprocessingml.template`: DOTX document template format
+  - `application/vnd.oasis.opendocument.text`: ODT document format
+  - `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`: XLSX spreadsheet format
+  - `application/vnd.ms-excel`: XLS spreadsheet format
+  - `application/vnd.oasis.opendocument.spreadsheet`: ODS spreadsheet format
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Document**
+
+  ```json
+  {
+    "type": "document",
+    "data": "BASE64_ENCODED_DOCUMENT",
+    "mime_type": "application/pdf"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **[ImageContent](/api-reference/interactions-api#Resource:ImageContent)**
+
+  {% /summary %}
+
+  An image content block.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `image`
+
+  {% hr /%}
+
+  **data**: `string`
+
+  The image content.
+
+  {% hr /%}
+
+  **uri**: `string`
+
+  The URI of the image.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **resolution**: `MediaResolution`
+
+  The resolution of the media.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The mime type of the image.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `image/png`: PNG image format
+  - `image/jpeg`: JPEG image format
+  - `image/webp`: WebP image format
+  - `image/heic`: HEIC image format
+  - `image/heif`: HEIF image format
+  - `image/gif`: GIF image format
+  - `image/bmp`: BMP image format
+  - `image/tiff`: TIFF image format
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Image**
+
+  ```json
+  {
+    "type": "image",
+    "data": "BASE64_ENCODED_IMAGE",
+    "mime_type": "image/png"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **[TextContent](/api-reference/interactions-api#Resource:TextContent)**
+
+  {% /summary %}
+
+  A text content block.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **text**: {% mark %}required{% /mark %} `string`
+
+  The text content.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `text`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **annotations**: `array (Annotation)`
+
+  Citation information for model-generated content.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **FileCitation**
+
+  {% /summary %}
+
+  A file citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_citation`
+
+  **document_uri**: `string`
+
+  The URI of the file.
+
+  **file_name**: `string`
+
+  The name of the file.
+
+  **source**: `string`
+
+  Source attributed for a portion of the text.
+
+  **custom_metadata**: `object`
+
+  User provided metadata about the retrieved context.
+
+  **page_number**: `integer`
+
+  Page number of the cited document, if applicable.
+
+  **media_id**: `string`
+
+  Media ID in-case of image citations, if applicable.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **PlaceCitation**
+
+  {% /summary %}
+
+  A place citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `place_citation`
+
+  **place_id**: `string`
+
+  The ID of the place, in `places/{place_id}` format.
+
+  **name**: `string`
+
+  Title of the place.
+
+  **url**: `string`
+
+  URI reference of the place.
+
+  {% details %}
+  {% summary %}
+  **review_snippets**: `array (ReviewSnippet)`
+
+  Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
+
+  {% /summary %}
+
+  **title**: `string`
+
+  Title of the review.
+
+  **url**: `string`
+
+  A link that corresponds to the user review on Google Maps.
+
+  **review_id**: `string`
+
+  The ID of the review snippet.
+
+  {% /details %}
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **SpeechAnnotation**
+
+  {% /summary %}
+
+  Speech annotation for text content.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `speech_metadata`
+
+  **speaker**: `string`
+
+  The speaker to associate with this turn.
+
+  **style**: `string`
+
+  Style instruction for the speech synthesis.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **UrlCitation**
+
+  {% /summary %}
+
+  A URL citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_citation`
+
+  **url**: `string`
+
+  The URL.
+
+  **title**: `string`
+
+  The title of the URL.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **WordInfo**
+
+  {% /summary %}
+
+  Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `word_info`
+
+  **text**: `string`
+
+  The transcribed word.
+
+  **start_offset**: `string`
+
+  Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **end_offset**: `string`
+
+  End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **speaker**: `string`
+
+  Optional. Speaker label for this word (e.g. "spk_1", "spk_2"). Present when diarization_mode is set in TranscriptionConfig.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Text**
+
+  ```json
+  {
+    "type": "text",
+    "text": "Hello, how are you?"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **VideoContent**
+
+  {% /summary %}
+
+  A video content block.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `video`
+
+  {% hr /%}
+
+  **data**: `string`
+
+  The video content.
+
+  {% hr /%}
+
+  **uri**: `string`
+
+  The URI of the video.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **resolution**: `MediaResolution`
+
+  The resolution of the media.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **processing**: `MediaProcessing` or `enum (string)`
+
+  How the model processes this video for understanding.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **MediaProcessing**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `static`
+
+  **start_offset**: `string`
+
+  Optional. Segment start time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "10.5s". Must be non-negative.
+
+  **end_offset**: `string`
+
+  Optional. Segment end time. Specified as a decimal number of seconds followed by an 's' suffix, e.g., "30s". Must be non-negative and greater than `start_offset` if `start_offset` is set.
+
+  **fps**: `number`
+
+  Optional. Video frame-rate sampling density.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `static`: Fixed-rate frame extraction. All frames placed in context.
+  - `agentic`: Model-driven dynamic navigation.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **name**: `string`
+
+  A user-defined name for this content block. Can be referenced by the model in the final response.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The mime type of the video.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `video/mp4`: MP4 video format
+  - `video/mpeg`: MPEG video format
+  - `video/mpg`: MPG video format
+  - `video/mov`: MOV video format
+  - `video/avi`: AVI video format
+  - `video/x-flv`: FLV video format
+  - `video/webm`: WebM video format
+  - `video/wmv`: WMV video format
+  - `video/3gpp`: 3GPP video format
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Video**
+
+  ```json
+  {
+    "type": "video",
+    "uri": "https://www.youtube.com/watch?v=9hE5-98ZeCg"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+### Tool  {% id="Resource:Tool" %}
 
 A tool that can be used by the model.
 
-### Possible Types
-
-CodeExecution A tool that can be used by the model to execute code.
-type object (required) No description provided.
-
-Always set to `"code_execution"`.
-ComputerUse A tool that can be used by the model to interact with the computer.
-type object (required) No description provided.
-
-Always set to `"computer_use"`.
-environment enum (string) (optional) The environment being operated.
-
-Possible
-values:
-
-- `browser`
-
-  Operates in a web browser.
-- `mobile`
-
-  Operates in a mobile environment.
-- `desktop`
-
-  Operates in a desktop environment.
-excluded_predefined_functions array (string) (optional) The list of predefined functions that are excluded from the model call.
-enable_prompt_injection_detection boolean (optional) Whether enable the prompt injection detection check on computer-use
-request.
-disabled_safety_policies array (enum (string)) (optional) Optional. Disabled safety policies for computer use.
-
-Possible
-values:
-
-- `financial_transactions`
-
-  Safety policy for financial transactions.
-- `sensitive_data_modification`
-
-  Safety policy for sensitive data modification.
-- `communication_tool`
-
-  Safety policy for communication tools (e.g. Gmail, Chat, Meet).
-- `account_creation`
-
-  Safety policy for account creation.
-- `data_modification`
-
-  Safety policy for data modification.
-- `user_consent_management`
-
-  Safety policy for user consent management.
-- `legal_terms_and_agreements`
-
-  Safety policy for legal terms and agreements.
-FileSearch A tool that can be used by the model to search files.
-type object (required) No description provided.
-
-Always set to `"file_search"`.
-file_search_store_names array (string) (optional) The file search store names to search.
-top_k integer (optional) The number of semantic retrieval chunks to retrieve.
-metadata_filter string (optional) Metadata filter to apply to the semantic retrieval documents and chunks.
-Function A tool that can be used by the model.
-type object (required) No description provided.
-
-Always set to `"function"`.
-name string (optional) The name of the function.
-description string (optional) A description of the function.
-parameters object (optional) The JSON Schema for the function's parameters.
-
-Supports a subset of JSON Schema. \`minLength\`, \`maxLength\`,
-\`minProperties\`, \`maxProperties\`, \`uniqueItems\`, \`contains\`,
-\`minContains\`, and \`maxContains\` are ignored and not enforced.
-GoogleMaps A tool that can be used by the model to call Google Maps.
-type object (required) No description provided.
-
-Always set to `"google_maps"`.
-enable_widget boolean (optional) Whether to return a widget context token in the tool call result of the
-response.
-latitude number (optional) The latitude of the user's location.
-longitude number (optional) The longitude of the user's location.
-GoogleSearch A tool that can be used by the model to search Google.
-type object (required) No description provided.
-
-Always set to `"google_search"`.
-search_types array (enum (string)) (optional) The types of search grounding to enable.
-
-Possible
-values:
-
-- `web_search`
-
-  Setting this field enables web search. Only text results are returned.
-- `image_search`
-
-  Setting this field enables image search. Image bytes are returned.
-McpServer A MCPServer is a server that can be called by the model to perform actions.
-type object (required) No description provided.
-
-Always set to `"mcp_server"`.
-name string (optional) The name of the MCPServer.
-url string (optional) The full URL for the MCPServer endpoint.
-Example: "https://api.example.com/mcp"
-headers object (optional) Optional: Fields for authentication headers, timeouts, etc., if needed.
-allowed_tools array (AllowedTools) (optional) The allowed tools.
-The configuration for allowed tools.
-
-#### Fields
-
-mode enum (string) (optional) The mode of the tool choice.
-
-Possible
-values:
-
-- `auto`
-
-  Auto tool choice.
-- `any`
-
-  Any tool choice.
-- `none`
-
-  No tool choice.
-- `validated`
-
-  Validated tool choice.
-tools array (string) (optional) The names of the allowed tools.
-UrlContext A tool that can be used by the model to fetch URL context.
-type object (required) No description provided.
-
-Always set to `"url_context"`.
-
-### Examples
-
-### CodeExecution
-
-<iframe src="https:///frame/api/interactions-api_356f4133027b21ad71b287123c0b72212c17f9ac9621cd8957cfa0e678703c5d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### ComputerUse
-
-<iframe src="https:///frame/api/interactions-api_52bb4224258c79eef93a158245ad38c69364247cc73f066d91bc4120d52305ff.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### FileSearch
-
-<iframe src="https:///frame/api/interactions-api_c83a8767ad9dd737699b42b28fc9c3879e79b51a9431fff789ce76fec2a66e1d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### Function
-
-<iframe src="https:///frame/api/interactions-api_bafef2e7039c3cf1cb0eb4e2cebf5fb3f7462b8ff5fbffde956548a4836e0837.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### GoogleMaps
-
-<iframe src="https:///frame/api/interactions-api_fcefc3ba72228925bfd9d50269184080ffdfb272ace60030d075fac8efe96ab2.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### GoogleSearch
-
-<iframe src="https:///frame/api/interactions-api_5d0dcd2f5ed56ec65c999d83c716ba839f75f5fad3c443d825d4b2f74b03160c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### McpServer
-
-<iframe src="https:///frame/api/interactions-api_65dc705fddb9a5f31ba54693c9a93b6db291660a7fb0fb42bb8626922ec5a090.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### UrlContext
-
-<iframe src="https:///frame/api/interactions-api_19c2a1da47f3acdb82a24eb77bc427dbc264c90cb8a6d074db206e1222722481.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### InteractionSseEvent
-
-<br />
-
-### Possible Types
-
-ErrorEvent event_type object (required) No description provided.
-
-Always set to `"error"`.
-error Error (optional) No description provided.
-Error message from an interaction.
-
-#### Fields
-
-code string (optional) A URI that identifies the error type.
-message string (optional) A human-readable error message.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-InteractionCompletedEvent Signals that the Interaction completed. Sent when the Interaction receives
-Complete/Cancel or naturally terminates. No more input can be sent to the
-Interaction after this.
-interaction InteractionSseEventInteraction (required) Required. Partial completed interaction resource emitted at the end of the stream.
-Partial interaction resource emitted by interaction lifecycle SSE events.
-Streaming lifecycle payloads may omit fields that are only available on
-full non-streaming Interaction responses.
-
-#### Fields
-
-id string (required) Required. Output only. A unique identifier for the interaction completion.
-status enum (string) (required) Required. Output only. The status of the interaction.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
-model string (optional) The model that will complete your prompt.
-created string (optional) Output only. The time at which the response was created in ISO 8601 format.
-updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
-usage Usage (optional) Output only. Statistics on the interaction request's token usage.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
-continuation_token string (optional) Opaque token to resume a long decode.
-Output: set when status is INCOMPLETE and decoding can be resumed.
-Input: pass the latest token back unchanged in CreateInteraction to
-continue decoding.
-agent string (optional) The agent to interact with.
-object string (optional) Output only. The resource type.
-event_type object (required) No description provided.
-
-Always set to `"interaction.completed"`.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-InteractionCreatedEvent Server response confirming that a new interaction was created.
-interaction InteractionSseEventInteraction (required) Required. Partial interaction resource emitted when the stream is created.
-Partial interaction resource emitted by interaction lifecycle SSE events.
-Streaming lifecycle payloads may omit fields that are only available on
-full non-streaming Interaction responses.
-
-#### Fields
-
-id string (required) Required. Output only. A unique identifier for the interaction completion.
-status enum (string) (required) Required. Output only. The status of the interaction.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
-model string (optional) The model that will complete your prompt.
-created string (optional) Output only. The time at which the response was created in ISO 8601 format.
-updated string (optional) Output only. The time at which the response was last updated in ISO 8601 format.
-usage Usage (optional) Output only. Statistics on the interaction request's token usage.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-service_tier ServiceTier (optional) The service tier for the interaction.
-<br />
-
-#### Possible values
-
-- `flex`
-
-  Flex service tier.
-- `standard`
-
-  Standard service tier.
-- `priority`
-
-  Priority service tier.
-steps array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) (optional) Output only. The steps that make up the interaction, if included in this event.
-continuation_token string (optional) Opaque token to resume a long decode.
-Output: set when status is INCOMPLETE and decoding can be resumed.
-Input: pass the latest token back unchanged in CreateInteraction to
-continue decoding.
-agent string (optional) The agent to interact with.
-object string (optional) Output only. The resource type.
-event_type object (required) No description provided.
-
-Always set to `"interaction.created"`.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-InteractionStatusUpdate interaction_id string (required) No description provided.
-status enum (string) (required) No description provided.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `requires_continuation`
-
-  The interaction requires at least one more request for it to be
-  completed. The next request should set the continuation_token to the one
-  returned by this request.
-event_type object (required) No description provided.
-
-Always set to `"interaction.status_update"`.
-continuation_token string (optional) An optional opaque continuation token used to resume decoding from the
-latest checkpoint after a disconnected stream.
-usage Usage (optional) Model usage statistics up to this checkpoint.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-StepDelta index integer (required) No description provided.
-delta StepDeltaData (required) No description provided.
-<br />
-
-#### Possible Types
-
-ArgumentsDelta type object (required) No description provided.
-
-Always set to `"arguments_delta"`.
-arguments string (optional) No description provided.
-AudioDelta type object (required) No description provided.
-
-Always set to `"audio"`.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `audio/wav`
-
-  WAV audio format
-- `audio/mp3`
-
-  MP3 audio format
-- `audio/aiff`
-
-  AIFF audio format
-- `audio/aac`
-
-  AAC audio format
-- `audio/ogg`
-
-  OGG audio format
-- `audio/flac`
-
-  FLAC audio format
-- `audio/mpeg`
-
-  MPEG audio format
-- `audio/m4a`
-
-  M4A audio format
-- `audio/l16`
-
-  L16 audio format
-- `audio/opus`
-
-  OPUS audio format
-- `audio/alaw`
-
-  ALAW audio format
-- `audio/mulaw`
-
-  MULAW audio format
-- `audio/webm`
-
-  WEBM audio format
-data string (optional) No description provided.
-uri string (optional) No description provided.
-sample_rate integer (optional) The sample rate of the audio.
-channels integer (optional) The number of audio channels.
-CodeExecutionCallDelta arguments CodeExecutionCallArguments (required) No description provided.
-The arguments to pass to the code execution.
-
-#### Fields
-
-language enum (string) (optional) Programming language of the \`code\`.
-
-Possible
-values:
-
-- `python`
-
-  Python \>= 3.10, with numpy and simpy available.
-- `bash`
-
-  Bash. Only available for Gemini 3.0 model or above.
-code string (optional) The code to be executed.
-type object (required) No description provided.
-
-Always set to `"code_execution_call"`.
-signature string (optional) A signature hash for backend validation.
-CodeExecutionResultDelta result string (required) No description provided.
-type object (required) No description provided.
-
-Always set to `"code_execution_result"`.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-DocumentDelta type object (required) No description provided.
-
-Always set to `"document"`.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `application/pdf`
-
-  PDF document format
-- `text/csv`
-
-  CSV document format
-data string (optional) No description provided.
-uri string (optional) No description provided.
-FileSearchCallDelta type object (required) No description provided.
-
-Always set to `"file_search_call"`.
-signature string (optional) A signature hash for backend validation.
-FileSearchResultDelta result array (FileSearchResult) (required) No description provided.
-The result of the File Search.
-type object (required) No description provided.
-
-Always set to `"file_search_result"`.
-signature string (optional) A signature hash for backend validation.
-FunctionResultDelta result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
-
-#### Possible Types
-
-array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
-
-This type has no specific fields.
-string A direct string value.
-
-This type has no specific fields.
-type object (required) No description provided.
-
-Always set to `"function_result"`.
-name string (optional) No description provided.
-is_error boolean (optional) No description provided.
-GoogleMapsCallDelta type object (required) No description provided.
-
-Always set to `"google_maps_call"`.
-arguments GoogleMapsCallArguments (optional) The arguments to pass to the Google Maps tool.
-The arguments to pass to the Google Maps tool.
-
-#### Fields
-
-queries array (string) (optional) The queries to be executed.
-signature string (optional) A signature hash for backend validation.
-GoogleMapsResultDelta type object (required) No description provided.
-
-Always set to `"google_maps_result"`.
-result array (GoogleMapsResult) (optional) The results of the Google Maps.
-The result of the Google Maps.
-
-#### Fields
-
-places array (Places) (optional) The places that were found.
-<br />
-
-#### Fields
-
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-widget_context_token string (optional) Resource name of the Google Maps widget context token.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchCallDelta arguments GoogleSearchCallArguments (required) No description provided.
-The arguments to pass to Google Search.
-
-#### Fields
-
-queries array (string) (optional) Web search queries for the following-up web search.
-type object (required) No description provided.
-
-Always set to `"google_search_call"`.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchResultDelta result array (GoogleSearchResult) (required) No description provided.
-The result of the Google Search.
-
-#### Fields
-
-search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-type object (required) No description provided.
-
-Always set to `"google_search_result"`.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-ImageDelta type object (required) No description provided.
-
-Always set to `"image"`.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `image/png`
-
-  PNG image format
-- `image/jpeg`
-
-  JPEG image format
-- `image/webp`
-
-  WebP image format
-- `image/heic`
-
-  HEIC image format
-- `image/heif`
-
-  HEIF image format
-- `image/gif`
-
-  GIF image format
-- `image/bmp`
-
-  BMP image format
-- `image/tiff`
-
-  TIFF image format
-data string (optional) No description provided.
-uri string (optional) No description provided.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-McpServerToolCallDelta name string (required) No description provided.
-server_name string (required) No description provided.
-arguments object (required) No description provided.
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_call"`.
-McpServerToolResultDelta result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
-
-#### Possible Types
-
-array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
-
-This type has no specific fields.
-string A direct string value.
-
-This type has no specific fields.
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_result"`.
-name string (optional) No description provided.
-server_name string (optional) No description provided.
-ProcessingCallDelta Streaming delta for a server-initiated media processing step.
-type object (required) No description provided.
-
-Always set to `"processing_call"`.
-signature string (optional) A signature hash for backend validation.
-ProcessingResultDelta Streaming delta for the result of a server-initiated media processing step.
-type object (required) No description provided.
-
-Always set to `"processing_result"`.
-signature string (optional) A signature hash for backend validation.
-TextAnnotationDelta type object (required) No description provided.
-
-Always set to `"text_annotation_delta"`.
-annotations array (Annotation) (optional) Citation information for model-generated content.
-Citation information for model-generated content.
-
-#### Possible Types
-
-FileCitation A file citation annotation.
-type object (required) No description provided.
-
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
-
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-SpeechAnnotation Speech annotation for text content.
-type object (required) No description provided.
-
-Always set to `"speech_metadata"`.
-speaker string (optional) The speaker to associate with this turn.
-style string (optional) Style instruction for the speech synthesis.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
-
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-WordInfo Word-level ASR annotation for transcription output.
-Carries the word text, optional timing, and optional speaker attribution.
-type object (required) No description provided.
-
-Always set to `"word_info"`.
-text string (optional) The transcribed word.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-end_offset string (optional) End offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
-Present when diarization_mode is set in TranscriptionConfig.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-TextDelta text string (required) No description provided.
-type object (required) No description provided.
-
-Always set to `"text"`.
-ThoughtSignatureDelta type object (required) No description provided.
-
-Always set to `"thought_signature"`.
-signature string (optional) Signature to match the backend source to be part of the generation.
-ThoughtSummaryDelta type object (required) No description provided.
-
-Always set to `"thought_summary"`.
-content [Content](https://ai.google.dev/api/interactions-api#Resource:Content) (optional) A new summary item to be added to the thought.
-UrlContextCallDelta arguments UrlContextCallArguments (required) No description provided.
-The arguments to pass to the URL context.
-
-#### Fields
-
-urls array (string) (optional) The URLs to fetch.
-type object (required) No description provided.
-
-Always set to `"url_context_call"`.
-signature string (optional) A signature hash for backend validation.
-UrlContextResultDelta result array (UrlContextResult) (required) No description provided.
-The result of the URL context.
-
-#### Fields
-
-url string (optional) The URL that was fetched.
-status enum (string) (optional) The status of the URL retrieval.
-
-Possible
-values:
-
-- `success`
-
-  Url retrieval is successful.
-- `error`
-
-  Url retrieval is failed due to error.
-- `paywall`
-
-  Url retrieval is failed because the content is behind paywall.
-- `unsafe`
-
-  Url retrieval is failed because the content is unsafe.
-type object (required) No description provided.
-
-Always set to `"url_context_result"`.
-is_error boolean (optional) No description provided.
-signature string (optional) A signature hash for backend validation.
-VideoDelta type object (required) No description provided.
-
-Always set to `"video"`.
-mime_type enum (string) (optional) No description provided.
-
-Possible
-values:
-
-- `video/mp4`
-
-  MP4 video format
-- `video/mpeg`
-
-  MPEG video format
-- `video/mpg`
-
-  MPG video format
-- `video/mov`
-
-  MOV video format
-- `video/avi`
-
-  AVI video format
-- `video/x-flv`
-
-  FLV video format
-- `video/webm`
-
-  WebM video format
-- `video/wmv`
-
-  WMV video format
-- `video/3gpp`
-
-  3GPP video format
-- `video/jpeg2000`
-
-  JPEG 2000 video format
-data string (optional) No description provided.
-uri string (optional) No description provided.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-event_type object (required) No description provided.
-
-Always set to `"step.delta"`.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-metadata StepDeltaMetadata (optional) No description provided.
-Optional metadata accompanying ANY streamed event.
-
-#### Fields
-
-total_usage Usage (optional) Statistics on the interaction request's token usage.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-StepStart index integer (required) No description provided.
-step [Step](https://ai.google.dev/api/interactions-api#Resource:Step) (required) No description provided.
-event_type object (required) No description provided.
-
-Always set to `"step.start"`.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-StepStop index integer (required) No description provided.
-event_type object (required) No description provided.
-
-Always set to `"step.stop"`.
-usage Usage (optional) Cumulative model usage stats from the start of the session.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-step_usage Usage (optional) Model usage stats for this specific step.
-Statistics on the interaction request's token usage.
-
-#### Fields
-
-total_input_tokens integer (optional) Number of tokens in the prompt (context).
-initial_input_tokens integer (optional) Number of input tokens used in the first turn of this interaction.
-input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_cached_tokens integer (optional) Number of tokens in the cached part of the prompt (the cached content).
-cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_output_tokens integer (optional) Total number of tokens across all the generated responses.
-output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_tool_use_tokens integer (optional) Number of tokens present in tool-use prompt(s).
-tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
-The token count for a single response modality.
-
-#### Fields
-
-modality ResponseModality (optional) The modality associated with the token count.
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
-tokens integer (optional) Number of tokens for the modality.
-total_thought_tokens integer (optional) Number of tokens of thoughts for thinking models.
-total_tokens integer (optional) Total token count for the interaction request (prompt + responses + other
-internal tokens).
-grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
-The number of grounding tool counts.
-
-#### Fields
-
-type enum (string) (optional) The grounding tool type associated with the count.
-
-Possible
-values:
-
-- `google_search`
-
-  Grounding with Google Web Search and Image Search, \& Web Grounding
-  for Enterprise.
-- `google_maps`
-
-  Grounding with Google Maps.
-count integer (optional) The number of grounding tool counts.
-event_id string (optional) The event_id token to be used to resume the interaction stream, from
-this event.
-
-### Examples
-
-### Error Event
-
-```json
-{
-  "error": {
-    "code": "not_found",
-    "message": "Failed to get completed interaction: Result not found."
-  },
-  "event_type": "error"
-}
-```
-
-### Interaction Completed
-
-```json
-{
-  "event_id": "evt_123",
-  "event_type": "interaction.completed",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.6-flash",
-    "status": "completed",
-    "updated": "2025-12-04T15:01:45Z"
+**Polymorphic Types:**
+
+{% details %}
+  {% summary %}
+  **CodeExecution**
+
+  {% /summary %}
+
+  A tool that can be used by the model to execute code.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `code_execution`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "code_execution"
+      }],
+      "input": "Calculate the first 10 Fibonacci numbers"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[{"type": "code_execution"}],
+      input="Calculate the first 10 Fibonacci numbers",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [{type: 'code_execution'}],
+    input: 'Calculate the first 10 Fibonacci numbers',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.CodeExecution;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  
+  Client client = new Client();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(new CodeExecution()))
+          .input(InteractionsInput.of("Calculate the first 10 Fibonacci numbers"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="code_execution" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.CodeExecution{})
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Calculate the first 10 Fibonacci numbers")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
   }
-}
-```
+  ```
 
-### Interaction Completed
+  {% /tab %}
 
-```json
-{
-  "event_id": "evt_123",
-  "event_type": "interaction.completed",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3-flash-preview",
-    "object": "interaction",
-    "status": "completed",
-    "updated": "2025-12-04T15:01:45Z"
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ComputerUse**
+
+  {% /summary %}
+
+  A tool that can be used by the model to interact with the computer.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `computer_use`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **environment**: `enum (string)`
+
+  The environment being operated.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `browser`: Operates in a web browser.
+  - `mobile`: Operates in a mobile environment.
+  - `desktop`: Operates in a desktop environment.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **excluded_predefined_functions**: `array (string)`
+
+  The list of predefined functions that are excluded from the model call.
+
+  {% hr /%}
+
+  **enable_prompt_injection_detection**: `boolean`
+
+  Whether enable the prompt injection detection check on computer-use request.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **disabled_safety_policies**: `array (enum (string))`
+
+  Optional. Disabled safety policies for computer use.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `financial_transactions`: Safety policy for financial transactions.
+  - `sensitive_data_modification`: Safety policy for sensitive data modification.
+  - `communication_tool`: Safety policy for communication tools (e.g. Gmail, Chat, Meet).
+  - `account_creation`: Safety policy for account creation.
+  - `data_modification`: Safety policy for data modification.
+  - `user_consent_management`: Safety policy for user consent management.
+  - `legal_terms_and_agreements`: Safety policy for legal terms and agreements.
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-2.5-computer-use-preview-10-2025",
+      "tools": [{
+        "type": "computer_use"
+      }],
+      "input": "Find a flight to Tokyo"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-2.5-computer-use-preview-10-2025",
+      tools=[{"type": "computer_use"}],
+      input="Find a flight to Tokyo",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-2.5-computer-use-preview-10-2025',
+    tools: [{type: 'computer_use'}],
+    input: 'Find a flight to Tokyo',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.ComputerUse;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  
+  Client client = new Client();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-2.5-computer-use-preview-10-2025")
+          .tools(List.of(new ComputerUse()))
+          .input(InteractionsInput.of("Find a flight to Tokyo"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="computer_use" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.ComputerUse{})
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Find a flight to Tokyo")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
   }
-}
-```
+  ```
 
-### Interaction Created
+  {% /tab %}
 
-```json
-{
-  "event_id": "evt_123",
-  "event_type": "interaction.created",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.6-flash",
-    "status": "in_progress",
-    "updated": "2025-12-04T15:01:45Z"
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **FileSearch**
+
+  {% /summary %}
+
+  A tool that can be used by the model to search files.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_search`
+
+  {% hr /%}
+
+  **file_search_store_names**: `array (string)`
+
+  The file search store names to search.
+
+  {% hr /%}
+
+  **top_k**: `integer`
+
+  The number of semantic retrieval chunks to retrieve.
+
+  {% hr /%}
+
+  **metadata_filter**: `string`
+
+  Metadata filter to apply to the semantic retrieval documents and chunks.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "file_search",
+        "file_search_store_names": ["fileSearchStores/m64d1sevsr4y-xfyawui3fxqg"]
+      }],
+      "input": "Who is the author of the book?"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  # Create a file search store so we have a valid one to use.
+  store = client.file_search_stores.create()
+  
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[
+          {"type": "file_search", "file_search_store_names": [store.name]}
+      ],
+      input="What documents are available?",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  
+  // Create a file search store so we have a valid one to use.
+  const store = await ai.fileSearchStores.create({});
+  if (!store.name) {
+    throw new Error('Store creation failed: Name is undefined');
   }
-}
-```
+  
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [
+      {
+        type: 'file_search',
+        file_search_store_names: [store.name],
+      },
+    ],
+    input: 'What documents are available?',
+  });
+  console.log(interaction.output_text);
+  ```
 
-### Interaction Created
+  {% /tab %}
 
-```json
-{
-  "event_id": "evt_123",
-  "event_type": "interaction.created",
-  "interaction": {
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3-flash-preview",
-    "object": "interaction",
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.types.CreateFileSearchStoreConfig;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.FileSearch;
+  import com.google.genai.types.FileSearchStore;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  
+  Client client = new Client();
+  
+  // Create a file search store so we have a valid one to use.
+  FileSearchStore store =
+      client.fileSearchStores.create(CreateFileSearchStoreConfig.builder().build());
+  String storeName = store.name().orElseThrow();
+  
+  FileSearch tool = FileSearch.builder().fileSearchStoreNames(List.of(storeName)).build();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(tool))
+          .input(InteractionsInput.of("What documents are available?"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="file_search" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.FileSearch{
+          FileSearchStoreNames: []string{store.Name},
+      })
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What documents are available?")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **Function**
+
+  {% /summary %}
+
+  A tool that can be used by the model.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `function`
+
+  {% hr /%}
+
+  **name**: `string`
+
+  The name of the function.
+
+  {% hr /%}
+
+  **description**: `string`
+
+  A description of the function.
+
+  {% hr /%}
+
+  **parameters**: `object`
+
+  The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get the current weather in a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            }
+          },
+          "required": ["location"]
+        }
+      }],
+      "input": "What is the weather like in Boston, MA?"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[{
+          "type": "function",
+          "name": "get_weather",
+          "description": "Get the current weather in a given location",
+          "parameters": {
+              "type": "object",
+              "properties": {
+                  "location": {
+                      "type": "string",
+                      "description": (
+                          "The city and state, e.g. San Francisco, CA"
+                      ),
+                  }
+              },
+              "required": ["location"],
+          },
+      }],
+      input="What is the weather like in Boston?",
+  )
+  print(response.steps[-1])
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [
+      {
+        type: 'function',
+        name: 'get_weather',
+        description: 'Get the current weather in a given location',
+        parameters: {
+          type: 'object',
+          properties: {
+            location: {
+              type: 'string',
+              description: 'The city and state, e.g. San Francisco, CA',
+            },
+          },
+          required: ['location'],
+        },
+      },
+    ],
+    input: 'What is the weather like in Boston?',
+  });
+  console.log(interaction.steps.at(-1));
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Function;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.Step;
+  
+  Client client = new Client();
+  Map<String, Object> parameters =
+      Map.of(
+          "type", "object",
+          "properties",
+              Map.of(
+                  "location",
+                  Map.of(
+                      "type", "string",
+                      "description", "The city and state, e.g. San Francisco, CA")),
+          "required", List.of("location"));
+  Function functionTool =
+      Function.builder()
+          .name("get_weather")
+          .description("Get the current weather in a given location")
+          .parameters(parameters)
+          .build();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(functionTool))
+          .input(InteractionsInput.of("What is the weather like in Boston?"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  List<Step> steps = interaction.steps().orElse(List.of());
+  if (!steps.isEmpty()) {
+    System.out.println(steps.get(steps.size() - 1));
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="function_calling" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      function := gaos_interactions.Function{
+          Name:        genai.Ptr("get_weather"),
+          Description: genai.Ptr("Get the current weather in a given location"),
+          Parameters: map[string]any{
+              "type": "object",
+              "properties": map[string]any{
+                  "location": map[string]any{
+                      "type":        "string",
+                      "description": "The city and state, e.g. San Francisco, CA",
+                  },
+              },
+              "required": []string{"location"},
+          },
+      }
+  
+      tool := gaos_interactions.NewTool(function)
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil {
+          for _, step := range res.Interaction.Steps {
+              if step.FunctionCallStep != nil {
+                  fmt.Println("Function Call:", step.FunctionCallStep.Name)
+                  fmt.Println("Arguments:", step.FunctionCallStep.Arguments)
+              }
+          }
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **GoogleMaps**
+
+  {% /summary %}
+
+  A tool that can be used by the model to call Google Maps.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_maps`
+
+  {% hr /%}
+
+  **enable_widget**: `boolean`
+
+  Whether to return a widget context token in the tool call result of the response.
+
+  {% hr /%}
+
+  **latitude**: `number`
+
+  The latitude of the user's location.
+
+  {% hr /%}
+
+  **longitude**: `number`
+
+  The longitude of the user's location.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "google_maps",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      }],
+      "input": "What is the best food near me?"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[
+          {"type": "google_maps", "latitude": 37.7749, "longitude": -122.4194}
+      ],
+      input="What is the best food near me?",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [
+      {
+        type: 'google_maps',
+        latitude: 37.7749,
+        longitude: -122.4194,
+      },
+    ],
+    input: 'What is the best food near me?',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.GoogleMaps;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  
+  Client client = new Client();
+  GoogleMaps tool = GoogleMaps.builder().latitude(37.7749).longitude(-122.4194).build();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(tool))
+          .input(InteractionsInput.of("What is the best food near me?"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="google_maps" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.GoogleMaps{
+          Latitude:  genai.Ptr(37.7749),
+          Longitude: genai.Ptr(-122.4194),
+      })
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the best food near me?")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **GoogleSearch**
+
+  {% /summary %}
+
+  A tool that can be used by the model to search Google.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_search`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **search_types**: `array (enum (string))`
+
+  The types of search grounding to enable.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `web_search`: Setting this field enables web search. Only text results are returned.
+  - `image_search`: Setting this field enables image search. Image bytes are returned.
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "google_search"
+      }],
+      "input": "Who is the current president of France?"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[{"type": "google_search"}],
+      input="Who is the current president of France?",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [{type: 'google_search'}],
+    input: 'Who is the current president of France?',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.GoogleSearch;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  
+  Client client = new Client();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(new GoogleSearch()))
+          .input(InteractionsInput.of("Who is the current president of France?"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="google_search" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.GoogleSearch{})
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Who is the current president of France?")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **McpServer**
+
+  {% /summary %}
+
+  A MCPServer is a server that can be called by the model to perform actions.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `mcp_server`
+
+  {% hr /%}
+
+  **name**: `string`
+
+  The name of the MCPServer.
+
+  {% hr /%}
+
+  **url**: `string`
+
+  The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
+
+  {% hr /%}
+
+  **headers**: `object`
+
+  Optional: Fields for authentication headers, timeouts, etc., if needed.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **allowed_tools**: `array (AllowedTools)`
+
+  The allowed tools.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **mode**: `enum (string)`
+
+  The mode of the tool choice.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `auto`: Auto tool choice.
+  - `any`: Any tool choice.
+  - `none`: No tool choice.
+  - `validated`: Validated tool choice.
+
+  {% /details %}
+
+  **tools**: `array (string)`
+
+  The names of the allowed tools.
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "mcp_server",
+        "name": "weather_service",
+        "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
+      }],
+      "input": "Today is 12-05-2025, what is the temperature today in London?"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  import os
+  
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[{
+          "type": "mcp_server",
+          "name": "weather_service",
+          "url": "https://gemini-api-demos.uc.r.appspot.com/mcp",
+      }],
+      input="Today is 12-05-2025, what is the temperature today in London?",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [
+      {
+        type: 'mcp_server',
+        name: 'weather_service',
+        url: 'https://gemini-api-demos.uc.r.appspot.com/mcp',
+      },
+    ],
+    input: 'Today is 12-05-2025, what is the temperature today in London?',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.MCPServer;
+  
+  Client client = new Client();
+  MCPServer mcpTool =
+      MCPServer.builder()
+          .name("weather_service")
+          .url("https://gemini-api-demos.uc.r.appspot.com/mcp")
+          .build();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(mcpTool))
+          .input(
+              InteractionsInput.of(
+                  "Today is 12-05-2025, what is the temperature today in London?"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="mcp_server" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "os"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      mcpServer := gaos_interactions.MCPServer{
+          Name: genai.Ptr("weather_service"),
+          URL:  genai.Ptr("https://gemini-api-demos.uc.r.appspot.com/mcp"),
+      }
+      tool := gaos_interactions.NewTool(mcpServer)
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Today is 12-05-2025, what is the temperature today in London?")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **UrlContext**
+
+  {% /summary %}
+
+  A tool that can be used by the model to fetch URL context.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_context`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="REST" %}
+  ```sh
+  curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "gemini-flash-latest",
+      "tools": [{
+        "type": "url_context"
+      }],
+      "input": "Summarize https://www.example.com"
+    }'
+  ```
+
+  {% /tab %}
+
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  response = client.interactions.create(
+      model="gemini-flash-latest",
+      tools=[{"type": "url_context"}],
+      input="Summarize https://www.example.com",
+  )
+  print(response.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import {GoogleGenAI} from '@google/genai';
+  
+  const ai = new GoogleGenAI({});
+  const interaction = await ai.interactions.create({
+    model: 'gemini-flash-latest',
+    tools: [{type: 'url_context'}],
+    input: 'Summarize https://www.example.com',
+  });
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.URLContext;
+  
+  Client client = new Client();
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-flash-latest")
+          .tools(List.of(new URLContext()))
+          .input(InteractionsInput.of("Summarize https://www.example.com"))
+          .build();
+  CreateInteractionResponse response =
+      client.interactions.create(CreateInteractionRequestBody.of(params));
+  Interaction interaction =
+      response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="url_context" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+      "google.golang.org/genai"
+      gaos_interactions "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      tool := gaos_interactions.NewTool(gaos_interactions.URLContext{})
+  
+      body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Summarize https://www.example.com")),
+          Tools: []gaos_interactions.Tool{tool},
+      })
+  
+      req := operations.CreateInteractionRequest{
+          Body: body,
+      }
+  
+      res, err := client.Interactions.Create(ctx, req)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      if res.Interaction != nil && res.Interaction.OutputText != nil {
+          fmt.Println(*res.Interaction.OutputText)
+      }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+### InteractionSseEvent  {% id="Resource:InteractionSseEvent" %}
+
+**Polymorphic Types:**
+
+{% details %}
+  {% summary %}
+  **ErrorEvent**
+
+  {% /summary %}
+
+  {% two-column-layout %}
+  {% left-column %}
+  **event_type**: {% mark %}required{% /mark %} `object`
+
+  Value: `error`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **error**: `Error`
+
+  {% /summary %}
+
+  **code**: `string`
+
+  A URI that identifies the error type.
+
+  **message**: `string`
+
+  A human-readable error message.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Error Event**
+
+  ```json
+  {
+    "error": {
+      "code": "not_found",
+      "message": "Failed to get completed interaction: Result not found."
+    },
+    "event_type": "error"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **InteractionCompletedEvent**
+
+  {% /summary %}
+
+  Signals that the Interaction completed. Sent when the Interaction receives
+  Complete/Cancel or naturally terminates. No more input can be sent to the
+  Interaction after this.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **interaction**: {% mark %}required{% /mark %} `InteractionSseEventInteraction`
+
+  Partial completed interaction resource emitted at the end of the stream.
+
+  {% /summary %}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  Output only. A unique identifier for the interaction completion.
+
+  {% details %}
+  {% summary %}
+  **status**: {% mark %}required{% /mark %} `enum (string)`
+
+  Output only. The status of the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `in_progress`: The interaction is in progress.
+  - `requires_action`: The interaction requires action/input from the user.
+  - `completed`: The interaction is completed.
+  - `failed`: The interaction failed.
+  - `cancelled`: The interaction was cancelled.
+  - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+
+  {% /details %}
+
+  **model**: `string`
+
+  The model that will complete your prompt.
+
+  **created**: `string`
+
+  Output only. The time at which the response was created in ISO 8601 format.
+
+  **updated**: `string`
+
+  Output only. The time at which the response was last updated in ISO 8601 format.
+
+  {% details %}
+  {% summary %}
+  **usage**: `Usage`
+
+  Output only. Statistics on the interaction request's token usage.
+
+  {% /summary %}
+
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **service_tier**: `ServiceTier`
+
+  The service tier for the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `flex`: Flex service tier.
+  - `standard`: Standard service tier.
+  - `priority`: Priority service tier.
+
+  {% /details %}
+
+  **steps**: `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
+
+  Output only. The steps that make up the interaction, if included in this event.
+
+  **continuation_token**: `string`
+
+  Opaque token to resume a long decode. Output: set when status is INCOMPLETE and decoding can be resumed. Input: pass the latest token back unchanged in CreateInteraction to continue decoding.
+
+  **agent**: `string`
+
+  The agent to interact with.
+
+  **object**: `string`
+
+  Output only. The resource type.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_type**: {% mark %}required{% /mark %} `object`
+
+  Value: `interaction.completed`
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="Interaction Completed" %}
+  ```json
+  {
+    "event_id": "evt_123",
+    "event_type": "interaction.completed",
+    "interaction": {
+      "created": "2025-12-04T15:01:45Z",
+      "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+      "model": "gemini-3.6-flash",
+      "status": "completed",
+      "updated": "2025-12-04T15:01:45Z"
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Interaction Completed" %}
+  ```json
+  {
+    "event_id": "evt_123",
+    "event_type": "interaction.completed",
+    "interaction": {
+      "created": "2025-12-04T15:01:45Z",
+      "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+      "model": "gemini-3-flash-preview",
+      "object": "interaction",
+      "status": "completed",
+      "updated": "2025-12-04T15:01:45Z"
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **InteractionCreatedEvent**
+
+  {% /summary %}
+
+  Server response confirming that a new interaction was created.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **interaction**: {% mark %}required{% /mark %} `InteractionSseEventInteraction`
+
+  Partial interaction resource emitted when the stream is created.
+
+  {% /summary %}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  Output only. A unique identifier for the interaction completion.
+
+  {% details %}
+  {% summary %}
+  **status**: {% mark %}required{% /mark %} `enum (string)`
+
+  Output only. The status of the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `in_progress`: The interaction is in progress.
+  - `requires_action`: The interaction requires action/input from the user.
+  - `completed`: The interaction is completed.
+  - `failed`: The interaction failed.
+  - `cancelled`: The interaction was cancelled.
+  - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+
+  {% /details %}
+
+  **model**: `string`
+
+  The model that will complete your prompt.
+
+  **created**: `string`
+
+  Output only. The time at which the response was created in ISO 8601 format.
+
+  **updated**: `string`
+
+  Output only. The time at which the response was last updated in ISO 8601 format.
+
+  {% details %}
+  {% summary %}
+  **usage**: `Usage`
+
+  Output only. Statistics on the interaction request's token usage.
+
+  {% /summary %}
+
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **service_tier**: `ServiceTier`
+
+  The service tier for the interaction.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `flex`: Flex service tier.
+  - `standard`: Standard service tier.
+  - `priority`: Priority service tier.
+
+  {% /details %}
+
+  **steps**: `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
+
+  Output only. The steps that make up the interaction, if included in this event.
+
+  **continuation_token**: `string`
+
+  Opaque token to resume a long decode. Output: set when status is INCOMPLETE and decoding can be resumed. Input: pass the latest token back unchanged in CreateInteraction to continue decoding.
+
+  **agent**: `string`
+
+  The agent to interact with.
+
+  **object**: `string`
+
+  Output only. The resource type.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_type**: {% mark %}required{% /mark %} `object`
+
+  Value: `interaction.created`
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="Interaction Created" %}
+  ```json
+  {
+    "event_id": "evt_123",
+    "event_type": "interaction.created",
+    "interaction": {
+      "created": "2025-12-04T15:01:45Z",
+      "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+      "model": "gemini-3.6-flash",
+      "status": "in_progress",
+      "updated": "2025-12-04T15:01:45Z"
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Interaction Created" %}
+  ```json
+  {
+    "event_id": "evt_123",
+    "event_type": "interaction.created",
+    "interaction": {
+      "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+      "model": "gemini-3-flash-preview",
+      "object": "interaction",
+      "status": "in_progress"
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **InteractionStatusUpdate**
+
+  {% /summary %}
+
+  {% two-column-layout %}
+  {% left-column %}
+  **interaction_id**: {% mark %}required{% /mark %} `string`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **status**: {% mark %}required{% /mark %} `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `in_progress`: The interaction is in progress.
+  - `requires_action`: The interaction requires action/input from the user.
+  - `completed`: The interaction is completed.
+  - `failed`: The interaction failed.
+  - `cancelled`: The interaction was cancelled.
+  - `incomplete`: The interaction is completed, but contains incomplete results (e.g. hitting max_tokens).
+  - `requires_continuation`: The interaction requires at least one more request for it to be completed. The next request should set the continuation_token to the one returned by this request.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_type**: {% mark %}required{% /mark %} `object`
+
+  Value: `interaction.status_update`
+
+  {% hr /%}
+
+  **continuation_token**: `string`
+
+  An optional opaque continuation token used to resume decoding from the latest checkpoint after a disconnected stream.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **usage**: `Usage`
+
+  Model usage statistics up to this checkpoint.
+
+  {% /summary %}
+
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Interaction Status Update**
+
+  ```json
+  {
+    "event_type": "interaction.status_update",
+    "interaction_id": "v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM",
     "status": "in_progress"
   }
-}
-```
+  ```
 
-### Interaction Status Update
+  {% /right-column %}
 
-```json
-{
-  "event_type": "interaction.status_update",
-  "interaction_id": "v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM",
-  "status": "in_progress"
-}
-```
+  {% /two-column-layout %}
 
-### Step Delta
+{% /details %}
 
-```json
-{
-  "delta": {
-    "type": "text",
-    "text": "Hello"
-  },
-  "event_type": "step.delta",
-  "index": 0
-}
-```
+{% details %}
+  {% summary %}
+  **StepDelta**
 
-### Step Start
+  {% /summary %}
 
-```json
-{
-  "event_type": "step.start",
-  "index": 0,
-  "step": {
-    "type": "model_output"
+  {% two-column-layout %}
+  {% left-column %}
+  **index**: {% mark %}required{% /mark %} `integer`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **delta**: {% mark %}required{% /mark %} `StepDeltaData`
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **ArgumentsDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `arguments_delta`
+
+  **arguments**: `string`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **AudioDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `audio`
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `audio/wav`: WAV audio format
+  - `audio/mp3`: MP3 audio format
+  - `audio/aiff`: AIFF audio format
+  - `audio/aac`: AAC audio format
+  - `audio/ogg`: OGG audio format
+  - `audio/flac`: FLAC audio format
+  - `audio/mpeg`: MPEG audio format
+  - `audio/m4a`: M4A audio format
+  - `audio/l16`: L16 audio format
+  - `audio/opus`: OPUS audio format
+  - `audio/alaw`: ALAW audio format
+  - `audio/mulaw`: MULAW audio format
+  - `audio/webm`: WEBM audio format
+
+  {% /details %}
+
+  **data**: `string`
+
+  **uri**: `string`
+
+  **sample_rate**: `integer`
+
+  The sample rate of the audio.
+
+  **channels**: `integer`
+
+  The number of audio channels.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **CodeExecutionCallDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `CodeExecutionCallArguments`
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **language**: `enum (string)`
+
+  Programming language of the `code`.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `python`: Python >= 3.10, with numpy and simpy available.
+  - `bash`: Bash. Only available for Gemini 3.0 model or above.
+
+  {% /details %}
+
+  **code**: `string`
+
+  The code to be executed.
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `code_execution_call`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **CodeExecutionResultDelta**
+
+  {% /summary %}
+
+  **result**: {% mark %}required{% /mark %} `string`
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `code_execution_result`
+
+  **is_error**: `boolean`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **DocumentDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `document`
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `application/pdf`: PDF document format
+  - `text/csv`: CSV document format
+  - `application/vnd.openxmlformats-officedocument.presentationml.presentation`: PPTX presentation format
+  - `application/vnd.ms-powerpoint`: PPT presentation format
+  - `application/vnd.oasis.opendocument.presentation`: ODP presentation format
+  - `application/vnd.openxmlformats-officedocument.wordprocessingml.document`: DOCX document format
+  - `application/msword`: DOC document format
+  - `application/vnd.openxmlformats-officedocument.wordprocessingml.template`: DOTX document template format
+  - `application/vnd.oasis.opendocument.text`: ODT document format
+  - `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`: XLSX spreadsheet format
+  - `application/vnd.ms-excel`: XLS spreadsheet format
+  - `application/vnd.oasis.opendocument.spreadsheet`: ODS spreadsheet format
+
+  {% /details %}
+
+  **data**: `string`
+
+  **uri**: `string`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **FileSearchCallDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_search_call`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **FileSearchResultDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (FileSearchResult)`
+
+  {% /summary %}
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_search_result`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **FunctionResultDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+
+  {% /summary %}
+
+  A list where each item is one of: [`ImageContent`](/api-reference/interactions-api#Resource:ImageContent), [`TextContent`](/api-reference/interactions-api#Resource:TextContent).
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `function_result`
+
+  **name**: `string`
+
+  **is_error**: `boolean`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **GoogleMapsCallDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_maps_call`
+
+  {% details %}
+  {% summary %}
+  **arguments**: `GoogleMapsCallArguments`
+
+  The arguments to pass to the Google Maps tool.
+
+  {% /summary %}
+
+  **queries**: `array (string)`
+
+  The queries to be executed.
+
+  {% /details %}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **GoogleMapsResultDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_maps_result`
+
+  {% details %}
+  {% summary %}
+  **result**: `array (GoogleMapsResult)`
+
+  The results of the Google Maps.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **places**: `array (Places)`
+
+  The places that were found.
+
+  {% /summary %}
+
+  **place_id**: `string`
+
+  The ID of the place, in `places/{place_id}` format.
+
+  **name**: `string`
+
+  Title of the place.
+
+  **url**: `string`
+
+  URI reference of the place.
+
+  {% details %}
+  {% summary %}
+  **review_snippets**: `array (ReviewSnippet)`
+
+  Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
+
+  {% /summary %}
+
+  **title**: `string`
+
+  Title of the review.
+
+  **url**: `string`
+
+  A link that corresponds to the user review on Google Maps.
+
+  **review_id**: `string`
+
+  The ID of the review snippet.
+
+  {% /details %}
+
+  {% /details %}
+
+  **widget_context_token**: `string`
+
+  Resource name of the Google Maps widget context token.
+
+  {% /details %}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **GoogleSearchCallDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `GoogleSearchCallArguments`
+
+  {% /summary %}
+
+  **queries**: `array (string)`
+
+  Web search queries for the following-up web search.
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_search_call`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **GoogleSearchResultDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (GoogleSearchResult)`
+
+  {% /summary %}
+
+  **search_suggestions**: `string`
+
+  Web content snippet that can be embedded in a web page or an app webview.
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_search_result`
+
+  **is_error**: `boolean`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **ImageDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `image`
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `image/png`: PNG image format
+  - `image/jpeg`: JPEG image format
+  - `image/webp`: WebP image format
+  - `image/heic`: HEIC image format
+  - `image/heif`: HEIF image format
+  - `image/gif`: GIF image format
+  - `image/bmp`: BMP image format
+  - `image/tiff`: TIFF image format
+
+  {% /details %}
+
+  **data**: `string`
+
+  **uri**: `string`
+
+  {% details %}
+  {% summary %}
+  **resolution**: `MediaResolution`
+
+  The resolution of the media.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **McpServerToolCallDelta**
+
+  {% /summary %}
+
+  **name**: {% mark %}required{% /mark %} `string`
+
+  **server_name**: {% mark %}required{% /mark %} `string`
+
+  **arguments**: {% mark %}required{% /mark %} `object`
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `mcp_server_tool_call`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **McpServerToolResultDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+
+  {% /summary %}
+
+  A list where each item is one of: [`ImageContent`](/api-reference/interactions-api#Resource:ImageContent), [`TextContent`](/api-reference/interactions-api#Resource:TextContent).
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `mcp_server_tool_result`
+
+  **name**: `string`
+
+  **server_name**: `string`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **ProcessingCallDelta**
+
+  {% /summary %}
+
+  Streaming delta for a server-initiated media processing step.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `processing_call`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **ProcessingResultDelta**
+
+  {% /summary %}
+
+  Streaming delta for the result of a server-initiated media processing step.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `processing_result`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **TextAnnotationDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `text_annotation_delta`
+
+  {% details %}
+  {% summary %}
+  **annotations**: `array (Annotation)`
+
+  Citation information for model-generated content.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **FileCitation**
+
+  {% /summary %}
+
+  A file citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_citation`
+
+  **document_uri**: `string`
+
+  The URI of the file.
+
+  **file_name**: `string`
+
+  The name of the file.
+
+  **source**: `string`
+
+  Source attributed for a portion of the text.
+
+  **custom_metadata**: `object`
+
+  User provided metadata about the retrieved context.
+
+  **page_number**: `integer`
+
+  Page number of the cited document, if applicable.
+
+  **media_id**: `string`
+
+  Media ID in-case of image citations, if applicable.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **PlaceCitation**
+
+  {% /summary %}
+
+  A place citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `place_citation`
+
+  **place_id**: `string`
+
+  The ID of the place, in `places/{place_id}` format.
+
+  **name**: `string`
+
+  Title of the place.
+
+  **url**: `string`
+
+  URI reference of the place.
+
+  {% details %}
+  {% summary %}
+  **review_snippets**: `array (ReviewSnippet)`
+
+  Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
+
+  {% /summary %}
+
+  **title**: `string`
+
+  Title of the review.
+
+  **url**: `string`
+
+  A link that corresponds to the user review on Google Maps.
+
+  **review_id**: `string`
+
+  The ID of the review snippet.
+
+  {% /details %}
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **SpeechAnnotation**
+
+  {% /summary %}
+
+  Speech annotation for text content.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `speech_metadata`
+
+  **speaker**: `string`
+
+  The speaker to associate with this turn.
+
+  **style**: `string`
+
+  Style instruction for the speech synthesis.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **UrlCitation**
+
+  {% /summary %}
+
+  A URL citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_citation`
+
+  **url**: `string`
+
+  The URL.
+
+  **title**: `string`
+
+  The title of the URL.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **WordInfo**
+
+  {% /summary %}
+
+  Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `word_info`
+
+  **text**: `string`
+
+  The transcribed word.
+
+  **start_offset**: `string`
+
+  Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **end_offset**: `string`
+
+  End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **speaker**: `string`
+
+  Optional. Speaker label for this word (e.g. "spk_1", "spk_2"). Present when diarization_mode is set in TranscriptionConfig.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **TextDelta**
+
+  {% /summary %}
+
+  **text**: {% mark %}required{% /mark %} `string`
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `text`
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **ThoughtSignatureDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `thought_signature`
+
+  **signature**: `string`
+
+  Signature to match the backend source to be part of the generation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **ThoughtSummaryDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `thought_summary`
+
+  **content**: [`Content`](/api-reference/interactions-api#Resource:Content)
+
+  A new summary item to be added to the thought.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **UrlContextCallDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `UrlContextCallArguments`
+
+  {% /summary %}
+
+  **urls**: `array (string)`
+
+  The URLs to fetch.
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_context_call`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **UrlContextResultDelta**
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (UrlContextResult)`
+
+  {% /summary %}
+
+  **url**: `string`
+
+  The URL that was fetched.
+
+  {% details %}
+  {% summary %}
+  **status**: `enum (string)`
+
+  The status of the URL retrieval.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `success`: Url retrieval is successful.
+  - `error`: Url retrieval is failed due to error.
+  - `paywall`: Url retrieval is failed because the content is behind paywall.
+  - `unsafe`: Url retrieval is failed because the content is unsafe.
+
+  {% /details %}
+
+  {% /details %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_context_result`
+
+  **is_error**: `boolean`
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **VideoDelta**
+
+  {% /summary %}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `video`
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  {% /summary %}
+
+  Possible values:
+
+  - `video/mp4`: MP4 video format
+  - `video/mpeg`: MPEG video format
+  - `video/mpg`: MPG video format
+  - `video/mov`: MOV video format
+  - `video/avi`: AVI video format
+  - `video/x-flv`: FLV video format
+  - `video/webm`: WebM video format
+  - `video/wmv`: WMV video format
+  - `video/3gpp`: 3GPP video format
+  - `video/jpeg2000`: JPEG 2000 video format
+
+  {% /details %}
+
+  **data**: `string`
+
+  **uri**: `string`
+
+  {% details %}
+  {% summary %}
+  **resolution**: `MediaResolution`
+
+  The resolution of the media.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_type**: {% mark %}required{% /mark %} `object`
+
+  Value: `step.delta`
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **metadata**: `StepDeltaMetadata`
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **total_usage**: `Usage`
+
+  Statistics on the interaction request's token usage.
+
+  {% /summary %}
+
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Step Delta**
+
+  ```json
+  {
+    "delta": {
+      "type": "text",
+      "text": "Hello"
+    },
+    "event_type": "step.delta",
+    "index": 0
   }
-}
-```
+  ```
 
-### Step Stop
+  {% /right-column %}
 
-```json
-{
-  "event_type": "step.stop",
-  "index": 0
-}
-```
+  {% /two-column-layout %}
 
-### ResponseFormat
+{% /details %}
 
-<br />
+{% details %}
+  {% summary %}
+  **StepStart**
 
-### Possible Types
+  {% /summary %}
 
-AudioResponseFormat Configuration for audio output format.
-type object (required) No description provided.
+  {% two-column-layout %}
+  {% left-column %}
+  **index**: {% mark %}required{% /mark %} `integer`
 
-Always set to `"audio"`.
-mime_type enum (string) (optional) The MIME type of the audio output.
+  {% hr /%}
 
-Possible
-values:
+  **step**: {% mark %}required{% /mark %} [`Step`](/api-reference/interactions-api#Resource:Step)
 
-- `audio/mp3`
+  {% hr /%}
 
-  MP3 audio format.
-- `audio/ogg_opus`
+  **event_type**: {% mark %}required{% /mark %} `object`
 
-  OGG Opus audio format.
-- `audio/l16`
+  Value: `step.start`
 
-  Raw PCM (L16) audio format.
-- `audio/wav`
+  {% hr /%}
 
-  WAV audio format.
-- `audio/alaw`
+  **event_id**: `string`
 
-  A-law audio format.
-- `audio/mulaw`
+  The event_id token to be used to resume the interaction stream, from this event.
 
-  Mu-law audio format.
-delivery enum (string) (optional) The delivery mode for the audio output.
+  {% /left-column %}
 
-Possible
-values:
+  {% right-column class="sticky" %}
+  **Example**
 
-- `inline`
+  **Step Start**
 
-  Audio data is returned inline in the response.
-- `uri`
+  ```json
+  {
+    "event_type": "step.start",
+    "index": 0,
+    "step": {
+      "type": "model_output"
+    }
+  }
+  ```
 
-  Audio data is returned as a URI.
-sample_rate integer (optional) Sample rate in Hz.
-bit_rate integer (optional) Bit rate in bits per second (bps). Only applicable for compressed formats
-(MP3, Opus).
-ImageResponseFormat Configuration for image output format.
-type object (required) No description provided.
+  {% /right-column %}
 
-Always set to `"image"`.
-mime_type enum (string) (optional) The MIME type of the image output.
+  {% /two-column-layout %}
 
-Possible
-values:
+{% /details %}
 
-- `image/jpeg`
+{% details %}
+  {% summary %}
+  **StepStop**
 
-  JPEG image format.
-delivery enum (string) (optional) The delivery mode for the image output.
+  {% /summary %}
 
-Possible
-values:
+  {% two-column-layout %}
+  {% left-column %}
+  **index**: {% mark %}required{% /mark %} `integer`
 
-- `inline`
+  {% hr /%}
 
-  Image data is returned inline in the response.
-- `uri`
+  **event_type**: {% mark %}required{% /mark %} `object`
 
-  Image data is returned as a URI.
-aspect_ratio enum (string) (optional) The aspect ratio for the image output.
+  Value: `step.stop`
 
-Possible
-values:
+  {% hr /%}
 
-- `1:1`
+  {% details %}
+  {% summary %}
+  **usage**: `Usage`
 
-  1:1 aspect ratio.
-- `2:3`
+  Cumulative model usage stats from the start of the session.
 
-  2:3 aspect ratio.
-- `3:2`
+  {% /summary %}
 
-  3:2 aspect ratio.
-- `3:4`
+  **total_input_tokens**: `integer`
 
-  3:4 aspect ratio.
-- `4:3`
+  Number of tokens in the prompt (context).
 
-  4:3 aspect ratio.
-- `4:5`
+  **initial_input_tokens**: `integer`
 
-  4:5 aspect ratio.
-- `5:4`
+  Number of input tokens used in the first turn of this interaction.
 
-  5:4 aspect ratio.
-- `9:16`
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
 
-  9:16 aspect ratio.
-- `16:9`
+  A breakdown of input token usage by modality.
 
-  16:9 aspect ratio.
-- `21:9`
+  {% /summary %}
 
-  21:9 aspect ratio.
-- `1:8`
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
 
-  1:8 aspect ratio.
-- `8:1`
+  The modality associated with the token count.
 
-  8:1 aspect ratio.
-- `1:4`
+  {% /summary %}
 
-  1:4 aspect ratio.
-- `4:1`
+  Possible values:
 
-  4:1 aspect ratio.
-image_size enum (string) (optional) The size of the image output.
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
 
-Possible
-values:
+  {% /details %}
 
-- `512`
+  **tokens**: `integer`
 
-  512px image size.
-- `1K`
+  Number of tokens for the modality.
 
-  1K image size.
-- `2K`
+  {% /details %}
 
-  2K image size.
-- `4K`
+  **total_cached_tokens**: `integer`
 
-  4K image size.
-TextResponseFormat Configuration for text output format.
-type object (required) No description provided.
+  Number of tokens in the cached part of the prompt (the cached content).
 
-Always set to `"text"`.
-mime_type enum (string) (optional) The MIME type of the text output.
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
 
-Possible
-values:
+  A breakdown of cached token usage by modality.
 
-- `application/json`
+  {% /summary %}
 
-  JSON output format.
-- `text/plain`
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
 
-  Plain text output format.
-schema object (optional) The JSON schema that the output should conform to. Only applicable when
-mime_type is application/json.
+  The modality associated with the token count.
 
-Supports a subset of JSON Schema. \`minLength\`, \`maxLength\`,
-\`minProperties\`, \`maxProperties\`, \`uniqueItems\`, \`contains\`,
-\`minContains\`, and \`maxContains\` are ignored and not enforced; validate
-these in your application. \`minItems\` and \`maxItems\` are enforced. Schemas
-that are too complex to enforce (for example, large \`maxItems\` on nested
-arrays) return a 400 INVALID_ARGUMENT error.
-VideoResponseFormat Configuration for video output format.
-type object (required) No description provided.
+  {% /summary %}
 
-Always set to `"video"`.
-delivery enum (string) (optional) The delivery mode for the video output.
+  Possible values:
 
-Possible
-values:
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
 
-- `inline`
+  {% /details %}
 
-  Video data is returned inline in the response.
-- `uri`
+  **tokens**: `integer`
 
-  Video data is returned as a URI.
-aspect_ratio enum (string) (optional) The aspect ratio for the video output.
+  Number of tokens for the modality.
 
-Possible
-values:
+  {% /details %}
 
-- `16:9`
+  **total_output_tokens**: `integer`
 
-  16:9 aspect ratio.
-- `9:16`
+  Total number of tokens across all the generated responses.
 
-  9:16 aspect ratio.
-duration string (optional) The duration for the video output.
-resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
 
-Possible
-values:
+  A breakdown of output token usage by modality.
 
-- `360p`
+  {% /summary %}
 
-  360p resolution.
-- `720p`
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
 
-  720p resolution.
-- `1080p`
+  The modality associated with the token count.
 
-  1080p resolution.
-- `4k`
+  {% /summary %}
 
-  4K resolution.
+  Possible values:
 
-### Examples
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
 
-### Audio Output
+  {% /details %}
 
-```json
-{
-  "type": "audio",
-  "sample_rate": 24000
-}
-```
+  **tokens**: `integer`
 
-### Image Output
+  Number of tokens for the modality.
 
-```json
-{
-  "type": "image",
-  "aspect_ratio": "16:9",
-  "image_size": "1K",
-  "mime_type": "image/jpeg"
-}
-```
+  {% /details %}
 
-### Text Output (JSON Schema)
+  **total_tool_use_tokens**: `integer`
 
-```json
-{
-  "type": "text",
-  "mime_type": "application/json",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "ingredients": {
-        "type": "array",
-        "items": {
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **step_usage**: `Usage`
+
+  Model usage stats for this specific step.
+
+  {% /summary %}
+
+  **total_input_tokens**: `integer`
+
+  Number of tokens in the prompt (context).
+
+  **initial_input_tokens**: `integer`
+
+  Number of input tokens used in the first turn of this interaction.
+
+  {% details %}
+  {% summary %}
+  **input_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of input token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_cached_tokens**: `integer`
+
+  Number of tokens in the cached part of the prompt (the cached content).
+
+  {% details %}
+  {% summary %}
+  **cached_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of cached token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_output_tokens**: `integer`
+
+  Total number of tokens across all the generated responses.
+
+  {% details %}
+  {% summary %}
+  **output_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of output token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_tool_use_tokens**: `integer`
+
+  Number of tokens present in tool-use prompt(s).
+
+  {% details %}
+  {% summary %}
+  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+
+  A breakdown of tool-use token usage by modality.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **modality**: `ResponseModality`
+
+  The modality associated with the token count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `text`: Indicates the model should return text.
+  - `image`: Indicates the model should return images.
+  - `audio`: Indicates the model should return audio.
+  - `video`: Indicates the model should return video.
+  - `document`: Indicates the model should return documents.
+
+  {% /details %}
+
+  **tokens**: `integer`
+
+  Number of tokens for the modality.
+
+  {% /details %}
+
+  **total_thought_tokens**: `integer`
+
+  Number of tokens of thoughts for thinking models.
+
+  **total_tokens**: `integer`
+
+  Total token count for the interaction request (prompt + responses + other internal tokens).
+
+  {% details %}
+  {% summary %}
+  **grounding_tool_count**: `array (GroundingToolCount)`
+
+  Grounding tool count.
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
+
+  The grounding tool type associated with the count.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `google_search`: Grounding with Google Web Search and Image Search, & Web Grounding for Enterprise.
+  - `google_maps`: Grounding with Google Maps.
+
+  {% /details %}
+
+  **count**: `integer`
+
+  The number of grounding tool counts.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **event_id**: `string`
+
+  The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Step Stop**
+
+  ```json
+  {
+    "event_type": "step.stop",
+    "index": 0
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+### ResponseFormat  {% id="Resource:ResponseFormat" %}
+
+**Polymorphic Types:**
+
+{% details %}
+  {% summary %}
+  **AudioResponseFormat**
+
+  {% /summary %}
+
+  Configuration for audio output format.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `audio`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The MIME type of the audio output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `audio/mp3`: MP3 audio format.
+  - `audio/ogg_opus`: OGG Opus audio format.
+  - `audio/l16`: Raw PCM (L16) audio format.
+  - `audio/wav`: WAV audio format.
+  - `audio/alaw`: A-law audio format.
+  - `audio/mulaw`: Mu-law audio format.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **delivery**: `enum (string)`
+
+  The delivery mode for the audio output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `inline`: Audio data is returned inline in the response.
+  - `uri`: Audio data is returned as a URI.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **sample_rate**: `integer`
+
+  Sample rate in Hz.
+
+  {% hr /%}
+
+  **bit_rate**: `integer`
+
+  Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Audio Output**
+
+  ```json
+  {
+    "type": "audio",
+    "sample_rate": 24000
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ImageResponseFormat**
+
+  {% /summary %}
+
+  Configuration for image output format.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `image`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The MIME type of the image output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `image/jpeg`: JPEG image format.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **delivery**: `enum (string)`
+
+  The delivery mode for the image output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `inline`: Image data is returned inline in the response.
+  - `uri`: Image data is returned as a URI.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **aspect_ratio**: `enum (string)`
+
+  The aspect ratio for the image output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `1:1`: 1:1 aspect ratio.
+  - `2:3`: 2:3 aspect ratio.
+  - `3:2`: 3:2 aspect ratio.
+  - `3:4`: 3:4 aspect ratio.
+  - `4:3`: 4:3 aspect ratio.
+  - `4:5`: 4:5 aspect ratio.
+  - `5:4`: 5:4 aspect ratio.
+  - `9:16`: 9:16 aspect ratio.
+  - `16:9`: 16:9 aspect ratio.
+  - `21:9`: 21:9 aspect ratio.
+  - `1:8`: 1:8 aspect ratio.
+  - `8:1`: 8:1 aspect ratio.
+  - `1:4`: 1:4 aspect ratio.
+  - `4:1`: 4:1 aspect ratio.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **image_size**: `enum (string)`
+
+  The size of the image output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `512`: 512px image size.
+  - `1K`: 1K image size.
+  - `2K`: 2K image size.
+  - `4K`: 4K image size.
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Image Output**
+
+  ```json
+  {
+    "type": "image",
+    "aspect_ratio": "16:9",
+    "image_size": "1K",
+    "mime_type": "image/jpeg"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **TextResponseFormat**
+
+  {% /summary %}
+
+  Configuration for text output format.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `text`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
+
+  The MIME type of the text output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `application/json`: JSON output format.
+  - `text/plain`: Plain text output format.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **schema**: `object`
+
+  The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Text Output (JSON Schema)**
+
+  ```json
+  {
+    "type": "text",
+    "mime_type": "application/json",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recipe_name": {
           "type": "string"
         }
       },
-      "recipe_name": {
-        "type": "string"
-      }
-    },
-    "required": [
-      "ingredients",
-      "recipe_name"
-    ]
+      "required": [
+        "ingredients",
+        "recipe_name"
+      ]
+    }
   }
-}
-```
+  ```
 
-### Video Output
+  {% /right-column %}
 
-```json
-{
-  "type": "video",
-  "aspect_ratio": "16:9",
-  "delivery": "inline"
-}
-```
+  {% /two-column-layout %}
 
-### Step
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **VideoResponseFormat**
+
+  {% /summary %}
+
+  Configuration for video output format.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `video`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **delivery**: `enum (string)`
+
+  The delivery mode for the video output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `inline`: Video data is returned inline in the response.
+  - `uri`: Video data is returned as a URI.
+
+  {% /details %}
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **aspect_ratio**: `enum (string)`
+
+  The aspect ratio for the video output.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `16:9`: 16:9 aspect ratio.
+  - `9:16`: 9:16 aspect ratio.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **duration**: `string`
+
+  The duration for the video output.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **resolution**: `enum (string)`
+
+  The video output resolution. Defaults to 720p.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `360p`: 360p resolution.
+  - `720p`: 720p resolution.
+  - `1080p`: 1080p resolution.
+  - `4k`: 4K resolution.
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Video Output**
+
+  ```json
+  {
+    "type": "video",
+    "aspect_ratio": "16:9",
+    "delivery": "inline"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+### Step  {% id="Resource:Step" %}
 
 A step in the interaction.
 
-### Possible Types
+**Polymorphic Types:**
 
-CodeExecutionCallStep Code execution call step.
-arguments CodeExecutionCallStepArguments (required) Required. The arguments to pass to the code execution.
-The arguments to pass to the code execution.
-
-#### Fields
-
-language enum (string) (optional) Programming language of the \`code\`.
-
-Possible
-values:
-
-- `python`
-
-  Python \>= 3.10, with numpy and simpy available.
-- `bash`
-
-  Bash. Only available for Gemini 3.0 model or above.
-code string (optional) The code to be executed.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
-
-Always set to `"code_execution_call"`.
-signature string (optional) A signature hash for backend validation.
-CodeExecutionResultStep Code execution result step.
-result string (required) Required. The output of the code execution.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
+{% details %}
+  {% summary %}
+  **CodeExecutionCallStep**
 
-Always set to `"code_execution_result"`.
-is_error boolean (optional) Whether the code execution resulted in an error.
-signature string (optional) A signature hash for backend validation.
-FileSearchCallStep File Search call step.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
+  {% /summary %}
 
-Always set to `"file_search_call"`.
-signature string (optional) A signature hash for backend validation.
-FileSearchResultStep File Search result step.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
+  Code execution call step.
 
-Always set to `"file_search_result"`.
-signature string (optional) A signature hash for backend validation.
-FunctionCallStep A function tool call step.
-name string (required) Required. The name of the tool to call.
-arguments object (required) Required. The arguments to pass to the function.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
-
-Always set to `"function_call"`.
-FunctionResultStep Result of a function tool call.
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The result of the tool call.
-
-#### Possible Types
-
-array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
-
-This type has no specific fields.
-string A direct string value.
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `CodeExecutionCallStepArguments`
 
-This type has no specific fields.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
+  The arguments to pass to the code execution.
 
-Always set to `"function_result"`.
-name string (optional) The name of the tool that was called.
-is_error boolean (optional) Whether the tool call resulted in an error.
-GoogleMapsCallStep Google Maps call step.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
+  {% /summary %}
 
-Always set to `"google_maps_call"`.
-arguments GoogleMapsCallStepArguments (optional) The arguments to pass to the Google Maps tool.
-The arguments to pass to the Google Maps tool.
+  {% details %}
+  {% summary %}
+  **language**: `enum (string)`
 
-#### Fields
-
-queries array (string) (optional) The queries to be executed.
-signature string (optional) A signature hash for backend validation.
-GoogleMapsResultStep Google Maps result step.
-result array (GoogleMapsResultItem) (required) No description provided.
-The result of the Google Maps.
-
-#### Fields
-
-places array (GoogleMapsResultPlaces) (optional) No description provided.
-<br />
-
-#### Fields
-
-place_id string (optional) No description provided.
-name string (optional) No description provided.
-url string (optional) No description provided.
-review_snippets array (ReviewSnippet) (optional) No description provided.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
-
-#### Fields
-
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-widget_context_token string (optional) No description provided.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
-
-Always set to `"google_maps_result"`.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchCallStep Google Search call step.
-arguments GoogleSearchCallStepArguments (required) Required. The arguments to pass to Google Search.
-The arguments to pass to Google Search.
-
-#### Fields
-
-queries array (string) (optional) Web search queries for the following-up web search.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
-
-Always set to `"google_search_call"`.
-search_type enum (string) (optional) The type of search grounding enabled.
-
-Possible
-values:
-
-- `web_search`
+  Programming language of the `code`.
 
-  Setting this field enables web search. Only text results are returned.
-- `image_search`
+  {% /summary %}
 
-  Setting this field enables image search. Image bytes are returned.
-signature string (optional) A signature hash for backend validation.
-GoogleSearchResultStep Google Search result step.
-result array (GoogleSearchResultItem) (required) Required. The results of the Google Search.
-The result of the Google Search.
+  Possible values:
 
-#### Fields
-
-search_suggestions string (optional) Web content snippet that can be embedded in a web page or an app webview.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
-
-Always set to `"google_search_result"`.
-is_error boolean (optional) Whether the Google Search resulted in an error.
-signature string (optional) A signature hash for backend validation.
-McpServerToolCallStep MCPServer tool call step.
-name string (required) Required. The name of the tool which was called.
-server_name string (required) Required. The name of the used MCP server.
-arguments object (required) Required. The JSON object of arguments for the function.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
+  - `python`: Python >= 3.10, with numpy and simpy available.
+  - `bash`: Bash. Only available for Gemini 3.0 model or above.
 
-Always set to `"mcp_server_tool_call"`.
-McpServerToolResultStep MCPServer tool result step.
-result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) Required. The output from the MCP server call. Can be simple text or rich content.
-
-#### Possible Types
-
-array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) A list where each item is one of: \`ImageContent\`, \`TextContent\`.
+  {% /details %}
 
-This type has no specific fields.
-string A direct string value.
-
-This type has no specific fields.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
-
-Always set to `"mcp_server_tool_result"`.
-name string (optional) Name of the tool which is called for this specific tool call.
-server_name string (optional) The name of the used MCP server.
-ModelOutputStep Output generated by the model.
-type object (required) No description provided.
-
-Always set to `"model_output"`.
-content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
-ProcessingCallStep A server-initiated processing step for media analysis (e.g. video
-understanding).
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
-
-Always set to `"processing_call"`.
-signature string (optional) A signature hash for backend validation.
-ProcessingResultStep The result of a server-initiated media processing step.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
-
-Always set to `"processing_result"`.
-signature string (optional) A signature hash for backend validation.
-ThoughtStep A thought step.
-type object (required) No description provided.
-
-Always set to `"thought"`.
-signature string (optional) A signature hash for backend validation.
-summary array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) A summary of the thought.
-UrlContextCallStep URL context call step.
-arguments UrlContextCallArguments (required) Required. The arguments to pass to the URL context.
-The arguments to pass to the URL context.
-
-#### Fields
-
-urls array (string) (optional) The URLs to fetch.
-id string (required) Required. A unique ID for this specific tool call.
-type object (required) No description provided.
-
-Always set to `"url_context_call"`.
-signature string (optional) A signature hash for backend validation.
-UrlContextResultStep URL context result step.
-result array (UrlContextResult) (required) Required. The results of the URL context.
-The result of the URL context.
-
-#### Fields
-
-url string (optional) The URL that was fetched.
-status enum (string) (optional) The status of the URL retrieval.
-
-Possible
-values:
-
-- `success`
-
-  Url retrieval is successful.
-- `error`
-
-  Url retrieval is failed due to error.
-- `paywall`
-
-  Url retrieval is failed because the content is behind paywall.
-- `unsafe`
-
-  Url retrieval is failed because the content is unsafe.
-call_id string (required) Required. ID to match the ID from the function call block.
-type object (required) No description provided.
-
-Always set to `"url_context_result"`.
-is_error boolean (optional) Whether the URL context resulted in an error.
-signature string (optional) A signature hash for backend validation.
-UserInputStep Input provided by the user.
-type object (required) No description provided.
-
-Always set to `"user_input"`.
-content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
-
-### Examples
-
-### CodeExecutionCallStep
-
-```json
-{
-  "type": "code_execution_call",
-  "arguments": {
-    "code": "print(sum(range(1, 11)))"
-  },
-  "id": "code_call_71021"
-}
-```
-
-### CodeExecutionResultStep
-
-```json
-{
-  "type": "code_execution_result",
-  "call_id": "code_call_71021",
-  "result": "55\n"
-}
-```
-
-### FileSearchCallStep
-
-```json
-{
-  "type": "file_search_call",
-  "id": "file_call_88192"
-}
-```
-
-### FileSearchResultStep
-
-```json
-{
-  "type": "file_search_result",
-  "call_id": "file_call_88192"
-}
-```
-
-### FunctionCallStep
-
-```json
-{
-  "name": "get_weather",
-  "type": "function_call",
-  "arguments": {
-    "location": "Boston, MA"
-  },
-  "id": "call_98231"
-}
-```
-
-### FunctionResultStep
-
-```json
-{
-  "name": "get_weather",
-  "type": "function_result",
-  "call_id": "call_98231",
-  "result": [
-    {
-      "type": "text",
-      "text": "{\"weather\":\"sunny\"}"
-    }
-  ]
-}
-```
-
-### GoogleMapsCallStep
-
-```json
-{
-  "type": "google_maps_call",
-  "arguments": {
-    "latitude": 37.7749,
-    "longitude": -122.4194
-  },
-  "id": "maps_call_39201"
-}
-```
-
-### GoogleMapsResultStep
-
-```json
-{
-  "type": "google_maps_result",
-  "call_id": "maps_call_39201",
-  "result": [
-    {
-      "name": "Golden Gate Park",
-      "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
-      "rating": 4.8
-    }
-  ]
-}
-```
-
-### GoogleSearchCallStep
-
-```json
-{
-  "type": "google_search_call",
-  "arguments": {
-    "query": "Who won the men's 100m in Paris 2024?"
-  },
-  "id": "search_call_19201"
-}
-```
-
-### GoogleSearchResultStep
-
-```json
-{
-  "type": "google_search_result",
-  "call_id": "search_call_19201",
-  "result": [
-    {
-      "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
-      "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
-      "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
-    }
-  ]
-}
-```
-
-### McpServerToolCallStep
-
-```json
-{
-  "name": "calculate_tax",
-  "type": "mcp_server_tool_call",
-  "arguments": {
-    "income": 120000,
-    "state": "CA"
-  },
-  "id": "mcp_call_29012",
-  "server_name": "financial_mcp_server"
-}
-```
-
-### McpServerToolResultStep
-
-```json
-{
-  "name": "calculate_tax",
-  "type": "mcp_server_tool_result",
-  "call_id": "mcp_call_29012",
-  "result": {
-    "tax_due": 32400
-  },
-  "server_name": "financial_mcp_server"
-}
-```
-
-### ModelOutputStep
-
-```json
-{
-  "type": "model_output",
-  "content": [
-    {
-      "type": "text",
-      "text": "The capital of France is Paris."
-    }
-  ]
-}
-```
-
-### ProcessingCallStep
-
-No examples available for this type.
-
-### ProcessingResultStep
-
-No examples available for this type.
-
-### ThoughtStep
-
-```json
-{
-  "type": "thought",
-  "signature": "thought_sig_abcd1234",
-  "summary": [
-    {
-      "type": "text",
-      "text": "The model is searching Google for the capital of France."
-    }
-  ]
-}
-```
-
-### UrlContextCallStep
-
-```json
-{
-  "type": "url_context_call",
-  "arguments": {
-    "urls": [
-      "https://www.example.com"
+  **code**: `string`
+
+  The code to be executed.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `code_execution_call`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **CodeExecutionCallStep**
+
+  ```json
+  {
+    "type": "code_execution_call",
+    "arguments": {
+      "code": "print(sum(range(1, 11)))"
+    },
+    "id": "code_call_71021"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **CodeExecutionResultStep**
+
+  {% /summary %}
+
+  Code execution result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **result**: {% mark %}required{% /mark %} `string`
+
+  The output of the code execution.
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `code_execution_result`
+
+  {% hr /%}
+
+  **is_error**: `boolean`
+
+  Whether the code execution resulted in an error.
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **CodeExecutionResultStep**
+
+  ```json
+  {
+    "type": "code_execution_result",
+    "call_id": "code_call_71021",
+    "result": "55\n"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **FileSearchCallStep**
+
+  {% /summary %}
+
+  File Search call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_search_call`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **FileSearchCallStep**
+
+  ```json
+  {
+    "type": "file_search_call",
+    "id": "file_call_88192"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **FileSearchResultStep**
+
+  {% /summary %}
+
+  File Search result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `file_search_result`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **FileSearchResultStep**
+
+  ```json
+  {
+    "type": "file_search_result",
+    "call_id": "file_call_88192"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **FunctionCallStep**
+
+  {% /summary %}
+
+  A function tool call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **name**: {% mark %}required{% /mark %} `string`
+
+  The name of the tool to call.
+
+  {% hr /%}
+
+  **arguments**: {% mark %}required{% /mark %} `object`
+
+  The arguments to pass to the function.
+
+  {% hr /%}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `function_call`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **FunctionCallStep**
+
+  ```json
+  {
+    "name": "get_weather",
+    "type": "function_call",
+    "arguments": {
+      "location": "Boston, MA"
+    },
+    "id": "call_98231"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **FunctionResultStep**
+
+  {% /summary %}
+
+  Result of a function tool call.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+
+  The result of the tool call.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+
+  {% /summary %}
+
+  A list where each item is one of: [`ImageContent`](/api-reference/interactions-api#Resource:ImageContent), [`TextContent`](/api-reference/interactions-api#Resource:TextContent).
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `function_result`
+
+  {% hr /%}
+
+  **name**: `string`
+
+  The name of the tool that was called.
+
+  {% hr /%}
+
+  **is_error**: `boolean`
+
+  Whether the tool call resulted in an error.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **FunctionResultStep**
+
+  ```json
+  {
+    "name": "get_weather",
+    "type": "function_result",
+    "call_id": "call_98231",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\"weather\":\"sunny\"}"
+      }
     ]
-  },
-  "id": "url_call_10219"
-}
-```
+  }
+  ```
 
-### UrlContextResultStep
+  {% /right-column %}
 
-```json
-{
-  "type": "url_context_result",
-  "call_id": "url_call_10219",
-  "result": [
-    {
-      "title": "Example Domain",
-      "url": "https://www.example.com",
-      "snippet": "This domain is for use in illustrative examples in documents."
-    }
-  ]
-}
-```
+  {% /two-column-layout %}
 
-### UserInputStep
+{% /details %}
 
-```json
-{
-  "type": "user_input",
-  "content": [
-    {
-      "type": "text",
-      "text": "What is the capital of France?"
-    }
-  ]
-}
-```
+{% details %}
+  {% summary %}
+  **GoogleMapsCallStep**
 
-### EnvironmentConfig
+  {% /summary %}
+
+  Google Maps call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_maps_call`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **arguments**: `GoogleMapsCallStepArguments`
+
+  The arguments to pass to the Google Maps tool.
+
+  {% /summary %}
+
+  **queries**: `array (string)`
+
+  The queries to be executed.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **GoogleMapsCallStep**
+
+  ```json
+  {
+    "type": "google_maps_call",
+    "arguments": {
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "id": "maps_call_39201"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **GoogleMapsResultStep**
+
+  {% /summary %}
+
+  Google Maps result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (GoogleMapsResultItem)`
+
+  {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **places**: `array (GoogleMapsResultPlaces)`
+
+  {% /summary %}
+
+  **place_id**: `string`
+
+  **name**: `string`
+
+  **url**: `string`
+
+  {% details %}
+  {% summary %}
+  **review_snippets**: `array (ReviewSnippet)`
+
+  {% /summary %}
+
+  **title**: `string`
+
+  Title of the review.
+
+  **url**: `string`
+
+  A link that corresponds to the user review on Google Maps.
+
+  **review_id**: `string`
+
+  The ID of the review snippet.
+
+  {% /details %}
+
+  {% /details %}
+
+  **widget_context_token**: `string`
+
+  {% /details %}
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_maps_result`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **GoogleMapsResultStep**
+
+  ```json
+  {
+    "type": "google_maps_result",
+    "call_id": "maps_call_39201",
+    "result": [
+      {
+        "name": "Golden Gate Park",
+        "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M",
+        "rating": 4.8
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **GoogleSearchCallStep**
+
+  {% /summary %}
+
+  Google Search call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `GoogleSearchCallStepArguments`
+
+  The arguments to pass to Google Search.
+
+  {% /summary %}
+
+  **queries**: `array (string)`
+
+  Web search queries for the following-up web search.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_search_call`
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **search_type**: `enum (string)`
+
+  The type of search grounding enabled.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `web_search`: Setting this field enables web search. Only text results are returned.
+  - `image_search`: Setting this field enables image search. Image bytes are returned.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **GoogleSearchCallStep**
+
+  ```json
+  {
+    "type": "google_search_call",
+    "arguments": {
+      "query": "Who won the men's 100m in Paris 2024?"
+    },
+    "id": "search_call_19201"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **GoogleSearchResultStep**
+
+  {% /summary %}
+
+  Google Search result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (GoogleSearchResultItem)`
+
+  The results of the Google Search.
+
+  {% /summary %}
+
+  **search_suggestions**: `string`
+
+  Web content snippet that can be embedded in a web page or an app webview.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `google_search_result`
+
+  {% hr /%}
+
+  **is_error**: `boolean`
+
+  Whether the Google Search resulted in an error.
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **GoogleSearchResultStep**
+
+  ```json
+  {
+    "type": "google_search_result",
+    "call_id": "search_call_19201",
+    "result": [
+      {
+        "title": "Paris 2024 Olympics: Noah Lyles wins men's 100m gold",
+        "url": "https://olympics.com/en/news/paris-2024-noah-lyles-wins-mens-100m-gold",
+        "snippet": "American Noah Lyles won the Olympic men's 100m gold medal in a photo finish."
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **McpServerToolCallStep**
+
+  {% /summary %}
+
+  MCPServer tool call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **name**: {% mark %}required{% /mark %} `string`
+
+  The name of the tool which was called.
+
+  {% hr /%}
+
+  **server_name**: {% mark %}required{% /mark %} `string`
+
+  The name of the used MCP server.
+
+  {% hr /%}
+
+  **arguments**: {% mark %}required{% /mark %} `object`
+
+  The JSON object of arguments for the function.
+
+  {% hr /%}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `mcp_server_tool_call`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **McpServerToolCallStep**
+
+  ```json
+  {
+    "name": "calculate_tax",
+    "type": "mcp_server_tool_call",
+    "arguments": {
+      "income": 120000,
+      "state": "CA"
+    },
+    "id": "mcp_call_29012",
+    "server_name": "financial_mcp_server"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **McpServerToolResultStep**
+
+  {% /summary %}
+
+  MCPServer tool result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+
+  The output from the MCP server call. Can be simple text or rich content.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+
+  {% /summary %}
+
+  A list where each item is one of: [`ImageContent`](/api-reference/interactions-api#Resource:ImageContent), [`TextContent`](/api-reference/interactions-api#Resource:TextContent).
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `mcp_server_tool_result`
+
+  {% hr /%}
+
+  **name**: `string`
+
+  Name of the tool which is called for this specific tool call.
+
+  {% hr /%}
+
+  **server_name**: `string`
+
+  The name of the used MCP server.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **McpServerToolResultStep**
+
+  ```json
+  {
+    "name": "calculate_tax",
+    "type": "mcp_server_tool_result",
+    "call_id": "mcp_call_29012",
+    "result": {
+      "tax_due": 32400
+    },
+    "server_name": "financial_mcp_server"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ModelOutputStep**
+
+  {% /summary %}
+
+  Output generated by the model.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `model_output`
+
+  {% hr /%}
+
+  **content**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **ModelOutputStep**
+
+  ```json
+  {
+    "type": "model_output",
+    "content": [
+      {
+        "type": "text",
+        "text": "The capital of France is Paris."
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ProcessingCallStep**
+
+  {% /summary %}
+
+  A server-initiated processing step for media analysis (e.g. video
+  understanding).
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `processing_call`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ProcessingResultStep**
+
+  {% /summary %}
+
+  The result of a server-initiated media processing step.
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `processing_result`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **ThoughtStep**
+
+  {% /summary %}
+
+  A thought step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `thought`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% hr /%}
+
+  **summary**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+
+  A summary of the thought.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **ThoughtStep**
+
+  ```json
+  {
+    "type": "thought",
+    "signature": "thought_sig_abcd1234",
+    "summary": [
+      {
+        "type": "text",
+        "text": "The model is searching Google for the capital of France."
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **UrlContextCallStep**
+
+  {% /summary %}
+
+  URL context call step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **arguments**: {% mark %}required{% /mark %} `UrlContextCallArguments`
+
+  The arguments to pass to the URL context.
+
+  {% /summary %}
+
+  **urls**: `array (string)`
+
+  The URLs to fetch.
+
+  {% /details %}
+
+  {% hr /%}
+
+  **id**: {% mark %}required{% /mark %} `string`
+
+  A unique ID for this specific tool call.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_context_call`
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **UrlContextCallStep**
+
+  ```json
+  {
+    "type": "url_context_call",
+    "arguments": {
+      "urls": [
+        "https://www.example.com"
+      ]
+    },
+    "id": "url_call_10219"
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **UrlContextResultStep**
+
+  {% /summary %}
+
+  URL context result step.
+
+  {% two-column-layout %}
+  {% left-column %}
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} `array (UrlContextResult)`
+
+  The results of the URL context.
+
+  {% /summary %}
+
+  **url**: `string`
+
+  The URL that was fetched.
+
+  {% details %}
+  {% summary %}
+  **status**: `enum (string)`
+
+  The status of the URL retrieval.
+
+  {% /summary %}
+
+  Possible values:
+
+  - `success`: Url retrieval is successful.
+  - `error`: Url retrieval is failed due to error.
+  - `paywall`: Url retrieval is failed because the content is behind paywall.
+  - `unsafe`: Url retrieval is failed because the content is unsafe.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **call_id**: {% mark %}required{% /mark %} `string`
+
+  ID to match the ID from the function call block.
+
+  {% hr /%}
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_context_result`
+
+  {% hr /%}
+
+  **is_error**: `boolean`
+
+  Whether the URL context resulted in an error.
+
+  {% hr /%}
+
+  **signature**: `string`
+
+  A signature hash for backend validation.
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **UrlContextResultStep**
+
+  ```json
+  {
+    "type": "url_context_result",
+    "call_id": "url_call_10219",
+    "result": [
+      {
+        "title": "Example Domain",
+        "url": "https://www.example.com",
+        "snippet": "This domain is for use in illustrative examples in documents."
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+{% details %}
+  {% summary %}
+  **UserInputStep**
+
+  {% /summary %}
+
+  Input provided by the user.
+
+  {% two-column-layout %}
+  {% left-column %}
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `user_input`
+
+  {% hr /%}
+
+  **content**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **UserInputStep**
+
+  ```json
+  {
+    "type": "user_input",
+    "content": [
+      {
+        "type": "text",
+        "text": "What is the capital of France?"
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+  {% /two-column-layout %}
+
+{% /details %}
+
+### EnvironmentConfig  {% id="Resource:EnvironmentConfig" %}
 
 Configuration for a custom environment.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-type object (required) No description provided.
+  **type**: {% mark %}required{% /mark %} `object`
 
-Always set to `"remote"`.
-sources array (Source) (optional) No description provided.
-A source to be mounted into the environment.
+  Value: `remote`
 
-#### Fields
+  {% hr /%}
 
-type enum (string) (optional) No description provided.
+  {% details %}
+  {% summary %}
+  **sources**: `array (Source)`
 
-Possible
-values:
+  {% /summary %}
 
-- `gcs`
+  {% details %}
+  {% summary %}
+  **type**: `enum (string)`
 
-  A Cloud Storage bucket.
-- `inline`
+  {% /summary %}
 
-  Inline content.
-- `repository`
+  Possible values:
 
-  A generic repository. The protocol prefix in the source URL
-  identifies the provider (e.g., github://, gcs://).
-source string (optional) The source of the environment.
-For Cloud Storage, this is the Cloud Storage path.
-For GitHub, this is the GitHub path.
-target string (optional) Where the source should appear in the environment.
-content string (optional) The inline content if \`type\` is \`INLINE\`.
-encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
-network [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or enum (string) (optional) Network configuration for the environment.
+  - `gcs`: A Cloud Storage bucket.
+  - `inline`: Inline content.
+  - `repository`: A generic repository. The protocol prefix in the source URL identifies the provider (e.g., github://, gcs://).
 
-#### Possible Types
+  {% /details %}
 
-[EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) Network egress configuration for the environment.
-allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
-to block all network egress.
+  **source**: `string`
 
-#### Possible Types
+  The source of the environment. For Cloud Storage, this is the Cloud Storage path. For GitHub, this is the GitHub path.
 
-array (EgressRule) A single domain allowlist rule with optional header injection.
-domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
-'\*.googleapis.com'). Use '\*' to allow all domains.
-transform object (optional) Headers to inject into requests matching this rule.
-Key: header name (e.g., "Authorization").
-Value: header value (e.g., "Bearer your-token").
-credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
-enum (string)
-- `disabled`: All network egress is blocked.
-enum (string)
-- `disabled`: All network egress is blocked.
-environment_id string (optional) Optional. The environment ID for the interaction. If specified, the request will
-update the existing environment instead of creating a new one.
-env object or string (optional) Environment variables to set in the sandbox environment.
+  **target**: `string`
 
-#### Possible Types
+  Where the source should appear in the environment.
 
-string A direct string value.
+  **content**: `string`
 
-This type has no specific fields.
+  The inline content if `type` is `INLINE`.
 
-### Examples
+  **encoding**: `string`
 
-### Inline Sources
+  Optional encoding for inline content (e.g. `base64`).
 
-```bash
-{
-  "type": "remote",
-  "sources": [
-    {
-      "type": "inline",
-      "content": "You are a data analyst. Always include visualizations and export results as PDF.",
-      "target": ".agents/AGENTS.md"
-    },
-    {
-      "type": "inline",
-      "content": "---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html",
-      "target": ".agents/skills/slide-maker/SKILL.md"
-    }
-  ]
-}
-```
+  {% /details %}
 
-### External Sources
+  {% hr /%}
 
-```bash
-{
-  "type": "remote",
-  "sources": [
-    {
-      "type": "repository",
-      "source": "https://github.com/my-org/my-skills.git",
-      "target": ".agents/skills"
-    },
-    {
-      "type": "gcs",
-      "source": "gs://my-bucket/my-folder",
-      "target": "/workspace/data"
-    }
-  ]
-}
-```
+  {% details %}
+  {% summary %}
+  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `enum (string)`
 
-### Network Allowlist
+  Network configuration for the environment.
 
-```bash
-{
-  "type": "remote",
-  "network": {
-    "allowlist": [
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **[EnvironmentNetworkEgressAllowlist](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist)**
+
+  {% /summary %}
+
+  Network egress configuration for the environment.
+
+  {% details %}
+  {% summary %}
+  **allowlist**: `array (EgressRule)` or `enum (string)`
+
+  List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **array (EgressRule)**
+
+  {% /summary %}
+
+  A single domain allowlist rule with optional header injection.
+
+  **domain**: {% mark %}required{% /mark %} `string`
+
+  Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+
+  **transform**: `object`
+
+  Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
+
+  **credential**: `string`
+
+  Optional. Reference to a server-managed Credential resource by ID.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `disabled`: All network egress is blocked.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `disabled`: All network egress is blocked.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% hr /%}
+
+  **environment_id**: `string`
+
+  Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
+
+  {% hr /%}
+
+  {% details %}
+  {% summary %}
+  **env**: `object` or `string`
+
+  Environment variables to set in the sandbox environment.
+
+  {% /summary %}
+
+  **Possible Types:**
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  {% tabs %}
+  {% tab label="Inline Sources" %}
+  ```json
+  {
+    "type": "remote",
+    "sources": [
       {
-        "domain": "pypi.org"
+        "type": "inline",
+        "content": "You are a data analyst. Always include visualizations and export results as PDF.",
+        "target": ".agents/AGENTS.md"
       },
       {
-        "domain": "*.github.com"
+        "type": "inline",
+        "content": "---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html",
+        "target": ".agents/skills/slide-maker/SKILL.md"
       }
     ]
   }
-}
-```
+  ```
 
-### Proxy Credentials
+  {% /tab %}
 
-```bash
-{
-  "type": "remote",
-  "network": {
-    "allowlist": [
+  {% tab label="External Sources" %}
+  ```json
+  {
+    "type": "remote",
+    "sources": [
       {
-        "domain": "api.github.com",
-        "transform": {
-          "Authorization": "Bearer YOUR_GITHUB_TOKEN"
-        }
+        "type": "repository",
+        "source": "https://github.com/my-org/my-skills.git",
+        "target": ".agents/skills"
+      },
+      {
+        "type": "gcs",
+        "source": "gs://my-bucket/my-folder",
+        "target": "/workspace/data"
       }
     ]
   }
-}
-```
+  ```
 
-### EnvironmentNetworkEgressAllowlist
+  {% /tab %}
+
+  {% tab label="Network Allowlist" %}
+  ```json
+  {
+    "type": "remote",
+    "network": {
+      "allowlist": [
+        {
+          "domain": "pypi.org"
+        },
+        {
+          "domain": "*.github.com"
+        }
+      ]
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Proxy Credentials" %}
+  ```json
+  {
+    "type": "remote",
+    "network": {
+      "allowlist": [
+        {
+          "domain": "api.github.com",
+          "transform": {
+            "Authorization": "Bearer YOUR_GITHUB_TOKEN"
+          }
+        }
+      ]
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% /tabs %}
+
+  {% /right-column %}
+
+{% /two-column-layout %}
+
+### EnvironmentNetworkEgressAllowlist  {% id="Resource:EnvironmentNetworkEgressAllowlist" %}
 
 Network egress configuration for the environment.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-allowlist array (EgressRule) or enum (string) (optional) List of allowed domains and their configurations. Set to \`"disabled"\`
-to block all network egress.
+  {% details %}
+  {% summary %}
+  **allowlist**: `array (EgressRule)` or `enum (string)`
 
-#### Possible Types
+  List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
-array (EgressRule) A single domain allowlist rule with optional header injection.
-domain string (required) Domain to allow outbound requests to. Supports wildcards (e.g.
-'\*.googleapis.com'). Use '\*' to allow all domains.
-transform object (optional) Headers to inject into requests matching this rule.
-Key: header name (e.g., "Authorization").
-Value: header value (e.g., "Bearer your-token").
-credential string (optional) Optional. Reference to a server-managed Credential resource by ID.
-enum (string)
-- `disabled`: All network egress is blocked.
+  {% /summary %}
 
-### Examples
+  **Possible Types:**
 
-### Network Allowlist
+  {% details %}
+  {% summary %}
+  **array (EgressRule)**
 
-```bash
-{
-  "allowlist": [
-    {
-      "domain": "github.com",
-      "transform": [
-        {
-          "Authorization": "Bearer your-token"
-        }
-      ]
-    },
-    {
-      "domain": "*.googleapis.com"
-    }
-  ]
-}
-```
+  {% /summary %}
 
-### ToolChoiceConfig
+  A single domain allowlist rule with optional header injection.
+
+  **domain**: {% mark %}required{% /mark %} `string`
+
+  Domain to allow outbound requests to. Supports wildcards (e.g. '*.googleapis.com'). Use '*' to allow all domains.
+
+  **transform**: `object`
+
+  Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
+
+  **credential**: `string`
+
+  Optional. Reference to a server-managed Credential resource by ID.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **enum (string)**
+
+  {% /summary %}
+
+  Possible values:
+
+  - `disabled`: All network egress is blocked.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Network Allowlist**
+
+  ```json
+  {
+    "allowlist": [
+      {
+        "domain": "github.com",
+        "transform": [
+          {
+            "Authorization": "Bearer your-token"
+          }
+        ]
+      },
+      {
+        "domain": "*.googleapis.com"
+      }
+    ]
+  }
+  ```
+
+  {% /right-column %}
+
+{% /two-column-layout %}
+
+### ToolChoiceConfig  {% id="Resource:ToolChoiceConfig" %}
 
 The tool choice configuration containing allowed tools.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-allowed_tools AllowedTools (optional) The allowed tools.
-The configuration for allowed tools.
+  {% details %}
+  {% summary %}
+  **allowed_tools**: `AllowedTools`
 
-#### Fields
+  The allowed tools.
 
-mode enum (string) (optional) The mode of the tool choice.
+  {% /summary %}
 
-Possible
-values:
+  {% details %}
+  {% summary %}
+  **mode**: `enum (string)`
 
-- `auto`
+  The mode of the tool choice.
 
-  Auto tool choice.
-- `any`
+  {% /summary %}
 
-  Any tool choice.
-- `none`
+  Possible values:
 
-  No tool choice.
-- `validated`
+  - `auto`: Auto tool choice.
+  - `any`: Any tool choice.
+  - `none`: No tool choice.
+  - `validated`: Validated tool choice.
 
-  Validated tool choice.
-tools array (string) (optional) The names of the allowed tools.
+  {% /details %}
 
-### Examples
+  **tools**: `array (string)`
 
-### Example
+  The names of the allowed tools.
 
-```bash
-{
-  "allowed_tools": {
-    "mode": "any",
-    "tools": [
-      "my_tool"
-    ]
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  ```json
+  {
+    "allowed_tools": {
+      "mode": "any",
+      "tools": [
+        "my_tool"
+      ]
+    }
   }
-}
-```
+  ```
 
-### ImageContent
+  {% /right-column %}
+
+{% /two-column-layout %}
+
+### ImageContent  {% id="Resource:ImageContent" %}
 
 An image content block.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-type object (required) No description provided.
+  **type**: {% mark %}required{% /mark %} `object`
 
-Always set to `"image"`.
-data string (optional) The image content.
-uri string (optional) The URI of the image.
-resolution MediaResolution (optional) The resolution of the media.
-<br />
+  Value: `image`
 
-#### Possible values
+  {% hr /%}
 
-- `low`
+  **data**: `string`
 
-  Low resolution.
-- `medium`
+  The image content.
 
-  Medium resolution.
-- `high`
+  {% hr /%}
 
-  High resolution.
-- `ultra_high`
+  **uri**: `string`
 
-  Ultra high resolution.
-mime_type enum (string) (optional) The mime type of the image.
+  The URI of the image.
 
-Possible
-values:
+  {% hr /%}
 
-- `image/png`
+  {% details %}
+  {% summary %}
+  **resolution**: `MediaResolution`
 
-  PNG image format
-- `image/jpeg`
+  The resolution of the media.
 
-  JPEG image format
-- `image/webp`
+  {% /summary %}
 
-  WebP image format
-- `image/heic`
+  Possible values:
 
-  HEIC image format
-- `image/heif`
+  - `low`: Low resolution.
+  - `medium`: Medium resolution.
+  - `high`: High resolution.
+  - `ultra_high`: Ultra high resolution.
 
-  HEIF image format
-- `image/gif`
+  {% /details %}
 
-  GIF image format
-- `image/bmp`
+  {% hr /%}
 
-  BMP image format
-- `image/tiff`
+  {% details %}
+  {% summary %}
+  **mime_type**: `enum (string)`
 
-  TIFF image format
+  The mime type of the image.
 
-### Examples
+  {% /summary %}
 
-### Image
+  Possible values:
 
-```bash
-{
-  "type": "image",
-  "data": "BASE64_ENCODED_IMAGE",
-  "mime_type": "image/png"
-}
-```
+  - `image/png`: PNG image format
+  - `image/jpeg`: JPEG image format
+  - `image/webp`: WebP image format
+  - `image/heic`: HEIC image format
+  - `image/heif`: HEIF image format
+  - `image/gif`: GIF image format
+  - `image/bmp`: BMP image format
+  - `image/tiff`: TIFF image format
 
-### TextContent
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Image**
+
+  ```json
+  {
+    "type": "image",
+    "data": "BASE64_ENCODED_IMAGE",
+    "mime_type": "image/png"
+  }
+  ```
+
+  {% /right-column %}
+
+{% /two-column-layout %}
+
+### TextContent  {% id="Resource:TextContent" %}
 
 A text content block.
 
-#### Fields
+{% two-column-layout %}
+  {% left-column %}
+  **Properties:**
 
-text string (required) Required. The text content.
-type object (required) No description provided.
+  **text**: {% mark %}required{% /mark %} `string`
 
-Always set to `"text"`.
-annotations array (Annotation) (optional) Citation information for model-generated content.
-Citation information for model-generated content.
+  The text content.
 
-#### Possible Types
+  {% hr /%}
 
-FileCitation A file citation annotation.
-type object (required) No description provided.
+  **type**: {% mark %}required{% /mark %} `object`
 
-Always set to `"file_citation"`.
-document_uri string (optional) The URI of the file.
-file_name string (optional) The name of the file.
-source string (optional) Source attributed for a portion of the text.
-custom_metadata object (optional) User provided metadata about the retrieved context.
-page_number integer (optional) Page number of the cited document, if applicable.
-media_id string (optional) Media ID in-case of image citations, if applicable.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  Value: `text`
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-PlaceCitation A place citation annotation.
-type object (required) No description provided.
+  {% hr /%}
 
-Always set to `"place_citation"`.
-place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-name string (optional) Title of the place.
-url string (optional) URI reference of the place.
-review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
-features of a given place in Google Maps.
-Encapsulates a snippet of a user review that answers a question about
-the features of a specific place in Google Maps.
+  {% details %}
+  {% summary %}
+  **annotations**: `array (Annotation)`
 
-#### Fields
+  Citation information for model-generated content.
 
-title string (optional) Title of the review.
-url string (optional) A link that corresponds to the user review on Google Maps.
-review_id string (optional) The ID of the review snippet.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  {% /summary %}
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-SpeechAnnotation Speech annotation for text content.
-type object (required) No description provided.
+  **Possible Types:**
 
-Always set to `"speech_metadata"`.
-speaker string (optional) The speaker to associate with this turn.
-style string (optional) Style instruction for the speech synthesis.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  {% details %}
+  {% summary %}
+  **FileCitation**
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-UrlCitation A URL citation annotation.
-type object (required) No description provided.
+  {% /summary %}
 
-Always set to `"url_citation"`.
-url string (optional) The URL.
-title string (optional) The title of the URL.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  A file citation annotation.
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
-WordInfo Word-level ASR annotation for transcription output.
-Carries the word text, optional timing, and optional speaker attribution.
-type object (required) No description provided.
+  **type**: {% mark %}required{% /mark %} `object`
 
-Always set to `"word_info"`.
-text string (optional) The transcribed word.
-start_offset string (optional) Start offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-end_offset string (optional) End offset in time of the word relative to the start of the audio.
-Present when timestamp_granularities contains "word".
-speaker string (optional) Optional. Speaker label for this word (e.g. "spk_1", "spk_2").
-Present when diarization_mode is set in TranscriptionConfig.
-start_index integer (optional) Start of segment of the response that is attributed to this source.
+  Value: `file_citation`
 
-Index indicates the start of the segment, measured in bytes.
-end_index integer (optional) End of the attributed segment, exclusive.
+  **document_uri**: `string`
 
-### Examples
+  The URI of the file.
 
-### Text
+  **file_name**: `string`
 
-```bash
-{
-  "type": "text",
-  "text": "Hello, how are you?"
-}
-```
+  The name of the file.
+
+  **source**: `string`
+
+  Source attributed for a portion of the text.
+
+  **custom_metadata**: `object`
+
+  User provided metadata about the retrieved context.
+
+  **page_number**: `integer`
+
+  Page number of the cited document, if applicable.
+
+  **media_id**: `string`
+
+  Media ID in-case of image citations, if applicable.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **PlaceCitation**
+
+  {% /summary %}
+
+  A place citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `place_citation`
+
+  **place_id**: `string`
+
+  The ID of the place, in `places/{place_id}` format.
+
+  **name**: `string`
+
+  Title of the place.
+
+  **url**: `string`
+
+  URI reference of the place.
+
+  {% details %}
+  {% summary %}
+  **review_snippets**: `array (ReviewSnippet)`
+
+  Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
+
+  {% /summary %}
+
+  **title**: `string`
+
+  Title of the review.
+
+  **url**: `string`
+
+  A link that corresponds to the user review on Google Maps.
+
+  **review_id**: `string`
+
+  The ID of the review snippet.
+
+  {% /details %}
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **SpeechAnnotation**
+
+  {% /summary %}
+
+  Speech annotation for text content.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `speech_metadata`
+
+  **speaker**: `string`
+
+  The speaker to associate with this turn.
+
+  **style**: `string`
+
+  Style instruction for the speech synthesis.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **UrlCitation**
+
+  {% /summary %}
+
+  A URL citation annotation.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `url_citation`
+
+  **url**: `string`
+
+  The URL.
+
+  **title**: `string`
+
+  The title of the URL.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **WordInfo**
+
+  {% /summary %}
+
+  Word-level ASR annotation for transcription output. Carries the word text, optional timing, and optional speaker attribution.
+
+  **type**: {% mark %}required{% /mark %} `object`
+
+  Value: `word_info`
+
+  **text**: `string`
+
+  The transcribed word.
+
+  **start_offset**: `string`
+
+  Start offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **end_offset**: `string`
+
+  End offset in time of the word relative to the start of the audio. Present when timestamp_granularities contains "word".
+
+  **speaker**: `string`
+
+  Optional. Speaker label for this word (e.g. "spk_1", "spk_2"). Present when diarization_mode is set in TranscriptionConfig.
+
+  **start_index**: `integer`
+
+  Start of segment of the response that is attributed to this source. Index indicates the start of the segment, measured in bytes.
+
+  **end_index**: `integer`
+
+  End of the attributed segment, exclusive.
+
+  {% /details %}
+
+  {% /details %}
+
+  {% /left-column %}
+
+  {% right-column class="sticky" %}
+  **Example**
+
+  **Text**
+
+  ```json
+  {
+    "type": "text",
+    "text": "Hello, how are you?"
+  }
+  ```
+
+  {% /right-column %}
+
+{% /two-column-layout %}
+

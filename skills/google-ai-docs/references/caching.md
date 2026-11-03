@@ -1,18 +1,32 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Context caching
+
 In a typical AI workflow, you might pass the same input tokens over and over to
-a model. The Gemini API offers implicit caching to optimize performance and costs.
+a model. The Gemini API offers implicit caching to optimize performance and
+costs.
 
-> [!NOTE]
-> **Note:** The **Interactions API** only supports implicit caching. Explicit caching (manually creating and managing cache objects) is not supported in the Interactions API, or for Gemini 4 Argon and onward. To use explicit caching on supported Gemini 3 and 2.5 models, switch to the [generateContent API](https://ai.google.dev/gemini-api/docs/generate-content/caching).
+{% callout type="note" %}
+  The **Interactions API** only supports implicit caching. Explicit caching
+  (manually creating and managing cache objects) is not supported in the
+  Interactions API, or for Gemini 4 Argon and onward. To use explicit caching on
+  supported Gemini 3 and 2.5 models, switch to the
+  [generateContent API](/docs/caching?generate-content=true).
 
-## Implicit caching
+{% /callout %}
+
+## Implicit caching  {% id="implicit-caching" %}
 
 Implicit caching is enabled by default for all Gemini 2.5 and newer models. It is
-supported for both [stateful](https://ai.google.dev/gemini-api/docs/text-generation#multi-turn-conversations) (using `previous_interaction_id`)
-and [stateless](https://ai.google.dev/gemini-api/docs/text-generation#stateless-conversations) conversation modes.
+supported for both [stateful](/docs/text-generation#multi-turn-conversations) (using `previous_interaction_id`)
+and [stateless](/docs/text-generation#stateless-conversations) conversation modes.
 We automatically pass on cost savings if your request hits caches. You don't need to configure anything to turn it on. The following table lists the minimum input token count for each model:
 
 | Model | Min token limit |
-|---|---|
+| :--- | :--- |
 | Gemini 4 Argon | 4,096 |
 | Gemini 3.8 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
@@ -25,8 +39,15 @@ To increase the chance of an implicit cache hit:
 - Try putting large and common contents at the beginning of your prompt
 - Try to send requests with similar prefix in a short amount of time
 
-> [!NOTE]
-> **Note:** **Multi-turn and agent loops on Gemini 4 (Argon and newer):** Gemini caches the full previous request only if the new request adds at least 2,050 tokens. Model output, thought, and function results all count toward this total. For smaller additions, Gemini re-processes the last 2,050 tokens of the previous request at the standard input rate. Most agent turns exceed this threshold.
+{% callout type="note" %}
+  **Multi-turn and agent loops on Gemini 4 (Argon and newer):** Gemini caches the
+  full previous request only if the new request adds at least 2,050 tokens. Model
+  output, thought, and function results all count toward this total. For smaller
+  additions, Gemini re-processes the last 2,050 tokens of the previous request at
+  the standard input rate. Most agent turns exceed this threshold.
+
+{% /callout %}
 
 You can see the number of tokens which were cache hits in the response object's
 `usage.total_cached_tokens` (Python and JavaScript) field.
+

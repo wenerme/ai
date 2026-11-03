@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/observability/logs/log-explorer/og.png?
 
 # Log Explorer (Legacy)
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/observability/logs/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Store and explore your Cloudflare logs directly within the Cloudflare dashboard or API.
 
@@ -38,7 +38,8 @@ Access to Log Explorer depends on how you connect. Account members need a [membe
 | **Log Search** | Log Share Reader (Log Share and Administrator Read Only also work) | `Logs Read` | Query logs in the dashboard or via API. |
 | **Log Search (save query)** | Super Administrator or Administrator | `Logs Edit` | Save, edit, or delete log search queries. |
 | **Manage datasets** | Super Administrator or Administrator | `Logs Edit` | Add, enable, or disable datasets. |
-| **Custom dashboards** | Analytics | `Analytics Read` | Create and view custom dashboards. |
+| **Custom dashboards (view)** | Super Administrator, Administrator, Administrator Read Only, or Analytics | — | View custom dashboards. |
+| **Custom dashboards (edit)** | Super Administrator or Administrator | — | Create, edit, or delete custom dashboards. |
 
 The API lists `Logs Edit` as `Logs Write`. They are the same permission.
 
@@ -98,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/observability/logs/log-explorer/#page","headline":"Log Explorer (Legacy)","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/observability/logs/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/logs/log-explorer/og.png?v=7bb59558ed9b4b08","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/observability/logs/log-explorer/#page","headline":"Log Explorer (Legacy)","description":"Store and explore Cloudflare logs in the dashboard.","url":"https://developers.cloudflare.com/observability/logs/log-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/observability/logs/log-explorer/og.png?v=7bb59558ed9b4b08","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

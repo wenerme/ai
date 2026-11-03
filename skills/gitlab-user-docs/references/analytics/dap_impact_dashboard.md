@@ -8,8 +8,7 @@ View the impact of your usage of GitLab Duo Agent Platform across your organizat
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632113) in GitLab 19.5.
 
-This feature is in private [beta](../../policy/development_stages_support.md).
-To test this feature, you must [request access](https://gitlab.com/gitlab-org/gitlab/-/work_items/632123).
+This feature is in [beta](../../policy/development_stages_support.md#beta).
 Share your feedback in [issue 632127](https://gitlab.com/gitlab-org/gitlab/-/work_items/632127).
 
 The GitLab Duo Agent Platform Impact dashboard shows how your organization uses Agent Platform and what that usage costs.

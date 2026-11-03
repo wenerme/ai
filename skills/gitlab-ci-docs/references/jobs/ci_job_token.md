@@ -264,8 +264,9 @@ For cross-project push to work, all of the following must be true:
 - The target project has **Allow Git push requests to the repository** enabled.
 - The target project has **Allow cross-project Git push requests from allowlisted projects** enabled.
 - The target project has the [job token allowlist](#add-a-group-or-project-to-the-job-token-allowlist) enabled.
-- The source project is on the target project's allowlist with the `admin_repositories`
-  [fine-grained permission](fine_grained_permissions.md), or with default permissions (no fine-grained restriction set).
+- The source project is on the target project's allowlist with
+  for  in its fine-grained permissions, or with default permissions
+  (no fine-grained restriction set).
   A group entry on the allowlist that includes the source project also satisfies this requirement.
 - The user who started the pipeline has at least the Developer role on the target project.
 
@@ -281,11 +282,9 @@ To allow cross-project push requests:
 1. In the **Permissions** section, select **Allow Git push requests to the repository**.
 1. Select **Allow cross-project Git push requests from allowlisted projects**.
 1. Select **Save Changes**.
-1. [Add the source project or its group to the allowlist](#add-a-group-or-project-to-the-job-token-allowlist)
-   with the `ADMIN_REPOSITORIES` fine-grained permission, or leave default permissions enabled.
-   In the allowlist entry, `ADMIN_REPOSITORIES` is the **Read and write** option for **Repositories**.
-   It does not appear in the [fine-grained permissions](fine_grained_permissions.md) endpoint tables,
-   because it grants Git push access rather than access to a REST API endpoint.
+1. [Add the source project or its group to the allowlist with fine-grained permissions](fine_grained_permissions.md#add-fine-grained-permissions-to-the-job-token-allowlist).
+   For , select .
+   Or, leave default permissions enabled.
 
 ## Fine-grained permissions for job tokens
 

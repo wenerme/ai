@@ -10,8 +10,9 @@
 - Feature flags `dap_instance_network_access_controls` and `dap_group_network_access_controls` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
 - Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243118) in 19.2.
 - Feature flag `dap_instance_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244957) in 19.3.
+- Setting to require the sandbox [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607753) in GitLab 19.6.
 
-The execution environment sandbox provides application-level network and filesystem isolation
+The execution environment sandbox provides application-level network and file system isolation
 that helps protect GitLab Duo Agent Platform remote flows from unauthorized network access
 and data exfiltration. It is designed to help prevent data exfiltration attempts,
 loading of malicious code from external sources, and unauthorized data gathering
@@ -28,7 +29,8 @@ The sandbox is enabled when:
 - GitLab Duo Agent Platform sessions are being executed on a runner.
 - The job can [create the user and mount namespaces](flows/execution/_index.md#sandbox-requirements-without-privileged-mode) that SRT needs.
 
-If SRT is not available or cannot create the sandbox, the flow runs without it.
+If SRT is not available or cannot create the sandbox, the flow runs without it,
+unless the sandbox is [required](#require-flows-to-run-in-the-sandbox).
 For more information, see [warnings and fallback behavior](#warnings-and-fallback-behavior).
 
 For agents that run on your computer, see [local sandbox](../../editor_extensions/local_sandbox.md).
@@ -51,10 +53,11 @@ The execution environment sandbox uses [Anthropic Sandbox Runtime (SRT)](https:/
 
 - Network isolation: Intercepts all network requests before they leave
   the execution environment and validates them against allowlisted domains.
-- Filesystem restrictions: Limits read and write access to specific directories
+- File system restrictions: Limits read and write access to specific directories
   and blocks access to sensitive files.
 - Graceful fallback: If SRT is unavailable or required operating system privileges
-  are missing, the flow runs directly with a warning message.
+  are missing, the flow runs directly with a warning message, unless the sandbox
+  is [required](#require-flows-to-run-in-the-sandbox).
 
 ## Install Anthropic Sandbox Runtime (SRT) on a custom image
 
@@ -112,7 +115,7 @@ To resolve this:
    Error: Sandbox dependencies are not available on this system. Required: ripgrep (rg), bubblewrap (bwrap), and socat.
    ```
 
-## Network and filesystem restrictions
+## Network and file system restrictions
 
 When the execution environment sandbox is applied, the following restrictions are enforced.
 
@@ -128,9 +131,9 @@ By default, the sandbox permits access to the following configurations:
 
 Only the environment variables and parameters required to run DAP and Git operations are accessible from the sandbox environment.
 
-### Filesystem configuration
+### File system configuration
 
-The sandbox enforces the following filesystem restrictions:
+The sandbox enforces the following file system restrictions:
 
 - Read restrictions: SSH keys (`~/.ssh`) are blocked.
 - Write allowed: Current directory (`./`) and `/tmp`.
@@ -254,7 +257,7 @@ Prerequisites:
 
 To configure group-level network access controls:
 
-1. On the top bar, select **Search or go to** and find your top-level group.
+1. In the top bar, select **Search or go to** and find your top-level group.
 1. In the left sidebar, select **Settings**, then **GitLab Duo**.
 1. Select **Change configuration**.
 1. Under **Data and privacy**, in the **Network access** section, configure the
@@ -465,9 +468,67 @@ This setting turns on access to the following domains:
 - `www.schemastore.org`
 - `*.modelcontextprotocol.io`
 
+## Require flows to run in the sandbox
+
+Require the sandbox when flows must not run without network and file system isolation.
+When the sandbox is required and SRT is not installed or cannot create the sandbox,
+the CI/CD job fails instead of running the flow without the sandbox.
+The job log shows an error like:
+
+```plaintext
+Error: srt is not installed or not in PATH, refusing to run because the sandbox is required
+```
+
+Projects cannot turn off the requirement in the `agent-config.yml` file.
+
+The requirement checks for the `srt` command in the job.
+If a project uses a custom image or a `setup_script`, the project controls which `srt` command runs,
+so the requirement cannot guarantee isolation for flows in that project.
+
+### GitLab.com
+
+Prerequisites:
+
+- The Owner role for the top-level group.
+
+The requirement applies to all subgroups and projects in the top-level group.
+
+To require the sandbox for a top-level group:
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Settings**, then **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Data and privacy**, in the **Execution environment sandbox** section,
+   select the **Don't run flows when the sandbox is unavailable** checkbox.
+1. Select **Save changes**.
+
+To require the sandbox for a top-level group, you can also use the
+`ai_settings_attributes[require_sandbox]` parameter of the
+[Update group attributes](../../api/groups.md#update-group-attributes) API.
+
+### GitLab Self-Managed and GitLab Dedicated
+
+Prerequisites:
+
+- Administrator access.
+
+To require the sandbox for your instance:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **GitLab Duo**.
+1. Select **Change configuration**.
+1. Under **Data and privacy**, in the **Execution environment sandbox** section,
+   select the **Don't run flows when the sandbox is unavailable** checkbox.
+1. Select **Save changes**.
+
+To require the sandbox for your instance, you can also use the
+`requireSandbox` argument of the
+[`duoSettingsUpdate`](../../api/graphql/reference/mutations.md#duosettingsupdate) GraphQL mutation.
+
 ## Warnings and fallback behavior
 
-If sandboxing is unavailable or cannot be applied:
+If sandboxing is unavailable or cannot be applied, and the sandbox is not
+[required](#require-flows-to-run-in-the-sandbox):
 
 - The flow runs directly without sandbox protection
 - A warning message is displayed within CI job logs with a link to runner configuration guidance

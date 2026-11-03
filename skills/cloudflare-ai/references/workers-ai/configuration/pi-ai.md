@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v
 
 # Pi AI
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To use Workers AI with [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai), use `createAI` from `agents/models/pi-ai`. It returns Pi AI `Model` objects, so Workers AI models work with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), and with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/). This page covers Workers AI models. For AI Gateway catalog models, fallback, gateway options, and the full reference, refer to [Pi AI](https://developers.cloudflare.com/agents/models/pi-ai/).
 
 ## Setup
 
-Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.3.0`:
+Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.5.0`:
 
 npmyarnpnpmbun
 
@@ -168,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/#page","headline":"Pi AI","description":"Use Workers AI models with Pi AI through createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v=927ed23e0b5e5a1a","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/#page","headline":"Pi AI","description":"Use Workers AI models with Pi AI through createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-ai/configuration/pi-ai/og.png?v=927ed23e0b5e5a1a","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

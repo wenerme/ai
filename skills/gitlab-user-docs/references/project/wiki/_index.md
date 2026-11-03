@@ -28,10 +28,10 @@ Wiki pages display a [sidebar](#sidebar), which you can customize.
 
 To access a project wiki:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 
-If **Plan** > **Wiki** is not listed in the left sidebar of your project, a project administrator
+If  >  is not listed in the left sidebar of your project, a project administrator
 has [disabled it](#enable-or-disable-a-project-wiki).
 
 ## Configure a default branch for your wiki
@@ -52,22 +52,22 @@ When a wiki is created, it is empty. On your first visit, you can create the
 home page users see when viewing the wiki. This page requires a specific path
 to be used as your wiki's home page. To create it:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Create your first page**.
-1. Optional. Change the **Title** of the home page.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select .
+1. Optional. Change the  of the home page.
 1. GitLab requires this first page to have the path `home`. The page on this
    path serves as the front page for your wiki.
-1. Optional. Select **Edit page options** () to:
-   - Change the **Path** of the page. By default, the path is generated from the title.
+1. Optional. Select  () to:
+   - Change the  of the page. By default, the path is generated from the title.
      Page paths use [special characters](#special-characters-in-page-paths) for subdirectories and formatting,
      and have [length restrictions](#length-restrictions-for-file-and-directory-names).
-   - Change the content **Format**.
-   - Select a **Template**. For more information, see [from a template](#from-a-template).
+   - Change the content .
+   - Select a . For more information, see [from a template](#from-a-template).
 1. Add a welcome message for your home page in the content area. You can
    always edit it later.
-1. Select **Create page**. To add a commit message before saving, select the arrow next to
-   **Create page** and select **Save changes with message**.
+1. Select . To add a commit message before saving, select the arrow next to
+    and select .
 
 ## Create a new wiki page
 
@@ -84,28 +84,28 @@ Prerequisites:
 
 To create a new wiki page from a project or group:
 
-1. On the top bar, select **Search or go to** and find your group or project.
-1. In the upper-right corner, select **Create new** (), then **New wiki page**.
+1. On the top bar, select  and find your group or project.
+1. In the upper-right corner, select  (), then .
 
 Alternatively:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Wiki actions** (), then **New page** on this page, or any other wiki page.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  (), then  on this page, or any other wiki page.
 
 After opening the new page form, complete the following steps:
 
-1. Add a **Title** for your new page in the editor header.
-1. Optional. Select **Edit page options** () to:
-   - Change the **Path** of the page. By default, the path is generated from the title.
+1. Add a  for your new page in the editor header.
+1. Optional. Select  () to:
+   - Change the  of the page. By default, the path is generated from the title.
      Page paths use [special characters](#special-characters-in-page-paths) for subdirectories and formatting,
      and have [length restrictions](#length-restrictions-for-file-and-directory-names).
-   - Change the content **Format**.
-   - Select a **Template**. For more information, see [from a template](#from-a-template).
+   - Change the content .
+   - Select a . For more information, see [from a template](#from-a-template).
 1. Optional. Add content to your wiki page.
 1. Optional. Attach a file, and GitLab stores it in the wiki's Git repository.
-1. Select **Create page**. To add a commit message before saving, select the arrow next to
-   **Create page** and select **Save changes with message**.
+1. Select . To add a commit message before saving, select the arrow next to
+    and select .
 
 ### From a template
 
@@ -120,39 +120,39 @@ Prerequisites:
 
 ### From template list
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Templates** to view all available templates.
-1. Next to the template you want to use, select **Create from template**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  to view all available templates.
+1. Next to the template you want to use, select .
 1. The new page form opens with:
    - The template content pre-filled in the content area.
    - The template selected in the template dropdown list.
 1. Enter a title for your new page.
 1. Modify the content as needed.
-1. Select **Create page**.
+1. Select .
 
 ### From template page
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Templates** to view all available templates.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  to view all available templates.
 1. Choose and select the template you want to use.
-1. In the page header, select **Create from template**.
+1. In the page header, select .
 1. The new page form opens with the current template pre-selected and its content loaded.
 1. Enter a title for your new page.
 1. Modify the content as needed.
-1. Select **Create page**.
+1. Select .
 
 ### From new page form
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **New page**.
-1. In the **Choose a template** dropdown list, select your desired template.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select .
+1. In the  dropdown list, select your desired template.
 1. The template content is automatically loaded into the content area.
 1. Enter a title for your page.
 1. Modify the content as needed.
-1. Select **Create page**.
+1. Select .
 
 ### Create or edit wiki pages locally
 
@@ -160,9 +160,9 @@ Wikis are based on Git repositories, so you can clone them locally and edit
 them as you would do with every other Git repository. To clone a wiki repository
 locally:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Wiki actions** (), then **Clone repository**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  (), then .
 1. Follow the on-screen instructions.
 
 Files you add to your wiki locally must use one of the following
@@ -228,21 +228,21 @@ Prerequisites:
 The wiki editor opens with a sticky header that contains:
 
 - The page title. You can edit this inline.
-- **Edit page options** () to change the page path, format, or select a template.
+-  () to change the page path, format, or select a template.
 - A sidebar toggle () to show or hide the wiki sidebar.
-- **Save changes** and **Cancel** to save or discard your changes.
+-  and  to save or discard your changes.
 
 To edit a wiki page:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Go to the page you want to edit, and select **Edit**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Go to the page you want to edit, and select .
 1. Edit the content.
-1. Select **Save changes**. To add a commit message before saving, select the arrow next to
-   **Save changes** and select **Save changes with message**.
+1. Select . To add a commit message before saving, select the arrow next to
+    and select .
 
 When you preview a page and scroll, a sticky bar at the top of the page keeps
-**Edit** and other actions accessible.
+ and other actions accessible.
 
 Unsaved changes to a wiki page are preserved in local browser storage to prevent accidental data loss.
 
@@ -266,11 +266,11 @@ above the comments section.
 
 To react to a wiki page:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to react to.
 1. Below the page content, select an existing emoji to add your reaction, or select
-   **Add reaction** () to choose a different emoji.
+    () to choose a different emoji.
 
 To remove a reaction, select the emoji again. Each user can add only one reaction of each type per page.
 
@@ -282,10 +282,10 @@ Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role.
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to delete.
-1. Select **Wiki actions** (), then **Delete page**.
+1. Select  (), then .
 1. Confirm the deletion.
 
 ## Move or rename a wiki page
@@ -305,25 +305,25 @@ Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role.
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to move or rename.
-1. Select **Edit**.
-1. In the editor header, select **Edit page options** ().
-1. To move the page, change the **Path** field. For example,
+1. Select .
+1. In the editor header, select  ().
+1. To move the page, change the  field. For example,
    if you have a wiki page called `About` under `Company` and you want to
-   move it to the wiki's root, change the **Path** from `About` to `/About`.
-1. To rename the page, change the **Path**.
-1. Select **Save changes**.
+   move it to the wiki's root, change the  from `About` to `/About`.
+1. To rename the page, change the .
+1. Select .
 
 ## Export a wiki page
 
 You can export a wiki page as a PDF file:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to export.
-1. In the upper right, select **Wiki actions** (), then select **Print as PDF**.
+1. In the upper right, select  (), then select .
 
 A PDF of the wiki page is created.
 
@@ -354,10 +354,10 @@ Prerequisites:
 
 - You must have the Developer, Maintainer, or Owner role.
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Wiki actions** (), then **Templates**.
-1. Select **New Template**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  (), then .
+1. Select .
 1. Enter the template title, format, and content.
 
 The template path is generated from the title and cannot be edited. To rename a template,
@@ -377,7 +377,7 @@ Prerequisites:
 
 - You must have [created](#create-a-template) at least one template already.
 
-1. In the **Content** section, select the **Choose a template** dropdown list.
+1. In the  section, select the  dropdown list.
 1. Select a template from the list. If the page already has some content, a warning displays
    indicating that the existing content will be overwritten.
 1. Select **Apply template**.
@@ -395,15 +395,15 @@ Prerequisites:
 
 To restore a wiki page template to a previous version:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. Select **Wiki actions** (), then **Templates**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. Select  (), then .
 1. Select a template.
-1. Select **Wiki actions** (), then **Template history**.
+1. Select  (), then .
 1. Select the version you want to restore.
-1. In the upper right, select **Restore this version**.
-1. In the commit dialog, add a **Commit message** to describe why you're restoring this version.
-1. Select **Restore**.
+1. In the upper right, select .
+1. In the commit dialog, add a  to describe why you're restoring this version.
+1. Select .
 
 The page template is restored to the selected version. All previous versions remain in the page history.
 
@@ -422,7 +422,7 @@ You can subscribe to specific wiki pages to receive notifications when someone:
 ### Subscribe to a wiki page
 
 1. Open the wiki page you want to follow.
-1. In the upper-right corner, next to **Edit**, select the bell icon ().
+1. In the upper-right corner, next to , select the bell icon ().
 1. Select the bell icon () again to unsubscribe.
 
 When you change your subscription status, GitLab shows a confirmation message:
@@ -447,14 +447,14 @@ The history page shows:
 - The page author.
 - The commit message.
 - The last update.
-- Previous revisions, by selecting a revision number in the **Page version** column.
+- Previous revisions, by selecting a revision number in the  column.
 
 To view the changes for a wiki page:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to view history for.
-1. Select **Wiki actions** (), then **Page history**.
+1. Select  (), then .
 
 ### History of moved or renamed pages
 
@@ -481,11 +481,11 @@ at its current path.
 
 You can see the changes made in a version of a wiki page, similar to versioned diff file views:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the wiki page you're interested in.
-1. Select **Wiki actions** (), then **Page history** to see all page versions.
-1. Select the commit message in the **Diff** column for the version you're interested in.
+1. Select  (), then  to see all page versions.
+1. Select the commit message in the  column for the version you're interested in.
 
 If a version includes a move or rename, the diff shows the change from the previous path
 to the new path.
@@ -503,14 +503,14 @@ Prerequisites:
 
 To restore a wiki page to a previous version:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
 1. Go to the page you want to restore.
-1. Select **Wiki actions** (), then **Page history**.
+1. Select  (), then .
 1. Select the version you want to restore.
-1. In the upper right, select **Restore this version**.
-1. In the commit dialog, add a **Commit message** to describe why you're restoring this version.
-1. Select **Restore**.
+1. In the upper right, select .
+1. In the commit dialog, add a  to describe why you're restoring this version.
+1. Select .
 
 The page is restored to the selected version. All previous versions remain in the page history.
 
@@ -532,7 +532,7 @@ the sidebar. You can toggle the sidebar open or closed using
 the sidebar toggle () located in the upper-left corner of the page.
 
 For performance reasons, the sidebar is limited to displaying 5000 entries. To
-view a list of all pages, select **View All Pages** in the sidebar.
+view a list of all pages, select  in the sidebar.
 
 ### Customize sidebar
 
@@ -545,10 +545,10 @@ Prerequisites:
 This process creates a wiki page named `_sidebar` that fully
 replaces the default sidebar navigation:
 
-1. In the top bar, select **Search or go to** and find your project or group.
-1. In the left sidebar, select **Plan** > **Wiki**.
-1. In the upper-left corner of the page, select **Add custom sidebar** ().
-1. When complete, select **Save changes**.
+1. In the top bar, select  and find your project or group.
+1. In the left sidebar, select  > .
+1. In the upper-left corner of the page, select  ().
+1. When complete, select .
 
 A `_sidebar` example, formatted with Markdown:
 
@@ -579,14 +579,14 @@ You can disable group wikis from the [group settings](group.md#configure-group-w
 
 To add a link to an external wiki from a project's left sidebar:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Integrations**.
-1. Select **External wiki**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
 1. Add the URL to your external wiki.
-1. Optional. Select **Test settings**.
-1. Select **Save changes**.
+1. Optional. Select .
+1. Select .
 
-You can now see the **External wiki** option from your project's
+You can now see the  option from your project's
 left sidebar.
 
 When you enable this integration, the link to the external
@@ -595,21 +595,21 @@ To hide the internal wiki from the sidebar, [disable the project's wiki](#disabl
 
 To hide the link to an external wiki:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Integrations**.
-1. Select **External wiki**.
-1. Under **Enable integration**, clear the **Active** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. Under , clear the  checkbox.
+1. Select .
 
 ## Disable the project's wiki
 
 To disable a project's internal wiki:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. Scroll down to find and turn off the **Wiki** toggle (in gray).
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Scroll down to find and turn off the  toggle (in gray).
+1. Select .
 
 The internal wiki is now disabled, and users and project members:
 
@@ -640,13 +640,13 @@ Support includes:
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/238053) in GitLab 19.2. Feature flags `wiki_immersive_editor` removed.
 
 1. [Create](#create-a-new-wiki-page) a new wiki page, or [edit](#edit-a-wiki-page) an existing one.
-1. Select **Markdown** as your format. Select **Edit page options**
+1. Select **Markdown** as your format. Select
    () in the editor header to change the format.
-1. In the editor's header, select **Switch to rich text editing**.
+1. In the editor's header, select .
 1. Customize your page's content using the various formatting options available in the rich text editor.
-1. Select **Create page** for a new page, or **Save changes** for an existing page.
+1. Select  for a new page, or  for an existing page.
 
-To switch back to plain text, select **Switch to plain text editing**.
+To switch back to plain text, select .
 
 See also:
 

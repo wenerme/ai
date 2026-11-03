@@ -121,7 +121,7 @@ To run a PlantUML container in Docker, run this command:
 docker run -d --name plantuml -p 8005:8080 plantuml/plantuml-server:tomcat
 ```
 
-The **PlantUML URL** is the hostname of the server running the container.
+The  is the hostname of the server running the container.
 
 When running GitLab in Docker, it must have access to the PlantUML container.
 To achieve that, use [Docker Compose](https://docs.docker.com/compose/).
@@ -451,11 +451,11 @@ This configuration prevents potentially malicious diagram code from executing in
 After configuring your local PlantUML server, you're ready to enable the PlantUML integration:
 
 1. Sign in to GitLab as an [Administrator](../../user/permissions.md) user.
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, go to **Settings** > **General** and expand the **PlantUML** section.
-1. Select the **Enable PlantUML** checkbox.
+1. In the upper-right corner, select .
+1. In the left sidebar, go to  >  and expand the  section.
+1. Select the  checkbox.
 1. Set the PlantUML instance as `https://gitlab.example.com/-/plantuml/`,
-   and select **Save changes**.
+   and select .
 
 To prevent browsers from sending diagram content to the external PlantUML service,
 use the [diagram proxy](diagram_proxy.md).

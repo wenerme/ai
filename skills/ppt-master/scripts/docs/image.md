@@ -214,6 +214,114 @@ new record inherits that legal provenance and records `derived_from` plus the
 ordered `treatments`. Run `analyze_images.py` after all planned derivatives are
 ready so the inventory reflects the files that SVG authoring will consume.
 
+## `image_ocr.py`
+
+OCR helper for the [Image to PPTX](../../workflows/profiles/image-to-pptx.md)
+profile. `rapidocr` and `onnxruntime` are optional (about 170 MB with their
+OpenCV dependency) and are not installed by `requirements.txt`; `scan` prints
+the install command and exits `2` when they are missing.
+
+```bash
+pip install rapidocr onnxruntime
+python3 scripts/image_ocr.py scan <project_path> images/source-pages/01.png [...] --canvas 1280x720
+python3 scripts/image_ocr.py merge-base <project_path> --page 01 --inpainted images/01_inpainted.png \
+  --out images/01_base.png [--pad 6]
+python3 scripts/image_ocr.py text-layer <project_path> --page 01 --base images/01_base.png \
+  --out svg_output/01_cover.svg --font "Microsoft YaHei, Arial" [--title-font "SimSun, Cambria"] \
+  [--lang zh-CN] [--page-role cover]
+```
+
+`scan` writes `analysis/ocr/<page-stem>.json` per page image and prints one
+line per block (`?` marks a block whose lowest line confidence is below 0.9).
+Coordinates are canvas pixels: `--canvas` must be the deck canvas, and the
+scale is `canvas width / page pixel width`. Lines are merged into one block
+when they share a left edge (within 0.6 line heights), a height (within 25%),
+an ink color (RGB distance below 64), and a vertical gap of at most 0.9 line
+heights; labels, notes, and body copy with different ink therefore stay
+separate blocks.
+
+| Block field | Meaning |
+|---|---|
+| `id` | Stable `tNN` id in reading order; becomes the SVG group id |
+| `lines[]` | One entry per OCR line: `text`, `score`, `x`, `y`, `w`, `h` (canvas px). `text-layer` places exactly these line strings |
+| `text` | The joined lines, for reading only; editing it changes nothing |
+| `font_size` | 0.97 × median of line width ÷ advance units (CJK 1.0 em, capitals 0.68, other letters and digits 0.54, punctuation 0.36) over lines of at least four units, else line height ÷ 1.4 |
+| `color` | Mean ink color of the first line (pixels farther than 60% of the maximum distance from the line box's border median) |
+| `skip` | Absent by default; set `true` for text that belongs to an image (photo signage, product print, logo lettering) |
+
+`merge-base` composites a text-removed image (from `image_gen.py
+--reference-image` or a host's native editor) into the source page: inside
+each unskipped OCR line box, grown by `--pad` canvas px and feathered by 2 px,
+it takes the inpainted pixels; everywhere else it keeps the source pixels, so
+photos, graphics, and rules outside the text boxes stay byte-identical to the
+page image. Each `--layer <png>` (repeatable; RGBA or a flat magenta/green
+key) adds that layer's opaque area, grown by `--pad`, to the inpainted region,
+so objects removed from the base for their own layer do not come back from the
+source. When the page image is narrower than the canvas, nothing is merged: the
+generated image is written whole at its own resolution, because upscaled
+source pixels would be blurrier. Run it after review, because `skip` blocks
+keep their source pixels. A rule or shape the inpainting extended into a text
+box stays in the merged base; the removal prompt prevents that, not the merge.
+
+With OCR installed, `merge-base` then re-reads the written base: every OCR line
+(score at least 0.6, containing a letter, digit, or CJK character) whose center
+falls inside a removal box is printed under `Residue:` and the command exits
+`3`; the file is still written. Without OCR it prints that the check was
+skipped and exits `0`.
+
+**Review contract**: `scan` rewrites the JSON, so run it before review and never after. Correct a misread by editing that line's `lines[].text`
+(OCR drops spaces around `+`, `·`, and Latin words and confuses `I` / `l`);
+mark image-owned text `skip: true`; keep the line count so line positions
+stay registered. `text-layer` then writes one SVG: a full-canvas
+`data-pptx-role="background"` image of the text-free base, and one root group
+per unskipped block with one `<text>` whose later lines are positioned
+`<tspan>` rows. Baselines are `line top + line height / 2 + 0.36 × font size`;
+the largest block (and only the first within 85% of it) takes `--title-font`
+and the group id `title`. When the stack's first family is monospace (Consolas, Courier, Menlo, `*Mono*`), `text-layer` recomputes each block's size with 0.55 em per non-CJK glyph instead of using `font_size`. Each group's `data-pptx-bounds` spans the estimated
+glyph extent plus a 4 px margin, widened rightward to the nearest zone on its
+right or to 8 px inside the canvas; remaining overlaps are split at the
+midpoint, top/bottom only for genuinely stacked zones and left/right otherwise. The generated page runs through the Quick final checker
+like any page; weight, emphasis runs, and alignment other than left-aligned
+are not inferred and are added by hand when the source shows them.
+
+## `image_layers.py`
+
+Layer helpers for the [Image to PPTX](../../workflows/profiles/image-to-pptx.md)
+profile; Pillow and numpy only.
+
+```bash
+python3 scripts/image_layers.py check <project_path> --page-image images/source-pages/01.png \
+  --layer images/01_plate.png [--ratio 0.8]
+python3 scripts/image_layers.py diff-matte <project_path> --page-image images/source-pages/01.png \
+  --base images/01_base.png --out images/01_subject.png [--ocr analysis/ocr/01.json] [--threshold 60]
+python3 scripts/image_layers.py mono-matte <project_path> --plate images/01_plate_key.png --key "#FF00FF" \
+  --box 44.7 25.1 72.1 70.2 --out images/01_logo.png [--fill "#FFFFFF"] [--canvas-width 1280]
+```
+
+`check` compares the layer's opaque pixels with the page at the same position,
+on a 640-px-wide copy, and at every shift of 5 and 10 px in x and y. It prints
+the origin difference, the best shifted difference, and the best offset in page
+pixels, then exits `0` (`Registered`) when the origin difference is at most
+`--ratio` times the best shifted one, otherwise `3`. Opacity comes from real
+alpha, else from a flat `#FF00FF` or `#00FF00` key. A layer that is placed
+correctly but completes parts the page shows hidden behind another object still
+passes; z-order is decided by the page assembly, not by this check.
+
+`diff-matte` writes an RGBA layer from the page's own pixels: a pixel is kept
+when its RGB distance to the resized base exceeds `--threshold`, outside the
+reviewed OCR text boxes when `--ocr` is given; the mask is closed by 3 px and
+feathered by 0.8 px. It needs no generator and is registered by construction,
+but it is limited to the page's resolution, and it loses parts whose color
+matches the background behind them.
+
+`mono-matte` cuts one single-color graphic (a white logo or wordmark) from a
+raw flat-key plate, before keying: inside `--box` (canvas px, scaled to the
+plate), alpha is the minimum of the channels the key lacks (below 128 in the
+key: G for `#FF00FF`, R and B for `#00FF00`), normalized so the 99th percentile
+is opaque, and every pixel takes `--fill`. Key color cannot bleed into the
+edges, and interior gaps the generator painted with the key become
+transparent. It prints the placement box; a key that lacks no channel exits `1`.
+
 ## `analyze_images.py`
 
 Analyze objective image-file facts in a project directory before writing the

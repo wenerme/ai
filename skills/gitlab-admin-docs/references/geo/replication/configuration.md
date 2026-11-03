@@ -8,7 +8,7 @@ Finalize your secondary Geo site setup by replicating secrets, SSH keys, and add
 > [!note]
 > This is the final step in setting up a secondary Geo site. Stages of the
 > setup process must be completed in the documented order.
-> If not, [complete all prior stages](../setup/_index.md#using-linux-package-installations) before proceeding.
+> If not, [complete all prior stages](../setup/_index.md#build-a-path-from-the-general-steps) before proceeding.
 
 The basic steps of configuring a secondary site are to:
 

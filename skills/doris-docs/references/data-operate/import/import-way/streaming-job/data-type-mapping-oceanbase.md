@@ -7,11 +7,11 @@
 }
 ---
 
-OceanBase CDC continuous load supports only MySQL compatibility mode and uses the MySQL type conversion path. The following table shows how OceanBase column types map to Doris column types during automatic table creation.
-
 > **caution**: Experimental feature
 
-OceanBase CDC continuous load is available as an experimental feature starting from Doris 4.1.4.
+Doris continuous load is experimental and supported starting with Doris 4.1.5.
+
+OceanBase CDC continuous load supports only MySQL compatibility mode and uses the MySQL type conversion path. The following table shows how OceanBase column types map to Doris column types during automatic table creation.
 
 ## JDBC URL Parameter Normalization
 

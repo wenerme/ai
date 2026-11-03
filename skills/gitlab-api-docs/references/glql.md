@@ -4,6 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209517) in GitLab 18.7.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266611) to return `503 Service Unavailable` for query timeouts and `500 Internal Server Error` for unexpected errors instead of `400 Bad Request` in GitLab 19.6.
 
 Use this API to execute [GitLab Query Language (GLQL)](../user/glql/_index.md) queries programmatically.
 GLQL provides a simplified query language for searching and
@@ -690,7 +691,8 @@ The API returns the following HTTP status codes:
 | `401 Unauthorized`          | Authentication required or invalid credentials. |
 | `403 Forbidden`             | Insufficient permissions or missing required OAuth scope. |
 | `429 Too Many Requests`     | Query rate limit exceeded. |
-| `500 Internal Server Error` | Server error during query execution. |
+| `500 Internal Server Error` | Unexpected server error during query execution. |
+| `503 Service Unavailable`   | Query timed out. Narrow the query scope, for example with more filters or a shorter time range, and try again. |
 
 ### Error response examples
 
@@ -739,6 +741,22 @@ The API returns the following HTTP status codes:
   ```json
   {
     "error": "Query temporarily blocked due to repeated timeouts. Please try again later or narrow your search scope."
+  }
+  ```
+
+- Query timed out:
+
+  ```json
+  {
+    "error": "Query timed out"
+  }
+  ```
+
+- Unexpected server error. This response uses the `message` key instead of `error`:
+
+  ```json
+  {
+    "message": "500 Internal Server Error"
   }
   ```
 

@@ -94,6 +94,10 @@ Hyperdrive supports [`SET` statements ↗︎](https://www.postgresql.org/docs/cu
 
 This implies that a single Worker invocation may obtain multiple connections to perform its database operations and may need to `SET` any configurations for every query or transaction. It is not recommended to wrap multiple database operations with a single transaction to maintain the `SET` state. Doing so will affect the performance and scaling of Hyperdrive, as the connection cannot be reused by other Worker isolates for the duration of the transaction.
 
+Hyperdrive supports the transaction-level advisory lock functions [`pg_advisory_xact_lock` ↗︎](https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-ADVISORY-LOCKS), `pg_advisory_xact_lock_shared`, `pg_try_advisory_xact_lock`, and `pg_try_advisory_xact_lock_shared`, including their two-key (`integer`, `integer`) overloads. These locks are released when the transaction ends, before the connection is returned to the pool, so they behave consistently when you wrap them in an explicit transaction with `BEGIN`/`COMMIT`.
+
+Hyperdrive does not support session-level advisory lock functions (`pg_advisory_lock`, `pg_advisory_lock_shared`, `pg_try_advisory_lock`, and `pg_try_advisory_lock_shared`) because it uses transaction pooling. A session-level lock can remain held by a pooled connection after your client disconnects, blocking other clients until the lock is explicitly released or the database connection closes. Use transaction-level advisory locks within an explicit transaction instead.
+
 Hyperdrive supports named prepared statements as implemented in the `postgres.js` and `node-postgres` drivers. Named prepared statements in other drivers may have worse performance or may not be supported.
 
 ## Related resources

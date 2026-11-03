@@ -490,6 +490,7 @@ Example responses:
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
 - `pipeline_delete_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179).
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
+- `job_erase_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_job_erase` removed.
 - `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6.
 - `duo_token_usage_tracking_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259436) in GitLab 19.6.
 - `o11y_provisioner_api_key` and `o11y_provisioner_url` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262322) in GitLab 19.6.

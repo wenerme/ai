@@ -986,6 +986,8 @@ List branches in gitlab-org/gitlab whose names contain "release"
 ## `get_repository_file`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248744) in GitLab 19.3.
+- Maximum response content [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/633042) from 1 MiB to 32 KiB in GitLab 19.6.
+- `line_byte_offset` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633042) in GitLab 19.6.
 
 This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1001,10 +1003,15 @@ The file is returned as committed at `ref`, so uncommitted changes in a local ch
 | `file_path`  | string  | No       | Path of the file relative to the repository root. Required if `url` is not provided. |
 | `ref`        | string  | No       | Branch name, tag name, or commit SHA. Use `HEAD` for the default branch. Required if `url` is not provided. |
 | `offset`     | integer | No       | Zero-indexed line to start reading from. Default is `0`. |
-| `limit`      | integer | No       | Maximum number of lines to return. Default and maximum are `2000`. |
+| `limit`      | integer | No       | Maximum number of lines to return. Default is `500`. Maximum is `2000`. |
+| `line_byte_offset` | integer | No | Byte position in the line at `offset` where the response starts. Use the value from `system_instruction` after a long line is cut. |
 
 The response contains a `metadata` object with `total_lines`, `returned_lines`, `truncated`, and `size_bytes`.
 When the response covers only part of the file, `system_instruction` states the `offset` to use in the next call.
+
+Each response returns at most 32 KiB of file content.
+When a line is longer than that, the response ends partway through the line,
+and `system_instruction` states the `offset` and `line_byte_offset` to use for the rest of the line.
 
 This tool returns text only.
 Binary files and files stored in Git LFS return an error.

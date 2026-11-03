@@ -822,6 +822,19 @@ multiple or redundant LDAP identities.
 
 If one of those identities was added for an older LDAP provider that is no longer in use, [remove the `identity` records that relate to the removed LDAP server](#remove-the-identity-records-that-relate-to-the-removed-ldap-server).
 
+## Group sync fails with an LDAP search error
+
+When an LDAP search fails during group sync, [`application_json.log`](../../logs/_index.md#application_jsonlog) contains the following message:
+
+```plaintext
+LDAP search error code: <code>, message: <message>
+```
+
+To identify the cause, look up the result code in your LDAP server's documentation.
+
+GitLab stops group sync for the affected group and leaves group memberships unchanged. For more
+information, see [Failed LDAP searches](ldap_synchronization.md#failed-ldap-searches).
+
 ## Debugging Tools
 
 ### LDAP check

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoin
 
 # /crawl - Crawl web content
 
-Last updated Oct 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
@@ -156,10 +156,18 @@ Example response:
 		"browserSecondsUsed": 134.7,
 		"total": 50,
 		"finished": 50,
+		"robots": [
+			{
+				"origin": "https://developers.cloudflare.com",
+				"state": "available",
+				"status": 200
+			}
+		],
 		"records": [
 			{
 				"url": "https://developers.cloudflare.com/workers/",
 				"status": "completed",
+				"outcome": "success",
 				"markdown": "# Cloudflare Workers\nBuild and deploy serverless applications...",
 				"metadata": {
 					"status": 200,
@@ -170,6 +178,7 @@ Example response:
 			{
 				"url": "https://developers.cloudflare.com/workers/get-started/quickstarts/",
 				"status": "completed",
+				"outcome": "success",
 				"markdown": "## Quickstarts\nGet up and running with a simple Hello World...",
 				"metadata": {
 					"status": 200,
@@ -184,6 +193,37 @@ Example response:
 	"success": true
 }
 ```
+
+### URL outcomes
+
+Each record can include an `outcome` field that describes the result of processing its URL. The `status` field describes the current URL state, while `outcome` provides the specific result. The `outcome` field may be absent for older records.
+
+The possible outcomes are:
+
+| Outcome | Description |
+| --- | --- |
+| `success` | The URL was processed successfully. |
+| `robots_disallowed` | The site's `robots.txt` rules disallowed the URL. |
+| `crawl_purpose_disallowed` | A Content Signal disallowed a declared `crawlPurposes` value. |
+| `content_use_disallowed` | A Content Signal disallowed the declared `contentUse` level. |
+| `connection_error` | The crawler could not connect to the origin. |
+| `timeout` | Processing the URL timed out. |
+| `browser_unavailable` | A browser was not available to process the URL. |
+| `format_generation_error` | The crawler could not generate a requested output format. |
+| `unsupported_content_type` | The response used a content type that the crawler does not support. |
+| `unclassified_error` | Processing failed for a reason that the crawler could not classify. |
+| `page_error` | The page returned an HTTP error or encountered a page-level error. |
+| `too_large` | The response exceeded the crawler's size limit. |
+
+### robots.txt diagnostics
+
+The job-level `robots` array describes the `robots.txt` state for the first 50 origins encountered by the crawl. Each entry contains these fields:
+
+| Field | Description |
+| --- | --- |
+| `origin` | Origin whose `robots.txt` file was checked. |
+| `state` | Availability of usable `robots.txt` rules. Possible values are `available`, `absent`, and `fetch_failed`. |
+| `status` | HTTP status code that established the state. This field is absent when the crawler did not receive an HTTP response while requesting the `robots.txt` file. |
 
 ### Errored and blocked pages
 
@@ -635,5 +675,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/og.png?v=0071d0f11e705093","dateModified":"2026-10-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/og.png?v=0071d0f11e705093","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

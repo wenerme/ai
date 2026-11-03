@@ -1,223 +1,124 @@
-The models endpoint provides a way for you to programmatically list the available models, and retrieve extended metadata such as supported functionality and context window sizing. Read more in [the Models guide](https://ai.google.dev/gemini-api/docs/models/gemini).
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
 
-## Method: models.get
+# Models
 
-- [Endpoint](https://ai.google.dev/api/models#body.HTTP_TEMPLATE)
-- [Path parameters](https://ai.google.dev/api/models#body.PATH_PARAMETERS)
-- [Request body](https://ai.google.dev/api/models#body.request_body)
-- [Response body](https://ai.google.dev/api/models#body.response_body)
-- [Authorization scopes](https://ai.google.dev/api/models#body.aspect)
-- [Example request](https://ai.google.dev/api/models#body.codeSnippets)
-  - [Get](https://ai.google.dev/api/models#body.codeSnippets.group)
+The models endpoint provides a way for you to programmatically list the available models, and retrieve extended metadata such as supported functionality and context window sizing. Read more in [the Models guide](/docs/models).
 
-Gets information about a specific `Model` such as its version number, token limits, [parameters](https://ai.google.dev/gemini-api/docs/models/generative-models#model-parameters) and other metadata. Refer to the [Gemini models guide](https://ai.google.dev/gemini-api/docs/models/gemini) for detailed model information.
+## Methods  {% id="methods" %}
 
-### Endpoint
+{% table %}
+  * Method
+  * HTTP request
 
-get `https://generativelanguage.googleapis.com/v1beta/{name=models/*}`   
+  ---
 
-### Path parameters
+  * [Getting a model](/api-reference/models/get-model)
+  *     {% mark class="http-get" %}{% icon name="south_west" /%}`GET`{% /mark %} `/v1beta/models/{model}`
 
-`name` `string` Required. The resource name of the model.
+    Gets information about a specific [`Model`](/api-reference/models#Resource:Model) such as its version number, token limits, [parameters](/docs/prompting-strategies#model-parameters) and other metadata.
 
-This name should match a model name returned by the `models.list` method.
 
-Format: `models/{model}` It takes the form `models/{model}`.
+  ---
 
-### Request body
+  * [Listing models](/api-reference/models/list-models)
+  *     {% mark class="http-get" %}{% icon name="south_west" /%}`GET`{% /mark %} `/v1beta/models`
 
-The request body must be empty.
+    Lists the [`Model`s](/docs/models) available through the Gemini API.
 
-### Example request
+{% /table %}
 
-### Python
+## Resources  {% id="resources" %}
 
-    from google import genai
-
-    client = genai.Client()
-    model_info = client.models.get(model="gemini-3.8-flash")
-    print(model_info)
-
-### Go
-
-    ctx := context.Background()
-    client, err := genai.NewClient(ctx, &genai.ClientConfig{
-    	APIKey:  os.Getenv("GEMINI_API_KEY"),
-    	Backend: genai.BackendGeminiAPI,
-    })
-    if err != nil {
-    	log.Fatal(err)
-    }
-
-    modelInfo, err := client.Models.Get(ctx, "gemini-3.8-flash", nil)
-    if err != nil {
-    	log.Fatal(err)
-    }
-
-    fmt.Println(modelInfo)
-
-### Shell
-
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash?key=$GEMINI_API_KEYpan>.sh
-
-### Response body
-
-If successful, the response body contains an instance of `https://ai.google.dev/api/models#Model`.
-
-## Method: models.list
-
-- [Endpoint](https://ai.google.dev/api/models#body.HTTP_TEMPLATE)
-- [Query parameters](https://ai.google.dev/api/models#body.QUERY_PARAMETERS)
-- [Request body](https://ai.google.dev/api/models#body.request_body)
-- [Response body](https://ai.google.dev/api/models#body.response_body)
-  - [JSON representation](https://ai.google.dev/api/models#body.ListModelsResponse.SCHEMA_REPRESENTATION)
-- [Authorization scopes](https://ai.google.dev/api/models#body.aspect)
-- [Example request](https://ai.google.dev/api/models#body.codeSnippets)
-  - [List](https://ai.google.dev/api/models#body.codeSnippets.group)
-
-Lists the [`Model`s](https://ai.google.dev/gemini-api/docs/models/gemini) available through the Gemini API.
-
-### Endpoint
-
-get `https://generativelanguage.googleapis.com/v1beta/models`   
-
-### Query parameters
-
-`pageSize` `integer` The maximum number of `Models` to return (per page).
-
-If unspecified, 50 models will be returned per page. This method returns at most 1000 models per page, even if you pass a larger pageSize.
-`pageToken` `string` A page token, received from a previous `models.list` call.
-
-Provide the `pageToken` returned by one request as an argument to the next request to retrieve the next page.
-
-When paginating, all other parameters provided to `models.list` must match the call that provided the page token.
-
-### Request body
-
-The request body must be empty.
-
-### Example request
-
-### Python
-
-    from google import genai
-
-    client = genai.Client()
-
-    print("List of models that support generateContent:\n")
-    for m in client.models.list():
-      for action in m.supported_actions:
-        if action == "generateContent":
-          print(m.name)
-
-    print("List of models that support embedContent:\n")
-    for m in client.models.list():
-      for action in m.supported_actions:
-        if action == "embedContent":
-          print(m.name)
-
-### Go
-
-    ctx := context.Background()
-    client, err := genai.NewClient(ctx, &genai.ClientConfig{
-    	APIKey:  os.Getenv("GEMINI_API_KEY"),
-    	Backend: genai.BackendGeminiAPI,
-    })
-    if err != nil {
-    	log.Fatal(err)
-    }
-
-    // Retrieve the list of models.
-    models, err := client.Models.List(ctx, &genai.ListModelsConfig{})
-    if err != nil {
-    	log.Fatal(err)
-    }
-
-    fmt.Println("List of models that support generateContent:")
-    for _, m := range models.Items {
-    	for _, action := range m.SupportedActions {
-    		if action == "generateContent" {
-    			fmt.Println(m.Name)
-    			break
-    		}
-    	}
-    }
-
-    fmt.Println("\nList of models that support embedContent:")
-    for _, m := range models.Items {
-    	for _, action := range m.SupportedActions {
-    		if action == "embedContent" {
-    			fmt.Println(m.Name)
-    			break
-    		}
-    	}
-    }
-
-### Shell
-
-    curl https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEYpan>.sh
-
-### Response body
-
-Response from `ListModel` containing a paginated list of Models.
-
-If successful, the response body contains data with the following structure:
-Fields `models[]` ``object (`https://ai.google.dev/api/models#Model`)`` The returned Models.
-`nextPageToken` `string` A token, which can be sent as `pageToken` to retrieve the next page.
-
-If this field is omitted, there are no more pages.
-
-| JSON representation |
-|---|
-| ``` { "models": [ { object (`https://ai.google.dev/api/models#Model`) } ], "nextPageToken": string } ``` |
-
-## REST Resource: models
-
-- [Resource: Model](https://ai.google.dev/api/models#Model)
-  - [JSON representation](https://ai.google.dev/api/models#Model.SCHEMA_REPRESENTATION)
-- [Methods](https://ai.google.dev/api/models#METHODS_SUMMARY)
-
-## Resource: Model
+### Model  {% id="Resource:Model" %}
 
 Information about a Generative Language Model.
-Fields `name` `string` Required. The resource name of the `Model`. Refer to [Model variants](https://ai.google.dev/gemini-api/docs/models/gemini#model-variations) for all allowed values.
 
-Format: `models/{model}` with a `{model}` naming convention of:
+**Properties:**
 
-- "{baseModelId}-{version}"
+**name**: {% mark %}required{% /mark %} `string`
+
+The resource name of the [`Model`](/api-reference/models#Resource:Model). Refer to [Model variants](/docs/models#model-versions) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of:
+
+- "{base_model_id}-{version}"
 
 Examples:
 
 - `models/gemini-1.5-flash-001`
-`baseModelId` `string` Required. The name of the base model, pass this to the generation request.
 
-Examples:
+{% hr /%}
+
+**baseModelId**: {% mark %}required{% /mark %} `string`
+
+The name of the base model, pass this to the generation request. Examples:
 
 - `gemini-1.5-flash`
-`version` `string` Required. The version number of the model.
 
-This represents the major version (`1.0` or `1.5`)
-`displayName` `string` The human-readable name of the model. E.g. "Gemini 1.5 Flash".
+{% hr /%}
 
-The name can be up to 128 characters long and can consist of any UTF-8 characters.
-`description` `string` A short description of the model.
-`inputTokenLimit` `integer` Maximum number of input tokens allowed for this model.
-`outputTokenLimit` `integer` Maximum number of output tokens available for this model.
-`supportedGenerationMethods[]` `string` The model's supported generation methods.
+**version**: {% mark %}required{% /mark %} `string`
 
-The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
-`thinking` `boolean` Whether the model supports thinking.
-`temperature` `number` Controls the randomness of the output.
+The version number of the model. This represents the major version (`1.0` or `1.5`)
 
-Values can range over `[0.0,maxTemperature]`, inclusive. A higher value will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be used by the backend while making the call to the model.
-`maxTemperature` `number` The maximum temperature this model can use.
-`topP` `number` For [Nucleus sampling](https://ai.google.dev/gemini-api/docs/prompting-strategies#top-p).
+{% hr /%}
 
-Nucleus sampling considers the smallest set of tokens whose probability sum is at least `topP`. This value specifies default to be used by the backend while making the call to the model.
-`topK` `integer` For Top-k sampling.
+**displayName**: `string`
 
-Top-k sampling considers the set of `topK` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `topK` isn't allowed as a generation parameter.
+The human-readable name of the model. E.g. "Gemini 1.5 Flash". The name can be up to 128 characters long and can consist of any UTF-8 characters.
 
-| JSON representation |
-|---|
-| ``` { "name": string, "baseModelId": string, "version": string, "displayName": string, "description": string, "inputTokenLimit": integer, "outputTokenLimit": integer, "supportedGenerationMethods": [ string ], "thinking": boolean, "temperature": number, "maxTemperature": number, "topP": number, "topK": integer } ``` |
+{% hr /%}
+
+**description**: `string`
+
+A short description of the model.
+
+{% hr /%}
+
+**inputTokenLimit**: `integer`
+
+Maximum number of input tokens allowed for this model.
+
+{% hr /%}
+
+**outputTokenLimit**: `integer`
+
+Maximum number of output tokens available for this model.
+
+{% hr /%}
+
+**supportedGenerationMethods**: `array (string)`
+
+The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
+
+{% hr /%}
+
+**temperature**: `number`
+
+Controls the randomness of the output. Values can range over `[0.0,max_temperature]`, inclusive. A higher value will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be used by the backend while making the call to the model.
+
+{% hr /%}
+
+**maxTemperature**: `number`
+
+The maximum temperature this model can use.
+
+{% hr /%}
+
+**topP**: `number`
+
+For [Nucleus sampling](/docs/prompting-strategies#model-parameters). Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be used by the backend while making the call to the model.
+
+{% hr /%}
+
+**topK**: `integer`
+
+For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
+
+{% hr /%}
+
+**thinking**: `boolean`
+
+Whether the model supports thinking.
+

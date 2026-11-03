@@ -18,10 +18,10 @@ see [Leverage Requirements and Test management in your SDLC](https://www.youtube
    1. Create a GitLab server.
    1. Enable the `Xsquash4GitLab` plugin.
    1. Configure a synchronization.
-   1. From the **Real-time synchronization** panel, copy the following fields to use later in GitLab:
+   1. From the  panel, copy the following fields to use later in GitLab:
 
-      - **Webhook URL**.
-      - **Secret token** if your Squash TM system administrator configured one at step 1.
+      - .
+      -  if your Squash TM system administrator configured one at step 1.
 
 ## Configure GitLab
 
@@ -31,12 +31,12 @@ Prerequisites:
   On GitLab Self-Managed, an administrator can instead
   [allow requests to the local network](../../../security/webhooks.md#allow-requests-to-the-local-network-from-webhooks-and-integrations).
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **Integrations**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select **Squash TM**.
-1. Ensure that the **Active** toggle is enabled.
-1. In the **Trigger** section, indicate which type of issue is concerned by the real-time synchronization.
+1. Ensure that the  toggle is enabled.
+1. In the  section, indicate which type of issue is concerned by the real-time synchronization.
 1. Complete the fields:
 
-   - Enter the **Squash TM webhook URL**.
-   - Enter the **secret token** if your Squash TM system administrator configured it earlier.
+   - Enter the .
+   - Enter the  if your Squash TM system administrator configured it earlier.

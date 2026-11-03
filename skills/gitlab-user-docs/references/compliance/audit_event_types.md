@@ -538,6 +538,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`github_updates_stop_requested`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266762) | A user requests to stop GitHub updates for a project imported with continuous sync | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628593) | Project |
 | [`direct_transfer_relation_export_batch_downloaded`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194872) | Direct Transfer relation export batch downloaded | Yes | GitLab [18.2](https://gitlab.com/gitlab-org/gitlab/-/issues/441977) | Group, Project |
 | [`direct_transfer_relation_export_downloaded`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194872) | Direct Transfer relation export downloaded | Yes | GitLab [18.2](https://gitlab.com/gitlab-org/gitlab/-/issues/441977) | Group, Project |
 | [`direct_transfer_relations_export_initiated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/194872) | Direct Transfer relations export initiated | Yes | GitLab [18.2](https://gitlab.com/gitlab-org/gitlab/-/issues/441977) | Group, Project |

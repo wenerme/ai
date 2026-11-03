@@ -1,16 +1,23 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Rate limits
+
 Rate limits regulate the number of requests you can make to the Gemini API
 within a given timeframe. These limits help maintain fair usage, protect against
 abuse, and help maintain system performance for all users.
 
-[View your active rate limits in AI Studio](https://aistudio.google.com/rate-limit?timeRange=last-28-days)
+{% button href="https://aistudio.google.com/rate-limit?timeRange=last-28-days" variant="primary" %}View your active rate limits in AI Studio{% /button %}
 
-## How rate limits work
+## How rate limits work  {% id="how-rate-limits-work" %}
 
 Rate limits are usually measured across three dimensions:
 
-- Requests per minute (**RPM**)
-- Tokens per minute (input) (**TPM**)
-- Requests per day (**RPD**)
+* Requests per minute (**RPM**)
+* Tokens per minute (input) (**TPM**)
+* Requests per day (**RPD**)
 
 Your usage is evaluated against each limit, and exceeding any of them will
 trigger a rate limit error. For example, if your RPM limit is 20, making 21
@@ -23,41 +30,43 @@ quotas reset at midnight Pacific time.
 Limits vary depending on the specific model being used, and some limits only
 apply to specific models. For example, Images per minute, or IPM, is only
 calculated for models capable of generating images (Nano Banana), but is
-conceptually similar to TPM. Other models might have a token per day limit (TPD).
-Built-in tools also have specific rate limits. For example, Grounding with Google
-Search on Gemini 3 and newer models is subject to a default limit of 1,500 requests
-per day (RPD) per project on the Gemini Developer API (see
-[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search#pricing)).
+conceptually similar to TPM. Other models might have a token per day limit
+(TPD). Built-in tools also have specific rate limits. For example, Grounding
+with Google Search on Gemini 3 and newer models is subject to a default limit of
+1,500 requests per day (RPD) per project on the Gemini Developer API (see
+[Grounding with Google Search](/docs/google-search#pricing)).
 
 Rate limits are more restricted for experimental and preview models.
 
-### Spend-based rate limits
+### Spend-based rate limits  {% id="spend-rate-limits" %}
 
 In addition to requests per minute (RPM) and tokens per minute (TPM) limits, the
 Gemini API enforces spend-based rate limits to protect against unexpected
 charges. Whether these limits apply to your account depends on your billing
-history and [usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers).
+history and [usage tier](/docs/rate-limits#usage-tiers).
 
 The following table shows the spend-based rate limits for each
-[usage tier](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers). These limits are
-evaluated on a rolling 10-minute window. Whether these limits apply to your
-account depends on your billing history and account standing.
+[usage tier](/docs/rate-limits#usage-tiers). These limits are evaluated on a rolling 10-minute
+window. Whether these limits apply to your account depends on your billing
+history and account standing.
 
 | Usage tier | Spend rate limit (per 10 minutes) |
-|---|---|
+| :--- | :--- |
 | **Free** | N/A |
 | **Tier 1** | $10 |
-| **Tier 2** | $50 |
+| **Tier 2** | $200 |
 | **Tier 3** | $200 |
 
 If you hit a spend-based rate limit, the API returns a `429 RESOURCE_EXHAUSTED`
 error. To resolve this:
 
-- **Wait and retry** after a short period.
-- **Reduce the rate of expensive requests**, for example by using smaller context windows or shorter outputs.
-- If you consistently hit this limit during normal usage, [request a rate limit increase](https://ai.google.dev/gemini-api/docs/rate-limits#request-rate-limit-increase).
+* Wait and retry after a short period.
+* Reduce the rate of expensive requests, for example by using smaller context
+  windows or shorter outputs.
+* If you consistently hit this limit during normal usage,
+  [request a rate limit increase](/docs/rate-limits#request-rate-limit-increase).
 
-## Usage tiers
+## Usage tiers  {% id="usage-tiers" %}
 
 Rate limits are tied to the project's usage tier. As your API usage and spending
 increase, you'll be automatically upgraded to a higher tier with increased rate
@@ -67,10 +76,10 @@ The qualifications for Tiers 2 and 3 are based on the total cumulative spending
 on Google Cloud services (including, but not limited to, the Gemini API) for the
 billing account linked to your project.
 
-| Usage tier | Qualification | [Billing tier cap](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) |
-|---|---|---|
-| **Free** | [Active project](https://ai.google.dev/gemini-api/docs/api-key#google-cloud-projects) or free trial | N/A |
-| **Tier 1** | [Set up and link an active billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) | $250 |
+| Usage tier | Qualification | [Billing tier cap](/docs/billing#tier-spend-caps) |
+| :--- | :--- | :--- |
+| **Free** | [Active project](/docs/api-key#google-cloud-projects) or free trial | N/A |
+| **Tier 1** | [Set up and link an active billing account](/docs/billing#setup-billing) | $250 |
 | **Tier 2** | Paid $100 + 3 days from first successful payment | $2,000 |
 | **Tier 3** | Paid $1,000 + 30 days from first successful payment | $20,000 - $100,000+ |
 
@@ -81,138 +90,409 @@ other factors identified during the review process.
 This system helps maintain the security and integrity of the Gemini API platform
 for all users.
 
-## Gemini API rate limits
+## Gemini API rate limits  {% id="current-rate-limits" %}
 
 Rate limits depend on a variety of factors (such as your usage tier) and can be
 viewed in Google AI Studio. As your tier and account status change over time,
 your rate limits will automatically update.
 
-[View your active rate limits in AI Studio](https://aistudio.google.com/rate-limit?timeRange=last-28-days)
+{% button href="https://aistudio.google.com/rate-limit?timeRange=last-28-days" variant="primary" %}View your active rate limits in AI Studio{% /button %}
 
 Specified rate limits are not guaranteed and actual capacity may vary.
 
-## Priority inference rate limits
+## Priority inference rate limits  {% id="priority" %}
 
-[Priority](https://ai.google.dev/gemini-api/docs/priority-inference) consumption holds its own rate
+[Priority](/docs/priority-inference) consumption holds its own rate
 limits even though consumption is counted towards overall interactive traffic
-rate limits. **Default rate limits are: 0.3x the
-[standard rate limit](https://aistudio.google.com/rate-limit)
-for each model and tier**
+rate limits. **Default rate limits are: 0.3x the [standard rate limit](https://aistudio.google.com/rate-limit) for each model and tier**
 
-## Batch API rate limits
+## Batch API rate limits  {% id="batch-api" %}
 
-[Batch API](https://ai.google.dev/gemini-api/docs/batch-api) requests are subject to their own rate
+[Batch API](/docs/batch-api) requests are subject to their own rate
 limits, separate from the non-batch API calls.
 
-- **Concurrent batch requests:** 100
-- **Input file size limit:** 2GB
-- **File storage limit:** 20GB
-- **Enqueued tokens per model:** The **Batch enqueued tokens** table lists the maximum number of tokens that can be enqueued for batch processing across all your active batch jobs for a given model.
+* **Concurrent batch requests:** 100
+* **Input file size limit:** 2GB
+* **File storage limit:** 20GB
+* **Enqueued tokens per model:** The **Batch enqueued tokens** table lists the
+  maximum number of tokens that can be enqueued for batch processing across
+  all your active batch jobs for a given model.
 
-### Tier 1
+{% tabs %}
+  {% tab title="Tier 1" %}
+  {% table %}
+  * Model
+  * Batch enqueued tokens
 
-| Model | Batch enqueued tokens |
-| Text-out models |||||
-|---|---|---|---|---|
-| Gemini 4 Argon | 5,000,000 |
-| Gemini 3.1 Pro Preview | 5,000,000 |
-| Gemini 3.5 Flash-Lite | 10,000,000 |
-| Gemini 3.8 Flash | 3,000,000 |
-| Gemini 3.1 Flash Lite | 10,000,000 |
-| Gemini 3.1 Flash Lite Preview | 10,000,000 |
-| Gemini 3.6 Flash | 3,000,000 |
-| Gemini 2.5 Pro | 5,000,000 |
-| Gemini 2.5 Pro TTS | 25,000 |
-| Gemini 2.5 Flash | 3,000,000 |
-| Gemini 2.5 Flash Preview | 3,000,000 |
-| Gemini 2.5 Flash Image Preview | 3,000,000 |
-| Gemini 2.5 Flash TTS | 100,000 |
-| Gemini 2.5 Flash Lite | 10,000,000 |
-| Gemini 2.5 Flash Lite Preview | 10,000,000 |
-| Gemini 2.0 Flash | 10,000,000 |
-| Gemini 2.0 Flash Image | 3,000,000 |
-| Gemini 2.0 Flash Lite | 10,000,000 |
-| Gemini 3.1 Flash Image Preview 🍌 | 1,000,000 |
-| Gemini 3.1 Flash Lite Image 🍌 | 2,000,000 |
-| Gemini 3 Pro Image Preview 🍌 | 2,000,000 |
-| Gemini Embedding | 500,000 |
+  ---
 
-### Tier 2
+  * Gemini 4 Argon
+  * 5,000,000
 
-| Model | Batch enqueued tokens |
-| Text-out models |||||
-|---|---|---|---|---|
-| Gemini 4 Argon | 500,000,000 |
-| Gemini 3.1 Pro Preview | 500,000,000 |
-| Gemini 3.5 Flash-Lite | 500,000,000 |
-| Gemini 3.1 Flash Lite | 500,000,000 |
-| Gemini 3.1 Flash Lite Preview | 500,000,000 |
-| Gemini 3.8 Flash | 400,000,000 |
-| Gemini 3.6 Flash | 400,000,000 |
-| Gemini 2.5 Pro | 500,000,000 |
-| Gemini 2.5 Pro TTS | 100,000 |
-| Gemini 2.5 Flash | 400,000,000 |
-| Gemini 2.5 Flash Preview | 400,000,000 |
-| Gemini 2.5 Flash Image Preview | 400,000,000 |
-| Gemini 2.5 Flash TTS | 100,000 |
-| Gemini 2.5 Flash Lite | 500,000,000 |
-| Gemini 2.5 Flash Lite Preview | 500,000,000 |
-| Gemini 2.0 Flash | 1,000,000,000 |
-| Gemini 2.0 Flash Image | 400,000,000 |
-| Gemini 2.0 Flash Lite | 1,000,000,000 |
-| Gemini 3.1 Flash Image Preview 🍌 | 250,000,000 |
-| Gemini 3.1 Flash Lite Image 🍌 | 270,000,000 |
-| Gemini 3 Pro Image Preview 🍌 | 270,000,000 |
-| Gemini Embedding | 5,000,000 |
+  ---
 
-### Tier 3
+  * Gemini 3.1 Pro Preview
+  * 5,000,000
 
-| Model | Batch enqueued tokens |
-| Text-out models |||||
-|---|---|---|---|---|
-| Gemini 4 Argon | 1,000,000,000 |
-| Gemini 3.1 Pro Preview | 1,000,000,000 |
-| Gemini 3.5 Flash-Lite | 1,000,000,000 |
-| Gemini 3.1 Flash Lite | 1,000,000,000 |
-| Gemini 3.1 Flash Lite Preview | 1,000,000,000 |
-| Gemini 3.8 Flash | 1,000,000,000 |
-| Gemini 3.6 Flash | 1,000,000,000 |
-| Gemini 2.5 Pro | 1,000,000,000 |
-| Gemini 2.5 Pro TTS | 1,000,000 |
-| Gemini 2.5 Flash | 1,000,000,000 |
-| Gemini 2.5 Flash Preview | 1,000,000,000 |
-| Gemini 2.5 Flash Image Preview | 1,000,000,000 |
-| Gemini 2.5 Flash TTS | 4,000,000 |
-| Gemini 2.5 Flash Lite | 1,000,000,000 |
-| Gemini 2.5 Flash Lite Preview | 1,000,000,000 |
-| Gemini 2.0 Flash | 5,000,000,000 |
-| Gemini 2.0 Flash Image | 1,000,000,000 |
-| Gemini 2.0 Flash Lite | 5,000,000,000 |
-| Gemini 3.1 Flash Image Preview 🍌 | 750,000,000 |
-| Gemini 3.1 Flash Lite Image 🍌 | 1,000,000,000 |
-| Gemini 3 Pro Image Preview 🍌 | 1,000,000,000 |
-| Gemini Embedding | 10,000,000 |
+  ---
 
-## How to upgrade to the next tier
+  * Gemini 3.8 Flash
+  * 3,000,000
+
+  ---
+
+  * Gemini 3.6 Flash
+  * 3,000,000
+
+  ---
+
+  * Gemini 3.5 Flash-Lite
+  * 10,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite
+  * 10,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Preview
+  * 10,000,000
+
+  ---
+
+  * Gemini 2.5 Pro
+  * 5,000,000
+
+  ---
+
+  * Gemini 2.5 Pro TTS
+  * 25,000
+
+  ---
+
+  * Gemini 2.5 Flash
+  * 3,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Preview
+  * 3,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Image Preview
+  * 3,000,000
+
+  ---
+
+  * Gemini 2.5 Flash TTS
+  * 100,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite
+  * 10,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite Preview
+  * 10,000,000
+
+  ---
+
+  * Gemini 2.0 Flash
+  * 10,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Image
+  * 3,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Lite
+  * 10,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Image Preview 🍌
+  * 1,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Image 🍌
+  * 2,000,000
+
+  ---
+
+  * Gemini 3 Pro Image Preview 🍌
+  * 2,000,000
+
+  ---
+
+  * Gemini Embedding
+  * 500,000
+  {% /table %}
+
+  {% /tab %}
+
+  {% tab title="Tier 2" %}
+  {% table %}
+  * Model
+  * Batch enqueued tokens
+
+  ---
+
+  * Gemini 4 Argon
+  * 500,000,000
+
+  ---
+
+  * Gemini 3.1 Pro Preview
+  * 500,000,000
+
+  ---
+
+  * Gemini 3.5 Flash-Lite
+  * 500,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite
+  * 500,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Preview
+  * 500,000,000
+
+  ---
+
+  * Gemini 3.8 Flash
+  * 400,000,000
+
+  ---
+
+  * Gemini 3.6 Flash
+  * 400,000,000
+
+  ---
+
+  * Gemini 2.5 Pro
+  * 500,000,000
+
+  ---
+
+  * Gemini 2.5 Pro TTS
+  * 100,000
+
+  ---
+
+  * Gemini 2.5 Flash
+  * 400,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Preview
+  * 400,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Image Preview
+  * 400,000,000
+
+  ---
+
+  * Gemini 2.5 Flash TTS
+  * 100,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite
+  * 500,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite Preview
+  * 500,000,000
+
+  ---
+
+  * Gemini 2.0 Flash
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Image
+  * 400,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Lite
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Image Preview 🍌
+  * 250,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Image 🍌
+  * 270,000,000
+
+  ---
+
+  * Gemini 3 Pro Image Preview 🍌
+  * 270,000,000
+
+  ---
+
+  * Gemini Embedding
+  * 5,000,000
+  {% /table %}
+
+  {% /tab %}
+
+  {% tab title="Tier 3" %}
+  {% table %}
+  * Model
+  * Batch enqueued tokens
+
+  ---
+
+  * Gemini 4 Argon
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.1 Pro Preview
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.5 Flash-Lite
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Preview
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.8 Flash
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3.6 Flash
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Pro
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Pro TTS
+  * 1,000,000
+
+  ---
+
+  * Gemini 2.5 Flash
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Preview
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Image Preview
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Flash TTS
+  * 4,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.5 Flash Lite Preview
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.0 Flash
+  * 5,000,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Image
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 2.0 Flash Lite
+  * 5,000,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Image Preview 🍌
+  * 750,000,000
+
+  ---
+
+  * Gemini 3.1 Flash Lite Image 🍌
+  * 1,000,000,000
+
+  ---
+
+  * Gemini 3 Pro Image Preview 🍌
+  * 1,000,000,000
+
+  ---
+
+  * Gemini Embedding
+  * 10,000,000
+  {% /table %}
+
+  {% /tab %}
+
+{% /tabs %}
+
+## How to upgrade to the next tier  {% id="how-to-upgrade-to-the-next-tier" %}
 
 To transition from the Free tier to a paid tier, you must first
-[set up billing in AI Studio](https://ai.google.dev/gemini-api/docs/billing).
+[set up billing in AI Studio](/docs/billing).
 
-Once your project meets the
-[specified criteria](https://ai.google.dev/gemini-api/docs/rate-limits#usage-tiers), it will be
+Once your project meets the [specified criteria](/docs/rate-limits#usage-tiers), it will be
 automatically upgraded to the next tier. Tier upgrades from the Free to Tier 1
 will typically take effect instantly, and subsequent tier upgrades will take
-effect within 10 minutes. Navigate to the
-[Projects page](https://aistudio.google.com/projects) in AI Studio to check your
-tiers.
+effect within 10 minutes. Navigate to the [Projects page](https://aistudio.google.com/projects) in AI Studio to check your tiers.
 
-## Request a rate limit increase
+## Request a rate limit increase  {% id="request-rate-limit-increase" %}
 
 Each model variation has an associated rate limit (requests per minute, RPM).
 For details on those rate limits, see the
 [AI Studio Rate Limit](https://aistudio.google.com/rate-limit) page.
 
-[Request paid tier rate limit increase](https://forms.gle/ETzX94k8jf7iSotH9)
+{% button href="https://forms.gle/ETzX94k8jf7iSotH9" variant="primary" %}Request paid tier rate limit increase{% /button %}
 
 We offer no guarantees about increasing your rate limit, but we'll do our best
 to review your request.
+

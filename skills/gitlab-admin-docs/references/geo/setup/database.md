@@ -23,7 +23,7 @@ testing or production environments.
 
 > [!note]
 > The stages of the setup process must be completed in the documented order.
-> If not, [complete all prior stages](_index.md#using-linux-package-installations) before proceeding.
+> If not, [complete all prior stages](_index.md#build-a-path-from-the-general-steps) before proceeding.
 
 ## Database password consistency requirements
 
@@ -674,6 +674,8 @@ On all GitLab Geo secondary sites:
 
 ## Multi-node database replication
 
+Use Patroni to run a highly available PostgreSQL cluster on the primary and secondary Geo sites.
+
 ### Migrating a single PostgreSQL node to Patroni
 
 Before the introduction of Patroni, Geo had no support for Linux package installations for HA setups on the secondary site.
@@ -965,7 +967,12 @@ For each Patroni node on the secondary site:
 1. Edit `/etc/gitlab/gitlab.rb` and add the following:
 
    > [!warning]
-   > Each password type must have [matching values](#database-password-consistency-requirements) across all Geo sites.
+   > - Each password type must have [matching values](#database-password-consistency-requirements) across all Geo sites.
+   > - On Patroni database nodes, use `patroni_role` as shown in the following example.
+   >   Do not set `geo_secondary_role` or `geo_primary_role`.
+   >   These roles are intended for single-node sites and are unsupported on Patroni nodes.
+   >   The [GitLab chart Geo guide](https://docs.gitlab.com/charts/advanced/geo/) uses these roles
+   >   for a single-node, non-Patroni database.
 
    ```ruby
    roles(['consul_role', 'patroni_role'])

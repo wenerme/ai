@@ -4515,11 +4515,11 @@ Creates a custom dashboard in an organization.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `config` | [`CustomDashboardConfigInput!`](input_objects.md#customdashboardconfiginput) | Dashboard layout/config. |
+| `config` | [`JSON!`](scalars.md#json) | Dashboard config, validated against the analytics dashboard JSON schema. |
 | `description` | [`String`](scalars.md#string) | Dashboard description. |
 | `name` | [`String!`](scalars.md#string) | Dashboard name. |
 | `namespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Namespace to scope the dashboard to. |
-| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization the dashboard belongs to. Defaults to the current organization if not provided. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization the dashboard belongs to. Must be the current organization, which is used when not provided. |
 
 ### `createCustomDashboard` fields {.no_toc}
 
@@ -11182,8 +11182,8 @@ Deprecated in GitLab 17.3. CVS has been enabled permanently. See [this epic](htt
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `projectPath` | [`ID!`](scalars.md#id) | Full path of the project to initialize. |
-| `targetBranch` | [`String!`](scalars.md#string) | Ref of the fork to fetch into. |
+| `projectPath` | [`ID!`](scalars.md#id) | Full path of the fork to update. |
+| `targetBranch` | [`String!`](scalars.md#string) | Branch of the fork to merge the upstream default branch into. |
 
 ### `projectSyncFork` fields {.no_toc}
 
@@ -13745,7 +13745,7 @@ Updates a custom dashboard.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `config` | [`CustomDashboardConfigInput`](input_objects.md#customdashboardconfiginput) | Dashboard layout/config. |
+| `config` | [`JSON`](scalars.md#json) | Dashboard config, validated against the analytics dashboard JSON schema. |
 | `description` | [`String`](scalars.md#string) | Dashboard description. |
 | `id` | [`AnalyticsCustomDashboardsDashboardID!`](scalars.md#analyticscustomdashboardsdashboardid) | Global ID of the dashboard to update. |
 | `name` | [`String`](scalars.md#string) | Dashboard name. |

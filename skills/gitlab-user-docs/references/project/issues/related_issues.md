@@ -22,12 +22,12 @@ Prerequisites:
 
 To link one issue to another:
 
-1. In the **Linked items** section of an issue,
+1. In the  section of an issue,
    select the add linked issue button ().
 1. Select the relationship between the two issues. Either:
-   - **relates to**
-   - [**blocks**](#blocking-issues)
-   - [**is blocked by**](#blocking-issues)
+   -
+   - [](#blocking-issues)
+   - [](#blocking-issues)
 1. Input the issue number or paste in the full URL of the issue.
 
    [Linking related issues with the current issue]
@@ -42,7 +42,7 @@ To link one issue to another:
 
    Valid references are added to a temporary list that you can review.
 
-1. When you have added all the linked issues, select **Add**.
+1. When you have added all the linked issues, select .
 
 When you have finished adding all linked issues, you can see
 them categorized so their relationships can be better understood visually.
@@ -54,7 +54,7 @@ For more information, see [crosslinking issues](crosslinking_issues.md).
 
 ## Remove a linked issue
 
-In the **Linked items** section of an issue, select the remove button () on the
+In the  section of an issue, select the remove button () on the
 right side of each issue token to remove.
 
 Due to the bi-directional relationship, the relationship no longer appears in either issue.
@@ -68,8 +68,8 @@ Access our [permissions](../../permissions.md) page for more information.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-When you [add a linked issue](#add-a-linked-issue), you can show that it **blocks** or
-**is blocked by** another issue.
+When you [add a linked issue](#add-a-linked-issue), you can show that it  or
+ another issue.
 
 Issues blocked by other issues have an icon () next to their title, shown in the
 issue lists and [boards](../issue_board.md).

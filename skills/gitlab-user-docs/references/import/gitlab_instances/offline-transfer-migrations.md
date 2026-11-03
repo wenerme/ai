@@ -110,6 +110,7 @@ list of restrictions, see
   in GitLab 19.5.
 - Importing of group and project badges [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/538355)
   in GitLab 19.5.
+- Importing of snippets [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/538347) in GitLab 19.6.
 
 Offline transfer imports the same group and project items as migration by direct transfer.
 For the full list, see [migrated group items](../../group/import/migrated_items.md#migrated-group-items) and
@@ -118,7 +119,6 @@ For the full list, see [migrated group items](../../group/import/migrated_items.
 The following items are not imported by offline transfer:
 
 - Wikis. Support for wiki import is proposed in [work item 538858](https://gitlab.com/gitlab-org/gitlab/-/work_items/538858).
-- Snippets. Support for snippet import is proposed in [work item 538347](https://gitlab.com/gitlab-org/gitlab/-/work_items/538347).
 
 When you import a group, its subgroups and projects are always imported if they are present in
 the export.

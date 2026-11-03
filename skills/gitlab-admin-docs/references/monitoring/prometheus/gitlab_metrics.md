@@ -109,6 +109,7 @@ The following metrics are available:
 | `gitlab_find_dependency_paths_real_duration_seconds`                           | Histogram |  18.3 |                                                                         | Duration in seconds spent resolving the ancestor dependency paths for a given component. |
 | `gitlab_ghost_user_migration_lag_seconds`                                      | Gauge     |  15.6 |                                                                         | The waiting time in seconds of the oldest scheduled record for ghost user migration |
 | `gitlab_ghost_user_migration_scheduled_records_total`                          | Gauge     |  15.6 |                                                                         | The total number of scheduled ghost user migrations |
+| `gitlab_global_search_duration_seconds`                                        | Histogram |  19.6 | `search_type`, `search_level`, `search_scope`                           | Duration in seconds of successful global searches. Autocomplete requests have empty labels, and count-only requests (`SearchController#count`, EE `#aggregations`, and count-only GraphQL blob searches) are excluded. |
 | `gitlab_graphql_return_type_conflicts_total`                                   | Counter   |  19.4 | `field`, `operation`, `types`                                           | Number of GraphQL queries selecting mismatched types for the same response key |
 | `gitlab_highlight_usage`                                                       | Counter   |  16.8 | `used_on`                                                               | The number of times `Gitlab::Highlight` is used |
 | `gitlab_http_router_rule_total`                                                | Counter   |  17.4 | `rule_action`, `rule_type`                                              | Counts occurrences of HTTP Router rule's `rule_action` and `rule_type` |
@@ -562,6 +563,7 @@ The following metrics can be controlled by feature flags:
 | `gitlab_ci_queue_active_runners_total`       | `gitlab_ci_builds_queuing_metrics` |
 | `gitaly_circuit_breaker_requests_total`      | `add_circuit_breaker_to_gitaly`    |
 | `gitaly_circuit_breaker_transitions_total`   | `add_circuit_breaker_to_gitaly`    |
+| `gitlab_global_search_duration_seconds`      | `global_search_duration_histogram` |
 | `ruby_gvl_wait_seconds_total`                | `enable_sidekiq_gvl_metrics`       |
 | `ruby_gvl_wait_seconds_total`                | `enable_puma_gvl_metrics`          |
 

@@ -192,6 +192,23 @@ If you parse stack traces, for example in a [Tail Worker](https://developers.clo
 
 WebAssembly that your code compiles from bytes, for example with `new WebAssembly.Module(bytes)`, keeps the hash name, as do WebAssembly bindings in Workers that use the service worker syntax.
 
+### Report Node.js 24 as `process.version`
+
+| **Default as of** | 2026-11-24 |
+| --- | --- |
+| **Flag to enable** | `nodejs_process_version_24` |
+| **Flag to disable** | `no_nodejs_process_version_24` |
+
+When you enable the `nodejs_process_version_24` compatibility flag along with the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) flag, `process.version` and `process.versions.node` report the latest Node.js 24 release instead of the latest Node.js 22 release.
+
+```js
+process.version; // "v24.22.2" with the flag, "v22.23.4" without it
+```
+
+Workers provide [a subset of Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). `process.version` and `process.versions.node` tell libraries which Node.js release the [Node.js compatibility layer](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) targets. Libraries often check them to decide which features to use, so with this flag a library may take code paths written for Node.js 24.
+
+To keep reporting Node.js 22 after the compatibility date, set the `no_nodejs_process_version_24` flag.
+
 ### Share Python standard library across Python Workers
 
 | **Default as of** | 2026-11-19 |

@@ -17,6 +17,10 @@
 }
 ---
 
+> **caution**: Experimental feature
+
+Doris continuous load is experimental and supported starting with Doris 4.1.5.
+
 Doris streaming ingestion supports synchronizing data from **Amazon RDS PostgreSQL 14 and above**. Before starting a sync task, you must enable **Logical Replication** on the RDS instance and complete the configuration of the sync user, permissions, and Publication.
 
 This document is intended for RDS PostgreSQL instance administrators and describes the prerequisite steps required for Doris streaming ingestion.
@@ -142,18 +146,6 @@ Privilege overview:
 
 ## Step 5: Configure the Publication
 
-### Doris 4.0
-
-A Publication named `dbz_publication` must be created in advance with `FOR ALL TABLES`:
-
-```sql
-CREATE PUBLICATION dbz_publication FOR ALL TABLES;
-```
-
-If the sync user has superuser privileges, such as the `rds_superuser` role, Doris can automatically create `dbz_publication` when the task starts, and you do not need to execute this statement manually. Doris 4.0 does not support custom Publication names or Publications that contain only a subset of tables.
-
-### Doris 4.1.0 and later
-
 By default, you do not need to create a Publication manually. When `publication_name` is not set, Doris uses the sync account to create a Publication named `doris_pub_<job_id>` and cleans it up when the job is deleted. The sync account therefore needs permission to create Publications.
 
 If `publication_name` is explicitly set when creating the Streaming Job, create a Publication with the same name in advance. A custom Publication must include all source tables synchronized by the job and must be maintained and cleaned up by the user. For example:
@@ -175,7 +167,7 @@ No. `on` means logical replication is already in effect, and you can skip direct
 
 **Q2: Can I use a Publication with a different name?**
 
-Doris 4.0 does not support custom names and only supports `dbz_publication FOR ALL TABLES`. Since version 4.1.0, you can specify a custom name through `publication_name`, but you must create the Publication before creating the job and ensure that it includes all synchronized tables.
+You can specify a custom name through `publication_name`, but you must create the Publication before creating the job and ensure that it includes all synchronized tables.
 
 **Q3: Is it required to use the `rds_replication` role?**
 
@@ -183,7 +175,7 @@ Yes. For security reasons, RDS PostgreSQL does not allow using the standard Post
 
 **Q4: Is it mandatory to manually create the Publication?**
 
-In Doris 4.0, a regular sync user must create `dbz_publication` manually, while Doris can create it automatically when the user has superuser privileges. Since version 4.1.0, when `publication_name` is omitted, Doris automatically creates and manages the default Publication. Only a custom Publication must be created in advance. For details, see [Step 5](#step-5-configure-the-publication).
+When `publication_name` is omitted, Doris automatically creates and manages the default Publication. Only a custom Publication must be created in advance. For details, see [Step 5](#step-5-configure-the-publication).
 
 ---
 
@@ -194,7 +186,6 @@ In Doris 4.0, a regular sync user must create `dbz_publication` manually, while 
 | `SHOW rds.logical_replication;` still returns `off` | The parameter group is not bound to the instance, or the instance has not been restarted | Check whether the instance uses the new parameter group, and restart it |
 | Permission error when creating the user | The current account does not have sufficient privileges | Use an administrator account with the privilege to create users |
 | `GRANT rds_replication` returns an error | The current account does not have permission to grant this role | Use an `rds_superuser` account or another account with the grant privilege |
-| Doris 4.0 reports that `dbz_publication` does not exist | `dbz_publication` has not been created, and the sync account lacks superuser privileges | Execute `CREATE PUBLICATION dbz_publication FOR ALL TABLES;`, or use an account with the required privileges |
-| Doris 4.1.0 or later fails to create the default Publication | The sync account lacks permission to create Publications | Grant the required privileges to the sync account, or have an administrator create a custom Publication in advance and configure `publication_name` |
-| Doris 4.1.0 or later reports that a custom Publication does not exist | `publication_name` is configured, but a Publication with the same name has not been created | Create the Publication as described in [Step 5](#step-5-configure-the-publication), or remove `publication_name` to use the default Publication managed by Doris |
+| The default Publication cannot be created | The sync account lacks permission to create Publications | Grant the required privileges to the sync account, or have an administrator create a custom Publication in advance and configure `publication_name` |
+| A custom Publication does not exist | `publication_name` is configured, but a Publication with the same name has not been created | Create the Publication as described in [Step 5](#step-5-configure-the-publication), or remove `publication_name` to use the default Publication managed by Doris |
 | Parameter changes do not take effect | **Apply immediately** was not selected, or the instance was not restarted | Re-execute [Step 3](#step-3-apply-the-parameter-group-and-restart) |

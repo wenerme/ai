@@ -50,10 +50,10 @@ To learn how to create better OKRs and how we use them at GitLab, see the
 
 To create an objective:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**.
-1. In the upper-right corner, select **New item**.
-1. For **Type**, select **Objective**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. In the upper-right corner, select .
+1. For , select **Objective**.
 1. Enter the objective title.
 1. Select **Create objective**.
 
@@ -63,8 +63,8 @@ To create a key result, [add it as a child](#add-a-child-key-result) to an exist
 
 To view an objective:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. [Filter the list of work items](project/issues/managing_issues.md#filter-the-list-of-issues)
    for `Type = Objective`.
 1. Select the title of an objective from the list.
@@ -73,13 +73,13 @@ To view an objective:
 
 To view a key result:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. [Filter the list of work items](project/issues/managing_issues.md#filter-the-list-of-issues)
    for `Type = Key Result`.
 1. Select the title of a key result from the list.
 
-Alternatively, you can access a key result from the **Child items** section in
+Alternatively, you can access a key result from the  section in
 its parent's objective.
 
 ## Edit title and description
@@ -96,21 +96,21 @@ To edit an OKR:
 1. Optional. To edit the title, select it, make your changes, and select any area outside the title
    text box.
 1. Optional. To edit the description, select the edit icon (), make your changes, and
-   select **Save**.
+   select .
 
 ## Prevent truncating descriptions with **Read more**
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181184) in GitLab 17.10.
 
 If an OKR description is long, GitLab displays only part of it.
-To see the whole description, you must select **Read more**.
+To see the whole description, you must select .
 This truncation makes it easier to find other elements on the page without scrolling through lengthy text.
 
 To change whether descriptions are truncated:
 
-1. On an objective or key result, in the upper-right corner, select **More actions** ().
-1. Select **View options**.
-1. Toggle **Truncate descriptions** according to your preference.
+1. On an objective or key result, in the upper-right corner, select  ().
+1. Select .
+1. Toggle  according to your preference.
 
 This setting is remembered and affects all issues, tasks, epics, objectives, and key results.
 
@@ -121,15 +121,15 @@ This setting is remembered and affects all issues, tasks, epics, objectives, and
 Attributes are shown in a sidebar to the right of the description when space allows.
 To hide the sidebar and increase space for the description:
 
-1. On an objective or key result, in the upper-right corner, select **More actions** ().
-1. Select **View options**.
-1. Select **Hide sidebar**.
+1. On an objective or key result, in the upper-right corner, select  ().
+1. Select .
+1. Select .
 
 This setting is remembered and affects all issues, tasks, epics, objectives, and key results.
 
 To show the sidebar again:
 
-- Repeat the previous steps and select **Show sidebar**.
+- Repeat the previous steps and select .
 
 ## View OKR system notes
 
@@ -143,8 +143,8 @@ Prerequisites:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project.
 
-You can view all the [system notes](project/system_notes.md) related to the OKR. By default they are sorted by **Oldest first**.
-You can always change the sorting order to **Newest first**, which is remembered across sessions.
+You can view all the [system notes](project/system_notes.md) related to the OKR. By default they are sorted by .
+You can always change the sorting order to , which is remembered across sessions.
 
 ## Comments and threads
 
@@ -163,7 +163,7 @@ Prerequisites:
 To change the assignee on an OKR:
 
 1. [Open the objective](#view-an-objective) or [key result](#view-a-key-result) that you want to edit.
-1. Next to **Assignees**, select **Add assignees**.
+1. Next to , select .
 1. From the dropdown list, select the users to add as an assignee.
 1. Select any area outside the dropdown list.
 
@@ -180,7 +180,7 @@ Use [labels](project/labels.md) to organize OKRs among teams.
 To add labels to an OKR:
 
 1. [Open the objective](#view-an-objective) or [key result](#view-a-key-result) that you want to edit.
-1. Next to **Labels**, select **Add labels**.
+1. Next to , select .
 1. From the dropdown list, select the labels to add.
 1. Select any area outside the dropdown list.
 
@@ -198,7 +198,7 @@ Prerequisites:
 To add an objective to a milestone:
 
 1. [Open the objective](#view-an-objective) that you want to edit.
-1. Next to **Milestone**, select **Add to milestone**.
+1. Next to , select .
    If an objective already belongs to a milestone, the dropdown list shows the current milestone.
 1. From the dropdown list, select the milestone to be associated with the objective.
 
@@ -221,11 +221,11 @@ Prerequisites:
 
 To set progress of an objective or key result:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. [Filter the list of work items](project/issues/managing_issues.md#filter-the-list-of-issues)
    for `Type = Objective` or `Type = Key Result` and select your item.
-1. Next to **Progress**, select the text box.
+1. Next to , select the text box.
 1. Enter a number from 0 to 100.
 
 ## Set health status
@@ -244,7 +244,7 @@ Prerequisites:
 To set health status of an OKR:
 
 1. [Open the key result](#view-a-key-result) that you want to edit.
-1. Next to **Health status**, select the dropdown list and select the desired health status.
+1. Next to , select the dropdown list and select the desired health status.
 
 ## Promote a key result to an objective
 
@@ -258,7 +258,7 @@ To promote a key result:
 
 1. [Open the key result](#view-a-key-result).
 1. In the upper-right corner, select the vertical ellipsis ().
-1. Select **Promote to objective**.
+1. Select .
 
 Alternatively, use the [`/promote_to objective` quick action](project/quick_actions.md#promote_to).
 
@@ -284,12 +284,12 @@ Prerequisites:
 
 To convert an OKR into another item type:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**, then select your issue to view it.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > , then select your issue to view it.
 1. In the list, find your objective or key result and select it.
-1. In the upper-right corner, select **More actions** (), then select **Change type**.
+1. In the upper-right corner, select  (), then select .
 1. Select the desired item type.
-1. If all conditions are met, select **Change type**.
+1. If all conditions are met, select .
 
 Alternatively, you can use the [`/type` quick action](project/quick_actions.md#type), followed
 by `issue`, `task`, `objective`, or `key result` in a comment.
@@ -301,9 +301,9 @@ To refer to an objective or key result elsewhere in GitLab, you can use its full
 
 To copy the objective or key result reference to your clipboard:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**, then select your objective or key result to view it.
-1. In the upper-right corner, select the vertical ellipsis (), then select **Copy reference**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > , then select your objective or key result to view it.
+1. In the upper-right corner, select the vertical ellipsis (), then select .
 
 You can now paste the reference into another description or comment.
 
@@ -319,8 +319,8 @@ For more information about creating comments by sending an email and the necessa
 
 To copy the objective's or key result's email address:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Work items**, then select your objective to view it.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > , then select your objective to view it.
 1. In the upper-right corner, select the vertical ellipsis (), then select **Copy objective email address** or **Copy key result email address**.
 
 ## Close an OKR
@@ -337,7 +337,7 @@ Prerequisites:
 To close an OKR:
 
 1. [Open the objective](#view-an-objective) that you want to edit.
-1. Next to **Status**, select **Closed**.
+1. In the upper-right corner, select  (), then select **Close objective** or **Close key result**.
 
 You can reopen a closed OKR the same way.
 
@@ -349,7 +349,7 @@ In your workflow, use key results to measure the goal described in the objective
 You can add child objectives to a total of 9 levels. An objective can have up to 100 child OKRs.
 Key results are children of objectives and cannot have children items themselves.
 
-Child objectives and key results are available in the **Child items** section
+Child objectives and key results are available in the  section
 below an objective's description.
 
 ### Add a child objective
@@ -362,7 +362,7 @@ Prerequisites:
 
 To add a new objective to an objective:
 
-1. In an objective, in the **Child items** section, select **Add** and then
+1. In an objective, in the  section, select  and then
    select **New objective**.
 1. Enter a title for the new objective.
 1. Select a [project](project/organize_work_with_projects.md) to create the new objective in.
@@ -370,7 +370,7 @@ To add a new objective to an objective:
 
 To add an existing objective to an objective:
 
-1. In an objective, in the **Child items** section, select **Add** and then
+1. In an objective, in the  section, select  and then
    select **Existing objective**.
 1. Search for the desired objective by entering part of its title, then selecting the
    desired match.
@@ -388,7 +388,7 @@ Prerequisites:
 
 To add a new key result to an objective:
 
-1. In an objective, in the **Child items** section, select **Add** and then
+1. In an objective, in the  section, select  and then
    select **New key result**.
 1. Enter a title for the new key result.
 1. Select a [project](project/organize_work_with_projects.md) to create the new key result in.
@@ -396,7 +396,7 @@ To add a new key result to an objective:
 
 To add an existing key result to an objective:
 
-1. In an objective, in the **Child items** section, select **Add** and then
+1. In an objective, in the  section, select  and then
    select **Existing key result**.
 1. Search for the desired OKR by entering part of its title, then selecting the
    desired match.
@@ -455,11 +455,11 @@ Prerequisites:
 To set an objective as a parent of an OKR:
 
 1. [Open the objective](#view-an-objective) or [key result](#view-a-key-result) that you want to edit.
-1. Next to **Parent**, from the dropdown list, select the parent to add.
+1. Next to , from the dropdown list, select the parent to add.
 1. Select any area outside the dropdown list.
 
 To remove the parent of the objective or key result,
-next to **Parent**, select the dropdown list and then select **Unassign**.
+next to , select the dropdown list and then select .
 
 ## Confidential OKRs
 
@@ -500,7 +500,7 @@ To change the confidentiality of an existing OKR:
 
 1. [Open the objective](#view-an-objective) or [key result](#view-a-key-result).
 1. In the upper-right corner, select the vertical ellipsis ().
-1. Select **Turn on confidentiality** or **Turn off confidentiality**.
+1. Select  or .
 
 ### Who can see confidential OKRs
 
@@ -553,7 +553,7 @@ Prerequisites:
 To lock an OKR:
 
 1. In the upper-right corner, select the vertical ellipsis ().
-1. Select **Lock discussion**.
+1. Select .
 
 A system note is added to the page details.
 
@@ -579,14 +579,14 @@ Prerequisites:
 
 To link an item to an objective or key result:
 
-1. In the **Linked items** section of an objective or key result,
-   select **Add**.
+1. In the  section of an objective or key result,
+   select .
 1. Select the relationship between the two items. Either:
-   - **Relates to**
-   - **Blocks**
-   - **Is blocked by**
+   -
+   -
+   -
 1. Enter the search text of the item, URL, or its reference ID.
-1. When you have added all the items to be linked, select **Add** below the search box.
+1. When you have added all the items to be linked, select  below the search box.
 
 When you have finished adding all linked items, you can see
 them categorized so their relationships can be better understood visually.
@@ -599,7 +599,7 @@ Prerequisites:
 
 - You must have the Guest, Planner, Reporter, Developer, Maintainer, or Owner role for the project.
 
-In the **Linked items** section of an objective or key result,
-next to each item, select the vertical ellipsis () and then select **Remove**.
+In the  section of an objective or key result,
+next to each item, select the vertical ellipsis () and then select .
 
 Due to the bi-directional relationship, the relationship no longer appears in either item.

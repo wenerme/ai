@@ -43137,6 +43137,40 @@ paths:
           type: integer
         in: path
       x-gitlab-lifecycle: experiment
+  "/api/v4/organizations/{id}/transfer_users":
+    post:
+      operationId: postApiV4OrganizationsIdTransferUsers
+      summary: Transfer users to an organization
+      description: Transfers ownership of users to the organization, including their
+        personal namespaces and projects. All users must currently belong to the same
+        organization. This feature was introduced in GitLab 19.6.
+      tags:
+      - Organizations
+      responses:
+        '202':
+          description: Accepted
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID of the organization to transfer the users to.
+        schema:
+          type: integer
+        in: path
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/postApiV4OrganizationsIdTransferUsersRequest"
+      x-gitlab-lifecycle: experiment
   "/api/v4/offline_exports":
     post:
       operationId: postApiV4OfflineExports
@@ -61343,6 +61377,8 @@ paths:
           description: Too Many Requests
         '500':
           description: Internal server error
+        '503':
+          description: Service unavailable
       requestBody:
         required: true
         content:
@@ -80647,8 +80683,10 @@ paths:
     post:
       operationId: postApiV4BulkImportsImportIdCancel
       summary: Cancel a migration
-      description: Cancels a direct transfer migration. This feature was introduced
-        in GitLab 17.1.
+      description: Cancels a direct transfer or offline transfer migration. Migrations
+        that already finished, failed, timed out, or were canceled keep their status,
+        but any entities still running are canceled. This feature was introduced in
+        GitLab 17.1.
       tags:
       - Imports
       responses:
@@ -122722,6 +122760,17 @@ components:
       required:
       - name
       - path
+    postApiV4OrganizationsIdTransferUsersRequest:
+      type: object
+      properties:
+        user_ids:
+          type: array
+          items:
+            type: integer
+          description: The IDs of the users to transfer. Maximum 50.
+          nullable: true
+      required:
+      - user_ids
     postApiV4OfflineExportsRequest:
       type: object
       properties:

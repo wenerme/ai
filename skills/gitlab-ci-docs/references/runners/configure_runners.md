@@ -512,9 +512,11 @@ try to preserve worktrees and try to re-use them by default.
 This has limitations when using the [Docker Machine executor](https://docs.gitlab.com/runner/executors/docker_machine/).
 
 A Git strategy of `none` also re-uses the local working copy, but skips all Git
-operations usually done by GitLab. GitLab Runner pre-clone scripts are also skipped,
-if present. This strategy could mean you need to add `fetch` and `checkout` commands
-to [your `.gitlab-ci.yml` script](../yaml/_index.md#script).
+operations usually done by GitLab. GitLab Runner `pre_get_sources_script` and
+`post_get_sources_script` hooks and the job-level
+[`hooks:pre_get_sources_script`](../yaml/_index.md#hookspre_get_sources_script)
+are also skipped, if present. This strategy could mean you need to add `fetch` and
+`checkout` commands to [your `.gitlab-ci.yml` script](../yaml/_index.md#script).
 
 It can be used for jobs that operate exclusively on artifacts, like a deployment job.
 Git repository data may be present, but it's likely out of date. You should only
@@ -523,8 +525,9 @@ aware that cache and artifact files from previous pipelines might still be prese
 
 Unlike `none`, the `empty` Git strategy deletes and then re-creates
 a dedicated build directory before downloading cache or artifact files.
-With this strategy, the GitLab Runner hook scripts are still run
-(if provided) to allow for further behavior customization.
+Like `none`, this strategy skips the GitLab Runner `pre_get_sources_script` and
+`post_get_sources_script` hooks and the job-level
+`hooks:pre_get_sources_script`, because no Git sources are fetched.
 Use the `empty` Git strategy when:
 
 - You do not need the repository data to be present.

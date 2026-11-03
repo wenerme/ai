@@ -163,24 +163,24 @@ For more information, see [Diagrams.net](../../../administration/integration/dia
 
 To create a diagram in the plain text editor:
 
-1. On the wiki page you want to edit, select **Edit**.
+1. On the wiki page you want to edit, select .
 1. In the text box, make sure you're using the plain text editor
-   (the button on the bottom left says **Switch to rich text editing**).
-1. In the editor's toolbar, select **Insert or edit diagram** ().
+   (the button on the bottom left says ).
+1. In the editor's toolbar, select  ().
 1. Create the diagram in the [app.diagrams.net](https://app.diagrams.net/) editor.
-1. Select **Save & exit**.
+1. Select .
 
 A Markdown image reference to the diagram is inserted in the wiki content.
 
 To edit a diagram in the plain text editor:
 
-1. On the wiki page you want to edit, select **Edit**.
+1. On the wiki page you want to edit, select .
 1. In the text box, make sure you're using the plain text editor
-   (the button on the bottom left says **Switch to rich text editing**).
+   (the button on the bottom left says ).
 1. Position your cursor in the Markdown image reference that contains the diagram.
-1. Select **Insert or edit diagram** ().
+1. Select  ().
 1. Edit the diagram in the [app.diagrams.net](https://app.diagrams.net/) editor.
-1. Select **Save & exit**.
+1. Select .
 
 A Markdown image reference to the diagram is inserted in the wiki content,
 replacing the previous diagram.
@@ -189,24 +189,24 @@ replacing the previous diagram.
 
 To create a diagram in the rich text editor:
 
-1. On the wiki page you want to edit, select **Edit**.
+1. On the wiki page you want to edit, select .
 1. In the text box, make sure you're using the rich text editor
-   (the button on the bottom left says **Switch to plain text editing**).
-1. In the editor's toolbar, select **More options** ().
-1. In the dropdown list, select **Create or edit diagram**.
+   (the button on the bottom left says ).
+1. In the editor's toolbar, select  ().
+1. In the dropdown list, select .
 1. Create the diagram in the [app.diagrams.net](https://app.diagrams.net/) editor.
-1. Select **Save & exit**.
+1. Select .
 
 The diagram as visualized in the diagrams.net editor is inserted in the wiki content.
 
 To edit a diagram in the rich text editor:
 
-1. On the wiki page you want to edit, select **Edit**.
+1. On the wiki page you want to edit, select .
 1. In the text box, make sure you're using the rich text editor
-   (the button on the bottom left says **Switch to plain text editing**).
+   (the button on the bottom left says ).
 1. Select the diagram that you want to edit.
-1. In the floating toolbar, select **Edit diagram** ().
+1. In the floating toolbar, select  ().
 1. Edit the diagram in the [app.diagrams.net](https://app.diagrams.net/) editor.
-1. Select **Save & exit**.
+1. Select .
 
 The selected diagram is replaced with an updated version.

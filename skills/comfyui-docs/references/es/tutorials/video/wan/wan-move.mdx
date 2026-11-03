@@ -1,25 +1,26 @@
 ---
 title: "Ejemplo de flujo de trabajo Wan-Move en ComfyUI"
 description: "Genera video con movimiento controlable usando Wan-Move en ComfyUI: guía el movimiento de objetos con trayectorias de puntos para imagen a video."
-translationSourceHash: 78cfc130
+translationSourceHash: 6e632abd
 translationFrom: tutorials/video/wan/wan-move.mdx
 translationBlockHashes:
   "_intro": 67a26359
   "Wan-Move image-to-video workflow": 78aef00b
+  "Model links": 8e0ef166
 ---
 
-**Wan-Move** es un framework de generación de video con control de movimiento desarrollado por Tongyi Lab de Alibaba. Permite controlar el movimiento de los objetos en los videos generados especificando trayectorias de puntos sobre la imagen de entrada, lo que hace que la generación de imagen a video sea más precisa y controlable.
+**Wan-Move** es un framework de generación de video con control de movimiento desarrollado por Tongyi Lab de Alibaba. Te permite controlar el movimiento de los objetos en los videos generados especificando trayectorias de puntos sobre la imagen de entrada, lo que hace que la generación de imagen a video sea más precisa y controlable.
 
 **Características principales**:
-- **Control de movimiento en 480p y 5 s de alta calidad**: genera videos de 5 segundos en 480p con una controlabilidad de movimiento de grano fino
-- **Orientación por trayectorias latent**: representa las condiciones de movimiento propagando las características del primer fotograma a lo largo de las trayectorias
-- **Control de grano fino a nivel puntual**: los movimientos de los objetos se representan con trayectorias de puntos densas, lo que permite un control preciso a nivel de región
+- **Control de movimiento de alta calidad en 5 s y 480p**: genera videos de 5 segundos en 480p con una controlabilidad de movimiento de grano fino
+- **Orientación por trayectorias latentes**: representa las condiciones de movimiento propagando las características del primer fotograma a lo largo de las trayectorias
+- **Control de grano fino a nivel puntual**: el movimiento de los objetos se representa con trayectorias de puntos densas, lo que permite un control preciso a nivel de región
 - **Sin cambios en la arquitectura**: se integra sin problemas en Wan-I2V-14B sin módulos de movimiento adicionales
 
 **Enlaces relacionados**:
 - [GitHub](https://github.com/ali-vilab/Wan-Move)
 - [Hugging Face](https://huggingface.co/Ruihang/Wan-Move-14B-480P)
-- [Paper](https://arxiv.org/abs/2512.08765)
+- [Artículo](https://arxiv.org/abs/2512.08765)
 
 ## Flujo de trabajo de imagen a video Wan-Move
 
@@ -49,22 +50,22 @@ Sube este archivo al nodo `LoadImage` correspondiente:
 ## Enlaces de modelos
 
   
-    Colócalo en <code>ComfyUI/models/diffusion_models/</code>
+    Coloca el archivo en <code>ComfyUI/models/diffusion_models/</code>
   
   
-    Colócalo en <code>ComfyUI/models/loras/</code>
+    Coloca el archivo en <code>ComfyUI/models/loras/</code>
   
   
-    Colócalo en <code>ComfyUI/models/text_encoders/</code>
+    Coloca el archivo en <code>ComfyUI/models/text_encoders/</code>
   
   
-    Colócalo en <code>ComfyUI/models/clip_vision/</code>
+    Coloca el archivo en <code>ComfyUI/models/clip_vision/</code>
   
   
-    Colócalo en <code>ComfyUI/models/vae/</code>
+    Coloca el archivo en <code>ComfyUI/models/vae/</code>
   
 
-**Ubicación de almacenamiento de modelos**
+**Ubicación de almacenamiento de los modelos**
 
 ```
 📂 ComfyUI/

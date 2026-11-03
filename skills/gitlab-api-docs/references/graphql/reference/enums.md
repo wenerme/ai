@@ -2252,53 +2252,6 @@ Values for sorting tags.
 | `PUBLISHED_AT_ASC` | Ordered by published_at in ascending order. Only available for GitLab.com. |
 | `PUBLISHED_AT_DESC` | Ordered by published_at in descending order. Only available for GitLab.com. |
 
-## `CustomDashboardDateRangeOption`
-
-Preset date range options available for dashboard filters.
-
-| Value | Description |
-| ----- | ----------- |
-| `CUSTOM` | Custom date range. |
-| `DAYS_180` | Last 180 days. |
-| `DAYS_30` | Last 30 days. |
-| `DAYS_365` | Last 365 days. |
-| `DAYS_60` | Last 60 days. |
-| `DAYS_7` | Last 7 days. |
-| `DAYS_90` | Last 90 days. |
-| `TODAY` | Current day. |
-
-## `CustomDashboardFilteredSearchOperator`
-
-Comparison operators for filtered search tokens.
-
-| Value | Description |
-| ----- | ----------- |
-| `IS` | Matches the given value. |
-| `IS_NOT` | Does not match the given value. |
-| `IS_NOT_OR` | Does not match any of the given values. |
-
-## `CustomDashboardFilteredSearchToken`
-
-Token types available for filtered search.
-
-| Value | Description |
-| ----- | ----------- |
-| `ASSIGNEE` | Filter by assignee. |
-| `AUTHOR` | Filter by author. |
-| `LABEL` | Filter by label. |
-| `MILESTONE` | Filter by milestone. |
-| `SOURCE_BRANCH` | Filter by source branch. |
-| `TARGET_BRANCH` | Filter by target branch. |
-
-## `CustomDashboardGridHeight`
-
-Grid height display mode for the dashboard.
-
-| Value | Description |
-| ----- | ----------- |
-| `COMPACT` | Compact grid height. |
-| `DEFAULT` | Default grid height. |
-
 ## `CustomDashboardScope`
 
 Scope filter for custom dashboards.
@@ -2308,15 +2261,6 @@ Scope filter for custom dashboards.
 | `ALL` | Return all dashboards. |
 | `GITLAB` | Return only GitLab-provided system dashboards. |
 | `USER` | Return only user-created dashboards. |
-
-## `CustomDashboardStatus`
-
-Maturity status of the dashboard.
-
-| Value | Description |
-| ----- | ----------- |
-| `BETA` | Dashboard is in beta. |
-| `EXPERIMENT` | Dashboard is experimental. |
 
 ## `CustomFieldType`
 
@@ -6180,6 +6124,7 @@ Name of the feature that the callout is for.
 | `NAMESPACE_USER_CAP_REACHED_ALERT` | Callout feature name for namespace_user_cap_reached_alert. |
 | `ORGANIZATIONS_AVAILABLE_ALERT` | Callout feature name for organizations_available_alert. |
 | `OVERAGE_SEAT_COUNT_THRESHOLD` | Callout feature name for overage_seat_count_threshold. |
+| `POST_TRIAL_USAGE_CARD` | Callout feature name for post_trial_usage_card. |
 | `PREVIEW_USAGE_QUOTA_FREE_PLAN_ALERT` | Callout feature name for preview_usage_quota_free_plan_alert. |
 | `PREVIEW_USER_OVER_LIMIT_FREE_PLAN_ALERT` | Callout feature name for preview_user_over_limit_free_plan_alert. |
 | `PROJECT_REPOSITORY_LIMIT_ALERT_WARNING_THRESHOLD` | Callout feature name for project_repository_limit_alert_warning_threshold. |
