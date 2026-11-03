@@ -21,12 +21,12 @@ Prerequisites:
 To create an epic in the group you're in:
 
 1. Get to the New Epic form:
-   - Go to your group and from the left sidebar select **Work items**. Then select **New item**.
-   - From an epic in your group, in the upper-right corner, select **More actions** (). Then select **New related item**.
-   - From anywhere, in the top menu, select **New** (). Then select **New work item**.
-   - In an empty [roadmap](../roadmap/_index.md), select **New work item**.
+   - Go to your group and from the left sidebar select . Then select .
+   - From an epic in your group, in the upper-right corner, select  (). Then select .
+   - From anywhere, in the top menu, select  (). Then select .
+   - In an empty [roadmap](../roadmap/_index.md), select .
 
-1. From the **Type** dropdown list, select **Epic** if it is not already selected.
+1. From the  dropdown list, select **Epic** if it is not already selected.
 1. Complete the fields.
    - Enter a title.
    - Enter a description.
@@ -40,7 +40,7 @@ The newly created epic opens.
 
 ### Start and due date inheritance
 
-If you select **Inherited**:
+If you select :
 
 - For the **start date**: GitLab scans all child epics and issues assigned to the epic,
   and sets the start date to match the earliest start date found in the child epics or the milestone
@@ -80,13 +80,13 @@ Prerequisites:
 
 To edit an epic's title or description:
 
-1. Select **Edit**.
+1. Select .
 1. Make your changes.
-1. Select **Save changes**.
+1. Select .
 
 To edit an epic's start date, due date, milestone, or labels:
 
-1. Next to each section in the right sidebar, select **Edit**.
+1. Next to each section in the right sidebar, select .
 1. Select the dates, milestone, or labels for your epic.
 
 ### Reorder list items in the epic description
@@ -121,12 +121,12 @@ Prerequisites:
 
 To update multiple epics at the same time:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**, then filter by **Type** = **Epic**.
-1. Select **Bulk edit**. On the right, a sidebar with editable fields appears.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > , then filter by  = **Epic**.
+1. Select . On the right, a sidebar with editable fields appears.
 1. Select the checkboxes next to each epic you want to edit.
 1. From the sidebar, edit the available fields.
-1. Select **Update selected**.
+1. Select .
 
 When bulk editing epics in a group, you can edit the following attributes:
 
@@ -144,13 +144,13 @@ When bulk editing epics in a group, you can edit the following attributes:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181184) in GitLab 17.10.
 
 If an epic description is long, GitLab displays only part of it.
-To see the whole description, you must select **Read more**.
+To see the whole description, you must select .
 This truncation makes it easier to find other elements on the page without scrolling through lengthy text.
 
 To change whether descriptions are truncated:
 
-1. On an epic, in the upper-right corner, select **More actions** ().
-1. Toggle **Truncate descriptions** according to your preference.
+1. On an epic, in the upper-right corner, select  ().
+1. Toggle  according to your preference.
 
 This setting is remembered and affects all issues, tasks, epics, objectives, and key results.
 
@@ -162,14 +162,14 @@ Epic attributes are shown in a sidebar to the right of the description when spac
 
 To hide the sidebar and increase space for the description:
 
-1. On an epic, in the upper-right corner, select **More actions** ().
-1. Select **Hide sidebar**.
+1. On an epic, in the upper-right corner, select  ().
+1. Select .
 
 This setting is remembered and affects all issues, tasks, epics, objectives, and key results.
 
 To show the sidebar again:
 
-- Repeat the previous steps and select **Show sidebar**.
+- Repeat the previous steps and select .
 
 ## Assignees
 
@@ -196,10 +196,10 @@ Prerequisites:
 
 To change the assignee on an epic:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**, then filter by **Type** = **Epic**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > , then filter by  = **Epic**.
 1. Select your epic to view it.
-1. In the right sidebar, in the **Assignees** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. From the dropdown list, select the users to add as an assignee.
 1. Select any area outside the dropdown list.
 
@@ -238,10 +238,10 @@ Prerequisites:
 
 To change an epic's color:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**, then filter by **Type** = **Epic**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > , then filter by  = **Epic**.
 1. Select an epic.
-1. In the right sidebar, in the **Color** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. Select an existing color or enter an RGB or hex value.
 1. Select any area outside the dialog.
 
@@ -257,8 +257,8 @@ Prerequisites:
 
 To delete an epic:
 
-1. In the upper-right corner, select **More actions** (), then **Delete epic**.
-1. Select **Delete**. On the confirmation dialog, select **Delete epic**.
+1. In the upper-right corner, select  (), then **Delete epic**.
+1. On the confirmation dialog, select **Delete epic**.
 
 Deleting an epic releases all existing issues from their associated epic in the system.
 
@@ -272,7 +272,7 @@ Prerequisites:
 
 To close an epic:
 
-- In the upper-right corner, select **More actions** (), then **Close epic**.
+- In the upper-right corner, select  (), then **Close epic**.
 
 You can also use the [`/close` quick action](../../project/quick_actions.md#close).
 
@@ -288,7 +288,7 @@ Prerequisites:
 
 To do so, either:
 
-- In the upper-right corner, select **More actions** () and then **Reopen epic**.
+- In the upper-right corner, select  () and then **Reopen epic**.
 - Use the [`/reopen` quick action](../../project/quick_actions.md#reopen).
 
 You can also create an epic by
@@ -299,7 +299,7 @@ You can also create an epic by
 If an issue belongs to an epic, you can go to the parent epic from:
 
 - Breadcrumbs at the top of the issue.
-- The **Parent** section in the right sidebar.
+- The  section in the right sidebar.
 
 ## View epics list
 
@@ -330,7 +330,7 @@ the epic's [confidentiality status](#make-an-epic-confidential):
   role for the group.
 
 Permission to view an epic is not the same as permission to view its child items.
-In the **Child items** section, you see only the items you have permission to view.
+In the  section, you see only the items you have permission to view.
 The item counts and progress include items you cannot view.
 For more information, see [view count and weight of issues in an epic](../../work_items/child_items.md#view-count-and-weight-of-issues-in-an-epic).
 
@@ -359,7 +359,7 @@ To open an epic in the full page view:
   - Hold <kbd>Command</kbd> or <kbd>Control</kbd> and select the epic.
 - Select an epic, and from the drawer, either:
   - In the upper-left corner, select the issue reference, for example `my_project#123`.
-  - In the upper-right corner, select **Open in full page** ().
+  - In the upper-right corner, select  ().
 
 To always open work items in full page view, see [set preference whether to open items in a drawer](../../work_items/_index.md#configure-list-display-preferences).
 
@@ -369,7 +369,7 @@ To always open work items in full page view, see [set preference whether to open
 
 You can filter a list of epics by:
 
-- Title or description (select **Search within**)
+- Title or description (select )
 - Author name / username
 - Confidentiality
 - Groups
@@ -383,8 +383,8 @@ You can filter a list of epics by:
 
 To filter:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**, then filter by **Type** = **Epic**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > , then filter by  = **Epic**.
 1. Select additional filters, operators, and values as needed.
    To search by title or description, type in the filter bar.
 1. Press <kbd>Enter</kbd> or select the magnifying glass ().
@@ -419,7 +419,7 @@ You can sort the epics list by:
 - Health
 - Blocking
 
-Each option contains a button that can toggle the order between **Ascending** and **Descending**.
+Each option contains a button that can toggle the order between  and .
 The sort option and order are saved and used wherever you browse epics, including the
 [roadmap](../roadmap/_index.md).
 
@@ -429,7 +429,7 @@ You can reverse the default order and interact with the activity feed sorted by 
 at the top. Your preference is saved in local storage and automatically applied to every epic and issue
 you view.
 
-To change the activity sort order, select the **Oldest first** dropdown list and select either oldest
+To change the activity sort order, select the  dropdown list and select either oldest
 or newest items to be shown first.
 
 ## Make an epic confidential
@@ -450,7 +450,7 @@ Prerequisites:
 To make an epic confidential:
 
 - **When creating an epic**: Select the checkbox next to **Turn on confidentiality**.
-- **In an existing epic**: In the upper-right corner, select **More actions** (). Then select **Turn on confidentiality**.
+- **In an existing epic**: In the upper-right corner, select  (). Then select .
 
 You can also use the [`/confidential` quick action](../../project/quick_actions.md#confidential).
 
@@ -468,7 +468,7 @@ in relation to epics.
 Use health status on epics to gain quick insight into project progress.
 Health status helps you communicate and manage potential issues proactively.
 
-You can view an epic's health status in the epic view and in the **Child items** and **Linked items** sections.
+You can view an epic's health status in the epic view and in the  and  sections.
 
 You can set the health status to:
 
@@ -492,10 +492,10 @@ Prerequisites:
 
 To change the health status of an epic:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Work items**, then filter by **Type** = **Epic**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > , then filter by  = **Epic**.
 1. Select an epic.
-1. In the right sidebar, in the **Health status** section, select **Edit**.
+1. In the right sidebar, in the  section, select .
 1. From the dropdown list, select a status.
 
 The epic's health status is updated.

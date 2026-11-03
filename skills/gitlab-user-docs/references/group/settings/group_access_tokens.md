@@ -137,6 +137,7 @@ Expired, rotated, or revoked tokens are stored in the **Inactive group access to
 - Ability to view expired and revoked tokens until they are automatically deleted [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/471683) in GitLab 17.9. Feature flag `retain_resource_access_token_user_after_revoke` removed.
 
 Rotate a token to create a new token with the same permissions and scope as the original.
+The new token uses the same bot user as the original token.
 The original token becomes inactive immediately, and GitLab retains both versions for
 audit purposes. You can view both active and inactive tokens on the access tokens page.
 
@@ -160,8 +161,11 @@ To rotate a group access token:
 - Ability to view expired and revoked tokens until they are automatically deleted [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/471683) in GitLab 17.9. Feature flag `retain_resource_access_token_user_after_revoke` removed.
 
 Revoke a token to immediately invalidate it and prevent further use. Revoked tokens are not
-deleted immediately, but you can filter token lists to show only active tokens. By default,
-GitLab deletes revoked group and project access tokens after 30 days. For more information, see
+deleted immediately, but you can filter token lists to show only active tokens.
+By default, GitLab deletes a bot user and all of its tokens 30 days after the last of
+those tokens is revoked or expires.
+Rotated tokens use the same bot user, so tokens from earlier rotations stay on the access
+tokens page while the latest token is active. For more information, see
 [inactive token retention](../../../administration/settings/account_and_limit_settings.md#inactive-project-and-group-access-token-retention-period).
 
 > [!warning]
@@ -207,8 +211,9 @@ You can configure this for every group on the [GitLab instance](../../../adminis
 or a [specific group](../manage.md#expiry-emails-for-group-and-project-access-tokens).
 If applied to a parent group, this setting is inherited by all descendant groups and projects.
 
-Expired tokens appear in the inactive group access tokens section until they're automatically
-deleted. On GitLab Self-Managed, you can modify this
+By default, expired tokens appear in the inactive group access tokens section until GitLab
+deletes the bot user, 30 days after its last token becomes inactive.
+On GitLab Self-Managed, you can modify this
 [retention period](../../../administration/settings/account_and_limit_settings.md#inactive-project-and-group-access-token-retention-period).
 
 ## Bot users for groups

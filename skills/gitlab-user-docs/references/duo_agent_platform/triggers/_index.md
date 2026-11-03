@@ -338,14 +338,16 @@ Prerequisites:
 - [Experiment and beta features](../turn_on_off.md#turn-on-beta-and-experimental-features)
   must be turned on.
 - Scheduled triggers must be [turned on](#turn-scheduled-triggers-on-or-off) for the group or instance.
-- A custom flow from the AI Catalog must be enabled in the project.
-  External agents and flows that use a configuration file cannot run on a schedule.
+- A custom flow from the AI Catalog or the [Developer Flow](../../project/merge_requests/developer.md)
+  must be enabled in the project.
+  Other foundational flows, external agents, and flows that use a configuration file
+  cannot run on a schedule.
 
 To change the flow of an existing scheduled trigger:
 
 - Your role for the project must be equal to or higher than the role of the trigger's service account.
 - You must have permission to add members to the project.
-- The new flow must be a custom flow from the AI Catalog.
+- The new flow must be a custom flow from the AI Catalog or the Developer Flow.
 
 You do not need these permissions to change the schedule, description, or instructions.
 

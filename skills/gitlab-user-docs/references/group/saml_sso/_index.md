@@ -573,10 +573,15 @@ Prerequisites:
 - You must have the Owner role for the group that the enterprise user belongs to.
 - Group SSO must be enabled.
 
-You can disable password authentication for all [enterprise users](../../enterprise_user/_index.md) of the group. This also applies to enterprise users who are administrators of the group. Configuring this setting stops enterprise users from changing, resetting, or authenticating with their password. Instead, these users can authenticate with:
+You can disable password authentication for all [enterprise users](../../enterprise_user/_index.md) of the group. This also applies to enterprise users who have the Owner role for the group. Configuring this setting stops enterprise users from changing, resetting, or authenticating with their password. Instead, these users can authenticate with:
 
 - The group SAML IdP for the GitLab web UI.
 - A personal access token for the GitLab API and Git with HTTP Basic Authentication unless the group has [disabled personal access tokens for enterprise users](../../profile/personal_access_tokens.md#disable-personal-access-tokens-for-enterprise-users).
+
+If your identity provider becomes unavailable, enterprise users cannot sign in to the GitLab UI.
+To reduce the risk of losing access, consider adding a user with the Owner role
+who is not an enterprise user of the group.
+This user can sign in with a password and change the SAML SSO settings.
 
 To disable password and passkey authentication for enterprise users:
 
@@ -664,8 +669,10 @@ When the **Enforce SSO-only authentication for web activity for this group** opt
 - SSO is enforced when users access groups and projects in the organization's
   group hierarchy. Users can view other groups and projects outside their organization without signing in through SAML SSO.
 - Users cannot be added as new members manually.
-- Users with the Owner role can use the standard sign in process to make
-  necessary changes to top-level group settings.
+- Users with the Owner role can access the top-level group without SSO to make
+  necessary changes to its settings. If
+  [password and passkey authentication is disabled for enterprise users](#disable-password-and-passkey-authentication-for-enterprise-users),
+  enterprise users with the Owner role must still sign in with SSO.
 - For non-members or users who are not signed in:
   - SSO is not enforced when they access public group resources.
   - SSO is enforced when they access private group resources.

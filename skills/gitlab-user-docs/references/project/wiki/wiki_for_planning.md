@@ -39,12 +39,12 @@ Create links between wiki documentation and your planning items to build a conne
 Epics often need detailed specifications that are too long for an epic description.
 Keep the full documentation in a wiki:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Create a wiki page with your detailed requirements (for example, with slug `product-requirements`).
-1. In the top bar, select **Search or go to** and find your project's group.
-1. Select **Plan** > **Work items**.
-1. In the filter bar, select the filter **Type**, operator **is**, and value **Epic**.
+1. In the top bar, select  and find your project's group.
+1. Select  > .
+1. In the filter bar, select the filter , operator , and value .
 1. Identify your desired epic, and select its title.
 1. In the epic description, link to the wiki page:
 

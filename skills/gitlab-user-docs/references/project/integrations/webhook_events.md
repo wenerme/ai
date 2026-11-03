@@ -1528,6 +1528,7 @@ Payload example:
 - `object_attributes.default_branch` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606357) in GitLab 19.3.
 - `object_attributes.root_pipeline_id`, `bridges`, and `source_pipeline.bridge_id` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241952) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `ci_pipeline_otlp_trace_correlation`. Disabled by default.
 - `object_attributes.root_pipeline_id`, `bridges`, and `source_pipeline.bridge_id` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260524) in GitLab 19.5. Feature flag `ci_pipeline_otlp_trace_correlation` removed.
+- `builds[].exit_code` and `bridges[].exit_code` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/637131) in GitLab 19.6.
 
 Pipeline events are triggered when the status of a pipeline changes.
 
@@ -1541,9 +1542,13 @@ The payload also includes these attributes for pipeline relationships:
   If the pipeline is not a child pipeline, the value is the ID of the pipeline itself.
 - `bridges`: The trigger jobs in the pipeline.
   Each entry has the same attributes as a `builds` entry, except `artifacts_file`, and includes `"bridge": true`.
+  For bridges, `runner` and `exit_code` are always `null`.
 - `source_pipeline.bridge_id`: The ID of the upstream trigger job that created the pipeline.
   The value is `null` if the upstream job is not a trigger job.
   `source_pipeline` is included only when the pipeline has an upstream pipeline.
+- `builds[].exit_code`: The exit code that GitLab stored when the job failed.
+  GitLab stores values from 0 to 32767, so a larger exit code is stored as 32767.
+  The value is `null` if the job didn't fail or the runner reported no exit code.
 
 Request header:
 
@@ -1644,6 +1649,7 @@ Payload example:
       "duration": null,
       "queued_duration": null,
       "failure_reason": null,
+      "exit_code": null,
       "when": "manual",
       "manual": true,
       "allow_failure": false,
@@ -1676,6 +1682,7 @@ Payload example:
       "duration": 17.0,
       "queued_duration": 196.0,
       "failure_reason": null,
+      "exit_code": null,
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
@@ -1715,6 +1722,7 @@ Payload example:
       "duration": 17.0,
       "queued_duration": 196.0,
       "failure_reason": "script_failure",
+      "exit_code": 137,
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
@@ -1753,6 +1761,7 @@ Payload example:
       "duration": 17.0,
       "queued_duration": 196.0,
       "failure_reason": null,
+      "exit_code": null,
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
@@ -1791,6 +1800,7 @@ Payload example:
       "duration": null,
       "queued_duration": null,
       "failure_reason": null,
+      "exit_code": null,
       "when": "on_success",
       "manual": false,
       "allow_failure": false,
@@ -1825,6 +1835,7 @@ Payload example:
       "duration": 100.0,
       "queued_duration": 1.0,
       "failure_reason": null,
+      "exit_code": null,
       "when": "on_success",
       "manual": false,
       "allow_failure": false,

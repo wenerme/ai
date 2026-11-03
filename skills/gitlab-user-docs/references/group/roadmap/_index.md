@@ -24,8 +24,8 @@ The epic roadmap offers the following benefits:
 
 To view the roadmap in a group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Roadmap**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
 
 The roadmap shows the epics and milestones in a
 group, one of its subgroups, or a project in one of the groups.
@@ -40,7 +40,7 @@ child epics.
 
 On top of the milestone bars, you can see their title. When you point to a
 milestone bar or title, a popover appears with its title, start date, and due
-date. You can also select the chevron () next to the **Milestones**
+date. You can also select the chevron () next to the
 heading to toggle the list of the milestone bars.
 
 [The roadmap view with epics and milestones.]
@@ -65,8 +65,8 @@ In the Roadmap view, you can sort epics by:
 - Created date
 - Last updated date
 
-Each option contains a button that toggles the sort order between **ascending**
-and **descending**. The sort option and order persist when browsing epics, including
+Each option contains a button that toggles the sort order between
+and . The sort option and order persist when browsing epics, including
 the [epics list view](../epics/_index.md).
 
 In the Roadmap view, you can also filter by the epics':
@@ -118,9 +118,9 @@ shared using URL parameters.
 
 Roadmap provides these date range options, each with a predetermined timeline duration:
 
-- **This quarter**: Includes the weeks present in the current quarter.
-- **This year**: Includes the weeks or months present in the current year.
-- **Within 3 years**: Includes the weeks, months, or quarters present both in
+- : Includes the weeks present in the current quarter.
+- : Includes the weeks or months present in the current year.
+- : Includes the weeks, months, or quarters present both in
   the previous 18 months and the upcoming 18 months (three years in total).
 
 ### Layout presets
@@ -128,8 +128,8 @@ Roadmap provides these date range options, each with a predetermined timeline du
 Depending on the selected [date range preset](#date-range-presets), the roadmap supports
 these layout presets:
 
-- **Quarters**: Available only when the **Within 3 years** date range is selected.
-- **Months**: Available when either **This year** or **Within 3 years** date range is selected.
+- **Quarters**: Available only when the  date range is selected.
+- **Months**: Available when either  or  date range is selected.
 - **Weeks** (default): Available for all the date range presets.
 
 ### Quarters

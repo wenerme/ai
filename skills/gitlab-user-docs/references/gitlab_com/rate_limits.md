@@ -258,6 +258,28 @@ a top-level group can send each hour and each day:
 For details, see
 [Service Desk email rate limit](../../administration/instance_limits.md#service-desk-email-rate-limit).
 
+### Limits for new paid top-level groups
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265987) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `service_desk_paid_namespace_probation`. Enabled on GitLab.com.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+When a top-level group moves to a paid plan, the Free plan limits apply to its Service Desk emails for seven days.
+After seven days, the limits for the group's plan apply.
+These reduced limits also apply to groups on the Ultimate and Ultimate trial paid customer plans,
+which otherwise have no limit.
+
+The seven days start when the group moves to a paid plan, including from a Premium trial or Ultimate trial:
+
+- Renewing a subscription does not restart the seven days.
+- If a group moves back to the Free plan and later to a paid plan again, the seven days start again.
+
+Groups on the Open Source, Premium trial, or Ultimate trial plans keep the limits for their plan.
+
+To request an exception for a top-level group, contact [GitLab Support](https://support.gitlab.com).
+
 ## Group and project import by uploading export files
 
 To help avoid abuse, GitLab.com applies rate limits to:

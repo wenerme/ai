@@ -229,6 +229,7 @@ The data ends at the last minute that the `pg_ash_rollup_minute_worker` job summ
 so the newest data is usually one or two minutes old.
 The tab shows:
 
+- : A chart of the average number of active sessions in each minute, stacked by wait event type. An average of 1 means one session ran or waited for the whole minute, or two sessions for half a minute.
 - : The share of the load for each wait event type,
   and the average and peak number of active sessions.
   `CPU*` counts sessions that were active without a wait event.
@@ -240,6 +241,7 @@ for example on the first day after you install it, `pg_ash` reads hourly summari
 
 - The time range widens to whole hours.
   The current hour has no hourly summary yet, so its load is missing.
+- The  chart shows the average load in each hour. An hour without an hourly summary, such as the current hour, shows as a gap.
 -  shows .
 - Time without summarized samples, such as before the install or the current hour, counts as no load,
   so averages are lower than the load while sampling ran.

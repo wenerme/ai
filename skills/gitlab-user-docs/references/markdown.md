@@ -41,7 +41,7 @@ To see exact examples of how GitLab renders any of these examples:
 1. Copy the relevant raw Markdown example (not the rendered version of the example).
 1. Paste the Markdown somewhere in GitLab that supports Markdown previews, for example
    issue or merge request comments or descriptions, or a new Markdown file.
-1. Select **Preview** to view the GitLab-rendered Markdown.
+1. Select  to view the GitLab-rendered Markdown.
 
 ## Differences with standard Markdown
 
@@ -960,9 +960,9 @@ In a rendered table, you can sort the rows by the values in a column.
 
 To sort a table:
 
-1. In a column header, select **Sort ascending** ().
-1. Select **Sort descending** ().
-1. Select **Reset sorting** () to restore the original row order.
+1. In a column header, select  ().
+1. Select  ().
+1. Select  () to restore the original row order.
 
 You can also select anywhere in the column header cell, including text and empty space,
 to perform the same sort actions.
@@ -1196,10 +1196,10 @@ For more information, see [accessible images and videos](#accessible-images-and-
 
 When an image is selected, it opens in an overlay.
 
-If an image has transparent areas, hover over it and select **Toggle transparency checkerboard**
+If an image has transparent areas, hover over it and select
 to show a checkerboard background.
 The checkerboard makes transparent areas visible against any theme.
-**Toggle transparency checkerboard** appears on PNG, WebP, and GIF images if at least 5% of their pixels have some degree of transparency (are not fully opaque).
+ appears on PNG, WebP, and GIF images if at least 5% of their pixels have some degree of transparency (are not fully opaque).
 Images with fewer than 5% transparent pixels do not show the toggle.
 
 ### Videos

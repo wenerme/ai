@@ -507,9 +507,7 @@ To configure the per user and project limit:
 ## Job erasure rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- Generally available in GitLab 19.6. Feature flag `rate_limit_job_erase` removed.
 
 Erasing a job removes its artifacts and log. One erase request is small, but a user who sends
 many requests can strain your instance. For example, a script that erases every job in a

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=53
 
 # Custom dashboards
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/custom-dashboards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/custom-dashboards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom dashboards allow you to build personalized views that highlight the metrics most critical to your infrastructure and security posture. Move beyond standard product dashboards and consolidate data from multiple Cloudflare products into a single, unified view.
 
@@ -31,6 +31,15 @@ Investigate incidents so that when something goes wrong, you can create focused 
 ## Availability
 
 Custom Dashboards are available to all Cloudflare customers. Each account can have up to 100 dashboards.
+
+## Permissions
+
+Access to Custom Dashboards depends on your [member role](https://developers.cloudflare.com/fundamentals/manage-members/roles/):
+
+| Action | Member role |
+| --- | --- |
+| View dashboards | Super Administrator, Administrator, Administrator Read Only, or Analytics |
+| Create, edit, or delete dashboards | Super Administrator or Administrator |
 
 ## Get started
 
@@ -159,7 +168,7 @@ When creating a chart, Log Explorer customers can select from Log Explorer datas
 
 ## Manage dashboards
 
-Dashboards belong to the account, so everyone with access to the account can view them, and they are organized in a list view where you can see all dashboards in your account. From any dashboard, you can add, remove, or rearrange charts, and changes are saved automatically when you exit edit mode.
+Dashboards belong to the account, so every member with a role that can [view dashboards](#permissions) can see them. They are organized in a list view where you can see all dashboards in your account. From any dashboard, you can add, remove, or rearrange charts, and changes are saved automatically when you exit edit mode.
 
 Each chart has a menu with options to edit its configuration, duplicate it, or drill down into related data in Security Analytics or Log Search.
 
@@ -181,5 +190,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/custom-dashboards/#page","headline":"Custom dashboards","description":"Create custom dashboards from analytics, log, and Workers Observability data.","url":"https://developers.cloudflare.com/analytics/custom-dashboards/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=537b3d095c257183","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/custom-dashboards/#page","headline":"Custom dashboards","description":"Create custom dashboards from analytics, log, and Workers Observability data.","url":"https://developers.cloudflare.com/analytics/custom-dashboards/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=537b3d095c257183","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

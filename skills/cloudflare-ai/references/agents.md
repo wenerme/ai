@@ -54,22 +54,22 @@ Build your first agent with the Pi harness. The [Pi harness](https://developers.
 npmyarnpnpmbun
 
 ```
-npm i agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+npm i agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
 ```
-yarn add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+yarn add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
 ```
-pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
 ```
-bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord
+bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord
 ```
 
-The Pi packages are optional peer dependencies of `agents`, at `~1.4.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
+The Pi packages are optional peer dependencies of `agents`, at `~1.5.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
 
 To start from a complete app with a browser UI, a Cloudflare Computer workspace, and code execution, deploy the Pi harness example:
 

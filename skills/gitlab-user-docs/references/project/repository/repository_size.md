@@ -317,7 +317,8 @@ To redact text from your repository:
 1. In the left sidebar, select **Settings** > **Repository**.
 1. Expand **Repository maintenance**.
 1. Select **Redact text**.
-1. On the drawer, enter the text to redact. Regexes and glob patterns are accepted.
+1. On the drawer, enter the text to redact. Only exact matches are redacted.
+   Regular expressions and glob patterns are not supported.
 1. Select **Redact matching strings**.
 1. On the confirmation dialog, enter your project path.
 1. Select **Yes, redact matching strings**.

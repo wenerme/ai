@@ -1,793 +1,880 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Code execution
+
 The Gemini API provides a code execution tool that enables the model to
 generate and run Python code. The model can then learn iteratively from the
 code execution results until it arrives at a final output. You can use code
 execution to build applications that benefit from code-based reasoning. For
 example, you can use code execution to solve equations or process text. You can
-also use the [libraries](https://ai.google.dev/gemini-api/docs/code-execution#supported-libraries) included in the code execution
+also use the [libraries](/docs/code-execution#supported-libraries) included in the code execution
 environment to perform more specialized tasks.
 
 Gemini is only able to execute code in Python. You can still ask Gemini to
 generate code in another language, but the model can't use the code execution
 tool to run it.
 
-## Enable code execution
+## Enable code execution  {% id="enable-code-execution" %}
 
 To enable code execution, configure the code execution tool on the model. This
 allows the model to generate and run code.
 
-### Python
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  interaction = client.interactions.create(
+      model="gemini-3.8-flash",
+      input="What is the sum of the first 50 prime numbers? "
+            "Generate and run code for the calculation, and make sure you get all 50.",
+      tools=[{"type": "code_execution"}]
+  )
+  
+  for step in interaction.steps:
+      if step.type == "model_output":
+          for content_block in step.content:
+              if content_block.type == "text":
+                  print(content_block.text)
+      elif step.type == "code_execution_call":
+          print(step.arguments.code)
+      elif step.type == "code_execution_result":
+          print(step.result)
+  ```
 
-    from google import genai
+  {% /tab %}
 
-    client = genai.Client()
-
-    interaction = client.interactions.create(
-        model="gemini-3.8-flash",
-        input="What is the sum of the first 50 prime numbers? "
-              "Generate and run code for the calculation, and make sure you get all 50.",
-        tools=[{"type": "code_execution"}]
-    )
-
-    for step in interaction.steps:
-        if step.type == "model_output":
-            for content_block in step.content:
-                if content_block.type == "text":
-                    print(content_block.text)
-        elif step.type == "code_execution_call":
-            print(step.arguments.code)
-        elif step.type == "code_execution_result":
-            print(step.result)
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    const client = new GoogleGenAI({});
-
-    const interaction = await client.interactions.create({
-        model: "gemini-3.8-flash",
-        input: "What is the sum of the first 50 prime numbers? " +
-               "Generate and run code for the calculation, and make sure you get all 50.",
-        tools: [{ type: "code_execution" }]
-    });
-
-    for (const step of interaction.steps) {
-        if (step.type === "model_output") {
-            for (const contentBlock of step.content) {
-                if (contentBlock.type === "text") {
-                    console.log(contentBlock.text);
-                }
-            }
-        } else if (step.type === "code_execution_call") {
-            console.log(step.arguments.code);
-        } else if (step.type === "code_execution_result") {
-            console.log(step.result);
-        }
-    }
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CodeExecution;
-    import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
-    import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.ModelOutputStep;
-    import com.google.genai.gaos.models.interactions.Step;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.Collections;
-
-    Client client = new Client();
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
-            .input(
-                InteractionsInput.of(
-                    "What is the sum of the first 50 prime numbers? "
-                        + "Generate and run code for the calculation, and make sure you get all 50."))
-            .tools(Arrays.asList(CodeExecution.builder().build()))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    for (Step step : interaction.steps().orElse(Collections.emptyList())) {
-      if (step instanceof ModelOutputStep) {
-        ModelOutputStep outputStep = (ModelOutputStep) step;
-        for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
-          if (contentBlock instanceof TextContent) {
-            System.out.println(((TextContent) contentBlock).text().orElse(""));
+  {% tab label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const client = new GoogleGenAI({});
+  
+  const interaction = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "What is the sum of the first 50 prime numbers? " +
+             "Generate and run code for the calculation, and make sure you get all 50.",
+      tools: [{ type: "code_execution" }]
+  });
+  
+  for (const step of interaction.steps) {
+      if (step.type === "model_output") {
+          for (const contentBlock of step.content || []) {
+              if (contentBlock.type === "text") {
+                  console.log(contentBlock.text);
+              }
           }
-        }
-      } else if (step instanceof CodeExecutionCallStep) {
-        CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
-        callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
-      } else if (step instanceof CodeExecutionResultStep) {
-        CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-        System.out.println(resultStep.result().orElse(""));
+      } else if (step.type === "code_execution_call") {
+          console.log(step.arguments.code);
+      } else if (step.type === "code_execution_result") {
+          console.log(step.result);
       }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.CodeExecution;
+  import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
+  import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.ModelOutputStep;
+  import com.google.genai.gaos.models.interactions.Step;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import java.util.Arrays;
+  import java.util.Collections;
+  
+  Client client = new Client();
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-3.8-flash")
+          .input(
+              InteractionsInput.of(
+                  "What is the sum of the first 50 prime numbers? "
+                      + "Generate and run code for the calculation, and make sure you get all 50."))
+          .tools(Arrays.asList(CodeExecution.builder().build()))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+  
+  for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+    if (step instanceof ModelOutputStep) {
+      ModelOutputStep outputStep = (ModelOutputStep) step;
+      for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
+        if (contentBlock instanceof TextContent) {
+          System.out.println(((TextContent) contentBlock).text().orElse(""));
+        }
+      }
+    } else if (step instanceof CodeExecutionCallStep) {
+      CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
+      callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
+    } else if (step instanceof CodeExecutionResultStep) {
+      CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
+      System.out.println(resultStep.result().orElse(""));
     }
+  }
+  ```
 
-### Go
+  {% /tab %}
 
-    package main
+  {% tab label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model: interactions.Model("gemini-3.8-flash"),
+              Input: interactions.NewInteractionsInput(
+                  "What is the sum of the first 50 prime numbers? " +
+                      "Generate and run code for the calculation, and make sure you get all 50.",
+              ),
+              Tools: []interactions.Tool{
+                  interactions.NewTool(interactions.CodeExecution{}),
+              },
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      for _, step := range res.Interaction.Steps {
+          if outStep := step.ModelOutputStep; outStep != nil {
+              for _, contentBlock := range outStep.Content {
+                  if textContent := contentBlock.TextContent; textContent != nil {
+                      fmt.Println(textContent.GetText())
+                  }
+              }
+          } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+              if code := callStep.Arguments.GetCode(); code != nil {
+                  fmt.Println(*code)
+              }
+          } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+              fmt.Println(resultStep.GetResult())
+          }
+      }
+  }
+  ```
 
-    import (
-        "context"
-        "fmt"
-        "log"
+  {% /tab %}
 
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
+  {% tab label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -H "Api-Revision: 2026-05-20" \
+  -d '{
+      "model": "gemini-3.8-flash",
+      "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
+      "tools": [{"type": "code_execution"}]
+  }'
+  ```
 
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
+  {% /tab %}
 
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash"),
-                Input: interactions.NewInteractionsInput(
-                    "What is the sum of the first 50 prime numbers? " +
-                        "Generate and run code for the calculation, and make sure you get all 50.",
-                ),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.CodeExecution{}),
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        for _, step := range res.Interaction.Steps {
-            if outStep := step.ModelOutputStep; outStep != nil {
-                for _, contentBlock := range outStep.Content {
-                    if textContent := contentBlock.TextContent; textContent != nil {
-                        fmt.Println(textContent.GetText())
-                    }
-                }
-            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
-                if code := callStep.Arguments.GetCode(); code != nil {
-                    fmt.Println(*code)
-                }
-            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-                fmt.Println(resultStep.GetResult())
-            }
-        }
-    }
-
-### REST
-
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -d '{
-        "model": "gemini-3.8-flash",
-        "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
-        "tools": [{"type": "code_execution"}]
-    }'
+{% /tabs %}
 
 The output might look something like the following, which has been formatted for
 readability:
 
-    Okay, I need to calculate the sum of the first 50 prime numbers. Here's how I'll
-    approach this:
+```none
+Okay, I need to calculate the sum of the first 50 prime numbers. Here's how I'll
+approach this:
 
-    1.  **Generate Prime Numbers:** I'll use an iterative method to find prime
-        numbers. I'll start with 2 and check if each subsequent number is divisible
-        by any number between 2 and its square root. If not, it's a prime.
-    2.  **Store Primes:** I'll store the prime numbers in a list until I have 50 of
-        them.
-    3.  **Calculate the Sum:**  Finally, I'll sum the prime numbers in the list.
+1. **Generate Prime Numbers:** I'll use an iterative method to find prime
+    numbers. I'll start with 2 and check if each subsequent number is divisible
+    by any number between 2 and its square root. If not, it's a prime.
 
-    Here's the Python code to do this:
+2. **Store Primes:** I'll store the prime numbers in a list until I have 50 of
+    them.
 
-    def is_prime(n):
-      """Efficiently checks if a number is prime."""
-      if n <= 1:
-        return False
-      if n <= 3:
-        return True
-      if n % 2 == 0 or n % 3 == 0:
-        return False
-      i = 5
-      while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
-          return False
-        i += 6
-      return True
+3. **Calculate the Sum:** Finally, I'll sum the prime numbers in the list.
 
-    primes = []
-    num = 2
-    while len(primes) < 50:
-      if is_prime(num):
-        primes.append(num)
-      num += 1
+Here's the Python code to do this:
 
-    sum_of_primes = sum(primes)
-    print(f'{primes=}')
-    print(f'{sum_of_primes=}')
+def is_prime(n):
+  """Efficiently checks if a number is prime."""
+  if n <= 1:
+    return False
+  if n <= 3:
+    return True
+  if n % 2 == 0 or n % 3 == 0:
+    return False
+  i = 5
+  while i * i <= n:
+    if n % i == 0 or n % (i + 2) == 0:
+      return False
+    i += 6
+  return True
 
-    primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
-    71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
-    157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
-    sum_of_primes=5117
+primes = []
+num = 2
+while len(primes) < 50:
+  if is_prime(num):
+    primes.append(num)
+  num += 1
 
-    The sum of the first 50 prime numbers is 5117.
+sum_of_primes = sum(primes)
+print(f'{primes=}')
+print(f'{sum_of_primes=}')
+
+primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67,
+71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
+157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
+sum_of_primes=5117
+
+The sum of the first 50 prime numbers is 5117.
+```
 
 This output combines several content parts that the model returns when using
 code execution:
 
-- `text`: Inline text generated by the model
-- `code_execution_call`: Code generated by the model that is meant to be executed
-- `code_execution_result`: Result of the executable code
+* `text`: Inline text generated by the model
+* `code_execution_call`: Code generated by the model that is meant to be executed
+* `code_execution_result`: Result of the executable code
 
-## Code Execution with images (Gemini 3)
+## Code Execution with images (Gemini 3)  {% id="images" %}
 
 The Gemini 3 Flash model can now write and execute Python code to actively
 manipulate and inspect images.
 
 **Use cases**
 
-- **Zoom and inspect**: The model implicitly detects when details are too small (e.g., reading a distant gauge) and writes code to crop and re-examine the area at higher resolution.
-- **Visual math**: The model can run multi-step calculations using code (e.g., summing line items on a receipt).
-- **Image annotation**: The model can annotate images to answer questions, such as drawing arrows to show relationships.
+*   **Zoom and inspect**: The model implicitly detects when details are too small
+  (e.g., reading a distant gauge) and writes code to crop and re-examine the area
+  at higher resolution.
 
-> [!NOTE]
-> **Note:** While the model automatically handles zooming for small details, you should prompt it explicitly to use code for other tasks, such as "Write code to count the number of gears" or "Rotate this image to make it upright".
+*   **Visual math**: The model can run multi-step calculations using code (e.g.,
+  summing line items on a receipt).
 
-## Enable Code Execution with images
+*   **Image annotation**: The model can annotate images to answer questions, such
+  as drawing arrows to show relationships.
+
+
+{% callout type="note" %}
+  While the model automatically handles zooming for small details, you
+  should prompt it explicitly to use code for other tasks, such as "Write code to
+  count the number of gears" or "Rotate this image to make it upright".
+
+{% /callout %}
+
+## Enable Code Execution with images  {% id="code-exec-with-images" %}
 
 Code Execution with images is officially supported in Gemini 3 Flash. You can
 activate this behavior by enabling both Code Execution as a tool and Thinking.
 
-### Python
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  import requests
+  import base64
+  from PIL import Image
+  import io
+  
+  image_path = "https://goo.gle/instrument-img"
+  image_bytes = requests.get(image_path).content
+  
+  client = genai.Client()
+  
+  interaction = client.interactions.create(
+      model="gemini-3.8-flash",
+      input=[
+          {"type": "image", "data": base64.b64encode(image_bytes).decode('utf-8'), "mime_type": "image/jpeg"},
+          {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
+      ],
+      tools=[{"type": "code_execution"}]
+  )
+  
+  for step in interaction.steps:
+      if step.type == "model_output":
+          for content_block in step.content:
+              if content_block.type == "text":
+                  print(content_block.text)
+              elif content_block.type == "image":
+                  display(Image.open(io.BytesIO(base64.b64decode(content_block.data))))
+      elif step.type == "code_execution_call":
+          print(step.arguments.code)
+      elif step.type == "code_execution_result":
+          print(step.result)
+  ```
 
-    from google import genai
-    import requests
-    import base64
-    from PIL import Image
-    import io
+  {% /tab %}
 
-    image_path = "https://goo.gle/instrument-img"
-    image_bytes = requests.get(image_path).content
-
-    client = genai.Client()
-
-    interaction = client.interactions.create(
-        model="gemini-3.8-flash",
-        input=[
-            {"type": "image", "data": base64.b64encode(image_bytes).decode('utf-8'), "mime_type": "image/jpeg"},
-            {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
-        ],
-        tools=[{"type": "code_execution"}]
-    )
-
-    for step in interaction.steps:
-        if step.type == "model_output":
-            for content_block in step.content:
-                if content_block.type == "text":
-                    print(content_block.text)
-                elif content_block.type == "image":
-                    img = Image.open(io.BytesIO(base64.b64decode(content_block.data)))
-                    img.show()  # or: img.save("output_image.jpg")
-        elif step.type == "code_execution_call":
-            print(step.arguments.code)
-        elif step.type == "code_execution_result":
-            print(step.result)
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    async function main() {
-      const client = new GoogleGenAI({});
-
-      const imageUrl = "https://goo.gle/instrument-img";
-      const response = await fetch(imageUrl);
-      const imageArrayBuffer = await response.arrayBuffer();
-      const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
-
-      const interaction = await client.interactions.create({
-        model: "gemini-3.8-flash",
-        input: [
-          {
-            type: "image",
-            data: base64ImageData,
-            mime_type: "image/jpeg"
-          },
-          { type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?" }
-        ],
-        tools: [{ type: "code_execution" }]
-      });
-
-      for (const step of interaction.steps) {
-        if (step.type === "model_output") {
-          for (const contentBlock of step.content) {
-            if (contentBlock.type === "text") {
-              console.log("Text:", contentBlock.text);
-            }
-          }
-        } else if (step.type === "code_execution_call") {
-          console.log(`\nGenerated Code:\n`, step.arguments.code);
-        } else if (step.type === "code_execution_result") {
-          console.log(`\nExecution Output:\n`, step.result);
-        }
-      }
-    }
-
-    main();
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CodeExecution;
-    import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
-    import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.ImageContent;
-    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.ModelOutputStep;
-    import com.google.genai.gaos.models.interactions.Step;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.io.InputStream;
-    import java.net.URI;
-    import java.nio.file.Files;
-    import java.nio.file.Paths;
-    import java.util.Arrays;
-    import java.util.Base64;
-    import java.util.Collections;
-
-    String imageUrl = "https://goo.gle/instrument-img";
-    byte[] imageBytes;
-    try (InputStream in = URI.create(imageUrl).toURL().openStream()) {
-      imageBytes = in.readAllBytes();
-    }
-    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-
-    Client client = new Client();
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
-            .input(
-                InteractionsInput.ofContent(
-                    Arrays.asList(
-                        ImageContent.builder()
-                            .data(base64Image)
-                            .mimeType(ImageContentMimeType.IMAGE_JPEG)
-                            .build(),
-                        TextContent.builder()
-                            .text(
-                                "Zoom into the expression pedals and tell me how many pedals are there?")
-                            .build())))
-            .tools(Arrays.asList(CodeExecution.builder().build()))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    for (Step step : interaction.steps().orElse(Collections.emptyList())) {
-      if (step instanceof ModelOutputStep) {
-        ModelOutputStep outputStep = (ModelOutputStep) step;
-        for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
-          if (contentBlock instanceof TextContent) {
-            System.out.println(((TextContent) contentBlock).text().orElse(""));
-          } else if (contentBlock instanceof ImageContent) {
-            ImageContent imgContent = (ImageContent) contentBlock;
-            if (imgContent.data().isPresent()) {
-              byte[] decoded = Base64.getDecoder().decode(imgContent.data().get());
-              Files.write(Paths.get("output_image.jpg"), decoded);
-            }
+  {% tab label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  async function main() {
+    const client = new GoogleGenAI({});
+  
+    const imageUrl = "https://goo.gle/instrument-img";
+    const response = await fetch(imageUrl);
+    const imageArrayBuffer = await response.arrayBuffer();
+    const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
+  
+    const interaction = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: [
+        {
+          type: "image",
+          data: base64ImageData,
+          mime_type: "image/jpeg"
+        },
+        { type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?" }
+      ],
+      tools: [{ type: "code_execution" }]
+    });
+  
+    for (const step of interaction.steps) {
+      if (step.type === "model_output") {
+        for (const contentBlock of step.content || []) {
+          if (contentBlock.type === "text") {
+            console.log("Text:", contentBlock.text);
           }
         }
-      } else if (step instanceof CodeExecutionCallStep) {
-        CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
-        callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
-      } else if (step instanceof CodeExecutionResultStep) {
-        CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-        System.out.println(resultStep.result().orElse(""));
+      } else if (step.type === "code_execution_call") {
+        console.log(`\nGenerated Code:\n`, step.arguments.code);
+      } else if (step.type === "code_execution_result") {
+        console.log(`\nExecution Output:\n`, step.result);
       }
     }
+  }
+  
+  await main();
+  ```
 
-### Go
+  {% /tab %}
 
-    package main
-
-    import (
-        "context"
-        "encoding/base64"
-        "fmt"
-        "io"
-        "log"
-        "net/http"
-        "os"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.CodeExecution;
+  import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
+  import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.ImageContent;
+  import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.ModelOutputStep;
+  import com.google.genai.gaos.models.interactions.Step;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import java.io.InputStream;
+  import java.net.URI;
+  import java.nio.file.Files;
+  import java.nio.file.Paths;
+  import java.util.Arrays;
+  import java.util.Base64;
+  import java.util.Collections;
+  
+  String imageUrl = "https://goo.gle/instrument-img";
+  byte[] imageBytes;
+  try (InputStream in = URI.create(imageUrl).toURL().openStream()) {
+    imageBytes = in.readAllBytes();
+  }
+  String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+  
+  Client client = new Client();
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model("gemini-3.8-flash")
+          .input(
+              InteractionsInput.ofContent(
+                  Arrays.asList(
+                      ImageContent.builder()
+                          .data(base64Image)
+                          .mimeType(ImageContentMimeType.IMAGE_JPEG)
+                          .build(),
+                      TextContent.builder()
+                          .text(
+                              "Zoom into the expression pedals and tell me how many pedals are there?")
+                          .build())))
+          .tools(Arrays.asList(CodeExecution.builder().build()))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+  
+  for (Step step : interaction.steps().orElse(Collections.emptyList())) {
+    if (step instanceof ModelOutputStep) {
+      ModelOutputStep outputStep = (ModelOutputStep) step;
+      for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
+        if (contentBlock instanceof TextContent) {
+          System.out.println(((TextContent) contentBlock).text().orElse(""));
+        } else if (contentBlock instanceof ImageContent) {
+          ImageContent imgContent = (ImageContent) contentBlock;
+          if (imgContent.data().isPresent()) {
+            byte[] decoded = Base64.getDecoder().decode(imgContent.data().get());
+            Files.write(Paths.get("output_image.jpg"), decoded);
+          }
         }
-
-        imageURL := "https://goo.gle/instrument-img"
-        httpResp, err := http.Get(imageURL)
-        if err != nil {
-            log.Fatal(err)
-        }
-        defer httpResp.Body.Close()
-        imageBytes, err := io.ReadAll(httpResp.Body)
-        if err != nil {
-            log.Fatal(err)
-        }
-        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash"),
-                Input: interactions.NewInteractionsInput([]interactions.Content{
-                    interactions.NewContent(interactions.ImageContent{
-                        Data:     genai.Ptr(base64Image),
-                        MimeType: interactions.ImageContentMimeType("image/jpeg").ToPointer(),
-                    }),
-                    interactions.NewContent(interactions.TextContent{
-                        Text: "Zoom into the expression pedals and tell me how many pedals are there?",
-                    }),
-                }),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.CodeExecution{}),
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        for _, step := range res.Interaction.Steps {
-            if outStep := step.ModelOutputStep; outStep != nil {
-                for _, contentBlock := range outStep.Content {
-                    if textContent := contentBlock.TextContent; textContent != nil {
-                        fmt.Println(textContent.GetText())
-                    } else if imgContent := contentBlock.ImageContent; imgContent != nil && imgContent.Data != nil {
-                        decoded, err := base64.StdEncoding.DecodeString(*imgContent.Data)
-                        if err == nil {
-                            _ = os.WriteFile("output_image.jpg", decoded, 0644)
-                        }
-                    }
-                }
-            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
-                if code := callStep.Arguments.GetCode(); code != nil {
-                    fmt.Println(*code)
-                }
-            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-                fmt.Println(resultStep.GetResult())
-            }
-        }
+      }
+    } else if (step instanceof CodeExecutionCallStep) {
+      CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
+      callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
+    } else if (step instanceof CodeExecutionResultStep) {
+      CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
+      System.out.println(resultStep.result().orElse(""));
     }
+  }
+  ```
 
-### REST
+  {% /tab %}
 
-    IMG_URL="https://goo.gle/instrument-img"
-    MODEL="gemini-3.8-flash"
+  {% tab label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "encoding/base64"
+      "fmt"
+      "io"
+      "log"
+      "net/http"
+      "os"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      imageURL := "https://goo.gle/instrument-img"
+      httpResp, err := http.Get(imageURL)
+      if err != nil {
+          log.Fatal(err)
+      }
+      defer httpResp.Body.Close()
+      imageBytes, err := io.ReadAll(httpResp.Body)
+      if err != nil {
+          log.Fatal(err)
+      }
+      base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+  
+      res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model: interactions.Model("gemini-3.8-flash"),
+              Input: interactions.NewInteractionsInput([]interactions.Content{
+                  interactions.NewContent(interactions.ImageContent{
+                      Data:     genai.Ptr(base64Image),
+                      MimeType: interactions.ImageContentMimeType("image/jpeg").ToPointer(),
+                  }),
+                  interactions.NewContent(interactions.TextContent{
+                      Text: "Zoom into the expression pedals and tell me how many pedals are there?",
+                  }),
+              }),
+              Tools: []interactions.Tool{
+                  interactions.NewTool(interactions.CodeExecution{}),
+              },
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      for _, step := range res.Interaction.Steps {
+          if outStep := step.ModelOutputStep; outStep != nil {
+              for _, contentBlock := range outStep.Content {
+                  if textContent := contentBlock.TextContent; textContent != nil {
+                      fmt.Println(textContent.GetText())
+                  } else if imgContent := contentBlock.ImageContent; imgContent != nil && imgContent.Data != nil {
+                      decoded, err := base64.StdEncoding.DecodeString(*imgContent.Data)
+                      if err == nil {
+                          _ = os.WriteFile("output_image.jpg", decoded, 0644)
+                      }
+                  }
+              }
+          } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+              if code := callStep.Arguments.GetCode(); code != nil {
+                  fmt.Println(*code)
+              }
+          } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+              fmt.Println(resultStep.GetResult())
+          }
+      }
+  }
+  ```
 
-    MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
-    if [[ -z "$MIME_TYPE" || ! "$MIME_TYPE" == image/* ]]; then
-      MIME_TYPE="image/jpeg"
-    fi
+  {% /tab %}
 
-    if [[ "$(uname)" == "Darwin" ]]; then
-      IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -b 0)
-    elif [[ "$(base64 --version 2>&1)" = *"FreeBSD"* ]]; then
-      IMAGE_B64=$(curl -sL "$IMG_URL" | base64)
-    else
-      IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
-    fi
+  {% tab label="REST" %}
+  ```shell
+  IMG_URL="https://goo.gle/instrument-img"
+  MODEL="gemini-3.8-flash"
+  
+  MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
+  if [[ -z "$MIME_TYPE" || ! "$MIME_TYPE" == image/* ]]; then
+    MIME_TYPE="image/jpeg"
+  fi
+  
+  if [[ "$(uname)" == "Darwin" ]]; then
+    IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -b 0)
+  elif [[ "$(base64 --version 2>&1)" = *"FreeBSD"* ]]; then
+    IMAGE_B64=$(curl -sL "$IMG_URL" | base64)
+  else
+    IMAGE_B64=$(curl -sL "$IMG_URL" | base64 -w0)
+  fi
+  
+  # Use jq to create the JSON payload to avoid "Argument list too long" error with large base64 strings
+  echo -n "$IMAGE_B64" > image_b64.txt
+  jq -n \
+    --rawfile b64 image_b64.txt \
+    --arg mime "$MIME_TYPE" \
+    '{
+      model: "gemini-3.8-flash",
+      input: [
+        {type: "image", data: $b64, mime_type: $mime},
+        {type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?"}
+      ],
+      tools: [{type: "code_execution"}]
+    }' > payload.json
+  
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -H "Api-Revision: 2026-05-20" \
+      -d @payload.json
+  ```
 
-    # Use jq to create the JSON payload to avoid "Argument list too long" error with large base64 strings
-    echo -n "$IMAGE_B64" > image_b64.txt
-    jq -n \
-      --rawfile b64 image_b64.txt \
-      --arg mime "$MIME_TYPE" \
-      '{
-        model: "gemini-3.8-flash",
-        input: [
-          {type: "image", data: $b64, mime_type: $mime},
-          {type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?"}
-        ],
-        tools: [{type: "code_execution"}]
-      }' > payload.json
+  {% /tab %}
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
-        -H "x-goog-api-key: $GEMINI_API_KEY" \
-        -H 'Content-Type: application/json' \
-        -d @payload.json
+{% /tabs %}
 
-## Use code execution in multi-turn interactions
+## Use code execution in multi-turn interactions  {% id="code-in-chat" %}
 
 You can also use code execution as part of a multi-turn conversation using
 `previous_interaction_id`.
 
-### Python
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  interaction1 = client.interactions.create(
+      model="gemini-3.8-flash",
+      input="I have a math question for you.",
+      tools=[{"type": "code_execution"}]
+  )
+  print(interaction1.output_text)
+  
+  interaction2 = client.interactions.create(
+      model="gemini-3.8-flash",
+      previous_interaction_id=interaction1.id,
+      input="What is the sum of the first 50 prime numbers? "
+            "Generate and run code for the calculation, and make sure you get all 50.",
+      tools=[{"type": "code_execution"}]
+  )
+  
+  for step in interaction2.steps:
+      if step.type == "model_output":
+          for content_block in step.content:
+              if content_block.type == "text":
+                  print(content_block.text)
+      elif step.type == "code_execution_call":
+          print(step.arguments.code)
+      elif step.type == "code_execution_result":
+          print(step.result)
+  ```
 
-    from google import genai
+  {% /tab %}
 
-    client = genai.Client()
-
-    interaction1 = client.interactions.create(
-        model="gemini-3.8-flash",
-        input="I have a math question for you.",
-        tools=[{"type": "code_execution"}]
-    )
-    print(interaction1.output_text)
-
-    interaction2 = client.interactions.create(
-        model="gemini-3.8-flash",
-        previous_interaction_id=interaction1.id,
-        input="What is the sum of the first 50 prime numbers? "
-              "Generate and run code for the calculation, and make sure you get all 50.",
-        tools=[{"type": "code_execution"}]
-    )
-
-    for step in interaction2.steps:
-        if step.type == "model_output":
-            for content_block in step.content:
-                if content_block.type == "text":
-                    print(content_block.text)
-        elif step.type == "code_execution_call":
-            print(step.arguments.code)
-        elif step.type == "code_execution_result":
-            print(step.result)
-
-### JavaScript
-
-    import { GoogleGenAI } from "@google/genai";
-
-    const client = new GoogleGenAI({});
-
-    const interaction1 = await client.interactions.create({
-        model: "gemini-3.8-flash",
-        input: "I have a math question for you.",
-        tools: [{ type: "code_execution" }]
-    });
-    console.log(interaction1.output_text);
-
-    const interaction2 = await client.interactions.create({
-        model: "gemini-3.8-flash",
-        previous_interaction_id: interaction1.id,
-        input: "What is the sum of the first 50 prime numbers? " +
-               "Generate and run code for the calculation, and make sure you get all 50.",
-        tools: [{ type: "code_execution" }]
-    });
-
-    for (const step of interaction2.steps) {
-        if (step.type === "model_output") {
-            for (const contentBlock of step.content) {
-                if (contentBlock.type === "text") {
-                    console.log(contentBlock.text);
-                }
-            }
-        } else if (step.type === "code_execution_call") {
-            console.log(step.arguments.code);
-        } else if (step.type === "code_execution_result") {
-            console.log(step.result);
-        }
-    }
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.CodeExecution;
-    import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
-    import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
-    import com.google.genai.gaos.models.interactions.Content;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.interactions.ModelOutputStep;
-    import com.google.genai.gaos.models.interactions.Step;
-    import com.google.genai.gaos.models.interactions.TextContent;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.Collections;
-
-    Client client = new Client();
-
-    CreateModelInteraction params1 =
-        CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
-            .input(InteractionsInput.of("I have a math question for you."))
-            .tools(Arrays.asList(CodeExecution.builder().build()))
-            .build();
-
-    Interaction interaction1 =
-        client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
-    System.out.println(interaction1.outputText().orElse(""));
-
-    CreateModelInteraction params2 =
-        CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
-            .previousInteractionId(interaction1.id().get())
-            .input(
-                InteractionsInput.of(
-                    "What is the sum of the first 50 prime numbers? "
-                        + "Generate and run code for the calculation, and make sure you get all 50."))
-            .tools(Arrays.asList(CodeExecution.builder().build()))
-            .build();
-
-    Interaction interaction2 =
-        client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
-
-    for (Step step : interaction2.steps().orElse(Collections.emptyList())) {
-      if (step instanceof ModelOutputStep) {
-        ModelOutputStep outputStep = (ModelOutputStep) step;
-        for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
-          if (contentBlock instanceof TextContent) {
-            System.out.println(((TextContent) contentBlock).text().orElse(""));
+  {% tab label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const client = new GoogleGenAI({});
+  
+  const interaction1 = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "I have a math question for you.",
+      tools: [{ type: "code_execution" }]
+  });
+  console.log(interaction1.output_text);
+  
+  const interaction2 = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      previous_interaction_id: interaction1.id,
+      input: "What is the sum of the first 50 prime numbers? " +
+             "Generate and run code for the calculation, and make sure you get all 50.",
+      tools: [{ type: "code_execution" }]
+  });
+  
+  for (const step of interaction2.steps) {
+      if (step.type === "model_output") {
+          for (const contentBlock of step.content || []) {
+              if (contentBlock.type === "text") {
+                  console.log(contentBlock.text);
+              }
           }
-        }
-      } else if (step instanceof CodeExecutionCallStep) {
-        CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
-        callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
-      } else if (step instanceof CodeExecutionResultStep) {
-        CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-        System.out.println(resultStep.result().orElse(""));
+      } else if (step.type === "code_execution_call") {
+          console.log(step.arguments.code);
+      } else if (step.type === "code_execution_result") {
+          console.log(step.result);
       }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.CodeExecution;
+  import com.google.genai.gaos.models.interactions.CodeExecutionCallStep;
+  import com.google.genai.gaos.models.interactions.CodeExecutionResultStep;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.ModelOutputStep;
+  import com.google.genai.gaos.models.interactions.Step;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import java.util.Arrays;
+  import java.util.Collections;
+  
+  Client client = new Client();
+  
+  CreateModelInteraction params1 =
+      CreateModelInteraction.builder()
+          .model("gemini-3.8-flash")
+          .input(InteractionsInput.of("I have a math question for you."))
+          .tools(Arrays.asList(CodeExecution.builder().build()))
+          .build();
+  
+  Interaction interaction1 =
+      client.interactions.create(CreateInteractionRequestBody.of(params1)).interaction().get();
+  System.out.println(interaction1.outputText().orElse(""));
+  
+  CreateModelInteraction params2 =
+      CreateModelInteraction.builder()
+          .model("gemini-3.8-flash")
+          .previousInteractionId(interaction1.id().get())
+          .input(
+              InteractionsInput.of(
+                  "What is the sum of the first 50 prime numbers? "
+                      + "Generate and run code for the calculation, and make sure you get all 50."))
+          .tools(Arrays.asList(CodeExecution.builder().build()))
+          .build();
+  
+  Interaction interaction2 =
+      client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
+  
+  for (Step step : interaction2.steps().orElse(Collections.emptyList())) {
+    if (step instanceof ModelOutputStep) {
+      ModelOutputStep outputStep = (ModelOutputStep) step;
+      for (Content contentBlock : outputStep.content().orElse(Collections.emptyList())) {
+        if (contentBlock instanceof TextContent) {
+          System.out.println(((TextContent) contentBlock).text().orElse(""));
+        }
+      }
+    } else if (step instanceof CodeExecutionCallStep) {
+      CodeExecutionCallStep callStep = (CodeExecutionCallStep) step;
+      callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
+    } else if (step instanceof CodeExecutionResultStep) {
+      CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
+      System.out.println(resultStep.result().orElse(""));
     }
+  }
+  ```
 
-### Go
+  {% /tab %}
 
-    package main
+  {% tab label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model: interactions.Model("gemini-3.8-flash"),
+              Input: interactions.NewInteractionsInput("I have a math question for you."),
+              Tools: []interactions.Tool{
+                  interactions.NewTool(interactions.CodeExecution{}),
+              },
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+      if res1.Interaction.OutputText != nil {
+          fmt.Println(*res1.Interaction.OutputText)
+      }
+  
+      res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+              Model:                 interactions.Model("gemini-3.8-flash"),
+              PreviousInteractionID: res1.Interaction.ID,
+              Input: interactions.NewInteractionsInput(
+                  "What is the sum of the first 50 prime numbers? " +
+                      "Generate and run code for the calculation, and make sure you get all 50.",
+              ),
+              Tools: []interactions.Tool{
+                  interactions.NewTool(interactions.CodeExecution{}),
+              },
+          }),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      for _, step := range res2.Interaction.Steps {
+          if outStep := step.ModelOutputStep; outStep != nil {
+              for _, contentBlock := range outStep.Content {
+                  if textContent := contentBlock.TextContent; textContent != nil {
+                      fmt.Println(textContent.GetText())
+                  }
+              }
+          } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+              if code := callStep.Arguments.GetCode(); code != nil {
+                  fmt.Println(*code)
+              }
+          } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+              fmt.Println(resultStep.GetResult())
+          }
+      }
+  }
+  ```
 
-    import (
-        "context"
-        "fmt"
-        "log"
+  {% /tab %}
 
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
+  {% tab label="REST" %}
+  ```shell
+  # First turn
+  RESPONSE1=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -H "Api-Revision: 2026-05-20" \
+  -d '{
+      "model": "gemini-3.8-flash",
+      "input": "I have a math question for you.",
+      "tools": [{"type": "code_execution"}]
+  }')
+  
+  INTERACTION_ID=$(echo $RESPONSE1 | jq -r '.id')
+  
+  # Second turn with previous_interaction_id
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -H "Api-Revision: 2026-05-20" \
+  -d '{
+      "model": "gemini-3.8-flash",
+      "previous_interaction_id": "'"$INTERACTION_ID"'",
+      "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
+      "tools": [{"type": "code_execution"}]
+  }'
+  ```
 
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
+  {% /tab %}
 
-        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.8-flash"),
-                Input: interactions.NewInteractionsInput("I have a math question for you."),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.CodeExecution{}),
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-        if res1.Interaction.OutputText != nil {
-            fmt.Println(*res1.Interaction.OutputText)
-        }
+{% /tabs %}
 
-        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:                 interactions.Model("gemini-3.8-flash"),
-                PreviousInteractionID: res1.Interaction.ID,
-                Input: interactions.NewInteractionsInput(
-                    "What is the sum of the first 50 prime numbers? " +
-                        "Generate and run code for the calculation, and make sure you get all 50.",
-                ),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.CodeExecution{}),
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
+## Input/output (I/O)  {% id="input-output" %}
 
-        for _, step := range res2.Interaction.Steps {
-            if outStep := step.ModelOutputStep; outStep != nil {
-                for _, contentBlock := range outStep.Content {
-                    if textContent := contentBlock.TextContent; textContent != nil {
-                        fmt.Println(textContent.GetText())
-                    }
-                }
-            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
-                if code := callStep.Arguments.GetCode(); code != nil {
-                    fmt.Println(*code)
-                }
-            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-                fmt.Println(resultStep.GetResult())
-            }
-        }
-    }
-
-### REST
-
-    # First turn
-    RESPONSE1=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -d '{
-        "model": "gemini-3.8-flash",
-        "input": "I have a math question for you.",
-        "tools": [{"type": "code_execution"}]
-    }')
-
-    INTERACTION_ID=$(echo $RESPONSE1 | jq -r '.id')
-
-    # Second turn with previous_interaction_id
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
-    -H "x-goog-api-key: $GEMINI_API_KEY" \
-    -H 'Content-Type: application/json' \
-    -d '{
-        "model": "gemini-3.8-flash",
-        "previous_interaction_id": "'"$INTERACTION_ID"'",
-        "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
-        "tools": [{"type": "code_execution"}]
-    }'
-
-## Input/output (I/O)
-
-In current Gemini models such as
-[Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash), code
+Starting with
+[Gemini 2.0 Flash](/docs/models), code
 execution supports file input and graph output. Using these input and output
 capabilities, you can upload CSV and text files, ask questions about the
 files, and have [Matplotlib](https://matplotlib.org/) graphs generated as part
 of the response. The output files are returned as inline images in the response.
 
-### I/O pricing
+### I/O pricing  {% id="input-output-pricing" %}
 
 When using code execution I/O, you're charged for input tokens and output
 tokens:
 
 **Input tokens:**
 
-- User prompt
+* User prompt
 
 **Output tokens:**
 
-- Code generated by the model
-- Code execution output in the code environment
-- Thinking tokens
-- Summary generated by the model
+* Code generated by the model
+* Code execution output in the code environment
+* Thinking tokens
+* Summary generated by the model
 
-### I/O details
+### I/O details  {% id="input-output-details" %}
 
 When you're working with code execution I/O, be aware of the following technical
 details:
 
-- The maximum runtime of the code environment is 30 seconds.
-- If the code environment generates an error, the model may decide to regenerate the code output. This can happen up to 5 times.
-- The maximum file input size is limited by the model token window. If you upload a file that exceeds the model's maximum context window, the API will return an error.
-- Code execution works best with text and CSV files.
-- The input file can be passed as inline data or uploaded using the [Files API](https://ai.google.dev/gemini-api/docs/files), and the output file is always returned as inline data.
+*   The maximum runtime of the code environment is 30 seconds.
 
-## Billing
+*   If the code environment generates an error, the model may decide to
+  regenerate the code output. This can happen up to 5 times.
+
+*   The maximum file input size is limited by the model token window. If you upload a file that exceeds the model's maximum context window, the API will return an error.
+
+*   Code execution works best with text and CSV files.
+
+*   The input file can be passed as inline data or uploaded using the
+  [Files API](/docs/files),
+  and the output file is always returned as inline data.
+
+
+## Billing  {% id="billing" %}
 
 There's no additional charge for enabling code execution from the Gemini API.
 You'll be billed at the current rate of input and output tokens based on the
@@ -795,84 +882,108 @@ Gemini model you're using.
 
 Here are a few other things to know about billing for code execution:
 
-- You're only billed once for the input tokens you pass to the model, and you're billed for the final output tokens returned to you by the model.
-- Tokens representing generated code are counted as output tokens. Generated code can include text and multimodal output like images.
-- Code execution results are also counted as output tokens.
+*   You're only billed once for the input tokens you pass to the model, and you're
+  billed for the final output tokens returned to you by the model.
+
+*   Tokens representing generated code are counted as output tokens. Generated
+  code can include text and multimodal output like images.
+
+*   Code execution results are also counted as output tokens.
+
 
 The billing model is shown in the following diagram:
 
-![code execution billing model](https://ai.google.dev/static/gemini-api/docs/images/code-execution-diagram.png)
+![](https://www.gstatic.com/cloud-cms/ecde91a1ae68725124dc8c1532aabd8c.png)
 
-- You're billed at the current rate of input and output tokens based on the Gemini model you're using.
-- If Gemini uses code execution when generating your response, the original prompt, the generated code, and the result of the executed code are labeled *intermediate tokens* and are billed as *input tokens*.
-- Gemini then generates a summary and returns the generated code, the result of the executed code, and the final summary. These are billed as *output tokens*.
-- The Gemini API includes an intermediate token count in the API response, so you know why you're getting additional input tokens beyond your initial prompt.
+*   You're billed at the current rate of input and output tokens based on the
+  Gemini model you're using.
 
-## Limitations
+*   If Gemini uses code execution when generating your response, the original
+  prompt, the generated code, and the result of the executed code are labeled
+  *intermediate tokens* and are billed as *input tokens*.
 
-- The model can only generate and execute code. It can't return other artifacts like media files.
-- In some cases, enabling code execution can lead to regressions in other areas of model output (for example, writing a story).
-- There is some variation in the ability of the different models to use code execution successfully.
+*   Gemini then generates a summary and returns the generated code, the result of
+  the executed code, and the final summary. These are billed as *output tokens*.
 
-## Supported tools combinations
+*   The Gemini API includes an intermediate token count in the API response, so
+  you know why you're getting additional input tokens beyond your initial
+  prompt.
+
+
+## Limitations  {% id="limitations" %}
+
+*   The model can only generate and execute code. It can't return other artifacts
+  like media files.
+
+*   In some cases, enabling code execution can lead to regressions in other areas
+  of model output (for example, writing a story).
+
+*   There is some variation in the ability of the different models to use code
+  execution successfully.
+
+
+## Supported tools combinations  {% id="supported-tools-combinations" %}
 
 Code execution tool can be combined with
-[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) to
+[Grounding with Google Search](/docs/google-search) to
 power more complex use cases.
 
-Gemini 3 models support combining built-in tools (like Code Execution) with
+Gemini 4 and Gemini 3 models support combining built-in tools (like Code Execution) with
 custom tools (function calling).
 
-## Supported libraries
+## Supported libraries  {% id="supported-libraries" %}
 
 The code execution environment includes the following libraries:
 
-- attrs
-- chess
-- contourpy
-- fpdf
-- geopandas
-- imageio
-- jinja2
-- joblib
-- jsonschema
-- jsonschema-specifications
-- lxml
-- matplotlib
-- mpmath
-- numpy
-- opencv-python
-- openpyxl
-- packaging
-- pandas
-- pillow
-- protobuf
-- pylatex
-- pyparsing
-- PyPDF2
-- python-dateutil
-- python-docx
-- python-pptx
-- reportlab
-- scikit-learn
-- scipy
-- seaborn
-- six
-- striprtf
-- sympy
-- tabulate
-- tensorflow
-- toolz
-- xlrd
+* attrs
+* chess
+* contourpy
+* fpdf
+* geopandas
+* imageio
+* jinja2
+* joblib
+* jsonschema
+* jsonschema-specifications
+* lxml
+* matplotlib
+* mpmath
+* numpy
+* opencv-python
+* openpyxl
+* packaging
+* pandas
+* pillow
+* protobuf
+* pylatex
+* pyparsing
+* PyPDF2
+* python-dateutil
+* python-docx
+* python-pptx
+* reportlab
+* scikit-learn
+* scipy
+* seaborn
+* six
+* striprtf
+* sympy
+* tabulate
+* tensorflow
+* toolz
+* xlrd
 
 You can't install your own libraries.
 
-> [!NOTE]
-> **Note:** Only `matplotlib` is supported for graph rendering using code execution.
+{% callout type="note" %}
+  Only `matplotlib` is supported for graph rendering using code execution.
 
-## What's next
+{% /callout %}
 
-- Try the [Interactions API Quickstart](https://ai.google.dev/gemini-api/docs/quickstart).
-- Learn about other Gemini API tools:
-  - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling)
-  - [Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search)
+## What's next  {% id="whats-next" %}
+
+* Try the [Code execution quickstart](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Code_Execution.ipynb) in Google Colab.
+* Learn about other Gemini API tools:  * [Function calling](/docs/function-calling)
+  * [Grounding with Google Search](/docs/google-search)
+
+

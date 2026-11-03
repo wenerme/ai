@@ -16,6 +16,10 @@
 }
 ---
 
+> **caution**: Experimental feature
+
+Doris continuous load is experimental and supported starting with Doris 4.1.5.
+
 Doris streaming ingestion supports synchronizing data from Amazon RDS MySQL. Compatible versions include **MySQL 5.6, 5.7, and 8.0.x**. Before starting a sync task, you must ensure that the RDS instance has Binlog enabled and that change logs are recorded in the correct format.
 
 This document is intended for users who need to synchronize data from Amazon RDS MySQL into Doris through streaming ingestion (CDC). It guides you through all prerequisite configurations in scenario order.

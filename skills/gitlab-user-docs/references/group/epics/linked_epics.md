@@ -113,12 +113,12 @@ Prerequisites:
 
 To link one epic to another item:
 
-1. In the **Linked items** section of an epic, select **Add**.
+1. In the  section of an epic, select .
 1. Select the relationship between the two items. Either:
 
-   - **relates to**
-   - **blocks**
-   - **is blocked by**
+   -
+   -
+   -
 
 1. To enter the linked item, either:
 
@@ -135,7 +135,7 @@ To link one epic to another item:
 
    Valid references are added to a temporary list that you can review.
 
-1. Select **Add**.
+1. Select .
 
 The linked items are then displayed on the epic grouped by relationship.
 The relationship only shows in the UI if the user can see both items.
@@ -154,14 +154,14 @@ Prerequisites:
 
 To remove a linked item:
 
-1. At the bottom of the description, find the **Linked items** section of the work item.
-1. For each linked item, select **Remove** ().
+1. At the bottom of the description, find the  section of the work item.
+1. For each linked item, select  ().
 
 The relationship is removed from both epics.
 
 ## Blocking epics
 
-When you [add a linked item](#add-a-linked-item), you can show that it **blocks** or
-**is blocked by** another epic.
+When you [add a linked item](#add-a-linked-item), you can show that it  or
+ another epic.
 
 If you try to close a blocked epic using the **Close epic** button, a confirmation message appears.

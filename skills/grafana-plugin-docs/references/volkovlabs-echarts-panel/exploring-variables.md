@@ -1,13 +1,13 @@
 ---
 title: "Exploring variables | Grafana Plugins documentation"
-description: "Learn how dashboard, global, and environment variables work in Grafana, how they differ, and where to find more examples."
+description: "Learn how dashboard, built-in, and environment variables work in Grafana, how they differ, and where to find more examples."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
 # Exploring variables
 
-Variables in Grafana come in three types: dashboard, global, and environment. This page breaks them down and shows how they fit into your Grafana deployment.
+Variables in Grafana come in three types: dashboard, built-in, and environment. This page breaks them down and shows how they fit into your Grafana deployment.
 
 [](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/variables.png)
 
@@ -17,9 +17,9 @@ Dashboard variables live within a single dashboard, powering filters and dynamic
 
 [](https://grafana.com/media/docs/grafana/panels-visualizations/business-charts/variables-edit.png)
 
-## Global variables
+## Built-in variables
 
-Global variables tap into Grafana-wide settings, ready to use across your dashboards. This is a list of the most common ones:
+Built-in variables tap into Grafana-wide settings, ready to use across your dashboards. This is a list of the most common ones:
 
 Expand table
 
@@ -35,7 +35,7 @@ Expand table
 | `${__user.id}`    | ID of the current user             |
 | `${__user.login}` | Login handle of the current user   |
 
-For the full list, refer to [Grafana global variable documentation](https://grafana.com/docs/grafana/latest/visualizations/dashboards/variables/add-template-variables/#global-variables).
+For the full list, refer to [Grafana built-in variable documentation](https://grafana.com/docs/grafana/latest/visualizations/dashboards/variables/built-in-variables/).
 
 ## Environment variables
 

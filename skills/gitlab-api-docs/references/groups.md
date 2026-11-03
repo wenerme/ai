@@ -265,6 +265,7 @@ Additional response attributes:
     "include_recommended_allowed": false,
     "allow_all_unix_sockets": false,
     "allow_project_extension": true,
+    "require_sandbox": false,
     "minimum_access_level_execute": "developer",
     "minimum_access_level_execute_async": "developer",
     "minimum_access_level_manage": "maintainer",
@@ -299,6 +300,7 @@ when GitLab Duo Agent Platform is available for the group. The object contains t
 | `minimum_access_level_execute_async` | string | The minimum access level required to execute GitLab Duo Agent Platform features in CI/CD. One of `developer`, `maintainer`, or `owner`. Returned when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `minimum_access_level_manage` | string | The minimum access level required to manage GitLab Duo Agent Platform. One of `developer`, `maintainer`, or `owner`. Returned when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `prompt_injection_protection_level` | string | The prompt injection protection level. One of `no_checks`, `log_only`, or `interrupt`. |
+| `require_sandbox` | boolean | When `true`, flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. Applies only to top-level groups on GitLab.com. |
 | `web_search_enabled` | boolean | When `true`, web search is enabled in GitLab Duo Chat for this group. |
 
 When adding the parameter `with_projects=false`, projects aren't returned.
@@ -2037,6 +2039,7 @@ The `shared_runners_setting` attribute determines whether instance runners are e
 - `include_recommended_allowed`, `allow_all_unix_sockets`, and `allow_project_extension` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234867) in GitLab 19.0.
 - `ai_catalog_restricted_to_group_hierarchy` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/233914) in GitLab 19.0.
 - `web_search_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) in GitLab 19.4.
+- `require_sandbox` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262117) in GitLab 19.6.
 
 The `ai_settings_attributes` hash configures AI-related settings for the group.
 All attributes are optional.
@@ -2056,6 +2059,7 @@ All attributes are optional.
 | `minimum_access_level_execute_async` | integer | The minimum access level required to execute GitLab Duo Agent Platform features in CI/CD. Valid values: `30` (Developer), `40` (Maintainer), `50` (Owner). Available when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `minimum_access_level_manage` | integer | The minimum access level required to manage GitLab Duo Agent Platform. Valid values: `30` (Developer), `40` (Maintainer), `50` (Owner). Available when the `dap_group_customizable_permissions` feature flag is enabled. |
 | `prompt_injection_protection_level` | string | The prompt injection protection level. Valid values: `no_checks`, `log_only`, `interrupt`. |
+| `require_sandbox` | boolean | When `true`, flows that run on GitLab Runner fail when the execution environment sandbox is unavailable, instead of running without it. Applies only to top-level groups on GitLab.com. |
 | `web_search_enabled` | boolean | When `true`, enables web search in GitLab Duo Chat for this group. Can only be set on top-level groups. |
 
 ## Update group avatars

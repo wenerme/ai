@@ -190,6 +190,14 @@ To make your group or project use the latest version of an agent or flow:
 1. Select the agent or flow you want to update.
 1. Review the latest version carefully. To update, select **View latest version** > **Update to `<x.y.z>`**.
 
+### Maximum number of versions
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635191) in GitLab 19.6.
+
+An AI Catalog item can have a maximum of 1,000 versions.
+When an item reaches this limit, GitLab displays an error and does not save a new version.
+To make more changes, create a new item.
+
 ## Configuration size limits
 
 - Separate size limit for flow and external agent YAML [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/247313) in GitLab 19.3.

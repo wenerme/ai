@@ -13,6 +13,12 @@ Apache ECharts is a versatile data visualization library. It provides a wide ran
 
 The Business Charts plugin lets you add interactive and customizable charts to your Grafana dashboard.
 
+Give it a try using Grafana Play
+
+With Grafana Play, you can explore and see how it works, learning from practical examples to accelerate your development. This feature can be seen on [Business Charts](https://play.grafana.org/d/dffwd1380bsnb4c/).
+
+[Try it](https://play.grafana.org/d/dffwd1380bsnb4c/)
+
 ## Requirements
 
 - Business Charts panel 7.X requires **Grafana 11** or **Grafana 12**.

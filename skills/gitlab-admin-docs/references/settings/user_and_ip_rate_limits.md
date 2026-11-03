@@ -258,10 +258,15 @@ To disable the bypass mechanism, make sure the environment variable
 
 ## Allow specific users to bypass authenticated request rate limiting
 
+- Bypass of application rate limits scoped to a user [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251953) in GitLab 19.4.
+
 Similarly to the bypass header described previously, it is possible to allow
 a certain set of users to bypass the rate limiter. This only applies
 to authenticated requests: with unauthenticated requests, by definition
 GitLab does not know who the user is.
+
+Users in the allowlist also bypass application rate limits scoped to a user,
+such as the [limit on listing a project's jobs](#maximum-authenticated-requests-to-projectidjobs-per-minute).
 
 The allowlist is configured as a comma-separated list of user IDs in
 the `GITLAB_THROTTLE_USER_ALLOWLIST` environment variable. If you want

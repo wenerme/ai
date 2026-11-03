@@ -181,6 +181,10 @@ reduce the security footprint of your users.
 - [Disable SSH Keys](../ssh_advanced.md#disable-ssh-keys-for-enterprise-users).
 - [Disable two-factor authentication](../../security/two_factor_authentication.md#enterprise-users).
 
+Before you disable password authentication, consider adding a user with the Owner role who is
+not an enterprise user of the group. This user can still sign in if your identity provider becomes
+unavailable.
+
 ### Restrict personal snippets
 
 You can prevent enterprise users from creating [personal snippets](../snippets.md) in their

@@ -729,6 +729,7 @@ An AI catalog flow.
 | `name` | [`String!`](scalars.md#string) | Name of the item. |
 | `project` | [`Project`](#project) | Project for the item. |
 | `public` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
+| `schedulable` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates a flow trigger for the flow can run on a schedule. |
 | `softDeleted` | [`Boolean`](scalars.md#boolean) | Indicates if the item has been soft deleted. |
 | `softDeletedAt` | [`Time`](scalars.md#time) | Timestamp of when the item was soft deleted. |
 | `starCount` | [`Int!`](scalars.md#int) | Number of stars for the item. |
@@ -1001,6 +1002,7 @@ An AI catalog third party flow.
 | `name` | [`String!`](scalars.md#string) | Name of the item. |
 | `project` | [`Project`](#project) | Project for the item. |
 | `public` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
+| `schedulable` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates a flow trigger for the flow can run on a schedule. |
 | `softDeleted` | [`Boolean`](scalars.md#boolean) | Indicates if the item has been soft deleted. |
 | `softDeletedAt` | [`Time`](scalars.md#time) | Timestamp of when the item was soft deleted. |
 | `starCount` | [`Int!`](scalars.md#int) | Number of stars for the item. |
@@ -5687,7 +5689,7 @@ Represents compared code quality report.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `existingErrors` | [`[CodequalityReportsComparerReportDegradation!]`](#codequalityreportscomparerreportdegradation) | All code quality degradations. |
+| `existingErrors` | [`[CodequalityReportsComparerReportDegradation!]`](#codequalityreportscomparerreportdegradation) | Code quality degradations found in both the base and head reports. |
 | `newErrors` | [`[CodequalityReportsComparerReportDegradation!]!`](#codequalityreportscomparerreportdegradation) | New code quality degradations. |
 | `resolvedErrors` | [`[CodequalityReportsComparerReportDegradation!]`](#codequalityreportscomparerreportdegradation) | Resolved code quality degradations. |
 | `status` | [`CodequalityReportsComparerStatus!`](enums.md#codequalityreportscomparerstatus) | Status of report. |
@@ -9843,9 +9845,9 @@ Details of the fork project compared to its upstream project.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `ahead` | [`Int`](scalars.md#int) | Number of commits ahead of upstream. |
-| `behind` | [`Int`](scalars.md#int) | Number of commits behind upstream. |
-| `hasConflicts` | [`Boolean`](scalars.md#boolean) | Indicates if the fork conflicts with its upstream project. |
+| `ahead` | [`Int`](scalars.md#int) | Number of commits ahead of the upstream default branch. |
+| `behind` | [`Int`](scalars.md#int) | Number of commits behind the upstream default branch. |
+| `hasConflicts` | [`Boolean`](scalars.md#boolean) | Indicates if the last synchronization failed because of a merge conflict with the upstream default branch. |
 | `isSyncing` | [`Boolean`](scalars.md#boolean) | Indicates if there is a synchronization in progress. |
 
 ## `FunctionalVerificationStatus`
@@ -10178,7 +10180,7 @@ Describes a usage event for the subscription.
 | ---- | ---- | ----------- |
 | `billable` | [`Boolean`](scalars.md#boolean) | Whether the event was billed. Only populated when `events` was queried with `includeNonBillable: true`; null otherwise, and null when the Customer Portal does not report it. |
 | `creditsUsed` | [`Float`](scalars.md#float) | GitLab Credits consumed on the date. |
-| `eventType` | [`String`](scalars.md#string) | Event type. Null when `events` was queried with `includeNonBillable: true`; use `flowType`. |
+| `eventType` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `flowType`. |
 | `flowType` | [`String`](scalars.md#string) | User-friendly display name for the event flow type. |
 | `location` | [`GitlabSubscriptionUsageEventLocation`](unions.md#gitlabsubscriptionusageeventlocation) | Event location: project or namespace. |
 | `locationId` | [`GlobalID`](scalars.md#globalid) | Global ID of the event location. Populated even when the referenced record is deleted or not visible to the user, unlike `location`. When both fields are present, they identify the same record. |
@@ -10728,6 +10730,7 @@ GPG signature for a signed commit.
 | `totalRepositorySizeExcess` | [`Float`](scalars.md#float) | Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. |
 | `transferInProgress` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Indicates if the group is currently being transferred. |
 | `triageAndRemediationCoverageCounters` | [`TriageAndRemediationCoverageCounters`](#triageandremediationcoveragecounters) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Triage and remediation coverage counters for the group, for a given trigger type.  <strong>Arguments for `triageAndRemediationCoverageCounters`:</strong> <dl><dt>`triggerType` ([`ScanProfileTriggerType!`](enums.md#scanprofiletriggertype))</dt><dd>Trigger type to count coverage for.</dd></dl> |
+| `triageAndRemediationFlowStatuses` | [`[TriageAndRemediationTriggerFlowStatus!]`](#triageandremediationtriggerflowstatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.AI flow status of each triage and remediation trigger type. |
 | `twoFactorGracePeriod` | [`Int`](scalars.md#int) | Time before two-factor authentication is enforced. |
 | `updatedAt` | [`Time`](scalars.md#time) | Timestamp of when the group was last updated. |
 | `userPermissions` | [`GroupPermissions!`](#grouppermissions) | Permissions for the current user on the resource. |
@@ -14080,7 +14083,7 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `agentPresence` | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Agent attribution for a note posted by a GitLab Duo Agent Platform session. Available to anyone who can read the note; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null when no session posted the note or when the `agent_presence_consolidation` feature flag is disabled. |
+| `agentPresence` | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Agent attribution for a note posted by a GitLab Duo Agent Platform session. Available to anyone who can read the note; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null for system notes, when no session posted the note, or when the `agent_presence_consolidation` feature flag is disabled. |
 | `author` | [`UserCore`](#usercore) | User who wrote the note. |
 | `authorIsContributor` | [`Boolean`](scalars.md#boolean) | Indicates whether the note author is a contributor. |
 | `awardEmoji` | [`AwardEmojiConnection`](#awardemojiconnection) | List of emoji reactions associated with the note. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -20168,6 +20171,17 @@ Triage and remediation coverage counters for a namespace, for a given trigger ty
 | ---- | ---- | ----------- |
 | `autoCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Count of unarchived projects in the group where the trigger type is attached and set to automatic. |
 | `enabledCount` | [`Int!`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Count of unarchived projects in the group where the trigger type is attached. |
+
+## `TriageAndRemediationTriggerFlowStatus`
+
+AI flow status of a triage and remediation trigger type.
+
+### `TriageAndRemediationTriggerFlowStatus` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `flowStatus` | [`TriageAndRemediationFlowStatus!`](enums.md#triageandremediationflowstatus) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whether the AI flow behind the trigger type is enabled, based on Duo configuration. |
+| `triggerType` | [`ScanProfileTriggerType!`](enums.md#scanprofiletriggertype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Trigger type the flow status applies to. |
 
 ## `TrialUsage`
 

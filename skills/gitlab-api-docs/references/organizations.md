@@ -123,3 +123,49 @@ Example response:
   "avatar_url": null
 }
 ```
+
+## Transfer users to an organization
+
+- Introduced in GitLab 19.6.
+
+Transfers ownership of users to an organization, including their personal namespaces and projects.
+This is a change of ownership, not organization membership.
+The transfer runs in the background.
+
+Prerequisites:
+
+- You must be an administrator.
+- All users must belong to the same organization.
+- No user can be an internal user, such as the ghost user or a bot like `support_bot` or `admin_bot`. Service accounts and project access token bots can be transferred.
+
+```plaintext
+POST /organizations/:id/transfer_users
+```
+
+Parameters:
+
+| Attribute  | Type              | Required | Description |
+|------------|-------------------|----------|-------------|
+| `id`       | integer           | yes      | The ID of the organization to transfer the users to. |
+| `user_ids` | array of integers | yes      | The IDs of the users to transfer. Maximum 50. |
+
+If successful, returns [`202 Accepted`](rest/troubleshooting.md#status-codes) and the IDs of the users being transferred.
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --data "user_ids[]=5" \
+  --data "user_ids[]=6" \
+  --url "https://gitlab.example.com/api/v4/organizations/42/transfer_users"
+```
+
+Example response:
+
+```json
+{
+  "organization_id": 42,
+  "user_ids": [5, 6]
+}
+```

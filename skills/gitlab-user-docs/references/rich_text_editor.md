@@ -32,14 +32,14 @@ To track work on adding the rich text editor to more places across GitLab, see
 Use the rich text editor to edit descriptions, wiki pages, add comments.
 
 To switch to the rich text editor: In a text box, in the lower-left corner, select
-**Switch to rich text editing**.
+.
 
 ## Switch to the plain text editor
 
 If you want to enter Markdown source in the text box, return to using the plain text editor.
 
 To switch to the plain text editor: In a text box, in the lower-left corner, select
-**Switch to plain text editing**.
+.
 
 [A text editor in rich text editing mode with the "Switch to plain text editing" text box in the lower-left]
 
@@ -78,7 +78,7 @@ list items, diagrams (or even another table!) in table cells.
 
 To insert a table:
 
-1. Select **Insert table** .
+1. Select  .
 1. From the dropdown list, select the dimensions of the new table.
 
 [A table size selector with 3 rows and 3 columns.]
@@ -100,7 +100,7 @@ To merge selected cells into one:
 1. Select multiple cells - select one and drag your cursor.
 1. In the upper-right corner of a cell, select the chevron  > **Merge N cells**.
 
-To split merged cells: In the upper-right corner of a cell, select the chevron  > **Split cell**.
+To split merged cells: In the upper-right corner of a cell, select the chevron  > .
 
 ### Paste into a table cell
 
@@ -115,9 +115,9 @@ To choose how the content is pasted:
 1. In the upper-right corner of the target cell, select the chevron
    .
 1. Select one of these options:
-   - **Paste into cell**: Inserts the copied content at the cursor. A copied table becomes a
+   - : Inserts the copied content at the cursor. A copied table becomes a
      table nested inside the cell.
-   - **Paste and merge into table**: Distributes the copied cells across the table (default behavior).
+   - : Distributes the copied cells across the table (default behavior).
 
 Each option also shows its keyboard shortcut next to its label.
 To paste a copied table as a nested table without opening the menu, place your cursor in a table cell.

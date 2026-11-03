@@ -36,10 +36,10 @@ For a video overview, see [Design Management](https://www.youtube.com/watch?v=CC
   Image thumbnails are stored as other uploads, and are not associated with a project but rather
   with a specific design model.
 
-  A GitLab administrator can verify the relative path of a hashed-stored project by going to **Admin** > **Projects**
-  and then selecting the project in question. The **Relative path** field contains `@hashed` in its value.
+  A GitLab administrator can verify the relative path of a hashed-stored project by going to  >
+  and then selecting the project in question. The  field contains `@hashed` in its value.
 
-If the requirements are not met, you are notified in the **Designs** section.
+If the requirements are not met, you are notified in the  section.
 
 ## Supported file types
 
@@ -58,7 +58,7 @@ Support for PDF files is tracked in [issue 32811](https://gitlab.com/gitlab-org/
 
 ## View a design
 
-The **Designs** section is in the issue description.
+The  section is in the issue description.
 
 Prerequisites:
 
@@ -67,7 +67,7 @@ Prerequisites:
 To view a design:
 
 1. Go to an issue.
-1. In the **Designs** section, select the design image you want to view.
+1. In the  section, select the design image you want to view.
 
 The design you selected opens. You can then [zoom in](#zoom-in-on-a-design) on it or
 [create a comment](#add-a-comment-to-a-design).
@@ -76,7 +76,7 @@ The design you selected opens. You can then [zoom in](#zoom-in-on-a-design) on i
 
 When viewing a design, you can move to other designs. To do so, either:
 
-- In the upper-right corner, select **Go to previous design** () or **Go to next design** ().
+- In the upper-right corner, select  () or  ().
 - Press <kbd>Left</kbd> or <kbd>Right</kbd> on your keyboard.
 
 To return to the issue view, either:
@@ -162,13 +162,13 @@ To add a design to an issue:
 
 1. Go to an issue.
 1. Either:
-   - Select **Upload designs** and then select images from your file browser. You can select up to
+   - Select  and then select images from your file browser. You can select up to
      10 files at once.
 
    - Select **click to upload** and then select images from your file browser. You can select up to
      10 files at once.
 
-   - Drag a file from your file browser and drop it in the drop zone in the **Designs** section.
+   - Drag a file from your file browser and drop it in the drop zone in the  section.
 
      [Uploading a new design by dragging and dropping it onto the issue page.]
 
@@ -195,8 +195,8 @@ Prerequisites:
 
 To do so, [add a design](#add-a-design-to-an-issue) with the same filename.
 
-To browse all the design versions, use the dropdown list at the top of the **Designs** section.
-It's shown as either **Showing latest version** or **Showing version #N**.
+To browse all the design versions, use the dropdown list at the top of the  section.
+It's shown as either  or **Showing version #N**.
 
 ### Skipped designs
 
@@ -225,13 +225,13 @@ Prerequisites:
 To archive a single design:
 
 1. Select the design to view it enlarged.
-1. In the upper-right corner, select **Archive design** ().
-1. Select **Archive designs**.
+1. In the upper-right corner, select  ().
+1. Select .
 
 To archive multiple designs at once:
 
 1. Select the checkboxes on the designs you want to archive.
-1. Select **Archive selected**.
+1. Select .
 
 ## Design management data persistence
 
@@ -262,7 +262,7 @@ You can start [discussions](../../discussions/_index.md) on uploaded designs. To
 1. Select the design.
 1. Select the image. A pin is created in that spot, identifying the discussion's location.
 1. Enter your message.
-1. Select **Comment**.
+1. Select .
 
 You can adjust a pin's position by dragging it around the image.
 Use this when your design's layout has changed, or to move a pin so you can add a new one in
@@ -283,8 +283,8 @@ Prerequisites:
 
 To delete a comment from a design:
 
-1. On the comment you want to delete, select **More actions**  > **Delete comment**.
-1. On the confirmation dialog, select **Delete comment**.
+1. On the comment you want to delete, select   > .
+1. On the confirmation dialog, select .
 
 ## Resolve a discussion thread on a design
 
@@ -292,18 +292,18 @@ When you're done discussing part of a design, you can resolve the discussion thr
 
 To mark a thread as resolved or open, either:
 
-- In the upper-right corner of the first comment of the discussion, select **Resolve thread** or **Reopen thread** ().
-- Add a new comment to the thread and select or clear the **Resolve thread** checkbox.
+- In the upper-right corner of the first comment of the discussion, select  or  ().
+- Add a new comment to the thread and select or clear the  checkbox.
 
 Resolving a discussion thread also marks any pending [to-do items](../../todos.md) related to notes
 inside the thread as done. Only to-do items for the user triggering the action are affected.
 
 Your resolved comment pins disappear from the design to free up space for new discussions.
-To revisit a resolved discussion, expand **Resolved Comments** below the visible threads.
+To revisit a resolved discussion, expand  below the visible threads.
 
 ## Add a to-do item for a design
 
-To add a [to-do item](../../todos.md) for a design, select **Add a to-do item** on the design sidebar.
+To add a [to-do item](../../todos.md) for a design, select  on the design sidebar.
 
 ## Refer to a design in Markdown
 
@@ -358,7 +358,7 @@ For example, `https://gitlab.example.com/mygroup/myproject/-/issues/123456/desig
 You can no longer access `menu.png` with `https://gitlab.example.com/mygroup/myproject/-/issues/123456/designs/menu.png`.
 
 The workaround is to select one of the previous versions from the dropdown list at the top of the
-**Designs** section.
-It's shown as either **Showing latest version** or **Showing version #N**.
+ section.
+It's shown as either  or **Showing version #N**.
 
 [Issue 392540](https://gitlab.com/gitlab-org/gitlab/-/issues/392540) tracks improving this behavior.

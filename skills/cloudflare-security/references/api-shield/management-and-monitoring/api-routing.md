@@ -12,7 +12,11 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/ap
 
 # API Routing
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Legacy feature
+
+API Routing is a legacy feature and is not available to new customers. Customers with existing access can continue to use the feature. Cloudflare will provide advance notice before deprecating API Routing.
 
 API Shield Routing allows you to expose a single external API that routes requests to different back-end services, even when those services use different paths or hostnames than your zone.
 
@@ -55,7 +59,7 @@ If API Shield returns unexpected results, check your Source Endpoint host, metho
 
 ## Availability
 
-API Shield Routing is currently in an open beta and is only available for Enterprise customers subscribed to API Shield. Enterprise customers who have not purchased API Shield can preview [API Shield as a non-contract service ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/api-shield) in the Cloudflare dashboard or by contacting your account team.
+API Shield Routing is only available to customers with existing access.
 
 ## Limitations
 
@@ -74,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/og.png?v=2b93b8249ae8d0f5","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/og.png?v=2b93b8249ae8d0f5","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

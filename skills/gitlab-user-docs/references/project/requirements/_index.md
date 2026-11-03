@@ -36,9 +36,9 @@ Prerequisites:
 
 To create a requirement:
 
-1. In a project, go to **Plan** > **Requirements**.
-1. Select **New requirement**.
-1. Enter a title and description and select **New requirement**.
+1. In a project, go to  > .
+1. Select .
+1. Enter a title and description and select .
 
 [The requirement form in a drawer.]
 
@@ -51,7 +51,7 @@ You can view a requirement from the list by selecting it.
 
 [A requirement selected in the list, with its details in a drawer.]
 
-To edit a requirement while viewing it, select the **Edit** icon ()
+To edit a requirement while viewing it, select the  icon ()
 next to the requirement title.
 
 ## Edit a requirement
@@ -66,31 +66,31 @@ Prerequisites:
 
 To edit a requirement:
 
-1. From the requirements list, select the **Edit** icon ().
+1. From the requirements list, select the  icon ().
 1. Update the title and description in the text input field. You can also mark a
-   requirement as satisfied in the edit form by using the checkbox **Satisfied**.
-1. Select **Save changes**.
+   requirement as satisfied in the edit form by using the checkbox .
+1. Select .
 
 ## Archive a requirement
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 
 You can archive an open requirement while
-you're in the **Open** tab.
+you're in the  tab.
 
 Prerequisites:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role or be the author or assignee of the requirement.
 
-To archive a requirement, select **Archive** ().
+To archive a requirement, select  ().
 
-As soon as a requirement is archived, it no longer appears in the **Open** tab.
+As soon as a requirement is archived, it no longer appears in the  tab.
 
 ## Reopen a requirement
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 
-You can view the list of archived requirements in the **Archived** tab.
+You can view the list of archived requirements in the  tab.
 
 Prerequisites:
 
@@ -98,9 +98,9 @@ Prerequisites:
 
 [The archived requirements list view.]
 
-To reopen an archived requirement, select **Reopen**.
+To reopen an archived requirement, select .
 
-As soon as a requirement is reopened, it no longer appears in the **Archived** tab.
+As soon as a requirement is reopened, it no longer appears in the  tab.
 
 ## Search for a requirement
 
@@ -112,8 +112,8 @@ You can search for a requirement from the requirements list page based on the fo
 
 To search for a requirement:
 
-1. In a project, go to **Plan** > **Requirements** > **List**.
-1. Select the **Search or filter results** field. A dropdown list appears.
+1. In a project, go to  > .
+1. Select the  field. A dropdown list appears.
 1. Select the requirement author or status from the dropdown list or enter plain text to search by requirement title.
 1. Press <kbd>Enter</kbd> on your keyboard to filter the list.
 
@@ -232,12 +232,12 @@ Before you import your file:
 
 To import requirements:
 
-1. In a project, go to **Plan** > **Requirements**.
+1. In a project, go to  > .
    - For a project with requirements, in the
      upper-right corner, select the vertical ellipsis (),
-     then select **Import requirements** ().
-   - For a project without requirements, in the middle of the page, select **Import CSV**.
-1. Select the file and select **Import requirements**.
+     then select  ().
+   - For a project without requirements, in the middle of the page, select .
+1. Select the file and select .
 
 The file is processed in the background and a notification email is sent
 to you after the import is complete.
@@ -292,17 +292,17 @@ Prerequisites:
 
 To export requirements:
 
-1. In a project, go to **Plan** > **Requirements**.
+1. In a project, go to  > .
 1. In the upper-right corner, select the vertical ellipsis (),
-   then select **Export as CSV** ().
+   then select  ().
 
    A confirmation dialog appears.
 
-1. Under **Advanced export options**, select which fields to export.
+1. Under , select which fields to export.
 
    All fields are selected by default. To exclude a field from being exported, clear the checkbox next to it.
 
-1. Select **Export requirements**. The exported CSV file is sent to the email address associated with your user.
+1. Select . The exported CSV file is sent to the email address associated with your user.
 
 ### Exported CSV file format
 

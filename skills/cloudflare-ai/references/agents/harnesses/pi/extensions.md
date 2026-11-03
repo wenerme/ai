@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v
 
 # Extensions
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Both tools and system prompt sections are provided to the Pi `Harness` via extensions. An extension is Pi Durable's own: a plain object with a `name`, `tools`, and `sections`, installed on the registry you pass to `Harness.open()`. [`PiHarness`](https://developers.cloudflare.com/agents/harnesses/pi/) does not wrap them, so every Pi Durable extension feature works.
 
@@ -24,14 +24,14 @@ Create the registry with `createRegistry()` and install extensions in the `harne
 
 ```js
 import { DurableObject } from "cloudflare:workers";
-import { Type } from "@earendil-works/pi-ai";
 import { createModels } from "@earendil-works/pi-ai/models";
 import { createRegistry, Harness } from "@earendil-works/pi-durable";
+import { obj, str } from "@earendil-works/pi-schema";
 import { PiHarness } from "agents/harness/pi";
 import { Lifecycle } from "agents/lifecycle";
 import { createAI } from "agents/models/pi-ai";
 
-const WordCount = Type.Object({ text: Type.String() });
+const WordCount = obj({ text: str() });
 
 const wordCount = {
 	name: "word_count",
@@ -77,18 +77,18 @@ export class Editor extends DurableObject {
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
-import { Type } from "@earendil-works/pi-ai";
 import { createModels } from "@earendil-works/pi-ai/models";
 import {
 	createRegistry,
 	Harness,
 	type ToolRegistration,
 } from "@earendil-works/pi-durable";
+import { obj, str } from "@earendil-works/pi-schema";
 import { PiHarness } from "agents/harness/pi";
 import { Lifecycle } from "agents/lifecycle";
 import { createAI } from "agents/models/pi-ai";
 
-const WordCount = Type.Object({ text: Type.String() });
+const WordCount = obj({ text: str() });
 
 const wordCount: ToolRegistration<typeof WordCount> = {
 	name: "word_count",
@@ -138,13 +138,13 @@ Create the registry per object, as a class field, not at module scope. Pi keeps 
 
 A tool is a Pi Durable `ToolRegistration`:
 
-- **Typed arguments.** Type a tool as `ToolRegistration<typeof Parameters>`, and `execute` gets arguments typed from the schema. Pi validates them against `parameters` before it calls `execute`. A bare `ToolRegistration` types its arguments as `unknown`.
+- **Typed arguments.** Build `parameters` with the schema builders from `@earendil-works/pi-schema`, such as `obj()`, `str()`, and `num()`. Type a tool as `ToolRegistration<typeof Parameters>`, and `execute` gets arguments typed from the schema. Pi validates them against `parameters` before it calls `execute`. `obj()` rejects properties it does not list unless you pass `{ open: true }`. A bare `ToolRegistration` types its arguments as `unknown`.
 - **What a running call can use.** `execute(args, api, context)` gets Pi's operations for the call. `api.output()` streams running output, `api.details()` sends data for a UI, and `api.memo()` stores values that survive an eviction.
 - **Abort.** `context.abortSignal` is aborted when the call is. Honor it: `session.abort()` waits until every running tool returns.
 - **Parallel calls.** Pi runs the tool calls in one model round at the same time by default. Set `executionMode: "sequential"` on a tool whose calls must run one after another. One sequential call makes its whole round sequential.
 
 ```ts
-const FetchPage = Type.Object({ url: Type.String() });
+const FetchPage = obj({ url: str() });
 
 const fetchPage: ToolRegistration<typeof FetchPage> = {
 	name: "fetch_page",
@@ -232,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/#page","headline":"Extensions","description":"Add tools, system prompt sections, and skills to a PiHarness with Pi Durable extensions.","url":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/extensions/og.png?v=ff419cf17f0cd56f","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

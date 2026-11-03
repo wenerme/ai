@@ -404,8 +404,12 @@ curl --request GET \
 ## Cancel a migration
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438281) in GitLab 17.1.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630670) in GitLab 19.6 to leave migrations that already ended unchanged.
 
-Cancels a direct transfer migration.
+Cancels a direct transfer or offline transfer migration.
+
+If the migration has already finished, failed, timed out, or was canceled, its status doesn't change
+and the response shows its current status. Any of its entities that are still running are canceled.
 
 ```plaintext
 POST /bulk_imports/:id/cancel
@@ -430,10 +434,10 @@ curl --request POST \
 
 Possible response status codes:
 
-| Status | Description                     |
-|--------|---------------------------------|
-| 200    | Migration successfully canceled |
-| 401    | Unauthorized                    |
-| 403    | Forbidden                       |
-| 404    | Migration not found             |
-| 503    | Service unavailable             |
+| Status | Description                                                 |
+|--------|-------------------------------------------------------------|
+| 200    | Migration canceled, or already ended and returned unchanged |
+| 401    | Unauthorized                                                |
+| 403    | Forbidden                                                   |
+| 404    | Migration not found                                         |
+| 503    | Service unavailable                                         |

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/og.png?v=
 
 # Pi AI
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To call AI Gateway from [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai), use `createAI` from `agents/models/pi-ai`. It calls models from the [model catalog](https://developers.cloudflare.com/ai/models/), [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/), and Pi AI's own model objects through your gateway. This page covers the AI Gateway features. For the full reference, refer to [Pi AI](https://developers.cloudflare.com/agents/models/pi-ai/).
 
 ## Installation
 
-Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.3.0`:
+Install the Agents SDK and Pi AI. `createAI` needs `@earendil-works/pi-ai@~1.5.0`:
 
 npmyarnpnpmbun
 
@@ -167,5 +167,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/#page","headline":"Pi AI","description":"Call AI Gateway from Pi AI with createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/og.png?v=ae6beb0d263037eb","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/#page","headline":"Pi AI","description":"Call AI Gateway from Pi AI with createAI from agents/models/pi-ai.","url":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/integrations/pi-ai/og.png?v=ae6beb0d263037eb","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

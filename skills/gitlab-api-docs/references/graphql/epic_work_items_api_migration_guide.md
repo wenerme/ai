@@ -56,7 +56,7 @@ around with existing queries:
    - For GitLab Self-Managed, go to `https://gitlab.example.com/-/graphql-explorer`.
      Change `gitlab.example.com` to your instance URL.
 1. Paste a query listed in an example into the left window of your GraphiQL explorer tool.
-1. Select **Play**.
+1. Select .
 
 ### Query epics
 

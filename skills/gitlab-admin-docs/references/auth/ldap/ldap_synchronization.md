@@ -156,10 +156,8 @@ To prevent this synchronization, you can set `sync_name` to `false`.
 
 ### Blocked users
 
-A user is blocked if either the:
-
-- Access check fails on user sync, and that user is set to an `ldap_blocked` state in GitLab.
-- LDAP server is not available when that user signs in.
+A user is blocked if the LDAP access check finds that the user no longer exists in LDAP or is
+disabled in Active Directory. GitLab sets that user to an `ldap_blocked` state.
 
 If a user is blocked, that user cannot sign in or push or pull code.
 
@@ -171,12 +169,6 @@ A blocked user is unblocked when they sign in with LDAP if all of the following 
 An administrator can trigger this check for one user without waiting for the user to sign in or
 for the next scheduled sync. For more information, see
 [Resync a user blocked by LDAP](../../moderate_users.md#resync-a-user-blocked-by-ldap).
-
-All users are blocked if the LDAP server is unavailable when an LDAP user synchronization is run.
-
-> [!note]
-> If all users are blocked due to the LDAP server not being available when an LDAP user synchronization is run,
-> a subsequent LDAP user synchronization does not automatically unblock those users.
 
 ## Group sync
 
@@ -828,6 +820,28 @@ next group sync reveals they should only have the Developer role, their
 access is adjusted accordingly. The only exception is if the user is the
 last owner in a group. Groups need at least one owner to fulfill
 administrative duties.
+
+#### Failed LDAP searches
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/226913) in GitLab 18.10 [with a feature flag](../../feature_flags/_index.md) named `ldap_raise_on_search_error`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/636709) in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+When an LDAP search fails, GitLab stops the group sync for that group rather than acting on an empty
+result. GitLab marks the group as failed to sync, creates an audit event, and leaves group
+memberships unchanged.
+
+If an LDAP search fails when a user signs in, GitLab denies the sign-in but does not block the user.
+
+If your LDAP server returns a result code that GitLab should ignore, an administrator can
+[disable the feature flag](../../feature_flags/_index.md) named `ldap_raise_on_search_error`. Group
+sync then runs on the result of the failed search, which can remove members, and the sign-in check
+can block users.
+
+For the error that GitLab logs, see
+[Group sync fails with an LDAP search error](ldap-troubleshooting.md#group-sync-fails-with-an-ldap-search-error).
 
 #### Minimal Access role assignment with restricted access
 

@@ -54,22 +54,22 @@ You do not need an API key. The agent uses [Workers AI](https://developers.cloud
    npmyarnpnpmbun
 
    ```
-   npm i agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/computer
+   npm i agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord @cloudflare/computer
    ```
 
    ```
-   yarn add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/computer
+   yarn add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord @cloudflare/computer
    ```
 
    ```
-   pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/computer
+   pnpm add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord @cloudflare/computer
    ```
 
    ```
-   bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/chord @cloudflare/computer
+   bun add agents @earendil-works/pi-durable @earendil-works/pi-ai @earendil-works/pi-schema @earendil-works/chord @cloudflare/computer
    ```
 
-   The Pi packages are optional peer dependencies of `agents`, at `~1.4.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
+   The Pi packages are optional peer dependencies of `agents`, at `~1.5.0`. Pi Durable is experimental and its API can change in minor releases, so each `agents` release supports one Pi minor version. Install the versions your package manager resolves for `agents`.
 
 ## Configure Wrangler
 
@@ -81,7 +81,7 @@ Add the `AI` binding and a SQLite-backed Durable Object to your Wrangler configu
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-30",
+	"compatibility_date": "2026-11-03",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -100,7 +100,7 @@ name = "my-agent"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-30"
+compatibility_date = "2026-11-03"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]

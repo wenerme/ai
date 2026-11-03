@@ -300,7 +300,8 @@ To modify the retention period for inactive tokens:
 1. In the left sidebar, select **Settings** > **General**.
 1. Expand **Account and limit**.
 1. In the **Inactive project and group access token retention period** text box, modify the retention period.
-   - If a number is defined, all group and project access tokens are deleted after they are inactive for the specified number of days.
+   - If a number is defined, GitLab deletes a token family after all of its tokens are
+     inactive for the specified number of days.
    - If the field is blank, inactive tokens are never deleted.
 1. Select **Save changes**.
 

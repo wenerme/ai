@@ -296,24 +296,32 @@ response attributes for `response_format=raw`:
 | `entities[].summary`                | object       | Summary of a found entity. Contains `namespace_path` and `project_path`. `project_path` is `null` for group work items. Other fields can be added. |
 | `entities[].token`                  | string       | Token as sent. |
 | `entities[].type`                   | string       | `MergeRequest`, `WorkItem`, `Job`, `Pipeline`, `Branch`, or `Commit`. `null` when `found` is `false`. |
-| `version`                           | string       | Response contract version, `1.3.0`. |
+| `version`                           | string       | Response contract version, `1.4.0`. |
 
 Summaries include these fields:
 
 - For a merge request: title, state, author, branches, head pipeline status, merge commit, reviewers,
-  linked issues, description, changed files, failed jobs, and discussions.
+  linked issues, description, changed files with their diffs, failed jobs, and discussions.
 - For a work item: title, state, labels, assignees, milestone, linked merge requests, description, and discussions.
-- For a job: name, status, stage, failure reason, ref, commit, pipeline, merge request, failed tests, and log tail.
+- For a job: name, status, stage, failure reason, ref, commit, pipeline, merge request, failed tests, and log.
 - For a pipeline: status, ref, commit, source, merge request, jobs, and failed jobs. Jobs come from the pipeline
   itself, not from its child pipelines.
 - For a branch: head commit, its open or latest merge request, and its latest pipeline with failed jobs.
 - For a commit: title, description, author, its latest pipeline, the merge requests that contain it, and changed files.
 
-Failed tests come from the job's [unit test report](../ci/testing/unit_test_reports.md). The log tail is the last
-60 lines of the job script output, or of the whole log when a job failed before its script started.
+Failed tests come from the job's [unit test report](../ci/testing/unit_test_reports.md). A job's log is its job script
+output, followed by its `after_script` output, with lines longer than 500 characters cut. The log has a size limit
+of 40 KB for a requested job and 6 KB for each failed job of a merge request, pipeline, or branch, and
+`after_script` output gets at most a quarter of it. When a part does not fit, runs of five or more lines that
+differ only in numbers or hashes, such as progress output, are folded into their first and last line, and only the
+end of that part that fits is kept. `...` marks where lines were left out, and for a requested job
+`summary.truncated` then includes `log`.
 Changed line ranges use new-file line numbers, so a deletion is reported at the line after it, which can be
 one past the end of the file. A changed file has no `lines` when it was deleted or its diff could not be read,
 and empty `lines` when its diff has no text lines, such as for a binary or very large file.
+A changed file's `diff` has its first 40 diff lines, with 200 lines shared across the merge request in file
+order. It is absent for deleted, generated, binary, and very large files, and for files after the budget ran out.
+A cut diff ends with `... N more diff lines`, and `summary.truncated` then includes `diffs`.
 
 Lists are limited and contain only records you can read. `summary.truncated` is an array with the names of
 the lists that were cut, for example `["reviewers"]`. It is empty when no list was cut.
@@ -360,7 +368,7 @@ Example response:
 
 ```json
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "entities": [
     {
       "token": "example-group/example-project#42",
@@ -417,8 +425,9 @@ Example response:
 }
 ```
 
-With `response_format=llm`, the response is `text/plain`. It contains the summary text,
-then the graph in TOON format under a `graph:` label, or a single `error <code>` line.
+With `response_format=llm`, the response is `text/plain`. Each entity starts with its scalar fields,
+then its graph in TOON format under an indented `graph:` label, before longer blocks such as the description.
+A graph with no nodes is left out, and a failed expansion is a single `graph_error=<code>` line.
 When a list in an entity is cut, the entity includes a `truncated=` line right after its scalar
 fields that names the incomplete lists, for example `truncated=reviewers,changed_files`.
 A failed job whose failed tests were cut has its own `truncated=failed_tests` line.

@@ -23,8 +23,8 @@ can edit group wikis. Group wiki repositories can be moved using the
 
 To access a group wiki:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Plan** > **Wiki**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
 
 ## Export a group wiki
 
@@ -56,14 +56,14 @@ can enable or disable a group wiki through the group settings.
 
 To open group settings:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Permissions and group features**.
-1. Scroll to **Wiki** and select one of these options:
-   - **Enabled**: For public groups, everyone can access the wiki. For internal groups, only authenticated users can access the wiki.
-   - **Private**: Only group members can access the wiki.
-   - **Disabled**: The wiki isn't accessible, and cannot be downloaded.
-1. Select **Save changes**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Scroll to  and select one of these options:
+   - : For public groups, everyone can access the wiki. For internal groups, only authenticated users can access the wiki.
+   - : Only group members can access the wiki.
+   - : The wiki isn't accessible, and cannot be downloaded.
+1. Select .
 
 ## Delete the contents of a group wiki
 

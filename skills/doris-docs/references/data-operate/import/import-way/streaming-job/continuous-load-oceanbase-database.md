@@ -16,11 +16,13 @@
 }
 ---
 
-OceanBase CDC with Auto Table Creation uses `FROM OCEANBASE (...) TO DATABASE (...)`. Doris reads full and incremental data through the OBBinlog service and automatically creates Doris Unique Key tables from the upstream schemas. Use `include_tables` to sync one table, multiple tables, or all tables in the database.
-
 > **caution**: Experimental feature
 
-OceanBase CDC continuous load is available as an experimental feature starting from Doris 4.1.4. It currently supports only OceanBase MySQL compatibility mode and Auto Table Creation Sync. Oracle compatibility mode and SQL Mapping Sync are not supported.
+Doris continuous load is experimental and supported starting with Doris 4.1.5.
+
+OceanBase CDC with Auto Table Creation uses `FROM OCEANBASE (...) TO DATABASE (...)`. Doris reads full and incremental data through the OBBinlog service and automatically creates Doris Unique Key tables from the upstream schemas. Use `include_tables` to sync one table, multiple tables, or all tables in the database.
+
+OceanBase CDC continuous load currently supports only OceanBase MySQL compatibility mode and Auto Table Creation Sync. Oracle compatibility mode and SQL Mapping Sync are not supported.
 
 ### Applicable Scenarios
 
