@@ -22,12 +22,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Partner
+- Zero data retention
 
 FLUX.2 \[klein] 9B is a 9 billion parameter model that can generate images from text descriptions and supports multi-reference editing capabilities.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Zero data retention | Yes |
 | Partner | Yes |
 
 ## Parameters

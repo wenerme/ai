@@ -624,7 +624,7 @@ Source of an AI tool.
 | Value | Description |
 | ----- | ----------- |
 | `GITLAB` | Tool provided by GitLab. |
-| `MCP` | Tool provided via MCP. |
+| `MCP` | Tool provided via MCP, by the GitLab MCP server or a GitLab client's local MCP server. |
 
 ## `AiUsageEventType`
 

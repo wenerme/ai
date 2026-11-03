@@ -22,12 +22,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Partner
+- Zero data retention
 
 FLUX.2 \[klein] is an ultra-fast, distilled image model. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Zero data retention | Yes |
 | Partner | Yes |
 
 ## Parameters

@@ -24,6 +24,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Batch
 - Function calling
 - Vision
+- Zero data retention
 
 Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.
 
@@ -33,6 +34,7 @@ Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is nat
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.27 per M input tokens, $0.85 per M output tokens |
 

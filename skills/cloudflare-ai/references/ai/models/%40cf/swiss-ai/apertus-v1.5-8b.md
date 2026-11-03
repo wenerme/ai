@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Cloudflare-hosted
 - Function calling
 - Vision
+- Zero data retention
 
 Apertus 1.5 is an 8B parameter language model designed to advance the state of multilingual, multimodal, fully open, and transparent AI. The models support a wide range of languages, handle contexts of up to 262,144 tokens, and it uses only fully open training data whilst delivering performance comparable to other models of similar size. For access, please fill out this form: https://forms.gle/kgvmkr6ucHN3xNuH6
 
@@ -31,6 +32,7 @@ Apertus 1.5 is an 8B parameter language model designed to advance the state of m
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Vision | Yes |
+| Zero data retention | Yes |
 
 ## Playground
 

@@ -166,7 +166,7 @@ even in restricted environments.
 
 ### Initial repository clone depth
 
-The runner's [`GIT_DEPTH`](../../../../ci/runners/configure_runners.md#shallow-cloning) controls how many commits are initially cloned. Pipeline secret detection automatically fetches additional commits when needed, so you typically don't need to adjust this setting.
+The runner's [`GIT_DEPTH`](../../../../ci/runners/configure_runners.md#shallow-cloning) controls the depth of the initial clone. Pipeline secret detection automatically fetches additional commits when needed, so you typically don't need to adjust this setting.
 
 If you experience persistent issues with missing commits in restricted network environments, see the troubleshooting for workarounds.
 
@@ -458,7 +458,7 @@ To resolve this issue:
   ```yaml
   secret_detection:
     variables:
-      GIT_DEPTH: 100  # or 0 to clone everything
+      GIT_DEPTH: "100"  # or 0 to clone everything
   ```
 
 - For large repositories, limit the scan scope:

@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Function calling
+- Zero data retention
 
 PhoneLLM is an open model tuned for voice agents. The model is based on Nemotron Nano 30B base capabilities and excels at typical voice agent tasks with thinking disabled.
 
@@ -29,6 +30,7 @@ PhoneLLM is an open model tuned for voice agents. The model is based on Nemotron
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,140 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.06 per M input tokens, $0.24 per M output tokens |
 
 ## Playground

@@ -21,11 +21,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/ai4bharat/indictrans2-en-indic-1B`
 
 - Cloudflare-hosted
+- Zero data retention
 
 IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Unit Pricing | $0.342 per M input tokens, $0.342 per M output tokens |
 
 ## Usage

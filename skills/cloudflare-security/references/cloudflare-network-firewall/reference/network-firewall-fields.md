@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-network-firewall/reference/n
 
 # Cloudflare Network Firewall fields
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -114,9 +114,9 @@ For Cloudflare Network Firewall, the `ip.geoip.country` field (which is deprecat
 
 `ip.hdr_len` `Number`
 
-The length of the IPv4 header in bytes.
+The length of the IPv4 header in 32-bit words.
 
-Example value: `5`
+Example value: `5` represents five 32-bit words, or 20 bytes.
 
 ---
 
@@ -343,5 +343,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/og.png?v=12dd27395f7164be","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/#page","headline":"Cloudflare Network Firewall fields","description":"Fields available in Network Firewall rule expressions.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/og.png?v=12dd27395f7164be","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","UDP","ICMP"]}
 ```

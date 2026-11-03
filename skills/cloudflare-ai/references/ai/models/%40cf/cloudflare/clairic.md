@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Vision
+- Zero data retention
 
 Clairic is a System One-style model that can extract, compute, estimate, and forecast values from inputs. It is strongly typed and outputs confidence scores and probabilities against its outputs. This model is in preview from the Cloudflare Workers AI team.
 
@@ -30,6 +31,7 @@ Clairic is a System One-style model that can extract, compute, estimate, and for
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 65,536 tokens |
 | Terms and License | [link](#terms) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.10 per M input tokens |
 
 ## Usage

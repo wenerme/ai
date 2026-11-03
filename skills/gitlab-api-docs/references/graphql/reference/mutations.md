@@ -14100,6 +14100,7 @@ returned.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `deleteGenericPackagesNotDownloadedInDays` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of days after which generic packages that have not been downloaded are deleted. `null` when disabled. The value is ignored unless the `packages_cleanup_delete_generic_not_downloaded` feature flag is enabled. |
 | `keepNDuplicatedPackageFiles` | [`PackagesCleanupKeepDuplicatedPackageFilesEnum`](enums.md#packagescleanupkeepduplicatedpackagefilesenum) | Number of duplicated package files to retain. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project path where the packages cleanup policy is located. |
 

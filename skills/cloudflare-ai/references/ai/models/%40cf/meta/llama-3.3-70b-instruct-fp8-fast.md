@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Cloudflare-hosted
 - Batch
 - Function calling
+- Zero data retention
 
 Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 
@@ -31,6 +32,7 @@ Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.293 per M input tokens, $2.253 per M output tokens |
 

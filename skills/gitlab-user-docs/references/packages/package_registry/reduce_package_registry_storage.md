@@ -116,6 +116,71 @@ save the setting.
 To control whether you can publish the same package name and version again, see
 [allow or prevent duplicates](supported_functionality.md#allow-or-prevent-duplicates).
 
+### Delete generic packages that are not downloaded
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630800) in GitLab 19.6 [with a flag](../../../administration/feature_flags/_index.md) named `packages_cleanup_delete_generic_not_downloaded`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+You can delete generic packages that nobody has downloaded for a set number of days.
+Use this rule for short-lived generic packages, such as build caches or nightly build outputs.
+
+- A package is deleted when its last download is older than the number of days you set.
+  If a package was never downloaded, GitLab uses its creation date instead.
+- Uploading a new file to a package version also counts as activity. A package version
+  that received a file within the number of days you set is not deleted, even if nobody downloaded it.
+- GitLab tracks the last download per package version, not per file.
+  Downloading any file in a package version counts as a download of the whole version.
+- Only generic packages are affected. Other package formats are not deleted by this rule.
+- Packages that match a [package protection rule](package_protection_rules.md) with a minimum
+  access level for delete are skipped.
+- The rule runs with the rest of the cleanup policy, every 12 hours.
+- There is no setting in the UI. You set the rule with the GraphQL API.
+
+> [!warning]
+> Deleted packages cannot be restored.
+
+Prerequisites:
+
+- You must have the Maintainer or Owner role.
+
+To delete generic packages not downloaded in a set number of days, use the
+[GraphQL API](../../../api/graphql/_index.md) to run the `updatePackagesCleanupPolicy` mutation.
+Set `deleteGenericPackagesNotDownloadedInDays` to a whole number from 1 to 3650:
+
+```graphql
+mutation {
+  updatePackagesCleanupPolicy(input: {
+    projectPath: "my-group/my-project",
+    deleteGenericPackagesNotDownloadedInDays: 30
+  }) {
+    packagesCleanupPolicy {
+      deleteGenericPackagesNotDownloadedInDays
+    }
+    errors
+  }
+}
+```
+
+To turn off this rule, set `deleteGenericPackagesNotDownloadedInDays` to `null`:
+
+```graphql
+mutation {
+  updatePackagesCleanupPolicy(input: {
+    projectPath: "my-group/my-project",
+    deleteGenericPackagesNotDownloadedInDays: null
+  }) {
+    packagesCleanupPolicy {
+      deleteGenericPackagesNotDownloadedInDays
+    }
+    errors
+  }
+}
+```
+
 ### Set cleanup limits to conserve resources
 
 A background process executes the package cleanup policies. This process can take a long time to finish and consumes

@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/microsoft/resnet-50`
 
 - Cloudflare-hosted
+- Zero data retention
 
 50 layers deep image classification CNN trained on more than 1M images from ImageNet
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://www.microsoft.com/en-us/research/blog/microsoft-vision-model-resnet-50-combines-web-scale-data-and-multi-task-learning-to-achieve-state-of-the-art/) |
+| Zero data retention | Yes |
 | Unit Pricing | $0.00000251 per inference request |
 
 ## Parameters

@@ -1733,7 +1733,7 @@ A governance rule for an AI agent tool.
 | `id` | [`ID!`](scalars.md#id) | Tool name. Used as stable identifier. Always the tool name string and never a database ID. |
 | `localAccess` | [`AiToolPermission`](enums.md#aitoolpermission) | Effective permission mode for local or IDE surface, after applying group and project rules and the default. |
 | `name` | [`String!`](scalars.md#string) | Name of the tool as registered in the tool registry. |
-| `source` | [`AiToolSource!`](enums.md#aitoolsource) | Source of the tool. Either "gitlab" or "mcp". |
+| `source` | [`AiToolSource!`](enums.md#aitoolsource) | Source of the tool. Either "gitlab" or "mcp". "mcp" covers tools from the GitLab MCP server and from a GitLab client's local MCP server, such as the GitLab Duo CLI. |
 | `webAccess` | [`AiToolPermission`](enums.md#aitoolpermission) | Effective permission mode for web surface, after applying group and project rules and the default. |
 
 ## `AiToolRuleAccess`
@@ -15141,6 +15141,7 @@ A packages cleanup policy designed to keep only packages and packages assets tha
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `deleteGenericPackagesNotDownloadedInDays` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Number of days after which generic packages that have not been downloaded are deleted. `null` when disabled. The value is ignored unless the `packages_cleanup_delete_generic_not_downloaded` feature flag is enabled. |
 | `keepNDuplicatedPackageFiles` | [`PackagesCleanupKeepDuplicatedPackageFilesEnum!`](enums.md#packagescleanupkeepduplicatedpackagefilesenum) | Number of duplicated package files to retain. |
 | `nextRunAt` | [`Time`](scalars.md#time) | Next time that the packages cleanup policy will be executed. |
 

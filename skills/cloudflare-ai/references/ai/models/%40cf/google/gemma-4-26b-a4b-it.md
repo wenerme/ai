@@ -25,6 +25,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Function calling
 - Reasoning
 - Vision
+- Zero data retention
 
 Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.
 
@@ -35,6 +36,7 @@ Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.10 per M input tokens, $0.30 per M output tokens |
 

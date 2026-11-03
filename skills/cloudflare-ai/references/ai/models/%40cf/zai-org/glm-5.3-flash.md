@@ -24,6 +24,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Function calling
 - Reasoning
 - Vision
+- Zero data retention
 
 The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.
 
@@ -38,6 +39,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `low``high``max` (default) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.15 per M input tokens, $0.50 per M output tokens, $0.03 per M cached input tokens |
 
 ## Playground

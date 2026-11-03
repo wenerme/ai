@@ -1453,22 +1453,24 @@ List all failed pipelines on the main branch for project gitlab-org/gitlab
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605855) in GitLab 19.3.
 - `update` action [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/619469) in GitLab 19.4.
+- `merge_request_iid` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264858) in GitLab 19.6.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Runs, retries, cancels, or renames a CI/CD pipeline in a GitLab project. To list pipelines,
 use the `list_pipelines` tool instead.
 
-| Parameter     | Type    | Required    | Description |
-|---------------|---------|-------------|-------------|
-| `url`         | string  | No          | GitLab URL of the project. Used only to create a pipeline. Provide this, or `project_id`. |
-| `project_id`  | string  | No          | ID or full path of the project. Used only to create a pipeline. Provide this, or `url`. |
-| `pipeline_id` | integer | No          | ID of an existing pipeline to target. When set, requires `action`. Omit to create a new pipeline. |
-| `action`      | string  | No          | Lifecycle action to perform on `pipeline_id`: `retry`, `cancel`, or `update`. Required when `pipeline_id` is set. |
-| `ref`         | string  | No          | Branch or tag name. Required to create a pipeline (when `pipeline_id` is absent). |
-| `name`        | string  | No          | New pipeline name. Required for `action: "update"`. |
-| `variables`   | array   | No          | Pipeline variables in array format (`[{key, value, variable_type}]`). |
-| `inputs`      | hash    | No          | Pipeline input parameters as key-value pairs. |
+| Parameter           | Type    | Required    | Description |
+|---------------------|---------|-------------|-------------|
+| `url`               | string  | No          | GitLab URL of the project. Used only to create a pipeline. Provide this, or `project_id`. |
+| `project_id`        | string  | No          | ID or full path of the project. Used only to create a pipeline. Provide this, or `url`. |
+| `merge_request_iid` | integer | No          | Internal ID of a merge request to create a pipeline for. |
+| `pipeline_id`       | integer | No          | ID of an existing pipeline to target. When set, requires `action`. Omit to create a new pipeline. |
+| `action`            | string  | No          | Lifecycle action to perform on `pipeline_id`: `retry`, `cancel`, or `update`. Required when `pipeline_id` is set. |
+| `ref`               | string  | No          | Branch or tag name. Required to create a pipeline on a branch or tag (when `pipeline_id` and `merge_request_iid` are absent). |
+| `name`              | string  | No          | New pipeline name. Required for `action: "update"`. |
+| `variables`         | array   | No          | Pipeline variables in array format (`[{key, value, variable_type}]`). |
+| `inputs`            | hash    | No          | Pipeline input parameters as key-value pairs. |
 
 Examples:
 
@@ -1476,6 +1478,12 @@ Examples:
 
   ```plaintext
   Create a pipeline on the main branch for project gitlab-org/gitlab
+  ```
+
+- Create a pipeline for a merge request:
+
+  ```plaintext
+  Create a pipeline for merge request 42 in project gitlab-org/gitlab
   ```
 
 - Retry a pipeline:

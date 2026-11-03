@@ -1826,14 +1826,14 @@
   "openai-docs/models.md": {
     "url": "https://developers.openai.com/api/docs/models.md",
     "skill": "openai-docs",
-    "size": 12481,
-    "updatedAt": "2026-10-27T00:57:34.034Z"
+    "size": 5674,
+    "updatedAt": "2026-11-03T06:29:43.923Z"
   },
   "openai-docs/models/all.md": {
     "url": "https://developers.openai.com/api/docs/models/all.md",
     "skill": "openai-docs",
-    "size": 12773,
-    "updatedAt": "2026-10-27T00:57:34.271Z"
+    "size": 12842,
+    "updatedAt": "2026-11-03T06:29:44.183Z"
   },
   "openai-docs/models/compare.md": {
     "url": "https://developers.openai.com/api/docs/models/compare.md",
@@ -1844,10 +1844,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"fa18b105e27a1efc5d6b56858deb8f55\"",
-    "lastModified": "Sat, 31 Oct 2026 08:43:28 GMT",
-    "size": 23502,
-    "updatedAt": "2026-10-31T10:20:40.937Z"
+    "etag": "W/\"e7d5c2c77af837540e479fffb255c422\"",
+    "lastModified": "Tue, 03 Nov 2026 00:48:32 GMT",
+    "size": 21887,
+    "updatedAt": "2026-11-03T06:29:44.682Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
@@ -5084,10 +5084,10 @@
   "openai-api/live.md": {
     "url": "https://developers.openai.com/api/reference/resources/live/index.md",
     "skill": "openai-api",
-    "etag": "W/\"50e4c2d5e83c14a47d348de2823a8166\"",
-    "lastModified": "Sat, 31 Oct 2026 00:43:28 GMT",
-    "size": 1592349,
-    "updatedAt": "2026-10-31T00:43:28.828Z"
+    "etag": "W/\"ed835e936f6325bbba5ca5cf17c34b09\"",
+    "lastModified": "Tue, 03 Nov 2026 01:21:48 GMT",
+    "size": 1592229,
+    "updatedAt": "2026-11-03T06:31:31.898Z"
   },
   "openai-api/live/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/live/methods/connect/index.md",
@@ -5100,10 +5100,10 @@
   "openai-api/live/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/live/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"6116736883ae11ea00c0aa579715b495\"",
-    "lastModified": "Sat, 31 Oct 2026 00:43:29 GMT",
-    "size": 42190,
-    "updatedAt": "2026-10-31T00:43:29.672Z"
+    "etag": "W/\"f2a4ef0e8f828fc8cc1500ad3e9b7fe7\"",
+    "lastModified": "Tue, 03 Nov 2026 04:50:06 GMT",
+    "size": 42070,
+    "updatedAt": "2026-11-03T06:31:32.741Z"
   },
   "openai-api/live/forks.md": {
     "url": "https://developers.openai.com/api/reference/resources/live/subresources/forks/index.md",

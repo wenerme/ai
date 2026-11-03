@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Batch
+- Zero data retention
 
 BAAI general embedding (Small) model that transforms any given text into a 384-dimensional vector
 
@@ -30,6 +31,7 @@ BAAI general embedding (Small) model that transforms any given text into a 384-d
 | More information | [link ↗](https://huggingface.co/BAAI/bge-small-en-v1.5) |
 | Maximum Input Tokens | 512 |
 | Output Dimensions | 384 |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.0202 per M input tokens |
 

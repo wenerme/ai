@@ -49,6 +49,7 @@ GitLab records each decision as an [audit event](#view-audit-events).
 | Python    | pip, uv, Poetry, pipenv, twine |
 | Ruby      | RubyGems, Bundler |
 | Rust      | Cargo |
+| Go        | GitHub |
 
 Packages in other ecosystems are fetched without evaluation.
 

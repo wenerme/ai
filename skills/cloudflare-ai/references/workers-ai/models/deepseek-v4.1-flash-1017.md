@@ -24,6 +24,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Function calling
 - Reasoning
 - Vision
+- Zero data retention
 
 We introduce DeepSeek-V4.1-Flash, a multimodal Mixture-of-Experts (MoE) model with 552B backbone parameters and support for contexts of up to one million tokens. The model natively processes images and text, and generates text autoregressively.
 
@@ -38,6 +39,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``low``high` (default)`max` |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.30 per M input tokens, $1.20 per M output tokens, $0.006 per M cached input tokens |
 
 ## Playground

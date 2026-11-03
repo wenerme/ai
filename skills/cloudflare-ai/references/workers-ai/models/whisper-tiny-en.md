@@ -23,11 +23,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/openai/whisper-tiny-en`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Beta | Yes |
 
 ## Parameters

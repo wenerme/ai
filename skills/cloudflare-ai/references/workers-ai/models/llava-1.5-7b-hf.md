@@ -23,11 +23,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/llava-hf/llava-1.5-7b-hf`
 
 - Cloudflare-hosted
+- Zero data retention
 
 LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Beta | Yes |
 
 ## Parameters

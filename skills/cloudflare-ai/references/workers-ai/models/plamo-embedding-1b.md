@@ -21,11 +21,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/pfnet/plamo-embedding-1b`
 
 - Cloudflare-hosted
+- Zero data retention
 
 PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc. It can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Unit Pricing | $0.0186 per M input tokens |
 
 ## Usage

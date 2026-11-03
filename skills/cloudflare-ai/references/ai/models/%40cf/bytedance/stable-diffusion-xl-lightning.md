@@ -23,12 +23,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/bytedance/stable-diffusion-xl-lightning`
 
 - Cloudflare-hosted
+- Zero data retention
 
 SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://huggingface.co/ByteDance/SDXL-Lightning) |
+| Zero data retention | Yes |
 | Beta | Yes |
 | Unit Pricing | $0.00 per step |
 

@@ -16,6 +16,34 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-11-02
+
+
+**Organize and authorize Access service tokens with tags**
+
+You can now assign key-value tags to [Access service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#tag-service-tokens) and use those tags to organize credentials or control application access. Each token supports up to five tags, such as `environment: production` or `team: payments`.
+
+Add or edit tags when you create or update a token in the dashboard or service token API. You can search and filter by tag on the **Service Tokens** page. Tags also appear in [Resource Tagging](https://developers.cloudflare.com/resource-tagging/), where you can query them alongside other tagged resources.
+
+The **Service Token Tag** policy selector matches valid tokens with an exact key-value pair. Use it in a **Service Auth** policy to authorize tokens by environment or team without listing each token individually. For example, this API policy configuration accepts valid tokens tagged `environment: production`:
+
+```json
+{
+	"name": "Production service tokens",
+	"decision": "non_identity",
+	"include": [
+		{
+			"service_token_tag": {
+				"key": "environment",
+				"value": "production"
+			}
+		}
+	]
+}
+```
+
+For setup instructions, refer to [Tag service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#tag-service-tokens) and [Authorize service tokens by tag](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#authorize-service-tokens-by-tag).
+
 ## 2026-10-30
 
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/applicat
 
 # Managed OAuth
 
-Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you protect an application with Cloudflare Access, by default non-browser clients — such as CLIs, AI agents, SDKs, and scripts — cannot complete the browser-based login redirect. They receive a `302` redirect with no usable token or authorization endpoint.
 
@@ -135,7 +135,7 @@ To test, open an MCP client and connect to the protected MCP server. The client 
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
 3. Go to the **Advanced settings** tab, turn on **Managed OAuth**.
 4. (Optional) Configure [Managed OAuth settings](#managed-oauth-settings).
@@ -189,7 +189,7 @@ Configure these settings in the **Advanced settings** tab of your [self-hosted a
 
 - **Allow localhost clients**: Allow any client with redirect URIs on `localhost`.
 - **Allow loopback clients**: Allow any client with redirect URIs on `127.0.0.1`.
-- **Allowed redirect URIs**: Redirect URIs allowed for dynamically registered clients (for example, `https://playground.ai.cloudflare.com/*`). The URL must use `https`. Paths may end in `/*` to match all sub-paths.
+- **Allowed redirect URIs**: Redirect URIs allowed for dynamically registered clients. HTTP and HTTPS paths may end in `/*` to match all sub-paths (for example, `https://playground.ai.cloudflare.com/*`). Native applications may use private-use URI schemes such as `cursor://anysphere.cursor-mcp/oauth/callback` or `com.example.app:/oauth/callback`. Custom-scheme URIs must be listed explicitly and match exactly; they cannot contain wildcards, credentials, or fragments.
 - **Grant session duration**: How long the OAuth refresh token remains valid.
 - **Access token lifetime**: How long an OIDC Access token can be used to authenticate with your application. Cloudflare recommends configuring a short **Access token lifetime** (default 15 minutes) in conjunction with a longer **Grant session duration**. When the access token expires, Cloudflare uses the refresh token to issue a new one after re-evaluating the user against your Access policies. When the refresh token expires, the user must re-authenticate with the identity provider.
 
@@ -324,5 +324,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/og.png?v=e5ce0214649dd6e3","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/og.png?v=e5ce0214649dd6e3","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}
 ```

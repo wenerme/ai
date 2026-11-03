@@ -23,12 +23,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Cloudflare-hosted
 - Partner
 - Real-time
+- Zero data retention
 
 Flux is the first conversational speech recognition model built specifically for voice agents.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://deepgram.com/terms) |
+| Zero data retention | Yes |
 | Partner | Yes |
 | Real-time | Yes |
 | Unit Pricing | $0.0077 per audio minute (websocket) |

@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Cloudflare-hosted
 - LoRA
 - Vision
+- Zero data retention
 
 The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.
 
@@ -42,6 +43,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | LoRA | Yes |
 | Unit Pricing | $0.0485 per M input tokens, $0.676 per M output tokens |
 

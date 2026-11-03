@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/lykon/dreamshaper-8-lcm`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://huggingface.co/Lykon/DreamShaper) |
+| Zero data retention | Yes |
 
 ## Parameters
 

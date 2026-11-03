@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devic
 
 # Connect the Cloudflare One Client before Windows login
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 <details>
 
@@ -49,31 +49,26 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
-5. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
-6. Copy the Client Secret.
+5. (Optional) In **Tags**, select **Add tag** and enter a key-value pair, such as `environment: production`. You can add up to five tags.
+6. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
+7. Copy the Client Secret.
 
    Caution
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:<details><summary>
-
-   Required API token permissions</summary>
-
-At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
-   - <code>Access: Service Tokens Write</code></details>
-
-   *Create a service tokenbash*
-
-
+1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:
 
    ```bash
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/service_tokens" \
    	--request POST \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
    	--json '{
    		"name": "CI/CD token",
-   		"duration": "8760h"
+   		"duration": "8760h",
+   		"tags": {
+   				"environment": "production"
+   		}
    	}'
    ```
 
@@ -179,7 +174,7 @@ In your [device enrollment permissions](https://developers.cloudflare.com/cloudf
 
 ## 2. (Optional) Restrict access during pre-login
 
-Devices enrolled via a service token are identified by the email address `non_identity@<team-name>.cloudflareaccess.com`. Using this email address, you can apply specific [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) during the pre-login state. For example, you could provide access to only those resources necessary to complete the Windows login and/or device management activities.
+Devices enrolled via a service token are identified by the email address `non_identity@<team-name>.cloudflareaccess.com`. Using this email address, you can apply specific [device profile settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) during the pre-login state. For example, you could provide access to only those resources necessary to complete the Windows login and/or device management activities.
 
 <details>
 
@@ -260,5 +255,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/#page","headline":"Connect the Cloudflare One Client before Windows login","description":"Connect the Cloudflare One Client before Windows login in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/og.png?v=be8ffc2055eed9dd","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/#page","headline":"Connect the Cloudflare One Client before Windows login","description":"Connect the Cloudflare One Client before Windows login in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/og.png?v=be8ffc2055eed9dd","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
 ```

@@ -24,6 +24,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Batch
 - Function calling
 - Reasoning
+- Zero data retention
 
 Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.
 
@@ -32,6 +33,7 @@ Qwen3 is the latest generation of large language models in Qwen series, offering
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.0509 per M input tokens, $0.335 per M output tokens |
 

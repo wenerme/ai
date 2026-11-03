@@ -37,31 +37,26 @@ To create a service token:
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
-5. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
-6. Copy the Client Secret.
+5. (Optional) In **Tags**, select **Add tag** and enter a key-value pair, such as `environment: production`. You can add up to five tags.
+6. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
+7. Copy the Client Secret.
 
    Caution
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:<details><summary>
-
-   Required API token permissions</summary>
-
-At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
-   - <code>Access: Service Tokens Write</code></details>
-
-   *Create a service tokenbash*
-
-
+1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:
 
    ```bash
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/service_tokens" \
    	--request POST \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
    	--json '{
    		"name": "CI/CD token",
-   		"duration": "8760h"
+   		"duration": "8760h",
+   		"tags": {
+   				"environment": "production"
+   		}
    	}'
    ```
 

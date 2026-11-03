@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Function calling
+- Zero data retention
 
 EuroLLM-9B is a 9B parameter model trained on 4 trillion tokens divided across the considered languages and several data sources: Web data, parallel data (en-xx and xx-en), and high-quality datasets. For access, please fill out this form: https://forms.gle/kgvmkr6ucHN3xNuH6
 
@@ -29,6 +30,7 @@ EuroLLM-9B is a 9B parameter model trained on 4 trillion tokens divided across t
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Zero data retention | Yes |
 
 ## Playground
 
