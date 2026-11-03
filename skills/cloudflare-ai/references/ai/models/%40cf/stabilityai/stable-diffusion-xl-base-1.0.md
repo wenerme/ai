@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/stabilityai/stable-diffusion-xl-base-1.0`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.
 
@@ -30,6 +31,7 @@ Diffusion-based text-to-image generative model by Stability AI. Generates and mo
 | --- | --- |
 | Terms and License | [link ↗](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md) |
 | More information | [link ↗](https://stability.ai/stable-diffusion) |
+| Zero data retention | Yes |
 | Beta | Yes |
 | Unit Pricing | $0.00 per step |
 

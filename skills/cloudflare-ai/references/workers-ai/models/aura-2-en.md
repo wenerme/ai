@@ -24,12 +24,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Batch
 - Partner
 - Real-time
+- Zero data retention
 
 Aura-2 is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://deepgram.com/terms) |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Partner | Yes |
 | Real-time | Yes |

@@ -230,8 +230,8 @@ in the `.gitlab-ci.yml` file.
 
 ## Limit the number of changes fetched during clone
 
-You can limit the number of changes that GitLab CI/CD fetches when it clones
-a repository.
+You can limit how much Git history GitLab CI/CD fetches when it clones
+a repository by changing the Git depth:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **CI/CD**.
@@ -242,8 +242,14 @@ a repository.
 
 Newly created projects have a default `git depth` value of `20`.
 
-This value can be overridden by the [`GIT_DEPTH` variable](../../user/project/repository/monorepos/_index.md#use-shallow-clones-and-filters-in-cicd-processes)
+The value is a clone depth. It does not count commits.
+In a project that uses merge commits, a depth of `20` can fetch thousands of commits.
+If most of your jobs do not need history, set the value to `1`.
+Then set a higher value only in the jobs that need history.
+
+This value can be overridden by the [`GIT_DEPTH` variable](../runners/configure_runners.md#shallow-cloning)
 in the `.gitlab-ci.yml` file.
+For more information, see [how Git counts depth](../runners/configure_runners.md#how-git-counts-depth).
 
 ## Set a limit for how long jobs can run
 

@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Vision
+- Zero data retention
 
 Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B active parameters) that delivers frontier-level visual reasoning for tasks like object detection, pointing, OCR, and structured output.
 
@@ -29,6 +30,7 @@ Moondream 3 is a fast, efficient 9B mixture-of-experts vision language model (2B
 | --- | --- |
 | Terms and License | [link ↗](https://moondream.ai/licenses/model/1.0) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.30 per M input tokens, $1.00 per M output tokens |
 
 ## Parameters

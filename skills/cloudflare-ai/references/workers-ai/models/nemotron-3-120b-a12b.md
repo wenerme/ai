@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Cloudflare-hosted
 - Function calling
 - Reasoning
+- Zero data retention
 
 NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
 
@@ -32,6 +33,7 @@ NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-ag
 | Terms and License | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.50 per M input tokens, $1.50 per M output tokens |
 
 ## Reasoning effort

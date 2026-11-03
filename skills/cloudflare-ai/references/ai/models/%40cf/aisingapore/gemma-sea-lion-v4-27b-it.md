@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/aisingapore/gemma-sea-lion-v4-27b-it`
 
 - Cloudflare-hosted
+- Zero data retention
 
 SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.
 
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Zero data retention | Yes |
 | Unit Pricing | $0.351 per M input tokens, $0.555 per M output tokens |
 
 ## Playground

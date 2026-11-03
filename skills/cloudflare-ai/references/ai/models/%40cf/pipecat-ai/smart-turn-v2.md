@@ -23,11 +23,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Cloudflare-hosted
 - Batch
 - Real-time
+- Zero data retention
 
 An open source, community-driven, native audio turn detection model in 2nd version
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Real-time | Yes |
 | Unit Pricing | $0.000338 per audio minute |

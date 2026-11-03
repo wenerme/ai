@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/openai/whisper`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://openai.com/research/whisper) |
+| Zero data retention | Yes |
 | Unit Pricing | $0.000453 per audio minute |
 
 ## Parameters

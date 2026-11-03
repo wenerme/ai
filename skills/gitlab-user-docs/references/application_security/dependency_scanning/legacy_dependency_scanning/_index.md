@@ -43,7 +43,7 @@ table.no-vertical-table-lines tr {
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 > [!warning]
-> The dependency scanning feature based on the Gemnasium analyzer is deprecated in GitLab 17.9 and is proposed for removal in GitLab 20.0. However, the removal timeline is not finalized, and you can continue using Gemnasium as needed. For more information, see [epic 15961](https://gitlab.com/groups/gitlab-org/-/epics/15961).
+> The dependency scanning feature based on the Gemnasium analyzer is deprecated in GitLab 17.9 and is proposed for removal in GitLab 20.0. However, the removal timeline is not finalized, and you can continue using Gemnasium as needed. For new projects, use [SBOM-based dependency scanning](../_index.md) instead. To move existing projects, see [migrate to dependency scanning using SBOM](../migration_guide_to_sbom_based_scans.md). For more information, see [epic 15961](https://gitlab.com/groups/gitlab-org/-/epics/15961).
 
 Dependency scanning integrates into your CI/CD pipelines, and runs automatically to identify
 security vulnerabilities in your application's dependencies. By scanning branches before they merge,

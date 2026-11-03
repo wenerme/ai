@@ -192,6 +192,14 @@ If you parse stack traces, for example in a [Tail Worker](https://developers.clo
 
 WebAssembly that your code compiles from bytes, for example with `new WebAssembly.Module(bytes)`, keeps the hash name, as do WebAssembly bindings in Workers that use the service worker syntax.
 
+### Share Python standard library across Python Workers
+
+| **Default as of** | 2026-11-19 |
+| --- | --- |
+| **Flag to enable** | `python_shared_standard_library` |
+
+When this flag is set, Python standard library (`/lib/python3XX.zip`) is shared across multiple isolates through shared memory. This reduces the memory footprint of Python Workers.
+
 ### `cache` option does not override the origin's `Cache-Control`
 
 | **Default as of** | 2026-11-17 |

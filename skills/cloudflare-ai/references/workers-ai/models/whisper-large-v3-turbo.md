@@ -22,11 +22,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Batch
+- Zero data retention
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.000513 per audio minute |
 

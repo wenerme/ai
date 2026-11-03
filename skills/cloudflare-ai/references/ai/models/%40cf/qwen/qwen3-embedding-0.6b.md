@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/qwen/qwen3-embedding-0.6b`
 
 - Cloudflare-hosted
+- Zero data retention
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
 
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Zero data retention | Yes |
 | Unit Pricing | $0.0118 per M input tokens |
 
 ## Usage

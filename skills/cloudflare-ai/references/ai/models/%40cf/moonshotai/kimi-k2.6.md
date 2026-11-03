@@ -25,6 +25,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Function calling
 - Reasoning
 - Vision
+- Zero data retention
 
 Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
 
@@ -39,6 +40,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``high` (default) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.95 per M input tokens, $4.00 per M output tokens, $0.16 per M cached input tokens |
 

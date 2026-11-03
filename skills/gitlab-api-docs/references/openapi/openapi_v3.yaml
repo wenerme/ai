@@ -3364,6 +3364,32 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/patchApiV4AiDuoWorkflowsWorkflowsIdRequest"
+  "/api/v4/ai/duo_workflows/workflows/{id}/catalog_items":
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsIdCatalogItems
+      summary: Get the AI Catalog item a workflow runs, with its sub-items
+      description: Returns the saved AI Catalog item this session runs and its resolved
+        subagents. A subagent the user cannot use has an error instead of a definition.
+      tags:
+      - GitLab Duo workflows
+      - Internal operations
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: The flow was not found or the user cannot read it
+        '422':
+          description: Workflow does not run a saved AI Catalog item
+        '400':
+          description: Bad Request
+      parameters:
+      - name: id
+        required: true
+        description: The ID of the workflow
+        schema:
+          type: integer
+        in: path
+        example: 1
   "/api/v4/ai/duo_workflows/workflows/{id}/checkpoints":
     post:
       operationId: postApiV4AiDuoWorkflowsWorkflowsIdCheckpoints
@@ -45918,9 +45944,8 @@ paths:
       - name: reviewer_username
         required: false
         description: Returns merge requests which have the user as a reviewer with
-          the given `username`. `None` returns merge requests with no reviewers. `Any`
-          returns merge requests with any reviewer. Introduced in GitLab 13.8. Mutually
-          exclusive with `reviewer_id`.
+          the given `username`. Introduced in GitLab 13.8. Mutually exclusive with
+          `reviewer_id`.
         schema:
           type: string
           nullable: true
@@ -46217,9 +46242,8 @@ paths:
       - name: not[reviewer_username]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given `username`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Introduced in
-          GitLab 13.8. Mutually exclusive with `not[reviewer_id]`."
+          reviewer with the given `username`. Introduced in GitLab 13.8. Mutually
+          exclusive with `not[reviewer_id]`."
         schema:
           type: string
           nullable: true
@@ -46256,9 +46280,7 @@ paths:
       - name: not[reviewer_id]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given user `id`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive
-          with `not[reviewer_username]`."
+          reviewer with the given user `id`. Mutually exclusive with `not[reviewer_username]`."
         schema:
           type: integer
           nullable: true
@@ -46439,9 +46461,8 @@ paths:
       - name: reviewer_username
         required: false
         description: Returns merge requests which have the user as a reviewer with
-          the given `username`. `None` returns merge requests with no reviewers. `Any`
-          returns merge requests with any reviewer. Introduced in GitLab 13.8. Mutually
-          exclusive with `reviewer_id`.
+          the given `username`. Introduced in GitLab 13.8. Mutually exclusive with
+          `reviewer_id`.
         schema:
           type: string
           nullable: true
@@ -46738,9 +46759,8 @@ paths:
       - name: not[reviewer_username]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given `username`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Introduced in
-          GitLab 13.8. Mutually exclusive with `not[reviewer_id]`."
+          reviewer with the given `username`. Introduced in GitLab 13.8. Mutually
+          exclusive with `not[reviewer_id]`."
         schema:
           type: string
           nullable: true
@@ -46777,9 +46797,7 @@ paths:
       - name: not[reviewer_id]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given user `id`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive
-          with `not[reviewer_username]`."
+          reviewer with the given user `id`. Mutually exclusive with `not[reviewer_username]`."
         schema:
           type: integer
           nullable: true
@@ -47153,9 +47171,8 @@ paths:
       - name: reviewer_username
         required: false
         description: Returns merge requests which have the user as a reviewer with
-          the given `username`. `None` returns merge requests with no reviewers. `Any`
-          returns merge requests with any reviewer. Introduced in GitLab 13.8. Mutually
-          exclusive with `reviewer_id`.
+          the given `username`. Introduced in GitLab 13.8. Mutually exclusive with
+          `reviewer_id`.
         schema:
           type: string
           nullable: true
@@ -47452,9 +47469,8 @@ paths:
       - name: not[reviewer_username]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given `username`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Introduced in
-          GitLab 13.8. Mutually exclusive with `not[reviewer_id]`."
+          reviewer with the given `username`. Introduced in GitLab 13.8. Mutually
+          exclusive with `not[reviewer_id]`."
         schema:
           type: string
           nullable: true
@@ -47491,9 +47507,7 @@ paths:
       - name: not[reviewer_id]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given user `id`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive
-          with `not[reviewer_username]`."
+          reviewer with the given user `id`. Mutually exclusive with `not[reviewer_username]`."
         schema:
           type: integer
           nullable: true
@@ -65861,9 +65875,8 @@ paths:
       - name: reviewer_username
         required: false
         description: Returns merge requests which have the user as a reviewer with
-          the given `username`. `None` returns merge requests with no reviewers. `Any`
-          returns merge requests with any reviewer. Introduced in GitLab 13.8. Mutually
-          exclusive with `reviewer_id`.
+          the given `username`. Introduced in GitLab 13.8. Mutually exclusive with
+          `reviewer_id`.
         schema:
           type: string
           nullable: true
@@ -66160,9 +66173,8 @@ paths:
       - name: not[reviewer_username]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given `username`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Introduced in
-          GitLab 13.8. Mutually exclusive with `not[reviewer_id]`."
+          reviewer with the given `username`. Introduced in GitLab 13.8. Mutually
+          exclusive with `not[reviewer_id]`."
         schema:
           type: string
           nullable: true
@@ -66199,9 +66211,7 @@ paths:
       - name: not[reviewer_id]
         required: false
         description: "`<Negated>` Returns merge requests which have the user as a
-          reviewer with the given user `id`. `None` returns merge requests with no
-          reviewers. `Any` returns merge requests with any reviewer. Mutually exclusive
-          with `not[reviewer_username]`."
+          reviewer with the given user `id`. Mutually exclusive with `not[reviewer_username]`."
         schema:
           type: integer
           nullable: true
@@ -119424,7 +119434,7 @@ components:
           nullable: true
         ci_default_git_depth:
           type: integer
-          description: Default number of revisions for shallow cloning
+          description: Default Git depth for shallow cloning
           nullable: true
         keep_latest_artifact:
           type: boolean

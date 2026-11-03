@@ -423,7 +423,7 @@ when the leader was upgraded:
    1. Edit `/etc/gitlab/gitlab.rb` and specify the required version:
 
       ```ruby
-      postgresql['version'] = 13
+      postgresql['version'] = 18
       ```
 
    1. Reconfigure GitLab:

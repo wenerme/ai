@@ -37,11 +37,6 @@ Models for realtime, speech, and audio workflows.
 - [GPT-Realtime-1.5](/api/docs/models/gpt-realtime-1.5.md): The best voice model for audio in, audio out
 - [GPT-Audio-1.5](/api/docs/models/gpt-audio-1.5.md): The best voice model for audio in, audio out with Chat Completions.
 - [GPT-Transcribe](/api/docs/models/gpt-transcribe.md): High-accuracy speech-to-text model for file and Realtime input transcription
-- [GPT-4o Transcribe](/api/docs/models/gpt-4o-transcribe.md): Deprecated. Speech-to-text model powered by GPT-4o
-- [GPT-4o Mini Transcribe](/api/docs/models/gpt-4o-mini-transcribe.md): Deprecated. Speech-to-text model powered by GPT-4o Mini
-- [GPT-4o Transcribe Diarize](/api/docs/models/gpt-4o-transcribe-diarize.md): Deprecated. Transcription model that identifies who's speaking when
-- [Whisper](/api/docs/models/whisper-1.md): Deprecated. General-purpose speech recognition model
-- [GPT-4o Mini TTS](/api/docs/models/gpt-4o-mini-tts.md): Deprecated. Text-to-speech model powered by GPT-4o Mini
 
 ## OpenAI Daybreak
 
@@ -85,40 +80,60 @@ Diverse models for a variety of tasks.
 - [GPT-5.4 Mini](/api/docs/models/gpt-5.4-mini.md): Our strongest mini model yet for coding, computer use, and subagents
 - [GPT-5.2](/api/docs/models/gpt-5.2.md): Previous flagship model for professional work with configurable reasoning effort
 - [GPT-5.2 Pro](/api/docs/models/gpt-5.2-pro.md): Previous pro model for professional work that produces smarter and more precise responses.
+- [omni-moderation](/api/docs/models/omni-moderation-latest.md): Identify potentially harmful content in text and images
+
+## ChatGPT models
+
+Models used in ChatGPT, not recommended for API use.
+
+- [Chat Latest](/api/docs/models/chat-latest.md): Latest Instant model used in ChatGPT
+
+## Deprecated models
+
+Includes models that have already shut down.
+
+- [GPT-Image-1.5](/api/docs/models/gpt-image-1.5.md): Deprecated. Our previous image generation model
+- [chatgpt-image-latest](/api/docs/models/chatgpt-image-latest.md): Deprecated. Previous image model used in ChatGPT.
+- [GPT-Image-1](/api/docs/models/gpt-image-1.md): Shut down. Retired image generation model
+- [GPT-Image-1 Mini](/api/docs/models/gpt-image-1-mini.md): Deprecated. A cost-efficient version of GPT Image 1
+- [GPT-Realtime](/api/docs/models/gpt-realtime.md): Deprecated. Model capable of realtime text and audio inputs and outputs
+- [GPT-Audio](/api/docs/models/gpt-audio.md): Deprecated. For audio inputs and outputs with Chat Completions API
+- [GPT-4o Transcribe](/api/docs/models/gpt-4o-transcribe.md): Deprecated. Speech-to-text model powered by GPT-4o
+- [GPT-4o Mini Transcribe](/api/docs/models/gpt-4o-mini-transcribe.md): Deprecated. Speech-to-text model powered by GPT-4o Mini
+- [GPT-4o Transcribe Diarize](/api/docs/models/gpt-4o-transcribe-diarize.md): Deprecated. Transcription model that identifies who's speaking when
+- [TTS-1](/api/docs/models/tts-1.md): Deprecated. Text-to-speech model optimized for speed
+- [TTS-1 HD](/api/docs/models/tts-1-hd.md): Deprecated. Text-to-speech model optimized for quality
+- [Whisper](/api/docs/models/whisper-1.md): Deprecated. General-purpose speech recognition model
+- [GPT-Realtime Mini](/api/docs/models/gpt-realtime-mini.md): Deprecated. A cost-efficient version of GPT-Realtime
+- [GPT-Audio Mini](/api/docs/models/gpt-audio-mini.md): Deprecated. A cost-efficient version of GPT Audio
+- [GPT-4o Audio](/api/docs/models/gpt-4o-audio-preview.md): Shut down. GPT-4o models capable of audio inputs and outputs
+- [GPT-4o Mini Audio](/api/docs/models/gpt-4o-mini-audio-preview.md): Shut down. Smaller model capable of audio inputs and outputs
+- [GPT-4o Realtime](/api/docs/models/gpt-4o-realtime-preview.md): Shut down. Model capable of realtime text and audio inputs and outputs
+- [GPT-4o Mini Realtime](/api/docs/models/gpt-4o-mini-realtime-preview.md): Shut down. Smaller realtime model for text and audio inputs and outputs
+- [GPT-4o Mini TTS](/api/docs/models/gpt-4o-mini-tts.md): Deprecated. Text-to-speech model powered by GPT-4o Mini
+- [Daybreak Red](/api/docs/models/gpt-daybreak-red-latest.md): Deprecated. An alias for advanced cybersecurity models for authorized vulnerability research and security testing.
+- [Daybreak Blue](/api/docs/models/gpt-daybreak-blue-latest.md): Deprecated. An alias for flagship general-purpose models with safeguards for defensive cybersecurity work.
+- [GPT-5.4 nano](/api/docs/models/gpt-5.4-nano.md): Deprecated. Our cheapest GPT-5.4-class model for simple high-volume tasks
+- [GPT-5.3-Codex](/api/docs/models/gpt-5.3-codex.md): Deprecated. The most capable agentic coding model to date.
+- [GPT-5.1](/api/docs/models/gpt-5.1.md): Deprecated. The best model for coding and agentic tasks with configurable reasoning effort
 - [GPT-5](/api/docs/models/gpt-5.md): Deprecated. Previous intelligent reasoning model for coding and agentic tasks with configurable reasoning effort
 - [GPT-5 Mini](/api/docs/models/gpt-5-mini.md): Deprecated. Strong intelligence for cost sensitive, low latency, high volume workloads
 - [GPT-5 nano](/api/docs/models/gpt-5-nano.md): Deprecated. Fastest, most cost-efficient version of GPT-5
 - [GPT-5 Pro](/api/docs/models/gpt-5-pro.md): Deprecated. Version of GPT-5 that produces smarter and more precise responses
 - [o3-pro](/api/docs/models/o3-pro.md): Deprecated. Version of o3 with more compute for better responses
 - [o3](/api/docs/models/o3.md): Deprecated. Reasoning model for complex tasks, succeeded by GPT-5
-- [omni-moderation](/api/docs/models/omni-moderation-latest.md): Identify potentially harmful content in text and images
-- [Daybreak Red](/api/docs/models/gpt-daybreak-red-latest.md): Deprecated. An alias for advanced cybersecurity models for authorized vulnerability research and security testing.
-- [Daybreak Blue](/api/docs/models/gpt-daybreak-blue-latest.md): Deprecated. An alias for flagship general-purpose models with safeguards for defensive cybersecurity work.
-- [GPT-5.4 nano](/api/docs/models/gpt-5.4-nano.md): Deprecated. Our cheapest GPT-5.4-class model for simple high-volume tasks
-- [GPT-5.3-Codex](/api/docs/models/gpt-5.3-codex.md): Deprecated. The most capable agentic coding model to date.
-- [GPT-5.1](/api/docs/models/gpt-5.1.md): Deprecated. The best model for coding and agentic tasks with configurable reasoning effort
-- [GPT-Realtime](/api/docs/models/gpt-realtime.md): Deprecated. Model capable of realtime text and audio inputs and outputs
-- [GPT-Audio](/api/docs/models/gpt-audio.md): Deprecated. For audio inputs and outputs with Chat Completions API
 - [GPT-4.1](/api/docs/models/gpt-4.1.md): Deprecated. Smartest non-reasoning model
 - [GPT-4.1 Mini](/api/docs/models/gpt-4.1-mini.md): Deprecated. Smaller, faster version of GPT-4.1
 - [GPT-4o Mini](/api/docs/models/gpt-4o-mini.md): Deprecated. Fast, affordable small model for focused tasks
-- [TTS-1](/api/docs/models/tts-1.md): Deprecated. Text-to-speech model optimized for speed
-- [TTS-1 HD](/api/docs/models/tts-1-hd.md): Deprecated. Text-to-speech model optimized for quality
 - [GPT-5.3 Chat](/api/docs/models/gpt-5.3-chat-latest.md): Shut down. GPT-5.3 Instant model used in ChatGPT
 - [GPT-5.2 Chat](/api/docs/models/gpt-5.2-chat-latest.md): Shut down. GPT-5.2 model used in ChatGPT
 - [GPT-5.2-Codex](/api/docs/models/gpt-5.2-codex.md): Shut down. Our most intelligent coding model optimized for long-horizon, agentic coding tasks.
-- [GPT-Image-1.5](/api/docs/models/gpt-image-1.5.md): Deprecated. Our previous image generation model
-- [chatgpt-image-latest](/api/docs/models/chatgpt-image-latest.md): Deprecated. Previous image model used in ChatGPT.
-- [GPT-Image-1 Mini](/api/docs/models/gpt-image-1-mini.md): Deprecated. A cost-efficient version of GPT Image 1
-- [GPT-Image-1](/api/docs/models/gpt-image-1.md): Shut down. Retired image generation model
 - [o3-deep-research](/api/docs/models/o3-deep-research.md): Shut down. Our most powerful deep research model
 - [o4-mini-deep-research](/api/docs/models/o4-mini-deep-research.md): Shut down. Faster, more affordable deep research model
 - [GPT-4.1 nano](/api/docs/models/gpt-4.1-nano.md): Shut down. Fastest, most cost-efficient version of GPT-4.1
 - [o4-mini](/api/docs/models/o4-mini.md): Shut down. Fast, cost-efficient reasoning model, succeeded by GPT-5 Mini
 - [o1-pro](/api/docs/models/o1-pro.md): Shut down. Version of o1 with more compute for better responses
 - [computer-use-preview](/api/docs/models/computer-use-preview.md): Shut down. Specialized model for computer use tool
-- [GPT-Realtime Mini](/api/docs/models/gpt-realtime-mini.md): Deprecated. A cost-efficient version of GPT-Realtime
-- [GPT-Audio Mini](/api/docs/models/gpt-audio-mini.md): Deprecated. A cost-efficient version of GPT Audio
 - [GPT-4o Mini Search Preview](/api/docs/models/gpt-4o-mini-search-preview.md): Shut down. Fast, affordable small model for web search
 - [GPT-4o Search Preview](/api/docs/models/gpt-4o-search-preview.md): Shut down. GPT model for web search in Chat Completions
 - [GPT-4.5 Preview](/api/docs/models/gpt-4.5-preview.md): Shut down. Deprecated large model.
@@ -127,10 +142,6 @@ Diverse models for a variety of tasks.
 - [o1-mini](/api/docs/models/o1-mini.md): Shut down. A small model alternative to o1
 - [o1 Preview](/api/docs/models/o1-preview.md): Shut down. Preview of our first o-series reasoning model
 - [GPT-4o](/api/docs/models/gpt-4o.md): Deprecated. Fast, intelligent, flexible GPT model
-- [GPT-4o Audio](/api/docs/models/gpt-4o-audio-preview.md): Shut down. GPT-4o models capable of audio inputs and outputs
-- [GPT-4o Mini Audio](/api/docs/models/gpt-4o-mini-audio-preview.md): Shut down. Smaller model capable of audio inputs and outputs
-- [GPT-4o Mini Realtime](/api/docs/models/gpt-4o-mini-realtime-preview.md): Shut down. Smaller realtime model for text and audio inputs and outputs
-- [GPT-4o Realtime](/api/docs/models/gpt-4o-realtime-preview.md): Shut down. Model capable of realtime text and audio inputs and outputs
 - [GPT-4 Turbo](/api/docs/models/gpt-4-turbo.md): Shut down. An older high-intelligence GPT model
 - [babbage-002](/api/docs/models/babbage-002.md): Shut down. Replacement for the GPT-3 ada and babbage base models
 - [ChatGPT-4o](/api/docs/models/chatgpt-4o-latest.md): Shut down. GPT-4o model used in ChatGPT
@@ -147,11 +158,5 @@ Diverse models for a variety of tasks.
 - [GPT-5 Chat](/api/docs/models/gpt-5-chat-latest.md): Shut down. GPT-5 model used in ChatGPT
 - [text-moderation](/api/docs/models/text-moderation-latest.md): Shut down. Previous generation text-only moderation model
 - [text-moderation-stable](/api/docs/models/text-moderation-stable.md): Shut down. Previous generation text-only moderation model
-
-## ChatGPT models
-
-Models used in ChatGPT, not recommended for API use.
-
-- [Chat Latest](/api/docs/models/chat-latest.md): Latest Instant model used in ChatGPT
 
 [How we use your data](/api/docs/guides/your-data.md) · [Deprecated models](/api/docs/deprecations.md)

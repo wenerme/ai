@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/service-
 
 # Service tokens
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
-This section covers how to create, rotate, renew, disable, and revoke a service token. You can also configure Access to manage inactive service tokens automatically.
+This section covers how to create, tag, rotate, renew, disable, and revoke a service token. You can also configure Access to manage inactive service tokens automatically.
 
 ## Create a service token
 
@@ -24,31 +24,26 @@ This section covers how to create, rotate, renew, disable, and revoke a service 
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
-5. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
-6. Copy the Client Secret.
+5. (Optional) In **Tags**, select **Add tag** and enter a key-value pair, such as `environment: production`. You can add up to five tags.
+6. Select **Generate token**. You will see the generated Client ID and Client Secret for the service token, as well as their respective request headers.
+7. Copy the Client Secret.
 
    Caution
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:<details><summary>
-
-   Required API token permissions</summary>
-
-At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
-   - <code>Access: Service Tokens Write</code></details>
-
-   *Create a service tokenbash*
-
-
+1. Make a `POST` request to the [Access Service Tokens](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) endpoint:
 
    ```bash
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_tokens" \
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/service_tokens" \
    	--request POST \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
    	--json '{
    		"name": "CI/CD token",
-   		"duration": "8760h"
+   		"duration": "8760h",
+   		"tags": {
+   				"environment": "production"
+   		}
    	}'
    ```
 
@@ -151,6 +146,80 @@ You can now configure your Access applications and [device enrollment permission
 As of August 26, 2026, new service token Client Secrets use the format `cfast_[40 alphanumeric characters][8-character checksum]`. The prefix and checksum make the secrets easier for credential scanning tools to identify.
 
 Existing Client Secrets use a 64-character hexadecimal format. These secrets continue to work and do not require rotation. Both formats use the same Client ID and authentication headers.
+
+## Tag service tokens
+
+Use key-value tags to organize service tokens by environment, team, or purpose. For example, assign `environment: production` to your production tokens. You can filter tokens by tag and authorize tokens with a matching tag in a [Service Auth policy](#authorize-service-tokens-by-tag).
+
+Service token tags integrate with [Resource Tagging](https://developers.cloudflare.com/resource-tagging/). They are separate from [App Launcher tags](https://developers.cloudflare.com/cloudflare-one/reusable-components/tags/), which label applications for end users.
+
+Each service token supports up to five tags, with one value per key. Keys and values are case-sensitive and can each contain up to 256 characters. Keys support Unicode letters, digits, underscores (`_`), periods (`.`), and hyphens (`-`).
+
+### Add or edit tags
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
+2. Locate the token and select the three dots > **Edit**.
+3. In **Tags**, select **Add tag**. Enter a key and value, or select existing suggestions.
+4. To remove a tag, select its remove button.
+5. Select **Save**.
+
+You can also add tags when you [create a service token](#create-a-service-token). Editing only the tags does not rotate the Client Secret or change the expiration date.
+
+Include a `tags` object when you [create a service token](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/) or [update a service token](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/update/). When updating, include the token's existing `name` to preserve it. For example:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/service_tokens/%7Bservice_token_id%7D" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "CI/CD token",
+		"tags": {
+				"environment": "production",
+				"team": "payments"
+		}
+	}'
+```
+
+On update, `tags` replaces the token's entire tag set. Include every tag you want to keep, or send `"tags": {}` to remove all tags.
+
+Note
+
+Resource Tagging uses the resource type `access_service_token` and the token's `id`, not its Client ID. You can query service token tags through Resource Tagging, but you must add, update, and remove them through the Access dashboard or service token API. Direct writes through the Tagging API are not supported.
+
+### Authorize service tokens by tag
+
+Use the **Service Token Tag** selector to authorize valid tokens with a specific key-value pair. You do not need to list each token individually. Tokens assigned the matching tag are eligible under the policy, including tokens you create later.
+
+1. Create or edit an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for your application.
+2. Set the action to **Service Auth**.
+3. Add an **Include** rule with the **Service Token Tag** selector.
+4. Enter the **Tag key** and **Tag value**, such as `environment` and `production`.
+5. Save the policy and ensure it is assigned to your application.
+
+The equivalent API policy configuration is:
+
+```json
+{
+	"name": "Production service tokens",
+	"decision": "non_identity",
+	"include": [
+		{
+			"service_token_tag": {
+				"key": "environment",
+				"value": "production"
+			}
+		}
+	]
+}
+```
+
+Each rule matches one exact, case-sensitive key-value pair. Key-only matches and wildcards are not supported. The client must still present a valid Client ID and Client Secret; a tag does not make an expired or disabled token valid.
+
+You can use this selector in **Include**, **Require**, or **Exclude** rules. Policies that use the selector must use the **Service Auth** action. To require multiple tags, use the [Require rule type](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#require); multiple Include rules are combined with OR.
+
+Caution
+
+Changing a token's tags can change which applications it can access. Only grant service token edit permissions to administrators who should be able to change tag-based access.
 
 ## Connect your service to Access
 
@@ -527,5 +596,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/og.png?v=319d41b15b504397","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/og.png?v=319d41b15b504397","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

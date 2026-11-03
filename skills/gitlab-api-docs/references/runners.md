@@ -67,7 +67,8 @@ GET /runners?tag_list=tag1,tag2
 | `version_prefix` | string       | no       | The prefix of the version of the runners to return. For example, `15.0`, `14`, `16.1.241` |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/runners"
 ```
 
@@ -151,7 +152,8 @@ GET /runners/all?tag_list=tag1,tag2
 | `version_prefix` | string       | no       | The prefix of the version of the runners to return. For example, `15.0`, `16.1.241` |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/runners/all"
 ```
 
@@ -256,7 +258,8 @@ GET /runners/:id
 | `id`      | integer | yes      | The ID of a runner |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/runners/6"
 ```
 
@@ -491,7 +494,8 @@ curl --request GET \
 Follow the `Link` response header with `rel="next"` to retrieve the next page.
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/runners/1/jobs?status=running"
 ```
 
@@ -577,7 +581,8 @@ GET /runners/:id/managers
 | `id`      | integer | yes      | The ID of a runner |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/runners/1/managers"
 ```
 
@@ -642,7 +647,8 @@ GET /projects/:id/runners?tag_list=tag1,tag2
 | `version_prefix` | string         | no       | The prefix of the version of the runners to return. For example, `15.0`, `14`, `16.1.241` |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/projects/9/runners"
 ```
 
@@ -817,7 +823,8 @@ GET /groups/:id/runners?tag_list=tag1,tag2
 >   Use the `paused` attribute instead.
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+     --header "PRIVATE-TOKEN: <your_access_token>" \
      --url "https://gitlab.example.com/api/v4/groups/9/runners"
 ```
 
@@ -1175,7 +1182,8 @@ GET /runners/router/discovery
 ```
 
 ```shell
-curl --header "Runner-Token: <runner_authentication_token>" \
+curl --request GET \
+     --header "Runner-Token: <runner_authentication_token>" \
      --url "https://gitlab.example.com/api/v4/runners/router/discovery"
 ```
 

@@ -22,12 +22,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Partner
+- Zero data retention
 
 Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://leonardo.ai/terms-of-service/) |
+| Zero data retention | Yes |
 | Partner | Yes |
 | Unit Pricing | $0.00583 per 512 by 512 tile, $0.00011 per step |
 

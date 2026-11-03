@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/runwayml/stable-diffusion-v1-5-inpainting`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.
 
@@ -30,6 +31,7 @@ Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of
 | --- | --- |
 | Terms and License | [link ↗](https://github.com/runwayml/stable-diffusion/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/runwayml/stable-diffusion-inpainting) |
+| Zero data retention | Yes |
 | Beta | Yes |
 | Unit Pricing | $0.00 per step |
 

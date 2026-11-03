@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Function calling
+- Zero data retention
 
 Building upon Mistral Small 3 (2501), Mistral Small 3.1 (2503) adds state-of-the-art vision understanding and enhances long context capabilities up to 128k tokens without compromising text performance. With 24 billion parameters, this model achieves top-tier capabilities in both text and vision tasks.
 
@@ -29,6 +30,7 @@ Building upon Mistral Small 3 (2501), Mistral Small 3.1 (2503) adds state-of-the
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.351 per M input tokens, $0.555 per M output tokens |
 
 ## Playground

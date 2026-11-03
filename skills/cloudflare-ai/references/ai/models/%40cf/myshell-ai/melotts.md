@@ -21,11 +21,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/myshell-ai/melotts`
 
 - Cloudflare-hosted
+- Zero data retention
 
 MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Unit Pricing | $0.000205 per audio minute |
 
 ## Parameters

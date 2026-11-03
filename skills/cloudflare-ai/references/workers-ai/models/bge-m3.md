@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/baai/bge-m3`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
 | Model Info | |
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens |
+| Zero data retention | Yes |
 | Unit Pricing | $0.0118 per M input tokens |
 
 ## Usage

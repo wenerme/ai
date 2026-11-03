@@ -1034,7 +1034,7 @@ Considering these, you should carefully plan your PostgreSQL upgrade:
    in `/etc/gitlab/gitlab.rb` on the Rails instance:
 
    ```shell
-   postgresql['version'] = 16
+   postgresql['version'] = 18
    ```
 
 If issues are encountered upgrading the replicas,

@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Vision
+- Zero data retention
 
 Clef is a 27B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.
 
@@ -31,6 +32,7 @@ Clef is a 27B multimodal decision model that turns a state and a schema of typed
 | Terms and License | [link ↗](https://huggingface.co/Cloudflare/clef/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/Cloudflare/clef) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.24 per M input tokens |
 
 How media inputs are billed

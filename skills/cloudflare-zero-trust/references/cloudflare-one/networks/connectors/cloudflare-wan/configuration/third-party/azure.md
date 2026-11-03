@@ -16,8 +16,8 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Microsoft Azure integration guides currently available:
 
-- [Microsoft Azure Virtual WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/azure/azure-virtual-wan/)
-- [Microsoft Azure VPN Gateway](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/)
+- [Microsoft Azure Virtual WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-virtual-wan/)
+- [Microsoft Azure VPN Gateway](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/)
 
 Was this helpful?
 

@@ -5,7 +5,7 @@ description: "Browse OpenCode model IDs, capabilities, context windows, and pric
 
 # [OpenCode logo]OpenCode
 
-Access 130 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 131 OpenCode models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode documentation](https://opencode.ai/v2/docs/console/models/).
 
@@ -941,6 +941,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "opencode/nemotron-3.5-super-vl-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "opencode/pulse-alpha-free",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

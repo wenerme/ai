@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/black-forest-labs/flux-1-schnell`
 
 - Cloudflare-hosted
+- Zero data retention
 
 FLUX.1 \[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Zero data retention | Yes |
 
 ## Usage
 

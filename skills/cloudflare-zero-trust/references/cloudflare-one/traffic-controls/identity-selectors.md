@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/traffic-controls/identit
 
 # Identity-based policies
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare One, you can create Secure Web Gateway policies that filter outbound traffic down to the user identity level. To do that, you can build DNS, HTTP or Network policies using a set of [identity-based selectors](#identity-based-selectors). These selectors require you to deploy the Cloudflare One Client in [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
 
@@ -121,13 +121,13 @@ To force Gateway to match all email address variants, go to **Traffic policies**
 
 Specify a value from a [custom OIDC claim](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) configured on your identity provider.
 
-Note
+You can use this selector with [Generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/), [Microsoft Entra ID](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/), and [Okta (OIDC)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/) integrations. Add the claim name under **OIDC Claims** in your identity provider integration, then re-authenticate the Cloudflare One Client. Verify that the claim appears in `oidc_fields` in the [user identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/).
 
-This selector is only available for the [Generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/) identity provider integration. Named OIDC providers such as Okta and Microsoft Entra ID do not support custom OIDC claims in Gateway policies — use the [User Group Names](#user-group-names) or [User Group IDs](#user-group-ids) selectors for those providers instead.
+For array claims, Gateway matches individual values. For example, an `amr` claim containing `["pwd", "mfa"]` can match `amr=mfa`.
 
 | UI name | API example |
 | --- | --- |
-| OIDC Claims | `any(identity.oidc_claims[*] == "\"department=engineering\"")` |
+| OIDC Claims | `any(identity.oidc_claims[*] == "department=engineering")` |
 
 ### SAML Attributes
 
@@ -260,5 +260,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#page","headline":"Identity-based policies","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/og.png?v=e1bb1ccbc7db2a04","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#page","headline":"Identity-based policies","description":"Reference information for Identity-based policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/og.png?v=e1bb1ccbc7db2a04","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SAML","SCIM"]}
 ```

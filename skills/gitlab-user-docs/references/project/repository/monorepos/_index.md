@@ -182,11 +182,14 @@ GitLab and GitLab Runner perform a
 by default.
 
 The clone depth can be configured in the GitLab CI/CD pipeline configuration
-with `GIT_DEPTH`, for example:
+with `GIT_DEPTH`.
+Monorepos often have many merge commits, and each step of depth after a merge commit
+also fetches commits from the merged branch.
+For jobs that use only the files of the pipeline commit, set the depth to `1`:
 
 ```yaml
 variables:
-  GIT_DEPTH: 10
+  GIT_DEPTH: "1"
 
 test:
   script:
@@ -203,6 +206,9 @@ maximum size of blobs to 1MB, add:
 variables:
   GIT_CLONE_EXTRA_FLAGS: --filter=blob:limit=1m
 ```
+
+`GIT_CLONE_EXTRA_FLAGS` applies only to the native `git clone` of GitLab Runner, not to the default `fetch` Git strategy.
+For the requirements, see [Git clone extra flags](../../../../ci/runners/configure_runners.md#git-clone-extra-flags).
 
 ### Filter out paths and object types
 

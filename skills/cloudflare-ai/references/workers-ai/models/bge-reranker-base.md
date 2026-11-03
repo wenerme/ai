@@ -21,11 +21,13 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 `@cf/baai/bge-reranker-base`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \[0,1] by sigmoid function.
 
 | Model Info | |
 | --- | --- |
+| Zero data retention | Yes |
 | Unit Pricing | $0.00311 per M input tokens |
 
 ## Usage

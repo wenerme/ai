@@ -2373,7 +2373,7 @@ Supported general project attributes:
 | `build_git_strategy`                               | string            | No       | The Git strategy. Defaults to `fetch`. |
 | `build_timeout`                                    | integer           | No       | The maximum amount of time, in seconds, that a job can run. |
 | `ci_config_path`                                   | string            | No       | The path to CI configuration file. |
-| `ci_default_git_depth`                             | integer           | No       | Default number of revisions for [shallow cloning](../ci/pipelines/settings.md#limit-the-number-of-changes-fetched-during-clone). |
+| `ci_default_git_depth`                             | integer           | No       | Default Git depth for [shallow cloning](../ci/pipelines/settings.md#limit-the-number-of-changes-fetched-during-clone). |
 | `ci_delete_pipelines_in_seconds`                   | integer           | No       | Pipelines older than the configured time are deleted. |
 | `ci_display_pipeline_variables`                    | boolean           | No       | Display all manually-defined variables in the pipeline details page after running a pipeline manually. |
 | `ci_forward_deployment_enabled`                    | boolean           | No       | Enable or disable [prevent outdated deployment jobs](../ci/pipelines/settings.md#prevent-outdated-deployment-jobs). |

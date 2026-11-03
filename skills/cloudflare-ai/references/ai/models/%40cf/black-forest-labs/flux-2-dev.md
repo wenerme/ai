@@ -22,12 +22,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Partner
+- Zero data retention
 
 FLUX.2 \[dev] is an image model from Black Forest Labs where you can generate highly realistic and detailed images, with multi-reference support.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Zero data retention | Yes |
 | Partner | Yes |
 
 ## Parameters

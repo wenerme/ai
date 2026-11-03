@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Vision
+- Zero data retention
 
 Clef-omni is a multimodal decision model built on a 30B-parameter mixture-of-experts (3B active) backbone. It turns a state and a schema of typed questions into decisions, reads the state as text, JSON, images, audio, or video, and returns a probability for every allowed option of every question.
 
@@ -31,6 +32,7 @@ Clef-omni is a multimodal decision model built on a 30B-parameter mixture-of-exp
 | Terms and License | [link ↗](https://huggingface.co/Cloudflare/clef-omni/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/Cloudflare/clef-omni) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.15 per M input tokens |
 
 How media inputs are billed

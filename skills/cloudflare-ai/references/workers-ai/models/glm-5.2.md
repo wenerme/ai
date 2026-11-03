@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Cloudflare-hosted
 - Function calling
 - Reasoning
+- Zero data retention
 
 Z.ai's flagship agentic coding model
 
@@ -35,6 +36,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``high``max` (default) |
+| Zero data retention | Yes |
 | Unit Pricing | $1.40 per M input tokens, $4.40 per M output tokens, $0.26 per M cached input tokens |
 
 ## Reasoning effort

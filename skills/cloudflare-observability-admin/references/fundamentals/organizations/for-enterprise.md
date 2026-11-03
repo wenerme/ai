@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/organizations/for-enterpri
 
 # Organizations for Enterprise
 
-Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Organizations provides a single-tier structure for Enterprise customers to manage multiple Cloudflare accounts from one unified dashboard.
 
@@ -113,6 +113,14 @@ After creating an Organization, you can assign existing accounts to manage them 
 The assigned account now appears on the Organization overview page. From here, you can view the account, copy its ID, or rename it.
 
 To remove an account from your Organization, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+
+Note
+
+Removing an account from an Organization detaches it and returns it to standalone status. All zones, WAF rules, members, and configurations are preserved — the account continues to exist and function normally.
+
+This is different from [deleting an account](https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/), which is a permanent action that cannot be undone.
+
+**When contacting Support, specify that you want the account removed from the Organization, not deleted**, and include the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 ### Create new accounts
 
@@ -263,5 +271,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/og.png?v=f762337ac635c141","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/og.png?v=f762337ac635c141","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -185,6 +185,34 @@ Always Deny is enforced for every client because the server refuses the call.
 Use Always Deny rather than Always Ask when you need stronger enforcement
 across all clients.
 
+### GitLab Duo CLI tools
+
+- [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/work_items/3106) in GitLab 19.6 [with a flag](../../administration/feature_flags/_index.md) named `duo_cli_first_party_tools`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+The GitLab Duo CLI serves some tools to the agent from its own local MCP server.
+These tools appear on the **Tool management** tab with a source of `mcp` and a
+category of **Duo CLI**. You set a mode for them the same way as for other tools.
+
+| Tool | ID | Description | Default mode |
+|------|----|-------------|--------------|
+| Duo CLI Code Review | `mcp__duo__review` | Review the local code changes in the GitLab Duo CLI. | Always Allow |
+
+With GitLab Duo CLI 9.33.0 and later:
+
+- The mode you set for [local access](#access-types) applies to these tools, even when
+  tool governance for local access is not turned on for your group.
+- Tools set to **Always Allow** run without an approval prompt.
+- The tools are available even when the
+  [**Allow external MCP tools**](../gitlab_duo/model_context_protocol/mcp_clients.md#allow-external-mcp-tools)
+  setting is turned off.
+
+Earlier versions of the GitLab Duo CLI treat these tools like any other external MCP tool.
+
 ### Approval prompt (Always Ask)
 
 When a GitLab Duo Agent Platform agent calls a tool configured as

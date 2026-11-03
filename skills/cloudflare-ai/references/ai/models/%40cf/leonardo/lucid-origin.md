@@ -22,12 +22,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 - Cloudflare-hosted
 - Partner
+- Zero data retention
 
 Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.
 
 | Model Info | |
 | --- | --- |
 | Terms and License | [link ↗](https://leonardo.ai/terms-of-service/) |
+| Zero data retention | Yes |
 | Partner | Yes |
 | Unit Pricing | $0.007 per 512 by 512 tile, $0.000132 per step |
 

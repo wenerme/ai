@@ -24,6 +24,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Batch
 - Function calling
 - Reasoning
+- Zero data retention
 
 DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities.
 
@@ -36,6 +37,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``low``high` (default)`max` |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.44 per M input tokens, $1.32 per M output tokens, $0.014 per M cached input tokens |
 

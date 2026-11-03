@@ -21,12 +21,14 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `@cf/huggingface/distilbert-sst-2-int8`
 
 - Cloudflare-hosted
+- Zero data retention
 
 Distilled BERT model that was finetuned on SST-2 for sentiment classification
 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://huggingface.co/Intel/distilbert-base-uncased-finetuned-sst-2-english-int8-static) |
+| Zero data retention | Yes |
 | Unit Pricing | $0.0263 per M input tokens |
 
 ## Usage

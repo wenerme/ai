@@ -865,35 +865,71 @@ For example, a security scanner does not analyze the content of those files, and
 
 ### Shallow cloning
 
-You can specify the depth of fetching and cloning using `GIT_DEPTH`.
-`GIT_DEPTH` does a shallow clone of the repository and can significantly speed up cloning.
-It can be helpful for repositories with a large number of commits or old, large binaries. The value is
-passed to `git fetch` and `git clone`.
+Use `GIT_DEPTH` to limit how much Git history a job fetches.
+With `GIT_DEPTH`, the job does a shallow clone of the repository, which can significantly speed up cloning.
+The value is passed to `git fetch` and `git clone`.
 
-Newly-created projects automatically have a
+Newly created projects have a
 [default `git depth` value of `20`](../pipelines/settings.md#limit-the-number-of-changes-fetched-during-clone).
+To fetch the complete history of all branches and tags, set `GIT_DEPTH` to `0`.
 
-If you use a depth of `1` and have a queue of jobs or retry
-jobs, jobs may fail.
+Each job fetches the commit of its pipeline by its SHA.
+A queued or retried job finds its commit at any depth, even after the branch moves on or is rewritten.
 
-Git fetching and cloning is based on a ref, such as a branch name, so runners
-can't clone a specific commit SHA. If multiple jobs are in the queue, or
-you retry an old job, the commit to be tested must be in the cloned
-Git history. Setting too small a value for `GIT_DEPTH` can make
-it impossible to run these old commits and `unresolved reference` is displayed in
-job logs. You should then reconsider changing `GIT_DEPTH` to a higher value.
+#### How Git counts depth
 
-Jobs that rely on `git describe` may not work correctly when `GIT_DEPTH` is
-set because only part of the Git history is present.
+The depth counts steps from the pipeline commit. It does not count commits.
+Git follows every parent of a commit, not only the first parent.
+A merge commit has two parents, so each step after a merge commit also fetches commits from the merged branch.
 
-To fetch or clone only the last 3 commits:
+In a project that uses merge commits, a small depth can fetch many commits.
+For example, in a busy repository with merge commits on the default branch, a depth of `20` can fetch thousands of commits.
+A depth of `N` fetches about `N` commits only when the history is linear,
+for example when the project uses [fast-forward merges](../../user/project/merge_requests/methods/_index.md#fast-forward-merge).
+
+#### Choose a depth for each job
+
+Most jobs only need the pipeline commit, for example jobs that build, test, lint, or scan code.
+For these jobs, use `1`. The job fetches only the pipeline commit, which is the least data a clone can fetch:
 
 ```yaml
 variables:
-  GIT_DEPTH: "3"
+  GIT_DEPTH: "1"
 ```
 
-You can set it globally or per-job in the [`variables`](../yaml/_index.md#variables) section.
+You can set it globally or for each job in the [`variables`](../yaml/_index.md#variables) section.
+
+Some jobs read Git history, for example jobs that run `git log`, `git describe`, or `git merge-base`.
+A shallow clone can make these commands fail, or return an incomplete result without an error.
+For example, `git log -- <path>` stops at the oldest fetched commit.
+
+If a job needs a specific older commit, fetch that commit in the job instead of increasing the depth for all jobs.
+For example, to list the files that a merge request changes:
+
+```yaml
+list-changed-files:
+  variables:
+    GIT_DEPTH: "1"
+  script:
+    - BASE_SHA="${CI_MERGE_REQUEST_TARGET_BRANCH_SHA:-$CI_MERGE_REQUEST_DIFF_BASE_SHA}"
+    - git fetch --depth=1 origin "$BASE_SHA"
+    - git diff --name-only "$BASE_SHA" HEAD
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+```
+
+`BASE_SHA` depends on the pipeline type:
+
+- In [merged results pipelines](../pipelines/merged_results_pipelines.md), `CI_MERGE_REQUEST_TARGET_BRANCH_SHA`
+  is the target branch commit that the merge result is based on.
+- In other merge request pipelines, `CI_MERGE_REQUEST_TARGET_BRANCH_SHA` is empty.
+  The job uses `CI_MERGE_REQUEST_DIFF_BASE_SHA`, the base commit of the merge request diff.
+
+`git diff` compares the two commits directly, so the job does not need the history between them.
+
+After a shallow clone, always pass `--depth` to `git fetch` in your job.
+A `git fetch` without `--depth` or `--deepen` can download the full history of the fetched commit,
+because the shallow clone has no commits in common with it.
 
 ### Git submodule depth
 

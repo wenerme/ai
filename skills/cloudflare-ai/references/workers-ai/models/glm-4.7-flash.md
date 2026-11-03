@@ -23,6 +23,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 - Cloudflare-hosted
 - Function calling
 - Reasoning
+- Zero data retention
 
 GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.
 
@@ -31,6 +32,7 @@ GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |
+| Zero data retention | Yes |
 | Unit Pricing | $0.0605 per M input tokens, $0.40 per M output tokens |
 
 ## Playground

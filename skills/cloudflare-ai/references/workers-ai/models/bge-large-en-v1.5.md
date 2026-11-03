@@ -22,6 +22,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-a
 
 - Cloudflare-hosted
 - Batch
+- Zero data retention
 
 BAAI general embedding (Large) model that transforms any given text into a 1024-dimensional vector
 
@@ -30,6 +31,7 @@ BAAI general embedding (Large) model that transforms any given text into a 1024-
 | More information | [link ↗](https://huggingface.co/BAAI/bge-large-en-v1.5) |
 | Maximum Input Tokens | 512 |
 | Output Dimensions | 1,024 |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.204 per M input tokens |
 

@@ -25,6 +25,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 - Function calling
 - Reasoning
 - Vision
+- Zero data retention
 
 Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads.
 
@@ -34,6 +35,7 @@ Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Ali
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `low``medium``xhigh` (default) |
 | Vision | Yes |
+| Zero data retention | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.45 per M input tokens, $3.20 per M output tokens, $0.05 per M cached input tokens |
 
