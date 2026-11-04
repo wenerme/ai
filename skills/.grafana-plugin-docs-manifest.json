@@ -1226,8 +1226,8 @@
   },
   "grafana-lokiexplore-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
-    "size": 16697,
-    "updatedAt": "2026-10-28T00:53:50.367Z"
+    "size": 16701,
+    "updatedAt": "2026-11-04T18:10:47.795Z"
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",
@@ -3301,8 +3301,8 @@
   },
   "volkovlabs-image-panel/exploring-variables.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/exploring-variables.md",
-    "size": 2358,
-    "updatedAt": "2026-10-28T10:28:35.486Z"
+    "size": 2347,
+    "updatedAt": "2026-11-04T18:12:06.927Z"
   },
   "volkovlabs-image-panel/features.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-image-panel/latest/features.md",

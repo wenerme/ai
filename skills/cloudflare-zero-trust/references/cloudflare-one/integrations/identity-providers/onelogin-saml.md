@@ -32,7 +32,7 @@ OneLogin provides SSO identity management. Cloudflare Access supports OneLogin a
    https://<your-team-name>.cloudflareaccess.com
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 8. Select the **Parameters** tab, select **Add Parameter** and enter your values for **Cloudflare Access Field**.
 9. Select the **Access** tab
 10. In Roles, use the mapping to programmatically and automatically assign users that can access the application.![OneLogin SAML Application Access interface with available Roles listed](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=932,format=webp/_astro/onelogin-saml-6.72q8OCR8.png)

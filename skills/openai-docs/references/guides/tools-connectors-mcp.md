@@ -187,10 +187,10 @@ puts(response.output_text)
 ```
 
 
-It is very important that developers trust any remote MCP server they use with
-  the Responses API. A malicious server can exfiltrate sensitive data from
-  anything that enters the model's context. Carefully review the 
-  **Risks and Safety** section below before using this tool.
+Only use remote MCP servers you trust with the Responses API. A malicious
+  server can exfiltrate sensitive data from anything that enters the model's
+  context. Carefully review the **Risks and Safety** section below
+  before using this tool.
 
 The API will return new items in the `output` array of the model response. If the model decides to use an MCP server, it will first make a request to list available tools from the server, which will create a `mcp_list_tools` output item. The following illustrative output shows only the search tool, with its description shortened. The server also exposes other documentation tools.
 
@@ -1338,7 +1338,7 @@ To use the playground to test the connectors API functionality, start by enterin
 https://www.googleapis.com/auth/calendar.events
 ```
 
-This authorization scope will enable the API to read Google Calendar events. In the UI under "Step 1: Select and authorize APIs".
+Enter this scope under **Step 1: Select and authorize APIs** to let the API read Google Calendar events.
 
 After authorizing the application with your Google account, you will come to **Step 2: Exchange authorization code for tokens**. This will generate an access token you can use in an API request using the Google Calendar connector:
 
@@ -1907,6 +1907,10 @@ Below are some best practices to consider when integrating connectors and remote
 #### Prompt injection
 
 [Prompt injection](https://chatgpt.com/?prompt=what%20is%20prompt%20injection?) is an important security consideration in any LLM application, and is especially true when you give the model access to MCP servers and connectors which can access sensitive data or take action. Use these tools with appropriate caution and protective measures if the prompt for the model contains user-provided content.
+
+For example, a web page could instruct the model to look up a customer in your CRM and put the customer’s email address in a URL. Fetching that URL would disclose the address, even if the CRM tool only allows reads.
+
+To compare a public company announcement with private CRM records, collect the public facts in a request with only web search enabled. Pass the relevant facts into a second request with access limited to your internal CRM search tool. This keeps customer records out of web queries and URLs.
 
 #### Always require approval for sensitive actions
 

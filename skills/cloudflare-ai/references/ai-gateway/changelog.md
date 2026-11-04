@@ -16,6 +16,30 @@ Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-11-04
+
+
+**Route across a pool of models with model aliases**
+
+AI Gateway now supports model aliases. A model alias is a pool of models that your application calls by one name, such as `custom/support-fast`. AI Gateway tries the models in the order you set and falls back to the next one if a request fails, or uses smart routing to choose a model for each request.
+
+Because your application only references the alias, you can swap models or change the routing algorithm on your gateway without redeploying. Create and manage aliases on your gateway's **Routing** page, alongside dynamic routes.
+
+To call an alias through the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), use its name as the `model`. For example, send this body to `/accounts/{account_id}/ai/run`:
+
+```json
+{
+	"model": "custom/support-fast",
+	"input": {
+		"messages": [{ "role": "user", "content": "Reply with a short greeting." }]
+	}
+}
+```
+
+Include the `cf-aig-gateway-id` header to select the gateway where you created the alias. Aliases are scoped to individual gateways.
+
+For setup instructions and routing options, refer to [Model aliases](https://developers.cloudflare.com/ai-gateway/features/routing/model-aliases/).
+
 ## 2026-11-03
 
 
@@ -94,7 +118,7 @@ export default {
 
 With `createAI` you get:
 
-- **Every model by id.** Workers AI `@cf/` ids, any model in the [AI Gateway catalog](https://developers.cloudflare.com/ai/models/), and [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) as `dynamic/<route>`.
+- **Every model by id.** Workers AI `@cf/` ids, any model in the [AI Gateway catalog](https://developers.cloudflare.com/ai/models/), and [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) as `dynamic/<route>`.
 - **Vendor model objects.** Pass a model from the vendor's own package, such as `ai(anthropic("claude-opus-5-5"))`. It goes unchanged to AI Gateway's [provider-native endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/).
 - **The binding, or an account id and API token.** Use a gateway in another account, or call from outside a Worker.
 - **Gateway options, fallback, and BYOK.** Caching, logging, metadata, retries, `byokAlias`, `zdr`, and `vendorKey`.
@@ -222,7 +246,7 @@ On the analysis side, User Insights groups conversations by task, tracks convers
 
 ![User Insights task and model analysis grouped by task categories](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1434,height=606,format=webp/_astro/user-insights-task-analysis.CS2pm7wg.png)
 
-The Potential Savings view highlights requests that may work with faster or less expensive models without compromising output quality. These are the same signals that Cloudflare's [Auto Router](https://developers.cloudflare.com/ai-gateway/features/auto-router/) uses to select a model based on task and cost.
+The Potential Savings view highlights requests that may work with faster or less expensive models without compromising output quality. These are the same signals that Cloudflare's [Auto Router](https://developers.cloudflare.com/ai-gateway/features/routing/auto-router/) uses to select a model based on task and cost.
 
 ![Potential Savings view comparing tasks and suggested models](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=669,format=webp/_astro/user-insights-potential-savings.C7j_Gjcn.png)
 
@@ -457,7 +481,7 @@ You can configure the retry count (up to 5 attempts), the delay between retries 
 
 ![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=502,format=webp/_astro/auto-retry-changelog.DoCXZnDy.png)
 
-This is particularly useful when you do not control the client making the request and cannot implement retry logic on the caller side. For more complex failover scenarios — such as failing across different providers — use [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/).
+This is particularly useful when you do not control the client making the request and cannot implement retry logic on the caller side. For more complex failover scenarios — such as failing across different providers — use [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/).
 
 For more information, refer to [Manage gateways](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#retry-requests).
 
@@ -537,7 +561,7 @@ We've also combined the previously separate code example sections into one view 
 
 **Dynamic Routing**
 
-- The [route builder](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) is now more performant and responsive.
+- The [route builder](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) is now more performant and responsive.
 - You can now copy route names to your clipboard with a single click.
 - Code examples use the [Universal Endpoint](https://developers.cloudflare.com/ai-gateway/usage/universal/) format, making it easier to integrate routes into your application.
 

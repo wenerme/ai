@@ -74,10 +74,10 @@
   "openai-docs/changelog.md": {
     "url": "https://developers.openai.com/api/docs/changelog.md",
     "skill": "openai-docs",
-    "etag": "W/\"54007c41f774e75684e161e380b0ea5c\"",
-    "lastModified": "Sat, 31 Oct 2026 00:24:18 GMT",
-    "size": 78938,
-    "updatedAt": "2026-10-31T00:40:32.799Z"
+    "etag": "W/\"6500d1edaec5a92f9dee8737b16d3ab3\"",
+    "lastModified": "Wed, 04 Nov 2026 08:08:31 GMT",
+    "size": 79459,
+    "updatedAt": "2026-11-04T18:05:37.506Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",
@@ -594,10 +594,10 @@
   "openai-docs/guides/batch.md": {
     "url": "https://developers.openai.com/api/docs/guides/batch.md",
     "skill": "openai-docs",
-    "etag": "W/\"5ebbe16a5da97ced43f4c4029579d2b6\"",
-    "lastModified": "Wed, 30 Sep 2026 16:08:43 GMT",
-    "size": 21469,
-    "updatedAt": "2026-09-30T16:30:42.437Z"
+    "etag": "W/\"d0abd0b4cb68db5058c46b3f02870d00\"",
+    "lastModified": "Wed, 04 Nov 2026 08:11:29 GMT",
+    "size": 21087,
+    "updatedAt": "2026-11-04T18:05:51.621Z"
   },
   "openai-docs/guides/chatgpt-api-credits.md": {
     "url": "https://developers.openai.com/api/docs/guides/chatgpt-api-credits.md",
@@ -750,14 +750,6 @@
     "lastModified": "Sun, 01 Nov 2026 04:13:59 GMT",
     "size": 37786,
     "updatedAt": "2026-11-01T10:20:27.808Z"
-  },
-  "openai-docs/guides/deep-research.md": {
-    "url": "https://developers.openai.com/api/docs/guides/deep-research.md",
-    "skill": "openai-docs",
-    "etag": "W/\"74ccbee04fd133eb8ee479600454fa63\"",
-    "lastModified": "Wed, 30 Sep 2026 04:08:46 GMT",
-    "size": 57887,
-    "updatedAt": "2026-09-30T05:22:06.636Z"
   },
   "openai-docs/guides/deployment-checklist.md": {
     "url": "https://developers.openai.com/api/docs/guides/deployment-checklist.md",
@@ -1178,10 +1170,10 @@
   "openai-docs/guides/rate-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/rate-limits.md",
     "skill": "openai-docs",
-    "etag": "W/\"eb7f232ac5ae2f5a777fad06cc2ef80c\"",
-    "lastModified": "Thu, 29 Oct 2026 23:56:00 GMT",
-    "size": 22632,
-    "updatedAt": "2026-10-30T00:48:34.446Z"
+    "etag": "W/\"e307e88f141c6a51850b3b02c0602f89\"",
+    "lastModified": "Wed, 04 Nov 2026 08:11:40 GMT",
+    "size": 23020,
+    "updatedAt": "2026-11-04T18:06:07.451Z"
   },
   "openai-docs/guides/rbac.md": {
     "url": "https://developers.openai.com/api/docs/guides/rbac.md",
@@ -1522,10 +1514,10 @@
   "openai-docs/guides/tools-connectors-mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"4189918660124aae52a1c4ae9e8854ef\"",
-    "lastModified": "Wed, 04 Nov 2026 06:04:18 GMT",
-    "size": 64586,
-    "updatedAt": "2026-11-04T06:04:25.521Z"
+    "etag": "W/\"d2889205b431531e875b1d67b202edb1\"",
+    "lastModified": "Wed, 04 Nov 2026 08:30:54 GMT",
+    "size": 65034,
+    "updatedAt": "2026-11-04T18:06:16.895Z"
   },
   "openai-docs/guides/tools-file-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-file-search.md",
@@ -1578,10 +1570,10 @@
   "openai-docs/guides/tools-web-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-web-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"d49482e69915cdf0ed2f8b5ee1f3e798\"",
-    "lastModified": "Tue, 27 Oct 2026 00:44:28 GMT",
-    "size": 47939,
-    "updatedAt": "2026-10-27T00:57:26.888Z"
+    "etag": "W/\"5e146f1678b137f0ae9d909a1ed46087\"",
+    "lastModified": "Wed, 04 Nov 2026 08:16:34 GMT",
+    "size": 46083,
+    "updatedAt": "2026-11-04T18:06:18.392Z"
   },
   "openai-docs/guides/tools.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools.md",
@@ -1832,8 +1824,8 @@
   "openai-docs/models/all.md": {
     "url": "https://developers.openai.com/api/docs/models/all.md",
     "skill": "openai-docs",
-    "size": 12842,
-    "updatedAt": "2026-11-03T06:29:44.183Z"
+    "size": 12816,
+    "updatedAt": "2026-11-04T18:06:25.688Z"
   },
   "openai-docs/models/compare.md": {
     "url": "https://developers.openai.com/api/docs/models/compare.md",
@@ -1876,10 +1868,10 @@
   "openai-docs/tutorials/web-qa-embeddings.md": {
     "url": "https://developers.openai.com/api/docs/tutorials/web-qa-embeddings.md",
     "skill": "openai-docs",
-    "etag": "W/\"0c398ea516e981061c8db3089d2ba247\"",
-    "lastModified": "Sat, 31 Oct 2026 23:44:42 GMT",
-    "size": 21334,
-    "updatedAt": "2026-11-01T00:48:15.168Z"
+    "etag": "W/\"aee42eda23519d56ddc5c265ca1d4226\"",
+    "lastModified": "Wed, 04 Nov 2026 14:20:55 GMT",
+    "size": 18206,
+    "updatedAt": "2026-11-04T18:06:27.062Z"
   },
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",

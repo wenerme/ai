@@ -54,7 +54,7 @@ To use Google's built-in SCIM provisioning, follow the [Google Workspace (SAML/S
     https://<your-team-name>.cloudflareaccess.com
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 12. Under **Authorized redirect URIs**, in the **URIs** field, enter the following URL:
 
     ```txt

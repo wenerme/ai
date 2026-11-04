@@ -38,7 +38,7 @@ You do not need to be a Google Cloud Platform user to integrate Google as an ide
    https://<your-team-name>.cloudflareaccess.com
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 8. Under **Authorized redirect URIs**, in the **URIs** field, enter the following URL:
 
    ```txt

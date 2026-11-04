@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/reference/headers/og.png?
 
 Which email headers you can set, which are auto-generated, and how they are validated
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
@@ -104,6 +104,12 @@ Email Service rejects the entire send request if it contains a disallowed header
 | Header | RFC | Notes |
 | --- | --- | --- |
 | `Archived-At` | [RFC 5064 ↗︎](https://datatracker.ietf.org/doc/html/rfc5064) | URL where message is archived |
+
+### One-time passcodes
+
+| Header | RFC | Notes |
+| --- | --- | --- |
+| `OTP-Token` | [draft-goto-otp-token ↗︎](https://datatracker.ietf.org/doc/draft-goto-otp-token/) | One-time passcode bound to a web origin, for example `"123456"; origin="https://example.com"`. The origin must be a canonical `https` origin. At most one per message. |
 
 ### Custom X-headers
 
@@ -197,5 +203,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/headers/og.png?v=f7f5235f5e874a71","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/headers/og.png?v=f7f5235f5e874a71","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

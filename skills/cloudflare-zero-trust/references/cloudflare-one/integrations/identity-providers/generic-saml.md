@@ -37,7 +37,7 @@ The typical setup requirements are:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 3. Set the **Name ID/Email format** to `emailAddress`.
 4. (Optional) Set the signature policy to *Always Sign*.
 

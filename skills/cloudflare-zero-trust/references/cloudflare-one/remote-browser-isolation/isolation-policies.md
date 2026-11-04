@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation
 
 # Isolation policies
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
 
 Note
 
-Isolation policies are Gateway HTTP policies. Gateway [account-level and resource-scoped roles](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) apply to isolation policies, so you can delegate management of specific isolation policies without granting access to all Gateway resources.
+Isolation policies are Gateway HTTP policies. Gateway [account-level and resource-scoped roles](https://developers.cloudflare.com/cloudflare-one/traffic-controls/granular-permissions/) apply to isolation policies, so you can delegate management of specific isolation policies without granting access to all Gateway resources.
 
 ## Isolate
 
@@ -104,7 +104,7 @@ When you isolate a website, you can also restrict what users do on that site. Th
 
 Note
 
-This option does not prevent files from being downloaded into the remote browser. To prevent files being downloaded into the remote browser, use HTTP Policies to block by [Download Mime Type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-mime-type).
+This option does not prevent files from being downloaded into the remote browser. To prevent files being downloaded into the remote browser, use HTTP Policies to block by [Download Mime Type](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#download-and-upload-mime-type).
 
 ### File uploads
 
@@ -113,16 +113,29 @@ This option does not prevent files from being downloaded into the remote browser
 
 Note
 
-This option does not prevent files being uploaded to websites from third-party cloud file managers or files downloaded into the remote browser download bar from other isolated websites. To prevent files being uploaded from the remote browser into an isolated website, use HTTP Policies to block by [Upload Mime Type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-mime-type).
+This option does not prevent files being uploaded to websites from third-party cloud file managers or files downloaded into the remote browser download bar from other isolated websites. To prevent files being uploaded from the remote browser into an isolated website, use HTTP Policies to block by [Upload Mime Type](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/#download-and-upload-mime-type).
 
 ### Keyboard
 
-- *Allow*: (Default) Users can perform keyboard inputs into an isolated website.
-- *Do not allow*: Prohibits users from performing keyboard inputs into an isolated website.
+- *Allow*: (Default) Users can perform all keyboard inputs into an isolated website.
+- *Allow read-only actions* Beta: Blocks data entry while allowing built-in browser actions such as find in page, select all, copy, print, and zoom. Other policy settings still apply. For example, if **Print remote web pages locally** is set to *Do not allow*, then the print shortcut will not work even in this mode.
+- *Do not allow*: Prohibits users from performing any keyboard inputs into an isolated website.
 
 Note
 
 Mouse input remains available to allow users to browse a website by following hyperlinks and scrolling. This does not prevent user input into third-party virtual keyboards within an isolated website.
+
+#### Keyboard and clipboard interaction
+
+The keyboard setting and clipboard settings compose independently. The following table shows how they interact when the keyboard is set to *Allow read-only actions*:
+
+| Keyboard setting | Copy setting | Printing setting | Result |
+| --- | --- | --- | --- |
+| *Allow read-only actions* | *Allow* | *Allow* | Users can find in page, select all, copy to local clipboard, print, and zoom. |
+| *Allow read-only actions* | *Allow only within isolated browser* | *Allow* | Users can find in page, select all, copy between isolated tabs, print, and zoom. Copy to local clipboard is blocked. |
+| *Allow read-only actions* | *Do not allow* | *Allow* | Users can find in page, select all, print, and zoom. Copy is blocked entirely. |
+| *Allow read-only actions* | *Allow* | *Do not allow* | Users can find in page, select all, copy to local clipboard, and zoom. Printing is blocked. |
+| *Allow read-only actions* | *Do not allow* | *Do not allow* | Users can find in page, select all, and zoom only. |
 
 ### Printing
 
@@ -297,5 +310,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/og.png?v=8cb3e21a22a5bb11","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#page","headline":"Isolation policies","description":"Reference information for Isolation policies in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/og.png?v=8cb3e21a22a5bb11","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

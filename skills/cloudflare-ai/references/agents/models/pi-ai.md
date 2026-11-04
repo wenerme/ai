@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab6
 
 # Pi AI
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/pi-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `agents/models/pi-ai` is a [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai) provider for Workers AI and AI Gateway. It has the same `createAI` factory and options as the [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/), and returns Pi AI `Model` objects. Use it with Pi AI's `stream` and `complete`, with [Pi Durable ↗︎](https://github.com/earendil-works/pi/tree/main/packages/durable), with the [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/), or with any framework built on a Pi AI `Models` registry.
 
@@ -156,7 +156,7 @@ ai(getBuiltinModel("anthropic", "claude-opus-5-5"));
 
 Any other string throws a `TypeError`. The provider does not guess what a prefix means.
 
-A [dynamic route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) runs on `env.AI.run()` under the gateway you created it on, so set that gateway's `id`. The route picks the model and answers in the chat completions format. It takes the same metadata defaults and overrides as a Workers AI id.
+A [dynamic route](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) runs on `env.AI.run()` under the gateway you created it on, so set that gateway's `id`. The route picks the model and answers in the chat completions format. It takes the same metadata defaults and overrides as a Workers AI id.
 
 A catalog id uses the AI Gateway catalog's spelling, `anthropic/claude-opus-5.5`. Pi AI's own list spells Claude ids the way Anthropic does (`claude-opus-5-5`), so the provider lists them under the catalog spelling. A model object from a vendor registry keeps the vendor's spelling.
 
@@ -297,7 +297,7 @@ const result = await ai.generateImages(images, {
 - [AI SDK provider](https://developers.cloudflare.com/agents/models/ai-sdk/)
 - [Pi harness](https://developers.cloudflare.com/agents/harnesses/pi/)
 - [Model catalog](https://developers.cloudflare.com/ai/models/)
-- [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- [Dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/)
 - [Pi AI ↗︎](https://github.com/earendil-works/pi/tree/main/packages/ai)
 
 Was this helpful?
@@ -309,5 +309,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/pi-ai/#page","headline":"Pi AI","description":"Use createAI from agents/models/pi-ai to run Workers AI models, AI Gateway catalog models, dynamic routes, and Pi AI model objects through the AI binding or an account id and API token with Pi AI, Pi Durable, and the Pi harness.","url":"https://developers.cloudflare.com/agents/models/pi-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/pi-ai/og.png?v=0a20561ab61bea68","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

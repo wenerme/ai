@@ -78,7 +78,7 @@ billing account linked to your project.
 
 | Usage tier | Qualification | [Billing tier cap](/docs/billing#tier-spend-caps) |
 | :--- | :--- | :--- |
-| **Free** | [Active project](/docs/api-key#google-cloud-projects) or free trial | N/A |
+| **Free** | [Active project](/docs/api-key#google-cloud-projects) or free trial; some projects need [verification](/docs/verification) | N/A |
 | **Tier 1** | [Set up and link an active billing account](/docs/billing#setup-billing) | $250 |
 | **Tier 2** | Paid $100 + 3 days from first successful payment | $2,000 |
 | **Tier 3** | Paid $1,000 + 30 days from first successful payment | $20,000 - $100,000+ |

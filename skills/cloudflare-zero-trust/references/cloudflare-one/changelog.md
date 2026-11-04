@@ -16,6 +16,32 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-11-04
+
+[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Block data entry with Browser Isolation without losing search, copy, and zoom (beta)**
+
+[Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) now support a third keyboard option in beta: *Allow read-only actions*. Previously, the keyboard setting was binary — allow all input or block everything. With *Allow read-only actions*, you can block data entry while preserving the built-in browser actions your users depend on.
+
+In *Allow read-only actions* mode, users can still find in page, select all, copy, print, and zoom. All other keyboard input is blocked from reaching the isolated page. Copy and print remain subject to their own policy settings, so the controls compose instead of overriding each other. For example, setting the keyboard to *Allow read-only actions* and copy to *Do not allow* lets users search and zoom but prevents them from copying content.
+
+To use this feature, set **Keyboard** to *Allow read-only actions* in your isolation policy settings. Via the API, set `keyboard` to `enable_read_only_actions` in the `biso_admin_controls` object with `version` set to `v2`.
+
+For more information, refer to [Keyboard](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#keyboard).
+
+## 2026-11-03
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Linux (version 2026.7.1385.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix addresses an issue building trusted certificate chains.
+
 ## 2026-11-02
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
