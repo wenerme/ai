@@ -49,7 +49,8 @@ analyzes secret detection findings to identify likely false positives. This help
 security team focus on genuine secrets and reduces time spent on manual triage.
 
 For Ultimate tier customers with a GitLab Duo add-on, false positive detection runs automatically
-after each security scan and provides confidence scores with explanations for each assessment.
+on new vulnerabilities that meet the severity threshold after a security scan. It provides confidence scores with
+explanations for each assessment.
 
 ## Related topics
 

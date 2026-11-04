@@ -18,7 +18,9 @@ Text-to-Image • Leonardo
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/leonardo/phoenix-1.0`
+Model ID
+
+`@cf/leonardo/phoenix-1.0` Copy
 
 - Cloudflare-hosted
 - Partner

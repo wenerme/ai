@@ -22,7 +22,7 @@ To learn how to structure a project's configuration, refer to [Programmatic conf
 
 Select a highlighted line to show its type and description below it.
 
-Generated from `@cloudflare/config`0.27.0
+Generated from `@cloudflare/config`0.30.0
 
 defineConfig6 optionsWorker19 optionsBindings37 optionsTriggers5 optionsExports7 options
 
@@ -1225,14 +1225,17 @@ Binding to an Analytics Engine dataset. For reference, see <a href="https://deve
 
 <details>
 
-<summary>Options (1)</summary>
+<summary>Options (2)</summary>
 
 
 
 <dl>
 
 <dt><code>name?: string</code></dt>
-<dd>The name of this dataset to write to.</dd></dl></details>
+<dd>The name of this dataset to write to.</dd>
+
+<dt><code>dev?: BindingDevOptions</code></dt>
+<dd>Options that only apply during local development.</dd></dl></details>
 
 
 
@@ -1531,7 +1534,7 @@ Binding to a Hyperdrive configuration. For reference, see <a href="https://devel
 <dt><code>id: string</code></dt>
 <dd>The ID of the Hyperdrive configuration.</dd>
 
-<dt><code>dev?: { /** The database connection string used during local development. */ connectionString?: string; }</code></dt>
+<dt><code>dev?: BindingDevOptions &amp; { /** The database connection string used during local development. */ connectionString?: string; }</code></dt>
 <dd>Options that only apply during local development.</dd></dl></details>
 
 
@@ -3311,7 +3314,7 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 
 <details>
 
-<summary>Options (5)</summary>
+<summary>Options (6)</summary>
 
 
 
@@ -3332,7 +3335,8 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 <dt><code>defaultRetention?: { /** How long to retain instances that completed successfully or were terminated. */ successRetention?: number | string; /** How long to retain errored instances. */ errorRetention?: number | string; }</code></dt>
 <dd>Default retention for instances of this Workflow, applied when an instance does not set its own retention. Accepts milliseconds or a duration string such as <code>"3 days"</code>.</dd>
 
-</dl></details>
+<dt><code>jurisdiction?: (typeof WORKFLOW_JURISDICTIONS)[number]</code></dt>
+<dd>Jurisdiction that the Workflow's instances run and store their data in. It is set when the Workflow is created and cannot be changed afterwards.</dd></dl></details>
 
 
 

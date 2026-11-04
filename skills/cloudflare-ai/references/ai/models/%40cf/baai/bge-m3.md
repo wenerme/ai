@@ -18,7 +18,9 @@ Text Embeddings • BAAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-m3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/baai/bge-m3`
+Model ID
+
+`@cf/baai/bge-m3` Copy
 
 - Cloudflare-hosted
 - Zero data retention

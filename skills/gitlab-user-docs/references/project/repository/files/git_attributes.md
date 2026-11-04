@@ -58,11 +58,11 @@ For more information, see [syntax highlighting](highlighting.md).
 ## Custom merge drivers
 
 - Tier: Free, Premium, Ultimate
-- Offering: GitLab Self-Managed, GitLab Dedicated
+- Offering: GitLab Self-Managed
 
 GitLab Self-Managed administrators can define [custom merge drivers](https://git-scm.com/docs/gitattributes#_defining_a_custom_merge_driver)
 in a GitLab configuration file, then use the custom merge drivers in a Git `.gitattributes` file.
-Custom merge drivers are not supported on GitLab.com.
+Custom merge drivers are not supported on GitLab.com or GitLab Dedicated.
 
 Custom merge drivers are a Git feature that gives you advanced control over conflict
 resolution.
@@ -93,6 +93,35 @@ How to configure a custom merge driver depends on the type of installation.
        ],
      },
    }
+   ```
+
+### Helm chart (Kubernetes)
+
+If your Gitaly nodes run outside the Kubernetes cluster, such as in a
+[Cloud Native Hybrid](../../../../administration/reference_architectures/_index.md#cloud-native-hybrid)
+architecture, follow the Linux package instructions on each Gitaly node instead.
+
+1. Export the Helm values:
+
+   ```shell
+   helm get values gitlab > gitlab_values.yaml
+   ```
+
+1. Edit `gitlab_values.yaml`:
+
+   ```yaml
+   gitlab:
+     gitaly:
+       git:
+         config:
+           - key: "merge.foo.driver"
+             value: "true"
+   ```
+
+1. Save the file and apply the new values:
+
+   ```shell
+   helm upgrade -f gitlab_values.yaml gitlab gitlab/gitlab
    ```
 
 ### Self-compiled (source)

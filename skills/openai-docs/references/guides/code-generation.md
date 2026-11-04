@@ -17,7 +17,7 @@ Writing, reviewing, editing, and answering questions about code is one of the pr
 
 [**Codex**](https://developers.openai.com/codex) is OpenAI's coding agent for software development. It helps you write, review and debug code. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
 
-Codex works best with the latest general-purpose models, such as [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol). The older [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) model is [deprecated](https://developers.openai.com/api/docs/deprecations#2026-10-01-gpt-53-codex-gpt-51-gpt-54-nano) and will shut down on April 1, 2027.
+Codex works best with the latest general-purpose models, such as [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol).
 
 See the [ChatGPT docs](https://developers.openai.com/codex) for setup guides, reference material, pricing, and more information.
 
@@ -194,9 +194,9 @@ curl https://api.openai.com/v1/responses \
 
 ## Frontend development
 
-Our models from the GPT-5 family are especially strong at frontend development, especially when combined with a coding agent harness such as Codex.
+For frontend work, start with `gpt-6.1-sol` or `gpt-6-astra` in Codex or the Responses API.
 
-The demo applications below were generated from a single prompt without hand-written code. Use them to evaluate frontend generation quality and prompt patterns for UI-heavy code generation workflows.
+The historical GPT-5 gallery shows applications generated from a single prompt. Use the prompts as starting points and evaluate the results with the model you plan to deploy.
 
 ## Next steps
 

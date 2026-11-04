@@ -152,6 +152,7 @@ To insert a diagram:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/231412) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `allow_iframes_in_markdown`. Disabled by default.
 - Inserting embedded content from the editor toolbar [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/282443) in GitLab 19.6.
+- Option to turn a link into embedded content [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265667) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -160,6 +161,8 @@ To insert a diagram:
 
 Insert content, like a YouTube video or a Figma design, from an
 [embed provider](markdown.md#embedded-content) that your administrator allows.
+
+To embed content, paste the image Markdown or the `<iframe>` embed code from the provider.
 
 ### From the editor toolbar
 
@@ -172,7 +175,12 @@ To insert embedded content from the editor toolbar:
 
 ### From a link
 
-To embed content, paste the image Markdown or the `<iframe>` embed code from the provider.
+If a link points to an allowed embed provider, you can turn it into embedded content.
+
+To turn a link into embedded content:
+
+1. In the text box, select the link.
+1. Select  ().
 
 ### Edit embedded content
 

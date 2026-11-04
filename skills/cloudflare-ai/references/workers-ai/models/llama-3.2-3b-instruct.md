@@ -18,7 +18,9 @@ Text Generation • Meta
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3.2-3b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/meta/llama-3.2-3b-instruct`
+Model ID
+
+`@cf/meta/llama-3.2-3b-instruct` Copy
 
 - Cloudflare-hosted
 - LoRA

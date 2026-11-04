@@ -26,7 +26,7 @@ Anthropic recommends using the latest API version whenever possible.
 
   * [Migrating to API version 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21) shows how to upgrade.
 
-  * Available on the Claude API, [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws), [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed), [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry), and [Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed). On [Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock), it's available for Claude 4.7 and later models. For other models on Bedrock, see the [migration guide for API version 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21#upgrade).
+  * Available on the Claude API, [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws), [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed), [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry), and [Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed). On [Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock), it’s available for Claude 4.7 and later models. For other models on Bedrock, see the [migration guide for API version 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21#upgrade).
 
   * Messages API:
 
@@ -39,15 +39,15 @@ Anthropic recommends using the latest API version whenever possible.
     * [RBAC groups](https://platform.claude.com/docs/en/api/beta/organization/rbac_groups/list) no longer return `roles`. Use `role_ids` instead.
     * [RBAC group members](https://platform.claude.com/docs/en/api/beta/organization/rbac_groups/members/list), and the response to removing one, no longer return `group_id`. Use `rbac_group_id` instead.
     * [RBAC roles](https://platform.claude.com/docs/en/api/beta/organization/rbac_roles/list) no longer return `name`. Use `display_name` instead.
-    * [Organization](https://platform.claude.com/docs/en/api/organization/rate_limits/list) and [workspace](https://platform.claude.com/docs/en/api/organization/workspaces/rate_limits/list) rate-limit entries no longer return `group_type`. Use `group.type` instead.
-    * [API keys](https://platform.claude.com/docs/en/api/organization/api_keys/list) no longer return `workspace_id`. Use `scope.workspace_id` instead, which gives the workspace's real ID even for the Default Workspace (an all-workspaces key has no `workspace_id` in `scope`).
+    * [Organization](https://platform.claude.com/docs/en/api/organization/rate_limits/list) and [workspace](https://platform.claude.com/docs/en/api/organization/workspaces/rate_limits/list) rate-limit entries, and the response to [setting a workspace’s rate limits](https://platform.claude.com/docs/en/api/organization/workspaces/rate_limits/update), no longer return `group_type`. Use `group.type` instead.
+    * [API keys](https://platform.claude.com/docs/en/api/organization/api_keys/list) no longer return `workspace_id`. Use `scope.workspace_id` instead, which gives the workspace’s real ID even for the Default Workspace (an all-workspaces key has no `workspace_id` in `scope`).
 
   * Claude Enterprise Analytics API:
 
     * The per-user [usage](https://platform.claude.com/docs/en/api/beta/organization/analytics/user_usage_report/list) and [cost](https://platform.claude.com/docs/en/api/beta/organization/analytics/user_cost_report/list) reports no longer have `actor.email`. Use `actor.email_address` instead.
     * The [activity summaries](https://platform.claude.com/docs/en/api/beta/organization/analytics/summaries/list) response no longer has `summaries`. Use `data` instead.
 
-- `2023-06-01`
+* `2023-06-01`
 
   * New format for [streaming](https://platform.claude.com/docs/en/build-with-claude/streaming) server-sent events (SSE):
 
@@ -57,4 +57,4 @@ Anthropic recommends using the latest API version whenever possible.
 
   * Removed legacy `exception` and `truncated` values in responses.
 
-- `2023-01-01`: Initial release.
+* `2023-01-01`: Initial release.

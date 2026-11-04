@@ -20,7 +20,9 @@ Text-to-Image • Stability.ai
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/stabilityai/stable-diffusion-xl-base-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/stabilityai/stable-diffusion-xl-base-1.0`
+Model ID
+
+`@cf/stabilityai/stable-diffusion-xl-base-1.0` Copy
 
 - Cloudflare-hosted
 - Zero data retention

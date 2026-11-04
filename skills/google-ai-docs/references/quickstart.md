@@ -2952,7 +2952,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with
       // Start a Deep Research agent in the background
       res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
           Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-              Agent:      interactions.AgentOption("deep-research-pro-preview-12-2025"),
+              Agent:      interactions.AgentOption("deep-research-preview-04-2026"),
               Input:      interactions.NewInteractionsInput("Research the competitive landscape of solid-state EV batteries in 2026."),
               Background: genai.Ptr(true),
           }),

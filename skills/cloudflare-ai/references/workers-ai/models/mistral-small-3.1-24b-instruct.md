@@ -18,7 +18,9 @@ Text Generation • MistralAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/mistral-small-3.1-24b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/mistralai/mistral-small-3.1-24b-instruct`
+Model ID
+
+`@cf/mistralai/mistral-small-3.1-24b-instruct` Copy
 
 - Cloudflare-hosted
 - Function calling

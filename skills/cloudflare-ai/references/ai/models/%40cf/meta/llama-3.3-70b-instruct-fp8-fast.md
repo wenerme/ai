@@ -18,7 +18,9 @@ Text Generation • Meta
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/meta/llama-3.3-70b-instruct-fp8-fast`
+Model ID
+
+`@cf/meta/llama-3.3-70b-instruct-fp8-fast` Copy
 
 - Cloudflare-hosted
 - Batch

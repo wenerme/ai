@@ -18,7 +18,9 @@ Automatic Speech Recognition • Deepgram
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/deepgram/flux`
+Model ID
+
+`@cf/deepgram/flux` Copy
 
 - Cloudflare-hosted
 - Partner

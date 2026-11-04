@@ -12,7 +12,7 @@ The shell tool lets models run commands through either:
 Shell is available through the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses). It's not available via the Chat Completions API.
 
 Running arbitrary shell commands can be dangerous. Always sandbox execution,
-  apply allowlists or denylists where possible, and log tool activity for
+  allow or block specific commands where possible, and log tool activity for
   auditing.
 
 ## Hosted shell quickstart
@@ -774,7 +774,7 @@ puts(response.output_text)
 
 Allowlisting domains introduces security risks such as prompt
   injection-driven data exfiltration. Only allowlist domains you trust and that
-  attackers cannot use to receive exfiltrated data. Carefully review the [Risks
+  attackers cannot use to receive stolen data. Carefully review the [Risks
   and safety](#risks-and-safety) section below before using this tool.
 
 ## Network policy precedence
@@ -1680,7 +1680,7 @@ Example shell_call item
 
 You can also run shell commands in your own local runtime by executing `shell_call` actions and sending `shell_call_output` back to the model.
 
-Use this mode when you need full control over execution environment, filesystem access, or existing internal tooling.
+Use this mode when you need control over the filesystem or access to internal tools. Set the tool type to `shell` and its environment type to `local`. If you are migrating from the retired `local_shell` tool, update your request and handle `shell_call` and `shell_call_output` in your execution loop.
 
 Local shell request
 
@@ -1802,7 +1802,9 @@ puts(response.output)
 
 When you receive `shell_call` output items:
 
-- Execute requested commands in your runtime.
+- Inspect each command before execution. Use an allowlist and require approval for destructive commands or commands that access sensitive data.
+- Run approved commands in a sandbox with explicit filesystem, network, memory, and time limits. Enforce your own timeout even when the model suggests one.
+- Log commands and their outcomes for auditing.
 - Capture `stdout`, `stderr`, and outcome.
 - Return results as `shell_call_output` in the next request.
 
@@ -2000,7 +2002,7 @@ Example shell_call_output payload
 ```
 
 
-For legacy migration details, see the older [Local shell guide](https://developers.openai.com/api/docs/guides/tools-local-shell).
+If a command fails or times out, return its outcome so the model can decide whether to retry. See the [legacy tool shutdown notice](https://developers.openai.com/api/docs/deprecations#2025-11-17-codex-mini-latest-model-snapshot).
 
 ## Use local shell with Agents SDK
 

@@ -503,17 +503,13 @@ EmbeddingClient client = new(model, key);
 OpenAIEmbedding embedding = await client.GenerateEmbeddingAsync("Testing 123");
 
 float[] shortened = embedding.ToFloats().Span[..256].ToArray();
-double magnitude = Math.Sqrt(shortened.Sum(value => value * value));
-float[] normalized =
+double magnitude = Math.Sqrt(shortened.Sum(value => (double)value * value));
+double[] normalized =
     magnitude == 0
-        ? shortened
-        : shortened.Select(value => (float)(value / magnitude)).ToArray();
+        ? shortened.Select(value => (double)value).ToArray()
+        : shortened.Select(value => value / magnitude).ToArray();
 
-Console.WriteLine($"Dimensions: {normalized.Length}");
-Console.WriteLine($"First value: {normalized[0]:F6}");
-Console.WriteLine(
-    $"L2 norm: {Math.Sqrt(normalized.Sum(value => value * value)):F3}"
-);
+Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(normalized));
 ```
 
 ```ruby
@@ -927,9 +923,9 @@ static double CosineSimilarity(float[] left, float[] right)
     double dot = 0, leftNorm = 0, rightNorm = 0;
     for (int i = 0; i < left.Length; i++)
     {
-        dot += left[i] * right[i];
-        leftNorm += left[i] * left[i];
-        rightNorm += right[i] * right[i];
+        dot += (double)left[i] * right[i];
+        leftNorm += (double)left[i] * left[i];
+        rightNorm += (double)right[i] * right[i];
     }
     return dot / Math.Sqrt(leftNorm * rightNorm);
 }
@@ -1188,9 +1184,9 @@ static double CosineSimilarity(float[] left, float[] right)
     double dot = 0, leftNorm = 0, rightNorm = 0;
     for (int i = 0; i < left.Length; i++)
     {
-        dot += left[i] * right[i];
-        leftNorm += left[i] * left[i];
-        rightNorm += right[i] * right[i];
+        dot += (double)left[i] * right[i];
+        leftNorm += (double)left[i] * left[i];
+        rightNorm += (double)right[i] * right[i];
     }
     return dot / Math.Sqrt(leftNorm * rightNorm);
 }
@@ -1458,9 +1454,9 @@ static double CosineSimilarity(float[] left, float[] right)
     double dot = 0, leftNorm = 0, rightNorm = 0;
     for (int i = 0; i < left.Length; i++)
     {
-        dot += left[i] * right[i];
-        leftNorm += left[i] * left[i];
-        rightNorm += right[i] * right[i];
+        dot += (double)left[i] * right[i];
+        leftNorm += (double)left[i] * left[i];
+        rightNorm += (double)right[i] * right[i];
     }
     return dot / Math.Sqrt(leftNorm * rightNorm);
 }
@@ -1800,9 +1796,9 @@ static double CosineSimilarity(float[] left, float[] right)
     double dot = 0, leftNorm = 0, rightNorm = 0;
     for (int i = 0; i < left.Length; i++)
     {
-        dot += left[i] * right[i];
-        leftNorm += left[i] * left[i];
-        rightNorm += right[i] * right[i];
+        dot += (double)left[i] * right[i];
+        leftNorm += (double)left[i] * left[i];
+        rightNorm += (double)right[i] * right[i];
     }
     return dot / Math.Sqrt(leftNorm * rightNorm);
 }

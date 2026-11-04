@@ -18,7 +18,9 @@ Text Generation • Moonshot AI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/kimi-k2.7-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/moonshotai/kimi-k2.7-code`
+Model ID
+
+`@cf/moonshotai/kimi-k2.7-code` Copy
 
 - Cloudflare-hosted
 - Function calling

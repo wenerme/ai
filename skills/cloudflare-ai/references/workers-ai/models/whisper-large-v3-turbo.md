@@ -18,7 +18,9 @@ Automatic Speech Recognition • OpenAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/openai/whisper-large-v3-turbo`
+Model ID
+
+`@cf/openai/whisper-large-v3-turbo` Copy
 
 - Cloudflare-hosted
 - Batch

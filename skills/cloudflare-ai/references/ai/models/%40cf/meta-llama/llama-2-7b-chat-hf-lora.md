@@ -20,7 +20,9 @@ Text Generation • Meta
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta-llama/llama-2-7b-chat-hf-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/meta-llama/llama-2-7b-chat-hf-lora`
+Model ID
+
+`@cf/meta-llama/llama-2-7b-chat-hf-lora` Copy
 
 - Cloudflare-hosted
 - LoRA

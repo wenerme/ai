@@ -861,8 +861,8 @@
   },
   "grafana-github-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor.md",
-    "size": 68196,
-    "updatedAt": "2026-10-28T00:53:38.713Z"
+    "size": 71354,
+    "updatedAt": "2026-11-04T06:08:56.234Z"
   },
   "grafana-github-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables.md",
@@ -2681,8 +2681,8 @@
   },
   "marcusolsson-dynamictext-panel/exploring-variables.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/exploring-variables.md",
-    "size": 2358,
-    "updatedAt": "2026-10-28T00:54:39.125Z"
+    "size": 2350,
+    "updatedAt": "2026-11-04T06:09:57.152Z"
   },
   "marcusolsson-dynamictext-panel/features.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-dynamictext-panel/latest/features.md",
@@ -3106,8 +3106,8 @@
   },
   "volkovlabs-form-panel/exploring-variables.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/exploring-variables.md",
-    "size": 2358,
-    "updatedAt": "2026-10-28T00:54:53.082Z"
+    "size": 2347,
+    "updatedAt": "2026-11-04T06:10:09.487Z"
   },
   "volkovlabs-form-panel/features.md": {
     "url": "https://grafana.com/docs/plugins/volkovlabs-form-panel/latest/features.md",

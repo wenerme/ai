@@ -2,18 +2,18 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-The `apply_patch` tool lets GPT-5.1 create, update, and delete files in your codebase using structured diffs. Instead of just suggesting edits, the model emits patch operations that your application applies and then reports back on, enabling iterative, multi-step code editing workflows.
+Use `apply_patch` with the Responses API to propose file creations, updates, and deletions as structured diffs. Your application applies each operation and returns its result. The examples use `gpt-6-astra`.
 
 ## When to use
 
-Some common scenarios where you would use apply_patch:
+You can use `apply_patch` for the following tasks.
 
-- **Multi-file refactors** – Rename symbols, extract helpers, or reorganize modules across many files at once.
-- **Bug fixes** – Have the model both diagnose issues and emit precise patches.
-- **Tests & docs generation** – Create new test files, fixtures, and documentation alongside code changes.
-- **Migrations & mechanical edits** – Apply repetitive, structured updates (API migrations, type annotations, formatting fixes, etc.).
+- **Multi-file refactors.** Rename symbols, extract helpers, or reorganize modules across many files at once.
+- **Bug fixes.** Have the model both diagnose issues and emit precise patches.
+- **Tests & docs generation.** Create new test files, fixtures, and documentation alongside code changes.
+- **Migrations & mechanical edits.** Apply repetitive, structured updates (API migrations, type annotations, formatting fixes, etc.).
 
-If you can describe your repo and desired change in text, apply_patch can usually generate the corresponding diffs.
+If you can describe your repo and desired change in text, `apply_patch` can usually generate the corresponding diffs.
 
 ## Use apply patch tool with Responses API
 
@@ -647,16 +647,20 @@ The model can then adjust future diffs (for example, by re-reading a file in you
 
   </td>
   <td style={{ maxWidth: "150px" }}>
-    [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5)
-    
-
-    [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4)
-    
-
-    [GPT-5.2](https://developers.openai.com/api/docs/models/gpt-5.2)
-    
-
-    [GPT-5.1](https://developers.openai.com/api/docs/models/gpt-5.1)
+    - [`gpt-5.2`](https://developers.openai.com/api/docs/models/gpt-5.2)
+- [`gpt-5.4`](https://developers.openai.com/api/docs/models/gpt-5.4)
+- [`gpt-5.4-mini`](https://developers.openai.com/api/docs/models/gpt-5.4-mini)
+- [`gpt-5.4-pro`](https://developers.openai.com/api/docs/models/gpt-5.4-pro)
+- [`gpt-5.5`](https://developers.openai.com/api/docs/models/gpt-5.5)
+- [`gpt-5.6-cyber`](https://developers.openai.com/api/docs/models/gpt-5.6-cyber)
+- [`gpt-5.6-luna`](https://developers.openai.com/api/docs/models/gpt-5.6-luna)
+- [`gpt-5.6-sol`](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
+- [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra)
+- [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra)
+- [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna)
+- [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol)
+- [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol)
+- [`gpt-6.1-terra`](https://developers.openai.com/api/docs/models/gpt-6.1-terra)
   </td>
 </tr>
 

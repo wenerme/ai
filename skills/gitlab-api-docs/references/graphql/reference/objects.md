@@ -2629,13 +2629,17 @@ Per-action permissions Artifact Registry reports for the current user on a repos
 | ---- | ---- | ----------- |
 | `createArtifact` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can publish artifacts to the repository. |
 | `createRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can add an upstream to the repository. |
+| `createRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates the user can grant a role on the repository. |
 | `deleteArtifact` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can delete artifacts from the repository. |
 | `deleteRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can delete the repository. |
 | `deleteRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can remove an upstream from the repository. |
+| `deleteRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates the user can revoke a role on the repository. |
 | `readArtifact` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can read artifacts held by the repository. |
 | `readRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can read the repository and its metadata. |
+| `readRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates the user can view who holds a role on the repository. |
 | `updateRepository` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can change the repository's settings. |
 | `updateRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Indicates the user can change an upstream of the repository. |
+| `updateRoleAssignment` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Indicates the user can change a member's role on the repository. |
 
 ## `ArtifactRegistryRepositoryStatistics`
 
@@ -18939,8 +18943,26 @@ A configuration variable that a scan profile of a given type can set.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Translated description of the configuration field. |
 | `envVar` | [`String`](scalars.md#string) | CI/CD variable the configuration field is passed to the scan as. |
 | `key` | [`String!`](scalars.md#string) | Name of the configuration field, as used in the scan profile configuration input. |
+| `label` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Translated display name of the configuration field. |
+| `max` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Largest value the configuration field accepts, when its value type is `INTEGER`. |
+| `min` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Smallest value the configuration field accepts, when its value type is `INTEGER`. |
+| `options` | [`[SecurityScanProfileVariableOption!]`](#securityscanprofilevariableoption) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Values the configuration field can take, when its value type is `ENUM` or `MULTI_SELECT`. |
+| `placeholder` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Example value of the configuration field. |
+| `valueType` | [`SecurityScanProfileVariableValueType`](enums.md#securityscanprofilevariablevaluetype) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Kind of value the configuration field takes. |
+
+## `SecurityScanProfileVariableOption`
+
+Value a scan profile configuration variable of the enum or multi-select value type can take.
+
+### `SecurityScanProfileVariableOption` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `text` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Translated display text of the option. |
+| `value` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Value passed to the CI/CD variable. |
 
 ## `SecurityScanners`
 
@@ -22253,6 +22275,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 | `iid` | [`String!`](scalars.md#string) | Internal ID of the work item. |
 | `imported` | [`Boolean!`](scalars.md#boolean) | Indicates whether the work item was imported. |
 | `lockVersion` | [`Int!`](scalars.md#int) | Lock version of the work item. Incremented each time the work item is updated. |
+| `movedToId` | [`WorkItemID`](scalars.md#workitemid) | ID of the work item that the work item was moved to. Null if the work item was not moved, or the current user cannot read the work item it was moved to. |
 | `movedToWorkItemUrl` | [`String`](scalars.md#string) | URL of the work item that the work item was moved to. |
 | `name` | [`String`](scalars.md#string) | Name or title of the object. |
 | `namespace` | [`Namespace`](#namespace) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 15.10.Namespace the work item belongs to. |

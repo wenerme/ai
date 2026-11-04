@@ -18,7 +18,9 @@ Automatic Speech Recognition • OpenAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/whisper/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/openai/whisper`
+Model ID
+
+`@cf/openai/whisper` Copy
 
 - Cloudflare-hosted
 - Zero data retention

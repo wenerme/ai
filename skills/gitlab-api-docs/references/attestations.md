@@ -23,6 +23,7 @@ For more information on provenance, see [SLSA provenance specification](../ci/pi
 ## List all attestations
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205784) in 18.5.
+- `signing_method` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267389) in GitLab 19.6.
 
 Lists all attestations for a specified project and SHA-256 hash.
 
@@ -36,6 +37,24 @@ Supported attributes:
 | --------- | ---- | -------- | ----------- |
 | `id` | integer or string | yes | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths) |
 | `subject_digest` | string | yes | The hex encoded SHA-256 hash of the artifact |
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the following response attributes:
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `build_id` | integer | ID of the CI/CD job that produced the attestation. |
+| `created_at` | datetime | Date and time the attestation was created. |
+| `download_url` | string | URL to download the attestation bundle. |
+| `expire_at` | datetime | Date and time the attestation expires. |
+| `id` | integer | ID of the attestation. |
+| `iid` | integer | Internal ID of the attestation in the project. |
+| `predicate_kind` | string | Kind of predicate. Possible values: `provenance` or `sbom`. |
+| `predicate_type` | string | URI of the predicate type. |
+| `project_id` | integer | ID of the project. |
+| `signing_method` | string | [Attestation method](../ci/pipeline_security/slsa/level_3/_index.md#attestation-methods) used to sign the attestation. Possible values: `sigstore` or `local_ca`. |
+| `status` | string | Status of the attestation. Possible values: `success` or `error`. |
+| `subject_digest` | string | Hex-encoded SHA-256 hash of the artifact. |
+| `updated_at` | datetime | Date and time the attestation was last updated. |
 
 Example request:
 
@@ -60,6 +79,7 @@ Example response:
     "predicate_kind": "provenance",
     "predicate_type": "https://slsa.dev/provenance/v1",
     "subject_digest": "76c34666f719ef14bd2b124a7db51e9c05e4db2e12a84800296d559064eebe2c",
+    "signing_method": "sigstore",
     "download_url": "https://gitlab.example.com/api/v4/projects/1/attestations/1/download"
   }
 ]

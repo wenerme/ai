@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-rea
 
 # Non-realtime WebSockets API
 
-Last updated May 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Non-realtime WebSockets API allows you to establish persistent connections for AI requests without requiring repeated handshakes. This approach is ideal for applications that do not require real-time interactions but still benefit from reduced latency and continuous communication.
 
 ## Set up WebSockets API
 
-1. Generate an AI Gateway token with appropriate AI Gateway Run and opt in to using an authenticated gateway.
+1. Generate a Cloudflare API token with the **AI Gateway Run** permission. New gateways require authentication. If you use an existing gateway with authentication turned off, [turn it on](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
 2. Use the `wss://` protocol to initiate a WebSocket connection:
 
    ```plaintext
@@ -63,7 +63,7 @@ ws.on("open", () => {
 			},
 		}),
 	);
-})
+});
 
 ws.on("message", (message) => {
 	console.log(message.toString());
@@ -148,5 +148,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/#page","headline":"Non-realtime WebSockets API","description":"Establish persistent WebSocket connections for AI requests through AI Gateway without real-time streaming.","url":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/og.png?v=7cf74d3088842ed8","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/#page","headline":"Non-realtime WebSockets API","description":"Establish persistent WebSocket connections for AI requests through AI Gateway without real-time streaming.","url":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/usage/websockets-api/non-realtime-api/og.png?v=7cf74d3088842ed8","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

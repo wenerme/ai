@@ -18,7 +18,9 @@ Text Generation • MistralAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/mistral/mistral-7b-instruct-v0.2-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/mistral/mistral-7b-instruct-v0.2-lora`
+Model ID
+
+`@cf/mistral/mistral-7b-instruct-v0.2-lora` Copy
 
 - Cloudflare-hosted
 - LoRA

@@ -27,6 +27,7 @@ Select a query type from the **Query Type** drop-down in the query editor:
 - [**Projects**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#projects): List projects associated with a user or organization.
 - [**Pull request files**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-files): List files changed in a specific pull request.
 - [**Pull requests**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-requests): List pull requests for a repository, using the GitHub query syntax to filter the response.
+- [**Pull requests for branches**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-requests-for-branches): Look up the pull requests opened from up to 100 branches of a repository.
 - [**Pull request reviews**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#pull-request-reviews): List reviews for pull requests in a repository.
 - [**Releases**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#releases): List created releases for a repository.
 - [**Repositories**](https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor/#repositories): List repositories for a user or organization.
@@ -704,6 +705,41 @@ Expand table
 | changes            | Total number of line changes                      |
 | status             | Change type: `added`, `modified`, `renamed`, etc. |
 | previous\_filename | Original path for renamed files                   |
+
+### Pull requests for branches
+
+Look up the pull requests opened from a list of branches. All branches are looked up in one GitHub GraphQL request. In the query editor, enter the branches as a comma-separated list; through the data source query API (`/api/ds/query`), send `queryType: "Pull_Requests_For_Branches"` with `options.branches`.
+
+#### Query options
+
+Expand table
+
+| Name                              | Description                                              | Required |
+|-----------------------------------|----------------------------------------------------------|----------|
+| `owner`                           | The GitHub user or organization that owns the repository | Yes      |
+| `repository`                      | The name of the repository                               | Yes      |
+| `options.branches` (**Branches**) | Head branch names to look up, at most 100                | Yes      |
+
+The **Branches** field accepts dashboard variables. A multi-value variable such as `$branches` expands to one branch per selected value.
+
+#### Response
+
+The response includes one row per pull request, with at most the five newest pull requests per branch. Branches without a pull request return no rows.
+
+Expand table
+
+| Name             | Description                                                                                                            |
+|------------------|------------------------------------------------------------------------------------------------------------------------|
+| repository       | Repository the pull requests belong to (`owner/name`)                                                                  |
+| head\_ref        | Branch the pull request was opened from                                                                                |
+| number           | Pull request number                                                                                                    |
+| state            | `OPEN`, `CLOSED`, or `MERGED`                                                                                          |
+| created\_at      | When the pull request was opened                                                                                       |
+| merged\_at       | When the pull request was merged, if it was                                                                            |
+| closed\_at       | When the pull request was closed, if it was                                                                            |
+| base\_ref        | Branch the pull request targets                                                                                        |
+| head\_repository | Repository the head branch lives in (`owner/name`); differs from `repository` for forks, empty if the fork was deleted |
+| default\_branch  | The repository’s default branch                                                                                        |
 
 ### Pull request reviews
 

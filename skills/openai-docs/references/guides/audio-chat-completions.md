@@ -144,7 +144,7 @@ ChatCompletionOptions options = new()
 {
     ResponseModalities = ChatResponseModalities.Text | ChatResponseModalities.Audio,
     AudioOptions = new(ChatOutputAudioVoice.Alloy, ChatOutputAudioFormat.Wav),
-    StoredOutputEnabled = true,
+    StoredOutputEnabled = false,
 };
 
 ChatCompletion completion = await client.CompleteChatAsync(
@@ -400,7 +400,7 @@ ChatCompletionOptions options = new()
 {
     ResponseModalities = ChatResponseModalities.Text | ChatResponseModalities.Audio,
     AudioOptions = new(ChatOutputAudioVoice.Alloy, ChatOutputAudioFormat.Wav),
-    StoredOutputEnabled = true,
+    StoredOutputEnabled = false,
 };
 
 ChatCompletion completion = await client.CompleteChatAsync([message], options);

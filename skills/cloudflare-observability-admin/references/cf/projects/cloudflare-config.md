@@ -1992,7 +1992,7 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 
 <details>
 
-<summary>Options (5)</summary>
+<summary>Options (6)</summary>
 
 
 
@@ -2013,7 +2013,8 @@ Declares a Workflow defined by this Worker. The export's key must name a class t
 <dt><code>defaultRetention?: { /** How long to retain instances that completed successfully or were terminated. */ successRetention?: number | string; /** How long to retain errored instances. */ errorRetention?: number | string; }</code></dt>
 <dd>Default retention for instances of this Workflow, applied when an instance does not set its own retention. Accepts milliseconds or a duration string such as <code>"3 days"</code>.</dd>
 
-</dl></details>
+<dt><code>jurisdiction?: (typeof WORKFLOW_JURISDICTIONS)[number]</code></dt>
+<dd>Jurisdiction that the Workflow's instances run and store their data in. It is set when the Workflow is created and cannot be changed afterwards.</dd></dl></details>
 
 
 

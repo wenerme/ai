@@ -22,13 +22,15 @@ Content type: `application/json`
 
     Identifier for the workflow invoked by the session.
 
-  - `state_variables: optional map[string or boolean or number]`
+  - `state_variables: optional map[string or number or boolean or number]`
 
     State variables forwarded to the workflow. Keys may be up to 64 characters, values must be primitive types, and the map defaults to an empty object.
 
     - `string`
 
       `maxLength: 10485760`
+
+    - `number`
 
     - `boolean`
 
@@ -218,11 +220,13 @@ Content type: `application/json`
 
       Identifier of the workflow backing the session.
 
-    - `state_variables: map[string or boolean or number] or null`
+    - `state_variables: map[string or number or boolean or number] or null`
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
       - `string`
+
+      - `number`
 
       - `boolean`
 

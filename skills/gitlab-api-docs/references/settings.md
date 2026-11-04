@@ -141,6 +141,7 @@ Example response:
   "jira_connect_public_key_storage_enabled": false,
   "jira_connect_proxy_url": null,
   "jira_connect_additional_audience_url": null,
+  "jira_connect_domain_allowlist": [],
   "silent_mode_enabled": false,
   "package_registry_allow_anyone_to_pull_option": true,
   "bulk_import_max_download_file_size": 5120,
@@ -366,6 +367,7 @@ Example response:
   "jira_connect_application_key": "123",
   "jira_connect_public_key_storage_enabled": true,
   "jira_connect_proxy_url": "http://gitlab.example.com",
+  "jira_connect_domain_allowlist": ["example.atlassian.net"],
   "user_defaults_to_private_profile": true,
   "projects_api_rate_limit_unauthenticated": 400,
   "runner_jobs_request_api_limit": 2000,
@@ -483,6 +485,7 @@ Example responses:
 - `pipeline_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627270) in GitLab 19.5.
 - `pg_ash_sampling_enabled` and `pg_ash_sample_interval_seconds` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250170) in GitLab 19.4.
 - `group_audit_events_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255336) in GitLab 19.5.
+- `jira_connect_domain_allowlist` and `jira_connect_domain_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256324) in GitLab 19.6.
 - `pipeline_retry_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627233) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_retry`. Disabled by default.
 - `pipeline_retry_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_retry` removed.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../administration/feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.
@@ -498,6 +501,8 @@ Example responses:
 - `iframe_rendering_allowlist` and `iframe_rendering_allowlist_raw` [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254945) to accept embed provider IDs instead of domains in GitLab 19.5.
 - `orbit_query_limit`, `orbit_indexing_status_limit`, `orbit_item_counts_limit`, and `orbit_rate_limit_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/476) in GitLab 19.6.
 - `todos_list_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default.
+- `issuable_csv_import_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266323) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `issuable_csv_import_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
+- `wiki_read_request_limit_unauthenticated` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266523) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `wiki_read_unauthenticated_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
 
 In general, all settings are optional. When enabling some settings, you might also need
 to configure other related settings. These requirements are in the `Required` column of the following table.
@@ -727,10 +732,13 @@ to configure other related settings. These requirements are in the `Required` co
 | `html_emails_enabled`                    | boolean          | no                                   | Enable HTML emails. |
 | `import_sources`                         | array of strings | no                                   | Sources to allow project import from, possible values: `github`, `bitbucket`, `bitbucket_server`, `fogbugz`, `git`, `gitlab_project`, `gitea`, and `manifest`. |
 | `invisible_captcha_enabled`              | boolean          | no                                   | Enable Invisible CAPTCHA spam detection during account creation. Disabled by default. |
+| `issuable_csv_import_limit`              | integer          | no                                   | Maximum number of CSV imports of issues, work items, and requirements every hour for each user. Default: `20`. Set to `0` to disable the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `issues_create_limit`                    | integer          | no                                   | Maximum number of issue creation requests every minute for each user. Disabled by default. |
 | `jira_connect_application_key`           | string           | no                                   | ID of the OAuth application used to authenticate with the GitLab for Jira Cloud app. |
 | `jira_connect_public_key_storage_enabled` | boolean         | no                                   | Enable public key storage for the GitLab for Jira Cloud app. |
 | `jira_connect_proxy_url`                 | string           | no                                   | URL of the GitLab instance used as a proxy for the GitLab for Jira Cloud app. |
+| `jira_connect_domain_allowlist`          | array of strings | no                                   | List of Jira domains that can install the GitLab for Jira Cloud app. Applies to the Connect app only. If empty, all domains are allowed. |
+| `jira_connect_domain_allowlist_raw`      | string           | no                                   | Raw newline- or comma-separated list of Jira domains that can install the GitLab for Jira Cloud app. Applies to the Connect app only. |
 | `keep_latest_artifact`                   | boolean          | no                                   | Prevent the deletion of the artifacts from the most recent successful jobs, regardless of the expiry time. Enabled by default. |
 | `local_markdown_version`                 | integer          | no                                   | Increase this value when any cached Markdown should be invalidated. |
 | `lock_memberships_to_saml`               | boolean          | no                                   | Enforce a [global lock on SAML group memberships](../user/group/saml_sso/group_sync.md#global-saml-group-memberships-lock). |
@@ -1017,6 +1025,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `web_hook_test_limit`                    | integer          | no                                   | Maximum number of webhook test requests every minute, for each user, for a given project or group. Default: 5. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587887) in GitLab 19.3. |
 | `whats_new_variant`                      | string           | no                                   | What's new variant, possible values: `all_tiers`, `current_tier`, and `disabled`. |
 | `wiki_page_max_content_bytes`            | integer          | no                                   | Maximum wiki page content size in bytes. Default: 5242880 bytes (5 MB). The minimum value is 1024 bytes. |
+| `wiki_read_request_limit_unauthenticated` | integer         | no                                   | Maximum number of requests every minute from unauthenticated users to read a project or group wiki. Applies to the wiki pages in the UI and to the REST API endpoints that list and retrieve wiki pages. Default: `500`. Set to `0` to turn off the rate limit. This attribute is in [beta](../policy/development_stages_support.md#beta) and might be changed or removed without notice. |
 | `bulk_import_concurrent_pipeline_batch_limit` | integer     | no                                   | Maximum simultaneous direct transfer batch exports to process. |
 | `concurrent_relation_batch_export_limit` | integer          | no                                   | Maximum number of simultaneous batch export jobs to process. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169122) in GitLab 17.6. |
 | `concurrent_relation_export_limit`       | integer          | no                                   | Maximum number of simultaneous project file exports to process. Default: 25. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599092) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `limit_concurrent_project_exports`. Disabled by default. |

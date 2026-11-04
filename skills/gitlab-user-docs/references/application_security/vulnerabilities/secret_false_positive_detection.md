@@ -6,15 +6,14 @@ Automatic detection and filtering of false positives in secret detection finding
 - Add-on: GitLab Duo Core, Pro, or Enterprise
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced in [epic 17885](https://gitlab.com/groups/gitlab-org/-/work_items/20152) in GitLab 18.10 as a [beta](../../../policy/development_stages_support.md#beta) feature with a [feature flag](../../../administration/feature_flags/_index.md) named `duo_secret_detection_false_positive`. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227074).
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17885) in GitLab 18.10 as a [beta](../../../policy/development_stages_support.md#beta) feature with a [feature flag](../../../administration/feature_flags/_index.md) named `duo_secret_detection_false_positive`. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227074).
 - [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/21233) in GitLab 19.1.
 - Support in the triage and remediation profile [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254011) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profile`. Enabled by default.
-- Support for non-default tracked branches [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23297) in GitLab 19.5.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history.
 
-Secret false positive detection is an opt-in feature. When you enable it, GitLab Duo analyzes each detected secret to determine the likelihood that it's a false positive. Detection is available for all secret types detected by [GitLab secret detection](../secret_detection/_index.md).
+Secret false positive detection is an opt-in feature. When you enable it, GitLab Duo analyzes detected secrets to determine the likelihood that they're false positives. Detection is available for all secret types detected by [GitLab Secret Detection](../secret_detection/_index.md).
 
 > [!important]
 > When this feature is enabled, information about the vulnerability, including the code context surrounding the detected secret, is sent to large language models (LLMs) for analysis. The behavior described in the [secret detection and redaction](../../gitlab_duo/data_usage.md#secret-detection-and-redaction) documentation does not apply to this feature. Review your organization's data policies before enabling this feature.
@@ -25,7 +24,7 @@ The GitLab Duo assessment includes information about each false positive finding
 - Explanation: Reasons why the finding may or may not be a true positive, based on code context and secret characteristics.
 - Visual indicator: A badge in the vulnerability report that shows the false positive assessment.
 
-Once enabled, false positive detection runs automatically after each security scan without manual intervention.
+Once enabled, false positive detection runs automatically on new vulnerabilities without manual intervention.
 
 Results are based on AI analysis and should be reviewed by security professionals. The feature requires GitLab Duo with an active subscription.
 
@@ -38,8 +37,9 @@ across multiple projects and groups at once, use the
 False positive detection runs automatically in the following scenarios:
 
 - A secret detection scan completes successfully on the default branch.
-- The scan detects secrets.
+- The scan detects new vulnerabilities. Existing vulnerabilities are not analyzed again automatically.
 - GitLab Duo features are enabled for the project.
+- The vulnerability meets the severity threshold. Without a triage and remediation profile, only vulnerabilities with high or critical severity are analyzed. With a profile, the profile sets the severity threshold, run mode, and other criteria.
 
 The analysis runs in the background and results appear in the vulnerability report after processing is complete.
 
@@ -49,7 +49,6 @@ You can manually run false positive detection for existing vulnerabilities:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Secure** > **Vulnerability report**.
-1. Optional. To find a vulnerability in a branch other than the default branch, [filter by tracked ref](../vulnerability_report/_index.md#tracked-ref-filter).
 1. Select the vulnerability you want to analyze.
 1. In the upper-right corner, select **AI actions**, then select **Check for false positive**.
 
@@ -62,6 +61,7 @@ To use false positive detection, you must have the following requirements:
 - A GitLab Duo add-on subscription (GitLab Duo Core, Pro, or Enterprise).
 - [GitLab Duo enabled](../../gitlab_duo/turn_on_off.md) in your project or group.
 - [A default GitLab Duo namespace set](../../profile/preferences.md#set-a-default-gitlab-duo-namespace) in your user preferences.
+- For automatic runs, [GitLab Duo experiment and beta features turned on](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features).
 - GitLab 18.10 or later.
 
 ### Enable false positive detection
@@ -73,7 +73,7 @@ False positive detection is turned off by default and must be explicitly enabled
 You can allow all projects in a group to use the foundational flow. Individual projects must still enable the feature in their project settings.
 To allow false positive detection for all projects in a group:
 
-1. In the left sidebar, select **Search or go to** and find your group.
+1. In the top bar, select **Search or go to** and find your group.
 1. Select **Settings** > **GitLab Duo**.
 1. Under **Allow foundational flows**, select the **Secret Detection False Positive Detection** checkbox.
 1. Select **Save changes**.
@@ -82,25 +82,25 @@ To allow false positive detection for all projects in a group:
 
 Prerequisites:
 
-- The Security Manager, Maintainer, or Owner role for the project.
+- The Maintainer or Owner role for the project.
 
 To turn on false positive detection for a specific project:
 
-1. In the left sidebar, select **Search or go to** and find your project.
+1. In the top bar, select **Search or go to** and find your project.
 1. Select **Settings** > **General**.
 1. Expand **GitLab Duo**.
-1. Turn on the **Turn on secret detection false positive detection** toggle.
+1. Turn on the **Turn on Secret Detection false positive detection** toggle.
 1. Select **Save changes**.
 
 When you allow false positive detection for the group and turn it on for the project, the feature works automatically with your existing secret detection scanners.
 
 ## Confidence scores
 
-The confidence score estimates how likely the GitLab Duo assessment is to be correct:
+The confidence score estimates how likely the finding is to be a false positive. The vulnerability report badge shows one of the following labels:
 
-- Likely false positive (80-100%): GitLab Duo is highly confident that the finding is a false positive.
-- Possible false positive (60-79%): GitLab Duo has reasonable confidence that the finding may be a false positive but recommends manual review.
-- Likely not a false positive (&lt;60%): GitLab Duo is not confident that the finding is a false positive. Manual review is strongly recommended before you dismiss the vulnerability.
+-  (80% or higher): GitLab Duo is highly confident that the finding is a false positive.
+-  (above 60% and below 80%): GitLab Duo has reasonable confidence that the finding may be a false positive but recommends manual review.
+-  (60% or lower): GitLab Duo is not confident that the finding is a false positive. Manual review is strongly recommended before you dismiss the vulnerability.
 
 ## Dismissing false positives
 
@@ -128,11 +128,12 @@ If you want to remove the false positive assessment and keep the vulnerability:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Secure** > **Vulnerability report**.
-1. Locate the vulnerability with the false positive flag.
-1. Hover over the false positive badge on the vulnerability.
-1. Select **Remove False Positive Flag**.
+1. Select the vulnerability with the false positive flag.
+1. In the **Risk** section, select **AI analysis**.
+1. In the drawer, select **Remove false positive flag**.
+1. In the confirmation dialog, select **Dismiss False Positive Flag**.
 
-The false positive flag is removed and the FP confidence score reverts to 0. The vulnerability remains in the report and can be re-evaluated in future scans.
+The false positive flag is removed and the FP confidence score reverts to 0. The vulnerability remains in the report. The flag is not re-evaluated automatically, because only new vulnerabilities are analyzed after a scan.
 
 ## Providing feedback
 

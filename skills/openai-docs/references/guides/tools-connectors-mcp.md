@@ -683,11 +683,17 @@ using OpenAI.Responses;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
 ResponsesClient client = new(key);
 
-CreateResponseOptions options = new() { Model = "gpt-6-astra" };
+CreateResponseOptions options = new()
+{
+    Model = "gpt-6-astra",
+    ToolChoice = ResponseToolChoice.CreateRequiredChoice(),
+    ParallelToolCallsEnabled = false
+};
 options.Tools.Add(
     ResponseTool.CreateMcpTool(
         serverLabel: "openai_docs",
         serverUri: new Uri("https://developers.openai.com/mcp"),
+        allowedTools: new McpToolFilter { ToolNames = { "search_openai_docs" } },
         toolCallApprovalPolicy: DefaultMcpToolCallApprovalPolicy.AlwaysRequireApproval
     )
 );
@@ -701,6 +707,7 @@ McpToolCallApprovalRequestItem approvalRequest =
 
 // Step 2: Approve the tool call and get the final response.
 options.PreviousResponseId = response1.Id;
+options.ToolChoice = ResponseToolChoice.CreateNoneChoice();
 options.InputItems.Clear();
 options.InputItems.Add(
     ResponseItem.CreateMcpApprovalResponseItem(approvalRequest.Id, approved: true)

@@ -18,7 +18,9 @@ Text Generation • Google
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/google/gemma-4-26b-a4b-it`
+Model ID
+
+`@cf/google/gemma-4-26b-a4b-it` Copy
 
 - Cloudflare-hosted
 - Batch

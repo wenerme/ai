@@ -1403,7 +1403,6 @@ BinaryData schema = BinaryData.FromString(
           "properties": {
             "type": { "type": "string", "enum": ["div", "button", "header", "section", "field", "form"] },
             "label": { "type": "string" },
-            "children": { "type": "array", "items": { "$ref": "#/$defs/component" } },
             "attributes": {
               "type": "array",
               "items": {
@@ -1412,7 +1411,8 @@ BinaryData schema = BinaryData.FromString(
                 "required": ["name", "value"],
                 "additionalProperties": false
               }
-            }
+            },
+            "children": { "type": "array", "items": { "$ref": "#/$defs/component" } }
           },
           "required": ["type", "label", "children", "attributes"],
           "additionalProperties": false
@@ -1424,6 +1424,7 @@ BinaryData schema = BinaryData.FromString(
 CreateResponseOptions options = new()
 {
     Model = "gpt-6-astra",
+    MaxOutputTokenCount = 4096,
     TextOptions = new ResponseTextOptions
     {
         TextFormat = ResponseTextFormat.CreateJsonSchemaFormat(
@@ -1434,10 +1435,22 @@ CreateResponseOptions options = new()
     },
 };
 options.InputItems.Add(ResponseItem.CreateSystemMessageItem("You are a UI generator. Convert the user request into a component tree."));
-options.InputItems.Add(ResponseItem.CreateUserMessageItem("Make a User Profile Form"));
+options.InputItems.Add(ResponseItem.CreateUserMessageItem(
+    "Make a small user profile form with exactly three direct children: " +
+    "a Name field, an Email field, and a Save button. Give each child no children. " +
+    "Use short labels and at most two short attributes per component."
+));
 
 ResponseResult response = await client.CreateResponseAsync(options);
-using JsonDocument parsed = JsonDocument.Parse(response.GetOutputText());
+string text = response.GetOutputText();
+bool refused = response.OutputItems.OfType<MessageResponseItem>()
+    .SelectMany(message => message.Content)
+    .Any(part => part.Kind == ResponseContentPartKind.Refusal);
+if (response.Status != ResponseStatus.Completed || refused || string.IsNullOrWhiteSpace(text))
+{
+    throw new InvalidOperationException("UI generation did not complete.");
+}
+using JsonDocument parsed = JsonDocument.Parse(text);
 Console.WriteLine(parsed.RootElement);
 ```
 

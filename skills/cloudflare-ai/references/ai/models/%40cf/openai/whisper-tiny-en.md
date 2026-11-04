@@ -20,7 +20,9 @@ Automatic Speech Recognition • OpenAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-tiny-en/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/openai/whisper-tiny-en`
+Model ID
+
+`@cf/openai/whisper-tiny-en` Copy
 
 - Cloudflare-hosted
 - Zero data retention

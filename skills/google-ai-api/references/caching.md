@@ -65,37 +65,48 @@ Cached content can be only used with model it was created for.
 
 **Properties:**
 
-**model**: {% mark %}required{% /mark %} `string`
+{% section class="api-ref-property-list" %}
+  **model**: {% mark %}required{% /mark %} `string`
 
-Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
+  Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
 
-{% hr /%}
+  {% hr /%}
 
-**expireTime**: `string`
+  {% details %}
+  {% summary %}
+  **expiration**: `Union type`
 
-Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+  Specifies when this resource will expire.
 
-{% hr /%}
+  {% /summary %}
 
-**ttl**: `string`
+  Union field `expiration` can be only one of the following:
 
-Input only. New TTL for this resource, input only.
+  **expireTime**: `string`
 
-{% hr /%}
+  Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
 
-**name**: `string`
+  **ttl**: `string`
 
-Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`
+  Input only. New TTL for this resource, input only.
 
-{% hr /%}
+  {% /details %}
 
-**displayName**: `string`
+  {% hr /%}
 
-Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+  **name**: `string`
 
-{% hr /%}
+  Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`
 
-{% details %}
+  {% hr /%}
+
+  **displayName**: `string`
+
+  Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+
+  {% hr /%}
+
+  {% details %}
   {% summary %}
   **systemInstruction**: `Content`
 
@@ -105,11 +116,19 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **parts**: `array (Part)`
+  **parts**: `Part array`
 
   Ordered `Parts` that constitute a single message. Parts may have different MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   **text**: `string`
 
@@ -187,11 +206,21 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **parts**: `array (FunctionResponsePart)`
+  **parts**: `FunctionResponsePart array`
 
   Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  The data of the function response part.
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -242,9 +271,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -266,7 +297,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **scheduling**: `enum (string)`
+  **scheduling**: `string enum`
 
   Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
 
@@ -315,7 +346,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **language**: {% mark %}required{% /mark %} `enum (string)`
+  **language**: {% mark %}required{% /mark %} `string enum`
 
   Programming language of the `code`.
 
@@ -348,7 +379,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **outcome**: {% mark %}required{% /mark %} `enum (string)`
+  **outcome**: {% mark %}required{% /mark %} `string enum`
 
   Outcome of the code execution.
 
@@ -453,6 +484,18 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **metadata**: `Union type`
+
+  Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing.
+
+  {% /summary %}
+
+  Union field `metadata` can be only one of the following:
+
   {% details %}
   {% summary %}
   **videoMetadata**: `VideoMetadata`
@@ -472,6 +515,8 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
   **fps**: `number`
 
   Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% /details %}
 
   {% /details %}
 
@@ -497,7 +542,17 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **level**: `enum (string)`
+  **value**: `Union type`
+
+  The media resolution level.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **level**: `string enum`
 
   The tokenization quality used for given media. for Gemini API support .
 
@@ -515,9 +570,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -549,7 +606,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **words**: `array (WordInfo)`
+  **words**: `WordInfo array`
 
   Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
 
@@ -595,13 +652,13 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn conversations, otherwise can be left blank or unset.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **contents**: `array (Content)`
+  **contents**: `Content array`
 
   Optional. Input only. Immutable. The content to cache.
 
@@ -609,11 +666,19 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **parts**: `array (Part)`
+  **parts**: `Part array`
 
   Ordered `Parts` that constitute a single message. Parts may have different MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   **text**: `string`
 
@@ -691,11 +756,21 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **parts**: `array (FunctionResponsePart)`
+  **parts**: `FunctionResponsePart array`
 
   Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  The data of the function response part.
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -746,9 +821,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -770,7 +847,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **scheduling**: `enum (string)`
+  **scheduling**: `string enum`
 
   Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
 
@@ -819,7 +896,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **language**: {% mark %}required{% /mark %} `enum (string)`
+  **language**: {% mark %}required{% /mark %} `string enum`
 
   Programming language of the `code`.
 
@@ -852,7 +929,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **outcome**: {% mark %}required{% /mark %} `enum (string)`
+  **outcome**: {% mark %}required{% /mark %} `string enum`
 
   Outcome of the code execution.
 
@@ -957,6 +1034,18 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **metadata**: `Union type`
+
+  Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing.
+
+  {% /summary %}
+
+  Union field `metadata` can be only one of the following:
+
   {% details %}
   {% summary %}
   **videoMetadata**: `VideoMetadata`
@@ -976,6 +1065,8 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
   **fps**: `number`
 
   Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% /details %}
 
   {% /details %}
 
@@ -1001,7 +1092,17 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **level**: `enum (string)`
+  **value**: `Union type`
+
+  The media resolution level.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **level**: `string enum`
 
   The tokenization quality used for given media. for Gemini API support .
 
@@ -1019,9 +1120,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -1053,7 +1156,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **words**: `array (WordInfo)`
+  **words**: `WordInfo array`
 
   Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
 
@@ -1099,13 +1202,13 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn conversations, otherwise can be left blank or unset.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **tools**: `array (Tool)`
+  **tools**: `Tool array`
 
   Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
 
@@ -1113,7 +1216,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **functionDeclarations**: `array (FunctionDeclaration)`
+  **functionDeclarations**: `FunctionDeclaration array`
 
   Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
 
@@ -1172,7 +1275,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Indicates if the value may be null.
 
-  **enum**: `array (string)`
+  **enum**: `string array`
 
   Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
 
@@ -1192,7 +1295,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Properties of Type.OBJECT.
 
-  **required**: `array (string)`
+  **required**: `string array`
 
   Optional. Required properties of Type.OBJECT.
 
@@ -1228,11 +1331,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Example of the object. Will only populated when the object is the root.
 
-  **anyOf**: `array (Schema)`
+  **anyOf**: `Schema array`
 
   Optional. The value should be validated against any (one or more) of the subschemas in the list.
 
-  **propertyOrdering**: `array (string)`
+  **propertyOrdering**: `string array`
 
   Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
 
@@ -1291,7 +1394,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Indicates if the value may be null.
 
-  **enum**: `array (string)`
+  **enum**: `string array`
 
   Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
 
@@ -1311,7 +1414,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Properties of Type.OBJECT.
 
-  **required**: `array (string)`
+  **required**: `string array`
 
   Optional. Required properties of Type.OBJECT.
 
@@ -1347,11 +1450,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. Example of the object. Will only populated when the object is the root.
 
-  **anyOf**: `array (Schema)`
+  **anyOf**: `Schema array`
 
   Optional. The value should be validated against any (one or more) of the subschemas in the list.
 
-  **propertyOrdering**: `array (string)`
+  **propertyOrdering**: `string array`
 
   Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
 
@@ -1367,7 +1470,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **behavior**: `enum (string)`
+  **behavior**: `string enum`
 
   Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
 
@@ -1401,7 +1504,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   The mode of the predictor to be used in dynamic retrieval.
 
@@ -1500,7 +1603,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **environment**: {% mark %}required{% /mark %} `enum (string)`
+  **environment**: {% mark %}required{% /mark %} `string enum`
 
   The environment being operated.
 
@@ -1515,7 +1618,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
-  **excludedPredefinedFunctions**: `array (string)`
+  **excludedPredefinedFunctions**: `string array`
 
   Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
 
@@ -1525,7 +1628,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **disabledSafetyPolicies**: `array (enum (string))`
+  **disabledSafetyPolicies**: `string enum array`
 
   Optional. Disabled safety policies for computer use.
 
@@ -1564,7 +1667,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /summary %}
 
-  **fileSearchStoreNames**: {% mark %}required{% /mark %} `array (string)`
+  **fileSearchStoreNames**: {% mark %}required{% /mark %} `string array`
 
   The names of the file_search_stores to retrieve from. Example: `fileSearchStores/my-file-search-store-123`
 
@@ -1580,11 +1683,21 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **mcpServers**: `array (McpServer)`
+  **mcpServers**: `McpServer array`
 
   Optional. MCP Servers to connect to.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **transport**: `Union type`
+
+  The transport to use to connect to the MCPServer.
+
+  {% /summary %}
+
+  Union field `transport` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -1616,6 +1729,8 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
+  {% /details %}
+
   **name**: `string`
 
   The name of the MCPServer.
@@ -1636,11 +1751,11 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **toolConfig**: `ToolConfig`
 
@@ -1658,7 +1773,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   Optional. Specifies the mode in which function calling should execute. If unspecified, the default value will be set to AUTO.
 
@@ -1674,7 +1789,7 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   {% /details %}
 
-  **allowedFunctionNames**: `array (string)`
+  **allowedFunctionNames**: `string array`
 
   Optional. A set of function names that, when provided, limits the functions the model will call. This should only be set when the Mode is ANY or VALIDATED. Function names should match [FunctionDeclaration.name]. When set, model will predict a function call from only allowed function names.
 
@@ -1716,23 +1831,23 @@ Optional. Immutable. The user-generated meaningful display name of the cached co
 
   Optional. If true, the API response will include the server-side tool calls and responses within the `Content` message. This allows clients to observe the server's tool interactions.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**createTime**: `string`
+  **createTime**: `string`
 
-Output only. Creation time of the cache entry.
+  Output only. Creation time of the cache entry.
 
-{% hr /%}
+  {% hr /%}
 
-**updateTime**: `string`
+  **updateTime**: `string`
 
-Output only. When the cache entry was last updated in UTC time.
+  Output only. When the cache entry was last updated in UTC time.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **usageMetadata**: `CachedContentUsageMetadata`
 
@@ -1744,5 +1859,7 @@ Output only. When the cache entry was last updated in UTC time.
 
   Total number of tokens that the cached content consumes.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 

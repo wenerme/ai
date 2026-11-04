@@ -18,7 +18,9 @@ Text Classification • BAAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/baai/bge-reranker-base`
+Model ID
+
+`@cf/baai/bge-reranker-base` Copy
 
 - Cloudflare-hosted
 - Zero data retention

@@ -56,9 +56,9 @@ PUT projects/:id/packages/npm/:package_name
 | `versions`     | string | yes      | Package version information.        |
 
 ```shell
-curl --request PUT
-     --header "Content-Type: application/json"
-     --data @./path/to/metadata/file.json
+curl --request PUT \
+     --header "Content-Type: application/json" \
+     --data @./path/to/metadata/file.json \
      --header "Authorization: Bearer <personal_access_token>" \
      --url "https://gitlab.example.com/api/v4/projects/1/packages/npm/@myscope%2fmy-pkg"
 ```

@@ -18,7 +18,9 @@ Text-to-Image • Leonardo
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/lucid-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/leonardo/lucid-origin`
+Model ID
+
+`@cf/leonardo/lucid-origin` Copy
 
 - Cloudflare-hosted
 - Partner

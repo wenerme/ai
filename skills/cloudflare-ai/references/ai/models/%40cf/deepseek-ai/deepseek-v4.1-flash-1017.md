@@ -18,7 +18,9 @@ Text Generation • DeepSeek
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepseek-ai/deepseek-v4.1-flash-1017/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/deepseek-ai/deepseek-v4.1-flash-1017`
+Model ID
+
+`@cf/deepseek-ai/deepseek-v4.1-flash-1017` Copy
 
 - Cloudflare-hosted
 - Function calling

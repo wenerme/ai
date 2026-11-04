@@ -18,7 +18,9 @@ Text Generation • Moonshot AI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/kimi-k2.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/moonshotai/kimi-k2.6`
+Model ID
+
+`@cf/moonshotai/kimi-k2.6` Copy
 
 - Cloudflare-hosted
 - Batch

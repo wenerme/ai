@@ -18,7 +18,9 @@ Text-to-Speech • Deepgram
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/aura-2-es/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/deepgram/aura-2-es`
+Model ID
+
+`@cf/deepgram/aura-2-es` Copy
 
 - Cloudflare-hosted
 - Batch

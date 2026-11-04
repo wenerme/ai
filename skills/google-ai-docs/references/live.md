@@ -1,301 +1,166 @@
-<br />
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
 
-<br />
+# Gemini Live API overview
 
-The Live API enables low-latency, real-time voice and video interactions with Gemini. It processes continuous streams of audio, video, or text to deliver immediate, human-like spoken responses, creating a natural conversational experience for your users.
+The Live API enables low-latency, real-time voice and vision interactions with
+Gemini. It processes continuous streams of audio, images, and text to deliver
+immediate, human-like spoken responses, creating a natural conversational
+experience for your users.
 
-![Live API Overview](https://ai.google.dev/static/gemini-api/docs/images/live-api-overview.png)
+![](https://www.gstatic.com/cloud-cms/995b16822e9fa0e87694e97e1da60e42.png)
 
-Live API offers a comprehensive set of features such as[Voice Activity Detection](https://ai.google.dev/gemini-api/docs/live-guide#interruptions),[tool use and function calling](https://ai.google.dev/gemini-api/docs/live-tools),[session management](https://ai.google.dev/gemini-api/docs/live-session)(for managing long running conversations) and[ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens)(for secure client-sided authentication).
+{% button href="https://aistudio.google.com/live" icon="mic" variant="primary" %}Try the Live API in Google AI Studio{% /button %}
 
-This page gets you up and running with examples and basic code samples.
+{% button href="https://github.com/google-gemini/gemini-live-api-examples" icon="code" variant="primary" %}Clone example apps from GitHub{% /button %}
 
-[Try the Live API in Google AI Studiomic](https://aistudio.google.com/live)
+{% button href="/docs/coding-agents" icon="terminal" variant="primary" %}Use coding agent skills{% /button %}
 
-## Choose an implementation approach
+## Use cases  {% id="use-cases" %}
 
-When integrating with Live API, you'll need to choose one of the following implementation approaches:
+Live API can be used to build real-time voice agents for a
+variety of industries, including:
 
-- **Server-to-server** : Your backend connects to the Live API using[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). Typically, your client sends stream data (audio, video, text) to your server, which then forwards it to the Live API.
-- **Client-to-server** : Your frontend code connects directly to the Live API using[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)to stream data, bypassing your backend.
+*   **E-commerce and retail:** Shopping assistants that offer personalized
+  recommendations and support agents that resolve customer issues.
 
-**Note:** Client-to-server generally offers better performance for streaming audio and video, since it bypasses the need to send the stream to your backend first. It's also easier to set up since you don't need to implement a proxy that sends data from your client to your server and then your server to the API. However, for production environments, in order to mitigate security risks, we recommend using[ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens)instead of standard API keys.  
+*   **Gaming:** Interactive non-player characters (NPCs), in-game help
+  assistants, and real-time translation of in-game content.
 
-## Partner integrations
+*   **Next-gen interfaces:** Voice- and video-enabled experiences in robotics,
+  smart glasses, and vehicles.
 
-To streamline the development of real-time audio and video apps, you can use a third-party integration that supports the Gemini Live API over WebRTC or WebSockets.  
-[Pipecat by Daily
-Create a real-time AI chatbot using Gemini Live and Pipecat.](https://docs.pipecat.ai/guides/features/gemini-live)[LiveKit
-Use the Gemini Live API with LiveKit Agents.](https://docs.livekit.io/agents/models/realtime/plugins/gemini/)[Fishjam by Software Mansion
-Create live video and audio streaming applications with Fishjam.](https://docs.fishjam.io/tutorials/gemini-live-integration)[Agent Development Kit (ADK)
-Implement the Live API with Agent Development Kit (ADK).](https://google.github.io/adk-docs/streaming/)[Vision Agents by Stream
-Build real-time voice and video AI applications with Vision Agents.](https://visionagents.ai/integrations/gemini)[Voximplant
-Connect inbound and outbound calls to Live API with Voximplant.](https://voximplant.com/products/gemini-client)
+*   **Healthcare:** Health companions for patient support and education.
 
-## Get started
+*   **Financial services:** AI advisors for wealth management and investment
+  guidance.
 
-Microphone streamAudio file stream
+*   **Education:** AI mentors and learner companions that provide personalized
+  instruction and feedback.
 
-This server-side example**streams audio from the microphone** and plays the returned audio. For complete end-to-end examples including a client application, see[Example applications](https://ai.google.dev/gemini-api/docs/live#example-applications).
+*   **Translation and localization:** Real-time, low-latency translation of
+  spoken conversations, enabling seamless multilingual communication.
 
-The input audio format should be in 16-bit PCM, 16kHz, mono format, and the received audio uses a sample rate of 24kHz.  
+*   **Live transcription and captioning:** Real-time speech-to-text streaming for
+  live subtitles, meeting transcription, voice dictation, and customer call logging.
 
-### Python
 
-Install helpers for audio streaming. Additional system-level dependencies (e.g.`portaudio`) might be required. Refer to the[PyAudio docs](https://pypi.org/project/PyAudio/)for detailed installation steps.  
+## Key features  {% id="key-features" %}
 
-    pip install pyaudio
+Live API offers a comprehensive set of features for building
+robust voice agents:
 
-**Note:** **Use headphones**. This script uses the system default audio input and output, which often won't include echo cancellation. To prevent the model from interrupting itself, use headphones.  
+*   [**Multilingual support**](/docs/live-api/capabilities#supported-languages):
+  Converse in 70 supported languages.
 
-    import asyncio
-    from google import genai
-    import pyaudio
+*   [**Barge-in**](/docs/live-api/capabilities#interruptions):
+  Users can interrupt the model at any time for responsive interactions.
 
-    client = genai.Client()
+*   [**Tool use**](/docs/live-api/tools):
+  Integrates tools like function calling and Google Search for dynamic
+  interactions.
 
-    # --- pyaudio config ---
-    FORMAT = pyaudio.paInt16
-    CHANNELS = 1
-    SEND_SAMPLE_RATE = 16000
-    RECEIVE_SAMPLE_RATE = 24000
-    CHUNK_SIZE = 1024
+*   [**Audio transcriptions**](/docs/live-api/capabilities#audio-transcription):
+  Provides text transcripts of both user input and model output.
 
-    pya = pyaudio.PyAudio()
+*   [**Proactive audio**](/docs/live-api/capabilities#proactive-audio):
+  Lets you control when the model responds and in what contexts.
 
-    # --- Live API config ---
-    MODEL = "gemini-2.5-flash-native-audio-preview-12-2025"
-    CONFIG = {
-        "response_modalities": ["AUDIO"],
-        "system_instruction": "You are a helpful and friendly AI assistant.",
-    }
+*   [**Affective dialog**](/docs/live-api/capabilities#affective-dialog):
+  Adapts response style and tone to match the user's input expression.
 
-    audio_queue_output = asyncio.Queue()
-    audio_queue_mic = asyncio.Queue(maxsize=5)
-    audio_stream = None
+*   [**Live Transcription**](/docs/live-api/live-transcribe):
+  Real-time, continuous speech-to-text streaming with automatic language detection and custom vocabulary.
 
-    async def listen_audio():
-        """Listens for audio and puts it into the mic audio queue."""
-        global audio_stream
-        mic_info = pya.get_default_input_device_info()
-        audio_stream = await asyncio.to_thread(
-            pya.open,
-            format=FORMAT,
-            channels=CHANNELS,
-            rate=SEND_SAMPLE_RATE,
-            input=True,
-            input_device_index=mic_info["index"],
-            frames_per_buffer=CHUNK_SIZE,
-        )
-        kwargs = {"exception_on_overflow": False} if __debug__ else {}
-        while True:
-            data = await asyncio.to_thread(audio_stream.read, CHUNK_SIZE, **kwargs)
-            await audio_queue_mic.put({"data": data, "mime_type": "audio/pcm"})
+*   [**Live Translation**](/docs/live-api/live-translate):
+  Real-time voice-to-voice translation in 70+ languages.
 
-    async def send_realtime(session):
-        """Sends audio from the mic audio queue to the GenAI session."""
-        while True:
-            msg = await audio_queue_mic.get()
-            await session.send_realtime_input(audio=msg)
 
-    async def receive_audio(session):
-        """Receives responses from GenAI and puts audio data into the speaker audio queue."""
-        while True:
-            turn = session.receive()
-            async for response in turn:
-                if (response.server_content and response.server_content.model_turn):
-                    for part in response.server_content.model_turn.parts:
-                        if part.inline_data and isinstance(part.inline_data.data, bytes):
-                            audio_queue_output.put_nowait(part.inline_data.data)
+## Technical specifications  {% id="technical-specifications" %}
 
-            # Empty the queue on interruption to stop playback
-            while not audio_queue_output.empty():
-                audio_queue_output.get_nowait()
+The following table outlines the technical specifications for the
+Live API:
 
-    async def play_audio():
-        """Plays audio from the speaker audio queue."""
-        stream = await asyncio.to_thread(
-            pya.open,
-            format=FORMAT,
-            channels=CHANNELS,
-            rate=RECEIVE_SAMPLE_RATE,
-            output=True,
-        )
-        while True:
-            bytestream = await audio_queue_output.get()
-            await asyncio.to_thread(stream.write, bytestream)
+{% table %}
+  * Category
+  * Details
 
-    async def run():
-        """Main function to run the audio loop."""
-        try:
-            async with client.aio.live.connect(
-                model=MODEL, config=CONFIG
-            ) as live_session:
-                print("Connected to Gemini. Start speaking!")
-                async with asyncio.TaskGroup() as tg:
-                    tg.create_task(send_realtime(live_session))
-                    tg.create_task(listen_audio())
-                    tg.create_task(receive_audio(live_session))
-                    tg.create_task(play_audio())
-        except asyncio.CancelledError:
-            pass
-        finally:
-            if audio_stream:
-                audio_stream.close()
-            pya.terminate()
-            print("\nConnection closed.")
+  ---
 
-    if __name__ == "__main__":
-        try:
-            asyncio.run(run())
-        except KeyboardInterrupt:
-            print("Interrupted by user.")
+  * Input modalities
+  * Audio (raw 16-bit PCM audio, 16kHz, little-endian), images (JPEG <= 1FPS), text
 
-### JavaScript
+  ---
 
-Install helpers for audio streaming. Additional system-level dependencies might be required (`sox`for Mac/Windows or`ALSA`for Linux). Refer to the[speaker](https://www.npmjs.com/package/speaker)and[mic](https://www.npmjs.com/package/mic)docs for detailed installation steps.  
+  * Output modalities
+  * Audio (raw 16-bit PCM audio, 24kHz, little-endian)
 
-    npm install mic speaker
+  ---
 
-**Note:** **Use headphones**. This script uses the system default audio input and output, which often won't include echo cancellation. To prevent the model from interrupting itself, use headphones.  
+  * Protocol
+  * Stateful WebSocket connection (WSS)
+{% /table %}
 
-    import { GoogleGenAI, Modality } from '@google/genai';
-    import mic from 'mic';
-    import Speaker from 'speaker';
+## Choose an implementation approach  {% id="implementation-approach" %}
 
-    const ai = new GoogleGenAI({});
-    // WARNING: Do not use API keys in client-side (browser based) applications
-    // Consider using Ephemeral Tokens instead
-    // More information at: https://ai.google.dev/gemini-api/docs/ephemeral-tokens
+When integrating with Live API, you'll need to choose one of the following
+implementation approaches:
 
-    // --- Live API config ---
-    const model = 'gemini-2.5-flash-native-audio-preview-12-2025';
-    const config = {
-      responseModalities: [Modality.AUDIO],
-      systemInstruction: "You are a helpful and friendly AI assistant.",
-    };
+-   **Server-to-server**: Your backend connects to the Live API using
+  [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). Typically, your client sends stream data (audio, video,
+  text) to your server, which then forwards it to the Live API.
 
-    async function live() {
-      const responseQueue = [];
-      const audioQueue = [];
-      let speaker;
+-   **Client-to-server**: Your frontend code connects directly to the Live API
+  using [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) to stream data, bypassing your backend.
 
-      async function waitMessage() {
-        while (responseQueue.length === 0) {
-          await new Promise((resolve) => setImmediate(resolve));
-        }
-        return responseQueue.shift();
-      }
 
-      function createSpeaker() {
-        if (speaker) {
-          process.stdin.unpipe(speaker);
-          speaker.end();
-        }
-        speaker = new Speaker({
-          channels: 1,
-          bitDepth: 16,
-          sampleRate: 24000,
-        });
-        speaker.on('error', (err) => console.error('Speaker error:', err));
-        process.stdin.pipe(speaker);
-      }
+{% callout type="note" %}
+  Note: Client-to-server generally offers better performance for streaming audio
+  and video, since it bypasses the need to send the stream to your backend first.
+  It's also easier to set up since you don't need to implement a proxy that sends
+  data from your client to your server and then your server to the API. However,
+  for production environments, in order to mitigate security risks, we recommend
+  using [ephemeral tokens](/docs/live-api/ephemeral-tokens) instead of standard
+  API keys.
 
-      async function messageLoop() {
-        // Puts incoming messages in the audio queue.
-        while (true) {
-          const message = await waitMessage();
-          if (message.serverContent && message.serverContent.interrupted) {
-            // Empty the queue on interruption to stop playback
-            audioQueue.length = 0;
-            continue;
-          }
-          if (message.serverContent && message.serverContent.modelTurn && message.serverContent.modelTurn.parts) {
-            for (const part of message.serverContent.modelTurn.parts) {
-              if (part.inlineData && part.inlineData.data) {
-                audioQueue.push(Buffer.from(part.inlineData.data, 'base64'));
-              }
-            }
-          }
-        }
-      }
+{% /callout %}
 
-      async function playbackLoop() {
-        // Plays audio from the audio queue.
-        while (true) {
-          if (audioQueue.length === 0) {
-            if (speaker) {
-              // Destroy speaker if no more audio to avoid warnings from speaker library
-              process.stdin.unpipe(speaker);
-              speaker.end();
-              speaker = null;
-            }
-            await new Promise((resolve) => setImmediate(resolve));
-          } else {
-            if (!speaker) createSpeaker();
-            const chunk = audioQueue.shift();
-            await new Promise((resolve) => {
-              speaker.write(chunk, () => resolve());
-            });
-          }
-        }
-      }
+## Get started  {% id="get-started" %}
 
-      // Start loops
-      messageLoop();
-      playbackLoop();
+Select the guide that matches your development environment:
 
-      // Connect to Gemini Live API
-      const session = await ai.live.connect({
-        model: model,
-        config: config,
-        callbacks: {
-          onopen: () => console.log('Connected to Gemini Live API'),
-          onmessage: (message) => responseQueue.push(message),
-          onerror: (e) => console.error('Error:', e.message),
-          onclose: (e) => console.log('Closed:', e.reason),
-        },
-      });
+{% card-grid %}
+  {% card badge="Server-to-server" description="Connect to the Gemini Live API using the GenAI SDK to build a\nreal-time multimodal application with a Python backend." href="/docs/live-api/get-started-sdk" title="GenAI SDK tutorial" /%}
 
-      // Setup Microphone for input
-      const micInstance = mic({
-        rate: '16000',
-        bitwidth: '16',
-        channels: '1',
-      });
-      const micInputStream = micInstance.getAudioStream();
+  {% card badge="Client-to-server" description="Connect to the Gemini Live API using WebSockets to build a\nreal-time multimodal application with a JavaScript frontend and ephemeral\ntokens." href="/docs/live-api/get-started-websocket" title="WebSocket tutorial" /%}
 
-      micInputStream.on('data', (data) => {
-        // API expects base64 encoded PCM data
-        session.sendRealtimeInput({
-          audio: {
-            data: data.toString('base64'),
-            mimeType: "audio/pcm;rate=16000"
-          }
-        });
-      });
+  {% card badge="Agent Development Kit" description=Create an agent and use the Agent Development Kit (ADK)
+Streaming to enable voice and video communication. href="https://google.github.io/adk-docs/streaming/" title="ADK tutorial" /%}
 
-      micInputStream.on('error', (err) => {
-        console.error('Microphone error:', err);
-      });
+{% /card-grid %}
 
-      micInstance.start();
-      console.log('Microphone started. Speak now...');
-    }
+## Partner integrations  {% id="partner-integrations" %}
 
-    live().catch(console.error);
+To streamline the development of real-time audio and video apps, you can use
+a third-party integration that supports the Gemini Live API over WebRTC or
+WebSockets.
 
-## Example applications
+{% card-grid %}
+  {% card description="Use the Gemini Live API with LiveKit Agents." href="https://docs.livekit.io/agents/models/realtime/plugins/gemini/" title="LiveKit" /%}
 
-Check out the following example applications that illustrate how to use Live API for end-to-end use cases:
+  {% card description="Create a real-time AI chatbot using Gemini Live and Pipecat." href="https://docs.pipecat.ai/guides/features/gemini-live" title="Pipecat by Daily" /%}
 
-- [Live audio starter app](https://aistudio.google.com/apps/bundled/live_audio?showPreview=true&showCode=true&showAssistant=false)on AI Studio, using JavaScript libraries to connect to Live API and stream bidirectional audio through your microphone and speakers.
-- See the[Partner integrations](https://ai.google.dev/gemini-api/docs/live#partner-integrations)for additional examples and getting started guides.
+  {% card description="Create live video and audio streaming applications with\nFishjam." href="https://docs.fishjam.io/tutorials/gemini-live-integration" title="Fishjam by Software Mansion" /%}
 
-## What's next
+  {% card description="Build real-time voice and video AI applications with Vision\nAgents." href="https://visionagents.ai/integrations/gemini" title="Vision Agents by Stream" /%}
 
-- Read the full Live API[Capabilities](https://ai.google.dev/gemini-api/docs/live-guide)guide for key capabilities and configurations; including Voice Activity Detection and native audio features.
-- Read the[Tool use](https://ai.google.dev/gemini-api/docs/live-tools)guide to learn how to integrate Live API with tools and function calling.
-- Read the[Session management](https://ai.google.dev/gemini-api/docs/live-session)guide for managing long running conversations.
-- Read the[Ephemeral tokens](https://ai.google.dev/gemini-api/docs/ephemeral-tokens)guide for secure authentication in[client-to-server](https://ai.google.dev/gemini-api/docs/live#implementation-approach)applications.
-- For more information about the underlying WebSockets API, see the[WebSockets API reference](https://ai.google.dev/api/live).
+  {% card description="Connect inbound and outbound calls to Live API with\nVoximplant." href="https://voximplant.com/products/gemini-client" title="Voximplant" /%}
+
+  {% card description="Build real-time conversational AI applications with Agora." href="https://docs.agora.io/en/conversational-ai/models/mllm/gemini" title="Agora" /%}
+
+  {% card description="Get started with the Gemini Live API using Firebase AI\nLogic." href="https://firebase.google.com/docs/ai-logic/live-api?api=dev" title="Firebase AI SDK" /%}
+
+{% /card-grid %}
+

@@ -18,7 +18,9 @@ Automatic Speech Recognition • Deepgram
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/nova-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/deepgram/nova-3`
+Model ID
+
+`@cf/deepgram/nova-3` Copy
 
 - Cloudflare-hosted
 - Batch
