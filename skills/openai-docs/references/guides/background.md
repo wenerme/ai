@@ -271,8 +271,7 @@ options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("Write a very long novel about otters in space.")
 );
 
-ResponseResult created = await client.CreateResponseAsync(options);
-ResponseResult response = await client.GetResponseAsync(created.Id);
+ResponseResult response = await client.CreateResponseAsync(options);
 while (response.Status is ResponseStatus.Queued or ResponseStatus.InProgress)
 {
     await Task.Delay(TimeSpan.FromSeconds(1));

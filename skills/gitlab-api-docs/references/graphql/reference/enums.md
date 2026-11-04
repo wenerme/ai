@@ -5573,6 +5573,19 @@ Highest version bump allowed when remediating a dependency.
 | `MINOR` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Allow patch and minor upgrades. |
 | `PATCH` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.Allow patch upgrades only. |
 
+## `SecurityScanProfileVariableValueType`
+
+Kind of value a scan profile configuration variable takes.
+
+| Value | Description |
+| ----- | ----------- |
+| `BOOLEAN` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.True or false. |
+| `ENUM` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.One of the values listed in the variable options. |
+| `INTEGER` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Whole number. |
+| `MULTI_SELECT` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Any number of values listed in the variable options. |
+| `STRING` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Single string. |
+| `STRING_LIST` | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.List of strings. |
+
 ## `SecurityScannerType`
 
 The type of the security scanner.

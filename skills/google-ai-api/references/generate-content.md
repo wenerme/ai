@@ -69,13 +69,14 @@ in `finish_reason` and in `safety_ratings`. The API:
 
 **Properties:**
 
-**candidates**: `array (`[`Candidate`](/api-reference/generate-content#Resource:Candidate)`)`
+{% section class="api-ref-property-list" %}
+  **candidates**: [`Candidate`](/api-reference/generate-content#Resource:Candidate) `array`
 
-Candidate responses from the model.
+  Candidate responses from the model.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **promptFeedback**: `PromptFeedback`
 
@@ -85,7 +86,7 @@ Candidate responses from the model.
 
   {% details %}
   {% summary %}
-  **blockReason**: `enum (string)`
+  **blockReason**: `string enum`
 
   Optional. If set, the prompt was blocked and no candidates are returned. Rephrase the prompt.
 
@@ -102,15 +103,15 @@ Candidate responses from the model.
 
   {% /details %}
 
-  **safetyRatings**: `array (`[`SafetyRating`](/api-reference/generate-content#Resource:SafetyRating)`)`
+  **safetyRatings**: [`SafetyRating`](/api-reference/generate-content#Resource:SafetyRating) `array`
 
   Ratings for safety of the prompt. There is at most one rating per category.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **usageMetadata**: `UsageMetadata`
 
@@ -142,19 +143,19 @@ Candidate responses from the model.
 
   Total token count for the generation request (prompt + tool-use prompt + thoughts + response candidates).
 
-  **promptTokensDetails**: `array (`[`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount)`)`
+  **promptTokensDetails**: [`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount) `array`
 
   Output only. List of modalities that were processed in the request input.
 
-  **cacheTokensDetails**: `array (`[`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount)`)`
+  **cacheTokensDetails**: [`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount) `array`
 
   Output only. List of modalities of the cached content in the request input.
 
-  **candidatesTokensDetails**: `array (`[`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount)`)`
+  **candidatesTokensDetails**: [`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount) `array`
 
   Output only. List of modalities that were returned in the response.
 
-  **toolUsePromptTokensDetails**: `array (`[`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount)`)`
+  **toolUsePromptTokensDetails**: [`ModalityTokenCount`](/api-reference/generate-content#Resource:ModalityTokenCount) `array`
 
   Output only. List of modalities that were processed for tool-use request inputs.
 
@@ -175,23 +176,23 @@ Candidate responses from the model.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**modelVersion**: `string`
+  **modelVersion**: `string`
 
-Output only. The model version used to generate the response.
+  Output only. The model version used to generate the response.
 
-{% hr /%}
+  {% hr /%}
 
-**responseId**: `string`
+  **responseId**: `string`
 
-Output only. response_id is used to identify each response.
+  Output only. response_id is used to identify each response.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **modelStatus**: `ModelStatus`
 
@@ -226,7 +227,9 @@ Output only. response_id is used to identify each response.
 
   A message explaining the model status.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 
 ### Candidate  {% id="Resource:Candidate" %}
 
@@ -234,21 +237,22 @@ A response candidate generated from the model.
 
 **Properties:**
 
-**index**: `integer`
+{% section class="api-ref-property-list" %}
+  **index**: `integer`
 
-Output only. Index of the candidate in the list of response candidates.
+  Output only. Index of the candidate in the list of response candidates.
 
-{% hr /%}
+  {% hr /%}
 
-**content**: [`Content`](/api-reference/generate-content#Resource:Content)
+  **content**: [`Content`](/api-reference/generate-content#Resource:Content)
 
-Output only. Generated content returned from the model.
+  Output only. Generated content returned from the model.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **finishReason**: `enum (string)`
+  **finishReason**: `string enum`
 
   Optional. Output only. The reason why the model stopped generating tokens. If empty, the model has not stopped generating tokens.
 
@@ -280,37 +284,37 @@ Output only. Generated content returned from the model.
   - `PUP_LIMITED_DISABLED`: Indicates that token generation stopped because the user account is limited or disabled due to Prohibited Use Policy (PUP) violations.
   - `CONTINUATION`: Token generation was stopped because the response reached the per-request token limit, but generation is not yet complete. The model response can be continued via a subsequent request using the returned `continuation_token`. Note, the `max_output_tokens` is cumulative across continuation hops and must be monotonically increased or omitted.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**finishMessage**: `string`
+  **finishMessage**: `string`
 
-Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.
+  Optional. Output only. Details the reason why the model stopped generating tokens. This is populated only when `finish_reason` is set.
 
-{% hr /%}
+  {% hr /%}
 
-**safetyRatings**: `array (`[`SafetyRating`](/api-reference/generate-content#Resource:SafetyRating)`)`
+  **safetyRatings**: [`SafetyRating`](/api-reference/generate-content#Resource:SafetyRating) `array`
 
-List of ratings for the safety of a response candidate. There is at most one rating per category.
+  List of ratings for the safety of a response candidate. There is at most one rating per category.
 
-{% hr /%}
+  {% hr /%}
 
-**citationMetadata**: [`CitationMetadata`](/api-reference/generate-content#Resource:CitationMetadata)
+  **citationMetadata**: [`CitationMetadata`](/api-reference/generate-content#Resource:CitationMetadata)
 
-Output only. Citation information for model-generated candidate. This field may be populated with recitation information for any text included in the `content`. These are passages that are "recited" from copyrighted material in the foundational LLM's training data.
+  Output only. Citation information for model-generated candidate. This field may be populated with recitation information for any text included in the `content`. These are passages that are "recited" from copyrighted material in the foundational LLM's training data.
 
-{% hr /%}
+  {% hr /%}
 
-**tokenCount**: `integer`
+  **tokenCount**: `integer`
 
-Output only. Token count for this candidate.
+  Output only. Token count for this candidate.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **groundingAttributions**: `array (GroundingAttribution)`
+  **groundingAttributions**: `GroundingAttribution array`
 
   Output only. Attribution information for sources that contributed to a grounded answer. This field is populated for `GenerateAnswer` calls.
 
@@ -323,6 +327,14 @@ Output only. Token count for this candidate.
   Output only. Identifier for the source contributing to this attribution.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **source**: `Union type`
+
+  {% /summary %}
+
+  Union field `source` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -362,15 +374,17 @@ Output only. Token count for this candidate.
 
   {% /details %}
 
+  {% /details %}
+
   **content**: [`Content`](/api-reference/generate-content#Resource:Content)
 
   Grounding source content that makes up this attribution.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **groundingMetadata**: `GroundingMetadata`
 
@@ -398,11 +412,21 @@ Output only. Token count for this candidate.
 
   {% details %}
   {% summary %}
-  **groundingChunks**: `array (GroundingChunk)`
+  **groundingChunks**: `GroundingChunk array`
 
   List of supporting references retrieved from specified grounding source. When streaming, this only contains the grounding chunks that have not been included in the grounding metadata of previous responses.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **chunkType**: `Union type`
+
+  Chunk type.
+
+  {% /summary %}
+
+  Union field `chunkType` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -474,11 +498,21 @@ Output only. Token count for this candidate.
 
   {% details %}
   {% summary %}
-  **customMetadata**: `array (GroundingChunkCustomMetadata)`
+  **customMetadata**: `GroundingChunkCustomMetadata array`
 
   Optional. User-provided metadata about the retrieved context.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **value**: `Union type`
+
+  The value of the metadata. Can be a string, a list of strings, or a number.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
 
   **stringValue**: `string`
 
@@ -492,7 +526,7 @@ Output only. Token count for this candidate.
 
   {% /summary %}
 
-  **values**: `array (string)`
+  **values**: `string array`
 
   The string values of the list.
 
@@ -501,6 +535,8 @@ Output only. Token count for this candidate.
   **numericValue**: `number`
 
   Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
+
+  {% /details %}
 
   **key**: `string`
 
@@ -552,7 +588,7 @@ Output only. Token count for this candidate.
 
   {% details %}
   {% summary %}
-  **reviewSnippets**: `array (ReviewSnippet)`
+  **reviewSnippets**: `ReviewSnippet array`
 
   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
@@ -578,9 +614,11 @@ Output only. Token count for this candidate.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **groundingSupports**: `array (GoogleAiGenerativelanguageV1betaGroundingSupport)`
+  **groundingSupports**: `GoogleAiGenerativelanguageV1betaGroundingSupport array`
 
   List of grounding support.
 
@@ -612,15 +650,15 @@ Output only. Token count for this candidate.
 
   {% /details %}
 
-  **groundingChunkIndices**: `array (integer)`
+  **groundingChunkIndices**: `integer array`
 
   Optional. A list of indices (into 'grounding_chunk' in `response.candidate.grounding_metadata`) specifying the citations associated with the claim. For instance [1,3,4] means that grounding_chunk[1], grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to the claim. If the response is streaming, the grounding_chunk_indices refer to the indices across all responses. It is the client's responsibility to accumulate the grounding chunks from all responses (while maintaining the same order).
 
-  **confidenceScores**: `array (number)`
+  **confidenceScores**: `number array`
 
   Optional. Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices.
 
-  **renderedParts**: `array (integer)`
+  **renderedParts**: `integer array`
 
   Output only. Indices into the `parts` field of the candidate's content. These indices specify which rendered parts are associated with this support source.
 
@@ -640,11 +678,11 @@ Output only. Token count for this candidate.
 
   {% /details %}
 
-  **webSearchQueries**: `array (string)`
+  **webSearchQueries**: `string array`
 
   Web search queries for the following-up web search.
 
-  **imageSearchQueries**: `array (string)`
+  **imageSearchQueries**: `string array`
 
   Image search queries used for grounding.
 
@@ -652,17 +690,17 @@ Output only. Token count for this candidate.
 
   Optional. Resource name of the Google Maps widget context token that can be used with the PlacesContextElement widget in order to render contextual data. Only populated in the case that grounding with Google Maps is enabled.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**avgLogprobs**: `number`
+  **avgLogprobs**: `number`
 
-Output only. Average log probability score of the candidate.
+  Output only. Average log probability score of the candidate.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **logprobsResult**: `LogprobsResult`
 
@@ -676,7 +714,7 @@ Output only. Average log probability score of the candidate.
 
   {% details %}
   {% summary %}
-  **topCandidates**: `array (TopCandidates)`
+  **topCandidates**: `TopCandidates array`
 
   Length = total number of decoding steps.
 
@@ -684,7 +722,7 @@ Output only. Average log probability score of the candidate.
 
   {% details %}
   {% summary %}
-  **candidates**: `array (LogprobsResultCandidate)`
+  **candidates**: `LogprobsResultCandidate array`
 
   Sorted by log probability in descending order.
 
@@ -708,7 +746,7 @@ Output only. Average log probability score of the candidate.
 
   {% details %}
   {% summary %}
-  **chosenCandidates**: `array (LogprobsResultCandidate)`
+  **chosenCandidates**: `LogprobsResultCandidate array`
 
   Length = total number of decoding steps. The chosen candidates may or may not be in top_candidates.
 
@@ -728,11 +766,11 @@ Output only. Average log probability score of the candidate.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **urlContextMetadata**: `UrlContextMetadata`
 
@@ -742,7 +780,7 @@ Output only. Average log probability score of the candidate.
 
   {% details %}
   {% summary %}
-  **urlMetadata**: `array (UrlMetadata)`
+  **urlMetadata**: `UrlMetadata array`
 
   List of url context.
 
@@ -754,7 +792,7 @@ Output only. Average log probability score of the candidate.
 
   {% details %}
   {% summary %}
-  **urlRetrievalStatus**: `enum (string)`
+  **urlRetrievalStatus**: `string enum`
 
   Status of the url retrieval.
 
@@ -772,13 +810,15 @@ Output only. Average log probability score of the candidate.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**continuationToken**: `string`
+  **continuationToken**: `string`
 
-An optional opaque continuation token returned when `finish_reason` is `CONTINUATION`. Clients can pass this token in a subsequent `GenerateContentRequest` to continue generation.
+  An optional opaque continuation token returned when `finish_reason` is `CONTINUATION`. Clients can pass this token in a subsequent `GenerateContentRequest` to continue generation.
+
+{% /section %}
 
 ### CitationMetadata  {% id="Resource:CitationMetadata" %}
 
@@ -786,9 +826,10 @@ A collection of source attributions for a piece of content.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
-  **citationSources**: `array (CitationSource)`
+  **citationSources**: `CitationSource array`
 
   Citations to sources for a specific response.
 
@@ -810,7 +851,9 @@ A collection of source attributions for a piece of content.
 
   Optional. License for the GitHub project that is attributed as a source for segment. License info is required for code citations.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 
 ### HarmCategory  {% id="Resource:HarmCategory" %}
 
@@ -829,7 +872,8 @@ Represents token counting info for a single modality.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
   **modality**: `GenerativeLanguageModality`
 
@@ -846,13 +890,15 @@ Represents token counting info for a single modality.
   - `AUDIO`: Audio.
   - `DOCUMENT`: Document, e.g. PDF.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**tokenCount**: `integer`
+  **tokenCount**: `integer`
 
-Number of tokens.
+  Number of tokens.
+
+{% /section %}
 
 ### SafetyRating  {% id="Resource:SafetyRating" %}
 
@@ -866,7 +912,8 @@ here.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
   **category**: {% mark %}required{% /mark %} [`HarmCategory`](/api-reference/generate-content#Resource:HarmCategory)
 
@@ -883,13 +930,13 @@ here.
   - `HARM_CATEGORY_DANGEROUS_CONTENT`: **Gemini** - Dangerous content.
   - `HARM_CATEGORY_JAILBREAK`: **Gemini** - Prompts attempting to bypass or subvert the model's safety guidelines (jailbreak attempts).
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **probability**: {% mark %}required{% /mark %} `enum (string)`
+  **probability**: {% mark %}required{% /mark %} `string enum`
 
   The probability of harm for this content.
 
@@ -903,13 +950,15 @@ here.
   - `MEDIUM`: Content has a medium chance of being unsafe.
   - `HIGH`: Content has a high chance of being unsafe.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**blocked**: `boolean`
+  **blocked**: `boolean`
 
-Was this content blocked because of this rating?
+  Was this content blocked because of this rating?
+
+{% /section %}
 
 ### SafetySetting  {% id="Resource:SafetySetting" %}
 
@@ -920,7 +969,8 @@ content is blocked.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
   **category**: {% mark %}required{% /mark %} [`HarmCategory`](/api-reference/generate-content#Resource:HarmCategory)
 
@@ -937,13 +987,13 @@ content is blocked.
   - `HARM_CATEGORY_DANGEROUS_CONTENT`: **Gemini** - Dangerous content.
   - `HARM_CATEGORY_JAILBREAK`: **Gemini** - Prompts attempting to bypass or subvert the model's safety guidelines (jailbreak attempts).
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **threshold**: {% mark %}required{% /mark %} `enum (string)`
+  **threshold**: {% mark %}required{% /mark %} `string enum`
 
   Controls the probability threshold at which harm is blocked.
 
@@ -958,7 +1008,9 @@ content is blocked.
   - `BLOCK_NONE`: All content will be allowed.
   - `OFF`: Turn off the safety filter.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 
 ### ServiceTier  {% id="Resource:ServiceTier" %}
 
@@ -979,13 +1031,22 @@ the message turn.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
-  **parts**: `array (Part)`
+  **parts**: `Part array`
 
   Ordered `Parts` that constitute a single message. Parts may have different MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   **text**: `string`
 
@@ -1063,11 +1124,21 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **parts**: `array (FunctionResponsePart)`
+  **parts**: `FunctionResponsePart array`
 
   Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  The data of the function response part.
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -1118,9 +1189,11 @@ the message turn.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -1142,7 +1215,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **scheduling**: `enum (string)`
+  **scheduling**: `string enum`
 
   Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
 
@@ -1191,7 +1264,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **language**: {% mark %}required{% /mark %} `enum (string)`
+  **language**: {% mark %}required{% /mark %} `string enum`
 
   Programming language of the `code`.
 
@@ -1224,7 +1297,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **outcome**: {% mark %}required{% /mark %} `enum (string)`
+  **outcome**: {% mark %}required{% /mark %} `string enum`
 
   Outcome of the code execution.
 
@@ -1329,6 +1402,18 @@ the message turn.
 
   {% /details %}
 
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **metadata**: `Union type`
+
+  Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing.
+
+  {% /summary %}
+
+  Union field `metadata` can be only one of the following:
+
   {% details %}
   {% summary %}
   **videoMetadata**: `VideoMetadata`
@@ -1348,6 +1433,8 @@ the message turn.
   **fps**: `number`
 
   Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% /details %}
 
   {% /details %}
 
@@ -1373,7 +1460,17 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **level**: `enum (string)`
+  **value**: `Union type`
+
+  The media resolution level.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **level**: `string enum`
 
   The tokenization quality used for given media. for Gemini API support .
 
@@ -1391,9 +1488,11 @@ the message turn.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -1425,7 +1524,7 @@ the message turn.
 
   {% details %}
   {% summary %}
-  **words**: `array (WordInfo)`
+  **words**: `WordInfo array`
 
   Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
 
@@ -1465,13 +1564,15 @@ the message turn.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**role**: `string`
+  **role**: `string`
 
-Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn conversations, otherwise can be left blank or unset.
+  Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn conversations, otherwise can be left blank or unset.
+
+{% /section %}
 
 ### Environment  {% id="Resource:Environment" %}
 
@@ -1479,15 +1580,16 @@ An execution environment for an agent.
 
 **Properties:**
 
-**id**: {% mark %}required{% /mark %} `string`
+{% section class="api-ref-property-list" %}
+  **id**: {% mark %}required{% /mark %} `string`
 
-Output only. The ID of the environment.
+  Output only. The ID of the environment.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **sources**: `array (Source)`
+  **sources**: `Source array`
 
   Sources to be mounted into the environment.
 
@@ -1495,7 +1597,7 @@ Output only. The ID of the environment.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   {% /summary %}
 
@@ -1524,31 +1626,31 @@ Output only. The ID of the environment.
 
   Optional encoding for inline content (e.g. `base64`).
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**created**: `string`
+  **created**: `string`
 
-Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+  Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-{% hr /%}
+  {% hr /%}
 
-**updated**: `string`
+  **updated**: `string`
 
-Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+  Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-{% hr /%}
+  {% hr /%}
 
-**lastAccessed**: `string`
+  **lastAccessed**: `string`
 
-Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+  Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **status**: `enum (string)`
+  **status**: `string enum`
 
   Output only. The status of the environment container.
 
@@ -1560,11 +1662,21 @@ Output only. The time at which the environment was last accessed in ISO 8601 for
   - `ACTIVE`: Output only. The status of the environment container.
   - `EXPIRED`: Output only. The status of the environment container.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
+  {% summary %}
+  **network**: `Union type`
+
+  Network configuration for the environment.
+
+  {% /summary %}
+
+  Union field `network` can be only one of the following:
+
+  {% details %}
   {% summary %}
   **networkAllowlist**: `EnvironmentNetworkEgressAllowlist`
 
@@ -1574,7 +1686,7 @@ Output only. The time at which the environment was last accessed in ISO 8601 for
 
   {% details %}
   {% summary %}
-  **allowlist**: `array (EgressRule)`
+  **allowlist**: `EgressRule array`
 
   List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
@@ -1594,7 +1706,7 @@ Output only. The time at which the environment was last accessed in ISO 8601 for
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   Network egress mode. Set via the `"allowlist": "disabled"` short form; must be the only rule in the allowlist and cannot be combined with `domain`, `transform` or `credential`.
 
@@ -1609,13 +1721,11 @@ Output only. The time at which the environment was last accessed in ISO 8601 for
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
-
-{% details %}
+  {% details %}
   {% summary %}
-  **networkMode**: `enum (string)`
+  **networkMode**: `string enum`
 
   Network egress mode.
 
@@ -1626,19 +1736,23 @@ Output only. The time at which the environment was last accessed in ISO 8601 for
   - `NETWORK_MODE_UNSPECIFIED`: Default value. Unused.
   - `DISABLED`: All network egress is blocked.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% /details %}
 
-**fileCount**: `string`
+  {% hr /%}
 
-Output only. The number of files in the environment, output only.
+  **fileCount**: `string`
 
-{% hr /%}
+  Output only. The number of files in the environment, output only.
 
-**sizeBytes**: `string`
+  {% hr /%}
 
-Output only. The total size of the environment files in bytes, output only.
+  **sizeBytes**: `string`
+
+  Output only. The total size of the environment files in bytes, output only.
+
+{% /section %}
 
 ### Schema  {% id="Resource:Schema" %}
 
@@ -1649,7 +1763,8 @@ object](https://spec.openapis.org/oas/v3.0.3#schema).
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
   **type**: {% mark %}required{% /mark %} `Type`
 
@@ -1668,133 +1783,135 @@ object](https://spec.openapis.org/oas/v3.0.3#schema).
   - `OBJECT`: Object type.
   - `NULL`: Null type.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**format**: `string`
+  **format**: `string`
 
-Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
+  Optional. The format of the data. Any value is allowed, but most do not trigger any special functionality.
 
-{% hr /%}
+  {% hr /%}
 
-**title**: `string`
+  **title**: `string`
 
-Optional. The title of the schema.
+  Optional. The title of the schema.
 
-{% hr /%}
+  {% hr /%}
 
-**description**: `string`
+  **description**: `string`
 
-Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
+  Optional. A brief description of the parameter. This could contain examples of use. Parameter description may be formatted as Markdown.
 
-{% hr /%}
+  {% hr /%}
 
-**nullable**: `boolean`
+  **nullable**: `boolean`
 
-Optional. Indicates if the value may be null.
+  Optional. Indicates if the value may be null.
 
-{% hr /%}
+  {% hr /%}
 
-**enum**: `array (string)`
+  **enum**: `string array`
 
-Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
+  Optional. Possible values of the element of Type.STRING with enum format. For example we can define an Enum Direction as : {type:STRING, format:enum, enum:["EAST", NORTH", "SOUTH", "WEST"]}
 
-{% hr /%}
+  {% hr /%}
 
-**items**: [`Schema`](/api-reference/generate-content#Resource:Schema)
+  **items**: [`Schema`](/api-reference/generate-content#Resource:Schema)
 
-Optional. Schema of the elements of Type.ARRAY.
+  Optional. Schema of the elements of Type.ARRAY.
 
-{% hr /%}
+  {% hr /%}
 
-**maxItems**: `string`
+  **maxItems**: `string`
 
-Optional. Maximum number of the elements for Type.ARRAY.
+  Optional. Maximum number of the elements for Type.ARRAY.
 
-{% hr /%}
+  {% hr /%}
 
-**minItems**: `string`
+  **minItems**: `string`
 
-Optional. Minimum number of the elements for Type.ARRAY.
+  Optional. Minimum number of the elements for Type.ARRAY.
 
-{% hr /%}
+  {% hr /%}
 
-**properties**: `object`
+  **properties**: `object`
 
-Optional. Properties of Type.OBJECT.
+  Optional. Properties of Type.OBJECT.
 
-{% hr /%}
+  {% hr /%}
 
-**required**: `array (string)`
+  **required**: `string array`
 
-Optional. Required properties of Type.OBJECT.
+  Optional. Required properties of Type.OBJECT.
 
-{% hr /%}
+  {% hr /%}
 
-**minProperties**: `string`
+  **minProperties**: `string`
 
-Optional. Minimum number of the properties for Type.OBJECT.
+  Optional. Minimum number of the properties for Type.OBJECT.
 
-{% hr /%}
+  {% hr /%}
 
-**maxProperties**: `string`
+  **maxProperties**: `string`
 
-Optional. Maximum number of the properties for Type.OBJECT.
+  Optional. Maximum number of the properties for Type.OBJECT.
 
-{% hr /%}
+  {% hr /%}
 
-**minimum**: `number`
+  **minimum**: `number`
 
-Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
+  Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
 
-{% hr /%}
+  {% hr /%}
 
-**maximum**: `number`
+  **maximum**: `number`
 
-Optional. Maximum value of the Type.INTEGER and Type.NUMBER
+  Optional. Maximum value of the Type.INTEGER and Type.NUMBER
 
-{% hr /%}
+  {% hr /%}
 
-**minLength**: `string`
+  **minLength**: `string`
 
-Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
+  Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING
 
-{% hr /%}
+  {% hr /%}
 
-**maxLength**: `string`
+  **maxLength**: `string`
 
-Optional. Maximum length of the Type.STRING
+  Optional. Maximum length of the Type.STRING
 
-{% hr /%}
+  {% hr /%}
 
-**pattern**: `string`
+  **pattern**: `string`
 
-Optional. Pattern of the Type.STRING to restrict a string to a regular expression.
+  Optional. Pattern of the Type.STRING to restrict a string to a regular expression.
 
-{% hr /%}
+  {% hr /%}
 
-**example**: `object`
+  **example**: `object`
 
-Optional. Example of the object. Will only populated when the object is the root.
+  Optional. Example of the object. Will only populated when the object is the root.
 
-{% hr /%}
+  {% hr /%}
 
-**anyOf**: `array (`[`Schema`](/api-reference/generate-content#Resource:Schema)`)`
+  **anyOf**: [`Schema`](/api-reference/generate-content#Resource:Schema) `array`
 
-Optional. The value should be validated against any (one or more) of the subschemas in the list.
+  Optional. The value should be validated against any (one or more) of the subschemas in the list.
 
-{% hr /%}
+  {% hr /%}
 
-**propertyOrdering**: `array (string)`
+  **propertyOrdering**: `string array`
 
-Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
+  Optional. The order of the properties. Not a standard field in open api spec. Used to determine the order of the properties in the response.
 
-{% hr /%}
+  {% hr /%}
 
-**default**: `object`
+  **default**: `object`
 
-Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
+  Optional. Default value of the field. Per JSON Schema, this field is intended for documentation generators and doesn't affect validation. Thus it's included here and ignored so that developers who send schemas with a `default` field don't get unknown-field errors.
+
+{% /section %}
 
 ### Tool  {% id="Resource:Tool" %}
 
@@ -1806,9 +1923,10 @@ knowledge and scope of the model.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
   {% summary %}
-  **functionDeclarations**: `array (FunctionDeclaration)`
+  **functionDeclarations**: `FunctionDeclaration array`
 
   Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling. The model or system does not execute the function. Instead the defined function may be returned as a FunctionCall with arguments to the client side for execution. The model may decide to call a subset of these functions by populating FunctionCall in the response. The next conversation turn may contain a FunctionResponse with the Content.role "function" generation context for the next model turn.
 
@@ -1840,7 +1958,7 @@ knowledge and scope of the model.
 
   {% details %}
   {% summary %}
-  **behavior**: `enum (string)`
+  **behavior**: `string enum`
 
   Optional. Specifies the function Behavior. Currently only supported by the BidiGenerateContent method.
 
@@ -1854,11 +1972,11 @@ knowledge and scope of the model.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **googleSearchRetrieval**: `GoogleSearchRetrieval`
 
@@ -1876,7 +1994,7 @@ knowledge and scope of the model.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   The mode of the predictor to be used in dynamic retrieval.
 
@@ -1895,11 +2013,11 @@ knowledge and scope of the model.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **codeExecution**: `CodeExecution`
 
@@ -1907,11 +2025,11 @@ knowledge and scope of the model.
 
   {% /summary %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **googleSearch**: `GoogleSearch`
 
@@ -1967,11 +2085,11 @@ knowledge and scope of the model.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **computerUse**: `ComputerUse`
 
@@ -1981,7 +2099,7 @@ knowledge and scope of the model.
 
   {% details %}
   {% summary %}
-  **environment**: {% mark %}required{% /mark %} `enum (string)`
+  **environment**: {% mark %}required{% /mark %} `string enum`
 
   The environment being operated.
 
@@ -1996,7 +2114,7 @@ knowledge and scope of the model.
 
   {% /details %}
 
-  **excludedPredefinedFunctions**: `array (string)`
+  **excludedPredefinedFunctions**: `string array`
 
   Optional. By default, predefined functions are included in the final model call. Some of them can be explicitly excluded from being automatically included. This can serve two purposes: 1. Using a more restricted / different action space. 2. Improving the definitions / instructions of predefined functions.
 
@@ -2006,7 +2124,7 @@ knowledge and scope of the model.
 
   {% details %}
   {% summary %}
-  **disabledSafetyPolicies**: `array (enum (string))`
+  **disabledSafetyPolicies**: `string enum array`
 
   Optional. Disabled safety policies for computer use.
 
@@ -2025,11 +2143,11 @@ knowledge and scope of the model.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **urlContext**: `UrlContext`
 
@@ -2037,11 +2155,11 @@ knowledge and scope of the model.
 
   {% /summary %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **fileSearch**: `FileSearch`
 
@@ -2049,7 +2167,7 @@ knowledge and scope of the model.
 
   {% /summary %}
 
-  **fileSearchStoreNames**: {% mark %}required{% /mark %} `array (string)`
+  **fileSearchStoreNames**: {% mark %}required{% /mark %} `string array`
 
   The names of the file_search_stores to retrieve from. Example: `fileSearchStores/my-file-search-store-123`
 
@@ -2061,17 +2179,27 @@ knowledge and scope of the model.
 
   Optional. Metadata filter to apply to the semantic retrieval documents and chunks.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **mcpServers**: `array (McpServer)`
+  **mcpServers**: `McpServer array`
 
   Optional. MCP Servers to connect to.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **transport**: `Union type`
+
+  The transport to use to connect to the MCPServer.
+
+  {% /summary %}
+
+  Union field `transport` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -2103,15 +2231,17 @@ knowledge and scope of the model.
 
   {% /details %}
 
+  {% /details %}
+
   **name**: `string`
 
   The name of the MCPServer.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **googleMaps**: `GoogleMaps`
 
@@ -2123,7 +2253,9 @@ knowledge and scope of the model.
 
   Optional. Whether to return a widget context token in the GroundingMetadata of the response. Developers can use the widget context token to render a Google Maps widget with geospatial context related to the places that the model references in the response.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 
 ### AuthToken  {% id="Resource:AuthToken" %}
 
@@ -2131,7 +2263,18 @@ A request to create an ephemeral authentication token.
 
 **Properties:**
 
-{% details %}
+{% section class="api-ref-property-list" %}
+  {% details %}
+  {% summary %}
+  **config**: `Union type`
+
+  The method-specific configuration for the resulting token.
+
+  {% /summary %}
+
+  Union field `config` can be only one of the following:
+
+  {% details %}
   {% summary %}
   **bidiGenerateContentSetup**: `BidiGenerateContentSetup`
 
@@ -2165,7 +2308,7 @@ A request to create an ephemeral authentication token.
 
   Optional. Number of generated responses to return. If unset, this will default to 1. Please note that this doesn't work for previous generation models (Gemini 1.0 family)
 
-  **stopSequences**: `array (string)`
+  **stopSequences**: `string array`
 
   Optional. The set of character sequences (up to 5) that will stop output generation. If specified, the API will stop at the first appearance of a `stop_sequence`. The stop sequence will not be included as part of the response.
 
@@ -2219,7 +2362,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **responseModalities**: `array (enum (string))`
+  **responseModalities**: `string enum array`
 
   Optional. The requested modalities of the response. Represents the set of modalities that the model can return, and should be expected in the response. This is an exact match to the modalities of the response. A model may have multiple combinations of supported modalities. If the requested modalities do not match any of the supported combinations, an error will be returned. An empty list is equivalent to requesting only text.
 
@@ -2252,6 +2395,16 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
+  **voiceConfig**: `Union type`
+
+  The configuration for the speaker to use.
+
+  {% /summary %}
+
+  Union field `voiceConfig` can be only one of the following:
+
+  {% details %}
+  {% summary %}
   **prebuiltVoiceConfig**: `PrebuiltVoiceConfig`
 
   The configuration for the prebuilt voice to use.
@@ -2274,6 +2427,8 @@ A request to create an ephemeral authentication token.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
   **multiSpeakerVoiceConfig**: `MultiSpeakerVoiceConfig`
@@ -2284,7 +2439,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **speakerVoiceConfigs**: {% mark %}required{% /mark %} `array (SpeakerVoiceConfig)`
+  **speakerVoiceConfigs**: {% mark %}required{% /mark %} `SpeakerVoiceConfig array`
 
   All the enabled speaker voices.
 
@@ -2304,6 +2459,16 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
+  **voiceConfig**: `Union type`
+
+  The configuration for the speaker to use.
+
+  {% /summary %}
+
+  Union field `voiceConfig` can be only one of the following:
+
+  {% details %}
+  {% summary %}
   **prebuiltVoiceConfig**: `PrebuiltVoiceConfig`
 
   The configuration for the prebuilt voice to use.
@@ -2323,6 +2488,8 @@ A request to create an ephemeral authentication token.
   - Speaker name for prebuilt voices (for example, `Orus` or `Kore`).
   - Voice ID for stored voices (for example, `voice_xxx`).
   - Voice replication key (for example, `voicekey_xxx`).
+
+  {% /details %}
 
   {% /details %}
 
@@ -2354,7 +2521,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **thinkingLevel**: `enum (string)`
+  **thinkingLevel**: `string enum`
 
   Optional. Controls the maximum depth of the model's internal reasoning process before it produces a response. The default value is model-dependent. Refer to the [Thinking levels guide](/docs/thinking#thinking-levels) for more details. Recommended for Gemini 3 or later models. Use with earlier models results in an error.
 
@@ -2392,7 +2559,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mediaResolution**: `enum (string)`
+  **mediaResolution**: `string enum`
 
   Optional. If specified, the media resolution specified will be used.
 
@@ -2429,7 +2596,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mimeType**: `enum (string)`
+  **mimeType**: `string enum`
 
   Optional. The MIME type of the text output.
 
@@ -2459,7 +2626,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mimeType**: `enum (string)`
+  **mimeType**: `string enum`
 
   Optional. The MIME type of the audio output.
 
@@ -2479,7 +2646,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **delivery**: `enum (string)`
+  **delivery**: `string enum`
 
   Optional. The delivery mode for the audio output.
 
@@ -2513,7 +2680,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mimeType**: `enum (string)`
+  **mimeType**: `string enum`
 
   Optional. The MIME type of the image output.
 
@@ -2528,7 +2695,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **delivery**: `enum (string)`
+  **delivery**: `string enum`
 
   Optional. The delivery mode for the image output.
 
@@ -2544,7 +2711,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **aspectRatio**: `enum (string)`
+  **aspectRatio**: `string enum`
 
   Optional. The aspect ratio for the image output.
 
@@ -2572,7 +2739,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **imageSize**: `enum (string)`
+  **imageSize**: `string enum`
 
   Optional. The size of the image output.
 
@@ -2618,11 +2785,11 @@ A request to create an ephemeral authentication token.
 
   {% /summary %}
 
-  **languageCodes**: `array (string)`
+  **languageCodes**: `string array`
 
   Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
 
-  **customVocabulary**: `array (string)`
+  **customVocabulary**: `string array`
 
   Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
 
@@ -2636,7 +2803,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.
 
@@ -2658,7 +2825,7 @@ A request to create an ephemeral authentication token.
 
   Optional. The user provided system instructions for the model. Note: Only text should be used in parts and content in each part will be in a separate paragraph.
 
-  **tools**: `array (`[`Tool`](/api-reference/generate-content#Resource:Tool)`)`
+  **tools**: [`Tool`](/api-reference/generate-content#Resource:Tool) `array`
 
   Optional. A list of `Tools` the model may use to generate the next response. A [`Tool`](/api-reference/generate-content#Resource:Tool) is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
 
@@ -2684,7 +2851,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **startOfSpeechSensitivity**: `enum (string)`
+  **startOfSpeechSensitivity**: `string enum`
 
   Optional. Determines how likely speech is to be detected.
 
@@ -2704,7 +2871,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **endOfSpeechSensitivity**: `enum (string)`
+  **endOfSpeechSensitivity**: `string enum`
 
   Optional. Determines how likely detected speech is ended.
 
@@ -2742,7 +2909,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **turnCoverage**: `enum (string)`
+  **turnCoverage**: `string enum`
 
   Optional. Defines which input is included in the user's turn.
 
@@ -2787,6 +2954,16 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
+  **compressionMechanism**: `Union type`
+
+  The context window compression mechanism used.
+
+  {% /summary %}
+
+  Union field `compressionMechanism` can be only one of the following:
+
+  {% details %}
+  {% summary %}
   **slidingWindow**: `SlidingWindow`
 
   A sliding-window mechanism.
@@ -2796,6 +2973,8 @@ A request to create an ephemeral authentication token.
   **targetTokens**: `string`
 
   The target number of tokens to keep. The default value is trigger_tokens/2. Discarding parts of the context window causes a temporary latency increase so this value should be calibrated to avoid frequent compression operations.
+
+  {% /details %}
 
   {% /details %}
 
@@ -2813,11 +2992,11 @@ A request to create an ephemeral authentication token.
 
   {% /summary %}
 
-  **languageCodes**: `array (string)`
+  **languageCodes**: `string array`
 
   Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
 
-  **customVocabulary**: `array (string)`
+  **customVocabulary**: `string array`
 
   Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
 
@@ -2831,7 +3010,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.
 
@@ -2855,11 +3034,11 @@ A request to create an ephemeral authentication token.
 
   {% /summary %}
 
-  **languageCodes**: `array (string)`
+  **languageCodes**: `string array`
 
   Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
 
-  **customVocabulary**: `array (string)`
+  **customVocabulary**: `string array`
 
   Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
 
@@ -2873,7 +3052,7 @@ A request to create an ephemeral authentication token.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.
 
@@ -2929,35 +3108,39 @@ A request to create an ephemeral authentication token.
 
   - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% /details %}
 
-**name**: `string`
+  {% hr /%}
 
-Output only. Identifier. The token itself.
+  **name**: `string`
 
-{% hr /%}
+  Output only. Identifier. The token itself.
 
-**expireTime**: `string`
+  {% hr /%}
 
-Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
+  **expireTime**: `string`
 
-{% hr /%}
+  Optional. Input only. Immutable. An optional time after which, when using the resulting token, messages in BidiGenerateContent sessions will be rejected. (Gemini may preemptively close the session after this time.) If not set then this defaults to 30 minutes in the future. If set, this value must be less than 20 hours in the future.
 
-**newSessionExpireTime**: `string`
+  {% hr /%}
 
-Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
+  **newSessionExpireTime**: `string`
 
-{% hr /%}
+  Optional. Input only. Immutable. The time after which new Live API sessions using the token resulting from this request will be rejected. If not set this defaults to 60 seconds in the future. If set, this value must be less than 20 hours in the future.
 
-**uses**: `integer`
+  {% hr /%}
 
-Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+  **uses**: `integer`
 
-{% hr /%}
+  Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
 
-**fieldMask**: `string`
+  {% hr /%}
 
-Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` *is* present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+  **fieldMask**: `string`
+
+  Optional. Input only. Immutable. If field_mask is empty, and `bidi_generate_content_setup` is not present, then the effective `BidiGenerateContentSetup` message is taken from the Live API connection. If field_mask is empty, and `bidi_generate_content_setup` *is* present, then the effective `BidiGenerateContentSetup` message is taken entirely from `bidi_generate_content_setup` in this request. The setup message from the Live API connection is ignored. If field_mask is not empty, then the corresponding fields from `bidi_generate_content_setup` will overwrite the fields from the setup message in the Live API connection.
+
+{% /section %}
 

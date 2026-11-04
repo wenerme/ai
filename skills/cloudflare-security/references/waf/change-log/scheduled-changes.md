@@ -16,14 +16,15 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-10-12
+## 2026-11-03
 
 
-**WAF Release - Scheduled changes for 2026-10-19**
+**WAF Release - Scheduled changes for 2026-11-10**
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-10-12 | 2026-10-19 | Log | N/A | ...5ea9966d | Broken Access Control - Directory Traversal (Beta) | This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8). |
+| 2026-10-12 | 2026-11-10 | Log | N/A | ...5ea9966d | Broken Access Control - Directory Traversal (Beta) | This rule will be merged into the original rule "Broken Access Control - Directory Traversal" (ID: ...cb14ded8). |
+| 2026-11-03 | 2026-11-10 | Log | N/A | ...7178209b | Generic Rules - Dangerous File Upload | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

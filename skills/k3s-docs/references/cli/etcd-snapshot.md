@@ -6,7 +6,7 @@ title: etcd-snapshot
 
 This page describes how to use the `k3s etcd-snapshot` CLI tool to manage etcd snapshots and how to restore from an etcd snapshot.
 
-K3s etcd snapshots are stored on the node file system, and may optionally be uploaded to an S3 compatible object store for disaster recovery scenarios. Snapshots can be both automated on a reoccurring schedule, and taken manually on-demand.  The `k3s etcd-snapshot` CLI tool offers a set of subcommands that can be used to create, delete, and manage snapshots.
+K3s etcd snapshots are stored on the node file system, and may optionally be uploaded to an S3-compatible object store for disaster recovery scenarios. Snapshots can be both automated on a recurring schedule, and taken manually on-demand.  The `k3s etcd-snapshot` CLI tool offers a set of subcommands that can be used to create, delete, and manage snapshots.
 
 | Subcommand | Description |
 | ----------- | --------------- |
@@ -28,13 +28,13 @@ The following options control the operation of scheduled snapshots:
 | `--etcd-disable-snapshots` | Disable scheduled snapshots |
 | `--etcd-snapshot-name` | Sets the base name of etcd scheduled snapshots. (Default: `etcd-snapshot`) |
 | `--etcd-snapshot-compress` | Compress etcd snapshots |
-| `--etcd-snapshot-dir` | Directory to save db snapshots. (Default location: `${data-dir}/db/snapshots`) |
+| `--etcd-snapshot-dir` | Directory to save db snapshots. (Default location: `${data-dir}/server/db/snapshots`) |
 | `--etcd-snapshot-retention` | Number of local snapshots to retain on each server node (default: 5) |
 | `--etcd-snapshot-schedule-cron` |  Snapshot interval time in cron spec. eg. every 5 hours `0 */5 * * *` (default: `0 */12 * * *`) |
 
 The data-dir value defaults to `/var/lib/rancher/k3s` and can be changed independently by setting the `--data-dir` flag.
 
-Scheduled snapshots are saved to the path set by the server's `--etcd-snapshot-dir` value. If you want them replicated in S3 compatible object stores, refer to [S3 configuration options](#s3-compatible-object-store-support)
+Scheduled snapshots are saved to the path set by the server's `--etcd-snapshot-dir` value. If you want them replicated in S3-compatible object stores, refer to [S3 configuration options](#s3-compatible-object-store-support).
 
 Snapshots can be saved manually by running the `k3s etcd-snapshot save` command. There is no retention for these on-demand snapshots and the user needs to remove them manually by using `k3s etcd-snapshot delete` or `k3s etcd-snapshot prune` commands. On-demand snapshots have a name that starts with `on-demand`, followed by the node name and timestamp.
 
@@ -44,13 +44,13 @@ The following options control the operation of on-demand snapshots:
 | ----------- | --------------- |
 | `--name` | Sets the base name of etcd on-demand snapshots. (Default: `on-demand`) |
 | `--etcd-snapshot-compress` | Compress etcd snapshots |
-| `--etcd-snapshot-dir` | Directory to save db snapshots. (Default location: `${data-dir}/db/snapshots`) |
+| `--etcd-snapshot-dir` | Directory to save db snapshots. (Default location: `${data-dir}/server/db/snapshots`) |
 
 The data-dir value defaults to `/var/lib/rancher/k3s` and can be changed independently by setting the `--data-dir` flag.
 
 The `--name` flag can only be set when running the `k3s etcd-snapshot save` command. The other two can also be part of the `k3s server` [configuration file](../installation/configuration.md#configuration-file)
 
-On-demand snapshots are saved to the path set by the server's `--etcd-snapshot-dir` value. If you want them replicated in S3 compatible object stores, refer to [S3 configuration options](#s3-compatible-object-store-support)
+On-demand snapshots are saved to the path set by the server's `--etcd-snapshot-dir` value. If you want them replicated in S3-compatible object stores, refer to [S3 configuration options](#s3-compatible-object-store-support)
 
 ## Deleting Snapshots
 
@@ -91,7 +91,7 @@ K3s supports replicating etcd snapshots to and restoring etcd snapshots from S3-
 | `--etcd-s3-region` | S3 region / bucket location (optional). defaults to us-east-1 |
 | `--etcd-s3-folder` | S3 folder |
 | `--etcd-s3-retention` | Number of S3 snapshots to retain in the configured region, bucket, and prefix (default: `5`) |
-| `--etcd-s3-proxy` | Proxy server to use when connecting to S3, overriding any proxy-releated environment variables |
+| `--etcd-s3-proxy` | Proxy server to use when connecting to S3, overriding any proxy-related environment variables |
 | `--etcd-s3-insecure` | Disables S3 over HTTPS |
 | `--etcd-s3-timeout` | S3 timeout (default: `5m0s`) |
 | `--etcd-s3-config-secret` | Name of secret in the kube-system namespace used to configure S3, if etcd-s3 is enabled and no other etcd-s3 options are set |
@@ -183,7 +183,7 @@ K3s runs through several steps when restoring a snapshot:
 6. CA Certificates and other confidential data are extracted from the datastore and written to disk, for later use.
 7. The restore is complete, and K3s can be restarted and used normally on the server where the restore was performed.
 8. (optional) Agents and control-plane servers can be started normally. 
-8. (optional) Etcd servers can be restarted to rejoin to the cluster after removing old database files.
+9. (optional) Etcd servers can be restarted to rejoin to the cluster after removing old database files.
 
 When restoring a snapshot, you don't need to use the exact same K3s version that created it.
 A higher patch or minor version is also acceptable, as long as the Kubernetes [Version Skew Policy](https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order) is respected.
@@ -200,7 +200,7 @@ Select the tab below that matches your cluster configuration.
     ```
 
 2. Run `k3s server` with the `--cluster-reset` flag, and `--cluster-reset-restore-path` indicating the path to the snapshot to restore.
-   If the snapshot is stored on S3, provide S3 configuration flags (`--etcd-s3`, `--etcd-s3-bucket`, and so on), and give only the filename name of the snapshot as the restore path.
+   If the snapshot is stored on S3, provide S3 configuration flags (`--etcd-s3`, `--etcd-s3-bucket`, and so on), and give only the filename of the snapshot as the restore path.
 
     :::note
     Using the `--cluster-reset` flag without specifying a snapshot to restore simply resets the etcd cluster to a single member without restoring a snapshot.
@@ -231,7 +231,7 @@ In this example there are 3 servers, `S1`, `S2`, and `S3`. The snapshot is locat
     ```
 
 2. On S1, run `k3s server` with the `--cluster-reset` option, and `--cluster-reset-restore-path` indicating the path to the snapshot to restore.
-   If the snapshot is stored on S3, provide S3 configuration flags (`--etcd-s3`, `--etcd-s3-bucket`, and so on), and give only the filename name of the snapshot as the restore path.
+   If the snapshot is stored on S3, provide S3 configuration flags (`--etcd-s3`, `--etcd-s3-bucket`, and so on), and give only the filename of the snapshot as the restore path.
 
     :::note
     Using the `--cluster-reset` flag without specifying a snapshot to restore simply resets the etcd cluster to a single member without restoring a snapshot.
@@ -360,7 +360,7 @@ The CLI inherits its defaults from the server configuration, but options may be 
 The CLI, and the server-side snapshot management API that the CLI interacts with, do not make any effort to validate target paths or confirm that files/objects targeted for deletion are actually etcd snapshots.
 
 Administrators who wish to restrict snapshot management operations (both save of on-demand snapshots, and deletion of existing snapshots) can use the `etcd-snapshot-restrictions` option.
-This option applies one or more restriction to snapshot management operations by disabling override of server-side settings by CLI flags.
+This option applies one or more restrictions to snapshot management operations by disabling override of server-side settings by CLI flags.
 
 | Value | Effect |
 | ----- | ------ |

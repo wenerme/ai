@@ -22,7 +22,7 @@ the `background` parameter set to `true` can be cancelled.
 
 ### Returns
 
-- `BetaResponse object { id, access_programs, created_at, 35 more }`
+- `BetaResponse object { id, access_programs, created_at, 36 more }`
 
   - `id: string`
 
@@ -5446,14 +5446,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -5679,6 +5679,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.6-cyber"`
 
       - `"gpt-rosalind-research"`
+
+      - `"gpt-6-rosalind"`
 
     - `string`
 
@@ -11071,6 +11073,16 @@ the `background` parameter set to `true` can be cancelled.
 
       The unique ID of the conversation that this response was associated with.
 
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
+
   - `max_output_tokens: optional integer or null`
 
     An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -11314,11 +11326,13 @@ the `background` parameter set to `true` can be cancelled.
 
       - `"explicit"`
 
-    - `ttl: "30m"`
+    - `ttl: "30m" or "12h"`
 
       The minimum lifetime applied to each cache breakpoint.
 
       - `"30m"`
+
+      - `"12h"`
 
     - `comparison_response_id: optional string or null`
 
@@ -11653,7 +11667,7 @@ the `background` parameter set to `true` can be cancelled.
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -11665,6 +11679,16 @@ the `background` parameter set to `true` can be cancelled.
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -11779,6 +11803,9 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
   "metadata": {},
   "conversation": {
     "id": "id"
+  },
+  "image": {
+    "context_compression": "enabled"
   },
   "moderation": {
     "input": {
@@ -11911,11 +11938,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 Content type: `application/json`
 
-- `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string or null`
+- `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
@@ -12139,7 +12166,23 @@ Content type: `application/json`
 
     - `"gpt-rosalind-research"`
 
+    - `"gpt-6-rosalind"`
+
   - `string`
+
+- `image: optional object { context_compression }`
+
+  Request level image options.
+
+  - `context_compression: optional "auto" or "enabled" or "disabled"`
+
+    Controls image context optimization. Defaults to `auto`, which uses the model, transport, and input to select a policy. Use `enabled` to require compression support or `disabled` to turn it off.
+
+    - `"auto"`
+
+    - `"enabled"`
+
+    - `"disabled"`
 
 - `input: optional string or array of BetaEasyInputMessage or Message { content, role, agent, 2 more }  or BetaResponseOutputMessage or 33 more or null`
 
@@ -17428,7 +17471,7 @@ Content type: `application/json`
 
 - `prompt_cache_options: optional object { mode, ttl }  or null`
 
-  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
+  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`. Supported lifetimes depend on the API. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
 
   - `mode: optional "implicit" or "explicit"`
 
@@ -17469,7 +17512,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `BetaCompactedResponse object { id, created_at, object, 2 more }`
+- `BetaCompactedResponse object { id, created_at, object, 3 more }`
 
   - `id: string`
 
@@ -22490,7 +22533,7 @@ Content type: `application/json`
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -22502,6 +22545,16 @@ Content type: `application/json`
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -22518,6 +22571,16 @@ Content type: `application/json`
     - `total_tokens: integer`
 
       The total number of tokens used.
+
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
 
 ### Example
 
@@ -22573,13 +22636,20 @@ curl https://api.openai.com/v1/responses/compact \
     "input_tokens": 42897,
     "input_tokens_details": {
       "cache_write_tokens": 0,
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens_details": {
+        "ttl_12h_tokens": 0,
+        "ttl_30m_tokens": 0
+      }
     },
     "output_tokens": 12000,
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
     "total_tokens": 54897
+  },
+  "image": {
+    "context_compression": "disabled"
   }
 }
 ```
@@ -22747,6 +22817,20 @@ Content type: `application/json`
     - `id: string`
 
       The unique ID of the conversation.
+
+- `image: optional object { context_compression }`
+
+  Request level image options.
+
+  - `context_compression: optional "auto" or "enabled" or "disabled"`
+
+    Controls image context optimization. Defaults to `auto`, which uses the model, transport, and input to select a policy. Use `enabled` to require compression support or `disabled` to turn it off.
+
+    - `"auto"`
+
+    - `"enabled"`
+
+    - `"disabled"`
 
 - `include: optional array of BetaResponseIncludable or null`
 
@@ -28079,14 +28163,14 @@ Content type: `application/json`
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+- `model: optional "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -28313,6 +28397,8 @@ Content type: `application/json`
 
     - `"gpt-rosalind-research"`
 
+    - `"gpt-6-rosalind"`
+
   - `string`
 
 - `moderation: optional object { model, policy }  or null`
@@ -28411,7 +28497,7 @@ Content type: `application/json`
 
 - `prompt_cache_options: optional object { comparison_response_id, mode, prewarm, ttl }`
 
-  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
+  Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`. Supported lifetimes depend on the API. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
 
   - `comparison_response_id: optional string or null`
 
@@ -28429,11 +28515,13 @@ Content type: `application/json`
 
     Prepares the prompt cache without generating output. Defaults to `false`. When set to `true`, overrides the `generate` field to `false`.
 
-  - `ttl: optional "30m"`
+  - `ttl: optional "30m" or "12h"`
 
-    The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+    The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Supported values are `30m` (the default) and `12h`. The backend may retain cache entries for longer.
 
     - `"30m"`
+
+    - `"12h"`
 
 - `prompt_cache_retention: optional "in_memory" or "24h" or null`
 
@@ -29926,7 +30014,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `BetaResponse object { id, access_programs, created_at, 35 more }`
+- `BetaResponse object { id, access_programs, created_at, 36 more }`
 
   - `id: string`
 
@@ -35350,14 +35438,14 @@ Content type: `application/json`
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -35583,6 +35671,8 @@ Content type: `application/json`
       - `"gpt-5.6-cyber"`
 
       - `"gpt-rosalind-research"`
+
+      - `"gpt-6-rosalind"`
 
     - `string`
 
@@ -40975,6 +41065,16 @@ Content type: `application/json`
 
       The unique ID of the conversation that this response was associated with.
 
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
+
   - `max_output_tokens: optional integer or null`
 
     An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -41218,11 +41318,13 @@ Content type: `application/json`
 
       - `"explicit"`
 
-    - `ttl: "30m"`
+    - `ttl: "30m" or "12h"`
 
       The minimum lifetime applied to each cache breakpoint.
 
       - `"30m"`
+
+      - `"12h"`
 
     - `comparison_response_id: optional string or null`
 
@@ -41557,7 +41659,7 @@ Content type: `application/json`
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -41569,6 +41671,16 @@ Content type: `application/json`
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -41684,6 +41796,9 @@ curl https://api.openai.com/v1/responses \
   "metadata": {},
   "conversation": {
     "id": "id"
+  },
+  "image": {
+    "context_compression": "enabled"
   },
   "moderation": {
     "input": {
@@ -42642,7 +42757,7 @@ Retrieves a model response with the given ID.
 
 ### Returns
 
-- `BetaResponse object { id, access_programs, created_at, 35 more }`
+- `BetaResponse object { id, access_programs, created_at, 36 more }`
 
   - `id: string`
 
@@ -48066,14 +48181,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -48299,6 +48414,8 @@ Retrieves a model response with the given ID.
       - `"gpt-5.6-cyber"`
 
       - `"gpt-rosalind-research"`
+
+      - `"gpt-6-rosalind"`
 
     - `string`
 
@@ -53691,6 +53808,16 @@ Retrieves a model response with the given ID.
 
       The unique ID of the conversation that this response was associated with.
 
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
+
   - `max_output_tokens: optional integer or null`
 
     An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -53934,11 +54061,13 @@ Retrieves a model response with the given ID.
 
       - `"explicit"`
 
-    - `ttl: "30m"`
+    - `ttl: "30m" or "12h"`
 
       The minimum lifetime applied to each cache breakpoint.
 
       - `"30m"`
+
+      - `"12h"`
 
     - `comparison_response_id: optional string or null`
 
@@ -54273,7 +54402,7 @@ Retrieves a model response with the given ID.
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -54285,6 +54414,16 @@ Retrieves a model response with the given ID.
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -54398,6 +54537,9 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID \
   "metadata": {},
   "conversation": {
     "id": "id"
+  },
+  "image": {
+    "context_compression": "enabled"
   },
   "moderation": {
     "input": {
@@ -54526,7 +54668,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Compacted Response
 
-- `BetaCompactedResponse object { id, created_at, object, 2 more }`
+- `BetaCompactedResponse object { id, created_at, object, 3 more }`
 
   - `id: string`
 
@@ -59547,7 +59689,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -59559,6 +59701,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -59575,6 +59727,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `total_tokens: integer`
 
       The total number of tokens used.
+
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
 
 ### Beta Computer Action
 
@@ -60542,7 +60704,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response
 
-- `BetaResponse object { id, access_programs, created_at, 35 more }`
+- `BetaResponse object { id, access_programs, created_at, 36 more }`
 
   - `id: string`
 
@@ -65966,14 +66128,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -66199,6 +66361,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-5.6-cyber"`
 
       - `"gpt-rosalind-research"`
+
+      - `"gpt-6-rosalind"`
 
     - `string`
 
@@ -71591,6 +71755,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The unique ID of the conversation that this response was associated with.
 
+  - `image: optional object { context_compression }`
+
+    - `context_compression: "enabled" or "disabled"`
+
+      Effective image context optimization policy.
+
+      - `"enabled"`
+
+      - `"disabled"`
+
   - `max_output_tokens: optional integer or null`
 
     An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -71834,11 +72008,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"explicit"`
 
-    - `ttl: "30m"`
+    - `ttl: "30m" or "12h"`
 
       The minimum lifetime applied to each cache breakpoint.
 
       - `"30m"`
+
+      - `"12h"`
 
     - `comparison_response_id: optional string or null`
 
@@ -72173,7 +72349,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The number of input tokens.
 
-    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
       A detailed breakdown of the input tokens.
 
@@ -72185,6 +72361,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of tokens that were retrieved from the cache.
         [More on prompt caching](/api/docs/guides/prompt-caching).
+
+      - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+        - `ttl_12h_tokens: integer`
+
+          The number of input tokens written with 12-hour retention.
+
+        - `ttl_30m_tokens: integer`
+
+          The number of input tokens written with 30-minute retention.
 
     - `output_tokens: integer`
 
@@ -77944,14 +78130,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -78177,6 +78363,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -83569,6 +83757,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -83812,11 +84010,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -84151,7 +84351,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -84163,6 +84363,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -90387,14 +90597,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -90620,6 +90830,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -96012,6 +96224,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -96255,11 +96477,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -96594,7 +96818,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -96606,6 +96830,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -102301,14 +102535,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -102534,6 +102768,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -107926,6 +108162,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -108169,11 +108415,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -108508,7 +108756,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -108520,6 +108768,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -114468,14 +114726,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -114701,6 +114959,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -120093,6 +120353,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -120336,11 +120606,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -120675,7 +120947,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -120687,6 +120959,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -126195,14 +126477,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -126428,6 +126710,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -131820,6 +132104,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -132063,11 +132357,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -132402,7 +132698,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -132414,6 +132710,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -164973,14 +165279,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -165206,6 +165512,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-cyber"`
 
         - `"gpt-rosalind-research"`
+
+        - `"gpt-6-rosalind"`
 
       - `string`
 
@@ -170598,6 +170906,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The unique ID of the conversation that this response was associated with.
 
+    - `image: optional object { context_compression }`
+
+      - `context_compression: "enabled" or "disabled"`
+
+        Effective image context optimization policy.
+
+        - `"enabled"`
+
+        - `"disabled"`
+
     - `max_output_tokens: optional integer or null`
 
       An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -170841,11 +171159,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"explicit"`
 
-      - `ttl: "30m"`
+      - `ttl: "30m" or "12h"`
 
         The minimum lifetime applied to each cache breakpoint.
 
         - `"30m"`
+
+        - `"12h"`
 
       - `comparison_response_id: optional string or null`
 
@@ -171180,7 +171500,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The number of input tokens.
 
-      - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+      - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
         A detailed breakdown of the input tokens.
 
@@ -171192,6 +171512,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of tokens that were retrieved from the cache.
           [More on prompt caching](/api/docs/guides/prompt-caching).
+
+        - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+          - `ttl_12h_tokens: integer`
+
+            The number of input tokens written with 12-hour retention.
+
+          - `ttl_30m_tokens: integer`
+
+            The number of input tokens written with 30-minute retention.
 
       - `output_tokens: integer`
 
@@ -178984,14 +179314,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+      - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
 
-        - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+        - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
           Model ID used to generate the response, like `gpt-6-astra`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -179217,6 +179547,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.6-cyber"`
 
           - `"gpt-rosalind-research"`
+
+          - `"gpt-6-rosalind"`
 
         - `string`
 
@@ -184609,6 +184941,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The unique ID of the conversation that this response was associated with.
 
+      - `image: optional object { context_compression }`
+
+        - `context_compression: "enabled" or "disabled"`
+
+          Effective image context optimization policy.
+
+          - `"enabled"`
+
+          - `"disabled"`
+
       - `max_output_tokens: optional integer or null`
 
         An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/api/docs/guides/reasoning).
@@ -184852,11 +185194,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"explicit"`
 
-        - `ttl: "30m"`
+        - `ttl: "30m" or "12h"`
 
           The minimum lifetime applied to each cache breakpoint.
 
           - `"30m"`
+
+          - `"12h"`
 
         - `comparison_response_id: optional string or null`
 
@@ -185191,7 +185535,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The number of input tokens.
 
-        - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+        - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
           A detailed breakdown of the input tokens.
 
@@ -185203,6 +185547,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The number of tokens that were retrieved from the cache.
             [More on prompt caching](/api/docs/guides/prompt-caching).
+
+          - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+            - `ttl_12h_tokens: integer`
+
+              The number of input tokens written with 12-hour retention.
+
+            - `ttl_30m_tokens: integer`
+
+              The number of input tokens written with 30-minute retention.
 
         - `output_tokens: integer`
 
@@ -187470,7 +187824,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     The number of input tokens.
 
-  - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+  - `input_tokens_details: object { cache_write_tokens, cached_tokens, cache_write_tokens_details }`
 
     A detailed breakdown of the input tokens.
 
@@ -187482,6 +187836,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The number of tokens that were retrieved from the cache.
       [More on prompt caching](/api/docs/guides/prompt-caching).
+
+    - `cache_write_tokens_details: optional object { ttl_12h_tokens, ttl_30m_tokens }`
+
+      - `ttl_12h_tokens: integer`
+
+        The number of input tokens written with 12-hour retention.
+
+      - `ttl_30m_tokens: integer`
+
+        The number of input tokens written with 30-minute retention.
 
   - `output_tokens: integer`
 
@@ -187597,11 +187961,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Responses Client Event
 
-- `BetaResponsesClientEvent = ResponseCreate { type, access_programs, background, 33 more }  or BetaResponseSteerEvent or BetaResponseInjectEvent`
+- `BetaResponsesClientEvent = ResponseCreate { type, access_programs, background, 34 more }  or BetaResponseSteerEvent or BetaResponseInjectEvent`
 
   Client events accepted by the Responses WebSocket server.
 
-  - `ResponseCreate object { type, access_programs, background, 33 more }`
+  - `ResponseCreate object { type, access_programs, background, 34 more }`
 
     Client event for creating a response over a persistent WebSocket connection.
     This payload uses the same top-level fields as `POST /v1/responses`, plus
@@ -187676,6 +188040,20 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Whether to generate output for this response. Defaults to true when omitted.
       Set to false to prepare request state without model output; the response
       ID can be used as previous_response_id on a later turn.
+
+    - `image: optional object { context_compression }`
+
+      Request level image options.
+
+      - `context_compression: optional "auto" or "enabled" or "disabled"`
+
+        Controls image context optimization. Defaults to `auto`, which uses the model, transport, and input to select a policy. Use `enabled` to require compression support or `disabled` to turn it off.
+
+        - `"auto"`
+
+        - `"enabled"`
+
+        - `"disabled"`
 
     - `include: optional array of BetaResponseIncludable or null`
 
@@ -193008,14 +193386,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: optional "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more or string`
+    - `model: optional "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 107 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6.1-terra" or 108 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -193242,6 +193620,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"gpt-rosalind-research"`
 
+        - `"gpt-6-rosalind"`
+
       - `string`
 
     - `moderation: optional object { model, policy }  or null`
@@ -193340,7 +193720,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `prompt_cache_options: optional object { comparison_response_id, mode, prewarm, ttl }`
 
-      Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`, which is currently the only supported value. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
+      Options for prompt caching. Supported for `gpt-5.6` and later models. By default, OpenAI automatically chooses one implicit cache breakpoint. You can add explicit breakpoints to content blocks with `prompt_cache_breakpoint`. Each request can write up to four breakpoints. For cache matching, OpenAI considers up to the latest 80 breakpoints in the conversation, without a content-block lookback limit. Set `mode` to `explicit` to disable the implicit breakpoint. The `ttl` defaults to `30m`. Supported lifetimes depend on the API. See the [prompt caching guide](/api/docs/guides/prompt-caching) for current details.
 
       - `comparison_response_id: optional string or null`
 
@@ -193358,11 +193738,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         Prepares the prompt cache without generating output. Defaults to `false`. When set to `true`, overrides the `generate` field to `false`.
 
-      - `ttl: optional "30m"`
+      - `ttl: optional "30m" or "12h"`
 
-        The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Defaults to `30m`, which is currently the only supported value. The backend may retain cache entries for longer.
+        The minimum lifetime applied to every implicit and explicit cache breakpoint written by the request. Supported values are `30m` (the default) and `12h`. The backend may retain cache entries for longer.
 
         - `"30m"`
+
+        - `"12h"`
 
     - `prompt_cache_retention: optional "in_memory" or "24h" or null`
 

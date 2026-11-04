@@ -38,87 +38,90 @@ Information about a Generative Language Model.
 
 **Properties:**
 
-**name**: {% mark %}required{% /mark %} `string`
+{% section class="api-ref-property-list" %}
+  **name**: {% mark %}required{% /mark %} `string`
 
-The resource name of the [`Model`](/api-reference/models#Resource:Model). Refer to [Model variants](/docs/models#model-versions) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of:
+  The resource name of the [`Model`](/api-reference/models#Resource:Model). Refer to [Model variants](/docs/models#model-versions) for all allowed values. Format: `models/{model}` with a `{model}` naming convention of:
 
-- "{base_model_id}-{version}"
+  - "{base_model_id}-{version}"
 
-Examples:
+  Examples:
 
-- `models/gemini-1.5-flash-001`
+  - `models/gemini-1.5-flash-001`
 
-{% hr /%}
+  {% hr /%}
 
-**baseModelId**: {% mark %}required{% /mark %} `string`
+  **baseModelId**: {% mark %}required{% /mark %} `string`
 
-The name of the base model, pass this to the generation request. Examples:
+  The name of the base model, pass this to the generation request. Examples:
 
-- `gemini-1.5-flash`
+  - `gemini-1.5-flash`
 
-{% hr /%}
+  {% hr /%}
 
-**version**: {% mark %}required{% /mark %} `string`
+  **version**: {% mark %}required{% /mark %} `string`
 
-The version number of the model. This represents the major version (`1.0` or `1.5`)
+  The version number of the model. This represents the major version (`1.0` or `1.5`)
 
-{% hr /%}
+  {% hr /%}
 
-**displayName**: `string`
+  **displayName**: `string`
 
-The human-readable name of the model. E.g. "Gemini 1.5 Flash". The name can be up to 128 characters long and can consist of any UTF-8 characters.
+  The human-readable name of the model. E.g. "Gemini 1.5 Flash". The name can be up to 128 characters long and can consist of any UTF-8 characters.
 
-{% hr /%}
+  {% hr /%}
 
-**description**: `string`
+  **description**: `string`
 
-A short description of the model.
+  A short description of the model.
 
-{% hr /%}
+  {% hr /%}
 
-**inputTokenLimit**: `integer`
+  **inputTokenLimit**: `integer`
 
-Maximum number of input tokens allowed for this model.
+  Maximum number of input tokens allowed for this model.
 
-{% hr /%}
+  {% hr /%}
 
-**outputTokenLimit**: `integer`
+  **outputTokenLimit**: `integer`
 
-Maximum number of output tokens available for this model.
+  Maximum number of output tokens available for this model.
 
-{% hr /%}
+  {% hr /%}
 
-**supportedGenerationMethods**: `array (string)`
+  **supportedGenerationMethods**: `string array`
 
-The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
+  The model's supported generation methods. The corresponding API method names are defined as Pascal case strings, such as `generateMessage` and `generateContent`.
 
-{% hr /%}
+  {% hr /%}
 
-**temperature**: `number`
+  **temperature**: `number`
 
-Controls the randomness of the output. Values can range over `[0.0,max_temperature]`, inclusive. A higher value will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be used by the backend while making the call to the model.
+  Controls the randomness of the output. Values can range over `[0.0,max_temperature]`, inclusive. A higher value will produce responses that are more varied, while a value closer to `0.0` will typically result in less surprising responses from the model. This value specifies default to be used by the backend while making the call to the model.
 
-{% hr /%}
+  {% hr /%}
 
-**maxTemperature**: `number`
+  **maxTemperature**: `number`
 
-The maximum temperature this model can use.
+  The maximum temperature this model can use.
 
-{% hr /%}
+  {% hr /%}
 
-**topP**: `number`
+  **topP**: `number`
 
-For [Nucleus sampling](/docs/prompting-strategies#model-parameters). Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be used by the backend while making the call to the model.
+  For [Nucleus sampling](/docs/prompting-strategies#model-parameters). Nucleus sampling considers the smallest set of tokens whose probability sum is at least `top_p`. This value specifies default to be used by the backend while making the call to the model.
 
-{% hr /%}
+  {% hr /%}
 
-**topK**: `integer`
+  **topK**: `integer`
 
-For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
+  For Top-k sampling. Top-k sampling considers the set of `top_k` most probable tokens. This value specifies default to be used by the backend while making the call to the model. If empty, indicates the model doesn't use top-k sampling, and `top_k` isn't allowed as a generation parameter.
 
-{% hr /%}
+  {% hr /%}
 
-**thinking**: `boolean`
+  **thinking**: `boolean`
 
-Whether the model supports thinking.
+  Whether the model supports thinking.
+
+{% /section %}
 

@@ -649,8 +649,8 @@ curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --header "Content-Type: application/json" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations" \
-  --data '{"url":"grpcs://agent.example.com:4242", \
-           "client_cert":"'"$(awk -v ORS='\\n' '1' client.pem)"'", \
+  --data '{"url":"grpcs://agent.example.com:4242",
+           "client_cert":"'"$(awk -v ORS='\\n' '1' client.pem)"'",
            "client_key":"'"$(awk -v ORS='\\n' '1' client-key.pem)"'"}'
 ```
 
@@ -691,5 +691,5 @@ Example request:
 ```shell
 curl --request DELETE \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations/1
+  --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations/1"
 ```

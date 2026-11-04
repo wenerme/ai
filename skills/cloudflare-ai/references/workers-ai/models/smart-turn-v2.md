@@ -18,7 +18,9 @@ Dumb Pipe • Pipecat
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/smart-turn-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/pipecat-ai/smart-turn-v2`
+Model ID
+
+`@cf/pipecat-ai/smart-turn-v2` Copy
 
 - Cloudflare-hosted
 - Batch

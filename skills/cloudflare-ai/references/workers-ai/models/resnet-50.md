@@ -18,7 +18,9 @@ Image Classification • Microsoft
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/resnet-50/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/microsoft/resnet-50`
+Model ID
+
+`@cf/microsoft/resnet-50` Copy
 
 - Cloudflare-hosted
 - Zero data retention

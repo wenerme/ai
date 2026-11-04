@@ -643,27 +643,25 @@ Global flags
 
 Experimental
 
-Get information about the queries run on a D1 database
+Get information about the queries run on a D1 database, or on all D1 databases in the account
 
 This command acts on remote D1 Databases.
 
 npmyarnpnpm
 
 ```
-npx wrangler d1 insights <NAME>
+npx wrangler d1 insights [NAME]
 ```
 
 ```
-yarn wrangler d1 insights <NAME>
+yarn wrangler d1 insights [NAME]
 ```
 
 ```
-pnpm wrangler d1 insights <NAME>
+pnpm wrangler d1 insights [NAME]
 ```
 
-- `<NAME>` `string` required
-
-  The name of the DB
+- `[NAME]` `string` The name or binding of the DB. Omit to get insights for every D1 database in the account
 - `--time-period` `string` default: 1d
 
   Fetch data from now to the provided time period

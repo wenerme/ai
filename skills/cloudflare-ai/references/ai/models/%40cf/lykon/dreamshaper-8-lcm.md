@@ -18,7 +18,9 @@ Text-to-Image • lykon
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/lykon/dreamshaper-8-lcm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/lykon/dreamshaper-8-lcm`
+Model ID
+
+`@cf/lykon/dreamshaper-8-lcm` Copy
 
 - Cloudflare-hosted
 - Zero data retention

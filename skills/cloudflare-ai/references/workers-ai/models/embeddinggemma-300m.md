@@ -20,7 +20,9 @@ Text Embeddings • Google
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/google/embeddinggemma-300m`
+Model ID
+
+`@cf/google/embeddinggemma-300m` Copy
 
 - Cloudflare-hosted
 - Zero data retention

@@ -20,7 +20,9 @@ Text-to-Image • ByteDance
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/bytedance/stable-diffusion-xl-lightning`
+Model ID
+
+`@cf/bytedance/stable-diffusion-xl-lightning` Copy
 
 - Cloudflare-hosted
 - Zero data retention

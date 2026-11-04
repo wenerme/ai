@@ -4,6 +4,8 @@
 
 Admin APIs let you automate organization management workflows such as user invitations, audit log review, project administration, API key management, spend limits and alerts, data retention, and rate limit operations. Use them for back-office automation, security workflows, and operational tooling that should run outside the dashboard.
 
+For the distinction between an administrative credential, a user-owned project key, and a workload's service account, see [API keys and service accounts](https://developers.openai.com/api/docs/guides/api-keys).
+
 For endpoint details, see the [Administration API reference](https://developers.openai.com/api/reference/administration/overview), including [Admin API keys](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys), [Invites](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/invites), [Users](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/users), [Projects](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects), [Spend limits](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/spend_limit), and [Audit logs](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
 ## Use an Admin API key with the SDK
@@ -77,7 +79,7 @@ openai = OpenAI::Client.new(
 
 ## Restrict model access for projects
 
-Use project model permissions to set an allowlist or denylist for a project. Set `mode` to `allow_list` to allow only the listed models, or set `mode` to `deny_list` to block the listed models while allowing other available models. Model IDs must be visible to the organization, including visible fine-tuned model snapshots.
+Use project model permissions to set an allowlist or deny list for a project. Set `mode` to `allow_list` to allow only the listed models, or set `mode` to `deny_list` to block the listed models while allowing other available models. Model IDs must be visible to the organization, including visible fine-tuned model snapshots.
 
 Set a project model allowlist/denylist
 

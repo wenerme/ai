@@ -66,6 +66,7 @@ The Interaction resource.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   **id**: {% mark %}required{% /mark %} `string`
 
   Output only. A unique identifier for the interaction completion.
@@ -74,7 +75,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **status**: {% mark %}required{% /mark %} `enum (string)`
+  **status**: {% mark %}required{% /mark %} `string enum`
 
   Output only. The status of the interaction.
 
@@ -106,7 +107,7 @@ The Interaction resource.
 
   {% hr /%}
 
-  **steps**: {% mark %}required{% /mark %} `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
+  **steps**: {% mark %}required{% /mark %} [`Step`](/api-reference/interactions-api#Resource:Step) `array`
 
   Output only. The steps that make up the interaction, when included in the response.
 
@@ -172,19 +173,19 @@ The Interaction resource.
 
   Seed used in decoding for reproducibility.
 
-  **stop_sequences**: `array (string)`
+  **stop_sequences**: `string array`
 
   A list of character sequences that will stop output interaction.
 
   {% details %}
   {% summary %}
-  **tool_choice**: [`ToolChoiceConfig`](/api-reference/interactions-api#Resource:ToolChoiceConfig) or `enum (string)`
+  **tool_choice**: [`ToolChoiceConfig`](/api-reference/interactions-api#Resource:ToolChoiceConfig) or `string enum`
 
   The tool choice configuration.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -204,7 +205,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   The mode of the tool choice.
 
@@ -219,7 +220,7 @@ The Interaction resource.
 
   {% /details %}
 
-  **tools**: `array (string)`
+  **tools**: `string array`
 
   The names of the allowed tools.
 
@@ -229,7 +230,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -290,7 +291,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **task**: `enum (string)`
+  **task**: `string enum`
 
   Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
 
@@ -316,23 +317,23 @@ The Interaction resource.
 
   {% /summary %}
 
-  **language_codes**: `array (string)`
+  **language_codes**: `string array`
 
   Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
 
-  **custom_vocabulary**: `array (string)`
+  **custom_vocabulary**: `string array`
 
   Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms.
 
   {% details %}
   {% summary %}
-  **mode**: `TranscriptionMode` or `enum (string)`
+  **mode**: `TranscriptionMode` or `string enum`
 
   Discriminated transcription mode options or enum.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -360,7 +361,7 @@ The Interaction resource.
 
   Value: `verbatim`
 
-  **timestamp_granularities**: `array (string)`
+  **timestamp_granularities**: `string array`
 
   Optional. The granularity of timestamps to include in the transcription output. Supported values: "word". If empty, no timestamps are generated.
 
@@ -372,7 +373,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -389,13 +390,13 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **structured_speech_config**: `SpeakerConfig` or `array (SpeechConfig)`
+  **structured_speech_config**: `SpeakerConfig` or `SpeechConfig array`
 
   Speech and multi-speaker configuration.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -407,7 +408,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **speakers**: `array (SpeechConfig)`
+  **speakers**: `SpeechConfig array`
 
   Individual speaker configurations.
 
@@ -431,7 +432,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **array (SpeechConfig)**
+  **SpeechConfig array**
 
   {% /summary %}
 
@@ -463,13 +464,13 @@ The Interaction resource.
 
   {% hr /%}
 
-  **tools**: `array (`[`Tool`](/api-reference/interactions-api#Resource:Tool)`)`
+  **tools**: [`Tool`](/api-reference/interactions-api#Resource:Tool) `array`
 
   A list of tool declarations the model may call during interaction.
 
   {% hr /%}
 
-  **input**: [`Content`](/api-reference/interactions-api#Resource:Content) or `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)` or `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)` or `string`
+  **input**: [`Content`](/api-reference/interactions-api#Resource:Content) or [`Content`](/api-reference/interactions-api#Resource:Content) `array` or [`Step`](/api-reference/interactions-api#Resource:Step) `array` or `string`
 
   The input for the interaction.
 
@@ -493,7 +494,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -529,7 +530,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -565,7 +566,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -601,7 +602,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -641,7 +642,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -649,7 +650,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -674,13 +675,13 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **response_format**: [`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat) or `array (`[`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat)`)`
+  **response_format**: [`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat) or [`ResponseFormat`](/api-reference/interactions-api#Resource:ResponseFormat) `array`
 
   Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -692,7 +693,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **array ([ResponseFormat](/api-reference/interactions-api#Resource:ResponseFormat))**
+  **[ResponseFormat](/api-reference/interactions-api#Resource:ResponseFormat) array**
 
   {% /summary %}
 
@@ -718,7 +719,7 @@ The Interaction resource.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -734,13 +735,13 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **sources**: `array (Source)`
+  **sources**: `Source array`
 
   {% /summary %}
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   {% /summary %}
 
@@ -772,13 +773,13 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `enum (string)`
+  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `string enum`
 
   Network configuration for the environment.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -790,17 +791,17 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **allowlist**: `array (EgressRule)` or `enum (string)`
+  **allowlist**: `EgressRule array` or `string enum`
 
   List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array (EgressRule)**
+  **EgressRule array**
 
   {% /summary %}
 
@@ -822,7 +823,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -838,7 +839,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -862,7 +863,7 @@ The Interaction resource.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -924,7 +925,7 @@ The Interaction resource.
 
   {% /summary %}
 
-  **uris**: `array (string)`
+  **uris**: `string array`
 
   Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
 
@@ -938,7 +939,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **safety_settings**: `array (SafetySetting)`
+  **safety_settings**: `SafetySetting array`
 
   Safety settings for the interaction.
 
@@ -964,7 +965,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **threshold**: {% mark %}required{% /mark %} `enum (string)`
+  **threshold**: {% mark %}required{% /mark %} `string enum`
 
   The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
 
@@ -981,7 +982,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **method**: `enum (string)`
+  **method**: `string enum`
 
   Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
 
@@ -1006,7 +1007,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **errors**: `array (Error)`
+  **errors**: `Error array`
 
   Output only. Diagnostic faults / platform errors recorded on the interaction.
 
@@ -1074,7 +1075,7 @@ The Interaction resource.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -1127,7 +1128,7 @@ The Interaction resource.
 
   {% details %}
   {% summary %}
-  **visualization**: `enum (string)`
+  **visualization**: `string enum`
 
   Whether to include visualizations in the response.
 
@@ -1167,6 +1168,8 @@ The Interaction resource.
   **max_total_tokens**: `string`
 
   Max total tokens for the agent run.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -1231,6 +1234,7 @@ The content of the response.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `audio`
@@ -1263,7 +1267,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The mime type of the audio.
 
@@ -1286,6 +1290,8 @@ The content of the response.
   - `audio/webm`: WEBM audio format
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -1318,6 +1324,7 @@ The content of the response.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `document`
@@ -1338,7 +1345,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The mime type of the document.
 
@@ -1360,6 +1367,8 @@ The content of the response.
   - `application/vnd.oasis.opendocument.spreadsheet`: ODS spreadsheet format
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -1392,6 +1401,7 @@ The content of the response.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `image`
@@ -1431,7 +1441,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The mime type of the image.
 
@@ -1449,6 +1459,8 @@ The content of the response.
   - `image/tiff`: TIFF image format
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -1481,6 +1493,7 @@ The content of the response.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **text**: {% mark %}required{% /mark %} `string`
 
   The text content.
@@ -1495,13 +1508,13 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **annotations**: `array (Annotation)`
+  **annotations**: `Annotation array`
 
   Citation information for model-generated content.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -1575,7 +1588,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **review_snippets**: `array (ReviewSnippet)`
+  **review_snippets**: `ReviewSnippet array`
 
   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
@@ -1705,6 +1718,8 @@ The content of the response.
 
   {% /details %}
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -1735,6 +1750,7 @@ The content of the response.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `video`
@@ -1774,13 +1790,13 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **processing**: `MediaProcessing` or `enum (string)`
+  **processing**: `MediaProcessing` or `string enum`
 
   How the model processes this video for understanding.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -1808,7 +1824,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -1831,7 +1847,7 @@ The content of the response.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The mime type of the video.
 
@@ -1850,6 +1866,8 @@ The content of the response.
   - `video/3gpp`: 3GPP video format
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -1887,9 +1905,12 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `code_execution`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -2032,6 +2053,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `computer_use`
@@ -2040,7 +2062,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **environment**: `enum (string)`
+  **environment**: `string enum`
 
   The environment being operated.
 
@@ -2056,7 +2078,7 @@ A tool that can be used by the model.
 
   {% hr /%}
 
-  **excluded_predefined_functions**: `array (string)`
+  **excluded_predefined_functions**: `string array`
 
   The list of predefined functions that are excluded from the model call.
 
@@ -2070,7 +2092,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **disabled_safety_policies**: `array (enum (string))`
+  **disabled_safety_policies**: `string enum array`
 
   Optional. Disabled safety policies for computer use.
 
@@ -2087,6 +2109,8 @@ A tool that can be used by the model.
   - `legal_terms_and_agreements`: Safety policy for legal terms and agreements.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -2229,13 +2253,14 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `file_search`
 
   {% hr /%}
 
-  **file_search_store_names**: `array (string)`
+  **file_search_store_names**: `string array`
 
   The file search store names to search.
 
@@ -2250,6 +2275,8 @@ A tool that can be used by the model.
   **metadata_filter**: `string`
 
   Metadata filter to apply to the semantic retrieval documents and chunks.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -2423,6 +2450,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `function`
@@ -2444,6 +2472,8 @@ A tool that can be used by the model.
   **parameters**: `object`
 
   The JSON Schema for the function's parameters. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -2670,6 +2700,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `google_maps`
@@ -2691,6 +2722,8 @@ A tool that can be used by the model.
   **longitude**: `number`
 
   The longitude of the user's location.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -2847,6 +2880,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `google_search`
@@ -2855,7 +2889,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **search_types**: `array (enum (string))`
+  **search_types**: `string enum array`
 
   The types of search grounding to enable.
 
@@ -2867,6 +2901,8 @@ A tool that can be used by the model.
   - `image_search`: Setting this field enables image search. Image bytes are returned.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -3009,6 +3045,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `mcp_server`
@@ -3035,7 +3072,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **allowed_tools**: `array (AllowedTools)`
+  **allowed_tools**: `AllowedTools array`
 
   The allowed tools.
 
@@ -3043,7 +3080,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   The mode of the tool choice.
 
@@ -3058,11 +3095,13 @@ A tool that can be used by the model.
 
   {% /details %}
 
-  **tools**: `array (string)`
+  **tools**: `string array`
 
   The names of the allowed tools.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -3231,9 +3270,12 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `url_context`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -3378,6 +3420,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **event_type**: {% mark %}required{% /mark %} `object`
 
   Value: `error`
@@ -3405,6 +3448,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -3441,6 +3486,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **interaction**: {% mark %}required{% /mark %} `InteractionSseEventInteraction`
@@ -3455,7 +3501,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **status**: {% mark %}required{% /mark %} `enum (string)`
+  **status**: {% mark %}required{% /mark %} `string enum`
 
   Output only. The status of the interaction.
 
@@ -3502,7 +3548,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -3538,7 +3584,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -3574,7 +3620,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -3610,7 +3656,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -3650,7 +3696,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -3658,7 +3704,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -3695,7 +3741,7 @@ A tool that can be used by the model.
 
   {% /details %}
 
-  **steps**: `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
+  **steps**: [`Step`](/api-reference/interactions-api#Resource:Step) `array`
 
   Output only. The steps that make up the interaction, if included in this event.
 
@@ -3724,6 +3770,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -3784,6 +3832,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **interaction**: {% mark %}required{% /mark %} `InteractionSseEventInteraction`
@@ -3798,7 +3847,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **status**: {% mark %}required{% /mark %} `enum (string)`
+  **status**: {% mark %}required{% /mark %} `string enum`
 
   Output only. The status of the interaction.
 
@@ -3845,7 +3894,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -3881,7 +3930,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -3917,7 +3966,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -3953,7 +4002,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -3993,7 +4042,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -4001,7 +4050,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -4038,7 +4087,7 @@ A tool that can be used by the model.
 
   {% /details %}
 
-  **steps**: `array (`[`Step`](/api-reference/interactions-api#Resource:Step)`)`
+  **steps**: [`Step`](/api-reference/interactions-api#Resource:Step) `array`
 
   Output only. The steps that make up the interaction, if included in this event.
 
@@ -4067,6 +4116,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -4123,13 +4174,14 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **interaction_id**: {% mark %}required{% /mark %} `string`
 
   {% hr /%}
 
   {% details %}
   {% summary %}
-  **status**: {% mark %}required{% /mark %} `enum (string)`
+  **status**: {% mark %}required{% /mark %} `string enum`
 
   {% /summary %}
 
@@ -4177,7 +4229,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -4213,7 +4265,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -4249,7 +4301,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -4285,7 +4337,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -4325,7 +4377,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -4333,7 +4385,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -4359,6 +4411,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -4389,6 +4443,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **index**: {% mark %}required{% /mark %} `integer`
 
   {% hr /%}
@@ -4399,7 +4454,7 @@ A tool that can be used by the model.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -4427,7 +4482,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   {% /summary %}
 
@@ -4477,7 +4532,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **language**: `enum (string)`
+  **language**: `string enum`
 
   Programming language of the `code`.
 
@@ -4538,7 +4593,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   {% /summary %}
 
@@ -4589,7 +4644,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (FileSearchResult)`
+  **result**: {% mark %}required{% /mark %} `FileSearchResult array`
 
   {% /summary %}
 
@@ -4613,15 +4668,15 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+  **result**: {% mark %}required{% /mark %} `(`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`) array` or `object` or `string`
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+  **([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent)) array**
 
   {% /summary %}
 
@@ -4669,7 +4724,7 @@ A tool that can be used by the model.
 
   {% /summary %}
 
-  **queries**: `array (string)`
+  **queries**: `string array`
 
   The queries to be executed.
 
@@ -4693,7 +4748,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: `array (GoogleMapsResult)`
+  **result**: `GoogleMapsResult array`
 
   The results of the Google Maps.
 
@@ -4701,7 +4756,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **places**: `array (Places)`
+  **places**: `Places array`
 
   The places that were found.
 
@@ -4721,7 +4776,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **review_snippets**: `array (ReviewSnippet)`
+  **review_snippets**: `ReviewSnippet array`
 
   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
@@ -4767,7 +4822,7 @@ A tool that can be used by the model.
 
   {% /summary %}
 
-  **queries**: `array (string)`
+  **queries**: `string array`
 
   Web search queries for the following-up web search.
 
@@ -4791,7 +4846,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (GoogleSearchResult)`
+  **result**: {% mark %}required{% /mark %} `GoogleSearchResult array`
 
   {% /summary %}
 
@@ -4825,7 +4880,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   {% /summary %}
 
@@ -4891,15 +4946,15 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+  **result**: {% mark %}required{% /mark %} `(`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`) array` or `object` or `string`
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+  **([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent)) array**
 
   {% /summary %}
 
@@ -4977,13 +5032,13 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **annotations**: `array (Annotation)`
+  **annotations**: `Annotation array`
 
   Citation information for model-generated content.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -5057,7 +5112,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **review_snippets**: `array (ReviewSnippet)`
+  **review_snippets**: `ReviewSnippet array`
 
   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
@@ -5247,7 +5302,7 @@ A tool that can be used by the model.
 
   {% /summary %}
 
-  **urls**: `array (string)`
+  **urls**: `string array`
 
   The URLs to fetch.
 
@@ -5271,7 +5326,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (UrlContextResult)`
+  **result**: {% mark %}required{% /mark %} `UrlContextResult array`
 
   {% /summary %}
 
@@ -5281,7 +5336,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **status**: `enum (string)`
+  **status**: `string enum`
 
   The status of the URL retrieval.
 
@@ -5322,7 +5377,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   {% /summary %}
 
@@ -5404,7 +5459,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -5440,7 +5495,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -5476,7 +5531,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -5512,7 +5567,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -5552,7 +5607,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -5560,7 +5615,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -5582,6 +5637,8 @@ A tool that can be used by the model.
   {% /details %}
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -5615,6 +5672,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **index**: {% mark %}required{% /mark %} `integer`
 
   {% hr /%}
@@ -5632,6 +5690,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -5664,6 +5724,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **index**: {% mark %}required{% /mark %} `integer`
 
   {% hr /%}
@@ -5692,7 +5753,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -5728,7 +5789,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -5764,7 +5825,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -5800,7 +5861,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -5840,7 +5901,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -5848,7 +5909,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -5889,7 +5950,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **input_tokens_by_modality**: `array (ModalityTokens)`
+  **input_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of input token usage by modality.
 
@@ -5925,7 +5986,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **cached_tokens_by_modality**: `array (ModalityTokens)`
+  **cached_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of cached token usage by modality.
 
@@ -5961,7 +6022,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **output_tokens_by_modality**: `array (ModalityTokens)`
+  **output_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of output token usage by modality.
 
@@ -5997,7 +6058,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **tool_use_tokens_by_modality**: `array (ModalityTokens)`
+  **tool_use_tokens_by_modality**: `ModalityTokens array`
 
   A breakdown of tool-use token usage by modality.
 
@@ -6037,7 +6098,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **grounding_tool_count**: `array (GroundingToolCount)`
+  **grounding_tool_count**: `GroundingToolCount array`
 
   Grounding tool count.
 
@@ -6045,7 +6106,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   The grounding tool type associated with the count.
 
@@ -6071,6 +6132,8 @@ A tool that can be used by the model.
   **event_id**: `string`
 
   The event_id token to be used to resume the interaction stream, from this event.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6106,6 +6169,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `audio`
@@ -6114,7 +6178,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The MIME type of the audio output.
 
@@ -6135,7 +6199,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **delivery**: `enum (string)`
+  **delivery**: `string enum`
 
   The delivery mode for the audio output.
 
@@ -6159,6 +6223,8 @@ A tool that can be used by the model.
   **bit_rate**: `integer`
 
   Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6190,6 +6256,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `image`
@@ -6198,7 +6265,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The MIME type of the image output.
 
@@ -6214,7 +6281,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **delivery**: `enum (string)`
+  **delivery**: `string enum`
 
   The delivery mode for the image output.
 
@@ -6231,7 +6298,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **aspect_ratio**: `enum (string)`
+  **aspect_ratio**: `string enum`
 
   The aspect ratio for the image output.
 
@@ -6260,7 +6327,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **image_size**: `enum (string)`
+  **image_size**: `string enum`
 
   The size of the image output.
 
@@ -6274,6 +6341,8 @@ A tool that can be used by the model.
   - `4K`: 4K image size.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6307,6 +6376,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `text`
@@ -6315,7 +6385,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The MIME type of the text output.
 
@@ -6333,6 +6403,8 @@ A tool that can be used by the model.
   **schema**: `object`
 
   The JSON schema that the output should conform to. Only applicable when mime_type is application/json. Supports a subset of JSON Schema. `minLength`, `maxLength`, `minProperties`, `maxProperties`, `uniqueItems`, `contains`, `minContains`, and `maxContains` are ignored and not enforced; validate these in your application. `minItems` and `maxItems` are enforced. Schemas that are too complex to enforce (for example, large `maxItems` on nested arrays) return a 400 INVALID_ARGUMENT error.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6382,6 +6454,7 @@ A tool that can be used by the model.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `video`
@@ -6390,7 +6463,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **delivery**: `enum (string)`
+  **delivery**: `string enum`
 
   The delivery mode for the video output.
 
@@ -6407,7 +6480,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **aspect_ratio**: `enum (string)`
+  **aspect_ratio**: `string enum`
 
   The aspect ratio for the video output.
 
@@ -6430,7 +6503,7 @@ A tool that can be used by the model.
 
   {% details %}
   {% summary %}
-  **resolution**: `enum (string)`
+  **resolution**: `string enum`
 
   The video output resolution. Defaults to 720p.
 
@@ -6444,6 +6517,8 @@ A tool that can be used by the model.
   - `4k`: 4K resolution.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6482,6 +6557,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **arguments**: {% mark %}required{% /mark %} `CodeExecutionCallStepArguments`
@@ -6492,7 +6568,7 @@ A step in the interaction.
 
   {% details %}
   {% summary %}
-  **language**: `enum (string)`
+  **language**: `string enum`
 
   Programming language of the `code`.
 
@@ -6529,6 +6605,8 @@ A step in the interaction.
 
   A signature hash for backend validation.
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -6562,6 +6640,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **result**: {% mark %}required{% /mark %} `string`
 
   The output of the code execution.
@@ -6589,6 +6668,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6621,6 +6702,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **id**: {% mark %}required{% /mark %} `string`
 
   A unique ID for this specific tool call.
@@ -6636,6 +6718,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6667,6 +6751,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **call_id**: {% mark %}required{% /mark %} `string`
 
   ID to match the ID from the function call block.
@@ -6682,6 +6767,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6713,6 +6800,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **name**: {% mark %}required{% /mark %} `string`
 
   The name of the tool to call.
@@ -6734,6 +6822,8 @@ A step in the interaction.
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `function_call`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6769,19 +6859,20 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+  **result**: {% mark %}required{% /mark %} `(`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`) array` or `object` or `string`
 
   The result of the tool call.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+  **([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent)) array**
 
   {% /summary %}
 
@@ -6825,6 +6916,8 @@ A step in the interaction.
 
   Whether the tool call resulted in an error.
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -6862,6 +6955,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **id**: {% mark %}required{% /mark %} `string`
 
   A unique ID for this specific tool call.
@@ -6882,7 +6976,7 @@ A step in the interaction.
 
   {% /summary %}
 
-  **queries**: `array (string)`
+  **queries**: `string array`
 
   The queries to be executed.
 
@@ -6893,6 +6987,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -6928,15 +7024,16 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (GoogleMapsResultItem)`
+  **result**: {% mark %}required{% /mark %} `GoogleMapsResultItem array`
 
   {% /summary %}
 
   {% details %}
   {% summary %}
-  **places**: `array (GoogleMapsResultPlaces)`
+  **places**: `GoogleMapsResultPlaces array`
 
   {% /summary %}
 
@@ -6948,7 +7045,7 @@ A step in the interaction.
 
   {% details %}
   {% summary %}
-  **review_snippets**: `array (ReviewSnippet)`
+  **review_snippets**: `ReviewSnippet array`
 
   {% /summary %}
 
@@ -6990,6 +7087,8 @@ A step in the interaction.
 
   A signature hash for backend validation.
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -7027,6 +7126,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **arguments**: {% mark %}required{% /mark %} `GoogleSearchCallStepArguments`
@@ -7035,7 +7135,7 @@ A step in the interaction.
 
   {% /summary %}
 
-  **queries**: `array (string)`
+  **queries**: `string array`
 
   Web search queries for the following-up web search.
 
@@ -7057,7 +7157,7 @@ A step in the interaction.
 
   {% details %}
   {% summary %}
-  **search_type**: `enum (string)`
+  **search_type**: `string enum`
 
   The type of search grounding enabled.
 
@@ -7075,6 +7175,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7109,9 +7211,10 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (GoogleSearchResultItem)`
+  **result**: {% mark %}required{% /mark %} `GoogleSearchResultItem array`
 
   The results of the Google Search.
 
@@ -7146,6 +7249,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7184,6 +7289,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **name**: {% mark %}required{% /mark %} `string`
 
   The name of the tool which was called.
@@ -7211,6 +7317,8 @@ A step in the interaction.
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `mcp_server_tool_call`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7248,19 +7356,20 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`)` or `object` or `string`
+  **result**: {% mark %}required{% /mark %} `(`[`ImageContent`](/api-reference/interactions-api#Resource:ImageContent) or [`TextContent`](/api-reference/interactions-api#Resource:TextContent)`) array` or `object` or `string`
 
   The output from the MCP server call. Can be simple text or rich content.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array ([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent))**
+  **([ImageContent](/api-reference/interactions-api#Resource:ImageContent) or [TextContent](/api-reference/interactions-api#Resource:TextContent)) array**
 
   {% /summary %}
 
@@ -7304,6 +7413,8 @@ A step in the interaction.
 
   The name of the used MCP server.
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -7339,13 +7450,16 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `model_output`
 
   {% hr /%}
 
-  **content**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+  **content**: [`Content`](/api-reference/interactions-api#Resource:Content) `array`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7381,6 +7495,7 @@ A step in the interaction.
   A server-initiated processing step for media analysis (e.g. video
   understanding).
 
+  {% section class="api-ref-property-list" %}
   **id**: {% mark %}required{% /mark %} `string`
 
   A unique ID for this specific tool call.
@@ -7397,6 +7512,8 @@ A step in the interaction.
 
   A signature hash for backend validation.
 
+  {% /section %}
+
 {% /details %}
 
 {% details %}
@@ -7407,6 +7524,7 @@ A step in the interaction.
 
   The result of a server-initiated media processing step.
 
+  {% section class="api-ref-property-list" %}
   **call_id**: {% mark %}required{% /mark %} `string`
 
   ID to match the ID from the function call block.
@@ -7423,6 +7541,8 @@ A step in the interaction.
 
   A signature hash for backend validation.
 
+  {% /section %}
+
 {% /details %}
 
 {% details %}
@@ -7435,6 +7555,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `thought`
@@ -7447,9 +7568,11 @@ A step in the interaction.
 
   {% hr /%}
 
-  **summary**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+  **summary**: [`Content`](/api-reference/interactions-api#Resource:Content) `array`
 
   A summary of the thought.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7487,6 +7610,7 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **arguments**: {% mark %}required{% /mark %} `UrlContextCallArguments`
@@ -7495,7 +7619,7 @@ A step in the interaction.
 
   {% /summary %}
 
-  **urls**: `array (string)`
+  **urls**: `string array`
 
   The URLs to fetch.
 
@@ -7518,6 +7642,8 @@ A step in the interaction.
   **signature**: `string`
 
   A signature hash for backend validation.
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7554,9 +7680,10 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **result**: {% mark %}required{% /mark %} `array (UrlContextResult)`
+  **result**: {% mark %}required{% /mark %} `UrlContextResult array`
 
   The results of the URL context.
 
@@ -7568,7 +7695,7 @@ A step in the interaction.
 
   {% details %}
   {% summary %}
-  **status**: `enum (string)`
+  **status**: `string enum`
 
   The status of the URL retrieval.
 
@@ -7609,6 +7736,8 @@ A step in the interaction.
 
   A signature hash for backend validation.
 
+  {% /section %}
+
   {% /left-column %}
 
   {% right-column class="sticky" %}
@@ -7646,13 +7775,16 @@ A step in the interaction.
 
   {% two-column-layout %}
   {% left-column %}
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `user_input`
 
   {% hr /%}
 
-  **content**: `array (`[`Content`](/api-reference/interactions-api#Resource:Content)`)`
+  **content**: [`Content`](/api-reference/interactions-api#Resource:Content) `array`
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7687,6 +7819,7 @@ Configuration for a custom environment.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `remote`
@@ -7695,13 +7828,13 @@ Configuration for a custom environment.
 
   {% details %}
   {% summary %}
-  **sources**: `array (Source)`
+  **sources**: `Source array`
 
   {% /summary %}
 
   {% details %}
   {% summary %}
-  **type**: `enum (string)`
+  **type**: `string enum`
 
   {% /summary %}
 
@@ -7735,13 +7868,13 @@ Configuration for a custom environment.
 
   {% details %}
   {% summary %}
-  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `enum (string)`
+  **network**: [`EnvironmentNetworkEgressAllowlist`](/api-reference/interactions-api#Resource:EnvironmentNetworkEgressAllowlist) or `string enum`
 
   Network configuration for the environment.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -7753,17 +7886,17 @@ Configuration for a custom environment.
 
   {% details %}
   {% summary %}
-  **allowlist**: `array (EgressRule)` or `enum (string)`
+  **allowlist**: `EgressRule array` or `string enum`
 
   List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array (EgressRule)**
+  **EgressRule array**
 
   {% /summary %}
 
@@ -7785,7 +7918,7 @@ Configuration for a custom environment.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -7801,7 +7934,7 @@ Configuration for a custom environment.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -7829,7 +7962,7 @@ Configuration for a custom environment.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -7842,6 +7975,8 @@ Configuration for a custom environment.
   {% /details %}
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -7943,19 +8078,20 @@ Network egress configuration for the environment.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
-  **allowlist**: `array (EgressRule)` or `enum (string)`
+  **allowlist**: `EgressRule array` or `string enum`
 
   List of allowed domains and their configurations. Set to `"disabled"` to block all network egress.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
-  **array (EgressRule)**
+  **EgressRule array**
 
   {% /summary %}
 
@@ -7977,7 +8113,7 @@ Network egress configuration for the environment.
 
   {% details %}
   {% summary %}
-  **enum (string)**
+  **string enum**
 
   {% /summary %}
 
@@ -7988,6 +8124,8 @@ Network egress configuration for the environment.
   {% /details %}
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -8026,6 +8164,7 @@ The tool choice configuration containing allowed tools.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   {% details %}
   {% summary %}
   **allowed_tools**: `AllowedTools`
@@ -8036,7 +8175,7 @@ The tool choice configuration containing allowed tools.
 
   {% details %}
   {% summary %}
-  **mode**: `enum (string)`
+  **mode**: `string enum`
 
   The mode of the tool choice.
 
@@ -8051,11 +8190,13 @@ The tool choice configuration containing allowed tools.
 
   {% /details %}
 
-  **tools**: `array (string)`
+  **tools**: `string array`
 
   The names of the allowed tools.
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -8085,6 +8226,7 @@ An image content block.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   **type**: {% mark %}required{% /mark %} `object`
 
   Value: `image`
@@ -8124,7 +8266,7 @@ An image content block.
 
   {% details %}
   {% summary %}
-  **mime_type**: `enum (string)`
+  **mime_type**: `string enum`
 
   The mime type of the image.
 
@@ -8142,6 +8284,8 @@ An image content block.
   - `image/tiff`: TIFF image format
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 
@@ -8170,6 +8314,7 @@ A text content block.
   {% left-column %}
   **Properties:**
 
+  {% section class="api-ref-property-list" %}
   **text**: {% mark %}required{% /mark %} `string`
 
   The text content.
@@ -8184,13 +8329,13 @@ A text content block.
 
   {% details %}
   {% summary %}
-  **annotations**: `array (Annotation)`
+  **annotations**: `Annotation array`
 
   Citation information for model-generated content.
 
   {% /summary %}
 
-  **Possible Types:**
+  **Possible Types:** {% class="api-ref-label" %}
 
   {% details %}
   {% summary %}
@@ -8264,7 +8409,7 @@ A text content block.
 
   {% details %}
   {% summary %}
-  **review_snippets**: `array (ReviewSnippet)`
+  **review_snippets**: `ReviewSnippet array`
 
   Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
 
@@ -8393,6 +8538,8 @@ A text content block.
   {% /details %}
 
   {% /details %}
+
+  {% /section %}
 
   {% /left-column %}
 

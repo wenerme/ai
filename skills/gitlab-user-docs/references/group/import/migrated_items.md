@@ -182,6 +182,7 @@ Merge request-related project items that are migrated to the destination GitLab 
 Setting-related project items that are migrated to the destination GitLab instance include:
 
 - Avatar
+- CI/CD settings
 - Container expiration policy
 - Project properties
 - Service Desk

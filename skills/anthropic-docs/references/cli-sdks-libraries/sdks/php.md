@@ -39,7 +39,7 @@ $textBlock = array_find($message->content, static fn ($block): bool => $block->t
 echo $textBlock->text;
 ```
 
-For authentication options including Workload Identity Federation, see [Authentication](https://platform.claude.com/docs/en/manage-claude/authentication). If your API key is a [personal or service account key](https://platform.claude.com/docs/en/manage-claude/authentication#key-types) that isn't scoped to a workspace, set the workspace ID in the `anthropic-workspace-id` request header; [Select a workspace](https://platform.claude.com/docs/en/manage-claude/authentication#select-a-workspace) shows the per-request option for this SDK.
+For authentication options including Workload Identity Federation, see [Authentication](https://platform.claude.com/docs/en/manage-claude/authentication). If your API key is a [personal or service account key](https://platform.claude.com/docs/en/manage-claude/authentication#key-types) that isn’t scoped to a workspace, set the workspace ID in the `anthropic-workspace-id` request header; [Select a workspace](https://platform.claude.com/docs/en/manage-claude/authentication#select-a-workspace) shows the per-request option for this SDK.
 
 ## Value objects
 
@@ -240,15 +240,15 @@ $client = new Client(requestOptions: ['middleware' => [new TracingMiddleware()]]
 
 `$next` runs the rest of the chain and sends the request. Call it once to forward the request, skip the call to return your own response (such as a cached one), or call it several times to send follow-up requests (such as a custom retry).
 
-The SDK also passes every middleware a third argument: the request's `Anthropic\RequestOptions`, which merges the client's options with the options of the call. To read an option such as `fallbackState`, declare an optional third parameter, `?RequestOptions $options = null`. Treat the object as read-only, because every middleware and every retry of the request shares it. If your callable already has a third parameter with another purpose, rewrite it, because the SDK fills that parameter on every call.
+The SDK also passes every middleware a third argument: the request’s `Anthropic\RequestOptions`, which merges the client’s options with the options of the call. To read an option such as `fallbackState`, declare an optional third parameter, `?RequestOptions $options = null`. Treat the object as read-only, because every middleware and every retry of the request shares it. If your callable already has a third parameter with another purpose, rewrite it, because the SDK fills that parameter on every call.
 
 At runtime:
 
-* **Retries:** Middleware runs once for each HTTP attempt, inside the SDK's retry loop, so it runs again on each retry.
+* **Retries:** Middleware runs once for each HTTP attempt, inside the SDK’s retry loop, so it runs again on each retry.
 * **Error responses:** `$next` returns a response for every HTTP status. The SDK throws its [typed exceptions](https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/php#error-handling) only after the whole chain returns, so a middleware can inspect or replace a 4xx or 5xx response.
 * **Exceptions:** An exception that a middleware throws reaches your code unchanged, except in two cases. The SDK handles a PSR-18 `ClientExceptionInterface` as a connection error, which surfaces as `APIConnectionException`. It retries the attempt after an `Anthropic\Core\Exceptions\RetryableException`, and throws that exception unchanged when no retries are left.
 * **Authentication:** The SDK refreshes OAuth tokens, and signs or authorizes Amazon Bedrock and Google Cloud requests, inside the innermost `$next`. A request that your middleware changes is therefore signed after the change, and again each time you call `$next`.
-* **Response bodies:** A middleware that reads the response body must rewind it, or return `$response->withBody(...)` with a new body, so that the SDK can still decode it. A streaming body can't be rewound, so pass it through unread.
+* **Response bodies:** A middleware that reads the response body must rewind it, or return `$response->withBody(...)` with a new body, so that the SDK can still decode it. A streaming body can’t be rewound, so pass it through unread.
 
 ## Platform integrations
 
@@ -278,11 +278,11 @@ The PHP SDK also supports Claude Models on Google Cloud (Anthropic managed) thro
 
 ## Semantic versioning
 
-Each major version of this SDK sends one API version by default, and a new major version comes with each new API version. The first major version that sends `2026-10-21` is 1.0.0; see [Switch to 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21#upgrade).
-
 This package follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions.
 
 This package considers improvements to the (non-runtime) PHPDoc type definitions to be non-breaking changes.
+
+Every request to the Claude API uses an API version. With this SDK, your requests use the API version that was current when your SDK’s major version was released, so you move to a new API version by upgrading to a new major version. Version 1.0.0 is the first to use `2026-10-21`. See [Migrating to API version 2026-10-21](https://platform.claude.com/docs/en/api/migration-2026-10-21#upgrade) for how to upgrade.
 
 ## Additional resources
 

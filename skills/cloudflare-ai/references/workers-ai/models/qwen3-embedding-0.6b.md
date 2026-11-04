@@ -18,7 +18,9 @@ Text Embeddings • Qwen
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/qwen/qwen3-embedding-0.6b`
+Model ID
+
+`@cf/qwen/qwen3-embedding-0.6b` Copy
 
 - Cloudflare-hosted
 - Zero data retention

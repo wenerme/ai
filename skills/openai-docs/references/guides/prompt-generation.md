@@ -3262,6 +3262,12 @@ options.ResponseFormat = ChatResponseFormat.CreateJsonSchemaFormat("metaschema",
         },
         "additionalProperties": {
           "type": "boolean"
+        },
+        "$defs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/schema_definition"
+          }
         }
       },
       "required": [
@@ -3284,6 +3290,12 @@ options.ResponseFormat = ChatResponseFormat.CreateJsonSchemaFormat("metaschema",
         "schema_definition": {
           "type": "object",
           "properties": {
+            "description": {
+              "type": "string"
+            },
+            "enum": {
+              "type": "array"
+            },
             "type": {
               "type": "string",
               "enum": [
@@ -3322,24 +3334,50 @@ options.ResponseFormat = ChatResponseFormat.CreateJsonSchemaFormat("metaschema",
             },
             "additionalProperties": {
               "type": "boolean"
+            },
+            "$ref": {
+              "type": "string"
+            },
+            "anyOf": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/schema_definition"
+              }
             }
           },
-          "required": [
-            "type"
-          ],
           "additionalProperties": false,
           "if": {
             "properties": {
               "type": {
                 "const": "object"
               }
-            }
+            },
+            "required": [
+              "type"
+            ]
           },
           "then": {
             "required": [
               "properties"
             ]
-          }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "$ref"
+              ]
+            },
+            {
+              "required": [
+                "type"
+              ]
+            },
+            {
+              "required": [
+                "anyOf"
+              ]
+            }
+          ]
         }
       }
     }
@@ -4744,6 +4782,8 @@ options.ResponseFormat = ChatResponseFormat.CreateJsonSchemaFormat("function-met
         "schema_definition": {
           "type": "object",
           "properties": {
+            "description": { "type": "string" },
+            "enum": { "type": "array" },
             "type": {
               "type": "string",
               "enum": [

@@ -1835,6 +1835,7 @@ using OpenAI.Realtime;
 RealtimeResponseOptions options = new()
 
 {
+    OutputModalities = { RealtimeOutputModality.Text },
     Instructions = "Say exactly the following: I'm a little teapot, short and stout! This is my handle, this is my spout!"
 
 };

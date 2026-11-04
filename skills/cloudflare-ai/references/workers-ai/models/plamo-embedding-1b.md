@@ -18,7 +18,9 @@ Text Embeddings • pfnet
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/pfnet/plamo-embedding-1b`
+Model ID
+
+`@cf/pfnet/plamo-embedding-1b` Copy
 
 - Cloudflare-hosted
 - Zero data retention

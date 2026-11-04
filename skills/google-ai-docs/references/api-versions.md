@@ -40,7 +40,7 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [Thinking / Reasoning](/docs/thinking) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [System Instructions](/docs/text-generation) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Audio Output (Speech Config)](/docs/audio) |  | {% badge type="supported" /%} |
-| [Service Tier (Priority / Flex)](/docs/priority-inference) |  | {% badge type="supported" /%} |
+| [Service Tier (Priority / Flex)](/docs/priority-inference) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | **Tools** |  |  |
 | [Code Execution Tool](/docs/code-execution) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Google Search Grounding](/docs/google-search) | {% badge type="supported" /%} | {% badge type="supported" /%} |
@@ -48,7 +48,7 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [URL Context Tool](/docs/url-context) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [File Search Tool](/docs/file-search) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | [Computer Use Tool](/docs/computer-use) | {% badge type="supported" /%} | {% badge type="supported" /%} |
-| [MCP Servers Tool](/docs/function-calling#mcp) |  | {% badge type="supported" /%} |
+| [MCP Servers Tool](/docs/function-calling#mcp) | {% badge type="supported" /%} | {% badge type="supported" /%} |
 | **Realtime APIs** |  |  |
 | [Live API (WebSockets)](/docs/live-api) |  | {% badge type="supported" /%} |
 | [Live Music API](/docs/realtime-music-generation) |  | {% badge type="supported" /%} |

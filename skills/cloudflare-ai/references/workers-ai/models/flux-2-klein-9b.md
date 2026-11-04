@@ -18,7 +18,9 @@ Text-to-Image • Black Forest Labs
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux-2-klein-9b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/black-forest-labs/flux-2-klein-9b`
+Model ID
+
+`@cf/black-forest-labs/flux-2-klein-9b` Copy
 
 - Cloudflare-hosted
 - Partner

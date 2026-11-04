@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/og.p
 
 # Use Pruna P-video through AI Gateway
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows how to call the [Pruna's P-video ↗︎](https://replicate.com/prunaai/p-video) model on [Replicate](https://developers.cloudflare.com/ai-gateway/usage/providers/replicate/) through AI Gateway.
 
@@ -51,7 +51,7 @@ To set up an AI Gateway using the API:
 
 Note your **Account ID** and **Gateway name** for use in later steps.
 
-To add authentication to your gateway, refer to [Authenticated Gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
+New gateways require authentication. To create a token or turn on authentication for an existing gateway, refer to [Authenticated Gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
 
 ## 3. Construct the gateway URL
 
@@ -126,12 +126,12 @@ The response includes a prediction `id`:
 
 ```json
 {
-  "id": "xyz789...",
-  "status": "starting",
-  "urls": {
-    "get": "https://api.replicate.com/v1/predictions/xyz789...",
-    "cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"
-  }
+	"id": "xyz789...",
+	"status": "starting",
+	"urls": {
+		"get": "https://api.replicate.com/v1/predictions/xyz789...",
+		"cancel": "https://api.replicate.com/v1/predictions/xyz789.../cancel"
+	}
 }
 ```
 
@@ -162,5 +162,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/#page","headline":"Use Pruna P-video through AI Gateway","description":"Learn how to call prunaai/p-video on Replicate through AI Gateway","url":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/og.png?v=37536bed53600d03","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/#page","headline":"Use Pruna P-video through AI Gateway","description":"Learn how to call prunaai/p-video on Replicate through AI Gateway","url":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/og.png?v=37536bed53600d03","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

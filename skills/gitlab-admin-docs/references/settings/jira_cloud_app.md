@@ -485,6 +485,35 @@ Other GitLab instances that use the proxy must configure the following settings 
 - [**Jira Connect Proxy URL**](#set-up-your-instance-for-atlassian-marketplace-installation)
 - [**Redirect URI**](#set-up-oauth-authentication)
 
+## Restrict Jira domains that can install the app
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256324) in GitLab 19.6.
+
+Configure an allowlist to restrict which Jira domains can install the GitLab for Jira Cloud app
+on your instance.
+Each entry must match the Jira site hostname exactly.
+For example, `atlassian.net` does not allow `example.atlassian.net`.
+If the allowlist is empty, all Jira domains can install the app.
+
+The allowlist applies only to the Connect version of the app.
+It does not restrict the [Forge version](../../integration/jira/connect-app.md#migration-from-atlassian-connect-to-forge).
+
+Prerequisites:
+
+- Administrator access.
+
+> [!warning]
+> Before you save the allowlist, add every Jira site that is already connected.
+> Upgrading or reinstalling the app fails for sites that are not on the allowlist.
+
+To restrict Jira domains that can install the app:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab for Jira App**.
+1. In **Jira Connect domain allowlist**, enter one Jira domain per line.
+1. Select **Save changes**.
+
 ## Security considerations
 
 The following security considerations are specific to administering the app.

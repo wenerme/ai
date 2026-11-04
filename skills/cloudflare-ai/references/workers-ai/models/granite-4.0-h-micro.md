@@ -18,7 +18,9 @@ Text Generation • IBM
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/ibm-granite/granite-4.0-h-micro`
+Model ID
+
+`@cf/ibm-granite/granite-4.0-h-micro` Copy
 
 - Cloudflare-hosted
 - Function calling

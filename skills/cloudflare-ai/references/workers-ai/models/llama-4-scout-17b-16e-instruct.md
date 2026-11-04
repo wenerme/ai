@@ -18,7 +18,9 @@ Text Generation • Meta
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-4-scout-17b-16e-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/meta/llama-4-scout-17b-16e-instruct`
+Model ID
+
+`@cf/meta/llama-4-scout-17b-16e-instruct` Copy
 
 - Cloudflare-hosted
 - Batch

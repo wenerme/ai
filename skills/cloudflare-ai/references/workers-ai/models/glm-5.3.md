@@ -18,7 +18,9 @@ Text Generation • Zhipu AI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/glm-5.3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/zai-org/glm-5.3`
+Model ID
+
+`@cf/zai-org/glm-5.3` Copy
 
 - Cloudflare-hosted
 - Function calling

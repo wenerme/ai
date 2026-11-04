@@ -18,7 +18,9 @@ Text Generation • OpenAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/openai/gpt-oss-20b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/openai/gpt-oss-20b`
+Model ID
+
+`@cf/openai/gpt-oss-20b` Copy
 
 - Cloudflare-hosted
 - Batch

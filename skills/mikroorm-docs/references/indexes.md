@@ -268,6 +268,10 @@ The advanced `columns` option (sort order, prefix length, collation) is not supp
 
 The `expression` escape hatch (raw SQL for the whole index body) cannot be combined with `where` — the two ways to spell the predicate are mutually exclusive. If you need both a custom expression and a predicate, inline the `WHERE` clause into `expression` yourself. MikroORM throws a clear error if both are set.
 
+> **note**: Combining with `deferMode`
+
+Partial unique indexes cannot be deferrable — only constraints can, and constraints cannot carry a predicate. MikroORM throws if `deferMode` is combined with `where`. On PostgreSQL, a deferrable partial uniqueness check can be expressed as an [exclusion constraint](./defining-entities.md#exclusion-constraints-postgresql) via `@Check()`, e.g. `expression: 'exclude using btree (email with =) where (deleted_at is null) deferrable initially deferred'`.
+
 > **note**: Round-trip via the entity generator
 
 On PostgreSQL, indexes over functional columns (e.g. `lower(email)`, `(data->>'kind')`) are introspected as opaque `expression` strings — the full `CREATE INDEX … WHERE …` survives the round-trip, but a regenerated entity uses `expression` rather than structured `properties` + `where`. Purely column-based partial indexes round-trip as structured `where`.

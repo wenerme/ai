@@ -1,5 +1,5 @@
 ---
-description: This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabled by default, for a vulnerability in Nuxt Image and IPX. The rule offers partial coverage. Please follow the advisory and patch to the latest version.
+description: This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of PHP Capture the Flag (CTF) challenge.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,21 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-11-03
+
+
+**WAF Release - 2026-11-03**
+
+This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of [PHP Capture the Flag (CTF) challenge ↗︎](https://blog.cloudflare.com/php-ctf).
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...bcd95984 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | Block | Rule detection updated. |
+| Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...0a0c2f64 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #2 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...13f91633 | N/A | phpMyAdmin - Authentication Bypass | N/A | Disabled | This is a new detection. |
 
 ## 2026-10-30
 
@@ -32,10 +47,10 @@ This release introduces updates to the underlying rule expressions for PHP out-o
 
 | Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
 | Cloudflare Free Ruleset | ...82dab691 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
-| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
 | Cloudflare Free Ruleset | ...24b1a4c6 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...545d163c | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #3 | Block | Block | Rule detection updated. |
+| Cloudflare Managed Ruleset | ...212afcc9 | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619) #4 | Block | Block | Rule detection updated. |
 | Cloudflare Response Ruleset | ...48d2242a | N/A | Default block for High confidence Signatures | Block | Block | Rule detection updated. |
 
 ## 2026-10-28
@@ -429,29 +444,8 @@ This release introduces a new threat detection to enhance protection against SQL
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...bcfa0966 | N/A | SQLi - WHERE Comparison With WITH Clause | Log | Block | This is a new detection. |
 
-## 2026-08-26
-
-
-**WAF Release - 2026-08-26 - Emergency**
-
-This emergency release updates an existing Next.js remote code execution rule to identify CVE-2026-75604 and adds a new rule for remote code execution in the Next.js Image Optimizer via crafted AVIF images.
-
-**Key Findings**
-
-- CVE-2026-75604 affects Windows-hosted Next.js applications using both the Pages Router and App Router without Cache Components and can lead to unauthenticated remote code execution.
-- GHSA-2xp9-vwfh-vxw4 affects the Next.js Image Optimizer and can lead to unauthenticated remote code execution when it optimizes an attacker-controlled AVIF image.
-
-**Impact**
-
-Next.js recommends updating to version 16.3.3 or 15.5.24 to address these vulnerabilities.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...2ca6cce3 | N/A | Next.js - Remote Code Execution - CVE:CVE-2026-75604 | Block | N/A | Rule metadata description refined. Detection unchanged. |
-| Cloudflare Managed Ruleset | ...80256efe | N/A | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF | N/A | Block | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This emergency release adds a new rule to the Cloudflare Managed Ruleset, disabled by default, for a vulnerability in Nuxt Image and IPX. The rule offers partial coverage. Please follow the advisory and patch to the latest version.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog","description":"This release introduces updates to the underlying rule expressions for PHP out-of-memory (OOM) vulnerabilities CVE-2026-109618, CVE-2026-109619 and CVE-2026-115560. The improvements are iterative changes based on reports from Security Researchers as part of PHP Capture the Flag (CTF) challenge.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

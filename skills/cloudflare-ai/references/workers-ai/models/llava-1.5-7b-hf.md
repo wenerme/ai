@@ -20,7 +20,9 @@ Image-to-Text • llava-hf
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/llava-hf/llava-1.5-7b-hf`
+Model ID
+
+`@cf/llava-hf/llava-1.5-7b-hf` Copy
 
 - Cloudflare-hosted
 - Zero data retention

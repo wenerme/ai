@@ -46,6 +46,8 @@ Set spend alerts on the [limits](https://platform.openai.com/settings/organizati
 
 The OpenAI API uses API keys for authentication. Visit your [API keys](https://platform.openai.com/settings/organization/api-keys) page to retrieve the API key you'll use in your requests.
 
+Use a project service account for an application's identity instead of depending on an individual developer's key. See [API keys and service accounts](https://developers.openai.com/api/docs/guides/api-keys) for choosing credentials and automating project and key management.
+
 This is a relatively straightforward way to control access, but you must be vigilant about securing these keys. Avoid exposing the API keys in your code or in public repositories; instead, store them in a secure location. You should expose your keys to your application using environment variables or secret management service, so that you don't need to hard-code them in your codebase. Read more in our [Best practices for API key safety](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety).
 
 We strongly recommend setting an expiration date when you create a project API key and establishing a regular key rotation process. Before a key expires, create a replacement, update your applications to use it, and revoke the old key once you've verified that the replacement works.

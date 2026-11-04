@@ -20,7 +20,9 @@ Text Generation • Google
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/gemma-7b-it-lora/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/google/gemma-7b-it-lora`
+Model ID
+
+`@cf/google/gemma-7b-it-lora` Copy
 
 - Cloudflare-hosted
 - LoRA

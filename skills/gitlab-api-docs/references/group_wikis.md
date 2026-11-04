@@ -8,6 +8,17 @@ An API for [project wikis](wikis.md) is also available.
 
 Comments on a wiki page are called `notes`. To interact with them, use the [notes API](notes.md#group-wikis).
 
+## Rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266523) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `wiki_read_unauthenticated_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+A rate limit applies to unauthenticated requests that list or retrieve pages in a group wiki.
+For more information, see [rate limits](../rate_limits/_index.md#api-and-rails-console).
+
 ## List wiki pages
 
 Lists all wiki pages for a specified group.

@@ -356,6 +356,7 @@ internal static async Task SendFunctionCallOutputAsync(RealtimeSessionClient ses
     {
         ResponseOptions = new()
         {
+            OutputModalities = { RealtimeOutputModality.Text },
             Metadata = new Dictionary<string, BinaryData> { ["topic"] = BinaryData.FromObjectAsJson("lookup_order_followup") },
             ToolChoice = RealtimeDefaultToolChoice.None
         }
@@ -1103,16 +1104,17 @@ private static void send(RealtimeConnection connection, RealtimeClientEvent even
 ```
 
 ```csharp
+using System.Text.Json;
 using OpenAI.Realtime;
 
 #pragma warning disable OPENAI002
-// Replace https://mcp.example.com/mcp with your company's MCP server URL.
+// Connect to the official OpenAI documentation MCP server.
 
 internal static async Task ApproveMcpRequestAsync(RealtimeSessionClient session, string approvalRequestId, CancellationToken cancellationToken)
 {
     await session.SendCommandAsync(new RealtimeClientCommandConversationItemCreate(new RealtimeMcpToolCallApprovalResponseItem(approvalRequestId, true)
     {
-        Id = $"mcp_approval_{approvalRequestId}"
+        Id = Guid.NewGuid().ToString("N")
     }), cancellationToken);
 }
 ```
@@ -1285,6 +1287,7 @@ connection.send(
 ```
 
 ```csharp
+using System.Text.Json;
 using OpenAI.Realtime;
 
 #pragma warning disable OPENAI002
@@ -1294,6 +1297,7 @@ await session.SendCommandAsync(new RealtimeClientCommandResponseCreate
     ResponseOptions = new()
     {
         Metadata = new Dictionary<string, BinaryData> { ["topic"] = BinaryData.FromObjectAsJson("mcp_initial") },
+        ToolChoice = RealtimeDefaultToolChoice.Required,
         OutputModalities =
         {
             RealtimeOutputModality.Text

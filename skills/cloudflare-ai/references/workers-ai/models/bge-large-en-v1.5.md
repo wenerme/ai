@@ -18,7 +18,9 @@ Text Embeddings • BAAI
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-large-en-v1.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/baai/bge-large-en-v1.5`
+Model ID
+
+`@cf/baai/bge-large-en-v1.5` Copy
 
 - Cloudflare-hosted
 - Batch

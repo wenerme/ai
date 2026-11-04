@@ -93571,6 +93571,10 @@ components:
           type: string
         jira_connect_additional_audience_url:
           type: string
+        jira_connect_domain_allowlist:
+          type: string
+        jira_connect_domain_allowlist_raw:
+          type: string
         jira_forge_app_id:
           type: string
         math_rendering_limits_enabled:
@@ -94073,6 +94077,8 @@ components:
           type: string
         groups_api_limit:
           type: string
+        issuable_csv_import_limit:
+          type: string
         project_api_limit:
           type: string
         project_invited_groups_api_limit:
@@ -94122,6 +94128,8 @@ components:
         web_hook_event_resend_limit:
           type: string
         web_hook_test_limit:
+          type: string
+        wiki_read_request_limit_unauthenticated:
           type: string
         github_gists_import_limit:
           type: string
@@ -95409,6 +95417,12 @@ components:
         subject_digest:
           type: string
           example: 5db1fee4b5703808c48078a76768b155b421b210c0761cd6a5d223f4d99f1eaa
+        signing_method:
+          type: string
+          enum:
+          - sigstore
+          - local_ca
+          example: local_ca
         download_url:
           type: string
     APIEntitiesCommitStats:
@@ -111861,6 +111875,18 @@ components:
           description: URL of the GitLab instance used as a proxy for the GitLab for
             Jira Cloud app.
           nullable: true
+        jira_connect_domain_allowlist:
+          type: array
+          items:
+            type: string
+          description: List of Jira domains that can install the GitLab for Jira Cloud
+            app. Applies to the Connect app only. If empty, all domains are allowed.
+          nullable: true
+        jira_connect_domain_allowlist_raw:
+          type: string
+          description: Raw newline- or comma-separated list of Jira domains that can
+            install the GitLab for Jira Cloud app. Applies to the Connect app only.
+          nullable: true
         jira_forge_app_id:
           type: string
           description: Atlassian Forge app ID (ARI) of the GitLab for Jira Cloud app,
@@ -113997,6 +114023,9 @@ components:
         groups_api_limit:
           type: string
           nullable: true
+        issuable_csv_import_limit:
+          type: string
+          nullable: true
         project_api_limit:
           type: string
           nullable: true
@@ -114040,6 +114069,9 @@ components:
           type: string
           nullable: true
         todos_list_api_limit:
+          type: string
+          nullable: true
+        wiki_read_request_limit_unauthenticated:
           type: string
           nullable: true
         observability_backend_ssl_verification_enabled:
@@ -115964,6 +115996,53 @@ components:
             "y":
               type: integer
               description: Y coordinate in the image
+              nullable: true
+            line_range:
+              type: object
+              description: Multi-line start and end
+              properties:
+                start:
+                  type: object
+                  description: Start line for a multi-line note
+                  properties:
+                    line_code:
+                      type: string
+                      description: Start line code for multi-line note
+                      nullable: true
+                    type:
+                      type: string
+                      description: Start line type for multi-line note
+                      nullable: true
+                    old_line:
+                      type: integer
+                      description: Start old_line line number
+                      nullable: true
+                    new_line:
+                      type: integer
+                      description: Start new_line line number
+                      nullable: true
+                  nullable: true
+                end:
+                  type: object
+                  description: End line for a multi-line note
+                  properties:
+                    line_code:
+                      type: string
+                      description: End line code for multi-line note
+                      nullable: true
+                    type:
+                      type: string
+                      description: End line type for multi-line note
+                      nullable: true
+                    old_line:
+                      type: integer
+                      description: End old_line line number
+                      nullable: true
+                    new_line:
+                      type: integer
+                      description: End new_line line number
+                      nullable: true
+                  nullable: true
               nullable: true
           required:
           - base_sha

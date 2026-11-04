@@ -86,8 +86,8 @@ Keep the sideband open until `session.closed` supplies final usage, then release
 
 Call a phone number through your SIP provider with [Create session](https://developers.openai.com/api/reference/resources/live/methods/create). Your provider handles the phone network connection while GPT-Live carries the conversation.
 
-Outbound SIP calling must be enabled for your organization. It is available
-  through the Live API, not the Realtime API call-creation endpoint.
+Outbound SIP calling is available to all organizations through the Live API,
+  not the Realtime API call-creation endpoint.
 
 #### Configure your trunk
 
@@ -171,7 +171,7 @@ Use the same [transfer](#transfer-or-end-the-call) and [hangup](https://develope
 
 Outbound SIP requests have a 1 MiB body limit. Ringing is limited to 3 minutes, and a connected call is limited to 2 hours. These limits aren't configurable in the creation request.
 
-A `403` response with `outbound_sip_not_enabled` means outbound calling isn't enabled for your organization. Invalid session configuration is returned on the creation request. Transport setup failures can return `502`, and initialization timeouts return `504`. After creation succeeds, monitor `transport.failed` for asynchronous setup failures.
+Invalid session configuration is returned on the creation request. Transport setup failures can return `502`, and initialization timeouts return `504`. After creation succeeds, monitor `transport.failed` for asynchronous setup failures.
 
 Each creation request places a new call. `X-Client-Request-Id` doesn't
   deduplicate requests. Don't automatically retry after an ambiguous timeout or

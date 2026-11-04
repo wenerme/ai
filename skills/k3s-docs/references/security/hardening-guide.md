@@ -95,7 +95,7 @@ kubelet-arg:
 
 The runtime requirements to comply with the CIS Benchmark are centered around pod security (via PSP or PSA), network policies and API Server auditing logs. These are outlined in this section.
 
-By default, K3s does not include any pod security or network policies. However, K3s ships with a controller that will enforce network policies, if any are created. K3s doesn't enable auditing by default, so audit log configuration and audit policy must be created manually. By default, K3s runs with the both the `PodSecurity` and `NodeRestriction` admission controllers enabled, among others.
+By default, K3s does not include any pod security or network policies. However, K3s ships with a controller that will enforce network policies, if any are created. K3s doesn't enable auditing by default, so audit log configuration and audit policy must be created manually. By default, K3s runs with both the `PodSecurity` and `NodeRestriction` admission controllers enabled, among others.
 
 ### Pod Security
 
@@ -104,7 +104,7 @@ K3s v1.25 and newer support [Pod Security Admissions (PSAs)](https://kubernetes.
 --kube-apiserver-arg="admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml"
 ```
 
-The policy should be written to a file named `psa.yaml` in `/var/lib/rancher/k3s/server` directory. 
+The policy should be written to a file named `psa.yaml` in the `/var/lib/rancher/k3s/server` directory. 
 
 Here is an example of a compliant PSA:
 ```yaml
@@ -414,7 +414,7 @@ spec:
 
 CIS requires that all namespaces have a network policy applied that reasonably limits traffic into namespaces and pods.
 
-Network policies should be placed the `/var/lib/rancher/k3s/server/manifests` directory, where they will automatically be deployed on startup.
+Network policies should be placed in the `/var/lib/rancher/k3s/server/manifests` directory, where they will automatically be deployed on startup.
 
 Here is an example of a compliant network policy.
 
@@ -433,7 +433,7 @@ spec:
             kubernetes.io/metadata.name: kube-system
 ```
 
-With the applied restrictions, DNS will be blocked unless purposely allowed. Below is a network policy that will allow for traffic to exist for DNS.
+With the applied restrictions, DNS will be blocked unless purposely allowed. Below is a network policy that will allow DNS traffic.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -504,15 +504,15 @@ spec:
 
 ### API Server audit configuration
 
-CIS requirements 1.2.22 to 1.2.25 are related to configuring audit logs for the API Server. K3s doesn't create by default the log directory and audit policy, as auditing requirements are specific to each user's policies and environment.
+CIS requirements 1.2.22 to 1.2.25 are related to configuring audit logs for the API Server. By default, K3s doesn't create the log directory and audit policy, as auditing requirements are specific to each user's policies and environment.
 
-The log directory, ideally, must be created before starting K3s. A restrictive access permission is recommended to avoid leaking potential sensitive information.
+The log directory, ideally, must be created before starting K3s. A restrictive access permission is recommended to avoid leaking potentially sensitive information.
 
 ```bash
 sudo mkdir -p -m 700 /var/lib/rancher/k3s/server/logs
 ```
 
-A starter audit policy to log request metadata is provided below. The policy should be written to a file named `audit.yaml` in `/var/lib/rancher/k3s/server` directory. Detailed information about policy configuration for the API server can be found in the Kubernetes [documentation](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/).
+A starter audit policy to log request metadata is provided below. The policy should be written to a file named `audit.yaml` in the `/var/lib/rancher/k3s/server` directory. Detailed information about policy configuration for the API server can be found in the Kubernetes [documentation](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/).
 
 ```yaml
 apiVersion: audit.k8s.io/v1
@@ -547,7 +547,7 @@ sudo systemctl restart k3s.service
 ```
 
 ## Manual Operations
-The following are controls that K3s currently does not pass by with the above configuration applied. These controls require manual intervention to fully comply with the CIS Benchmark.
+The following are controls that K3s currently does not pass with the above configuration applied. These controls require manual intervention to fully comply with the CIS Benchmark.
 
 ### Control 1.1.20
 Ensure that the Kubernetes PKI certificate file permissions are set to 600 or more restrictive (Manual)
@@ -603,7 +603,7 @@ kube-apiserver-arg:
 Ensure that a limit is set on pod PIDs 
 
 Remediation
-Decide on an appropriate level for this parameter and set it,
+Decide on an appropriate level for this parameter and set it.
 If using a K3s config file /etc/rancher/k3s/config.yaml, edit the file to set `podPidsLimit` to
 ```yaml
 kubelet-arg:
@@ -618,7 +618,7 @@ Refer to [CIS 1.8 Section 5](self-assessment-1.8.md#51-rbac-and-service-accounts
 
 #### Control 5.1.5
 
-> **note**: Remediation to achieve passing score is only needed for cis-1.9
+> **note**: Remediation to achieve a passing score is only needed for cis-1.9
 
 Remediation
 Create explicit service accounts wherever a Kubernetes workload requires specific access to the Kubernetes API server.

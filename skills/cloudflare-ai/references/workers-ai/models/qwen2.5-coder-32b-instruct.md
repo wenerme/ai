@@ -18,7 +18,9 @@ Text Generation • Qwen
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen2.5-coder-32b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/qwen/qwen2.5-coder-32b-instruct`
+Model ID
+
+`@cf/qwen/qwen2.5-coder-32b-instruct` Copy
 
 - Cloudflare-hosted
 - LoRA

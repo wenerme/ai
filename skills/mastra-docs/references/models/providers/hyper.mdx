@@ -5,7 +5,7 @@ description: "Browse Charm Hyper model IDs, capabilities, context windows, and p
 
 # [Charm Hyper logo]Charm Hyper
 
-Access 23 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
+Access 24 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
 
 Learn more in the [Charm Hyper documentation](https://hyper.charm.land).
 
@@ -70,7 +70,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
+    "contextWindow": 1000000,
     "maxOutput": 262144,
     "inputCost": 0.33,
     "outputCost": 1.31
@@ -218,6 +218,18 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.32664,
     "outputCost": 1.30656
+  },
+  {
+    "model": "hyper/muse-spark-open",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.4,
+    "outputCost": 4.65
   },
   {
     "model": "hyper/prism",

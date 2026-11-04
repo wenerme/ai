@@ -48,15 +48,18 @@ The response to an `EmbedContentRequest`.
 
 **Properties:**
 
-**embedding**: [`ContentEmbedding`](/api-reference/embeddings#Resource:ContentEmbedding)
+{% section class="api-ref-property-list" %}
+  **embedding**: [`ContentEmbedding`](/api-reference/embeddings#Resource:ContentEmbedding)
 
-Output only. The embedding generated from the input content.
+  Output only. The embedding generated from the input content.
 
-{% hr /%}
+  {% hr /%}
 
-**usageMetadata**: [`EmbeddingUsageMetadata`](/api-reference/embeddings#Resource:EmbeddingUsageMetadata)
+  **usageMetadata**: [`EmbeddingUsageMetadata`](/api-reference/embeddings#Resource:EmbeddingUsageMetadata)
 
-Output only. The usage metadata for the request.
+  Output only. The usage metadata for the request.
+
+{% /section %}
 
 ### ContentEmbedding  {% id="Resource:ContentEmbedding" %}
 
@@ -64,15 +67,18 @@ A list of floats representing an embedding.
 
 **Properties:**
 
-**values**: `array (number)`
+{% section class="api-ref-property-list" %}
+  **values**: `number array`
 
-The embedding values. This is for 3P users only and will not be populated for 1P calls.
+  The embedding values. This is for 3P users only and will not be populated for 1P calls.
 
-{% hr /%}
+  {% hr /%}
 
-**shape**: `array (integer)`
+  **shape**: `integer array`
 
-This field stores the soft tokens tensor frame shape (e.g. [1, 1, 256, 2048]).
+  This field stores the soft tokens tensor frame shape (e.g. [1, 1, 256, 2048]).
+
+{% /section %}
 
 ### TaskType  {% id="Resource:TaskType" %}
 
@@ -94,25 +100,36 @@ A resource representing a batch of `EmbedContent` requests.
 
 **Properties:**
 
-**model**: {% mark %}required{% /mark %} `string`
+{% section class="api-ref-property-list" %}
+  **model**: {% mark %}required{% /mark %} `string`
 
-The name of the `Model` to use for generating the completion. Format: `models/{model}`.
+  The name of the `Model` to use for generating the completion. Format: `models/{model}`.
 
-{% hr /%}
+  {% hr /%}
 
-**displayName**: {% mark %}required{% /mark %} `string`
+  **displayName**: {% mark %}required{% /mark %} `string`
 
-The user-defined name of this batch.
+  The user-defined name of this batch.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **inputConfig**: {% mark %}required{% /mark %} `InputEmbedContentConfig`
 
   Input configuration of the instances on which batch processing are performed.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **source**: {% mark %}required{% /mark %} `Union type`
+
+  The source of the input.
+
+  {% /summary %}
+
+  Union field `source` can be only one of the following:
 
   **fileName**: `string`
 
@@ -128,7 +145,7 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **requests**: {% mark %}required{% /mark %} `array (InlinedEmbedContentRequest)`
+  **requests**: {% mark %}required{% /mark %} `InlinedEmbedContentRequest array`
 
   The requests to be processed in the batch.
 
@@ -156,11 +173,19 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **parts**: `array (Part)`
+  **parts**: `Part array`
 
   Ordered `Parts` that constitute a single message. Parts may have different MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   **text**: `string`
 
@@ -238,11 +263,21 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **parts**: `array (FunctionResponsePart)`
+  **parts**: `FunctionResponsePart array`
 
   Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **data**: `Union type`
+
+  The data of the function response part.
+
+  {% /summary %}
+
+  Union field `data` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -293,9 +328,11 @@ The user-defined name of this batch.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -317,7 +354,7 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **scheduling**: `enum (string)`
+  **scheduling**: `string enum`
 
   Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
 
@@ -366,7 +403,7 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **language**: {% mark %}required{% /mark %} `enum (string)`
+  **language**: {% mark %}required{% /mark %} `string enum`
 
   Programming language of the `code`.
 
@@ -399,7 +436,7 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **outcome**: {% mark %}required{% /mark %} `enum (string)`
+  **outcome**: {% mark %}required{% /mark %} `string enum`
 
   Outcome of the code execution.
 
@@ -504,6 +541,18 @@ The user-defined name of this batch.
 
   {% /details %}
 
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **metadata**: `Union type`
+
+  Controls extra preprocessing of data. Set this when `inline_data` or `file_data` is present to configure per-part static media preprocessing.
+
+  {% /summary %}
+
+  Union field `metadata` can be only one of the following:
+
   {% details %}
   {% summary %}
   **videoMetadata**: `VideoMetadata`
@@ -523,6 +572,8 @@ The user-defined name of this batch.
   **fps**: `number`
 
   Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0].
+
+  {% /details %}
 
   {% /details %}
 
@@ -548,7 +599,17 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **level**: `enum (string)`
+  **value**: `Union type`
+
+  The media resolution level.
+
+  {% /summary %}
+
+  Union field `value` can be only one of the following:
+
+  {% details %}
+  {% summary %}
+  **level**: `string enum`
 
   The tokenization quality used for given media. for Gemini API support .
 
@@ -566,9 +627,11 @@ The user-defined name of this batch.
 
   {% /details %}
 
+  {% /details %}
+
   {% details %}
   {% summary %}
-  **mediaProcessing**: `enum (string)`
+  **mediaProcessing**: `string enum`
 
   Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inline_data` or `file_data` with video mime). Non-video parts ignore this field.
 
@@ -600,7 +663,7 @@ The user-defined name of this batch.
 
   {% details %}
   {% summary %}
-  **words**: `array (WordInfo)`
+  **words**: `WordInfo array`
 
   Optional. Detailed word-level transcriptions and timing details. Present when word_timestamp is set.
 
@@ -662,23 +725,35 @@ The user-defined name of this batch.
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% /details %}
 
-**name**: `string`
+  {% hr /%}
 
-Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.
+  **name**: `string`
 
-{% hr /%}
+  Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}`.
 
-{% details %}
+  {% hr /%}
+
+  {% details %}
   {% summary %}
   **output**: `EmbedContentBatchOutput`
 
   Output only. The output of the batch request.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **output**: `Union type`
+
+  The output of the batch request.
+
+  {% /summary %}
+
+  Union field `output` can be only one of the following:
 
   **responsesFile**: `string`
 
@@ -694,11 +769,21 @@ Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}
 
   {% details %}
   {% summary %}
-  **inlinedResponses**: `array (InlinedEmbedContentResponse)`
+  **inlinedResponses**: `InlinedEmbedContentResponse array`
 
   Output only. The responses to the requests in the batch.
 
   {% /summary %}
+
+  {% details %}
+  {% summary %}
+  **output**: `Union type`
+
+  The output of the request.
+
+  {% /summary %}
+
+  Union field `output` can be only one of the following:
 
   {% details %}
   {% summary %}
@@ -716,7 +801,7 @@ Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}
 
   A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 
-  **details**: `array (object)`
+  **details**: `object array`
 
   A list of messages that carry the error details. There is a common set of message types for APIs to use.
 
@@ -726,6 +811,8 @@ Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}
 
   Output only. The response to the request.
 
+  {% /details %}
+
   **metadata**: `object`
 
   Output only. The metadata associated with the request.
@@ -734,29 +821,31 @@ Output only. Identifier. Resource name of the batch. Format: `batches/{batch_id}
 
   {% /details %}
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% /details %}
 
-**createTime**: `string`
+  {% hr /%}
 
-Output only. The time at which the batch was created.
+  **createTime**: `string`
 
-{% hr /%}
+  Output only. The time at which the batch was created.
 
-**endTime**: `string`
+  {% hr /%}
 
-Output only. The time at which the batch processing completed.
+  **endTime**: `string`
 
-{% hr /%}
+  Output only. The time at which the batch processing completed.
 
-**updateTime**: `string`
+  {% hr /%}
 
-Output only. The time at which the batch was last updated.
+  **updateTime**: `string`
 
-{% hr /%}
+  Output only. The time at which the batch was last updated.
 
-{% details %}
+  {% hr /%}
+
+  {% details %}
   {% summary %}
   **batchStats**: `EmbedContentBatchStats`
 
@@ -780,11 +869,11 @@ Output only. The time at which the batch was last updated.
 
   Output only. The number of requests that are still pending processing.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **state**: `BatchState`
 
@@ -802,13 +891,15 @@ Output only. The time at which the batch was last updated.
   - `BATCH_STATE_CANCELLED`: The batch has been cancelled.
   - `BATCH_STATE_EXPIRED`: The batch has expired.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**priority**: `string`
+  **priority**: `string`
 
-Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+  Optional. The priority of the batch. Batches with a higher priority value will be processed before batches with a lower priority value. Negative values are allowed. Default is 0.
+
+{% /section %}
 
 ### EmbedContentConfig  {% id="Resource:EmbedContentConfig" %}
 
@@ -816,13 +907,14 @@ Configurations for the EmbedContent request.
 
 **Properties:**
 
-**title**: `string`
+{% section class="api-ref-property-list" %}
+  **title**: `string`
 
-Optional. The title for the text.
+  Optional. The title for the text.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
   **taskType**: [`TaskType`](/api-reference/embeddings#Resource:TaskType)
 
@@ -842,31 +934,33 @@ Optional. The title for the text.
   - `FACT_VERIFICATION`: Specifies that the given text will be used for fact verification.
   - `CODE_RETRIEVAL_QUERY`: Specifies that the given text will be used for code retrieval.
 
-{% /details %}
+  {% /details %}
 
-{% hr /%}
+  {% hr /%}
 
-**autoTruncate**: `boolean`
+  **autoTruncate**: `boolean`
 
-Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
+  Optional. Whether to silently truncate the input content if it's longer than the maximum sequence length.
 
-{% hr /%}
+  {% hr /%}
 
-**outputDimensionality**: `integer`
+  **outputDimensionality**: `integer`
 
-Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
+  Optional. Reduced dimension for the output embedding. If set, excessive values in the output embedding are truncated from the end.
 
-{% hr /%}
+  {% hr /%}
 
-**documentOcr**: `boolean`
+  **documentOcr**: `boolean`
 
-Optional. Whether to enable OCR for document content.
+  Optional. Whether to enable OCR for document content.
 
-{% hr /%}
+  {% hr /%}
 
-**audioTrackExtraction**: `boolean`
+  **audioTrackExtraction**: `boolean`
 
-Optional. Whether to extract audio from video content.
+  Optional. Whether to extract audio from video content.
+
+{% /section %}
 
 ### EmbeddingUsageMetadata  {% id="Resource:EmbeddingUsageMetadata" %}
 
@@ -874,15 +968,16 @@ Metadata on the usage of the embedding request.
 
 **Properties:**
 
-**promptTokenCount**: `integer`
+{% section class="api-ref-property-list" %}
+  **promptTokenCount**: `integer`
 
-Output only. Number of tokens in the prompt.
+  Output only. Number of tokens in the prompt.
 
-{% hr /%}
+  {% hr /%}
 
-{% details %}
+  {% details %}
   {% summary %}
-  **promptTokenDetails**: `array (ModalityTokenCount)`
+  **promptTokenDetails**: `ModalityTokenCount array`
 
   Output only. List of modalities that were processed in the request input.
 
@@ -911,5 +1006,7 @@ Output only. Number of tokens in the prompt.
 
   Number of tokens.
 
-{% /details %}
+  {% /details %}
+
+{% /section %}
 

@@ -1,0 +1,536 @@
+> ## AI Agent Context
+> Get the complete documentation index at: https://aistudio.google.com/llms.txt
+> Use this file to discover all available pages.
+> For the full documentation in a single file, fetch: https://aistudio.google.com/llms-full.txt
+
+# Grounding with Google Search
+
+Grounding with Google Search connects the Gemini model to real-time web content
+and works with all available languages. This allows
+Gemini to provide more accurate answers and cite verifiable sources beyond its
+knowledge cutoff.
+
+Grounding helps you build applications that can:
+
+*   **Increase factual accuracy:** Reduce model hallucinations by basing
+  responses on real-world information.
+
+*   **Access real-time information:** Answer questions about recent events and
+  topics.
+
+*   **Provide citations:** Build user trust by showing the sources for the
+  model's claims.
+
+
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  interaction = client.interactions.create(
+      model="gemini-3.8-flash",
+      input="Who won the euro 2024?",
+      tools=[{"type": "google_search"}]
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const client = new GoogleGenAI({});
+  
+  const interaction = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "Who won the euro 2024?",
+      tools: [{ type: "google_search" }]
+  });
+  
+  console.log(interaction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.GoogleSearch;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.Model;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import java.util.Arrays;
+  
+  Client client = new Client();
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model(Model.of("gemini-3.8-flash"))
+          .input(InteractionsInput.of("Who won the euro 2024?"))
+          .tools(Arrays.asList(GoogleSearch.builder().build()))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+  
+  System.out.println(interaction.outputText().orElse(""));
+  ```
+
+  {% /tab %}
+
+  {% tab label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(
+              interactions.CreateModelInteraction{
+                  Model: interactions.Model("gemini-3.8-flash"),
+                  Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
+                  Tools: []interactions.Tool{
+                      interactions.NewTool(interactions.GoogleSearch{}),
+                  },
+              },
+          ),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      fmt.Println(resp.Interaction.GetOutputText())
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -H "Api-Revision: 2026-05-20" \
+    -d '{
+      "model": "gemini-3.8-flash",
+      "input": "Who won the euro 2024?",
+      "tools": [{"type": "google_search"}]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+## How grounding with Google Search works  {% id="how-it-works" %}
+
+When you enable the `google_search` tool, the model handles the entire workflow
+of searching, processing, and citing information automatically.
+
+![](https://www.gstatic.com/cloud-cms/0c893db002557e538dbe4c9afe8f5abf.png)
+
+1.   **User Prompt:** Your application sends a user's prompt to the Gemini API
+  with the `google_search` tool enabled.
+
+2.   **Prompt Analysis:** The model analyzes the prompt and determines if a
+  Google Search can improve the answer.
+
+3.   **Google Search:** If needed, the model automatically generates one or
+  multiple search queries and executes them.
+
+4.   **Search Results Processing:** The model processes the search results,
+  synthesizes the information, and formulates a response.
+
+5.   **Grounded Response:** The API returns a final, user-friendly response that
+  is grounded in the search results. This response includes the model's text
+  answer with inline `annotations` containing the citations, as well as
+  `google_search_call` and `google_search_result` steps with the search
+  queries and search suggestions.
+
+
+## Understanding the grounding response  {% id="understanding-the-grounding-response" %}
+
+When a response is successfully grounded, the model's text output includes
+inline `annotations` directly on the text content block. These annotations
+provide citation information linking parts of the response to their sources.
+
+```json
+{
+  "steps": [
+    {
+      "type": "thought",
+      "summary": [
+        {
+          "type": "text",
+          "text": "The user is asking for the winner of Euro 2024. I need to search for the result of the Euro 2024 final."
+        }
+      ],
+      "signature": "CoMDAXLI2nynRYojJIy6B1Jh9os2crpWLfB0..."
+    },
+    {
+      "type": "google_search_call",
+      "arguments": {
+        "queries": ["UEFA Euro 2024 winner"]
+      }
+    },
+    {
+      "type": "google_search_result",
+      "call_id": "search_001",
+      "result": [
+        {
+          "search_suggestions": "<!-- HTML and CSS for the search widget -->"
+        }
+      ]
+    },
+    {
+      "type": "model_output",
+      "content": [
+        {
+          "type": "text",
+          "text": "Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title.",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "url": "https://www.aljazeera.com/sports/euro-2024-final",
+              "title": "aljazeera.com",
+              "start_index": 0,
+              "end_index": 56
+            },
+            {
+              "type": "url_citation",
+              "url": "https://www.uefa.com/euro2024/news/spain-wins-euro-2024",
+              "title": "uefa.com",
+              "start_index": 57,
+              "end_index": 124
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+The key fields in the response:
+
+*   `google_search_call` : Contains the search `queries` the model executed.
+
+*   `google_search_result` : Contains `search_suggestions`, an HTML snippet
+  for rendering search suggestions in your UI. Full usage requirements are
+  detailed in the [Terms of Service](/docs/terms#grounding-with-google-search).
+
+*   `text` with `annotations` : The model's synthesized answer with inline
+  citations. Each `url_citation` annotation links a text segment (defined
+  by `start_index` and `end_index`) to a source URL. This is the key to
+  building inline citations.
+
+
+Grounding with Google Search can also be used in combination with the [URL
+context tool](/docs/url-context) to ground responses in
+both public web data and the specific URLs you provide.
+
+## Attributing sources with inline citations  {% id="attributing-sources-with-inline-citations" %}
+
+The API returns inline `url_citation` annotations on the text content block,
+giving you complete control over how you display sources in your user interface.
+Each annotation includes `start_index` and `end_index` to identify which part
+of the text it cites. Here's how to extract and display them.
+
+{% tabs %}
+  {% tab label="Python" %}
+  ```python
+  for step in interaction.steps:
+      if step.type == "model_output":
+          for content_block in step.content:
+              if content_block.type == "text":
+                  print(content_block.text)
+                  if content_block.annotations:
+                      print("\nCitations:")
+                      for annotation in content_block.annotations:
+                          if annotation.type == "url_citation":
+                              cited_text = content_block.text[annotation.start_index:annotation.end_index]
+                              print(f" [{annotation.title}]({annotation.url})")
+                              print(f" Cited text: \"{cited_text}\"")
+  ```
+
+  {% /tab %}
+
+  {% tab label="JavaScript" %}
+  ```javascript
+  for (const step of interaction.steps) {
+    if (step.type === 'model_output') {
+      for (const contentBlock of step.content || []) {
+        if (contentBlock.type === 'text') {
+          console.log(contentBlock.text);
+          if (contentBlock.annotations) {
+            console.log("\nCitations:");
+            for (const annotation of contentBlock.annotations) {
+              if (annotation.type === 'url_citation') {
+                const citedText = contentBlock.text.slice(annotation.startIndex, annotation.endIndex);
+                console.log(` [${annotation.title}](${annotation.url})`);
+                console.log(` Cited text: "${citedText}"`);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Java" %}
+  ```java
+  import com.google.genai.Client;
+  import com.google.genai.gaos.models.interactions.Annotation;
+  import com.google.genai.gaos.models.interactions.Content;
+  import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+  import com.google.genai.gaos.models.interactions.GoogleSearch;
+  import com.google.genai.gaos.models.interactions.Interaction;
+  import com.google.genai.gaos.models.interactions.InteractionsInput;
+  import com.google.genai.gaos.models.interactions.Model;
+  import com.google.genai.gaos.models.interactions.ModelOutputStep;
+  import com.google.genai.gaos.models.interactions.Step;
+  import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.interactions.URLCitation;
+  import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+  import java.util.Arrays;
+  
+  Client client = new Client();
+  
+  CreateModelInteraction params =
+      CreateModelInteraction.builder()
+          .model(Model.of("gemini-3.8-flash"))
+          .input(InteractionsInput.of("Who won the euro 2024?"))
+          .tools(Arrays.asList(GoogleSearch.builder().build()))
+          .build();
+  
+  Interaction interaction =
+      client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+  
+  if (interaction.steps().isPresent()) {
+    for (Step step : interaction.steps().get()) {
+      if (step instanceof ModelOutputStep) {
+        ModelOutputStep outputStep = (ModelOutputStep) step;
+        if (outputStep.content().isPresent()) {
+          for (Content contentBlock : outputStep.content().get()) {
+            if (contentBlock instanceof TextContent) {
+              TextContent textContent = (TextContent) contentBlock;
+              String text = textContent.text().orElse("");
+              System.out.println(text);
+              if (textContent.annotations().isPresent()
+                  && !textContent.annotations().get().isEmpty()) {
+                System.out.println("\nCitations:");
+                for (Annotation annotation : textContent.annotations().get()) {
+                  if (annotation instanceof URLCitation) {
+                    URLCitation citation = (URLCitation) annotation;
+                    int start = citation.startIndex().orElse(0);
+                    int end = citation.endIndex().orElse(0);
+                    String citedText =
+                        (start >= 0 && end <= text.length() && start <= end)
+                            ? text.substring(start, end)
+                            : "";
+                    System.out.printf(
+                        "  [%s](%s)%n", citation.title().orElse(""), citation.url().orElse(""));
+                    System.out.printf("    Cited text: \"%s\"%n", citedText);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ```
+
+  {% /tab %}
+
+  {% tab label="Go" %}
+  ```go
+  package main
+  
+  import (
+      "context"
+      "fmt"
+      "log"
+  
+      "google.golang.org/genai"
+      "google.golang.org/genai/interactions/models/interactions"
+      "google.golang.org/genai/interactions/models/operations"
+  )
+  
+  func main() {
+      ctx := context.Background()
+      client, err := genai.NewClient(ctx, nil)
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+          Body: operations.NewCreateInteractionRequestBody(
+              interactions.CreateModelInteraction{
+                  Model: interactions.Model("gemini-3.8-flash"),
+                  Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
+                  Tools: []interactions.Tool{
+                      interactions.NewTool(interactions.GoogleSearch{}),
+                  },
+              },
+          ),
+      })
+      if err != nil {
+          log.Fatal(err)
+      }
+  
+      for _, step := range resp.Interaction.Steps {
+          if step.ModelOutputStep != nil {
+              for _, content := range step.ModelOutputStep.Content {
+                  if content.TextContent != nil {
+                      text := content.TextContent.Text
+                      fmt.Println(text)
+                      if len(content.TextContent.Annotations) > 0 {
+                          fmt.Println("\nCitations:")
+                          for _, annotation := range content.TextContent.Annotations {
+                              if annotation.URLCitation != nil {
+                                  c := annotation.URLCitation
+                                  start := 0
+                                  if c.StartIndex != nil {
+                                      start = *c.StartIndex
+                                  }
+                                  end := 0
+                                  if c.EndIndex != nil {
+                                      end = *c.EndIndex
+                                  }
+                                  citedText := ""
+                                  if start >= 0 && end <= len(text) && start <= end {
+                                      citedText = text[start:end]
+                                  }
+                                  title := ""
+                                  if c.Title != nil {
+                                      title = *c.Title
+                                  }
+                                  url := ""
+                                  if c.URL != nil {
+                                      url = *c.URL
+                                  }
+                                  fmt.Printf("  [%s](%s)\n", title, url)
+                                  fmt.Printf("    Cited text: %q\n", citedText)
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+The output will show the text followed by its citations:
+
+```none
+Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title.
+
+Citations:
+  [aljazeera.com](https://www.aljazeera.com/sports/euro-2024-final)
+    Cited text: "Spain won Euro 2024, defeating England 2-1 in the final."
+  [uefa.com](https://www.uefa.com/euro2024/news/spain-wins-euro-2024)
+    Cited text: "This victory marks Spain's record fourth European Championship title."
+```
+
+## Pricing  {% id="pricing" %}
+
+When you use Grounding with Google Search with Gemini 3 and newer models, your
+project is billed for **each** search query that the model decides to execute.
+This per-query billing model includes 5,000 free search requests per month
+shared across all Gemini 3 and newer models, and then costs **$14 per 1,000
+search requests**.
+
+For example, if the model decides to execute multiple search queries to answer
+a single prompt (e.g. searching for `"UEFA Euro 2024 winner"` and `"Spain vs
+England Euro 2024 final score"` within the same API call), this counts as two
+billable uses of the tool for that request. For billing purposes, we ignore
+empty web search queries when counting unique queries.
+
+When you use search grounding with Gemini 2.5 or older models, your project is
+billed per prompt.
+
+For detailed pricing information, see the [Gemini API pricing
+page](/docs/pricing).
+
+{% callout type="note" %}
+  **Note:** Grounding with Google Search has a default limit of **1,500 requests
+  per day (RPD)** per project on Gemini 3 and newer models in the Paid Tier of the
+  Gemini Developer API. If your application requires a higher daily limit, submit
+  a request in [Google AI Studio](https://aistudio.google.com/rate-limit) (select
+  **Request more quota** next to the `generate_content_search_request_paid` limit).
+
+{% /callout %}
+
+## Supported models  {% id="supported-models" %}
+
+You can find full capabilities on the [model
+overview](https://ai.google.dev/docs/models) page.
+
+| Model | Grounding with Google Search |
+| --- | :---: |
+| Gemini 4 Argon | ✔️ |
+| Gemini 3.8 Flash | ✔️ |
+| Gemini 3.6 Flash | ✔️ |
+| Gemini 3.5 Flash-Lite | ✔️ |
+| Gemini 3.1 Flash Image Preview | ✔️ |
+| Gemini 3.1 Pro Preview | ✔️ |
+| Gemini 3 Pro Image Preview | ✔️ |
+| Gemini 3 Flash Preview | ✔️ |
+| Gemini 2.5 Pro | ✔️ |
+| Gemini 2.5 Flash | ✔️ |
+| Gemini 2.5 Flash-Lite | ✔️ |
+| Gemini 2.0 Flash | ✔️ |
+
+{% callout type="note" %}
+  Older models use a `google_search_retrieval` tool. For all current models,
+  use the `google_search` tool as shown in the examples.
+
+{% /callout %}
+
+## Supported tool combinations  {% id="tool-combination" %}
+
+You can use Grounding with Google Search with other tools like
+[code execution](/docs/code-execution),
+[URL context](/docs/url-context), and
+[Grounding with Google Maps](/docs/maps-grounding) (supported on Gemini 3.5
+Flash and later models) to power more complex use cases. Gemini 3 models also
+support combining these built-in tools with custom tools (function calling).
+Learn more on the [tool combinations](/docs/tool-combination) page.
+
+## What's next  {% id="whats-next" %}
+
+* Learn about other available tools, like [Function Calling](/docs/function-calling).
+* Learn how to augment prompts with specific URLs using the [URL context tool](/docs/url-context).
+

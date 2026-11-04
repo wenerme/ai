@@ -112,11 +112,13 @@ Cancelling prevents new requests from using the issued client secret.
 
       Identifier of the workflow backing the session.
 
-    - `state_variables: map[string or boolean or number] or null`
+    - `state_variables: map[string or number or boolean or number] or null`
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
       - `string`
+
+      - `number`
 
       - `boolean`
 

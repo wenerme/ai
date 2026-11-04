@@ -1150,7 +1150,7 @@ Example request:
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
      --header "Accept: application/json" \
-     --url "https://gitlab.example.com/api/v4/users/:user_id/projects
+     --url "https://gitlab.example.com/api/v4/users/:user_id/projects"
 ```
 
 Example response:
@@ -1886,7 +1886,7 @@ Example request:
 
 ```shell
 curl --header "PRIVATE-TOKEN: <your_access_token>" \
-     --url "https://gitlab.com/api/v4/projects/<project_id>/users" \
+     --url "https://gitlab.example.com/api/v4/projects/<project_id>/users"
 ```
 
 Example response:

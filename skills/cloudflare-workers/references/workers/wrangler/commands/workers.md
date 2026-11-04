@@ -1250,7 +1250,7 @@ pnpm wrangler versions upload [PATH]
 - `--minify` `boolean` Minify the Worker
 - `--upload-source-maps` `boolean` Include source maps when uploading this Worker (defaults to true)
 - `--dry-run` `boolean` Compile a project and run checks without actually uploading the Worker
-- `--secrets-file` `string` Path to a file containing secrets to upload with the version (JSON or .env format). Applies additively with secrets from previous deployments - omitted secrets will not be deleted.
+- `--secrets-file` `string` Path to a file containing secrets to upload with the version (JSON or .env format). Dotenv values expand $VAR and ${VAR}; process environment values override file values. Only use trusted dotenv secrets files; they can read and upload any process environment value. Escape literal dollar signs with $ or use JSON. Applies additively with secrets from previous deployments - omitted secrets will not be deleted.
 - `--keep-vars` `boolean` default: false
 
   When not used (or set to false), Wrangler will delete all vars before setting those found in the Wrangler configuration. When used (and set to true), the environment variables are not deleted before the deployment. If you set variables via the dashboard you probably want to use this flag. Note that secrets are never deleted by deployments.

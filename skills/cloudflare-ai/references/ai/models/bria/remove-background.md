@@ -18,11 +18,13 @@ Image-to-Image • bria
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bria/remove-background/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`bria/remove-background`
+Model ID
 
-Note
+`bria/remove-background` Copy
 
-Use this model ID with the Workers AI binding, the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), and the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/). When you call the provider directly, through [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/), or from a tool configured with the provider's own SDK, use the provider's model name instead. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
+Use with the [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/), the AI Gateway [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), or the [Unified API](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/).
+
+Calling the provider directly? Use the provider's model name instead, including with [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) or the provider's own SDK. For example, Anthropic's name for `anthropic/claude-opus-4.8` is `claude-opus-4-8`.
 
 - Third-party
 

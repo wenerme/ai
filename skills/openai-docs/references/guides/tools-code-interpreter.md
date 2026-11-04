@@ -7,7 +7,7 @@ The Code Interpreter tool allows models to write and run Python code in a sandbo
 - Processing files with diverse data and formatting
 - Generating files with data and images of graphs
 - Writing and running code iteratively to solve problems—for example, a model that writes code that fails to run can keep rewriting and running that code until it succeeds
-- Boosting visual intelligence in our latest reasoning models (like [o3](https://developers.openai.com/api/docs/models/o3) and [o4-mini](https://developers.openai.com/api/docs/models/o4-mini)). The model can use this tool to crop, zoom, rotate, and otherwise process and transform images.
+- Inspecting images with [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra). Code Interpreter can crop, zoom, rotate, or read individual pixels using Python.
 
 Here's an example of calling the [Responses API](https://developers.openai.com/api/reference/resources/responses) with a tool call to Code Interpreter:
 
@@ -159,7 +159,7 @@ While we call this tool Code Interpreter, the model knows it as the "python
 
 The Code Interpreter tool requires a [container object](https://developers.openai.com/api/reference/resources/containers). A container is a fully sandboxed virtual machine that the model can run Python code in. This container can contain files that you upload, or that it generates.
 
-There are two ways to create containers:
+You can create containers automatically or explicitly.
 
 1. Auto mode: as seen in the example above, you can do this by passing the `"container": { "type": "auto", "memory_limit": "4g", "file_ids": ["file-1", "file-2"] }` property in the tool configuration while creating a new Response object. This automatically creates a new container, or reuses an active container that was used by a previous `code_interpreter_call` item in the model's context. Leaving out `memory_limit` keeps the default 1 GB tier for the container. Look for the `code_interpreter_call` item in the output of this API request to find the `container_id` that was generated or used.
 2. Explicit mode: here, you explicitly [create a container](https://developers.openai.com/api/reference/resources/containers/methods/create) using the `v1/containers` endpoint, including the `memory_limit` you need (for example `"memory_limit": "4g"`), and assign its `id` as the `container` value in the tool configuration in the Response object. For example:

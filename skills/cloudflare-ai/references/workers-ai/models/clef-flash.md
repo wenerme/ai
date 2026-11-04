@@ -18,7 +18,9 @@ Text Generation • Cloudflare
 
 Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/clef-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cf/cloudflare/clef-flash`
+Model ID
+
+`@cf/cloudflare/clef-flash` Copy
 
 - Cloudflare-hosted
 - Vision
