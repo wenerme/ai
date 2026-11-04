@@ -1,5 +1,5 @@
 ---
-description: Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.
+description: Explore AI Gateway features including caching, rate limiting, guardrails, routing, and data loss prevention.
 title: Features
 image: https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db45
 
 # Features
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
 
@@ -59,7 +59,7 @@ Control application scaling and protect against abuse with flexible rate limitin
 
 Use Rate Limiting
 
-[Auto Router](https://developers.cloudflare.com/ai-gateway/features/auto-router/)
+[Auto Router](https://developers.cloudflare.com/ai-gateway/features/routing/auto-router/)
 
 Automatically route each request to the most cost-effective model that can handle the task while maintaining response quality.
 
@@ -72,19 +72,18 @@ Automatically route each request to the most cost-effective model that can handl
 
 Use Auto Router
 
-[Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+[Routing](https://developers.cloudflare.com/ai-gateway/features/routing/)
 
-Create sophisticated request routing flows without code changes. Route requests based on user segments, geography, content analysis, or A/B testing requirements through a visual interface.
+Choose models without changing application code. Use model aliases for shared model choices and routing preferences, or dynamic routes for conditional flows.
 
 **Key benefits:**
 
-- Visual flow-based configuration
-- User-based and geographic routing
-- A/B testing and fractional traffic splitting
-- Context-aware routing based on request content
-- Dynamic rate limiting with automatic fallbacks
+- Stable model names with configurable model order or smart routing
+- Conditional routing and percentage-based traffic splits
+- Rate and budget limits within dynamic routes
+- Fallbacks when a model is unavailable
 
-Use Dynamic Routing
+Use Routing
 
 ### Security & Safety
 
@@ -214,7 +213,7 @@ Use Custom Costs
 ## Getting Started with Features
 
 1. **Start with the basics**: Enable [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/) and [Analytics](https://developers.cloudflare.com/ai-gateway/observability/analytics/) for immediate benefits
-2. **Add reliability**: Configure Fallbacks and Rate Limiting using [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+2. **Add reliability**: Configure Fallbacks and Rate Limiting using [dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/)
 3. **Enhance security**: Implement [Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/), [DLP](https://developers.cloudflare.com/ai-gateway/features/dlp/), and [Authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
 
 ---
@@ -230,5 +229,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features","description":"Explore AI Gateway features including caching, rate limiting, guardrails, routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

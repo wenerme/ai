@@ -26,7 +26,7 @@ Connect authentik to Cloudflare Access with OpenID Connect (OIDC). OIDC is the r
 
 Your Cloudflare Access team name is part of the redirect URI. Locate your team name before you configure authentik.
 
-You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 
 1. Log in to authentik as an administrator and open the Admin interface.
 2. Go to **Applications** > **Applications** and select **New Application**.

@@ -53,7 +53,7 @@ This file shares several fields with Cloudflare Access so you do not have to inp
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
-You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 
 15. Fill the other fields with values from your Ping dashboard.
 16. Select **Save**.

@@ -24,7 +24,7 @@ This setup uses the **SAML** identity provider in Cloudflare One. The dedicated 
 - Your Cloudflare One team name.
 - For SCIM, access to Google's custom SCIM profiles beta in your Google Admin console.
 
-You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 
 ## Set up SAML authentication
 

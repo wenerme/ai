@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/api/workers/workers-api-reference/og
 
 # Workers API reference
 
-Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The in-Worker R2 API is accessed by binding an R2 bucket to a [Worker](https://developers.cloudflare.com/workers). The Worker you write can expose external access to buckets via a route or manipulate R2 objects internally.
 
@@ -107,6 +107,7 @@ class Default(WorkerEntrypoint):
   - In the event that a precondition specified in `options` fails, `get()` returns an `R2Object` with `body` undefined.
 - `put` `(key: string, value: ReadableStream | ArrayBuffer | ArrayBufferView | string | null | Blob, options?: R2PutOptions): Promise<R2Object | null>`
   - Stores the given `value` and metadata under the associated `key`. Once the write succeeds, returns an `R2Object` containing metadata about the stored Object.
+  - If `value` is a `ReadableStream`, its length must be known: for example, a request body with a `Content-Length` header, or the readable half of a [`FixedLengthStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/#fixedlengthstream). Otherwise, `put()` throws `TypeError: Provided readable stream must have a known length (request/response body or readable half of FixedLengthStream)`. This includes a request body sent without `Content-Length` (chunked) and the readable side of a `TransformStream`. To store such a stream, buffer it first, for example with `await request.arrayBuffer()`, or pipe it through a `FixedLengthStream` if you know its length.
   - In the event that a precondition specified in `options` fails, `put()` returns `null`, and the object will not be stored.
   - R2 writes are strongly consistent. Once the Promise resolves, all subsequent read operations will see this key value pair globally.
 - `delete` `(key: string | string[]): Promise<void>`
@@ -198,6 +199,7 @@ A multipart upload can be completed or aborted at any time, either through the S
   - The `uploadId` for the multipart upload.
 - `uploadPart` `(partNumber: number, value: ReadableStream | ArrayBuffer | ArrayBufferView | string | Blob, options?: R2MultipartOptions): Promise<R2UploadedPart>`
   - Uploads a single part with the specified part number to this multipart upload. Each part must be uniform in size with an exception for the final part which can be smaller.
+  - If `value` is a `ReadableStream`, its length must be known, as for `put()`. Otherwise, `uploadPart()` throws the same `TypeError`.
   - Returns an `R2UploadedPart` object containing the `etag` and `partNumber`. These `R2UploadedPart` objects are required when completing the multipart upload.
 - `abort` `(): Promise<void>`
   - Aborts the multipart upload. Returns a Promise that resolves when the upload has been successfully aborted.
@@ -425,5 +427,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/og.png?v=c3d660cabeabbae1","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/og.png?v=c3d660cabeabbae1","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

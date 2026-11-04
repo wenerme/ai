@@ -52,9 +52,9 @@ exporters:
       insecure: true
 ```
 
-Copy the exact updated configuration from the **Data Sources UI** in OpenObserve.
+Copy the exact updated configuration from **Data > Data sources > Custom > Traces > OTEL Collector** in OpenObserve.
 
-[OpenObserve Data Sources - OTel Collector Traces]
+[Data sources, Custom, Logs, OTEL Collector exporter config]
 
 :::tip[Send all signals through one exporter]
 If you're already migrating metrics or logs, you can consolidate all signals (metrics, logs, traces) into a single `otlphttp/openobserve` exporter — one endpoint, one auth header, all signals.
@@ -113,13 +113,13 @@ When you're ready, consider switching the SDKs themselves to OpenTelemetry - the
 
 1. Open the OpenObserve UI → **Traces** in the left sidebar.
 2. Select a trace stream and set a time range 
-3. Filter by `service.name` to find your services.
+3. Filter by `service_name` to find your services (OpenObserve stores the `service.name` resource attribute as `service_name`).
 4. Click into a trace to verify spans, durations, and attributes are intact.
 
-[OpenObserve Traces Explorer]
+[Traces page with spans from several services]
 *OpenObserve Traces Explorer — verify traces are flowing after migration*
 
-[OpenObserve Trace Detail View]
+[Trace details in the Waterfall view]
 *OpenObserve trace detail view showing spans and timing*
 
 ### Troubleshooting

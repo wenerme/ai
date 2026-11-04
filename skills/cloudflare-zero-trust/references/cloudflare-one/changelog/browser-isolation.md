@@ -16,6 +16,19 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/browser-isolation.xml)
 
+## 2026-11-04
+
+
+**Block data entry with Browser Isolation without losing search, copy, and zoom (beta)**
+
+[Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) now support a third keyboard option in beta: *Allow read-only actions*. Previously, the keyboard setting was binary — allow all input or block everything. With *Allow read-only actions*, you can block data entry while preserving the built-in browser actions your users depend on.
+
+In *Allow read-only actions* mode, users can still find in page, select all, copy, print, and zoom. All other keyboard input is blocked from reaching the isolated page. Copy and print remain subject to their own policy settings, so the controls compose instead of overriding each other. For example, setting the keyboard to *Allow read-only actions* and copy to *Do not allow* lets users search and zoom but prevents them from copying content.
+
+To use this feature, set **Keyboard** to *Allow read-only actions* in your isolation policy settings. Via the API, set `keyboard` to `enable_read_only_actions` in the `biso_admin_controls` object with `version` set to `v2`.
+
+For more information, refer to [Keyboard](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#keyboard).
+
 ## 2026-09-30
 
 

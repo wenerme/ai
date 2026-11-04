@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce1
 
 # AI SDK
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/models/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `agents/models/ai-sdk` is an [AI SDK ↗︎](https://ai-sdk.dev/) provider for Workers AI and AI Gateway. `createAI` returns a full `ProviderV4`, so its models work anywhere the AI SDK takes a model: `generateText`, `streamText`, tools, structured output, and [Think](https://developers.cloudflare.com/agents/harnesses/think/).
 
@@ -183,7 +183,7 @@ Unified Billing requires [authentication](https://developers.cloudflare.com/ai-g
 
 ## Call a dynamic route
 
-An [AI Gateway dynamic route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) is named `dynamic/<route>`. The route you configured on the gateway picks the model, and can apply conditions, percentages, rate and budget limits, and its own fallbacks:
+An [AI Gateway dynamic route](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/) is named `dynamic/<route>`. The route you configured on the gateway picks the model, and can apply conditions, percentages, rate and budget limits, and its own fallbacks:
 
 ```ts
 const ai = createAI({ binding: env.AI, id: "my-gateway" });
@@ -680,7 +680,7 @@ A string can be a Workers AI id, a catalog id, or a dynamic route.
 
 - [pi-ai provider](https://developers.cloudflare.com/agents/models/pi-ai/)
 - [Model catalog](https://developers.cloudflare.com/ai/models/)
-- [Dynamic routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+- [Dynamic routes](https://developers.cloudflare.com/ai-gateway/features/routing/dynamic-routing/)
 - [AI Gateway provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 - [AI Gateway Worker binding methods](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/)
 - [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/)
@@ -694,5 +694,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/models/ai-sdk/#page","headline":"AI SDK","description":"Use createAI from agents/models/ai-sdk to call Workers AI models, AI Gateway catalog models, dynamic routes, and vendor AI SDK models through the AI binding or an account id and API token.","url":"https://developers.cloudflare.com/agents/models/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/models/ai-sdk/og.png?v=43ec00ce16b33b7e","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

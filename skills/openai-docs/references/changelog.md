@@ -530,6 +530,12 @@ GPT-5.5 supports a 1M token context window, image input, structured outputs, fun
 - Caching for GPT-5.5 only works with extended prompt caching. In-memory prompt caching is not supported.
 Learn more [here](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-5.5#behavioral-changes).
 
+### Apr 22
+
+Update · Model: o3-deep-research · Model: o3-deep-research-2025-06-26 · Model: o4-mini-deep-research · Model: o4-mini-deep-research-2025-06-26 · API: v1/responses
+
+Deprecated `o3-deep-research` and `o4-mini-deep-research`, including their June 26, 2025 snapshots. These models are scheduled to shut down on July 23, 2026. See the [deprecation notice](https://developers.openai.com/api/docs/deprecations#2026-04-22-legacy-gpt-model-snapshots-july-2026-shutdown).
+
 ### Apr 21
 
 Feature · Model: gpt-image-2 · API: v1/images/generations · API: v1/images/edits · API: v1/batch
@@ -913,7 +919,7 @@ Launched support for [Priority processing](https://platform.openai.com/docs/guid
 
 Feature · Model: o3-deep-research · Model: o3-deep-research-2025-06-26 · Model: o4-mini-deep-research · Model: o4-mini-deep-research-2025-06-26 · API: v1/responses
 
-Released [o3-deep-research](https://developers.openai.com/api/docs/models/o3-deep-research) and [o4-mini-deep-research](https://developers.openai.com/api/docs/models/o4-mini-deep-research), deep research variants of our o-series reasoning models optimized for deep analysis and research tasks. Learn more in the [deep research guide](https://developers.openai.com/api/docs/guides/deep-research).
+Released [o3-deep-research](https://developers.openai.com/api/docs/models/o3-deep-research) and [o4-mini-deep-research](https://developers.openai.com/api/docs/models/o4-mini-deep-research), deep research variants of our o-series reasoning models optimized for deep analysis and research tasks. Learn more in the [deep research guide](https://developers.openai.com/api/docs/guides/tools-web-search?api-mode=responses#run-longer-web-research).
 
 Added support for async event handling with [webhooks](https://developers.openai.com/api/docs/guides/webhooks). [Reduced and simplified pricing](https://developers.openai.com/api/docs/pricing) for the web search tool. Added support for the [web search tool](https://developers.openai.com/api/docs/guides/tools-web-search).
 

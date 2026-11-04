@@ -37,7 +37,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.![Centrify Trust Identity Provider Configuration with team domain and callback](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1343,format=webp/_astro/centrify-6.ChCQ_t69.png)
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.![Centrify Trust Identity Provider Configuration with team domain and callback](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1343,format=webp/_astro/centrify-6.ChCQ_t69.png)
 13. Select **Save**.
 14. Copy the following values:
 

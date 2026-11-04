@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/og.png?v=d9b4c0d9dbab4986
 
 # Cloudflare AI Gateway
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Observe and control your AI applications.
 
@@ -54,11 +54,11 @@ Control how your application scales by limiting the number of requests your appl
 
 Use Rate limiting
 
-[Request retry and fallback](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
+[Routing](https://developers.cloudflare.com/ai-gateway/features/routing/)
 
-Improve resilience by defining request retry and model fallbacks in case of an error.
+Choose models and fallbacks with model aliases, or build conditional flows with dynamic routes.
 
-Use Request retry and fallback
+Use Routing
 
 [Your favorite providers](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 
@@ -101,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/#page","headline":"Cloudflare AI Gateway","description":"Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/og.png?v=d9b4c0d9dbab4986","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/#page","headline":"Cloudflare AI Gateway","description":"Observe and control your AI applications with analytics, caching, rate limiting, and model fallback through AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/og.png?v=d9b4c0d9dbab4986","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

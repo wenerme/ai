@@ -194,7 +194,7 @@ This approach has many benefits:
 
 Note that unsuccessful requests contribute to your per-minute limit, so continuously resending a request won’t work.
 
-The legacy Completions examples below use `gpt-3.5-turbo-instruct`, which was shut down on [September 28, 2026](https://developers.openai.com/api/docs/deprecations#2025-09-26-legacy-gpt-model-snapshots). You can use the same retry pattern with current models by migrating to [Responses or Chat Completions](https://developers.openai.com/api/docs/guides/migrate-to-responses).
+The following examples retry a `gpt-6-luna` request to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create). Each wrapper limits attempts and disables the SDK’s built-in retries.
 
 The Python examples below demonstrate fallback backoff. They don't inspect `Retry-After`: before using them, add handling for valid server hints so the wrappers don't retry sooner than requested. Disable SDK retries or account for them in your application's retry limits.
 
@@ -210,25 +210,34 @@ To add exponential backoff to your requests, you can use the `tenacity.retry` de
 Using the Tenacity library
 
 ```python
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 from tenacity import (
     retry,
+    retry_if_exception_type,
     stop_after_attempt,
     wait_random_exponential,
 )  # for exponential backoff
 
-client = OpenAI()
+client = OpenAI(max_retries=0)
 
 
-@retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
-def completion_with_backoff(**kwargs):
-    return client.completions.create(**kwargs)
-
-
-completion_with_backoff(
-    model="gpt-3.5-turbo-instruct",
-    prompt="Once upon a time,",
+@retry(
+    retry=retry_if_exception_type(RateLimitError),
+    wait=wait_random_exponential(min=1, max=60),
+    stop=stop_after_attempt(6),
+    reraise=True,
 )
+def response_with_backoff(**kwargs):
+    return client.responses.create(**kwargs)
+
+
+response = response_with_backoff(
+    model="gpt-6-luna",
+    input="Say hello in one sentence.",
+    reasoning={"effort": "none"},
+    max_output_tokens=64,
+)
+print(response.output_text)
 ```
 
 
@@ -254,18 +263,21 @@ import backoff
 import openai
 from openai import OpenAI
 
-client = OpenAI()
+client = OpenAI(max_retries=0)
 
 
-@backoff.on_exception(backoff.expo, openai.RateLimitError)
-def completions_with_backoff(**kwargs):
-    return client.completions.create(**kwargs)
+@backoff.on_exception(backoff.expo, openai.RateLimitError, max_tries=6)
+def response_with_backoff(**kwargs):
+    return client.responses.create(**kwargs)
 
 
-completions_with_backoff(
-    model="gpt-3.5-turbo-instruct",
-    prompt="Once upon a time,",
+response = response_with_backoff(
+    model="gpt-6-luna",
+    input="Say hello in one sentence.",
+    reasoning={"effort": "none"},
+    max_output_tokens=64,
 )
+print(response.output_text)
 ```
 
 
@@ -291,7 +303,7 @@ import time
 import openai
 from openai import OpenAI
 
-client = OpenAI()
+client = OpenAI(max_retries=0)
 
 # define a retry decorator
 
@@ -341,8 +353,17 @@ def retry_with_exponential_backoff(
 
 
 @retry_with_exponential_backoff
-def completions_with_backoff(**kwargs):
-    return client.completions.create(**kwargs)
+def response_with_backoff(**kwargs):
+    return client.responses.create(**kwargs)
+
+
+response = response_with_backoff(
+    model="gpt-6-luna",
+    input="Say hello in one sentence.",
+    reasoning={"effort": "none"},
+    max_output_tokens=64,
+)
+print(response.output_text)
 ```
 
 Again, OpenAI makes no guarantees on the security or efficiency of this solution but it can be a good starting place for your own solution.

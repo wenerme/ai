@@ -1021,7 +1021,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (13)
+Previous version history (14)
 
 </summary>
 
@@ -1091,6 +1091,26 @@ This release includes the following highlights:
 - When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
 
 </details>
+
+<details>
+
+<summary>
+
+Linux 2026.7.1385.0
+
+</summary>
+
+**Version:** Linux 2026.7.1385.0**Date:** 2026-11-03**Size:** 75.8 MB
+
+AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.7.1385.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 

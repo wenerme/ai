@@ -2,35 +2,25 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-This tutorial uses the legacy Completions endpoint with
-  `gpt-3.5-turbo-instruct`, which has a scheduled shutdown date of September 28,
-  2026. Its answer-generation example retains the legacy request format for
-  reference. For a current approach, use [file
-  search](https://developers.openai.com/api/docs/guides/tools-file-search) with the Responses API. See the
-  [deprecation
-  notice](https://developers.openai.com/api/docs/deprecations#2025-09-26-legacy-gpt-model-snapshots).
-
 This tutorial walks through an example of crawling a website (in this example, the OpenAI website), turning the crawled pages into embeddings using the [Embeddings API](https://developers.openai.com/api/docs/guides/embeddings), and then creating a basic search functionality that allows a user to ask questions about the embedded information. This is intended to be a starting point for more sophisticated applications that make use of custom knowledge bases.
 
 # Getting started
 
 Some basic knowledge of Python and GitHub is helpful for this tutorial. Before diving in, make sure to [set up an OpenAI API key](https://developers.openai.com/api/reference/overview) and walk through the [quickstart tutorial](https://developers.openai.com/api/docs/quickstart). This will give a good intuition on how to use the API to its full potential.
 
-Python is used as the main programming language along with the OpenAI, Pandas, transformers, NumPy, and other popular packages. If you run into any issues working through this tutorial, please ask a question on the [OpenAI Community Forum](https://community.openai.com).
-
-To start with the code, clone the [full code for this tutorial on GitHub](https://github.com/openai/web-crawl-q-and-a-example). Alternatively, follow along and copy each section into a Jupyter notebook and run the code step by step, or just read along. A good way to avoid any issues is to set up a new virtual environment and install the required packages by running the following commands:
+Use Python 3.11 or later. Create a virtual environment, install the packages used in the examples, and set `OPENAI_API_KEY` as described in the [quickstart](https://developers.openai.com/api/docs/quickstart).
 
 ```bash
 python -m venv env
-
 source env/bin/activate
-
-pip install -r requirements.txt
+python -m pip install openai pandas numpy requests beautifulsoup4 tiktoken matplotlib
 ```
+
+Copy the examples into a Python file or notebook in the order shown and run them in the same working directory.
 
 ## Setting up a web crawler
 
-The primary focus of this tutorial is the OpenAI API so if you prefer, you can skip the context on how to create a web crawler and just [download the source code](https://github.com/openai/web-crawl-q-and-a-example). Otherwise, expand the section below to work through the scraping mechanism implementation.
+Choose a website you can crawl. Expand the steps below to collect page text for the embeddings.
 
 
 
@@ -47,23 +37,14 @@ The primary focus of this tutorial is the OpenAI API so if you prefer, you can s
       technique that you can also use for your own company or personal website.
     
 
-    
-
-      
-
-View source code
-
-
-    
-
   
 
 
 
 
-While this crawler is written from scratch, open source packages like [Scrapy](https://github.com/scrapy/scrapy) can also help with these operations.
+While this crawler is written from scratch, open source packages like [`Scrapy`](https://github.com/scrapy/scrapy) can also help with these operations.
 
-This crawler will start from the root URL passed in at the bottom of the code below, visit each page, find additional links, and visit those pages as well (as long as they have the same root domain). To begin, import the required packages, set up the basic URL, and define a HTMLParser class.
+This crawler will start from the root URL passed in at the bottom of the code below, visit each page, find additional links, and visit those pages as well (as long as they have the same root domain). To begin, import the required packages, set the starting URL, and define a subclass of `HTMLParser`.
 
 ```python
 import requests
@@ -231,7 +212,7 @@ The last line of the above example runs the crawler which goes through all the a
     
 
       Blank empty lines can clutter the text files and make them harder to
-      process. A simple function can remove those lines and tidy up the files.
+      process. A function can remove those lines and tidy up the files.
     
 
   
@@ -257,6 +238,8 @@ Extra spacing and new lines can clutter the text and complicate the embeddings
   characters.
 
 ```python
+from pathlib import Path
+
 import pandas as pd
 
 # Create a list to store the text files
@@ -330,7 +313,7 @@ df.n_tokens.hist()
 
 
 
-The newest embeddings model can handle inputs with up to 8191 input tokens so most of the rows would not need any chunking, but this may not be the case for every page scraped so the next code chunk will split the longer lines into smaller chunks.
+Split longer pages into chunks that fit within the [embedding model’s input limit](https://developers.openai.com/api/docs/models/text-embedding-3-small).
 
 ```python
 max_tokens = 500
@@ -406,7 +389,7 @@ df.n_tokens.hist()
 
 
 
-The content is now broken down into smaller chunks and a request can be sent to the OpenAI API specifying the use of the new text-embedding-ada-002 model to create the embeddings:
+Create an embedding for each chunk with `text-embedding-3-small`. Use the same model for query embeddings. If you change embedding models, rebuild the index before searching it.
 
 ```python
 from openai import OpenAI
@@ -432,12 +415,9 @@ This should take about 3-5 minutes but after you will have your embeddings ready
 
   
 
-    The embeddings are ready and the final step of this process is to create a
-      simple question and answer system. This will take a user's question,
-      create an embedding of it, and compare it with the existing embeddings to
-      retrieve the most relevant text from the scraped website. The
-      gpt-3.5-turbo-instruct model will then generate a natural sounding answer
-      based on the retrieved text.
+    Embed the user's question and compare it with the indexed chunks to find
+      the most relevant text. Send that text and the question to the Responses
+      API to generate an answer.
     
 
   
@@ -460,10 +440,18 @@ df.head()
 ```
 
 
-The question needs to be converted to an embedding with a function, now that the data is ready. This is important because the search with embeddings compares the vector of numbers (which was the conversion of the raw text) using cosine distance. The vectors are likely related and might be the answer to the question if they are close in cosine distance. The OpenAI python package has a built in `distances_from_embeddings` function which is useful here.
+Embed the question using the same model you used to build the index. The example computes cosine distances with NumPy and retrieves the closest text chunks.
 
 ```python
-def create_context(question, df, max_len=1800, size="ada"):
+def distances_from_embeddings(query, embeddings, distance_metric="cosine"):
+    if distance_metric != "cosine":
+        raise ValueError("This example supports cosine distance only.")
+    return [
+        1 - float(np.dot(query, item) / (np.linalg.norm(query) * np.linalg.norm(item)))
+        for item in embeddings
+    ]
+
+def create_context(question, df, max_len=1800):
     """
     Create a context for a question by finding the most similar context from the dataframe
     """
@@ -500,83 +488,30 @@ def create_context(question, df, max_len=1800, size="ada"):
 ```
 
 
-The text was broken up into smaller sets of tokens, so looping through in ascending order and continuing to add the text is a critical step to ensure a full answer. The `max_len` can also be modified to something smaller, if more content than desired is returned.
-
-The previous step only retrieved chunks of texts that are semantically related to the question, so they might contain the answer, but there's no guarantee of it. The chance of finding an answer can be further increased by returning the top 5 most likely results.
-
-The answering prompt will then try to extract the relevant facts from the retrieved contexts, in order to formulate a coherent answer. If there is no relevant answer, the prompt will return “I don’t know.”
-
-A realistic sounding answer to the question can be created with the completion endpoint using `gpt-3.5-turbo-instruct`.
+The `max_len` argument limits how many tokens of retrieved text to include. Pass that text and the question to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) using `gpt-6-luna`. Read the answer from `response.output_text`.
 
 ```python
-def answer_question(
-    df,
-    model="gpt-3.5-turbo-instruct",
-    question="Am I allowed to publish model outputs to Twitter, without a human review?",
-    max_len=1800,
-    size="ada",
-    debug=False,
-    max_tokens=150,
-    stop_sequence=None,
-):
-    """
-    Answer a question based on the most similar context from the dataframe texts
-    """
-    context = create_context(
-        question,
-        df,
-        max_len=max_len,
-        size=size,
+def answer_question(df, question, max_len=1800):
+    context = create_context(question, df, max_len=max_len)
+    response = client.responses.create(
+        model="gpt-6-luna",
+        instructions=(
+            "Answer the question using only the supplied context. "
+            "If the context doesn't answer the question, say \"I don't know.\""
+        ),
+        input=f"Context: {context}\n\nQuestion: {question}",
     )
-    # If debug, print the raw model response
-    if debug:
-        print("Context:\n" + context)
-        print("\n\n")
-
-    try:
-        # Create a completion using the question and context
-        response = client.completions.create(
-            model=model,
-            prompt=(
-                "Answer the question based on the context below, and if the "
-                "question can't be answered based on the context, say "
-                '"I don\'t know"'
-                f"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:"
-            ),
-            temperature=0,
-            max_tokens=max_tokens,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0,
-            stop=stop_sequence,
-        )
-        return response.choices[0].text.strip()
-    except Exception as error:
-        print(error)
-        return ""
+    return response.output_text.strip()
 ```
 
 
-It is done! A working Q/A system that has the knowledge embedded from the OpenAI website is now ready. A few quick tests can be done to see the quality of the output:
+Ask a question the indexed pages can answer, then ask one they cannot. If the index contains a description of ChatGPT, the first call should answer from it. The second should return “I don't know.”
 
 ```python
-answer_question(df, question="What day is it?", debug=False)
-
-answer_question(df, question="What is our newest embeddings model?")
-
-answer_question(df, question="What is ChatGPT?")
+print(answer_question(df, "What is ChatGPT?"))
+print(answer_question(df, "What did I have for breakfast today?"))
 ```
 
-
-The responses will look something like the following:
-
-```response
-"I don't know."
-
-'The newest embeddings model is text-embedding-ada-002.'
-
-'ChatGPT is a model trained to interact in a conversational way. It is able to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.'
-```
 
 If the system is not able to answer a question that is expected, it is worth searching through the raw text files to see if the information that is expected to be known actually ended up being embedded or not. The crawling process that was done initially was setup to skip sites outside the original domain that was provided, so it might not have that knowledge if there was a subdomain setup.
 

@@ -60,7 +60,7 @@ To create a Relying Party Trust:
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 15. Select **Next**. The **Configure Identifiers** step displays.![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=1166,format=webp/_astro/adfs-7.BHM4h9Ct.png)
 16. Paste your callback URL in the **Relying party trust identifier** field.
 17. Select **Next**. In the **Configure Multi-factor Authentication Now?** step, you can configure multi-factor authentication.

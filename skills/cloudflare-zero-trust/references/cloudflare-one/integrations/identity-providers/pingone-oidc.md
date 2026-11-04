@@ -34,7 +34,7 @@ The PingOne cloud platform from PingIdentity provides SSO identity management. C
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 10. Select **Save**.
 
 ### 2. Add PingOne to Cloudflare One

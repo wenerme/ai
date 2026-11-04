@@ -48,7 +48,7 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
    <your-team-name>
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 8. In the **Sign On** tab, copy the **Client ID** and **Client secret** and paste these into `App ID` and `Client secret`.
 9. Copy your Okta Account URL (without the `-admin` value) and copy it into the Cloudflare Okta setup field.
 
@@ -64,7 +64,7 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 6. Choose the desired **Assignment** option and select **Save**.
 7. From the application view, go to the **Sign On** tab.
 8. Scroll down to **Token claims** and select **Show legacy configuration** > **Edit**.![Configuring the Groups claim filter in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=737,height=658,format=webp/_astro/okta-2.DrNQXWIc.png)

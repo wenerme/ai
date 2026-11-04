@@ -39,8 +39,8 @@ For a given input file, the parameters in each line's `body` field are the same 
 When targeting `/v1/moderations`, include an `input` field in every request body. Batch accepts plain-text inputs and content arrays with text or image inputs using `omni-moderation-latest`. The Batch worker rejects requests that set `stream=true`, matching the synchronous moderation endpoint.
 
 ```jsonl
-{"custom_id": "request-1", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gpt-3.5-turbo-0125", "messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "Hello world!"}],"max_tokens": 1000}}
-{"custom_id": "request-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gpt-3.5-turbo-0125", "messages": [{"role": "system", "content": "You are an unhelpful assistant."},{"role": "user", "content": "Hello world!"}],"max_tokens": 1000}}
+{"custom_id": "request-1", "method": "POST", "url": "/v1/responses", "body": {"model": "gpt-6-luna", "input": "Reply with the word blue.", "reasoning": {"effort": "none"}, "max_output_tokens": 64}}
+{"custom_id": "request-2", "method": "POST", "url": "/v1/responses", "body": {"model": "gpt-6-luna", "input": "Reply with the word green.", "reasoning": {"effort": "none"}, "max_output_tokens": 64}}
 ```
 
 #### Moderation input examples
@@ -86,7 +86,7 @@ Request with text and image input:
 
 Prefer referencing remote assets with `image_url` (instead of base64 blobs) to
   keep your `.jsonl` files well below the 200&nbsp;MB Batch upload limit,
-  especially for multimodal Moderations requests.
+  especially for multimodal moderation requests.
 
 ### 2. Upload your batch input file
 
@@ -204,7 +204,7 @@ const openai = new OpenAI();
 
 const batch = await openai.batches.create({
   input_file_id: "file-abc123",
-  endpoint: "/v1/chat/completions",
+  endpoint: "/v1/responses",
   completion_window: "24h",
 });
 
@@ -214,7 +214,7 @@ console.log(batch);
 ```python
 batch = client.batches.create(
     input_file_id=batch_input_file.id,
-    endpoint="/v1/chat/completions",
+    endpoint="/v1/responses",
     completion_window="24h",
     metadata={"description": "nightly eval job"},
 )
@@ -235,7 +235,7 @@ func main() {
 	client := openai.NewClient()
 	batch, err := client.Batches.New(context.Background(), openai.BatchNewParams{
 		InputFileID:      "file-abc123",
-		Endpoint:         openai.BatchNewParamsEndpointV1ChatCompletions,
+		Endpoint:         openai.BatchNewParamsEndpointV1Responses,
 		CompletionWindow: openai.BatchNewParamsCompletionWindow24h,
 	})
 	if err != nil {
@@ -279,7 +279,7 @@ curl https://api.openai.com/v1/batches \
   -H "Content-Type: application/json" \
   -d '{
     "input_file_id": "file-abc123",
-    "endpoint": "/v1/chat/completions",
+    "endpoint": "/v1/responses",
     "completion_window": "24h"
   }'
 ```
@@ -287,7 +287,7 @@ curl https://api.openai.com/v1/batches \
 ```bash
 openai batches create \
   --input-file-id file-abc123 \
-  --endpoint /v1/chat/completions \
+  --endpoint /v1/responses \
   --completion-window 24h
 ```
 
@@ -298,7 +298,7 @@ This request will return a [Batch object](https://developers.openai.com/api/refe
 {
   "id": "batch_abc123",
   "object": "batch",
-  "endpoint": "/v1/chat/completions",
+  "endpoint": "/v1/responses",
   "errors": null,
   "input_file_id": "file-abc123",
   "completion_window": "24h",
@@ -497,13 +497,15 @@ openai files content \
 The output `.jsonl` file will have one response line for every successful request line in the input file. Any failed requests in the batch will have their error information written to an error file that can be found via the batch's `error_file_id`.
 
 Note that the output line order **may not match** the input line order.
-  Instead of relying on order to process your results, use the custom_id field
+  Instead of relying on order to process your results, use the `custom_id` field
   which will be present in each line of your output file and allow you to map
   requests in your input to results in your output.
 
+The following output is abbreviated to show the ID mapping and generated text. Read each message’s `output_text` content from `response.body.output`.
+
 ```jsonl
-{"id": "batch_req_123", "custom_id": "request-2", "response": {"status_code": 200, "request_id": "req_123", "body": {"id": "chatcmpl-123", "object": "chat.completion", "created": 1711652795, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello."}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 22, "completion_tokens": 2, "total_tokens": 24}, "system_fingerprint": "fp_123"}}, "error": null}
-{"id": "batch_req_456", "custom_id": "request-1", "response": {"status_code": 200, "request_id": "req_789", "body": {"id": "chatcmpl-abc", "object": "chat.completion", "created": 1711652789, "model": "gpt-3.5-turbo-0125", "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello! How can I assist you today?"}, "logprobs": null, "finish_reason": "stop"}], "usage": {"prompt_tokens": 20, "completion_tokens": 9, "total_tokens": 29}, "system_fingerprint": "fp_3ba"}}, "error": null}
+{"id": "batch_req_2", "custom_id": "request-2", "response": {"status_code": 200, "request_id": "req_2", "body": {"id": "resp_2", "object": "response", "status": "completed", "output": [{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "green"}]}]}}, "error": null}
+{"id": "batch_req_1", "custom_id": "request-1", "response": {"status_code": 200, "request_id": "req_1", "body": {"id": "resp_1", "object": "response", "status": "completed", "output": [{"type": "message", "role": "assistant", "content": [{"type": "output_text", "text": "blue"}]}]}}, "error": null}
 ```
 
 The output file will automatically be deleted 30 days after the batch is complete.

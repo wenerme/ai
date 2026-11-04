@@ -39,7 +39,7 @@ To set up SAML with AWS IAM as your identity provider:
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
-You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.
 
 11. Select **Submit**.
 12. Next, select the **Actions** dropdown menu and select *Edit attribute mappings*.

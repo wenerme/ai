@@ -82,9 +82,6 @@ Anthropic’s [client SDKs](https://platform.claude.com/docs/en/cli-sdks-librari
         ```kotlin
         implementation("com.anthropic:anthropic-java:3.4.0")
         implementation("com.anthropic:anthropic-java-foundry:3.4.0")
-
-        // For Entra ID authentication, also add the Azure Identity library
-        implementation("com.azure:azure-identity:1.18.3")
         ```
       </Tab>
 
@@ -100,15 +97,11 @@ Anthropic’s [client SDKs](https://platform.claude.com/docs/en/cli-sdks-librari
             <artifactId>anthropic-java-foundry</artifactId>
             <version>3.4.0</version>
         </dependency>
-        <!-- For Entra ID authentication, also add the Azure Identity library -->
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-identity</artifactId>
-            <version>1.18.3</version>
-        </dependency>
         ```
       </Tab>
     </Tabs>
+
+    For Entra ID authentication, also add the Azure Identity library (`com.azure:azure-identity`) to your build, at the latest version on [Maven Central](https://central.sonatype.com/artifact/com.azure/azure-identity).
   </Tab>
 
   <Tab title="PHP">
@@ -201,7 +194,7 @@ The SDK’s Foundry client requires an API key and either a resource name or bas
   curl https://{resource}.services.ai.azure.com/anthropic/v1/messages \
     -H "content-type: application/json" \
     -H "api-key: YOUR_AZURE_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -d '{
       "model": "claude-opus-5-5",
       "max_tokens": 1024,
@@ -404,7 +397,7 @@ Entra ID authentication lets you manage access with Azure RBAC, integrate with y
   curl https://{resource}.services.ai.azure.com/anthropic/v1/messages \
     -H "content-type: application/json" \
     -H "Authorization: Bearer $(az account get-access-token --resource https://ai.azure.com --query accessToken -o tsv)" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -d '{
       "model": "claude-opus-5-5",
       "max_tokens": 1024,

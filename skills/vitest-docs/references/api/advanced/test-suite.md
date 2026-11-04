@@ -162,7 +162,7 @@ Checks the running state of the suite. Possible return values:
 - **passed**: every test inside this suite has passed.
 - **skipped**: this suite was skipped during collection.
 
-> **warning**: Note that [test module](/api/advanced/test-module) also has a `state` method that returns the same values, but it can also return an additional `queued` state if the module wasn't executed yet.
+> **warning**: Note that [test module](/api/advanced/test-module) also has a `state` method that returns the same values, but it can also return an additional `queued` state if the module is queued, but Vitest did not collect its tests yet.
 
 ## errors
 

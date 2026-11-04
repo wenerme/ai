@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Microsoft Entra ID
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can integrate Microsoft Entra ID (formerly Azure Active Directory) with Cloudflare One and build policies based on user identity and group membership. Users will authenticate to Cloudflare One using their Entra ID credentials.
 
@@ -39,7 +39,7 @@ To retrieve those values:
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.![Registering an application in Azure](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1656,height=1398,format=webp/_astro/name-app.BaJD5DTz.png)
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Zero Trust** > **Settings** > **Team name and domain** > **Team name**.![Registering an application in Azure](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1656,height=1398,format=webp/_astro/name-app.BaJD5DTz.png)
 7. Select **Register**.
 8. Next, return to Microsoft Entra ID and go to **Applications** > **App registrations**.
 9. Select **All applications** and select the app you just created. Copy the **Application (client) ID** and **Directory (tenant) ID**. You will need these values when [adding Entra ID as an identity provider in step 3](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#3-add-entra-id-as-an-identity-provider).![Viewing the Application ID and Directory ID in Azure](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2018,height=898,format=webp/_astro/azure-values.BIjGV_0A.png)
@@ -254,7 +254,7 @@ When [SCIM synchronization is enabled](#synchronize-users-and-groups), your Entr
 
 If building an Access policy, choose the *Azure Groups* selector. ![Azure group names displayed in the Access policy builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1608,height=282,format=webp/_astro/azure-scim-groups.CShvL-AY.png)
 
-If building a Gateway policy, choose the [*User Group Names*](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-names) selector.
+If building a Gateway policy, choose the [*User Group Names*](https://developers.cloudflare.com/cloudflare-one/traffic-controls/identity-selectors/#user-group-names) selector.
 
 ### Manual entry
 
@@ -349,5 +349,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#page","headline":"Microsoft Entra ID","description":"Microsoft Entra ID in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/og.png?v=59032bf1015e0943","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#page","headline":"Microsoft Entra ID","description":"Microsoft Entra ID in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/og.png?v=59032bf1015e0943","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}
 ```

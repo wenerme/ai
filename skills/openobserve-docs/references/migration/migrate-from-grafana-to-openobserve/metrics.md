@@ -56,8 +56,8 @@ remote_write:
 
 Update the `url` to the OpenObserve remote write endpoint and add your credentials.
 
-[OpenObserve Data Sources - Prometheus Remote Write]
-*You can copy the exact Prometheus remote write configuration from the OpenObserve Data Sources UI*
+[Data sources, Custom, Metrics, Prometheus remote_write config]
+*You can copy the exact Prometheus remote write configuration from **Data > Data sources > Custom > Metrics > Prometheus** in OpenObserve*
 
 Reload Prometheus after updating (no restart needed):
 ```bash
@@ -79,9 +79,9 @@ exporters:
     endpoint: http://mimir:9009/api/v1/push
 ```
 
-Copy the exact updated configuration from the **Data Sources UI** in OpenObserve.
+Copy the exact updated configuration from **Data > Data sources > Custom > Metrics > OTEL Collector** in OpenObserve.
 
-[OpenObserve Data Sources - OTel Collector Metrics]
+[Data sources, Custom, Logs, OTEL Collector exporter config]
 
 ---
 
@@ -101,17 +101,17 @@ metrics:
 **Updated config**:
 
 ```yaml
-logs:
+metrics:
   configs:
     - name: default
-      clients:
-        - url: http://openobserve:5080/api/{org_id}/ingest/metrics/_json
+      remote_write:
+        - url: http://openobserve:5080/api/{org_id}/prometheus/api/v1/write
           basic_auth:
             username: admin@example.com
             password: Complexpass#123
 ```
 
-Update the `remote_write` URL to the OpenObserve endpoint. Copy the exact configuration from the **Data Sources UI** in OpenObserve.
+Update the `remote_write` URL to the OpenObserve endpoint (`/api/{org_id}/prometheus/api/v1/write`). Copy the exact configuration from **Data > Data sources > Custom > Metrics > Prometheus** in OpenObserve.
 
 Or replace with [OpenObserve Collector](https://github.com/openobserve/openobserve-helm-chart/blob/main/charts/openobserve-collector/README.md).
 
@@ -126,9 +126,9 @@ Or replace with [OpenObserve Collector](https://github.com/openobserve/openobser
   data_format = "prometheusremotewrite"
 ```
 
-Update the output URL to the OpenObserve endpoint. Copy the exact configuration from the **Data Sources UI** in OpenObserve.
+Update the output URL to the OpenObserve endpoint. Copy the exact configuration from **Data > Data sources > Custom > Metrics > Telegraf** in OpenObserve.
 
-[OpenObserve Data Sources -Telegraf ]
+[Data sources, Custom, Metrics, Telegraf output config]
 
 > **Dedicated guide :** [Telegraf → OpenObserve](https://openobserve.ai/blog/how-to-set-up-telegraf-for-http-metrics-collection/)
 
@@ -172,7 +172,7 @@ helm upgrade kps1 prometheus-community/kube-prometheus-stack -f values.yaml -n m
 
 For detailed steps on ingesting AWS CloudWatch metrics into OpenObserve, see the dedicated guide:
 
-[OpenObserve Data Sources - AWS CloudWatch ]
+[Data sources, Recommended, AWS, Individual Services with CloudWatch Logs and CloudWatch Metrics]
 
 > **Dedicated guide:** [AWS CloudWatch Metrics → OpenObserve](https://openobserve.ai/blog/monitor-aws-rds-with-cloudwatch-metrics/)
 
@@ -182,7 +182,7 @@ For detailed steps on ingesting AWS CloudWatch metrics into OpenObserve, see the
 
 For detailed steps on ingesting Azure Monitor metrics into OpenObserve, see the dedicated guide:
 
-[OpenObserve Data Sources - Azure Monitor ]
+[Data sources, Recommended, Microsoft Azure setup]
 
 > **Dedicated guide:** [Azure Monitor Metrics → OpenObserve](https://openobserve.ai/blog/azure-monitor-metrics/)
 
@@ -197,7 +197,7 @@ For detailed steps on ingesting Azure Monitor metrics into OpenObserve, see the 
 3. Run a test query — `sum(process_cpu_utilization{})` or any counter you know is active.
 4. Confirm the values and timestamps match what you'd expect from the source.
 
-[OpenObserve Metrics Explorer]
+[Metrics page, Visualize tab with a PromQL query]
 *OpenObserve Metrics Explorer — verify metrics are flowing after migration*
 
 ### Troubleshooting

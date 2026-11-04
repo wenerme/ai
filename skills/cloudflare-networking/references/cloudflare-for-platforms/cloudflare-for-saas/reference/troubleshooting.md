@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Troubleshooting
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Certificate stuck in pending validation
 
@@ -170,6 +170,26 @@ To solve this, you can set `cloudflare_branding` to `true` when [creating your c
 
 Cloudflare branding means that `sni.cloudflaressl.com` will be added as the certificate Common Name (CN) and the long hostname will be included as a part of the Subject Alternative Name (SAN).
 
+---
+
+## TLS handshake failure for clients without SNI
+
+Clients that omit the `server_name` extension from their TLS `ClientHello` — typically legacy embedded devices or very old operating systems — receive a TLS handshake failure (alert 40) when connecting to a custom hostname. Without SNI, the edge cannot determine which certificate to serve, and the connection fails before any HTTP traffic is exchanged.
+
+SNI is required for custom hostnames. There is no configuration within Cloudflare for SaaS that enables non-SNI clients to connect to arbitrary custom hostnames (for example, `shop.example.com`). The only reliable fix is to upgrade the affected devices to a TLS stack that supports SNI.
+
+### Alternative architecture for non-SNI clients
+
+If upgrading affected devices is not possible, an alternative architecture combining [Spectrum](https://developers.cloudflare.com/spectrum/) and [BYOIP](https://developers.cloudflare.com/byoip/) can allow non-SNI clients to reach custom hostnames — but it does not use Cloudflare for SaaS.
+
+In this model:
+
+- Each custom hostname is assigned a dedicated IP via BYOIP (requires ownership of at least a /24 prefix, with one IP allocated per tenant), so the destination IP itself identifies the tenant instead of SNI.
+- Spectrum routes the connection at Layer 4 by IP:port without terminating TLS.
+- TLS is handled entirely at the origin, which is responsible for selecting the correct certificate per hostname.
+
+This approach requires Spectrum and BYOIP add-ons and is a significant architectural change. Contact your account team to evaluate this option.
+
 Was this helpful?
 
 YesNo
@@ -179,5 +199,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/og.png?v=9d2a249f28a574a1","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/og.png?v=9d2a249f28a574a1","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

@@ -40,6 +40,9 @@ requests, enforce security limits, and track usage to your account.
   page](https://aistudio.google.com/api-keys).
 *   If you need a new key, click **Create API key** in AI Studio and follow the
   dialog to add a new key-project pair.
+*   Additional projects and projects imported from Google Cloud may need
+  [project verification](/docs/verification) before they can use the free
+  tier.
 
 {% button href="https://aistudio.google.com/apikey" variant="ais" %}Create a Gemini API Key{% /button %}
 
