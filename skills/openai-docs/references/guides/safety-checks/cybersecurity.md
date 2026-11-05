@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-GPT-5.3-Codex and newer models, including GPT-5.4 and GPT-5.5, are classified as having High Cybersecurity Capability under our [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf). As a result, additional automated safeguards apply when these models are used via the API. Please note that the safeguards applied in the API differ from those used in Codex. You can learn more about the Codex safeguards [here](https://developers.openai.com/codex/cyber-safety/).
+We classify GPT-5.6 Cyber as High and GPT-6 Cyber as Critical for cybersecurity under our [Preparedness Framework](https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf). Additional automated safeguards apply to API models classified as High or Critical for cybersecurity. Please note that the safeguards applied in the API differ from those used in Codex. You can learn more about the Codex safeguards [here](https://developers.openai.com/codex/cyber-safety/).
 
 These safeguards monitor for signals of potentially suspicious cybersecurity activity. If certain thresholds are met, access to the model may be temporarily limited while activity is reviewed. Because these systems are still being calibrated, legitimate security research or defensive work may occasionally be flagged. We expect only a small portion of traffic to be impacted, and we’re continuing to refine the overall API experience.
 
@@ -15,8 +15,7 @@ and project, model, and product surface. Daybreak Red requires separate
 approval and provisioning; applying, verifying an identity, or receiving
 Daybreak Blue access doesn't grant specialist-model access.
 
-For approved API projects, use a Daybreak alias or a compatible underlying
-model ID. Alias resolution can change and depends on your approved access.
+For approved API projects, use the most capable cyber model available to you. Alias resolution can change and depends on your approved access.
 See [Use Daybreak in the Responses API](https://developers.openai.com/api/docs/guides/daybreak) to choose a
 model and `access_programs.cyber` value, understand defaults, and handle errors.
 Access and model behavior depend on the approved organization and project;
@@ -38,6 +37,8 @@ audit logs, and fail closed when review is unavailable. See
 
 Application-level tool review and Codex product-side sandboxing are separate
 from the API cybersecurity safeguards described on this page.
+
+For GPT-6-Cyber, [configure your project and IP allowlist](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending requests.
 
 ## Safeguard actions for non-ZDR Organizations
 

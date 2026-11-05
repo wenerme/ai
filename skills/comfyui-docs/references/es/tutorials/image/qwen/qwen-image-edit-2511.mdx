@@ -1,7 +1,7 @@
 ---
 title: "Qwen-Image-Edit-2511 en ComfyUI: edición de imágenes coherente"
 description: "Edita imágenes con Qwen-Image-Edit-2511 en ComfyUI: mayor coherencia de personajes y de varias personas, LoRA integradas y sustitución de materiales."
-translationSourceHash: ca30ed5e
+translationSourceHash: 4824ce99
 translationFrom: tutorials/image/qwen/qwen-image-edit-2511.mdx
 ---
 
@@ -95,4 +95,71 @@ Después de actualizar ComfyUI, puedes encontrar el archivo del flujo de trabajo
 │   │      └── qwen_image_edit_2511_bf16.safetensors
 │   └── 📂 vae/
 │          └── qwen_image_vae.safetensors
+```
+
+### Qwen-Image-Edit-2511 con múltiples ángulos y el nodo de cámara 3D {#template_qwen_multiangle_app}
+
+Carga una foto, gira una cámara 3D alrededor del sujeto y Qwen-Image-Edit-2511 dibuja ese mismo sujeto desde el ángulo que elijas. La plantilla combina el modelo de edición con el LoRA de múltiples ángulos, así que puedes volver a fotografiar una sola imagen de entrada desde cualquier ángulo.
+
+[Vista previa del flujo de trabajo de múltiples ángulos de Qwen-Image-Edit-2511]
+
+  
+    Abrir en Comfy Cloud
+  
+  
+    Descarga el JSON o busca «Generate Multiple Angles with 3D Camera Node» en la biblioteca de plantillas
+  
+
+**Material de entrada**
+
+Sube este archivo al nodo `LoadImage`:
+
+  
+    Nodo `LoadImage` 1
+  
+
+#### Controles del ángulo de cámara
+
+El nodo **Compose Camera Angle Prompt** añade una vista 3D encima de sus campos de ángulo. Al elegir un punto de vista en la vista 3D, el nodo escribe una descripción de plano como `front view eye-level shot medium shot` en el prompt del flujo de trabajo, así que no la escribes a mano. Los campos de ángulo se actualizan al moverte.
+
+- **Camera / Object**: **Camera** te mueve alrededor del sujeto y **Object** mira a través del objetivo y gira el sujeto.
+- **Horizontal angle, Vertical angle, Shot size**: posiciones con nombre: ocho alrededor del sujeto, de `Front` a `Front left`, cuatro elevaciones de `Low angle` a `High angle` y tres tamaños de plano de `Wide shot` a `Close-up`. Arrastrar en la vista 3D fija los mismos valores.
+- **Preview**: abre una ventana superpuesta con lo que entra en el encuadre.
+
+Conecta una imagen a la entrada de imagen opcional del nodo para verla en la cara frontal del sujeto, lo que facilita distinguir izquierda y derecha al orbitar.
+
+El modo turbo (`enable_turbo_mode`, un control del nodo del subgrafo) está activado por defecto: 4 pasos, CFG 1 y el LoRA Lightning de 4 pasos. Desactívalo para la pasada de 40 pasos con CFG 4 y sin ese LoRA.
+
+**Descargas de modelos para este flujo de trabajo**
+
+  
+    Coloca el archivo en <code>ComfyUI/models/diffusion_models/</code>
+  
+  
+    Coloca el archivo en <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    Coloca el archivo en <code>ComfyUI/models/vae/</code>
+  
+  
+    Coloca el archivo en <code>ComfyUI/models/loras/</code>
+  
+  
+    Coloca el archivo en <code>ComfyUI/models/loras/</code>
+  
+
+**Ubicación de los modelos**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── qwen_image_edit_2511_int8_convrot.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   ├── 📂 vae/
+│   │   └── qwen_image_vae.safetensors
+│   └── 📂 loras/
+│       ├── qwen-image-edit-2511-multiple-angles-lora.safetensors
+│       └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 ```

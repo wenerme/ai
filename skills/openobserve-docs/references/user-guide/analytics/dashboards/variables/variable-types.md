@@ -15,23 +15,23 @@ This variable dynamically fetches values from a selected field in a stream. It s
 
 **Use Case:** Filter the dashboard panels by Pod name using values from logs.
 
-[Query variable]
+[Edit Variable form for a Query Values variable named pod on the docs_k8s_logs stream and k8s_pod_name field]
 :::note[Configuration]
-**Basic**:
+**General**:
 
-- **Type of Variable**: Query Values
+- **Type of variable**: Query Values
 - **Name**: pod
 - **Label (optional)**: Pod 
 - **Stream Type**: Logs
 - **Stream**: `default`
 - **Field**: `k8s_pod_name`
-- **Default Max Record Size (optional)**: `20`
+- **Default max record size (optional)**: `20`
 
-**Advanced:**
+**Options:**
 
 - **Allow multiple selection**: Enabled
-- **By Default Select**: First value
-- **Hide on Dashboard**: Disabled
+- **By Default Select:** First value
+- **Hide On Dashboard**: Disabled
 - **Escape Single Quotes**: Disabled
 
 **Result**: 
@@ -50,19 +50,19 @@ This variable allows you to set a fixed value that cannot be changed by dashboar
 **When to use:** When the value should always stay the same and must not be changed by anyone using the dashboard.
 
 **Use case:** Building a dashboard that focuses only on logs from a specific Kubernetes namespace named ziox.
-[Constant variable]
+[Constant variable env with the value docs]
 
 :::note[Configuration]
-**Basic**: 
+**General**: 
 
 - **Type of variable**: Constant
 - **Name**: constant-ziox
 - **Label (optional)**: Namespace-name-ziox-constant 
 - **Value**: `ziox`
 
-**Advanced**:
+**Options**:
 
-- **Hide on Dashboard**: Disabled
+- **Hide On Dashboard**: Disabled
 - **Escape Single Quotes**: Disabled
 
 **Result**: 
@@ -77,16 +77,16 @@ This variable provides a free-form text input field on the dashboard.
 **When to use:** When users need to manually enter a value that may not exist in the dropdown, such as custom IDs or strings.
 
 **Use Case:** You want users to manually enter the cluster name they want to filter logs by.
-[Textbox variable]
+[Textbox variable cluster with the default value _o2_all_]
 :::note[Configuration]
-**Basic**:
+**General**:
 
 - **Type of variable**: Textbox
 - **Name**: input-cluster-name
 - **Label (optional)**: Enter Cluster Name
 - **Default value (optional)**: `_o2_all_`
 
-**Advanced**:
+**Options**:
 
 - **Hide On Dashboard**: Disabled
 - **Escape Single Quotes**: Disabled
@@ -114,10 +114,10 @@ This variable lets you predefine a list of selectable values.
 **When to use:** When values are known in advance and should not be fetched from data.
 
 **Use Case:** You want to allow users to select a predefined service from a list, such as openobserve or ingress-nginx. This is useful when the possible values are known and limited, and you want to control what the user can select.
-[Custom variable]
+[Custom variable service with the options checkout (default) and cart]
 :::note[Configuration]
 
-**Basic**: 
+**General**: 
 
 - **Type of variable**: Custom
 - **Name**: service-name
@@ -131,10 +131,10 @@ This variable lets you predefine a list of selectable values.
     - **Value**: `ingress-nginx`
     - **Default**: Unchecked
 
-**Advanced**:
+**Options**:
 
 - **Allow multiple selection**: Disabled
-- **Hide on Dashboard**: Disabled
+- **Hide On Dashboard**: Disabled
 - **Escape Single Quotes**: Disabled
 
 **Result**: 

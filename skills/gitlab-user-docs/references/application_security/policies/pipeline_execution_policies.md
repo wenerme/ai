@@ -76,13 +76,28 @@ Note the following:
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/issues/592205) in GitLab 18.11.
 
 When pipeline execution policies or [scan execution policies](scan_execution_policies.md) are configured
-for a project, the security policy pipeline check requires all pipelines for the latest commit to
-succeed before the merge request can be merged. This check applies to all pipelines that run because of the
+for a project and  is turned on,
+all pipelines for the latest commit must succeed before the merge request can be merged.
+This check applies to all pipelines that run because of the
 commit, not just pipelines created by security policies.
 
 The security policy pipeline check prevents merging when the merge request pipeline passes but
 another pipeline (such as a branch pipeline created by a security policy) fails, which could otherwise
 allow unverified code to be merged.
+
+This setting is turned off by default.
+The check does not run until you turn on the setting in each project.
+
+Prerequisites:
+
+- The Maintainer or Owner role for the project.
+
+To turn on the security policy pipeline check:
+
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Under , select .
+1. Select .
 
 The security policy pipeline check behaves as follows:
 

@@ -180,12 +180,19 @@ Example responses:
 
 ## Validate existing CI/CD configuration
 
+- `ci_lint_api_require_authentication` setting [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267969) in GitLab 19.6.
+
 Validates the existing `.gitlab-ci.yml` configuration for a specified project.
 This endpoint validates the CI/CD configuration in the context of the
 project, including:
 
 - Using the project's CI/CD variables.
 - Searching the project's files for `include:local` entries.
+
+If an administrator [requires authentication for the CI Lint API](../administration/settings/continuous_integration.md#require-authentication-for-the-ci-lint-api),
+this endpoint requires authentication, including for public projects.
+In this case, requests that use `CI_JOB_TOKEN` also return `401 Unauthorized`, because
+this endpoint doesn't accept CI/CD job tokens. Use a personal, project, or group access token instead.
 
 ```plaintext
 GET /projects/:id/ci/lint

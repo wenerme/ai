@@ -245,7 +245,7 @@ Embedded snippets display a header that shows:
 
 For example:
 
-<script src="https://gitlab.com/gitlab-org/gitlab-foss/snippets/1717978.js"></script>
+<script src="https://gitlab.com/gitlab-org/gitlab-foss/-/snippets/1717978.js"></script>
 
 ## Download snippets
 

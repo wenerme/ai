@@ -21,8 +21,11 @@ just text extraction, allowing Gemini to:
   formatting, for use in downstream applications.
 
 
-You can also pass non-PDF documents in the same way but Gemini will see them
-as normal text which will eliminate context like charts or formatting.
+You can also pass Microsoft Office and OpenDocument files, such as Word
+documents, PowerPoint presentations, and Excel spreadsheets. For details, see
+[Office and OpenDocument files](/docs/document-processing#office-documents).
+Other non-PDF documents, such as TXT, Markdown, or HTML files, are processed as
+plain text, which eliminates context like charts or formatting.
 
 ## Passing PDF data inline  {% id="inline_data" %}
 
@@ -1350,6 +1353,131 @@ the text prompt stays within the model's context window.
 
 {% /tabs %}
 
+## Office and OpenDocument files  {% id="office-documents" %}
+
+Gemini models can process Microsoft Office and OpenDocument files. Pass them
+the same way as PDFs, either inline or with the Files API, using a `document`
+content block and one of the following MIME types:
+
+| File type | Extension | MIME type |
+| --- | --- | --- |
+| Documents | `.docx` | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` |
+|  | `.doc` | `application/msword` |
+|  | `.dotx` | `application/vnd.openxmlformats-officedocument.wordprocessingml.template` |
+|  | `.odt` | `application/vnd.oasis.opendocument.text` |
+| Presentations | `.pptx` | `application/vnd.openxmlformats-officedocument.presentationml.presentation` |
+|  | `.ppt` | `application/vnd.ms-powerpoint` |
+|  | `.odp` | `application/vnd.oasis.opendocument.presentation` |
+| Spreadsheets | `.xlsx` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` |
+|  | `.xls` | `application/vnd.ms-excel` |
+|  | `.ods` | `application/vnd.oasis.opendocument.spreadsheet` |
+
+These files are processed as follows:
+
+* **DOCX, DOTX, ODT, and PPTX files**: The model receives the text of the
+  whole file, plus embedded images for DOCX and PPTX files. Pages and slides
+  aren't rendered as images, so page layout and visual elements such as
+  charts might not be preserved.
+* **DOC, PPT, and ODP files**: Each page or slide is rendered as an image,
+  so the model can interpret layouts, charts, and images. The whole file is
+  processed.
+* **XLSX and XLS files**: Only the **first sheet** is read. Its contents are
+  converted to CSV, so the model receives the cell values but not formulas or
+  formatting.
+* **ODS files**: Only the **first sheet** is read. The model receives its cell
+  data and formulas.
+
+Other sheets in a workbook are ignored. To analyze a different sheet, move it to
+the first position or save it as a separate file.
+
+Files are processed the same way whether you pass them in a request or a tool
+returns them in a [function response](/docs/function-calling#multimodal).
+The existing file size and page limits apply to the whole file.
+
+The following example uploads a PowerPoint presentation with the Files API and
+asks the model to summarize it:
+
+{% tabs %}
+  {% tab filename="sample.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  deck = client.files.upload(
+      file="quarterly_review.pptx",
+      config={
+          "mime_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      },
+  )
+  
+  interaction = client.interactions.create(
+      model="gemini-3.8-flash",
+      input=[
+          {"type": "document", "uri": deck.uri, "mime_type": deck.mime_type},
+          {"type": "text", "text": "Summarize the key takeaways from each slide."},
+      ],
+  )
+  
+  print(interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="sample.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const ai = new GoogleGenAI({});
+  
+  async function main() {
+      const deck = await ai.files.upload({
+          file: "quarterly_review.pptx",
+          config: {
+              mimeType: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+          },
+      });
+  
+      const interaction = await ai.interactions.create({
+          model: "gemini-3.8-flash",
+          input: [
+              { type: "document", uri: deck.uri, mime_type: deck.mimeType },
+              { type: "text", text: "Summarize the key takeaways from each slide." }
+          ]
+      });
+      console.log(interaction.output_text);
+  }
+  
+  main();
+  ```
+
+  {% /tab %}
+
+  {% tab filename="sample.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "gemini-3.8-flash",
+      "input": [
+        {
+          "type": "document",
+          "uri": "https://generativelanguage.googleapis.com/v1beta/files/FILE_ID",
+          "mime_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        },
+        {"type": "text", "text": "Summarize the key takeaways from each slide."}
+      ]
+    }'
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+Tools can also return these files to the model. For details, see
+[Multimodal function responses](/docs/function-calling#multimodal).
+
 ## Technical details  {% id="technical-details" %}
 
 Gemini supports PDF files up to 50MB or 1000 pages. This limit applies
@@ -1390,12 +1518,16 @@ For more details about the media resolution parameter, see the
 
 ### Document types  {% id="document-types" %}
 
+Document vision meaningfully understands PDFs and DOC, PPT, and ODP files,
+which are rendered as page images. DOCX, DOTX, ODT, and PPTX files are converted
+to text, and spreadsheets are read as tabular data. For details, see
+[Office and OpenDocument files](/docs/document-processing#office-documents).
+
 Technically, you can pass other MIME types for document understanding, like
-TXT, Markdown, HTML, XML, etc. However, document vision ***only meaningfully
-understands PDFs***. Other types will be extracted as pure text, and the model
-won't be able to interpret what we see in the rendering of those files. Any
-file-type specifics like charts, diagrams, HTML tags, Markdown formatting, etc.,
-will be lost.
+TXT, Markdown, HTML, XML, etc. However, these types are extracted as pure
+text, which means the model can't understand the visual elements present in a
+rendered file. Any file-type specifics like charts, diagrams, HTML tags,
+Markdown formatting, etc., will be lost.
 
 To learn about other file input methods, see the
 [File input methods](/docs/file-input-methods) guide.

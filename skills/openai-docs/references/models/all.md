@@ -44,7 +44,8 @@ Models for realtime, speech, and audio workflows.
 
 Advanced cyber models for defenders
 
-- [GPT-5.6 Cyber](/api/docs/models/gpt-5.6-cyber.md): Our most advanced cybersecurity model for authorized vulnerability research and security testing.
+- [GPT-6-Cyber](/api/docs/models/gpt-6-cyber.md): Investigate a vulnerability, reproduce it in an authorized test environment, or verify a fix.
+- [GPT-5.6 Cyber](/api/docs/models/gpt-5.6-cyber.md): Cybersecurity model for authorized vulnerability research and security testing.
 
 ## Life sciences
 

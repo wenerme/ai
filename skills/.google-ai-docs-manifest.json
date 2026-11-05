@@ -86,8 +86,8 @@
   "google-ai-docs/image-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
     "skill": "google-ai-docs",
-    "size": 49869,
-    "updatedAt": "2026-11-03T17:55:31.636Z"
+    "size": 49937,
+    "updatedAt": "2026-11-05T18:08:48.838Z"
   },
   "google-ai-docs/audio.md": {
     "url": "https://ai.google.dev/gemini-api/docs/audio",
@@ -98,14 +98,14 @@
   "google-ai-docs/video.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video",
     "skill": "google-ai-docs",
-    "size": 1827,
-    "updatedAt": "2026-11-03T17:55:32.701Z"
+    "size": 1898,
+    "updatedAt": "2026-11-05T18:08:58.730Z"
   },
   "google-ai-docs/document-processing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/document-processing",
     "skill": "google-ai-docs",
-    "size": 43963,
-    "updatedAt": "2026-11-03T17:55:33.349Z"
+    "size": 48879,
+    "updatedAt": "2026-11-05T18:08:59.269Z"
   },
   "google-ai-docs/structured-output.md": {
     "url": "https://ai.google.dev/gemini-api/docs/structured-output",
@@ -116,8 +116,8 @@
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
     "skill": "google-ai-docs",
-    "size": 123108,
-    "updatedAt": "2026-11-03T17:55:34.425Z"
+    "size": 128460,
+    "updatedAt": "2026-11-05T18:09:00.730Z"
   },
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
@@ -158,14 +158,14 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 101809,
-    "updatedAt": "2026-11-03T17:55:40.104Z"
+    "size": 103573,
+    "updatedAt": "2026-11-05T18:09:08.682Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
     "skill": "google-ai-docs",
-    "size": 10303,
-    "updatedAt": "2026-11-04T18:08:50.078Z"
+    "size": 10749,
+    "updatedAt": "2026-11-05T18:09:10.237Z"
   },
   "google-ai-docs/openai.md": {
     "url": "https://ai.google.dev/gemini-api/docs/openai",

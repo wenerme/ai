@@ -231,6 +231,21 @@ The Jenkins migration banner is displayed by default. To hide it:
 1. Select the **Show the migrate from Jenkins banner** checkbox.
 1. Select **Save changes**.
 
+#### Require authentication for the CI Lint API
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267969) in GitLab 19.6.
+
+By default, unauthenticated users can use the [CI Lint API](../../api/lint.md#validate-existing-cicd-configuration)
+to validate the CI/CD configuration of public projects.
+
+To require authentication for this endpoint:
+
+1. Select the **Require authentication for the CI Lint API** checkbox.
+1. Select **Save changes**.
+
+When this setting is turned on, requests that use a CI/CD job token (`CI_JOB_TOKEN`)
+also return `401 Unauthorized`, because this endpoint doesn't accept job tokens.
+
 ## Access package registry settings
 
 Configure NuGet package validation, Helm package limits, package file size limits, and package forwarding.

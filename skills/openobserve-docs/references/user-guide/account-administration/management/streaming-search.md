@@ -19,7 +19,7 @@ This feature is **enabled by default** and automatically optimizes query perform
 OpenObserve splits the total time range into partitions, each covering a segment of time or data volume. For example, an 8-hour query with 8 GB of data may be split into 8 partitions, each processing 1 GB. These partitions are executed sequentially and contribute partial results to the final output.
 
 ### Mini-Partition
-Based on the environment variable `ZO_MINI_SEARCH_PARTITION_DURATION_SECS`, the first partition is divided into a mini-partition to return results faster. This is helpful when working with large time ranges.
+Based on the environment variable `ZO_SEARCH_MINI_PARTITION_DURATION_SECS`, the first partition is divided into a mini-partition to return results faster. This is helpful when working with large time ranges.
 
 The environment variable is enabled by default and it defines the duration of the mini-partition in seconds. By default, this is set to 60 seconds.
 

@@ -1,5 +1,5 @@
 ---
-description: Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.
+description: Proxy public hostnames to private origins through Cloudflare WAN (IPsec, GRE, or CNI).
 title: Set up a private origin via Cloudflare WAN
 image: https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/og.png?v=ce9e8902ea9e1211
 ---
@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudfla
 
 # Set up a private origin via Cloudflare WAN
 
-Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through proxying public hostnames to origins on a private network. The private network is reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) IPsec tunnel. The CDN, WAF, Cache, and other proxied features apply to this traffic the same way they apply to traffic destined for public origins.
+
+This guide uses IPsec. The same flow works over [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) and [CNI](https://developers.cloudflare.com/network-interconnect/). Configure the on-ramp using those docs, then continue from [step 2](#2-create-a-dns-record-with-private-network-routing).
 
 Closed beta
 
@@ -24,13 +26,15 @@ This feature is in closed beta. To request access, contact your Cloudflare accou
 
 Confirm the following before you start:
 
-- **Active Cloudflare WAN subscription**: This capability requires a Cloudflare WAN subscription on your account.
-- **Access to private origins enabled on your account**: This is a separate entitlement from standard authoritative DNS access. Contact your Cloudflare account team to request access.
+- **Active Cloudflare WAN subscription**: this guide requires a Cloudflare WAN subscription on your account.
+- **Private Origins available on your account**: contact your account team to enable it.
 - **IPsec tunnels configured**: Set up two anycast IPsec tunnels for redundancy, each with a different Cloudflare anycast endpoint. Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). Two settings are important for this use case:
   - Leave **Automatic return routing** disabled. It does not apply to the public-to-private origin traffic pattern, where requests originate on the Internet and reach your origin through Cloudflare's reverse proxy.
   - Keep the default **Health check** settings (type `reply`, direction `bidirectional`, rate `mid`). These defaults are required for tunnel health to track correctly in this use case.
-- **Static routes configured**: Add two static routes for the private prefix you want to reach — one per tunnel — with different priorities so traffic fails over to the backup tunnel if the primary goes down. For example, set priority `100` on the route through your primary tunnel and `101` on the route through your backup tunnel (lower numbers are higher priority). Refer to [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
-- **Cloudflare Source IP set to a private range**: The Cloudflare Source IP is the IP that Cloudflare uses when sending proxied requests into your private network. If it is left as a public range, your network cannot route the return traffic back through the tunnel and requests time out. Refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
+- **Static routes configured**: Add two static routes for the private prefix you want to reach, one per tunnel, with different priorities so traffic fails over to the backup tunnel if the primary goes down. For example, set priority `100` on the route through your primary tunnel and `101` on the route through your backup tunnel (lower numbers are higher priority). Refer to [Configure routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/).
+- **Unified Routing enabled**: your account must be on [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) to use a private Cloudflare source range. Contact your account team to enable it. This applies to new and existing accounts.
+- **MSS clamp set**: set the TCP MSS clamp on your IPsec tunnels to `1360` or lower.
+- **Cloudflare Source IP set to a private range**: The Cloudflare Source IP is the IP that Cloudflare uses when sending proxied requests into your private network. If it is left as a public range, your network cannot route the return traffic back through the tunnel and requests time out. Refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/). You also need a return route for the IPv6 source range `2606:4700:cf1:5000::/64` if any origin uses IPv6.
 
 ## 1. Verify your Cloudflare Source IP allocation
 
@@ -70,6 +74,12 @@ On the origin VM, verify that requests are arriving from the Cloudflare Source I
 sudo tcpdump -n -i any 'src net 100.64.0.0/12 and dst port 443'
 ```
 
+For IPv6 origins, watch for incoming traffic from the Cloudflare IPv6 source range:
+
+```bash
+sudo tcpdump -n -i any 'src net 2606:4700:cf1:5000::/64 and dst port 443'
+```
+
 Replace `100.64.0.0/12` with the Source IP range configured for your account, and adjust the port to match the listener on your origin.
 
 ## Common pitfalls
@@ -80,6 +90,9 @@ Replace `100.64.0.0/12` with the Source IP range configured for your account, an
 | Request times out, no response on the origin | The network where your origin lives has no return route for the Cloudflare Source IP range. Add a route that sends that range back through the tunnel. |
 | Tunnel shows IKE established but health checks fail | ICMP is blocked on the path or the health check is misconfigured. Allow ICMP between the tunnel endpoints and confirm the health check direction is `bidirectional` and type is `reply`. |
 | Traffic tries to route over the public Internet | The **Use private network routing** toggle is not turned on for the DNS record. Edit the record and turn the toggle on. |
+| Large responses hang or stall | The MSS clamp is missing or above `1360` on the IPsec tunnel. Set it to `1360` or lower. |
+| IPv6 requests time out | No return route for `2606:4700:cf1:5000::/64`. Add one through the tunnel. |
+| Cacheable assets return `403` | Known Tiered Cache issue. Refer to [Limitations](https://developers.cloudflare.com/dns/private-origins/#limitations). |
 
 ## Next steps
 
@@ -96,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/#page","headline":"Set up a private origin via Cloudflare WAN","description":"Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.","url":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/og.png?v=ce9e8902ea9e1211","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/#page","headline":"Set up a private origin via Cloudflare WAN","description":"Proxy public hostnames to private origins through Cloudflare WAN (IPsec, GRE, or CNI).","url":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/og.png?v=ce9e8902ea9e1211","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

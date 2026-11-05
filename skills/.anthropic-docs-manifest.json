@@ -26,8 +26,8 @@
   "anthropic-docs/manage-claude/authentication.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/authentication",
     "skill": "anthropic-docs",
-    "size": 27901,
-    "updatedAt": "2026-11-05T06:21:13.321Z"
+    "size": 28027,
+    "updatedAt": "2026-11-05T17:59:42.346Z"
   },
   "anthropic-docs/build-with-claude/overview.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/overview",
@@ -824,8 +824,8 @@
   "anthropic-docs/manage-claude/user-management.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/user-management",
     "skill": "anthropic-docs",
-    "size": 88485,
-    "updatedAt": "2026-11-04T05:58:49.237Z"
+    "size": 103619,
+    "updatedAt": "2026-11-05T18:00:44.764Z"
   },
   "anthropic-docs/manage-claude/plugins-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/plugins-api",
@@ -1832,8 +1832,8 @@
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",
     "skill": "anthropic-docs",
-    "size": 137294,
-    "updatedAt": "2026-11-05T06:23:28.565Z"
+    "size": 138499,
+    "updatedAt": "2026-11-05T18:01:52.267Z"
   },
   "anthropic-api/api/messages.md": {
     "url": "https://platform.claude.com/docs/en/api/messages",
@@ -5308,5 +5308,11 @@
     "skill": "anthropic-docs",
     "size": 60044,
     "updatedAt": "2026-11-02T20:22:13.581Z"
+  },
+  "anthropic-docs/manage-claude/ip-allowlist.md": {
+    "url": "https://platform.claude.com/docs/en/manage-claude/ip-allowlist",
+    "skill": "anthropic-docs",
+    "size": 12566,
+    "updatedAt": "2026-11-05T18:05:40.713Z"
   }
 }

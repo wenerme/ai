@@ -17,11 +17,11 @@ You can import alerts individually or in bulk using pre-defined templates. The i
 - URL   
 - JSON object or array
 
-[import-alerts]
+[Import Alert page with the File Upload / JSON tab, the Select Folder dropdown and the JSON editor]
 
 ### Steps to Import an Alert
 
-1. From the left-hand navigation, select **Alerts**.  
+1. In the left navigation, go to **Reliability > All Alerts**.  
 2. Click the **Import** button. 
 3. Choose one of the supported import methods using the tabs at the top: 
 
@@ -29,7 +29,7 @@ You can import alerts individually or in bulk using pre-defined templates. The i
     - **URL Import:** Provide a URL to fetch the alert configuration.
 
 **Note**: To import alerts in bulk, paste a JSON array containing multiple alert definitions in the JSON editor, as shown below: 
-[import-alerts-in-bulk]
+[JSON editor holding an array of two alert definitions for a bulk import]
 4. Click **Import**. 
 5. If validation errors occur, resolve issues based on the prompts:
 
@@ -38,16 +38,16 @@ You can import alerts individually or in bulk using pre-defined templates. The i
 - **If the timezone is missing for the cron job:** Select the appropriate timezone from the dropdown.  
 - **If the stream name and stream type does not exist:** Select existing stream name and stream type. 
 
-[import-alerts-validation-errors]
+[Error Validations panel asking for an existing stream name and an existing destination]
 
 ## Export Alerts
 
 Alert export allows users to download an alert configuration as a JSON file. This file contains all the alert's settings. 
-[export-alerts]
+[More actions menu on an alert row with the Export option]
 
 ### Steps to Export an Alert
 
-1. Navigate to the **Alerts** page.  
+1. Go to **Reliability > All Alerts**.  
 2. Locate the alert you want to export.  
 3. Click the **more options** menu (three-dot icon) in the **Actions** column and select **Export**.
 

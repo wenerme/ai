@@ -895,10 +895,79 @@ This file contains the JSON version of the logs in `auth.log`, for example:
     "message":"Rack_Attack",
     "env":"blocklist",
     "remote_ip":"x.x.x.x",
-    "request_method":"GET",
+    "method":"GET",
     "path":"/group/project.git/info/refs?service=git-upload-pack"
 }
 ```
+
+### `Rate_Limit_Block` messages
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258338) in GitLab 19.5.
+- `remote_ip`, `path`, and `method` fields [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265941) in GitLab 19.6.
+
+When the LabKit rate limiter blocks a request, GitLab returns a `429` status code
+before the request reaches a controller or an API endpoint.
+`production_json.log` and `api_json.log` have no entry for the blocked request.
+Instead, GitLab logs a `Rate_Limit_Block` message to `auth_json.log`.
+
+To limit the log volume, GitLab does not log a message for every blocked request.
+GitLab logs a message only when the request count of a rule reaches one of these values:
+
+- One more than the limit.
+- Two, four, eight, or a higher power of two times the limit.
+
+For example, for a limit of 60 requests each hour, GitLab logs a message for requests 61, 120, 240, and 480 in that hour.
+The count is separate for each client that the rule counts, as shown in the `counted_by` field.
+
+For example:
+
+```json
+{
+    "severity":"ERROR",
+    "time":"2026-10-30T09:21:14.512Z",
+    "correlation_id":"01JBRZ6Q7J5Y0T8V2N4K6M8P0R",
+    "message":"Rate_Limit_Block",
+    "status":429,
+    "matched":"throttle_unauthenticated_api",
+    "rule":"unauthenticated_api",
+    "remote_ip":"x.x.x.x",
+    "path":"/api/v4/projects",
+    "method":"GET",
+    "limit":500,
+    "period_s":60,
+    "count":501,
+    "counted_by":{"ip":"x.x.x.x"},
+    "rate_limit_state":["rack_request:unauthenticated_api:block"]
+}
+```
+
+The message has these fields:
+
+| Field              | Description |
+| ------------------ | ----------- |
+| `severity`         | Always `ERROR`. |
+| `time`             | Time that GitLab logged the message, in UTC. |
+| `correlation_id`   | Correlation ID of the blocked request that GitLab logged. |
+| `message`          | Always `Rate_Limit_Block`. |
+| `status`           | Always `429`. |
+| `matched`          | Name of the throttle that blocked the request. For a rule with no throttle, the name of the rule. The `Rack_Attack` message uses the same field name. |
+| `rule`             | Name of the LabKit rule that blocked the request. |
+| `remote_ip`        | IP address of the client. GitLab logs this field for every rule, also for rules that count requests by requester. |
+| `path`             | Path of the request, without the query string. If GitLab is installed under a relative URL, the path does not include the relative URL. The `path` field of a `Rack_Attack` message includes both. |
+| `method`           | HTTP method of the request. |
+| `limit`            | Number of requests that the rule allows in each period. |
+| `period_s`         | Length of the period, in seconds. |
+| `count`            | Number of requests that the rule counted for this client in the current period. |
+| `counted_by`       | Values that the rule counts requests by, for example `ip` for a rule that counts by IP address. For a rule that counts by authenticated requester, the field contains `requester_type` (`user` or `deploy_token`) and `requester_id`. Some rules count by other values, such as `aid`. |
+| `rate_limit_state` | Rate limit rules that counted the request or ended the check. The format is the same as the `rate_limit_state` field in `production_json.log`. |
+
+To find the requests that GitLab blocked for a user or an IP address:
+
+1. In `auth_json.log`, search for `Rate_Limit_Block` messages in the time period of the problem.
+1. Filter the messages by `counted_by`, `remote_ip`, or `path`.
+
+GitLab does not log most blocked requests, so most blocked requests have no `Rate_Limit_Block` message.
+If you search for the `correlation_id` of a blocked request, you find a `Rate_Limit_Block` message only if GitLab logged that request.
 
 ## `graphql_json.log`
 

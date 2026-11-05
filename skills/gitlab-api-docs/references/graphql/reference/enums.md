@@ -2692,6 +2692,7 @@ Where a Duo Workflow session was initiated from.
 | `MERGE_REQUEST_FIX_PIPELINE` | Session initiated from fixing a failed pipeline on a merge request. |
 | `MERGE_REQUEST_RESOLVE_DISCUSSION` | Session initiated from resolving a discussion on a merge request. |
 | `SLACK` | Session initiated from Slack. |
+| `VULNERABILITY_LEAKED_TOKEN_ROTATION` | Session initiated from rotating a leaked token found by a vulnerability. |
 | `WEB_CHAT` | Session initiated from GitLab Duo Chat in the web UI. |
 | `WORK_ITEM_PLAN_TO_MERGE_REQUEST` | Session initiated from creating a merge request from an existing workplan for a work item. |
 | `WORK_ITEM_TO_MERGE_REQUEST` | Session initiated from creating a merge request from a work item. |
@@ -5933,6 +5934,7 @@ Values for sorting timelogs.
 | `mentioned` | Todo action name for mentioned. |
 | `merge_train_removed` | Todo action name for merge_train_removed. |
 | `okr_checkin_requested` | Todo action name for okr_checkin_requested. |
+| `orbit_access_granted` | Todo action name for orbit_access_granted. |
 | `review_requested` | Todo action name for review_requested. |
 | `review_submitted` | Todo action name for review_submitted. |
 | `ssh_key_expired` | Todo action name for ssh_key_expired. |
@@ -6144,6 +6146,7 @@ Name of the feature that the callout is for.
 | `NAMESPACE_STORAGE_LIMIT_ALERT_WARNING_THRESHOLD` | Callout feature name for namespace_storage_limit_alert_warning_threshold. |
 | `NAMESPACE_STORAGE_PRE_ENFORCEMENT_BANNER` | Callout feature name for namespace_storage_pre_enforcement_banner. |
 | `NAMESPACE_USER_CAP_REACHED_ALERT` | Callout feature name for namespace_user_cap_reached_alert. |
+| `ORBIT_TURNED_ON_ALERT` | Callout feature name for orbit_turned_on_alert. |
 | `ORGANIZATIONS_AVAILABLE_ALERT` | Callout feature name for organizations_available_alert. |
 | `OVERAGE_SEAT_COUNT_THRESHOLD` | Callout feature name for overage_seat_count_threshold. |
 | `POST_TRIAL_USAGE_CARD` | Callout feature name for post_trial_usage_card. |

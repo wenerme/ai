@@ -37,7 +37,7 @@ The SRE Agent can be extended with org-scoped custom toolsets that are loaded in
 
 1. **OpenObserve Enterprise License** (v0.60.0+)
 2. **AI Provider API Key** with available quota (Anthropic, OpenAI, or Google Gemini)
-3. **`O2_AI_ENABLED`** set to `"true"` in your OpenObserve configuration
+3. **`O2_AI_ENABLED`** set to `"true"` in your OpenObserve configuration (the binary default is `true`, but the Helm chart sets it to `"false"`)
 
 ## Configuration Methods
 
@@ -68,16 +68,16 @@ enterprise:
   enabled: true
 
   # Required when O2_AI_ENABLED is "true"
-  sreagent:
+  o2ai:
     enabled: true
     config:
-      O2_SRE_HOST: "0.0.0.0"
-      O2_SRE_PORT: "8000"
-      O2_SRE_LOG_LEVEL: "INFO"
+      O2_AI_HOST: "0.0.0.0"
+      O2_AI_PORT: "8000"
+      O2_AI_LOG_LEVEL: "INFO"
       ADK_ENABLE_JSON_SCHEMA_FOR_FUNC_DECL: "true"
       O2_AI_GATEWAY_ENABLED: "false"
       O2_AI_PROVIDER: "anthropic"  # Options: anthropic, openai, gemini
-      O2_AI_MODEL: "claude-3-5-sonnet-20241022"
+      O2_AI_MODEL: "claude-sonnet-4-6"
       O2_AI_GATEWAY_URL: ""  # Leave empty when not using gateway
       O2_AGENT_URL: ""  # Leave empty - auto-generated
       O2_TOOL_API_URL: ""  # Leave empty - auto-generated
@@ -88,7 +88,7 @@ enterprise:
       O2_MCP_CONTENT_VALIDATION_MODE: "hybrid"
       O2_MCP_RESPONSE_VALIDATION_ENABLED: "true"
 
-  # IMPORTANT: Requires sreagent.enabled to be true
+  # IMPORTANT: Requires o2ai.enabled to be true
   parameters:
     O2_AI_ENABLED: "true"
     O2_AGENT_URL: ""  # Leave empty - auto-generated
@@ -111,16 +111,16 @@ aiGateway:
 enterprise:
   enabled: true
 
-  sreagent:
+  o2ai:
     enabled: true
     config:
-      O2_SRE_HOST: "0.0.0.0"
-      O2_SRE_PORT: "8000"
-      O2_SRE_LOG_LEVEL: "INFO"
+      O2_AI_HOST: "0.0.0.0"
+      O2_AI_PORT: "8000"
+      O2_AI_LOG_LEVEL: "INFO"
       ADK_ENABLE_JSON_SCHEMA_FOR_FUNC_DECL: "true"
       O2_AI_GATEWAY_ENABLED: "true"  # Auto-set when aiGateway.enabled: true
       O2_AI_PROVIDER: "anthropic"  # Can be omitted when using gateway
-      O2_AI_MODEL: "claude-3-5-sonnet-20241022"
+      O2_AI_MODEL: "claude-sonnet-4-6"
       O2_AI_GATEWAY_URL: ""  # Auto-configured when aiGateway.enabled: true
       O2_AGENT_URL: ""
       O2_TOOL_API_URL: ""
@@ -145,16 +145,16 @@ auth:
 enterprise:
   enabled: true
 
-  sreagent:
+  o2ai:
     enabled: true
     config:
-      O2_SRE_HOST: "0.0.0.0"
-      O2_SRE_PORT: "8000"
-      O2_SRE_LOG_LEVEL: "INFO"
+      O2_AI_HOST: "0.0.0.0"
+      O2_AI_PORT: "8000"
+      O2_AI_LOG_LEVEL: "INFO"
       ADK_ENABLE_JSON_SCHEMA_FOR_FUNC_DECL: "true"
       O2_AI_GATEWAY_ENABLED: "false"
       O2_AI_PROVIDER: "anthropic"
-      O2_AI_MODEL: "claude-3-5-sonnet-20241022"
+      O2_AI_MODEL: "claude-sonnet-4-6"
       O2_AI_GATEWAY_URL: ""
       O2_AGENT_URL: ""
       O2_TOOL_API_URL: ""
@@ -174,7 +174,6 @@ enterprise:
     O2_INCIDENTS_ENABLED: "true"
     O2_INCIDENTS_RCA_ENABLED: "true"
     O2_INCIDENTS_AUTO_RESOLVE_AFTER_MINUTES: "-1"
-    O2_INCIDENTS_ALERT_GRAPH_ENABLED: "true"
     O2_INCIDENTS_REANALYSIS_COOLDOWN_MINUTES: "30"  # Minimum minutes between automatic reanalysis runs (user-triggered reanalysis bypasses it)
 
 auth:
@@ -206,21 +205,21 @@ helm upgrade --install openobserve openobserve/openobserve-standalone \
 
 ```bash
 # Check SRE Agent pod
-kubectl get pods -n openobserve | grep sreagent
+kubectl get pods -n openobserve | grep o2ai
 
 # View logs
-kubectl logs -n openobserve deployment/openobserve-sreagent --tail=50
+kubectl logs -n openobserve deployment/openobserve-o2ai --tail=50
 
 # Check health
 kubectl exec -n openobserve deployment/openobserve-router -- \
-  curl -s http://openobserve-sreagent:8000/health
+  curl -s http://openobserve-o2ai:8000/health
 ```
 
 ### Method 2: Manual Deployment
 
 For deployments not using the official Helm charts. Requires deploying two components separately.
 
-**Docker Image:** `public.ecr.aws/zinclabs/o2-sre-agent:latest`
+**Docker Image:** `ghcr.io/openobserve/o2-ai:v1.1.0`
 
 #### Step 1: Create Kubernetes Secret
 
@@ -262,25 +261,25 @@ spec:
     spec:
       containers:
       - name: o2-sre-agent
-        image: public.ecr.aws/zinclabs/o2-sre-agent:latest
+        image: ghcr.io/openobserve/o2-ai:v1.1.0
         ports:
         - containerPort: 8000
           name: http
 
         env:
         # Server Configuration
-        - name: O2_SRE_HOST
+        - name: O2_AI_HOST
           value: "0.0.0.0"
-        - name: O2_SRE_PORT
+        - name: O2_AI_PORT
           value: "8000"
-        - name: O2_SRE_LOG_LEVEL
+        - name: O2_AI_LOG_LEVEL
           value: "INFO"
 
         # AI Provider Configuration
         - name: O2_AI_PROVIDER
           value: "anthropic"
         - name: O2_AI_MODEL
-          value: "claude-sonnet-4-5-20250929"
+          value: "claude-sonnet-4-6"
         - name: O2_AI_API_KEY
           valueFrom:
             secretKeyRef:
@@ -356,7 +355,6 @@ enterprise:
     # Optional: Incident Management
     O2_INCIDENTS_ENABLED: "true"
     O2_INCIDENTS_RCA_ENABLED: "true"
-    O2_INCIDENTS_ALERT_GRAPH_ENABLED: "true"
 ```
 
 Restart OpenObserve services to apply changes.
@@ -373,14 +371,14 @@ For detailed information about all available environment variables and their con
 
 | Provider | Model | Use Case |
 |----------|-------|----------|
-| **Anthropic** | `claude-3-5-sonnet-20241022` | Best reasoning, complex analysis (Recommended) |
+| **Anthropic** | `claude-sonnet-4-6` | Best reasoning, complex analysis (Recommended) |
 | **OpenAI** | `gpt-4-turbo`, `gpt-4o` | Wide compatibility, strong performance |
 | **Google Gemini** | `gemini-1.5-pro` | Cost-effective option |
 
 **Configuration:**
 ```yaml
 O2_AI_PROVIDER: "anthropic"  # or "openai", "gemini"
-O2_AI_MODEL: "claude-3-5-sonnet-20241022"
+O2_AI_MODEL: "claude-sonnet-4-6"
 O2_AI_API_KEY: "your-api-key"
 ```
 
@@ -401,7 +399,7 @@ aiGateway:
   port: 80
 
 enterprise:
-  sreagent:
+  o2ai:
     enabled: true
     # O2_AI_PROVIDER not needed
     # Gateway settings auto-configured
@@ -411,7 +409,7 @@ enterprise:
 
 ```yaml
 enterprise:
-  sreagent:
+  o2ai:
     enabled: true
     config:
       O2_AI_GATEWAY_ENABLED: "true"
@@ -423,11 +421,11 @@ enterprise:
 
 ```yaml
 enterprise:
-  sreagent:
+  o2ai:
     enabled: true
     config:
       O2_AI_PROVIDER: "anthropic"
-      O2_AI_MODEL: "claude-sonnet-4-5-20250929"
+      O2_AI_MODEL: "claude-sonnet-4-6"
       # No gateway configuration
 ```
 
@@ -454,11 +452,11 @@ O2_MCP_PASSWORD: "SecurePassword123"
 ### Access
 
 1. Log into OpenObserve
-2. Click the AI Assistant icon in the sidebar
-[AI Assistant in OpenObserve]
+2. Click the **AI Assistant** icon in the top bar and ask a question about your data
+[AI Assistant panel answering a question about a log stream]
 
-3. Navigate to Incidents page in OpenObserve side-menu
-[Incidents UI in OpenObserve]
+3. Navigate to **Reliability > Incidents** in the OpenObserve side menu
+[Incidents list with resolved incidents]
 
 ### Example Queries
 
@@ -496,7 +494,7 @@ Chat persistence is off by default. To turn it on, set these variables on OpenOb
 
 | Environment Variable | Required value | Description |
 |----------------------|----------------|-------------|
-| O2_AI_CHAT_PERSISTENCE_ENABLED | `true` | Turns on server-side chat persistence. Takes effect only when the AI Assistant is enabled and an SRE Agent URL is configured. |
+| O2_AI_CHAT_PERSISTENCE_ENABLED | `false` | Turns on server-side chat persistence. Takes effect only when the AI Assistant is enabled and an SRE Agent URL is configured. |
 | O2_AI_INTERNAL_SECRET | a shared secret | Sent to the SRE Agent on persisted chat turns and restores. It must equal the agent's `O2_INTERNAL_API_SECRET`; without it, persisted turns fail with `internal_secret_required`. |
 
 Conversation events are stored in the `_o2_ai_chat_events` stream of each organization.
@@ -587,8 +585,8 @@ These optional variables tune persistence. The defaults suit most deployments.
     Check pod status:
 
     ```bash
-    kubectl get pods -n openobserve | grep sreagent
-    kubectl logs -n openobserve deployment/openobserve-sreagent --tail=100
+    kubectl get pods -n openobserve | grep o2ai
+    kubectl logs -n openobserve deployment/openobserve-o2ai --tail=100
     ```
 
     Common causes:
@@ -601,10 +599,10 @@ These optional variables tune persistence. The defaults suit most deployments.
 
     ```bash
     # Check API key exists
-    kubectl get secret -n openobserve openobserve-auth -o jsonpath='{.data.O2_AI_API_KEY}' | base64 -d
+    kubectl get secret -n openobserve openobserve -o jsonpath='{.data.O2_AI_API_KEY}' | base64 -d
 
     # Check environment variables
-    kubectl exec -n openobserve deployment/openobserve-sreagent -- env | grep O2_
+    kubectl exec -n openobserve deployment/openobserve-o2ai -- env | grep O2_
     ```
 
 2. **AI Assistant Not Responding**
@@ -614,10 +612,10 @@ These optional variables tune persistence. The defaults suit most deployments.
     ```bash
     # Health check
     kubectl exec -n openobserve deployment/openobserve-router -- \
-      curl -s http://openobserve-sreagent:8000/health
+      curl -s http://openobserve-o2ai:8000/health
 
     # Check logs
-    kubectl logs -n openobserve deployment/openobserve-sreagent --tail=50
+    kubectl logs -n openobserve deployment/openobserve-o2ai --tail=50
     ```
 
     Common causes:
@@ -633,10 +631,10 @@ These optional variables tune persistence. The defaults suit most deployments.
 
     ```bash
     # Check O2_TOOL_API_URL
-    kubectl exec -n openobserve deployment/openobserve-sreagent -- env | grep O2_TOOL_API_URL
+    kubectl exec -n openobserve deployment/openobserve-o2ai -- env | grep O2_TOOL_API_URL
 
     # Test connectivity
-    kubectl exec -n openobserve deployment/openobserve-sreagent -- \
+    kubectl exec -n openobserve deployment/openobserve-o2ai -- \
       curl -s http://openobserve-router:5080/api/default/mcp
     ```
 
@@ -662,7 +660,7 @@ These optional variables tune persistence. The defaults suit most deployments.
     kubectl get svc -n <gateway-namespace> | grep ai-gateway
 
     # Test connectivity
-    kubectl exec -n openobserve deployment/openobserve-sreagent -- \
+    kubectl exec -n openobserve deployment/openobserve-o2ai -- \
       curl -s http://ai-gateway:80
     ```
 
@@ -682,7 +680,7 @@ These optional variables tune persistence. The defaults suit most deployments.
     Check configuration:
 
     ```bash
-    kubectl get configmap -n openobserve openobserve-config -o yaml | grep O2_INCIDENTS
+    kubectl get configmap -n openobserve openobserve -o yaml | grep O2_INCIDENTS
     ```
 
     Required settings (in OpenObserve, not SRE Agent):
@@ -707,11 +705,11 @@ These optional variables tune persistence. The defaults suit most deployments.
 
 ```bash
 # Check pod and logs
-kubectl get pods -n openobserve | grep sreagent
-kubectl logs -n openobserve deployment/openobserve-sreagent --tail=100
+kubectl get pods -n openobserve | grep o2ai
+kubectl logs -n openobserve deployment/openobserve-o2ai --tail=100
 
 # Verify configuration (redact sensitive data)
-kubectl get configmap -n openobserve openobserve-config -o yaml | grep O2_
+kubectl get configmap -n openobserve openobserve -o yaml | grep O2_
 ```
 
 ## Next steps

@@ -3159,6 +3159,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       parameters:
       - name: id
         required: true
@@ -19884,6 +19886,7 @@ paths:
           - duo_enterprise_access_granted
           - duo_core_access_granted
           - duo_workflow_input_required
+          - orbit_access_granted
           nullable: true
         in: query
       - name: author_id
@@ -50448,6 +50451,8 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCiLintResult"
+        '401':
+          description: Unauthorized
         '404':
           description: Not found
         '400':
@@ -93445,6 +93450,8 @@ components:
           type: integer
         ci_job_trace_update_interval_when_being_watched:
           type: integer
+        ci_lint_api_require_authentication:
+          type: string
         ci_partitions_in_seconds_limit_human_readable:
           type: string
         code_dropdown_custom_clients:
@@ -94245,6 +94252,8 @@ components:
           type: string
         pipeline_retry_limit_per_user_project:
           type: string
+        runner_job_list_completed_statuses_limit_per_user:
+          type: string
         job_retry_limit_per_user_project:
           type: string
         job_play_limit_per_user_project:
@@ -94576,6 +94585,8 @@ components:
         orbit_auto_index_root_namespace:
           type: string
         orbit_dap_enabled_by_default:
+          type: string
+        insights_query_limit:
           type: string
         orbit_query_limit:
           type: string
@@ -104554,7 +104565,7 @@ components:
       properties:
         events:
           type: array
-          description: Array of CloudEvents v1.0 envelopes.
+          description: Array of CloudEvents v1.0 envelopes. Maximum 500.
           items:
             type: object
             properties:
@@ -105125,6 +105136,7 @@ components:
           - ide_extension
           - work_item_plan_to_merge_request
           - web_chat
+          - vulnerability_leaked_token_rotation
           description: Where the session was triggered from in the UI.
           nullable: true
     postApiV4AiDuoWorkflowsWorkflowsWorkflowIdExecuteRequest:
@@ -112139,6 +112151,11 @@ components:
           description: Maximum number of caches that can be defined in a single CI/CD
             job.
           nullable: true
+        ci_lint_api_require_authentication:
+          type: boolean
+          description: If `true`, `GET /projects/:id/ci/lint` requires authentication,
+            including for public projects.
+          nullable: true
         ci_job_live_trace_enabled:
           type: boolean
           description: If `true`, turns on incremental logging for job logs. Archived
@@ -112215,6 +112232,11 @@ components:
           type: integer
           description: Maximum number of pipeline retries allowed per minute for a
             given project.
+          nullable: true
+        runner_job_list_completed_statuses_limit_per_user:
+          type: integer
+          description: Maximum number of runner job list requests filtered by a completed
+            status allowed per minute for a given user.
           nullable: true
         job_retry_limit_per_user_project:
           type: integer
@@ -113477,6 +113499,12 @@ components:
           description: Maximum number of requests per minute per user per group to
             the group audit events API.
           nullable: true
+        insights_query_limit:
+          type: integer
+          description: 'Maximum number of Insights chart queries per minute for each
+            user or IP address, for each group or project. Default: `60`. Set to `0`
+            to disable the rate limit.'
+          nullable: true
         orbit_query_limit:
           type: integer
           description: 'Maximum number of GitLab Orbit queries per minute per user.
@@ -113641,6 +113669,16 @@ components:
           type: boolean
           description: If `true`, enforces the GitLab Duo remote flows enabled setting
             for all subgroups.
+          nullable: true
+        duo_scheduled_triggers_enabled:
+          type: boolean
+          description: If `true`, allows GitLab Duo flows to run on a schedule for
+            the instance. Defaults to `true`.
+          nullable: true
+        lock_duo_scheduled_triggers_enabled:
+          type: boolean
+          description: If `true`, enforces the scheduled triggers enabled setting
+            for all groups.
           nullable: true
         duo_workflows_default_image_registry:
           type: string
@@ -114413,9 +114451,6 @@ components:
           type: string
           nullable: true
         duo_foundational_flows_availability:
-          type: string
-          nullable: true
-        duo_scheduled_triggers_enabled:
           type: string
           nullable: true
         duo_scheduled_triggers_availability:
@@ -135818,6 +135853,10 @@ components:
           type: boolean
           description: Enable GitLab foundational Duo flows for this group
           nullable: true
+        duo_scheduled_triggers_availability:
+          type: boolean
+          description: Allow GitLab Duo flows in this group to run on a schedule
+          nullable: true
         duo_custom_agents_availability:
           type: boolean
           description: Enable GitLab Duo custom agents for this group
@@ -136210,6 +136249,10 @@ components:
         duo_foundational_flows_availability:
           type: boolean
           description: Enable GitLab foundational Duo flows for this group
+          nullable: true
+        duo_scheduled_triggers_availability:
+          type: boolean
+          description: Allow GitLab Duo flows in this group to run on a schedule
           nullable: true
         duo_custom_agents_availability:
           type: boolean

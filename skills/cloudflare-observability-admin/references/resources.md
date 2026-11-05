@@ -448,7 +448,11 @@ Products
 
 [**DNSSEC migration tutorial** Follow this tutorial to migrate an existing DNS zone to Cloudflare without having to disable DNSSEC.](https://developers.cloudflare.com/dns/dnssec/dnssec-active-migration/)
 
-[**Set up a private origin via Cloudflare WAN** Proxy public hostnames to private origins through a Cloudflare WAN IPsec tunnel.](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/)
+[**Set up a private origin via Cloudflare Mesh** Proxy public hostnames to private origins through Cloudflare Mesh.](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-mesh/)
+
+[**Set up a private origin via Cloudflare Tunnel** Proxy public hostnames to private origins through Cloudflare Tunnel.](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-tunnel/)
+
+[**Set up a private origin via Cloudflare WAN** Proxy public hostnames to private origins through Cloudflare WAN (IPsec, GRE, or CNI).](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/)
 
 [**Convert full setup to partial setup** Convert a full DNS setup to a partial CNAME setup.](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)
 

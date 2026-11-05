@@ -1048,7 +1048,7 @@ understand the input.
 **Keyword type**: Header keyword. `spec` must be declared at the top of the configuration file,
 in a header section.
 
-**Supported values**: A string representing the description.
+**Supported values**: A string representing the description. You can use Markdown.
 
 **Example of `spec:inputs:description`**:
 

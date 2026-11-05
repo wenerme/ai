@@ -540,6 +540,17 @@ When warn mode is enabled (`enforcement_type: warn`) and a merge request trigger
 - Dependency list integration: If a merge request that bypasses a policy introduces a license, the dependency list displays a policy violation badge beside the license. Policy violation badges are available only on the dependency list for projects.
 - Disabled approval settings: Approval setting overrides are not enforced.
 
+Warn mode changes what happens after a policy violation is detected. It does not change which findings
+are violations. Rules use `severity_levels`, `vulnerability_states`, and `vulnerability_attributes`
+in the same way as policies with `enforcement_type: enforce`. If a merge request has no violations,
+the policy does not post a bot comment or require approvals.
+
+For example, when `vulnerability_states` is empty, only newly detected vulnerabilities are violations.
+A vulnerability that already exists on the target branch is not newly detected, so it
+does not trigger the policy, even if it matches `epss_score` or `known_exploited`. To also report
+vulnerabilities that already exist on the target branch, add states such as `detected` or `confirmed`
+to `vulnerability_states`.
+
 ### Configuring warn mode
 
 To enable warn mode for a merge request approval policy, set the `enforcement_type` field to `warn`:

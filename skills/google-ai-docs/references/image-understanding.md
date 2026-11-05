@@ -1412,7 +1412,7 @@ encoded png that is a probability map with values between 0 and 255.
 
 {% /tabs %}
 
-![](https://www.gstatic.com/cloud-cms/86b50800e5bf459eeb2a91d96a5ed82a.jpg)## Supported image formats  {% id="supported-formats" %}
+![A table with cupcakes, with the wooden and glass objects highlighted](https://www.gstatic.com/cloud-cms/86b50800e5bf459eeb2a91d96a5ed82a.jpg)## Supported image formats  {% id="supported-formats" %}
 
 Gemini supports the following image format MIME types:
 

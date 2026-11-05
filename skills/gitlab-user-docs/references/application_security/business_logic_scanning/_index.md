@@ -1,6 +1,6 @@
 # Business logic scanning
 
-Business logic scanning uses an AI agent to find authorization and access control vulnerabilities in your source code.
+Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find authorization and access control vulnerabilities in how your application enforces its own rules.
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
@@ -23,6 +23,23 @@ Business logic scanning looks for vulnerabilities like:
   but not that the user is an administrator.
 - Mass assignment. For example, an update endpoint passes every request parameter to the model,
   so a user can change their own `role` or `is_admin` attribute.
+
+## Compare with Security Review Flow
+
+Business logic scanning and [Security Review Flow](../security_review.md) both use AI
+to find vulnerabilities that pattern-based scanners miss, such as broken access control.
+They differ in scope, how they start, where results appear, and whether findings are tracked as vulnerabilities:
+
+|                            | Security Review Flow                                                         | Business logic scanning                                                                                              |
+|----------------------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Scope                      | The merge request diff and its surrounding context.                          | The files a merge request changes (partial scan), or the whole repository on the default branch.                     |
+| How it starts              | You manually assign the **Duo Security Review** reviewer to a merge request. | Automatically on merge requests when the scan profile is attached. For a full scan, from GitLab Duo Chat or the API. |
+| Where results appear       | Threaded diff comments with suggested fixes, and an internal note. On public projects, only the internal note. | Merge request scans: the merge request security widget. Full scans: the vulnerability report. |
+| Tracked as vulnerabilities | No. | Yes, for full scans of the default branch. |
+
+The two features complement each other. Use Security Review Flow for advisory feedback
+during merge request review. Use business logic scanning to track findings in the
+vulnerability report or to scan the whole repository.
 
 ## How business logic scanning works
 

@@ -223,6 +223,7 @@ Our latest Daybreak models.
 
 | Model | Short context input | Short context output | Short context cached input | Short context 30m write | Short context 12h write | Long context input | Long context output | Long context cached input | Long context 30m write | Long context 12h write |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-6-cyber | $20.00 | $100.00 | $2.00 | $25.00 | $50.00 | - | - | - | - | - |
 | gpt-5.6-sol | $4.00 | $20.00 | $0.40 | $5.00 | $10.00 | $8.00 | $30.00 | $0.80 | $10.00 | $20.00 |
 | gpt-5.6-cyber | $12.50 | $75.00 | $1.25 | $15.625 | $31.25 | - | - | - | - | - |
 | gpt-5.5-cyber | $12.50 | $75.00 | $1.25 | - | - | - | - | - | - | - |

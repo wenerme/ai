@@ -146,3 +146,8 @@ Prerequisites:
    - To reset the selected scope and period, select **Reset**.
 
 1. To analyze the displayed metrics with GitLab Duo, select **Analyze with Duo**.
+
+   GitLab Duo Chat opens with the [Data Analyst Agent](data_analyst.md), which reads the dashboard data.
+   The agent must be [turned on](../duo_agent_platform/agents/foundational_agents/_index.md#turn-foundational-agents-on-or-off)
+   for your [default GitLab Duo namespace](../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+   If the agent is turned off, Chat can't analyze the dashboard and displays a warning.

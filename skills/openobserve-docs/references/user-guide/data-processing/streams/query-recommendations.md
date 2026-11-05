@@ -6,7 +6,7 @@ description: Understand the purpose, structure, and usage of the query_recommend
 
 This document explains the function and application of the `query_recommendations` stream within the `_meta` organization in OpenObserve. It provides guidance for users who want to optimize query performance using system-generated recommendations based on observed query patterns.
 
-:::info[Availability]
+:::note[Availability]
 This feature is available in Enterprise Edition. 
 
 ## Overview
@@ -72,14 +72,14 @@ The examples below show how OpenObserve surfaces query patterns and recommends i
 
 **Example 1** 
 [example-1-query-recommendations]
-This recommendation indicates that across the last 360000000 hours of query data, the job field in the `default` stream was queried with an equality (`=`) operator 1220 times out of 1220 total queries. Since all queries used this field with the `=` operator, a secondary index could improve performance.
+This recommendation indicates that the `event` field in the `usage` stream was queried with an equality (`=`) operator 15 times out of 15 total queries. Since all queries used this field with the `=` operator, a secondary index could improve performance.
 
 :::note[Interpretation]
-Add a secondary index on the `job` field in the `default` stream for improved performance.
+Add a secondary index on the `event` field in the `usage` stream for improved performance.
 
 **Example 2** 
 [example-2-query-recommendations]
-This recommendation is for the `status` field in the `alert_test` stream. All 5 queries used `status` with an equality operator. Although the number is small, the uniform pattern indicates a potential for future optimization.
+This recommendation is for the `status` field in the `triggers` stream. The only query observed used `status` with the `IN` operator, and the field has 5 distinct values. Although the number is small, the uniform pattern indicates a potential for future optimization.
 
 :::note[Interpretation]
 Consider indexing status if query volume increases or performance becomes a concern.

@@ -414,11 +414,15 @@ This lifetime is not a requirement, and can be set to any value greater than 0 a
 - 400 days, if you enable the `buffered_token_expiration_limit` feature flag.
   This extended limit is not available on GitLab Dedicated.
 
-If this setting is left blank, the default allowable lifetime of access tokens is:
+If you leave this setting blank and **Require expiration date** is selected,
+the default allowable lifetime of new access tokens is:
 
 - 365 days by default.
 - 400 days, if you enable the `buffered_token_expiration_limit` feature flag.
   This extended limit is not available on GitLab Dedicated.
+
+If you leave this setting blank and **Require expiration date** is cleared,
+new access tokens have no maximum lifetime.
 
 Access tokens are the only tokens needed for programmatic access to GitLab.
 However, organizations with security requirements may want to enforce more protection by
@@ -426,8 +430,7 @@ requiring the regular rotation of these tokens.
 
 ### Set a lifetime
 
-Only a GitLab administrator can set a lifetime. Leaving it empty means
-there are no restrictions.
+Only a GitLab administrator can set a lifetime.
 
 To set a lifetime on how long access tokens are valid:
 

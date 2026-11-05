@@ -8,6 +8,12 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## November, 2026
 
+### Nov 5
+
+Feature · Model: gpt-6-cyber
+
+Use [GPT-6-Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber) to investigate vulnerabilities, reproduce them in an authorized test environment, and verify fixes. See [Daybreak setup](https://developers.openai.com/api/docs/guides/daybreak#set-up-gpt-6-cyber) before sending your first request.
+
 ### Nov 4
 
 Feature · Model: gpt-image-2.6-sunburst · Model: gpt-image-2.6-flare · API: v1/images/generations · API: v1/images/edits

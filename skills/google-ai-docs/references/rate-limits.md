@@ -100,6 +100,41 @@ your rate limits will automatically update.
 
 Specified rate limits are not guaranteed and actual capacity may vary.
 
+### Gemini Omni Flash rate limits  {% id="gemini-omni-flash-rate-limits" %}
+
+The following standard interactive rate limits apply to
+[`gemini-omni-1.2-flash`](/docs/models/gemini-omni-flash):
+
+{% table %}
+  * Usage tier
+  * Requests per minute (RPM)
+  * Requests per day (RPD)
+
+  ---
+
+  * Free
+  * Not supported
+  * Not supported
+
+  ---
+
+  * Tier 1
+  * 8
+  * 40
+
+  ---
+
+  * Tier 2
+  * 16
+  * 200
+
+  ---
+
+  * Tier 3
+  * 40
+  * 2,000
+{% /table %}
+
 ## Priority inference rate limits  {% id="priority" %}
 
 [Priority](/docs/priority-inference) consumption holds its own rate

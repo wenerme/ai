@@ -117,7 +117,7 @@ POST /projects/:id/badges
 ```shell
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --form "link_url=https://gitlab.com/gitlab-org/gitlab-foss/commits/main" \
+  --form "link_url=https://gitlab.com/gitlab-org/gitlab-foss/-/commits/main" \
   --form "image_url=https://shields.io/my/badge1" \
   --form "name=mybadge" \
   --url "https://gitlab.example.com/api/v4/projects/:id/badges"
@@ -129,9 +129,9 @@ Example response:
 {
   "id": 1,
   "name": "mybadge",
-  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/main",
+  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/main",
   "image_url": "https://shields.io/my/badge1",
-  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/main",
+  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/main",
   "rendered_image_url": "https://shields.io/my/badge1",
   "kind": "project"
 }
@@ -165,9 +165,9 @@ Example response:
 {
   "id": 1,
   "name": "mybadge",
-  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/main",
+  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/main",
   "image_url": "https://shields.io/my/badge",
-  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/main",
+  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/main",
   "rendered_image_url": "https://shields.io/my/badge",
   "kind": "project"
 }
