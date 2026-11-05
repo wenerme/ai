@@ -201,15 +201,23 @@ When using direct transfer between GitLab instances, you might encounter the fol
 Import::BulkImports::FileDownloadStrategy::ServiceError Invalid content type
 ```
 
-This error is related to how network traffic is routed between instances.
-If a content type other than `application/gzip` is returned,
-your network requests might be bypassing GitLab Workhorse.
+This error occurs when the destination instance downloads an export file from the source instance
+and the response has a content type other than `application/gzip` or `application/octet-stream`.
+The destination checks the content type before the HTTP status code.
+As a result, you also get this error when the source instance returns an error instead of the export file.
+For more information, see [issue 638232](https://gitlab.com/gitlab-org/gitlab/-/issues/638232).
 
-To resolve this issue:
+To find the cause, check the [Workhorse logs](../../../administration/logs/_index.md#workhorse-logs)
+on the source instance for the `export_relations/download` request:
 
-- Check that your Ingress is configured to route traffic through
+- If the `status` is `4xx` or `5xx`, the source instance returned an error. For example, the source instance returns
+  `404` if [migration by direct transfer](../../../administration/settings/import_and_export_settings.md#enable-migration-of-groups-and-projects-by-direct-transfer)
+  is turned off. Keep the setting turned on for the entire migration.
+- If the request is missing from the Workhorse logs, your network requests might be bypassing GitLab Workhorse.
+  Check that your Ingress is configured to route traffic through
   GitLab Workhorse on port `8181` rather than directly to Puma.
-- Consider enabling [proxy downloads](../../../administration/object_storage.md#proxy-download) for object storage.
+- If the `status` is `302`, the source instance redirected the request to object storage.
+  Consider enabling [proxy downloads](../../../administration/object_storage.md#proxy-download) for object storage.
 
 ## Milestone titles appended with `(imported-xx-datetime)`
 

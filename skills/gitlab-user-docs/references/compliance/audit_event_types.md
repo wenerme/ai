@@ -97,6 +97,8 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`ai_governance_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262303) | The umbrella setting for AI Governance features is changed on a group or project | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/632724) | Group, Project |
 | [`anthropic_compliance_integration_created`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264339) | An Anthropic Compliance integration is created for a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
+| [`anthropic_compliance_integration_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | An Anthropic Compliance integration is deleted from a top-level group | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
+| [`anthropic_compliance_integration_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264598) | The Compliance Access Key of an Anthropic Compliance integration is replaced, or the integration is turned on or off | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/628487) | Group |
 
 ### Audit events
 
@@ -348,6 +350,13 @@ Audit event types belong to the following product categories.
 | [`runner_controller_token_revoked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223435) | A runner controller token is revoked | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/582008) | Instance |
 | [`runner_controller_token_rotated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223435) | A runner controller token is rotated | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/582008) | Instance |
 | [`runner_controller_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/223435) | A runner controller is updated | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/582008) | Instance |
+
+### Dap code review
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review default review depth setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Project |
+| [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow deep reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Project |
 
 ### Dap triggers
 

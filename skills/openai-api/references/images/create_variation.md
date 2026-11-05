@@ -18,7 +18,7 @@ Content type: `multipart/form-data`
 
   - `string`
 
-  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 9 more`
+  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 11 more`
 
     - `"gpt-image-1.5"`
 
@@ -33,6 +33,10 @@ Content type: `multipart/form-data`
     - `"gpt-image-2.5-flare"`
 
     - `"gpt-image-2.5-flare-2026-09-08"`
+
+    - `"gpt-image-2.6-sunburst"`
+
+    - `"gpt-image-2.6-flare"`
 
     - `"gpt-image-1"`
 
@@ -74,7 +78,7 @@ Content type: `multipart/form-data`
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 5 more }`
+- `ImagesResponse object { created, background, data, 6 more }`
 
   The response from the image generation endpoint.
 
@@ -110,15 +114,19 @@ Content type: `multipart/form-data`
 
       `format: uri`
 
-  - `output_format: optional "png" or "webp" or "jpeg"`
+  - `output_format: optional "png" or "webp" or "jpeg" or 2 more`
 
-    The output format of the image generation. Either `png`, `webp`, or `jpeg`.
+    The output format of the generated image.
 
     - `"png"`
 
     - `"webp"`
 
     - `"jpeg"`
+
+    - `"gif"`
+
+    - `"svg"`
 
   - `quality: optional "low" or "medium" or "high" or 2 more`
 
@@ -153,6 +161,20 @@ Content type: `multipart/form-data`
       - `"1024x1536"`
 
       - `"1536x1024"`
+
+  - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+    Token usage for the model that authored the SVG, separate from image rendering usage.
+
+    - `input_tokens: integer`
+
+    - `model: string`
+
+    - `output_tokens: integer`
+
+    - `reasoning_tokens: integer`
+
+    - `total_tokens: integer`
 
   - `usage: optional object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
@@ -225,6 +247,13 @@ curl https://api.openai.com/v1/images/variations \
   "quality": "low",
   "safety_identifier": "safety_identifier",
   "size": "1024x1024",
+  "svg_usage": {
+    "input_tokens": 0,
+    "model": "model",
+    "output_tokens": 0,
+    "reasoning_tokens": 0,
+    "total_tokens": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {

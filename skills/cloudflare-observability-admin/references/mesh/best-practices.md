@@ -122,7 +122,7 @@ To route traffic between Cloudflare Mesh and [Cloudflare WAN](https://developers
 
 ## Connect Workers to Mesh
 
-Cloudflare Workers can connect to destinations routed through Cloudflare Mesh using [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). Use `cf1:network` to select your account's default virtual network, or `cf1:vnet:<UUID>` to select a specific configured virtual network. Selecting a virtual network for a Worker does not enable custom virtual networks for Mesh nodes.
+Cloudflare Workers can connect to destinations routed through Cloudflare Mesh using [VPC Network bindings](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/). Use `cf1:network` to select your account's default virtual network, or `cf1:vnet:<UUID>` to select a specific configured virtual network.
 
 The same binding also handles outbound traffic to public Internet destinations: requests egress through [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-controls/), so your existing Zero Trust traffic policies are enforced and Worker traffic appears in Gateway DNS, HTTP, and Network logs alongside the rest of your traffic.
 

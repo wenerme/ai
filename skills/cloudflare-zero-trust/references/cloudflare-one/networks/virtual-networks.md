@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/virtual-network
 
 # Virtual networks
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
 
@@ -20,7 +20,7 @@ Every Cloudflare account has a default virtual network. You can create additiona
 
 Note
 
-Cloudflare Tunnel and the Cloudflare One Client support multiple virtual networks. Cloudflare WAN connections (IPsec, GRE, CNI) currently use only the default virtual network.
+Cloudflare Tunnel and the Cloudflare One Client support multiple virtual networks, and you can assign [Cloudflare Mesh CIDR routes](https://developers.cloudflare.com/mesh/features/routes/) to any virtual network. Cloudflare WAN connections (IPsec, GRE, CNI) currently use only the default virtual network.
 
 ## When to use virtual networks
 
@@ -35,55 +35,19 @@ Cloudflare Tunnel and the Cloudflare One Client support multiple virtual network
 When traffic enters Cloudflare destined for a private IP address, Cloudflare looks up the route in the virtual network routing table. The virtual network determines:
 
 - Which private destinations are reachable.
-- Which connector (Tunnel or WAN connection) carries the traffic.
+- Which connector (tunnel, Mesh node, or WAN connection) carries the traffic.
 - How overlapping IP addresses are disambiguated.
 
-```
-flowchart TD
-accTitle: Virtual network routing
-accDescr: Shows how a Cloudflare account contains three virtual networks, each with their own routing table and connectors pointing to separate destinations. The same CIDR can exist in each virtual network as isolated routing domains.
+Your Cloudflare account
 
-    subgraph account ["Your Cloudflare account"]
-        direction LR
-
-        subgraph vnet_default ["Virtual Network: default"]
-            routes_d("10.0.0.0/8 via Tunnel
-            192.168.1.0/24 via IPsec")
-            routes_d --> tunnel_d(["Tunnel"])
-            routes_d --> ipsec_d(["IPsec"])
-        end
-
-        subgraph vnet_prod ["Virtual Network: production"]
-            routes_p("10.0.0.0/8 via Tunnel")
-            routes_p --> tunnel_p(["Tunnel (prod)"])
-        end
-
-        subgraph vnet_stg ["Virtual Network: staging"]
-            routes_s("10.0.0.0/8 via Tunnel")
-            routes_s --> tunnel_s(["Tunnel (stg)"])
-        end
-    end
-
-    tunnel_d --> dc_legacy("Legacy DC
-    10.0.0.0/8")
-    ipsec_d --> dc_branch("Branch (IPsec)
-    192.168.1.0/24")
-    tunnel_p --> dc_prod("Production DC
-    10.0.0.0/8")
-    tunnel_s --> dc_stg("Staging DC
-    10.0.0.0/8")
-
-    classDef orange fill:#f48120,stroke:#d6710e,color:#fff
-    classDef blue fill:#4b9fd5,stroke:#3a8bc2,color:#fff
-
-    class tunnel_d,tunnel_p,tunnel_s orange
-    class ipsec_d blue
-
-    style vnet_default stroke:#999,stroke-width:2px,stroke-dasharray: 5 5
-    style vnet_prod stroke:#f48120,stroke-width:2px
-    style vnet_stg stroke:#f48120,stroke-width:2px
-
-```
+- default
+  - `10.0.0.0/8`TunnelLegacy DC
+  - `192.168.1.0/24`IPsecBranch office
+- production
+  - `10.0.0.0/8`TunnelProduction DC
+  - `172.16.0.0/16`MeshProduction VPC
+- staging
+  - `10.0.0.0/8`TunnelStaging DC
 
 The same CIDR (`10.0.0.0/8`) can exist in each virtual network because they are isolated routing domains.
 
@@ -99,7 +63,7 @@ Virtual network support varies by product:
 | --- | --- | --- |
 | Cloudflare Tunnel | Multiple virtual networks | Assign CIDR routes to a virtual network when configuring your tunnel |
 | Cloudflare One Client | Multiple virtual networks | Users land in a virtual network based on policy or client selection |
-| Cloudflare Mesh | Not currently supported | — |
+| Cloudflare Mesh | Multiple virtual networks | Assign CIDR routes to a virtual network when [adding a route](https://developers.cloudflare.com/mesh/features/routes/) |
 | Cloudflare WAN | Default only | All IPsec, GRE, and CNI connections use the default virtual network |
 
 ## The default virtual network
@@ -146,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/#page","headline":"Virtual networks","description":"How Virtual networks works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/og.png?v=6b1a554b6918a01a","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/#page","headline":"Virtual networks","description":"How Virtual networks works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/og.png?v=6b1a554b6918a01a","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

@@ -286,6 +286,47 @@ To allow cross-project push requests:
    For , select .
    Or, leave default permissions enabled.
 
+You can also allow cross-project push requests with the GraphQL API.
+
+To allow Git push requests and cross-project push requests in the target project, use the
+[`projectCiCdSettingsUpdate`](../../api/graphql/reference/mutations.md#projectcicdsettingsupdate) mutation:
+
+```graphql
+mutation {
+  projectCiCdSettingsUpdate(input: {
+    fullPath: "<target-namespace>/<target-project>",
+    pushRepositoryForJobTokenAllowed: true,
+    crossProjectPushForJobTokenAllowed: true
+  }) {
+    ciCdSettings {
+      pushRepositoryForJobTokenAllowed
+      crossProjectPushForJobTokenAllowed
+    }
+    errors
+  }
+}
+```
+
+To add the source project to the target project's allowlist with
+for , use the
+[`ciJobTokenScopeAddGroupOrProject`](../../api/graphql/reference/mutations.md#cijobtokenscopeaddgrouporproject) mutation.
+In this mutation, `projectPath` is the target project and `targetPath` is the source project:
+
+```graphql
+mutation {
+  ciJobTokenScopeAddGroupOrProject(input: {
+    projectPath: "<target-namespace>/<target-project>",
+    targetPath: "<source-namespace>/<source-project>",
+    defaultPermissions: false,
+    jobTokenPolicies: [ADMIN_REPOSITORIES]
+  }) {
+    errors
+  }
+}
+```
+
+To use default permissions instead, omit `defaultPermissions` and `jobTokenPolicies`.
+
 ## Fine-grained permissions for job tokens
 
 You can use fine-grained permissions to explicitly allow access to a limited set of REST API endpoints.

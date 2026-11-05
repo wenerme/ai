@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=08
 
 # Workers API
 
-Last updated Oct 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -376,7 +376,7 @@ Note that Workflows on Workers Free have a limit of 1,024 steps. Refer to [Workf
 
 ## Default instance retention
 
-By default, the state of a finished Workflow instance is retained for the maximum [retention period](https://developers.cloudflare.com/workflows/reference/limits/) available on your account. To retain instances for a shorter period, configure `default_retention` on the Workflow binding in your Wrangler configuration:
+By default, the state of a finished Workflow instance is retained for 3 days on the Workers Free plan. On the Workers Paid plan, instance state is retained for 7 days by default. Workflows created before the [Workers Paid default changed](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/) keep their existing 30-day default. To retain instances for a different period, up to your account's [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), configure `default_retention` on the Workflow binding in your Wrangler configuration:
 
 ```jsonc
 {
@@ -438,7 +438,7 @@ Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-05",
 	"exports": {
 		"MyWorkflow": {
 			"type": "workflow",
@@ -455,7 +455,7 @@ name = "billing-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-05"
 
 [exports.MyWorkflow]
 type = "workflow"
@@ -580,7 +580,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-05",
 	"workflows": [
 		{
 			// name of your workflow
@@ -600,7 +600,7 @@ name = "workflows-starter"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-05"
 
 [[workflows]]
 name = "workflows-starter"
@@ -627,7 +627,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"main": "src/index.ts",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
+	"compatibility_date": "2026-11-05",
 	"workflows": [
 		{
 			// name of your workflow
@@ -650,7 +650,7 @@ name = "web-api-worker"
 main = "src/index.ts"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
+compatibility_date = "2026-11-05"
 
 [[workflows]]
 name = "billing-workflow"
@@ -966,7 +966,7 @@ interface WorkflowInstanceCreateOptions {
 	params?: unknown;
 	/**
 	 * The retention policy for the Workflow instance.
-	 * Defaults to the maximum retention period available for the owner's account.
+	 * Defaults to the Workflow's `default_retention`, then the account default, then the plan default (3 days on Workers Free, 7 days on Workers Paid).
 	 */
 	retention?: {
 		/**
@@ -984,7 +984,7 @@ interface WorkflowInstanceCreateOptions {
 type WorkflowRetentionDuration = WorkflowSleepDuration;
 ```
 
-If `retention` is not set, instance state is retained for the [`default_retention`](https://developers.cloudflare.com/workflows/build/workers-api/#default-instance-retention) configured on the Workflow binding. If the binding does not set a default either, instance state is retained for the maximum retention period available on your account (3 days on the Workers Free plan, 30 days on the Workers Paid plan). Refer to the [retention limit](https://developers.cloudflare.com/workflows/reference/limits/) for more information.
+If `retention` is not set, instance state is retained for the [`default_retention`](https://developers.cloudflare.com/workflows/build/workers-api/#default-instance-retention) configured on the Workflow binding. If the binding does not set a default either, the account-level default applies, if one is set. Otherwise, instance state is retained for 3 days on the Workers Free plan, or 7 days on the Workers Paid plan (30 days for Workflows created before the [Workers Paid default changed](https://developers.cloudflare.com/changelog/post/2026-09-10-paid-retention-default/)). Refer to the [retention limit](https://developers.cloudflare.com/workflows/reference/limits/) for more information.
 
 The following example creates an instance that retains state for 1 day after success and 7 days after an error:
 
@@ -1322,5 +1322,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-10-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

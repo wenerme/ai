@@ -114,7 +114,7 @@ You can manually add an item to your To-Do List.
    - Objective or key result
    - Task
 
-1. In the upper-right corner, select **Add a to-do item** ().
+1. In the upper-right corner, select **Add to To-Do List** ().
 
 ### Create a to-do item by mentioning someone
 

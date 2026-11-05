@@ -21,6 +21,28 @@ Prerequisites:
   On GitLab Self-Managed, you must be an administrator.
 - You need a project with a package manager this feature supports. This guide uses npm.
 
+## Authentication
+
+### Use the dependency firewall in CI/CD
+
+In a CI/CD job, run your package manager through `glab df` in the job script, and set the
+`GLAB_ENABLE_CI_AUTOLOGIN` CI/CD variable to `true`. The CLI then signs in with the CI/CD job
+token, so the job needs no other credentials.
+
+The job token can evaluate packages for its own project only. The user who triggered the job
+needs one of the roles listed in the prerequisites.
+
+For an example job that fails when any package is blocked, see
+[`glab dependency-firewall ci-summary`](https://docs.gitlab.com/cli/dependency-firewall/ci-summary/).
+
+### Authenticate in your development workstation
+
+You can authenticate by executing the following command. More information in [Authenticate with GitLab](https://docs.gitlab.com/cli/authentication/).
+
+```shell
+glab auth login
+```
+
 ## Step 1: Turn on the firewall
 
 On GitLab.com:
@@ -78,11 +100,7 @@ malicious. Because `enforcement_type` is `warn`, nothing is blocked.
 ## Step 3: Install a package through the firewall
 
 Policies are evaluated by the [GitLab CLI](../../../editor_extensions/gitlab_cli/_index.md), so
-install and authenticate it first:
-
-```shell
-glab auth login
-```
+install and authenticate first.
 
 Clone the project the policy applies to, then install its dependencies with `glab df` in front
 of your usual command:
@@ -144,5 +162,3 @@ account that must keep publishing.
 
 - Add rules for [licenses](_index.md#license-rules), or tune the
   [risk severity thresholds](_index.md#risk-severity-rules).
-- Run the firewall in CI/CD with
-  [`glab df` in your job scripts](_index.md#use-the-dependency-firewall-in-cicd).

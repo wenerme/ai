@@ -1043,6 +1043,7 @@ Updates or creates settings for AI features.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `aiFlowTrigger` | [`AiFlowTriggerType`](objects.md#aiflowtriggertype) | Created AI flow trigger. |
+| `errorReason` | [`AiFlowTriggerErrorReason`](enums.md#aiflowtriggererrorreason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Machine-readable reason for the mutation error. |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `aiFlowTriggerDelete`
@@ -1094,6 +1095,7 @@ Updates or creates settings for AI features.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `aiFlowTrigger` | [`AiFlowTriggerType`](objects.md#aiflowtriggertype) | Updated AI flow trigger. |
+| `errorReason` | [`AiFlowTriggerErrorReason`](enums.md#aiflowtriggererrorreason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Machine-readable reason for the mutation error. |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `aiModelSelectionNamespaceModelAllowlistUpdate`
@@ -1315,6 +1317,55 @@ Verifies a Compliance Access Key with Anthropic, then stores it as the Anthropic
 | `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group. |
 
 ### `anthropicComplianceIntegrationCreate` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `anthropicComplianceIntegration` | [`AnthropicComplianceIntegration`](objects.md#anthropiccomplianceintegration) | Integration after the mutation. |
+| `errorReason` | [`AnthropicComplianceIntegrationErrorReason`](enums.md#anthropiccomplianceintegrationerrorreason) | Machine-readable reason for the mutation error. |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
+## `anthropicComplianceIntegrationDelete`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Deletes the Anthropic Compliance integration of a top-level group, including its Compliance Access Key. Claude Code sessions already ingested are kept.
+
+**Input type:** `AnthropicComplianceIntegrationDeleteInput`
+
+### `anthropicComplianceIntegrationDelete` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group. |
+
+### `anthropicComplianceIntegrationDelete` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errorReason` | [`AnthropicComplianceIntegrationErrorReason`](enums.md#anthropiccomplianceintegrationerrorreason) | Machine-readable reason for the mutation error. |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+
+## `anthropicComplianceIntegrationUpdate`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Replaces the Compliance Access Key of the Anthropic Compliance integration of a top-level group, or turns the integration on or off. Anthropic verifies a new key, or the stored key when turning the integration on, before GitLab saves the change.
+
+**Input type:** `AnthropicComplianceIntegrationUpdateInput`
+
+### `anthropicComplianceIntegrationUpdate` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `apiKey` | [`String`](scalars.md#string) | New Anthropic Compliance Access Key with the `read:compliance_user_data` scope. Write-only: GitLab never returns it. Does not turn on an integration an owner turned off. Cannot be used with `enabled`. |
+| `enabled` | [`Boolean`](scalars.md#boolean) | Turns ingestion on or off. Cannot be used with `apiKey`. |
+| `groupPath` | [`ID!`](scalars.md#id) | Full path of the top-level group. |
+
+### `anthropicComplianceIntegrationUpdate` fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
@@ -3688,7 +3739,7 @@ Creates a continuous deployment version set in an application.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `ciJobTokenScopeAllowlistEntry` | [`CiJobTokenScopeAllowlistEntry`](objects.md#cijobtokenscopeallowlistentry) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.6.Allowlist entry for the CI job token's access scope. |
+| `ciJobTokenScopeAllowlistEntry` | [`CiJobTokenScopeAllowlistEntry`](objects.md#cijobtokenscopeallowlistentry) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 17.6.Allowlist entry for the CI job token's access scope. Null when resetting to default permissions removes the current project's entry. |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 
 ## `ciLint`
@@ -4516,8 +4567,8 @@ Creates a custom dashboard in an organization.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `config` | [`JSON!`](scalars.md#json) | Dashboard config, validated against the analytics dashboard JSON schema. |
-| `description` | [`String`](scalars.md#string) | Dashboard description. |
-| `name` | [`String!`](scalars.md#string) | Dashboard name. |
+| `description` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `config.description`. |
+| `name` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `config.title`. |
 | `namespaceId` | [`NamespaceID`](scalars.md#namespaceid) | Namespace to scope the dashboard to. |
 | `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Organization the dashboard belongs to. Must be the current organization, which is used when not provided. |
 
@@ -10867,6 +10918,27 @@ Updates multiple members of a project. To use this mutation, you must have at le
 | `projectSecret` | [`ProjectSecret`](objects.md#projectsecret) | Project secret. |
 | `reason` | [`SecretsManagerWriteDenialReason`](enums.md#secretsmanagerwritedenialreason) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.2.Reason the write was denied due to entitlement; null when not denied for that reason. |
 
+## `projectSecretCreateFromLeakedToken`
+
+Rotates the personal access token leaked in a specified secret detection vulnerability and stores the new token as a project secret. This revokes the leaked token and creates a token with the same lifetime. The new token value is not returned. Administrators can rotate tokens for any user. Non-administrators can only rotate their own tokens. Fine-grained tokens also need the `rotate_personal_access_token` permission on the user boundary.
+
+**Input type:** `ProjectSecretCreateFromLeakedTokenInput`
+
+### `projectSecretCreateFromLeakedToken` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `description` | [`String`](scalars.md#string) | Description of the project secret. |
+| `name` | [`String!`](scalars.md#string) | Name of the project secret. |
+| `vulnerabilityId` | [`VulnerabilityID!`](scalars.md#vulnerabilityid) | Global ID of the secret detection vulnerability whose leaked token to rotate. |
+
+### `projectSecretCreateFromLeakedToken` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `projectSecret` | [`ProjectSecret`](objects.md#projectsecret) | Project secret created to store the rotated token. |
+
 ## `projectSecretDelete`
 
 **Input type:** `ProjectSecretDeleteInput`
@@ -13746,9 +13818,9 @@ Updates a custom dashboard.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `config` | [`JSON`](scalars.md#json) | Dashboard config, validated against the analytics dashboard JSON schema. |
-| `description` | [`String`](scalars.md#string) | Dashboard description. |
+| `description` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `config.description`. |
 | `id` | [`AnalyticsCustomDashboardsDashboardID!`](scalars.md#analyticscustomdashboardsdashboardid) | Global ID of the dashboard to update. |
-| `name` | [`String`](scalars.md#string) | Dashboard name. |
+| `name` | [`String`](scalars.md#string) | Deprecated in GitLab 19.6. Use `config.title`. |
 
 ### `updateCustomDashboard` fields {.no_toc}
 
@@ -15637,7 +15709,7 @@ Adds children to a given work item's hierarchy by Global ID.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `childrenIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of children work items. |
+| `childrenIds` | [`[WorkItemID!]!`](scalars.md#workitemid) | Global IDs of child work items (maximum is 1000). When the `work_item_hierarchy_add_children_limits` feature flag is enabled, a request can add at most 50 child items. |
 | `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item. |
 
 ### `workItemHierarchyAddChildrenItems` fields {.no_toc}

@@ -87,7 +87,9 @@ Don't store the token in the configuration file.
 | [Project access token](../../project/settings/project_access_tokens.md) | `api` | `api` |
 | [Fine-grained personal access token](../../../auth/tokens/fine_grained_access_tokens.md) | `Package: Read` | `Package: Read` and `Package: Create` |
 | [Deploy token](../../project/deploy_tokens/_index.md) | `read_package_registry` | `read_package_registry` and `write_package_registry` |
-| [CI/CD job token](../../../ci/jobs/ci_job_token.md) | Not applicable | Not applicable |
+| [CI/CD job token](../../../ci/jobs/ci_job_token.md) | No scope required | No scope required |
+
+To use a CI/CD job token, see [publish with GitLab CI/CD](#publish-with-gitlab-cicd).
 
 Anyone can install crates from a public project without a token.
 Private and internal projects require a token.

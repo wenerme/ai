@@ -20,7 +20,7 @@ Session affinity can also help reduce network requests, leading to savings for c
 
 Note
 
-Session Affinity is only supported by Public Load Balancers.
+Private load balancers support only the **By Cloudflare cookie and Client IP fallback** type, which works without cookies. For details, refer to [Session affinity on private load balancers](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers).
 
 ## How it works
 

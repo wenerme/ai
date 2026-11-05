@@ -17,7 +17,7 @@ A workspace can exist for a maximum of approximately one calendar year, `8760` h
 For a click-through demo, see [GitLab workspaces](https://tech-marketing.gitlab.io/static-demos/workspaces/ws_html.html).
 
 > [!note]
-> A workspace runs on any `linux/amd64` Kubernetes cluster that supports the GitLab agent for Kubernetes (`agentk`). If you need to run `sudo` commands, or
+> A workspace runs on any `linux/amd64` or `linux/arm64` Kubernetes cluster that supports the GitLab agent for Kubernetes (`agentk`). If you need to run `sudo` commands, or
 > build and run containers in your workspace, there might be platform-specific requirements.
 >
 > For more information, see [platform compatibility](configuration.md#platform-compatibility).
@@ -351,17 +351,23 @@ For other examples, see the [`examples` projects](https://gitlab.com/gitlab-org/
 
 ## Workspace container requirements
 
+- Support for ARM64 [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/550128) in GitLab 19.6.
+
 By default, workspaces inject and start the [GitLab VS Code fork](https://gitlab.com/gitlab-org/gitlab-web-ide-vscode-fork)
 in the container that has a defined `gl/inject-editor` attribute in the devfile.
 The workspace container where the GitLab VS Code fork is injected
 must meet the following system requirements:
 
-- System architecture: AMD64
+- System architecture: AMD64 or ARM64
 - System libraries:
   - `glibc` 2.28 and later
   - `glibcxx` 3.4.25 and later
 
 These requirements have been tested on Debian 10.13 and Ubuntu 20.04.
+
+The container image must support the architecture of the node where the workspace runs.
+GitLab injects the GitLab VS Code fork built for the architecture of the node, so the editor
+cannot start in an image built only for another architecture, even if the node can emulate it.
 
 > [!note]
 > GitLab always pulls the workspace tools injector image from the GitLab registry (`registry.gitlab.com`).

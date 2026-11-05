@@ -285,13 +285,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
   `minLength: 0`, `maxLength: 1048576`
 
+### Query Parameters
+
+- `include_obfuscation: optional boolean (default: true)`
+
+  Whether to include obfuscation padding in events on this connection. Defaults to `true`.
+
 ### Returns
 
 - `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
-  - `AgentSessionErrorEvent object { error, event_id, session_id, type }`
+  - `AgentSessionErrorEvent object { error, event_id, session_id, 2 more }`
 
     Emitted when a turn or session fails.
 
@@ -341,7 +347,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"error"`
 
-  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a hosted session environment is ready to connect.
 
@@ -439,7 +451,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after an idle hosted session environment is checkpointed and stopped.
 
@@ -471,7 +489,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.suspended"`
 
-  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after a suspended hosted session environment and its checkpoint expire.
 
@@ -503,7 +527,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.expired"`
 
-  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 4 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -543,7 +573,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.reset"`
 
-  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 5 more }`
 
     Emitted when command execution produces an output delta.
 
@@ -589,7 +625,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.output.command_execution_output.delta"`
 
-  - `AgentSessionCreatedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionCreatedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is created.
 
@@ -753,7 +795,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minItems: 0`, `maxItems: 2000`
 
-          - `Function object { defer_loading, description, name, 2 more }`
+          - `Function object { defer_loading, description, name, 3 more }`
 
             A function defined by the application.
 
@@ -782,6 +824,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
               The type of the object. Always `function`.
 
               - `"function"`
+
+            - `async: optional boolean`
+
+              Whether the agent continues without waiting for the function result.
 
           - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -1575,7 +1621,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.created"`
 
-  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn is created.
 
@@ -1797,7 +1849,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.created"`
 
-  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn starts running.
 
@@ -1829,7 +1887,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.in_progress"`
 
-  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn completes.
 
@@ -1865,7 +1929,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn fails.
 
@@ -1901,7 +1971,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn is cancelled.
 
@@ -1937,7 +2013,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an item is added to a turn.
 
@@ -3013,7 +3095,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.item.added"`
 
-  - `AgentSessionIdleEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionIdleEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session becomes idle.
 
@@ -3033,7 +3121,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.idle"`
 
-  - `AgentSessionInProgressEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionInProgressEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session starts processing a turn.
 
@@ -3053,7 +3147,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.in_progress"`
 
-  - `AgentSessionRequiresActionEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionRequiresActionEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is waiting for one or more required actions.
 
@@ -3073,7 +3173,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.requires_action"`
 
-  - `AgentSessionFailedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionFailedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session fails.
 
@@ -3093,7 +3199,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.failed"`
 
-  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted while a session environment is being prepared.
 
@@ -3125,7 +3237,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.pending"`
 
-  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment connects.
 
@@ -3157,7 +3275,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.connected"`
 
-  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment disconnects.
 
@@ -3189,7 +3313,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.disconnected"`
 
-  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment fails.
 
@@ -3221,7 +3351,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.failed"`
 
-  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is created.
 
@@ -3309,7 +3445,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.created"`
 
-  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a closed subagent successfully resumes.
 
@@ -3329,7 +3471,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.active"`
 
-  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is closed.
 
@@ -3349,7 +3497,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.closed"`
 
-  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an output item is complete.
 
@@ -3637,7 +3791,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.item.done"`
 
-  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is added.
 
@@ -3687,7 +3847,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.content_part.added"`
 
-  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output content part is complete.
 
@@ -3737,7 +3903,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.content_part.done"`
 
-  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 6 more }`
 
     Emitted when text is appended to an output text content part.
 
@@ -3789,7 +3961,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.output_text.delta"`
 
-  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is complete.
 
@@ -3841,7 +4019,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.output_text.done"`
 
-  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is added.
 
@@ -3901,7 +4085,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_part.added"`
 
-  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 6 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 7 more }`
 
     Emitted when a reasoning summary part is complete.
 
@@ -3957,7 +4147,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_part.done"`
 
-  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 6 more }`
 
     Emitted when text is appended to a reasoning summary.
 
@@ -4009,7 +4205,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_text.delta"`
 
-  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is complete.
 
@@ -4060,6 +4262,12 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.turn.reasoning_summary_text.done`.
 
       - `"agent.session.turn.reasoning_summary_text.done"`
+
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
 
 ### Example
 

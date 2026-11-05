@@ -5,6 +5,14 @@
 
 Rules used by GitLab Advanced SAST to detect vulnerabilities in Ruby code.
 
+If a rule reports a finding in code you know is safe, you can:
+
+- [Suppress findings on that line](../gitlab_advanced_sast.md#exclude-lines).
+- [Disable the rule](../customize_rulesets.md#disable-specific-default-gitlab-advanced-sast-rules).
+- [Dismiss the vulnerability](../../vulnerabilities/_index.md#vulnerability-dismissal-reasons).
+
+If the finding is a real vulnerability, [remediate it](../../remediate/_index.md).
+
 | Rule ID | Rule description | CWE | OWASP Top 10 |
 |---------|------------------|-----|--------------|
 | `ruby-digest-crypto-md5-usage-atomic` | Use of weak hash | [CWE-328](https://cwe.mitre.org/data/definitions/328.html) | A3:2017, A02:2021 |

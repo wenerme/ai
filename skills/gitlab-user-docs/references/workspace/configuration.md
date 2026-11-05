@@ -87,7 +87,7 @@ For more information, see the [workspace logs directory](_index.md#workspace-log
 
 The platform requirements for workspaces depend on your development needs.
 
-For basic workspace functionality, workspaces run on any `linux/amd64` Kubernetes cluster that supports
+For basic workspace functionality, workspaces run on any `linux/amd64` or `linux/arm64` Kubernetes cluster that supports
 the GitLab agent for Kubernetes, regardless of the underlying operating system.
 
 To choose a method that fits your platform requirements, see [configure sudo access for a workspace](#configure-sudo-access-for-a-workspace).

@@ -195,7 +195,7 @@ Short context: ≤272K input tokens. Long context: >272K input tokens.
   
 
 
-Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. Starting Nov 1, 2026, FedRAMP endpoints are also charged a 10% uplift. Priority processing was renamed Fast mode on July 30, 2026. GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026.
+Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026. FedRAMP endpoints are also charged a 10% uplift. Priority processing was renamed Fast mode on July 30, 2026. GPT-5.6 Sol’s promotional pricing is available until November 30, 2026.
 
   
 
@@ -382,6 +382,10 @@ Standard
 
 | Model | Modality | Input | Output | Cached input |
 | --- | --- | --- | --- | --- |
+| gpt-image-2.6-sunburst | Image | $8.00 | $30.00 | $2.00 |
+| gpt-image-2.6-sunburst | Text | $5.00 | - | $1.25 |
+| gpt-image-2.6-flare | Image | $8.00 | $30.00 | $2.00 |
+| gpt-image-2.6-flare | Text | $5.00 | - | $1.25 |
 | gpt-image-2.5-sunburst | Image | $8.00 | $30.00 | $2.00 |
 | gpt-image-2.5-sunburst | Text | $5.00 | - | $1.25 |
 | gpt-image-2.5-flare | Image | $8.00 | $30.00 | $2.00 |
@@ -548,7 +552,7 @@ Regional processing (data residency) endpoints are charged a 10% uplift for mode
 
     
 
-Finetuning
+Fine-tuning
 
 
     

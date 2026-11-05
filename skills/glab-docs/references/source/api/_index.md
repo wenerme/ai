@@ -2,7 +2,7 @@
 title: '`glab api`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Make an authenticated request to the GitLab API.
@@ -206,6 +206,14 @@ glab api graphql --paginate -f query='
     }
   }'
 
+```
+
+## Environment variables
+
+```plaintext
+GITLAB_TOKEN, OAUTH_TOKEN (in order of precedence): an authentication token for API requests.
+GITLAB_HOST, GITLAB_URI, GITLAB_URL: specify a GitLab host to make request to.
+GLAB_DEBUG_HTTP: print the full HTTP request and response, including headers and body, to stderr.
 ```
 
 ## Options

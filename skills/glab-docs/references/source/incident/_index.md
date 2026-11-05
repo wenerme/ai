@@ -2,7 +2,7 @@
 title: '`glab incident`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Work with GitLab incidents.
@@ -19,6 +19,14 @@ Use `--repo` to target a project other than the current one.
 
 ```console
 glab incident list
+```
+
+## Arguments
+
+```plaintext
+Specify an incident in one of the following formats:
+- By number, for example "123"
+- By URL, for example "https://gitlab.com/NAMESPACE/REPO/-/issues/incident/123"
 ```
 
 ## Options

@@ -271,6 +271,131 @@ For the embedding model family, the supported models per platform are:
 
 To request support for additional embedding models, see [epic 23917](https://gitlab.com/groups/gitlab-org/-/work_items/23917).
 
+## Declare image support for a self-hosted model
+
+- [Introduced](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
+
+GitLab Duo Agent Platform can send images to the model. For example, a user
+attaches an image in Agentic Chat, or the Developer Flow reads an image from
+the repository. If your model cannot read images, declare it. Otherwise, the
+agent can answer as if it had read an image that the model never processed.
+
+Without the declaration, the AI Gateway sends images to every self-hosted
+model, because it has no information about which input types the model
+accepts. One of the following outcomes can occur:
+
+- The model rejects the request. The AI Gateway removes the images and sends
+  the request again.
+- The model accepts the request and ignores the images. The response does not
+  include any information from the images. Neither the agent nor the user is
+  informed that the images are missing.
+
+With the declaration, the AI Gateway replaces each image with the text
+`[image omitted: the selected model does not support image input]` before it
+sends the request. It also informs the agent that the model cannot read images.
+
+Declare only models that you serve with a `custom_openai/` identifier and that
+cannot read images. LiteLLM already includes capability data for models such
+as GPT-4o on Azure OpenAI and Claude on Amazon Bedrock.
+
+### Create the model metadata file
+
+Create a JSON file with a top-level `models` object. Each key is a model name.
+Each value is an object of capability flags that
+[LiteLLM recognizes](https://docs.litellm.ai/docs/completion/input#registering-a-custom-model--provider).
+Set `supports_vision` to `false` for a model that cannot read images, or `true`
+for a model that can:
+
+```json
+{
+  "models": {
+    "Mistral-7B-Instruct-v0.3": {
+      "litellm_provider": "openai",
+      "mode": "chat",
+      "supports_vision": false
+    },
+    "Qwen2.5-VL-7B-Instruct": {
+      "litellm_provider": "openai",
+      "mode": "chat",
+      "supports_vision": true
+    }
+  }
+}
+```
+
+Use the model identifier without its provider prefix as the key. For
+`custom_openai/Mistral-7B-Instruct-v0.3`, the key is `Mistral-7B-Instruct-v0.3`.
+A key without a prefix applies under every provider.
+
+> [!note]
+> A key with a provider prefix, such as `custom_openai/Mistral-7B-Instruct-v0.3`,
+> applies only under that provider, and only when `litellm_provider` has the same
+> value as the prefix. Otherwise the entry is ignored.
+
+The same file can declare other capability flags, such as `supports_tool_choice`.
+
+### Mount the model metadata file
+
+Put the file in the AI Gateway container and point the
+`AIGW_LITELLM__MODEL_METADATA_FILE` environment variable at it.
+
+For a Docker deployment, add these options to the `docker run` command that starts
+the AI Gateway container:
+
+```shell
+--volume <path_to_metadata_file>:/etc/ai-gateway/litellm/litellm_models.json:ro \
+-e AIGW_LITELLM__MODEL_METADATA_FILE=/etc/ai-gateway/litellm/litellm_models.json
+```
+
+For a Docker Compose deployment, add the same volume and variable to the
+`gitlab-ai-gateway` service.
+
+For a standalone AI Gateway Helm chart deployment:
+
+1. Create a ConfigMap from the file:
+
+   ```shell
+   kubectl create configmap ai-gateway-litellm-models --namespace=ai-gateway \
+     --from-file=litellm_models.json=<path_to_metadata_file>
+   ```
+
+1. In your `values.yaml` file, mount the ConfigMap and set the variable:
+
+   ```yaml
+   volumes:
+     - name: litellm-models
+       configMap:
+         name: ai-gateway-litellm-models
+
+   volumeMounts:
+     - name: litellm-models
+       mountPath: /etc/ai-gateway/litellm
+       readOnly: true
+
+   extraEnvironmentVariables:
+     - name: AIGW_LITELLM__MODEL_METADATA_FILE
+       value: /etc/ai-gateway/litellm/litellm_models.json
+   ```
+
+   If you deployed the AI Gateway with the GitLab Helm chart, create the ConfigMap
+   with `--namespace=<gitlab_namespace>`, and put these keys under `ai-gateway:`.
+
+The AI Gateway reads the file only at startup. Restart it after you create or
+change the file.
+
+### Verify the declaration
+
+At startup, the AI Gateway writes `Registered external LiteLLM models` with the
+model names from the file to the [AI Gateway logs](logging.md#logs-in-your-ai-gateway-container).
+If the file is missing, cannot be read, is not valid JSON, or has an unexpected
+structure, the AI Gateway logs a warning. The AI Gateway then starts without the
+declarations. A file without a `models` object registers nothing and logs
+`External LiteLLM model metadata file contains no models`.
+
+To test a model declared with `supports_vision: false`, ask GitLab Duo to
+[read an image file](../../user/project/merge_requests/developer.md#provide-images-as-context).
+The agent reports that the model cannot see images.
+
 ## Turn on self-hosted beta models and features
 
 > [!note]

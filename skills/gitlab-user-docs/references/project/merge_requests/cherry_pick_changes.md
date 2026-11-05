@@ -144,3 +144,39 @@ first parent. Use the command line to cherry-pick with a different mainline. For
 
 - [Commits API](../../../api/commits.md#cherry-pick-a-commit)
 - [Cherry-pick changes with Git](../../../topics/git/cherry_pick.md)
+
+## Troubleshooting
+
+When working with cherry-picks in the GitLab UI, you might encounter the following issues.
+
+### Error: `These changes conflict with changes on <branch>`
+
+When you cherry-pick a merge request or commit, you might get an error that states:
+
+```plaintext
+Merge request cherry-pick failed: These changes conflict with changes on <branch>. Cherry-pick locally to resolve the conflicts.
+```
+
+This issue occurs when the branch you cherry-pick into has changed the same lines as the changes you cherry-pick.
+A merge request checks for conflicts only against its own target branch.
+The merge request can show no conflicts and still fail to cherry-pick into another branch.
+
+The GitLab UI cannot resolve cherry-pick conflicts.
+To resolve this issue, cherry-pick the changes on the command line and resolve the conflicts there.
+For more information, see [apply one commit to another branch](../../../topics/git/cherry_pick.md#apply-one-commit-to-another-branch).
+
+### Error: `There is nothing to cherry-pick into <branch>`
+
+When you cherry-pick a merge request or commit, you might get an error that states:
+
+```plaintext
+Merge request cherry-pick failed: There is nothing to cherry-pick into <branch>.
+```
+
+This issue occurs when the cherry-pick would not change the branch. For example:
+
+- The branch already contains the changes, because they were cherry-picked or merged before.
+  No action is needed.
+- The merge commit of the merge request contains no changes. This happens when the changes
+  reached the target branch in another commit before the merge request merged.
+  To copy the changes to another branch, cherry-pick the original commits instead.

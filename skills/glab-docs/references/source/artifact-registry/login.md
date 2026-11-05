@@ -2,7 +2,7 @@
 title: '`glab artifact-registry login`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Authenticate a package manager against the GitLab Artifact Registry. (EXPERIMENTAL)
@@ -120,6 +120,17 @@ glab artifact-registry login --sbt --registry https://ar.example.com --duration 
 # Configure Maven through a settings.xml passed to mvn with -s
 glab artifact-registry login --maven --registry https://ar.example.com --config-file ~/.m2/ci-settings.xml
 
+```
+
+## Environment variables
+
+```plaintext
+DOCKER_CONFIG: the directory holding Docker's config.json, written by --docker. Defaults to ~/.docker.
+GRADLE_USER_HOME: the directory holding gradle.properties, written by --gradle. Defaults to ~/.gradle.
+npm_config_userconfig: the .npmrc written by --npm. Defaults to ~/.npmrc.
+SBT_CONFIG_HOME: the sbt 2.x global base; --sbt writes 2/credentials.sbt in it. Defaults to $XDG_CONFIG_HOME/sbt, else ~/.config/sbt. On Windows, the sbt.bat of sbt 2.x overrides it with %LOCALAPPDATA%\sbt. --sbt skips a blank or relative value of this variable and the next two.
+XDG_CONFIG_HOME: used by --sbt for the sbt 2.x base when SBT_CONFIG_HOME is unset. Not read on Windows.
+LOCALAPPDATA: on Windows, used by --sbt in place of XDG_CONFIG_HOME, and for the base the sbt.bat of sbt 2.x passes.
 ```
 
 ## Options

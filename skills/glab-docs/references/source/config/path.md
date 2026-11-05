@@ -2,7 +2,7 @@
 title: '`glab config path`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Print the location of the global configuration file.
@@ -36,6 +36,12 @@ glab config path --dir
 
 # Open the configuration file in an editor
 $EDITOR "$(glab config path)"
+```
+
+## Environment variables
+
+```plaintext
+GLAB_CONFIG_DIR: Set to a directory path to override the global configuration location.
 ```
 
 ## Options

@@ -31,6 +31,68 @@ To use this feature, set **Keyboard** to *Allow read-only actions* in your isola
 
 For more information, refer to [Keyboard](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#keyboard).
 
+## 2026-11-04
+
+[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
+
+
+**New managed rule to help mitigate CVE-2026-98432.**
+
+Cloudflare Network Firewall has a new managed rule to help mitigate the Linux IPv4 TCP use-after-free vulnerability ([CVE-2026-98432 ↗︎](https://www.cve.org/CVERecord?id=CVE-2026-98432)):
+
+- **Rule name:** Block CVE-2026-98432 traffic
+- **Rule ID:** `6a4df2bf984946a88c74b07349557e83`
+
+The rule is **disabled by default**. To use it:
+
+1. Go to **Networking** > **Firewall Policies** > **Managed Rulesets**.
+2. Enable the rule with action **Log** first.
+3. Review traffic that matches the rule.
+4. If the matching traffic is not expected for your environment, change the action to **Block**.
+
+For more information on enabling managed rulesets, refer to [Enable managed rulesets](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/).
+
+For more details about the vulnerability, including an agent assessment prompt and evidence sources, refer to the [Cloudflare Radar Zero Wire briefing ↗︎](https://radar.cloudflare.com/security/zero-wire/linux-ipv4-tcp-use-after-free).
+
+## 2026-11-04
+
+[Load Balancing](https://developers.cloudflare.com/load-balancing/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)
+
+
+**Steer Cloudflare One users and private networks to the same endpoint with session affinity and hash steering in private load balancers**
+
+[Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) can now keep each user on the same endpoint. This helps with applications that keep session state on a single server.
+
+Cloudflare One Client or Cloudflare WAN site
+
+Connects to `100.112.0.0`
+
+[Private load balancer](https://developers.cloudflare.com/load-balancing/private-network/)
+
+Picks a healthy endpoint based on your steering policy
+
+[Health monitors](https://developers.cloudflare.com/load-balancing/monitors/) [Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/) [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers)
+
+- Pool 1 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+  - `10.0.0.1`vnet-a
+- Pool 2 [Cloudflare Mesh node](https://developers.cloudflare.com/mesh/)
+  - `10.1.0.1`default
+- Pool 3 [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+  - `10.2.0.1`default
+
+*Endpoint = IP address + virtual network*
+
+Two options are available:
+
+- **Hash endpoint steering.** In the dashboard, set a pool's **Endpoint steering** to [**Hash**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/hash-origin-steering/#private-load-balancers). Each user is mapped to an endpoint within the pool.
+- **Session affinity.** With the API, set `session_affinity` to `ip_cookie` on the load balancer. Each user stays on the same endpoint while it remains healthy and your pools do not change. Refer to [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers).
+
+For traffic from the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), Cloudflare identifies the user by their device, so a user stays on the same endpoint even if their IP address changes. For other traffic, such as from a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) site, Cloudflare uses the source IP address.
+
+This works for endpoints reached through Cloudflare Tunnel, Cloudflare Mesh, and Cloudflare WAN. Affinity pins the endpoint, not the `cloudflared` or Mesh replica that carries the traffic.
+
+To learn how private load balancing fits with your connectors, refer to [Load balance private network traffic](https://developers.cloudflare.com/cloudflare-one/networks/load-balancing/).
+
 ## 2026-11-03
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -174,6 +236,8 @@ For all query parameters and scoped endpoints, refer to [View tool-call analytic
 Cloudflare Access now supports HTML and Liquid templates for login, identity-denied, forbidden, and command-line approval pages. Custom templates allow you to control the branding and appearance of each supported page. Liquid variables allow you to provide custom instructions to users or provide a clear reason why they were blocked.
 
 Create templates in the Cloudflare One dashboard, validate them in the editor, and assign them to applications or set account defaults.
+
+Custom templates are available on Zero Trust Pay-as-you-go and Enterprise plans. They are not available on the Zero Trust Free plan.
 
 ![Custom Access denial page showing failed policy checks and explanations for why access was denied](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png)
 

@@ -22,26 +22,22 @@ When you run a tunnel, `cloudflared` establishes four outbound-only, [post-quant
 
 A replica is an additional `cloudflared` instance that points to the same tunnel. Each replica creates four new connections, providing additional ingress points to your origin. You can run up to 25 replicas (100 connections) per tunnel. Traffic routes to the geographically closest replica. To see which replica received a specific session, refer to [Network session logs](https://developers.cloudflare.com/tunnel/observability/#network-session-logs).
 
-```
-graph LR
-    C((Cloudflare))
-    subgraph E[Your network]
-        cf1["cloudflared <br> (Replica for tunnel-01)"]
-        cf2["cloudflared <br> (Replica for tunnel-01)"]
-        S1[Application]
-        cf1-->S1
-        cf2-->S1
-    end
-    C -- "Connections x 4 <br>"--> cf1
-    C --> cf1
-    C --> cf1
-    C --> cf1
-    C -- Connections x 4--> cf2
-    C --> cf2
-    C --> cf2
-    C --> cf2
+Cloudflare network
 
-```
+Forwards each request to the geographically closest replica
+
+4 outbound connections per replica
+
+Your network
+
+- cloudflared
+
+  Replica 1 on `host-a`tunnel-01
+- cloudflared
+
+  Replica 2 on `host-b`tunnel-01
+
+Application
 
 ### Deploy a replica
 

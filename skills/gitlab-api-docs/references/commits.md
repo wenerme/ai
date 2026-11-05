@@ -537,7 +537,7 @@ why:
 
 ```json
 {
-  "message": "Sorry, we cannot cherry-pick this commit automatically. This commit may already have been cherry-picked, or a more recent commit may have updated some of its content.",
+  "message": "Commit cherry-pick failed: There is nothing to cherry-pick into main.",
   "error_code": "empty"
 }
 ```
@@ -629,14 +629,15 @@ In the event of a failed revert, the response provides context about why:
 
 ```json
 {
-  "message": "Sorry, we cannot revert this commit automatically. This commit may already have been reverted, or a more recent commit may have updated some of its content.",
+  "message": "Commit revert failed: These changes conflict with changes on main. Revert locally to resolve the conflicts.",
   "error_code": "conflict"
 }
 ```
 
 In this case, the revert failed because the attempted revert generated a merge
 conflict. The other possible error code is `empty`, which indicates that the
-changeset was empty, likely due to the change having already been reverted.
+revert changes nothing on the branch. For example, the changes were already
+reverted, or were never on the branch.
 
 When `dry_run` is enabled, the server attempts to apply the revert _but not
 actually commit any resulting changes_. If the revert applies cleanly, the API

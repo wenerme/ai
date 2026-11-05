@@ -2,7 +2,7 @@
 title: '`glab issue`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Work with GitLab issues.
@@ -22,6 +22,14 @@ glab issue list
 glab issue create --label --confidential
 glab issue view --web 123
 glab issue note -m "closing because !123 was merged" <issue number>
+```
+
+## Arguments
+
+```plaintext
+Specify an issue in one of the following formats:
+- By number, for example "123"
+- By URL, for example "https://gitlab.com/NAMESPACE/REPO/-/issues/123"
 ```
 
 ## Options

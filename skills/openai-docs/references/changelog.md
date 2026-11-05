@@ -6,6 +6,16 @@
 
 Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecations).
 
+## November, 2026
+
+### Nov 4
+
+Feature · Model: gpt-image-2.6-sunburst · Model: gpt-image-2.6-flare · API: v1/images/generations · API: v1/images/edits
+
+Released [GPT-Image-2.6 Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) and [GPT-Image-2.6 Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for image generation and editing, with adjustable complexity, SVG generation, and animated GIF generation. Added markup-guided editing for supported GPT Image 2.5 and 2.6 models.
+
+See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation#gpt-image-26).
+
 ## October, 2026
 
 ### Oct 30

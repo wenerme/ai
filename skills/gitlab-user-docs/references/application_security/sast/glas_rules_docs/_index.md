@@ -3,8 +3,16 @@
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-The [GitLab Advanced SAST](../_index.md) analyzer uses the following rules
+The [GitLab Advanced SAST](../gitlab_advanced_sast.md) analyzer uses the following rules
 to detect vulnerabilities in source code.
+
+If a rule reports a finding in code you know is safe, you can:
+
+- [Suppress findings on that line](../gitlab_advanced_sast.md#exclude-lines).
+- [Disable the rule](../customize_rulesets.md#disable-specific-default-gitlab-advanced-sast-rules).
+- [Dismiss the vulnerability](../../vulnerabilities/_index.md#vulnerability-dismissal-reasons).
+
+If the finding is a real vulnerability, [remediate it](../../remediate/_index.md).
 
 ## Coverage summary
 

@@ -207,7 +207,18 @@ Example response:
 
 ## Delete a group label
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267374) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `label_delete_rate_limit`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Deletes a group label with a given name.
+
+By default, this endpoint is rate limited to 120 requests every minute for each user.
+The limit is shared with deleting project labels and with deleting labels in the UI.
+Administrators can change the limit with the `label_delete_limit` [application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 DELETE /groups/:id/labels/:label_id

@@ -176,6 +176,8 @@ including:
 |----------------------------------|-----------------------------------|------------------------------------------------------|---------|
 | Keyboard navigation command list | <kbd>F1</kbd>                     | <kbd>F1</kbd>                                        | A [list of commands](https://github.com/microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide#keyboard-navigation) that make the editor easier to use without a mouse. |
 | Tab trapping                     | <kbd>Control</kbd>+<kbd>m</kbd> | <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>m</kbd> | Enable [tab trapping](https://github.com/microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide#tab-trapping) to go to the next focusable element on the page instead of inserting a tab character. |
+| Screen reader optimization       | <kbd>Alt</kbd>+<kbd>F1</kbd> | <kbd>Option</kbd>+<kbd>F1</kbd> | Opens accessibility help, where you can turn on screen reader optimization. This mode turns off word wrap. If you reload the page, you have to turn the mode on again. |
+| Hover information                | <kbd>Control</kbd>+<kbd>k</kbd> then <kbd>Control</kbd>+<kbd>i</kbd> | <kbd>Command</kbd>+<kbd>k</kbd> then <kbd>Command</kbd>+<kbd>i</kbd> | Displays information about the CI/CD keyword at the cursor. Focus moves to the hover text when screen reader optimization is on. |
 
 ## Troubleshooting
 

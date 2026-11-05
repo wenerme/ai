@@ -266,6 +266,7 @@ Returns:
 - `202 Accepted` if the request to refresh billable users is successfully initiated.
 - `403 Forbidden` if the current user is not permitted to refresh billable users for the license.
 - `404 Not Found` if the license could not be found.
+- `429 Too Many Requests` if the same administrator has refreshed billable users in the last 10 minutes.
 
 | Attribute                    | Type          | Description                               |
 |:-----------------------------|:--------------|:------------------------------------------|

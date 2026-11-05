@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/api-tokens/og.png?v=ac6d8e2d9f
 
 # API tokens
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/api-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/api-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flagship supports two kinds of API tokens. Both use the same [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) flow. The difference is the resource the permission policy applies to.
 
@@ -86,7 +86,7 @@ The token secret is **only shown once**. Do not store the secret in plaintext wh
 
 ## Use the token
 
-Pass the token to an OpenFeature SDK as `authToken` (TypeScript) or the equivalent option in [Python](https://developers.cloudflare.com/flagship/sdk/python/) and [Go](https://developers.cloudflare.com/flagship/sdk/go/).
+Pass the token to an OpenFeature SDK as `authToken` (TypeScript) or the equivalent option in [Python](https://developers.cloudflare.com/flagship/sdk/python/), [Go](https://developers.cloudflare.com/flagship/sdk/go/), and [Rust](https://developers.cloudflare.com/flagship/sdk/rust/).
 
 ```ts
 import { OpenFeature } from "@openfeature/server-sdk";
@@ -119,5 +119,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/api-tokens/#page","headline":"API tokens","description":"Create account-wide or app-scoped API tokens for Flagship. App-scoped tokens can access only the Flagship apps you select.","url":"https://developers.cloudflare.com/flagship/api-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/api-tokens/og.png?v=ac6d8e2d9f9399d8","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/api-tokens/#page","headline":"API tokens","description":"Create account-wide or app-scoped API tokens for Flagship. App-scoped tokens can access only the Flagship apps you select.","url":"https://developers.cloudflare.com/flagship/api-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/api-tokens/og.png?v=ac6d8e2d9f9399d8","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

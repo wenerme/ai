@@ -41,6 +41,28 @@ Content type: `application/json`
 
   - `"auto"`
 
+- `complexity: optional "low" or "medium" or "high" or null`
+
+  Computation spent planning the image, independently of rendering quality. Uses the image model's configured default when omitted. For SVG output, controls the reference image, independently of the SVG author's reasoning.
+
+  - `"low"`
+
+  - `"medium"`
+
+  - `"high"`
+
+- `frame_count: optional integer or null`
+
+  Number of frames for GIF output. Accepts integers from 2 through 16. Defaults to 9 when omitted. Only supported with output_format=gif. The requested size must satisfy the selected model's GIF size limits. GIF output does not support streaming, partial images, masks, or custom output compression. Requires access to the GIF preview for the selected model.
+
+  `minimum: 2`, `maximum: 16`
+
+- `frame_duration_ms: optional integer or null`
+
+  Requested delay per GIF frame, in milliseconds. Defaults to 200 when omitted. GIF output rounds to the nearest 10 ms and caps the encoded delay at 655,350 ms per frame. Only supported with output_format=gif.
+
+  `minimum: 20`
+
 - `input_fidelity: optional "high" or "low" or null`
 
   Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -78,24 +100,26 @@ Content type: `application/json`
 
     `maxLength: 20971520`, `format: uri`
 
-- `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more or null (default: "gpt-image-2.5-sunburst")`
+- `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 9 more or null (default: "gpt-image-2.5-sunburst")`
 
   The GPT image model to use for image editing, including `gpt-image-2`, its dated
   snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
-  `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and
-  `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+  `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`, and `gpt-image-2.6-flare`.
+  Defaults to `gpt-image-2.5-sunburst`.
 
   `gpt-image-1` was shut down on October 23, 2026. Use
   `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
 
   - `string`
 
-  - `"gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 7 more`
+  - `"gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 9 more`
 
     The GPT image model to use for image editing, including `gpt-image-2`, its dated
     snapshot `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
-    `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and
-    `gpt-image-2.5-flare-2026-09-08`. Defaults to `gpt-image-2.5-sunburst`.
+    `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+    `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`, and `gpt-image-2.6-flare`.
+    Defaults to `gpt-image-2.5-sunburst`.
 
     `gpt-image-1` was shut down on October 23, 2026. Use
     `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.
@@ -113,6 +137,10 @@ Content type: `application/json`
     - `"gpt-image-2.5-flare"`
 
     - `"gpt-image-2.5-flare-2026-09-08"`
+
+    - `"gpt-image-2.6-sunburst"`
+
+    - `"gpt-image-2.6-flare"`
 
     - `"gpt-image-1"`
 
@@ -140,7 +168,7 @@ Content type: `application/json`
 
   `minimum: 0`, `maximum: 100`
 
-- `output_format: optional "png" or "jpeg" or "webp" or null (default: "png")`
+- `output_format: optional "png" or "jpeg" or "webp" or "gif" or null (default: "png")`
 
   Output image format. Supported for GPT image models.
 
@@ -149,6 +177,8 @@ Content type: `application/json`
   - `"jpeg"`
 
   - `"webp"`
+
+  - `"gif"`
 
 - `partial_images: optional integer or null (default: 0)`
 
@@ -213,7 +243,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `ImagesResponse object { created, background, data, 5 more }`
+- `ImagesResponse object { created, background, data, 6 more }`
 
   The response from the image generation endpoint.
 
@@ -249,15 +279,19 @@ Content type: `application/json`
 
       `format: uri`
 
-  - `output_format: optional "png" or "webp" or "jpeg"`
+  - `output_format: optional "png" or "webp" or "jpeg" or 2 more`
 
-    The output format of the image generation. Either `png`, `webp`, or `jpeg`.
+    The output format of the generated image.
 
     - `"png"`
 
     - `"webp"`
 
     - `"jpeg"`
+
+    - `"gif"`
+
+    - `"svg"`
 
   - `quality: optional "low" or "medium" or "high" or 2 more`
 
@@ -292,6 +326,20 @@ Content type: `application/json`
       - `"1024x1536"`
 
       - `"1536x1024"`
+
+  - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+    Token usage for the model that authored the SVG, separate from image rendering usage.
+
+    - `input_tokens: integer`
+
+    - `model: string`
+
+    - `output_tokens: integer`
+
+    - `reasoning_tokens: integer`
+
+    - `total_tokens: integer`
 
   - `usage: optional object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 
@@ -369,6 +417,13 @@ curl https://api.openai.com/v1/images/edits \
   "quality": "low",
   "safety_identifier": "safety_identifier",
   "size": "1024x1024",
+  "svg_usage": {
+    "input_tokens": 0,
+    "model": "model",
+    "output_tokens": 0,
+    "reasoning_tokens": 0,
+    "total_tokens": 0
+  },
   "usage": {
     "input_tokens": 0,
     "input_tokens_details": {

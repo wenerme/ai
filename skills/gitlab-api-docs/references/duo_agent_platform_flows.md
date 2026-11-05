@@ -103,6 +103,17 @@ is set and either of the following is true:
 - The ID does not reference a webhook that has GitLab Duo flow callbacks turned on in the project
   or namespace the flow runs in, or in one of its ancestor groups.
 
+If `start_workflow` is `true` and the target project has an empty repository, GitLab returns
+[`422 Unprocessable entity`](rest/troubleshooting.md#status-codes) with a `reason` of
+`repository_empty`:
+
+```json
+{
+  "message": "Repository is empty",
+  "reason": "repository_empty"
+}
+```
+
 ### Look up the consumer ID
 
 Before you can use `ai_catalog_item_consumer_id`, you must use the GraphQL API to retrieve the ID from the [AI Catalog](../user/duo_agent_platform/ai_catalog.md).

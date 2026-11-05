@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/flagship/og.png?v=e63632964c63afad
 
 # Cloudflare Flagship
 
-Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ship features safely with feature flags.
 
 Flagship is Cloudflare's feature flag service. It lets you control feature visibility in your applications without redeploying code. Define flags with targeting rules and percentage-based rollouts, then evaluate them directly inside your Workers through a [native binding](https://developers.cloudflare.com/flagship/binding/) or from server and browser applications with [OpenFeature SDKs](https://developers.cloudflare.com/flagship/sdk/).
 
-[OpenFeature ↗︎](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship ships official SDKs for TypeScript (Workers, Node.js, and browsers), Python, and Go. You can swap providers without changing evaluation code.
+[OpenFeature ↗︎](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship ships official SDKs for TypeScript (Workers, Node.js, and browsers), Python, Go, and Rust. You can swap providers without changing evaluation code.
 
 Check out the [Get started guide](https://developers.cloudflare.com/flagship/get-started/) to create your first feature flag.
 
@@ -32,13 +32,13 @@ Binding reference
 
 [OpenFeature SDK](https://developers.cloudflare.com/flagship/sdk/)
 
-Use the official OpenFeature SDKs to evaluate flags from Workers, Node.js, browsers, Python, and Go server applications. Switch from another flag provider by changing one line of configuration.
+Use the official OpenFeature SDKs to evaluate flags from Workers, Node.js, browsers, Python, Go, and Rust server applications. Switch from another flag provider by changing one line of configuration.
 
 View SDK docs
 
 [Targeting rules](https://developers.cloudflare.com/flagship/targeting/)
 
-Serve different flag values based on user attributes. Rules support 11 comparison operators, logical AND/OR grouping, and sequential evaluation.
+Serve different flag values based on user attributes. Rules support 13 comparison operators, logical AND/OR grouping, and sequential evaluation.
 
 Learn about targeting
 
@@ -91,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Cloudflare Flagship","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/og.png?v=e63632964c63afad","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/#page","headline":"Cloudflare Flagship","description":"Ship features safely with Flagship, Cloudflare's feature flag service for controlling feature visibility without redeploying code.","url":"https://developers.cloudflare.com/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/og.png?v=e63632964c63afad","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

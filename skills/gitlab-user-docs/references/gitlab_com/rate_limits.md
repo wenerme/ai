@@ -134,8 +134,35 @@ If you reach a limit regularly, you have several options, from least to most com
    gives you your plan's full limits.
 1. Upgrade your plan. Premium and Ultimate carry higher limits.
 
-For sustained needs above your plan's limits, an option to purchase additional headroom is in
-design. Details are published closer to availability.
+Advanced Capacity will provide the option to raise the limits for a top-level group.
+
+### Advanced Capacity
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com
+
+> [!disclaimer]
+> This page contains information related to upcoming products, features, and functionality. It is important to note that the information presented is for informational purposes only. Please do not rely on this information for purchasing or planning purposes. The development, release, and timing of any products, features, or functionality may be subject to change or delay and remain at the sole discretion of GitLab Inc.
+
+Advanced Capacity raises the rate limits for a top-level group.
+
+The Advanced Capacity Pack is a flat annual add-on for a group with a sustained need above
+its plan's limits. This add-on has no usage charges.
+
+Overage covers occasional spikes above your limit.
+On each day your group exceeds its plan or Advanced Capacity Pack limit, you pay a fixed daily price.
+Your group cannot exceed the overage band you select when you buy or renew. For the bands, see
+[GitLab pricing](https://about.gitlab.com/pricing/).
+Overage is on by default when you buy or renew a subscription. An Owner of the top-level group can
+turn off overage at any time, which keeps the group at its plan or Advanced Capacity Pack limit.
+
+The Enterprise Capacity Pack covers sustained needs above the Advanced Capacity Pack.
+For more information, contact your account team or [GitLab sales](https://about.gitlab.com/sales/).
+
+If your usage is already above a new plan limit, requests above that limit are not rate-limited
+through your current subscription term. The new Premium and Ultimate limits are planned to take
+effect in January 2027, and GitLab does not enforce them until Advanced Capacity is available to buy.
+For more information, see [GitLab pricing](https://about.gitlab.com/pricing/).
 
 ## Current rate limits
 

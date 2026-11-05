@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/load-balancing/private-network/public-t
 
 # Set up Private Network Load Balancing for Public traffic to Tunnel
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following steps to learn how to configure Private Network Load Balancing solution, using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) as the off-ramp to securely connect to your private or internal services.
 
@@ -25,8 +25,8 @@ The specific configuration steps can vary depending on your infrastructure and s
 
 To create a virtual network:
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **WARP Client** and find the **Virtual networks** setting.
-2. Select **Add new** or **Manage** > **Create virtual network** to create virtual networks.
+1. In the Cloudflare dashboard, go to **Networking** > **Routes** > **Virtual networks**. [Go to **Virtual networks** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes/virtual-networks)
+2. Select **Create virtual network**.
 3. Define your virtual network name and select **Save**.
 
 To assign the virtual network to the tunnel:
@@ -78,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/#page","headline":"Set up Private Network Load Balancing for Public traffic to Tunnel","description":"Load balance public traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/og.png?v=b60bebec78fe6588","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/#page","headline":"Set up Private Network Load Balancing for Public traffic to Tunnel","description":"Load balance public traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/private-network/public-to-tunnel/og.png?v=b60bebec78fe6588","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

@@ -50,13 +50,55 @@ or to a GitLab Self-Managed instance.
 
 When migrating projects by using file exports, an administrator's access token is required for user contributions to map correctly.
 
-Therefore, user contributions never map correctly when importing file exports from a GitLab Self-Managed instance to GitLab.com.
+Therefore, user contributions don't map correctly when importing file exports from a GitLab Self-Managed instance to GitLab.com,
+except for [enterprise users of the top-level group](#map-enterprise-users-on-gitlabcom).
 Instead, all GitLab user associations (such as comment author) are changed to the user importing the project. To preserve
 contribution history, do one of the following:
 
 - [Migrate by using direct transfer](../../group/import/_index.md).
 - Consider engaging Professional Services. For more information, see the
   [Professional Services catalog](https://about.gitlab.com/professional-services/catalog/).
+
+#### Map enterprise users on GitLab.com
+
+- Tier: Premium, Ultimate
+- Offering: GitLab.com
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592886) in GitLab 19.6 [with a flag](../../../administration/feature_flags/_index.md) named `file_import_enterprise_user_mapping`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+On GitLab.com, an Owner of a top-level group with a [verified domain](../../enterprise_user/_index.md#manage-group-domains)
+can keep the memberships and contributions of enterprise users when importing file exports into that group or its
+subgroups, without an administrator.
+Exported members who are [enterprise users](../../enterprise_user/_index.md) of that top-level group
+are added as members, and their contributions are mapped to them.
+All other users and their contributions are mapped to the user importing the file.
+
+To map an enterprise user:
+
+- The user's public email on the source instance must match their primary email on GitLab.com.
+  If users can't set a public email on the source instance, you can add their emails to the export file instead.
+  For more information, see [edit project export files](#edit-project-export-files).
+- The user must be active or deactivated. Blocked, banned, and pending approval users are not mapped.
+- The user must not be a bot or service account.
+- You must have the Owner role for the top-level group as a direct member.
+- You must import into an existing top-level group or one of its subgroups. A new top-level group has no enterprise users.
+
+[Custom roles](../../custom_roles/_index.md) from the source instance are not imported,
+including custom roles that do not use a seat.
+Members with a custom role get its base role instead, and seat checks use the base role.
+
+In the following cases, contributions are still mapped to the enterprise users, but none of them are added as members:
+
+- You import a project into a group that has the [**Users cannot be added to projects in this group**](../../group/access_and_permissions.md#prevent-members-from-being-added-to-projects-in-a-group)
+  setting turned on.
+- [Restricted access](../../../subscriptions/manage_seats.md#restricted-access) is turned on, and
+  the new billable members would exceed the seats in your subscription.
+
+After the import, add these users as members.
 
 #### When migrating to GitLab Self-Managed
 
@@ -89,7 +131,8 @@ other users. Supplementary comments mentioning original authors are:
 
 You can add or remove data from export files. For example, you can:
 
-- Manually add users' public emails to the `project_members.ndjson` file.
+- Manually add users' public emails to the `project_members.ndjson` file. Set `public_email` in each member's `user`
+  object. For group exports, members are in the `tree/groups/<group_id>/members.ndjson` file.
 - Trim CI pipelines by removing lines from the `ci_pipelines.ndjson` file.
 
 To edit a project export file:
@@ -450,6 +493,10 @@ Items that are not exported include:
   sure these users exist before importing the desired groups.
 - Users must set a public email in the source GitLab instance that matches their confirmed primary email in the
   destination GitLab instance. Most users receive an email asking them to confirm their email address.
+  You can also manually add users' public emails by [editing export files](#edit-project-export-files).
+- On GitLab.com, an Owner of a top-level group can [map enterprise users](#map-enterprise-users-on-gitlabcom)
+  of that group without an administrator. Import into an existing top-level group with a verified domain, or one of
+  its subgroups.
 
 ### Export a group
 
