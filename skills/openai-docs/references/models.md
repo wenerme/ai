@@ -29,13 +29,14 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-5.4 Pro](/api/docs/models/gpt-5.4-pro.md): Version of GPT-5.4 that produces smarter and more precise responses.
 - [GPT-5.5](/api/docs/models/gpt-5.5.md): A new class of intelligence for coding and professional work.
 - [GPT-5.5 Pro](/api/docs/models/gpt-5.5-pro.md): Version of GPT-5.5 that produces smarter and more precise responses.
-- [GPT-5.6 Cyber](/api/docs/models/gpt-5.6-cyber.md): Our most advanced cybersecurity model for authorized vulnerability research and security testing.
+- [GPT-5.6 Cyber](/api/docs/models/gpt-5.6-cyber.md): Cybersecurity model for authorized vulnerability research and security testing.
 - [GPT-5.6 Luna](/api/docs/models/gpt-5.6-luna.md): GPT-5.6 model optimized for cost-sensitive workloads
 - [GPT-5.6 Sol](/api/docs/models/gpt-5.6-sol.md): GPT-5.6 flagship model for complex professional work
 - [GPT-5.6 Terra](/api/docs/models/gpt-5.6-terra.md): GPT-5.6 model that balances intelligence and cost
 - [GPT-6 Astra](/api/docs/models/gpt-6-astra.md): Our most capable model for the most demanding work.
 - [GPT-6 Luna](/api/docs/models/gpt-6-luna.md): Our most efficient model for focused, high-volume tasks.
 - [GPT-6 Sol](/api/docs/models/gpt-6-sol.md): Built to power complex coding and agentic workflows.
+- [GPT-6-Cyber](/api/docs/models/gpt-6-cyber.md): Investigate a vulnerability, reproduce it in an authorized test environment, or verify a fix.
 - [GPT-6.1 Sol](/api/docs/models/gpt-6.1-sol.md): Near-Astra performance for complex work at a lower cost.
 - [GPT-6.1 Terra](/api/docs/models/gpt-6.1-terra.md): A fast, efficient model for visual reasoning, precise computer use, and clear, natural writing.
 - [GPT-Audio-1.5](/api/docs/models/gpt-audio-1.5.md): The best voice model for audio in, audio out with Chat Completions.

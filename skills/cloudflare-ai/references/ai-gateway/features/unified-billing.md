@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/features/unified-billing/og.
 
 # Unified Billing
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Unified Billing allows users to call Workers AI and connect to various AI providers (such as OpenAI, Anthropic, and Google AI Studio) and receive a single Cloudflare bill. To use Unified Billing, you must purchase and load credits into your Cloudflare account in the Cloudflare dashboard, which you can then spend with AI Gateway.
 
@@ -32,7 +32,9 @@ In rare instances, your credit balance may go negative. If this happens, Cloudfl
 
 Note
 
-You can only purchase AI Gateway credits with a credit card. Other payment methods, such as PayPal, are not supported for credit purchases.
+Use a non-prepaid credit or debit card to purchase AI Gateway credits. PayPal, Apple Pay, and Google Pay are not supported, even when linked to a card. Add the card directly in **Billing** and set it as your primary payment method.
+
+If the dashboard displays a permission notice, contact your account administrator. Request access to purchase credits and configure auto top-up.
 
 To load credits for AI Gateway:
 
@@ -40,7 +42,7 @@ To load credits for AI Gateway:
 
    The **Credits Available** card on the top right shows how many AI gateway credits you have on your account currently.
 2. In **Credits Available**, select **Manage**.
-3. If your account does not have a credit card on file, AI Gateway will prompt you to add one to purchase credits. Add a credit card.
+3. If needed, [add a credit or debit card in Billing](https://developers.cloudflare.com/billing/get-started/create-billing-profile/#add-a-primary-payment-method). If your primary payment method is PayPal, Apple Pay, or Google Pay, [make the card your primary payment method](https://developers.cloudflare.com/billing/get-started/create-billing-profile/#add-an-additional-payment-method).
 4. Select **Top-up credits**.
 5. Add the amount of credits you want to purchase, then select **Confirm and pay**.
 
@@ -52,6 +54,8 @@ You can configure AI Gateway to automatically replenish your credits when they f
 2. In **Credits Available**, select **Manage**.
 3. Select **Setup auto top-up credits**.
 4. Choose a threshold and a recharge amount for auto top-up.
+
+If prompted, complete your bank's card verification before enabling auto top-up.
 
 When your balance falls below the set threshold, AI Gateway will automatically apply the auto top-up amount to your account.
 
@@ -188,5 +192,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/og.png?v=83cc3ab3df05b3d9","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/og.png?v=83cc3ab3df05b3d9","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

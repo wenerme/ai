@@ -2403,7 +2403,7 @@ Example response:
       "sha": "81c6a84c7aebd45a1ac2c654aa87f11e32338e0a",
       "ref": "test-branch",
       "status": "success",
-      "web_url": "https://gitlab.com/gitlab-org/gitlab/pipelines/38980952"
+      "web_url": "https://gitlab.com/gitlab-org/gitlab/-/pipelines/38980952"
     },
     "head_pipeline": {
       "id": 38980952,

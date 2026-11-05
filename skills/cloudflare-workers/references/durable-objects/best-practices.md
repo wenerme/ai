@@ -19,6 +19,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Access Durable Objects Storage](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/)
 - [Use WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 - [Error handling](https://developers.cloudflare.com/durable-objects/best-practices/error-handling/)
+- [Automatic retries](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/)
 
 Was this helpful?
 

@@ -189,7 +189,10 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`auto_duo_code_review_on_push_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254521) | GitLab Duo automatic code review on push setting on group changed | Yes | GitLab [19.5](https://gitlab.com/groups/gitlab-org/-/work_items/21620) | Group |
 | [`duo_code_review_approval_counts_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254100) | GitLab Duo code review approval counts setting on group changed | Yes | GitLab [19.5](https://gitlab.com/groups/gitlab-org/-/work_items/21939) | Group |
+| [`duo_code_review_approved`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262385) | GitLab Duo code review approved a merge request | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23854) | Project |
+| [`duo_code_review_changes_requested`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262385) | GitLab Duo code review requested changes on a merge request | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23854) | Project |
 | [`duo_code_review_decisions_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254100) | GitLab Duo code review decisions setting on group changed | Yes | GitLab [19.5](https://gitlab.com/groups/gitlab-org/-/work_items/21939) | Group |
+| [`duo_code_review_requested_changes_overridden`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262385) | A user overrode changes requested by GitLab Duo code review on a merge request | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23854) | Project |
 | [`merge_request_approval_operation`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/92983) | A merge request is approved | No | GitLab [15.3](https://gitlab.com/gitlab-org/gitlab/-/issues/10869) | Project |
 | [`merge_request_closed_by_project_bot`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120927) | A merge request is closed using a project access token | Yes | GitLab [16.1](https://gitlab.com/gitlab-org/gitlab/-/issues/323299) | Project |
 | [`merge_request_created_by_project_bot`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120927) | A merge request is created using a project access token | Yes | GitLab [16.1](https://gitlab.com/gitlab-org/gitlab/-/issues/323299) | Project |
@@ -355,8 +358,8 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
-| [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review default review depth setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Project |
-| [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow deep reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Project |
+| [`duo_code_review_default_depth_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review default review depth setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
+| [`duo_code_review_depth_allowed_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265943) | GitLab Duo Code Review allow deep reviews setting changed | Yes | GitLab [19.6](https://gitlab.com/groups/gitlab-org/-/work_items/23598) | Group, Project |
 
 ### Dap triggers
 
@@ -892,6 +895,7 @@ Audit event types belong to the following product categories.
 | [`require_reauthentication_to_approve_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150710) | The setting for requiring reauthentication for merge request approvals is updated | Yes | GitLab [17.1](https://gitlab.com/gitlab-org/gitlab/-/issues/431346) | Group, Project |
 | [`squash_commit_template_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107533) | The merge request squash commit template for a project is updated | Yes | GitLab [15.8](https://gitlab.com/gitlab-org/gitlab/-/issues/369314) | Project |
 | [`squash_option_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/84624) | Squash option setting is updated | Yes | GitLab [15.0](https://gitlab.com/gitlab-org/gitlab/-/issues/301124) | Project |
+| [`ssh_certificate_authentication_failed`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259775) | SSH certificate authentication fails because the certificate cannot be resolved to an authorized user | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/work_items/611349) | Instance |
 | [`manually_trigger_housekeeping`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/112095) | Manually triggering housekeeping via API or admin UI | Yes | GitLab [15.9](https://gitlab.com/gitlab-org/gitlab/-/issues/390761) | Project |
 | [`project_blobs_removal`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/152522) | Removing blobs by using the GraphQL API or project settings UI | Yes | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/450701) | Project |
 | [`project_text_replacement`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/152522) | Replacing text by using the GraphQL API or project settings UI | Yes | GitLab [17.1](https://gitlab.com/gitlab-org/gitlab/-/issues/450701) | Project |

@@ -94,3 +94,70 @@ After updating ComfyUI, you can find the workflow file from the templates, or dr
 │   └── 📂 vae/
 │          └── qwen_image_vae.safetensors
 ```
+
+### Qwen-Image-Edit-2511 Multiple Angles with the 3D Camera Node {#template_qwen_multiangle_app}
+
+Load one photo, orbit a 3D camera around the subject, and Qwen-Image-Edit-2511 renders that same subject from the angle you picked. The template pairs the edit model with the multiple-angles LoRA, so you can re-shoot one input image from any angle you pick.
+
+[Qwen-Image-Edit-2511 multiple angles workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Generate Multiple Angles with 3D Camera Node&quot; in Template Library
+  
+
+**Input material**
+
+Upload this file to the `LoadImage` node:
+
+  
+    `LoadImage` node 1
+  
+
+#### Camera Angle controls
+
+The **Compose Camera Angle Prompt** node adds a 3D viewport above its angle fields. Pick a viewpoint in the viewport and the node writes a shot description such as `front view eye-level shot medium shot` into the workflow prompt, so you do not type it by hand. The angle fields follow as you move.
+
+- **Camera / Object**: **Camera** moves you around the subject, **Object** looks through the lens and turns the subject instead.
+- **Horizontal angle, Vertical angle, Shot size**: named positions: eight around the subject from `Front` to `Front left`, four elevations from `Low angle` to `High angle`, and three shot sizes from `Wide shot` to `Close-up`. Dragging in the 3D viewport sets the same values.
+- **Preview**: adds a picture-in-picture window with what the camera frame contains.
+
+Connect an image to the node's optional image input to show it on the front face of the subject, which makes left and right obvious while you orbit.
+
+Turbo mode (`enable_turbo_mode`, a control on the subgraph node) is on by default: 4 steps, CFG 1 and the 4-step Lightning LoRA. Switch it off for the 40-step, CFG 4 pass without the Lightning LoRA.
+
+**Model downloads for this workflow**
+
+  
+    Place in <code>ComfyUI/models/diffusion_models/</code>
+  
+  
+    Place in <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    Place in <code>ComfyUI/models/vae/</code>
+  
+  
+    qwen-image-edit-2511-multiple-angles-lora.safetensors goes in <code>ComfyUI/models/loras/</code>
+  
+  
+    Place in <code>ComfyUI/models/loras/</code>
+  
+
+**Model storage location**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── qwen_image_edit_2511_int8_convrot.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   ├── 📂 vae/
+│   │   └── qwen_image_vae.safetensors
+│   └── 📂 loras/
+│       ├── qwen-image-edit-2511-multiple-angles-lora.safetensors
+│       └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
+```

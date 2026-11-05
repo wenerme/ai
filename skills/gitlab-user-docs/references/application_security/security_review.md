@@ -32,6 +32,9 @@ Use Security Review Flow when you need help with:
 - Information disclosure: Identify code paths that can leak sensitive data to unauthorized callers.
 - Mass assignment risk: Flag endpoints or models that can expose unintended fields to user input.
 
+To scan the whole repository or track findings as vulnerabilities, see
+[business logic scanning](business_logic_scanning/_index.md).
+
 ## Prerequisites
 
 To use Security Review Flow:
@@ -132,6 +135,7 @@ Each finding is posted as a diff thread on the changed code. Each thread include
 > Findings are not tracked in the [Vulnerability Report](vulnerability_report/_index.md)
 > and do not count toward [merge request approval policies](policies/merge_request_approval_policies.md).
 > They complement, but do not replace, static analysis (SAST) findings.
+> To track findings as vulnerabilities, use business logic scanning.
 
 The following CWE classifications can appear in findings:
 

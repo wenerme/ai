@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/api/stub/og.png?v=4ef0d
 
 # Durable Object Stub
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/stub/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/stub/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -21,6 +21,8 @@ The `DurableObjectStub` interface is a client used to invoke methods on a remote
 Durable Objects implement E-order semantics, a concept deriving from the [E distributed programming language ↗︎](<https://en.wikipedia.org/wiki/E_(programming_language)>). When you make multiple calls to the same Durable Object, it is guaranteed that the calls will be delivered to the remote Durable Object in the order in which you made them. E-order semantics makes many distributed programming problems easier. E-order is implemented by the [Cap'n Proto ↗︎](https://capnproto.org) distributed object-capability RPC protocol, which Cloudflare Workers uses for internal communications.
 
 If an exception is thrown by a Durable Object stub all in-flight calls and future calls will fail with [exceptions](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/). To continue invoking methods on a remote Durable Object a Worker must recreate the stub. There are no ordering guarantees between different stubs.
+
+The runtime may retry a failed call before the exception reaches your code. For more information, refer to [Automatic retries](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/).
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -127,5 +129,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/stub/og.png?v=4ef0df5cda212c39","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/stub/#page","headline":"Durable Object Stub","description":"API reference for DurableObjectStub, the client used to invoke RPC methods on a remote Durable Object.","url":"https://developers.cloudflare.com/durable-objects/api/stub/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/stub/og.png?v=4ef0df5cda212c39","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

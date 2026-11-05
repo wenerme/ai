@@ -1162,12 +1162,12 @@ Supported attributes for multiline comments only:
 
 | Attribute                                | Type    | Required | Description |
 |------------------------------------------|---------|----------|-------------|
-| `position[line_range][end][line_code]`   | string  | Yes      | [Line code](#line-code) for the end line. |
-| `position[line_range][end][type]`        | string  | Yes      | Use `new` for lines added by this commit, otherwise `old`. |
+| `position[line_range][end][line_code]`   | string  | No       | [Line code](#line-code) for the end line. |
+| `position[line_range][end][type]`        | string  | No       | Use `new` for an added line and `old` for a removed line. Omit for an unchanged line. |
 | `position[line_range][end][old_line]`    | integer | No       | Old line number of the end line. |
 | `position[line_range][end][new_line]`    | integer | No       | New line number of the end line. |
-| `position[line_range][start][line_code]` | string  | Yes      | [Line code](#line-code) for the start line. |
-| `position[line_range][start][type]`      | string  | Yes      | Use `new` for lines added by this commit, otherwise `old`. |
+| `position[line_range][start][line_code]` | string  | No       | [Line code](#line-code) for the start line. |
+| `position[line_range][start][type]`      | string  | No       | Use `new` for an added line and `old` for a removed line. Omit for an unchanged line. |
 | `position[line_range][start][old_line]`  | integer | No       | Old line number of the start line. |
 | `position[line_range][start][new_line]`  | integer | No       | New line number of the start line. |
 | `position[line_range][end]`              | hash    | No       | Multiline note ending line. |
@@ -1544,32 +1544,12 @@ Supported attributes:
 | `position[new_line]`      | integer           | No                               | Line number after change. |
 | `position[old_path]`      | string            | No                               | File path before change. |
 | `position[old_line]`      | integer           | No                               | Line number before change. |
-| `position[line_range]`    | hash              | No                               | Line range for a multi-line diff note. |
+| `position[line_range]`    | hash              | No                               | Line range for a multi-line diff note. For more information, see [parameters for multiline comments](#parameters-for-multiline-comments). |
 | `position[height]`        | integer           | No                               | For `image` diff notes, image height. |
 | `position[width]`         | integer           | No                               | For `image` diff notes, image width. |
 | `position[x]`             | integer           | No                               | For `image` diff notes, X coordinate. |
 | `position[y]`             | integer           | No                               | For `image` diff notes, Y coordinate. |
 {.sortable}
-
-#### Parameters for multiline comments
-
-Supported attributes for multiline comments only:
-
-| Attribute                                | Type    | Required | Description |
-|------------------------------------------|---------|----------|-------------|
-| `position[line_range][end][line_code]`   | string  | Yes      | [Line code](#line-code) for the end line. |
-| `position[line_range][end][type]`        | string  | Yes      | Use `new` for lines added by this commit, otherwise `old`. |
-| `position[line_range][end][old_line]`    | integer | No       | Old line number of the end line. |
-| `position[line_range][end][new_line]`    | integer | No       | New line number of the end line. |
-| `position[line_range][start][line_code]` | string  | Yes      | [Line code](#line-code) for the start line. |
-| `position[line_range][start][type]`      | string  | Yes      | Use `new` for lines added by this commit, otherwise `old`. |
-| `position[line_range][start][old_line]`  | integer | No       | Old line number of the start line. |
-| `position[line_range][start][new_line]`  | integer | No       | New line number of the start line. |
-| `position[line_range][end]`              | hash    | No       | Multiline note ending line. |
-| `position[line_range][start]`            | hash    | No       | Multiline note starting line. |
-
-The `old_line` and `new_line` parameters inside the `line_range` attribute display the range for
-multi-line comments. For example, "Comment on lines +296 to +297".
 
 If successful, returns [`201 Created`](rest/troubleshooting.md#status-codes) and the created discussion object.
 

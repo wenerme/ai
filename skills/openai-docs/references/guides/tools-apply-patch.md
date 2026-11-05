@@ -657,6 +657,7 @@ The model can then adjust future diffs (for example, by re-reading a file in you
 - [`gpt-5.6-sol`](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
 - [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra)
 - [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra)
+- [`gpt-6-cyber`](https://developers.openai.com/api/docs/models/gpt-6-cyber)
 - [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna)
 - [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol)
 - [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol)

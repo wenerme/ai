@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/detections/ai-security-for-apps/uns
 
 # Unsafe and custom topic detection
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can detect when an LLM prompt touches on unsafe or unwanted subjects. There are two layers of topic detection:
 
@@ -99,8 +99,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/custom-top
         "topic": "seeking financial advice"
       },
       {
-        "label": "hr-internal",
-        "topic": "asking about internal HR policies"
+        "label": "job-seeking",
+        "topic": "asking for résumé advice"
       }
     ]
   }'
@@ -119,12 +119,20 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/custom-top
 
 ### Constraints
 
+Custom topic descriptions accept UTF-8 characters, including non-ASCII characters. Only English descriptions are officially supported.
+
+Descriptions in other languages are evaluated on a best-effort basis and may produce less consistent results.
+
 | Parameter | Limit |
 | --- | --- |
 | Maximum number of topics | 20 |
-| Topic string length | 2–50 printable ASCII characters |
+| Topic description length | 2–50 UTF-8 bytes |
+| Topic description characters | Letters, combining marks, numbers, punctuation, symbols, and spaces |
+| Prohibited characters | Tabs, line breaks, invalid text, and invisible formatting characters |
 | Label length | 2–20 characters |
-| Label format | Lowercase letters, numbers, and hyphens (`-`) only |
+| Label format | Lowercase ASCII letters, digits, and hyphens (`-`) only |
+
+The topic description limit is measured in bytes, not characters. A non-ASCII character can use multiple UTF-8 bytes.
 
 Caution
 
@@ -190,5 +198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/og.png?v=909acf3ad220e88c","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/#page","headline":"Unsafe and custom topic detection","description":"Detect unsafe and custom topics in AI application traffic.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/unsafe-topics/og.png?v=909acf3ad220e88c","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

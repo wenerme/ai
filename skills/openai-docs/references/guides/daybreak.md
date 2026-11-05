@@ -6,6 +6,8 @@ Use `access_programs.cyber` to select a cybersecurity access program for a Respo
 
 Before using Daybreak, complete [organization approval and project setup](https://help.openai.com/en/articles/20001261-enterprise-daybreak-onboarding). Your project needs access to both the program and the model. Use an API key from that project. The request parameter selects behavior within your approved access; it doesn't grant access.
 
+All Daybreak Red organizations must [require SSO](https://help.openai.com/en/articles/9534785-single-sign-on-sso-setup-for-openai-products) for the API organization that holds Cyber access and enforce MFA through your identity provider. If you use a separate Cyber organization, verify its domain and test SSO there.
+
 ## Choose the model and access program
 
 The `model` field selects the model. The `access_programs.cyber` field selects a supported access program for that request: `standard`, `daybreak_blue`, or `daybreak_red`.
@@ -43,6 +45,9 @@ GPT-6 Astra
             
 GPT-5.5-Cyber
 
+            
+GPT-5.6-Cyber
+
           
 
         </td>
@@ -65,12 +70,17 @@ GPT-5.5-Cyber
               `daybreak_red`
             
 
+            
+
+              `daybreak_red`
+            
+
           
 
         </td>
       </tr>
       <tr>
-        <td>GPT-5.6-Cyber</td>
+        <td>GPT-6-Cyber</td>
         <td>Red + additional model approval</td>
         <td>
           `daybreak_red`
@@ -152,6 +162,34 @@ When available, `access_programs.cyber` records the selected program. This parti
 
 
 When no program is specified and the request uses standard safeguards, `access_programs` is `null`. For a `-latest` alias, inspect `model` to see which model served the request. Alias resolution can change and depends on your approved access.
+
+## Set up GPT-6-Cyber
+
+Confirm with your account team that your organization has Daybreak Red access and approval for [GPT-6-Cyber](https://developers.openai.com/api/docs/models/gpt-6-cyber).
+
+**Project access.** Ask an organization owner to [enable Daybreak Red](https://help.openai.com/en/articles/20001531-openai-daybreak-set-up-access-for-your-team) for the project that will send requests. With project-level controls, use a non-default project and a key from that project.
+
+**IP allowlisting.** To use GPT-6-Cyber through the API, [configure an IP allowlist](https://developers.openai.com/api/docs/guides/ip-allowlist) for the public IPs your application sends requests from. If you have received approval to embed the model in a product, end users without direct model access don’t need to allowlist their own IPs.
+
+**Zero Data Retention.** If the project uses ZDR, [configure Private Safety Processing](https://developers.openai.com/api/docs/guides/private-safety-processing) (PSP). Check that storage shows “Validated” and that the project’s retention policy is “Zero Data Retention with Private Safety Processing.” PSP applies to all API traffic in that project.
+
+### Send a GPT-6-Cyber request
+
+Set `OPENAI_API_KEY` to a key from the approved project. Replace the sample safety identifier with a stable, pseudonymous identifier for the user making the request.
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-6-cyber",
+    "access_programs": {"cyber": "daybreak_red"},
+    "safety_identifier": "user_a17f",
+    "input": "Suggest a regression test for a path traversal fix."
+  }'
+```
+
+If the request fails, check the project associated with the key, the active allowlist, and the project’s retention policy. See [Daybreak API errors](https://developers.openai.com/api/docs/guides/daybreak#handle-errors).
 
 ## Handle errors
 

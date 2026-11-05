@@ -43,6 +43,18 @@ You can direct users to a specific report in insights by using the deep-linked U
 To create a deep link, append the report key to the end of the insights report URL.
 For example, a GitLab report with the key `bugsCharts` has the deep link URL `https://gitlab.com/gitlab-org/gitlab/insights/#/bugsCharts`.
 
+### Rate limit
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267890) in GitLab 19.6.
+
+Each chart in a report loads its data with a separate request.
+GitLab limits these requests to 60 every minute for each user in each group or project.
+For unauthenticated users, the limit applies to each IP address.
+When you reach the limit, the chart displays an error. Try again after a minute.
+
+On GitLab Self-Managed, administrators can change the limit with the `insights_query_limit`
+[application setting](../../../api/settings.md).
+
 ## Configuration
 
 ### Default file

@@ -16,24 +16,24 @@ Follow these steps to create and configure **Cipher Keys** in OpenObserve:
 
 :::accordion[Step 1: Navigate to the Cipher Keys section]
 
-1. From the top navigation bar, click the gear icon to open the **Management** page.  
-2. Select **Cipher Keys**.
+1. Click **Settings** in the left navigation.  
+2. Select **Cipher Keys** (under **Access & Security**).
 
-[cipher-keys]
+[Settings > Cipher Keys list under Access & Security]
 
 :::accordion[Step 2: Create a New Cipher Key]
 
-1. On the **Cipher Keys** page, click the **Add Cipher Key** button.  
+1. On the **Cipher Keys** page, click the **New cipher key** button.  
 2. Enter the required details:
 
     - **Name:** The key name must be **unique**. Characters such as colon, question mark, slash, hash, and spaces are not allowed.   
     - **Key Store Type:** Choose where the encryption key will be stored:
 
-        - **OpenObserve (Local)**: Stores the encryption key directly in OpenObserve’s database. If you select **OpenObserve**, paste your encryption key in the **Secrets** field. [Learn how you can encrypt the key before storing it in the OpenObserve database for additional security](#cipher-key-storage-in-openobserve). 
-        [Cipher Key Store Type- Local]
+        - **OpenObserve (Local)**: Stores the encryption key directly in OpenObserve’s database. If you select **OpenObserve**, paste your encryption key in the **Secret** field. [Learn how you can encrypt the key before storing it in the OpenObserve database for additional security](#cipher-key-storage-in-openobserve). 
+        [New cipher key form with the OpenObserve key store type and the Secret field]
 
         - **Akeyless**: Allow using Akeyless as an external key management system to store keys. If you select Akeyless, enter the Base URL of the Akeyless API, Access ID, Authentication details - Access Key or Lightweight directory access protocol (LDAP), and Secret Types - [Static](https://docs.akeyless.io/docs/static-secrets) or [Distributed Fragments Cryptography (DFC)](https://docs.akeyless.io/docs/zero-knowledge). 
-        [Cipher Keys Storage Type- akeyless] 
+        [New cipher key form with the Akeyless key store type, Base URL, Access ID, authentication and secret type] 
 
 3. Click **Continue**. 
 
@@ -44,10 +44,10 @@ Choose an encryption method:
 - **Simple**: Choose if encryption is done using Advanced Encryption Standard (AES). From the dropdown, select the algorithm as `AES-256 SIV`.  
 - **Tink KeySet**: Choose if the encryption is done using Google Tink.
 
-[Cipher keys encryption mechanism]
+[Encryption Mechanism step with type Simple and algorithm AES 256 SIV]
 
 After you have filled in all the details, click **Save**. Your new **Cipher Key** is now available to use in OpenObserve.
-[cipher-keys-page]
+[Cipher Keys list with the new key, its store type and mechanism type]
 
 ---
 
@@ -73,7 +73,7 @@ The `decrypt()` function can be slower on larger input fields due to its brute-f
 
 **Example** 
 **Sample Encrypted Dataset**: The following log entries exist in the `customer_feedback_encrypt` stream: 
-[Cipher keys encrypted data]
+[Logs results showing encrypted name and feedback fields]
 
 **1. Decrypt a single field** 
 
@@ -84,7 +84,7 @@ FROM "customer_feedback_encrypt"
 ```
 This returns the decrypted value of the `name_encrypted` field. 
 
-[decrypt a single field]
+[Logs results of decrypt on a single field, showing the decrypted names]
 
 **2. Decrypt multiple fields** 
 ```sql
@@ -95,7 +95,7 @@ FROM "customer_feedback_encrypt"
 ```
 This returns decrypted values for both `name_encrypted` and `feedback_encrypted`. 
 
-[Decrypt multiple fields]
+[Logs results of decrypt on two fields, showing decrypted names and feedback]
 ::::
 
 ---
@@ -143,7 +143,7 @@ decrypted_value: xyz
 
 **Sample Encrypted Dataset**: The following records exist in encrypted format in the `customer_feedback_nested` stream. Each record has multiple encrypted fields at different nesting levels:
 
-[Nested Dataset]
+[Expanded log record with an encrypted feedback_text field and a metadata JSON field holding an encrypted user name]
 
 **1. Decrypt a top-level field**
 The `feedback_text` field contains an encrypted plain-text value. To retrieve its original value, use `decrypt_path()` with the path set to '.'.
@@ -153,7 +153,7 @@ SELECT
 FROM "customer_feedback_nested"
 ```
 
-[Decrypt a top-level field]
+[Logs results of decrypt_path with the path set to a dot, showing decrypted feedback]
 
 **2. Decrypt a nested field**
 To retrieve the decrypted value of `name`, you can write the query as shown below: 
@@ -163,7 +163,7 @@ SELECT
 FROM "customer_feedback_nested"
 ```
 
-[Decrypt a nested field]
+[Logs results of decrypt_path on the user.name path, showing decrypted names]
 
 :::info[Path Examples for `decrypt_path()`]
 The `decrypt_path()` function allows you to specify exact JSON paths to selectively decrypt fields.  
@@ -215,14 +215,14 @@ You can use the `decrypt()` and `decrypt_path()` functions inside `WHERE` clause
 Select name_encrypted from "customer_feedback_encrypt" where decrypt(name_encrypted,'customer_feedback_key') = 'John';
 ```
  
-[Decrypt Function With Where Clause]
+[Logs results of a WHERE filter on a decrypted value, returning the still-encrypted field]
 
 - **With the LIKE clause**: This query will decrypt the `user_data` field using the `user_data_decryption_key` and return results where the decrypted data contains the substring '`John`': 
 ```
 SELECT user_id FROM user_activity_stream WHERE decrypt(user_data, 'user_data_decryption_key') LIKE '%John%';
 ```
 
-[Decrypt Function With Like Clause]
+[Logs results of a LIKE filter on a decrypted value]
 
 :::note[Note]
 - The time the data was ingested does not affect decryption.   
@@ -230,19 +230,19 @@ SELECT user_id FROM user_activity_stream WHERE decrypt(user_data, 'user_data_dec
 
 ## Manage Cipher Keys
 
-[manage-cipher-keys] 
+[Cipher Keys list with edit and delete icons in the Actions column] 
 To update or delete a Cipher Key, click the edit or delete icon under the **Actions** column, respectively.
 
 ## Cipher Key Storage in OpenObserve 
 
 When using **OpenObserve** as the encryption key (secret) storage option, you can encrypt the secret before storing it in the OpenObserve database by setting the following environment variables:
 
-- **`ZO_MASTER_ENCRYPTION_ALGORITHM`**: Set it to `aes-256-siv`.   
-- **`ZO_MASTER_ENCRYPTION_KEY`**: Set it to the encryption key you want OpenObserve to use to encrypt the secret. This must be a valid `aes-256-siv` key. Tink Key cannot be used here.
+- **`O2_MASTER_ENCRYPTION_ALGORITHM`**: Set it to `aes-256-siv` (the default and the only supported value).   
+- **`O2_MASTER_ENCRYPTION_KEY`**: Set it to the encryption key you want OpenObserve to use to encrypt the secret. This must be a valid base64-encoded 512-bit `aes-256-siv` key. Tink Key cannot be used here.
 
 :::info[Important Note]
 - To set up the above environment variables for **Cipher Keys** in OpenObserve’s database, first delete the existing **Cipher Keys** to avoid errors.   
-- If `ZO_MASTER_ENCRYPTION_KEY` is changed, the existing secret associated with `ZO_MASTER_ENCRYPTION_KEY` is no longer visible and usable. 
+- If `O2_MASTER_ENCRYPTION_KEY` is changed, the existing secret associated with `O2_MASTER_ENCRYPTION_KEY` is no longer visible and usable. 
 
 ## Failure Modes
 

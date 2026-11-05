@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/api/namespace/og.png?v=
 
 # Durable Object Namespace
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -156,7 +156,9 @@ const stub = env.MY_DURABLE_OBJECT.get(id);
 #### Parameters
 
 - A required [`DurableObjectId`](https://developers.cloudflare.com/durable-objects/api/id)
-- An optional object with the key `locationHint` and value of a [locationHint](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint) string.
+- An optional object with these optional keys:
+  - `locationHint`: a [locationHint](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint) string.
+  - `retry`: an object that sets the retry limits for calls through the returned stub. It accepts `maxRetries`, an integer from `0` to `10` that defaults to `4`, and `timeoutMs`, an integer from `500` to `60000` that defaults to `10000`. For more information, refer to [Set retry limits for a stub](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/#set-retry-limits-for-a-stub).
 
 #### Return values
 
@@ -176,7 +178,7 @@ const barStub = env.MY_DURABLE_OBJECT.getByName("bar");
 #### Parameters
 
 - A required string to be used to generate a [`DurableObjectStub`](https://developers.cloudflare.com/durable-objects/api/stub) corresponding to an instance of the Durable Object class with the provided name.
-- An optional object with the key `locationHint` and value of a [locationHint](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint) string.
+- An optional object with the same keys as the options for [`get`](#get), including `locationHint` and `retry`.
 
 #### Return values
 
@@ -212,5 +214,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/namespace/#page","headline":"Durable Object Namespace","description":"API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/api/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/namespace/og.png?v=2d33736d02547d40","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/namespace/#page","headline":"Durable Object Namespace","description":"API reference for DurableObjectNamespace, which creates IDs and obtains stubs to interact with Durable Objects.","url":"https://developers.cloudflare.com/durable-objects/api/namespace/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/namespace/og.png?v=2d33736d02547d40","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

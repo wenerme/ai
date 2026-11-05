@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/rules-of
 
 # Rules of Durable Objects
 
-Last updated Oct 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects provide a powerful primitive for building stateful, coordinated applications. Each Durable Object is a single-threaded, globally-unique instance with its own persistent storage. Understanding how to design around these properties is essential for building effective applications.
 
@@ -1855,7 +1855,9 @@ export class ChatRoom extends DurableObject<Env> {
 }
 ```
 
-When calling Durable Objects from a Worker, errors may include `.retryable` and `.overloaded` properties indicating whether the operation can be retried. For transient failures, implement exponential backoff to avoid overwhelming the system.
+When calling Durable Objects from a Worker, the runtime retries some failed calls automatically. Refer to [Automatic retries](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/) for which calls it retries.
+
+Errors that reach your code may include `.retryable` and `.overloaded` properties indicating whether the operation can be retried. For transient failures, implement exponential backoff to avoid overwhelming the system.
 
 Refer to [Error handling](https://developers.cloudflare.com/durable-objects/best-practices/error-handling/) for details on error properties, retry strategies, and exponential backoff patterns.
 
@@ -2645,5 +2647,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-10-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/og.png?v=238433fba2f60d80","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

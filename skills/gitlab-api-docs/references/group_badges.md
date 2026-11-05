@@ -110,7 +110,7 @@ POST /groups/:id/badges
 curl --request POST \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/:id/badges" \
-  --data "link_url=https://gitlab.com/gitlab-org/gitlab-foss/commits/master&image_url=https://shields.io/my/badge1&name=mybadge&position=0"
+  --data "link_url=https://gitlab.com/gitlab-org/gitlab-foss/-/commits/master&image_url=https://shields.io/my/badge1&name=mybadge&position=0"
 ```
 
 Example response:
@@ -119,9 +119,9 @@ Example response:
 {
   "id": 1,
   "name": "mybadge",
-  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/master",
   "image_url": "https://shields.io/my/badge1",
-  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/master",
   "rendered_image_url": "https://shields.io/my/badge1",
   "kind": "group"
 }
@@ -155,9 +155,9 @@ Example response:
 {
   "id": 1,
   "name": "mybadge",
-  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+  "link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/master",
   "image_url": "https://shields.io/my/badge",
-  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/commits/master",
+  "rendered_link_url": "https://gitlab.com/gitlab-org/gitlab-foss/-/commits/master",
   "rendered_image_url": "https://shields.io/my/badge",
   "kind": "group"
 }

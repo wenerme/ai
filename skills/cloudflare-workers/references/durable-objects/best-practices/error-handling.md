@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/durable-objects/best-practices/error-ha
 
 # Error handling
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/error-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/error-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Any uncaught exceptions thrown by a Durable Object or thrown by Durable Objects' infrastructure (such as overloads or network errors) will be propagated to the callsite of the client. Catching these exceptions allows you to retry creating the [`DurableObjectStub`](https://developers.cloudflare.com/durable-objects/api/stub) and sending requests.
 
-JavaScript Errors with the property `.retryable` set to True are suggested to be retried if requests to the Durable Object are idempotent, or can be applied multiple times without changing the response. If requests are not idempotent, then you will need to decide what is best for your application. It is strongly recommended to apply exponential backoff when retrying requests.
+The runtime retries some failures before they reach your code. For more information, refer to [Automatic retries](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/).
+
+JavaScript Errors with the property `.retryable` set to True are transient. If one reaches your code, either the runtime ran out of retries, or the failure happened after the request reached the Durable Object. Retry it yourself only if requests to the Durable Object are idempotent, or can be applied multiple times without changing the response. If requests are not idempotent, then you will need to decide what is best for your application. It is strongly recommended to apply exponential backoff when retrying requests.
 
 JavaScript Errors with the property `.overloaded` set to True should not be retried. If a Durable Object is overloaded, then retrying will worsen the overload and increase the overall error rate.
 
@@ -36,6 +38,8 @@ Refer to [Troubleshooting](https://developers.cloudflare.com/durable-objects/obs
 ## Example
 
 This example demonstrates retrying requests using the recommended exponential backoff algorithm.
+
+The runtime also retries each attempt in this loop, so three attempts here can become up to 15 attempts in total. Keep the attempt count low, or set [`retry: { maxRetries: 0 }`](https://developers.cloudflare.com/durable-objects/best-practices/automatic-retries/#set-retry-limits-for-a-stub) on the stub if your loop should be the only source of retries.
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -114,5 +118,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/#page","headline":"Error handling","description":"Handle exceptions from Durable Objects, including retryable and overloaded errors, with recommended patterns.","url":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/og.png?v=0f317caa41cf83e0","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/#page","headline":"Error handling","description":"Handle exceptions from Durable Objects, including retryable and overloaded errors, with recommended patterns.","url":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/best-practices/error-handling/og.png?v=0f317caa41cf83e0","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

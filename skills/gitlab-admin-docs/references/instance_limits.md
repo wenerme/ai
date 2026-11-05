@@ -991,6 +991,19 @@ The [changelog API](../api/repositories.md#add-changelog-data-to-file) enforces 
 - Each namespace (such as a group or a project) can have a maximum of 50 value streams.
 - Each value stream can have a maximum of 15 stages.
 
+### Stages per top-level namespace
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267098) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `vsa_hierarchy_stage_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+A top-level group or personal namespace, including all of its subgroups and projects,
+can have a maximum of 750 stages across all of its value streams. Existing stages are
+kept when a hierarchy is at the limit. You can still edit or remove them, but you cannot
+add more.
+
 ## Audit events streaming destination limits
 
 ### Custom HTTP Endpoint

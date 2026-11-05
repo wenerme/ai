@@ -2814,7 +2814,24 @@ For Gemini 3 series models, you can include multimodal content in
 the function response parts that you send to the model. The model can process
 this multimodal content in its next turn to produce a more informed response.
 
-To include multimodal data in a function response, include it as one or more content blocks in the `result` field of the `function_result` step. Each content block must specify its `type` (e.g., `"text"`, `"image"`).
+To include multimodal data in a function response, include it as one or more content blocks in the `result` field of the `function_result` step. Each content block must specify its `type`. The following types are supported:
+
+* **`text`**
+* **`image`**: `image/png`, `image/jpeg`, `image/webp`
+* **`document`**: `application/pdf`, `text/csv`, and
+  [Office and OpenDocument files](/docs/document-processing#office-documents)
+  (DOCX, DOC, DOTX, ODT, PPTX, PPT, ODP, XLSX, XLS, ODS)
+* **`audio`**: [Supported audio formats](/docs/audio#supported-formats)
+* **`video`**: [Supported video formats](/docs/video-understanding#supported-formats)
+  (available in `v1beta` and `v1alpha`)
+
+Each media block accepts either base64-encoded `data` or a `uri`, such as a
+[Files API](/docs/files) URI. Files in function results are processed the same
+way as the same file in a regular input. See
+[Return files by URI](/docs/function-calling#file-uri) for an example.
+
+If a block uses an unsupported MIME type, the API returns a `400
+INVALID_ARGUMENT` error that names the field and lists the accepted types.
 
 The following example shows how to send a function response containing image data back to the model in an interaction:
 
@@ -3056,6 +3073,145 @@ The following example shows how to send a function response containing image dat
           fmt.Println(finalResp.Interaction.GetOutputText())
       }
   }
+  ```
+
+  {% /tab %}
+
+{% /tabs %}
+
+### Return files by URI  {% id="file-uri" %}
+
+Inline data counts toward the request size limit. For large files, such as
+videos, long audio, or multi-page documents, upload the file with the
+[Files API](/docs/files) and return its `uri` instead of inline `data`.
+
+The following example shows a `view_file` tool that returns an Excel
+spreadsheet and a video by their Files API URIs. For `video` blocks, you can set
+`processing` to `"static"` or `"agentic"`. If you don't set it, the same default
+applies as for an input video. For details, see
+[Agentic video understanding](/docs/video-understanding#agentic-video-understanding).
+
+{% tabs %}
+  {% tab filename="sample.py" label="Python" %}
+  ```python
+  from google import genai
+  
+  client = genai.Client()
+  
+  tool_call = next(s for s in interaction.steps if s.type == "function_call")
+  
+  # Your tool uploads the files and returns their URIs.
+  sheet = client.files.upload(
+      file="q3_sales.xlsx",
+      config={"mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+  )
+  clip = client.files.upload(file="store_walkthrough.mp4")
+  
+  final_interaction = client.interactions.create(
+      model="gemini-3.8-flash",
+      previous_interaction_id=interaction.id,
+      input=[
+          {
+              "type": "function_result",
+              "name": tool_call.name,
+              "call_id": tool_call.id,
+              "result": [
+                  {"type": "text", "text": "{\"status\": \"ok\"}"},
+                  {
+                      "type": "document",
+                      "uri": sheet.uri,
+                      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                  },
+                  {
+                      "type": "video",
+                      "uri": clip.uri,
+                      "mime_type": "video/mp4",
+                      "processing": "agentic",
+                  },
+              ],
+          }
+      ],
+  )
+  
+  print(final_interaction.output_text)
+  ```
+
+  {% /tab %}
+
+  {% tab filename="sample.js" label="JavaScript" %}
+  ```javascript
+  import { GoogleGenAI } from "@google/genai";
+  
+  const client = new GoogleGenAI({});
+  
+  const toolCall = interaction.steps.find(s => s.type === 'function_call');
+  
+  // Your tool uploads the files and returns their URIs.
+  const sheet = await client.files.upload({
+      file: 'q3_sales.xlsx',
+      config: { mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' },
+  });
+  const clip = await client.files.upload({ file: 'store_walkthrough.mp4' });
+  
+  const finalInteraction = await client.interactions.create({
+      model: 'gemini-3.8-flash',
+      previous_interaction_id: interaction.id,
+      input: [{
+          type: 'function_result',
+          name: toolCall.name,
+          call_id: toolCall.id,
+          result: [
+              { type: 'text', text: '{"status": "ok"}' },
+              {
+                  type: 'document',
+                  uri: sheet.uri,
+                  mime_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+              },
+              {
+                  type: 'video',
+                  uri: clip.uri,
+                  mime_type: 'video/mp4',
+                  processing: 'agentic',
+              }
+          ]
+      }]
+  });
+  
+  console.log(finalInteraction.output_text);
+  ```
+
+  {% /tab %}
+
+  {% tab filename="sample.sh" label="REST" %}
+  ```shell
+  curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    -H "x-goog-api-key: $GEMINI_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "gemini-3.8-flash",
+      "previous_interaction_id": "INTERACTION_ID",
+      "input": [
+        {
+          "type": "function_result",
+          "name": "view_file",
+          "call_id": "call_123",
+          "result": [
+            {"type": "text", "text": "{\"status\": \"ok\"}"},
+            {
+              "type": "document",
+              "uri": "https://generativelanguage.googleapis.com/v1beta/files/SHEET_FILE_ID",
+              "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            },
+            {
+              "type": "video",
+              "uri": "https://generativelanguage.googleapis.com/v1beta/files/VIDEO_FILE_ID",
+              "mime_type": "video/mp4",
+              "processing": "agentic"
+            }
+          ]
+        }
+      ]
+    }'
   ```
 
   {% /tab %}

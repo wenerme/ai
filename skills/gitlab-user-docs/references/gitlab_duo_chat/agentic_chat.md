@@ -144,11 +144,8 @@ To trigger a flow from Chat:
 #### Start a long-running task with the `/goal` command
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23107) in GitLab 19.5 [with a feature flag](../../administration/feature_flags/_index.md) named `duo_chat_goal_command`. Disabled by default.
-- [Enabled on GitLab.com](https://gitlab.com/groups/gitlab-org/-/work_items/23107) in GitLab 19.5.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260971) in GitLab 19.5.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267398) in GitLab 19.6. Feature flag `duo_chat_goal_command` removed.
 
 Use `/goal` when you want GitLab Duo to keep working on a task until it's done,
 instead of answering one turn at a time and waiting for you to ask it to continue.

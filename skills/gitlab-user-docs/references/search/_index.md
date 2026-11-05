@@ -20,8 +20,9 @@ For code search, GitLab uses these types in this order:
 
 ## Available scopes
 
-- Groups scope [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249760) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `elasticsearch_group_search`. Disabled by default.
-- Groups scope [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/607018) in GitLab 19.5. Feature flag `elasticsearch_group_search` removed.
+- Groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249760) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `elasticsearch_group_search`. Disabled by default.
+- Groups [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/607018) in GitLab 19.5. Feature flag `elasticsearch_group_search` removed.
+- Group basic search [changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/632917) to return milestones of subgroups in GitLab 19.6.
 
 Scopes describe the type of data you're searching.
 The following scopes are available for basic search:
@@ -34,13 +35,18 @@ The following scopes are available for basic search:
 | Groups         |     Yes     | Yes | No |
 | Work items     |     Yes     | Yes | Yes |
 | Merge requests |     Yes     | Yes | Yes |
-| Milestones[^global-basic-search] |     Yes     | Yes | Yes |
+| Milestones[^basic-search-milestones] |     Yes     | Yes | Yes |
 | Projects       |     Yes     | Yes | No |
 | Users          |     Yes     | Yes | Yes |
 | Wikis          |     No      | No  | Yes |
 
 [^disable-global-search-scopes]: An administrator can [disable global search scopes](#disable-global-search-scopes).
-[^global-basic-search]: Global basic search returns only project milestones, not group milestones.
+[^basic-search-milestones]: Global basic search returns only project milestones.
+    Group basic search returns milestones of the group, its parent groups, and its subgroups
+    and milestones of projects in the group and its subgroups.
+    Project basic search returns milestones of the project, its group, and the parent groups of that group.
+    In global and group basic search, milestones of archived groups and projects are returned only when you
+    [include archived projects](#include-archived-projects-in-search-results).
 
 ## Specify a search type
 

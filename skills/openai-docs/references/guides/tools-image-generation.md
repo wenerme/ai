@@ -1142,6 +1142,7 @@ The following non-deprecated models have documented support for the image genera
 - [`gpt-5.6-sol`](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
 - [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra)
 - [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra)
+- [`gpt-6-cyber`](https://developers.openai.com/api/docs/models/gpt-6-cyber)
 - [`gpt-6-luna`](https://developers.openai.com/api/docs/models/gpt-6-luna)
 - [`gpt-6-sol`](https://developers.openai.com/api/docs/models/gpt-6-sol)
 - [`gpt-6.1-sol`](https://developers.openai.com/api/docs/models/gpt-6.1-sol)

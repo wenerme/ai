@@ -1,7 +1,7 @@
 ---
 title: "Qwen-Image-Edit-2511：ComfyUI 高一致性图像编辑"
 description: "在 ComfyUI 中使用 Qwen-Image-Edit-2511 编辑图像：角色与多人一致性更强，内置社区 LoRA，支持材质替换与几何构造线生成。"
-translationSourceHash: ca30ed5e
+translationSourceHash: 4824ce99
 translationFrom: tutorials/image/qwen/qwen-image-edit-2511.mdx
 ---
 
@@ -94,4 +94,71 @@ translationFrom: tutorials/image/qwen/qwen-image-edit-2511.mdx
 │   │      └── qwen_image_edit_2511_bf16.safetensors
 │   └── 📂 vae/
 │          └── qwen_image_vae.safetensors
+```
+
+### Qwen-Image-Edit-2511 多角度：使用 3D 相机节点 {#template_qwen_multiangle_app}
+
+上传一张照片，在 3D 视图中围绕主体转动相机，Qwen-Image-Edit-2511 就会按你选的角度重绘同一个主体。该模板把编辑模型与多角度 LoRA 搭配使用，一张输入图即可从任意角度重新拍摄同一主体。
+
+[Qwen-Image-Edit-2511 多角度工作流预览]
+
+  
+    在 Comfy Cloud 中打开
+  
+  
+    下载 JSON，或在模板库中搜索「Generate Multiple Angles with 3D Camera Node」
+  
+
+**输入素材**
+
+把文件放入 `LoadImage` 节点：
+
+  
+    `LoadImage` 节点 1
+  
+
+#### 相机角度控件
+
+**Compose Camera Angle Prompt** 节点在角度输入框上方加了一个 3D 视图。在视图中选定视角后，节点会把镜头描述（例如 `front view eye-level shot medium shot`）写入工作流的提示词，你不必手动输入。移动视角时，角度输入框会同步更新。
+
+- **Camera / Object**：**Camera** 让你绕主体移动，**Object** 则透过镜头转动主体。
+- **Horizontal angle、Vertical angle、Shot size**：按名称快速定位：水平方向绕主体 8 个位置（`Front` 到 `Front left`），垂直方向 4 档（`Low angle` 到 `High angle`），景别 3 档（`Wide shot` 到 `Close-up`）；在 3D 视图中拖动也会写入同样的数值。
+- **Preview**：画中画窗口显示相机取景范围内的画面。
+
+把图像接到节点的可选图像输入，它会显示在主体的正面，转动时更容易分清左右。
+
+Turbo 模式（`enable_turbo_mode`，子图节点上的控件）默认开启：4 步、CFG 1，并加载 4 步 Lightning LoRA。关闭后改用 40 步、CFG 4，且不加载该 LoRA。
+
+**本工作流的模型下载**
+
+  
+    放到 <code>ComfyUI/models/diffusion_models/</code>
+  
+  
+    放到 <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    放到 <code>ComfyUI/models/vae/</code>
+  
+  
+    放到 <code>ComfyUI/models/loras/</code>
+  
+  
+    放到 <code>ComfyUI/models/loras/</code>
+  
+
+**模型存储位置**
+
+```
+📂 ComfyUI/
+├── 📂 models/
+│   ├── 📂 diffusion_models/
+│   │   └── qwen_image_edit_2511_int8_convrot.safetensors
+│   ├── 📂 text_encoders/
+│   │   └── qwen_2.5_vl_7b_fp8_scaled.safetensors
+│   ├── 📂 vae/
+│   │   └── qwen_image_vae.safetensors
+│   └── 📂 loras/
+│       ├── qwen-image-edit-2511-multiple-angles-lora.safetensors
+│       └── Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors
 ```

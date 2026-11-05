@@ -94,8 +94,8 @@ if [[ -d "/builds/gitlab-examples/ci-debug-trace/.git" ]]; then
 ++ CI_SERVER_TLS_CA_FILE=/builds/gitlab-examples/ci-debug-trace.tmp/CI_SERVER_TLS_CA_FILE
 ++ export CI_PIPELINE_ID=52666
 ++ CI_PIPELINE_ID=52666
-++ export CI_PIPELINE_URL=https://gitlab.com/gitlab-examples/ci-debug-trace/pipelines/52666
-++ CI_PIPELINE_URL=https://gitlab.com/gitlab-examples/ci-debug-trace/pipelines/52666
+++ export CI_PIPELINE_URL=https://gitlab.com/gitlab-examples/ci-debug-trace/-/pipelines/52666
+++ CI_PIPELINE_URL=https://gitlab.com/gitlab-examples/ci-debug-trace/-/pipelines/52666
 ++ export CI_JOB_ID=7046507
 ++ CI_JOB_ID=7046507
 ++ export CI_JOB_URL=https://gitlab.com/gitlab-examples/ci-debug-trace/-/jobs/379424655

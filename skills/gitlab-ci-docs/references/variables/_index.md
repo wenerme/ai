@@ -406,9 +406,19 @@ job:
 ## Allow CI/CD variable expansion
 
 - **Expand variable** option [disabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209144) by default in GitLab 18.6.
+- Expanded variable size limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265796) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_variable_expansion_size_limit`. Enabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 You can set a variable to treat values with the `$` character as a reference to another variable.
 When the pipeline runs, the reference expands to use the value of the referenced variable.
+
+Expanded references can add at most 10 MiB to a job's variables. If a job goes over this limit,
+pipeline creation fails with the error ``expanded variables exceed the limit of 10 MiB at variable `<name>` ``.
+Keywords that expand variables, like `environment`, have the same limit for each value.
+A value over the limit is not expanded.
 
 CI/CD variables defined in the UI are not expanded by default. For CI/CD variables defined in
 the `.gitlab-ci.yml` file, control variable expansion with the [`variables:expand` keyword](../yaml/_index.md#variablesexpand).

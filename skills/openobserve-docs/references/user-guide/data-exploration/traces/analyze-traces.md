@@ -23,7 +23,7 @@ If profile samples carry the span's `trace_id` and `span_id`, the span sidebar s
 
 ## Automatic RED insights
 
-:::info[Enterprise]
+:::note[Enterprise]
 RED insights is available in Enterprise builds only.
 
 Go to **Settings** > **Organization Parameters** and, under **Traces**, turn on **Enable automatic RED insights for traces**. It is off by default. Every 6 hours, OpenObserve then creates rate, error-ratio, and p95-latency anomaly detectors for up to 20 of the busiest services, those with at least 10,000 requests in 24 hours. The detectors go in the **RED insights** alert folder, tagged `auto:red-insights`, which only admins see until it is shared. Turning the setting off deletes them at the next cycle.

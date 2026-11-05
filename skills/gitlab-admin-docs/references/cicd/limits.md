@@ -563,6 +563,34 @@ To configure the per user and project limit:
 1. Set a value for **Maximum job cancellations per project**.
 1. Select **Save changes**.
 
+## Runner job list rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268206) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_rate_limit_runner_job_list_completed_statuses`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+Repeated requests that list a runner's jobs filtered by a completed status can put significant load on your instance.
+To protect against this, you can limit how many of these requests each user can send.
+
+This rate limit applies to the `jobs` field of the [`CiRunner`](../../api/graphql/reference/objects.md#cirunner)
+GraphQL type when its `statuses` argument includes `SUCCESS`, `FAILED`, or `CANCELED`.
+This limit does not apply to requests filtered only by other statuses, or not filtered by status.
+
+GitLab enforces the following limit:
+
+- Per user: Configurable, with a default of `330` requests each minute.
+
+Set the limit to `0` to disable it. If the limit is exceeded, the request returns an error.
+
+To configure the limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Set a value for **Maximum runner job lists filtered by completed status per user**.
+1. Select **Save changes**.
+
 ## Maximum artifacts size
 
 Set size limits for job artifacts to control storage use.
