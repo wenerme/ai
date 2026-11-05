@@ -122,8 +122,8 @@
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
     "skill": "google-ai-docs",
-    "size": 34015,
-    "updatedAt": "2026-11-03T17:55:35.158Z"
+    "size": 34318,
+    "updatedAt": "2026-11-05T06:31:29.688Z"
   },
   "google-ai-docs/grounding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/grounding",

@@ -5,7 +5,7 @@ description: "Browse Tencent TokenHub model IDs, capabilities, context windows, 
 
 # [Tencent TokenHub logo]Tencent TokenHub
 
-Access 3 Tencent TokenHub models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKENHUB_API_KEY` environment variable.
+Access 4 Tencent TokenHub models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKENHUB_API_KEY` environment variable.
 
 Learn more in the [Tencent TokenHub documentation](https://cloud.tencent.com/document/product/1823/130050).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "tencent-tokenhub/hy4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.834,
+    "outputCost": 2.501
   },
   {
     "model": "tencent-tokenhub/hy4-preview",

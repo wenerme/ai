@@ -2,7 +2,7 @@
 title: '`glab snippet`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Create snippets.
@@ -19,6 +19,12 @@ To view and edit existing snippets, use the GitLab UI or `glab api` with the [Pr
 
 ```console
 glab snippet create --title "Title of the snippet" --filename "main.go"
+```
+
+## Arguments
+
+```plaintext
+Specify a snippet by number, for example "123".
 ```
 
 ## Options

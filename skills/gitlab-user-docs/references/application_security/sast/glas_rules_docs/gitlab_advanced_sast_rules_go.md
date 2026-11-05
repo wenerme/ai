@@ -5,6 +5,14 @@
 
 Rules used by GitLab Advanced SAST to detect vulnerabilities in Go code.
 
+If a rule reports a finding in code you know is safe, you can:
+
+- [Suppress findings on that line](../gitlab_advanced_sast.md#exclude-lines).
+- [Disable the rule](../customize_rulesets.md#disable-specific-default-gitlab-advanced-sast-rules).
+- [Dismiss the vulnerability](../../vulnerabilities/_index.md#vulnerability-dismissal-reasons).
+
+If the finding is a real vulnerability, [remediate it](../../remediate/_index.md).
+
 | Rule ID | Rule description | CWE | OWASP Top 10 |
 |---------|------------------|-----|--------------|
 | `go-gocql-sqli-session-taint` | Improper neutralization of special elements used in a SQL command ('SQL Injection') | [CWE-89](https://cwe.mitre.org/data/definitions/89.html) | A1:2017, A03:2021 |

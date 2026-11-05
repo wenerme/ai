@@ -194,7 +194,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -223,6 +223,10 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -528,7 +532,8 @@ curl https://api.openai.com/v1/agents \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "updated_at": 0,

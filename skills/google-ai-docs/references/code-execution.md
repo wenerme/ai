@@ -124,7 +124,7 @@ allows the model to generate and run code.
       callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
     } else if (step instanceof CodeExecutionResultStep) {
       CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-      System.out.println(resultStep.result().orElse(""));
+      System.out.println(resultStep.result().flatMap(r -> r.string()).orElse(""));
     }
   }
   ```
@@ -180,7 +180,9 @@ allows the model to generate and run code.
                   fmt.Println(*code)
               }
           } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-              fmt.Println(resultStep.GetResult())
+              if result := resultStep.GetResult().Str; result != nil {
+                  fmt.Println(*result)
+              }
           }
       }
   }
@@ -449,7 +451,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
       callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
     } else if (step instanceof CodeExecutionResultStep) {
       CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-      System.out.println(resultStep.result().orElse(""));
+      System.out.println(resultStep.result().flatMap(r -> r.string()).orElse(""));
     }
   }
   ```
@@ -531,7 +533,9 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
                   fmt.Println(*code)
               }
           } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-              fmt.Println(resultStep.GetResult())
+              if result := resultStep.GetResult().Str; result != nil {
+                  fmt.Println(*result)
+              }
           }
       }
   }
@@ -717,7 +721,7 @@ You can also use code execution as part of a multi-turn conversation using
       callStep.arguments().ifPresent(args -> System.out.println(args.code().orElse("")));
     } else if (step instanceof CodeExecutionResultStep) {
       CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
-      System.out.println(resultStep.result().orElse(""));
+      System.out.println(resultStep.result().flatMap(r -> r.string()).orElse(""));
     }
   }
   ```
@@ -790,7 +794,9 @@ You can also use code execution as part of a multi-turn conversation using
                   fmt.Println(*code)
               }
           } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
-              fmt.Println(resultStep.GetResult())
+              if result := resultStep.GetResult().Str; result != nil {
+                  fmt.Println(*result)
+              }
           }
       }
   }

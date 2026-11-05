@@ -1573,6 +1573,8 @@ tags:
   x-displayName: Service accounts
   externalDocs:
     url: https://docs.gitlab.com/api/service_accounts/
+- name: Service ping
+  description: Operations related to service ping.
 - name: Sidekiq
   description: |-
     Use this API to retrieve information about the current state of Sidekiq, including its jobs, queues,
@@ -2856,8 +2858,14 @@ paths:
           description: Created
         '401':
           description: Unauthorized
+        '402':
+          description: Payment required
+        '403':
+          description: Forbidden
         '404':
           description: Not found
+        '422':
+          description: Unprocessable entity
         '429':
           description: Too many requests
         '503':
@@ -3268,6 +3276,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: Not found
+        '422':
+          description: Unprocessable entity
       requestBody:
         required: false
         content:
@@ -3364,12 +3374,51 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/patchApiV4AiDuoWorkflowsWorkflowsIdRequest"
+  "/api/v4/ai/duo_workflows/workflows/{id}/tool_access_policies":
+    get:
+      operationId: getApiV4AiDuoWorkflowsWorkflowsIdToolAccessPolicies
+      summary: Get the tool access policy for a workflow
+      description: Returns the tool access policy for a workflow, for DWS to use when
+        its token carries none.
+      tags:
+      - GitLab Duo workflows
+      - Internal operations
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: id
+        required: true
+        description: ID of the workflow.
+        schema:
+          type: integer
+        in: path
+        example: 1
+      - name: project_id
+        required: false
+        description: ID of the project the session runs in. It can only make the policy
+          stricter.
+        schema:
+          type: integer
+          nullable: true
+        in: query
+        example: 1
   "/api/v4/ai/duo_workflows/workflows/{id}/catalog_items":
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsIdCatalogItems
       summary: Get the AI Catalog item a workflow runs, with its sub-items
       description: Returns the saved AI Catalog item this session runs and its resolved
         subagents. A subagent the user cannot use has an error instead of a definition.
+        When a setting turns subagents off, sub_items is empty and sub_items_skipped_reason
+        says which setting.
       tags:
       - GitLab Duo workflows
       - Internal operations
@@ -3885,6 +3934,8 @@ paths:
           description: 403 Forbidden
         '404':
           description: Not found
+        '422':
+          description: Unprocessable entity
         '429':
           description: Too many requests
       requestBody:
@@ -10247,6 +10298,8 @@ paths:
           description: Forbidden
         '401':
           description: Unauthorized
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       parameters:
@@ -73949,6 +74002,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          description: Bad request
         '401':
           description: Unauthorized
         '403':
@@ -73957,8 +74012,6 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
-        '400':
-          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -74501,6 +74554,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
         '400':
           description: Bad Request
       parameters:
@@ -75755,7 +75810,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunner"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '401':
@@ -75913,7 +75968,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunner"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '401':
@@ -76335,7 +76390,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunner"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '403':
@@ -76456,7 +76511,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunner"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Bad Request
         '403':
@@ -76534,7 +76589,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesCiRunner"
+                "$ref": "#/components/schemas/APIEntitiesCiRunnerWithUuid"
         '400':
           description: Scope contains invalid value
         '403':
@@ -83924,6 +83979,8 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '404':
+          description: 404 Not found
         '400':
           description: Bad Request
       parameters:
@@ -84127,6 +84184,8 @@ paths:
           description: 401 Unauthorized
         '403':
           description: 403 Forbidden
+        '404':
+          description: 404 Not found
         '400':
           description: Bad Request
       parameters:
@@ -85076,7 +85135,7 @@ components:
         extern_uid:
           type: string
         saml_provider_id:
-          type: string
+          type: integer
     APIEntitiesScimIdentity:
       type: object
       properties:
@@ -92340,14 +92399,20 @@ components:
       properties:
         emoji:
           type: string
+          example: coffee
         message:
           type: string
+          example: I crave coffee
         availability:
           type: string
+          example: busy
         message_html:
           type: string
+          example: <p dir="auto">I crave coffee</p>
         clear_status_at:
           type: string
+          format: date-time
+          example: '2026-10-28T10:00:00.000Z'
     APIEntitiesUser:
       type: object
       properties:
@@ -92646,11 +92711,16 @@ components:
       type: object
       properties:
         id:
-          type: string
+          type: integer
+          format: int64
+          example: 1
         email:
           type: string
+          example: user@example.com
         confirmed_at:
           type: string
+          format: date-time
+          example: '2015-12-24T15:51:21.880Z'
     APIEntitiesMembership:
       type: object
       properties:
@@ -92666,13 +92736,17 @@ components:
       type: object
       properties:
         groups_count:
-          type: string
+          type: integer
+          example: 1
         projects_count:
-          type: string
+          type: integer
+          example: 1
         issues_count:
-          type: string
+          type: integer
+          example: 1
         merge_requests_count:
-          type: string
+          type: integer
+          example: 1
     APIEntitiesImpersonationToken:
       type: object
       properties:
@@ -92814,15 +92888,21 @@ components:
       properties:
         username:
           type: string
+          example: johndoe
         last_activity_on:
           type: string
+          format: date
+          example: '2015-12-24'
         last_activity_at:
           type: string
+          format: date
+          example: '2015-12-24'
     APIEntitiesAvatar:
       type: object
       properties:
         avatar_url:
           type: string
+          example: https://example.com/avatar.png
     APIEntitiesApplicationWithSecret:
       type: object
       properties:
@@ -94079,6 +94159,8 @@ components:
           type: string
         issuable_csv_import_limit:
           type: string
+        label_delete_limit:
+          type: string
         project_api_limit:
           type: string
         project_invited_groups_api_limit:
@@ -94130,6 +94212,8 @@ components:
         web_hook_test_limit:
           type: string
         wiki_read_request_limit_unauthenticated:
+          type: string
+        work_item_hierarchy_add_children_limit:
           type: string
         github_gists_import_limit:
           type: string
@@ -102274,6 +102358,59 @@ components:
         file_extension:
           type: string
           example: jks
+    APIEntitiesCiRunnerWithUuid:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 8
+        description:
+          type: string
+          example: test-1-20150125
+        ip_address:
+          type: string
+          example: 127.0.0.1
+        active:
+          type: boolean
+          example: true
+        paused:
+          type: boolean
+          example: false
+        is_shared:
+          type: boolean
+          example: true
+        runner_type:
+          type: string
+          enum:
+          - instance_type
+          - group_type
+          - project_type
+          example: instance_type
+        name:
+          type: string
+          example: test
+        online:
+          type: boolean
+          example: true
+        created_by:
+          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-05-03T00:00:00.000Z'
+        status:
+          type: string
+          example: online
+        job_execution_status:
+          type: string
+          enum:
+          - active
+          - idle
+          example: idle
+        uuid:
+          type: string
+          example: '01966aa0-f383-7a6b-b694-cd4f2f96cca1'
     APIEntitiesCiRunnerDetails:
       type: object
       properties:
@@ -102324,6 +102461,9 @@ components:
           - active
           - idle
           example: idle
+        uuid:
+          type: string
+          example: '01966aa0-f383-7a6b-b694-cd4f2f96cca1'
         tag_list:
           type: string
         run_untagged:
@@ -102516,25 +102656,29 @@ components:
         name:
           type: string
         script:
-          type: string
+          type: array
+          items:
+            type: string
         timeout:
-          type: string
+          type: integer
         when:
           type: string
         allow_failure:
-          type: string
+          type: boolean
     APIEntitiesCiJobRequestHook:
       type: object
       properties:
         name:
           type: string
         script:
-          type: string
+          type: array
+          items:
+            type: string
     APIEntitiesCiJobRequestPort:
       type: object
       properties:
         number:
-          type: string
+          type: integer
         protocol:
           type: string
         name:
@@ -102577,11 +102721,15 @@ components:
         name:
           type: string
         untracked:
-          type: string
+          type: boolean
         paths:
-          type: string
+          type: array
+          items:
+            type: string
         exclude:
-          type: string
+          type: array
+          items:
+            type: string
         when:
           type: string
         expire_in:
@@ -102596,15 +102744,19 @@ components:
         key:
           type: string
         untracked:
-          type: string
+          type: boolean
         paths:
-          type: string
+          type: array
+          items:
+            type: string
         policy:
           type: string
         when:
           type: string
         fallback_keys:
-          type: string
+          type: array
+          items:
+            type: string
     APIEntitiesCiJobRequestCredentials:
       type: object
       properties:
@@ -103447,6 +103599,12 @@ components:
         web_hook_calls_mid:
           type: integer
           example: 500
+        integration_executions:
+          type: integer
+          example: 500
+        integration_executions_datadog:
+          type: integer
+          example: 3000
         max_pipelines_per_merge_train:
           type: integer
           example: 20
@@ -114026,6 +114184,9 @@ components:
         issuable_csv_import_limit:
           type: string
           nullable: true
+        label_delete_limit:
+          type: string
+          nullable: true
         project_api_limit:
           type: string
           nullable: true
@@ -114072,6 +114233,9 @@ components:
           type: string
           nullable: true
         wiki_read_request_limit_unauthenticated:
+          type: string
+          nullable: true
+        work_item_hierarchy_add_children_limit:
           type: string
           nullable: true
         observability_backend_ssl_verification_enabled:
@@ -137059,6 +137223,17 @@ components:
           type: integer
           description: Maximum number of times a webhook can be called per minute,
             per top-level namespace. Set to `0` for unlimited. GitLab.com only.
+          nullable: true
+        integration_executions:
+          type: integer
+          description: Maximum number of integration executions that can be enqueued
+            per minute, per top-level namespace, excluding Datadog. Set to `0` for
+            unlimited.
+          nullable: true
+        integration_executions_datadog:
+          type: integer
+          description: Maximum number of Datadog integration executions that can be
+            enqueued per minute, per top-level namespace. Set to `0` for unlimited.
           nullable: true
         max_pipelines_per_merge_train:
           type: integer

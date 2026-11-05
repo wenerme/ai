@@ -41,6 +41,8 @@ GitLab and the runner are then connected.
 
 ## List all available runners
 
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
+
 Lists all runners available to the user.
 
 Prerequisites:
@@ -98,6 +100,7 @@ Example response:
         "paused": false,
         "description": "test-1-20150125",
         "id": 6,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f06",
         "ip_address": "",
         "is_shared": false,
         "runner_type": "project_type",
@@ -111,6 +114,7 @@ Example response:
         "paused": false,
         "description": "test-2-20150125",
         "id": 8,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f08",
         "ip_address": "",
         "is_shared": false,
         "runner_type": "group_type",
@@ -126,6 +130,8 @@ Example response:
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
+
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
 
 Lists all runners in the GitLab instance (project and shared).
 
@@ -183,6 +189,7 @@ Example response:
         "paused": false,
         "description": "shared-runner-1",
         "id": 1,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f01",
         "ip_address": "",
         "is_shared": true,
         "runner_type": "instance_type",
@@ -196,6 +203,7 @@ Example response:
         "paused": false,
         "description": "shared-runner-2",
         "id": 3,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f03",
         "ip_address": "",
         "is_shared": true,
         "runner_type": "instance_type",
@@ -209,6 +217,7 @@ Example response:
         "paused": false,
         "description": "test-1-20150125",
         "id": 6,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f06",
         "ip_address": "",
         "is_shared": false,
         "runner_type": "project_type",
@@ -222,6 +231,7 @@ Example response:
         "paused": false,
         "description": "test-2-20150125",
         "id": 8,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f08",
         "ip_address": "",
         "is_shared": false,
         "runner_type": "group_type",
@@ -236,6 +246,8 @@ Example response:
 To view more than the first 20 runners, use [pagination](rest/_index.md#pagination).
 
 ## Retrieve runner's details
+
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
 
 Retrieves details of a runner.
 
@@ -292,6 +304,7 @@ Example response:
     "architecture": null,
     "description": "test-1-20150125",
     "id": 6,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f06",
     "ip_address": "",
     "is_shared": false,
     "runner_type": "project_type",
@@ -326,6 +339,8 @@ Example response:
 `token_expires_at` is returned only to users who can view the runner's sensitive data. For instance runners, that's administrators with admin mode enabled. The value is `null` if the runner's token has no expiry.
 
 ## Update runner's details
+
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
 
 Updates details of a runner.
 
@@ -385,6 +400,7 @@ Example response:
     "architecture": null,
     "description": "test-1-20150125-test",
     "id": 6,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f06",
     "ip_address": "",
     "is_shared": false,
     "runner_type": "group_type",
@@ -621,6 +637,8 @@ Example response:
 
 ## List all of a project's runners
 
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
+
 Lists all runners available in the project, including from ancestor groups and [any allowed instance runners](../ci/runners/runners_scope.md#enable-instance-runners-for-a-project).
 
 Prerequisites:
@@ -678,6 +696,7 @@ Example response:
         "paused": false,
         "description": "test-2-20150125",
         "id": 8,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f08",
         "ip_address": "",
         "is_shared": false,
         "runner_type": "project_type",
@@ -691,6 +710,7 @@ Example response:
         "paused": false,
         "description": "development_runner",
         "id": 5,
+        "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f05",
         "ip_address": "",
         "is_shared": true,
         "runner_type": "instance_type",
@@ -703,6 +723,8 @@ Example response:
 ```
 
 ## Assign a runner to project
+
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
 
 Assign an available project runner to the project.
 
@@ -744,6 +766,7 @@ Example response:
     "active": true,
     "description": "test-2016-02-01",
     "id": 9,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f09",
     "ip_address": "",
     "is_shared": false,
     "runner_type": "project_type",
@@ -784,6 +807,8 @@ curl --request DELETE \
 ```
 
 ## List all of a group's runners
+
+- `uuid` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266813) in GitLab 19.6.
 
 Lists all runners available in the group and its ancestor groups, including [any allowed instance runners](../ci/runners/runners_scope.md#enable-instance-runners-for-a-group).
 
@@ -842,6 +867,7 @@ Example response:
 [
   {
     "id": 3,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f03",
     "description": "Shared",
     "ip_address": "",
     "active": true,
@@ -855,6 +881,7 @@ Example response:
   },
   {
     "id": 6,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f06",
     "description": "Test",
     "ip_address": "",
     "active": true,
@@ -868,6 +895,7 @@ Example response:
   },
   {
     "id": 8,
+    "uuid": "0199d6a2-3c41-7e8b-9f2a-6b5c4d3e2f08",
     "description": "Test 2",
     "ip_address": "",
     "active": true,

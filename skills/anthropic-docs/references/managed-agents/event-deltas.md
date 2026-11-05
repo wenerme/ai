@@ -408,9 +408,8 @@ The following examples opt in to `agent.message` previews and reconcile them wit
               .build()
       );
 
-      Iterable<BetaManagedAgentsStreamSessionEvents> events = stream.stream()::iterator;
       deltas:
-      for (var event : events) {
+      for (var event : stream) {
           switch (event.type().value()) {
               case EVENT_START -> {
                   if (event.asEventStart().event().isAgentMessage()) {
@@ -596,7 +595,7 @@ A thread stream’s path ends in `/threads/{thread_id}/stream`. `/events/stream`
   curl --fail-with-body -sS -N \
     "https://api.anthropic.com/v1/sessions/$SESSION_ID/threads/$THREAD_ID/stream?beta=true&event_deltas%5B%5D=agent.message" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "accept: text/event-stream"
   ```
@@ -781,9 +780,8 @@ A thread stream’s path ends in `/threads/{thread_id}/stream`. `/events/stream`
               .addEventDelta(BetaManagedAgentsDeltaType.AGENT_MESSAGE)
               .build()
   )) {
-      Iterable<BetaManagedAgentsStreamSessionThreadEvents> events = stream.stream()::iterator;
       threadDeltas:
-      for (var event : events) {
+      for (var event : stream) {
           switch (event.type().value()) {
               case EVENT_DELTA -> IO.print(event.asEventDelta().delta().content().text());
               case AGENT_MESSAGE -> {

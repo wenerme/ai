@@ -2,7 +2,7 @@
 title: '`glab dependency-firewall pip`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Run Pip through the GitLab Dependency Firewall. (BETA)
@@ -35,6 +35,13 @@ glab dependency-firewall pip install requests
 # Install from a requirements file through the Dependency Firewall
 glab dependency-firewall pip install -r requirements.txt
 
+```
+
+## Environment variables
+
+```plaintext
+HTTPS_PROXY: outbound proxy glab uses to reach package registries. Credentials in the URL are sent to the proxy.
+NO_PROXY: hosts glab reaches directly instead of through HTTPS_PROXY.
 ```
 
 ## Options inherited from parent commands

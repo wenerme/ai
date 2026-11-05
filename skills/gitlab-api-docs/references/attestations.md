@@ -51,7 +51,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 | `predicate_kind` | string | Kind of predicate. Possible values: `provenance` or `sbom`. |
 | `predicate_type` | string | URI of the predicate type. |
 | `project_id` | integer | ID of the project. |
-| `signing_method` | string | [Attestation method](../ci/pipeline_security/slsa/level_3/_index.md#attestation-methods) used to sign the attestation. Possible values: `sigstore` or `local_ca`. |
+| `signing_method` | string | [Attestation method](../ci/pipeline_security/slsa/level_3/_index.md#attestation-methods) used to sign the attestation. Possible values: `sigstore` or `local_ca`. If `ATTEST_METHOD` is not set, defaults to `local_ca`, except for public projects on GitLab.com, which default to `sigstore`. |
 | `status` | string | Status of the attestation. Possible values: `success` or `error`. |
 | `subject_digest` | string | Hex-encoded SHA-256 hash of the artifact. |
 | `updated_at` | datetime | Date and time the attestation was last updated. |

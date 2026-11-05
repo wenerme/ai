@@ -820,6 +820,19 @@ Supported attributes:
 
 These endpoints apply to individual merge requests. All endpoints require authentication.
 
+A project, group, or instance setting, or a merge request approval policy, can
+[prevent editing approval rules in merge requests](../user/project/merge_requests/approvals/settings.md#prevent-editing-approval-rules-in-merge-requests).
+When editing is prevented, the following applies to open merge requests:
+
+- The merge request uses the project approval rules instead of `regular` and `any_approver` rules
+  defined on the merge request.
+  Rules of type `code_owner` and `report_approver` on the merge request still apply.
+  To get the rules that apply, use `GET /projects/:id/merge_requests/:merge_request_iid/approval_state`.
+  For more information, see [retrieve approval details for a merge request](#retrieve-approval-details-for-a-merge-request).
+- Requests to list all approval rules or retrieve an approval rule
+  return only rules stored on the merge request, such as `code_owner` rules.
+- Requests to create, update, or delete an approval rule for the merge request return `403 Forbidden`.
+
 ### Retrieve approval state for a merge request
 
 Retrieves the approval state for a specified merge request.

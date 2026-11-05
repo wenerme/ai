@@ -109,3 +109,37 @@ For more information on [redacting text](../repository/repository_size.md#redact
 - [Undo changes by using Git](../../../topics/git/undo.md)
 - [Revert a commit](../../../api/commits.md#revert-a-commit) with the Commits API
 - How changelogs [handle reverted commits](../changelogs.md#reverted-commit-handling)
+
+## Troubleshooting
+
+When reverting changes in the GitLab UI, you might encounter the following issues.
+
+### Error: `These changes conflict with changes on <branch>`
+
+When you revert a merge request or commit, you might get an error that states:
+
+```plaintext
+Merge request revert failed: These changes conflict with changes on <branch>. Revert locally to resolve the conflicts.
+```
+
+This issue occurs when later commits on the branch changed the same lines as the changes you revert.
+
+The GitLab UI cannot resolve revert conflicts.
+To resolve this issue, revert the changes on the command line and resolve the conflicts there.
+For more information, see [revert commits without altering history](../../../topics/git/undo.md#revert-commits-without-altering-history).
+
+### Error: `There is nothing to revert in <branch>`
+
+When you revert a merge request or commit, you might get an error that states:
+
+```plaintext
+Merge request revert failed: There is nothing to revert in <branch>.
+```
+
+This issue occurs when the revert would not change the branch. For example:
+
+- The changes were already reverted. No action is needed.
+- The changes were never on the branch. Check that you selected the correct branch.
+- The merge commit of the merge request contains no changes. This happens when the changes
+  reached the branch in another commit before the merge request merged.
+  To revert the changes, revert the original commits instead.

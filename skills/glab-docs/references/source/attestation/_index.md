@@ -2,7 +2,7 @@
 title: '`glab attestation`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Manage software attestations. (EXPERIMENTAL)
@@ -29,6 +29,14 @@ glab attestation verify gitlab-org/gitlab filename.txt
 
 # Verify attestation for filename.txt in the project with ID 123
 glab attestation verify 123 filename.txt
+```
+
+## Arguments
+
+```plaintext
+Specify a project in one of the following formats:
+- By number, for example "123"
+- By path, for example "gitlab-org/cli"
 ```
 
 ## Options inherited from parent commands

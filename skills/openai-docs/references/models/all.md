@@ -19,6 +19,8 @@ Compare capabilities and specifications.
 
 Models for image generation and editing.
 
+- [GPT-Image-2.6 Sunburst](/api/docs/models/gpt-image-2.6-sunburst.md): Image generation and editing for detailed visual work
+- [GPT-Image-2.6 Flare](/api/docs/models/gpt-image-2.6-flare.md): Image generation and editing for fast iteration
 - [GPT-Image-2.5 Sunburst](/api/docs/models/gpt-image-2.5-sunburst.md): Our most capable model for image generation and editing
 - [GPT-Image-2.5 Flare](/api/docs/models/gpt-image-2.5-flare.md): Fast, high-quality everyday image generation
 - [GPT-Image-2](/api/docs/models/gpt-image-2.md): State-of-the-art image generation model

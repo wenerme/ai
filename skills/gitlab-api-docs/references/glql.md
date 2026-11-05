@@ -687,7 +687,7 @@ The API returns the following HTTP status codes:
 | Status code                 | Description |
 |-----------------------------|-------------|
 | `200 Success`               | Query executed successfully. |
-| `400 Bad Request`           | Invalid query syntax, missing required parameters, or input exceeds size limit. |
+| `400 Bad Request`           | Invalid query syntax, configuration that is not YAML key-value pairs, a `query` value that is not a string, missing required parameters, or input exceeds size limit. |
 | `401 Unauthorized`          | Authentication required or invalid credentials. |
 | `403 Forbidden`             | Insufficient permissions or missing required OAuth scope. |
 | `429 Too Many Requests`     | Query rate limit exceeded. |

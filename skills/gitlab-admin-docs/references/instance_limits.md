@@ -133,6 +133,40 @@ Set the limit to `0` to disable it.
 
 - **Default rate limit**: Disabled (unlimited).
 
+### Integration execution rate limit
+
+- Introduced as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `integration_execution_budget`. Disabled by default.
+
+This setting is in beta and might be changed or removed without notice.
+
+Limit the number of times each minute that integration events in a top-level namespace
+are enqueued for execution. All project and group integrations in the namespace share this limit,
+including integrations inherited from an instance-level or group-level integration.
+[Datadog](../integration/datadog.md) has its own, separate limit, because it
+receives every pipeline and job event.
+
+The limits are:
+
+- `integration_executions`: all integrations except Datadog.
+- `integration_executions_datadog`: Datadog only.
+
+Events that exceed a limit are dropped and are not retried.
+
+To set these limits for a GitLab Self-Managed instance, use the [Plan Limits API](../api/plan_limits.md)
+or run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
+
+```ruby
+Plan.default.actual_limits.update!(integration_executions: 500, integration_executions_datadog: 3000)
+```
+
+Set a limit to `0` to disable it.
+
+By default, the feature only counts events that exceed a limit and logs them, without dropping
+anything. Events are dropped only when the `enforce_integration_execution_budget` (or, for Datadog,
+`enforce_integration_execution_budget_datadog`) feature flag is also enabled.
+
+- **Default rate limit**: Disabled (unlimited).
+
 ### Service Desk email rate limit
 
 - Introduced in GitLab 19.4 [with a feature flag](feature_flags/_index.md) named `service_desk_email_rate_limit`. Disabled by default.
@@ -271,6 +305,21 @@ When you rebase commits, commit messages that exceed the size limit are truncate
 This limit is separate from the size limits for commit titles and descriptions.
 
 - **Limit**: 10,240 bytes (10 KB).
+
+## Number of child items added in one request
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) in GitLab 19.6 [with a feature flag](feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+A single request can add at most 50 child items to a work item or epic.
+The limit applies when you add existing items in the UI, use the `/add_child` quick action,
+or use the GraphQL API.
+Requests that exceed the limit fail, and no child items are added.
+
+- **Max limit**: 50 child items.
 
 ## Number of issues in the milestone overview
 

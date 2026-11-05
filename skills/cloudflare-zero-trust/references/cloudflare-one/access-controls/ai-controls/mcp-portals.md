@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/access-controls/ai-contr
 
 # MCP server portals
 
-Last updated Nov 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -339,11 +339,11 @@ When you add an MCP server to a portal, all of its tools and prompts are availab
 
 To hide specific tools or prompts from portal users:
 
-1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**. [Go to **AI controls** ↗](https://one.dash.cloudflare.com/?to=/:account/access/ai-controls/mcp-server-portal)
 2. Find the portal you want to configure, then select the three dots > **Edit**.
-3. Under **Servers**, select the server name to open its tools panel.
-4. Scroll down to the **Tools** section, then turn off the toggle next to any tool or prompt that you want to hide from users.![The tools panel for an MCP server shows a list of tools with a toggle next to each one.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1017,height=855,format=webp/_astro/mcp-portal-manage-tools.CAqPUw2R.png)
-5. Select **Save**.
+3. Under **Servers**, find the server you want to configure. Select the value in **Tools authorized** or **Prompts authorized** (for example, `10/10`).
+4. Turn off the **Status** toggle next to each tool or prompt that you want to hide.
+5. Select **Back to portal**, then select **Save MCP server portal**.
 
 Turned-off tools will not appear in the portal's tool list. Users will not be able to call them.
 
@@ -977,6 +977,27 @@ The agent can retry the request, but it will continue to be blocked until the co
 
 Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), [MCP inspector ↗︎](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-from-an-mcp-client) that support remote MCP servers.
 
+### Connect Claude Desktop
+
+1. Go to **Zero Trust** > **Access controls** > **MCP Portals**. [Go to **AI controls** ↗](https://one.dash.cloudflare.com/?to=/:account/access/ai-controls/mcp-server-portal)
+2. Find the portal you want to connect, then select the three dots > **Edit**.
+3. In **Advanced settings**, add `https://claude.ai/api/mcp/auth_callback` to **Allowed redirect URIs**, then select **Save**.
+4. Add a custom connector in Claude:
+
+   a. For Free, Pro, and Max plans, go to **Customize** > **Connectors**. Select **+ Add** > **Add custom connector**.
+
+   b. For Team and Enterprise plans, an owner must go to **Organization settings** > **Connectors**. Select **Add** > **Custom** > **Web**.
+5. Enter `https://<subdomain>.<domain>/mcp` as the MCP server URL. Complete the remaining connector settings, then select **Add**.
+6. For Team and Enterprise plans, go to **Customize** > **Connectors**. Find the new connector, then select **Connect**.
+
+For plan-specific instructions, refer to [Claude's custom connector guide ↗︎](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+
+Note
+
+Claude connects to remote MCP servers from Anthropic's cloud infrastructure, including when you use Claude Desktop. The connection does not pass through the Cloudflare One Client on the user's device. Do not add a Cloudflare root certificate to the Claude connector.
+
+### Test in Workers AI Playground
+
 To test in Workers AI Playground:
 
 1. Go to [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/).
@@ -1002,6 +1023,21 @@ For MCP clients with server configuration files, add the portal as a remote HTTP
 }
 ```
 
+For clients that do not support remote MCP servers directly, use `mcp-remote` as a local bridge:
+
+*MCP client configuration using mcp-remotejson*
+
+```json
+{
+	"mcpServers": {
+		"example-mcp-server": {
+			"command": "npx",
+			"args": ["-y", "mcp-remote@latest", "https://<subdomain>.<domain>/mcp"]
+		}
+	}
+}
+```
+
 ### Portal homepage
 
 When users visit the portal domain (`https://<subdomain>.<domain>/`) in a browser, the portal displays a homepage with connection details and setup instructions.
@@ -1014,7 +1050,7 @@ The homepage shows:
 
 - The portal name and your organization branding (if configured in Cloudflare Access)
 - The MCP endpoint URL with a copy button
-- Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients with OS-specific file paths
+- Per-client connection instructions for Claude Desktop, Workers AI Playground, OpenCode, Windsurf, and other MCP clients
 
 Authenticated users see their email address and a **Sign out** button in the session bar. Users who are not authenticated can still view the homepage and connection instructions.
 
@@ -1337,5 +1373,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-11-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/og.png?v=0b257854e7de7b3f","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

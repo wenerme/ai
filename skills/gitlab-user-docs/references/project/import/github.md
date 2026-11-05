@@ -54,6 +54,10 @@ on the GitLab instance you import to.
 
 ## Known issues
 
+- On GitLab Self-Managed and GitLab Dedicated, if your GitHub OAuth app uses [expiring user access tokens](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#expiring-access-tokens)
+  (the GitHub default for new OAuth apps), importing several repositories at once can fail when imports
+  run longer than eight hours.
+  To prevent these failures, [opt the OAuth app out of expiring tokens](../../../integration/github.md#create-an-oauth-app-in-github).
 - GitHub pull request comments (known as diff notes in GitLab) created before 2017 are imported in separate threads.
   This occurs because of a limitation of the GitHub API that doesn't include `in_reply_to_id` for comments before 2017.
 - [In GitLab 18.3 and earlier](https://gitlab.com/gitlab-org/gitlab/-/issues/424400), Markdown attachments

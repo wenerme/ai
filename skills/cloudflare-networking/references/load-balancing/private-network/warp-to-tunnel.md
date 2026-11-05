@@ -1,5 +1,5 @@
 ---
-description: Load balance WARP client traffic to private origins via Tunnel.
+description: Load balance Cloudflare One Client traffic to private origins via Tunnel.
 title: Set up Private Network Load Balancing with Client-to-Tunnel
 image: https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/og.png?v=7b107ba788165184
 ---
@@ -12,40 +12,30 @@ image: https://developers.cloudflare.com/load-balancing/private-network/warp-to-
 
 # Set up Private Network Load Balancing with Client-to-Tunnel
 
-Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Private Network Load Balancing to distribute Cloudflare One Client traffic to private hostnames and IPs connected via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
 For example, assume you have an internal application running in two data centers, and you want Cloudflare One Client users to access the application from the data center closest to their geographic location. A typical load balancing configuration is shown in the following diagram:
 
-```
-graph LR
-    W[WARP clients] --> C{Private load balancer <br> 100.112.0.0}
-    C -- Tunnel 1 --> cf1
-    C -- Tunnel 2 --> cf2
-		subgraph D2[Data center 2]
-			cf2@{ shape: processes, label: "cloudflared" }
-			subgraph F[Pool 2]
-					S3["Endpoint <br> 10.0.0.1 (VNET-2)"]
-					S4["Endpoint <br> 10.0.0.2 (VNET-2)"]
-			end
-			cf2-->S3
-			cf2-->S4
-		end
-		subgraph D1[Data center 1]
-			cf1@{ shape: processes, label: "cloudflared" }
-			subgraph E[Pool 1]
-					S1["Endpoint <br> 10.0.0.1 (VNET-1)"]
-					S2["Endpoint <br> 10.0.0.2 (VNET-1)"]
-			end
-			cf1-->S1
-			cf1-->S2
-		end
+Cloudflare One Client devices
 
-		style E stroke-width:2px,stroke-dasharray: 5 5
-		style F stroke-width:2px,stroke-dasharray: 5 5
+Connects to `100.112.0.0`
 
-```
+[Private load balancer](https://developers.cloudflare.com/load-balancing/private-network/)
+
+Picks a healthy endpoint based on your steering policy
+
+[Health monitors](https://developers.cloudflare.com/load-balancing/monitors/) [Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/) [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers)
+
+- Pool 1 · Data center 1 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+  - `10.0.0.1`VNET-1
+  - `10.0.0.2`VNET-1
+- Pool 2 · Data center 2 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+  - `10.0.0.1`VNET-2
+  - `10.0.0.2`VNET-2
+
+*Endpoint = IP address + virtual network*
 
 The components in the diagram include:
 
@@ -129,7 +119,7 @@ After completing the setup, you will be redirected to the Load Balancing dashboa
 
 ## 3. Route the load balancer IP through the Cloudflare One Client
 
-In order for Cloudflare One Clients to connect to your load balancer, the load balancer's IP address must route through the WARP tunnel in your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
+In order for Cloudflare One Clients to connect to your load balancer, the load balancer's IP address must route through the Cloudflare One Client in your [Split Tunnels settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Device profiles**.
 2. Find the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Edit**.
@@ -137,14 +127,18 @@ In order for Cloudflare One Clients to connect to your load balancer, the load b
 4. Select **Manage**. Depending on the mode:
    - **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer. Note
 
-     Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as WARP CGNAT IPs, or Gateway initial resolved IPs if your account uses a legacy or custom range within CGNAT space. These IPs should remain deleted from the Exclude list.
+     Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as Cloudflare One Client device IPs, or Gateway initial resolved IPs if your account uses a legacy or custom range within CGNAT space. These IPs should remain deleted from the Exclude list.
    - **Include mode**: Add your load balancer IP.
 
 Cloudflare One Client traffic can now reach your private load balancer. For example, if your load balancer points to a web application, you can test by running `curl <load-balancer-IP>` from the device. This traffic will be distributed over Cloudflare Tunnel to your private endpoints according to your configured steering method.
 
+Note
+
+To keep each device on the same endpoint, set the pool's endpoint steering to [**Hash**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/hash-origin-steering/#private-load-balancers), or set [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers) to `ip_cookie` with the API. This pins the endpoint, not the `cloudflared` replica. If your application ties sessions to the source IP, refer to the caution in [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers).
+
 ## 4. (Optional) Assign a hostname to the load balancer
 
-If you want your load balancer and its endpoints to be transparently accessible to users via a hostname, you can create a Gateway DNS [Override policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#override) that maps the hostname to the load balancer's IP address. This ensures that traffic destined for the hostname resolves to the correct IP.
+If you want your load balancer and its endpoints to be transparently accessible to users via a hostname, you can create a Gateway DNS [Override policy](https://developers.cloudflare.com/cloudflare-one/traffic-controls/dns-policies/#override) that maps the hostname to the load balancer's IP address. This ensures that traffic destined for the hostname resolves to the correct IP.
 
 1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Select **Add a policy**.
@@ -167,5 +161,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/og.png?v=7b107ba788165184","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel","description":"Load balance Cloudflare One Client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/og.png?v=7b107ba788165184","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

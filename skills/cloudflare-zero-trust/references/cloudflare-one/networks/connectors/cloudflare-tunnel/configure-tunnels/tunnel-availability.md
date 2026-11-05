@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Tunnel availability and failover
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Our lightweight and open-source connector, [`cloudflared` ↗︎](https://github.com/cloudflare/cloudflared), was built to be highly available without any additional configuration requirements. When you run a tunnel, `cloudflared` establishes four outbound-only connections between the origin server and the Cloudflare network. These four connections are made to four different servers spread across at least two distinct data centers. This model ensures high availability and mitigates the risk of individual connection failures. This means in event a single connection, server, or data center goes offline, your resources will remain available.
 
@@ -20,26 +20,22 @@ Our lightweight and open-source connector, [`cloudflared` ↗︎](https://github
 
 You can deploy additional instances of `cloudflared` for availability and failover. These instances are called replicas. Each replica establishes four new connections to Cloudflare, providing additional points of ingress to your origin. All replicas point to the same tunnel, so if a single host running `cloudflared` goes down, the remaining replicas continue to serve traffic.
 
-```
-graph LR
-    C((Cloudflare))
-    subgraph E[Your network]
-        cf1["cloudflared <br> (Replica for tunnel-01)"]
-        cf2["cloudflared <br> (Replica for tunnel-01)"]
-        S1[Application]
-        cf1-->S1
-        cf2-->S1
-    end
-    C -- "Connections x 4 <br>"--> cf1
-    C --> cf1
-    C --> cf1
-    C --> cf1
-    C -- Connections x 4--> cf2
-    C --> cf2
-    C --> cf2
-    C --> cf2
+Cloudflare network
 
-```
+Forwards each request to the geographically closest replica
+
+4 outbound connections per replica
+
+Your network
+
+- cloudflared
+
+  Replica 1 on `host-a`tunnel-01
+- cloudflared
+
+  Replica 2 on `host-b`tunnel-01
+
+Application
 
 Replicas do not support traffic steering (such as round-robin or hash-based routing). When a request arrives at Cloudflare, it is forwarded to the geographically closest replica. If that connection fails, Cloudflare retries with other replicas, but there is no guarantee about which one is chosen. If you need intelligent traffic distribution, use [Cloudflare Load Balancers](#cloudflare-load-balancers) instead.
 
@@ -55,31 +51,24 @@ For setup instructions, refer to [Deploy cloudflared replicas](https://developer
 
 [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) proactively steers traffic away from unhealthy origins and intelligently distributes the traffic load based on your choice of [steering algorithms](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/). Unlike [`cloudflared` replicas](#cloudflared-replicas) which all use the same tunnel, a typical load balancer setup requires creating multiple tunnels. Most customers will create one tunnel per data center and one load balancer pool per tunnel.
 
-```
-graph LR
-    accTitle: Load balancing traffic to applications behind Cloudflare Tunnel
+- Internet
+- Cloudflare One Client
+- Cloudflare WAN
 
-    A[Internet] --> C{Cloudflare <br> Load Balancer}
-    B[Cloudflare One Client] --> C
-    M[Cloudflare WAN] --> C
-    C -- Tunnel 1 --> cf1
-    C -- Tunnel 2 --> cf2
-    subgraph F[Data center 2]
-        cf2[cloudflared <br> server]
-        S3[App server]
-        S4[App server]
-        cf2-->S3
-        cf2-->S4
-    end
-    subgraph E[Data center 1]
-        cf1[cloudflared <br> server]
-        S1[App server]
-        S2[App server]
-        cf1-->S1
-        cf1-->S2
-    end
+[Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/)
 
-```
+Steers traffic to healthy tunnels, with one pool per tunnel
+
+- Data center 1Tunnel 1
+
+  `cloudflared` forwards traffic to your app servers
+  - App server
+  - App server
+- Data center 2Tunnel 2
+
+  `cloudflared` forwards traffic to your app servers
+  - App server
+  - App server
 
 ### When to use load balancers
 
@@ -95,7 +84,7 @@ For setup instructions, refer to [Public load balancers](https://developers.clou
 There are two types of load balancers that you can use with Cloudflare Tunnel endpoints:
 
 - [Public load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/public-load-balancers/) steer traffic from the Internet to applications published on a Cloudflare domain. Use this method if your service is served by Cloudflare Tunnel via a [published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application).
-- [Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) steer traffic from Cloudflare One Clients, Cloudflare WAN, and other on-ramps to an internal IP on your private network. Use this method if your service is connected to Cloudflare Tunnel via a [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
+- [Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) steer traffic from Cloudflare One Clients, Cloudflare WAN, and other on-ramps to an internal IP on your private network. Use this method if your service is connected to Cloudflare Tunnel via a [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/). To keep each user on the same endpoint, use [hash steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/hash-origin-steering/#private-load-balancers) or [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers).
 
 Note
 
@@ -110,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#page","headline":"Tunnel availability and failover","description":"Deploy multiple cloudflared replicas for high availability and automatic failover across your infrastructure.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/og.png?v=e13dd91cf9dbb9b4","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#page","headline":"Tunnel availability and failover","description":"Deploy multiple cloudflared replicas for high availability and automatic failover across your infrastructure.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/og.png?v=e13dd91cf9dbb9b4","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

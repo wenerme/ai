@@ -94,6 +94,32 @@ Review your existing ruleset overrides before deployment. If you want to evaluat
 | Cloudflare Managed Ruleset | ...ca706f3c | N/A | Brotli - Request Content-Encoding - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
 | Cloudflare Managed Ruleset | ...402fe5bb | N/A | Next.js - Image Optimizer Path - CVE:CVE-2026-111497 | N/A | Log | This is a new detection. |
 
+## 2026-10-23
+
+
+**WAF Release - 2026-10-23 - Emergency - Cloudflare Managed Ruleset**
+
+The existing PHP remote code execution rule in the Cloudflare Managed Ruleset covers CVE-2026-115560. This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Managed Ruleset | ...9d9c073d | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+
+For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
+
+## 2026-10-23
+
+
+**WAF Release - 2026-10-23 - Emergency - Cloudflare Free Ruleset**
+
+The existing PHP remote code execution rule in the Cloudflare Free Ruleset covers CVE-2026-115560. This emergency release adds the CVE identifier to existing rule. Detection logic and rule actions remain unchanged.
+
+| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cloudflare Free Ruleset | ...7975ce1b | N/A | PHP Remote Code Execution Attack (CVE-2026-109618, CVE-2026-109619, CVE-2026-115560) #6 | Block | N/A | Rule metadata description refined. Detection unchanged. |
+
+For more information, refer to [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
+
 ## 2026-10-22
 
 
@@ -417,32 +443,6 @@ In **Security Analytics** > **Attack Analysis**, you can review matching signatu
 Attack Signature Detection uses the same signature definitions as [Cloudflare Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), but it does not inherit your Managed Rules actions, overrides, or deployment configuration. Managed Rules remain the recommended baseline protection during Early Access.
 
 Contact your Cloudflare account team to request access. For more information, refer to [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/).
-
-## 2026-09-01
-
-
-**Updated PII detection for AI Security for Apps**
-
-AI Security for Apps now supports an updated set of categories for detecting personally identifiable information (PII) in incoming prompts.
-
-The values available in [`cf.llm.prompt.pii_categories`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/) have changed. Existing WAF custom rules remain valid, but rules that reference a removed or renamed category will no longer match that category. Review any rules that use this field and update their expressions to use the currently supported values.
-
-For the complete category list and configuration guidance, refer to [PII detection](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/).
-
-## 2026-09-01
-
-
-**WAF Release - 2026-09-01**
-
-This release introduces a new threat detection to enhance protection against SQL injection (SQLi) attempts exploiting complex query syntax.
-
-**Key Findings**
-
-- SQLi Protection: Improved coverage for SQL injection patterns involving WHERE comparisons combined with WITH clauses.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...bcfa0966 | N/A | SQLi - WHERE Comparison With WITH Clause | Log | Block | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

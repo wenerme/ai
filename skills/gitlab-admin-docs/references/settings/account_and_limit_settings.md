@@ -437,13 +437,26 @@ To set a lifetime on how long access tokens are valid:
 1. Fill in the **Maximum allowable lifetime for access tokens (days)** field.
 1. Select **Save changes**.
 
-After a lifetime for access tokens is set, GitLab:
+After you set or change a lifetime for access tokens, GitLab:
 
 - Applies the lifetime for new personal access tokens, and requires users to set an expiration date
   and a date no later than the allowed lifetime.
 - After three hours, revokes old tokens with no expiration date or with a lifetime longer than the
   allowed lifetime. Three hours is given to allow administrators to change the allowed lifetime,
   or remove it, before revocation takes place.
+
+Revocation applies to existing personal, group, and project access tokens, even when you set a
+lifetime for the first time. For example, if you set a lifetime of 90 days, GitLab revokes tokens
+that expire more than 90 days after the revocation runs. Tokens that expire in 90 days or less
+keep working until their expiration date.
+
+Affected users receive an email that lists their revoked personal access tokens.
+No email is sent for revoked group or project access tokens.
+
+To check which tokens would be revoked before you set a lifetime, use the
+[personal access tokens API](../../api/personal_access_tokens.md#list-all-personal-access-tokens)
+with `state=active` and `expires_after` set to the lifetime plus one day.
+For example, for a lifetime of 90 days, set `expires_after` to the date 91 days from today.
 
 ## Limit the lifetime of SSH keys
 

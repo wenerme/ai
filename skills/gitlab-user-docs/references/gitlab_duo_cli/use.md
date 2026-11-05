@@ -399,6 +399,7 @@ When you use headless mode, the GitLab Duo CLI:
 ## Provide images as context
 
 - [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.27.0) in GitLab Duo CLI 9.27.0, during the GitLab 19.5 release, [with a feature flag](../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Enabled by default.
+- Support for self-hosted models [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -407,7 +408,8 @@ When you use headless mode, the GitLab Duo CLI:
 Prerequisites:
 
 - GitLab Duo CLI 9.27.0 or later.
-- Use a GitLab-managed model. Models that you host yourself are not supported.
+- A model that accepts image input. For a self-hosted model, an administrator can
+  [declare whether the model reads images](../../administration/gitlab_duo_self_hosted/configure_duo_features.md#declare-image-support-for-a-self-hosted-model).
 
 When you run GitLab Duo CLI locally in interactive or headless mode,
 GitLab Duo can read images and use them as context.

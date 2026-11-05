@@ -121,7 +121,19 @@ Example response:
 
 ## Assign an issue to an epic
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag. For more information, see the history.
+
 Assigns an issue to a specified epic. If the issue already belongs to another epic, it is unassigned from that epic first.
+
+By default, this endpoint is rate limited to 300 child items added every minute for each user,
+and each request adds one. The limit is shared with the other ways of adding child items.
+Administrators can change the limit with the `work_item_hierarchy_add_children_limit`
+[application setting](settings.md#available-settings).
+After you reach the limit, you receive
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 POST /groups/:id/epics/:epic_iid/issues/:issue_id

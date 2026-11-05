@@ -40,6 +40,55 @@ To ensure these models are used responsibly, you may need to complete the [API
   console](https://platform.openai.com/settings/organization/general) before
   using GPT Image models.
 
+### GPT Image 2.6
+
+GPT Image 2.6 includes [Sunburst](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst) for detailed visual work and [Flare](https://developers.openai.com/api/docs/models/gpt-image-2.6-flare) for fast iteration. Both models support complexity control, markup-guided edits, SVG output, and animated GIF output through the Image API. The existing examples below use GPT Image 2.5.
+
+#### Set image complexity
+
+Use the `complexity` request field to control how much the image model plans before rendering. Lower complexity can suit focused edits, such as changing a background or a sign. Higher complexity can help with dense text, complex layouts, and relationships between objects. Higher complexity can increase latency and introduce unwanted changes, so compare results for your task.
+
+The supported complexity levels for Sunburst and Flare are `low`, `medium`, and `high`. If you omit `complexity`, both models use `high`. The separate `quality` setting controls rendering quality.
+
+Adjusting complexity has no separate fee.
+
+Sunburst generated these paper-cut football scenes from the same prompt at medium quality. Compare the trophy, the uniforms, and the placement of the “CHAMPIONS” sign as complexity changes.
+
+
+
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 text-sm font-semibold">
+      Low complexity
+    </figcaption>
+    
+
+![Players in red lift a trophy topped with a crown. A CHAMPIONS banner spans the foreground.](<https://developers.openai.com/images/platform/guides/image-prompting/paper-cut-football-effort-low-gpt-image-2-6-sunburst.webp>)
+
+
+  </figure>
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 text-sm font-semibold">
+      Medium complexity
+    </figcaption>
+    
+
+![Players in red shirts with team crests lift a trophy decorated with a laurel wreath above a CHAMPIONS banner.](<https://developers.openai.com/images/platform/guides/image-prompting/paper-cut-football-effort-medium-gpt-image-2-6-sunburst.webp>)
+
+
+  </figure>
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 text-sm font-semibold">
+      High complexity
+    </figcaption>
+    
+
+![Players in folded blue paper jerseys fill the foreground. A CHAMPIONS sign hangs in the stands behind them.](<https://developers.openai.com/images/platform/guides/image-prompting/paper-cut-football-effort-high-gpt-image-2-6-sunburst.webp>)
+
+
+  </figure>
+
+
+
 ### Safety identifiers
 
 If your application serves individual end users, include a stable,
@@ -2508,6 +2557,118 @@ openai images edit \
 
 
 
+### Guide an edit with markup
+
+Use the Image API’s `POST /v1/images/edits` endpoint for markup-guided edits with supported GPT Image 2.5 and 2.6 models. For regional edits with the Responses API, use a [mask](#edit-an-image-using-a-mask). Use an annotation layer to show where a change should happen and describe the change in `prompt`.
+
+For example, download the [kitchen photo](https://developers.openai.com/images/platform/guides/image-prompting/kitchen.webp) and [transparent overlay](https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-overlay-gpt-image-2-6.png) into the same directory. The overlay circles the vase to recolor.
+
+Edit the circled vase with the Image API
+
+```python
+import base64
+from pathlib import Path
+
+from openai import OpenAI
+
+client = OpenAI()
+overlay = Path("markup-vase-overlay-gpt-image-2-6.png")
+with open("kitchen.webp", "rb") as image, overlay.open("rb") as markup:
+    result = client.images.edit(
+        model="gpt-image-2.6-flare",
+        image=("kitchen.webp", image, "image/webp"),
+        markup=(overlay.name, markup, "image/png"),
+        quality="medium",
+        prompt=(
+            "Recolor the striped vase inside the red circle to solid cobalt blue ceramic. "
+            "Keep its shape, the dried stems, and the rest of the kitchen unchanged. "
+            "Remove the red circle from the finished photo."
+        ),
+    )
+
+Path("vase.png").write_bytes(base64.b64decode(result.data[0].b64_json))
+```
+
+```go
+client := openai.NewClient()
+image, err := os.Open("kitchen.webp")
+if err != nil {
+	panic(err)
+}
+defer image.Close()
+markup, err := os.Open("markup-vase-overlay-gpt-image-2-6.png")
+if err != nil {
+	panic(err)
+}
+defer markup.Close()
+
+response, err := client.Images.Edit(context.Background(), openai.ImageEditParams{
+	Model:   openai.ImageModel("gpt-image-2.6-flare"),
+	Image:   openai.ImageEditParamsImageUnion{OfFile: openai.File(image, "kitchen.webp", "image/webp")},
+	Markup:  openai.File(markup, "markup-vase-overlay-gpt-image-2-6.png", "image/png"),
+	Quality: "medium",
+	Prompt: "Recolor the striped vase inside the red circle to solid cobalt blue ceramic. " +
+		"Keep its shape, the dried stems, and the rest of the kitchen unchanged. " +
+		"Remove the red circle from the finished photo.",
+})
+if err != nil {
+	panic(err)
+}
+result, err := base64.StdEncoding.DecodeString(response.Data[0].B64JSON)
+if err != nil {
+	panic(err)
+}
+if err := os.WriteFile("vase.png", result, 0o600); err != nil {
+	panic(err)
+}
+```
+
+```bash
+set -euo pipefail
+
+curl --fail --silent --show-error https://api.openai.com/v1/images/edits \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -F model=gpt-image-2.6-flare \
+  -F quality=medium \
+  -F 'image=@kitchen.webp;type=image/webp' \
+  -F 'markup=@markup-vase-overlay-gpt-image-2-6.png;type=image/png' \
+  -F 'prompt=Recolor the striped vase inside the red circle to solid cobalt blue ceramic. Keep its shape, the dried stems, and the rest of the kitchen unchanged. Remove the red circle from the finished photo.' |
+  jq -er '.data[0].b64_json' | base64 --decode > vase.png
+```
+
+
+
+
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 text-sm font-semibold">
+      Photo with the overlay
+    </figcaption>
+    
+
+![Kitchen photo with a red circle around the striped vase on the dining table](<https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-input-gpt-image-2-6.webp>)
+
+
+  </figure>
+  <figure className="m-0 min-w-0">
+    <figcaption className="mb-2 min-h-10 text-sm font-semibold">
+      Flare output
+    </figcaption>
+    
+
+![Flare edit of the kitchen with a blue vase and dried stems on the table](<https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-gpt-image-2-6-flare.webp>)
+
+
+  </figure>
+
+
+
+1. Keep the original image as the first input image.
+2. Create a separate transparent PNG containing your circles, sketches, or other annotations. After orientation, the annotation layer and the first image must have the same width and height. The PNG must contain transparent pixels; do not flatten it onto the original image.
+3. Send the annotation layer as `markup`. Multipart requests accept a file upload. JSON requests accept an object containing exactly one of `image_url` or `file_id`; `image_url` can contain an HTTPS URL or a base64 data URL. JSON edit requests use `images` for the input image array.
+4. Describe the requested change and the details you want to preserve. Review the result before using it.
+
+Markup applies to the first input image. Additional images serve as references. The first input image and the annotation layer can each contain at most 16,777,216 pixels. The annotation file also has a 50 MB size limit. Do not combine `markup` with `mask` or `prompt_rewriter`.
+
 ### Edit an image using a mask
 
 You can provide a mask to indicate which part of the image should be edited.
@@ -3132,6 +3293,65 @@ If using `jpeg` or `webp`, you can also specify the `output_compression` paramet
 Using `jpeg` is faster than `png`, so you should prioritize this format if
   latency is a concern.
 
+### Generate SVG output
+
+Set `output_format: "svg"` on `POST /v1/images/generations`. Use SVG for graphics that need editable paths, shapes, and colors, such as icons and illustrations.
+
+Set `n` to `1`. SVG output does not support streaming, partial images, `output_compression`, or `prompt_rewriter`. The image edit endpoint does not support SVG output, and an SVG is not a supported raster input for image edits.
+
+The API creates a reference image and uses it to produce the SVG. The `quality` setting controls that reference image. Decode `data[0].b64_json` as base64 and save the resulting UTF-8 XML bytes with a `.svg` extension. The returned document contains static vector content; it does not support scripts, external resources, or embedded raster images.
+
+Flare and Sunburst generated these SVG logos from the same prompt for a Field & Flour bakery logo.
+
+
+
+  <figure className="m-0 min-w-0 [&_[data-codex-screenshot-overlay]_img]:bg-surface">
+    <figcaption className="mb-2 text-sm font-semibold">
+      GPT Image 2.6 Flare
+    </figcaption>
+    
+
+![Flare SVG with a golden loaf above a two-line cream Field & Flour wordmark.](<https://developers.openai.com/images/platform/guides/image-prompting/field-and-flour-gpt-image-2-6-flare.svg>)
+
+
+  </figure>
+  <figure className="m-0 min-w-0 [&_img]:bg-white">
+    <figcaption className="mb-2 text-sm font-semibold">
+      GPT Image 2.6 Sunburst
+    </figcaption>
+    
+
+![Sunburst SVG with a steaming loaf between wheat sprigs above the Field & Flour wordmark and a rolling pin.](<https://developers.openai.com/images/platform/guides/image-prompting/field-and-flour-gpt-image-2-6-sunburst.svg>)
+
+
+  </figure>
+
+
+
+### Generate animated GIF output
+
+Set `output_format: "gif"` on `POST /v1/images/generations`. Describe the subject, motion, and desired loop in your prompt. GIF output is for image generation; the image edit endpoint does not support GIF output.
+
+Use these request fields to control the animation:
+
+| Field               | Values                                                                      | Default |
+| ------------------- | --------------------------------------------------------------------------- | ------- |
+| `frame_count`       | 2–64 frames                                                                 | 9       |
+| `frame_duration_ms` | 20–2000 milliseconds per frame, rounded to 10 ms                            | 200     |
+| `size`              | `auto`, or `WIDTHxHEIGHT` with positive dimensions that are multiples of 16 | `auto`  |
+
+`size` describes each finished frame. The frame count, frame dimensions, and number of animations must fit the model's size limits and the total request pixel budget. If the request exceeds those limits, reduce `frame_count`, the frame dimensions, or `n`. Use `auto` to let the API choose a frame size within the model's limits.
+
+The response contains the finished animation. Decode each result's `b64_json` value as base64 and save the bytes with a `.gif` extension. GIF output does not support streaming, partial images, custom `output_compression`, or `prompt_rewriter`. Use `frame_count` and `frame_duration_ms` only with GIF output.
+
+Sunburst generated this lantern animation with `frame_count=9` and `frame_duration_ms=200`. The monkey returns to its starting pose after 1.8 seconds.
+
+
+
+![A monkey in a green coat lifts a glowing lantern, blinks, and lowers it again in front of a snowy cabin.](<https://developers.openai.com/images/platform/guides/image-prompting/monkey-lantern-gpt-image-2-6-sunburst.gif>)
+
+
+
 ## Limitations
 
 GPT Image models are powerful and versatile image generation models, but they still have some limitations to be aware of:
@@ -3403,6 +3623,14 @@ When using image generation in the Responses API, `gpt-5` and newer models shoul
 
 ## Cost and latency
 
+### GPT Image 2.6 costs
+
+Image output costs $30 per million billable tokens. Use the [calculator](#calculating-costs) to estimate the output cost for one image.
+
+See [image generation pricing](https://developers.openai.com/api/docs/pricing#image-generation) for text and image rates per million tokens.
+
+Markup-guided edits use the same token rates as other edits, with no extra fee. For SVG output, you pay the image model’s rate for the reference image and the authoring model’s rate for the tokens it uses to produce the SVG. The total depends on how many tokens each model uses.
+
 ### GPT Image 2.5 costs
 
 Responses API requests include the mainline model's token usage in addition to image generation costs.
@@ -3420,10 +3648,13 @@ Cached image generation inputs are reflected in billing, but their cached token 
 
 
 
-### GPT Image 2.5 and GPT Image 2 output tokens
+
+
+
+### Calculating costs
 
 Select a model, quality, and size to estimate output tokens and image output cost.
-For `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, the quality options are `low`, `medium`, `high`, `xhigh`, and `max`.
+For GPT Image 2.6 and 2.5 Sunburst and Flare, the quality options are `low`, `medium`, `high`, `xhigh`, and `max`.
 For `gpt-image-2`, the options are `low`, `medium`, and `high`.
 The models can use different token counts for the same quality setting and share the same price per image output token.
 Use explicit quality and size values for this estimate; `auto` depends on the generated image.
@@ -3558,7 +3789,7 @@ Because `gpt-image-2` always processes image inputs at high fidelity, edit reque
 
 Refer to the [pricing page](https://developers.openai.com/api/docs/pricing#image-generation) for current
 text and image token prices, and use the [Calculating costs](#calculating-costs)
-section below to estimate request costs.
+section to estimate image output costs.
 
 The final cost is the sum of:
 
@@ -3566,9 +3797,8 @@ The final cost is the sum of:
 - input image tokens if using the edits endpoint
 - image output tokens
 
-### Calculating costs
+### Historical output costs
 
-Use the pricing calculator below to estimate request costs for GPT Image models.
 `gpt-image-2` supports thousands of valid resolutions; the table below lists the
 same sizes used for previous GPT Image models for comparison. For GPT Image 1.5,
 GPT Image 1, and GPT Image 1 Mini, the legacy per-image output pricing table is

@@ -2,7 +2,7 @@
 title: '`glab orbit`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Query the GitLab Orbit context graph. (EXPERIMENTAL)
@@ -61,6 +61,18 @@ $ glab orbit version
 # Install or update the managed binary without running it
 $ glab orbit --install
 $ glab orbit update
+```
+
+## Environment variables
+
+```plaintext
+- `GLAB_ORBIT_CLI_BINARY_PATH`: Use a local binary instead of the managed one. Skips
+  download, version checks, and updates. Can also be set via the `orbit_cli_binary_path`
+  configuration key.
+- `ORBIT_CLI_AUTO_DOWNLOAD`: Set to `true` to download the binary without a
+  prompt. Required to run in a non-interactive environment such as CI.
+- `ORBIT_CLI_AUTO_RUN`: Set to `true` to run the binary without a prompt.
+  Required to run in a non-interactive environment such as CI.
 ```
 
 ## Options

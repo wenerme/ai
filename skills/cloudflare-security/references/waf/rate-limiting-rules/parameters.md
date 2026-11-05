@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.p
 
 # Rate limiting parameters
 
-Last updated Oct 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The available rate limiting rule parameters are described in the following sections.
 
@@ -116,9 +116,7 @@ The number of requests over the period of time that will trigger the rule. Appli
 - Data type: `Integer`
 - Field name in the API: `period`
 
-The period of time to consider (in seconds) when evaluating the request rate. The available values [vary according to your Cloudflare plan](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability).
-
-The available API values are: `10`, `60` (one minute), `120` (two minutes), `300` (five minutes), `600` (10 minutes), or `3600` (one hour).
+The period of time to consider (in seconds) when evaluating the request rate. For the supported values and the longest period on each plan, refer to [Availability](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability).
 
 ### When rate exceeds > Score per period
 
@@ -183,7 +181,7 @@ The maximum field size is 30 KB.
 
 Once the rate is reached, the rate limiting rule applies the rule action to further requests for the period of time defined in this field (in seconds).
 
-In the dashboard, select one of the available values, which [vary according to your Cloudflare plan](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability). The available API values are: `0`, `10`, `60` (one minute), `120` (two minutes), `300` (five minutes), `600` (10 minutes), `3600` (one hour), or `86400` (one day).
+In the dashboard, select one of the available values, which [vary according to your Cloudflare plan](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability). In the API, set one of these values, or `0` to [throttle requests](#with-the-following-behavior).
 
 Customers on Free, Pro, and Business plans cannot select a duration when using a [challenge action](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#actions) — their rate limiting rule will always perform request throttling for these actions. With request throttling, you do not define a duration. When visitors pass a challenge, their corresponding [request counter](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/) is set to zero. When visitors with the same values for the rule characteristics make enough requests to trigger the rate limiting rule again, they will receive a new challenge.
 
@@ -278,5 +276,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.png?v=523c0070a2d11d0d","dateModified":"2026-10-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/og.png?v=523c0070a2d11d0d","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

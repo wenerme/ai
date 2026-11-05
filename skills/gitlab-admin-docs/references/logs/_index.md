@@ -645,10 +645,16 @@ The `correlation_duration_s` field is the time in seconds since the root request
 started, so a filter like `correlation_duration_s > 3600` finds jobs that belong to a long-running chain.
 The start time does not cross HTTP or gRPC calls, so a chain that passes through a request, for example
 when a job pushes to a repository and Gitaly calls the internal API, starts a new measurement at that request.
+The `correlation_depth` field is the depth of the job in that chain. A job enqueued by a request, or outside
+one, has depth 1, and a job enqueued by another job is one deeper than that job, so a filter like
+`correlation_depth > 100` finds jobs that keep enqueueing themselves.
+Sidekiq pushes retried, deferred, and scheduled jobs again, and both fields keep their values across such a
+push. The duration therefore includes retry backoff and the delay of a scheduled job, and the depth of the
+job does not change.
 
 > [!flag]
-> The availability of `correlation_duration_s` is controlled by the `log_correlation_duration`
-> feature flag. This flag is disabled by default.
+> The availability of `correlation_duration_s` and `correlation_depth` is controlled by the
+> `log_correlation_duration` feature flag. This flag is disabled by default.
 
 Instead of JSON logs, you can opt to generate text logs for Sidekiq. For example:
 

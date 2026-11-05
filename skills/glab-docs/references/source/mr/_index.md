@@ -2,7 +2,7 @@
 title: '`glab mr`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Create, view, and manage merge requests.
@@ -21,6 +21,15 @@ Use `--repo` to target a project other than the current one.
 glab mr create --fill --label bugfix
 glab mr merge 123
 glab mr note -m "needs to do X before it can be merged" branch-foo
+```
+
+## Arguments
+
+```plaintext
+Specify a merge request in one of the following formats:
+- By number, for example "123"
+- By the name of its source branch, for example "patch-1" or "OWNER:patch-1"
+- By URL, for example "https://gitlab.com/gitlab-org/cli/-/merge_requests/123"
 ```
 
 ## Options

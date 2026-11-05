@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/load-balancing/understand-basics/sessio
 
 # Session affinity
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you enable session affinity, your load balancer directs all requests from a particular end user to a specific endpoint. This continuity preserves information about the user session — such as items in their shopping cart — that might otherwise be lost if requests were spread out among multiple servers.
 
@@ -20,7 +20,7 @@ Session affinity can also help reduce network requests, leading to savings for c
 
 Note
 
-Session Affinity is only supported by Public Load Balancers.
+Private load balancers support only the **By Cloudflare cookie and Client IP fallback** type, which works without cookies. For details, refer to [Session affinity on private load balancers](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#private-load-balancers).
 
 ## Types
 
@@ -112,6 +112,25 @@ For more details on API commands in context, refer to [Create a load balancer wi
 
 ---
 
+## Private load balancers
+
+[Private load balancers](https://developers.cloudflare.com/load-balancing/private-network/) handle Layer 3/4 traffic and do not set or read cookies or HTTP headers. To get session affinity on a private load balancer, use the [API](#enabling-session-affinity-via-the-cloudflare-api) to set `session_affinity` to `ip_cookie` (**By Cloudflare cookie and Client IP fallback**). The `cookie` and `header` types have no effect on private load balancers.
+
+With `ip_cookie`, the load balancer picks the endpoint based on a stable identifier for the client:
+
+- For traffic from the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), the identifier is the client device. A device keeps the same endpoint even if its IP address changes.
+- For traffic from other on-ramps, the identifier is the source IP address.
+
+Requests with the same identifier go to the same endpoint for as long as that endpoint stays healthy. No cookie is stored, so `session_affinity_ttl` does not apply. A client may move to a different endpoint if that endpoint becomes unhealthy or if you add, remove, or reweight endpoints in the pool.
+
+The dashboard does not show session affinity settings for private load balancers. To keep each client on the same endpoint within a pool from the dashboard, set the pool's **Endpoint steering** to [**Hash**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/hash-origin-steering/#private-load-balancers) instead. Hash steering uses the same client identifier.
+
+Session affinity selects an endpoint, not a tunnel replica
+
+Session affinity on a private load balancer keeps a client on the same endpoint (IP address and virtual network). It does not control which [`cloudflared` replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) of a tunnel carries the traffic. Cloudflare forwards traffic to the replica closest to the Cloudflare data center handling the request, so the same client can reach the endpoint through different replicas over time. Each replica can reach the endpoint from a different source IP. Applications that bind a session to the client's source IP, such as some firewall or appliance admin interfaces, may still see requests from different IP addresses. To avoid this, put a proxy in front of the application so it always sees the same source IP, or run a single `cloudflared` replica for that tunnel (this removes replica redundancy).
+
+---
+
 ## Endpoint Drain
 
 Drain or remove all traffic from an endpoint without affecting any active customers using endpoint drain. For more details on endpoint drain, refer to [Performing planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/#gradual-rotation).
@@ -143,5 +162,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#page","headline":"Session affinity","description":"Route repeat visitors to the same origin server.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/og.png?v=80985e8cd7aca60e","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#page","headline":"Session affinity","description":"Route repeat visitors to the same origin server.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/","inLanguage":"en","image":"https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/og.png?v=80985e8cd7aca60e","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/get-started/og.png?v=c1fc9510104254
 
 # Get started
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Web Application Firewall (Cloudflare WAF) checks incoming web and API requests and filters undesired traffic based on sets of rules called rulesets.
 
@@ -86,27 +86,22 @@ Note
 
 Bot score is only available to Enterprise customers with [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/). Customers on Pro and Business plans should turn on [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) instead, which provides built-in bot protection without creating custom rules.
 
-Enterprise customers with Bot Management should first configure bot protection using **Security Settings**, which provide baseline protection without creating custom rules:
+Bot Management is always active for entitled Enterprise zones and assigns a bot score to every request. It does not block or challenge traffic on its own: you act on bot traffic with custom rules.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page and filter by **Bot traffic**. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
-2. Configure the **Definitely automated**, **Likely automated**, and **Verified bots** settings according to your needs.
-3. Turn on **Block AI bots** if you want to block AI crawlers.
+2. In **Bot management**, select the edit icon and make sure **JavaScript Detections** and **Auto-update machine learning model** are turned on.
+3. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) using the Bot Score, Verified Bot, and Static Resource fields. You can also start from the bot traffic templates by selecting **View bot traffic templates** in **Bot management**.
+   - **When incoming requests match**:
 
-These built-in settings auto-update with new bot signatures and do not count toward your custom rule limits. For more details, refer to [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/).
+     | Field | Operator | Value | Logic |
+     | --- | --- | --- | --- |
+     | Bot Score | less than | `30` | And |
+     | Verified Bot | equals | Off | And |
+     | Static Resource | equals | Off |  |
+   - **Choose action**: Managed Challenge
+4. (Optional) In **Security Settings**, use **Configure AI bot policies** to control how AI crawlers and agents can access your site. For details, refer to [Block AI bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/).
 
-### Create a custom rule for additional control
-
-Optionally, if you need more granular control — for example, a different score threshold or rules that combine bot score with other fields — [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) using the Bot Score and Verified Bot fields:
-
-- **When incoming requests match**:
-
-  | Field | Operator | Value | Logic |
-  | --- | --- | --- | --- |
-  | Bot Score | less than | `20` | And |
-  | Verified Bot | equals | Off |  |
-- **Choose action**: Managed Challenge
-
-This rule uses a threshold of 20 (instead of the default threshold of 30 used by the settings), providing stricter protection for traffic in the 20-29 score range.
+For more details on rule templates and recommended settings, refer to [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/#deploy-custom-rule-templates).
 
 For a more comprehensive example of baseline protection against malicious bots, refer to [Challenge bad bots](https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/#general-protection).
 
@@ -208,5 +203,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/get-started/og.png?v=c1fc951010425434","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/get-started/#page","headline":"Get started","description":"Set up the Cloudflare WAF to protect your applications from attacks.","url":"https://developers.cloudflare.com/waf/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/get-started/og.png?v=c1fc951010425434","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

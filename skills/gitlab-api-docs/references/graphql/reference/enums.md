@@ -392,6 +392,14 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | `SUMMARIZE_NEW_MERGE_REQUEST` | Summarize new merge request feature setting. |
 | `SUMMARIZE_REVIEW` | Summarize review feature setting. |
 
+## `AiFlowTriggerErrorReason`
+
+Reasons a flow trigger mutation failed.
+
+| Value | Description |
+| ----- | ----------- |
+| `INSUFFICIENT_SERVICE_ACCOUNT_ACCESS` | Access of the user does not cover the service account that the scheduled trigger runs as. |
+
 ## `AiFlowTriggerEventType`
 
 Possible event types for flow triggers.
@@ -1038,6 +1046,7 @@ Reason an Anthropic Compliance integration mutation failed.
 | `BLANK_KEY` | Compliance Access Key is blank. |
 | `INVALID_INTEGRATION` | Integration failed validation, for example because one already exists. |
 | `INVALID_KEY` | Anthropic rejected the Compliance Access Key. |
+| `NOT_FOUND` | Group has no Anthropic Compliance integration. |
 | `RATE_LIMITED` | GitLab or Anthropic rate limited the request. Try again later. |
 | `VERIFICATION_FAILED` | GitLab could not reach Anthropic to verify the Compliance Access Key. |
 

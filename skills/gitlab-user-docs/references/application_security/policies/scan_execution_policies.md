@@ -569,14 +569,14 @@ scan_execution_policy:
   - scan: dast
     scanner_profile: Scanner Profile A
     site_profile: Site Profile B
-- name: Enforce DAST and secret detection scans every 10 minutes
-  description: This policy enforces DAST and secret detection scans to run every 10 minutes
+- name: Enforce DAST and secret detection scans every day
+  description: This policy enforces DAST and secret detection scans to run every day at 10:00
   enabled: true
   rules:
   - type: schedule
     branches:
     - main
-    cadence: "*/10 * * * *"
+    cadence: "0 10 * * *"
   actions:
   - scan: dast
     scanner_profile: Scanner Profile C
@@ -604,8 +604,8 @@ In this example:
 - For every pipeline executed on branches that match the `release/*` wildcard (for example, branch
   `release/v1.2.1`)
   - DAST scans run with `Scanner Profile A` and `Site Profile B`.
-- DAST and secret detection scans run every 10 minutes. The DAST scan runs with `Scanner Profile C`
-  and `Site Profile D`.
+- DAST and secret detection scans run on the `main` branch every day at 10:00. The DAST scan runs
+  with `Scanner Profile C` and `Site Profile D`.
 - Secret detection, container scanning, and SAST scans run for every pipeline executed on the `main`
   branch. The SAST scan runs with the `SAST_EXCLUDED_ANALYZER` variable set to `"brakeman"`.
 

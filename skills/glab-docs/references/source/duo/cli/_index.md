@@ -2,7 +2,7 @@
 title: '`glab duo cli`'
 stage: AI Clients
 group: Developer Clients
-info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
+info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/marketing/product-and-technical-marketing/technical-writing/#assignments>
 ---
 
 Run the GitLab Duo CLI.
@@ -73,6 +73,14 @@ glab duo cli --install --yes
 
 # Check for and install updates
 glab duo cli update
+```
+
+## Environment variables
+
+```plaintext
+- `GLAB_DUO_CLI_BINARY_PATH`: Use a local binary instead of the managed one.
+  Skips download, version checks, and updates. Can also be set through the
+  `duo_cli_binary_path` configuration key.
 ```
 
 ## Options

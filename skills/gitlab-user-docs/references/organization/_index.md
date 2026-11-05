@@ -76,9 +76,8 @@ If you are a member of one or more organizations, you can go to any of them from
 
 ## Organization URLs
 
-An organization, and everything it contains, is addressed under `/o/<organization-path>/`.
+Organization pages, such as the overview and dashboards, are addressed under `/o/<organization-path>/`.
 For example, `https://gitlab.example.com/o/my-org/-/overview`.
-Existing group and project URLs keep working.
 
 Groups and projects keep their own URLs, also after you transfer them into an organization.
 Links to a group, project or user profile in the form `/o/<organization-path>/<path>` redirect to that URL.

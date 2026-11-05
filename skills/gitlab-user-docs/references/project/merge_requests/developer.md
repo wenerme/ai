@@ -178,6 +178,7 @@ To use the flow, run the GitLab Duo CLI in one of these modes:
 ### Provide images as context
 
 - Introduced in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Disabled by default.
+- Support for self-hosted models [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -185,7 +186,8 @@ To use the flow, run the GitLab Duo CLI in one of these modes:
 
 Prerequisites:
 
-- Use a GitLab-managed model. Models that you host yourself are not supported.
+- A model that accepts image input. For a self-hosted model, an administrator can
+  [declare whether the model reads images](../../../administration/gitlab_duo_self_hosted/configure_duo_features.md#declare-image-support-for-a-self-hosted-model).
 - For a flow that GitLab runs on a runner, such as one started from Agentic Chat,
   a discussion, or an issue, the execution environment must include
   GitLab Duo CLI 9.29.0 or later. In GitLab 19.5.0, the default execution image

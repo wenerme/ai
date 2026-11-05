@@ -1952,7 +1952,7 @@ Date relative to today, in the instance time zone.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `adjacentWorkItemId` | [`WorkItemID`](scalars.md#workitemid) | ID of the work item to be switched with. |
-| `childrenIds` | [`[WorkItemID!]`](scalars.md#workitemid) | Global IDs of children work items. |
+| `childrenIds` | [`[WorkItemID!]`](scalars.md#workitemid) | Global IDs of child work items (maximum is 1000). When the `work_item_hierarchy_add_children_limits` feature flag is enabled, a request can add at most 50 child items. |
 | `parentId` | [`WorkItemID`](scalars.md#workitemid) | Global ID of the parent work item. Use `null` to remove the association. |
 | `relativePosition` | [`RelativePositionType`](enums.md#relativepositiontype) | Type of switch. Valid values are `BEFORE` or `AFTER`. |
 

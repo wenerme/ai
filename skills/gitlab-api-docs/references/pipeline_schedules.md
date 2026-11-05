@@ -436,6 +436,9 @@ curl --request DELETE \
 Runs a pipeline schedule immediately. The next scheduled run
 of this pipeline is not affected.
 
+You can [run a pipeline schedule manually](../ci/pipelines/schedules.md#run-manually) once per minute.
+If you exceed this limit, this endpoint returns a `429 Too Many Requests` status code with a `Retry-After` header.
+
 ```plaintext
 POST /projects/:id/pipeline_schedules/:pipeline_schedule_id/play
 ```

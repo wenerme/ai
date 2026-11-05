@@ -46,7 +46,7 @@ GitLab records each decision as an [audit event](#view-audit-events).
 |-----------|------------------|
 | Java      | Maven, Gradle |
 | Node.js   | npm, pnpm, Yarn |
-| Python    | pip, uv, Poetry, pipenv, twine |
+| Python    | pip, uv, Poetry, pipenv, Twine |
 | Ruby      | RubyGems, Bundler |
 | Rust      | Cargo |
 | Go        | GitHub |
@@ -103,7 +103,7 @@ policies are preserved, but the firewall stops evaluating packages.
 ## Use the dependency firewall
 
 Run your package manager through the GitLab CLI to check each package against your policies. You
-can run it on your machine or in a CI/CD job.
+can run it on your machine or in a CI/CD job. Authentication is required.
 
 Prerequisites:
 
@@ -112,18 +112,6 @@ Prerequisites:
 - The Reporter, Security Manager, Developer, Maintainer, or Owner role for the project.
 
 To get started, follow the [dependency firewall tutorial](quickstart.md).
-
-### Use the dependency firewall in CI/CD
-
-In a CI/CD job, run your package manager through `glab df` in the job script, and set the
-`GLAB_ENABLE_CI_AUTOLOGIN` CI/CD variable to `true`. The CLI then signs in with the CI/CD job
-token, so the job needs no other credentials.
-
-The job token can evaluate packages for its own project only. The user who triggered the job
-needs one of the roles listed in the prerequisites.
-
-For an example job that fails when any package is blocked, see
-[`glab dependency-firewall ci-summary`](https://docs.gitlab.com/cli/dependency-firewall/ci-summary/).
 
 ## Prevent bypassing the firewall
 

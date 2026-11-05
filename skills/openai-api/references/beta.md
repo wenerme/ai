@@ -184,7 +184,7 @@ Content type: `application/json`
 
   `minItems: 0`, `maxItems: 2000`
 
-  - `Function object { description, name, parameters, 2 more }`
+  - `Function object { description, name, parameters, 3 more }`
 
     A function defined by the application.
 
@@ -209,6 +209,10 @@ Content type: `application/json`
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean (default: false)`
+
+      Whether the agent continues without waiting for the function result. Defaults to `false`.
 
     - `defer_loading: optional boolean (default: false)`
 
@@ -600,7 +604,7 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -629,6 +633,10 @@ Content type: `application/json`
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -914,7 +922,8 @@ curl https://api.openai.com/v1/agents \
       "parameters": {
         "foo": "bar"
       },
-      "type": "function"
+      "type": "function",
+      "async": true
     }
   ],
   "updated_at": 0,
@@ -1178,7 +1187,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -1207,6 +1216,10 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -1512,7 +1525,8 @@ curl https://api.openai.com/v1/agents \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "updated_at": 0,
@@ -1707,7 +1721,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -1736,6 +1750,10 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -2017,7 +2035,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       "parameters": {
         "foo": "bar"
       },
-      "type": "function"
+      "type": "function",
+      "async": true
     }
   ],
   "updated_at": 0,
@@ -2220,7 +2239,7 @@ Content type: `application/json`
 
   `minItems: 0`, `maxItems: 2000`
 
-  - `Function object { description, name, parameters, 2 more }`
+  - `Function object { description, name, parameters, 3 more }`
 
     A function defined by the application.
 
@@ -2245,6 +2264,10 @@ Content type: `application/json`
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean (default: false)`
+
+      Whether the agent continues without waiting for the function result. Defaults to `false`.
 
     - `defer_loading: optional boolean (default: false)`
 
@@ -2636,7 +2659,7 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -2665,6 +2688,10 @@ Content type: `application/json`
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -2947,7 +2974,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       "parameters": {
         "foo": "bar"
       },
-      "type": "function"
+      "type": "function",
+      "async": true
     }
   ],
   "updated_at": 0,
@@ -3150,7 +3178,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -3179,6 +3207,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ToolSearch object { type }`
 
@@ -4078,7 +4110,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Output Command Execution Output Delta Event
 
-- `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
+- `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 5 more }`
 
   Emitted when command execution produces an output delta.
 
@@ -4123,6 +4155,12 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.output.command_execution_output.delta`.
 
     - `"agent.output.command_execution_output.delta"`
+
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
 
 ### Agent Output Item
 
@@ -5404,7 +5442,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
-      - `Function object { defer_loading, description, name, 2 more }`
+      - `Function object { defer_loading, description, name, 3 more }`
 
         A function defined by the application.
 
@@ -5433,6 +5471,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
           The type of the object. Always `function`.
 
           - `"function"`
+
+        - `async: optional boolean`
+
+          Whether the agent continues without waiting for the function result.
 
       - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -6298,7 +6340,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Created Event
 
-- `AgentSessionCreatedEvent object { event_id, session, type }`
+- `AgentSessionCreatedEvent object { event_id, session, type, obfuscation }`
 
   Emitted when a session is created.
 
@@ -6462,7 +6504,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -6491,6 +6533,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -7284,6 +7330,12 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.created"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Deleted
 
 - `AgentSessionDeleted object { id, deleted, object }`
@@ -7308,7 +7360,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Environment Connected Event
 
-- `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted when a session environment connects.
 
@@ -7406,9 +7458,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.connected"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Disconnected Event
 
-- `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted when a session environment disconnects.
 
@@ -7506,9 +7564,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.disconnected"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Expired Event
 
-- `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted after a suspended hosted session environment and its checkpoint expire.
 
@@ -7606,9 +7670,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.expired"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Failed Event
 
-- `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted when a session environment fails.
 
@@ -7706,9 +7776,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.failed"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Pending Event
 
-- `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted while a session environment is being prepared.
 
@@ -7806,9 +7882,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.pending"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Ready Event
 
-- `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted when a hosted session environment is ready to connect.
 
@@ -7906,9 +7988,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.ready"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Environment Reset Event
 
-- `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
+- `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 4 more }`
 
   Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -7947,6 +8035,12 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.session.environment.reset`.
 
     - `"agent.session.environment.reset"`
+
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
 
 ### Agent Session Environment State
 
@@ -8022,7 +8116,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Environment Suspended Event
 
-- `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+- `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 3 more }`
 
   Emitted after an idle hosted session environment is checkpointed and stopped.
 
@@ -8120,9 +8214,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.environment.suspended"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Error Event
 
-- `AgentSessionErrorEvent object { error, event_id, session_id, type }`
+- `AgentSessionErrorEvent object { error, event_id, session_id, 2 more }`
 
   Emitted when a turn or session fails.
 
@@ -8172,13 +8272,19 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"error"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Event
 
 - `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
-  - `AgentSessionErrorEvent object { error, event_id, session_id, type }`
+  - `AgentSessionErrorEvent object { error, event_id, session_id, 2 more }`
 
     Emitted when a turn or session fails.
 
@@ -8228,7 +8334,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"error"`
 
-  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a hosted session environment is ready to connect.
 
@@ -8326,7 +8438,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after an idle hosted session environment is checkpointed and stopped.
 
@@ -8358,7 +8476,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.suspended"`
 
-  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after a suspended hosted session environment and its checkpoint expire.
 
@@ -8390,7 +8514,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.expired"`
 
-  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 4 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -8430,7 +8560,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.reset"`
 
-  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 5 more }`
 
     Emitted when command execution produces an output delta.
 
@@ -8476,7 +8612,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.output.command_execution_output.delta"`
 
-  - `AgentSessionCreatedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionCreatedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is created.
 
@@ -8640,7 +8782,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
           `minItems: 0`, `maxItems: 2000`
 
-          - `Function object { defer_loading, description, name, 2 more }`
+          - `Function object { defer_loading, description, name, 3 more }`
 
             A function defined by the application.
 
@@ -8669,6 +8811,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
               The type of the object. Always `function`.
 
               - `"function"`
+
+            - `async: optional boolean`
+
+              Whether the agent continues without waiting for the function result.
 
           - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -9462,7 +9608,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.created"`
 
-  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn is created.
 
@@ -9684,7 +9836,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.created"`
 
-  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn starts running.
 
@@ -9716,7 +9874,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.in_progress"`
 
-  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn completes.
 
@@ -9752,7 +9916,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn fails.
 
@@ -9788,7 +9958,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn is cancelled.
 
@@ -9824,7 +10000,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an item is added to a turn.
 
@@ -10900,7 +11082,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.item.added"`
 
-  - `AgentSessionIdleEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionIdleEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session becomes idle.
 
@@ -10920,7 +11108,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.idle"`
 
-  - `AgentSessionInProgressEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionInProgressEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session starts processing a turn.
 
@@ -10940,7 +11134,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.in_progress"`
 
-  - `AgentSessionRequiresActionEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionRequiresActionEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is waiting for one or more required actions.
 
@@ -10960,7 +11160,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.requires_action"`
 
-  - `AgentSessionFailedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionFailedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session fails.
 
@@ -10980,7 +11186,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.failed"`
 
-  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted while a session environment is being prepared.
 
@@ -11012,7 +11224,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.pending"`
 
-  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment connects.
 
@@ -11044,7 +11262,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.connected"`
 
-  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment disconnects.
 
@@ -11076,7 +11300,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.disconnected"`
 
-  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment fails.
 
@@ -11108,7 +11338,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.environment.failed"`
 
-  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is created.
 
@@ -11196,7 +11432,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.subagent.created"`
 
-  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a closed subagent successfully resumes.
 
@@ -11216,7 +11458,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.subagent.active"`
 
-  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is closed.
 
@@ -11236,7 +11484,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.subagent.closed"`
 
-  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an output item is complete.
 
@@ -11524,7 +11778,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.item.done"`
 
-  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is added.
 
@@ -11574,7 +11834,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.content_part.added"`
 
-  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output content part is complete.
 
@@ -11624,7 +11890,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.content_part.done"`
 
-  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 6 more }`
 
     Emitted when text is appended to an output text content part.
 
@@ -11676,7 +11948,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.output_text.delta"`
 
-  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is complete.
 
@@ -11728,7 +12006,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.output_text.done"`
 
-  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is added.
 
@@ -11788,7 +12072,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.reasoning_summary_part.added"`
 
-  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 6 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 7 more }`
 
     Emitted when a reasoning summary part is complete.
 
@@ -11844,7 +12134,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.reasoning_summary_part.done"`
 
-  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 6 more }`
 
     Emitted when text is appended to a reasoning summary.
 
@@ -11896,7 +12192,13 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.reasoning_summary_text.delta"`
 
-  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is complete.
 
@@ -11948,9 +12250,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       - `"agent.session.turn.reasoning_summary_text.done"`
 
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
 ### Agent Session Failed Event
 
-- `AgentSessionFailedEvent object { event_id, session, type }`
+- `AgentSessionFailedEvent object { event_id, session, type, obfuscation }`
 
   Emitted when a session fails.
 
@@ -12114,7 +12422,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -12143,6 +12451,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -12936,9 +13248,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.failed"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Idle Event
 
-- `AgentSessionIdleEvent object { event_id, session, type }`
+- `AgentSessionIdleEvent object { event_id, session, type, obfuscation }`
 
   Emitted when a session becomes idle.
 
@@ -13102,7 +13420,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -13131,6 +13449,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -13924,9 +14246,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.idle"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session In Progress Event
 
-- `AgentSessionInProgressEvent object { event_id, session, type }`
+- `AgentSessionInProgressEvent object { event_id, session, type, obfuscation }`
 
   Emitted when a session starts processing a turn.
 
@@ -14090,7 +14418,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -14119,6 +14447,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -14911,6 +15243,12 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.session.in_progress`.
 
     - `"agent.session.in_progress"`
+
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
 
 ### Agent Session Input Message Param
 
@@ -16402,7 +16740,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session Requires Action Event
 
-- `AgentSessionRequiresActionEvent object { event_id, session, type }`
+- `AgentSessionRequiresActionEvent object { event_id, session, type, obfuscation }`
 
   Emitted when a session is waiting for one or more required actions.
 
@@ -16566,7 +16904,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -16595,6 +16933,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -17388,9 +17730,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.requires_action"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Subagent Active Event
 
-- `AgentSessionSubagentActiveEvent object { event_id, subagent, type }`
+- `AgentSessionSubagentActiveEvent object { event_id, subagent, type, obfuscation }`
 
   Emitted when a closed subagent successfully resumes.
 
@@ -17502,9 +17850,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.subagent.active"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Subagent Closed Event
 
-- `AgentSessionSubagentClosedEvent object { event_id, subagent, type }`
+- `AgentSessionSubagentClosedEvent object { event_id, subagent, type, obfuscation }`
 
   Emitted when a subagent is closed.
 
@@ -17616,9 +17970,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.subagent.closed"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Subagent Created Event
 
-- `AgentSessionSubagentCreatedEvent object { event_id, subagent, type }`
+- `AgentSessionSubagentCreatedEvent object { event_id, subagent, type, obfuscation }`
 
   Emitted when a subagent is created.
 
@@ -17730,9 +18090,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.subagent.created"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Cancelled Event
 
-- `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
+- `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 4 more }`
 
   Emitted when a turn is cancelled.
 
@@ -17996,9 +18362,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     Token usage by the root agent during the turn, when available.
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Completed Event
 
-- `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 3 more }`
+- `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 4 more }`
 
   Emitted when a turn completes.
 
@@ -18262,9 +18634,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     Token usage by the root agent during the turn, when available.
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Content Part Added Event
 
-- `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 5 more }`
+- `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 6 more }`
 
   Emitted when an output text content part is added.
 
@@ -18326,9 +18704,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.content_part.added"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Content Part Done Event
 
-- `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 5 more }`
+- `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 6 more }`
 
   Emitted when an output content part is complete.
 
@@ -18390,9 +18774,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.content_part.done"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Created Event
 
-- `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 2 more }`
+- `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 3 more }`
 
   Emitted when a turn is created.
 
@@ -18652,9 +19042,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.created"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Failed Event
 
-- `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
+- `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 4 more }`
 
   Emitted when a turn fails.
 
@@ -18918,9 +19314,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     Token usage by the root agent during the turn, when available.
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn In Progress Event
 
-- `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 2 more }`
+- `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 3 more }`
 
   Emitted when a turn starts running.
 
@@ -19180,9 +19582,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.in_progress"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Item Added Event
 
-- `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
+- `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 4 more }`
 
   Emitted when an item is added to a turn.
 
@@ -20258,9 +20666,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.item.added"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Item Done Event
 
-- `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 3 more }`
+- `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 4 more }`
 
   Emitted when an output item is complete.
 
@@ -21110,9 +21524,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.item.done"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Output Text Delta Event
 
-- `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 5 more }`
+- `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 6 more }`
 
   Emitted when text is appended to an output text content part.
 
@@ -21164,9 +21584,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.output_text.delta"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Output Text Done Event
 
-- `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 5 more }`
+- `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 6 more }`
 
   Emitted when an output text content part is complete.
 
@@ -21218,9 +21644,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.output_text.done"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Reasoning Summary Part Added Event
 
-- `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 5 more }`
+- `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 6 more }`
 
   Emitted when a reasoning summary content part is added.
 
@@ -21282,9 +21714,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.reasoning_summary_part.added"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Reasoning Summary Part Done Event
 
-- `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 6 more }`
+- `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 7 more }`
 
   Emitted when a reasoning summary part is complete.
 
@@ -21352,9 +21790,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.reasoning_summary_part.done"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Reasoning Summary Text Delta Event
 
-- `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 5 more }`
+- `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 6 more }`
 
   Emitted when text is appended to a reasoning summary.
 
@@ -21406,9 +21850,15 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
     - `"agent.session.turn.reasoning_summary_text.delta"`
 
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
+
 ### Agent Session Turn Reasoning Summary Text Done Event
 
-- `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 5 more }`
+- `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 6 more }`
 
   Emitted when a reasoning summary content part is complete.
 
@@ -21459,6 +21909,12 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The type of the object. Always `agent.session.turn.reasoning_summary_text.done`.
 
     - `"agent.session.turn.reasoning_summary_text.done"`
+
+  - `obfuscation: optional string`
+
+    Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+    `minLength: 0`
 
 ### Agent Text
 
@@ -21556,11 +22012,11 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool
 
-- `AgentTool = Function { defer_loading, description, name, 2 more }  or ProgrammaticToolCalling { enabled, type }  or Mcp { allowed_tools, connection_origin, credential_id, 5 more }  or 3 more`
+- `AgentTool = Function { defer_loading, description, name, 3 more }  or ProgrammaticToolCalling { enabled, type }  or Mcp { allowed_tools, connection_origin, credential_id, 5 more }  or 3 more`
 
   A tool available to the agent.
 
-  - `Function object { defer_loading, description, name, 2 more }`
+  - `Function object { defer_loading, description, name, 3 more }`
 
     A function defined by the application.
 
@@ -21589,6 +22045,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean`
+
+      Whether the agent continues without waiting for the function result.
 
   - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -21792,11 +22252,11 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Tool Param
 
-- `AgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 4 more`
+- `AgentToolParam = Function { description, name, parameters, 3 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 4 more`
 
   A tool available to the agent.
 
-  - `Function object { description, name, parameters, 2 more }`
+  - `Function object { description, name, parameters, 3 more }`
 
     A function defined by the application.
 
@@ -21821,6 +22281,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean (default: false)`
+
+      Whether the agent continues without waiting for the function result. Defaults to `false`.
 
     - `defer_loading: optional boolean (default: false)`
 
@@ -23504,11 +23968,11 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool
 
-- `PersistedAgentTool = Function { defer_loading, description, name, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { enabled, type }  or 4 more`
+- `PersistedAgentTool = Function { defer_loading, description, name, 3 more }  or ToolSearch { type }  or ProgrammaticToolCalling { enabled, type }  or 4 more`
 
   A credential-free tool available to a reusable agent.
 
-  - `Function object { defer_loading, description, name, 2 more }`
+  - `Function object { defer_loading, description, name, 3 more }`
 
     A function defined by the application.
 
@@ -23537,6 +24001,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean`
+
+      Whether the agent continues without waiting for the function result.
 
   - `ToolSearch object { type }`
 
@@ -23754,11 +24222,11 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Persisted Agent Tool Param
 
-- `PersistedAgentToolParam = Function { description, name, parameters, 2 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 4 more`
+- `PersistedAgentToolParam = Function { description, name, parameters, 3 more }  or ToolSearch { type }  or ProgrammaticToolCalling { type, enabled }  or 4 more`
 
   A tool that can be stored on a reusable agent without session credentials.
 
-  - `Function object { description, name, parameters, 2 more }`
+  - `Function object { description, name, parameters, 3 more }`
 
     A function defined by the application.
 
@@ -23783,6 +24251,10 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The type of the object. Always `function`.
 
       - `"function"`
+
+    - `async: optional boolean (default: false)`
+
+      Whether the agent continues without waiting for the function result. Defaults to `false`.
 
     - `defer_loading: optional boolean (default: false)`
 
@@ -25162,7 +25634,7 @@ Content type: `application/json`
 
             `minItems: 0`, `maxItems: 16384`
 
-            - `Function object { description, name, parameters, 2 more }`
+            - `Function object { description, name, parameters, 3 more }`
 
               A function defined by the application.
 
@@ -25187,6 +25659,10 @@ Content type: `application/json`
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean (default: false)`
+
+                Whether the agent continues without waiting for the function result. Defaults to `false`.
 
               - `defer_loading: optional boolean (default: false)`
 
@@ -25726,7 +26202,7 @@ Content type: `application/json`
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -25755,6 +26231,10 @@ Content type: `application/json`
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -26475,7 +26955,8 @@ curl https://api.openai.com/v1/agents/automations \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "compaction": {
@@ -26827,7 +27308,7 @@ Lists project-owned automations, optionally filtered by target session.
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -26856,6 +27337,10 @@ Lists project-owned automations, optionally filtered by target session.
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -27576,7 +28061,8 @@ curl https://api.openai.com/v1/agents/automations \
               "parameters": {
                 "foo": "bar"
               },
-              "type": "function"
+              "type": "function",
+              "async": true
             }
           ],
           "compaction": {
@@ -27855,7 +28341,7 @@ Pauses future scheduled delivery without stopping an active session.
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -27884,6 +28370,10 @@ Pauses future scheduled delivery without stopping an active session.
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -28581,7 +29071,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/pause \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "compaction": {
@@ -28854,7 +29345,7 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -28883,6 +29374,10 @@ Resumes scheduled delivery; one-time automations without a pending invocation re
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -29580,7 +30075,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/resume \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "compaction": {
@@ -29853,7 +30349,7 @@ Retrieves a project-owned automation.
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -29882,6 +30378,10 @@ Retrieves a project-owned automation.
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -30578,7 +31078,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "compaction": {
@@ -31197,7 +31698,7 @@ Content type: `application/json`
 
         `minItems: 0`, `maxItems: 16384`
 
-        - `Function object { description, name, parameters, 2 more }`
+        - `Function object { description, name, parameters, 3 more }`
 
           A function defined by the application.
 
@@ -31222,6 +31723,10 @@ Content type: `application/json`
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean (default: false)`
+
+            Whether the agent continues without waiting for the function result. Defaults to `false`.
 
           - `defer_loading: optional boolean (default: false)`
 
@@ -31727,7 +32232,7 @@ Content type: `application/json`
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -31756,6 +32261,10 @@ Content type: `application/json`
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -32454,7 +32963,8 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
           "parameters": {
             "foo": "bar"
           },
-          "type": "function"
+          "type": "function",
+          "async": true
         }
       ],
       "compaction": {
@@ -32717,7 +33227,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minItems: 0`, `maxItems: 2000`
 
-            - `Function object { defer_loading, description, name, 2 more }`
+            - `Function object { defer_loading, description, name, 3 more }`
 
               A function defined by the application.
 
@@ -32746,6 +33256,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean`
+
+                Whether the agent continues without waiting for the function result.
 
             - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -33525,7 +34039,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
     `minItems: 0`, `maxItems: 2000`
 
-    - `Function object { defer_loading, description, name, 2 more }`
+    - `Function object { defer_loading, description, name, 3 more }`
 
       A function defined by the application.
 
@@ -33554,6 +34068,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean`
+
+        Whether the agent continues without waiting for the function result.
 
     - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -34647,7 +35165,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
             `minItems: 0`, `maxItems: 16384`
 
-            - `Function object { description, name, parameters, 2 more }`
+            - `Function object { description, name, parameters, 3 more }`
 
               A function defined by the application.
 
@@ -34672,6 +35190,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
                 The type of the object. Always `function`.
 
                 - `"function"`
+
+              - `async: optional boolean (default: false)`
+
+                Whether the agent continues without waiting for the function result. Defaults to `false`.
 
               - `defer_loading: optional boolean (default: false)`
 
@@ -35129,7 +35651,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minItems: 0`, `maxItems: 2000`
 
-        - `Function object { defer_loading, description, name, 2 more }`
+        - `Function object { defer_loading, description, name, 3 more }`
 
           A function defined by the application.
 
@@ -35158,6 +35680,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean`
+
+            Whether the agent continues without waiting for the function result.
 
         - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -36275,7 +36801,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
         `minItems: 0`, `maxItems: 16384`
 
-        - `Function object { description, name, parameters, 2 more }`
+        - `Function object { description, name, parameters, 3 more }`
 
           A function defined by the application.
 
@@ -36300,6 +36826,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
             The type of the object. Always `function`.
 
             - `"function"`
+
+          - `async: optional boolean (default: false)`
+
+            Whether the agent continues without waiting for the function result. Defaults to `false`.
 
           - `defer_loading: optional boolean (default: false)`
 
@@ -36797,7 +37327,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minItems: 0`, `maxItems: 2000`
 
-          - `Function object { defer_loading, description, name, 2 more }`
+          - `Function object { defer_loading, description, name, 3 more }`
 
             A function defined by the application.
 
@@ -36826,6 +37356,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               The type of the object. Always `function`.
 
               - `"function"`
+
+            - `async: optional boolean`
+
+              Whether the agent continues without waiting for the function result.
 
           - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -37621,7 +38155,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
 
           `minItems: 0`, `maxItems: 2000`
 
-          - `Function object { defer_loading, description, name, 2 more }`
+          - `Function object { defer_loading, description, name, 3 more }`
 
             A function defined by the application.
 
@@ -37650,6 +38184,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID \
               The type of the object. Always `function`.
 
               - `"function"`
+
+            - `async: optional boolean`
+
+              Whether the agent continues without waiting for the function result.
 
           - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -38545,7 +39083,7 @@ Queues a manual delivery without changing the saved schedule.
 
                   `minItems: 0`, `maxItems: 2000`
 
-                  - `Function object { defer_loading, description, name, 2 more }`
+                  - `Function object { defer_loading, description, name, 3 more }`
 
                     A function defined by the application.
 
@@ -38574,6 +39112,10 @@ Queues a manual delivery without changing the saved schedule.
                       The type of the object. Always `function`.
 
                       - `"function"`
+
+                    - `async: optional boolean`
+
+                      Whether the agent continues without waiting for the function result.
 
                   - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -39606,7 +40148,7 @@ Lists delivery records for a project-owned automation.
 
                   `minItems: 0`, `maxItems: 2000`
 
-                  - `Function object { defer_loading, description, name, 2 more }`
+                  - `Function object { defer_loading, description, name, 3 more }`
 
                     A function defined by the application.
 
@@ -39635,6 +40177,10 @@ Lists delivery records for a project-owned automation.
                       The type of the object. Always `function`.
 
                       - `"function"`
+
+                    - `async: optional boolean`
+
+                      Whether the agent continues without waiting for the function result.
 
                   - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -40672,7 +41218,7 @@ Retrieves a delivery record for a project-owned automation.
 
                   `minItems: 0`, `maxItems: 2000`
 
-                  - `Function object { defer_loading, description, name, 2 more }`
+                  - `Function object { defer_loading, description, name, 3 more }`
 
                     A function defined by the application.
 
@@ -40701,6 +41247,10 @@ Retrieves a delivery record for a project-owned automation.
                       The type of the object. Always `function`.
 
                       - `"function"`
+
+                    - `async: optional boolean`
+
+                      Whether the agent continues without waiting for the function result.
 
                   - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -41694,7 +42244,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                   `minItems: 0`, `maxItems: 2000`
 
-                  - `Function object { defer_loading, description, name, 2 more }`
+                  - `Function object { defer_loading, description, name, 3 more }`
 
                     A function defined by the application.
 
@@ -41723,6 +42273,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                       The type of the object. Always `function`.
 
                       - `"function"`
+
+                    - `async: optional boolean`
+
+                      Whether the agent continues without waiting for the function result.
 
                   - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -42620,7 +43174,7 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
 
                 `minItems: 0`, `maxItems: 2000`
 
-                - `Function object { defer_loading, description, name, 2 more }`
+                - `Function object { defer_loading, description, name, 3 more }`
 
                   A function defined by the application.
 
@@ -42649,6 +43203,10 @@ curl https://api.openai.com/v1/agents/automations/$AUTOMATION_ID/invocations/$IN
                     The type of the object. Always `function`.
 
                     - `"function"`
+
+                  - `async: optional boolean`
+
+                    Whether the agent continues without waiting for the function result.
 
                 - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -47415,7 +47973,7 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 16384`
 
-    - `Function object { description, name, parameters, 2 more }`
+    - `Function object { description, name, parameters, 3 more }`
 
       A function defined by the application.
 
@@ -47440,6 +47998,10 @@ Content type: `application/json`
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean (default: false)`
+
+        Whether the agent continues without waiting for the function result. Defaults to `false`.
 
       - `defer_loading: optional boolean (default: false)`
 
@@ -47767,6 +48329,14 @@ Content type: `application/json`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
 
+- `stream_options: optional object { include_obfuscation }`
+
+  Options for the event stream. Only allowed when `stream` is `true`.
+
+  - `include_obfuscation: optional boolean (default: true)`
+
+    Whether to include obfuscation padding in events on this connection. Defaults to `true`.
+
 - `vault_ids: optional array of string or null`
 
   The IDs of vaults made available to the session.
@@ -47929,7 +48499,7 @@ Content type: `application/json`
 
       `minItems: 0`, `maxItems: 2000`
 
-      - `Function object { defer_loading, description, name, 2 more }`
+      - `Function object { defer_loading, description, name, 3 more }`
 
         A function defined by the application.
 
@@ -47958,6 +48528,10 @@ Content type: `application/json`
           The type of the object. Always `function`.
 
           - `"function"`
+
+        - `async: optional boolean`
+
+          Whether the agent continues without waiting for the function result.
 
       - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -48792,7 +49366,8 @@ curl https://api.openai.com/v1/agents/sessions \
         "parameters": {
           "foo": "bar"
         },
-        "type": "function"
+        "type": "function",
+        "async": true
       }
     ],
     "compaction": {
@@ -49115,7 +49690,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
       `minItems: 0`, `maxItems: 2000`
 
-      - `Function object { defer_loading, description, name, 2 more }`
+      - `Function object { defer_loading, description, name, 3 more }`
 
         A function defined by the application.
 
@@ -49144,6 +49719,10 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
           The type of the object. Always `function`.
 
           - `"function"`
+
+        - `async: optional boolean`
+
+          Whether the agent continues without waiting for the function result.
 
       - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -49996,7 +50575,8 @@ curl https://api.openai.com/v1/agents/sessions \
             "parameters": {
               "foo": "bar"
             },
-            "type": "function"
+            "type": "function",
+            "async": true
           }
         ],
         "compaction": {
@@ -50240,7 +50820,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
       `minItems: 0`, `maxItems: 2000`
 
-      - `Function object { defer_loading, description, name, 2 more }`
+      - `Function object { defer_loading, description, name, 3 more }`
 
         A function defined by the application.
 
@@ -50269,6 +50849,10 @@ Retrieves the current state of a managed agent session. See [managing sessions](
           The type of the object. Always `function`.
 
           - `"function"`
+
+        - `async: optional boolean`
+
+          Whether the agent continues without waiting for the function result.
 
       - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -51097,7 +51681,8 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
         "parameters": {
           "foo": "bar"
         },
-        "type": "function"
+        "type": "function",
+        "async": true
       }
     ],
     "compaction": {
@@ -51249,7 +51834,7 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 16384`
 
-    - `Function object { description, name, parameters, 2 more }`
+    - `Function object { description, name, parameters, 3 more }`
 
       A function defined by the application.
 
@@ -51274,6 +51859,10 @@ Content type: `application/json`
         The type of the object. Always `function`.
 
         - `"function"`
+
+      - `async: optional boolean (default: false)`
+
+        Whether the agent continues without waiting for the function result. Defaults to `false`.
 
       - `defer_loading: optional boolean (default: false)`
 
@@ -51685,7 +52274,7 @@ Content type: `application/json`
 
       `minItems: 0`, `maxItems: 2000`
 
-      - `Function object { defer_loading, description, name, 2 more }`
+      - `Function object { defer_loading, description, name, 3 more }`
 
         A function defined by the application.
 
@@ -51714,6 +52303,10 @@ Content type: `application/json`
           The type of the object. Always `function`.
 
           - `"function"`
+
+        - `async: optional boolean`
+
+          Whether the agent continues without waiting for the function result.
 
       - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -52543,7 +53136,8 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
         "parameters": {
           "foo": "bar"
         },
-        "type": "function"
+        "type": "function",
+        "async": true
       }
     ],
     "compaction": {
@@ -53325,13 +53919,19 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
   `minLength: 0`, `maxLength: 1048576`
 
+### Query Parameters
+
+- `include_obfuscation: optional boolean (default: true)`
+
+  Whether to include obfuscation padding in events on this connection. Defaults to `true`.
+
 ### Returns
 
 - `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentSuspendedEvent or 30 more`
 
   An event emitted by a Managed Agents session.
 
-  - `AgentSessionErrorEvent object { error, event_id, session_id, type }`
+  - `AgentSessionErrorEvent object { error, event_id, session_id, 2 more }`
 
     Emitted when a turn or session fails.
 
@@ -53381,7 +53981,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"error"`
 
-  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentReadyEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a hosted session environment is ready to connect.
 
@@ -53479,7 +54085,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentSuspendedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after an idle hosted session environment is checkpointed and stopped.
 
@@ -53511,7 +54123,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.suspended"`
 
-  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentExpiredEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted after a suspended hosted session environment and its checkpoint expire.
 
@@ -53543,7 +54161,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.expired"`
 
-  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 4 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -53583,7 +54207,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.reset"`
 
-  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 4 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentOutputCommandExecutionOutputDeltaEvent object { delta, event_id, item_id, 5 more }`
 
     Emitted when command execution produces an output delta.
 
@@ -53629,7 +54259,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.output.command_execution_output.delta"`
 
-  - `AgentSessionCreatedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionCreatedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is created.
 
@@ -53793,7 +54429,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           `minItems: 0`, `maxItems: 2000`
 
-          - `Function object { defer_loading, description, name, 2 more }`
+          - `Function object { defer_loading, description, name, 3 more }`
 
             A function defined by the application.
 
@@ -53822,6 +54458,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
               The type of the object. Always `function`.
 
               - `"function"`
+
+            - `async: optional boolean`
+
+              Whether the agent continues without waiting for the function result.
 
           - `ProgrammaticToolCalling object { enabled, type }`
 
@@ -54615,7 +55255,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.created"`
 
-  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCreatedEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn is created.
 
@@ -54837,7 +55483,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.created"`
 
-  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnInProgressEvent object { event_id, session_id, turn, 3 more }`
 
     Emitted when a turn starts running.
 
@@ -54869,7 +55521,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.in_progress"`
 
-  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCompletedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn completes.
 
@@ -54905,7 +55563,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnFailedEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn fails.
 
@@ -54941,7 +55605,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnCancelledEvent object { event_id, session_id, turn, 4 more }`
 
     Emitted when a turn is cancelled.
 
@@ -54977,7 +55647,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       Token usage by the root agent during the turn, when available.
 
-  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemAddedEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an item is added to a turn.
 
@@ -56053,7 +56729,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.item.added"`
 
-  - `AgentSessionIdleEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionIdleEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session becomes idle.
 
@@ -56073,7 +56755,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.idle"`
 
-  - `AgentSessionInProgressEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionInProgressEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session starts processing a turn.
 
@@ -56093,7 +56781,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.in_progress"`
 
-  - `AgentSessionRequiresActionEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionRequiresActionEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session is waiting for one or more required actions.
 
@@ -56113,7 +56807,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.requires_action"`
 
-  - `AgentSessionFailedEvent object { event_id, session, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionFailedEvent object { event_id, session, type, obfuscation }`
 
     Emitted when a session fails.
 
@@ -56133,7 +56833,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.failed"`
 
-  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentPendingEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted while a session environment is being prepared.
 
@@ -56165,7 +56871,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.pending"`
 
-  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentConnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment connects.
 
@@ -56197,7 +56909,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.connected"`
 
-  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentDisconnectedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment disconnects.
 
@@ -56229,7 +56947,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.disconnected"`
 
-  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 2 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionEnvironmentFailedEvent object { environment, event_id, session_id, 3 more }`
 
     Emitted when a session environment fails.
 
@@ -56261,7 +56985,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.failed"`
 
-  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentCreatedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is created.
 
@@ -56349,7 +57079,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.created"`
 
-  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentActiveEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a closed subagent successfully resumes.
 
@@ -56369,7 +57105,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.active"`
 
-  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionSubagentClosedEvent object { event_id, subagent, type, obfuscation }`
 
     Emitted when a subagent is closed.
 
@@ -56389,7 +57131,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.subagent.closed"`
 
-  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 3 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnItemDoneEvent object { event_id, item, output_index, 4 more }`
 
     Emitted when an output item is complete.
 
@@ -56677,7 +57425,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.item.done"`
 
-  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartAddedEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is added.
 
@@ -56727,7 +57481,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.content_part.added"`
 
-  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnContentPartDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output content part is complete.
 
@@ -56777,7 +57537,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.content_part.done"`
 
-  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDeltaEvent object { content_index, delta, event_id, 6 more }`
 
     Emitted when text is appended to an output text content part.
 
@@ -56829,7 +57595,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.output_text.delta"`
 
-  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnOutputTextDoneEvent object { content_index, event_id, item_id, 6 more }`
 
     Emitted when an output text content part is complete.
 
@@ -56881,7 +57653,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.output_text.done"`
 
-  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartAddedEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is added.
 
@@ -56941,7 +57719,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_part.added"`
 
-  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 6 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryPartDoneEvent object { event_id, item_id, output_index, 7 more }`
 
     Emitted when a reasoning summary part is complete.
 
@@ -56997,7 +57781,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_part.done"`
 
-  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDeltaEvent object { delta, event_id, item_id, 6 more }`
 
     Emitted when text is appended to a reasoning summary.
 
@@ -57049,7 +57839,13 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.turn.reasoning_summary_text.delta"`
 
-  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 5 more }`
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
+
+  - `AgentSessionTurnReasoningSummaryTextDoneEvent object { event_id, item_id, output_index, 6 more }`
 
     Emitted when a reasoning summary content part is complete.
 
@@ -57100,6 +57896,12 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       The type of the object. Always `agent.session.turn.reasoning_summary_text.done`.
 
       - `"agent.session.turn.reasoning_summary_text.done"`
+
+    - `obfuscation: optional string`
+
+      Random alphanumeric padding. Present when stream obfuscation is enabled.
+
+      `minLength: 0`
 
 ### Example
 
@@ -77726,7 +78528,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -77762,6 +78564,34 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -77783,13 +78613,14 @@ the `background` parameter set to `true` can be cancelled.
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -77797,13 +78628,14 @@ the `background` parameter set to `true` can be cancelled.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -77812,8 +78644,6 @@ the `background` parameter set to `true` can be cancelled.
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -77826,6 +78656,14 @@ the `background` parameter set to `true` can be cancelled.
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -77841,16 +78679,24 @@ the `background` parameter set to `true` can be cancelled.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -77894,6 +78740,39 @@ the `background` parameter set to `true` can be cancelled.
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -78925,7 +79804,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -78961,6 +79840,34 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -78982,13 +79889,14 @@ the `background` parameter set to `true` can be cancelled.
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -78996,13 +79904,14 @@ the `background` parameter set to `true` can be cancelled.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -79011,8 +79920,6 @@ the `background` parameter set to `true` can be cancelled.
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -79025,6 +79932,14 @@ the `background` parameter set to `true` can be cancelled.
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -79040,16 +79955,24 @@ the `background` parameter set to `true` can be cancelled.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -79093,6 +80016,39 @@ the `background` parameter set to `true` can be cancelled.
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -79662,7 +80618,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -79758,7 +80714,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -79767,6 +80723,10 @@ the `background` parameter set to `true` can be cancelled.
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -79803,6 +80763,18 @@ the `background` parameter set to `true` can be cancelled.
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -82576,7 +83548,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -82612,6 +83584,34 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -82633,13 +83633,14 @@ the `background` parameter set to `true` can be cancelled.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -82647,13 +83648,14 @@ the `background` parameter set to `true` can be cancelled.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -82662,8 +83664,6 @@ the `background` parameter set to `true` can be cancelled.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -82676,6 +83676,14 @@ the `background` parameter set to `true` can be cancelled.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -82691,16 +83699,24 @@ the `background` parameter set to `true` can be cancelled.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -82744,6 +83760,39 @@ the `background` parameter set to `true` can be cancelled.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -83639,7 +84688,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -83675,6 +84724,34 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -83696,13 +84773,14 @@ the `background` parameter set to `true` can be cancelled.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -83710,13 +84788,14 @@ the `background` parameter set to `true` can be cancelled.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -83725,8 +84804,6 @@ the `background` parameter set to `true` can be cancelled.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -83739,6 +84816,14 @@ the `background` parameter set to `true` can be cancelled.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -83754,16 +84839,24 @@ the `background` parameter set to `true` can be cancelled.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -83807,6 +84900,39 @@ the `background` parameter set to `true` can be cancelled.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -84200,7 +85326,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -84296,7 +85422,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -84305,6 +85431,10 @@ the `background` parameter set to `true` can be cancelled.
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -84341,6 +85471,18 @@ the `background` parameter set to `true` can be cancelled.
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -85935,7 +87077,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"programmatic_tool_calling"`
 
-    - `ImageGeneration object { type, action, background, 9 more }`
+    - `ImageGeneration object { type, action, background, 13 more }`
 
       A tool that generates images using the GPT image models.
 
@@ -85971,6 +87113,34 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"auto"`
 
+      - `complexity: optional "low" or "medium" or "high"`
+
+        Computation spent planning the image, independently of rendering quality.
+        Overrides the outer response's `reasoning.effort` for image generation.
+        When omitted, inherits a supported outer reasoning effort or uses the
+        image model's configured default.
+        For SVG output, controls the reference image, not the SVG author's
+        reasoning.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+      - `frame_count: optional integer (default: 9)`
+
+        Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+        `minimum: 2`, `maximum: 16`
+
+      - `frame_duration_ms: optional integer (default: 200)`
+
+        Duration of each GIF frame in milliseconds, rounded to 10 ms.
+        Requires `output_format` to be `gif`. Default: 200.
+
+        `minimum: 20`, `maximum: 2000`
+
       - `input_fidelity: optional "high" or "low" or null`
 
         Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -85992,13 +87162,14 @@ the `background` parameter set to `true` can be cancelled.
 
           Base64-encoded mask image.
 
-      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -86006,13 +87177,14 @@ the `background` parameter set to `true` can be cancelled.
 
         - `string`
 
-        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -86021,8 +87193,6 @@ the `background` parameter set to `true` can be cancelled.
           - `"gpt-image-1"`
 
           - `"gpt-image-1-mini"`
-
-          - `"gpt-image-1.5"`
 
           - `"gpt-image-2"`
 
@@ -86035,6 +87205,14 @@ the `background` parameter set to `true` can be cancelled.
           - `"gpt-image-2.5-flare"`
 
           - `"gpt-image-2.5-flare-2026-09-08"`
+
+          - `"gpt-image-2.6-sunburst"`
+
+          - `"gpt-image-2.6-flare"`
+
+          - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -86050,16 +87228,24 @@ the `background` parameter set to `true` can be cancelled.
 
         `minimum: 0`, `maximum: 100`
 
-      - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-        The output format of the generated image. One of `png`, `webp`, or
-        `jpeg`. Default: `png`.
+        The output format of the generated image. One of `png`, `webp`, `jpeg`,
+        `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+        that supports the selected format. GIF output does not support
+        partial image streaming (`partial_images` greater than `0`),
+        `input_image_mask`, or custom `output_compression`.
+        Responses lifecycle events can still be streamed for GIF output.
 
         - `"png"`
 
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `partial_images: optional integer (default: 0)`
 
@@ -86103,6 +87289,39 @@ the `background` parameter set to `true` can be cancelled.
           - `"1536x1024"`
 
           - `"auto"`
+
+      - `svg: optional object { model, reasoning }`
+
+        SVG author model settings. Requires `output_format` to be `svg`.
+        When SVG model selection is enabled, omitting this object uses the
+        outer response model. Otherwise, the default SVG author is used and
+        explicit model overrides are unavailable.
+
+        - `model: optional string`
+
+          `minLength: 1`
+
+        - `reasoning: optional object { effort }  or null`
+
+          Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+          - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+            Controls how much effort the model should spend on reasoning for this request.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+            - `"max"`
 
     - `LocalShell object { type }`
 
@@ -89743,7 +90962,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -89779,6 +90998,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -89800,13 +91047,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -89814,13 +91062,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -89829,8 +91078,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -89843,6 +91090,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -89858,16 +91113,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -89911,6 +91174,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -90942,7 +92238,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -90978,6 +92274,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -90999,13 +92323,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -91013,13 +92338,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -91028,8 +92354,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -91042,6 +92366,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -91057,16 +92389,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -91110,6 +92450,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -91679,7 +93052,7 @@ Content type: `application/json`
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -91775,7 +93148,7 @@ Content type: `application/json`
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -91784,6 +93157,10 @@ Content type: `application/json`
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -91820,6 +93197,18 @@ Content type: `application/json`
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -94252,7 +95641,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -94288,6 +95677,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -94309,13 +95726,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -94323,13 +95741,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -94338,8 +95757,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -94352,6 +95769,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -94367,16 +95792,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -94420,6 +95853,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -95443,7 +96909,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -95479,6 +96945,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -95500,13 +96994,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -95514,13 +97009,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -95529,8 +97025,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -95543,6 +97037,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -95558,16 +97060,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -95611,6 +97121,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -96409,7 +97952,7 @@ Content type: `application/json`
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -96505,7 +98048,7 @@ Content type: `application/json`
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -96514,6 +98057,10 @@ Content type: `application/json`
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -96550,6 +98097,18 @@ Content type: `application/json`
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
 
@@ -100425,7 +101984,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -100461,6 +102020,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -100482,13 +102069,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -100496,13 +102084,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -100511,8 +102100,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -100525,6 +102112,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -100540,16 +102135,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -100593,6 +102196,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -101624,7 +103260,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -101660,6 +103296,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -101681,13 +103345,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -101695,13 +103360,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -101710,8 +103376,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -101724,6 +103388,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -101739,16 +103411,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -101792,6 +103472,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -102361,7 +104074,7 @@ Content type: `application/json`
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -102457,7 +104170,7 @@ Content type: `application/json`
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -102466,6 +104179,10 @@ Content type: `application/json`
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -102502,6 +104219,18 @@ Content type: `application/json`
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -104865,7 +106594,7 @@ Content type: `application/json`
 
       - `"programmatic_tool_calling"`
 
-  - `ImageGeneration object { type, action, background, 9 more }`
+  - `ImageGeneration object { type, action, background, 13 more }`
 
     A tool that generates images using the GPT image models.
 
@@ -104901,6 +106630,34 @@ Content type: `application/json`
 
       - `"auto"`
 
+    - `complexity: optional "low" or "medium" or "high"`
+
+      Computation spent planning the image, independently of rendering quality.
+      Overrides the outer response's `reasoning.effort` for image generation.
+      When omitted, inherits a supported outer reasoning effort or uses the
+      image model's configured default.
+      For SVG output, controls the reference image, not the SVG author's
+      reasoning.
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+    - `frame_count: optional integer (default: 9)`
+
+      Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+      `minimum: 2`, `maximum: 16`
+
+    - `frame_duration_ms: optional integer (default: 200)`
+
+      Duration of each GIF frame in milliseconds, rounded to 10 ms.
+      Requires `output_format` to be `gif`. Default: 200.
+
+      `minimum: 20`, `maximum: 2000`
+
     - `input_fidelity: optional "high" or "low" or null`
 
       Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -104922,13 +106679,14 @@ Content type: `application/json`
 
         Base64-encoded mask image.
 
-    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
       The image generation model to use. One of `gpt-image-1-mini`,
       `gpt-image-1.5`, `gpt-image-2`,
       `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
       `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-      `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+      `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+      `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
       `gpt-image-2`.
 
       `gpt-image-1` was shut down on October 23, 2026. Use
@@ -104936,13 +106694,14 @@ Content type: `application/json`
 
       - `string`
 
-      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -104951,8 +106710,6 @@ Content type: `application/json`
         - `"gpt-image-1"`
 
         - `"gpt-image-1-mini"`
-
-        - `"gpt-image-1.5"`
 
         - `"gpt-image-2"`
 
@@ -104965,6 +106722,14 @@ Content type: `application/json`
         - `"gpt-image-2.5-flare"`
 
         - `"gpt-image-2.5-flare-2026-09-08"`
+
+        - `"gpt-image-2.6-sunburst"`
+
+        - `"gpt-image-2.6-flare"`
+
+        - `"gpt-image-1.5"`
+
+        - `"chatgpt-image-latest"`
 
     - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -104980,16 +106745,24 @@ Content type: `application/json`
 
       `minimum: 0`, `maximum: 100`
 
-    - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+    - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-      The output format of the generated image. One of `png`, `webp`, or
-      `jpeg`. Default: `png`.
+      The output format of the generated image. One of `png`, `webp`, `jpeg`,
+      `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+      that supports the selected format. GIF output does not support
+      partial image streaming (`partial_images` greater than `0`),
+      `input_image_mask`, or custom `output_compression`.
+      Responses lifecycle events can still be streamed for GIF output.
 
       - `"png"`
 
       - `"webp"`
 
       - `"jpeg"`
+
+      - `"gif"`
+
+      - `"svg"`
 
     - `partial_images: optional integer (default: 0)`
 
@@ -105033,6 +106806,39 @@ Content type: `application/json`
         - `"1536x1024"`
 
         - `"auto"`
+
+    - `svg: optional object { model, reasoning }`
+
+      SVG author model settings. Requires `output_format` to be `svg`.
+      When SVG model selection is enabled, omitting this object uses the
+      outer response model. Otherwise, the default SVG author is used and
+      explicit model overrides are unavailable.
+
+      - `model: optional string`
+
+        `minLength: 1`
+
+      - `reasoning: optional object { effort }  or null`
+
+        Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+        - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+          Controls how much effort the model should spend on reasoning for this request.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+          - `"max"`
 
   - `LocalShell object { type }`
 
@@ -107718,7 +109524,7 @@ Content type: `application/json`
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -107754,6 +109560,34 @@ Content type: `application/json`
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -107775,13 +109609,14 @@ Content type: `application/json`
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -107789,13 +109624,14 @@ Content type: `application/json`
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -107804,8 +109640,6 @@ Content type: `application/json`
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -107818,6 +109652,14 @@ Content type: `application/json`
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -107833,16 +109675,24 @@ Content type: `application/json`
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -107886,6 +109736,39 @@ Content type: `application/json`
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -108917,7 +110800,7 @@ Content type: `application/json`
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -108953,6 +110836,34 @@ Content type: `application/json`
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -108974,13 +110885,14 @@ Content type: `application/json`
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -108988,13 +110900,14 @@ Content type: `application/json`
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -109003,8 +110916,6 @@ Content type: `application/json`
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -109017,6 +110928,14 @@ Content type: `application/json`
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -109032,16 +110951,24 @@ Content type: `application/json`
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -109085,6 +111012,39 @@ Content type: `application/json`
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -109654,7 +111614,7 @@ Content type: `application/json`
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -109750,7 +111710,7 @@ Content type: `application/json`
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -109759,6 +111719,10 @@ Content type: `application/json`
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -109795,6 +111759,18 @@ Content type: `application/json`
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -112568,7 +114544,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -112604,6 +114580,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -112625,13 +114629,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -112639,13 +114644,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -112654,8 +114660,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -112668,6 +114672,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -112683,16 +114695,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -112736,6 +114756,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -113631,7 +115684,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -113667,6 +115720,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -113688,13 +115769,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -113702,13 +115784,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -113717,8 +115800,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -113731,6 +115812,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -113746,16 +115835,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -113799,6 +115896,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -114192,7 +116322,7 @@ Content type: `application/json`
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -114288,7 +116418,7 @@ Content type: `application/json`
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -114297,6 +116427,10 @@ Content type: `application/json`
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -114333,6 +116467,18 @@ Content type: `application/json`
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -115927,7 +118073,7 @@ Content type: `application/json`
 
         - `"programmatic_tool_calling"`
 
-    - `ImageGeneration object { type, action, background, 9 more }`
+    - `ImageGeneration object { type, action, background, 13 more }`
 
       A tool that generates images using the GPT image models.
 
@@ -115963,6 +118109,34 @@ Content type: `application/json`
 
         - `"auto"`
 
+      - `complexity: optional "low" or "medium" or "high"`
+
+        Computation spent planning the image, independently of rendering quality.
+        Overrides the outer response's `reasoning.effort` for image generation.
+        When omitted, inherits a supported outer reasoning effort or uses the
+        image model's configured default.
+        For SVG output, controls the reference image, not the SVG author's
+        reasoning.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+      - `frame_count: optional integer (default: 9)`
+
+        Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+        `minimum: 2`, `maximum: 16`
+
+      - `frame_duration_ms: optional integer (default: 200)`
+
+        Duration of each GIF frame in milliseconds, rounded to 10 ms.
+        Requires `output_format` to be `gif`. Default: 200.
+
+        `minimum: 20`, `maximum: 2000`
+
       - `input_fidelity: optional "high" or "low" or null`
 
         Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -115984,13 +118158,14 @@ Content type: `application/json`
 
           Base64-encoded mask image.
 
-      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -115998,13 +118173,14 @@ Content type: `application/json`
 
         - `string`
 
-        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -116013,8 +118189,6 @@ Content type: `application/json`
           - `"gpt-image-1"`
 
           - `"gpt-image-1-mini"`
-
-          - `"gpt-image-1.5"`
 
           - `"gpt-image-2"`
 
@@ -116027,6 +118201,14 @@ Content type: `application/json`
           - `"gpt-image-2.5-flare"`
 
           - `"gpt-image-2.5-flare-2026-09-08"`
+
+          - `"gpt-image-2.6-sunburst"`
+
+          - `"gpt-image-2.6-flare"`
+
+          - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -116042,16 +118224,24 @@ Content type: `application/json`
 
         `minimum: 0`, `maximum: 100`
 
-      - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-        The output format of the generated image. One of `png`, `webp`, or
-        `jpeg`. Default: `png`.
+        The output format of the generated image. One of `png`, `webp`, `jpeg`,
+        `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+        that supports the selected format. GIF output does not support
+        partial image streaming (`partial_images` greater than `0`),
+        `input_image_mask`, or custom `output_compression`.
+        Responses lifecycle events can still be streamed for GIF output.
 
         - `"png"`
 
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `partial_images: optional integer (default: 0)`
 
@@ -116095,6 +118285,39 @@ Content type: `application/json`
           - `"1536x1024"`
 
           - `"auto"`
+
+      - `svg: optional object { model, reasoning }`
+
+        SVG author model settings. Requires `output_format` to be `svg`.
+        When SVG model selection is enabled, omitting this object uses the
+        outer response model. Otherwise, the default SVG author is used and
+        explicit model overrides are unavailable.
+
+        - `model: optional string`
+
+          `minLength: 1`
+
+        - `reasoning: optional object { effort }  or null`
+
+          Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+          - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+            Controls how much effort the model should spend on reasoning for this request.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+            - `"max"`
 
     - `LocalShell object { type }`
 
@@ -120461,7 +122684,7 @@ Retrieves a model response with the given ID.
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -120497,6 +122720,34 @@ Retrieves a model response with the given ID.
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -120518,13 +122769,14 @@ Retrieves a model response with the given ID.
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -120532,13 +122784,14 @@ Retrieves a model response with the given ID.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -120547,8 +122800,6 @@ Retrieves a model response with the given ID.
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -120561,6 +122812,14 @@ Retrieves a model response with the given ID.
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -120576,16 +122835,24 @@ Retrieves a model response with the given ID.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -120629,6 +122896,39 @@ Retrieves a model response with the given ID.
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -121660,7 +123960,7 @@ Retrieves a model response with the given ID.
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -121696,6 +123996,34 @@ Retrieves a model response with the given ID.
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -121717,13 +124045,14 @@ Retrieves a model response with the given ID.
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -121731,13 +124060,14 @@ Retrieves a model response with the given ID.
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -121746,8 +124076,6 @@ Retrieves a model response with the given ID.
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -121760,6 +124088,14 @@ Retrieves a model response with the given ID.
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -121775,16 +124111,24 @@ Retrieves a model response with the given ID.
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -121828,6 +124172,39 @@ Retrieves a model response with the given ID.
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -122397,7 +124774,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -122493,7 +124870,7 @@ Retrieves a model response with the given ID.
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -122502,6 +124879,10 @@ Retrieves a model response with the given ID.
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -122538,6 +124919,18 @@ Retrieves a model response with the given ID.
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -125311,7 +127704,7 @@ Retrieves a model response with the given ID.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -125347,6 +127740,34 @@ Retrieves a model response with the given ID.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -125368,13 +127789,14 @@ Retrieves a model response with the given ID.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -125382,13 +127804,14 @@ Retrieves a model response with the given ID.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -125397,8 +127820,6 @@ Retrieves a model response with the given ID.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -125411,6 +127832,14 @@ Retrieves a model response with the given ID.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -125426,16 +127855,24 @@ Retrieves a model response with the given ID.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -125479,6 +127916,39 @@ Retrieves a model response with the given ID.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -126374,7 +128844,7 @@ Retrieves a model response with the given ID.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -126410,6 +128880,34 @@ Retrieves a model response with the given ID.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -126431,13 +128929,14 @@ Retrieves a model response with the given ID.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -126445,13 +128944,14 @@ Retrieves a model response with the given ID.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -126460,8 +128960,6 @@ Retrieves a model response with the given ID.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -126474,6 +128972,14 @@ Retrieves a model response with the given ID.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -126489,16 +128995,24 @@ Retrieves a model response with the given ID.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -126542,6 +129056,39 @@ Retrieves a model response with the given ID.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -126935,7 +129482,7 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -127031,7 +129578,7 @@ Retrieves a model response with the given ID.
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -127040,6 +129587,10 @@ Retrieves a model response with the given ID.
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -127076,6 +129627,18 @@ Retrieves a model response with the given ID.
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -128670,7 +131233,7 @@ Retrieves a model response with the given ID.
 
         - `"programmatic_tool_calling"`
 
-    - `ImageGeneration object { type, action, background, 9 more }`
+    - `ImageGeneration object { type, action, background, 13 more }`
 
       A tool that generates images using the GPT image models.
 
@@ -128706,6 +131269,34 @@ Retrieves a model response with the given ID.
 
         - `"auto"`
 
+      - `complexity: optional "low" or "medium" or "high"`
+
+        Computation spent planning the image, independently of rendering quality.
+        Overrides the outer response's `reasoning.effort` for image generation.
+        When omitted, inherits a supported outer reasoning effort or uses the
+        image model's configured default.
+        For SVG output, controls the reference image, not the SVG author's
+        reasoning.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+      - `frame_count: optional integer (default: 9)`
+
+        Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+        `minimum: 2`, `maximum: 16`
+
+      - `frame_duration_ms: optional integer (default: 200)`
+
+        Duration of each GIF frame in milliseconds, rounded to 10 ms.
+        Requires `output_format` to be `gif`. Default: 200.
+
+        `minimum: 20`, `maximum: 2000`
+
       - `input_fidelity: optional "high" or "low" or null`
 
         Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -128727,13 +131318,14 @@ Retrieves a model response with the given ID.
 
           Base64-encoded mask image.
 
-      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -128741,13 +131333,14 @@ Retrieves a model response with the given ID.
 
         - `string`
 
-        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -128756,8 +131349,6 @@ Retrieves a model response with the given ID.
           - `"gpt-image-1"`
 
           - `"gpt-image-1-mini"`
-
-          - `"gpt-image-1.5"`
 
           - `"gpt-image-2"`
 
@@ -128770,6 +131361,14 @@ Retrieves a model response with the given ID.
           - `"gpt-image-2.5-flare"`
 
           - `"gpt-image-2.5-flare-2026-09-08"`
+
+          - `"gpt-image-2.6-sunburst"`
+
+          - `"gpt-image-2.6-flare"`
+
+          - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -128785,16 +131384,24 @@ Retrieves a model response with the given ID.
 
         `minimum: 0`, `maximum: 100`
 
-      - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-        The output format of the generated image. One of `png`, `webp`, or
-        `jpeg`. Default: `png`.
+        The output format of the generated image. One of `png`, `webp`, `jpeg`,
+        `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+        that supports the selected format. GIF output does not support
+        partial image streaming (`partial_images` greater than `0`),
+        `input_image_mask`, or custom `output_compression`.
+        Responses lifecycle events can still be streamed for GIF output.
 
         - `"png"`
 
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `partial_images: optional integer (default: 0)`
 
@@ -128838,6 +131445,39 @@ Retrieves a model response with the given ID.
           - `"1536x1024"`
 
           - `"auto"`
+
+      - `svg: optional object { model, reasoning }`
+
+        SVG author model settings. Requires `output_format` to be `svg`.
+        When SVG model selection is enabled, omitting this object uses the
+        outer response model. Otherwise, the default SVG author is used and
+        explicit model overrides are unavailable.
+
+        - `model: optional string`
+
+          `minLength: 1`
+
+        - `reasoning: optional object { effort }  or null`
+
+          Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+          - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+            Controls how much effort the model should spend on reasoning for this request.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+            - `"max"`
 
     - `LocalShell object { type }`
 
@@ -131408,7 +134048,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -131444,6 +134084,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -131465,13 +134133,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -131479,13 +134148,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -131494,8 +134164,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -131508,6 +134176,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -131523,16 +134199,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -131576,6 +134260,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -132599,7 +135316,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -132635,6 +135352,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -132656,13 +135401,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -132670,13 +135416,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -132685,8 +135432,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -132699,6 +135444,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -132714,16 +135467,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -132767,6 +135528,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -133565,7 +136359,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -133661,7 +136455,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -133670,6 +136464,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -133706,6 +136504,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
 
@@ -138408,7 +141218,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -138444,6 +141254,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -138465,13 +141303,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -138479,13 +141318,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -138494,8 +141334,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -138508,6 +141346,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -138523,16 +141369,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -138576,6 +141430,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -139607,7 +142494,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -139643,6 +142530,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -139664,13 +142579,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -139678,13 +142594,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -139693,8 +142610,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -139707,6 +142622,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -139722,16 +142645,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -139775,6 +142706,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -140344,7 +143308,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -140440,7 +143404,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -140449,6 +143413,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -140485,6 +143453,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -143258,7 +146238,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -143294,6 +146274,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -143315,13 +146323,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -143329,13 +146338,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -143344,8 +146354,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -143358,6 +146366,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -143373,16 +146389,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -143426,6 +146450,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -144321,7 +147378,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -144357,6 +147414,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -144378,13 +147463,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -144392,13 +147478,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -144407,8 +147494,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -144421,6 +147506,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -144436,16 +147529,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -144489,6 +147590,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -144882,7 +148016,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -144978,7 +148112,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -144987,6 +148121,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -145023,6 +148161,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -146617,7 +149767,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"programmatic_tool_calling"`
 
-    - `ImageGeneration object { type, action, background, 9 more }`
+    - `ImageGeneration object { type, action, background, 13 more }`
 
       A tool that generates images using the GPT image models.
 
@@ -146653,6 +149803,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"auto"`
 
+      - `complexity: optional "low" or "medium" or "high"`
+
+        Computation spent planning the image, independently of rendering quality.
+        Overrides the outer response's `reasoning.effort` for image generation.
+        When omitted, inherits a supported outer reasoning effort or uses the
+        image model's configured default.
+        For SVG output, controls the reference image, not the SVG author's
+        reasoning.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+      - `frame_count: optional integer (default: 9)`
+
+        Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+        `minimum: 2`, `maximum: 16`
+
+      - `frame_duration_ms: optional integer (default: 200)`
+
+        Duration of each GIF frame in milliseconds, rounded to 10 ms.
+        Requires `output_format` to be `gif`. Default: 200.
+
+        `minimum: 20`, `maximum: 2000`
+
       - `input_fidelity: optional "high" or "low" or null`
 
         Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -146674,13 +149852,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           Base64-encoded mask image.
 
-      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -146688,13 +149867,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `string`
 
-        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -146703,8 +149883,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-image-1"`
 
           - `"gpt-image-1-mini"`
-
-          - `"gpt-image-1.5"`
 
           - `"gpt-image-2"`
 
@@ -146717,6 +149895,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-image-2.5-flare"`
 
           - `"gpt-image-2.5-flare-2026-09-08"`
+
+          - `"gpt-image-2.6-sunburst"`
+
+          - `"gpt-image-2.6-flare"`
+
+          - `"gpt-image-1.5"`
+
+          - `"chatgpt-image-latest"`
 
       - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -146732,16 +149918,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         `minimum: 0`, `maximum: 100`
 
-      - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-        The output format of the generated image. One of `png`, `webp`, or
-        `jpeg`. Default: `png`.
+        The output format of the generated image. One of `png`, `webp`, `jpeg`,
+        `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+        that supports the selected format. GIF output does not support
+        partial image streaming (`partial_images` greater than `0`),
+        `input_image_mask`, or custom `output_compression`.
+        Responses lifecycle events can still be streamed for GIF output.
 
         - `"png"`
 
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `partial_images: optional integer (default: 0)`
 
@@ -146785,6 +149979,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1536x1024"`
 
           - `"auto"`
+
+      - `svg: optional object { model, reasoning }`
+
+        SVG author model settings. Requires `output_format` to be `svg`.
+        When SVG model selection is enabled, omitting this object uses the
+        outer response model. Otherwise, the default SVG author is used and
+        explicit model overrides are unavailable.
+
+        - `model: optional string`
+
+          `minLength: 1`
+
+        - `reasoning: optional object { effort }  or null`
+
+          Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+          - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+            Controls how much effort the model should spend on reasoning for this request.
+
+            - `"none"`
+
+            - `"minimal"`
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+            - `"xhigh"`
+
+            - `"max"`
 
     - `LocalShell object { type }`
 
@@ -150410,7 +153637,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -150446,6 +153673,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -150467,13 +153722,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -150481,13 +153737,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -150496,8 +153753,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -150510,6 +153765,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -150525,16 +153788,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -150578,6 +153849,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -151609,7 +154913,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -151645,6 +154949,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -151666,13 +154998,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -151680,13 +155013,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -151695,8 +155029,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -151709,6 +155041,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -151724,16 +155064,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -151777,6 +155125,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -152346,7 +155727,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -152442,7 +155823,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -152451,6 +155832,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -152487,6 +155872,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -155260,7 +158657,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -155296,6 +158693,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -155317,13 +158742,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -155331,13 +158757,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -155346,8 +158773,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -155360,6 +158785,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -155375,16 +158808,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -155428,6 +158869,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -156323,7 +159797,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -156359,6 +159833,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -156380,13 +159882,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -156394,13 +159897,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -156409,8 +159913,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -156423,6 +159925,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -156438,16 +159948,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -156491,6 +160009,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -156884,7 +160435,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -156980,7 +160531,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -156989,6 +160540,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -157025,6 +160580,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -158619,7 +162186,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -158655,6 +162222,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -158676,13 +162271,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -158690,13 +162286,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -158705,8 +162302,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -158719,6 +162314,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -158734,16 +162337,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -158787,6 +162398,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -162877,7 +166521,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -162913,6 +166557,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -162934,13 +166606,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -162948,13 +166621,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -162963,8 +166637,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -162977,6 +166649,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -162992,16 +166672,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -163045,6 +166733,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -164076,7 +167797,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -164112,6 +167833,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -164133,13 +167882,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -164147,13 +167897,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -164162,8 +167913,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -164176,6 +167925,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -164191,16 +167948,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -164244,6 +168009,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -164813,7 +168611,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -164909,7 +168707,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -164918,6 +168716,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -164954,6 +168756,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -167727,7 +171541,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -167763,6 +171577,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -167784,13 +171626,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -167798,13 +171641,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -167813,8 +171657,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -167827,6 +171669,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -167842,16 +171692,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -167895,6 +171753,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -168790,7 +172681,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -168826,6 +172717,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -168847,13 +172766,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -168861,13 +172781,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -168876,8 +172797,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -168890,6 +172809,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -168905,16 +172832,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -168958,6 +172893,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -169351,7 +173319,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -169447,7 +173415,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -169456,6 +173424,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -169492,6 +173464,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -171086,7 +175070,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -171122,6 +175106,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -171143,13 +175155,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -171157,13 +175170,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -171172,8 +175186,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -171186,6 +175198,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -171201,16 +175221,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -171254,6 +175282,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -174815,7 +178876,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -174851,6 +178912,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -174872,13 +178961,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -174886,13 +178976,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -174901,8 +178992,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -174915,6 +179004,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -174930,16 +179027,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -174983,6 +179088,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -176014,7 +180152,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -176050,6 +180188,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -176071,13 +180237,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -176085,13 +180252,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -176100,8 +180268,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -176114,6 +180280,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -176129,16 +180303,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -176182,6 +180364,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -176751,7 +180966,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -176847,7 +181062,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -176856,6 +181071,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -176892,6 +181111,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -179665,7 +183896,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -179701,6 +183932,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -179722,13 +183981,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -179736,13 +183996,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -179751,8 +184012,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -179765,6 +184024,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -179780,16 +184047,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -179833,6 +184108,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -180728,7 +185036,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -180764,6 +185072,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -180785,13 +185121,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -180799,13 +185136,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -180814,8 +185152,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -180828,6 +185164,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -180843,16 +185187,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -180896,6 +185248,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -181289,7 +185674,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -181385,7 +185770,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -181394,6 +185779,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -181430,6 +185819,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -183024,7 +187425,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -183060,6 +187461,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -183081,13 +187510,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -183095,13 +187525,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -183110,8 +187541,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -183124,6 +187553,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -183139,16 +187576,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -183192,6 +187637,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -187006,7 +191484,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -187042,6 +191520,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -187063,13 +191569,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -187077,13 +191584,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -187092,8 +191600,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -187106,6 +191612,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -187121,16 +191635,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -187174,6 +191696,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -188205,7 +192760,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -188241,6 +192796,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -188262,13 +192845,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -188276,13 +192860,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -188291,8 +192876,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -188305,6 +192888,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -188320,16 +192911,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -188373,6 +192972,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -188942,7 +193574,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -189038,7 +193670,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -189047,6 +193679,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -189083,6 +193719,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -191856,7 +196504,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -191892,6 +196540,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -191913,13 +196589,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -191927,13 +196604,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -191942,8 +196620,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -191956,6 +196632,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -191971,16 +196655,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -192024,6 +196716,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -192919,7 +197644,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -192955,6 +197680,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -192976,13 +197729,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -192990,13 +197744,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -193005,8 +197760,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -193019,6 +197772,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -193034,16 +197795,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -193087,6 +197856,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -193480,7 +198282,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -193576,7 +198378,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -193585,6 +198387,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -193621,6 +198427,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -195215,7 +200033,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -195251,6 +200069,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -195272,13 +200118,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -195286,13 +200133,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -195301,8 +200149,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -195315,6 +200161,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -195330,16 +200184,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -195383,6 +200245,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -198757,7 +203652,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -198793,6 +203688,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -198814,13 +203737,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -198828,13 +203752,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -198843,8 +203768,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -198857,6 +203780,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -198872,16 +203803,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -198925,6 +203864,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -199956,7 +204928,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -199992,6 +204964,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -200013,13 +205013,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -200027,13 +205028,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -200042,8 +205044,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -200056,6 +205056,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -200071,16 +205079,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -200124,6 +205140,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -200693,7 +205742,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -200789,7 +205838,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -200798,6 +205847,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -200834,6 +205887,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -203607,7 +208672,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -203643,6 +208708,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -203664,13 +208757,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -203678,13 +208772,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -203693,8 +208788,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -203707,6 +208800,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -203722,16 +208823,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -203775,6 +208884,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -204670,7 +209812,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -204706,6 +209848,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -204727,13 +209897,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -204741,13 +209912,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -204756,8 +209928,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -204770,6 +209940,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -204785,16 +209963,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -204838,6 +210024,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -205231,7 +210450,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -205327,7 +210546,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -205336,6 +210555,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -205372,6 +210595,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -206966,7 +212201,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -207002,6 +212237,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -207023,13 +212286,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -207037,13 +212301,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -207052,8 +212317,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -207066,6 +212329,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -207081,16 +212352,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -207134,6 +212413,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -210344,7 +215656,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -210380,6 +215692,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -210401,13 +215741,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -210415,13 +215756,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -210430,8 +215772,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -210444,6 +215784,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -210459,16 +215807,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -210512,6 +215868,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -211543,7 +216932,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -211579,6 +216968,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -211600,13 +217017,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -211614,13 +217032,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -211629,8 +217048,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -211643,6 +217060,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -211658,16 +217083,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -211711,6 +217144,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -212280,7 +217746,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -212376,7 +217842,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -212385,6 +217851,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -212421,6 +217891,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -215636,7 +221118,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -215672,6 +221154,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -215693,13 +221203,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -215707,13 +221218,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -215722,8 +221234,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -215736,6 +221246,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -215751,16 +221269,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -215804,6 +221330,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -216835,7 +222394,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -216871,6 +222430,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -216892,13 +222479,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -216906,13 +222494,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -216921,8 +222510,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -216935,6 +222522,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -216950,16 +222545,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -217003,6 +222606,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -217572,7 +223208,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -217668,7 +223304,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -217677,6 +223313,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -217713,6 +223353,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -221944,7 +227596,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -221980,6 +227632,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -222001,13 +227681,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -222015,13 +227696,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -222030,8 +227712,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -222044,6 +227724,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -222059,16 +227747,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -222112,6 +227808,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -223135,7 +228864,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -223171,6 +228900,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -223192,13 +228949,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -223206,13 +228964,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -223221,8 +228980,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -223235,6 +228992,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -223250,16 +229015,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -223303,6 +229076,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -223696,7 +229502,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The identifier of the actor that created the item.
 
-  - `ImageGenerationCall object { id, result, status, 9 more }`
+  - `ImageGenerationCall object { id, result, status, 10 more }`
 
     An image generation request made by the model.
 
@@ -223792,7 +229598,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"unknown"`
 
-    - `output_format: optional "png" or "webp" or "jpeg" or null`
+    - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
       The output format used for generation.
 
@@ -223801,6 +229607,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"webp"`
 
       - `"jpeg"`
+
+      - `"gif"`
+
+      - `"svg"`
 
     - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -223837,6 +229647,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"1024x1536"`
 
         - `"1536x1024"`
+
+    - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+      - `input_tokens: integer`
+
+      - `model: string`
+
+      - `output_tokens: integer`
+
+      - `reasoning_tokens: integer`
+
+      - `total_tokens: integer`
 
   - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -226845,7 +232667,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -226881,6 +232703,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -226902,13 +232752,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -226916,13 +232767,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -226931,8 +232783,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -226945,6 +232795,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -226960,16 +232818,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -227013,6 +232879,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -228036,7 +233935,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -228072,6 +233971,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -228093,13 +234020,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -228107,13 +234035,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -228122,8 +234051,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -228136,6 +234063,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -228151,16 +234086,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -228204,6 +234147,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -228597,7 +234573,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -228693,7 +234669,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -228702,6 +234678,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -228738,6 +234718,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -231765,7 +237757,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -231801,6 +237793,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -231822,13 +237842,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -231836,13 +237857,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -231851,8 +237873,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -231865,6 +237885,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -231880,16 +237908,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -231933,6 +237969,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -232956,7 +239025,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -232992,6 +239061,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -233013,13 +239110,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -233027,13 +239125,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -233042,8 +239141,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -233056,6 +239153,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -233071,16 +239176,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -233124,6 +239237,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -233517,7 +239663,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -233613,7 +239759,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -233622,6 +239768,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -233658,6 +239808,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -237559,7 +243721,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -237595,6 +243757,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -237616,13 +243806,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -237630,13 +243821,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -237645,8 +243837,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -237659,6 +243849,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -237674,16 +243872,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -237727,6 +243933,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -238758,7 +244997,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -238794,6 +245033,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -238815,13 +245082,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -238829,13 +245097,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -238844,8 +245113,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -238858,6 +245125,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -238873,16 +245148,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -238926,6 +245209,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -239495,7 +245811,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -239591,7 +245907,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -239600,6 +245916,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -239636,6 +245956,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -242409,7 +248741,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -242445,6 +248777,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -242466,13 +248826,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -242480,13 +248841,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -242495,8 +248857,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -242509,6 +248869,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -242524,16 +248892,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -242577,6 +248953,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -243472,7 +249881,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -243508,6 +249917,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -243529,13 +249966,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -243543,13 +249981,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -243558,8 +249997,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -243572,6 +250009,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -243587,16 +250032,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -243640,6 +250093,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -244033,7 +250519,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -244129,7 +250615,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -244138,6 +250624,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -244174,6 +250664,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -245768,7 +252270,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -245804,6 +252306,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -245825,13 +252355,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -245839,13 +252370,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -245854,8 +252386,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -245868,6 +252398,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -245883,16 +252421,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -245936,6 +252482,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -251594,7 +258173,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"programmatic_tool_calling"`
 
-              - `ImageGeneration object { type, action, background, 9 more }`
+              - `ImageGeneration object { type, action, background, 13 more }`
 
                 A tool that generates images using the GPT image models.
 
@@ -251630,6 +258209,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"auto"`
 
+                - `complexity: optional "low" or "medium" or "high"`
+
+                  Computation spent planning the image, independently of rendering quality.
+                  Overrides the outer response's `reasoning.effort` for image generation.
+                  When omitted, inherits a supported outer reasoning effort or uses the
+                  image model's configured default.
+                  For SVG output, controls the reference image, not the SVG author's
+                  reasoning.
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                - `frame_count: optional integer (default: 9)`
+
+                  Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                  `minimum: 2`, `maximum: 16`
+
+                - `frame_duration_ms: optional integer (default: 200)`
+
+                  Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                  Requires `output_format` to be `gif`. Default: 200.
+
+                  `minimum: 20`, `maximum: 2000`
+
                 - `input_fidelity: optional "high" or "low" or null`
 
                   Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -251651,13 +258258,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Base64-encoded mask image.
 
-                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -251665,13 +258273,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `string`
 
-                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                     The image generation model to use. One of `gpt-image-1-mini`,
                     `gpt-image-1.5`, `gpt-image-2`,
                     `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                     `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                    `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                    `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                    `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                     `gpt-image-2`.
 
                     `gpt-image-1` was shut down on October 23, 2026. Use
@@ -251680,8 +258289,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"gpt-image-1"`
 
                     - `"gpt-image-1-mini"`
-
-                    - `"gpt-image-1.5"`
 
                     - `"gpt-image-2"`
 
@@ -251694,6 +258301,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"gpt-image-2.5-flare"`
 
                     - `"gpt-image-2.5-flare-2026-09-08"`
+
+                    - `"gpt-image-2.6-sunburst"`
+
+                    - `"gpt-image-2.6-flare"`
+
+                    - `"gpt-image-1.5"`
+
+                    - `"chatgpt-image-latest"`
 
                 - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -251709,16 +258324,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   `minimum: 0`, `maximum: 100`
 
-                - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+                - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                  The output format of the generated image. One of `png`, `webp`, or
-                  `jpeg`. Default: `png`.
+                  The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                  `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                  that supports the selected format. GIF output does not support
+                  partial image streaming (`partial_images` greater than `0`),
+                  `input_image_mask`, or custom `output_compression`.
+                  Responses lifecycle events can still be streamed for GIF output.
 
                   - `"png"`
 
                   - `"webp"`
 
                   - `"jpeg"`
+
+                  - `"gif"`
+
+                  - `"svg"`
 
                 - `partial_images: optional integer (default: 0)`
 
@@ -251762,6 +258385,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"1536x1024"`
 
                     - `"auto"`
+
+                - `svg: optional object { model, reasoning }`
+
+                  SVG author model settings. Requires `output_format` to be `svg`.
+                  When SVG model selection is enabled, omitting this object uses the
+                  outer response model. Otherwise, the default SVG author is used and
+                  explicit model overrides are unavailable.
+
+                  - `model: optional string`
+
+                    `minLength: 1`
+
+                  - `reasoning: optional object { effort }  or null`
+
+                    Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                    - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                      Controls how much effort the model should spend on reasoning for this request.
+
+                      - `"none"`
+
+                      - `"minimal"`
+
+                      - `"low"`
+
+                      - `"medium"`
+
+                      - `"high"`
+
+                      - `"xhigh"`
+
+                      - `"max"`
 
               - `LocalShell object { type }`
 
@@ -252793,7 +259449,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"programmatic_tool_calling"`
 
-              - `ImageGeneration object { type, action, background, 9 more }`
+              - `ImageGeneration object { type, action, background, 13 more }`
 
                 A tool that generates images using the GPT image models.
 
@@ -252829,6 +259485,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"auto"`
 
+                - `complexity: optional "low" or "medium" or "high"`
+
+                  Computation spent planning the image, independently of rendering quality.
+                  Overrides the outer response's `reasoning.effort` for image generation.
+                  When omitted, inherits a supported outer reasoning effort or uses the
+                  image model's configured default.
+                  For SVG output, controls the reference image, not the SVG author's
+                  reasoning.
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                - `frame_count: optional integer (default: 9)`
+
+                  Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                  `minimum: 2`, `maximum: 16`
+
+                - `frame_duration_ms: optional integer (default: 200)`
+
+                  Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                  Requires `output_format` to be `gif`. Default: 200.
+
+                  `minimum: 20`, `maximum: 2000`
+
                 - `input_fidelity: optional "high" or "low" or null`
 
                   Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -252850,13 +259534,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     Base64-encoded mask image.
 
-                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -252864,13 +259549,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `string`
 
-                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                     The image generation model to use. One of `gpt-image-1-mini`,
                     `gpt-image-1.5`, `gpt-image-2`,
                     `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                     `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                    `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                    `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                    `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                     `gpt-image-2`.
 
                     `gpt-image-1` was shut down on October 23, 2026. Use
@@ -252879,8 +259565,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"gpt-image-1"`
 
                     - `"gpt-image-1-mini"`
-
-                    - `"gpt-image-1.5"`
 
                     - `"gpt-image-2"`
 
@@ -252893,6 +259577,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"gpt-image-2.5-flare"`
 
                     - `"gpt-image-2.5-flare-2026-09-08"`
+
+                    - `"gpt-image-2.6-sunburst"`
+
+                    - `"gpt-image-2.6-flare"`
+
+                    - `"gpt-image-1.5"`
+
+                    - `"chatgpt-image-latest"`
 
                 - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -252908,16 +259600,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   `minimum: 0`, `maximum: 100`
 
-                - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+                - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                  The output format of the generated image. One of `png`, `webp`, or
-                  `jpeg`. Default: `png`.
+                  The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                  `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                  that supports the selected format. GIF output does not support
+                  partial image streaming (`partial_images` greater than `0`),
+                  `input_image_mask`, or custom `output_compression`.
+                  Responses lifecycle events can still be streamed for GIF output.
 
                   - `"png"`
 
                   - `"webp"`
 
                   - `"jpeg"`
+
+                  - `"gif"`
+
+                  - `"svg"`
 
                 - `partial_images: optional integer (default: 0)`
 
@@ -252961,6 +259661,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                     - `"1536x1024"`
 
                     - `"auto"`
+
+                - `svg: optional object { model, reasoning }`
+
+                  SVG author model settings. Requires `output_format` to be `svg`.
+                  When SVG model selection is enabled, omitting this object uses the
+                  outer response model. Otherwise, the default SVG author is used and
+                  explicit model overrides are unavailable.
+
+                  - `model: optional string`
+
+                    `minLength: 1`
+
+                  - `reasoning: optional object { effort }  or null`
+
+                    Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                    - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                      Controls how much effort the model should spend on reasoning for this request.
+
+                      - `"none"`
+
+                      - `"minimal"`
+
+                      - `"low"`
+
+                      - `"medium"`
+
+                      - `"high"`
+
+                      - `"xhigh"`
+
+                      - `"max"`
 
               - `LocalShell object { type }`
 
@@ -253530,7 +260263,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-          - `ImageGenerationCall object { id, result, status, 9 more }`
+          - `ImageGenerationCall object { id, result, status, 10 more }`
 
             An image generation request made by the model.
 
@@ -253626,7 +260359,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"unknown"`
 
-            - `output_format: optional "png" or "webp" or "jpeg" or null`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
               The output format used for generation.
 
@@ -253635,6 +260368,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -253671,6 +260408,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1024x1536"`
 
                 - `"1536x1024"`
+
+            - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+              - `input_tokens: integer`
+
+              - `model: string`
+
+              - `output_tokens: integer`
+
+              - `reasoning_tokens: integer`
+
+              - `total_tokens: integer`
 
           - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -256444,7 +263193,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -256480,6 +263229,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -256501,13 +263278,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -256515,13 +263293,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -256530,8 +263309,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -256544,6 +263321,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -256559,16 +263344,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -256612,6 +263405,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -257507,7 +264333,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -257543,6 +264369,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -257564,13 +264418,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -257578,13 +264433,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -257593,8 +264449,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -257607,6 +264461,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -257622,16 +264484,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -257675,6 +264545,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -258068,7 +264971,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The identifier of the actor that created the item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -258164,7 +265067,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -258173,6 +265076,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -258209,6 +265116,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -259803,7 +266722,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -259839,6 +266758,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -259860,13 +266807,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -259874,13 +266822,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -259889,8 +266838,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -259903,6 +266850,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -259918,16 +266873,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -259971,6 +266934,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -261722,7 +268718,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A compaction item generated by the [`v1/responses/compact` API](/api/reference/resources/responses/methods/compact).
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -265648,7 +272644,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -265684,6 +272680,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -265705,13 +272729,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -265719,13 +272744,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -265734,8 +272760,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -265748,6 +272772,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -265763,16 +272795,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -265816,6 +272856,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -266847,7 +273920,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"programmatic_tool_calling"`
 
-            - `ImageGeneration object { type, action, background, 9 more }`
+            - `ImageGeneration object { type, action, background, 13 more }`
 
               A tool that generates images using the GPT image models.
 
@@ -266883,6 +273956,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"auto"`
 
+              - `complexity: optional "low" or "medium" or "high"`
+
+                Computation spent planning the image, independently of rendering quality.
+                Overrides the outer response's `reasoning.effort` for image generation.
+                When omitted, inherits a supported outer reasoning effort or uses the
+                image model's configured default.
+                For SVG output, controls the reference image, not the SVG author's
+                reasoning.
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+              - `frame_count: optional integer (default: 9)`
+
+                Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+                `minimum: 2`, `maximum: 16`
+
+              - `frame_duration_ms: optional integer (default: 200)`
+
+                Duration of each GIF frame in milliseconds, rounded to 10 ms.
+                Requires `output_format` to be `gif`. Default: 200.
+
+                `minimum: 20`, `maximum: 2000`
+
               - `input_fidelity: optional "high" or "low" or null`
 
                 Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -266904,13 +274005,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   Base64-encoded mask image.
 
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -266918,13 +274020,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `string`
 
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                   The image generation model to use. One of `gpt-image-1-mini`,
                   `gpt-image-1.5`, `gpt-image-2`,
                   `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                   `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                  `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                  `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                  `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                   `gpt-image-2`.
 
                   `gpt-image-1` was shut down on October 23, 2026. Use
@@ -266933,8 +274036,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-1"`
 
                   - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
 
                   - `"gpt-image-2"`
 
@@ -266947,6 +274048,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"gpt-image-2.5-flare"`
 
                   - `"gpt-image-2.5-flare-2026-09-08"`
+
+                  - `"gpt-image-2.6-sunburst"`
+
+                  - `"gpt-image-2.6-flare"`
+
+                  - `"gpt-image-1.5"`
+
+                  - `"chatgpt-image-latest"`
 
               - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -266962,16 +274071,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 `minimum: 0`, `maximum: 100`
 
-              - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+              - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
+                The output format of the generated image. One of `png`, `webp`, `jpeg`,
+                `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+                that supports the selected format. GIF output does not support
+                partial image streaming (`partial_images` greater than `0`),
+                `input_image_mask`, or custom `output_compression`.
+                Responses lifecycle events can still be streamed for GIF output.
 
                 - `"png"`
 
                 - `"webp"`
 
                 - `"jpeg"`
+
+                - `"gif"`
+
+                - `"svg"`
 
               - `partial_images: optional integer (default: 0)`
 
@@ -267015,6 +274132,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"1536x1024"`
 
                   - `"auto"`
+
+              - `svg: optional object { model, reasoning }`
+
+                SVG author model settings. Requires `output_format` to be `svg`.
+                When SVG model selection is enabled, omitting this object uses the
+                outer response model. Otherwise, the default SVG author is used and
+                explicit model overrides are unavailable.
+
+                - `model: optional string`
+
+                  `minLength: 1`
+
+                - `reasoning: optional object { effort }  or null`
+
+                  Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                  - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                    Controls how much effort the model should spend on reasoning for this request.
+
+                    - `"none"`
+
+                    - `"minimal"`
+
+                    - `"low"`
+
+                    - `"medium"`
+
+                    - `"high"`
+
+                    - `"xhigh"`
+
+                    - `"max"`
 
             - `LocalShell object { type }`
 
@@ -267584,7 +274734,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 9 more }`
+        - `ImageGenerationCall object { id, result, status, 10 more }`
 
           An image generation request made by the model.
 
@@ -267680,7 +274830,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"unknown"`
 
-          - `output_format: optional "png" or "webp" or "jpeg" or null`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
             The output format used for generation.
 
@@ -267689,6 +274839,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -267725,6 +274879,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"1024x1536"`
 
               - `"1536x1024"`
+
+          - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+            - `input_tokens: integer`
+
+            - `model: string`
+
+            - `output_tokens: integer`
+
+            - `reasoning_tokens: integer`
+
+            - `total_tokens: integer`
 
         - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -270100,7 +277266,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"programmatic_tool_calling"`
 
-      - `ImageGeneration object { type, action, background, 9 more }`
+      - `ImageGeneration object { type, action, background, 13 more }`
 
         A tool that generates images using the GPT image models.
 
@@ -270136,6 +277302,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"auto"`
 
+        - `complexity: optional "low" or "medium" or "high"`
+
+          Computation spent planning the image, independently of rendering quality.
+          Overrides the outer response's `reasoning.effort` for image generation.
+          When omitted, inherits a supported outer reasoning effort or uses the
+          image model's configured default.
+          For SVG output, controls the reference image, not the SVG author's
+          reasoning.
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+        - `frame_count: optional integer (default: 9)`
+
+          Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+          `minimum: 2`, `maximum: 16`
+
+        - `frame_duration_ms: optional integer (default: 200)`
+
+          Duration of each GIF frame in milliseconds, rounded to 10 ms.
+          Requires `output_format` to be `gif`. Default: 200.
+
+          `minimum: 20`, `maximum: 2000`
+
         - `input_fidelity: optional "high" or "low" or null`
 
           Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -270157,13 +277351,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             Base64-encoded mask image.
 
-        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+        - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
           The image generation model to use. One of `gpt-image-1-mini`,
           `gpt-image-1.5`, `gpt-image-2`,
           `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
           `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-          `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+          `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+          `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
           `gpt-image-2`.
 
           `gpt-image-1` was shut down on October 23, 2026. Use
@@ -270171,13 +277366,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `string`
 
-          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -270186,8 +277382,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-1"`
 
             - `"gpt-image-1-mini"`
-
-            - `"gpt-image-1.5"`
 
             - `"gpt-image-2"`
 
@@ -270200,6 +277394,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"gpt-image-2.5-flare"`
 
             - `"gpt-image-2.5-flare-2026-09-08"`
+
+            - `"gpt-image-2.6-sunburst"`
+
+            - `"gpt-image-2.6-flare"`
+
+            - `"gpt-image-1.5"`
+
+            - `"chatgpt-image-latest"`
 
         - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -270215,16 +277417,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           `minimum: 0`, `maximum: 100`
 
-        - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-          The output format of the generated image. One of `png`, `webp`, or
-          `jpeg`. Default: `png`.
+          The output format of the generated image. One of `png`, `webp`, `jpeg`,
+          `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+          that supports the selected format. GIF output does not support
+          partial image streaming (`partial_images` greater than `0`),
+          `input_image_mask`, or custom `output_compression`.
+          Responses lifecycle events can still be streamed for GIF output.
 
           - `"png"`
 
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `partial_images: optional integer (default: 0)`
 
@@ -270268,6 +277478,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1536x1024"`
 
             - `"auto"`
+
+        - `svg: optional object { model, reasoning }`
+
+          SVG author model settings. Requires `output_format` to be `svg`.
+          When SVG model selection is enabled, omitting this object uses the
+          outer response model. Otherwise, the default SVG author is used and
+          explicit model overrides are unavailable.
+
+          - `model: optional string`
+
+            `minLength: 1`
+
+          - `reasoning: optional object { effort }  or null`
+
+            Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+            - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+              Controls how much effort the model should spend on reasoning for this request.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
 
       - `LocalShell object { type }`
 
@@ -272237,7 +279480,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -272273,6 +279516,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -272294,13 +279565,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -272308,13 +279580,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -272323,8 +279596,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -272337,6 +279608,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -272352,16 +279631,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -272405,6 +279692,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -273172,7 +280492,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -273208,6 +280528,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -273229,13 +280577,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -273243,13 +280592,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -273258,8 +280608,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -273272,6 +280620,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -273287,16 +280643,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -273340,6 +280704,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -273880,7 +281277,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -273976,7 +281373,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -273985,6 +281382,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -274021,6 +281422,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -278358,7 +285771,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -278394,6 +285807,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -278415,13 +285856,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -278429,13 +285871,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -278444,8 +285887,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -278458,6 +285899,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -278473,16 +285922,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -278526,6 +285983,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -279557,7 +287047,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"programmatic_tool_calling"`
 
-          - `ImageGeneration object { type, action, background, 9 more }`
+          - `ImageGeneration object { type, action, background, 13 more }`
 
             A tool that generates images using the GPT image models.
 
@@ -279593,6 +287083,34 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"auto"`
 
+            - `complexity: optional "low" or "medium" or "high"`
+
+              Computation spent planning the image, independently of rendering quality.
+              Overrides the outer response's `reasoning.effort` for image generation.
+              When omitted, inherits a supported outer reasoning effort or uses the
+              image model's configured default.
+              For SVG output, controls the reference image, not the SVG author's
+              reasoning.
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+            - `frame_count: optional integer (default: 9)`
+
+              Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+              `minimum: 2`, `maximum: 16`
+
+            - `frame_duration_ms: optional integer (default: 200)`
+
+              Duration of each GIF frame in milliseconds, rounded to 10 ms.
+              Requires `output_format` to be `gif`. Default: 200.
+
+              `minimum: 20`, `maximum: 2000`
+
             - `input_fidelity: optional "high" or "low" or null`
 
               Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -279614,13 +287132,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 Base64-encoded mask image.
 
-            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -279628,13 +287147,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `string`
 
-              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+              - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
                 The image generation model to use. One of `gpt-image-1-mini`,
                 `gpt-image-1.5`, `gpt-image-2`,
                 `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
                 `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-                `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+                `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+                `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
                 `gpt-image-2`.
 
                 `gpt-image-1` was shut down on October 23, 2026. Use
@@ -279643,8 +287163,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-1"`
 
                 - `"gpt-image-1-mini"`
-
-                - `"gpt-image-1.5"`
 
                 - `"gpt-image-2"`
 
@@ -279657,6 +287175,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"gpt-image-2.5-flare"`
 
                 - `"gpt-image-2.5-flare-2026-09-08"`
+
+                - `"gpt-image-2.6-sunburst"`
+
+                - `"gpt-image-2.6-flare"`
+
+                - `"gpt-image-1.5"`
+
+                - `"chatgpt-image-latest"`
 
             - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -279672,16 +287198,24 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               `minimum: 0`, `maximum: 100`
 
-            - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+            - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-              The output format of the generated image. One of `png`, `webp`, or
-              `jpeg`. Default: `png`.
+              The output format of the generated image. One of `png`, `webp`, `jpeg`,
+              `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+              that supports the selected format. GIF output does not support
+              partial image streaming (`partial_images` greater than `0`),
+              `input_image_mask`, or custom `output_compression`.
+              Responses lifecycle events can still be streamed for GIF output.
 
               - `"png"`
 
               - `"webp"`
 
               - `"jpeg"`
+
+              - `"gif"`
+
+              - `"svg"`
 
             - `partial_images: optional integer (default: 0)`
 
@@ -279725,6 +287259,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"1536x1024"`
 
                 - `"auto"`
+
+            - `svg: optional object { model, reasoning }`
+
+              SVG author model settings. Requires `output_format` to be `svg`.
+              When SVG model selection is enabled, omitting this object uses the
+              outer response model. Otherwise, the default SVG author is used and
+              explicit model overrides are unavailable.
+
+              - `model: optional string`
+
+                `minLength: 1`
+
+              - `reasoning: optional object { effort }  or null`
+
+                Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+                - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                  Controls how much effort the model should spend on reasoning for this request.
+
+                  - `"none"`
+
+                  - `"minimal"`
+
+                  - `"low"`
+
+                  - `"medium"`
+
+                  - `"high"`
+
+                  - `"xhigh"`
+
+                  - `"max"`
 
           - `LocalShell object { type }`
 
@@ -280294,7 +287861,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 9 more }`
+      - `ImageGenerationCall object { id, result, status, 10 more }`
 
         An image generation request made by the model.
 
@@ -280390,7 +287957,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"unknown"`
 
-        - `output_format: optional "png" or "webp" or "jpeg" or null`
+        - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
           The output format used for generation.
 
@@ -280399,6 +287966,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"webp"`
 
           - `"jpeg"`
+
+          - `"gif"`
+
+          - `"svg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -280435,6 +288006,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"1024x1536"`
 
             - `"1536x1024"`
+
+        - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+          - `input_tokens: integer`
+
+          - `model: string`
+
+          - `output_tokens: integer`
+
+          - `reasoning_tokens: integer`
+
+          - `total_tokens: integer`
 
       - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -283921,7 +291504,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -283957,6 +291540,34 @@ Returns a list of input items for a given response.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -283978,13 +291589,14 @@ Returns a list of input items for a given response.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -283992,13 +291604,14 @@ Returns a list of input items for a given response.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -284007,8 +291620,6 @@ Returns a list of input items for a given response.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -284021,6 +291632,14 @@ Returns a list of input items for a given response.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -284036,16 +291655,24 @@ Returns a list of input items for a given response.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -284089,6 +291716,39 @@ Returns a list of input items for a given response.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -285112,7 +292772,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -285148,6 +292808,34 @@ Returns a list of input items for a given response.
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -285169,13 +292857,14 @@ Returns a list of input items for a given response.
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -285183,13 +292872,14 @@ Returns a list of input items for a given response.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -285198,8 +292888,6 @@ Returns a list of input items for a given response.
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -285212,6 +292900,14 @@ Returns a list of input items for a given response.
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -285227,16 +292923,24 @@ Returns a list of input items for a given response.
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -285280,6 +292984,39 @@ Returns a list of input items for a given response.
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -285915,7 +293652,7 @@ Returns a list of input items for a given response.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -286011,7 +293748,7 @@ Returns a list of input items for a given response.
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -286020,6 +293757,10 @@ Returns a list of input items for a given response.
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -286056,6 +293797,18 @@ Returns a list of input items for a given response.
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -289080,7 +296833,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -289116,6 +296869,34 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -289137,13 +296918,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -289151,13 +296933,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -289166,8 +296949,6 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -289180,6 +296961,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -289195,16 +296984,24 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -289248,6 +297045,39 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -290271,7 +298101,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -290307,6 +298137,34 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -290328,13 +298186,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -290342,13 +298201,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -290357,8 +298217,6 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -290371,6 +298229,14 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -290386,16 +298252,24 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -290439,6 +298313,39 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -291074,7 +298981,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -291170,7 +299077,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -291179,6 +299086,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -291215,6 +299126,18 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -294355,7 +302278,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -294391,6 +302314,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -294412,13 +302363,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -294426,13 +302378,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -294441,8 +302394,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -294455,6 +302406,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -294470,16 +302429,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -294523,6 +302490,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -295554,7 +303554,7 @@ Content type: `application/json`
 
             - `"programmatic_tool_calling"`
 
-        - `ImageGeneration object { type, action, background, 9 more }`
+        - `ImageGeneration object { type, action, background, 13 more }`
 
           A tool that generates images using the GPT image models.
 
@@ -295590,6 +303590,34 @@ Content type: `application/json`
 
             - `"auto"`
 
+          - `complexity: optional "low" or "medium" or "high"`
+
+            Computation spent planning the image, independently of rendering quality.
+            Overrides the outer response's `reasoning.effort` for image generation.
+            When omitted, inherits a supported outer reasoning effort or uses the
+            image model's configured default.
+            For SVG output, controls the reference image, not the SVG author's
+            reasoning.
+
+            - `"low"`
+
+            - `"medium"`
+
+            - `"high"`
+
+          - `frame_count: optional integer (default: 9)`
+
+            Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+            `minimum: 2`, `maximum: 16`
+
+          - `frame_duration_ms: optional integer (default: 200)`
+
+            Duration of each GIF frame in milliseconds, rounded to 10 ms.
+            Requires `output_format` to be `gif`. Default: 200.
+
+            `minimum: 20`, `maximum: 2000`
+
           - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -295611,13 +303639,14 @@ Content type: `application/json`
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
             The image generation model to use. One of `gpt-image-1-mini`,
             `gpt-image-1.5`, `gpt-image-2`,
             `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
             `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+            `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
             `gpt-image-2`.
 
             `gpt-image-1` was shut down on October 23, 2026. Use
@@ -295625,13 +303654,14 @@ Content type: `application/json`
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
               The image generation model to use. One of `gpt-image-1-mini`,
               `gpt-image-1.5`, `gpt-image-2`,
               `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
               `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+              `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
               `gpt-image-2`.
 
               `gpt-image-1` was shut down on October 23, 2026. Use
@@ -295640,8 +303670,6 @@ Content type: `application/json`
               - `"gpt-image-1"`
 
               - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
 
               - `"gpt-image-2"`
 
@@ -295654,6 +303682,14 @@ Content type: `application/json`
               - `"gpt-image-2.5-flare"`
 
               - `"gpt-image-2.5-flare-2026-09-08"`
+
+              - `"gpt-image-2.6-sunburst"`
+
+              - `"gpt-image-2.6-flare"`
+
+              - `"gpt-image-1.5"`
+
+              - `"chatgpt-image-latest"`
 
           - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -295669,16 +303705,24 @@ Content type: `application/json`
 
             `minimum: 0`, `maximum: 100`
 
-          - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+          - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
+            The output format of the generated image. One of `png`, `webp`, `jpeg`,
+            `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+            that supports the selected format. GIF output does not support
+            partial image streaming (`partial_images` greater than `0`),
+            `input_image_mask`, or custom `output_compression`.
+            Responses lifecycle events can still be streamed for GIF output.
 
             - `"png"`
 
             - `"webp"`
 
             - `"jpeg"`
+
+            - `"gif"`
+
+            - `"svg"`
 
           - `partial_images: optional integer (default: 0)`
 
@@ -295722,6 +303766,39 @@ Content type: `application/json`
               - `"1536x1024"`
 
               - `"auto"`
+
+          - `svg: optional object { model, reasoning }`
+
+            SVG author model settings. Requires `output_format` to be `svg`.
+            When SVG model selection is enabled, omitting this object uses the
+            outer response model. Otherwise, the default SVG author is used and
+            explicit model overrides are unavailable.
+
+            - `model: optional string`
+
+              `minLength: 1`
+
+            - `reasoning: optional object { effort }  or null`
+
+              Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+              - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+                Controls how much effort the model should spend on reasoning for this request.
+
+                - `"none"`
+
+                - `"minimal"`
+
+                - `"low"`
+
+                - `"medium"`
+
+                - `"high"`
+
+                - `"xhigh"`
+
+                - `"max"`
 
         - `LocalShell object { type }`
 
@@ -296291,7 +304368,7 @@ Content type: `application/json`
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 9 more }`
+    - `ImageGenerationCall object { id, result, status, 10 more }`
 
       An image generation request made by the model.
 
@@ -296387,7 +304464,7 @@ Content type: `application/json`
 
             - `"unknown"`
 
-      - `output_format: optional "png" or "webp" or "jpeg" or null`
+      - `output_format: optional "png" or "webp" or "jpeg" or 2 more or null`
 
         The output format used for generation.
 
@@ -296396,6 +304473,10 @@ Content type: `application/json`
         - `"webp"`
 
         - `"jpeg"`
+
+        - `"gif"`
+
+        - `"svg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -296432,6 +304513,18 @@ Content type: `application/json`
           - `"1024x1536"`
 
           - `"1536x1024"`
+
+      - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
+
+        - `input_tokens: integer`
+
+        - `model: string`
+
+        - `output_tokens: integer`
+
+        - `reasoning_tokens: integer`
+
+        - `total_tokens: integer`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -298332,7 +306425,7 @@ Content type: `application/json`
 
       - `"programmatic_tool_calling"`
 
-  - `ImageGeneration object { type, action, background, 9 more }`
+  - `ImageGeneration object { type, action, background, 13 more }`
 
     A tool that generates images using the GPT image models.
 
@@ -298368,6 +306461,34 @@ Content type: `application/json`
 
       - `"auto"`
 
+    - `complexity: optional "low" or "medium" or "high"`
+
+      Computation spent planning the image, independently of rendering quality.
+      Overrides the outer response's `reasoning.effort` for image generation.
+      When omitted, inherits a supported outer reasoning effort or uses the
+      image model's configured default.
+      For SVG output, controls the reference image, not the SVG author's
+      reasoning.
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+    - `frame_count: optional integer (default: 9)`
+
+      Number of GIF frames. Requires `output_format` to be `gif`. Default: 9.
+
+      `minimum: 2`, `maximum: 16`
+
+    - `frame_duration_ms: optional integer (default: 200)`
+
+      Duration of each GIF frame in milliseconds, rounded to 10 ms.
+      Requires `output_format` to be `gif`. Default: 200.
+
+      `minimum: 20`, `maximum: 2000`
+
     - `input_fidelity: optional "high" or "low" or null`
 
       Control how much effort the model will exert to match the style and features, especially facial features, of input images. Supports `high` and `low` on `gpt-image-1.5`; `gpt-image-1-mini` supports only `low`. For `gpt-image-2`, omit this parameter. Defaults to `low` on supported models.
@@ -298389,13 +306510,14 @@ Content type: `application/json`
 
         Base64-encoded mask image.
 
-    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
       The image generation model to use. One of `gpt-image-1-mini`,
       `gpt-image-1.5`, `gpt-image-2`,
       `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
       `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-      `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+      `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+      `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
       `gpt-image-2`.
 
       `gpt-image-1` was shut down on October 23, 2026. Use
@@ -298403,13 +306525,14 @@ Content type: `application/json`
 
       - `string`
 
-      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-2" or 9 more`
 
         The image generation model to use. One of `gpt-image-1-mini`,
         `gpt-image-1.5`, `gpt-image-2`,
         `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
         `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
-        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2.5-flare-2026-09-08`, `gpt-image-2.6-sunburst`,
+        `gpt-image-2.6-flare`, or `chatgpt-image-latest`. Default:
         `gpt-image-2`.
 
         `gpt-image-1` was shut down on October 23, 2026. Use
@@ -298418,8 +306541,6 @@ Content type: `application/json`
         - `"gpt-image-1"`
 
         - `"gpt-image-1-mini"`
-
-        - `"gpt-image-1.5"`
 
         - `"gpt-image-2"`
 
@@ -298432,6 +306553,14 @@ Content type: `application/json`
         - `"gpt-image-2.5-flare"`
 
         - `"gpt-image-2.5-flare-2026-09-08"`
+
+        - `"gpt-image-2.6-sunburst"`
+
+        - `"gpt-image-2.6-flare"`
+
+        - `"gpt-image-1.5"`
+
+        - `"chatgpt-image-latest"`
 
     - `moderation: optional "auto" or "low" (default: "auto")`
 
@@ -298447,16 +306576,24 @@ Content type: `application/json`
 
       `minimum: 0`, `maximum: 100`
 
-    - `output_format: optional "png" or "webp" or "jpeg" (default: "png")`
+    - `output_format: optional "png" or "webp" or "jpeg" or 2 more (default: "png")`
 
-      The output format of the generated image. One of `png`, `webp`, or
-      `jpeg`. Default: `png`.
+      The output format of the generated image. One of `png`, `webp`, `jpeg`,
+      `gif`, or `svg`. Default: `png`. GIF and SVG output require a model
+      that supports the selected format. GIF output does not support
+      partial image streaming (`partial_images` greater than `0`),
+      `input_image_mask`, or custom `output_compression`.
+      Responses lifecycle events can still be streamed for GIF output.
 
       - `"png"`
 
       - `"webp"`
 
       - `"jpeg"`
+
+      - `"gif"`
+
+      - `"svg"`
 
     - `partial_images: optional integer (default: 0)`
 
@@ -298500,6 +306637,39 @@ Content type: `application/json`
         - `"1536x1024"`
 
         - `"auto"`
+
+    - `svg: optional object { model, reasoning }`
+
+      SVG author model settings. Requires `output_format` to be `svg`.
+      When SVG model selection is enabled, omitting this object uses the
+      outer response model. Otherwise, the default SVG author is used and
+      explicit model overrides are unavailable.
+
+      - `model: optional string`
+
+        `minLength: 1`
+
+      - `reasoning: optional object { effort }  or null`
+
+        Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+        - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+          Controls how much effort the model should spend on reasoning for this request.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+          - `"max"`
 
   - `LocalShell object { type }`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/bots/concepts/bot-detection-engines/og.
 
 # Bot detection engines
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare uses multiple detection engines because different bot types require different detection strategies. Simple bots can be caught by pattern matching against known signatures, while sophisticated bots require machine learning and behavioral analysis.
 
@@ -28,7 +28,7 @@ The [**JavaScript Detections (JSD)**](https://developers.cloudflare.com/cloudfla
 
 JSD is completely optional. To adjust your settings, configure Super Bot Fight Mode from **Security** > **Bots**.
 
-## Adaptive Intelligence (Business and Enterprise)
+## Adaptive Intelligence
 
 **Adaptive Intelligence** is Cloudflare's machine learning engine, and it accounts for the majority of all bot detections. It distinguishes between human and automated traffic using large volumes of anonymized data from across Cloudflare's global network, which proxies billions of requests daily.
 
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#page","headline":"Bot detection engines","description":"Heuristics, machine learning, and behavioral analysis engines used to detect bots.","url":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/og.png?v=9c9fae9edf429751","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#page","headline":"Bot detection engines","description":"Heuristics, machine learning, and behavioral analysis engines used to detect bots.","url":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/","inLanguage":"en","image":"https://developers.cloudflare.com/bots/concepts/bot-detection-engines/og.png?v=9c9fae9edf429751","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

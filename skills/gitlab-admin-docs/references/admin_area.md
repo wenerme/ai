@@ -563,6 +563,7 @@ The list view displays verification status for a selected component.
 - Wrong sequence owners check [added to schema health check](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197521) in GitLab 18.4.
 - Search path check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239913) in GitLab 19.2.
 - Check for GitLab objects outside the search path [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249289) in GitLab 19.3.
+- Planner statistics check [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266548) in GitLab 19.6.
 
 The database diagnostics page consists of a number of checks that
 attempt to flag common problems with the database:
@@ -570,6 +571,7 @@ attempt to flag common problems with the database:
 - Index corruption caused by [change in PostgreSQL collations](https://gitlab.com/groups/gitlab-org/-/work_items/8573)
 - [Schema discrepancies](https://gitlab.com/groups/gitlab-org/-/work_items/3928)
 - GitLab objects that the [search path](#search-path-check) cannot resolve as expected
+- Large tables without [planner statistics](#planner-statistics-check)
 
 To run each check, select the run button for the check. Selecting the run button
 schedules a background job that will report information from the check to the page.
@@ -646,6 +648,29 @@ To run the check from the console:
 
 ```shell
 sudo gitlab-rake gitlab:db:diagnostics:search_path
+```
+
+The task exits with status `1` when it finds an error.
+
+#### Planner statistics check
+
+The planner statistics check runs when the page loads. For each database, the
+ section lists large tables with no
+planner statistics on record, and large partitioned tables. Each row shows the heap size, the
+estimated row count, the time since the last `ANALYZE`, the interval GitLab expects between
+`ANALYZE` runs on a partitioned table, and a status. A table with a finding is marked
+ or ,
+and a healthy table . A table has no statistics after
+a PostgreSQL major version upgrade before PostgreSQL 18, and autovacuum never analyzes
+a partitioned table.
+
+For the conditions behind each finding and how to fix them, see
+[Planner statistics findings](postgresql/vacuum.md#planner-statistics-findings).
+
+To run the check from the console:
+
+```shell
+sudo gitlab-rake gitlab:db:diagnostics:planner_statistics
 ```
 
 The task exits with status `1` when it finds an error.

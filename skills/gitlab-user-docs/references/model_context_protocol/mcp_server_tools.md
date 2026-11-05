@@ -1658,15 +1658,17 @@ Mark work item 42 in project gitlab-org/gitlab as blocked by work item 40
 ## `get_saved_view_work_items`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227911) in GitLab 18.11.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631461) to accept a numeric `saved_view_id` and return display settings in GitLab 19.6.
 
 This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
 Retrieves a saved view and its list of work items from a namespace. The tool applies the
-filters and the sort order in the saved view to the returned work items.
+filters and the sort order in the saved view to the returned work items. The output also
+includes the display settings of the saved view.
 
 | Parameter       | Type    | Required | Description |
 |-----------------|---------|----------|-------------|
-| `saved_view_id` | string  | Yes      | Global ID of the saved view (in the format `gid://gitlab/WorkItems::SavedViews::SavedView/<id>`). |
+| `saved_view_id` | string  | Yes      | Numeric ID (for example, `42`) or global ID (`gid://gitlab/WorkItems::SavedViews::SavedView/42`) of the saved view. |
 | `url`           | string  | No       | URL for the namespace (project or group). Required if `group_id` or `project_id` is missing. |
 | `group_id`      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
 | `project_id`    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
@@ -2067,6 +2069,7 @@ List the wiki pages in gitlab-org/gitlab
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) from `semantic_code_search` in GitLab 19.4. `semantic_code_search` continues to work as an alias.
 - `scope` parameter [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) in GitLab 19.4.
 - `semantic_query` parameter [renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/606755) to `q` in GitLab 19.4.
+- `scope` parameter [made optional](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267551) in GitLab 19.6.
 
 This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -2081,7 +2084,7 @@ see [semantic code search](../gitlab_duo/semantic_code_search.md).
 
 | Parameter        | Type    | Required | Description |
 |------------------|---------|----------|-------------|
-| `scope`          | string  | Yes      | Type of content to search. Only `code` is supported. |
+| `scope`          | string  | No       | Type of content to search. Only `code` is supported. If omitted, `code` is used. |
 | `q`              | string  | Yes      | Natural language search query. |
 | `project_id`     | string  | Yes      | ID or full path of the project. |
 | `directory_path` | string  | No       | Restricts the search to files under this directory path (for example, `app/services/`). Must be a relative path, without a leading slash or `..` segments. Applies only when `scope` is `code`. |

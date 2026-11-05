@@ -81,8 +81,13 @@ or the command line. GitLab Premium and Ultimate tiers can also automate updates
 
 ### From the UI
 
-When you update a fork from the UI, the following repository protection settings on the fork are
-bypassed:
+When you update a fork from the UI, GitLab merges the upstream default branch into the branch
+selected in your fork.
+GitLab also uses the upstream default branch to calculate whether your fork is ahead or behind.
+To update a non-default branch from the upstream branch with the same name, use the
+[command line](#from-the-command-line).
+
+The following repository protection settings on the fork are bypassed:
 
 - Push rules configured on the fork.
 - File locking applied to files in the fork.
@@ -93,7 +98,9 @@ and applies them directly to the fork.
 
 Prerequisites:
 
-- You must create your fork from an [unprotected branch](branches/protected.md) in the upstream project.
+- Permission to push to the selected branch in your fork, including when the branch is
+  [protected](branches/protected.md).
+  Otherwise,  is not displayed.
 
 To update your fork from the GitLab UI:
 

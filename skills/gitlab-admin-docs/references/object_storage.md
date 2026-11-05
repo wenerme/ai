@@ -141,6 +141,7 @@ The following table lists the valid `objects` that can be used:
 | `pages`            | [Pages](pages/_index.md) |
 | `ci_secure_files`  | [Secure files](cicd/secure_files.md) |
 | `ci_catalog_bundles` | [CI/CD component bundles](../ci/components/_index.md) |
+| `duo_session_capsules` | [GitLab Duo Agent Platform session capsules](../user/duo_agent_platform/sessions/_index.md) |
 
 Within each object type, four parameters can be defined:
 

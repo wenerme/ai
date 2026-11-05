@@ -526,7 +526,10 @@ If you run `cloud_connector:keys:rotate` before you restart the AI Gateway, the 
 rejects tokens signed with the new key with `Forbidden by auth provider`.
 Puma and Sidekiq processes sign with the new key after they restart,
 and their GitLab Duo requests then fail.
-For example, flows fail to start with `Could not obtain Duo Workflow token`.
+For example:
+
+- A request for a workflow token returns `400 Bad request` with `16:Forbidden by auth provider`.
+- A flow that GitLab starts itself, such as a code review, fails to start.
 
 To resolve this issue, restart the AI Gateway
 after you create the new key and before GitLab signs tokens with it.

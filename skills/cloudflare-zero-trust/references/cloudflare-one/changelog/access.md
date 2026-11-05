@@ -105,6 +105,8 @@ Cloudflare Access now supports HTML and Liquid templates for login, identity-den
 
 Create templates in the Cloudflare One dashboard, validate them in the editor, and assign them to applications or set account defaults.
 
+Custom templates are available on Zero Trust Pay-as-you-go and Enterprise plans. They are not available on the Zero Trust Free plan.
+
 ![Custom Access denial page showing failed policy checks and explanations for why access was denied](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=919,format=webp/_astro/custom-denial-page-policy-evaluation.DnTXNqTw.png)
 
 For supported page types, template examples, and setup instructions, refer to [Access custom pages](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/access-custom-pages/).
