@@ -149,6 +149,7 @@ Example response:
   "runner_jobs_request_api_limit": 2000,
   "runner_jobs_patch_trace_api_limit": 200,
   "runner_jobs_endpoints_api_limit": 200,
+  "runner_manager_creation_limit": 1000,
   "security_txt_content": null,
   "security_scan_stale_after_days": 90,
   "bulk_import_concurrent_pipeline_batch_limit": 25,
@@ -238,8 +239,8 @@ these parameters:
 - `throttle_unauthenticated_git_http_enabled`, `throttle_unauthenticated_git_http_period_in_seconds`, and `throttle_unauthenticated_git_http_requests_per_period` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147112) in GitLab 17.0.
 - `allow_all_integrations` and `allowed_integrations` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/issues/500610) in GitLab 17.6.
 - `throttle_authenticated_git_http_enabled`, `throttle_authenticated_git_http_period_in_seconds`, and `throttle_authenticated_git_http_requests_per_period` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/191552) in GitLab 18.1 [with a feature flag](../administration/feature_flags/_index.md) named `git_authenticated_http_limit`. Disabled by default.
-- `git_authenticated_http_limit` feature flag [enabled](https://gitlab.com/gitlab-org/gitlab/-/issues/543768) in GitLab 18.3.
-- `git_authenticated_http_limit` feature flag [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/561577) in GitLab 18.4.
+- `throttle_authenticated_git_http_enabled`, `throttle_authenticated_git_http_period_in_seconds`, and `throttle_authenticated_git_http_requests_per_period` attributes [enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/543768) in GitLab 18.3.
+- `throttle_authenticated_git_http_enabled`, `throttle_authenticated_git_http_period_in_seconds`, and `throttle_authenticated_git_http_requests_per_period` attributes [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/561577) in GitLab 18.4. Feature flag `git_authenticated_http_limit` removed.
 - `throttle_authenticated_dependency_proxy_enabled`, `throttle_authenticated_dependency_proxy_period_in_seconds`, and `throttle_authenticated_dependency_proxy_requests_per_period` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/issues/627044) in GitLab 19.4.
 - `throttle_authenticated_mcp_enabled`, `throttle_authenticated_mcp_period_in_seconds`, and `throttle_authenticated_mcp_requests_per_period` attributes [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256468) in GitLab 19.5.
 
@@ -373,6 +374,7 @@ Example response:
   "runner_jobs_request_api_limit": 2000,
   "runner_jobs_patch_trace_api_limit": 200,
   "runner_jobs_endpoints_api_limit": 200,
+  "runner_manager_creation_limit": 1000,
   "users_api_limit_followers": 100,
   "users_api_limit_following": 100,
   "users_api_limit_status": 240,
@@ -471,8 +473,8 @@ Example responses:
 - `receptive_cluster_agents_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463427) in GitLab 17.4.
 - `allow_all_integrations` and `allowed_integrations` [added](https://gitlab.com/gitlab-org/gitlab/-/issues/500610) in GitLab 17.6.
 - `iframe_rendering_enabled`, `iframe_rendering_allowlist`, and `iframe_rendering_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/200864) in GitLab 18.7.
-- `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
-- `email_otp_enabled` introduced in GitLab 19.1.
+- `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235284) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default.
+- `email_otp_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236437) in GitLab 19.1.
 - `built_in_project_templates_enabled` and `lock_built_in_project_templates_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed.
 - `require_sha_for_merge` and `lock_require_sha_for_merge` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236732) in GitLab 19.2.
 - `sidekiq_timezone_override` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244922) in GitLab 19.2.
@@ -488,14 +490,14 @@ Example responses:
 - `group_audit_events_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/255336) in GitLab 19.5.
 - `jira_connect_domain_allowlist` and `jira_connect_domain_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256324) in GitLab 19.6.
 - `pipeline_retry_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627233) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_retry`. Disabled by default.
-- `pipeline_retry_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_retry` removed.
+- `pipeline_retry_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/263011) in GitLab 19.6. Feature flag `rate_limit_pipeline_retry` removed.
 - `runner_job_list_completed_statuses_limit_per_user` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268206) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `ci_rate_limit_runner_job_list_completed_statuses`. Disabled by default.
 - `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627273) in GitLab 19.5 [with feature flags](../administration/feature_flags/_index.md) named `rate_limit_job_retry` and `rate_limit_job_play`. Disabled by default.
-- `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` generally available in GitLab 19.6. Feature flags `rate_limit_job_retry` and `rate_limit_job_play` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261718).
+- `job_retry_limit_per_user_project` and `job_play_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261718) in GitLab 19.6. Feature flags `rate_limit_job_retry` and `rate_limit_job_play` removed.
 - `pipeline_delete_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627268) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_pipeline_delete`. Disabled by default.
-- `pipeline_delete_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179).
+- `pipeline_delete_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/631179) in GitLab 19.6. Feature flag `rate_limit_pipeline_delete` removed.
 - `job_erase_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.5 [with a feature flag](../administration/feature_flags/_index.md) named `rate_limit_job_erase`. Disabled by default.
-- `job_erase_limit_per_user_project` generally available in GitLab 19.6. Feature flag `rate_limit_job_erase` removed.
+- `job_erase_limit_per_user_project` [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/632455) in GitLab 19.6. Feature flag `rate_limit_job_erase` removed.
 - `job_cancel_limit_per_user_project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/627274) in GitLab 19.6.
 - `duo_token_usage_tracking_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/259436) in GitLab 19.6.
 - `o11y_provisioner_api_key` and `o11y_provisioner_url` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262322) in GitLab 19.6.
@@ -504,10 +506,10 @@ Example responses:
 - `orbit_query_limit`, `orbit_indexing_status_limit`, `orbit_item_counts_limit`, and `orbit_rate_limit_allowlist_raw` [introduced](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/476) in GitLab 19.6.
 - `insights_query_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267890) in GitLab 19.6.
 - `todos_list_api_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265469) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `todos_list_api_rate_limit`. Disabled by default.
-- `issuable_csv_import_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266323) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `issuable_csv_import_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
-- `wiki_read_request_limit_unauthenticated` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266523) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `wiki_read_unauthenticated_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
-- `work_item_hierarchy_add_children_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
-- `label_delete_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267374) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `label_delete_rate_limit`. Disabled by default. This attribute is in [beta](../policy/development_stages_support.md#beta).
+- `issuable_csv_import_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266323) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `issuable_csv_import_rate_limit`. Disabled by default.
+- `wiki_read_request_limit_unauthenticated` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266523) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `wiki_read_unauthenticated_rate_limit`. Disabled by default.
+- `work_item_hierarchy_add_children_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266141) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `work_item_hierarchy_add_children_limits`. Disabled by default.
+- `label_delete_limit` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267374) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `label_delete_rate_limit`. Disabled by default.
 - `ci_lint_api_require_authentication` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267969) in GitLab 19.6.
 
 In general, all settings are optional. When enabling some settings, you might also need
@@ -856,6 +858,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `runner_jobs_request_api_limit`          | integer          | no                                   | Maximum number of requests every minute for each runner token for requests to the `/jobs/request` runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537) in GitLab 18.5. |
 | `runner_jobs_patch_trace_api_limit`      | integer          | no                                   | Maximum number of requests every minute for each runner token for requests to the `PATCH /jobs/:id/trace` runner jobs API endpoint. Default: 2000. To disable throttling, set to 0. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537) in GitLab 18.5. |
 | `runner_jobs_endpoints_api_limit`        | integer          | no                                   | Maximum number of requests every minute for each job token for requests to `/jobs/*` requests to the runner jobs API endpoints. Default: 200. To disable throttling, set to 0. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537) in GitLab 18.5. |
+| `runner_manager_creation_limit`          | integer          | no                                   | Maximum number of runner managers each runner can create every 10 minutes. Applies only when the `log_runner_manager_creation_limit` or `enforce_runner_manager_creation_limit` feature flag is enabled. Default: 1000. To disable the limit, set to 0. Introduced in GitLab 19.6. |
 | `users_api_limit_following` | integer |    no    | Maximum number of requests every minute, for each user or IP address. Default: 100. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181054) in GitLab 17.10. |
 | `users_api_limit_followers` | integer |    no    | Maximum number of requests every minute, for each user or IP address. Default: 100. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181054) in GitLab 17.10. |
 | `users_api_limit_status`    | integer |    no    | Maximum number of requests every minute, for each user or IP address. Default: 240. Set to `0` to disable limits. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/181054) in GitLab 17.10. |

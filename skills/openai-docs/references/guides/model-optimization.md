@@ -146,27 +146,6 @@ Often uses human-generated "ground truth" responses to show the model how it sho
   </td>
 </tr>
 
-<tr>
-<td>
-[Reinforcement fine-tuning (RFT)](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)
-</td>
-<td>
-Generate a response for a prompt, provide an expert grade for the result, and reinforce the model's chain-of-thought for higher-scored responses.
-
-Requires expert graders to agree on the ideal output from the model.
-
-**Reasoning models only**.
-
-</td>
-<td>
-- Complex domain-specific tasks that require advanced reasoning
-- Medical diagnoses based on history and diagnostic guidelines
-- Determining relevant passages from legal case law
-</td>
-<td>
-`o4-mini-2025-04-16`
-</td>
-</tr>
 </tbody>
 </table>
 
@@ -179,10 +158,9 @@ In the OpenAI platform, you can create fine-tuned models either in the [dashboar
 1. Collect a dataset of examples to use as training data
 1. Upload that dataset to OpenAI, formatted in JSONL
 1. Create a fine-tuning job using one of the methods above, depending on your goals—this begins the fine-tuning training process
-1. In the case of RFT, you'll also define a grader to score the model's behavior
 1. Evaluate the results
 
-Get started with [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning), [vision fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning), [direct preference optimization](https://developers.openai.com/api/docs/guides/direct-preference-optimization), or [reinforcement fine-tuning](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning).
+Get started with [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning), [vision fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning), or [direct preference optimization](https://developers.openai.com/api/docs/guides/direct-preference-optimization).
 
 ## Learn from experts
 

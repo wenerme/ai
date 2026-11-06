@@ -22,7 +22,19 @@ Released [GPT-Image-2.6 Sunburst](https://developers.openai.com/api/docs/models/
 
 See the [image generation guide](https://developers.openai.com/api/docs/guides/image-generation#gpt-image-26).
 
+### Nov 2
+
+Feature · Model: gpt-live-1 · API: v1/live/sessions
+
+Outbound SIP calling is now available to all organizations through the Live API. Connect GPT-Live to a phone number through your SIP provider. See the [SIP guide](https://developers.openai.com/api/docs/guides/voice-sip?api=live#place-an-outbound-call).
+
 ## October, 2026
+
+### Oct 30
+
+Feature · API: v1/agents/sessions
+
+Added automatic review for eligible Agents API projects. Set the session's `review` field to `"auto_review"` to have a model approve or deny supported tool and permission requests based on conversation intent and risk. See the [automatic review guide](https://developers.openai.com/api/docs/guides/agents-api/sessions/approvals) for supported requests, limitations, and additional token billing.
 
 ### Oct 30
 
@@ -988,7 +1000,7 @@ Launched [codex-mini-latest](https://developers.openai.com/api/docs/models/codex
 
 Feature · API: v1/fine-tuning · API: v1/responses · API: v1/chat/completions
 
-Launched support for [reinforcement fine-tuning](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning). Learn about available [fine-tuning methods](https://developers.openai.com/api/docs/guides/model-optimization). [gpt-4.1-nano](https://developers.openai.com/api/docs/models/gpt-4.1-nano) is now available for fine-tuning.
+Launched support for [reinforcement fine-tuning](https://developers.openai.com/api/reference/resources/fine_tuning). Learn about available [fine-tuning methods](https://developers.openai.com/api/docs/guides/model-optimization). [gpt-4.1-nano](https://developers.openai.com/api/docs/models/gpt-4.1-nano) is now available for fine-tuning.
 
 ## April, 2025
 

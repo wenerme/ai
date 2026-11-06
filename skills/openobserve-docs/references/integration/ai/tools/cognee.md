@@ -17,7 +17,7 @@ Capture latency and result counts for every Cognee knowledge graph ingest and se
 ## **Installation**
 
 ```shell
-pip install openobserve-telemetry-sdk cognee opentelemetry-api python-dotenv
+pip install openobserve-python-sdk cognee opentelemetry-api python-dotenv
 ```
 
 ## **Configuration**
@@ -114,7 +114,7 @@ Each operation wrapped in a span produces the following attributes. OpenObserve 
 3. Click any span to inspect `cognee_query` and `cognee_result_count`
 4. Sort by duration to identify slow ingest or search operations
 
-[Cognee trace in OpenObserve]
+[Cognee trace in OpenObserve, Waterfall view with the cognee.search span attributes]
 
 ## **Next Steps**
 

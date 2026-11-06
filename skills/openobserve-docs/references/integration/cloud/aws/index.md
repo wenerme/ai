@@ -10,7 +10,7 @@ OpenObserve provides comprehensive AWS monitoring integrations to collect logs, 
 
 These AWS monitoring integrations enable cloud observability, infrastructure monitoring, and application performance monitoring across your AWS cloud workloads.
 
-[aws]
+[AWS Integrations, Individual Services tab]
 
 ## AWS Services Integration Guides
 

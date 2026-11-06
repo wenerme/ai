@@ -6,7 +6,7 @@ aliases:
 
 # Database Preparation
 
-You need a database to use Gitea. Gitea supports PostgreSQL (>= 12), MySQL (>= 8.0), MariaDB (>= 10.4), SQLite (builtin), and MSSQL (>= 2012 SP4). This page will guide into preparing database. Only PostgreSQL and MySQL will be covered here since those database engines are widely-used in production. If you plan to use SQLite, you can ignore this chapter.
+You need a database to use Gitea. Gitea supports PostgreSQL (>= 12), MySQL (>= 8.0), MariaDB (>= 10.4), SQLite (builtin), and MSSQL (>= 2012 SP4). This page will guide into preparing database. PostgreSQL, MySQL and MSSQL are covered here. If you plan to use SQLite, you can ignore this chapter.
 
 > **warning**: Converting one database type to another is not a well-tested process and you may experience issues. It is better to choose the final database type at the type of the first installation. Be aware that SQLite does not scale; if you expect your instance to grow at a later time, you should choose another database type.
 
@@ -170,6 +170,28 @@ Database instance can be on same machine as Gitea (local database setup), or on 
     where `gitea` is database user, `giteadb` is database name, and `203.0.113.3` is IP address of your database instance.
 
     You should be prompted to enter password for the database user, and connected to the database.
+
+## MSSQL
+
+1. As an administrator, create the login, a database with case-sensitive collation, and its user. Replace the password `'gitea'` with a secure one:
+
+    ```sql
+    CREATE LOGIN gitea WITH PASSWORD = 'gitea';
+    CREATE DATABASE giteadb COLLATE Latin1_General_CS_AS;
+    GO
+    USE giteadb;
+    CREATE USER gitea FOR LOGIN gitea;
+    ALTER ROLE db_owner ADD MEMBER gitea;
+    GO
+    ```
+
+    Upgrades change the database schema, so the user needs `db_owner`, or `db_ddladmin`, `db_datareader` and `db_datawriter`. With the latter, also run `ALTER DATABASE giteadb SET READ_COMMITTED_SNAPSHOT ON;` as administrator.
+
+2. On your Gitea server, test the connection to the database:
+
+    ```sh
+    sqlcmd -S 203.0.113.3 -U gitea -d giteadb
+    ```
 
 ## Database Connection over TLS
 

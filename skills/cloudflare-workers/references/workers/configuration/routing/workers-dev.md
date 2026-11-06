@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/configuration/routing/workers-d
 
 # workers.dev
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers accounts come with a `workers.dev` subdomain that is configurable in the Cloudflare dashboard. Your `workers.dev` subdomain allows you getting started quickly by deploying Workers without first onboarding your custom domain to Cloudflare.
 
@@ -34,6 +34,30 @@ When enabled, your `workers.dev` URL is available publicly. You can use [Cloudfl
 Access can protect one Worker's production `workers.dev` URL, preview URLs, or both. You can also protect all Workers or all Worker previews in an account.
 
 To use details about the signed-in user in your Worker, use [`ctx.access`](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#read-authenticated-user-identity-with-ctxaccess). You can also read the [user's identity](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) from the validated JWT or the `/cdn-cgi/access/get-identity` endpoint.
+
+## Browser Integrity Check on `workers.dev`
+
+All requests to a `workers.dev` hostname are evaluated by [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/) (BIC) on the Cloudflare-managed `workers.dev` zone. This includes [Preview URLs](https://developers.cloudflare.com/workers/previews/) and [Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/).
+
+- You cannot turn off this check for a `workers.dev` hostname.
+- Turning off BIC in your own zone, or adding a [custom rule](https://developers.cloudflare.com/waf/custom-rules/skip/) or [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/) that skips or turns off BIC, only affects your zone. It does not affect the check on the `workers.dev` zone.
+- Automated clients that send some default library `User-Agent` headers (for example, the default Python `urllib` user agent) receive [error 1010](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/) before your Worker runs. These requests do not appear in your Worker logs.
+
+To allow automated clients to reach your Worker:
+
+1. **Recommended:** Configure the client to send a descriptive `User-Agent` header that identifies your application. The client does not need to send a browser user agent. For example, in Python:
+
+   ```python
+   import urllib.request
+
+   req = urllib.request.Request(
+       "https://example.com/data.json",
+       headers={"User-Agent": "my-app/1.0 (+https://example.com)"},
+   )
+   urllib.request.urlopen(req)
+   ```
+
+2. Serve your Worker on a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) in a zone you own. You can then create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/) that turns off Browser Integrity Check, or a [custom rule](https://developers.cloudflare.com/waf/custom-rules/skip/) that skips it, for only the paths that need it.
 
 ## Disabling `workers.dev`
 
@@ -97,5 +121,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/og.png?v=61666caf444ad8be","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/#page","headline":"workers.dev","description":"Deploy Cloudflare Workers on a workers.dev subdomain for quick testing and personal projects.","url":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/workers-dev/og.png?v=61666caf444ad8be","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

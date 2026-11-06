@@ -945,6 +945,64 @@ deploy:
 In this example, `inputs.runner_tags` with `'docker,linux'` produces `['docker', 'linux']`,
 which is assigned to `tags` as an array.
 
+#### `default`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/578504) in GitLab 19.6
+  [with a feature flag](../../administration/feature_flags/_index.md) named `ci_interpolation_default_function`.
+  Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Use `default` to replace an empty value with a fallback value. A value is empty
+when it is `null` or an empty string. `false`, `0`, and empty arrays are not empty values.
+
+The fallback value can be either:
+
+- A string in single quotes, for example `default('latest')`. The string cannot contain `'`.
+- Another input or [component context](../components/_index.md#use-component-context-in-components) field,
+  for example `default(inputs.image_tag)` or `default(component.sha)`. The field keeps its type,
+  for example an array input stays an array. Component context fields must be listed in `spec:component`.
+
+`true`, `false`, numbers, and arrays are not supported as fallback values. To use a fallback value of
+another type, set it as the input's `default` in `spec:inputs`.
+
+`default` does not interpolate the fallback value again.
+
+Example:
+
+```yaml
+spec:
+  component: [version, sha]
+  inputs:
+    image_tag:
+      default: ''
+---
+
+build:
+  image: registry.example.com/my-component:$[[ inputs.image_tag | default(component.version) | default(component.sha) ]]
+  script: echo "Building..."
+```
+
+In this example:
+
+- When `image_tag` is set, the image uses that tag.
+- When `image_tag` is not set and the component is included with a released CI/CD Catalog version,
+  for example `@1.2.3`, the image uses `1.2.3`.
+- When `image_tag` is not set and the component is included with a branch or commit SHA,
+  `component.version` is empty, and the image uses the commit SHA of the component.
+
+If you combine `default` with other functions, you must set `default` first.
+Other functions like [`truncate`](#truncate) return an error when the value is `null`. For example:
+
+```yaml
+$[[ component.version | default(component.sha) | truncate(0,8) ]]
+```
+
+The fallback value cannot contain `|` or `]]`. `|` separates the functions in an interpolation block,
+and `]]` ends the block.
+
 ## Troubleshooting
 
 ### YAML syntax errors when using `inputs` in `rules`

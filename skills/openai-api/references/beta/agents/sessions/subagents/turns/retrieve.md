@@ -26,7 +26,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
 ### Returns
 
-- `Turn object { id, agent_id, completed_at, 8 more }`
+- `Turn object { id, agent_id, completed_at, 9 more }`
 
   The canonical public representation of a session turn.
 
@@ -258,6 +258,16 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
       `format: int64`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
 ### Example
 
 ```http
@@ -293,6 +303,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
       "reasoning_tokens": 0
     },
     "total_tokens": 0
+  },
+  "prompt_cache_options": {
+    "ttl": "30m"
   }
 }
 ```

@@ -23,6 +23,6 @@ basic_auth:
 
 > Replace api.openobserve.ai with your self hosted OpenObserve instance if you are hosting it yourself.
 
-You will then be able to explore the metrics in metrics explorer and build dashboards by querying using **SQL or PromQL**
+You will then be able to explore the metrics on the **Metrics** page and build dashboards by querying using **SQL or PromQL**
 
 [image]

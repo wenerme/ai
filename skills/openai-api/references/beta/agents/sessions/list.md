@@ -1010,6 +1010,16 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -1148,6 +1158,9 @@ curl https://api.openai.com/v1/agents/sessions \
       "vault_ids": [
         "string"
       ],
+      "prompt_cache_options": {
+        "ttl": "30m"
+      },
       "review": "none"
     }
   ],

@@ -184,8 +184,8 @@ Dart, Kotlin, Objective-C, Rust, Scala, and Swift support is in
 [beta](../../../policy/development_stages_support.md#beta).
 Analysis runs as a separate CI/CD job, `gitlab-advanced-sast-ext`, when GitLab Advanced SAST is
 enabled and the repository contains files for one of these languages. No additional variable is
-required. For Swift and Objective-C, see
-[Swift and Objective-C configuration](advanced_sast_swift_objc.md).
+required. For details, see
+[Advanced SAST configuration for additional languages](advanced_sast_ext.md).
 
 For Kotlin, Objective-C, Scala, and Swift, `semgrep-sast` also runs, and `gitlab-advanced-sast-ext`
 defers to it for the weaknesses Semgrep already reports, so the same weakness class is not reported
@@ -764,8 +764,8 @@ You can adjust GitLab Advanced SAST behavior using the following variables:
 | `GITLAB_ADVANCED_SAST_ENABLED`              | `false`                | Enable GitLab Advanced SAST scanning for all supported languages except C and C++. Dart, Kotlin, Objective-C, Rust, Scala, and Swift analysis runs as a separate `gitlab-advanced-sast-ext` job. |
 | `GITLAB_ADVANCED_SAST_CPP_ENABLED`          | `false`                | Enable GitLab Advanced SAST scanning specifically for C and C++ projects.                                                                                                                       |
 | `GITLAB_ADV_SAST_INCR_SCAN`                 | `false`                | Enable [incremental scanning](#incremental-scanning) to cache taint signatures between pipeline runs. |
-| `GITLAB_ADVANCED_SAST_EXT_INCREMENTAL_ENABLED` | `true` | Applies only to the `gitlab-advanced-sast-ext` analyzer (Dart, Kotlin, Objective-C, Rust, Scala, and Swift), which has [incremental scanning](advanced_sast_swift_objc.md#incremental-scanning) enabled by default. Set to `false` to turn it off. Has no effect on repositories without files for those languages. For other languages, use `GITLAB_ADV_SAST_INCR_SCAN` instead. |
-| `GITLAB_ADVANCED_SAST_EXT_DEDUP_LANGUAGES` | `kotlin,swift` | Applies only to the `gitlab-advanced-sast-ext` analyzer. Comma-separated list of beta languages for which the analyzer defers to `semgrep-sast` for the weaknesses Semgrep already reports, so they are not reported twice. For Kotlin: CWE-89, CWE-78, CWE-22, CWE-79, CWE-327, and CWE-295. For Swift: the Keychain accessibility check (CWE-922). Set to an empty value to turn the de-duplication off, for example when benchmarking. |
+| `GITLAB_ADVANCED_SAST_EXT_INCREMENTAL_ENABLED` | `true` | Applies only to the `gitlab-advanced-sast-ext` analyzer (Dart, Kotlin, Objective-C, Rust, Scala, and Swift), which has [incremental scanning](advanced_sast_ext.md#incremental-scanning) enabled by default. Set to `false` to turn it off. Has no effect on repositories without files for those languages. For other languages, use `GITLAB_ADV_SAST_INCR_SCAN` instead. |
+| `GITLAB_ADVANCED_SAST_EXT_DEDUP_LANGUAGES` | `kotlin,scala,swift` | Applies only to the `gitlab-advanced-sast-ext` analyzer. Comma-separated list of beta languages for which the analyzer defers to `semgrep-sast` for the weaknesses Semgrep already reports, so they are not reported twice. For Kotlin: CWE-89, CWE-78, CWE-22, CWE-79, CWE-327, and CWE-295. For Scala: CWE-89, CWE-78, CWE-79, CWE-918, and CWE-601. For Swift: the Keychain accessibility check (CWE-922). Set to an empty value to turn the de-duplication off, for example when benchmarking. |
 | `ADVANCED_SAST_PARTIAL_SCAN`                | `false`                | Enable GitLab Advanced SAST diff-scanning mode by setting to `differential`.                                                                                                                    |
 | `GITLAB_ADVANCED_SAST_RULE_TIMEOUT`         | `30`                   | Timeout in seconds per rule per file. When exceeded, that analysis is skipped.                                                                                                                  |
 | `REPORT_UNVERIFIED_VULNS`                   | `false`                | Include unverified findings in scan results. Set to `true`, `1`, or `True` to enable.                                                                                                           |

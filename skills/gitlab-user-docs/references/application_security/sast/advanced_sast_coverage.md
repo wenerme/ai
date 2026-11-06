@@ -178,49 +178,64 @@ GitLab Advanced SAST finds the following types of weaknesses in each programming
 | [CWE-1341](https://cwe.mitre.org/data/definitions/1341.html) | Multiple Releases of Same Resource or Handle                                                                           | Yes | Yes | No  | No  | No  | No             | No  | No  | No |
 | [CWE-1419](https://cwe.mitre.org/data/definitions/1419.html) | Incorrect Initialization of Resource                                                                                   | Yes | Yes | No  | No  | No  | No             | No  | No  | No |
 
-## Swift and Objective-C CWE coverage
+## Additional languages CWE coverage
 
 - Status: Beta
 
-Swift and Objective-C analysis is in [beta](../../../policy/development_stages_support.md#beta) and
-runs as a separate CI/CD job, `gitlab-advanced-sast-ext`. For more information, see
-[Swift and Objective-C configuration](advanced_sast_swift_objc.md).
+Dart, Kotlin, Objective-C, Rust, Scala, and Swift analysis is in
+[beta](../../../policy/development_stages_support.md#beta) and runs as a separate CI/CD job,
+`gitlab-advanced-sast-ext`. For more information, see
+[Advanced SAST configuration for additional languages](advanced_sast_ext.md).
 
-GitLab Advanced SAST finds the following types of weaknesses across Swift and Objective-C combined.
-Coverage is not identical for both languages and continues to expand during the beta.
+GitLab Advanced SAST finds the following types of weaknesses in each language. The Objective-C
+and Swift columns list the same combined set, and coverage is not identical for both languages.
+Coverage continues to expand during the beta.
 
-| CWE                                                          | CWE Description                                                                                                         |
-|:-------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|
-| [CWE-22](https://cwe.mitre.org/data/definitions/22.html)     | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                          |
-| [CWE-78](https://cwe.mitre.org/data/definitions/78.html)     | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                              |
-| [CWE-79](https://cwe.mitre.org/data/definitions/79.html)     | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')                                    |
-| [CWE-89](https://cwe.mitre.org/data/definitions/89.html)     | Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')                                    |
-| [CWE-90](https://cwe.mitre.org/data/definitions/90.html)     | Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')                                    |
-| [CWE-134](https://cwe.mitre.org/data/definitions/134.html)   | Use of Externally-Controlled Format String                                                                              |
-| [CWE-200](https://cwe.mitre.org/data/definitions/200.html)   | Exposure of Sensitive Information to an Unauthorized Actor                                                              |
-| [CWE-295](https://cwe.mitre.org/data/definitions/295.html)   | Improper Certificate Validation                                                                                         |
-| [CWE-312](https://cwe.mitre.org/data/definitions/312.html)   | Cleartext Storage of Sensitive Information                                                                              |
-| [CWE-319](https://cwe.mitre.org/data/definitions/319.html)   | Cleartext Transmission of Sensitive Information                                                                         |
-| [CWE-321](https://cwe.mitre.org/data/definitions/321.html)   | Use of Hard-coded Cryptographic Key                                                                                     |
-| [CWE-327](https://cwe.mitre.org/data/definitions/327.html)   | Use of a Broken or Risky Cryptographic Algorithm                                                                        |
-| [CWE-328](https://cwe.mitre.org/data/definitions/328.html)   | Use of Weak Hash                                                                                                        |
-| [CWE-329](https://cwe.mitre.org/data/definitions/329.html)   | Generation of Predictable IV with CBC Mode                                                                              |
-| [CWE-330](https://cwe.mitre.org/data/definitions/330.html)   | Use of Insufficiently Random Values                                                                                     |
-| [CWE-347](https://cwe.mitre.org/data/definitions/347.html)   | Improper Verification of Cryptographic Signature                                                                        |
-| [CWE-367](https://cwe.mitre.org/data/definitions/367.html)   | Time-of-check Time-of-use (TOCTOU) Race Condition                                                                       |
-| [CWE-477](https://cwe.mitre.org/data/definitions/477.html)   | Use of Obsolete Function                                                                                                |
-| [CWE-502](https://cwe.mitre.org/data/definitions/502.html)   | Deserialization of Untrusted Data                                                                                       |
-| [CWE-522](https://cwe.mitre.org/data/definitions/522.html)   | Insufficiently Protected Credentials                                                                                    |
-| [CWE-532](https://cwe.mitre.org/data/definitions/532.html)   | Insertion of Sensitive Information into Log File                                                                        |
-| [CWE-598](https://cwe.mitre.org/data/definitions/598.html)   | Use of GET Request Method With Sensitive Query Strings                                                                  |
-| [CWE-601](https://cwe.mitre.org/data/definitions/601.html)   | URL Redirection to Untrusted Site ('Open Redirect')                                                                     |
-| [CWE-611](https://cwe.mitre.org/data/definitions/611.html)   | Improper Restriction of XML External Entity Reference                                                                   |
-| [CWE-639](https://cwe.mitre.org/data/definitions/639.html)   | Authorization Bypass Through User-Controlled Key                                                                        |
-| [CWE-643](https://cwe.mitre.org/data/definitions/643.html)   | Improper Neutralization of Data within XPath Expressions ('XPath Injection')                                            |
-| [CWE-916](https://cwe.mitre.org/data/definitions/916.html)   | Use of Password Hash With Insufficient Computational Effort                                                             |
-| [CWE-917](https://cwe.mitre.org/data/definitions/917.html)   | Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')  |
-| [CWE-918](https://cwe.mitre.org/data/definitions/918.html)   | Server-Side Request Forgery (SSRF)                                                                                      |
-| [CWE-1333](https://cwe.mitre.org/data/definitions/1333.html) | Inefficient Regular Expression Complexity                                                                               |
+| CWE                                                          | CWE Description                                                                                                        | Dart        | Kotlin      | Objective-C | Rust        | Scala       | Swift       |
+|:-------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------|:------------|:------------|:------------|:------------|:------------|:------------|
+| [CWE-22](https://cwe.mitre.org/data/definitions/22.html)     | Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')                                         | Yes | Yes | Yes | Yes | Yes | Yes |
+| [CWE-78](https://cwe.mitre.org/data/definitions/78.html)     | Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')                             | No  | Yes | Yes | Yes | Yes | Yes |
+| [CWE-79](https://cwe.mitre.org/data/definitions/79.html)     | Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')                                   | Yes | Yes | Yes | No  | Yes | Yes |
+| [CWE-89](https://cwe.mitre.org/data/definitions/89.html)     | Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')                                   | Yes | Yes | Yes | Yes | Yes | Yes |
+| [CWE-90](https://cwe.mitre.org/data/definitions/90.html)     | Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')                                   | No  | No  | Yes | Yes | No  | Yes |
+| [CWE-91](https://cwe.mitre.org/data/definitions/91.html)     | XML Injection (aka Blind XPath Injection)                                                                              | No  | No  | No  | Yes | No  | No  |
+| [CWE-117](https://cwe.mitre.org/data/definitions/117.html)   | Improper Output Neutralization for Logs                                                                                | No  | No  | No  | Yes | No  | No  |
+| [CWE-134](https://cwe.mitre.org/data/definitions/134.html)   | Use of Externally-Controlled Format String                                                                             | No  | No  | Yes | No  | No  | Yes |
+| [CWE-200](https://cwe.mitre.org/data/definitions/200.html)   | Exposure of Sensitive Information to an Unauthorized Actor                                                             | No  | Yes | Yes | No  | No  | Yes |
+| [CWE-248](https://cwe.mitre.org/data/definitions/248.html)   | Uncaught Exception                                                                                                     | No  | Yes | No  | No  | No  | No  |
+| [CWE-295](https://cwe.mitre.org/data/definitions/295.html)   | Improper Certificate Validation                                                                                        | No  | Yes | Yes | Yes | No  | Yes |
+| [CWE-312](https://cwe.mitre.org/data/definitions/312.html)   | Cleartext Storage of Sensitive Information                                                                             | No  | Yes | Yes | No  | No  | Yes |
+| [CWE-319](https://cwe.mitre.org/data/definitions/319.html)   | Cleartext Transmission of Sensitive Information                                                                        | Yes | Yes | Yes | Yes | No  | Yes |
+| [CWE-321](https://cwe.mitre.org/data/definitions/321.html)   | Use of Hard-coded Cryptographic Key                                                                                    | No  | No  | Yes | No  | No  | Yes |
+| [CWE-327](https://cwe.mitre.org/data/definitions/327.html)   | Use of a Broken or Risky Cryptographic Algorithm                                                                       | No  | Yes | Yes | No  | No  | Yes |
+| [CWE-328](https://cwe.mitre.org/data/definitions/328.html)   | Use of Weak Hash                                                                                                       | No  | No  | Yes | Yes | No  | Yes |
+| [CWE-329](https://cwe.mitre.org/data/definitions/329.html)   | Generation of Predictable IV with CBC Mode                                                                             | Yes | No  | Yes | No  | No  | Yes |
+| [CWE-330](https://cwe.mitre.org/data/definitions/330.html)   | Use of Insufficiently Random Values                                                                                    | Yes | No  | Yes | Yes | No  | Yes |
+| [CWE-347](https://cwe.mitre.org/data/definitions/347.html)   | Improper Verification of Cryptographic Signature                                                                       | No  | No  | Yes | No  | No  | Yes |
+| [CWE-367](https://cwe.mitre.org/data/definitions/367.html)   | Time-of-check Time-of-use (TOCTOU) Race Condition                                                                      | No  | No  | Yes | No  | No  | Yes |
+| [CWE-441](https://cwe.mitre.org/data/definitions/441.html)   | Unintended Proxy or Intermediary ('Confused Deputy')                                                                   | No  | Yes | No  | No  | No  | No  |
+| [CWE-477](https://cwe.mitre.org/data/definitions/477.html)   | Use of Obsolete Function                                                                                               | No  | No  | Yes | No  | No  | Yes |
+| [CWE-502](https://cwe.mitre.org/data/definitions/502.html)   | Deserialization of Untrusted Data                                                                                      | No  | No  | Yes | No  | No  | Yes |
+| [CWE-522](https://cwe.mitre.org/data/definitions/522.html)   | Insufficiently Protected Credentials                                                                                   | No  | No  | Yes | No  | No  | Yes |
+| [CWE-530](https://cwe.mitre.org/data/definitions/530.html)   | Exposure of Backup File to an Unauthorized Control Sphere                                                              | No  | Yes | No  | No  | No  | No  |
+| [CWE-532](https://cwe.mitre.org/data/definitions/532.html)   | Insertion of Sensitive Information into Log File                                                                       | Yes | Yes | Yes | No  | No  | Yes |
+| [CWE-552](https://cwe.mitre.org/data/definitions/552.html)   | Files or Directories Accessible to External Parties                                                                    | No  | Yes | No  | No  | No  | No  |
+| [CWE-598](https://cwe.mitre.org/data/definitions/598.html)   | Use of GET Request Method With Sensitive Query Strings                                                                 | No  | No  | Yes | No  | No  | Yes |
+| [CWE-601](https://cwe.mitre.org/data/definitions/601.html)   | URL Redirection to Untrusted Site ('Open Redirect')                                                                    | No  | No  | Yes | Yes | Yes | Yes |
+| [CWE-611](https://cwe.mitre.org/data/definitions/611.html)   | Improper Restriction of XML External Entity Reference                                                                  | No  | No  | Yes | No  | No  | Yes |
+| [CWE-639](https://cwe.mitre.org/data/definitions/639.html)   | Authorization Bypass Through User-Controlled Key                                                                       | No  | No  | Yes | No  | No  | Yes |
+| [CWE-643](https://cwe.mitre.org/data/definitions/643.html)   | Improper Neutralization of Data within XPath Expressions ('XPath Injection')                                           | No  | No  | Yes | Yes | No  | Yes |
+| [CWE-749](https://cwe.mitre.org/data/definitions/749.html)   | Exposed Dangerous Method or Function                                                                                   | No  | Yes | No  | No  | No  | No  |
+| [CWE-798](https://cwe.mitre.org/data/definitions/798.html)   | Use of Hard-coded Credentials                                                                                          | No  | Yes | No  | Yes | No  | No  |
+| [CWE-829](https://cwe.mitre.org/data/definitions/829.html)   | Inclusion of Functionality from Untrusted Control Sphere                                                               | No  | Yes | No  | No  | No  | No  |
+| [CWE-916](https://cwe.mitre.org/data/definitions/916.html)   | Use of Password Hash With Insufficient Computational Effort                                                            | No  | No  | Yes | No  | No  | Yes |
+| [CWE-917](https://cwe.mitre.org/data/definitions/917.html)   | Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection') | No  | No  | Yes | No  | No  | Yes |
+| [CWE-918](https://cwe.mitre.org/data/definitions/918.html)   | Server-Side Request Forgery (SSRF)                                                                                     | Yes | Yes | Yes | Yes | Yes | Yes |
+| [CWE-925](https://cwe.mitre.org/data/definitions/925.html)   | Improper Verification of Intent by Broadcast Receiver                                                                  | No  | Yes | No  | No  | No  | No  |
+| [CWE-926](https://cwe.mitre.org/data/definitions/926.html)   | Improper Export of Android Application Components                                                                      | No  | Yes | No  | No  | No  | No  |
+| [CWE-927](https://cwe.mitre.org/data/definitions/927.html)   | Use of Implicit Intent for Sensitive Communication                                                                     | No  | Yes | No  | No  | No  | No  |
+| [CWE-940](https://cwe.mitre.org/data/definitions/940.html)   | Improper Verification of Source of a Communication Channel                                                             | No  | Yes | No  | No  | No  | No  |
+| [CWE-1333](https://cwe.mitre.org/data/definitions/1333.html) | Inefficient Regular Expression Complexity                                                                              | No  | No  | Yes | No  | No  | Yes |
 
 > [!note]
 > Did this page answer the question you had? If not, comment on [epic 15343](https://gitlab.com/groups/gitlab-org/-/epics/15343) to share your use case.

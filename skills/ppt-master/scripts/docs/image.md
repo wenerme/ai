@@ -160,6 +160,22 @@ Validates the file behind every `Generated` row before skipping it, iterates ret
 
 **Compatibility**: legacy `type` values read as `background` → `hero_page` + no type, `hero` → `hero_page` + Primitive A, `portrait` → `local` + Primitive B, `typography` → `hero_page` + `embedded` + Primitive C; a missing `page_role` is `local`, a missing `text_policy` is `none` (one aggregate warning per manifest); an existing manifest lacking `deck_rendering` or an item lacking `type` replays its assembled `prompt` verbatim without reconstruction; a legacy `deck_style_anchor` or `deck_palette` never overrides `deck_rendering` / `color_scheme`; legacy `page_role: full_page` reads as `hero_page`.
 
+## `slice_images.py`
+
+Slice a contact sheet with `--grid RxC`, optionally naming the outputs with
+`--names` or `--prefix` and choosing their directory with `--output`.
+All outputs are checked before any slice is written. An output that resolves to
+the source sheet or shares its file identity (including a hard link) is rejected;
+choose different names, a prefix, or an output directory. Output symlinks,
+including dangling links, are also rejected to preserve both the link and its
+referent: remove the output symlink or choose a regular output path before
+rerunning. Existing ordinary slices are overwritten, so regenerating a sheet
+and rerunning the same names refreshes the files used by the image manifest.
+Before slicing, 16-bit grayscale is reduced to 8-bit by retaining each sample's
+high byte (`0..65535` → `0..255`), before RGB/RGBA conversion. This uses the
+encoded bit depth, never the image's observed brightness range. A PNG grayscale
+transparent sample is matched at full depth before reducing the color values.
+
 ## `image_treat.py`
 
 Create a non-destructive PNG derivative from one bitmap already prepared under
@@ -204,6 +220,8 @@ fixed order: brightness → contrast → tone treatment → blur → fit. Desatu
 mutually exclusive. At least one option must produce a real change; animated
 sources are rejected rather than reduced to one frame, while a camera
 multi-picture JPEG (MPO) contributes its primary frame.
+Before treatments, 16-bit grayscale uses the same depth normalization as
+[`slice_images.py`](#slice_imagespy), including for a `--fit`-only derivative.
 
 Both input and output are bare filenames directly under `images/`; output must
 be a new `.png` file, or a new `.jpg` file when the source is opaque (a
@@ -292,7 +310,7 @@ profile; Pillow and numpy only.
 
 ```bash
 python3 scripts/image_layers.py check <project_path> --page-image images/source-pages/01.png \
-  --layer images/01_plate.png [--ratio 0.8]
+  --layer images/01_plate.png [--occlusion-mask images/01_occlusion.png] [--ratio 0.8]
 python3 scripts/image_layers.py diff-matte <project_path> --page-image images/source-pages/01.png \
   --base images/01_base.png --out images/01_subject.png [--ocr analysis/ocr/01.json] [--threshold 60]
 python3 scripts/image_layers.py mono-matte <project_path> --plate images/01_plate_key.png --key "#FF00FF" \
@@ -304,9 +322,22 @@ on a 640-px-wide copy, and at every shift of 5 and 10 px in x and y. It prints
 the origin difference, the best shifted difference, and the best offset in page
 pixels, then exits `0` (`Registered`) when the origin difference is at most
 `--ratio` times the best shifted one, otherwise `3`. Opacity comes from real
-alpha, else from a flat `#FF00FF` or `#00FF00` key. A layer that is placed
-correctly but completes parts the page shows hidden behind another object still
-passes; z-order is decided by the page assembly, not by this check.
+alpha whenever any pixel has alpha below 20, regardless of its share of the
+image; pixels with alpha above 200 enter the opacity mask shared with
+`merge-base`. When no pixel has alpha below 20, flat `#FF00FF` or `#00FF00`
+key detection remains active, including near-opaque RGBA inputs such as an
+image whose alpha is uniformly 250. When a layer completes parts hidden behind
+upper objects in the page, supply `--occlusion-mask`: a grayscale image at the
+canonical page dimensions, with nonzero pixels marking those actual occluders
+and zero pixels elsewhere. Only originally visible layer pixels are compared,
+and shifted samples landing behind an occluder are excluded too. When resizing,
+samples whose bicubic kernel support touches an occluder are also excluded,
+so thin occluders and their resampling fringes cannot enter the score. Registration
+uses the same ratio and shifts; without a mask it compares all opaque pixels
+and does not infer occlusion from color differences. A wrong-size mask, no
+visible opaque pixels, or no shifted comparison pixels exits `1` with a repair
+hint. The mask is comparison evidence only; the complete layer is unchanged,
+and the page assembly must still place the occluders above it.
 
 `diff-matte` writes an RGBA layer from the page's own pixels: a pixel is kept
 when its RGB distance to the resized base exceeds `--threshold`, outside the
@@ -317,9 +348,12 @@ matches the background behind them.
 
 `mono-matte` cuts one single-color graphic (a white logo or wordmark) from a
 raw flat-key plate, before keying: inside `--box` (canvas px, scaled to the
-plate), alpha is the minimum of the channels the key lacks (below 128 in the
-key: G for `#FF00FF`, R and B for `#00FF00`), normalized so the 99th percentile
-is opaque, and every pixel takes `--fill`. Key color cannot bleed into the
+plate), each low channel (below 128 in the key: G for `#FF00FF`, R and B for
+`#00FF00`) has its own key value subtracted and negative differences clipped
+to zero. Alpha is the minimum of those differences, normalized so the 99th
+percentile is opaque, and every pixel takes `--fill`. Nonzero low-channel keys
+such as `#FF40FF` and `#20FF20` therefore leave zero alpha on the key field.
+Key color cannot bleed into the
 edges, and interior gaps the generator painted with the key become
 transparent. It prints the placement box; a key that lacks no channel exits `1`.
 

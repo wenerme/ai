@@ -19,7 +19,7 @@ git clone https://github.com/openobserve/sample-tracing-golang
 If you don't have Go installed, please install it and then follow below steps.
 
 Open `pkg/tel/otel_helper_http.go` file from that repository. and make changes to the highlighted lines below
-```go lineNumbers {29,38,36}
+```go lineNumbers {30,37,39}
 
 package tel
 
@@ -86,12 +86,12 @@ func InitTracerHTTP() *sdktrace.TracerProvider {
 }
 
 ```
-## Setup up credentials 
+## Set up credentials
 
 - You will get `url` and `Authorization` key from the [trace ingestion settings](https://cloud.openobserve.ai/web/ingestion/custom/traces/).
 - Replace the `url` and `Authorization` key in the `pkg/tel/otel_helper_http.go` file.
 
-## Setup Service/Application 
+## Set up the service/application
 Follow the steps given in the sample-tracing-golang readme and then start server
 ```
 go run .
@@ -104,16 +104,16 @@ Refresh page couple of times to get more traces exported.
 
 Traces are captured, you can check these captured traces in the [Traces view](https://cloud.openobserve.ai/web/traces).
 
-[Traces Page]
+[Traces page with spans from the sample services]
 
 Filter traces with your service name `otel1-gin-gonic`
 
-[Filter traces with service name]
+[Spans filtered by service_name otel1-gin-gonic]
 
 Click on any trace to check trace data
 
-[Trace details]
+[Trace details in the Waterfall view]
 
 Trace can have multiple spans, each span represents single operation or task within that trace. Click on any span to check span details.
 
-[Trace details]
+[Span details panel with the span attributes]

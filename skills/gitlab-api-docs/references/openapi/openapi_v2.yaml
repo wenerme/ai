@@ -48742,6 +48742,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       tags:
       - usage_data
       operationId: postApiV4UsageDataIncrementCounter
@@ -48765,6 +48767,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
       tags:
       - usage_data
       operationId: postApiV4UsageDataIncrementUniqueUsers

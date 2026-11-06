@@ -2667,7 +2667,7 @@ curl --fail --silent --show-error https://api.openai.com/v1/images/edits \
 3. Send the annotation layer as `markup`. Multipart requests accept a file upload. JSON requests accept an object containing exactly one of `image_url` or `file_id`; `image_url` can contain an HTTPS URL or a base64 data URL. JSON edit requests use `images` for the input image array.
 4. Describe the requested change and the details you want to preserve. Review the result before using it.
 
-Markup applies to the first input image. Additional images serve as references. The first input image and the annotation layer can each contain at most 16,777,216 pixels. The annotation file also has a 50 MB size limit. Do not combine `markup` with `mask` or `prompt_rewriter`.
+Markup applies to the first input image. Additional images serve as references. The first input image and the annotation layer can each contain at most 16,777,216 pixels. The annotation file also has a 50 MB size limit. Do not combine `markup` with `mask`.
 
 ### Edit an image using a mask
 
@@ -3297,7 +3297,7 @@ Using `jpeg` is faster than `png`, so you should prioritize this format if
 
 Set `output_format: "svg"` on `POST /v1/images/generations`. Use SVG for graphics that need editable paths, shapes, and colors, such as icons and illustrations.
 
-Set `n` to `1`. SVG output does not support streaming, partial images, `output_compression`, or `prompt_rewriter`. The image edit endpoint does not support SVG output, and an SVG is not a supported raster input for image edits.
+Set `n` to `1`. SVG output does not support streaming, partial images, or `output_compression`. The image edit endpoint does not support SVG output, and an SVG is not a supported raster input for image edits.
 
 The API creates a reference image and uses it to produce the SVG. The `quality` setting controls that reference image. Decode `data[0].b64_json` as base64 and save the resulting UTF-8 XML bytes with a `.svg` extension. The returned document contains static vector content; it does not support scripts, external resources, or embedded raster images.
 
@@ -3342,7 +3342,7 @@ Use these request fields for GIF output from either endpoint:
 
 `size` describes each finished frame. The frame count, frame dimensions, and number of animations must fit the model's size limits and the total request pixel budget. If the request exceeds those limits, reduce `frame_count`, the frame dimensions, or `n`. Use `auto` to let the API choose a frame size within the model's limits.
 
-The response contains the finished animation. Decode each result's `b64_json` value as base64 and save the bytes with a `.gif` extension. GIF output does not support streaming, partial images, custom `output_compression`, or `prompt_rewriter`. Use `frame_count` and `frame_duration_ms` only with GIF output.
+The response contains the finished animation. Decode each result's `b64_json` value as base64 and save the bytes with a `.gif` extension. GIF output does not support streaming, partial images, or custom `output_compression`. Use `frame_count` and `frame_duration_ms` only with GIF output.
 
 Sunburst generated this lantern animation with `frame_count=9` and `frame_duration_ms=200`. The monkey returns to its starting pose after 1.8 seconds.
 

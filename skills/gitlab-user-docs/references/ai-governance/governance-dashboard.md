@@ -127,13 +127,17 @@ what each tool is allowed to do.
 ### Tool calls by action
 
 The **Tool calls by action** card shows a ring chart of the tool calls in the
-selected date range, grouped by the action type of the tool, as set in
-**Tool management**:
+selected date range, grouped by the action type of the tool:
 
 - **Read**
 - **Write**
 - **Destructive**
-- **Unclassified**, for tools that the tool registry does not know.
+- **Unclassified**, for tools with no known action type.
+
+For GitLab Duo agents, the action type comes from **Tool management**. For
+connected agents such as Claude Code, Cursor, Codex, and OpenCode, the action type comes from
+a reviewed list of each agent's known tools. Tools that are not on that list are
+**Unclassified**.
 
 The total number of calls is in the center of the chart. The legend shows each
 action's share.

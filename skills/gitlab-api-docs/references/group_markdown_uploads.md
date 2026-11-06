@@ -151,6 +151,35 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
 
 If successful, returns [`200`](rest/troubleshooting.md#status-codes) and the uploaded file in the response body.
 
+### Download a file linked from a description or comment
+
+To download a file that is linked from a description or comment, get the secret and filename from the link.
+The link to an uploaded file has one of these formats:
+
+- On the rendered page: `https://gitlab.example.com/-/group/<group_id>/uploads/<secret>/<filename>`.
+  To get the API URL, replace `/-/group/` with `/api/v4/groups/`.
+- In the raw Markdown: `/uploads/<secret>/<filename>`.
+  This link does not include the project or group.
+  If the file belongs to a project (for example, in an issue or merge request), use the
+  [project Markdown uploads API](project_markdown_uploads.md#download-an-uploaded-file-by-secret-and-filename).
+  The group endpoint returns `404` for files uploaded to a project.
+
+Copy the filename from the link, not from your original file.
+GitLab can change the filename when the file is uploaded. For example, GitLab replaces spaces with underscores.
+
+For example, for this link on a rendered page:
+
+```plaintext
+https://gitlab.example.com/-/group/5/uploads/648d97c6eef5fc5df8d1004565b3ee5a/sample.jpg
+```
+
+Use this request:
+
+```shell
+curl --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/groups/5/uploads/648d97c6eef5fc5df8d1004565b3ee5a/sample.jpg"
+```
+
 ## Delete an uploaded file by ID
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/157066) in GitLab 17.2.

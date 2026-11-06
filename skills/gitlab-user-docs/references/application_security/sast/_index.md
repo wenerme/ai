@@ -379,10 +379,12 @@ These languages are supported by both GitLab Advanced SAST (Ultimate) and standa
 | Java[^including-java-server]       | Yes                      | Yes                   |
 | Java Properties        | Yes                      | Yes                   |
 | JavaScript[^including-node-react] | Yes                      | Yes                   |
+| Kotlin[^including-android], [^advanced-sast-support] | Yes     | Yes                   |
 | Objective-C (iOS)[^advanced-sast-support] | Yes               | Yes                   |
 | PHP                    | Yes                      | Yes                   |
 | Python                 | Yes                      | Yes                   |
 | Ruby[^including-rails]       | Yes                      | Yes                   |
+| Scala[^advanced-sast-support] | Yes                     | Yes                   |
 | Swift (iOS)[^advanced-sast-support] | Yes                     | Yes                   |
 | TypeScript             | Yes                      | Yes                   |
 | YAML[^support-restricted-following]       | Yes                      | Yes                   |
@@ -392,6 +394,7 @@ These languages are supported by both GitLab Advanced SAST (Ultimate) and standa
 [^including-java-server]: Including Java Server Pages (JSP) and Android.
 [^including-node-react]: Including Node.js and React.
 [^including-rails]: Including Ruby on Rails.
+[^including-android]: Including Android.
 [^support-restricted-following]: YAML support is restricted to the following file patterns:
 
     - `application*.yml`
@@ -399,33 +402,29 @@ These languages are supported by both GitLab Advanced SAST (Ultimate) and standa
     - `bootstrap*.yml`
     - `bootstrap*.yaml`
 
-[^advanced-sast-support]: GitLab Advanced SAST support for Swift and Objective-C is in
-    [beta](../../../policy/development_stages_support.md#beta). Analysis runs as a separate
+[^advanced-sast-support]: GitLab Advanced SAST support for Kotlin, Objective-C, Scala, and Swift is
+    in [beta](../../../policy/development_stages_support.md#beta). Analysis runs as a separate
     `gitlab-advanced-sast-ext` job, which is enabled together with GitLab Advanced SAST by the
     shared `GITLAB_ADVANCED_SAST_ENABLED` variable. For more information, see
-    [Swift and Objective-C configuration](advanced_sast_swift_objc.md).
+    [Advanced SAST configuration for additional languages](advanced_sast_ext.md).
 
 ### Languages with standard analyzer support only
 
 These languages are supported by standard analyzers (all tiers) but not by GitLab Advanced SAST:
 
-| Language           | Standard analyzer[^languages-standard-tiers-uses-semgrep]                                                                           | Proposed support[^referenced-epic-proposes] |
-|--------------------|---------------------------------------------------------------------------------------------------------|------------------------------|
-| Apex (Salesforce)  | Yes [PMD-Apex](https://gitlab.com/gitlab-org/security-products/analyzers/pmd-apex)              | None                         |
-| Elixir (Phoenix)   | Yes [Sobelow](https://gitlab.com/gitlab-org/security-products/analyzers/sobelow)                | None                         |
-| Groovy             | Yes [SpotBugs](https://gitlab.com/gitlab-org/security-products/analyzers/spotbugs)[^find-sec-bugs]  | None                         |
-| Kotlin[^including-android] | Yes                                                                                             | [Epic 15173](https://gitlab.com/groups/gitlab-org/-/epics/15173) |
-| Scala              | Yes                                                                                             | [Epic 15174](https://gitlab.com/groups/gitlab-org/-/epics/15174) |
+| Language           | Standard analyzer[^languages-standard-tiers-uses-semgrep]                                                                           |
+|--------------------|---------------------------------------------------------------------------------------------------------|
+| Apex (Salesforce)  | Yes [PMD-Apex](https://gitlab.com/gitlab-org/security-products/analyzers/pmd-apex)              |
+| Elixir (Phoenix)   | Yes [Sobelow](https://gitlab.com/gitlab-org/security-products/analyzers/sobelow)                |
+| Groovy             | Yes [SpotBugs](https://gitlab.com/gitlab-org/security-products/analyzers/spotbugs)[^find-sec-bugs]  |
 
 [^languages-standard-tiers-uses-semgrep]: All tiers. Uses [Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep)
     analyzer with [GitLab-managed rules](rules.md#semgrep-based-analyzer) unless otherwise specified.
-[^referenced-epic-proposes]: The referenced epic proposes GitLab Advanced SAST support for these languages.
 [^find-sec-bugs]: SpotBugs with the find-sec-bugs plugin. Supports Gradle, Maven, and SBT. It can also be used with variants
     like the Gradle wrapper, Grails, and the Maven wrapper. However, SpotBugs has
     [limitations](https://gitlab.com/gitlab-org/gitlab/-/issues/350801) when used against Ant-based
     projects. You should use the GitLab Advanced SAST or Semgrep-based analyzer for Ant-based Java or
     Scala projects.
-[^including-android]: Including Android.
 
 ### Languages with GitLab Advanced SAST support only
 
@@ -1072,7 +1071,7 @@ Some analyzers can be customized by using CI/CD variables.
 |-------------------------------------|----------------------|------------------------------------------|-------------|
 | `GITLAB_ADVANCED_SAST_ENABLED`      | GitLab Advanced SAST | `false`                                  | Set to `true` to enable GitLab Advanced SAST scanning (available in GitLab Ultimate only). |
 | `GITLAB_ADV_SAST_INCR_SCAN` | GitLab Advanced SAST | `false` | Enable incremental scanning to cache taint signatures between pipeline runs. |
-| `GITLAB_ADVANCED_SAST_EXT_INCREMENTAL_ENABLED` | GitLab Advanced SAST | `true` | Applies only to the `gitlab-advanced-sast-ext` analyzer (Swift, Objective-C, Dart, Scala, and Kotlin), which has [incremental scanning](advanced_sast_swift_objc.md#incremental-scanning) turned on by default. Set to `false` to turn it off. Has no effect on repositories without files for those languages. For other languages, use `GITLAB_ADV_SAST_INCR_SCAN` instead. |
+| `GITLAB_ADVANCED_SAST_EXT_INCREMENTAL_ENABLED` | GitLab Advanced SAST | `true` | Applies only to the `gitlab-advanced-sast-ext` analyzer (Dart, Kotlin, Objective-C, Rust, Scala, and Swift), which has [incremental scanning](advanced_sast_ext.md#incremental-scanning) turned on by default. Set to `false` to turn it off. Has no effect on repositories without files for those languages. For other languages, use `GITLAB_ADV_SAST_INCR_SCAN` instead. |
 | `GITLAB_ADVANCED_SAST_CPP_ENABLED`  | GitLab Advanced SAST | `false`                                  | To turn on GitLab Advanced SAST scanning for C and C++ projects, set to `true`. |
 | `ADVANCED_SAST_PARTIAL_SCAN`        | GitLab Advanced SAST | `false`                                  | To turn on diff-scanning mode, set to `differential`. |
 | `GITLAB_ADVANCED_SAST_RULE_TIMEOUT` | GitLab Advanced SAST | `30`                                     | Timeout in seconds per rule per file. When this timeout is exceeded, that analysis is skipped. |

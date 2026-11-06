@@ -38,7 +38,7 @@ The script authenticates to Anypoint with a username/password, fetches logs from
     # ------------------------------
     ANYPOINT_USERNAME = "YOUR_USERNAME"
     ANYPOINT_PASSWORD = "YOUR_PASSWORD"
-    OPENOBSERVE_ENDPOINT = "https://<your-openobserve-endpoint>/api/default/mulesoft/_json"
+    OPENOBSERVE_ENDPOINT = "https://<your-openobserve-endpoint>/api/<org_id>/mulesoft/_json"
     OPENOBSERVE_API_TOKEN = "BASE64_ENCODED_USER:PASSWORD"
     ANYPOINT_ORG_NAME = "<ANYPOINT_ORG_NAME>"
     ANYPOINT_ENV_NAME = "<ANYPOINT_ENV_NAME>"
@@ -205,7 +205,7 @@ The script authenticates to Anypoint with a username/password, fetches logs from
 
     ```
 
-2. Install Dependencies"
+2. Install Dependencies
 
     ```bash
     python3 -m venv venv
@@ -218,7 +218,7 @@ The script authenticates to Anypoint with a username/password, fetches logs from
     * `ANYPOINT_USERNAME` / `ANYPOINT_PASSWORD` → your MuleSoft account.
     * `ANYPOINT_ORG_NAME`, `ANYPOINT_ENV_NAME`, `ANYPOINT_APP_NAME`.
     * `OPENOBSERVE_ENDPOINT` → your OpenObserve API `_json` ingestion URL.
-    * `OPENOBSERVE_API_TOKEN` → base64-encoded user\:password.
+    * `OPENOBSERVE_API_TOKEN` → Base64 of `email:token` (the user and token from the command in **Data > Data sources > Custom > Logs > Curl**).
 
 4. Run Once
 
@@ -228,8 +228,8 @@ The script authenticates to Anypoint with a username/password, fetches logs from
 
 :::accordion[Step 2: Verify Logs in OpenObserve]
 
-1. Go to **Streams → mulesoft** in OpenObserve to query logs. 
-[Verify Logs in OpenObserve]
+1. In OpenObserve, go to **Logs** and select the `mulesoft` stream. 
+[MuleSoft logs in the Logs page]
 
 :::accordion[Step 3: Automate]
 

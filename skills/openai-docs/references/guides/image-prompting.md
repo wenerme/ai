@@ -140,7 +140,7 @@ In these outputs, `low` places a crown on the trophy. At `medium`, a laurel wrea
 
 For a logo you can scale or recolor by editing its paths, send the [Field & Flour bakery logo prompt](#design-a-reusable-logo) to `POST /v1/images/generations`. Set `output_format="svg"` and `n=1`. SVG also supports `background="transparent"`, so the space around the mark can take the color of the surface behind it.
 
-Omit `stream`, `partial_images`, `output_compression`, and `prompt_rewriter` from the SVG request. Decode `data[0].b64_json` from base64 and save the resulting XML as a `.svg` file.
+Omit `stream`, `partial_images`, and `output_compression` from the SVG request. Decode `data[0].b64_json` from base64 and save the resulting XML as a `.svg` file.
 
 
 
@@ -561,7 +561,7 @@ Draw a circle around the object you want to change, then describe the change in 
 
 Send two files in one multipart `POST /v1/images/edits` request. Use the [original kitchen photo](https://developers.openai.com/images/platform/guides/image-prompting/kitchen.webp) for `image` and the [transparent circle overlay](https://developers.openai.com/images/platform/guides/image-prompting/markup-vase-overlay-gpt-image-2-6.png) for `markup`. Both files are 1200 × 900 pixels. The preview shows the two files together.
 
-The markup overlay applies only to the first input image. Any additional images serve as references. Omit `mask` and `prompt_rewriter` when you send `markup`.
+The markup overlay applies only to the first input image. Any additional images serve as references. Omit `mask` when you send `markup`.
 
 
 

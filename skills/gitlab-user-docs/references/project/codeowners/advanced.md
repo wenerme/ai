@@ -17,8 +17,9 @@ GitLab uses `File::fnmatch` with the `File::FNM_DOTMATCH` and `File::FNM_PATHNAM
 - The patterns follow a subset of shell filename globbing rules, and are not regular expressions.
 - The `File::FNM_DOTMATCH` flag allows `*` to match dotfiles like `.gitignore`.
 - The `File::FNM_PATHNAME` flag prevents `*` from matching the `/` path separator.
-- `**` matches directories recursively. For example, `**/*.rb` matches `config/database.rb`
+- `**/` matches directories recursively. For example, `**/*.rb` matches `config/database.rb`
   and `app/controllers/users/stars_controller.rb`.
+  A trailing `/**` does not match files in subdirectories. Use a trailing `/` instead.
 
 ## Default Code Owners and optional sections
 

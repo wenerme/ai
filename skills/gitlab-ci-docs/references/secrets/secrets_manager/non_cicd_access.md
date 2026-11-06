@@ -62,8 +62,11 @@ To authenticate with a service account:
 ## Read a secret
 
 This example mints an access token for a project, authenticates to OpenBao, then reads a secret value.
+To read a group's secrets, call the
+[group endpoint](../../../api/secrets_manager.md#create-a-secrets-manager-access-token-for-a-group)
+with `groups/<group_id>` instead of `projects/<project_id>`.
 
-1. Mint an access token. The token you authenticate with must have the `api` scope:
+1. Mint an access token:
 
    ```shell
    RESPONSE=$(curl --silent --request POST \
@@ -71,10 +74,11 @@ This example mints an access token for a project, authenticates to OpenBao, then
      --url "https://gitlab.example.com/api/v4/projects/<project_id>/secrets_manager/access_token")
    ```
 
-   The response contains a `provider.vault` object with `server`, `namespace`, `path`,
-   `secrets_path`, and `auth.jwt` details, plus a short-lived `token`.
+   The response contains an `expires_at` timestamp and a `provider.vault` object with
+   `server`, `namespace`, `path`, `secrets_path`, and `auth.jwt` details.
+   The JWT is in `provider.vault.auth.jwt.token`.
 
-1. Authenticate to OpenBao with the returned token, then read the value:
+1. Exchange the JWT for an OpenBao token, then read the value:
 
    ```shell
    SERVER=$(echo "$RESPONSE" | jq --raw-output .provider.vault.server)
@@ -112,9 +116,8 @@ Because OpenBao implements the Vault API, you can use the
 export VAULT_ADDR="<server>"
 export VAULT_NAMESPACE="<namespace>"
 
-# Exchange the minted JWT for an OpenBao token, then export it.
-vault write "auth/<auth_jwt_path>/login" role=<role> jwt=<token>
-export VAULT_TOKEN="<client_token>"
+# Exchange the minted JWT for an OpenBao token.
+export VAULT_TOKEN="$(vault write -field=token "auth/<auth_jwt_path>/login" role=<role> jwt=<auth_jwt_token>)"
 
 # Read the secret value.
 vault kv get -mount=<path> "<secrets_path>/<secret_name>"
@@ -215,7 +218,8 @@ The [Vault provider](https://registry.terraform.io/providers/hashicorp/vault/lat
 authenticates with the minted JWT and reads the secret.
 
 The script mints the token and prints the connection details as JSON. It reads the GitLab
-token from the `GITLAB_TOKEN` environment variable:
+token from the `GITLAB_TOKEN` environment variable.
+To read a group's secrets, call the group endpoint with `groups/<group_id>` instead of `projects/<project_id>`:
 
 ```shell
 #!/usr/bin/env bash
@@ -237,7 +241,8 @@ curl --silent --request POST \
     }'
 ```
 
-Reference the script from an `external` data source, configure the Vault provider, then read the secret:
+Reference the script from an `external` data source, configure the Vault provider, then read the secret
+with an [ephemeral resource](https://developer.hashicorp.com/terraform/language/resources/ephemeral):
 
 ```hcl
 data "external" "gitlab_secrets_token" {
@@ -249,8 +254,9 @@ data "external" "gitlab_secrets_token" {
 }
 
 provider "vault" {
-  address   = data.external.gitlab_secrets_token.result.server
-  namespace = data.external.gitlab_secrets_token.result.namespace
+  address          = data.external.gitlab_secrets_token.result.server
+  namespace        = data.external.gitlab_secrets_token.result.namespace
+  skip_child_token = true
 
   auth_login_jwt {
     mount = data.external.gitlab_secrets_token.result.auth_path
@@ -259,17 +265,31 @@ provider "vault" {
   }
 }
 
-data "vault_kv_secret_v2" "my_secret" {
+ephemeral "vault_kv_secret_v2" "my_secret" {
   mount = data.external.gitlab_secrets_token.result.mount
   name  = "${data.external.gitlab_secrets_token.result.secrets_path}/<secret_name>"
 }
 
-output "secret_value" {
-  value     = data.vault_kv_secret_v2.my_secret.data["value"]
-  sensitive = true
-}
+# Pass the value to a provider configuration or a write-only argument, for example:
+# password_wo = ephemeral.vault_kv_secret_v2.my_secret.data["value"]
 ```
 
-The minted token is valid for five minutes, so `terraform apply` must run within that window.
+Set `skip_child_token = true` in the Vault provider.
+By default, the provider uses the OpenBao token from the JWT login to create a child token,
+but that OpenBao token cannot create child tokens.
+Without this setting, the provider fails with a `403` error and the message
+`failed to create limited child token`.
+
+Ephemeral resources require Terraform 1.10 or later, or OpenTofu 1.11 or later, and Vault provider 5.0 or later.
+Terraform and OpenTofu do not store their values in the state or plan files.
+With earlier versions, use the `vault_kv_secret_v2` data source instead.
+The data source stores the secret value in the state in plain text, so restrict access to the state.
+
+The minted JWT is valid for five minutes:
+
+- The Vault provider must read the secret within five minutes of the start of the run.
+  The provider authenticates to OpenBao when it first reads a secret, not when the run starts.
+- If you save a plan with `terraform plan -out`, apply it within five minutes.
+  During the apply, Terraform reads ephemeral resources again with the JWT from the plan.
 
 A native GitLab Terraform provider integration is proposed in [epic 21177](https://gitlab.com/groups/gitlab-org/-/epics/21177).

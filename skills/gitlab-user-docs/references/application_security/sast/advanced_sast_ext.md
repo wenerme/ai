@@ -1,28 +1,39 @@
-# Advanced SAST Swift and Objective-C configuration
+# Advanced SAST configuration for additional languages
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16318) as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.3.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16318) with support for Swift and Objective-C as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.3.
 - Incremental scanning [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249721) in GitLab 19.4.
+- Support for Dart, Kotlin, and Scala [added](https://gitlab.com/gitlab-org/gitlab/-/issues/630101) in GitLab 19.4.
+- Support for Rust [added](https://gitlab.com/gitlab-org/gitlab/-/issues/630101) in GitLab 19.5.
 
-GitLab Advanced SAST analyzes Swift and Objective-C code by using cross-file, cross-function taint
-analysis, which extends [GitLab Advanced SAST](gitlab_advanced_sast.md) coverage to iOS
-applications.
+GitLab Advanced SAST analyzes Dart, Kotlin, Objective-C, Rust, Scala, and Swift code by using
+cross-file, cross-function taint analysis, which extends
+[GitLab Advanced SAST](gitlab_advanced_sast.md) coverage to these languages.
 
-Swift and Objective-C analysis runs as a separate CI/CD job, `gitlab-advanced-sast-ext`, that ships
-as its own container image. No additional configuration is required. When GitLab Advanced SAST is
-turned on, the job runs if the repository contains Swift (`.swift`), Objective-C (`.m`), or
-Objective-C++ (`.mm`) files.
+Analysis of these languages runs as a separate CI/CD job, `gitlab-advanced-sast-ext`, that ships as
+its own container image. No additional configuration is required. When GitLab Advanced SAST is
+turned on, the job runs if the repository contains files with any of these extensions:
 
-## Turn on GitLab Advanced SAST Swift and Objective-C analysis
+| Language      | File extensions |
+|:--------------|:----------------|
+| Dart          | `.dart`         |
+| Kotlin        | `.kt`, `.kts`   |
+| Objective-C   | `.m`            |
+| Objective-C++ | `.mm`           |
+| Rust          | `.rs`           |
+| Scala         | `.scala`, `.sc` |
+| Swift         | `.swift`        |
+
+## Turn on analysis
 
 Prerequisites:
 
 - [Turn on GitLab Advanced SAST](gitlab_advanced_sast.md#turn-on-gitlab-advanced-sast).
 
-Swift and Objective-C analysis uses the same enablement variable as the other supported languages:
+These languages use the same enablement variable as the other supported languages:
 
 ```yaml
 include:
@@ -32,12 +43,12 @@ variables:
   GITLAB_ADVANCED_SAST_ENABLED: "true"
 ```
 
-When this variable is set and the repository contains Swift or Objective-C files, GitLab adds the
-`gitlab-advanced-sast-ext` job to the `test` stage of the pipeline.
+When this variable is set and the repository contains files for one of these languages, GitLab adds
+the `gitlab-advanced-sast-ext` job to the `test` stage of the pipeline.
 
-## Turn off GitLab Advanced SAST Swift and Objective-C analysis
+## Turn off analysis
 
-To turn off Swift and Objective-C analysis while keeping GitLab Advanced SAST turned on for other
+To turn off analysis of these languages while keeping GitLab Advanced SAST turned on for other
 languages, add `gitlab-advanced-sast-ext` to the `SAST_EXCLUDED_ANALYZERS` variable:
 
 ```yaml
@@ -49,7 +60,7 @@ variables:
   SAST_EXCLUDED_ANALYZERS: "gitlab-advanced-sast-ext"
 ```
 
-To turn off GitLab Advanced SAST entirely, including Swift and Objective-C analysis, set
+To turn off GitLab Advanced SAST entirely, including these languages, set
 `GITLAB_ADVANCED_SAST_ENABLED` to `"false"`.
 
 If `GITLAB_ADVANCED_SAST_ENABLED` is set as a group CI/CD variable, a value in the project's
@@ -90,11 +101,11 @@ variables:
   GITLAB_ADVANCED_SAST_EXT_INCREMENTAL_ENABLED: "false"
 ```
 
-### Disable the cache
+### Turn off the cache
 
 Turning off incremental scanning keeps the `cache:` active, so every pipeline still uploads and
 downloads the store.
-The store stays primed, so you can re-enable incremental scanning and reuse it immediately.
+The store stays primed, so you can turn incremental scanning back on and reuse it immediately.
 
 To also remove the cache cost from every pipeline, override the job with an empty `cache:`:
 
@@ -109,8 +120,8 @@ gitlab-advanced-sast-ext:
   cache: []
 ```
 
-With the cache disabled, every pipeline runs a full scan and pays no cache cost.
-Re-enabling incremental scanning then requires one full scan to prime the store again.
+With the cache turned off, every pipeline runs a full scan and pays no cache cost.
+Turning incremental scanning back on then requires one full scan to prime the store again.
 
 ## Vulnerability coverage
 
@@ -123,27 +134,25 @@ sensitive information, it models iOS-specific APIs and data flows, including:
 - Storage of sensitive data in `UserDefaults`, the pasteboard, and local files.
 - WebKit and UIWebView content loading.
 
-For the complete list of weakness types the analyzer detects, see
-[Swift and Objective-C CWE coverage](advanced_sast_coverage.md#swift-and-objective-c-cwe-coverage).
+For the complete list of weakness types the analyzer detects in each language, see
+[Additional languages CWE coverage](advanced_sast_coverage.md#additional-languages-cwe-coverage).
 
 ## FIPS pipelines
 
-A FIPS-enabled image is not available for Swift and Objective-C analysis during the beta. As with
-the other analyzers, a FIPS-compliant image is available only for GitLab Advanced SAST and the
-Semgrep-based analyzer.
+A FIPS-enabled image is not available for these languages during the beta. As with the other
+analyzers, a FIPS-compliant image is available only for GitLab Advanced SAST and the Semgrep-based
+analyzer.
 
 In pipelines that use [FIPS-enabled images](_index.md#fips-enabled-images), the
 `gitlab-advanced-sast-ext` job still runs, and fails because it cannot pull a FIPS-enabled image.
-To use SAST in a FIPS-compliant manner,
-[turn off Swift and Objective-C analysis](#turn-off-gitlab-advanced-sast-swift-and-objective-c-analysis).
+To use SAST in a FIPS-compliant manner, [turn off the analysis](#turn-off-analysis).
 
 ## Known issues
 
-During the beta, Swift and Objective-C analysis has the following known issues:
+During the beta, analysis of these languages has the following known issues:
 
 - [Offline environments](../offline_deployments/_index.md) are not supported.
-- Findings are not deduplicated against findings from the Semgrep-based SAST analyzer. When both
-  analyzers detect the same vulnerability in a Swift or Objective-C file, both findings are
-  reported.
+- Findings are not fully deduplicated against findings from the Semgrep-based SAST analyzer. In
+  Kotlin, Scala, and Swift files, some vulnerabilities might be reported twice.
 - [Custom rulesets](customize_rulesets.md) are not supported.
 - [Diff-based scanning](gitlab_advanced_sast.md#diff-based-scanning) is not supported.

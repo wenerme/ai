@@ -57,7 +57,7 @@ Open LobeChat at `http://localhost:3210`, select a model, and send a chat messag
 4. Use `http_status_code` to identify failed requests
 5. Sort by `duration` to find slow completions
 
-[LobeChat trace in OpenObserve]
+[LobeChat trace in OpenObserve, Waterfall view with the POST /webapi/chat/openai span attributes]
 
 ## **What Gets Captured**
 

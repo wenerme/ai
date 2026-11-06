@@ -25,3 +25,5 @@ echo -n 'root@example.com:Complexpass#123' | base64
  which will give you
 
  `cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM=`
+
+The Firehose sends this value in the `X-Amz-Firehose-Access-Key` header. **Data > Data sources > Custom > Logs > Kinesis Firehose** shows the endpoint and access key for your organization, ready to copy.

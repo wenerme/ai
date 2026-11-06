@@ -65,7 +65,7 @@ processors:
 
 exporters:
   otlphttp/openobserve:
-    endpoint: https://<your-openobserve-endpoint>/api/default
+    endpoint: https://<your-openobserve-endpoint>/api/<org_id>
     headers:
       Authorization: Basic <your_auth_token>
       stream-name: default
@@ -78,9 +78,9 @@ service:
       exporters: [otlphttp/openobserve]
 ```
 
-Replace `<your-openobserve-endpoint>` and `<your_auth_token>` with your OpenObserve details.
+Replace `<your-openobserve-endpoint>`, `<org_id>` and `<your_auth_token>` with your OpenObserve details.
 
-[OpenObserve Redis Creds]
+[OTEL Collector config under Custom > Metrics]
 
 > A full list of metrics collected is available in the [Redis receiver documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver).
 
@@ -96,9 +96,9 @@ otelcol-contrib --config /path/to/config.yaml
 
 :::accordion[Step 5: Visualize in OpenObserve]
 
-1. Open **OpenObserve → Streams** and select your metrics stream.  
-   [Visualize Redis Metrics]  
-   [Visualize Redis Metrics]  
+1. Open **Data > Streams** in OpenObserve and select your metrics stream.  
+   [Redis metric streams in Data > Streams]  
+   [Redis client metrics in the Metrics explorer]  
 
 2. Create dashboards to monitor Redis memory, connections, and operations.
 

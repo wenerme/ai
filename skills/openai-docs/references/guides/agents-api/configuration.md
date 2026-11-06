@@ -454,11 +454,12 @@ See the [Create session reference](https://developers.openai.com/api/reference/r
 
 ## Update settings for an existing session
 
-Send `POST /v1/agents/sessions/{session_id}` with an `agent` object to change `model`, `reasoning.effort`, or `service_tier` for one session. These settings are available in the beta and GA API contracts. You can update `metadata` in the same request.
+Send `POST /v1/agents/sessions/{session_id}` with an `agent` object to change `tools`, `model`, `reasoning.effort`, or `service_tier` for one session. These settings are available in the beta and GA API contracts. You can update `metadata` in the same request.
 
-Changes apply to new turns started by messages sent after the update completes. Messages already in flight can use the previous settings. An active turn keeps its settings, including when you send a steering message. The session keeps its conversation history. The selected model must support the resulting settings, or the update fails.
+Model, reasoning effort, and service tier changes apply to new turns started by messages sent after the update completes. Messages already in flight can use the previous settings. An active turn keeps those settings, including when you send a steering message. The session keeps its conversation history. The selected model must support the resulting settings, or the update fails.
 
 - The `agent` and `reasoning` objects merge supplied fields into the current settings. Omitted fields stay unchanged, including reasoning summary. Changing only `model` preserves the session's reasoning effort and service tier.
+- `tools` replaces the full tool list. Functions and MCP servers change on the next model call. Built-in tools change by the next turn. Omit `tools` to preserve the current tools, or pass `null` or `[]` to clear them.
 - `reasoning.effort: null` resets effort to the selected model's default.
 - `service_tier: null` restores automatic tier selection.
 - A model must remain set, so you cannot supply `model: null`. The `agent` and `reasoning` objects also reject `null`.
@@ -477,7 +478,7 @@ For example, this request changes reasoning effort and lets the API select the s
 
 Updating a session does not change the saved agent or other sessions. Later saved-agent updates do not change the session.
 
-You cannot update `reasoning.summary`, `text`, `tools`, `instructions`, or `multi_agent` through this endpoint. Create a new session to change those settings.
+You cannot update `reasoning.summary`, `text`, `instructions`, or `multi_agent` through this endpoint. Create a new session to change those settings. See the [Update session reference](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/update) for request fields.
 
 ## Automatic action review
 

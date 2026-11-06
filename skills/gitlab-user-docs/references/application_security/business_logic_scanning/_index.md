@@ -3,11 +3,12 @@
 Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find authorization and access control vulnerabilities in how your application enforces its own rules.
 
 - Tier: Ultimate
-- Offering: GitLab.com, GitLab Self-Managed
+- Offering: GitLab.com, GitLab Dedicated
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
+- [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262270) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

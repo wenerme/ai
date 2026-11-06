@@ -610,7 +610,7 @@ Batch
 
 
 
-Tokens used for model grading in reinforcement fine-tuning are billed at that model's per-token rate. Inference discounts are available if you enable data sharing when creating the fine-tune job. Learn more.
+Inference discounts are available if you enable data sharing when creating the fine-tune job. Learn more.
 
 
   

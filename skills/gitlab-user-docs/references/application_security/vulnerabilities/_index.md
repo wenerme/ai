@@ -15,8 +15,8 @@ Vulnerability details, status, resolution, and linking issues.
 
 Each vulnerability in a project has a vulnerability page. The page header shows the vulnerability
 title, when and in which pipeline it was detected, how many related merge requests and issues there
-are (if any), and the actions available to you. The right sidebar shows the vulnerability's status
-and severity. The rest of the vulnerability's data is grouped into the following sections:
+are (if any), and the actions available to you. The right sidebar shows the vulnerability's status,
+severity, and [due date](#set-a-due-date-for-a-vulnerability). The rest of the vulnerability's data is grouped into the following sections:
 
 - **Risk**: The scores and flags that help you prioritize the vulnerability.
 - **Remediation**: The solution reported by the scanner, when one is available.
@@ -374,6 +374,42 @@ To change a vulnerability's status from its Vulnerability Page:
 
 Details of the status change, including who made the change and when, are recorded in the
 **Activity** section of the vulnerability page.
+
+## Set a due date for a vulnerability
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266271) in GitLab 19.6.
+
+Set a due date to track when a vulnerability should be remediated.
+
+Prerequisites:
+
+- You must have the Security Manager, Maintainer, or Owner role for the project, or a custom role with the
+  `admin_vulnerability` permission.
+
+To set a vulnerability's due date:
+
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select the vulnerability's description.
+1. In the right sidebar, in the  section, select .
+1. Select a date.
+1. Select .
+
+To remove a vulnerability's due date:
+
+1. In the  section, select .
+1. Clear the date.
+1. Select .
+
+Users who can view the vulnerability can see the due date, but cannot change the date.
+
+When the vulnerability's status is  or
+, the due date shows a label:
+
+- : The due date has passed.
+- : The due date is in the next seven days.
+
+Resolved and dismissed vulnerabilities show the due date without a label.
 
 ## Create a GitLab issue for a vulnerability
 
