@@ -617,6 +617,7 @@ const run = await openai.evals.runs.create("YOUR_EVAL_ID", {
   data_source: {
     type: "responses",
     model: "gpt-6-astra",
+    sampling_params: { reasoning_effort: "low" },
     input_messages: {
       type: "template",
       template: [

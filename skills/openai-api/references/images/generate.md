@@ -115,15 +115,15 @@ Content type: `application/json`
 
   The compression level (0-100%) for the generated images. This parameter is only supported for the GPT image models with the `webp` or `jpeg` output formats, and defaults to 100.
 
-- `output_format: optional "png" or "jpeg" or "webp" or 2 more or null (default: "png")`
+- `output_format: optional "png" or "webp" or "jpeg" or 2 more or null (default: "png")`
 
   The format in which the generated images are returned. This parameter is only supported for the GPT image models.
 
   - `"png"`
 
-  - `"jpeg"`
-
   - `"webp"`
+
+  - `"jpeg"`
 
   - `"gif"`
 
@@ -222,7 +222,7 @@ Content type: `application/json`
 
 - `svg: optional object { model, reasoning }  or null`
 
-  Selects the model and reasoning effort used to author SVG output. Requires output_format=svg and access to SVG model selection. When model selection is enabled, supply svg.model. When model selection is disabled, omit this object. The top-level model selects the image model that creates the reference image. SVG generation requires n=1 and does not support streaming, partial images, prompt_rewriter, or output_compression. SVG edits are not supported.
+  Selects the model and reasoning effort used to author SVG output. Requires output_format=svg and access to SVG model selection. When model selection is enabled, supply svg.model. When model selection is disabled, omit this object. The top-level model selects the image model that creates the reference image. SVG generation requires n=1 and does not support streaming, partial images, prompt_rewriter, or output_compression.
 
   - `model: string`
 
@@ -296,7 +296,7 @@ Content type: `application/json`
 
   - `output_format: optional "png" or "webp" or "jpeg" or 2 more`
 
-    The output format of the generated image.
+    The output format of the generated or edited image.
 
     - `"png"`
 
@@ -344,7 +344,7 @@ Content type: `application/json`
 
   - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
 
-    Token usage for the model that authored the SVG, separate from image rendering usage.
+    Token usage for SVG authoring, separate from image rendering usage.
 
     - `input_tokens: integer`
 

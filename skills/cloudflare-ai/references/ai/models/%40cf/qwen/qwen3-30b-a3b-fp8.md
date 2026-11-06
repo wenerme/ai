@@ -26,12 +26,14 @@ Model ID
 - Batch
 - Function calling
 - Reasoning
+- Planned deprecation
 - Zero data retention
 
 Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | Yes |

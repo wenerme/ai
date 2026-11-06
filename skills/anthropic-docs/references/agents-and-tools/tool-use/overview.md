@@ -4,28 +4,28 @@ url: https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
 description: Connect Claude to external tools and APIs. See where tools run, when Claude calls them, and which tool fits your task.
 ---
 
-Tool use (also called function calling) lets Claude call functions that you define or that Anthropic provides. Claude determines when to call a tool based on the user's request and the tool's description. It then returns a structured call that your application runs (client tools) or that Anthropic runs (server tools).
+Tool use (also called function calling) lets Claude call functions that you define or that Anthropic provides. Claude determines when to call a tool based on the user’s request and the tool’s description. It then returns a structured call that your application runs (client tools) or that Anthropic runs (server tools).
 
-Here's a minimal example using a server tool, the [Web search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool), which Anthropic runs for you:
+Here’s a minimal example using a server tool, the [Web search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool), which Anthropic runs for you:
 
 <CodeGroup>
   ```bash cURL
   curl https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "content-type: application/json" \
     -d '{
       "model": "claude-opus-5-5",
-      "max_tokens": 1024,
+      "max_tokens": 4096,
       "tools": [{"type": "web_search_20260209", "name": "web_search"}],
-      "messages": [{"role": "user", "content": "What'\''s the latest on the Mars rover?"}]
+      "messages": [{"role": "user", "content": "What is the latest on the Mars rover?"}]
     }'
   ```
 
   ```bash CLI
   ant messages create \
     --model claude-opus-5-5 \
-    --max-tokens 1024 \
+    --max-tokens 4096 \
     --tool '{type: web_search_20260209, name: web_search}' \
     --message '{role: user, content: "What is the latest on the Mars rover?"}'
   ```
@@ -34,9 +34,9 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
   client = anthropic.Anthropic()
   response = client.messages.create(
       model="claude-opus-5-5",
-      max_tokens=1024,
+      max_tokens=4096,
       tools=[{"type": "web_search_20260209", "name": "web_search"}],
-      messages=[{"role": "user", "content": "What's the latest on the Mars rover?"}],
+      messages=[{"role": "user", "content": "What is the latest on the Mars rover?"}],
   )
   print(response.content)
   ```
@@ -45,9 +45,9 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
   const client = new Anthropic();
   const response = await client.messages.create({
     model: "claude-opus-5-5",
-    max_tokens: 1024,
+    max_tokens: 4096,
     tools: [{ type: "web_search_20260209", name: "web_search" }],
-    messages: [{ role: "user", content: "What's the latest on the Mars rover?" }]
+    messages: [{ role: "user", content: "What is the latest on the Mars rover?" }]
   });
   console.log(response.content);
   ```
@@ -58,9 +58,9 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
   var parameters = new MessageCreateParams
   {
       Model = Model.ClaudeOpus5_5,
-      MaxTokens = 1024,
+      MaxTokens = 4096,
       Tools = [new ToolUnion(new WebSearchTool20260209())],
-      Messages = [new UserMessageParam { Content = "What's the latest on the Mars rover?" }]
+      Messages = [new UserMessageParam { Content = "What is the latest on the Mars rover?" }]
   };
 
   var message = await client.Messages.Create(parameters);
@@ -72,12 +72,12 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
 
   response, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
   	Model:     anthropic.ModelClaudeOpus5_5,
-  	MaxTokens: 1024,
+  	MaxTokens: 4096,
   	Tools: []anthropic.ToolUnionParam{
   		{OfWebSearchTool20260209: &anthropic.WebSearchTool20260209Param{}},
   	},
   	Messages: []anthropic.MessageParam{
-  		anthropic.NewUserMessage(anthropic.NewTextBlock("What's the latest on the Mars rover?")),
+  		anthropic.NewUserMessage(anthropic.NewTextBlock("What is the latest on the Mars rover?")),
   	},
   })
   if err != nil {
@@ -94,9 +94,9 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
 
       MessageCreateParams params = MessageCreateParams.builder()
           .model(Model.CLAUDE_OPUS_5_5)
-          .maxTokens(1024L)
+          .maxTokens(4096L)
           .addTool(WebSearchTool20260209.builder().build())
-          .addUserMessage("What's the latest on the Mars rover?")
+          .addUserMessage("What is the latest on the Mars rover?")
           .build();
 
       Message response = client.messages().create(params);
@@ -109,12 +109,12 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
 
   $message = $client->messages->create(
       model: 'claude-opus-5-5',
-      maxTokens: 1024,
+      maxTokens: 4096,
       tools: [
           ['type' => 'web_search_20260209', 'name' => 'web_search'],
       ],
       messages: [
-          ['role' => 'user', 'content' => "What's the latest on the Mars rover?"],
+          ['role' => 'user', 'content' => 'What is the latest on the Mars rover?'],
       ],
   );
 
@@ -126,21 +126,21 @@ Here's a minimal example using a server tool, the [Web search tool](https://plat
 
   message = client.messages.create(
     model: Anthropic::Model::CLAUDE_OPUS_5_5,
-    max_tokens: 1024,
+    max_tokens: 4096,
     tools: [{ type: "web_search_20260209", name: "web_search" }],
-    messages: [{ role: "user", content: "What's the latest on the Mars rover?" }]
+    messages: [{ role: "user", content: "What is the latest on the Mars rover?" }]
   )
   puts message.content
   ```
 </CodeGroup>
 
-Claude runs the search on Anthropic's infrastructure and returns the cited results in the same response. To have Claude call a function that you define, pass a tool with an `input_schema`, then run the call when Claude returns a `tool_use` block. The [client tool example](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#how-tool-use-works) shows that round trip end to end. Learn more about [defining tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) and [handling tool calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
+Claude runs the search on Anthropic’s infrastructure and returns the cited results in the same response. To have Claude call a function that you define, pass a tool with an `input_schema`, then run the call when Claude returns a `tool_use` block. The [client tool example](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview#how-tool-use-works) shows that round trip end to end. Learn more about [defining tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools) and [handling tool calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls).
 
 ## How tool use works
 
-Tools differ primarily by where the code runs. **Client tools** (including user-defined tools and tools with Anthropic-defined schemas, such as `bash` and `text_editor`) run in your application. Claude responds with `stop_reason: "tool_use"` and one or more `tool_use` blocks. Your code runs the operation and sends back a `tool_result`. **Server tools** (such as `web_search`, `web_fetch`, `code_execution`, and `tool_search`) run on Anthropic's infrastructure: you see the results directly without handling execution, unless Claude calls the tool in the same group of parallel tool calls as one of your client tools (see [Stop reasons and fallback](https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons#tool-use)).
+Tools differ primarily by where the code runs. **Client tools** (including user-defined tools and tools with Anthropic-defined schemas, such as `bash` and `text_editor`) run in your application. Claude responds with `stop_reason: "tool_use"` and one or more `tool_use` blocks. Your code runs the operation and sends back a `tool_result`. **Server tools** (such as `web_search`, `web_fetch`, `code_execution`, and `tool_search`) run on Anthropic’s infrastructure: you see the results directly without handling execution, unless Claude calls the tool in the same group of parallel tool calls as one of your client tools (see [Stop reasons and fallback](https://platform.claude.com/docs/en/build-with-claude/handling-stop-reasons#tool-use)).
 
-Here's that round trip in full for a client tool. The first request defines a `get_weather` tool, and Claude answers the question by calling it: the response carries a `tool_use` block, your code runs the lookup, and a second request sends the result back in a `tool_result` block so Claude can reply with the answer.
+Here’s that round trip in full for a client tool. The first request defines a `get_weather` tool, and Claude answers the question by calling it: the response carries a `tool_use` block, your code runs the lookup, and a second request sends the result back in a `tool_result` block so Claude can reply with the answer.
 
 <CodeGroup exclude="shell:cURL, shell:CLI">
   <CodeGroupItem language="cURL">
@@ -635,24 +635,24 @@ To connect to Model Context Protocol (MCP) servers, see the [MCP connector](http
 
 ## When Claude uses tools
 
-With the default `tool_choice` of `{"type": "auto"}`, Claude determines on each turn whether to call a tool or respond directly. It calls a tool when the request maps to that tool's described capability and the answer isn't already in context. It responds directly for stable knowledge, creative tasks, and conversational turns.
+With the default `tool_choice` of `{"type": "auto"}`, Claude determines on each turn whether to call a tool or respond directly. It calls a tool when the request maps to that tool’s described capability and the answer isn’t already in context. It responds directly for stable knowledge, creative tasks, and conversational turns.
 
-This boundary is steerable through your system prompt. If Claude isn't calling tools when you expect, a light instruction such as `"Use the tools to investigate before responding."` increases tool use. A stronger form such as `"Always call a tool first before responding."` pushes further. Conversely, `"Use your judgment about whether to call a tool or respond directly."` keeps triggering behavior conservative.
+This boundary is steerable through your system prompt. If Claude isn’t calling tools when you expect, a light instruction such as `"Use the tools to investigate before responding."` increases tool use. A stronger form such as `"Always call a tool first before responding."` pushes further. Conversely, `"Use your judgment about whether to call a tool or respond directly."` keeps triggering behavior conservative.
 
 To require a tool call rather than rely on prompting, set [`tool_choice`](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools#forcing-tool-use).
 
 <Tip>
   **Guarantee schema conformance with strict tool use**
 
-  Add `strict: true` to your custom tool definitions to ensure Claude's tool calls always match your schema exactly. See [Strict tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use).
+  Add `strict: true` to your custom tool definitions to ensure Claude’s tool calls always match your schema exactly. See [Strict tool use](https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use).
 </Tip>
 
-Each server tool's page describes its own trigger boundary in more detail.
+Each server tool’s page describes its own trigger boundary in more detail.
 
 <Accordion title="When required parameters are missing">
-  If the user's prompt doesn't include enough information to fill all the required parameters for a tool, Claude Opus is much more likely to recognize that a parameter is missing and ask for it. Claude Sonnet might ask, especially when prompted to think before outputting a tool request. But it might also infer a reasonable value.
+  If the user’s prompt doesn’t include enough information to fill all the required parameters for a tool, Claude Opus is much more likely to recognize that a parameter is missing and ask for it. Claude Sonnet might ask, especially when prompted to think before outputting a tool request. But it might also infer a reasonable value.
 
-  For example, given a `get_weather` tool that requires a `location` parameter, if you ask Claude "What's the weather?" without specifying a location, Claude (particularly Claude Sonnet) might guess values you didn't supply:
+  For example, given a `get_weather` tool that requires a `location` parameter, if you ask Claude “What’s the weather?” without specifying a location, Claude (particularly Claude Sonnet) might guess values you didn’t supply:
 
   ```json JSON
   {
@@ -712,7 +712,7 @@ Anthropic publishes the schema and trains Claude on it. Your application still r
 
 ### Server tools
 
-Server tools run on Anthropic's infrastructure, with no handler code in your application. See [Server tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools) for the mechanics they share.
+Server tools run on Anthropic’s infrastructure, with no handler code in your application. See [Server tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/server-tools) for the mechanics they share.
 
 <CardGroup cols={2}>
   <Card title="Web search tool" icon="magnifying-glass" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool">
@@ -770,16 +770,15 @@ When you use `tools`, the API also automatically includes a special system promp
 | Claude Opus 4.7                                                                                                                                                        | 675 tokens                                | 804 tokens                               |
 | Claude Opus 4.6                                                                                                                                                        | 497 tokens                                | 589 tokens                               |
 | Claude Opus 4.5                                                                                                                                                        | 496 tokens                                | 588 tokens                               |
-| Claude Opus 4.1 ([retired, except on Bedrock and Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/about-claude/model-deprecations)) | 313 tokens                                | 315 tokens                               |
+| Claude Opus 4.1 ([retired, except on Claude Models on Google Cloud (Google managed) and Bedrock](https://platform.claude.com/docs/en/about-claude/model-deprecations)) | 313 tokens                                | 315 tokens                               |
 | Claude Opus 4 ([retired, except on Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/about-claude/model-deprecations))               | 313 tokens                                | 315 tokens                               |
 | Claude Sonnet 5.5                                                                                                                                                      | 286 tokens                                |                                          |
 | Claude Sonnet 5                                                                                                                                                        | 354 tokens                                | 474 tokens                               |
 | Claude Sonnet 4.6                                                                                                                                                      | 497 tokens                                | 589 tokens                               |
 | Claude Sonnet 4.5                                                                                                                                                      | 496 tokens                                | 588 tokens                               |
-| Claude Sonnet 4 ([retired, except on Bedrock and Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/about-claude/model-deprecations)) | 313 tokens                                | 315 tokens                               |
+| Claude Sonnet 4 ([retired, except on Claude Models on Google Cloud (Google managed) and Bedrock](https://platform.claude.com/docs/en/about-claude/model-deprecations)) | 313 tokens                                | 315 tokens                               |
 | Claude Haiku 5.5                                                                                                                                                       | 286 tokens                                | 406 tokens                               |
 | Claude Haiku 4.5                                                                                                                                                       | 496 tokens                                | 588 tokens                               |
-| Claude Haiku 3.5 ([retired, except on Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/about-claude/model-deprecations))            | 264 tokens                                | 355 tokens                               |
 
 * **auto, none:** The count when tool\_choice is auto or none.
 * **any, tool:** The count when tool\_choice is any or tool.

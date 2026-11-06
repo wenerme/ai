@@ -181,9 +181,11 @@ class EditorDriver {
   }
 
   async keypress(action) {
-    const keys = action.keys.join("+");
+    const keys = action.keys.map((key) => key.toUpperCase()).join("+");
     if (keys !== "CTRL+A" && keys !== "CTRL+S") {
-      throw new Error("Only Select All and Save are allowed.");
+      throw new Error(
+        `Only Select All and Save are allowed; received ${JSON.stringify(action.keys)}.`
+      );
     }
     await this.focusEditor();
     await desktop("xdotool", "key", "--clearmodifiers", keys.toLowerCase());

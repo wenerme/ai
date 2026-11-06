@@ -4,8 +4,14 @@ Business logic scanning uses an AI agent, the Business Logic Security Analyzer (
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
+- Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257199) in GitLab 19.5 as an [experiment](../../../policy/development_stages_support.md#experiment) [with a feature flag](../../../administration/feature_flags/_index.md) named `bl_security_analyzer`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/264192) from experiment to beta in GitLab 19.6.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
 
 Business logic scanning uses an AI agent, the Business Logic Security Analyzer (BLSA), to find
 vulnerabilities in how your application enforces its own rules. Pattern-based analyzers like
@@ -63,6 +69,8 @@ Prerequisites:
 - A GitLab Ultimate subscription.
 - [GitLab Duo Agent Platform turned on](../../duo_agent_platform/turn_on_off.md) for the
   top-level group.
+- [Experiment and beta features turned on](../../duo_agent_platform/turn_on_off.md#turn-on-beta-and-experimental-features)
+  in the GitLab Duo settings of the top-level group.
 
 To turn on business logic scanning:
 

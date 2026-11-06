@@ -611,7 +611,7 @@ Continue to **Register your storage**.
 
 ### Register your storage
 
-After completing the cloud setup above, use either the API console or the Management API to register and validate your storage. You only need to use one method.
+After completing the cloud setup above, select an eligible base data retention policy for the project. Private Safety Processing can be used with Zero Data Retention or Modified Abuse Monitoring, and the selected policy remains active while Private Safety Processing uses your connected storage. Then use either the API console or the Management API to register and validate your storage. You only need to use one method.
 
 #### Option 1: API console
 
@@ -625,41 +625,41 @@ Open **Organization settings > Data controls > Data retention** and select **Con
 
 ##### 2. Enter your storage details
 
-Choose **AWS**, **Azure**, **GCP**, or **OCI**, then select the project. If you opened the modal from project settings, that project is already selected. If **Registered storage** appears, choose **Connect new storage** to add a destination.
+Choose **AWS**, **Azure**, **GCP**, or **OCI**, then select the project. Under **Data retention policy**, select **Zero Data Retention with Private Safety Processing** or **Modified Abuse Monitoring with Private Safety Processing**, depending on the policies available to your organization. If you opened the modal from project settings, that project is already selected. If **Registered storage** appears, choose **Connect new storage** to add a destination.
 
 For **AWS**, enter the **Bucket ARN** and **IAM role ARN** from your cloud setup.
 
 <img src="https://developers.openai.com/images/platform/guides/private-safety-processing/setup-07-platform-aws-connect.webp"
-  alt="Connect external storage dialog with AWS selected, showing project selection, Bucket ARN, IAM role ARN, and Connect and validate."
+  alt="Connect external storage dialog with AWS selected, showing Project Name, Data retention policy, Bucket ARN, and IAM role ARN."
   style={{ border: 0, borderRadius: 0 }}
 />
 
 For **Azure**, enter **Tenant ID**, **Subscription ID**, **Resource group**, **Storage account name**, and **Container name**. Scroll down in the modal to complete all fields.
 
 <img src="https://developers.openai.com/images/platform/guides/private-safety-processing/setup-08-platform-azure-connect.webp"
-  alt="Connect external storage dialog with Azure selected, showing project selection, Tenant ID, Subscription ID, and Resource group."
+  alt="Connect external storage dialog with Azure selected, showing Project Name, Data retention policy, Tenant ID, and Subscription ID."
   style={{ border: 0, borderRadius: 0 }}
 />
 
 For **GCP**, enter **Bucket name**, **Workload identity project number**, **Workload identity pool ID**, and **Workload identity provider ID**. Scroll down in the modal to complete all fields.
 
 <img src="https://developers.openai.com/images/platform/guides/private-safety-processing/setup-10-platform-gcp-connect.webp"
-  alt="Connect external storage dialog with GCP selected, showing project selection, Bucket name, and Workload identity project number."
+  alt="Connect external storage dialog with GCP selected, showing Project Name, Data retention policy, Bucket name, and Workload identity project number."
   style={{ border: 0, borderRadius: 0 }}
 />
 
 For **OCI**, enter **Tenancy OCID**, **Region**, and **Bucket name**. Use the region identifier, such as `us-ashburn-1`, and the bucket name, not its OCID or URL. OpenAI discovers the Object Storage namespace automatically. Scroll down in the modal to complete all fields.
 
 <img src="https://developers.openai.com/images/platform/guides/private-safety-processing/setup-platform-oci-connect.webp"
-  alt="Connect external storage dialog with OCI selected, showing project selection, Tenancy OCID, and Region."
+  alt="Connect external storage dialog with OCI selected, showing Project Name, Data retention policy, and Tenancy OCID."
   style={{ border: 0, borderRadius: 0 }}
 />
 
 ##### 3. Connect and validate
 
-Select **Connect and validate**. The API console registers the storage, runs validation, and refreshes the storage status and project policy. Registration alone doesn't change the policy.
+Select **Connect and validate**. The API console saves the selected base data retention policy, registers the storage, runs validation, and refreshes the storage and project status. Successful validation enables Private Safety Processing while keeping the selected base policy.
 
-Wait for **Storage validated** and confirmation that the project now uses ZDR with PSP, then select **Done**.
+Wait for **Storage validated** and confirmation that Private Safety Processing is active for the project, then select **Done**.
 
 ![OpenAI Project Settings showing validated AWS S3 storage and the Zero Data Retention with Private Safety Processing policy.](https://developers.openai.com/images/platform/guides/private-safety-processing/setup-09-platform-storage-validated.webp)
 
@@ -667,7 +667,7 @@ If validation fails after registration, fix the reported issue and select **Retr
 
 #### Option 2: Management API
 
-Use an organization Admin API key for this method. Register storage with the commands below, then follow [**3. Verify your setup**](#3-verify-your-setup) to run validation.
+Use an organization Admin API key for this method. Set the project's base data retention policy, register storage, then follow [**4. Verify your setup**](#4-verify-your-setup) to run validation.
 
 ##### 1. Prepare your API settings
 
@@ -683,7 +683,22 @@ OPENAI_ORG_ID='<OPENAI_ORG_ID>'
 OPENAI_STORAGE_URL="$OPENAI_API_BASE/v1/organization/external_storage"
 ```
 
-##### 2. Send the registration request
+##### 2. Set the base retention policy
+
+Set an eligible base data retention policy for the project before registering storage. Use `zero_data_retention` for ZDR or `modified_abuse_monitoring` for MAM. The selected policy remains active after Private Safety Processing is enabled.
+
+```bash
+curl --fail-with-body -sS -X POST \
+  "$OPENAI_API_BASE/v1/organization/projects/CUSTOMER_PROJECT_ID/data_retention" \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "OpenAI-Organization: $OPENAI_ORG_ID" \
+  -H 'Content-Type: application/json' \
+  --data-binary '{"retention_type":"zero_data_retention"}'
+```
+
+For Modified Abuse Monitoring, send `{"retention_type":"modified_abuse_monitoring"}` instead. A successful response returns `object: "project.data_retention"` and the selected `type`.
+
+##### 3. Send the registration request
 
 Run the request for your provider only. Replace every `CUSTOMER_...` placeholder with your IDs and the resources you created.
 
@@ -761,9 +776,9 @@ curl --fail-with-body -sS -X POST "$OPENAI_STORAGE_URL" \
   }'
 ```
 
-The response contains an `id` beginning with `extstorage_` and `status: "pending"`. Keep the ID for validation. The API console shows **Pending validation** and leaves the project's retention policy unchanged.
+The response contains an `id` beginning with `extstorage_` and `status: "pending"`. Keep the ID for validation. The API console shows **Pending validation** and leaves the project's selected base data retention policy unchanged. Private Safety Processing isn't active until validation succeeds.
 
-##### 3. Verify your setup
+##### 4. Verify your setup
 
 For API validation, replace `EXTERNAL_STORAGE_ID` with the ID returned by registration, then run:
 
@@ -775,7 +790,7 @@ curl --fail-with-body -sS -X POST \
   -H "OpenAI-Organization: $OPENAI_ORG_ID"
 ```
 
-A successful response has `status: "validated"`. Validation checks configuration and access, then activates customer-managed retention for that project. The API console shows **Validated** and the read-only policy **Zero Data Retention with Private Safety Processing**.
+A successful response has `status: "validated"`. Validation checks configuration and access, then enables Private Safety Processing with customer-managed storage while keeping the selected base data retention policy. The API console shows **Validated** and the combined project policy, such as **Zero Data Retention with Private Safety Processing** or **Modified Abuse Monitoring with Private Safety Processing**.
 
 If you used the Management API, retrieve the saved registration:
 
@@ -786,7 +801,7 @@ curl --fail-with-body -sS \
   -H "OpenAI-Organization: $OPENAI_ORG_ID"
 ```
 
-For either method, open **Project Settings > Data retention** and select **Refresh**. Confirm the destination, provider, geography, and **Validated** status, then check the policy is **Zero Data Retention with Private Safety Processing**. The organization Data retention table also shows storage and status for each project.
+For either method, open **Project Settings > Data retention** and select **Refresh**. Confirm the destination, provider, geography, and **Validated** status, then check that the selected base policy shows Private Safety Processing. The organization Data retention table also shows storage and status for each project.
 
 ![OpenAI Project Settings Data retention page showing an AWS S3 external-storage connection with Validated status and the Zero Data Retention with PSP retention policy.](https://developers.openai.com/images/platform/guides/private-safety-processing/setup-05-verify-project-retention.webp)
 

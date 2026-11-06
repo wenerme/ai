@@ -36,6 +36,14 @@ We use the term "legacy" to refer to models and endpoints that no longer receive
 
 Upcoming deprecations are listed below, with the most recent announcements at the top.
 
+### 2026-11-05: GPT-5.5-Cyber
+
+The `gpt-5.5-cyber-preview` model is deprecated and will be removed from the API on February 1, 2027. Migrate to the most capable cyber model available to you before the shutdown date.
+
+| Shutdown date    | Model / system          | Recommended replacement                        |
+| ---------------- | ----------------------- | ---------------------------------------------- |
+| February 1, 2027 | `gpt-5.5-cyber-preview` | The most capable cyber model available to you. |
+
 ### 2026-10-14: GPT-4 series model deprecations
 
 On October 14, 2026, we notified developers using certain GPT-4 series models of their deprecation and removal from the API on January 14, 2027.
@@ -113,6 +121,8 @@ On June 11, 2026, we notified developers using older GPT-5 and o3 model snapshot
 | Dec 11, 2026  | `o3` \| `o3-2025-04-16`                 | `gpt-5.6-sol`                         |
 | Dec 11, 2026  | `o3-pro` \| `o3-pro-2025-06-10`         | `gpt-5.6-sol` (`reasoning.mode: pro`) |
 
+Fine-tuned versions of these models follow the same shutdown schedule as their underlying base models.
+
 ### 2026-06-03: Reusable prompts
 
 On June 3, 2026, we notified developers using reusable prompts in the dashboard and API that reusable prompt objects are being deprecated.
@@ -155,9 +165,9 @@ On June 2, 2026, we notified developers using older GPT Image models of their de
 
 | Shutdown date | Model / system                                | Recommended replacement                           |
 | ------------- | --------------------------------------------- | ------------------------------------------------- |
-| Dec 1, 2026   | `gpt-image-1-mini`                            | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
-| Dec 1, 2026   | `gpt-image-1.5` \| `gpt-image-1.5-2025-12-16` | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
-| Dec 1, 2026   | `chatgpt-image-latest`                        | `gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` |
+| Dec 1, 2026   | `gpt-image-1-mini`                            | `gpt-image-2.6-sunburst` or `gpt-image-2.6-flare` |
+| Dec 1, 2026   | `gpt-image-1.5` \| `gpt-image-1.5-2025-12-16` | `gpt-image-2.6-sunburst` or `gpt-image-2.6-flare` |
+| Dec 1, 2026   | `chatgpt-image-latest`                        | `gpt-image-2.6-sunburst` or `gpt-image-2.6-flare` |
 
 ### Update to OpenAI’s self-serve fine-tuning
 

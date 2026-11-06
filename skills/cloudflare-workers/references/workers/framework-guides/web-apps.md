@@ -18,6 +18,7 @@ Create full-stack web applications deployed to Cloudflare Workers.
 
 - [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
 - [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
+- [EmDash](https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/)
 - [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
 - [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
 - [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)

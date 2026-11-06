@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/framework-guides/automatic-conf
 
 # Deploy an existing project
 
-Last updated Oct 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -37,7 +37,7 @@ Automatic configuration supports the following frameworks:
 
 | Framework | Adapter/Tool | Notes |
 | --- | --- | --- |
-| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) | `vinext` | Configures vinext for Cloudflare Workers and adds the required Vite and Wrangler configuration. |
+| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) | OpenNext or vinext | Wrangler configures OpenNext. `cf init` configures vinext for Next.js 16 and later. |
 | [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/) | `@astrojs/cloudflare` | Runs `astro add cloudflare` automatically |
 | [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/) | `@sveltejs/adapter-cloudflare` | Runs `sv add sveltekit-adapter` automatically |
 | [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/) | Built-in Cloudflare preset | |
@@ -68,8 +68,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"main": "dist/_worker.js/index.js",
 	"upload_source_maps": true,
 	// Set this to today's date
-	"compatibility_date": "2026-10-27",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_date": "2026-11-06",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": "dist",
@@ -86,8 +85,7 @@ name = "my-project"
 main = "dist/_worker.js/index.js"
 upload_source_maps = true
 # Set this to today's date
-compatibility_date = "2026-10-27"
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2026-11-06"
 
 [assets]
 binding = "ASSETS"
@@ -97,7 +95,7 @@ directory = "dist"
 enabled = true
 ```
 
-The exact configuration varies based on your framework.
+The exact configuration varies based on your framework. For compatibility dates before `2026-08-04`, automatic configuration also adds the `nodejs_compat` compatibility flag.
 
 ### `package.json`
 
@@ -249,7 +247,14 @@ You can also manually configure your project by following the framework-specific
 
 ## Next.js configuration
 
-For Next.js projects, automatic configuration uses [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) as the default deployment path for Cloudflare Workers. The generated configuration adds the vinext and Vite dependencies, creates the Cloudflare Workers configuration, and adds package scripts for development, builds, and deployment.
+The adapter that automatic configuration uses for Next.js depends on the tool you run:
+
+| Tool | Next.js 16 and later | Next.js 15 and earlier |
+| --- | --- | --- |
+| `wrangler setup` or `wrangler deploy` | [OpenNext](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/) | [OpenNext](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/) |
+| [`cf init`](https://developers.cloudflare.com/cf/projects/) | [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) | [OpenNext](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/) |
+
+When automatic configuration uses vinext, it runs `vinext init`. The generated configuration adds the vinext and Vite dependencies, creates the Cloudflare Workers configuration, and adds package scripts for development, builds, and deployment. To use vinext with Wrangler, run `vinext init` directly. For more information, refer to [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/).
 
 vinext supports Next.js caching features such as Incremental Static Regeneration (ISR), `"use cache"`, and `unstable_cache`. For production applications, configure the generated Workers project with the cache backend your application requires. For more information, refer to [vinext caching ↗︎](https://github.com/cloudflare/vinext#caching).
 
@@ -286,5 +291,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/og.png?v=7d0f8d3dc115af82","dateModified":"2026-10-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/og.png?v=7d0f8d3dc115af82","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

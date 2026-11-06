@@ -26,6 +26,7 @@ Model ID
 - Function calling
 - Reasoning
 - Vision
+- Planned deprecation
 - Zero data retention
 
 Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
@@ -36,6 +37,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |

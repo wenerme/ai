@@ -31,6 +31,13 @@ When the new experience first launched, it did not support changing the type of 
 
 If you run into an issue with the new experience, contact your account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
+## 2026-10-30
+
+
+**Cloudflare Services for Private Origins is generally available**
+
+**Cloudflare Services for Private Origins is generally available.** Proxy public hostnames to origins in your private network over Cloudflare WAN, Cloudflare Tunnel, or Cloudflare Mesh. Refer to [Private origins](https://developers.cloudflare.com/dns/private-origins/) and the [announcement blog post ↗︎](https://blog.cloudflare.com/private-origins-public-to-private/).
+
 ## 2026-10-26
 
 

@@ -24,12 +24,14 @@ Model ID
 
 - Cloudflare-hosted
 - Reasoning
+- Planned deprecation
 - Zero data retention
 
 DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
 | Terms and License | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
 | Reasoning | Yes |

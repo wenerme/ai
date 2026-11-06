@@ -25,12 +25,14 @@ Model ID
 - Cloudflare-hosted
 - Function calling
 - Reasoning
+- Planned deprecation
 - Zero data retention
 
 NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 256,000 tokens |
 | Terms and License | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |

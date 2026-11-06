@@ -4,9 +4,9 @@ url: https://platform.claude.com/docs/en/manage-claude/wif-providers/github-acti
 description: Authenticate GitHub Actions workflows to the Claude API with short-lived identity tokens instead of long-lived API keys.
 ---
 
-Every GitHub Actions workflow run can request a signed identity token from GitHub's hosted issuer at `https://token.actions.githubusercontent.com`. With Workload Identity Federation, your workflow exchanges that token for a short-lived Anthropic access token, so your CI jobs can call the Claude API without an `ANTHROPIC_API_KEY` secret stored in your repository.
+Every GitHub Actions workflow run can request a signed identity token from GitHub’s hosted issuer at `https://token.actions.githubusercontent.com`. With Workload Identity Federation, your workflow exchanges that token for a short-lived Anthropic access token, so your CI jobs can call the Claude API without an `ANTHROPIC_API_KEY` secret stored in your repository.
 
-The token's `sub` claim encodes the repository and trigger context. For a push to a branch it has the form `repo:<owner>/<repo>:ref:refs/heads/<branch>`. Pull-request runs use `repo:<owner>/<repo>:pull_request`, and environment-gated deployments use `repo:<owner>/<repo>:environment:<name>`. Your federation rule matches against this claim (and others, such as `repository_owner` and `ref`) to determine which workflow runs are allowed to authenticate.
+The token’s `sub` claim encodes the repository and trigger context. For a push to a branch it has the form `repo:<owner>/<repo>:ref:refs/heads/<branch>`. Pull-request runs use `repo:<owner>/<repo>:pull_request`, and environment-gated deployments use `repo:<owner>/<repo>:environment:<name>`. Your federation rule matches against this claim (and others, such as `repository_owner` and `ref`) to determine which workflow runs are allowed to authenticate.
 
 ## Prerequisites
 
@@ -64,7 +64,7 @@ The decoded token carries claims that describe the workflow run. Your federation
 }
 ```
 
-See [GitHub's OIDC subject claim reference](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims) for the full list of `sub` formats.
+See [GitHub’s OIDC subject claim reference](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims) for the full list of `sub` formats.
 
 ## Configure Anthropic
 
@@ -109,7 +109,7 @@ Be as specific as the workload allows. Loosen `subject_prefix` to `repo:your-org
 
 ## Acquire and use a token
 
-Set the federation environment variables on the job and call the SDK normally. `Anthropic()` (typescript: `new Anthropic()`; csharp: `new AnthropicClient()`; go: `anthropic.NewClient()`; java: `AnthropicOkHttpClient.fromEnv()`; php: `new Client()`; ruby: `Anthropic::Client.new`) reads `ANTHROPIC_IDENTITY_TOKEN_FILE`, exchanges the JWT on the first request, and refreshes the access token automatically before it expires.
+Set the federation environment variables on the job. In the SDK, `anthropic.Anthropic()` (typescript: `new Anthropic()`; csharp: `new AnthropicClient()`; go: `anthropic.NewClient()`; java: `AnthropicOkHttpClient.fromEnv()`; php: `new Client()`; ruby: `Anthropic::Client.new`) reads `ANTHROPIC_IDENTITY_TOKEN_FILE`, exchanges the JWT on the first request, and refreshes the access token automatically before it expires.
 
 <CodeGroup>
   ```yaml Workflow
@@ -161,7 +161,7 @@ Set the federation environment variables on the job and call the SDK normally. `
 
   curl https://api.anthropic.com/v1/messages \
     -H "authorization: Bearer $ACCESS_TOKEN" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "content-type: application/json" \
     -d '{
       "model": "claude-opus-5-5",
@@ -172,8 +172,10 @@ Set the federation environment variables on the job and call the SDK normally. `
 
   ```bash CLI
   # Reads ANTHROPIC_FEDERATION_RULE_ID, ANTHROPIC_ORGANIZATION_ID,
-  # ANTHROPIC_SERVICE_ACCOUNT_ID, ANTHROPIC_WORKSPACE_ID, and ANTHROPIC_IDENTITY_TOKEN_FILE
+  # ANTHROPIC_SERVICE_ACCOUNT_ID, and ANTHROPIC_IDENTITY_TOKEN_FILE
   # from the job environment.
+  # For a rule enabled for all workspaces or more than one, set ANTHROPIC_PROFILE
+  # to a federation profile that sets workspace_id.
   ant messages create \
     --model claude-opus-5-5 \
     --max-tokens 1024 \
@@ -307,11 +309,11 @@ Set the federation environment variables on the job and call the SDK normally. `
   ```
 </CodeGroup>
 
-Each GitHub-issued identity token expires roughly 5 minutes after issuance. The token-request endpoint (`ACTIONS_ID_TOKEN_REQUEST_URL`) stays valid for the entire job, so you can fetch a fresh token at any point. The SDK exchanges the token on first use and caches the resulting Anthropic access token. For jobs that run longer than the Anthropic token's lifetime, the SDK re-reads `ANTHROPIC_IDENTITY_TOKEN_FILE` on each refresh, so re-run the fetch step periodically (or wrap it in a background loop) to keep the file current. Alternatively, except in Java, pass the SDK a token provider that calls `ACTIONS_ID_TOKEN_REQUEST_URL` directly instead of using the file path.
+Each GitHub-issued identity token expires roughly 5 minutes after issuance. The token-request endpoint (`ACTIONS_ID_TOKEN_REQUEST_URL`) stays valid for the entire job, so you can fetch a fresh token at any point. The SDK exchanges the token on first use and caches the resulting Anthropic access token. On each refresh, the SDK rereads `ANTHROPIC_IDENTITY_TOKEN_FILE`. For jobs that run longer than the Anthropic token’s lifetime, rerun the fetch step periodically (or wrap it in a background loop) to keep the file current. Alternatively, except in Java, pass the SDK a token provider that calls `ACTIONS_ID_TOKEN_REQUEST_URL` directly instead of using the file path.
 
 ## Verify the setup
 
-A successful exchange returns an `access_token` starting with `sk-ant-oat01-` and an `expires_in` value in seconds. A denied exchange returns an opaque `401` `authentication_error` with the fixed message `Authentication failed`, whichever check failed; in most cases the deny reason is recorded on the attempt's entry in the [authentication history page](https://platform.claude.com/settings/workload-identity-federation?tab=history) in the Claude Console, and [Troubleshoot a failed exchange](https://platform.claude.com/docs/en/manage-claude/wif-reference#troubleshoot-a-failed-exchange) walks the checks in order. The most common GitHub Actions-side cause is the `sub` claim format not matching (its trailing segment varies among `ref:...`, `environment:...`, and `pull_request` events); the history entry shows reason `match_subject_prefix`.
+A successful exchange returns an `access_token` starting with `sk-ant-oat01-` and an `expires_in` value in seconds. A denied exchange returns an opaque `401` `authentication_error` with the fixed message `Authentication failed`, whichever check failed. In most cases the deny reason is recorded on the attempt’s entry in the [authentication history page](https://platform.claude.com/settings/workload-identity-federation?tab=history) in the Claude Console. [Troubleshoot a failed exchange](https://platform.claude.com/docs/en/manage-claude/wif-reference#troubleshoot-a-failed-exchange) walks the checks in order. The most common GitHub Actions-side cause is the `sub` claim format not matching (its trailing segment varies among `ref:...`, `environment:...`, and `pull_request` events); the history entry shows reason `match_subject_prefix`.
 
 ## Restrict which workflows can authenticate
 
@@ -319,7 +321,7 @@ A successful exchange returns an `access_token` starting with `sk-ant-oat01-` an
   A `subject_prefix` of `repo:your-org/*` alone matches every repository in your organization, and without a `ref` constraint it also matches `pull_request` runs triggered from forks. Anyone who can open a pull request against a matching repository could obtain a federated Anthropic token.
 </Warning>
 
-Lock the rule's `match` block to the narrowest scope that fits your use case:
+Lock the rule’s `match` block to the narrowest scope that fits your use case:
 
 * **Pin to a single repository:** Use `subject_prefix: "repo:your-org/your-repo:*"` so other repositories in the organization do not match.
 * **Pin to a protected branch:** Add `"ref": "refs/heads/main"` (or your release branch) under `claims` so pull-request runs and feature branches do not match.

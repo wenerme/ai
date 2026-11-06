@@ -8,8 +8,8 @@
   "google-ai-api/generate-content.md": {
     "url": "https://ai.google.dev/api/generate-content",
     "skill": "google-ai-api",
-    "size": 93316,
-    "updatedAt": "2026-11-04T06:06:58.674Z"
+    "size": 94177,
+    "updatedAt": "2026-11-06T06:23:31.265Z"
   },
   "google-ai-api/caching.md": {
     "url": "https://ai.google.dev/api/caching",
@@ -32,8 +32,8 @@
   "google-ai-api/live.md": {
     "url": "https://ai.google.dev/api/live",
     "skill": "google-ai-api",
-    "size": 35540,
-    "updatedAt": "2026-11-03T17:55:23.972Z"
+    "size": 35838,
+    "updatedAt": "2026-11-06T06:23:41.641Z"
   },
   "google-ai-api/models.md": {
     "url": "https://ai.google.dev/api/models",
@@ -92,8 +92,8 @@
   "google-ai-docs/audio.md": {
     "url": "https://ai.google.dev/gemini-api/docs/audio",
     "skill": "google-ai-docs",
-    "size": 41085,
-    "updatedAt": "2026-11-03T17:55:32.166Z"
+    "size": 42006,
+    "updatedAt": "2026-11-06T06:23:51.343Z"
   },
   "google-ai-docs/video.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video",
@@ -200,7 +200,7 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 180269,
-    "updatedAt": "2026-11-04T06:07:24.748Z"
+    "size": 180831,
+    "updatedAt": "2026-11-06T06:24:10.719Z"
   }
 }

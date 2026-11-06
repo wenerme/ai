@@ -356,7 +356,7 @@ This rule enforces the defined actions based on license findings.
 | `match_on_inclusion_license` | `boolean` | true if `licenses` field does not exist       | `true`, `false`              | Whether the rule matches inclusion or exclusion of licenses listed in `license_types`.                                                                                                                              |
 | `license_types` | `array` of `string` | true if `licenses` field does not exist       | license types                | [SPDX license names](https://spdx.org/licenses/) to match on, for example `Affero General Public License v1.0` or `MIT License`.                                                                                     |
 | `license_states` | `array` of `string` | true                                          | `newly_detected`, `detected` | Whether to match newly detected and/or previously detected licenses. The `newly_detected` state triggers approval when either a new package is introduced or when a new license for an existing package is detected. |
-| `licenses`     | `object` | true if `license_types` field does not exist  | `licenses` object            | [SPDX license names](https://spdx.org/licenses/) to match on including package exceptions.                                                                                                                        |
+| `licenses`     | `object` | true if `license_types` field does not exist  | `licenses` object            | License names to match on, including package exceptions. Use [SPDX license names](https://spdx.org/licenses/) or custom license names.                                                                            |
 
 ### `licenses` object
 
@@ -372,17 +372,32 @@ package exclusions.
 
 | Field  | Type     | Required | Possible values   | Description                                        |
 |--------|----------|----------|-------------------|----------------------------------------------------|
-| `name` | `string` | true     | SPDX license name | [SPDX license name](https://spdx.org/licenses/).    |
+| `name` | `string` | true     | SPDX license name or custom license name | The license name to match. Use an [SPDX license name](https://spdx.org/licenses/), or a custom name such as an internal license or a `LicenseRef-*` identifier. |
 | `packages` | `object` | false    | `packages` object | List of packages exceptions for the given license. |
 
 > [!note]
-> The `name` field must be a valid [SPDX license name](https://spdx.org/licenses/).
+> The `name` field must match the license name reported in the software bill of materials (SBOM). For licenses with an SPDX
+> identifier, use the [SPDX license name](https://spdx.org/licenses/). For other licenses, use the
+> custom name from the SBOM, such as an internal license or a `LicenseRef-*` identifier.
 > The value `unknown` is not a recognized SPDX license name, and is not supported in
 > the `licenses` field. Package-level exclusions configured for `unknown` licenses are
 > ignored during merge request approval evaluation. To manage packages with `unknown`
 > licenses, use the [`license_types`](#license_finding-rule-type) field, or allow
 > `unknown` as a license in your policy. For more information, see
 > [license approval policies block merge requests due to `unknown` licenses](../../compliance/license_approval_policies.md#license-approval-policies-block-merge-requests-due-to-unknown-licenses).
+
+For example, to allow the MIT License and an internal license that has no SPDX identifier:
+
+```yaml
+- type: license_finding
+  branch_type: protected
+  license_states:
+    - newly_detected
+  licenses:
+    allowed:
+      - name: MIT License
+      - name: LicenseRef-Example-Internal
+```
 
 ### `packages` object
 

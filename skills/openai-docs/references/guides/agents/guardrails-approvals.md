@@ -58,6 +58,8 @@ try {
 } catch (error) {
   if (error instanceof InputGuardrailTripwireTriggered) {
     console.log("Guardrail blocked the request.");
+  } else {
+    throw error;
   }
 }
 ```
@@ -147,7 +149,7 @@ const cancelOrder = tool({
 
 const agent = new Agent({
   name: "Support agent",
-  instructions: "Handle support requests and ask for approval when needed.",
+  instructions: "Use cancel_order to handle cancellation requests.",
   tools: [cancelOrder],
 });
 
@@ -156,6 +158,7 @@ let result = await run(agent, "Cancel order 123.");
 if (result.interruptions?.length) {
   const state = result.state;
   for (const interruption of result.interruptions) {
+    console.log(`Approval required: ${interruption.name}`);
     state.approve(interruption);
   }
   result = await run(agent, state);

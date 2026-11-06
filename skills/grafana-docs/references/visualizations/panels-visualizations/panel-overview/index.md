@@ -220,7 +220,7 @@ Time series
 
 ## Add a panel
 
-To add a panel to an empty dashboard, click or drag the panel onto the dashboard:
+To add a panel to an empty dashboard, click **+ Add visualization**:
 
 [Empty dashboard state]
 

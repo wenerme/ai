@@ -110,6 +110,12 @@ The audio transcription configuration.
 
   ---
 
+  * `sourceText`
+  * `string`
+  * Optional. The source text to be edited or rewritten via voice instructions. When provided in `SMART` mode, the model evaluates the audio input against this text and emits the complete replacement text in the candidate response rather than appending to it.
+
+  ---
+
   * `mode`
   * [`Mode`](/api-reference/live#AudioTranscriptionConfig.Mode)
   * Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.

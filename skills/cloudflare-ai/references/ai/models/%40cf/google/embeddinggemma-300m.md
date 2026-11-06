@@ -25,12 +25,14 @@ Model ID
 `@cf/google/embeddinggemma-300m` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Zero data retention | Yes |
 | Beta | Yes |
 

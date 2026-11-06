@@ -26,12 +26,14 @@ Model ID
 
 - Cloudflare-hosted
 - LoRA
+- Planned deprecation
 - Zero data retention
 
 This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 3,500 tokens |
 | Zero data retention | Yes |
 | LoRA | Yes |

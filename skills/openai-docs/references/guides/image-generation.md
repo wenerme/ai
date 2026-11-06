@@ -3330,13 +3330,13 @@ Flare and Sunburst generated these SVG logos from the same prompt for a Field & 
 
 ### Generate animated GIF output
 
-Set `output_format: "gif"` on `POST /v1/images/generations`. Describe the subject, motion, and desired loop in your prompt. GIF output is for image generation; the image edit endpoint does not support GIF output.
+Set `output_format: "gif"` on `POST /v1/images/generations` or `POST /v1/images/edits`. Describe the subject, motion, and desired loop in your prompt. To guide the animation with still reference images, send them to the image edit endpoint.
 
-Use these request fields to control the animation:
+Use these request fields for GIF output from either endpoint:
 
 | Field               | Values                                                                      | Default |
 | ------------------- | --------------------------------------------------------------------------- | ------- |
-| `frame_count`       | 2–64 frames                                                                 | 9       |
+| `frame_count`       | 2–16 frames                                                                 | 9       |
 | `frame_duration_ms` | 20–2000 milliseconds per frame, rounded to 10 ms                            | 200     |
 | `size`              | `auto`, or `WIDTHxHEIGHT` with positive dimensions that are multiples of 16 | `auto`  |
 

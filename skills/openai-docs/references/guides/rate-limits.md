@@ -37,6 +37,10 @@ Other important things worth noting:
 
 The three paid usage tiers are **Build**, **Launch**, and **Grow**. Your organization's usage tier upgrades automatically as its total credit purchases reach each threshold. Higher tiers generally provide higher rate limits across models.
 
+Usage tiers describe rate limits. A model's rate-limit entry does not confirm
+  access for your organization, project, or API key. If a model is missing,
+  [check model availability](#model-availability).
+
 | Tier   | Qualification                                                         | Usage limits     |
 | ------ | --------------------------------------------------------------------- | ---------------- |
 | Free   | User must be in an [allowed geography](https://developers.openai.com/api/docs/supported-countries) | $100 / month     |
@@ -135,6 +139,15 @@ curl https://api.openai.com/v1/fine_tuning/model_limits \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
+
+## Model availability
+
+Model access and rate limits are separate. Meeting a usage-tier threshold doesn't grant access to every model. If a documented model is missing from Playground or `GET /v1/models`, or a request returns `model_not_found`:
+
+1. **Check the model ID and endpoint.** Use the exact ID from the [model documentation](https://developers.openai.com/api/docs/models), confirm that it supports your endpoint, and check for retirement or availability notices.
+2. **Compare the organization, project, and credentials.** Select the intended organization and project in Playground. Call [List models](https://developers.openai.com/api/reference/resources/models/methods/list) with the same API key and any `OpenAI-Organization` and `OpenAI-Project` headers used by the failed request. A model visible in your dashboard session may still be unavailable to a different API key.
+3. **Review project restrictions and model requirements.** Ask someone who can manage the project to check its model permissions and data-retention settings. Follow any model-specific access requirements and review any rollout notices in the model documentation. A missing model alone does not identify the cause.
+4. **Refresh and check again.** After changing access settings, refresh the model list or Playground. If the model is still unavailable, contact support with the model ID, organization and project IDs, request time, error message, and the `x-request-id` response header, if available. Don't share your API key.
 
 ## Error mitigation
 

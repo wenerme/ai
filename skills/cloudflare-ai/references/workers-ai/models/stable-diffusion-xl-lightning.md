@@ -25,12 +25,14 @@ Model ID
 `@cf/bytedance/stable-diffusion-xl-lightning` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | More information | [link ↗](https://huggingface.co/ByteDance/SDXL-Lightning) |
 | Zero data retention | Yes |
 | Beta | Yes |

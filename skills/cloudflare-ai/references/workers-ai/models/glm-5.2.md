@@ -25,6 +25,7 @@ Model ID
 - Cloudflare-hosted
 - Function calling
 - Reasoning
+- Planned deprecation
 - Zero data retention
 
 Z.ai's flagship agentic coding model
@@ -35,6 +36,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
 | Reasoning | `none``high``max` (default) |

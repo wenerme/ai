@@ -279,6 +279,15 @@ Start with Unix-local for local development on macOS or Linux. It gives you the
 smallest local loop because the runner can create a temporary workspace from the
 agent's default manifest and clean it up after the run.
 
+For the TypeScript SDK, install a trusted Python 3 interpreter on the host before
+creating a session with `UnixLocalSandboxClient`. The SDK uses Python for protected local
+file access and checks `/usr/bin/python3`, `/usr/local/bin/python3`, and
+`/opt/homebrew/bin/python3`. If Python is installed elsewhere, set
+`OPENAI_AGENTS_PYTHON` in the host environment to its absolute executable path
+before starting Node.js. This is a host prerequisite, not a package to install
+inside the sandbox. Session creation fails if no suitable Python
+interpreter is available.
+
 Run a Unix-local sandbox agent
 
 ```javascript
@@ -540,10 +549,11 @@ try {
     content: "Continue from the existing workspace and add tests.",
   });
 
-  await run(agent, conversation, {
+  const secondResult = await run(agent, conversation, {
     maxTurns: 20,
     sandbox: { session: resumedSession },
   });
+  console.log(secondResult.finalOutput);
 } finally {
   await resumedSession.close?.();
 }

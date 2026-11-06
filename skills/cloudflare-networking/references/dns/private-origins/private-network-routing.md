@@ -18,10 +18,6 @@ Private network routing allows you to proxy HTTP/HTTPS traffic from public hostn
 
 For end-to-end setup, refer to the guide for your connectivity type: [Cloudflare WAN](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-wan/), [Cloudflare Tunnel](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-tunnel/), or [Cloudflare Mesh](https://developers.cloudflare.com/dns/private-origins/set-up-via-cloudflare-mesh/).
 
-Closed beta
-
-This feature is in closed beta. Contact your account team to request access.
-
 ## Aspects to consider
 
 Before you enable private network routing, consider the following:

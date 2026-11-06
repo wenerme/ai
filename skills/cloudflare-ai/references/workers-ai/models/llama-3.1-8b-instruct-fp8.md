@@ -23,12 +23,14 @@ Model ID
 `@cf/meta/llama-3.1-8b-instruct-fp8` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 Llama 3.1 8B quantized to FP8 precision
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE) |
 | Zero data retention | Yes |

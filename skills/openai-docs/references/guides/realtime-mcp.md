@@ -1014,7 +1014,6 @@ function approveMcpRequest(approvalRequestId) {
   const event = {
     type: "conversation.item.create",
     item: {
-      id: `mcp_approval_${approvalRequestId}`,
       type: "mcp_approval_response",
       approval_request_id: approvalRequestId,
       approve: true,
@@ -1145,6 +1144,8 @@ const event = {
   type: "response.create",
   response: {
     output_modalities: ["text"],
+    tool_choice: "required",
+    parallel_tool_calls: false,
     input: [
       {
         type: "message",

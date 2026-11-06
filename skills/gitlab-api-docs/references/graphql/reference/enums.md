@@ -6195,6 +6195,7 @@ Possible types of user.
 | `GHOST` | Ghost. |
 | `HUMAN` | Human. |
 | `IMPORT_USER` | Import user. |
+| `ORBIT_BOT` | Orbit bot. |
 | `PLACEHOLDER` | Placeholder. |
 | `PROJECT_BOT` | Project bot. |
 | `SECURITY_BOT` | Security bot. |
