@@ -2298,6 +2298,17 @@ Artifact Registry an organization is activated for.
 | `status` | [`String!`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 | `userPermissions` | [`ArtifactRegistryNamespacePermissions!`](#artifactregistrynamespacepermissions) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Permissions Artifact Registry grants the current user on the namespace, read from the namespace details as the user when this field is selected. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
+## `ArtifactRegistryAssignedRole`
+
+Role held through a direct role assignment.
+
+### `ArtifactRegistryAssignedRole` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `key` | [`String!`](scalars.md#string) | Stable key of the role, for example `artifact_admin` or `organization_admin`. |
+| `name` | [`String!`](scalars.md#string) | Display name of the role, for example `Organization Administrator`. |
+
 ## `ArtifactRegistryImage`
 
 Image in an Artifact Registry repository.
@@ -2660,11 +2671,12 @@ A direct role assignment. A user, the Artifact Registry role they hold, and the 
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| `assignedRole` | [`ArtifactRegistryAssignedRole`](#artifactregistryassignedrole) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Assigned role, including platform roles such as Organization Administrator. |
 | `assignee` | [`UserCore`](#usercore) | User the role is assigned to. |
 | `createdAt` | [`Time`](scalars.md#time) | Time the assignment was created. |
 | `grantedBy` | [`UserCore`](#usercore) | User who granted the role. Null when unknown, for example for grants made before this field existed or by a user who was deleted. |
 | `resourceId` | [`String!`](scalars.md#string) | UUID of the Artifact Registry resource the role is assigned on. |
-| `role` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Assigned Artifact Registry role. |
+| `role` | [`ArtifactRegistryRole`](enums.md#artifactregistryrole) | Assigned Artifact Registry role. Null for platform roles such as Organization Administrator, which `assignedRole` covers. |
 | `userPermissions` | [`ArtifactRegistryRoleAssignmentPermissions!`](#artifactregistryroleassignmentpermissions) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Actions the current user can take on the assignment. |
 
 ## `ArtifactRegistryRoleAssignmentConnection`

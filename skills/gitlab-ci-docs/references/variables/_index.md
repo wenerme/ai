@@ -512,7 +512,7 @@ Additional details:
 
 ## Use pipeline variables
 
-- Pipeline variable size limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261789) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_enforce_pipeline_variables_total_size_limit`. Disabled by default.
+- Pipeline variable size limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/261789) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `ci_enforce_pipeline_variables_total_size_limit`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

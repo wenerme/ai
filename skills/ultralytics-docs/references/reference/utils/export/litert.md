@@ -19,3 +19,7 @@ keywords: Ultralytics, LiteRT, model export, PyTorch to LiteRT, TFLite, edge dep
 <hr>
 
 ## ::: ultralytics.utils.export.litert.torch2litert
+
+<hr>
+
+## ::: ultralytics.utils.export.litert.tflite2nxp

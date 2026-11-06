@@ -18,10 +18,6 @@ This guide walks you through proxying public hostnames to origins on a private n
 
 This guide uses IPsec. The same flow works over [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) and [CNI](https://developers.cloudflare.com/network-interconnect/). Configure the on-ramp using those docs, then continue from [step 2](#2-create-a-dns-record-with-private-network-routing).
 
-Closed beta
-
-This feature is in closed beta. To request access, contact your Cloudflare account team.
-
 ## Before you begin
 
 Confirm the following before you start:

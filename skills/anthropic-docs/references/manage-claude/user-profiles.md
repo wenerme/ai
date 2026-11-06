@@ -35,10 +35,11 @@ You create and manage profiles in one of the following:
 
 * An organization on the Claude API.
 * An organization on [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws). The calling principal needs the [user profile IAM actions](https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions#user-profiles).
-* A [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry) deployment [hosted on Anthropic](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#hosting-options), not one hosted on Azure. You don’t need an organization on the Claude API or Claude Platform on AWS. Use your Foundry endpoint, with the same base URL and authentication that you use for inference.
 * An organization on [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed), where you can create, retrieve, list, and update profiles. Use the latest version of the [SDK client for Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed#install-an-sdk), or call the [organization-level base URL](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed#making-requests) directly, with Google Cloud credentials instead of an API key.
 
-Amazon Bedrock and Claude Models on Google Cloud (Google managed) don’t have the `/v1/user_profiles` endpoints. If your inference runs there, create your profiles in an organization on the Claude API or Claude Platform on AWS. On Amazon Bedrock, profiles work only with [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock). See [Attribute requests on Amazon Bedrock and Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/manage-claude/user-profiles#attribute-requests-on-amazon-bedrock-and-google-cloud).
+Claude Models on Google Cloud (Google managed) and Amazon Bedrock don’t have the `/v1/user_profiles` endpoints. If your inference runs there, create your profiles in an organization on the Claude API or Claude Platform on AWS. On Amazon Bedrock, profiles work only with [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock). See [Attribute requests on Claude Models on Google Cloud (Google managed) and Amazon Bedrock](https://platform.claude.com/docs/en/manage-claude/user-profiles#attribute-requests-on-amazon-bedrock-and-google-cloud).
+
+If your inference runs on a [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry) deployment [hosted on Anthropic](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#hosting-options), create your profiles in an organization on the Claude API. Before your Foundry requests can use those profile IDs, Anthropic has to link your Foundry resource to that organization. To request the link, contact your Anthropic account team. The `/v1/user_profiles` endpoints are not available on Microsoft Foundry.
 
 Keep the traffic you send for your end customers in one organization and your own internal usage in another. Profiles belong to an organization, not a workspace, so separate workspaces in one organization aren’t enough. Only the organization for end-customer traffic needs user profiles. To create another organization on the Claude API, see the “How to create a new organization” section of [Creating and managing Workspaces in the Claude Console](https://support.claude.com/en/articles/9796807) in the Claude Help Center.
 
@@ -54,7 +55,7 @@ The following example registers a company that buys API access through a gateway
   ```bash cURL
   curl https://api.anthropic.com/v1/user_profiles \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "content-type: application/json" \
     -d '{
       "name": "Acme Analytics, Inc.",
@@ -232,7 +233,7 @@ Send the profile ID in the `anthropic-user-profile-id` header on every request y
   ```bash cURL
   curl https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-user-profile-id: $PROFILE_ID" \
     -H "content-type: application/json" \
     -d '{
@@ -359,22 +360,22 @@ Send the profile ID in the `anthropic-user-profile-id` header on every request y
 
 The header works the same way on [token counting](https://platform.claude.com/docs/en/build-with-claude/token-counting), [Message Batches](https://platform.claude.com/docs/en/build-with-claude/batch-processing), and [OpenAI SDK compatibility](https://platform.claude.com/docs/en/cli-sdks-libraries/libraries/openai-sdk) requests. On a batch, it applies to every request in the batch.
 
-The Claude API, Claude Platform on AWS, Microsoft Foundry deployments hosted on Anthropic, and Claude Models on Google Cloud (Anthropic managed) check the ID on every request. If the ID is malformed or doesn’t belong to the organization that sends the request, the API returns a `400` `invalid_request_error`. By default, these platforms accept a profile ID only on requests from the organization that created the profile. This means that if you send traffic under more than one organization, for example one on the Claude API and one on Claude Platform on AWS, a request from an organization that didn’t create the profile gets the same `400`.
+The Claude API, Claude Platform on AWS, Claude Models on Google Cloud (Anthropic managed), and Microsoft Foundry deployments hosted on Anthropic check the ID on every request. If the ID is malformed or doesn’t belong to the organization that sends the request, the API returns a `400` `invalid_request_error`. By default, these platforms accept a profile ID only on requests from the organization that created the profile. This means that if you send traffic under more than one organization, for example one on the Claude API and one on Claude Platform on AWS, a request from an organization that didn’t create the profile gets the same `400`. On Microsoft Foundry deployments hosted on Anthropic, every profile ID gets this `400` until Anthropic [links your Foundry resource](https://platform.claude.com/docs/en/manage-claude/user-profiles#before-you-begin) to the organization that created the profile.
 
 Message Batches is the exception: creating a batch checks only the ID’s format. If a well-formed ID doesn’t belong to the organization that sends the batch, the batch is still created, and each request in it then fails with an `errored` result that contains the same `invalid_request_error`.
 
-### Attribute requests on Amazon Bedrock and Claude Models on Google Cloud (Google managed)
+### Attribute requests on Claude Models on Google Cloud (Google managed) and Amazon Bedrock
 
-A profile ID of either access type also works on [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock) and on Claude Models on Google Cloud (Google managed). It doesn’t work with the [earlier Amazon Bedrock integration](https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy) that you call with `InvokeModel` or `Converse`. You use your Anthropic organization’s credentials only to create and manage profiles. Inference stays on your existing AWS or Google Cloud credentials.
+A profile ID of either access type also works on Claude Models on Google Cloud (Google managed) and on [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock). It doesn’t work with the [earlier Amazon Bedrock integration](https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy) that you call with `InvokeModel` or `Converse`. You use your Anthropic organization’s credentials only to create and manage profiles. Inference stays on your existing AWS or Google Cloud credentials.
 
-| Platform                                                                                                                                                   | Create profiles                                              | Send the profile ID in                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
-| Claude API                                                                                                                                                 | Yes                                                          | `anthropic-user-profile-id` header          |
-| [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws)                                                     | Yes                                                          | `anthropic-user-profile-id` header          |
-| [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry), deployments hosted on Anthropic                    | Yes                                                          | `anthropic-user-profile-id` header          |
-| [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed) | Yes                                                          | `anthropic-user-profile-id` header          |
-| [Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed)       | No. Create them on the Claude API or Claude Platform on AWS. | `anthropic-user-profile-id` header          |
-| [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock)                                                 | No. Create them on the Claude API or Claude Platform on AWS. | `user_profile_id` field in the request body |
+| Platform                                                                                                                                                   | Create profiles                                                                                                                                                         | Send the profile ID in                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| Claude API                                                                                                                                                 | Yes                                                                                                                                                                     | `anthropic-user-profile-id` header          |
+| [Claude Platform on AWS](https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws)                                                     | Yes                                                                                                                                                                     | `anthropic-user-profile-id` header          |
+| [Microsoft Foundry](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry), deployments hosted on Anthropic                    | No. Create them on the Claude API, and [ask Anthropic to link your Foundry resource](https://platform.claude.com/docs/en/manage-claude/user-profiles#before-you-begin). | `anthropic-user-profile-id` header          |
+| [Claude Models on Google Cloud (Anthropic managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/anthropic-managed) | Yes                                                                                                                                                                     | `anthropic-user-profile-id` header          |
+| [Claude Models on Google Cloud (Google managed)](https://platform.claude.com/docs/en/build-with-claude/claude-models-on-google-cloud/google-managed)       | No. Create them on the Claude API or Claude Platform on AWS.                                                                                                            | `anthropic-user-profile-id` header          |
+| [Claude in Amazon Bedrock](https://platform.claude.com/docs/en/build-with-claude/claude-in-amazon-bedrock)                                                 | No. Create them on the Claude API or Claude Platform on AWS.                                                                                                            | `user_profile_id` field in the request body |
 
 On Claude in Amazon Bedrock, put the ID at the top level of the request body:
 
@@ -395,7 +396,7 @@ Link each AWS account that sends requests to Claude in Amazon Bedrock, and each 
 
 Programs that apply to a profile apply to an account’s requests only after the account is linked and the portal shows it as **Linked**. Those programs include the ones an end customer’s organization is approved for after the end customer [links the profile to that organization](https://platform.claude.com/docs/en/manage-claude/user-profiles-verification-portal) and, for Cyber Verification Program access levels, turns them on for the profile in the portal.
 
-Claude in Amazon Bedrock and Claude Models on Google Cloud (Google managed) check the format of the ID but don’t look the profile up. They reject a malformed ID with a `400`. They accept any well-formed ID, so a successful response doesn’t confirm that the ID matches a profile. A request with no ID goes through unattributed, and if it triggers an enforcement action, the action applies to your whole organization.
+Claude Models on Google Cloud (Google managed) and Claude in Amazon Bedrock check the format of the ID but don’t look the profile up. They reject a malformed ID with a `400`. They accept any well-formed ID, so a successful response doesn’t confirm that the ID matches a profile. A request with no ID goes through unattributed, and if it triggers an enforcement action, the action applies to your whole organization.
 
 ### Identify individual users within a company
 
@@ -466,7 +467,7 @@ The following example marks the account as suspended and deletes a `trial_cohort
   ```bash cURL
   curl "https://api.anthropic.com/v1/user_profiles/$PROFILE_ID" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "content-type: application/json" \
     -d '{
       "external_user_details": {"account_status": "suspended"},
@@ -598,7 +599,7 @@ Delete a profile when an end customer closes their account or asks you to erase 
   ```bash cURL
   curl -X DELETE "https://api.anthropic.com/v1/user_profiles/$PROFILE_ID" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01"
+    -H "anthropic-version: 2026-10-21"
   ```
 
   ```bash CLI
@@ -673,7 +674,7 @@ Delete a profile when an end customer closes their account or asks you to erase 
 
 The response repeats the ID with `"type": "user_profile_deleted"`. If a delete returns a server error, retry it. A `404` on the retry means the first delete went through.
 
-After a delete, the profile endpoints return a `404` for that ID. For up to about 10 minutes, inference requests that carry the deleted ID can still succeed. After that, the platforms that check the ID on every request reject the request with a `400`. Claude in Amazon Bedrock and Claude Models on Google Cloud (Google managed) don’t look profiles up, so they still accept it.
+After a delete, the profile endpoints return a `404` for that ID. For up to about 10 minutes, inference requests that carry the deleted ID can still succeed. After that, the platforms that check the ID on every request reject the request with a `400`. Claude Models on Google Cloud (Google managed) and Claude in Amazon Bedrock don’t look profiles up, so they still accept it.
 
 ## Next steps
 

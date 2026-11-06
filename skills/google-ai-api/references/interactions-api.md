@@ -347,6 +347,10 @@ The Interaction resource.
 
   Value: `smart`
 
+  **source_text**: `string`
+
+  The source text to be edited or rewritten via voice instructions. When provided, the model performs voice-driven editing and outputs the finalized replacement text.
+
   {% /details %}
 
   {% details %}
@@ -1924,7 +1928,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "code_execution"
       }],
@@ -1940,7 +1944,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[{"type": "code_execution"}],
       input="Calculate the first 10 Fibonacci numbers",
   )
@@ -1955,7 +1959,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [{type: 'code_execution'}],
     input: 'Calculate the first 10 Fibonacci numbers',
   });
@@ -1977,7 +1981,7 @@ A tool that can be used by the model.
   Client client = new Client();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(new CodeExecution()))
           .input(InteractionsInput.of("Calculate the first 10 Fibonacci numbers"))
           .build();
@@ -2013,7 +2017,7 @@ A tool that can be used by the model.
       tool := gaos_interactions.NewTool(gaos_interactions.CodeExecution{})
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Calculate the first 10 Fibonacci numbers")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -2290,7 +2294,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "file_search",
         "file_search_store_names": ["fileSearchStores/m64d1sevsr4y-xfyawui3fxqg"]
@@ -2311,7 +2315,7 @@ A tool that can be used by the model.
   store = client.file_search_stores.create()
   
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[
           {"type": "file_search", "file_search_store_names": [store.name]}
       ],
@@ -2335,7 +2339,7 @@ A tool that can be used by the model.
   }
   
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [
       {
         type: 'file_search',
@@ -2371,7 +2375,7 @@ A tool that can be used by the model.
   FileSearch tool = FileSearch.builder().fileSearchStoreNames(List.of(storeName)).build();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(tool))
           .input(InteractionsInput.of("What documents are available?"))
           .build();
@@ -2410,7 +2414,7 @@ A tool that can be used by the model.
       })
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What documents are available?")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -2487,7 +2491,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "function",
         "name": "get_weather",
@@ -2515,7 +2519,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[{
           "type": "function",
           "name": "get_weather",
@@ -2546,7 +2550,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [
       {
         type: 'function',
@@ -2601,7 +2605,7 @@ A tool that can be used by the model.
           .build();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(functionTool))
           .input(InteractionsInput.of("What is the weather like in Boston?"))
           .build();
@@ -2655,7 +2659,7 @@ A tool that can be used by the model.
       tool := gaos_interactions.NewTool(function)
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -2737,7 +2741,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "google_maps",
         "latitude": 37.7749,
@@ -2755,7 +2759,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[
           {"type": "google_maps", "latitude": 37.7749, "longitude": -122.4194}
       ],
@@ -2772,7 +2776,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [
       {
         type: 'google_maps',
@@ -2801,7 +2805,7 @@ A tool that can be used by the model.
   GoogleMaps tool = GoogleMaps.builder().latitude(37.7749).longitude(-122.4194).build();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(tool))
           .input(InteractionsInput.of("What is the best food near me?"))
           .build();
@@ -2840,7 +2844,7 @@ A tool that can be used by the model.
       })
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the best food near me?")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -2916,7 +2920,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "google_search"
       }],
@@ -2932,7 +2936,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[{"type": "google_search"}],
       input="Who is the current president of France?",
   )
@@ -2947,7 +2951,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [{type: 'google_search'}],
     input: 'Who is the current president of France?',
   });
@@ -2969,7 +2973,7 @@ A tool that can be used by the model.
   Client client = new Client();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(new GoogleSearch()))
           .input(InteractionsInput.of("Who is the current president of France?"))
           .build();
@@ -3005,7 +3009,7 @@ A tool that can be used by the model.
       tool := gaos_interactions.NewTool(gaos_interactions.GoogleSearch{})
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Who is the current president of France?")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -3115,7 +3119,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "mcp_server",
         "name": "weather_service",
@@ -3135,7 +3139,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[{
           "type": "mcp_server",
           "name": "weather_service",
@@ -3154,7 +3158,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [
       {
         type: 'mcp_server',
@@ -3187,7 +3191,7 @@ A tool that can be used by the model.
           .build();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(mcpTool))
           .input(
               InteractionsInput.of(
@@ -3230,7 +3234,7 @@ A tool that can be used by the model.
       tool := gaos_interactions.NewTool(mcpServer)
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Today is 12-05-2025, what is the temperature today in London?")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -3289,7 +3293,7 @@ A tool that can be used by the model.
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "gemini-flash-latest",
+      "model": "gemini-3.8-flash",
       "tools": [{
         "type": "url_context"
       }],
@@ -3305,7 +3309,7 @@ A tool that can be used by the model.
   
   client = genai.Client()
   response = client.interactions.create(
-      model="gemini-flash-latest",
+      model="gemini-3.8-flash",
       tools=[{"type": "url_context"}],
       input="Summarize https://www.example.com",
   )
@@ -3320,7 +3324,7 @@ A tool that can be used by the model.
   
   const ai = new GoogleGenAI({});
   const interaction = await ai.interactions.create({
-    model: 'gemini-flash-latest',
+    model: 'gemini-3.8-flash',
     tools: [{type: 'url_context'}],
     input: 'Summarize https://www.example.com',
   });
@@ -3342,7 +3346,7 @@ A tool that can be used by the model.
   Client client = new Client();
   CreateModelInteraction params =
       CreateModelInteraction.builder()
-          .model("gemini-flash-latest")
+          .model("gemini-3.8-flash")
           .tools(List.of(new URLContext()))
           .input(InteractionsInput.of("Summarize https://www.example.com"))
           .build();
@@ -3378,7 +3382,7 @@ A tool that can be used by the model.
       tool := gaos_interactions.NewTool(gaos_interactions.URLContext{})
   
       body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-          Model: gaos_interactions.Model("gemini-flash-latest"),
+          Model: gaos_interactions.Model("gemini-3.8-flash"),
           Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Summarize https://www.example.com")),
           Tools: []gaos_interactions.Tool{tool},
       })
@@ -6641,9 +6645,37 @@ A step in the interaction.
   {% two-column-layout %}
   {% left-column %}
   {% section class="api-ref-property-list" %}
-  **result**: {% mark %}required{% /mark %} `string`
+  {% details %}
+  {% summary %}
+  **result**: {% mark %}required{% /mark %} [`Content`](/api-reference/interactions-api#Resource:Content) `array` or `string`
 
   The output of the code execution.
+
+  {% /summary %}
+
+  **Possible Types:** {% class="api-ref-label" %}
+
+  {% details %}
+  {% summary %}
+  **[Content](/api-reference/interactions-api#Resource:Content) array**
+
+  {% /summary %}
+
+  The contents of the list.
+
+  {% /details %}
+
+  {% details %}
+  {% summary %}
+  **string**
+
+  {% /summary %}
+
+  A direct string value.
+
+  {% /details %}
+
+  {% /details %}
 
   {% hr /%}
 

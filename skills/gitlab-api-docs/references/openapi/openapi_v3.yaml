@@ -29327,6 +29327,8 @@ paths:
           description: Validation error
         '401':
           description: Unauthorized
+        '429':
+          description: Too many requests
       requestBody:
         required: true
         content:
@@ -84590,6 +84592,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       requestBody:

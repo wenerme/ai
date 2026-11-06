@@ -23,12 +23,14 @@ Model ID
 `@cf/myshell-ai/melotts` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Zero data retention | Yes |
 | Unit Pricing | $0.000205 per audio minute |
 

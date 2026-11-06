@@ -14,6 +14,8 @@ Products
 
 1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBasin CatalogBasin PipelinesBasin SQLBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPulumiQueuesR2Rate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
 
+[**Migrate from Vercel to Cloudflare Workers** Migrate a Vercel application to Cloudflare Workers. Includes tested guides for Next.js, TanStack Start, React Router, SvelteKit, Nuxt, and Astro.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
+
 [**Designing a distributed web performance architecture** A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/)
 
 [**Build a coding agent runner** Build a Worker that clones a GitHub repository into a Linux sandbox, runs Claude Code on a task in the background, and returns its changes as a diff.](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/)
@@ -87,8 +89,6 @@ Products
 [**Create and secure an AI agent wrapper using AI Gateway and Zero Trust** This tutorial explains how to use Cloudflare AI Gateway and Zero Trust to create a functional and secure website wrapper for an AI agent.](https://developers.cloudflare.com/cloudflare-one/tutorials/ai-wrapper-tenant-control/)
 
 [**Enhancing security posture with SentinelOne and Cloudflare One** The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/)
-
-[**Migrate from Vercel to Workers** Migrate your Vercel application to Cloudflare Workers. You should already have an existing project deployed on Vercel that you would like to host on Workers.](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)
 
 [**Point to Pages with a custom domain** This tutorial will instruct you how to configure an origin rule and a DNS record to point to a Pages deployment with a custom domain.](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/)
 

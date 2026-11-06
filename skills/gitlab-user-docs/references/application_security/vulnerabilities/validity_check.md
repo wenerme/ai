@@ -108,8 +108,11 @@ Validity checks support the following secret types:
 - Google Cloud API keys
 - HashiCorp Terraform user and organization API tokens
 - Heroku API keys
+- Highnote live secret keys
+- Highnote test secret keys
 - HubSpot private app access tokens and service keys
 - Hugging Face user access tokens
+- Ionic personal access tokens
 - MessageBird access keys
 - npm access tokens
 - OpenAI admin API keys
@@ -130,6 +133,7 @@ Validity checks support the following secret types:
 - Stripe test secret keys
 - Stripe test short secret keys
 - Tailscale API access tokens
+- Typeform personal access tokens
 
 Validity checks for AWS IAM access key IDs, Google Cloud API keys, and Postman API tokens
 work with any secret detection analyzer.
@@ -169,6 +173,7 @@ The supported URLs are:
 - `https://api.goshippo.com/addresses/`
 - `https://api.heroku.com/account`
 - `https://api.hubapi.com/account-info/v3/details`
+- `https://api.ionicjs.com/users/self`
 - `https://api.notification.canada.ca/v2/notifications`
 - `https://api.openai.com/v1/models`
 - `https://api.openai.com/v1/organization/admin_api_keys`
@@ -176,6 +181,10 @@ The supported URLs are:
 - `https://api.sendgrid.com/v3/scopes`
 - `https://api.stripe.com/v1/balance`
 - `https://api.tailscale.com/api/v2/tailnet/-/devices`
+- `https://api.typeform.com/me`
+- `https://api.typeform.eu/me`
+- `https://api.us.highnote.com/graphql`
+- `https://api.us.test.highnote.com/graphql`
 - `https://app.asana.com/api/1.0/users/me`
 - `https://app.terraform.io/api/v2/account/details`
 - `https://huggingface.co/api/whoami-v2`
@@ -199,6 +208,9 @@ the secret with its vendor, and assigns the detection one of the following statu
 - Inactive: The secret is expired or revoked and cannot be used for authentication.
 
 You should rotate active and possibly active secrets as soon as possible.
+
+For an active GitLab personal access token, you can
+[rotate the token and fix the code with GitLab Duo](../../../ci/secrets/secrets_manager/rotate_leaked_tokens.md).
 
 ```mermaid
 %%{init: { "fontFamily": "GitLab Sans" }}%%

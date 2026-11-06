@@ -428,27 +428,61 @@ Alternatively, you can use the [Agents SDK](https://developers.openai.com/api/do
 Use the apply patch tool with the Agents SDK
 
 ```javascript
+import {
+  mkdirSync,
+  realpathSync,
+  lstatSync,
+  readFileSync,
+  writeFileSync,
+  unlinkSync,
+} from "node:fs";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { applyDiff, Agent, run, applyPatchTool } from "@openai/agents";
 
 class WorkspaceEditor {
+  constructor(root = "workspace") {
+    mkdirSync(root, { recursive: true });
+    this.root = realpathSync(root);
+  }
+
+  path(name) {
+    const target = resolve(this.root, name);
+    const relativePath = relative(this.root, target);
+    if (
+      !relativePath ||
+      isAbsolute(relativePath) ||
+      relativePath === ".." ||
+      relativePath.startsWith(`..${sep}`)
+    ) {
+      throw new Error("Patch paths must stay inside the workspace");
+    }
+    let current = this.root;
+    for (const part of relativePath.split(sep)) {
+      current = join(current, part);
+      if (lstatSync(current, { throwIfNoEntry: false })?.isSymbolicLink()) {
+        throw new Error("Patch paths must not traverse symbolic links");
+      }
+    }
+    return target;
+  }
+
   async createFile(operation) {
-    // convert the diff to the file content
+    const path = this.path(operation.path);
     const content = applyDiff("", operation.diff, "create");
-    // write the file content to the file system
+    mkdirSync(dirname(path), { recursive: true });
+    writeFileSync(path, content, { encoding: "utf8", flag: "wx" });
     return { status: "completed", output: `Created ${operation.path}` };
   }
 
   async updateFile(operation) {
-    // read the file content from the file system
-    const current = "";
-    // convert the diff to the new file content
-    const newContent = applyDiff(current, operation.diff);
-    // write the updated file content to the file system
+    const path = this.path(operation.path);
+    const content = applyDiff(readFileSync(path, "utf8"), operation.diff);
+    writeFileSync(path, content, "utf8");
     return { status: "completed", output: `Updated ${operation.path}` };
   }
 
   async deleteFile(operation) {
-    // delete the file from the file system
+    unlinkSync(this.path(operation.path));
     return { status: "completed", output: `Deleted ${operation.path}` };
   }
 }
@@ -459,7 +493,7 @@ const agent = new Agent({
   name: "Patch Assistant",
   model: "gpt-6-astra",
   instructions:
-    "You can edit files inside the /tmp directory using the apply_patch tool.",
+    "Use apply_patch to edit files in the workspace. Supply paths relative to that workspace.",
   tools: [
     applyPatchTool({
       editor,

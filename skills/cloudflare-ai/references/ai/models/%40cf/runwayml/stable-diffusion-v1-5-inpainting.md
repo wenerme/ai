@@ -25,12 +25,14 @@ Model ID
 `@cf/runwayml/stable-diffusion-v1-5-inpainting` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Terms and License | [link ↗](https://github.com/runwayml/stable-diffusion/blob/main/LICENSE) |
 | More information | [link ↗](https://huggingface.co/runwayml/stable-diffusion-inpainting) |
 | Zero data retention | Yes |

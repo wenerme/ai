@@ -24,12 +24,14 @@ Model ID
 
 - Cloudflare-hosted
 - LoRA
+- Planned deprecation
 - Zero data retention
 
 The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
 | Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE) |
 | Zero data retention | Yes |

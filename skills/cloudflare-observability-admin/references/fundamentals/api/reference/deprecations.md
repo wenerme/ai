@@ -22,6 +22,49 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [Subscribe to RSS](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-11-05
+
+**Load Balancing monitors and Health Checks: Legacy TLS cipher suites**
+
+Deprecation date: November 5, 2026
+
+End of life date: February 1, 2027
+
+HTTPS [Load Balancing monitors](https://developers.cloudflare.com/load-balancing/monitors/) and HTTPS [Health Checks](https://developers.cloudflare.com/health-checks/) will stop supporting TLS cipher suites that use 3DES encryption or RSA key exchange when they connect to your origin servers. These cipher suites do not provide forward secrecy and are considered insecure. Removing them keeps health probes in line with current security standards.
+
+This change only affects TLS 1.2 and earlier handshakes. Connections that negotiate TLS 1.3 are not affected. The request and response formats of the API do not change.
+
+Deprecated cipher suites:
+
+- `AES128-GCM-SHA256` ( `TLS_RSA_WITH_AES_128_GCM_SHA256`)
+- `AES256-GCM-SHA384` ( `TLS_RSA_WITH_AES_256_GCM_SHA384`)
+- `AES128-SHA` ( `TLS_RSA_WITH_AES_128_CBC_SHA`)
+- `AES256-SHA` ( `TLS_RSA_WITH_AES_256_CBC_SHA`)
+- `DES-CBC3-SHA` ( `TLS_RSA_WITH_3DES_EDE_CBC_SHA`)
+- `ECDHE-RSA-DES-CBC3-SHA` ( `TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA`)
+
+Affected APIs:
+
+- [Load Balancer Monitors](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/) with `type: "https"`
+  - `/accounts/{account_id}/load_balancers/monitors`
+  - `/user/load_balancers/monitors`
+- [Health Checks](https://developers.cloudflare.com/api/resources/healthchecks/) with `type: "HTTPS"`
+  - `/zones/{zone_id}/healthchecks`
+
+Replacement:
+
+Make sure each origin server checked by an HTTPS monitor or health check supports TLS 1.3, or at least one ECDHE-based cipher suite such as `ECDHE-ECDSA-AES128-GCM-SHA256` or `ECDHE-RSA-AES128-GCM-SHA256`.
+
+If your origin already supports a modern cipher suite alongside the deprecated ones, you do not need to do anything. Health probes will negotiate the modern cipher suite automatically. To confirm, check that a TLS 1.2 connection restricted to ECDHE cipher suites succeeds:
+
+```sh
+openssl s_client -connect <ORIGIN_IP>:443 -servername <HOSTNAME> -tls1_2 -cipher 'ECDHE'
+```
+
+After February 1, 2027, health probes to origins that only support the deprecated cipher suites will fail the TLS handshake, and those origins will be reported as unhealthy. For Load Balancing, this can cause traffic to move away from the affected endpoints or trigger pool failover. The `allow_insecure` monitor setting does not affect cipher suite negotiation and will not prevent these failures.
+
+Proxied traffic is not affected by this change. Cloudflare's connections to your origin for proxied requests will continue to support these cipher suites. This means an origin that serves proxied traffic without problems can still fail health checks after the end of life date.
+
 ## 2026-10-02
 
 **Cloudflare Radar: Top browsers and NetFlows summary endpoints**
@@ -263,7 +306,7 @@ Deprecation date: November 3, 2025
 
 End of life date: July 15, 2026
 
-The Gateway Audit SSH action for [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) is deprecated and will be fully removed on July 15, 2026. [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/) is the replacement for managing and auditing SSH access.
+The Gateway Audit SSH action for [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-controls/network-policies/) is deprecated and will be fully removed on July 15, 2026. [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/) is the replacement for managing and auditing SSH access.
 
 Creating new Gateway rules with `action: "audit_ssh"` via the dashboard was disabled in December 2024. Creating new rules via the API and Terraform was disabled on November 3, 2025. Editing existing rules via the dashboard, API, and Terraform was disabled on January 15, 2026. On July 15, 2026, all remaining Audit SSH rules will stop working.
 

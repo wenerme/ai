@@ -244,15 +244,15 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | HashiCorp Vault batch token                       | Hashicorp Vault batch token                   | Yes | No | Yes | No | None |
 | HashiCorp Vault Service Token                     | HashicorpVaultServiceToken                     | Yes | No | Yes | No | None |
 | Heroku API key or application authorization token | Heroku API Key                                | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
-| Highnote Live Secret Key                          | HighnoteLiveSecretKey                         | Yes | No | Yes | No | None |
-| Highnote Test Secret Key                          | HighnoteTestSecretKey                         | Yes | No | Yes | No | None |
+| Highnote Live Secret Key                          | HighnoteLiveSecretKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
+| Highnote Test Secret Key                          | HighnoteTestSecretKey                         | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | HubSpot private app API token                     | Hubspot API token                             | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Hugging Face User Access Token                    | HuggingFaceUserAccessToken                    | Yes | No | Yes | Yes | GitLab Secret Scanning for Source Code |
 | Instagram access token                            | Instagram access token                        | Yes | No | No | No | None |
 | Intercom API token                                | Intercom API token                            | Yes | No | No | No | None |
 | Intercom App Access Token                         | IntercomAppAccessToken                        | Yes | No | Yes | No | None |
 | Intercom client secret or client ID               | Intercom client secret/ID                     | Yes | No | No | No | None |
-| Ionic personal access token                       | Ionic API token                               | Yes | No | No | No | None |
+| Ionic personal access token                       | Ionic API token                               | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | JFrog Platform Access Tokens                      | JfrogPlatformAccessToken                      | Yes | No | No | No | None |
 | Kubernetes Service Account Token                  | KubernetesServiceAccToken                     | Yes | No | Yes | No | None |
 | LangChain API Key                                 | LangChainAPIKey                               | Yes | No | Yes | No | None |
@@ -338,7 +338,7 @@ If you want to add a new secret detection rule, you can [propose new detection r
 | Twilio Account SID                                | Twilio Account SID                            | Yes | No | Yes | No | None |
 | Twilio API key                                    | Twilio API Key                                | Yes | No | Yes | No | None |
 | Twitch OAuth client secret                        | Twitch API token                              | Yes | No | No | No | None |
-| Typeform personal access token                    | Typeform API token                            | Yes | No | No | No | None |
+| Typeform personal access token                    | Typeform API token                            | Yes | No | No | Yes | GitLab Secret Scanning for Source Code |
 | Volcengine Access Key ID                          | VolcengineAccessKeyID                         | Yes | No | Yes | No | None |
 | WakaTime API Key                                  | WakaTimeAPIKey                                | Yes | No | Yes | No | None |
 | X token                                           | Twitter token                                 | Yes | No | No | No | None |

@@ -2801,6 +2801,10 @@ A request to create an ephemeral authentication token.
 
   Optional. Configures speaker diarization.
 
+  **sourceText**: `string`
+
+  Optional. The source text to be edited or rewritten via voice instructions. When provided in `SMART` mode, the model evaluates the audio input against this text and emits the complete replacement text in the candidate response rather than appending to it.
+
   {% details %}
   {% summary %}
   **mode**: `string enum`
@@ -3008,6 +3012,10 @@ A request to create an ephemeral authentication token.
 
   Optional. Configures speaker diarization.
 
+  **sourceText**: `string`
+
+  Optional. The source text to be edited or rewritten via voice instructions. When provided in `SMART` mode, the model evaluates the audio input against this text and emits the complete replacement text in the candidate response rather than appending to it.
+
   {% details %}
   {% summary %}
   **mode**: `string enum`
@@ -3049,6 +3057,10 @@ A request to create an ephemeral authentication token.
   **diarization**: `boolean`
 
   Optional. Configures speaker diarization.
+
+  **sourceText**: `string`
+
+  Optional. The source text to be edited or rewritten via voice instructions. When provided in `SMART` mode, the model evaluates the audio input against this text and emits the complete replacement text in the candidate response rather than appending to it.
 
   {% details %}
   {% summary %}

@@ -168,17 +168,19 @@ Content type: `application/json`
 
   `minimum: 0`, `maximum: 100`
 
-- `output_format: optional "png" or "jpeg" or "webp" or "gif" or null (default: "png")`
+- `output_format: optional "png" or "webp" or "jpeg" or 2 more or null (default: "png")`
 
-  Output image format. Supported for GPT image models.
+  Output image format. Supported for GPT image models. SVG output requires a supported image model and project access.
 
   - `"png"`
 
-  - `"jpeg"`
-
   - `"webp"`
 
+  - `"jpeg"`
+
   - `"gif"`
+
+  - `"svg"`
 
 - `partial_images: optional integer or null (default: 0)`
 
@@ -237,6 +239,36 @@ Content type: `application/json`
 
   Stream partial image results as events.
 
+- `svg: optional object { model, reasoning }  or null`
+
+  Selects the author model and reasoning effort for `output_format=svg`. Supply `svg.model` when SVG model selection is enabled. Otherwise, omit this object. SVG output requires `n=1` and cannot use streaming, partial images, or output compression.
+
+  - `model: optional string`
+
+    `minLength: 1`
+
+  - `reasoning: optional object { effort }  or null`
+
+    Reasoning effort for SVG authoring. When omitted, uses the author model's default in both Images and Responses.
+
+    - `effort: optional "none" or "minimal" or "low" or 4 more`
+
+      Controls how much effort the model should spend on reasoning for this request.
+
+      - `"none"`
+
+      - `"minimal"`
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+      - `"xhigh"`
+
+      - `"max"`
+
 - `user: optional string`
 
   Deprecated: use `safety_identifier` instead. This parameter remains accepted for backward compatibility and is used when `safety_identifier` is omitted, null, or empty. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
@@ -281,7 +313,7 @@ Content type: `application/json`
 
   - `output_format: optional "png" or "webp" or "jpeg" or 2 more`
 
-    The output format of the generated image.
+    The output format of the generated or edited image.
 
     - `"png"`
 
@@ -329,7 +361,7 @@ Content type: `application/json`
 
   - `svg_usage: optional object { input_tokens, model, output_tokens, 2 more }`
 
-    Token usage for the model that authored the SVG, separate from image rendering usage.
+    Token usage for SVG authoring, separate from image rendering usage.
 
     - `input_tokens: integer`
 

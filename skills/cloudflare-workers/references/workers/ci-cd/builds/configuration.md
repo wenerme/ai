@@ -113,6 +113,7 @@ It is recommended to consistently use the same API token across all uploads and 
 - [Web applications](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
   - [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
   - [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
+  - [EmDash](https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/)
   - [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
   - [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
   - [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)

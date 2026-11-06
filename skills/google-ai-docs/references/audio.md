@@ -260,7 +260,11 @@ timestamps, speaker diarization, and emotion detection using
           {"type": "video", "uri": YOUTUBE_URL, "mime_type": "video/mp4"},
           {"type": "text", "text": prompt}
       ],
-      response_format=response_schema,
+      response_format={
+          "type": "text",
+          "mime_type": "application/json",
+          "schema": response_schema,
+      },
   )
   
   print(interaction.output_text)
@@ -320,7 +324,11 @@ timestamps, speaker diarization, and emotion detection using
           { type: "video", uri: YOUTUBE_URL, mime_type: "video/mp4" },
           { type: "text", text: prompt }
       ],
-      response_format: responseSchema,
+      response_format: {
+          type: "text",
+          mime_type: "application/json",
+          schema: responseSchema,
+      },
   });
   
   console.log(JSON.parse(interaction.output_text || "{}"));
@@ -339,6 +347,8 @@ timestamps, speaker diarization, and emotion detection using
   import com.google.genai.gaos.models.interactions.Model;
   import com.google.genai.gaos.models.interactions.ResponseFormat;
   import com.google.genai.gaos.models.interactions.TextContent;
+  import com.google.genai.gaos.models.interactions.TextResponseFormat;
+  import com.google.genai.gaos.models.interactions.TextResponseFormatMimeType;
   import com.google.genai.gaos.models.interactions.VideoContent;
   import com.google.genai.gaos.models.interactions.VideoContentMimeType;
   import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
@@ -407,7 +417,12 @@ timestamps, speaker diarization, and emotion detection using
           .model(Model.of("gemini-3.8-flash"))
           .input(InteractionsInput.ofContent(contents))
           .responseFormat(
-              CreateModelInteractionResponseFormat.of(ResponseFormat.of(responseSchema)))
+              CreateModelInteractionResponseFormat.of(
+                  ResponseFormat.of(
+                      TextResponseFormat.builder()
+                          .mimeType(TextResponseFormatMimeType.APPLICATION_JSON)
+                          .schema(responseSchema)
+                          .build())))
           .build();
   
   Interaction interaction =
@@ -490,7 +505,10 @@ timestamps, speaker diarization, and emotion detection using
               Model: interactions.Model("gemini-3.8-flash"),
               Input: interactions.NewInteractionsInput(contents),
               ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
-                  interactions.NewResponseFormat(responseSchema),
+                  interactions.NewResponseFormat(interactions.TextResponseFormat{
+                      MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                      Schema:   responseSchema,
+                  }),
               )),
           }),
       })
@@ -526,22 +544,26 @@ timestamps, speaker diarization, and emotion detection using
         }
       ],
       "response_format": {
-          "type": "object",
-          "properties": {
-            "summary": {"type": "string"},
-            "segments": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "speaker": {"type": "string"},
-                  "timestamp": {"type": "string"},
-                  "content": {"type": "string"},
-                  "emotion": {"type": "string", "enum": ["happy", "sad", "angry", "neutral"]}
+          "type": "text",
+          "mime_type": "application/json",
+          "schema": {
+              "type": "object",
+              "properties": {
+                "summary": {"type": "string"},
+                "segments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "speaker": {"type": "string"},
+                      "timestamp": {"type": "string"},
+                      "content": {"type": "string"},
+                      "emotion": {"type": "string", "enum": ["happy", "sad", "angry", "neutral"]}
+                    }
+                  }
                 }
               }
             }
-          }
         }
     }'
   ```

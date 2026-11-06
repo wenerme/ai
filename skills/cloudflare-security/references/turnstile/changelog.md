@@ -16,6 +16,10 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/turnstile/changelog/index.xml)
 
+## 2026-11-02
+
+- Improved Turnstile widget responsiveness in narrow layouts and at increased browser zoom levels. The widget retains its standard width when space allows and adapts to narrower containers to improve accessibility. For sizing options, refer to [Widget sizes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#widget-sizes).
+
 ## 2026-07-22
 
 - Turnstile may now make requests to `hagen.challenges.cloudflare.com` or `brunhild.challenges.cloudflare.com` as part of browser verification. Add both hostnames to your network allowlist so Turnstile can access them. For more information, refer to [Failed subdomain network requests during Turnstile challenges](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#failed-subdomain-network-requests-during-turnstile-challenges).

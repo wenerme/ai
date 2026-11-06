@@ -22,6 +22,10 @@ Start a realtime voice session
 ```javascript
 import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
 
+const ephemeralKey = process.env.OPENAI_REALTIME_EPHEMERAL_KEY;
+if (!ephemeralKey)
+  throw new Error("Set OPENAI_REALTIME_EPHEMERAL_KEY from your server.");
+
 const agent = new RealtimeAgent({
   name: "Assistant",
   instructions: "You are a helpful voice assistant.",
@@ -32,7 +36,7 @@ const session = new RealtimeSession(agent, {
 });
 
 await session.connect({
-  apiKey: "ek_...(ephemeral key from your server)",
+  apiKey: ephemeralKey,
 });
 ```
 

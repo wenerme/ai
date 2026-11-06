@@ -169,7 +169,7 @@ with Claude"
     curl https://api.anthropic.com/v1/messages \
       -H "content-type: application/json" \
       -H "x-api-key: $ANTHROPIC_API_KEY" \
-      -H "anthropic-version: 2023-06-01" \
+      -H "anthropic-version: 2026-10-21" \
       -d '{
         "model": "claude-opus-5-5",
         "max_tokens": 1024,
@@ -422,11 +422,11 @@ with Claude"
         Interactive courses to master Claude.
       </Card>
 
-      <Card icon="book" title="Cookbook" href="https://platform.claude.com/cookbook">
+      <Card icon="book" title="Claude Cookbook" href="https://platform.claude.com/cookbook">
         Code samples and patterns.
       </Card>
 
-      <Card icon="play" title="Quickstarts" href="https://github.com/anthropics/anthropic-quickstarts">
+      <Card icon="play" title="Quickstarts" href="https://github.com/anthropics/claude-quickstarts">
         Deployable starter apps.
       </Card>
 

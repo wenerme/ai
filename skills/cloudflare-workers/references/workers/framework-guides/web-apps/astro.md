@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/framework-guides/web-apps/astro
 
 # Astro
 
-Last updated Oct 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
 
@@ -36,6 +36,8 @@ pnpm create cloudflare@latest my-astro-app --framework=astro
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create/deploy-to-workers&repository=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
 
+To move an existing Astro project from Vercel, refer to [Migrate Astro from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/astro/).
+
 ## What is Astro?
 
 [Astro ↗︎](https://astro.build/) is a JavaScript web framework designed for creating websites that display large amounts of content (such as blogs, documentation sites, or online stores).
@@ -43,6 +45,8 @@ pnpm create cloudflare@latest my-astro-app --framework=astro
 Astro emphasizes performance through minimal client-side JavaScript - by default, it renders as much content as possible at build time, or [on-demand ↗︎](https://docs.astro.build/en/guides/on-demand-rendering/) on the "server" - this can be a Cloudflare Worker. [“Islands” ↗︎](https://docs.astro.build/en/concepts/islands/) of JavaScript are added only where interactivity or personalization is needed.
 
 Astro is also framework-agnostic, and supports every major UI framework, including React, Preact, Svelte, Vue, SolidJS, via its official [integrations ↗︎](https://astro.build/integrations/).
+
+To add a content management system (CMS) to an Astro site on Workers, refer to [EmDash](https://developers.cloudflare.com/workers/framework-guides/web-apps/emdash/).
 
 ## Deploy a new Astro project on Workers
 
@@ -134,10 +138,6 @@ assets:directory: ./dist, binding: ASSETS
 
 wrangler.jsonc
 
-compatibility\_flags:nodejs\_compat
-
-wrangler.jsonc
-
 observability:enabled: true
 
 astro.config.mjs
@@ -164,7 +164,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    {
    	"name": "my-astro-app",
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
+   	"compatibility_date": "2026-11-06",
    	"assets": {
    		"directory": "./dist"
    	}
@@ -174,7 +174,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    ```toml
    name = "my-astro-app"
    # Set this to today's date
-   compatibility_date = "2026-10-13"
+   compatibility_date = "2026-11-06"
 
    [assets]
    directory = "./dist"
@@ -264,8 +264,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
        "upload_source_maps": true,
    	// Update to today's date
    	// Set this to today's date
-   	"compatibility_date": "2026-10-13",
-   	"compatibility_flags": ["nodejs_compat"],
+   	"compatibility_date": "2026-11-06",
    	"assets": {
    		"binding": "ASSETS",
    		"directory": "./dist"
@@ -281,8 +280,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
    main = "./dist/_worker.js/index.js"
    upload_source_maps = true
    # Set this to today's date
-   compatibility_date = "2026-10-13"
-   compatibility_flags = [ "nodejs_compat" ]
+   compatibility_date = "2026-11-06"
 
    [assets]
    binding = "ASSETS"
@@ -399,5 +397,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#page","headline":"Astro","description":"Create an Astro application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/og.png?v=071f5478c0a61a9e","dateModified":"2026-10-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg","full-stack","Astro"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#page","headline":"Astro","description":"Create an Astro application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/og.png?v=071f5478c0a61a9e","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg","full-stack","Astro"]}
 ```

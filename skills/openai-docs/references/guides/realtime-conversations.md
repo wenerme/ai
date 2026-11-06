@@ -817,8 +817,12 @@ function floatTo16BitPCM(float32Array) {
   const view = new DataView(buffer);
   let offset = 0;
   for (let i = 0; i < float32Array.length; i++, offset += 2) {
-    let s = Math.max(-1, Math.min(1, float32Array[i]));
-    view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    const sample = Math.max(-1, Math.min(1, float32Array[i]));
+    view.setInt16(
+      offset,
+      Math.round(sample * (sample < 0 ? 0x8000 : 0x7fff)),
+      true
+    );
   }
   return buffer;
 }
@@ -844,6 +848,17 @@ const files = [
   "fixtures/sample3.wav",
 ];
 
+// Manual commit and response creation require automatic turn detection off.
+ws.send(
+  JSON.stringify({
+    type: "session.update",
+    session: {
+      type: "realtime",
+      audio: { input: { turn_detection: null } },
+    },
+  })
+);
+
 for (const filename of files) {
   const audioFile = fs.readFileSync(filename);
   const audioBuffer = await decodeAudio(audioFile);
@@ -864,7 +879,12 @@ for (const filename of files) {
 }
 
 ws.send(JSON.stringify({ type: "input_audio_buffer.commit" }));
-ws.send(JSON.stringify({ type: "response.create" }));
+ws.send(
+  JSON.stringify({
+    type: "response.create",
+    response: { output_modalities: ["audio"] },
+  })
+);
 ```
 
 ```python

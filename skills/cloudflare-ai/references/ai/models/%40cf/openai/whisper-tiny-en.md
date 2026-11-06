@@ -25,12 +25,14 @@ Model ID
 `@cf/openai/whisper-tiny-en` Copy
 
 - Cloudflare-hosted
+- Planned deprecation
 - Zero data retention
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Zero data retention | Yes |
 | Beta | Yes |
 

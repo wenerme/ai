@@ -12633,7 +12633,7 @@ Detaches a security scan profile from projects and groups. All projects and grou
 | ---- | ---- | ----------- | ------- |
 | `groupIds` | [`[GroupID!]`](scalars.md#groupid) | Group IDs to detach the profile from. Detaches the profile from all subgroups and projects in the specified group. Errors for these projects are not returned. | `[]` |
 | `projectIds` | [`[ProjectID!]`](scalars.md#projectid) | Project IDs to detach the profile from. | `[]` |
-| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to detach. Must be the ID of a profile. |  |
+| `securityScanProfileId` | [`SecurityScanProfileID!`](scalars.md#securityscanprofileid) | Security scan profile ID to detach. Must be the ID of a profile, or the identifier of a default profile, such as `gid://gitlab/Security::ScanProfile/sast`. |  |
 
 ### `securityScanProfileDetach` fields {.no_toc}
 

@@ -26,6 +26,7 @@ Model ID
 - Function calling
 - Reasoning
 - Vision
+- Planned deprecation
 - Zero data retention
 
 The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.
@@ -36,6 +37,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info | |
 | --- | --- |
+| Planned Deprecation | 11/15/2026 |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | Terms and License | [link ↗](https://huggingface.co/zai-org/GLM-5.3-Flash/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |

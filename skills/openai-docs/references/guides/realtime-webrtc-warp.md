@@ -185,10 +185,16 @@ app.post("/session", async (req, res) => {
     });
     // Send back the SDP we received from the OpenAI REST API
     const sdp = await r.text();
+    res.set(
+      "Content-Type",
+      r.ok ? "application/sdp" : (r.headers.get("Content-Type") ?? "text/plain")
+    );
+    const location = r.headers.get("Location");
+    if (location) res.set("Location", location);
     res.status(r.status).send(sdp);
   } catch (error) {
-    console.error("Token generation error:", error);
-    res.status(500).json({ error: "Failed to generate token" });
+    console.error("Session creation error:", error);
+    res.status(500).json({ error: "Failed to create session" });
   }
 });
 

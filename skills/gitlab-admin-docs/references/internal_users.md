@@ -27,6 +27,7 @@ Other examples of internal users:
 - [Alert Bot](../operations/incident_management/alerts.md#trigger-actions-from-alerts)
 - [Ghost User](../user/profile/account/delete_account.md#associated-records)
 - [Support Bot](../user/project/service_desk/configure.md#support-bot-user)
+- [GitLab Orbit](../integration/orbit.md), the author of the to-do item that tells group members that GitLab Orbit is turned on
 - [Placeholder User](../user/import/mapping/post_migration_mapping.md#placeholder-users) created during imports
 - Visual Review Bot
 - Resource access tokens, including [project access tokens](../user/project/settings/project_access_tokens.md)
