@@ -79,7 +79,19 @@ Example response:
 
 ## Create context commits for a merge request
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267499) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `rate_limit_context_commits_write`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag.
+> For more information, see the history.
+
 Creates context commits for a single merge request.
+
+This endpoint is rate limited for each user. The limit is 10 requests each minute.
+Requests to [delete context commits](#delete-context-commits-from-a-merge-request)
+count toward the same limit.
+When you exceed the limit, the endpoint returns
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 POST /projects/:id/merge_requests/:merge_request_iid/context_commits
@@ -130,7 +142,19 @@ Example response:
 
 ## Delete context commits from a merge request
 
+- Rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267499) in GitLab 19.6 [with a flag](../administration/feature_flags/_index.md) named `rate_limit_context_commits_write`. Disabled by default.
+
+> [!flag]
+> The availability of the rate limit is controlled by a feature flag.
+> For more information, see the history.
+
 Deletes context commits from a single merge request.
+
+This endpoint is rate limited for each user. The limit is 10 requests each minute.
+Requests to [create context commits](#create-context-commits-for-a-merge-request)
+count toward the same limit.
+When you exceed the limit, the endpoint returns
+[`429 Too Many Requests`](rest/troubleshooting.md#status-codes).
 
 ```plaintext
 DELETE /projects/:id/merge_requests/:merge_request_iid/context_commits

@@ -73,7 +73,7 @@ To create a variable, follow these steps:
 {{< shared id="add-variable" >}}
 
 1. Navigate to the dashboard you want to update.
-1. Click **Edit**.
+1. Select **Editing** in the dashboard mode drop-down list.
 1. Click the plus sign **Add new element** icon in the sidebar and select **Variable**.
 
    You can also click the **Add variable** plus sign icon at the top of the dashboard.
@@ -162,7 +162,7 @@ Query expressions are different for each data source. For more information, refe
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ### Query type
 
@@ -202,7 +202,7 @@ For example, if you have server names or region names that never change, then yo
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ## Add a textbox variable {#add-a-text-box-variable}
 
@@ -217,7 +217,7 @@ For more information about cardinality, refer to [What are cardinality spikes an
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ## Add a constant variable
 
@@ -234,7 +234,7 @@ Constant variables are useful when you have complex values that you need to incl
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ## Add a data source variable
 
@@ -252,7 +252,7 @@ _Data source_ variables enable you to quickly change the data source for an enti
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ## Add an interval variable
 
@@ -272,7 +272,7 @@ You can use an interval variable as a parameter to group by time (for InfluxDB),
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ### Interval variable examples
 
@@ -308,7 +308,7 @@ _Switch_ variables display a switch with two configurable values representing en
 
 1. Click **Save** in the top-right corner.
 1. Enter an optional description of your changes and click **Save**.
-1. Click **Exit edit**.
+1. Select **Viewing** in the dashboard mode drop-down list.
 
 ### Switch variable examples
 

@@ -404,8 +404,14 @@ Use `**` to match files or patterns across multiple directory levels:
 /docs/**/index.md
 ```
 
-To match all files in a directory,
+To match all files in a directory and its subdirectories,
 use [directory paths](#directory-paths) with a trailing slash (`/`).
+
+> [!note]
+> Only `**/` matches across directory levels.
+> A trailing `/**` behaves like `*` and matches files one level deep.
+> For example, `/docs/**` matches `/docs/index.md` but not `/docs/api/index.md`.
+> To match all files recursively, use `/docs/` or `/docs/**/*`.
 
 ### Exclusion patterns
 

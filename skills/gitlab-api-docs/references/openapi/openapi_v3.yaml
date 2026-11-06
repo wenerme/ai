@@ -3376,43 +3376,6 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/patchApiV4AiDuoWorkflowsWorkflowsIdRequest"
-  "/api/v4/ai/duo_workflows/workflows/{id}/tool_access_policies":
-    get:
-      operationId: getApiV4AiDuoWorkflowsWorkflowsIdToolAccessPolicies
-      summary: Get the tool access policy for a workflow
-      description: Returns the tool access policy for a workflow, for DWS to use when
-        its token carries none.
-      tags:
-      - GitLab Duo workflows
-      - Internal operations
-      responses:
-        '200':
-          description: OK
-        '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not found
-      parameters:
-      - name: id
-        required: true
-        description: ID of the workflow.
-        schema:
-          type: integer
-        in: path
-        example: 1
-      - name: project_id
-        required: false
-        description: ID of the project the session runs in. It can only make the policy
-          stricter.
-        schema:
-          type: integer
-          nullable: true
-        in: query
-        example: 1
   "/api/v4/ai/duo_workflows/workflows/{id}/catalog_items":
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsIdCatalogItems
@@ -16171,11 +16134,15 @@ paths:
         required: false
         description: Column and direction to sort registered models by, for example
           `name`, `name DESC`, or `last_updated_timestamp DESC`. Supported columns
-          are `name` and `last_updated_timestamp`. Sorting by model metadata is not
-          supported.
+          are `name`, `created_at`, `updated_at`, `last_updated_timestamp` and `id`.
+          A list uses its first entry. Sorting by model metadata is not supported.
         schema:
-          type: string
-          default: name ASC
+          oneOf:
+          - type: string
+            default: name ASC
+          - type: array
+            items:
+              type: string
         in: query
       - name: page_token
         required: false
@@ -29281,6 +29248,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       requestBody:
@@ -29303,6 +29272,8 @@ paths:
           description: Unauthorized
         '404':
           description: Not found
+        '429':
+          description: Too many requests
         '400':
           description: Bad Request
       requestBody:
@@ -45263,8 +45234,8 @@ paths:
     delete:
       operationId: deleteApiV4UserPushSubscriptions
       summary: Unregister a mobile device from push notifications
-      description: Removes the calling user's push subscriptions for the given device
-        token.
+      description: Deletes every push subscription for the given device token, including
+        subscriptions that other users registered.
       tags:
       - Mobile push subscriptions
       responses:
@@ -94324,6 +94295,8 @@ components:
           type: string
         runner_jobs_endpoints_api_limit:
           type: string
+        runner_manager_creation_limit:
+          type: string
         background_operations_max_jobs:
           type: string
         pg_ash_sampling_enabled:
@@ -104312,6 +104285,7 @@ components:
           type: string
           enum:
           - gitlab-artifact-registry
+          - gitlab-autoflow
           description: Target service audience.
           minLength: 1
         expires_in:
@@ -110029,12 +110003,16 @@ components:
           description: Maximum number of runs to fetch in a page. The maximum is 1000.
           default: 200
         order_by:
-          type: string
+          oneOf:
+          - type: string
+            default: created_at DESC
+          - type: array
+            items:
+              type: string
           description: 'Order criteria. Can be by a column of the run/candidate (`created_at`,
             `name`) or by a metric if prefixed by `metrics`. Valid examples: `created_at`,
-            `created_at DESC`, `metrics.my_metric DESC`. Sorting by candidate parameter
-            or metadata is not supported.'
-          default: created_at DESC
+            `created_at DESC`, `metrics.my_metric DESC`. A list uses its first entry.
+            Sorting by candidate parameter or metadata is not supported.'
         page_token:
           type: string
           description: Token for pagination.
@@ -110252,10 +110230,15 @@ components:
             is 1000.
           default: 200
         order_by:
-          type: string
+          oneOf:
+          - type: string
+            default: created_at DESC
+          - type: array
+            items:
+              type: string
           description: Column and direction to sort experiments by, for example `created_at
-            DESC` or `name`. Supported columns are `created_at` and `name`.
-          default: created_at DESC
+            DESC` or `name`. Supported columns are `name`, `created_at`, `updated_at`,
+            `last_updated_timestamp` and `id`. A list uses its first entry.
         page_token:
           type: string
           description: Token for pagination.
@@ -112959,6 +112942,13 @@ components:
             requests to the `/jobs/request` runner jobs API endpoint. Default: `2000`.
             To disable throttling, set to `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/462537)
             in GitLab 18.5.'
+          nullable: true
+        runner_manager_creation_limit:
+          type: string
+          description: 'Maximum number of runner managers each runner can create every
+            10 minutes. Applies only when the `log_runner_manager_creation_limit`
+            or `enforce_runner_manager_creation_limit` feature flag is enabled. Default:
+            `1000`. To disable the limit, set to `0`.'
           nullable: true
         search_rate_limit:
           type: string

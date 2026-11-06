@@ -8,7 +8,7 @@ This page lists the array functions supported in OpenObserve, along with their u
 
 The array functions operate on fields that contain arrays. In OpenObserve, array fields are typically stored as stringified JSON arrays.
 
-For example, in a stream named `default`, there may be a field named `emails` that contains the following value:
+For example, in a stream named `docs_sql_examples`, there may be a field named `emails` that contains the following value:
 `["jim@email.com", "john@doe.com", "jene@doe.com"]` 
 Although the value appears as a valid array, it is stored as a string. The array functions in this section are designed to work on such stringified JSON arrays and provide support for sorting, counting, joining, slicing, and combining elements.
 
@@ -24,12 +24,12 @@ Although the value appears as a valid array, it is stored as a string. The array
 
 **Example**:
 ```sql
-SELECT *, arr_descending(emails) as sorted_emails FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, arr_descending(emails) as sorted_emails FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the emails field contains a stringified JSON array such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The query creates a new field `sorted_emails`, which contains the elements sorted in descending order:
 `["john@doe.com", "jene@doe.com", "jim@email.com"]`
 
-[arr_descending]
+[Logs results with the sorted_emails field from arr_descending]
 
 ---
 
@@ -40,11 +40,11 @@ Counts the number of elements in a stringified JSON array stored in the specifie
 
 **Example**:
 ```sql
-SELECT *, arrcount(emails) as email_count FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, arrcount(emails) as email_count FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function counts the number of elements in the array and returns the result: `3`.
 
-[arrcount]
+[Logs results with the email_count field from arrcount]
 
 ---
 
@@ -57,12 +57,12 @@ In this query, the `emails` field contains a value such as `["jim@email.com", "j
 
 **Example:**
 ```sql
-SELECT *, arrindex(emails, 0, 1) as selected_emails FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, arrindex(emails, 0, 1) as selected_emails FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function extracts elements at index `0` and `1`. The result is:
 `["jim@email.com", "john@doe.com"]`
 
-[arrindex]
+[Logs results with the selected_emails field from arrindex]
 
 ---
 
@@ -74,12 +74,12 @@ In this query, the `emails` field contains a value such as `["jim@email.com", "j
 - The output is a single string where array elements are joined by the delimiter in the order they appear.
 
 ```sql
-SELECT *, arrjoin(emails, ' | ') as joined_numbers FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, arrjoin(emails, ' | ') as joined_emails FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the `emails` field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function joins all elements using the delimiter `|`. The result is:
 `"jim@email.com | john@doe.com | jene@doe.com"`
 
-[arr_join]
+[Logs results with the joined_emails field from arrjoin]
 
 ---
 
@@ -91,12 +91,12 @@ In this query, the `emails` field contains a value such as `["jim@email.com", "j
 - All elements must be of the same type, such as numbers or strings.
 
 ```sql
-SELECT *, arrsort(emails) as increasing_numbers FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, arrsort(emails) as sorted_emails FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the emails field contains a value such as `["jim@email.com", "john@doe.com", "jene@doe.com"]`. The function sorts the elements in increasing lexicographical order. The result is:
 `["jene@doe.com", "jim@email.com", "john@doe.com"]`.
 
-[arrsort]
+[Logs results with the sorted_emails field from arrsort]
 
 ---
 
@@ -109,13 +109,13 @@ In this query, the emails field contains a value such as `["jim@email.com", "joh
 - The result is a new array of joined values.
 
 ```sql
-SELECT *, arrzip(emails, usernames, '|') as zipped_field FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, emails, usernames, arrzip(emails, usernames, '|') as zipped_field FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the `emails` field contains `["jim@email.com", "john@doe.com"]` and the `usernames` field contains `["jim", "john"]`. The function combines each pair of elements using the delimiter `|`.
 The result is:
 `["jim@email.com | jim", "john@doe.com | john"]`
 
-[arrzip]
+[Logs results with the zipped_field field from arrzip]
 
 ---
 
@@ -128,21 +128,21 @@ The result is:
 
 **Example:** 
 ```sql
-SELECT *, spath(json_object_field, 'nested.value') as extracted_value FROM "default" ORDER BY _timestamp DESC
+SELECT _timestamp, json_object_field, spath(json_object_field, 'nested.value') as extracted_value FROM "docs_sql_examples" ORDER BY _timestamp DESC
 ```
 In this query, the `json_object_field` contains a value such as:
 
 ```json
-{"nested": {"value": 23}}
+{"nested": {"value": "beta", "count": 7}}
 ```
 The function navigates the JSON structure and extracts the value associated with the path `nested.value`.
-The result is: `23`.
+The result is: `beta`.
 
 Sample Input in log stream:
-[Nested Input]
+[Records with a json_object_field value in the log stream]
 
 Running SQL query using spath():
-[Nested value extraction]
+[Logs results with the extracted_value field from spath]
 
 ---
 
@@ -161,7 +161,7 @@ Example:
 ```sql
 SELECT _timestamp, nums, less,
 array_union(cast_to_arr(nums), cast_to_arr(less)) as union_result
-FROM "arr_udf"
+FROM "docs_sql_examples"
 ORDER BY _timestamp DESC
 ```
 
@@ -171,7 +171,7 @@ In this query:
 - The function `cast_to_arr` is used to convert these fields into native arrays.
 - The result of `array_union` is a merged array with unique values: `[1, 2, 3, 4]`.
 
-[cast_to_arr]
+[Logs results with the union_result field from array_union and cast_to_arr]
 
 ---
 
@@ -184,9 +184,9 @@ In this query:
 
 **Example:**
 ```sql
-SELECT *,
+SELECT _timestamp, numbers, more_numbers,
 arrsort(to_array_string(array_concat(cast_to_arr(numbers), cast_to_arr(more_numbers)))) as sorted_result
-FROM "default"
+FROM "docs_sql_examples"
 ORDER BY _timestamp DESC
 ```
 In this query:
@@ -195,6 +195,6 @@ In this query:
 - `cast_to_arr` converts them into native arrays.
 - `array_concat` joins the two native arrays.
 - `to_array_string` converts the result back into a stringified array.
-- `arrsort` then sorts the array in increasing order.
+- `arrsort` then sorts the array in increasing order. `to_array_string` returns the elements as strings, so they sort as text (for example `"2"`, `"23"`, `"9"`).
 
-[to_array_string]
+[Logs results with the sorted_result field from to_array_string]

@@ -822,6 +822,18 @@ Content type: `application/json`
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
+- `prompt_cache_options: optional object { ttl }  or null`
+
+  Default prompt cache lifetime for turns in this session. Omit to use the model default.
+
+  - `ttl: optional "30m" or "12h" (default: "30m")`
+
+    Minimum lifetime for new prompt cache entries. Defaults to 30 minutes.
+
+    - `"30m"`
+
+    - `"12h"`
+
 - `review: optional "none" or "auto_review"`
 
   Action review mode. Omit to use none.
@@ -854,7 +866,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -1820,6 +1832,16 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -1940,6 +1962,9 @@ curl https://api.openai.com/v1/agents/sessions \
   "vault_ids": [
     "string"
   ],
+  "prompt_cache_options": {
+    "ttl": "30m"
+  },
   "review": "none"
 }
 ```

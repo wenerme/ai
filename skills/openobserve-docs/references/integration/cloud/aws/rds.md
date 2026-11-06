@@ -24,14 +24,14 @@ Amazon RDS database logs can be exported to CloudWatch Logs for database monitor
 
 :::accordion[Step 1: Get OpenObserve Ingestion URL and Access Key]
 
-1. In OpenObserve: go to **Data Sources → Recommended → AWS**
+1. In OpenObserve: go to **Data > Data sources > Recommended > Amazon Web Services(AWS)**. The **Manual Configuration** block shows the HTTP endpoint and Access Key
 2. Copy the ingestion URL and Access Key
 
-[Get OpenObserve Ingestion URL and Access Key]
+[Manual Configuration block with the HTTP endpoint and access key]
 
-> Update the URL to have the stream name of your choice:
+> The endpoint shown ends in `/default/_kinesis_firehose`. Replace `default` with your stream name:
     ```
-    https://<your-openobserve-domain>/aws/default/<stream_name>/_kinesis_firehose
+    https://<your-openobserve-domain>/aws/<org_id>/<stream_name>/_kinesis_firehose
     ```
 
 :::accordion[Step 2: Enable RDS Log Exports]
@@ -76,7 +76,7 @@ Amazon RDS database logs can be exported to CloudWatch Logs for database monitor
 
 1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-[Verify Logs in OpenObserve]
+[RDS PostgreSQL logs in the Logs page]
 
 :::accordion[Troubleshooting]
 

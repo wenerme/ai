@@ -5288,7 +5288,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
 ### Agent Session
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -6253,6 +6253,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     The IDs of vaults made available to the session.
 
     `minItems: 0`, `maxItems: 2000`
+
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
 
   - `review: optional "none" or "auto_review"`
 
@@ -7315,6 +7325,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The IDs of vaults made available to the session.
 
       `minItems: 0`, `maxItems: 2000`
+
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Default prompt cache lifetime for turns in this session, when configured.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
 
     - `review: optional "none" or "auto_review"`
 
@@ -9594,6 +9614,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `minItems: 0`, `maxItems: 2000`
 
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Default prompt cache lifetime for turns in this session, when configured.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
+
       - `review: optional "none" or "auto_review"`
 
         Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -9823,6 +9853,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       - `usage: TokenUsage or null`
 
         Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
+
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
 
     - `turn_id: string`
 
@@ -13234,6 +13274,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Default prompt cache lifetime for turns in this session, when configured.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
+
     - `review: optional "none" or "auto_review"`
 
       Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -14232,6 +14282,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Default prompt cache lifetime for turns in this session, when configured.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
+
     - `review: optional "none" or "auto_review"`
 
       Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -15229,6 +15289,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
       The IDs of vaults made available to the session.
 
       `minItems: 0`, `maxItems: 2000`
+
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Default prompt cache lifetime for turns in this session, when configured.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
 
     - `review: optional "none" or "auto_review"`
 
@@ -17716,6 +17786,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       `minItems: 0`, `maxItems: 2000`
 
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Default prompt cache lifetime for turns in this session, when configured.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
+
     - `review: optional "none" or "auto_review"`
 
       Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -18346,6 +18426,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `format: int64`
 
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
+
   - `turn_id: string`
 
     The ID of the turn associated with the event.
@@ -18617,6 +18707,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         The total number of input and output tokens used by the agent.
 
         `format: int64`
+
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
 
   - `turn_id: string`
 
@@ -19030,6 +19130,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         `format: int64`
 
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
+
   - `turn_id: string`
 
     The ID of the turn associated with the event.
@@ -19297,6 +19407,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         The total number of input and output tokens used by the agent.
 
         `format: int64`
+
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
 
   - `turn_id: string`
 
@@ -19569,6 +19689,16 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         The total number of input and output tokens used by the agent.
 
         `format: int64`
+
+    - `prompt_cache_options: optional object { ttl }  or null`
+
+      Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+      - `ttl: "30m" or "12h"`
+
+        - `"30m"`
+
+        - `"12h"`
 
   - `turn_id: string`
 
@@ -48313,6 +48443,18 @@ Content type: `application/json`
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
+- `prompt_cache_options: optional object { ttl }  or null`
+
+  Default prompt cache lifetime for turns in this session. Omit to use the model default.
+
+  - `ttl: optional "30m" or "12h" (default: "30m")`
+
+    Minimum lifetime for new prompt cache entries. Defaults to 30 minutes.
+
+    - `"30m"`
+
+    - `"12h"`
+
 - `review: optional "none" or "auto_review"`
 
   Action review mode. Omit to use none.
@@ -48345,7 +48487,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -49311,6 +49453,16 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -49431,6 +49583,9 @@ curl https://api.openai.com/v1/agents/sessions \
   "vault_ids": [
     "string"
   ],
+  "prompt_cache_options": {
+    "ttl": "30m"
+  },
   "review": "none"
 }
 ```
@@ -50502,6 +50657,16 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -50640,6 +50805,9 @@ curl https://api.openai.com/v1/agents/sessions \
       "vault_ids": [
         "string"
       ],
+      "prompt_cache_options": {
+        "ttl": "30m"
+      },
       "review": "none"
     }
   ],
@@ -50666,7 +50834,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -51632,6 +51800,16 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -51746,6 +51924,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "prompt_cache_options": {
+    "ttl": "30m"
+  },
   "review": "none"
 }
 ```
@@ -51754,7 +51935,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
 
 **post** `/agents/sessions/{session_id}`
 
-Updates session tools, metadata, model, reasoning effort, or service tier. Model settings apply to subsequent turns. Omitted fields are unchanged. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
+Updates session tools, metadata, model, reasoning effort, service tier, or the default prompt cache lifetime. Model settings apply to subsequent turns. Omitted fields are unchanged. See [managing sessions](/api/docs/guides/agents-api/sessions/manage).
 
 ### Path Parameters
 
@@ -52106,6 +52287,18 @@ Content type: `application/json`
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
+- `prompt_cache_options: optional object { ttl }  or null`
+
+  Default prompt cache lifetime for future turns. Send null to clear the session default.
+
+  - `ttl: optional "30m" or "12h" (default: "30m")`
+
+    Minimum lifetime for new prompt cache entries. Defaults to 30 minutes.
+
+    - `"30m"`
+
+    - `"12h"`
+
 - `review: optional "none" or "auto_review"`
 
   Default action review for new root turns. Existing turns and their subagents keep their review mode.
@@ -52120,7 +52313,7 @@ Content type: `application/json`
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -53086,6 +53279,16 @@ Content type: `application/json`
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -53201,6 +53404,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "prompt_cache_options": {
+    "ttl": "30m"
+  },
   "review": "none"
 }
 ```
@@ -55241,6 +55447,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minItems: 0`, `maxItems: 2000`
 
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Default prompt cache lifetime for turns in this session, when configured.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
+
       - `review: optional "none" or "auto_review"`
 
         Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -55470,6 +55686,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `usage: TokenUsage or null`
 
         Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
+
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
 
     - `turn_id: string`
 
@@ -60839,6 +61065,16 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
       `format: int64`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -60898,6 +61134,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
           "reasoning_tokens": 0
         },
         "total_tokens": 0
+      },
+      "prompt_cache_options": {
+        "ttl": "30m"
       }
     }
   ],
@@ -60936,7 +61175,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
 ### Returns
 
-- `Turn object { id, agent_id, completed_at, 8 more }`
+- `Turn object { id, agent_id, completed_at, 9 more }`
 
   The canonical public representation of a session turn.
 
@@ -61168,6 +61407,16 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
       `format: int64`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
 ### Example
 
 ```http
@@ -61203,6 +61452,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/subagents/$SUBAGENT_I
       "reasoning_tokens": 0
     },
     "total_tokens": 0
+  },
+  "prompt_cache_options": {
+    "ttl": "30m"
   }
 }
 ```
@@ -62806,6 +63058,16 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
       `format: int64`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -62865,6 +63127,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns \
           "reasoning_tokens": 0
         },
         "total_tokens": 0
+      },
+      "prompt_cache_options": {
+        "ttl": "30m"
       }
     }
   ],
@@ -62897,7 +63162,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
 ### Returns
 
-- `Turn object { id, agent_id, completed_at, 8 more }`
+- `Turn object { id, agent_id, completed_at, 9 more }`
 
   The canonical public representation of a session turn.
 
@@ -63128,6 +63393,16 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       The total number of input and output tokens used by the agent.
 
       `format: int64`
+
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
 
 ### Example
 
@@ -63164,6 +63439,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       "reasoning_tokens": 0
     },
     "total_tokens": 0
+  },
+  "prompt_cache_options": {
+    "ttl": "30m"
   }
 }
 ```
@@ -63172,7 +63450,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
 ### Turn
 
-- `Turn object { id, agent_id, completed_at, 8 more }`
+- `Turn object { id, agent_id, completed_at, 9 more }`
 
   The canonical public representation of a session turn.
 
@@ -63403,6 +63681,16 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       The total number of input and output tokens used by the agent.
 
       `format: int64`
+
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
 
 # Items
 

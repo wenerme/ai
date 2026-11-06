@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a4
 
 # Debug D1
 
-Last updated Nov 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
@@ -146,6 +146,35 @@ Write operations and Promise.race
 
 `Promise.race` bounds how long your Worker waits — it does not cancel the D1 query. A write that loses the race may still commit in the background. Always confirm the outcome of a write before retrying to avoid duplicate writes.
 
+## API error codes
+
+In addition to the `D1_ERROR` constants in the [Error list](#error-list), D1 returns numeric error codes on certain failures. Use the following table to identify the cause and recommended action.
+
+| Code | Name | Common cause | Recommended action |
+| --- | --- | --- | --- |
+| 7403 | Service authorization failure | The API token or Wrangler OAuth session does not have sufficient scope for the operation. | Verify the token has the required permission for the endpoint. Run `wrangler login` to refresh the Wrangler OAuth session. |
+| 7404 | Database not found | The database UUID does not exist in the account, or the binding is misconfigured. | Confirm the `database_id` in your `wrangler.toml` matches the database UUID shown in the Cloudflare dashboard. |
+| 7406 | Limit exceeded | The account has reached the maximum number of D1 databases allowed on its plan. | Review your [current limits](https://developers.cloudflare.com/d1/platform/limits/). Enterprise accounts with a custom database limit should contact Cloudflare support if the limit is not reflected. |
+| 7429 | DB overloaded | Too many concurrent requests are queued, or queued requests are taking too long to complete. | Retry with exponential backoff and jitter. If the error recurs while SQL execution time (`queryBatchTimeMs`) is fast and your workload is low, check the [Cloudflare System Status ↗︎](https://www.cloudflarestatus.com/) page. |
+| 7500 | Internal error | A platform-side storage event made the database temporarily unavailable. | Check the [Cloudflare System Status ↗︎](https://www.cloudflarestatus.com/) page. Retry with exponential backoff. If the database remains unavailable after the incident resolves, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). |
+| 10000 | Authentication error | The API token does not have the required scope for the endpoint. | Check the required permission for the endpoint in the [API reference](https://developers.cloudflare.com/api/resources/d1/) and create a token with the correct scope. Refer to [Error 10000 and token permissions](#error-10000-and-token-permissions). |
+
+### Error 7429 and analytics
+
+If you receive error 7429 while your analytics show fast SQL execution times, the error may originate from a server-side platform event rather than your application's workload. The `queryBatchTimeMs` metric measures only SQL execution time inside the database, not the total time a request spends waiting to reach SQL. Check the [Cloudflare System Status ↗︎](https://www.cloudflarestatus.com/) page before reducing application concurrency. If the error recurs and you suspect slow or expensive queries are contributing, refer to [Find slow and expensive queries](https://developers.cloudflare.com/d1/observability/find-expensive-queries/) to identify the databases and queries using the most resources.
+
+### Error 10000 and token permissions
+
+Error 10000 is an authentication error that occurs when the API token does not have the required permission for the endpoint. It is not specific to the export endpoint.
+
+The most common cause for error 10000 during export is using a **D1 Read** token instead of a **D1 Write** token. The export operation requires D1 Write permission because it locks the database until the export completes — it is not a read-only operation.
+
+To resolve this:
+
+1. Go to **API Tokens** in your Cloudflare dashboard. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+2. Create a new token with D1 Write permission — or check the [API reference](https://developers.cloudflare.com/api/resources/d1/) for the required permission for the specific endpoint you are calling.
+3. Use that token for the request.
+
 Was this helpful?
 
 YesNo
@@ -155,5 +184,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a486104ffa018f","dateModified":"2026-11-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/debug-d1/og.png?v=16a486104ffa018f","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

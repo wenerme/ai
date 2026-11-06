@@ -255,3 +255,72 @@ sudo gitlab-rake "gitlab:secrets_management:backfill_api_auth[<root_namespace_id
 
 The task is idempotent and safe to run more than once. If it reports failures, fix the underlying
 cause (for example, an unreachable OpenBao server) and run the task again.
+
+## Update the OpenBao policy for GitLab
+
+- Rake task [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262091) in GitLab 19.6.
+
+To provision secrets managers, GitLab authenticates to OpenBao with the `app` role on the
+`gitlab_rails_jwt` authentication mount.
+The `secrets_manager` OpenBao policy controls what this role can do.
+Earlier versions of the policy grant access to every OpenBao path.
+GitLab 19.6 and later include a restricted policy that grants access only to the paths that GitLab
+uses.
+
+OpenBao creates the policy once, when OpenBao initializes for the first time.
+Upgrading GitLab does not change the existing policy.
+To update the policy on an existing installation, an administrator runs the
+`gitlab:secrets_management:openbao:secrets_manager_policy:update` Rake task.
+The task compares the policy in OpenBao with the policy that your GitLab version includes.
+If the policies match, the task changes nothing.
+
+Prerequisites:
+
+- Administrator access.
+- OpenBao 2.6.0 or later.
+- A [recovery key](recovery_key.md#store-the-recovery-key).
+- If OpenBao has the restricted policy, a
+  [root token generated from the recovery key](recovery_key.md#generate-a-root-token-from-the-recovery-key).
+  The restricted policy does not allow GitLab to change the policy.
+
+To update the policy:
+
+1. Run the Rake task. By default, the task does not change anything, but shows the existing policy
+   and the policy that your GitLab version includes:
+
+   ```shell
+   # Linux package (Omnibus)
+   sudo gitlab-rake "gitlab:secrets_management:openbao:secrets_manager_policy:update"
+
+   # Helm chart (Kubernetes)
+   kubectl exec -n gitlab -it -c toolbox <toolbox-pod-name> -- \
+     gitlab-rake "gitlab:secrets_management:openbao:secrets_manager_policy:update"
+   ```
+
+   To find the toolbox pod name, run `kubectl get pods -n gitlab -lapp=toolbox`.
+
+   If the output states that the `secrets_manager` policy is already up to date, you do not need to
+   do anything else.
+   If the output states that OpenBao has no recovery key, store the recovery key and run the task
+   again.
+
+1. Run the Rake task with `DRY_RUN=false` to update the policy:
+
+   ```shell
+   # Linux package (Omnibus)
+   sudo gitlab-rake "gitlab:secrets_management:openbao:secrets_manager_policy:update" DRY_RUN=false
+
+   # Helm chart (Kubernetes)
+   kubectl exec -n gitlab -it -c toolbox <toolbox-pod-name> -- \
+     gitlab-rake "gitlab:secrets_management:openbao:secrets_manager_policy:update" DRY_RUN=false
+   ```
+
+   If the GitLab database does not store the recovery key, the task asks whether you have the
+   recovery key. To continue, enter `y`.
+
+   If OpenBao denies the update, the task asks for a root token. Enter the root token. The task does
+   not display the token as you enter it. Root tokens do not expire, so revoke the root token when
+   you finish your maintenance.
+
+1. If you entered a root token and do not need it for more maintenance, revoke the root token. The
+   last step of the procedure you used to generate the root token shows how.

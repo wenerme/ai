@@ -53,6 +53,9 @@ To view work items for a project or group:
 1. In the top bar, select  and find your project or group.
 1. In the left sidebar, select  > .
 
+In the Premium and Ultimate tiers, you can also view work items as a board grouped by status.
+For more information, see [board view](board_view.md).
+
 ### Filter work items
 
 The  list shows all work item types by default. To view a specific type

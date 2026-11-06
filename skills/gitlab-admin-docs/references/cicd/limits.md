@@ -576,6 +576,7 @@ To protect against this, you can limit how many of these requests each user can 
 This rate limit applies to the `jobs` field of the [`CiRunner`](../../api/graphql/reference/objects.md#cirunner)
 GraphQL type when its `statuses` argument includes `SUCCESS`, `FAILED`, or `CANCELED`.
 This limit does not apply to requests filtered only by other statuses, or not filtered by status.
+Statuses that a runner's jobs cannot have, such as pending, match no jobs.
 
 GitLab enforces the following limit:
 

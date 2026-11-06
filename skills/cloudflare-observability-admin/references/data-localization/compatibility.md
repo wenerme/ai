@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/data-localization/compatibility/og.png?
 
 # Product compatibility
 
-Last updated Oct 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/compatibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Data Localization Suite (DLS) has three features, each controlling a different aspect of where your data is handled:
 
@@ -54,16 +54,16 @@ The tables below show whether each Cloudflare product is compatible with each DL
 | Product | Geo Key Manager | Regional Services | Customer Metadata Boundary |
 | --- | --- | --- | --- |
 | Advanced Certificate Manager | ⚫️ | ⚫️ | ⚫️ |
-| Advanced DDoS Protection | ✅ | ✅ | 🚧 <sup>[8](#user-content-fn-3)</sup> <sup>[9](#user-content-fn-50)</sup> |
-| API Shield | ✅ | ✅ | 🚧 <sup>[10](#user-content-fn-4)</sup> |
+| Advanced DDoS Protection | ✅ | ✅ | 🚧 <sup>[8](#user-content-fn-50)</sup> |
+| API Shield | ✅ | ✅ | 🚧 <sup>[9](#user-content-fn-4)</sup> |
 | Bot Management | ✅ | ✅ | ✅ |
 | Client-side security (formerly Page Shield) | ✅ | ✅ | ✅ |
 | DNS Firewall | ⚫️ | ⚫️ | ✅ |
-| Rate Limiting | ✅ | ✅ | ✅ <sup>[11](#user-content-fn-37)</sup> |
+| Rate Limiting | ✅ | ✅ | ✅ <sup>[10](#user-content-fn-37)</sup> |
 | SSL | ✅ | ✅ | ✅ |
 | Cloudflare for SaaS | ✘ | ✅ | ✅ |
-| Turnstile | ⚫️ | ✘ | ✅ <sup>[12](#user-content-fn-38)</sup> |
-| WAF/L7 Firewall | ✅ | ✅ | 🚧 <sup>[9](#user-content-fn-50)</sup> |
+| Turnstile | ⚫️ | ✘ | ✅ <sup>[11](#user-content-fn-38)</sup> |
+| WAF/L7 Firewall | ✅ | ✅ | 🚧 <sup>[8](#user-content-fn-50)</sup> |
 | DMARC Management | ⚫️ | ⚫️ | ✅ |
 
 ---
@@ -72,22 +72,22 @@ The tables below show whether each Cloudflare product is compatible with each DL
 
 | Product | Geo Key Manager | Regional Services | Customer Metadata Boundary |
 | --- | --- | --- | --- |
-| Cloudflare Images | ⚫️ | ✅ <sup>[13](#user-content-fn-36)</sup> | 🚧 <sup>[14](#user-content-fn-35)</sup> |
-| AI Gateway | ✘ | ✘ | 🚧 <sup>[15](#user-content-fn-39)</sup> |
-| AI Search | ✘ <sup>[16](#user-content-fn-46)</sup> | ✘ <sup>[17](#user-content-fn-47)</sup> | 🚧 <sup>[18](#user-content-fn-48)</sup> |
+| Cloudflare Images | ⚫️ | ✅ <sup>[12](#user-content-fn-36)</sup> | 🚧 <sup>[13](#user-content-fn-35)</sup> |
+| AI Gateway | ✘ | ✘ | 🚧 <sup>[14](#user-content-fn-39)</sup> |
+| AI Search | ✘ <sup>[15](#user-content-fn-46)</sup> | ✘ <sup>[16](#user-content-fn-47)</sup> | 🚧 <sup>[17](#user-content-fn-48)</sup> |
 | AI Security for Apps | ✘ | ✘ | ✘ |
-| Cloudflare Pages | ✅ <sup>[19](#user-content-fn-11)</sup> | ✅ <sup>[19](#user-content-fn-11)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
-| Cloudflare D1 | ⚫️ | ⚫️ | 🚧 <sup>[20](#user-content-fn-40)</sup> |
-| Durable Objects | ⚫️ | ✅ <sup>[21](#user-content-fn-7)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
+| Cloudflare Pages | ✅ <sup>[18](#user-content-fn-11)</sup> | ✅ <sup>[18](#user-content-fn-11)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
+| Cloudflare D1 | ⚫️ | ⚫️ | 🚧 <sup>[19](#user-content-fn-40)</sup> |
+| Durable Objects | ⚫️ | ✅ <sup>[20](#user-content-fn-7)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
 | Email Routing | ⚫️ | ⚫️ | ✅ |
-| Remote MCP Server | ✅ <sup>[22](#user-content-fn-44)</sup> | ✅ <sup>[23](#user-content-fn-45)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
-| R2 | ✅ <sup>[24](#user-content-fn-27)</sup> | ✅ <sup>[25](#user-content-fn-8)</sup> | ✅ <sup>[26](#user-content-fn-28)</sup> |
+| Remote MCP Server | ✅ <sup>[21](#user-content-fn-44)</sup> | ✅ <sup>[22](#user-content-fn-45)</sup> | 🚧 <sup>[4](#user-content-fn-1)</sup> |
+| R2 | ✅ <sup>[23](#user-content-fn-27)</sup> | ✅ <sup>[24](#user-content-fn-8)</sup> | ✅ <sup>[25](#user-content-fn-28)</sup> |
 | Smart Placement | ⚫️ | ✘ | ✘ |
 | Stream | ⚫️ | ✘ | 🚧 <sup>[4](#user-content-fn-1)</sup> |
 | Vectorize | ⚫️ | ✘ | ✘ |
-| Workers (deployed on a Zone) | ✅ | ✅ | 🚧 <sup>[27](#user-content-fn-41)</sup> |
+| Workers (deployed on a Zone) | ✅ | ✅ | 🚧 <sup>[26](#user-content-fn-41)</sup> |
 | Workers AI | ⚫️ | ✘ | ✅ |
-| Workers KV | ⚫️ | ✘ | ✅ <sup>[28](#user-content-fn-34)</sup> |
+| Workers KV | ⚫️ | ✘ | ✅ <sup>[27](#user-content-fn-34)</sup> |
 | Workers.dev | ✘ | ✘ | ✘ |
 | Workers Analytics Engine (WAE) | ⚫️ | ⚫️ | 🚧 <sup>[4](#user-content-fn-1)</sup> |
 
@@ -97,13 +97,13 @@ The tables below show whether each Cloudflare product is compatible with each DL
 
 | Product | Geo Key Manager | Regional Services | Customer Metadata Boundary |
 | --- | --- | --- | --- |
-| Argo Smart Routing | ✅ | ✅ | ✘ <sup>[29](#user-content-fn-10)</sup> |
-| Static IP/BYOIP | ⚫️ | ✅ <sup>[30](#user-content-fn-26)</sup> | ⚫️ |
+| Argo Smart Routing | ✅ | ✅ | ✘ <sup>[28](#user-content-fn-10)</sup> |
+| Static IP/BYOIP | ⚫️ | ✅ <sup>[29](#user-content-fn-26)</sup> | ⚫️ |
 | Cloudflare Network Firewall | ⚫️ | ⚫️ | ✅ |
 | Network Flow | ⚫️ | ⚫️ | 🚧 <sup>[4](#user-content-fn-1)</sup> |
-| Magic Transit | ⚫️ | ⚫️ | ✅ <sup>[8](#user-content-fn-3)</sup> |
+| Magic Transit | ⚫️ | ⚫️ | ✅ |
 | Cloudflare WAN | ⚫️ | ⚫️ | ✅ |
-| Spectrum | ✅ | ✅ <sup>[31](#user-content-fn-42)</sup> | ✅ |
+| Spectrum | ✅ | ✅ <sup>[30](#user-content-fn-42)</sup> | ✅ |
 
 ---
 
@@ -111,9 +111,9 @@ The tables below show whether each Cloudflare product is compatible with each DL
 
 | Product | Geo Key Manager | Regional Services | Customer Metadata Boundary |
 | --- | --- | --- | --- |
-| Logpull | ⚫️ | ⚫️ | 🚧 <sup>[32](#user-content-fn-12)</sup> |
-| Logpush | ⚫️ | ✅ | 🚧 <sup>[33](#user-content-fn-13)</sup> |
-| Log Explorer | ⚫️ | ⚫️ | ✘ <sup>[34](#user-content-fn-23)</sup> |
+| Logpull | ⚫️ | ⚫️ | 🚧 <sup>[31](#user-content-fn-12)</sup> |
+| Logpush | ⚫️ | ✅ | 🚧 <sup>[32](#user-content-fn-13)</sup> |
+| Log Explorer | ⚫️ | ⚫️ | ✘ <sup>[33](#user-content-fn-23)</sup> |
 
 ---
 
@@ -121,13 +121,13 @@ The tables below show whether each Cloudflare product is compatible with each DL
 
 | Product | Geo Key Manager | Regional Services | Customer Metadata Boundary |
 | --- | --- | --- | --- |
-| Access | 🚧 <sup>[35](#user-content-fn-14)</sup> | 🚧 <sup>[36](#user-content-fn-15)</sup> | ✅ <sup>[37](#user-content-fn-16)</sup> |
-| Browser Isolation | ⚫️ | 🚧 <sup>[38](#user-content-fn-17)</sup> | ✅ |
+| Access | 🚧 <sup>[34](#user-content-fn-14)</sup> | 🚧 <sup>[35](#user-content-fn-15)</sup> | ✅ <sup>[36](#user-content-fn-16)</sup> |
+| Browser Isolation | ⚫️ | 🚧 <sup>[37](#user-content-fn-17)</sup> | ✅ |
 | CASB | ⚫️ | ⚫️ | ✘ |
-| Cloudflare Tunnel | ⚫️ | 🚧 <sup>[39](#user-content-fn-18)</sup> | ⚫️ |
-| Digital Experience | ⚫️ | ⚫️ | 🚧 <sup>[40](#user-content-fn-49)</sup> |
-| DLP | ⚫️ <sup>[41](#user-content-fn-19)</sup> | ⚫️ <sup>[41](#user-content-fn-19)</sup> | 🚧 <sup>[42](#user-content-fn-31)</sup> |
-| Gateway | 🚧 <sup>[43](#user-content-fn-20)</sup> | 🚧 <sup>[44](#user-content-fn-21)</sup> | 🚧 <sup>[45](#user-content-fn-22)</sup> |
+| Cloudflare Tunnel | ⚫️ | 🚧 <sup>[38](#user-content-fn-18)</sup> | ⚫️ |
+| Digital Experience | ⚫️ | ⚫️ | 🚧 <sup>[39](#user-content-fn-49)</sup> |
+| DLP | ⚫️ <sup>[40](#user-content-fn-19)</sup> | ⚫️ <sup>[40](#user-content-fn-19)</sup> | 🚧 <sup>[41](#user-content-fn-31)</sup> |
+| Gateway | 🚧 <sup>[42](#user-content-fn-20)</sup> | 🚧 <sup>[43](#user-content-fn-21)</sup> | 🚧 <sup>[44](#user-content-fn-22)</sup> |
 | Cloudflare One Client | ⚫️ | ⚫️ | 🚧 <sup>[4](#user-content-fn-1)</sup> |
 
 ## Footnotes
@@ -140,45 +140,44 @@ The tables below show whether each Cloudflare product is compatible with each DL
 6. Regular/Generic and Custom Tiered Cache work with Customer Metadata Boundary (CMB). Smart Tiered Caching (where Cloudflare automatically selects intermediate cache data centers) does not work with CMB.
     With CMB set to EU, the Zone Dashboard **Caching** > **Tiered Cache** > **Smart Tiered Caching** option will not populate the Dashboard Analytics. [↩](#user-content-fnref-30)
 7. Web Analytics collects the [minimum amount of information](https://developers.cloudflare.com/web-analytics/data-metrics/data-origin-and-collection/). Alternatively, you can [exclude EU Visitors from RUM](https://developers.cloudflare.com/speed/observatory/rum-beacon/#rum-excluding-eeaeu). [↩](#user-content-fnref-43)
-8. [Adaptive DDoS Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/) (which automatically adjusts DDoS rules based on your traffic patterns) is only supported when Customer Metadata Boundary is set to the US. All other DDoS protection features work with any CMB region. [↩](#user-content-fnref-3) [↩<sup>2</sup>](#user-content-fnref-3-2)
-9. Email and webhook notifications for DDoS and WAF events may not fire reliably when Customer Metadata Boundary is set to `eu`. This behavior is intermittent and under investigation. If timely alerts are critical, use [Logpush](https://developers.cloudflare.com/logs/logpush/) as a complementary monitoring mechanism. [↩](#user-content-fnref-50) [↩<sup>2</sup>](#user-content-fnref-50-2)
-10. The following API Shield sub-features do not work when CMB is set to EU: API Discovery (automatic detection of your API endpoints), Volumetric Abuse Detection (identifying unusually high API call volumes), and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) (tracking the order of API calls to detect misuse). All other API Shield features work with any CMB region. [↩](#user-content-fnref-4)
-11. Legacy Zone Analytics & Logs section not available outside US region when using CMB. Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead. [↩](#user-content-fnref-37)
-12. [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) are available. However, there are no regionalization guarantees for the Siteverify API yet. [↩](#user-content-fnref-38)
-13. Only when using a [Custom Domain](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/) set to a region. [↩](#user-content-fnref-36)
-14. Logs / Analytics not supported for CMB = EU. Jurisdictional Restrictions ([storage](https://developers.cloudflare.com/images/storage/upload-images/methods/)) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-35)
-15. Jurisdictional Restrictions (storage) options for [Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) are not supported today. All other features are available to all CMB regions. [↩](#user-content-fnref-39)
-16. Only R2 Custom Domains and Custom Certificate are supported. [↩](#user-content-fnref-46)
-17. Only R2 Custom Domains are supported. [↩](#user-content-fnref-47)
-18. The following are exceptions and are supported: AI Gateway Analytics (GraphQL Analytics datasets) and Logs (Logpush), R2 Dashboard Metrics & Analytics, Workers AI GraphQL Analytics datasets like aiInferenceAdaptive. [↩](#user-content-fnref-48)
-19. Only when using [Custom Domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) set to a region. [↩](#user-content-fnref-11) [↩<sup>2</sup>](#user-content-fnref-11-2)
-20. Jurisdictional Restrictions ([data location](https://developers.cloudflare.com/d1/configuration/data-location/) / storage) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-40)
-21. [Jurisdiction restrictions for Durable Objects](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction). [↩](#user-content-fnref-7)
-22. Only when using Workers Routes & Domains and Custom Certificate. [↩](#user-content-fnref-44)
-23. Only when using Workers Routes & Domains. [↩](#user-content-fnref-45)
-24. Only when using a Custom Domain and a [Custom Certificate](https://developers.cloudflare.com/r2/reference/data-security/#encryption-in-transit) or [Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/). [↩](#user-content-fnref-27)
-25. Only when using a [Custom Domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#connect-a-bucket-to-a-custom-domain) set to a region and using [jurisdictions with the S3 API](https://developers.cloudflare.com/r2/reference/data-location/#using-jurisdictions-with-the-s3-api). [↩](#user-content-fnref-8)
-26. R2 Dashboard [Metrics and Analytics](https://developers.cloudflare.com/r2/platform/metrics-analytics/) are populated. [Jurisdictional Restrictions](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) guarantee objects in a bucket are stored within a specific jurisdiction. [↩](#user-content-fnref-28)
-27. Logs / Analytics not available outside US region when using Customer Metadata Boundary. Use Logpush instead. [↩](#user-content-fnref-41)
-28. Jurisdictional Restrictions (storage) for Workers KV pairs is not supported today. [↩](#user-content-fnref-34)
-29. Argo cannot be used with Customer Metadata Boundary. [↩](#user-content-fnref-10)
-30. You can use Static IP/BYOIP with Regionalized Spectrum Applications. You can also regionalize BYOIP prefixes at the IP layer with [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/). [↩](#user-content-fnref-26)
-31. Only applies to HTTP/S Spectrum applications. Spectrum applications use a separate regionalization mechanism from the Regional Hostnames API. Configuring a regional hostname does not regionalize a Spectrum application on the same hostname. Contact your [Account Team](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for Spectrum-specific regionalization. [↩](#user-content-fnref-42)
-32. Logpull available when using CMB = US only. Logpull is a legacy feature, consider using [Logpush](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/) or [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/) instead. [↩](#user-content-fnref-12)
-33. Logpush available with Customer Metadata Boundary for [these datasets](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/). Contact your account team if you need another dataset. [↩](#user-content-fnref-13)
-34. Currently, customers do not have the ability to choose the location of the Cloudflare-managed R2 bucket for Log Explorer. [↩](#user-content-fnref-23)
-35. Access App SSL keys can use Geo Key Manager. [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) is not yet localized. [↩](#user-content-fnref-14)
-36. Can be localized to US FedRAMP Moderate Domestic region only. [↩](#user-content-fnref-15)
-37. Customer Metadata Boundary can be used to limit data transfer outside region, but Access User Logs will not be available outside US region. EU customers must use Logpush to retain logs. [↩](#user-content-fnref-16)
-38. Currently may only be used with US FedRAMP region. [↩](#user-content-fnref-17)
-39. The [`--region` parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services. For public hostnames served through a tunnel, Regional Services is configured at the DNS record level and operates independently from the tunnel connector region. For incoming web requests, Regional Services only applies when you have [published applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) (services exposed to users through the tunnel). In that case, the region associated with the DNS record will apply. [↩](#user-content-fnref-18)
-40. Dashboard Analytics are empty when using CMB outside the US region. Use [Logpush](https://developers.cloudflare.com/logs/logpush/) instead. [↩](#user-content-fnref-49)
-41. Uses Gateway HTTP and CASB. [↩](#user-content-fnref-19) [↩<sup>2</sup>](#user-content-fnref-19-2)
-42. DLP is part of Gateway HTTP, however, [DLP detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) are not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-31)
-43. You can [bring your own certificate ↗︎](https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/) to Gateway but these cannot yet be restricted to a specific region. [↩](#user-content-fnref-20)
-44. Gateway HTTP (web traffic filtering) supports Regional Services. Gateway DNS (domain name filtering) does not yet support regionalization.
+8. Email and webhook notifications for DDoS and WAF events may not fire reliably when Customer Metadata Boundary is set to `eu`. This behavior is intermittent and under investigation. If timely alerts are critical, use [Logpush](https://developers.cloudflare.com/logs/logpush/) as a complementary monitoring mechanism. [↩](#user-content-fnref-50) [↩<sup>2</sup>](#user-content-fnref-50-2)
+9. The following API Shield sub-features do not work when CMB is set to EU: API Discovery (automatic detection of your API endpoints), Volumetric Abuse Detection (identifying unusually high API call volumes), and [Sequence Analytics and Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) (tracking the order of API calls to detect misuse). All other API Shield features work with any CMB region. [↩](#user-content-fnref-4)
+10. Legacy Zone Analytics & Logs section not available outside US region when using CMB. Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) instead. [↩](#user-content-fnref-37)
+11. [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) are available. However, there are no regionalization guarantees for the Siteverify API yet. [↩](#user-content-fnref-38)
+12. Only when using a [Custom Domain](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/) set to a region. [↩](#user-content-fnref-36)
+13. Logs / Analytics not supported for CMB = EU. Jurisdictional Restrictions ([storage](https://developers.cloudflare.com/images/storage/upload-images/methods/)) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-35)
+14. Jurisdictional Restrictions (storage) options for [Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) are not supported today. All other features are available to all CMB regions. [↩](#user-content-fnref-39)
+15. Only R2 Custom Domains and Custom Certificate are supported. [↩](#user-content-fnref-46)
+16. Only R2 Custom Domains are supported. [↩](#user-content-fnref-47)
+17. The following are exceptions and are supported: AI Gateway Analytics (GraphQL Analytics datasets) and Logs (Logpush), R2 Dashboard Metrics & Analytics, Workers AI GraphQL Analytics datasets like aiInferenceAdaptive. [↩](#user-content-fnref-48)
+18. Only when using [Custom Domain](https://developers.cloudflare.com/pages/configuration/custom-domains/) set to a region. [↩](#user-content-fnref-11) [↩<sup>2</sup>](#user-content-fnref-11-2)
+19. Jurisdictional Restrictions ([data location](https://developers.cloudflare.com/d1/configuration/data-location/) / storage) options are not supported today. All other features are available to all CMB regions. Note that beta or future features may not be in scope and could be subject to change. [↩](#user-content-fnref-40)
+20. [Jurisdiction restrictions for Durable Objects](https://developers.cloudflare.com/durable-objects/reference/data-location/#restrict-durable-objects-to-a-jurisdiction). [↩](#user-content-fnref-7)
+21. Only when using Workers Routes & Domains and Custom Certificate. [↩](#user-content-fnref-44)
+22. Only when using Workers Routes & Domains. [↩](#user-content-fnref-45)
+23. Only when using a Custom Domain and a [Custom Certificate](https://developers.cloudflare.com/r2/reference/data-security/#encryption-in-transit) or [Keyless SSL](https://developers.cloudflare.com/ssl/keyless-ssl/). [↩](#user-content-fnref-27)
+24. Only when using a [Custom Domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#connect-a-bucket-to-a-custom-domain) set to a region and using [jurisdictions with the S3 API](https://developers.cloudflare.com/r2/reference/data-location/#using-jurisdictions-with-the-s3-api). [↩](#user-content-fnref-8)
+25. R2 Dashboard [Metrics and Analytics](https://developers.cloudflare.com/r2/platform/metrics-analytics/) are populated. [Jurisdictional Restrictions](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) guarantee objects in a bucket are stored within a specific jurisdiction. [↩](#user-content-fnref-28)
+26. Logs / Analytics not available outside US region when using Customer Metadata Boundary. Use Logpush instead. [↩](#user-content-fnref-41)
+27. Jurisdictional Restrictions (storage) for Workers KV pairs is not supported today. [↩](#user-content-fnref-34)
+28. Argo cannot be used with Customer Metadata Boundary. [↩](#user-content-fnref-10)
+29. You can use Static IP/BYOIP with Regionalized Spectrum Applications. You can also regionalize BYOIP prefixes at the IP layer with [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/). [↩](#user-content-fnref-26)
+30. Only applies to HTTP/S Spectrum applications. Spectrum applications use a separate regionalization mechanism from the Regional Hostnames API. Configuring a regional hostname does not regionalize a Spectrum application on the same hostname. Contact your [Account Team](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for Spectrum-specific regionalization. [↩](#user-content-fnref-42)
+31. Logpull available when using CMB = US only. Logpull is a legacy feature, consider using [Logpush](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/) or [Log Explorer](https://developers.cloudflare.com/observability/logs/log-explorer/) instead. [↩](#user-content-fnref-12)
+32. Logpush available with Customer Metadata Boundary for [these datasets](https://developers.cloudflare.com/data-localization/metadata-boundary/logpush-datasets/). Contact your account team if you need another dataset. [↩](#user-content-fnref-13)
+33. Currently, customers do not have the ability to choose the location of the Cloudflare-managed R2 bucket for Log Explorer. [↩](#user-content-fnref-23)
+34. Access App SSL keys can use Geo Key Manager. [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) is not yet localized. [↩](#user-content-fnref-14)
+35. Can be localized to US FedRAMP Moderate Domestic region only. [↩](#user-content-fnref-15)
+36. Customer Metadata Boundary can be used to limit data transfer outside region, but Access User Logs will not be available outside US region. EU customers must use Logpush to retain logs. [↩](#user-content-fnref-16)
+37. Currently may only be used with US FedRAMP region. [↩](#user-content-fnref-17)
+38. The [`--region` parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services. For public hostnames served through a tunnel, Regional Services is configured at the DNS record level and operates independently from the tunnel connector region. For incoming web requests, Regional Services only applies when you have [published applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) (services exposed to users through the tunnel). In that case, the region associated with the DNS record will apply. [↩](#user-content-fnref-18)
+39. Dashboard Analytics are empty when using CMB outside the US region. Use [Logpush](https://developers.cloudflare.com/logs/logpush/) instead. [↩](#user-content-fnref-49)
+40. Uses Gateway HTTP and CASB. [↩](#user-content-fnref-19) [↩<sup>2</sup>](#user-content-fnref-19-2)
+41. DLP is part of Gateway HTTP, however, [DLP detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) are not available outside US region when using Customer Metadata Boundary. [↩](#user-content-fnref-31)
+42. You can [bring your own certificate ↗︎](https://blog.cloudflare.com/bring-your-certificates-cloudflare-gateway/) to Gateway but these cannot yet be restricted to a specific region. [↩](#user-content-fnref-20)
+43. Gateway HTTP (web traffic filtering) supports Regional Services. Gateway DNS (domain name filtering) does not yet support regionalization.
      ICMP proxy (forwarding network diagnostic traffic like ping) and Mesh proxy are not available to Regional Services users. [File Sandboxing](https://developers.cloudflare.com/cloudflare-one/traffic-controls/http-policies/file-sandboxing/) (an add-on that quarantines and scans suspicious files in an isolated environment) is incompatible with DLS. [↩](#user-content-fnref-21)
-45. Dashboard Analytics and Logs are empty when using CMB outside the US region. Use Logpush instead. [↩](#user-content-fnref-22)
+44. Dashboard Analytics and Logs are empty when using CMB outside the US region. Use Logpush instead. [↩](#user-content-fnref-22)
 
 Was this helpful?
 
@@ -189,5 +188,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/compatibility/#page","headline":"Product compatibility","description":"Compatibility of Cloudflare products with Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/compatibility/og.png?v=cdd563fe118e759b","dateModified":"2026-10-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/compatibility/#page","headline":"Product compatibility","description":"Compatibility of Cloudflare products with Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/data-localization/compatibility/og.png?v=cdd563fe118e759b","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

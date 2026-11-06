@@ -258,6 +258,14 @@ additionally log `openbao_calls` and `openbao_duration_s`, which correspond to:
 - `openbao_calls`: Total number of calls to OpenBao
 - `openbao_duration_s`: Total time taken by OpenBao calls
 
+[In GitLab 19.6 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267120), requests that
+query [ClickHouse](../../integration/clickhouse.md) additionally log:
+
+- `clickhouse_queries_count`: Total number of ClickHouse queries
+- `clickhouse_rows_read`: Total number of rows ClickHouse read to answer those queries
+- `clickhouse_bytes_read`: Total number of bytes ClickHouse read to answer those queries
+- `clickhouse_duration_s`: Total time taken by ClickHouse queries
+
 [In GitLab 19.5 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256645), requests that
 the LabKit rate limiter evaluates also log `rate_limit_state`. The field is added to the
 per-request structured logs, including `production_json.log` and `api_json.log`.
@@ -968,6 +976,49 @@ To find the requests that GitLab blocked for a user or an IP address:
 
 GitLab does not log most blocked requests, so most blocked requests have no `Rate_Limit_Block` message.
 If you search for the `correlation_id` of a blocked request, you find a `Rate_Limit_Block` message only if GitLab logged that request.
+
+### `rate_limit_block_summary` messages
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268019) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `rate_limiter_endpoint_block_summary`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+
+Each Puma worker counts the requests that the LabKit rate limiter blocks, by endpoint and rule.
+About every five minutes, the worker logs one `rate_limit_block_summary` message to `auth_json.log`
+for each endpoint and rule that it blocked requests for.
+When a worker stops gracefully, it logs the counts it has left.
+
+Each message has the counts of one worker only.
+To get the number of blocked requests for an endpoint, add the `block_count` values of all messages in the time period.
+
+Each worker counts up to 10 endpoint and rule pairs in each period.
+The worker counts the blocks for any other pair in one message, with `endpoint_id` and `rate_limit_rule` set to `other`.
+
+For example:
+
+```json
+{
+    "severity":"INFO",
+    "time":"2026-11-05T09:25:00.104Z",
+    "message":"rate_limit_block_summary",
+    "endpoint_id":"GET /api/:version/projects",
+    "rate_limit_rule":"unauthenticated_api",
+    "block_count":42
+}
+```
+
+The message has these fields:
+
+| Field             | Description |
+| ----------------- | ----------- |
+| `severity`        | Always `INFO`. |
+| `time`            | Time that GitLab logged the message, in UTC. |
+| `message`         | Always `rate_limit_block_summary`. |
+| `endpoint_id`     | Endpoint that the blocked requests were for. `unknown` when GitLab cannot find the endpoint without a database lookup, such as for project and group pages, and for an API path with no endpoint. `other` for the blocks of pairs over the limit of 10. |
+| `rate_limit_rule` | Name of the LabKit rule that blocked the requests. The same value as the `rule` field of a `Rate_Limit_Block` message. `other` for the blocks of pairs over the limit of 10. |
+| `block_count`     | Number of requests that the rule blocked for this endpoint on this worker since the worker's previous message. |
 
 ## `graphql_json.log`
 

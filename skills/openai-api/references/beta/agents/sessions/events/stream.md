@@ -1334,6 +1334,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         `minItems: 0`, `maxItems: 2000`
 
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Default prompt cache lifetime for turns in this session, when configured.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
+
       - `review: optional "none" or "auto_review"`
 
         Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -1563,6 +1573,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `usage: TokenUsage or null`
 
         Best-effort token usage for the turn, or null if unknown. Recorded usage may change.
+
+      - `prompt_cache_options: optional object { ttl }  or null`
+
+        Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+        - `ttl: "30m" or "12h"`
+
+          - `"30m"`
+
+          - `"12h"`
 
     - `turn_id: string`
 

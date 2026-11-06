@@ -403,7 +403,7 @@ When you archive a project:
 - You cannot add members, create deploy tokens, add or edit webhooks, change the visibility,
   edit runners, or change CI/CD variables, integrations, or protected branches
 - You cannot view CI/CD variables or integration settings
-- You cannot delete container images until you unarchive the project
+- You cannot delete container images or tags until you unarchive the project
 - You can still revoke deploy tokens, remove runners, delete uploaded files, and remove sensitive data from the repository
 - You can still run a [repository cleanup](repository/repository_size.md#clean-up-repository)
 - With the API, you can still delete webhooks and turn off integrations

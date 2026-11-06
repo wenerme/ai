@@ -7,7 +7,7 @@ In actuality, it is easy to test Hono's applications.
 The way to create a test environment differs from each runtime, but the basic steps are the same.
 In this section, let's test with Cloudflare Workers and [Vitest].
 
-> **tip**: Cloudflare recommends using [Vitest] with [@cloudflare/vitest-pool-workers](https://www.npmjs.com/package/@cloudflare/vitest-pool-workers). For more details, please refer to [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) in the Cloudflare Workers docs.
+> **tip**: Cloudflare recommends using [Vitest] with [@cloudflare/vitest-plugin](https://www.npmjs.com/package/@cloudflare/vitest-plugin). For more details, please refer to [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) in the Cloudflare Workers docs.
 
 ## Request and Response
 

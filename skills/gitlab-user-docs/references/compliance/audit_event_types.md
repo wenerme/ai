@@ -712,6 +712,7 @@ Audit event types belong to the following product categories.
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
+| [`ci_runner_tags_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267234) | The tags of an instance, group, or project runner are updated | Yes | GitLab [19.6](https://gitlab.com/gitlab-org/gitlab/-/issues/637852) | Instance, Group, Project |
 | [`project_runner_cache_cleared`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254891) | A user clears the runner cache of a project | Yes | GitLab [19.5](https://gitlab.com/gitlab-org/gitlab/-/work_items/221634) | Project |
 
 ### Seat cost management

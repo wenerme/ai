@@ -56,6 +56,8 @@ from PIL import (
     ImageOps,
 )
 
+from image_normalization import normalize_grayscale_depth
+
 _GRID_RE = re.compile(r"^\s*(\d+)\s*[xX×]\s*(\d+)\s*$")
 _BG_BUCKET_SIZE = 16
 _BG_SAMPLE_BORDER = 2
@@ -984,7 +986,13 @@ def slice_sheet(
                 raise ValueError(f"--alpha requires .png output names, got {name!r}")
 
     with Image.open(sheet_path) as source:
-        sheet = ImageOps.exif_transpose(source).convert("RGBA")
+        with ImageOps.exif_transpose(source) as oriented:
+            normalized = normalize_grayscale_depth(oriented, source_format=source.format)
+            try:
+                sheet = normalized.convert("RGBA")
+            finally:
+                if normalized is not oriented:
+                    normalized.close()
     sw, sh = sheet.size
     uneven_sheet = (trim or alpha) and _sheet_keys_by_dominance(sheet, bg)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -1099,6 +1107,23 @@ def slice_sheet(
 
     for notice in notices:
         _log(f"[WARN] {notice}")
+
+    source_path = sheet_path.resolve()
+    for _, _, _, out_path in prepared:
+        if out_path.is_symlink():
+            raise ValueError(
+                f"output is a symlink: {out_path}; "
+                "remove the output symlink or choose unused --names before rerunning; "
+                "no output files were written"
+            )
+        if out_path.resolve() == source_path or (
+            out_path.exists() and out_path.samefile(sheet_path)
+        ):
+            raise ValueError(
+                f"output would overwrite the source sheet: {out_path}; "
+                "choose unused --names, a different --prefix, or a different --output directory; "
+                "no output files were written"
+            )
 
     for r, c, cell, out_path in prepared:
         cell.save(out_path)

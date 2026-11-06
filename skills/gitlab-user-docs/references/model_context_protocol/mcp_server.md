@@ -17,6 +17,7 @@ Connect AI tools to your GitLab instance with the GitLab MCP server.
 - `duo_agent_platform` toolset [listed only](https://gitlab.com/gitlab-org/gitlab/-/work_items/631747) when GitLab Duo Agent Platform is available for the user in GitLab 19.5.
 - `code_security` tools [listed only](https://gitlab.com/gitlab-org/gitlab/-/work_items/629267) when the licensed feature behind each tool is available for the user in GitLab 19.5.
 - `orbit` toolset [added](https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/work_items/1294) in GitLab 19.6.
+- Server instructions for GitLab Duo flows [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/267999) in GitLab 19.6.
 
 > [!warning]
 > To provide feedback on this feature, leave a comment on [issue 630189](https://gitlab.com/gitlab-org/gitlab/-/issues/630189).
@@ -164,6 +165,11 @@ On GitLab Self-Managed and GitLab Dedicated, all of the following must be true:
 
 For more information, see the [GitLab Duo Agent Platform prerequisites](../duo_agent_platform/_index.md#prerequisites)
 and [how to turn GitLab Duo Agent Platform on or off](../duo_agent_platform/turn_on_off.md).
+
+When you have access to GitLab Duo Agent Platform, the GitLab MCP server also sends server
+instructions when your client connects. The instructions tell your AI tool to propose a matching
+GitLab Duo flow, and to confirm with you before it starts one. The server sends them even when
+the header leaves out the `duo_agent_platform` toolset.
 
 The `code_security` tools are listed only when the feature behind each tool is available for you.
 This applies even when you request the toolset in the header or set the header to `all`.

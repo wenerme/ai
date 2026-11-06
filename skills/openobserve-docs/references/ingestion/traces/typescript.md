@@ -17,8 +17,8 @@ git clone https://github.com/openobserve/sample-tracing-nodejs-typescript
 
 If you don't have node.js installed, please install it and then follow below steps.
 
-Open `tracing.ts` file from that repository. and make changes to the highlighted lines below and make changes to the highlighted lines below.
-```typescript lineNumbers {13,15}
+Open `tracing.ts` file from that repository. and make changes to the highlighted lines below.
+```typescript lineNumbers {14,16}
 
 import  *  as  opentelemetry  from  "@opentelemetry/sdk-node";
 import { getNodeAutoInstrumentations } from  "@opentelemetry/auto-instrumentations-node";
@@ -45,10 +45,10 @@ const  sdk = new  opentelemetry.NodeSDK({
 sdk.start();
 ```
 </br>
-## Setup up credentials 
+## Set up credentials 
 
-You will get `url` and `Authorization` key from the [trace ingestion settings](https://cloud.openobserve.ai/web/ingestion/traces/).
-Replace the `url` and `Authorization` key in the `tracing.js` file.
+You will get `url` and `Authorization` key from the [OpenTelemetry ingestion settings](https://cloud.openobserve.ai/web/ingestion/custom/traces/opentelemetry).
+Replace the `url` and `Authorization` key in the `tracing.ts` file.
 
 ## Setup Service/Application
 
@@ -68,19 +68,19 @@ Refresh page couple of times to get more traces exported.
 Traces are captured, you can check them in the Traces UI
 </br>
 
-[Traces Page]
+[Traces page with spans from the sample services]
 </br>
 </br>
 
 Filter traces with your service name `nodejs-typescript-service`
 </br>
 
-[Filter traces with service name]
+[Spans filtered by service_name nodejs-typescript-service]
 
 Click on any trace to check trace data.
 
-[Trace details]
+[Trace details in the Waterfall view]
 
 Trace can have multiple spans, each span represents single operation or task within that trace. Click on any span to check span details.
 
-[Trace details]
+[Span details panel with the span attributes]

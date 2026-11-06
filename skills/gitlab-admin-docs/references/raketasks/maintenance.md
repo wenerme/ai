@@ -531,7 +531,7 @@ migrations can fail when the schema does not match what they expect.
 
 The task checks only for missing tables, indexes, foreign keys, and sequences, and for wrong
 sequence owners. The checks are the same as the
-[schema health check](../admin_area.md#schema-health-check) on the Database diagnostics page.
+[schema health check](../admin_area.md#schema-health-check) on the Database pre-upgrade checks page.
 Unlike `gitlab:db:schema_checker:run`, which prints every difference it finds for diagnosis,
 this task runs only these checks and signals the result with its exit code.
 

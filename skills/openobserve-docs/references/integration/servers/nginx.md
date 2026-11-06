@@ -86,7 +86,7 @@ vi nginx-fluent-bit.conf
     Match *
     Host localhost
     Port 5080
-    URI /api/default/default/_json
+    URI /api/<org_id>/default/_json
     Format json
     Json_date_key    _timestamp
     Json_date_format iso8601
@@ -96,8 +96,8 @@ vi nginx-fluent-bit.conf
     compress gzip
 ```
     - Adjust the access log path if you're using macOS (`/opt/homebrew/var/...`)
-    - Replace `<YOUR_PASSWORD>` with your OpenObserve password.  
-    [Openobserve-Fluent Bit]
+    - Replace `<org_id>`, `<YOUR_USERNAME>` and `<YOUR_PASSWORD>` with the values from **Data > Data sources > Custom > Logs > FluentBit**.  
+    [FluentBit output config under Custom > Logs]
 
 :::accordion[Step 4: Start Fluent Bit]
 
@@ -130,7 +130,7 @@ fluent-bit -c nginx-fluent-bit.conf -vv
   }
 }
 ```
-[Verify Logs in Openobserve]
+[Nginx access logs in the Logs page]
 
 ## Troubleshooting
 

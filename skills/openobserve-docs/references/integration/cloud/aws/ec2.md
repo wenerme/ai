@@ -26,10 +26,10 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
 
 :::accordion[Step 2: Install OpenObserve Collector]
 
-  1. In OpenObserve: Data Sources → Linux → Copy curl command
+  1. In OpenObserve: **Data > Data sources > Recommended > Linux** → copy the install command
   2. Execute the command on your EC2 instance.
 
-  [Install OpenObserve Collector]
+  [Linux card with the install command]
 
 :::accordion[Step 3: Configure the OpenTelemetry Collector]
 
@@ -37,7 +37,7 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
 
   1. View the current configuration:
   ```bash
-  sudo nano /etc/otel-collector/config.yaml
+  sudo nano /etc/otel-config.yaml
   ```
   2. To include additional log files, modify the `filelog` receiver:
   ```yaml
@@ -63,7 +63,7 @@ Stream server metrics and system logs from AWS EC2 Linux instances to OpenObserv
 
   Go to **Logs** in Openobserve → select **stream** → set **time range** → **Run Query** to check for EC2 logs.
 
-  [Check Log Ingestion]
+  [EC2 system logs in the Logs page]
 
   **Metrics**
 

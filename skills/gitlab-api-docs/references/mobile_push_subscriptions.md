@@ -84,10 +84,13 @@ Example response:
 
 ## Unregister a device
 
-Deletes the authenticated user's subscription for a device token, for
-example on sign-out. The token is passed in the request body rather than
-the URL so it does not appear in access logs. Returns `204 No Content` on
-success and `404 Not Found` when no matching subscription exists.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268455) in GitLab 19.6 to also delete subscriptions that other users registered for the device token.
+
+Deletes every subscription for a device token, including subscriptions that other users registered.
+For example, call this endpoint when a user signs out.
+If a previous user's sign-out request did not reach GitLab, this call also stops that user's notifications on the device.
+The token is passed in the request body rather than the URL so it does not appear in access logs.
+Returns `204 No Content` on success and `404 Not Found` when no subscription exists for the token.
 
 ```plaintext
 DELETE /user/push_subscriptions

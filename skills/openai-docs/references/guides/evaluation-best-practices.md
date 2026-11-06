@@ -52,7 +52,7 @@ You'll often see numerical eval scores between 0 and 1. There's more to evals th
 
 ## Design your eval process
 
-There are a few important components of an eval workflow:
+An eval workflow has a few important components:
 
 1. **Define eval objective**. What's the success criteria for the eval?
 1. **Collect dataset**. Which data will help you evaluate against your objective? Consider synthetic eval data, domain-specific eval data, purchased eval data, human-curated eval data, production data, and historical data.
@@ -117,7 +117,7 @@ When creating an eval dataset,
 
 ## Identify where you need evals
 
-Complexity increases as you move from simple to more complex architectures. Here are four common architecture patterns:
+Complexity increases as you move from basic to more complex architectures. Here are four common architecture patterns:
 
 - [Single-turn model interactions](#single-turn-model-interactions)
 - [Workflows](#workflow-architectures)
@@ -404,20 +404,20 @@ As you design your own evals, there are several specific evaluator types to choo
 
 Quantitative evals provide a numerical score you can use to filter and rank results. They provide useful benchmarks for automated regression testing.
 
-- **Examples**: Exact match, string match, ROUGE/BLEU scoring, function call accuracy, executable evals (executed to assess functionality or behavior—e.g., text2sql)
+- **Examples**: Exact match, string match, ROUGE/BLEU scoring, function call accuracy, executable evals (executed to assess functionality or behavior—for example, text2sql)
 - **Challenges**: May not be tailored to specific use cases, may miss nuance
 
 ### Human evals
 
 Human judgment evals provide the highest quality but are slow and expensive.
 
-- **Examples**: Skim over system outputs to get a sense of whether they look better or worse; create a randomized, blinded test in which employees, contractors, or outsourced labeling agencies judge the quality of system outputs (e.g., ranking a small set of possible outputs, or giving each a grade of 1-5)
+- **Examples**: Skim over system outputs to get a sense of whether they look better or worse; create a randomized, blinded test in which employees, contractors, or outsourced labeling agencies judge the quality of system outputs (for example, ranking a small set of possible outputs, or giving each a grade of 1-5)
 - **Challenges**: Disagreement among human experts, expensive, slow
 - **Recommendations**:
   - Conduct multiple rounds of detailed human review to refine the scorecard
-  - Implement a "show rather than tell" policy by providing examples of different score levels (e.g., 1, 3, and 8 out of 10)
+  - Implement a "show rather than tell" policy by providing examples of different score levels (for example, 1, 3, and 8 out of 10)
   - Include a pass/fail threshold in addition to the numerical score
-  - A simple way to aggregate multiple reviewers is to take consensus votes
+  - One way to aggregate multiple reviewers is to take consensus votes
 
 ### LLM-as-a-judge and model graders
 
@@ -450,8 +450,8 @@ We see these edge cases fall into a few buckets:
 Because users provide input to the model, our system must be flexible to handle the different ways our users may interact, like:
 
 - Non-English or multilingual inputs
-- Formats other than input text (e.g., XML, JSON, Markdown, CSV)
-- Input modalities (e.g., images)
+- Formats other than input text (for example, XML, JSON, Markdown, CSV)
+- Input modalities (for example, images)
 
 Your evals for instruction following and functional correctness need to accommodate inputs that users might try.
 
@@ -463,25 +463,23 @@ Examples include:
 
 - Multiple questions or intents in a single request
 - Typos and misspellings
-- Short requests with minimal context (e.g., if a user just says: "returns")
+- Short requests with minimal context (for example, if a user just says: "returns")
 - Long context or long-running conversations
-- Tool calls that return data with ambiguous property names (e.g., `"on: 123"`, where "on" is the order number)
+- Tool calls that return data with ambiguous property names (for example, `"on: 123"`, where "on" is the order number)
 - Multiple tool calls, sometimes leading to incorrect arguments
 - Multiple agent handoffs, sometimes leading to circular handoffs
 
 ### Personalization and customization
 
-While AI improves UX by adapting to user-specific requests, this flexibility introduces many edge cases. Clearly define evals for use cases you want to specifically support and block:
+While AI improves UX by adapting to user-specific requests, this flexibility introduces many edge cases. Define evals in clear terms for use cases you want to specifically support and block:
 
 - Jailbreak attempts to get the model to do something different
-- Formatting requests (e.g., format as JSON, or use bullet points)
+- Formatting requests (for example, format as JSON, or use bullet points)
 - Cases where user prompts conflict with your system prompts
 
 ## Use evals to improve performance
 
 When your evals reach a level of maturity that consistently measures performance, shift to using your evals data to improve your application's performance.
-
-Learn more about [reinforcement fine-tuning](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning) to create a data flywheel.
 
 ## Other resources
 

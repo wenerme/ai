@@ -14,7 +14,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 10 more }`
+- `AgentSession object { id, agent, created_at, 11 more }`
 
   A Managed Agents session.
 
@@ -980,6 +980,16 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     `minItems: 0`, `maxItems: 2000`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Default prompt cache lifetime for turns in this session, when configured.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
   - `review: optional "none" or "auto_review"`
 
     Review applied to eligible actions in this session. Omitted when review is none and automatic review is not enabled. Omission means none.
@@ -1094,6 +1104,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "vault_ids": [
     "string"
   ],
+  "prompt_cache_options": {
+    "ttl": "30m"
+  },
   "review": "none"
 }
 ```

@@ -23,7 +23,7 @@ check whether its toolset is enabled.
 | `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
 | `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
-| `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
+| `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
 | `ci` | [`get_pipeline`](#get_pipeline), [`get_pipeline_jobs`](#get_pipeline_jobs) (unlisted, superseded), [`get_job`](#get_job), [`get_artifact_file`](#get_artifact_file), [`list_pipelines`](#list_pipelines), [`save_pipeline`](#save_pipeline), [`manage_pipeline`](#manage_pipeline) (unlisted, superseded) |
 | `duo_agent_platform` | [`list_duo_agents_and_flows`](#list_duo_agents_and_flows), [`start_duo_session`](#start_duo_session), [`list_duo_sessions`](#list_duo_sessions), [`get_duo_session`](#get_duo_session), [`send_duo_session_input`](#send_duo_session_input) |
@@ -1843,6 +1843,34 @@ Example:
 
 ```plaintext
 Create a task "Update the onboarding guide" in project gitlab-org/gitlab and assign it to me
+```
+
+## `list_work_item_saved_views`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/265187) in GitLab 19.6.
+
+This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Lists the work item saved views in a project or group.
+Provide exactly one of `url`, `group_id`, or `project_id`.
+Each saved view in the result has a numeric `id`.
+To get the filters and work items of one saved view, pass its `id` to [`get_saved_view_work_items`](#get_saved_view_work_items).
+
+| Parameter         | Type    | Required | Description |
+|-------------------|---------|----------|-------------|
+| `url`             | string  | No       | URL for the project or group. |
+| `group_id`        | string  | No       | ID or path of the group. |
+| `project_id`      | string  | No       | ID or path of the project. |
+| `search`          | string  | No       | Search saved views by name or description. |
+| `subscribed_only` | boolean | No       | If `true`, returns only saved views you are subscribed to. |
+| `sort`            | string  | No       | Sort order. `ID` sorts newest first. `NAME_ASC` sorts by name. `RELATIVE_POSITION` sorts by your order of subscribed views and requires `subscribed_only: true`. Default is `ID`. |
+| `after`           | string  | No       | Cursor for forward pagination. |
+| `first`           | integer | No       | Number of saved views to return. Maximum 100. |
+
+Example:
+
+```plaintext
+List the saved views in group gitlab-org
 ```
 
 ## `list_work_items`

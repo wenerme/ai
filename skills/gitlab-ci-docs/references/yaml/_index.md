@@ -55,6 +55,7 @@ A GitLab CI/CD pipeline configuration includes:
   | [`coverage`](#coverage)                       | Code coverage settings for a given job. |
   | [`dast_configuration`](#dast_configuration)   | Use configuration from DAST profiles on a job level. |
   | [`dependencies`](#dependencies)               | Restrict which artifacts are passed to a specific job by providing a list of jobs to fetch artifacts from. |
+  | [`description`](#description)                 | Short text that explains the purpose of the job. |
   | [`environment`](#environment)                 | Name of an environment to which the job deploys. |
   | [`extends`](#extends)                         | Configuration entries that this job inherits from. |
   | [`identity`](#identity)                       | Authenticate with third party services using identity federation. |
@@ -2670,6 +2671,39 @@ the [stage](#stages) precedence.
   the dependent job still runs and does not generate an error.
 - If the artifacts of a dependent job are [expired](#artifactsexpire_in) or
   [deleted](../jobs/job_artifacts.md#delete-job-log-and-artifacts), then the job fails.
+
+---
+
+### `description`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/16481) in GitLab 19.6.
+
+Use `description` to add a short text that explains the purpose of a job.
+
+**Keyword type**: Job keyword. You can use it only as part of a job.
+
+**Supported values**:
+
+- A string of 128 characters or fewer.
+
+**Example of `description`**:
+
+```yaml
+rspec:
+  script: bundle exec rspec
+  description: Unit tests for the application
+
+rubocop:
+  script: bundle exec rubocop
+  description: Static code analysis
+```
+
+**Additional details**:
+
+- If the description is empty or contains only whitespace, GitLab ignores it.
+- GitLab does not expand CI/CD variables in the description.
+- The description is stored with the job configuration. It is no longer available
+  after the pipeline is archived.
 
 ---
 
@@ -6704,6 +6738,7 @@ trigger-child-pipeline:
 Use:
 
 - `trigger:include:artifact` to trigger a [dynamic child pipeline](../pipelines/downstream_pipelines.md#dynamic-child-pipelines).
+- [`trigger:include:component`](#triggerincludecomponent) to trigger a child pipeline with a [CI/CD component](../components/_index.md).
 - `trigger:include:inputs` to set the [inputs](../inputs/_index.md) when the downstream pipeline configuration
   uses [`spec:inputs`](#specinputs).
 - `trigger:include:local` for a path to a child pipeline configuration file when:
@@ -6727,6 +6762,35 @@ Use:
 **Related topics**:
 
 - [Child pipeline configuration examples](../pipelines/downstream_pipelines.md#trigger-a-downstream-pipeline-from-a-job-in-the-gitlab-ciyml-file).
+
+---
+
+#### `trigger:include:component`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/109154) in GitLab 15.9 [with a flag](../../administration/feature_flags/_index.md) named `ci_include_components`. Disabled by default.
+- [Feature flag `ci_include_components` removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128617) in GitLab 16.3.
+
+Use `trigger:include:component` to trigger a child pipeline with a
+[CI/CD component](../components/_index.md) as its configuration.
+
+**Supported values**: The full address of the CI/CD component, formatted as
+`<fully-qualified-domain-name>/<project-path>/<component-name>@<specific-version>`.
+
+**Example of `trigger:include:component`**:
+
+```yaml
+trigger-job:
+  trigger:
+    include:
+      - component: $CI_SERVER_FQDN/my-org/deploy-components/deploy@1.0
+        inputs:
+          environment: staging
+```
+
+**Additional details**:
+
+- Use `inputs` to set the component's [`spec:inputs`](#specinputs).
+- The same access rules as [`include:component`](#includecomponent) apply.
 
 ---
 

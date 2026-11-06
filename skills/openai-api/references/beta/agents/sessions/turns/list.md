@@ -274,6 +274,16 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
       `format: int64`
 
+  - `prompt_cache_options: optional object { ttl }  or null`
+
+    Prompt cache lifetime selected when this turn started, including an inherited session TTL. Null when the turn used the model default or no TTL was recorded.
+
+    - `ttl: "30m" or "12h"`
+
+      - `"30m"`
+
+      - `"12h"`
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -333,6 +343,9 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns \
           "reasoning_tokens": 0
         },
         "total_tokens": 0
+      },
+      "prompt_cache_options": {
+        "ttl": "30m"
       }
     }
   ],

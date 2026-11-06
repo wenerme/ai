@@ -15744,6 +15744,29 @@ Remove items linked to the work item.
 | `message` | [`String`](scalars.md#string) | Linked items update result message. |
 | `workItem` | [`WorkItem`](objects.md#workitem) | Updated work item. |
 
+## `workItemResolveWorkplanQuestions`
+
+- Status: Experiment
+
+- Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
+
+Resolves every open question the workplan generation flow asked on a work item, without resuming the flow. Plain flow comments are converted to resolvable threads first. Available only when the `workplan` feature flag is enabled; returns an error otherwise.
+
+**Input type:** `WorkItemResolveWorkplanQuestionsInput`
+
+### `workItemResolveWorkplanQuestions` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `id` | [`WorkItemID!`](scalars.md#workitemid) | Global ID of the work item whose workplan questions to resolve. |
+
+### `workItemResolveWorkplanQuestions` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `workItem` | [`WorkItem`](objects.md#workitem) | Work item after the questions were resolved. |
+
 ## `workItemResumeWorkplan`
 
 - Status: Experiment

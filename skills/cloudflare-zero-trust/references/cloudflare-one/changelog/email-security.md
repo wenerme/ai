@@ -16,6 +16,17 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml)
 
+## 2026-11-05
+
+
+**Set expiration dates for Email security policies**
+
+Email security now lets you set an expiration date when creating an allow or block policy. This helps you apply temporary policy changes without removing them manually.
+
+After the selected date passes, the policy expires and no longer applies.
+
+This feature is available to all Email security customers, regardless of plan.
+
 ## 2026-08-17
 
 

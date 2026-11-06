@@ -16,6 +16,36 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-11-06
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Cloudflare One adds fast flux detection to UEBA**
+
+Cloudflare One now includes fast flux detection as a predefined risk behavior for user and entity behavior analytics (UEBA). When enabled, detections contribute to a user's risk score.
+
+Fast flux is a DNS technique that rapidly changes the IP addresses returned for a domain. Threat actors can use it to make malicious infrastructure harder to track and take down. Detecting it can help security teams identify potentially risky activity and investigate it sooner.
+
+To turn on fast flux detection, go to **Risk score** > **Risk behaviors** in the Cloudflare Zero Trust dashboard.
+
+Fast flux detection is available on Enterprise plans.
+
+For more information, refer to [User risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/).
+
+## 2026-11-05
+
+[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)
+
+
+**Set expiration dates for Email security policies**
+
+Email security now lets you set an expiration date when creating an allow or block policy. This helps you apply temporary policy changes without removing them manually.
+
+After the selected date passes, the policy expires and no longer applies.
+
+This feature is available to all Email security customers, regardless of plan.
+
 ## 2026-11-04
 
 [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)

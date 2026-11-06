@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a
 
 # Known issues
 
-Last updated Oct 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Here are some known bugs and issues with Cloudflare Pages:
 
@@ -43,6 +43,30 @@ Here are some known bugs and issues with Cloudflare Pages:
 - Cloudflare's Load Balancer does not work with `*.pages.dev` projects; an `Error 1000: DNS points to prohibited IP` will appear.
 - When adding a custom domain, the domain will not verify if Cloudflare cannot validate a request for an SSL certificate on that hostname. In order for the SSL to validate, ensure Cloudflare Access or a Cloudflare Worker is allowing requests to the validation path: `http://{domain_name}/.well-known/acme-challenge/*`.
 - [Advanced Certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) cannot be used with Cloudflare Pages due to Cloudflare for SaaS's [certificate prioritization](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/).
+
+## Browser Integrity Check on Pages
+
+All requests to a Pages project are evaluated by [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/) (BIC) on the Cloudflare-managed `pages.dev` zone. This includes requests to your `*.pages.dev` subdomain and requests made through a [custom domain](https://developers.cloudflare.com/pages/configuration/custom-domains/).
+
+- You cannot turn off this check for a Pages project.
+- Turning off BIC in your own zone, or adding a [custom rule](https://developers.cloudflare.com/waf/custom-rules/skip/) or [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/) that skips or turns off BIC, only affects your zone. It does not affect the check on the `pages.dev` zone.
+- Clients that send some default library `User-Agent` headers (for example, the default Python `urllib` user agent) receive an HTTP `403` response with [error 1010](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/).
+
+To allow automated clients to reach your Pages project:
+
+1. **Recommended:** Configure the client to send a descriptive `User-Agent` header that identifies your application. The client does not need to send a browser user agent. For example, in Python:
+
+   ```python
+   import urllib.request
+
+   req = urllib.request.Request(
+       "https://example.com/data.json",
+       headers={"User-Agent": "my-app/1.0 (+https://example.com)"},
+   )
+   urllib.request.urlopen(req)
+   ```
+
+2. If you need full control over Browser Integrity Check, and your domain's nameservers are managed by Cloudflare, serve your site with [Workers static assets](https://developers.cloudflare.com/workers/static-assets/) on a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) in your zone. Your zone's Browser Integrity Check settings and rules then apply. Refer to [Migrate from Pages to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/).
 
 ## Pages Functions
 
@@ -195,5 +219,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a712c74821f807c","dateModified":"2026-10-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/platform/known-issues/#page","headline":"Known issues","description":"Current bugs and limitations for Cloudflare Pages builds, deployments, and configuration.","url":"https://developers.cloudflare.com/pages/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/pages/platform/known-issues/og.png?v=5a712c74821f807c","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

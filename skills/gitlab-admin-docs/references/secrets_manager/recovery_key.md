@@ -22,7 +22,7 @@ Use the pod name in place of `<toolbox-pod-name>` in the following commands.
 
 ## Store the recovery key
 
-Run this command once during initial setup, before an incident occurs:
+Run this command once during initial setup, right after OpenBao is initialized:
 
 ```shell
 kubectl exec -n gitlab -it -c toolbox <toolbox-pod-name> -- \

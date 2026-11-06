@@ -598,9 +598,3 @@ Now that you know the basics of supervised fine-tuning, explore these other meth
 
 
       Fine-tune a model using direct preference optimization (DPO).](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
-
-[Reinforcement fine-tuning
-
-
-
-      Fine-tune a reasoning model by grading its outputs.](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)

@@ -284,9 +284,3 @@ Now that you know the basics of DPO, explore these other methods as well.
 
 
       Learn to fine-tune for computer vision with image inputs.](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
-
-[Reinforcement fine-tuning
-
-
-
-      Fine-tune a reasoning model by grading its outputs.](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)

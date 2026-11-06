@@ -28,10 +28,10 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 
 :::accordion[Step 2: Configure OpenTelemetry with OpenObserve]
 
-1. In **Manage Jenkins → Configure System**, scroll to the **OpenTelemetry** section
+1. In **Manage Jenkins → Configure System**, scroll to the **OpenTelemetry** section. The endpoint and `Basic` credentials are shown in OpenObserve under **Data > Data sources > Custom > Traces > OTEL Collector**
 2. Under **OTLP Endpoint**, enter:
     ```
-    https://<O2_HOST>/api/<O2_ORGNAME>
+    https://<openobserve_host>/api/<org_id>
     ```
 3. Next, Select **Header Authentication**
 4. In **Header Value**, enter:
@@ -43,7 +43,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 
     ```
     otel.exporter.otlp.protocol=http/protobuf
-    otel.exporter.otlp.headers=organization=prometheus-demo,stream-name=default
+    otel.exporter.otlp.headers=organization=<org_id>,stream-name=default
     otel.logs.exporter=otlp
     ```
     [Configure OpenTelemetry with OpenObserve]
@@ -52,8 +52,8 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 
 6. Set Observability Backend URLs
     - Under **Visualization Backend**, select **Custom Observability Backend**
-    - **Trace Visualization URL Template**: `https://<O2_HOST>/web/traces`
-    - **Metrics Visualization URL Template**: `https://<O2_HOST>/web/metrics`
+    - **Trace Visualization URL Template**: `https://<openobserve_host>/web/traces`
+    - **Metrics Visualization URL Template**: `https://<openobserve_host>/web/metrics`
     [Set Observability Backend URLs]
     > These URLs allow Jenkins to link directly to OpenObserve dashboards and trace views.
 
@@ -127,7 +127,7 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 1. After pipeline execution, go to the Jenkins job panel -> Click the **Observability link**
 2. You will be redirected to OpenObserve with trace and metrics views for that specific job
 
-![View Pipeline Telemetry from Jenkins UI in Openobserve](https://openobserve.ai/assets%2Fobservability_162216efd5.gif)
+[Jenkins pipeline trace in OpenObserve]
 
 ## Troubleshooting
 
@@ -141,8 +141,8 @@ The Jenkins integration captures traces, logs, and metrics using the [OpenTeleme
 
 - Verify that **Visualization Backend** is set to **Custom**
 - Confirm the URLs:
-    - Traces: `https://<O2_HOST>/web/traces`
-    - Metrics: `https://<O2_HOST>/web/metrics`
+    - Traces: `https://<openobserve_host>/web/traces`
+    - Metrics: `https://<openobserve_host>/web/metrics`
 
 :::accordion[No pipeline logs or metrics?]
 

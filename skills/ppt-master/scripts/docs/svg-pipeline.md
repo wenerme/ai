@@ -106,6 +106,27 @@ relative to the frame origin. Relative text positions, text-local transforms,
 and styles remain part of the fingerprint; moving only one line or editing
 text/style never restores stale text over the edit.
 
+Imported text runs retain resolved normal weight/style, no decoration, and full
+opacity as explicit overrides. Editing one run therefore does not make later
+runs inherit the first run's formatting; rebuilt DrawingML writes explicit off
+values for inline overrides while omitted inline properties continue to inherit.
+
+On rebuilt pages, restored source connectors follow surviving Slide-local
+endpoint IDs, including replaced pictures and nested source objects. Deleting
+an endpoint removes only its `stCxn`/`endCxn` attachment and preserves connector
+geometry; reusing the deleted numeric ID does not reconnect it. Generated
+connections follow their own remapped IDs. If an edited endpoint maps to
+multiple objects, export removes that attachment, preserves connector geometry,
+and continues. A warning in stderr and the output page's round-trip report
+`warnings` names the connector, attachment end, and original endpoint ID.
+Reconnect that end to the intended object in PowerPoint, or keep one endpoint
+object in the authoring SVG before the next export.
+
+For imported groups carrying a pure rotation, temporary placeholders for
+unchanged native objects retain that rotation on the group until source XML
+restoration. Replacing a picture href keeps the unedited siblings' native
+geometry and style, including through nested rotation groups.
+
 Width/height or non-translation transform changes continue to rebuild from
 SVG. Whenever a source `txBody` is not restored and its `a14:m` count exceeds
 the remaining formula marker count, including after text or style edits, the
@@ -131,6 +152,12 @@ original hierarchy level and `graphicFrame` type. Markers without a source id
 keep generated chart grouping, id allocation, and naming unchanged. Rebuilt
 chart relationships point to the newly generated chart/workbook parts;
 restored packages keep their source parts.
+Data-only edits in older imported workspaces may encounter a normalized chart
+preview containing invisible one-point line segments. Materialization omits
+those segments with a `native-chart-empty-line-segment` warning while preserving
+values, gaps, markers, labels, and the native source package. Reimporting the
+source deck refreshes that stored preview; malformed or edited geometry still
+passes through the ordinary geometry checks.
 New chart part families reserve unused names across the complete export
 (including source/template parts, workbooks, relationships, and ChartEx
 styles/colors); conflicting writes or content types fail with the part path
@@ -253,6 +280,19 @@ cloned_passthrough=C patched=M rebuilt=R`. `patched` keeps source shape XML
 while order, notes, or motion may change; `rebuilt` means visible authoring or
 one of its referenced resources changed.
 Without `-o`, round-trip export names the deck `<workspace-directory-name>_<timestamp>[<flavor-suffix>].pptx` under `exports/`.
+
+Round-trip export rejects an output that would replace `sources/source.pptx`
+or the original source recorded in `analysis/roundtrip_manifest.json`
+(`source.originalPath`, an absolute path saved by new imports), before writing
+export artifacts. Choose a different output path, such as `exports/revised.pptx`.
+Parent-directory aliases are resolved for this check. A distinct leaf symlink
+or hardlink is still allowed: publishing atomically replaces only that alias
+entry, preserving the source. If atomic replacement fails, export stops without
+copying through the alias; choose a writable local output location. Older
+workspaces without `originalPath` protect the workspace source only; re-import
+the original deck to record its external path. Absolute paths from a different
+operating system do not block a moved workspace and are not compared locally.
+Ordinary Generate export is unaffected.
 
 Before export, run `python3 scripts/svg_quality_checker.py <workspace> --roundtrip --json`
 as the round-trip text-capacity gate. It resolves the output roster from
@@ -1405,6 +1445,10 @@ this only for manual checks outside `finalize_svg.py`.
 The replacement group retains the placeholder's id, class, style, opacity,
 visibility, clipping/filter context, and `data-pptx-*` / `data-edit-*`
 attributes. Hidden icon placeholders therefore remain hidden after embedding.
+Internal icon IDs receive a deterministic prefix for each instance, avoiding
+existing page IDs; local `url(#id)` and `href` references are rewritten together.
+This isolation also applies to editor previews and native in-memory expansion.
+An invalid icon XML error requires repairing that project-local icon before retrying.
 
 ## SVG Compatibility Contract
 

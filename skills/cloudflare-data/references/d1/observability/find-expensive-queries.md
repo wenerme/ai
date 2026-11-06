@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/d1/observability/find-expensive-queries
 
 # Find slow and expensive queries
 
-Last updated Oct 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/find-expensive-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/observability/find-expensive-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A small number of databases and queries usually cause most of the rows read and written in an account. These rows are what you pay for, and these queries make your databases slow. A query is usually slow when it reads many more rows than it returns. A read query that runs many times also puts load on a database. Many small queries that your Worker sends one after another also make a request slow, because each query is a separate round trip to D1.
 
@@ -178,7 +178,7 @@ To get the name of a database, run `npx cf d1 get <database_id>` or `npx wrangle
 
    In the example output in step 1, the `JOIN` query reads 1,244,521 rows each time it runs, and its `queryEfficiency` is approximately `0.000016`. The `OrderDetail.OrderId` column in the `JOIN` clause does not have an index.
 4. Find the index that fixes the query. To find the correct fix for each query pattern, refer to [Indexes and your bill](https://developers.cloudflare.com/d1/best-practices/use-indexes/#indexes-and-your-bill). For the example query, add an index on the `OrderId` column of the `OrderDetail` table.
-5. Create a [migration](https://developers.cloudflare.com/d1/reference/migrations/) for the index:
+5. If you use [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) to manage your database schema, add the index with a migration. First, create a migration for the index:
 
    ```sh
    npx cf d1 migrations create add_orderdetail_orderid_index
@@ -195,7 +195,8 @@ To get the name of a database, run `npx cf d1 get <database_id>` or `npx wrangle
    ```
 
    The command creates a file in the `migrations` directory. The number at the start of the file name depends on the migrations that you already have.
-6. Add the `CREATE INDEX` statement to the new migration file:
+
+   Add the `CREATE INDEX` statement to the new migration file:
 
    *migrations/0001\_add\_orderdetail\_orderid\_index.sqlsql*
 
@@ -206,7 +207,7 @@ To get the name of a database, run `npx cf d1 get <database_id>` or `npx wrangle
    CREATE INDEX IF NOT EXISTS idx_orderdetail_orderid ON OrderDetail (OrderId);
    ```
 
-7. Apply the migration to your remote database:
+   Apply the migration to your remote database:
 
    ```sh
    npx cf d1 migrations apply <database_id>
@@ -224,7 +225,7 @@ To get the name of a database, run `npx cf d1 get <database_id>` or `npx wrangle
    └────────────────────────────────────────┴────────┘
    ```
 
-8. Make sure that D1 uses the new index. Put `EXPLAIN QUERY PLAN` in front of the query and run it:
+6. Make sure that D1 uses the new index. Put `EXPLAIN QUERY PLAN` in front of the query and run it:
 
    ```sh
    npx cf d1 query <database_id> --sql "EXPLAIN QUERY PLAN <query>"
@@ -235,7 +236,7 @@ To get the name of a database, run `npx cf d1 get <database_id>` or `npx wrangle
    ```
 
    The line for the table that you added the index to should show `SEARCH ... USING INDEX`, not `SCAN`. For the example query, `SCAN OrderDetail` changes to `SEARCH OrderDetail USING INDEX idx_orderdetail_orderid (OrderId=?)`. For more information, refer to [Test an index](https://developers.cloudflare.com/d1/best-practices/use-indexes/#test-an-index).
-9. Make sure that the number of rows read decreases. Run the command from step 2 again with a shorter time period, such as `INTERVAL '1' HOUR` or `--time-period=1h`.
+7. Make sure that the number of rows read decreases. Run the command from step 2 again with a shorter time period, such as `INTERVAL '1' HOUR` or `--time-period=1h`.
 
    The results include all the queries in the time period. Queries that ran before you added the index increase the totals of a long time period.
 
@@ -433,5 +434,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/#page","headline":"Find slow and expensive queries","description":"Use cf sql query or wrangler d1 insights to find the D1 databases and queries that cost the most, then fix them.","url":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/og.png?v=3937662d09bd63f0","dateModified":"2026-10-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/#page","headline":"Find slow and expensive queries","description":"Use cf sql query or wrangler d1 insights to find the D1 databases and queries that cost the most, then fix them.","url":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/d1/observability/find-expensive-queries/og.png?v=3937662d09bd63f0","dateModified":"2026-11-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -39,6 +39,7 @@ The following Rake tasks are available for use with GitLab:
 | [Project import/export](project_import_export.md)                                                     | Prepare for [project exports and imports](../../user/project/settings/import_export.md). |
 | [Sidekiq job migration](../sidekiq/sidekiq_job_migration.md)                                          | Migrate Sidekiq jobs scheduled for future dates to a new queue. |
 | [Secrets Manager maintenance](../secrets_manager/maintenance.md#enable-secrets-access-from-external-requests) | Enable API authentication from external requests to existing secrets managers. |
+| [Secrets Manager OpenBao policy](../secrets_manager/maintenance.md#update-the-openbao-policy-for-gitlab) | Update the OpenBao policy for GitLab on an existing OpenBao installation. |
 | [Secrets Manager recovery key](../secrets_manager/recovery_key.md)                                   | Store, view, and fetch the OpenBao recovery key, and generate a root token from it. |
 | [Service Desk email](service_desk_email.md)                                                           | Service Desk email-related tasks. |
 | [SMTP maintenance](smtp.md)                                                                           | SMTP-related tasks. |
