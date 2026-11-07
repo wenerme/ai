@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35
 
 # Go SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
+The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP or locally from downloaded flag definitions. It does not support the Cloudflare Workers binding.
 
 ## Installation
 
@@ -84,6 +84,37 @@ config, _ := client.ObjectValue(ctx, "ui-config", map[string]any{"theme": "light
 
 Use the `*ValueDetails` methods when you need reason, variant, metadata, or error codes.
 
+## Local evaluation
+
+With local evaluation, the provider downloads the app's flag definitions and evaluates flags in-process. No network request is made per evaluation. The provider refreshes the definitions in the background.
+
+Local evaluation requires an API token with Flagship Read or Flagship App Read permission. Local evaluations do not appear in Flagship analytics.
+
+```go
+import "time"
+
+provider, err := flagship.NewProvider(flagship.Options{
+	AppID:           "<APP_ID>",
+	AccountID:       "<ACCOUNT_ID>",
+	AuthToken:       "<READ_API_TOKEN>",
+	LocalEvaluation: true,
+	RefreshInterval: 30 * time.Second,
+})
+if err != nil {
+	log.Fatal(err)
+}
+
+// Returns an error if the first definitions download fails.
+if err := openfeature.SetProviderAndWait(provider); err != nil {
+	log.Fatal(err)
+}
+defer openfeature.Shutdown()
+```
+
+The provider downloads the definitions when OpenFeature initializes it. If the first download fails, initialization returns an error and the provider reports the `ERROR` status. A background goroutine refreshes the definitions every `RefreshInterval`. If a background refresh fails, the provider keeps serving the last downloaded definitions. Calling `Shutdown` stops the goroutine.
+
+Local evaluation cannot be combined with `CacheTTL`. `AccountID` is always required. If you set `Endpoint` instead of `AppID`, the URL path must end in `/evaluate` so the provider can derive the definitions URL.
+
 ## Response caching
 
 The provider can cache evaluations to avoid a network round-trip for repeated flag/context pairs. Caching is off by default and enabled by setting `CacheTTL`:
@@ -109,7 +140,7 @@ The cache is per-provider instance, guarded by a mutex for concurrent use, and c
 | Option | Description |
 | --- | --- |
 | `AppID` | Flagship app ID. |
-| `AccountID` | Required with `AppID`. |
+| `AccountID` | Required with `AppID`, and always required for local evaluation. |
 | `BaseURL` | Base URL override. Defaults to `https://api.cloudflare.com`. |
 | `AuthToken` | Adds `Authorization: Bearer <token>` to each request. |
 | `Headers` | Static headers. Explicit `Authorization` overrides `AuthToken`. |
@@ -121,6 +152,8 @@ The cache is per-provider instance, guarded by a mutex for concurrent use, and c
 | `RetryDelay` | Delay between retries. Defaults to 1 second and is capped at 30 seconds. |
 | `CacheTTL` | Enables in-memory response caching when greater than 0. Cached values may be up to this duration stale. |
 | `CacheMaxSize` | Maximum number of cached entries. LRU-evicted beyond this limit. Defaults to 1000 when `CacheTTL` is set. |
+| `LocalEvaluation` | Downloads flag definitions and evaluates flags in-process. Off by default. |
+| `RefreshInterval` | How often local evaluation refreshes flag definitions. Defaults to 30 seconds. |
 | `Logging` | Enables debug and error logging. Off by default. |
 | `Logger` | Optional `slog`-compatible logger. Uses the default `slog` logger when unset. |
 | `Hooks` | Provider-level OpenFeature hooks. |
@@ -140,5 +173,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35c8","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/go/og.png?v=a3bb8c9370dc35c8","dateModified":"2026-11-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

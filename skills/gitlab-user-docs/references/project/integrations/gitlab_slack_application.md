@@ -174,7 +174,7 @@ To leave feedback on this feature's performance, use the thumbs up or thumbs dow
 GitLab Duo in Slack works in the following places:
 
 - Public and private channels where the agent is a member of the channel. Mention `@GitLab` to start.
-- Group direct messages that include the agent. GitLab Duo responds to every message, with or without a mention.
+- Group direct messages that include the agent. Mention `@GitLab` to start.
 - One-to-one direct messages with the agent, including when you open the agent from the Slack top bar.
 
 In direct messages, GitLab Duo uses the earlier messages in the conversation as context.

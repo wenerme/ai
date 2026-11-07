@@ -1477,8 +1477,9 @@ These lists are enforced on direct connections only. When a proxy is configured 
 - `LIMIT_SIZE_RPM`: **-1**: Maximum size of a RPM upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 - `LIMIT_SIZE_RUBYGEMS`: **-1**: Maximum size of a RubyGems upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 - `LIMIT_SIZE_SWIFT`: **-1**: Maximum size of a Swift upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
+- `LIMIT_SIZE_TERRAFORM_MODULE`: **-1**: Maximum size of a Terraform module archive upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`). Archives are additionally capped at 32 MiB decompressed.
+- `LIMIT_SIZE_TERRAFORM_STATE`: **-1**: Maximum size of a Terraform state upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 - `LIMIT_SIZE_VAGRANT`: **-1**: Maximum size of a Vagrant upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
-- `LIMIT_SIZE_TERRAFORM_STATE``: **-1**: Maximum size of a Terraform state upload (`-1` means no limits, format `1000`, `1 MB`, `1 GiB`)
 
 ## Mirror (`mirror`)
 

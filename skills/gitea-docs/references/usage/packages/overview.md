@@ -34,6 +34,7 @@ The following package managers are currently supported:
 | [RubyGems](usage/packages/rubygems.md) | Ruby | `gem`, `Bundler` |
 | [Swift](usage/packages/swift.md) | Swift | `swift` |
 | [Terraform](usage/packages/terraform.md) | - | `terraform` |
+| [Terraform Module](usage/packages/terraform-module.md) | - | `terraform`, `terragrunt` |
 | [Vagrant](usage/packages/vagrant.md) | - | `vagrant` |
 
 **The following paragraphs only apply if Packages are not globally disabled!**

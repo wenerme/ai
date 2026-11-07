@@ -17,14 +17,7 @@ Gitea Actions is designed to be compatible with GitHub Actions, with the differe
 `uses:` accepts these prefixes:
 
 - `self:` references your own Gitea instance, e.g. `uses: self:owner/repo@v1` or `uses: self:owner/repo/.gitea/workflows/build.yml@v1`
-- `builtin:` runs an action built into Gitea Runner, which needs no download and no Node in the job image, e.g. `uses: builtin:checkout`
-
-`builtin:checkout` accepts the `repository`, `ref`, `token`, `path` and `fetch-depth` inputs of `actions/checkout` with the same defaults, and fails on any other input.
-
-### Workflow-relative actions
-
-`$/` references the repository and commit of the workflow, or of the enclosing composite action, e.g. `uses: $/.gitea/actions/build`.
-Unlike `./`, it needs no checkout first.
+- `builtin:` runs an action built into Gitea Runner, which needs no download and does not depend on Node.js, e.g. `uses: builtin:checkout`
 
 ### Actions written in Go
 
@@ -90,7 +83,7 @@ See [Actions job token permissions](token-permissions.md).
 
 Actions without a host, like `uses: actions/checkout@v4`, are downloaded from `https://github.com`, or from your own instance when `[actions].DEFAULT_ACTIONS_URL` is `self`.
 See the [Configuration Cheat Sheet](../../administration/config-cheat-sheet.md#actions-actions).
-For other sources, see [Absolute action URLs](#absolute-action-urls), [Action prefixes](#action-prefixes) and [Workflow-relative actions](#workflow-relative-actions).
+For other sources, see [Absolute action URLs](#absolute-action-urls) and [Action prefixes](#action-prefixes).
 
 ### Context availability
 

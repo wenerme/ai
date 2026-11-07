@@ -62,6 +62,7 @@ This is a repeatable directive and can be used with different arguments at the s
 | `boundary` | [`String`](scalars.md#string) | Method name to call on the resolved object to extract the authorization boundary (Project/Group). Use when the object is already resolved (fields on types, nested fields). |
 | `boundaryArgument` | [`String`](scalars.md#string) | Argument name containing the authorization boundary (path or GlobalID). Use for mutations and query fields where the boundary is passed as an argument. |
 | `boundaryType` | [`PermissionBoundary`](enums.md#permissionboundary) | The type of authorization boundary (project, group, user, instance). Used for validation and documentation of the permission boundary. |
+| `parentAuthorizes` | [`[String!]`](scalars.md#string) | Permissions a type skipped with `parent_authorizes` needs. Every field that returns the type checks them on the boundary of the field's parent object. |
 | `permissions` | [`[String!]`](scalars.md#string) | Granular scope permissions required to access the field or type. |
 | `skipReason` | [`String`](scalars.md#string) | Reason the field or type intentionally opts out of granular token authorization. |
 

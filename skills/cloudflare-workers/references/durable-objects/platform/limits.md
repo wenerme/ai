@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/platform/limits/og.png?
 
 # Limits
 
-Last updated Oct 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects are a special kind of Worker, so [Workers limits](https://developers.cloudflare.com/workers/platform/limits/) also apply. Limits that depend on your Workers plan are identified on that page. This page also covers Durable Object storage, CPU, and [outbound HTTP request body size](#outbound-http-request-body-size) limits.
 
@@ -25,8 +25,8 @@ Durable Objects are a special kind of Worker, so [Workers limits](https://develo
 | Storage per account | Unlimited (Workers Paid) / 5GB (Free) <sup>[2](#user-content-fn-2)</sup> |
 | Storage per class | Unlimited <sup>[3](#user-content-fn-3)</sup> |
 | Storage per Durable Object | 10 GB <sup>[3](#user-content-fn-3)</sup> |
-| Key size | Key and value combined cannot exceed 2 MB |
-| Value size | Key and value combined cannot exceed 2 MB |
+| Key size | Key and value combined cannot exceed 8 MB |
+| Value size | Key and value combined cannot exceed 8 MB |
 | WebSocket message size | 32 MiB (only for received messages) |
 | CPU per request | 30 seconds (default) / configurable to 5 minutes of [active CPU time](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) <sup>[4](#user-content-fn-4)</sup> |
 | Simultaneous outgoing connections/request | 6 (same as [Workers](https://developers.cloudflare.com/workers/platform/limits/#simultaneous-open-connections)) |
@@ -39,7 +39,7 @@ For Durable Object classes with [SQLite storage](https://developers.cloudflare.c
 | --- | --- |
 | Maximum number of columns per table | 100 |
 | Maximum number of rows per table | Unlimited (excluding per-object storage limits) |
-| Maximum string, `BLOB` or table row size | 2 MB |
+| Maximum string, `BLOB` or table row size | 8 MB |
 | Maximum SQL statement length | 100 KB |
 | Maximum bound parameters per query | 100 |
 | Maximum arguments per SQL function | 32 |
@@ -205,5 +205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/limits/og.png?v=1a8908140cf9dd2c","dateModified":"2026-10-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/platform/limits/og.png?v=1a8908140cf9dd2c","dateModified":"2026-11-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
