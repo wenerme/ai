@@ -20,6 +20,15 @@ go install 'github.com/openai/openai-cli/cmd/openai@latest'
 
 Older versions of the Python SDK also installed a legacy `openai` command. If you already had that package installed and the command you see does not match this guide, your shell may still be resolving the older binary. Fresh CLI installs are not affected.
 
+## Explore commands
+
+Run `openai explore` in your terminal to browse commands before you set up an API key.
+Type a task such as `count tokens offline` to find `openai tokenizer count`.
+Use the arrow keys to highlight a match. Press <kbd>Enter</kbd> to select it or <kbd>Escape</kbd> to cancel.
+
+Explore shows the selected command without running it. With shell integration, you can edit the selection at your prompt.
+Run `openai explore --help` for supported shells and keyboard shortcuts.
+
 ## Authentication
 
 The CLI reads your API key from `OPENAI_API_KEY`:

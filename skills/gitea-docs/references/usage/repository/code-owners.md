@@ -7,25 +7,36 @@ aliases:
 
 # Code Owners
 
-Gitea maintains code owner files. It looks for it in the following locations in this order:
+Gitea reads the first CODEOWNERS file found at these locations, in order:
 
 - `./CODEOWNERS`
 - `./docs/CODEOWNERS`
 - `./.gitea/CODEOWNERS`
 
-And stops at the first found file.
+Pull requests use the base branch's rules. File views show owners from the commit
+being viewed, including when browsing a branch, tag, or historical commit.
 
-File format: `<regexp rule> <@user or @org/team> [@user or @org/team]...`
+## Patterns and owners
 
-Regexp specified in golang Regex format.
-Regexp can start with `!` for negative rules - match all files except specified.
+Each rule contains a pattern followed by users or organization teams.
+
+Patterns starting with `*` or containing `/*` are parsed as glob expressions.
+General patterns are parsed as regular expressions.
+A leading `!` inverts a match.
+
+Special rule characters like space, backslash and `#` must be escaped with a backslash.
+When using regexp, since backslash needs to be escaped in rule level, literal dot should be written as  `\\.`
 
 Example file:
 
-```bash
-.*\\.go @user1 @user2 # This is comment
+```text
+*.js @alice @bob       # This is an inline comment
+doc/*.md @charles      # Patterns starting with "*" or containing "/*" are parsed as glob
+src/**/db*.py @david   # Use "**" to match any-level sub directories
 
-# Comment too
+.*\\.go @user1 @user2   # General patterns are parsed as regexp
+test\\..*\\.js @user3   # !!! Do remeber: NOT "test.*.js", only regexp can be used for such cases
+
 # You can assigning code owning for users or teams
 frontend/src/.*\\.js @org1/team1 @org1/team2 @user3
 
@@ -40,24 +51,69 @@ docs/(aws|google|azure)/[^/]*\\.(md|txt) @user8 @org1/team4
 Code owners listed in this file will automatically be requested to review pull requests
 that modify files matching at least one corresponding rule.
 
-### Escaping
+## Sections
 
-You can escape characters `#`, ` ` (space) and `\` with `\`, like:
+A section heading can supply default owners for the rules that follow it:
 
+```text
+[Documentation] @org1/team-doc
+*.md
+README.md @alice
+
+[Frontend] @bob
+*.js
 ```
+
+Owners on a rule replace the section's default owners. Section names are
+case-insensitive; repeated headings belong to the same section. For each file, the
+last matching rule in each named section applies. Matching rules outside named
+sections retain Gitea's existing behavior: they all apply.
+
+## Review request annotations
+
+Use `## review-request=true` or `## review-request=false` to control automatic
+review requests. A line annotation overrides a section annotation, which overrides
+the global value. When none is set, individual code owners receive automatic review
+requests only if they watch the repository and include pull requests in their watch
+preferences. Team-level requests are enabled by default. An explicit `true` requests
+a review regardless of the individual owner's watch preferences; `false` disables
+automatic requests for the rule.
+
+```text
+## review-request=false # global default for following rules
+
+*.js @alice ## review-request=true # only this rule
+
+[Documentation] @org1/team-doc ## review-request=true
+*.md
+private/* @bob ## review-request=false
+```
+
+A standalone annotation changes the global default for subsequent rules.
+Annotations on section headings apply until the next heading. Ordinary comments
+start with `#`, including comments after annotations.
+
+Disabling review requests keeps code owners visible when viewing a file and
+does not waive approvals required by branch protection.
+
+## Escaping
+
+You need to escape characters `#`, ` ` (space) and `\` with backslash `\`, e.g.:
+
+```text
 dir/with\#hashtag @user1
 path\ with\ space @user2
 path/with\\backslash @user3
 ```
 
-Some character (`.+*?()|[]{}^$\`) should be escaped with `\\` inside regexp, like:
+Some regexp characters (`.+*?()|[]{}^$\`) should be escaped with `\\`, e.g.:
 
 ```
 path/\\.with\\.dots
 path/with\\+plus
 ```
 
-### Branch Protection Rules
+## Branch Protection Rules
 
 When setting up branch protection rules, you may choose to enforce code owner approval of
 modified files. This will block a PR from being merged until at least one code owner
@@ -65,7 +121,7 @@ has given approval for every applicable rule listed in the `CODEOWNERS` file.
 
 For example, say you have the following `CODEOWNERS` file:
 
-```bash
+```text
 .*\\.go @Bob
 .*\\.md @Sally @Chris
 migrations/.* @Alice

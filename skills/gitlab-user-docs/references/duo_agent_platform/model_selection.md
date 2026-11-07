@@ -56,6 +56,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Opus 5.5 and Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7279) as supported models for Business Logic Security Scan on October 15, 2026.
 - Claude Mythos 5.1 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7628) as a supported model for Business Logic Security Scan on October 23, 2026.
 - GPT-6.1 Terra [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7672) as a supported model for GitLab Duo Agentic Chat and all other agents on October 26, 2026.
+- Kimi K3.1 Pro [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7879) as a supported model for GitLab Duo Agentic Chat and all other agents on November 6, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -106,6 +107,7 @@ For information about model availability during trials, see
 | GPT-6.1 Sol[^model-subject-limited]    | Yes             | No       | No           | No                   | No               | Yes      |
 | GPT-6.1 Terra[^model-subject-limited]  | Yes             | No       | No           | No                   | No               | Yes      |
 | Kimi K3                     | Yes             | No       | No           | No                   | No               | Yes      |
+| Kimi K3.1 Pro               | Yes             | No       | No           | No                   | No               | Yes      |
 | MiniMax M3                  | Yes             | No       | No           | No                   | No               | Yes      |
 
 [^supported-models-earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)

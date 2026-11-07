@@ -131,13 +131,8 @@ The dependency list shows only dependencies that match your filters.
 
 ## Vulnerabilities
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/500551) in GitLab 17.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `update_sbom_occurrences_vulnerabilities_on_cvs`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/514223) in GitLab 17.9.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/500551) in GitLab 17.9.
 - A change to make the dependency list display only `detected` and `confirmed` states introduced in GitLab 18.5.
-
-> [!flag]
-> The availability of support for vulnerabilities associated with [SBOM-based dependency scanning](../dependency_scanning/dependency_scanning_sbom/_index.md) is controlled by a feature flag.
-> For more information, see the history.
 
 If a dependency has known vulnerabilities, view them by selecting the arrow next to the
 dependency's name or the badge that indicates how many known vulnerabilities exist. For each

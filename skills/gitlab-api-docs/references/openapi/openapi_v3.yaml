@@ -15858,6 +15858,22 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/postApiV4InternalOrgMoverExitMaintenanceRequest"
+  "/api/v4/internal/org_mover/manifest":
+    get:
+      operationId: getApiV4InternalOrgMoverManifest
+      summary: Describe this cell's Org Mover manifest
+      description: Returns the manifest of databases, tables and asset sources that
+        moving an organization off this cell must carry, generated for the running
+        GitLab version.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
   "/api/v4/projects/{id}/ml/mlflow/api/2.0/mlflow-artifacts/artifacts":
     get:
       operationId: getApiV4ProjectsIdMlMlflowApi20MlflowArtifactsArtifacts
@@ -91997,7 +92013,8 @@ components:
       properties:
         id:
           type: integer
-          description: ID of the status.
+          description: ID of the status. Default and custom statuses are numbered
+            separately.
           example: 1
         name:
           type: string
@@ -92005,22 +92022,36 @@ components:
           example: To do
         icon_name:
           type: string
-          description: Icon name of the status.
+          description: Name of the icon for the status, set by its category.
+          enum:
+          - status-neutral
+          - status-waiting
+          - status-running
+          - status-success
+          - status-cancelled
           example: status-waiting
         color:
           type: string
-          description: Color of the status.
+          description: Color of the status as a hex code.
           example: "#737278"
         position:
           type: integer
-          description: Position of the status within its category.
+          description: Position of the status in its category. Always 0 for custom
+            statuses.
           example: 0
         description:
           type: string
-          description: Description of the status.
+          description: Description of the status. Always null for default statuses.
         category:
           type: string
-          description: Category of the status.
+          description: Category of the status. Open categories are `triage`, `to_do`,
+            and `in_progress`. Closed categories are `done` and `canceled`.
+          enum:
+          - triage
+          - to_do
+          - in_progress
+          - done
+          - canceled
           example: to_do
     APIEntitiesList:
       type: object

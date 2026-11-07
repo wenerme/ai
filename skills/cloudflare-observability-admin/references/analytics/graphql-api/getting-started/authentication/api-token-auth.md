@@ -88,7 +88,7 @@ Once you have validated your API token configuration, select **Create Token**.
 
 When you create a new token, a confirmation page displays that includes your token and a custom `curl` command.
 
-![Page displaying your API token and the curl command to test your token](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1204,height=940,format=webp/_astro/token-complete.Dg4S1W72.png)
+![Page displaying your API token and the curl command to test your token](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2953,height=1955,format=webp/_astro/token-complete.ethtDojh.png)
 
 To copy the token to your device's clipboard, select the **Copy** button.
 

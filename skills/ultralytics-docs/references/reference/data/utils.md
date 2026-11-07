@@ -10,6 +10,10 @@ keywords: Ultralytics, dataset utils, data handling, image verification, Python,
 
     This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/data/utils.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/data/utils.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
 
+## ::: ultralytics.data.utils.tile_windows
+
+<hr>
+
 ## ::: ultralytics.data.utils.save_depth_png
 
 <hr>

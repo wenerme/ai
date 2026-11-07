@@ -18,6 +18,21 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## 2026-11-06
 
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
+
+
+**Sign in to Cloudflare Access with passkeys**
+
+Cloudflare Access supports passkeys as a login method for protected applications and the App Launcher. Users can sign in with a passkey saved on their device, security key, or password manager instead of entering a one-time PIN or configuring an identity provider.
+
+Users verify their identity with an existing login method once before enrolling a passkey. Administrators choose which applications accept passkeys and can remove a user's registered passkeys. Access policies still determine whether a user can access an application.
+
+![Passkeys identity-provider settings with automatic browser prompts turned on.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=600,height=171,format=webp/_astro/access-passkeys.DJrY1PIF.png)
+
+For setup and enrollment instructions, refer to [Passkeys](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/passkeys/).
+
+## 2026-11-06
+
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
 
