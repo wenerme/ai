@@ -5002,7 +5002,7 @@ Statistics for a group of CI jobs.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `queuedDuration` | [`CiDurationStatistics`](#cidurationstatistics) | Statistics for the amount of time that jobs were waiting to be picked up. The calculation is based on the 100 most recent jobs run by the 5000 most recently created runners in context. If no filter is applied to runners, the calculation uses the 100 most recent jobs globally. |
+| `queuedDuration` | [`CiDurationStatistics`](#cidurationstatistics) | Statistics for the amount of time that jobs were waiting to be picked up. The calculation is based on the 100 most recent jobs run by the 5000 most recently created runners in context. If no filter is applied to runners, the calculation uses the 100 most recent jobs globally. Jobs from older CI partitions might be excluded. |
 
 ## `CiManualVariable`
 

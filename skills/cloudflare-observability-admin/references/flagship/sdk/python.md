@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96
 
 # Python SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
+The Python SDK provides an OpenFeature-compatible `FlagshipServerProvider` for server-side Python applications. It evaluates flags over HTTP or locally from downloaded flag definitions. It does not support the Cloudflare Workers binding.
 
 ## Installation
 
@@ -72,15 +72,41 @@ Use the `*_details` methods when you need the resolved value, reason, variant, o
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `app_id` | `str` | None | Flagship app ID. |
-| `account_id` | `str` | None | Required with `app_id`. |
+| `account_id` | `str` | None | Required with `app_id`, and always required for local evaluation. |
 | `auth_token` | `str` | None | Bearer token added to every request. |
 | `headers_factory` | `Callable[[], dict[str, str]]` | None | Dynamic per-request headers. |
 | `timeout` | `float` | `5.0` | Request timeout in seconds. |
 | `retries` | `int` | `1` | Retry attempts on transient errors, capped at `10`. |
 | `retry_delay` | `float` | `1.0` | Delay between retries in seconds, capped at `30.0`. |
+| `local_evaluation` | `bool` | `False` | Download flag definitions and evaluate flags in-process. |
+| `refresh_interval` | `float` | `30.0` | Seconds between background definition refreshes. |
 | `logging` | `bool` | `False` | Enable SDK-level debug output through the SDK logger. |
 | `cache_ttl` | `float` | None | Cache TTL in seconds. Enables caching when set. |
 | `cache_max_size` | `int` | `1000` | Maximum cached entries before least-recently-used eviction. |
+
+## Local evaluation
+
+With local evaluation, the provider downloads the app's flag definitions and evaluates flags in-process. No network request is made per evaluation. The provider refreshes the definitions on a background daemon thread.
+
+Local evaluation requires an API token with Flagship Read or Flagship App Read permission. Local evaluations do not appear in Flagship analytics.
+
+```python
+api.set_provider_and_wait(
+    FlagshipServerProvider(
+        app_id="<APP_ID>",
+        account_id="<ACCOUNT_ID>",
+        auth_token="<READ_API_TOKEN>",
+        local_evaluation=True,
+        refresh_interval=30.0,
+    )
+)
+```
+
+Use `set_provider_and_wait` so the first definitions download completes before you evaluate flags. If the first download fails, initialization raises an error and the provider reports the `ERROR` status. If a background refresh fails, the provider keeps serving the last downloaded definitions.
+
+Local evaluation cannot be combined with `cache_ttl`. `account_id` is always required. If you set `endpoint` instead of `app_id`, the URL path must end in `/evaluate` so the provider can derive the definitions URL.
+
+Local evaluation does not enforce the Flagship request size limits on evaluation context. The Flagship API rejects very large contexts, but local evaluation evaluates them.
 
 ## Response caching
 
@@ -128,5 +154,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/python/#page","headline":"Python SDK","description":"Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/python/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96f39f9e","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/python/#page","headline":"Python SDK","description":"Set up the FlagshipServerProvider to evaluate Flagship feature flags from Python server applications using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/python/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/python/og.png?v=a150074b96f39f9e","dateModified":"2026-11-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

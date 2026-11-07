@@ -90,7 +90,7 @@ Select **Do it** to perform the described action. Depending on the step, it can 
 
 Automatic detection is enabled by default for supported actions, so steps can complete when you perform them yourself. Your administrator can change this setting. Quizzes, inputs, and challenges have their own completion checks.
 
-The guide’s progress indicator reflects completed steps. Use **Mark complete**, or **Complete milestone** in a learning path, when you want to mark the guide complete yourself. After completing a milestone, select **Continue** to open the next one. Merely opening the last milestone does not complete the whole path.
+The guide’s progress indicator reflects completed steps. A guide completes when you finish its last interactive step, even if reading material follows it. A guide with no interactive steps completes when you scroll to the end of its content. Use **Mark complete**, or **Complete milestone** in a learning path, when you want to mark the guide complete yourself. After completing a milestone, select **Continue** to open the next one. Merely opening the last milestone does not complete the whole path.
 
 ## Use learning paths and My learning
 

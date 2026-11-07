@@ -126,7 +126,7 @@ A sheet generates compatible transparent **illustration**, **illustrated-icon**,
 **Sheet prompt convention** — one `page_role: local` item with `image_size` from final placement; spot sheets `text_policy: none`, lettering sheets `embedded`:
 
 - **Grid**: derive `aspect_ratio` and `--grid` from the target shape, not a universal square grid. State an invisible logical **R×C grid** and the cell shape (compact square object, tall portrait, wide vignette, wide lettering mark); center each element in about 65% of its cell and keep at least 10% key-only margin on every side — tips, steam, particles, and effects included — so `slice_images.py --strict-alpha` never meets content on a cell edge. Never draw cells, panels, dividers, borders, frames, or alternate gutter colors; never shrink every subject into a square sticker.
-- **Key**: one flat chroma key across the sheet — pure `#00FF00`, `#0000FF`, or `#FF0000`, chosen so its hue is absent from every element and effect (a pure key despills and recovers soft alpha; an opaque element of the key's hue keeps its color, but thin dark strokes of that hue still fringe) — stated as exact HEX before the palette and the subjects (deck colors appear only inside elements), unchanged in every gutter, free of reflections or spill; grain, halftone, and vignette stay inside elements. The key is technical, not deck palette. Every pixel that is not an element is the key itself — no white card, panel, paper, mat, or frame under an element and no second tint of the key; state the key rule first in the prompt and repeat it last, because a model told only "no borders" still paints each element on a white card.
+- **Key**: one flat chroma key across the sheet — pure `#00FF00`, `#0000FF`, or `#FF0000`, chosen so its hue is absent from every element and effect (a pure key despills and recovers soft alpha; an opaque element of the key's hue keeps its color, but thin dark strokes of that hue still fringe; when the elements together carry all three hues — a near hue counts, as orange keys out on red — split them into sheets that each have an absent key instead of recoloring an element or keying on another color, which fringes) — stated as exact HEX before the palette and the subjects (deck colors appear only inside elements), unchanged in every gutter, free of reflections or spill; grain, halftone, and vignette stay inside elements. The key is technical, not deck palette. Every pixel that is not an element is the key itself — no white card, panel, paper, mat, or frame under an element and no second tint of the key; state the key rule first in the prompt and repeat it last, because a model told only "no borders" still paints each element on a white card.
 - **Identity**: shared `deck_rendering` + `color_scheme`.
 - **Illustration / illustrated-icon sheet**: name each element and its page or reuse job; for an icon, the compact cue that must survive at placement size; the §5.3 `none` cue.
 - **Lettering sheet**: exactly one named stable string per cell as the only text, quoted literally; the group's letterform character and treatment, then role, placement/background relationship, relative weight, and energy under §5.3's controlled-authorship default; artistry glyph-bound (silhouette, stroke structure, material, texture, depth, contour-bound light). No topic motifs, scene fragments, icons, detached ribbons, or particles unless the approved treatment is a lettering-plus-illustration lockup; key-only padding, no scene, unrelated copy, labels, watermark, or mockup surface. A single mark on a wide sheet (3:2 or wider) tends to come back with a faded ghost copy of itself above or below the real mark — give a lone mark a narrow band (about 4:1) that leaves no room for a second line, and inspect every lettering slice for a ghost band, not only for the characters.
@@ -203,9 +203,11 @@ Outside Image to PPTX, Path A uses single-image edit mode and Path B the host to
 
 ```bash
 python3 scripts/image_gen.py "Remove the planned foreground subjects and reconstruct the hidden background; preserve the exact canvas" \
-  --reference-image <project>/images/<source>.png -o <project>/images -f <group>_base
+  --reference-image <project>/images/<source>.png --aspect_ratio <source W:H> --image_size <tier> \
+  -o <project>/images -f <group>_base
 python3 scripts/image_gen.py "Isolate the planned non-overlapping foreground objects at their exact original positions on one flat #00FF00 plate" \
-  --reference-image <project>/images/<source>.png -o <project>/images -f <group>_plate_key
+  --reference-image <project>/images/<source>.png --aspect_ratio <source W:H> --image_size <tier> \
+  -o <project>/images -f <group>_plate_key
 python3 scripts/slice_images.py <project>/images/<group>_plate_key.png --grid 1x1 \
   --names <group>_plate --alpha --bg "#00FF00"
 ```
@@ -278,7 +280,7 @@ Write `project/images/image_prompts.json`:
   },
   "items": [
     {
-      "filename": "cover_bg.png",
+      "filename": "cover_bg.jpg",
       "purpose": "Cover background (Slide 01)",
       "page_role": "hero_page",
       "text_policy": "none",
@@ -289,7 +291,7 @@ Write `project/images/image_prompts.json`:
       "status": "Pending"
     },
     {
-      "filename": "framework_p05.png",
+      "filename": "framework_p05.jpg",
       "purpose": "Methodology framework (Slide 05)",
       "type": "framework",
       "page_role": "local",
@@ -312,7 +314,7 @@ Write `project/images/image_prompts.json`:
 | `items[].text_policy` | yes | `none` or `embedded`, judged per image (§5.3) |
 | `items[].aspect_ratio` | yes | The target shape as any positive `W:H` (e.g. `16:9`, `4:1`, `1.85:1`), derived from the placement, never narrowed to a backend. The backend outputs the nearest size its model allows and the manifest keeps this value; Executor fits the actual image through the crop policy, and a sheet is sliced from its actual size |
 | `items[].prompt` | yes | The assembled paragraph |
-| `items[].image_size` | no | `512px` / `1K` / `2K` / `4K` |
+| `items[].image_size` | no | `512px` / `1K` / `2K` / `4K` — a pixel tier (long edge about 1024 / 2048 / 4096 px), not an exact size: the smallest tier whose long edge covers 1.5–2× the planned display long edge, so a full-bleed 1280 px hero takes `2K`; the backend sets the exact pixels |
 | `items[].model` | no | Per-item backend model override |
 | `items[].alt_text` | no | Short caption |
 | `items[].slice_grid`, `items[].slice_names` | for a placeable-element sheet | Exact `RxC` and the comma-separated basenames (`rows*cols` unique outputs) for `slice_images.py`; slice basenames are unique across the manifest, so re-cutting part of a sheet rewrites the parent's `slice_names` (and grid) rather than adding a second item with the same names |
@@ -352,7 +354,7 @@ Prerequisite: §3 complete and `images/image_prompts.json` validates. The manife
 python3 scripts/image_gen.py --manifest project/images/image_prompts.json --output project/images
 ```
 
-Validates the file behind every `Generated` row before skipping it, iterates retryable rows with bounded concurrency, and writes each status atomically. Interrupting is safe (completed items stay `Generated`), and `--render-md` refreshes the Markdown sidecar after an interruption. Backend selection, `.env` lookup order, provider keys, and the OpenAI-compatible knobs: [`image.md`](../scripts/docs/image.md). The single-image form `image_gen.py "prompt" --filename …` remains for ad-hoc re-rolls. Backends return their own native resolutions: backfill the actual pixels into `Dimensions`, and when a file is far larger than its planned on-slide size, downscale it to that size as a prepared derivative (`image_treat.py --fit WxH`); never upscale.
+Validates the file behind every `Generated` row before skipping it, iterates retryable rows with bounded concurrency, and writes each status atomically. Interrupting is safe (completed items stay `Generated`), and `--render-md` refreshes the Markdown sidecar after an interruption. Backend selection, `.env` lookup order, provider keys, and the OpenAI-compatible knobs: [`image.md`](../scripts/docs/image.md). The single-image form `image_gen.py "prompt" --filename …` remains for ad-hoc re-rolls. Backends return their own native resolutions: backfill the actual pixels into `Dimensions`; never upscale. Extra source pixels are not a reason for a prepared derivative — export sizes delivered media (`svg_to_pptx.py --image-sizing`).
 
 ### Path B — host-native image tool
 
@@ -418,7 +420,7 @@ Do not ask and do not enter Offline Manual. Retain the filename, attempted path,
 | Subject vague | Abstract Reference | Concrete nouns (verbs + objects) |
 | Human depiction off-style | §5.2 cues diluted | Restate the rendering's facial detail, anatomy, texture, realism |
 
-**Variant workflow**: set the item's `status` back to `Pending`, update its `prompt` in place, rerun the same resolved path (Path A reprocesses only that item; Path B regenerates it; Manual re-renders the sidecar). For several stylistic tries append items with distinct filenames (`cover_bg_v2.png`).
+**Variant workflow**: set the item's `status` back to `Pending`, update its `prompt` in place, rerun the same resolved path (Path A reprocesses only that item; Path B regenerates it; Manual re-renders the sidecar). For several stylistic tries append items with distinct filenames (`cover_bg_v2.jpg`).
 
 ---
 

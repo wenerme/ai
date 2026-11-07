@@ -112,12 +112,13 @@ OpenAI backend notes:
 - `gpt-image-2.6-sunburst` and `gpt-image-2.6-flare` take the same handling as the 2.5 models below (sizes, `xhigh`/`max`, transparency, no `OPENAI_INPUT_FIDELITY`) and the same token rates, but have no Batch endpoint. Measured on 2026-11-05 at `1536x864`: `quality=medium` (the `1K` default) returned 924 output tokens versus 280 for 2.5; `high` returned 1078 for both ([models](https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst)).
 - Requests are sent with plain `requests.post()` to improve compatibility with
   OpenAI-compatible proxies that block the OpenAI SDK's `httpx` transport.
+- With `OPENAI_QUALITY` unset or `auto`, `image_size` also sets quality: `512px` low, `1K` medium, `2K` and `4K` high; set `OPENAI_QUALITY` to decouple them.
 - For `gpt-image-2`, `image_size=512px` means a low-quality draft preset, not a literal 512px edge. The model requires both edges to be multiples of 16px, a long:short ratio no greater than 3:1, and total pixels between 655,360 and 8,294,400. The 2.5 and 2.6 models share these rules and sizes; unlisted ratios are fitted to them, so `4:1` at 1K becomes `1776x592` (3:1).
 - `OPENAI_BACKGROUND=transparent` is supported by the 2.5 and 2.6 Sunburst and Flare models, including their published snapshots. For `gpt-image-2` it is in preview: a key without preview access gets HTTP 400 `Transparent background is not supported for this model.`, which fails the item without retries. Use PNG (the default) or WebP, not JPEG.
 - `OPENAI_QUALITY=xhigh` and `max` are accepted only for the 2.5 and 2.6 Sunburst and Flare models, including their published snapshots; older GPT Image models retain `auto/omit/low/medium/high`. See the [Images API parameters](https://developers.openai.com/api/reference/resources/images/methods/generate).
 - For reference edits, `OPENAI_INPUT_FIDELITY` accepts `high/low` on `gpt-image-1` and `gpt-image-1.5`, but only `low` on `gpt-image-1-mini`. Leave it unset for `gpt-image-2` and the 2.5 and 2.6 models (including snapshots); the API rejects it on 2.6 with HTTP 400, and this backend keeps the omission requirement for 2.5 because its support is not explicitly documented in the [edit API parameters](https://developers.openai.com/api/reference/resources/images/methods/edit).
 - OpenAI shut down `gpt-image-1` on 2026-10-23 and DALL·E 2/3 on 2026-05-12, and removes `gpt-image-1-mini`, `gpt-image-1.5` (including `gpt-image-1.5-2025-12-16`) and `chatgpt-image-latest` on 2026-12-01, naming the two 2.5 models as replacements. The backend keeps their size and option handling for OpenAI-compatible providers that still serve them; see [deprecations](https://developers.openai.com/api/docs/deprecations).
-- If `OPENAI_OUTPUT_FORMAT=jpeg` or `webp`, generated files use `.jpg` or `.webp` extensions instead of `.png`.
+- If `OPENAI_OUTPUT_FORMAT=jpeg` or `webp`, a filename without an extension is saved as `.jpg` or `.webp` instead of `.png`; an extension on the filename (every manifest item) still decides the saved format.
 - OpenAI-compatible providers that reject OpenAI-specific fields can use `OPENAI_RESPONSE_FORMAT=omit`, `OPENAI_QUALITY=omit`, and `OPENAI_SIZE_PRESET=<preset>`. Valid response formats are `auto`, `b64_json`, `url`, and `omit`; valid size presets are `auto`, `legacy`, `gpt-image`, `gpt-image-2`, and `dall-e-2`.
 
 Example `.env` for Agnes AI through the OpenAI-compatible backend:
@@ -156,7 +157,7 @@ MINIMAX_API_KEY=your-api-key
 
 ## `image_gen.py --manifest` runner and legacy manifest spellings
 
-Validates the file behind every `Generated` row before skipping it, iterates retryable rows with bounded adaptive concurrency, and writes each status atomically; a missing or corrupt file returns to `Failed`, and persistent rate limits end the run as retryable `Failed`. Options: `--concurrency` (default `IMAGE_CONCURRENCY` or 3; halves on rate limit, min 1), `--image_size`, `--output`/`-o`, `--backend`/`-b`, `--model`/`-m`, `--list-backends`. Interrupting is safe (completed items stay `Generated`); the Markdown sidecar re-renders on completion, or run `--render-md` after an interruption. Configuration: process environment first, then the first `.env` in cwd, the skill directory, the clone root, `~/.ppt-master/.env` — `IMAGE_BACKEND` (required; `--list-backends` shows the set and support tiers), `IMAGE_CONCURRENCY`, provider-specific `{PROVIDER}_API_KEY` / `_BASE_URL` / `_MODEL` (never `IMAGE_API_KEY` / `IMAGE_MODEL` / `IMAGE_BASE_URL`), and for OpenAI-compatible platforms `OPENAI_SIZE_PRESET` (`auto|legacy|gpt-image|gpt-image-2|dall-e-2`), `OPENAI_RESPONSE_FORMAT` (`auto|b64_json|url|omit`), `OPENAI_QUALITY` (`auto|omit|low|medium|high|xhigh|max|standard|hd`; `xhigh/max` only for the two 2.5 models and their snapshots) under `IMAGE_BACKEND=openai`; see `.env.example`. The single-image form `image_gen.py "prompt" --filename …` remains for ad-hoc re-rolls.
+Each item is written once in its filename's format, whatever the backend returns (a `.jpg` item as JPEG quality 90, a `.png` item as PNG). Validates the file behind every `Generated` row before skipping it, iterates retryable rows with bounded adaptive concurrency, and writes each status atomically; a missing or corrupt file returns to `Failed`, and persistent rate limits end the run as retryable `Failed`. Options: `--concurrency` (default `IMAGE_CONCURRENCY` or 3; halves on rate limit, min 1 — in manifest mode a backend returns a rate limit at once instead of retrying it, so the runner's halving and Retry-After pause act on the first 429; other transient errors keep the backend's own retries), `--image_size`, `--output`/`-o`, `--backend`/`-b`, `--model`/`-m`, `--list-backends`. Interrupting is safe (completed items stay `Generated`); the Markdown sidecar re-renders on completion, or run `--render-md` after an interruption. Configuration: process environment first, then the first `.env` in cwd, the skill directory, the clone root, `~/.ppt-master/.env` — `IMAGE_BACKEND` (required; `--list-backends` shows the set and support tiers), `IMAGE_CONCURRENCY`, provider-specific `{PROVIDER}_API_KEY` / `_BASE_URL` / `_MODEL` (never `IMAGE_API_KEY` / `IMAGE_MODEL` / `IMAGE_BASE_URL`), and for OpenAI-compatible platforms `OPENAI_SIZE_PRESET` (`auto|legacy|gpt-image|gpt-image-2|dall-e-2`), `OPENAI_RESPONSE_FORMAT` (`auto|b64_json|url|omit`), `OPENAI_QUALITY` (`auto|omit|low|medium|high|xhigh|max|standard|hd`; `xhigh/max` only for the two 2.5 models and their snapshots) under `IMAGE_BACKEND=openai`; see `.env.example`. The single-image form `image_gen.py "prompt" --filename …` remains for ad-hoc re-rolls.
 
 **Compatibility**: legacy `type` values read as `background` → `hero_page` + no type, `hero` → `hero_page` + Primitive A, `portrait` → `local` + Primitive B, `typography` → `hero_page` + `embedded` + Primitive C; a missing `page_role` is `local`, a missing `text_policy` is `none` (one aggregate warning per manifest); an existing manifest lacking `deck_rendering` or an item lacking `type` replays its assembled `prompt` verbatim without reconstruction; a legacy `deck_style_anchor` or `deck_palette` never overrides `deck_rendering` / `color_scheme`; legacy `page_role: full_page` reads as `hero_page`.
 
@@ -175,6 +176,10 @@ Before slicing, 16-bit grayscale is reduced to 8-bit by retaining each sample's
 high byte (`0..65535` → `0..255`), before RGB/RGBA conversion. This uses the
 encoded bit depth, never the image's observed brightness range. A PNG grayscale
 transparent sample is matched at full depth before reducing the color values.
+A sheet that already carries transparency (any pixel with alpha below 20, as
+an RGBA host or `OPENAI_BACKGROUND=transparent` output) is cut on its own alpha:
+`--trim` and `--alpha` use it, `--bg` is ignored, and `--strict-alpha` checks
+only for content reaching a cell edge.
 
 ## `image_treat.py`
 
@@ -216,7 +221,10 @@ python3 scripts/image_treat.py projects/demo title_art.png \
 Supported operations are brightness, contrast, desaturation/grayscale,
 duotone, Gaussian blur, and `--fit WxH` (downscale to fit inside a pixel
 box, aspect ratio and alpha preserved; never upscales). They compose in a
-fixed order: brightness → contrast → tone treatment → blur → fit. Desaturation, grayscale, and duotone are
+fixed order: brightness → contrast → tone treatment → blur → fit. For a cropped
+(cover) placement, pass the size the uncropped image takes when it covers the
+slot: a 1776x592 source cropped into a 920x228 slot takes `--fit 920x307`;
+`--fit 920x228` would leave 684x228 and force an upscale. Desaturation, grayscale, and duotone are
 mutually exclusive. At least one option must produce a real change; animated
 sources are rejected rather than reduced to one frame, while a camera
 multi-picture JPEG (MPO) contributes its primary frame.

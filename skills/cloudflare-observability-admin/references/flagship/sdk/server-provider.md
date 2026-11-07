@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/sdk/server-provider/og.png?v=f
 
 # TypeScript Server SDK
 
-Last updated Oct 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `FlagshipServerProvider` implements the OpenFeature server provider interface. The provider works in [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and any server-side JavaScript runtime that supports the Fetch API.
 
@@ -132,8 +132,46 @@ const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
 | `retryDelay` | `number` | No | Delay between retries in milliseconds. Defaults to `1000` and is capped at `30000`. |
 | `cacheTtl` | `number` | No | Cache TTL in milliseconds. Enables response caching when greater than `0`. |
 | `cacheMaxSize` | `number` | No | Maximum cached entries. Defaults to `1000` when `cacheTtl` is set. |
+| `localEvaluation` | `boolean` | No | Downloads flag definitions and evaluates flags in-process. Requires `accountId` and either `appId` or `endpoint`. Defaults to `false`. |
+| `refreshInterval` | `number` | No | Minimum time between local evaluation refreshes in milliseconds. Defaults to `30000`. |
 
 Provide either `binding` or `appId`, `accountId`, and `authToken`.
+
+## Local evaluation
+
+With local evaluation, the provider downloads the app's flag definitions and evaluates flags in-process. No network request is made per evaluation. Local evaluation works in Node.js, in Workers without a binding, and in other runtimes that support the Fetch API. It cannot be combined with a binding.
+
+Local evaluation requires an API token with Flagship Read or Flagship App Read permission. Local evaluations do not appear in Flagship analytics.
+
+```js
+await OpenFeature.setProviderAndWait(
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<READ_API_TOKEN>",
+		localEvaluation: true,
+		refreshInterval: 30_000,
+	}),
+);
+```
+
+```ts
+await OpenFeature.setProviderAndWait(
+	new FlagshipServerProvider({
+		appId: "<APP_ID>",
+		accountId: "<ACCOUNT_ID>",
+		authToken: "<READ_API_TOKEN>",
+		localEvaluation: true,
+		refreshInterval: 30_000,
+	}),
+);
+```
+
+The provider downloads the definitions when OpenFeature initializes it. If the first download fails, initialization fails and the provider reports the `ERROR` status. A `401` or `403` response reports `FATAL`.
+
+The provider refreshes definitions lazily. When an evaluation runs and the downloaded definitions are older than `refreshInterval`, the provider starts a refresh in the background and evaluates against the current definitions. If a refresh fails, the provider keeps serving the last downloaded definitions and emits the `PROVIDER_STALE` event. It emits `PROVIDER_READY` again when a refresh succeeds.
+
+`accountId` is always required. If you set `endpoint` instead of `appId`, the URL path must end in `/evaluate` so the provider can derive the definitions URL. Local evaluation cannot be combined with `cacheTtl` or `binding`.
 
 ## Response caching
 
@@ -241,5 +279,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/server-provider/#page","headline":"TypeScript Server SDK","description":"Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/server-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/server-provider/og.png?v=f318445dc0f36ef1","dateModified":"2026-10-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/server-provider/#page","headline":"TypeScript Server SDK","description":"Set up the FlagshipServerProvider to evaluate feature flags from Workers, Node.js, or other server-side JavaScript runtimes using OpenFeature.","url":"https://developers.cloudflare.com/flagship/sdk/server-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/server-provider/og.png?v=f318445dc0f36ef1","dateModified":"2026-11-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

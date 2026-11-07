@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 376 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 378 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -120,7 +120,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.0434,
+    "inputCost": 0.0487,
     "outputCost": 0.3
   },
   {
@@ -156,8 +156,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.1824,
-    "outputCost": 10.5539
+    "inputCost": 0.1539,
+    "outputCost": 10.1489
   },
   {
     "model": "kilo/~openai/gpt-astra-latest",
@@ -252,7 +252,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.0284,
+    "inputCost": 0.0285,
     "outputCost": 0.0923
   },
   {
@@ -644,7 +644,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 8192,
@@ -692,7 +692,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4000,
@@ -1224,8 +1224,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 235929,
-    "inputCost": 0.04,
-    "outputCost": 0.15
+    "inputCost": 0.027,
+    "outputCost": 0.08
   },
   {
     "model": "kilo/google/gemma-4-31b-it",
@@ -1480,6 +1480,30 @@ for await (const chunk of stream) {
     "outputCost": 0.7
   },
   {
+    "model": "kilo/liquid/lfm-3-1.7b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 8192,
+    "inputCost": 0.08,
+    "outputCost": 0.2
+  },
+  {
+    "model": "kilo/liquid/lfm-3-1.7b:free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 8192,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "kilo/mancer/weaver",
     "imageInput": false,
     "audioInput": false,
@@ -1726,8 +1750,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 198000,
-    "maxOutput": 32768,
+    "contextWindow": 65536,
+    "maxOutput": 58982,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -2940,8 +2964,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 65536,
-    "inputCost": 0.014,
-    "outputCost": 0.052
+    "inputCost": 0.02,
+    "outputCost": 0.073
   },
   {
     "model": "kilo/openai/gpt-oss-20b",
@@ -2953,7 +2977,7 @@ for await (const chunk of stream) {
     "contextWindow": 131072,
     "maxOutput": 117964,
     "inputCost": 0.004,
-    "outputCost": 0.018
+    "outputCost": 0.017
   },
   {
     "model": "kilo/openai/gpt-oss-safeguard-20b",
@@ -3936,8 +3960,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.0825,
-    "outputCost": 0.33
+    "inputCost": 0.132,
+    "outputCost": 0.528
   },
   {
     "model": "kilo/tencent/hy3-preview",
@@ -3972,8 +3996,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 64000,
-    "inputCost": 0.7506,
-    "outputCost": 2.2509
+    "inputCost": 0.834,
+    "outputCost": 2.501
   },
   {
     "model": "kilo/thedrummer/cydonia-24b-v4.1",

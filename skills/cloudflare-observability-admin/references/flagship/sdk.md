@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f
 
 # OpenFeature SDK
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Evaluate Flagship feature flags using OpenFeature.
 
@@ -22,9 +22,9 @@ Flagship provides official OpenFeature-compatible SDKs for TypeScript, Python, G
 
 | SDK | Package | Runtime | Evaluation modes |
 | --- | --- | --- | --- |
-| TypeScript | [`@cloudflare/flagship` ↗︎](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
-| Python | [`cloudflare-flagship` ↗︎](https://pypi.org/project/cloudflare-flagship/) | Python server applications | HTTP |
-| Go | [`github.com/cloudflare/flagship/sdks/go` ↗︎](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications | HTTP |
+| TypeScript | [`@cloudflare/flagship` ↗︎](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, local evaluation, browser prefetch cache |
+| Python | [`cloudflare-flagship` ↗︎](https://pypi.org/project/cloudflare-flagship/) | Python server applications | HTTP, local evaluation |
+| Go | [`github.com/cloudflare/flagship/sdks/go` ↗︎](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications | HTTP, local evaluation |
 | Rust | [`cloudflare-flagship` ↗︎](https://crates.io/crates/cloudflare-flagship) | Async Rust server applications | HTTP, local evaluation |
 
 ## SDKs
@@ -137,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, Go, and Rust applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/sdk/#page","headline":"OpenFeature SDK","description":"Use the official Flagship OpenFeature SDKs to evaluate feature flags from Workers, Node.js, browsers, Python, Go, and Rust applications.","url":"https://developers.cloudflare.com/flagship/sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/sdk/og.png?v=e2162f8929b4958f","dateModified":"2026-11-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
