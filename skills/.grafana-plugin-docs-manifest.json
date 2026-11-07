@@ -2121,8 +2121,8 @@
   },
   "grafana-slo-app/introduction.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/introduction.md",
-    "size": 7384,
-    "updatedAt": "2026-10-28T00:54:21.864Z"
+    "size": 6288,
+    "updatedAt": "2026-11-07T05:55:08.885Z"
   },
   "grafana-slo-app/maintenance-windows.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/maintenance-windows.md",

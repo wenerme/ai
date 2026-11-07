@@ -1,9 +1,14 @@
-# Code intelligence
+# Code intelligence (deprecated)
 
 Set up code intelligence using LSIF or SCIP indexers.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+> [!warning]
+> This feature was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/638863) in GitLab 19.7
+> and is planned for removal in 20.0. Use [code navigation](code_navigation.md) instead.
+> This change is a breaking change.
 
 Code intelligence adds features common to interactive
 development environments (IDE), including:
@@ -27,13 +32,6 @@ GitLab does not natively support SCIP for code intelligence. However, you can us
 [SCIP CLI](https://github.com/scip-code/scip/blob/main/docs/CLI.md) to convert
 indexes generated with SCIP tooling into a LSIF-compatible file. For discussions on native
 SCIP support, see [issue 412981](https://gitlab.com/gitlab-org/gitlab/-/issues/412981).
-
-For progress on upcoming code intelligence enhancements, see
-[epic 4212](https://gitlab.com/groups/gitlab-org/-/work_items/4212).
-
-GitLab also provides [code navigation](code_navigation.md), which reads the knowledge graph
-that GitLab Orbit builds from your code instead of an LSIF file, so it doesn't need an
-indexer or a CI/CD job.
 
 ## Configure code intelligence
 

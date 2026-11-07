@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 433 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 435 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1022,6 +1022,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 2.5,
     "outputCost": 10
+  },
+  {
+    "model": "llmgateway-providers/azure/gpt-4o-mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "llmgateway-providers/azure/gpt-4o-mini-transcribe",
@@ -2582,6 +2594,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.09,
     "outputCost": 0.28
+  },
+  {
+    "model": "llmgateway-providers/inference.net/kimi-k3.1-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "llmgateway-providers/inference.net/llama-3.2-11b-instruct",

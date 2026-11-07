@@ -16,6 +16,19 @@ Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-11-06
+
+
+**Review provider key activity in AI Gateway**
+
+AI Gateway now shows usage activity for your stored provider keys. Use this information to review credentials for rotation or removal.
+
+In **Provider Keys**, keys are grouped by provider with masked previews, aliases, and last-used and last-updated dates. The **Key security** section highlights keys with recorded activity older than 90 days. You can review these keys and delete them after checking their dependencies.
+
+Usage tracking starts November 2026.
+
+For details on storing, rotating, and removing provider keys, refer to [Bring your own keys](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
+
 ## 2026-11-04
 
 

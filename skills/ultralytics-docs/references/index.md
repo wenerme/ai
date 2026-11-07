@@ -58,6 +58,12 @@ Request an Enterprise License for commercial use at [Ultralytics Licensing](http
 
     [:octicons-arrow-right-24: Learn more](tasks/depth.md)
 
+!!! tip "🚀 New: High Resolution Tiling"
+
+    Train, validate, and predict on large images with fixed tiles across every vision task.
+
+    [:octicons-arrow-right-24: Learn more](guides/high-resolution-tiling.md)
+
 ## Get Started in Two Commands
 
 ```bash

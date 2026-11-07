@@ -46,6 +46,7 @@ To view the security dashboard for a project, a group, or an organization, you m
 ### Viewing the security dashboard
 
 - Organization security dashboard [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245508) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `organization_security_dashboard`. Disabled by default.
+- Organization security dashboard [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/605923) in GitLab 19.6.
 
 The security dashboard shows filterable charts and panels built with data from vulnerabilities detected in the default branch. Charts and panels include only open (needs triage or confirmed status) vulnerabilities and exclude those that are no longer detected.
 
@@ -111,6 +112,7 @@ supplies the following:
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245508) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `organization_security_dashboard`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/605923) in GitLab 19.6.
 
 The organization security dashboard provides an overview of vulnerabilities found in the default
 branches of all projects in the organization. The dashboard includes:
