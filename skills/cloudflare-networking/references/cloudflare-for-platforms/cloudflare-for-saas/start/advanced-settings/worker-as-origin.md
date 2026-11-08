@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for
 
 # Workers as your fallback origin
 
-Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are building your application on [Cloudflare Workers](https://developers.cloudflare.com/workers/), you can use a Worker as the origin for your SaaS zone (also known as your fallback origin).
 
@@ -31,7 +31,24 @@ When a visitor requests `mystore.customer.com`, Cloudflare routes that request t
 
 Note
 
-You do not need to add individual Worker routes for each custom hostname. The wildcard route pattern (`*/*`) automatically captures all traffic entering your zone, including traffic from customer vanity domains.
+You do not need a separate Worker route for each custom hostname. The `*/*` route matches all traffic entering your zone, but a more specific route can override it.
+
+### When customers also use Cloudflare
+
+When a customer enables Cloudflare proxying on a CNAME record pointing to your SaaS hostname, Worker routes can match that target hostname.
+
+For example, suppose `mystore.customer.com` points to `service.saasprovider.com`, with proxying enabled. Your SaaS zone has these routes:
+
+| Route | Worker |
+| --- | --- |
+| `*/*` | SaaS Worker |
+| `*.saasprovider.com/*` | None |
+
+The more specific `*.saasprovider.com/*` route matches the target hostname, so these requests bypass your Worker. If your fallback origin has no origin server, requests can fail with a `522` error.
+
+To send these requests to your Worker, add the route `service.saasprovider.com/*` and assign your SaaS Worker to it. Other hostnames covered by the exclusion will continue to bypass the Worker.
+
+For more information, refer to [how customer DNS proxy settings affect Worker routing](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/#o2o-behavior).
 
 ## Set up a Worker as your fallback origin
 
@@ -72,7 +89,7 @@ If you need per-hostname origin routing, implement it within your Worker using `
 
 ## Related resources
 
-- [Hostname routing](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/) - Learn about advanced routing patterns, including dispatch Workers and O2O behavior.
+- [Hostname routing](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/) - Route traffic with dispatch Workers and handle customers who also use Cloudflare.
 - [Workers routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) - Learn more about route pattern matching and validity rules.
 
 Was this helpful?
@@ -84,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/#page","headline":"Workers as your fallback origin","description":"Learn how to use a Worker as the fallback origin for your SaaS zone.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/og.png?v=152004ef47a578ea","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/#page","headline":"Workers as your fallback origin","description":"Learn how to use a Worker as the fallback origin for your SaaS zone.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/worker-as-origin/og.png?v=152004ef47a578ea","dateModified":"2026-11-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
