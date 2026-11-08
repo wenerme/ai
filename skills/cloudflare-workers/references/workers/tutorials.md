@@ -18,8 +18,8 @@ View tutorials to help you get started with Workers.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 6 days ago | Beginner |
-| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | last month | Intermediate |
+| [Migrate from Vercel to Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/) | 7 days ago | Beginner |
+| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 2 months ago | Intermediate |
 | [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 2 months ago | Intermediate |
 | [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/) | 5 months ago | Beginner |
 | [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 8 months ago | Intermediate |

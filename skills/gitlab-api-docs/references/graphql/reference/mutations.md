@@ -1463,7 +1463,7 @@ Replaces the Compliance Access Key of the Anthropic Compliance integration of a 
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Activates an Artifact Registry for an organization by claiming a slug.
+Activates an Artifact Registry for an organization by claiming a slug. Does not activate Artifact Registry if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryActivateInput`
 
@@ -1486,7 +1486,7 @@ Activates an Artifact Registry for an organization by claiming a slug.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes one artifact of an Artifact Registry repository. Permanently deletes a published artifact on a hosted repository and evicts a cached artifact on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result.
+Deletes one artifact of an Artifact Registry repository. Permanently deletes a published artifact on a hosted repository and evicts a cached artifact on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result. Does not delete the artifact if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryArtifactDeleteInput`
 
@@ -1510,7 +1510,7 @@ Deletes one artifact of an Artifact Registry repository. Permanently deletes a p
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes a container tag, identified by its name. Applies only to container repositories in Docker or OCI format. This mutation never reads the repository kind. Artifact Registry decides the outcome from its own records. On a hosted repository, deletion permanently removes the tag. On a remote repository, it evicts the cached tag reference. On a virtual repository, the request is passed through for Artifact Registry to decide. Deleting a tag never removes the manifest it pointed at. Artifact Registry accepts the request rather than completing it, so this mutation reports acceptance, not completion.
+Deletes a container tag, identified by its name. Applies only to container repositories in Docker or OCI format. This mutation never reads the repository kind. Artifact Registry decides the outcome from its own records. On a hosted repository, deletion permanently removes the tag. On a remote repository, it evicts the cached tag reference. On a virtual repository, the request is passed through for Artifact Registry to decide. Deleting a tag never removes the manifest it pointed at. Artifact Registry accepts the request rather than completing it, so this mutation reports acceptance, not completion. Does not delete the tag if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryContainerTagDeleteInput`
 
@@ -1535,7 +1535,7 @@ Deletes a container tag, identified by its name. Applies only to container repos
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Disables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization).
+Disables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization). Does not disable Artifact Registry if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryDisableInput`
 
@@ -1552,7 +1552,7 @@ Disables Artifact Registry for the organization resolved from the request contex
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Enables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization).
+Enables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization). Does not enable Artifact Registry if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryEnableInput`
 
@@ -1569,7 +1569,7 @@ Enables Artifact Registry for the organization resolved from the request context
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes a manifest, identified by its digest. Applies only to Docker or OCI container repositories, whose kind this mutation never reads. Artifact Registry decides the outcome from its records, permanently removing the manifest on a hosted repository, evicting the cached copy on a remote one, or passing the request through on a virtual one. Deleting a manifest removes tags pointing at it and index entries where it is the parent, though a manifest it indexed survives untagged. Artifact Registry accepts rather than completes the request, so this reports acceptance. Re-read the image's manifests afterward for the result. Deletion is refused if another manifest indexes the target as a child, and the error lists at most 10 blocking digests plus the total count.
+Deletes a manifest, identified by its digest. Applies only to Docker or OCI container repositories, whose kind this mutation never reads. Artifact Registry decides the outcome from its records, permanently removing the manifest on a hosted repository, evicting the cached copy on a remote one, or passing the request through on a virtual one. Deleting a manifest removes tags pointing at it and index entries where it is the parent, though a manifest it indexed survives untagged. Artifact Registry accepts rather than completes the request, so this reports acceptance. Re-read the image's manifests afterward for the result. Does not delete the manifest if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryManifestDeleteInput`
 
@@ -1577,7 +1577,7 @@ Deletes a manifest, identified by its digest. Applies only to Docker or OCI cont
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `digest` | [`String!`](scalars.md#string) | Content-addressable digest of the manifest, as returned by the `digest` field on a manifest. Limited to 512 characters. |
+| `digest` | [`String!`](scalars.md#string) | Content-addressable digest of the manifest, as returned by the `digest` field on a manifest. Limited to 512 characters. Deletion is refused if another manifest indexes this one as a child, and the error lists at most 10 blocking digests plus the total count. |
 | `imageId` | [`ID!`](scalars.md#id) | ID of the image holding the manifest in Artifact Registry, as returned by the `id` field on an image. Not a GitLab global ID. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the manifest, unique within the organization. |
 
@@ -1619,7 +1619,7 @@ Deletes up to 1000 manifests of one image, by digest. Applies to Docker and OCI 
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes one dist-tag of an npm package in an Artifact Registry repository, addressed by its Artifact Registry ID. Applies to npm repositories only. A non-npm repository is refused before any request reaches Artifact Registry, and the refusal appears in the payload errors. A remote repository is refused the same way, because Artifact Registry holds the dist-tags of a remote repository as a rewritten document rather than as individually addressable rows, so there is no dist-tag row to delete. Removes the dist-tag alone, never the version it named. The mutation reports acceptance rather than completion.
+Deletes one dist-tag of an npm package in an Artifact Registry repository, addressed by its Artifact Registry ID. Applies to npm repositories only. A non-npm repository is refused before any request reaches Artifact Registry, and the refusal appears in the payload errors. A remote repository is refused the same way, because Artifact Registry holds the dist-tags of a remote repository as a rewritten document rather than as individually addressable rows, so there is no dist-tag row to delete. Removes the dist-tag alone, never the version it named. The mutation reports acceptance rather than completion. Does not delete the dist-tag if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryNpmDistTagDeleteInput`
 
@@ -1643,7 +1643,7 @@ Deletes one dist-tag of an npm package in an Artifact Registry repository, addre
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes every artifact of an Artifact Registry repository. Permanently deletes published artifacts on a hosted repository and evicts cached artifacts on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result.
+Deletes every artifact of an Artifact Registry repository. Permanently deletes published artifacts on a hosted repository and evicts cached artifacts on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result. Does not delete the artifacts if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryRepositoryArtifactsDeleteInput`
 
@@ -1666,7 +1666,7 @@ Deletes every artifact of an Artifact Registry repository. Permanently deletes p
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
-Creates a repository in Artifact Registry.
+Creates a repository in Artifact Registry. Does not create the repository if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryRepositoryCreateInput`
 
@@ -1696,7 +1696,7 @@ Creates a repository in Artifact Registry.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
-Deletes a repository in Artifact Registry and removes every artifact it holds. Deleting an already-absent repository still succeeds.
+Deletes a repository in Artifact Registry and removes every artifact it holds. Deleting an already-absent repository still succeeds. Does not delete the repository if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryRepositoryDeleteInput`
 
@@ -1718,7 +1718,7 @@ Deletes a repository in Artifact Registry and removes every artifact it holds. D
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Tests the upstream connection of a remote repository in Artifact Registry.
+Tests the upstream connection of a remote repository in Artifact Registry. Does not test the connection if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryRepositoryTestConnectionInput`
 
@@ -1744,7 +1744,7 @@ Tests the upstream connection of a remote repository in Artifact Registry.
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3.
 
-Updates a repository in Artifact Registry. Artifact Registry writes the metadata fields and the settings in one transaction, so a failed update applies none of the changes.
+Updates a repository in Artifact Registry. Artifact Registry writes the metadata fields and the settings in one transaction, so a failed update applies none of the changes. Does not update the repository if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryRepositoryUpdateInput`
 
@@ -1865,7 +1865,7 @@ Revokes a user's Artifact Registry role on a resource. Names no role: a user hol
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.
 
-Removes an upstream repository association from a virtual repository in Artifact Registry. The upstream repository and its artifacts remain unchanged, and Artifact Registry compacts the remaining upstream positions. Succeeds even when the association is already gone, or the repository is missing, inaccessible, not virtual, or not of the given format.
+Removes an upstream repository association from a virtual repository in Artifact Registry. The upstream repository and its artifacts remain unchanged, and Artifact Registry compacts the remaining upstream positions. Succeeds even when the association is already gone, or the repository is missing, inaccessible, not virtual, or not of the given format. Does not remove the association if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryUpstreamRepositoryDissociateInput`
 
@@ -1889,7 +1889,7 @@ Removes an upstream repository association from a virtual repository in Artifact
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Tests a supplied upstream connection for the remote repository create form in Artifact Registry, before any repository exists to hold it.
+Tests a supplied upstream connection for the remote repository create form in Artifact Registry, before any repository exists to hold it. Does not test the connection if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryUpstreamTestConnectionInput`
 
@@ -1915,7 +1915,7 @@ Tests a supplied upstream connection for the remote repository create form in Ar
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.4.
 
-Deletes one version of a package in an Artifact Registry repository. Permanently deletes a published version on a hosted repository and evicts a cached version on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the version list to see the result. Applies to Maven and npm repositories only.
+Deletes one version of a package in an Artifact Registry repository. Permanently deletes a published version on a hosted repository and evicts a cached version on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the version list to see the result. Applies to Maven and npm repositories only. Does not delete the version if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryVersionDeleteInput`
 
@@ -1939,7 +1939,7 @@ Deletes one version of a package in an Artifact Registry repository. Permanently
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.
 
-Deletes up to 1000 versions of one package in an Artifact Registry repository, each with its files. Permanently deletes published versions on a hosted repository and evicts cached versions on a remote repository. A virtual repository holds no versions, so the mutation returns not found in `errors`. Artifact Registry applies the batch in the background, so the mutation reports acceptance rather than completion, and a version can still be listed until the batch reaches it. Re-read the version list to see the result. IDs that name no version of the package are ignored. On a hosted npm repository, deleting a version also removes its dist-tags, and deleting a package's last version removes the package. Applies to Maven and npm repositories only.
+Deletes up to 1000 versions of one package in an Artifact Registry repository, each with its files. Permanently deletes published versions on a hosted repository and evicts cached versions on a remote repository. A virtual repository holds no versions, so the mutation returns not found in `errors`. Artifact Registry applies the batch in the background, so the mutation reports acceptance rather than completion, and a version can still be listed until the batch reaches it. Re-read the version list to see the result. On a hosted npm repository, deleting a version also removes its dist-tags, and deleting a package's last version removes the package. Applies to Maven and npm repositories only. Does not delete versions if the `artifact_registry_ui` feature flag is disabled.
 
 **Input type:** `ArtifactRegistryVersionsBulkDeleteInput`
 
@@ -1947,7 +1947,7 @@ Deletes up to 1000 versions of one package in an Artifact Registry repository, e
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `ids` | [`[ID!]!`](scalars.md#id) | IDs of the versions to delete in Artifact Registry, as returned by the `id` field on a version. Not GitLab global IDs. Takes 1 to 1000 entries, and a repeated ID counts toward the limit. |
+| `ids` | [`[ID!]!`](scalars.md#id) | IDs of the versions to delete in Artifact Registry, as returned by the `id` field on a version. Not GitLab global IDs. Takes 1 to 1000 entries, and a repeated ID counts toward the limit. IDs that name no version of the package are ignored. Pass the list as a variable: the query text is limited to 10,000 characters. |
 | `name` | [`String!`](scalars.md#string) | Name of the repository holding the package, unique within the organization. |
 | `packageId` | [`ID!`](scalars.md#id) | ID of the package holding the versions in Artifact Registry, as returned by the `id` field on a package. Not a GitLab global ID. |
 
