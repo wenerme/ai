@@ -5,7 +5,7 @@ description: "Browse Novita AI model IDs, capabilities, context windows, and pri
 
 # [Novita AI logo]Novita AI
 
-Access 89 Novita AI models through Mastra's model router. Authentication is handled automatically using the `NOVITA_API_KEY` environment variable.
+Access 91 Novita AI models through Mastra's model router. Authentication is handled automatically using the `NOVITA_API_KEY` environment variable.
 
 Learn more in the [Novita AI documentation](https://novita.ai/docs/guides/introduction).
 
@@ -904,6 +904,18 @@ for await (const chunk of stream) {
     "outputCost": 0.58
   },
   {
+    "model": "novita-ai/tencent/hy4",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 64000,
+    "inputCost": 0.417,
+    "outputCost": 1.2505
+  },
+  {
     "model": "novita-ai/tencent/hy4-preview",
     "imageInput": false,
     "audioInput": false,
@@ -1106,6 +1118,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.5
+  },
+  {
+    "model": "novita-ai/zai-org/glm-5.3-flashX",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.37,
+    "outputCost": 1.25
   }
 ]}
 />
@@ -1144,7 +1168,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "novita-ai/zai-org/glm-5.3-flash"
+      ? "novita-ai/zai-org/glm-5.3-flashX"
       : "novita-ai/apodex/apodex-1.1-mini";
   }
 });

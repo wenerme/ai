@@ -940,13 +940,11 @@ puts(second.output_text)
 
 ### Keeping reasoning items in context
 
-When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/reference/resources/responses), we highly recommend you pass back any reasoning items returned with the last function call (in addition to the output of your function). If the model calls multiple functions consecutively, you should pass back all reasoning items, function call items, and function call output items, since the last `user` message. This allows the model to continue its reasoning process to produce better results in the most token-efficient manner.
+When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/reference/resources/responses), pass back the reasoning items returned with the function calls along with the tool outputs. This lets the model continue reasoning after a tool call.
 
-The simplest way to do this is to pass in all reasoning items from a previous response into the next one. Our systems will smartly ignore any reasoning items that aren't relevant to your functions, and only retain those in context that are relevant. You can pass reasoning items from previous responses either using the `previous_response_id` parameter, or by manually passing in all the [output](https://developers.openai.com/api/reference/resources/responses#responses/object-output) items from a past response into the [input](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-input) of a new one.
+You can carry reasoning items forward using `previous_response_id`. If you manage conversation history yourself, include the original input and all [output](https://developers.openai.com/api/reference/resources/responses#responses/object-output) items from each response in the [input](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-input) of the next request. Keep those items in their original order and append new items.
 
-For advanced use cases where you might be truncating and optimizing parts of the context window before passing them on to the next response, just ensure all items between the last user message and your function call output are passed into the next response untouched. This will ensure that the model has all the context it needs.
-
-Check out [this guide](https://developers.openai.com/api/docs/guides/conversation-state) to learn more about manual context management.
+For newer frontier models, changes to the history preceding a reasoning item can cause the API to drop that reasoning. See [Preserved reasoning](https://developers.openai.com/api/docs/guides/preserved-reasoning) for guidance on changing instructions and tool outputs, and managing long conversations.
 
 ## Change reasoning mid-conversation
 

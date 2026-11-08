@@ -439,15 +439,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Sat, 07 Nov 2026 04:12:59 GMT",
-    "size": 289837,
-    "updatedAt": "2026-11-07T05:42:59.555Z"
+    "lastModified": "Sat, 07 Nov 2026 19:47:47 GMT",
+    "size": 289919,
+    "updatedAt": "2026-11-08T05:44:26.711Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Fri, 06 Nov 2026 05:17:14 GMT",
-    "size": 66755,
-    "updatedAt": "2026-11-06T06:14:30.527Z"
+    "lastModified": "Sat, 07 Nov 2026 20:04:45 GMT",
+    "size": 67000,
+    "updatedAt": "2026-11-08T05:44:27.036Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -523,9 +523,9 @@
   },
   "mcp.md": {
     "url": "https://code.claude.com/docs/en/mcp",
-    "lastModified": "Sat, 07 Nov 2026 04:13:38 GMT",
-    "size": 156847,
-    "updatedAt": "2026-11-07T05:43:04.380Z"
+    "lastModified": "Sat, 07 Nov 2026 19:48:56 GMT",
+    "size": 157203,
+    "updatedAt": "2026-11-08T05:44:31.248Z"
   },
   "mcp-quickstart.md": {
     "url": "https://code.claude.com/docs/en/mcp-quickstart",

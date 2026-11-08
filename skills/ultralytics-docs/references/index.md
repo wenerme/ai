@@ -20,6 +20,7 @@ keywords: Ultralytics, YOLO, YOLO26, YOLO11, object detection, image segmentatio
 <a href="https://docs.ultralytics.com/fr">Français</a> ·
 <a href="https://docs.ultralytics.com/es">Español</a> ·
 <a href="https://docs.ultralytics.com/pt">Português</a> ·
+<a href="https://docs.ultralytics.com/it">Italiano</a> ·
 <a href="https://docs.ultralytics.com/tr">Türkçe</a> ·
 <a href="https://docs.ultralytics.com/vi">Tiếng Việt</a> ·
 <a href="https://docs.ultralytics.com/ar">العربية</a>
@@ -51,6 +52,12 @@ Request an Enterprise License for commercial use at [Ultralytics Licensing](http
 !!! info "YOLO27 is coming soon"
 
     Explore the [YOLO27 preview](models/yolo27.md), including architecture details, preliminary benchmarks, and examples for use after release. Models are undergoing final R&D for an anticipated launch later this year; they are not yet available, and no launch date is set.
+
+!!! tip "🚀 New: Scene Text OCR"
+
+    Detect and recognize scene text with YOLO26-Text using PaddleOCR or your own recognition model.
+
+    [:octicons-arrow-right-24: Learn more](guides/ocr.md)
 
 !!! tip "🚀 New: Monocular Depth Estimation"
 

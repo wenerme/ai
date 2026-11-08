@@ -8,7 +8,7 @@ Add an external key config for an organization
 
 Content type: `application/json`
 
-- `body: Aws { external_id, kms_arn, name, 3 more }  or Gcp { audience, kms_key_location, kms_key_name, 9 more }  or Azure { key_name, name, tenant_id, 4 more }`
+- `body: Aws { external_id, kms_arn, name, 3 more }  or Gcp { audience, kms_key_location, kms_key_name, 9 more }  or Azure { key_name, name, tenant_id, 4 more }  or Oci { key_ocid, name, region, 4 more }`
 
   - `Aws object { external_id, kms_arn, name, 3 more }`
 
@@ -136,9 +136,49 @@ Content type: `application/json`
 
       - `"psp_decryption"`
 
+  - `Oci object { key_ocid, name, region, 4 more }`
+
+    - `key_ocid: string`
+
+      The OCI Vault key OCID
+
+      `minLength: 1`, `maxLength: 512`
+
+    - `name: string`
+
+      A friendly name to identify this config
+
+    - `region: string`
+
+      The OCI region containing the vault
+
+      `minLength: 1`, `maxLength: 64`
+
+    - `type: "oci" (default: "oci")`
+
+      - `"oci"`
+
+    - `vault_ocid: string`
+
+      The customer OCI Vault OCID
+
+      `minLength: 1`, `maxLength: 512`
+
+    - `key_version_ocid: optional string`
+
+      The exact OCI key version OCID for PSP decryption.
+
+      `minLength: 1`, `maxLength: 512`
+
+    - `purpose: optional "ekm" or "psp_decryption"`
+
+      - `"ekm"`
+
+      - `"psp_decryption"`
+
 ### Returns
 
-- `ExternalKey object { id, api_project_ids, created_at, 21 more }`
+- `ExternalKey object { id, api_project_ids, created_at, 25 more }`
 
   - `id: string`
 
@@ -160,7 +200,11 @@ Content type: `application/json`
 
   - `key_name: optional string`
 
+  - `key_ocid: optional string`
+
   - `key_version: optional string`
+
+  - `key_version_ocid: optional string`
 
   - `kms_arn: optional string`
 
@@ -180,9 +224,13 @@ Content type: `application/json`
 
     - `"psp_decryption"`
 
+  - `region: optional string`
+
   - `role_arn: optional string`
 
   - `tenant_id: optional string`
+
+  - `vault_ocid: optional string`
 
   - `vault_uri: optional string`
 
@@ -223,7 +271,9 @@ curl https://api.openai.com/v1/organization/external_keys \
   "audience": "audience",
   "external_id": "external_id",
   "key_name": "key_name",
+  "key_ocid": "key_ocid",
   "key_version": "key_version",
+  "key_version_ocid": "key_version_ocid",
   "kms_arn": "kms_arn",
   "kms_key_location": "kms_key_location",
   "kms_key_name": "kms_key_name",
@@ -231,8 +281,10 @@ curl https://api.openai.com/v1/organization/external_keys \
   "kms_key_version": "kms_key_version",
   "kms_project_id": "kms_project_id",
   "purpose": "ekm",
+  "region": "region",
   "role_arn": "role_arn",
   "tenant_id": "tenant_id",
+  "vault_ocid": "vault_ocid",
   "vault_uri": "vault_uri",
   "workload_identity_pool_id": "workload_identity_pool_id",
   "workload_identity_project_number": "workload_identity_project_number",

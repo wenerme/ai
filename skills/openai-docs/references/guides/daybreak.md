@@ -12,6 +12,14 @@ All Daybreak Red organizations must [require SSO](https://help.openai.com/en/art
 
 The `model` field selects the model. The `access_programs.cyber` field selects a supported access program for that request: `standard`, `daybreak_blue`, or `daybreak_red`.
 
+Only organizations with existing access can use `gpt-5.5-cyber-preview`. It
+  retires on **February 1, 2027**. Requests that use this model will fail after
+  retirement. If you use it, change the `model` field to `gpt-5.6-cyber` before
+  that date. If your organization has approval for `gpt-6-cyber`, follow the
+  [setup instructions](#set-up-gpt-6-cyber) to switch to it instead. Confirm
+  your project has access to the replacement before switching. See [API
+  deprecations](https://developers.openai.com/api/docs/deprecations#2026-11-05-gpt-55-cyber).
+
 
 
   <table>
@@ -43,7 +51,7 @@ GPT-6.1 Sol
 GPT-6 Astra
 
             
-GPT-5.5-Cyber
+GPT-5.5-Cyber (existing access only)
 
             
 GPT-5.6-Cyber

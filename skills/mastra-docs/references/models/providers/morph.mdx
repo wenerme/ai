@@ -5,7 +5,7 @@ description: "Browse Morph model IDs, capabilities, context windows, and pricing
 
 # [Morph logo]Morph
 
-Access 11 Morph models through Mastra's model router. Authentication is handled automatically using the `MORPH_API_KEY` environment variable.
+Access 12 Morph models through Mastra's model router. Authentication is handled automatically using the `MORPH_API_KEY` environment variable.
 
 Learn more in the [Morph documentation](https://docs.morphllm.com).
 
@@ -146,6 +146,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 6,
     "outputCost": 22.5
+  },
+  {
+    "model": "morph/morph-kimik31",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 2.5,
+    "outputCost": 14
   },
   {
     "model": "morph/morph-v3-fast",

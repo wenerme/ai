@@ -1270,7 +1270,7 @@ USE THIS SKILL WHEN working with HuggingFace Transformers: loading/fine-tuning p
 npx skills add wenerme/ai --skill ui-ux-pro-max
 ```
 
-UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.
+UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 192 product palettes and reasoning profiles, 74 font pairings, 120 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.
 
 </details>
 <details>
@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 54499 files, 548 MiB total
+> 125 skills, 54501 files, 548 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1419,7 +1419,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [biome-docs](./skills/biome-docs/SKILL.md) | 961 | 12 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
-| [bun-docs](./skills/bun-docs/SKILL.md) | 1391 | 4.4 MiB |
+| [bun-docs](./skills/bun-docs/SKILL.md) | 1391 | 4.5 MiB |
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.4 KiB |
@@ -1472,7 +1472,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
-| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 55 | 523 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 55 | 524 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 40 | 190 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 13 | 96 KiB |
@@ -1483,7 +1483,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
 | [openai-api](./skills/openai-api/SKILL.md) | 668 | 46 MiB |
-| [openai-docs](./skills/openai-docs/SKILL.md) | 260 | 5.7 MiB |
+| [openai-docs](./skills/openai-docs/SKILL.md) | 261 | 5.7 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 38 | 392 KiB |
@@ -1501,7 +1501,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [shadcn](./skills/shadcn/SKILL.md) | 21 | 155 KiB |
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
-| [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 76 | 783 KiB |
+| [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 76 | 809 KiB |
 | [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 400 KiB |
 | [storybook-docs](./skills/storybook-docs/SKILL.md) | 872 | 4.0 MiB |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | 71 | 1.3 MiB |
@@ -1512,11 +1512,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 180 | 1.4 MiB |
-| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 74 | 3.4 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 538 | 5.0 MiB |
+| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 75 | 3.4 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 540 | 5.0 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 552 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 231 | 1.5 MiB |
-| [vllm-docs](./skills/vllm-docs/SKILL.md) | 187 | 1.9 MiB |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | 185 | 1.9 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 57 | 318 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 40 | 317 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
