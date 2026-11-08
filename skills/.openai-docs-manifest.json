@@ -658,10 +658,10 @@
   "openai-docs/guides/compaction.md": {
     "url": "https://developers.openai.com/api/docs/guides/compaction.md",
     "skill": "openai-docs",
-    "etag": "W/\"f00fecfc4a5f8a99bc4ce75a03ab8b88\"",
-    "lastModified": "Sat, 31 Oct 2026 23:36:56 GMT",
-    "size": 14718,
-    "updatedAt": "2026-11-01T00:47:36.282Z"
+    "etag": "W/\"a32f76a1fadcc0bfb4716f6981774a60\"",
+    "lastModified": "Sun, 08 Nov 2026 02:15:13 GMT",
+    "size": 14885,
+    "updatedAt": "2026-11-08T05:50:18.375Z"
   },
   "openai-docs/guides/completions.md": {
     "url": "https://developers.openai.com/api/docs/guides/completions.md",
@@ -682,10 +682,10 @@
   "openai-docs/guides/conversation-state.md": {
     "url": "https://developers.openai.com/api/docs/guides/conversation-state.md",
     "skill": "openai-docs",
-    "etag": "W/\"152f0b1a1f722813ee7e429c338309d4\"",
-    "lastModified": "Mon, 12 Oct 2026 02:28:55 GMT",
-    "size": 24941,
-    "updatedAt": "2026-10-12T05:43:45.360Z"
+    "etag": "W/\"f56452d80f556f0605417888609ee72c\"",
+    "lastModified": "Sun, 08 Nov 2026 02:15:13 GMT",
+    "size": 25175,
+    "updatedAt": "2026-11-08T05:50:19.066Z"
   },
   "openai-docs/guides/cost-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/cost-optimization.md",
@@ -730,10 +730,10 @@
   "openai-docs/guides/daybreak.md": {
     "url": "https://developers.openai.com/api/docs/guides/daybreak.md",
     "skill": "openai-docs",
-    "etag": "W/\"35839a0f1fe653848cc2b9eb3d946579\"",
-    "lastModified": "Thu, 05 Nov 2026 17:59:08 GMT",
-    "size": 9562,
-    "updatedAt": "2026-11-05T18:06:01.881Z"
+    "etag": "W/\"2e1ff08c25764867d08596220fb7a42c\"",
+    "lastModified": "Sun, 08 Nov 2026 02:05:03 GMT",
+    "size": 10142,
+    "updatedAt": "2026-11-08T05:50:20.443Z"
   },
   "openai-docs/guides/decisions-voice.md": {
     "url": "https://developers.openai.com/api/docs/guides/decisions-voice.md",
@@ -858,10 +858,10 @@
   "openai-docs/guides/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/function-calling.md",
     "skill": "openai-docs",
-    "etag": "W/\"c302c0ffcf5f738bc839e82b25da4e70\"",
-    "lastModified": "Mon, 02 Nov 2026 20:00:46 GMT",
-    "size": 76993,
-    "updatedAt": "2026-11-02T20:22:39.731Z"
+    "etag": "W/\"c3908a3d5bba3168dafd688df059ce1c\"",
+    "lastModified": "Sun, 08 Nov 2026 02:05:33 GMT",
+    "size": 77155,
+    "updatedAt": "2026-11-08T05:50:24.153Z"
   },
   "openai-docs/guides/google-cloud.md": {
     "url": "https://developers.openai.com/api/docs/guides/google-cloud.md",
@@ -1071,6 +1071,14 @@
     "size": 17805,
     "updatedAt": "2026-11-02T20:22:45.883Z"
   },
+  "openai-docs/guides/preserved-reasoning.md": {
+    "url": "https://developers.openai.com/api/docs/guides/preserved-reasoning.md",
+    "skill": "openai-docs",
+    "etag": "W/\"b9927237960c0a1dba27a3836f5ec018\"",
+    "lastModified": "Sun, 08 Nov 2026 02:07:41 GMT",
+    "size": 6884,
+    "updatedAt": "2026-11-08T05:50:30.534Z"
+  },
   "openai-docs/guides/private-link.md": {
     "url": "https://developers.openai.com/api/docs/guides/private-link.md",
     "skill": "openai-docs",
@@ -1258,10 +1266,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"36dd9d4afb0f57b029b82b0db1d3b8f7\"",
-    "lastModified": "Sun, 01 Nov 2026 04:12:21 GMT",
-    "size": 70917,
-    "updatedAt": "2026-11-01T10:20:43.593Z"
+    "etag": "W/\"e83ade2a55d9caf82f3c1f31ca295308\"",
+    "lastModified": "Sun, 08 Nov 2026 02:06:22 GMT",
+    "size": 70293,
+    "updatedAt": "2026-11-08T05:50:36.295Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",
@@ -1868,18 +1876,18 @@
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",
     "skill": "openai-api",
-    "etag": "W/\"77eaeac22cc3c168e0d5aeb3359f4f88\"",
-    "lastModified": "Wed, 04 Nov 2026 06:04:37 GMT",
-    "size": 906385,
-    "updatedAt": "2026-11-04T06:04:37.252Z"
+    "etag": "W/\"1f9729bb3d2e890a1314470096a9b609\"",
+    "lastModified": "Sun, 08 Nov 2026 05:50:54 GMT",
+    "size": 908345,
+    "updatedAt": "2026-11-08T05:50:54.585Z"
   },
   "openai-api/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/index.md",
     "skill": "openai-api",
-    "etag": "W/\"987c808b8629e0cd7b6f07026f5df34b\"",
-    "lastModified": "Wed, 04 Nov 2026 06:04:37 GMT",
-    "size": 906376,
-    "updatedAt": "2026-11-04T06:04:37.726Z"
+    "etag": "W/\"a435abc11c074a6770a9106d9672bf0a\"",
+    "lastModified": "Sun, 08 Nov 2026 05:50:54 GMT",
+    "size": 908336,
+    "updatedAt": "2026-11-08T05:50:54.926Z"
   },
   "openai-api/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -2028,42 +2036,42 @@
   "openai-api/admin/organization/external_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/index.md",
     "skill": "openai-api",
-    "etag": "W/\"adc841b30a137b542ad9337a408a0f54\"",
-    "lastModified": "Sat, 31 Oct 2026 00:41:32 GMT",
-    "size": 14573,
-    "updatedAt": "2026-10-31T00:41:32.884Z"
+    "etag": "W/\"ad81e2e41e4fcfb88ed429ff6db2b8a1\"",
+    "lastModified": "Sun, 08 Nov 2026 05:50:59 GMT",
+    "size": 16533,
+    "updatedAt": "2026-11-08T05:50:59.327Z"
   },
   "openai-api/admin/organization/external_keys/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/methods/create/index.md",
     "skill": "openai-api",
-    "etag": "W/\"f967efc3c43265691cb99d6eaa16ce54\"",
-    "lastModified": "Sat, 31 Oct 2026 00:41:33 GMT",
-    "size": 5718,
-    "updatedAt": "2026-10-31T00:41:33.265Z"
+    "etag": "W/\"202ffe1d2cb62cf51cb7287396a8fab0\"",
+    "lastModified": "Sun, 08 Nov 2026 05:50:59 GMT",
+    "size": 6742,
+    "updatedAt": "2026-11-08T05:50:59.587Z"
   },
   "openai-api/admin/organization/external_keys/delete.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/methods/delete/index.md",
     "skill": "openai-api",
-    "etag": "W/\"9447ac2107b29b3cf3b3b16cd84a2379\"",
-    "lastModified": "Thu, 29 Oct 2026 10:27:47 GMT",
-    "size": 2222,
-    "updatedAt": "2026-10-29T10:27:47.533Z"
+    "etag": "W/\"9d3d7e2533c76019d671d0352dbc858e\"",
+    "lastModified": "Sun, 08 Nov 2026 05:50:59 GMT",
+    "size": 2482,
+    "updatedAt": "2026-11-08T05:50:59.849Z"
   },
   "openai-api/admin/organization/external_keys/list.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/methods/list/index.md",
     "skill": "openai-api",
-    "etag": "W/\"adcc94db167d8fd3678989b4df16dc17\"",
-    "lastModified": "Thu, 29 Oct 2026 10:27:47 GMT",
-    "size": 2796,
-    "updatedAt": "2026-10-29T10:27:47.995Z"
+    "etag": "W/\"ff47fe57e048140cc1ee71b7641bd1ae\"",
+    "lastModified": "Sun, 08 Nov 2026 05:51:00 GMT",
+    "size": 3072,
+    "updatedAt": "2026-11-08T05:51:00.148Z"
   },
   "openai-api/admin/organization/external_keys/retrieve.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/methods/retrieve/index.md",
     "skill": "openai-api",
-    "etag": "W/\"740c8318f60434063eb8f66d851ae77b\"",
-    "lastModified": "Thu, 29 Oct 2026 10:27:48 GMT",
-    "size": 2198,
-    "updatedAt": "2026-10-29T10:27:48.438Z"
+    "etag": "W/\"44e0f6005d0487be519e72e13276400c\"",
+    "lastModified": "Sun, 08 Nov 2026 05:51:00 GMT",
+    "size": 2458,
+    "updatedAt": "2026-11-08T05:51:00.412Z"
   },
   "openai-api/admin/organization/external_keys/validate.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/external_keys/methods/validate/index.md",

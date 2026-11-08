@@ -10,7 +10,7 @@ Delete an external key config for the user's organization
 
 ### Returns
 
-- `ExternalKey object { id, api_project_ids, created_at, 21 more }`
+- `ExternalKey object { id, api_project_ids, created_at, 25 more }`
 
   - `id: string`
 
@@ -32,7 +32,11 @@ Delete an external key config for the user's organization
 
   - `key_name: optional string`
 
+  - `key_ocid: optional string`
+
   - `key_version: optional string`
+
+  - `key_version_ocid: optional string`
 
   - `kms_arn: optional string`
 
@@ -52,9 +56,13 @@ Delete an external key config for the user's organization
 
     - `"psp_decryption"`
 
+  - `region: optional string`
+
   - `role_arn: optional string`
 
   - `tenant_id: optional string`
+
+  - `vault_ocid: optional string`
 
   - `vault_uri: optional string`
 
@@ -88,7 +96,9 @@ curl https://api.openai.com/v1/organization/external_keys/$EXTERNAL_KEY_ID \
   "audience": "audience",
   "external_id": "external_id",
   "key_name": "key_name",
+  "key_ocid": "key_ocid",
   "key_version": "key_version",
+  "key_version_ocid": "key_version_ocid",
   "kms_arn": "kms_arn",
   "kms_key_location": "kms_key_location",
   "kms_key_name": "kms_key_name",
@@ -96,8 +106,10 @@ curl https://api.openai.com/v1/organization/external_keys/$EXTERNAL_KEY_ID \
   "kms_key_version": "kms_key_version",
   "kms_project_id": "kms_project_id",
   "purpose": "ekm",
+  "region": "region",
   "role_arn": "role_arn",
   "tenant_id": "tenant_id",
+  "vault_ocid": "vault_ocid",
   "vault_uri": "vault_uri",
   "workload_identity_pool_id": "workload_identity_pool_id",
   "workload_identity_project_number": "workload_identity_project_number",

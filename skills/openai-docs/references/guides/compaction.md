@@ -8,6 +8,8 @@ To support long-running interactions, you can use compaction to reduce context
 size while preserving state needed for subsequent turns.
 
 Compaction helps you balance quality, cost, and latency as conversations grow.
+For guidance on preserving reasoning when changing conversation history, see
+[Preserved reasoning](https://developers.openai.com/api/docs/guides/preserved-reasoning).
 
 ## Server-side compaction
 

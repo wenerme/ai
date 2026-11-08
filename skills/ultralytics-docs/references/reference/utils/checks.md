@@ -82,6 +82,10 @@ keywords: Ultralytics, YOLO, utility functions, version checks, requirements, im
 
 <hr>
 
+## ::: ultralytics.utils.checks.check_paddle
+
+<hr>
+
 ## ::: ultralytics.utils.checks.check_suffix
 
 <hr>
