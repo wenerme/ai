@@ -1635,6 +1635,42 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
     - `"event"`
 
+### Live Transport Connected Webhook Event
+
+- `LiveTransportConnectedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when a direct Live WebRTC session is created or an Instant Connect session activates. Use its session ID to attach a sideband observer.
+
+  - `id: string`
+
+    The webhook event ID.
+
+  - `created_at: integer`
+
+    Unix time in seconds when the event was created.
+
+    `format: unixtime`
+
+  - `data: object { session_id, type }`
+
+    - `session_id: string`
+
+      The Live session ID to use with the sideband attach endpoint.
+
+    - `type: "webrtc"`
+
+      The session transport.
+
+      - `"webrtc"`
+
+  - `object: "event"`
+
+    - `"event"`
+
+  - `type: "live.transport.connected"`
+
+    - `"live.transport.connected"`
+
 ### Live Transport Incoming Webhook Event
 
 - `LiveTransportIncomingWebhookEvent object { id, created_at, data, 2 more }`
@@ -2074,7 +2110,7 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = AgentEnvironmentExpiredWebhookEvent or AgentEnvironmentFailedWebhookEvent or AgentEnvironmentReadyWebhookEvent or 27 more`
+- `UnwrapWebhookEvent = AgentEnvironmentExpiredWebhookEvent or AgentEnvironmentFailedWebhookEvent or AgentEnvironmentReadyWebhookEvent or 28 more`
 
   Sent when an agent environment expires and can no longer resume from a snapshot.
 
@@ -2873,6 +2909,40 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
       The object of the event. Always `event`.
 
       - `"event"`
+
+  - `LiveTransportConnectedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when a direct Live WebRTC session is created or an Instant Connect session activates. Use its session ID to attach a sideband observer.
+
+    - `id: string`
+
+      The webhook event ID.
+
+    - `created_at: integer`
+
+      Unix time in seconds when the event was created.
+
+      `format: unixtime`
+
+    - `data: object { session_id, type }`
+
+      - `session_id: string`
+
+        The Live session ID to use with the sideband attach endpoint.
+
+      - `type: "webrtc"`
+
+        The session transport.
+
+        - `"webrtc"`
+
+    - `object: "event"`
+
+      - `"event"`
+
+    - `type: "live.transport.connected"`
+
+      - `"live.transport.connected"`
 
   - `LiveTransportIncomingWebhookEvent object { id, created_at, data, 2 more }`
 

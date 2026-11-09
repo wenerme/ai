@@ -16,13 +16,13 @@ A trigger is one of two kinds:
 
 - An [event trigger](#event-triggers) runs a flow when something happens in the project,
   for example when someone mentions the service account or a pipeline fails.
-- A [scheduled trigger](#scheduled-triggers) runs a flow at a recurring time,
+- A [scheduled automation](#scheduled-automations) runs a flow at a recurring time,
   for example every weekday at 9:00 AM.
 
-| Detail | Event trigger | Scheduled trigger |
+| Detail | Event trigger | Scheduled automation |
 |--------|---------------|-------------------|
 | What starts the run | An action by a person, such as a mention or an approval | The schedule. No person starts the run. |
-| Who the flow runs as | The service account of the flow, with [composite identity](../composite_identity.md) | A [dedicated service account](#service-account-for-scheduled-triggers), without composite identity |
+| Who the flow runs as | The service account of the flow, with [composite identity](../composite_identity.md) | A [dedicated service account](#service-account-for-scheduled-automations), without composite identity |
 | What the flow receives | For a mention, the comment. For other events, the web address of the merge request, work item, or project. | The web address of the project |
 
 To run the same flow on an event and on a schedule, create two triggers.
@@ -279,37 +279,37 @@ A trigger with the **Work item** event type and the **Created** action also does
 - The work item is imported from another GitLab instance or another tool, such as GitHub or Jira.
 - The work item is created from an email to [Service Desk](../../project/service_desk/_index.md).
 
-## Scheduled triggers
+## Scheduled automations
 
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Beta
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594180) in GitLab 19.4 as a [beta](../../../policy/development_stages_support.md#beta) [with flags](../../../administration/feature_flags/_index.md) named `ai_flow_schedules` and `autonomous_service_account_execution`. Disabled by default.
-- Setting to turn off scheduled triggers [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
+- Setting to turn off scheduled automations [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 
 > [!flag]
 > The availability of this feature is controlled by feature flags.
 > For more information, see the history.
 
-A scheduled trigger runs a flow at a recurring time.
-Use a scheduled trigger for work that does not start from an event, such as a weekly
+A scheduled automation runs a flow at a recurring time.
+Use a scheduled automation for work that does not start from an event, such as a weekly
 summary of stale issues.
 The flow receives no merge request or work item, so use [instructions](#add-instructions)
 to tell the flow what to do on each run.
 
 > [!disclaimer]
 
-Scheduled triggers have these limits:
+Scheduled automations have these limits:
 
-- A trigger has one schedule.
-- You can create scheduled triggers only in projects, not in groups.
-- By default, a project can have up to 100 scheduled triggers.
+- A scheduled automation has one schedule.
+- You can create scheduled automations only in projects, not in groups.
+- By default, a project can have up to 100 scheduled automations.
 
-### Service account for scheduled triggers
+### Service account for scheduled automations
 
-When you create a scheduled trigger, GitLab creates a service account for that trigger only.
+When you create a scheduled automation, GitLab creates a service account for that automation only.
 The account name starts with `Duo Scheduled`, followed by the project path and the
-trigger description.
+automation description.
 GitLab adds the account to the project with the same role as the service account of the flow.
 GitLab does not assign the Owner role to the account, and a run fails if the account has it.
 
@@ -325,7 +325,7 @@ The role of the account follows the role of the service account of the flow:
 - If the flow account has a higher role, GitLab raises the role of the trigger account only
   when someone edits the trigger. GitLab does not raise the role above what the editor can assign.
 
-### Create a scheduled trigger
+### Create a scheduled automation
 
 Prerequisites:
 
@@ -337,13 +337,13 @@ Prerequisites:
 - The project must belong to a group, and the group must not prevent adding members to projects.
 - [Experiment and beta features](../turn_on_off.md#turn-on-beta-and-experimental-features)
   must be turned on.
-- Scheduled triggers must be [turned on](#turn-scheduled-triggers-on-or-off) for the group or instance.
+- Scheduled automations must be [turned on](#turn-scheduled-automations-on-or-off) for the project, group, or instance.
 - A custom flow from the AI Catalog or the [Developer Flow](../../project/merge_requests/developer.md)
   must be enabled in the project.
   Other foundational flows, external agents, and flows that use a configuration file
   cannot run on a schedule.
 
-To change the flow of an existing scheduled trigger:
+To change the flow of an existing scheduled automation:
 
 - Your role for the project must be equal to or higher than the role of the trigger's service account.
 - You must have permission to add members to the project.
@@ -351,7 +351,7 @@ To change the flow of an existing scheduled trigger:
 
 You do not need these permissions to change the schedule, description, or instructions.
 
-To create a scheduled trigger:
+To create a scheduled automation:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **AI** > **Triggers**.
@@ -398,7 +398,8 @@ A successful run resets the count.
 GitLab skips a scheduled run, and does not count a failure, when:
 
 - The trigger is turned off.
-- Scheduled triggers are turned off for the group or instance.
+- Scheduled automations are turned off for the project, group, or instance.
+- Flow execution is turned off.
 - The namespace has no GitLab Credits left.
 - The project is archived or scheduled for deletion.
 
@@ -411,55 +412,76 @@ schedule again.
 The trigger toggle does not reactivate a schedule. After GitLab deactivates the schedule,
 the trigger stays turned on, but the flow does not run.
 
-### Turn scheduled triggers on or off
+### Turn scheduled automations on or off
 
-Scheduled triggers are turned on by default.
-When you turn off scheduled triggers, existing schedules stop running but GitLab keeps them.
+Scheduled automations are turned on by default.
+When you turn off scheduled automations, existing schedules stop running but GitLab keeps them.
 Runs that are in progress continue.
-You cannot add a schedule to a trigger while scheduled triggers are turned off.
-When you turn scheduled triggers back on, schedules resume at their next scheduled time.
+You cannot add a schedule to a trigger while scheduled automations are turned off.
+When you turn scheduled automations back on, schedules resume at their next scheduled time.
 GitLab does not make up the runs that it skipped.
 
-To turn scheduled triggers on or off, **Allow flow execution** must be turned on.
+To turn scheduled automations on or off, flow execution must be turned on.
+When scheduled automations are turned off for a group or the instance, subgroups and projects cannot turn them on.
 
 ### On GitLab.com
 
 Prerequisites:
 
-- You must have the Owner role for the top-level group.
+- For a top-level group, the Owner role for the group.
+- For a project, the Maintainer or Owner role for the project.
+
+To turn scheduled automations on or off for a top-level group:
 
 1. In the top bar, select **Search or go to** and find your top-level group.
 1. In the left sidebar, select **Settings** > **GitLab Duo**.
 1. Select **Change configuration**.
-1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Under **Flow execution**, select or clear the **Allow scheduled automations** checkbox.
 1. Select **Save changes**.
 
 The setting applies to the subgroups and projects of the group.
+
+To turn scheduled automations on or off for a project:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab Duo**.
+1. Turn on or turn off the **Allow scheduled automations** toggle.
+1. Select **Save changes**.
 
 ### On GitLab Self-Managed
 
 Prerequisites:
 
-- For the instance, you must have administrator access.
-- For a group, you must have the Owner role for the group.
+- For the instance, administrator access.
+- For a group, the Owner role for the group.
+- For a project, the Maintainer or Owner role for the project.
 
-To turn scheduled triggers on or off for the instance:
+To turn scheduled automations on or off for the instance:
 
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **GitLab Duo**.
 1. Select **Change configuration**.
-1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Under **Flow execution**, select or clear the **Allow scheduled automations** checkbox.
 1. Select **Save changes**.
 
-To turn scheduled triggers on or off for a group:
+To turn scheduled automations on or off for a group:
 
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Settings** > **General**.
 1. Expand **GitLab Duo features**.
-1. Under **Flow execution**, select or clear the **Allow scheduled triggers** checkbox.
+1. Under **Flow execution**, select or clear the **Allow scheduled automations** checkbox.
 1. Select **Save changes**.
 
 The setting applies to the subgroups and projects of the group.
+
+To turn scheduled automations on or off for a project:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab Duo**.
+1. Turn on or turn off the **Allow scheduled automations** toggle.
+1. Select **Save changes**.
 
 ## Add instructions
 
@@ -496,7 +518,7 @@ Instructions belong to one condition, not to the whole trigger. For a **Merge re
 one set of instructions applies to every action that you select in **Run when**.
 
 You can also add instructions when you [create an event trigger](#create-an-event-trigger),
-[create a scheduled trigger](#create-a-scheduled-trigger), or
+[create a scheduled automation](#create-a-scheduled-automation), or
 [enable a flow](../flows/custom.md#enable-a-flow).
 In the trigger form, the **Instructions** field stays hidden until you set **Configuration source**.
 If you select **Flow or external agent**, you must also select a flow that accepts instructions.

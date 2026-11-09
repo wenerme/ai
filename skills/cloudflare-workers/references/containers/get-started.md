@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc
 
 # Get started
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
 This example Worker should give you a sense for simple Container use, and provide a starting point for more complex use cases.
 
-This guide uses the `Container` class and its built-in lifecycle helpers. You can also manage containers directly through `ctx.container`. To compare both options, refer to [Containers APIs](https://developers.cloudflare.com/containers/api/).
+This guide uses the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/). A Durable Object starts its container through `ctx.container` and forwards requests to it.
 
 ## Prerequisites
 
@@ -110,6 +110,8 @@ Open the URL for your Worker. It should look like `https://hello-containers.<YOU
 
 - Requests to `/container/1` or `/container/2` route to specific containers. Each path after `/container/` maps to a unique container.
 - Requests to `/lb` load-balance across three containers chosen at random.
+- Requests to `/singleton` always route to the same container.
+- Requests to `/error` make a dedicated test container exit with an error.
 
 Read the response body to confirm which instance handled the request. If the Worker responds but container routes still error, wait for provisioning, then check [Containers ↗︎](https://dash.cloudflare.com/?to=/:account/workers/containers) logs in the dashboard.
 
@@ -125,9 +127,13 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/containers/
 {
 	"containers": [
 		{
-			"max_instances": 10,
 			"class_name": "MyContainer",
-			"image": "./Dockerfile",
+			"scheduling_policy": "durable_object",
+			"images": {
+				"base": {
+					"dockerfile": "./Dockerfile",
+				},
+			},
 		},
 	],
 	"durable_objects": {
@@ -149,9 +155,11 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/containers/
 
 ```toml
 [[containers]]
-max_instances = 10
 class_name = "MyContainer"
-image = "./Dockerfile"
+scheduling_policy = "durable_object"
+
+[containers.images.base]
+dockerfile = "./Dockerfile"
 
 [[durable_objects.bindings]]
 name = "MY_CONTAINER"
@@ -164,23 +172,22 @@ storage = "sqlite"
 
 Important points about this config:
 
-- `image` points to a Dockerfile, to a directory containing a Dockerfile, or to a fully qualified image reference such as `registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>`.
 - `class_name` must be a [Durable Object class name](https://developers.cloudflare.com/durable-objects/api/base/).
-- `max_instances` declares the maximum number of simultaneously running container instances that will run.
+- `scheduling_policy` is `durable_object`, so the Durable Object chooses the image and instance type each time it starts a container. Refer to [Scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/).
+- `images.base` names an image that Wrangler builds from the Dockerfile. The Durable Object passes it to `start()` as `ctx.container.images.base`.
 - The `exports` entry declares the Durable Object class with SQLite storage. Existing applications that use the legacy `migrations` array can continue to use it, but `exports` and `migrations` cannot be combined.
 
 ### The Container Image
 
 Your container image must be able to run on the `linux/amd64` architecture, but aside from that, has few limitations.
 
-In the example you just deployed, it is a simple Golang server that responds to requests on port 8080 using the `MESSAGE` environment variable that will be set in the Worker and an [auto-generated environment variable](https://developers.cloudflare.com/containers/configuration/environment-variables/) `CLOUDFLARE_DEPLOYMENT_ID.`
+In the example you just deployed, it is a simple Golang server that responds to requests on port 8080 using the `MESSAGE` and `INSTANCE_ID` environment variables that the Durable Object passes when it starts the container. It also answers `/health` so the Durable Object can check that the server is ready.
 
 ```go
 func handler(w http.ResponseWriter, r *http.Request) {
 	message := os.Getenv("MESSAGE")
-	instanceId := os.Getenv("CLOUDFLARE_DEPLOYMENT_ID")
-
-	fmt.Fprintf(w, "Hi, I'm a container and this is my message: %s, and my instance ID is: %s", message, instanceId)
+	instanceId := os.Getenv("INSTANCE_ID")
+	fmt.Fprintf(w, "Hi, I'm a container and this is my message: \"%s\", my instance ID is: %s", message, instanceId)
 }
 ```
 
@@ -190,63 +197,127 @@ After deploying the example code, to deploy a different image, you can replace t
 
 ### Worker code
 
-#### Container Configuration
+#### Container configuration
 
-First note `MyContainer` which extends the [`Container` ↗︎](https://github.com/cloudflare/containers) class:
+`MyContainer` extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/api/base/). It starts its container on the first request, waits for the container's HTTP server, and forwards requests to it:
 
-```js
-export class MyContainer extends Container {
-  defaultPort = 8080;
-  sleepAfter = '10s';
-  envVars = {
-    MESSAGE: 'I was passed in via the container class!',
-  };
+```ts
+const PORT = 8080;
+const INACTIVITY_TIMEOUT_MS = 2 * 60 * 1000;
 
-  override onStart() {
-    console.log('Container successfully started');
-  }
+export class MyContainer extends DurableObject<Env> {
+	private starting: Promise<void> | undefined;
+	private monitoring: Promise<void> | undefined;
 
-  override onStop() {
-    console.log('Container successfully shut down');
-  }
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+		const container = ctx.container;
+		if (container?.running) {
+			// Restore the timeout and exit monitoring after a DO restart.
+			void ctx.blockConcurrencyWhile(() =>
+				container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS),
+			);
+			this.observeExit();
+		}
+	}
 
-  override onError(error: unknown) {
-    console.log('Container error:', error);
-  }
+	async fetch(request: Request): Promise<Response> {
+		// Share startup across concurrent requests, including after a failed attempt.
+		this.starting ??= this.startAndWaitForPort().finally(() => {
+			this.starting = undefined;
+		});
+		await this.starting;
+
+		const url = new URL(request.url);
+		url.protocol = "http:";
+		url.host = "container";
+		const forwarded = new Request(url, request);
+		forwarded.headers.delete("host");
+		return this.ctx.container!.getTcpPort(PORT).fetch(forwarded);
+	}
+
+	private async startAndWaitForPort(): Promise<void> {
+		const container = this.ctx.container!;
+		if (!container.running) {
+			container.start({
+				image: container.images.base,
+				instance: "lite",
+				enableInternet: false,
+				env: {
+					MESSAGE: "I was passed in when the Durable Object started me!",
+					INSTANCE_ID: this.ctx.id.toString(),
+				},
+			});
+		}
+		this.observeExit();
+		await container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS);
+
+		// running means startup was requested, not that the HTTP server is ready.
+		const port = container.getTcpPort(PORT);
+		for (let attempt = 0; attempt < 100; attempt++) {
+			try {
+				const response = await port.fetch("http://container/health", {
+					signal: AbortSignal.timeout(1000),
+				});
+				await response.body?.cancel();
+				if (response.ok) return;
+			} catch {
+				// The port may not be listening yet. Retry the readiness probe only.
+			}
+			await scheduler.wait(200);
+		}
+		throw new Error("Container did not become ready on port 8080");
+	}
+
+	private observeExit(): void {
+		if (this.monitoring) return;
+		this.monitoring = this.ctx
+			.container!.monitor()
+			.then(() => console.log("Container exited successfully"))
+			.catch((error: unknown) => console.error("Container failed:", error))
+			.finally(() => {
+				this.monitoring = undefined;
+			});
+		this.ctx.waitUntil(this.monitoring);
+	}
 }
 ```
 
-This defines basic configuration for the container:
+This code does the following:
 
-- `defaultPort` sets the port that the `fetch` and `containerFetch` methods will use to communicate with the container. It also blocks requests until the container is listening on this port.
-- `sleepAfter` sets the timeout for the container to sleep after it has been idle for a certain amount of time.
-- `envVars` sets environment variables that will be passed to the container when it starts.
-- `onStart`, `onStop`, and `onError` are hooks that run when the container starts, stops, or errors, respectively.
+- [`start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) boots the container with the `base` image, the `lite` instance type, no Internet access, and two environment variables. It returns before the container is ready.
+- The readiness loop sends requests to `/health` through [`getTcpPort()`](https://developers.cloudflare.com/containers/api/durable-object-container/#gettcpport) until the server answers.
+- [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout) keeps the container running for two minutes after the Durable Object becomes inactive. The constructor sets the timeout again when the Durable Object restarts while its container runs.
+- `getTcpPort(PORT).fetch()` forwards each request to the container.
+- [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor) logs when the container exits. On the `/error` route, the container exits with code `1`, and `monitor()` rejects with the error.
 
-The `Container` class itself extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/), so your subclass has access to the full Durable Object API. The Durable Object handles routing, lifecycle, and persistent state, while the container process runs your image inside a Linux VM. This means you can use [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) to persist data that survives container restarts and resides close to the container itself.
+Because `MyContainer` is a Durable Object, it has access to the full Durable Object API. The Durable Object handles routing, lifecycle, and persistent state, while the container process runs your image inside a Linux VM. This means you can use [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) to persist data that survives container restarts and resides close to the container itself.
 
-For all properties and methods, refer to the [Container class API](https://developers.cloudflare.com/containers/api/container-class/) and the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
+For all properties and methods, refer to the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
 
 #### Routing to Containers
 
-When a request enters Cloudflare, your Worker's [`fetch` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is invoked. This is the code that handles the incoming request. The fetch handler in the example code, launches containers in two ways, on different routes:
+When a request enters Cloudflare, your Worker's [`fetch` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is invoked. This is the code that handles the incoming request. The example code uses the [Hono ↗︎](https://hono.dev/) framework to route requests. It launches containers in two ways, on different routes:
 
 - Making requests to `/container/` passes requests to a new container for each path. This is done by spinning up a new Container instance. You may note that the first request to a new path takes longer than subsequent requests, this is because a new container is booting.
 
-  ```js
-  if (pathname.startsWith("/container")) {
-  	const container = env.MY_CONTAINER.getByName(pathname);
-  	return await container.fetch(request);
-  }
+  ```ts
+  app.get("/container/:id", (c) =>
+  	c.env.MY_CONTAINER.getByName(`/container/${c.req.param("id")}`).fetch(
+  		c.req.raw,
+  	),
+  );
   ```
 
-- Making requests to `/lb` will load balance requests across several containers. This uses a simple `getRandom` helper method, which picks an ID at random from a set number (in this case 3), then routes to that Container instance. You can replace this with any routing or load balancing logic you choose to implement:
+- Making requests to `/lb` will load balance requests across several containers. The Worker picks a name at random from a fixed pool (in this case three), then routes to that Container instance. You can replace this with any routing or load balancing logic you choose to implement:
 
-  ```js
-  if (pathname.startsWith("/lb")) {
-  	const container = await getRandom(env.MY_CONTAINER, 3);
-  	return await container.fetch(request);
-  }
+  ```ts
+  const POOL_SIZE = 3;
+
+  app.get("/lb", (c) => {
+  	const index = Math.floor(Math.random() * POOL_SIZE);
+  	return c.env.MY_CONTAINER.getByName(`pool-${index}`).fetch(c.req.raw);
+  });
   ```
 
 This allows for multiple ways of using Containers:
@@ -254,12 +325,6 @@ This allows for multiple ways of using Containers:
 - If you simply want to send requests to many stateless and interchangeable containers, you should load balance.
 - If you have stateful services or need individually addressable containers, you should request specific Container instances.
 - If you are running short-lived jobs, want fine-grained control over the container lifecycle, want to parameterize container entrypoint or env vars, or want to chain together multiple container calls, you should request specific Container instances.
-
-Note
-
-Today, routing requests to one of many interchangeable Container instances uses the `getRandom` helper.
-
-It randomly selects one of a fixed number of instances for each request.
 
 ## View Containers in your Dashboard
 
@@ -289,5 +354,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Get started","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc11168d06b","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Get started","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc11168d06b","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

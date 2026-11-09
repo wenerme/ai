@@ -43,6 +43,7 @@ Example response:
   "ci_project_subscriptions": 2,
   "ci_pipeline_schedules": 10,
   "ci_needs_size_limit": 50,
+  "ci_job_variables_count": 0,
   "ci_registered_group_runners": 1000,
   "ci_registered_project_runners": 1000,
   "dotenv_size": 5120,
@@ -82,12 +83,13 @@ PUT /application/plan_limits
 | `ci_instance_level_variables`     | integer | no       | Maximum number of Instance-level CI/CD variables that can be defined. |
 | `ci_pipeline_size`                | integer | no       | Maximum number of jobs in a single pipeline. |
 | `ci_pipeline_variables_count`     | integer | no       | Maximum number of pipeline variables in a single pipeline. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
-| `ci_variable_value_size`          | integer | no       | Maximum size of a pipeline variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
-| `ci_variable_file_value_size`     | integer | no       | Maximum size of a file type pipeline variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
+| `ci_variable_value_size`          | integer | no       | Maximum size of a CI/CD variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
+| `ci_variable_file_value_size`     | integer | no       | Maximum size of a file type CI/CD variable value in bytes. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6. |
 | `ci_active_jobs`                  | integer | no       | Total number of jobs in currently active pipelines. |
 | `ci_project_subscriptions`        | integer | no       | Maximum number of pipeline subscriptions to and from a project. |
 | `ci_pipeline_schedules`           | integer | no       | Maximum number of pipeline schedules. |
 | `ci_needs_size_limit`             | integer | no       | Maximum number of [`needs`](../ci/yaml/needs.md) dependencies that a job can have. |
+| `ci_job_variables_count`       | integer | no       | Maximum number of job variables in a single job. Default value: `0`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254701) in GitLab 19.6. |
 | `ci_registered_group_runners`     | integer | no       | Maximum number of runners created or active in a group during the past seven days. |
 | `ci_registered_project_runners`   | integer | no       | Maximum number of runners created or active in a project during the past seven days. |
 | `dotenv_size`                     | integer | no       | Maximum size of a dotenv artifact in bytes. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432529) in GitLab 17.1. |
@@ -133,6 +135,7 @@ Example response:
   "ci_project_subscriptions": 2,
   "ci_pipeline_schedules": 10,
   "ci_needs_size_limit": 50,
+  "ci_job_variables_count": 0,
   "ci_registered_group_runners": 1000,
   "ci_registered_project_runners": 1000,
   "cargo_max_file_size": 5368709120,

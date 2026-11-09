@@ -909,7 +909,7 @@ Fable limit reached · continuing on Fable 5.1 uses usage credits, and the promp
 Fable 5.1 now uses usage credits · the prompt to confirm went unanswered — nothing was sent · answer it where this session is running, or /model to change
 ```
 
-The messages name the session's Fable model, so on Fable 5 they read `continuing on Fable 5` and `Fable 5 now uses usage credits`. Before v2.1.257, the first message began `Fable 5 limit reached`.
+The messages name the session's Fable model, so on Fable 5.2 they read `continuing on Fable 5.2` and `Fable 5.2 now uses usage credits`. Before v2.1.257, the first message began `Fable 5 limit reached`.
 
 This happens in [Remote Control](https://code.claude.com/docs/en/remote-control.md) sessions, [background sessions](https://code.claude.com/docs/en/agent-view.md), [agent team](https://code.claude.com/docs/en/agent-teams.md) teammate sessions, and sessions that another application hosts through the Agent SDK. For when Claude Code closes the prompt, see [Fable and usage credits](https://code.claude.com/docs/en/model-config.md#fable-and-usage-credits).
 
@@ -6450,7 +6450,7 @@ If Claude's answers seem less capable than you expect but no error is shown, the
 
 * A configured [`--fallback-model`](https://code.claude.com/docs/en/cli-reference#cli-flags) takes over after an availability error, for that turn only, with a notice in the transcript
 * An Amazon Bedrock or Google Cloud's Agent Platform startup check finds your default model unavailable, or your account [loses access to it mid-session](https://code.claude.com/docs/en/amazon-bedrock.md#when-a-model-is-disabled-mid-session)
-* [Automatic model fallback](https://code.claude.com/docs/en/model-config.md#automatic-model-fallback) on Fable 5.1, Fable 5, Opus 5.5, Sonnet 5.5, and Opus 5 moves the session to the flagged category's fallback model, when that category has one, and shows a notice in the transcript
+* [Automatic model fallback](https://code.claude.com/docs/en/model-config.md#automatic-model-fallback) on Fable models, Opus 5.5, Sonnet 5.5, and Opus 5 moves the session to the flagged category's fallback model, when that category has one. A notice appears in the transcript
 
 The Model selection check below catches the second and third cases; the first appears as a transcript notice rather than a `/model` change. [Model configuration](https://code.claude.com/docs/en/model-config.md) explains when each fallback applies.
 

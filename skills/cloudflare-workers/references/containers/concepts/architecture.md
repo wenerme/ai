@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/concepts/architecture/og.png
 
 # Lifecycle of a Container
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Deployment
 
@@ -54,7 +54,7 @@ An inactivity timeout, `signal()`, `destroy()`, a rollout, or a process exit can
 
 The `ctx.container.running` property becomes `true` before the process is ready to accept traffic. Check port readiness before you send the first request.
 
-For new applications, manage this lifecycle through the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/). It lets the Durable Object coordinate container compute with persistent state and alarms. Existing applications may use the [`Container` class](https://developers.cloudflare.com/containers/api/container-class/). To compare both APIs, refer to [Containers APIs](https://developers.cloudflare.com/containers/api/).
+Manage this lifecycle through the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/). It lets the Durable Object coordinate container compute with persistent state and alarms.
 
 ## Lifecycle of a request
 
@@ -66,7 +66,7 @@ Because all Container requests are passed through a Worker, end-users cannot mak
 
 ### Worker to Durable Object
 
-From the Worker, a request passes through a Durable Object instance. You can extend `DurableObject` and use `ctx.container` directly, or extend the [`Container` class](https://developers.cloudflare.com/containers/api/container-class/). Each Durable Object instance is a globally routable isolate that can execute code and store state. This allows developers to address and route to specific container instances, run code when a container exits, and store persistent state associated with each instance.
+From the Worker, a request passes through a Durable Object instance. The Durable Object class extends `DurableObject` and controls the container through `ctx.container`. Each Durable Object instance is a globally routable isolate that can execute code and store state. This allows developers to address and route to specific container instances, run code when a container exits, and store persistent state associated with each instance.
 
 ### Starting a Container
 
@@ -102,9 +102,7 @@ Containers should be built for the `linux/amd64` architecture, and should stay w
 
 ### Container shutdown
 
-With the Durable Object Container API, call [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout) to let the runtime stop the container after the Durable Object becomes inactive. The Durable Object becomes inactive when it stops receiving requests. The timeout can keep the container available while the Durable Object sleeps. You can also stop a container with [`signal()`](https://developers.cloudflare.com/containers/api/durable-object-container/#signal) or [`destroy()`](https://developers.cloudflare.com/containers/api/durable-object-container/#destroy).
-
-The `Container` class sets [`sleepAfter`](https://developers.cloudflare.com/containers/api/container-class/#sleepafter) to 10 minutes by default. Its [`onActivityExpired()`](https://developers.cloudflare.com/containers/api/container-class/#onactivityexpired) implementation calls [`stop()`](https://developers.cloudflare.com/containers/api/container-class/#stop). You can change the duration or override the hook.
+Call [`setInactivityTimeout()`](https://developers.cloudflare.com/containers/api/durable-object-container/#setinactivitytimeout) to let the runtime stop the container after the Durable Object becomes inactive. The Durable Object becomes inactive when it stops receiving requests. The timeout can keep the container available while the Durable Object sleeps. You can also stop a container with [`signal()`](https://developers.cloudflare.com/containers/api/durable-object-container/#signal) or [`destroy()`](https://developers.cloudflare.com/containers/api/durable-object-container/#destroy).
 
 When the platform is about to stop a container instance, it:
 
@@ -116,14 +114,11 @@ Handle `SIGTERM` in your image if you need cleanup before exit. The same sequenc
 
 ### Lifecycle events
 
-The Durable Object Container API provides [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor). Its promise resolves when the container exits and rejects when the container errors.
+The Durable Object runs its own code when the container changes state:
 
-The [`Container` class](https://developers.cloudflare.com/containers/api/container-class/) adds hooks that run Worker code when the container changes state:
-
-- [`onStart()`](https://developers.cloudflare.com/containers/api/container-class/#onstart) — Runs after the container has started.
-- [`onStop()`](https://developers.cloudflare.com/containers/api/container-class/#onstop) — Runs after the container process exits. Receives the exit code and reason for the stop.
-- [`onActivityExpired()`](https://developers.cloudflare.com/containers/api/container-class/#onactivityexpired) — Runs when the [`sleepAfter`](https://developers.cloudflare.com/containers/api/container-class/#sleepafter) timer expires with no incoming requests. The default implementation calls `stop()` to shut down the container. You can use this to only stop the container on certain conditions.
-- [`onError()`](https://developers.cloudflare.com/containers/api/container-class/#onerror) — Runs when container startup or port checking fails.
+- Startup work runs after [`start()`](https://developers.cloudflare.com/containers/api/durable-object-container/#start) and a successful port readiness check.
+- Exit work runs when the [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor) promise settles. The promise resolves when the main process exits with code `0`. It rejects with an error that has an `exitCode` property when the process exits with another code.
+- Scheduled work runs from an [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/), whether or not the container is running.
 
 Refer to the [status hooks example](https://developers.cloudflare.com/containers/examples/status-hooks/) for a full implementation.
 
@@ -139,10 +134,10 @@ You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2
 
 - A developer deploys a Container. Cloudflare automatically readies instances across its Network.
 - A request is made from a client in Bariloche, Argentina. It reaches the Worker in a nearby Cloudflare location in Neuquen, Argentina.
-- This Worker request calls `getContainer(env.MY_CONTAINER, "session-1337")`. Under the hood, this brings up a Durable Object, which then calls `this.ctx.container.start`.
+- This Worker request calls `env.MY_CONTAINER.getByName("session-1337")`. This brings up a Durable Object, which then calls `this.ctx.container.start()`.
 - This requests the nearest free Container instance. Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
 - A different user needs to route to the same container. This user's request reaches the Worker running in Cloudflare's location in San Diego, US.
-- The Worker again calls `getContainer(env.MY_CONTAINER, "session-1337")`.
+- The Worker again calls `env.MY_CONTAINER.getByName("session-1337")`.
 - If the initial container instance is still running, the request is routed to the original location in Buenos Aires. If the initial container has gone to sleep, Cloudflare will once again try to find the nearest "free" instance of the Container, likely one in North America, and start an instance there.
 
 Was this helpful?
@@ -154,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

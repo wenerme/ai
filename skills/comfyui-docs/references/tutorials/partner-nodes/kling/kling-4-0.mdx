@@ -1,0 +1,89 @@
+---
+title: "Kling 4.0 in ComfyUI: Text, Image, Reference, and Edit Workflows"
+description: "Generate and edit video with Kling 4.0 in ComfyUI: text to video, ten-keyframe animation, reference shots, and prompt-driven edits, each with stereo audio."
+---
+
+Kling 4.0 is Kling AI's video generation model, available in ComfyUI as Partner Nodes. One generation runs up to 30 seconds at 720p or 1080p, and produces stereo audio alongside the picture.
+
+Four templates cover the workflows below. Each node also offers a faster `kling-4.0-flash` model option, limited to 720p and 20 seconds.
+
+## Kling 4.0: Text to Video {#api_kling4_t2v}
+
+Generates a clip from a prompt alone. Describe the shots and their camera moves in order, because one run can hold several cuts.
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling4_t2v.mp4"></video>
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 4.0: Text to Video&quot; in Template Library
+  
+
+## Kling 4.0: Image to Video {#api_kling4_i2v}
+
+Animates one still, or a sequence of keyframes: an optional first frame, up to eight middle frames, and an optional last frame, ten images in total. The clip takes the aspect ratio of the first keyframe. `kling-4.0-flash` animates a single first frame.
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling4_i2v.mp4"></video>
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 4.0: Image to Video&quot; in Template Library
+  
+
+**Input material**
+
+  
+    Load into `first_frame`
+  
+
+## Kling 4.0: Reference to Video {#api_kling4_r2v}
+
+Shoots a new clip from references instead of a single starting frame: up to ten reference images (the optional frames count toward that limit) and five reference clips, with an optional last frame on `kling-4.0`. Refer to them in the prompt as `@Image1` and `@Video1`, in connection order.
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling4_r2v.mp4"></video>
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 4.0: Reference to Video&quot; in Template Library
+  
+
+**Input materials**
+
+  
+    Character reference, load into `reference_images`
+  
+  
+    Location reference, load into `reference_images`
+  
+
+## Kling 4.0: Video Edit {#api_kling4_video_edit}
+
+Rewrites a clip you already have. The result keeps the length of `video_1`, and `audio` set to `original` keeps the source audio instead of generating new sound.
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling4_video_edit.mp4"></video>
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 4.0: Video Edit&quot; in Template Library
+  
+
+**Input material**
+
+  
+    Load into `video_1`
+  
+
+## Input limits
+
+- Images: at least 300 x 300 px, aspect ratio between 2:5 and 5:2, up to ten per run, keyframes included.
+- Videos: each 3 to 30 seconds (3 to 20 with `kling-4.0-flash`), all connected clips 30 seconds in total, at least 24 fps, 700 to 4553 px per side, at most 8,294,400 px in total, aspect ratio between 2:5 and 5:2.
+- In the image, reference, and edit nodes, a prompt that names `@ImageN` or `@VideoN` beyond the number of connected inputs fails the run.
+
+Every parameter is listed on the node reference pages: [Text to Video](/built-in-nodes/Kling4TextToVideoNode), [Image to Video](/built-in-nodes/Kling4ImageToVideoNode), [Reference to Video](/built-in-nodes/Kling4ReferenceToVideoNode), [Edit Video](/built-in-nodes/Kling4EditVideoNode).

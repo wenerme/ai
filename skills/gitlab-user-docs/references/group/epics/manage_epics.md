@@ -336,7 +336,8 @@ For more information, see [view count and weight of issues in an epic](../../wor
 
 ### Open epics in a drawer
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/464698) in GitLab 17.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `work_item_view_for_issues`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/464063) in GitLab 17.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `issues_list_drawer`. Disabled by default.
+- Feature flag [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/170066) to `epics_list_drawer` in GitLab 17.6. Disabled by default.
 - Toggling between drawer and full page view [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/536620) in GitLab 18.2.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/500367) in GitLab 18.6. Feature flag `epics_list_drawer` removed.
 

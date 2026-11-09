@@ -114,6 +114,7 @@ Use the alternative attributes instead.
 - `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 - `automatic_rebase_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/623568) in GitLab 19.4.
 - `dap_powered` value for `reviewer_assignment_strategy` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/607677) in GitLab 19.4.
+- `duo_scheduled_triggers_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 
 Retrieves the specified project. This endpoint can be accessed without authentication if
 the project is publicly accessible.
@@ -314,6 +315,7 @@ following response attributes:
 | `reviewer_assignment_strategy` | string | Strategy used to automatically assign reviewers to merge requests. One of `disabled` or `code_owners`. This attribute can also return `dap_powered` for projects configured before GitLab 19.4. Premium and Ultimate only. |
 | `duo_remote_flows_enabled` | boolean | Indicates if GitLab Duo remote flows are enabled. |
 | `duo_foundational_flows_enabled` | boolean | Indicates if GitLab Duo foundational flows are enabled. |
+| `duo_scheduled_triggers_enabled` | boolean | Indicates if GitLab Duo scheduled automations are turned on. |
 | `duo_sast_fp_detection_enabled` | boolean | Indicates if GitLab Duo SAST false positive detection is enabled. |
 | `duo_sast_vr_workflow_enabled` | boolean | Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled. |
 | `web_based_commit_signing_enabled` | boolean | Indicates if web-based commit signing is enabled. |
@@ -558,6 +560,7 @@ List projects and project attributes.
 - `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 - `automatic_rebase_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/623568) in GitLab 19.4.
 - `dap_powered` value for `reviewer_assignment_strategy` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/607677) in GitLab 19.4.
+- `duo_scheduled_triggers_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 
 Lists all projects on the instance accessible to the authenticated user. Unauthenticated requests return only public projects with a limited subset of attributes.
 
@@ -755,6 +758,7 @@ following response attributes:
 | `reviewer_assignment_strategy` | string | Strategy used to automatically assign reviewers to merge requests. One of `disabled` or `code_owners`. This attribute can also return `dap_powered` for projects configured before GitLab 19.4. Premium and Ultimate only. |
 | `duo_remote_flows_enabled` | boolean | Indicates if GitLab Duo remote flows are enabled. |
 | `duo_foundational_flows_enabled` | boolean | Indicates if GitLab Duo foundational flows are enabled. |
+| `duo_scheduled_triggers_enabled` | boolean | Indicates if GitLab Duo scheduled automations are turned on. |
 | `duo_sast_fp_detection_enabled` | boolean | Indicates if GitLab Duo SAST false positive detection is enabled. |
 | `duo_sast_vr_workflow_enabled` | boolean | Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled. |
 | `spp_repository_pipeline_access` | boolean | Repository pipeline access for security policies. Only visible if the security orchestration policies feature is available. |
@@ -941,6 +945,7 @@ Example response:
 - `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 - `automatic_rebase_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/623568) in GitLab 19.4.
 - `dap_powered` value for `reviewer_assignment_strategy` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/607677) in GitLab 19.4.
+- `duo_scheduled_triggers_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 
 Lists all personal projects for a specified user. The following restrictions apply:
 
@@ -1137,6 +1142,7 @@ following response attributes:
 | `reviewer_assignment_strategy` | string | Strategy used to automatically assign reviewers to merge requests. One of `disabled` or `code_owners`. This attribute can also return `dap_powered` for projects configured before GitLab 19.4. Premium and Ultimate only. |
 | `duo_remote_flows_enabled` | boolean | Indicates if GitLab Duo remote flows are enabled. |
 | `duo_foundational_flows_enabled` | boolean | Indicates if GitLab Duo foundational flows are enabled. |
+| `duo_scheduled_triggers_enabled` | boolean | Indicates if GitLab Duo scheduled automations are turned on. |
 | `duo_sast_fp_detection_enabled` | boolean | Indicates if GitLab Duo SAST false positive detection is enabled. |
 | `duo_sast_vr_workflow_enabled` | boolean | Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled. |
 | `spp_repository_pipeline_access` | boolean | Repository pipeline access for security policies. Only visible if the security orchestration policies feature is available. |
@@ -1431,6 +1437,7 @@ Example response:
 - `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 - `automatic_rebase_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/623568) in GitLab 19.4.
 - `dap_powered` value for `reviewer_assignment_strategy` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/607677) in GitLab 19.4.
+- `duo_scheduled_triggers_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/634139) in GitLab 19.6.
 
 Lists all contributions to visible projects for a specified user. Returns only contributions in
 the past year. For more information about what counts as a contribution, see
@@ -1602,6 +1609,7 @@ following response attributes:
 | `reviewer_assignment_strategy` | string | Strategy used to automatically assign reviewers to merge requests. One of `disabled` or `code_owners`. This attribute can also return `dap_powered` for projects configured before GitLab 19.4. Premium and Ultimate only. |
 | `duo_remote_flows_enabled` | boolean | Indicates if GitLab Duo remote flows are enabled. |
 | `duo_foundational_flows_enabled` | boolean | Indicates if GitLab Duo foundational flows are enabled. |
+| `duo_scheduled_triggers_enabled` | boolean | Indicates if GitLab Duo scheduled automations are turned on. |
 | `duo_sast_fp_detection_enabled` | boolean | Indicates if GitLab Duo SAST false positive detection is enabled. |
 | `duo_sast_vr_workflow_enabled` | boolean | Indicates if GitLab Duo SAST vulnerability resolution workflow is enabled. |
 | `spp_repository_pipeline_access` | boolean | Repository pipeline access for security policies. Only visible if the security orchestration policies feature is available. |
@@ -2280,7 +2288,7 @@ Supported general project attributes:
 | `description`                                      | string  | No       | Short project description. |
 | `emails_disabled`                                  | boolean | No       | _(Deprecated)_ Disable email notifications. Use `emails_enabled` instead |
 | `emails_enabled`                                   | boolean | No       | Enable email notifications. |
-| `enforce_auth_checks_on_uploads`                   | boolean | No       | Enforce [auth checks](../security/user_file_uploads.md#enable-authorization-checks-for-all-media-files) on uploads. |
+| `enforce_auth_checks_on_uploads`                   | boolean | No       | Enforce [auth checks](../security/user_file_uploads.md#turn-off-authorization-checks-for-media-files) on uploads. |
 | `external_authorization_classification_label`      | string  | No       | The classification label for the project. Premium and Ultimate only. |
 | `group_runners_enabled`                            | boolean | No       | Enable group runners for this project. |
 | `group_with_project_templates_id`                  | integer | No       | For group-level custom templates, specifies ID of group from which all the custom project templates are sourced. Leave empty for instance-level templates. Requires `use_custom_template` to be true. Premium and Ultimate only. |
@@ -2397,7 +2405,7 @@ Supported general project attributes:
 | `duo_sast_vr_workflow_enabled` | boolean | No | If `true`, turns on SAST vulnerability resolution workflow. Requires the Security Manager, Maintainer, or Owner role. See [turn on SAST vulnerability resolution workflow](../user/duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off). |
 | `emails_disabled`                                  | boolean           | No       | _(Deprecated)_ Disable email notifications. Use `emails_enabled` instead |
 | `emails_enabled`                                   | boolean           | No       | Enable email notifications. |
-| `enforce_auth_checks_on_uploads`                   | boolean           | No       | Enforce [auth checks](../security/user_file_uploads.md#enable-authorization-checks-for-all-media-files) on uploads. |
+| `enforce_auth_checks_on_uploads`                   | boolean           | No       | Enforce [auth checks](../security/user_file_uploads.md#turn-off-authorization-checks-for-media-files) on uploads. |
 | `external_authorization_classification_label`      | string            | No       | The classification label for the project. Premium and Ultimate only. |
 | `feature_flags_minimum_role`                       | string            | No       | Minimum role required to create, update, toggle, and delete [feature flags](../operations/feature_flags.md#restrict-who-can-manage-feature-flags). One of `no_one_allowed`, `developer`, `maintainer`, or `owner`. Defaults to `developer`. Requires the Owner role to change this setting away from `owner` or `no_one_allowed`. |
 | `group_runners_enabled`                            | boolean           | No       | Enable group runners for this project. |

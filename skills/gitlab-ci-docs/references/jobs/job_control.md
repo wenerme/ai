@@ -101,6 +101,32 @@ To retry a manual job with previously-specified variables:
     You can add, modify, or delete CI/CD variables from this form.
   - Select .
 
+#### Job variable limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254701) in GitLab 19.6.
+
+Job variables have [limits](../../administration/cicd/limits.md#limit-job-variables).
+The two size limits are shared with every other kind of CI/CD variable.
+
+| Limit                           | GitLab.com | Default (GitLab Self-Managed and GitLab Dedicated) |
+|---------------------------------|------------|----------------------------------------------------|
+| Variables per job               | 200        | Not set                                            |
+| Value size                      | 128 KiB    | Not set                                            |
+| Value size, file type variables | 1 MiB      | Not set                                            |
+
+File type job variables can only be set through the GraphQL API.
+
+GitLab checks these limits when you run or retry a job with variables.
+If a limit is exceeded, the job does not run and an error is shown.
+For an oversized value, the error names the variable, for example:
+`Value for variable MY_VAR exceeds the 128 KiB limit`.
+
+Variables stored before these limits were added keep working.
+Retrying a job that already holds more variables than the limit also works, because the copied variables are not checked.
+
+Variables from dotenv report artifacts are not checked. They have their own limits, set by the
+`dotenv_variables` and `dotenv_size` plan limits.
+
 ### Require confirmation for manual jobs
 
 Use [`manual_confirmation`](../yaml/_index.md#manual_confirmation) with `when: manual` to require confirmation for manual jobs.

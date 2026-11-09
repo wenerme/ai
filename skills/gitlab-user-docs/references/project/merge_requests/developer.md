@@ -178,6 +178,7 @@ To use the flow, run the GitLab Duo CLI in one of these modes:
 ### Provide images as context
 
 - Introduced in GitLab 19.5 [with a feature flag](../../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/2806) in GitLab 19.6.
 - Support for self-hosted models [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
 
 > [!flag]

@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 374 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 373 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -1667,7 +1667,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
+    "maxOutput": 131072,
     "inputCost": 1.25,
     "outputCost": 4.25
   },
@@ -1696,18 +1696,6 @@ for await (const chunk of stream) {
     "outputCost": 0.112
   },
   {
-    "model": "kilo/minimax/minimax-m1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 40000,
-    "inputCost": 0.55,
-    "outputCost": 2.2
-  },
-  {
     "model": "kilo/minimax/minimax-m2.5",
     "imageInput": false,
     "audioInput": false,
@@ -1728,8 +1716,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 196608,
     "maxOutput": 176947,
-    "inputCost": 0.3,
-    "outputCost": 1.2
+    "inputCost": 0.21,
+    "outputCost": 0.84
   },
   {
     "model": "kilo/minimax/minimax-m3",
@@ -1966,8 +1954,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
+    "contextWindow": 32768,
+    "maxOutput": 26214,
     "inputCost": 0.1,
     "outputCost": 0.3
   },
@@ -2928,8 +2916,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 65536,
-    "inputCost": 0.015,
-    "outputCost": 0.057
+    "inputCost": 0.03,
+    "outputCost": 0.15
   },
   {
     "model": "kilo/openai/gpt-oss-20b",
@@ -2940,8 +2928,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 117964,
-    "inputCost": 0.004,
-    "outputCost": 0.017
+    "inputCost": 0.018,
+    "outputCost": 0.09
   },
   {
     "model": "kilo/openai/gpt-oss-safeguard-20b",
@@ -3430,8 +3418,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
+    "contextWindow": 256000,
+    "maxOutput": 64000,
     "inputCost": 0.39,
     "outputCost": 2.34
   },
@@ -3693,7 +3681,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
     "inputCost": 0.2,
@@ -4224,8 +4212,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 98304,
-    "inputCost": 0.13,
-    "outputCost": 0.85
+    "inputCost": 0.2,
+    "outputCost": 1.1
   },
   {
     "model": "kilo/z-ai/glm-4.5v",
@@ -4270,7 +4258,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 202752,
+    "contextWindow": 204800,
     "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 2.2

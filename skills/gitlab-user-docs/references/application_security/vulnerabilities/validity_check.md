@@ -210,7 +210,7 @@ the secret with its vendor, and assigns the detection one of the following statu
 You should rotate active and possibly active secrets as soon as possible.
 
 For an active GitLab personal access token, you can
-[rotate the token and fix the code with GitLab Duo](../../../ci/secrets/secrets_manager/rotate_leaked_tokens.md).
+[rotate the token and fix the code with GitLab Duo](../../../ci/secrets/secrets_manager/rotate-leaked-tokens.md).
 
 ```mermaid
 %%{init: { "fontFamily": "GitLab Sans" }}%%

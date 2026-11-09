@@ -474,7 +474,8 @@ puts(response.output_text)
 Note that for reasoning models like GPT-5 or o4-mini, any reasoning items
   returned in model responses with tool calls must also be passed back with tool
   call outputs. For guidance on preserving the history that produced those
-  items, see [Preserved reasoning](https://developers.openai.com/api/docs/guides/preserved-reasoning).
+  items, see [Best practices for prefix
+  changes](https://developers.openai.com/api/docs/guides/preserved-reasoning).
 
 ## Defining functions
 

@@ -15,31 +15,31 @@ For public and internal projects, you can change who can see your:
 - Job output logs
 - Job artifacts
 
-The **Project-based pipeline visibility** setting does not change who can view the
+The  setting does not change who can view the
 [pipeline security report](../../user/application_security/detect/security_scanning_results.md#view-pipeline-security-report).
 
 To change the visibility of your pipelines and related features:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Select or clear the **Project-based pipeline visibility** checkbox.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select or clear the  checkbox.
    When it is selected, pipelines and related features are visible:
 
-   - For [**Public**](../../user/public_access.md) projects, to everyone.
-   - For **Internal** projects, to all authenticated users except [external users](../../administration/external_users.md).
-   - For **Private** projects, to all project members (Guest or higher).
+   - For [](../../user/public_access.md) projects, to everyone.
+   - For  projects, to all authenticated users except [external users](../../administration/external_users.md).
+   - For  projects, to all project members (Guest or higher).
 
    When it is cleared:
 
-   - For **Public** projects, job logs, job artifacts,
-     and the **CI/CD** menu items are visible only to project members (Reporter or higher).
+   - For  projects, job logs, job artifacts,
+     and the  menu items are visible only to project members (Reporter or higher).
      Other users, including guest users, can only view the status of pipelines and jobs, and only
      when viewing merge requests or commits.
-   - For **Internal** projects, pipelines and related features are visible only to project members (Reporter or higher).
+   - For  projects, pipelines and related features are visible only to project members (Reporter or higher).
      Other authenticated users, except [external users](../../administration/external_users.md),
      can only view the status of pipelines and jobs, and only when viewing merge requests or commits.
-   - For **Private** projects, pipelines and related features are visible to project members (Reporter or higher) only.
+   - For  projects, pipelines and related features are visible to project members (Reporter or higher) only.
 
 ### Change pipeline visibility for non-project members in public projects
 
@@ -47,33 +47,33 @@ You can control the visibility of pipelines for non-project members in [public p
 
 This setting has no effect when:
 
-- Project visibility is set to [**Internal** or **Private**](../../user/public_access.md),
+- Project visibility is set to [ or ](../../user/public_access.md),
   because non-project members cannot access internal or private projects.
-- The [**Project-based pipeline visibility**](#change-which-users-can-view-your-pipelines) setting is disabled.
+- The [](#change-which-users-can-view-your-pipelines) setting is disabled.
 
 To change the pipeline visibility for non-project members:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. For **CI/CD**, choose:
-   - **Only project members**: Only project members can view pipelines.
-   - **Everyone With Access**: Non-project members can also view pipelines.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. For , choose:
+   - : Only project members can view pipelines.
+   - : Non-project members can also view pipelines.
+1. Select .
 
 The [CI/CD permissions table](../../user/permissions.md#project-cicd)
-lists the pipeline features non-project members can access when **Everyone With Access**
+lists the pipeline features non-project members can access when
 is selected.
 
 ## Auto-cancel redundant pipelines
 
 You can set pending or running pipelines to cancel automatically when a pipeline for new changes runs on the same branch. You can enable this in the project settings:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General Pipelines**.
-1. Select the **Auto-cancel redundant pipelines** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select the  checkbox.
+1. Select .
 
 Use the [`interruptible`](../yaml/_index.md#interruptible) keyword to indicate if a
 running job can be canceled before it completes. After a job with
@@ -97,11 +97,11 @@ For more information about this problem, see
 
 To create only a merge request pipeline when pushing to a branch with an open merge request:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Select the **Skip branch pipelines for merge requests** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select the  checkbox.
+1. Select .
 
 When this setting is enabled:
 
@@ -112,7 +112,7 @@ When this setting is enabled:
 - On the first push that creates a merge request, a branch pipeline is still created
   because the pipeline starts before the merge request is created.
   Starting from the next push, branch pipelines are skipped.
-- Mergeability checks, like [**Pipelines must succeed**](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge),
+- Mergeability checks, like [](../../user/project/merge_requests/auto_merge.md#require-a-successful-pipeline-for-merge),
   only consider merge request pipelines. Branch pipelines
   do not affect merge readiness.
 - Jobs without explicit `rules`, `only`, or `except` sections are automatically
@@ -132,12 +132,12 @@ newer one, which may not be what you want.
 
 To avoid this scenario:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Select the **Prevent outdated deployment jobs** checkbox.
-1. Optional. Clear the **Allow job retries for rollback deployments** checkbox.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select the  checkbox.
+1. Optional. Clear the  checkbox.
+1. Select .
 
 For more information, see [Deployment safety](../environments/deployment_safety.md#prevent-outdated-deployment-jobs).
 
@@ -154,11 +154,11 @@ or completely prevent cancellation of any pipelines or jobs.
 
 To change the permissions to cancel pipelines or jobs:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Select an option from **Minimum role required to cancel a pipeline or job**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select an option from .
+1. Select .
 
 ## Specify a custom CI/CD configuration file
 
@@ -167,14 +167,14 @@ directory. However, you can specify an alternate filename path, including locati
 
 To customize the path:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. In the **CI/CD configuration file** field, enter the filename. If the file:
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  field, enter the filename. If the file:
    - Is not in the root directory, include the path.
    - Is in a different project, include the group and project name.
    - Is on an external site, enter the full URL.
-1. Select **Save changes**.
+1. Select .
 
 > [!note]
 > You cannot use your project's [pipeline editor](../pipeline_editor/_index.md) to
@@ -215,10 +215,10 @@ Then other users and projects can access, but not edit, the configuration file.
 
 You can choose how your repository is fetched from GitLab when a job runs.
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Under **Git strategy**, select an option:
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , select an option:
    - `git clone` is slower because it clones the repository from scratch
      for every job. However, the local working copy is always pristine.
    - `git fetch` is faster because it re-uses the local working copy (and falls
@@ -233,10 +233,10 @@ in the `.gitlab-ci.yml` file.
 You can limit how much Git history GitLab CI/CD fetches when it clones
 a repository by changing the Git depth:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. Under **Git strategy**, under **Git shallow clone**, enter a value.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , under , enter a value.
    The maximum value is `1000`. To disable shallow clone and make GitLab CI/CD
    fetch all branches and tags each time, keep the value empty or set to `0`.
 
@@ -255,10 +255,10 @@ For more information, see [how Git counts depth](../runners/configure_runners.md
 
 You can define how long a job can run before it times out.
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. In the **Timeout** field, enter the number of minutes, or a human-readable value like `2 hours`.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  field, enter the number of minutes, or a human-readable value like `2 hours`.
    Must be 10 minutes or more, and less than one month. Default is 60 minutes.
    Pending jobs are dropped after 24 hours of inactivity.
 
@@ -283,17 +283,18 @@ You can disable GitLab CI/CD per project or [for all new projects on an instance
 
 When you disable GitLab CI/CD:
 
-- The **CI/CD** item in the left sidebar is removed.
+- The left sidebar no longer shows the  menu
+  or the  >  item.
 - The `/pipelines` and `/jobs` pages are no longer available.
 - Existing jobs and pipelines are hidden, not removed.
 
 To disable GitLab CI/CD in your project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Visibility, project features, permissions**.
-1. In the **Repository** section, turn off **CI/CD**.
-1. Select **Save changes**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  section, turn off .
+1. Select .
 
 These changes do not apply to projects in an [external integration](../../user/project/integrations/_index.md#available-integrations).
 
@@ -319,12 +320,12 @@ Prerequisites:
 
 To configure automatic pipeline cleanup:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **General pipelines**.
-1. In the **Automatic pipeline cleanup** field, enter a duration, for example `2 weeks` or `30 days`.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  field, enter a duration, for example `2 weeks` or `30 days`.
    The value must be at least one day, and no more than the instance maximum (1 year by default). Leave empty to never delete pipelines automatically.
-1. Select **Save changes**.
+1. Select .
 
 For GitLab Self-Managed, administrators can increase the upper limit for
 [automatic pipeline cleanup](../../administration/cicd/limits.md#maximum-retention-period-for-automatic-pipeline-cleanup).

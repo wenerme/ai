@@ -20,7 +20,7 @@ is deprecated, removed, or not found. Choose an available model from the catalog
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 272 modelsClear filters
+We found 273 modelsClear filters
 
 ## Compare models
 
@@ -622,6 +622,13 @@ Compare
 [l<h3>ltx-2-5-fast</h3>lightricksText-to-Video Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and image-to-video workflows, with synchronized audio, configurable duration, resolution, and frame rate.](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/)
 
 - Third-party
+
+Compare
+
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>muse-ember-1.0</h3>MetaText Generation Muse Ember 1.0 is Meta's fast, efficient model with top-tier speed for its class, built for subagent workloads.](https://developers.cloudflare.com/ai/models/meta/muse-ember-1.0/)
+
+- Third-party
+- +1
 
 Compare
 
@@ -1424,21 +1431,21 @@ Compare
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-r1-distill-qwen-32b</h3>DeepSeekText Generation DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/)
 
 - Cloudflare-hosted
-- +2
+- +3
 
 Compare
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4-flash-0731</h3>DeepSeekText Generation DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities.](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-flash-0731/)
 
 - Cloudflare-hosted
-- +4
+- +5
 
 Compare
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-v4-pro-0813</h3>DeepSeekText Generation DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-pro-0813/)
 
 - Cloudflare-hosted
-- +3
+- +4
 
 Compare
 
@@ -1459,14 +1466,14 @@ Compare
 [l<h3>dreamshaper-8-lcm</h3>lykonText-to-Image Stable Diffusion model that has been fine-tuned to be better at photorealism without sacrificing range.](https://developers.cloudflare.com/ai/models/@cf/lykon/dreamshaper-8-lcm/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>embeddinggemma-300m</h3>BetaGoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
@@ -1515,7 +1522,7 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-2b-it-lora</h3>BetaGoogleText Generation This is a Gemma-2B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.](https://developers.cloudflare.com/ai/models/@cf/google/gemma-2b-it-lora/)
 
 - Cloudflare-hosted
-- +2
+- +3
 
 Compare
 
@@ -1529,7 +1536,7 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemma-7b-it-lora</h3>BetaGoogleText Generation This is a Gemma-7B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.](https://developers.cloudflare.com/ai/models/@cf/google/gemma-7b-it-lora/)
 
 - Cloudflare-hosted
-- +2
+- +3
 
 Compare
 
@@ -1550,7 +1557,7 @@ Compare
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 - Cloudflare-hosted
-- +3
+- +4
 
 Compare
 
@@ -1564,7 +1571,7 @@ Compare
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 
 - Cloudflare-hosted
-- +4
+- +5
 
 Compare
 
@@ -1599,28 +1606,28 @@ Compare
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.6</h3>Moonshot AIText Generation Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.6/)
 
 - Cloudflare-hosted
-- +5
+- +6
 
 Compare
 
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)<h3>kimi-k2.7-code</h3>Moonshot AIText Generation Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.7-code/)
 
 - Cloudflare-hosted
-- +4
+- +5
 
 Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-2-7b-chat-hf-lora</h3>BetaMetaText Generation This is a Llama2 base model that Cloudflare dedicated for inference with LoRA adapters. Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 7B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format.](https://developers.cloudflare.com/ai/models/@cf/meta-llama/llama-2-7b-chat-hf-lora/)
 
 - Cloudflare-hosted
-- +2
+- +3
 
 Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.1-8b-instruct-fp8</h3>MetaText Generation Llama 3.1 8B quantized to FP8 precision](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct-fp8/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
@@ -1634,14 +1641,14 @@ Compare
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.2-1b-instruct</h3>MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.2-1b-instruct/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)<h3>llama-3.2-3b-instruct</h3>MetaText Generation The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.2-3b-instruct/)
 
 - Cloudflare-hosted
-- +2
+- +3
 
 Compare
 
@@ -1669,7 +1676,7 @@ Compare
 [l<h3>llava-1.5-7b-hf</h3>Betallava-hfImage-to-Text LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.](https://developers.cloudflare.com/ai/models/@cf/llava-hf/llava-1.5-7b-hf/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
@@ -1690,7 +1697,7 @@ Compare
 [![MyShell logo](https://developers.cloudflare.com/_astro/myshell.6ROagMV2.svg)<h3>melotts</h3>MyShellText-to-Speech MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.](https://developers.cloudflare.com/ai/models/@cf/myshell-ai/melotts/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
@@ -1718,7 +1725,7 @@ Compare
 [![NVIDIA logo](https://developers.cloudflare.com/_astro/nvidia.DI1bb8hH.svg)<h3>nemotron-3-120b-a12b</h3>NVIDIAText Generation NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.](https://developers.cloudflare.com/ai/models/@cf/nvidia/nemotron-3-120b-a12b/)
 
 - Cloudflare-hosted
-- +3
+- +4
 
 Compare
 
@@ -1760,7 +1767,7 @@ Compare
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)<h3>qwen3-30b-a3b-fp8</h3>QwenText Generation Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen3-30b-a3b-fp8/)
 
 - Cloudflare-hosted
-- +4
+- +5
 
 Compare
 
@@ -1781,7 +1788,7 @@ Compare
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)<h3>qwq-32b</h3>QwenText Generation QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.](https://developers.cloudflare.com/ai/models/@cf/qwen/qwq-32b/)
 
 - Cloudflare-hosted
-- +3
+- +4
 
 Compare
 
@@ -1802,21 +1809,21 @@ Compare
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)<h3>stable-diffusion-v1-5-inpainting</h3>BetaRunwayMLText-to-Image Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-inpainting/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
 [![Stability.ai logo](https://developers.cloudflare.com/_astro/stabilityai.VsBx3CKv.svg)<h3>stable-diffusion-xl-base-1.0</h3>BetaStability.aiText-to-Image Diffusion-based text-to-image generative model by Stability AI. Generates and modify images based on text prompts.](https://developers.cloudflare.com/ai/models/@cf/stabilityai/stable-diffusion-xl-base-1.0/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)<h3>stable-diffusion-xl-lightning</h3>BetaByteDanceText-to-Image SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 
@@ -1837,7 +1844,7 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>whisper-tiny-en</h3>BetaOpenAIAutomatic Speech Recognition Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. Trained on 680k hours of labelled data, Whisper models demonstrate a strong ability to generalize to many datasets and domains without the need for fine-tuning. This is the English-only version of the Whisper Tiny model which was trained on the task of speech recognition.](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-tiny-en/)
 
 - Cloudflare-hosted
-- +1
+- +2
 
 Compare
 

@@ -385,11 +385,89 @@ is more than 100, download the CSV file to view the log.
 
 New authentications to a project can take up to 5 minutes to appear in the authentication log.
 
-## Use legacy format for CI/CD tokens
+## JWT format for CI/CD job tokens
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/514860) in GitLab 17.10.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/167938) in GitLab 17.7 [with a flag](../../administration/feature_flags/_index.md) named `ci_job_token_jwt`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/514860) for new top-level groups in GitLab 17.10.
 
-Beginning in GitLab 19.0, CI/CD job tokens use the JWT standard by default. Projects can continue to use the legacy format by configuring the top-level group for their project. This setting is only available until the GitLab 20.0 release.
+GitLab is switching CI/CD job tokens from a legacy random-string format to a
+[JSON Web Token (JWT)](https://jwt.io/) format. A JWT job token is signed by the
+instance and embeds the identifiers GitLab needs to route the request.
+
+Which format a job receives depends on the top-level group of the job's project:
+
+- Projects in top-level groups created in GitLab 17.10 or later use the JWT format.
+- Projects in top-level groups created before GitLab 17.10 use the legacy format,
+  unless the group turns on .
+- Projects in personal namespaces use the legacy format.
+
+These rules have two exceptions:
+
+- Jobs run by a service account with composite identity, for example GitLab Duo Agent Platform
+  flows, always use the JWT format.
+- If an administrator turns on the `ci_job_token_jwt` feature flag, all projects use the JWT
+  format, including projects in personal namespaces. Top-level groups that turn off
+  the setting still use the legacy format.
+
+The JWT format is planned to become the default for all projects, and the legacy
+format is planned to be removed in a later release. No milestone is set for either change.
+For the current status, see the [deprecation announcement](../../update/deprecations.md#updating-cicd-job-tokens-to-jwt-standard).
+
+### Differences between the legacy and JWT formats
+
+Jobs use the token in the same way with both formats, through the `CI_JOB_TOKEN` variable.
+The token itself is different:
+
+| Property   | Legacy format                               | JWT format |
+|------------|---------------------------------------------|------------|
+| Length     | About 30 characters.                        | About 800 characters. |
+| Prefix     | `glcbt-`.                                   | `glcbt-`, preceded by the [instance token prefix](../../administration/settings/account_and_limit_settings.md#instance-token-prefix) if one is configured. |
+| Characters | Letters, numbers, `-`, and `_`.             | Letters, numbers, `-`, `_`, and two `.` separators. |
+| Expiry     | No expiry time in the token. The token is rejected after the job finishes. | The token also carries an expiry time of the job timeout plus 5 minutes. |
+
+The format change itself does not affect workflows that pass the token through unchanged.
+A workflow can break if it copies the token into something with a size or character limit,
+or parses the token expecting the legacy format. For example:
+
+- Using the token in a filename, a path, or a database column with a length limit.
+- Encoding the token with `base64` or another command that wraps long lines.
+- Cloning with the token in the repository URL on a host with a very old Git version.
+- Matching the token with a regular expression that does not allow `.`.
+
+If you use a [custom executor](https://docs.gitlab.com/runner/executors/custom/), check what
+your driver does with the `CUSTOM_ENV_CI_JOB_TOKEN` variable and with the token in the
+repository URL. Version 0.5.0 and earlier of the EC2 Fargate driver broke this way.
+For more information, see [JWT format job token errors](#jwt-format-job-token-errors).
+
+### Test your workflows with the JWT format
+
+Before the JWT format becomes the default for all projects, test the pipelines and
+workflows that use `CI_JOB_TOKEN`.
+
+Prerequisites:
+
+- The Owner role for the group.
+
+To test your workflows with the JWT format:
+
+1. Create a top-level group for testing, which uses the JWT format by default, or turn on
+    for an existing group.
+   The setting is in the same place as described in
+   [Use legacy format for CI/CD tokens](#use-legacy-format-for-cicd-tokens).
+1. Optional. To check which format a job receives without exposing the token, add
+   `echo "${#CI_JOB_TOKEN}"` to a job script, or `$env:CI_JOB_TOKEN.Length` for PowerShell.
+   The command prints the length of the token: about 30 characters for the legacy format
+   and about 800 for the JWT format.
+1. Run your pipelines and workflows from a project in that group.
+
+### Use legacy format for CI/CD tokens
+
+You can configure a group to use the legacy format instead of the JWT format.
+This setting is planned for removal with the legacy format in a future release.
+
+Prerequisites:
+
+- The Owner role for the group.
 
 To use the legacy format for your CI/CD tokens:
 
@@ -481,6 +559,26 @@ When `base64` encoding JWT format job tokens during job execution, for example w
 `echo $CI_JOB_TOKEN | base64`, the token is rendered invalid.
 
 To fix this issue, use `base64 -w0` to disable automatically wrapping the token.
+
+#### Git clone fails on SSH executor hosts with an old Git version
+
+On [SSH executor](https://docs.gitlab.com/runner/executors/ssh/) hosts that run a very old
+Git version, for example the version shipped with RHEL 6 and earlier, Git clone can fail with
+the longer JWT job token in the repository URL. For more information, see
+[issue 509578](https://gitlab.com/gitlab-org/gitlab/-/issues/509578#note_2757691798).
+
+To fix this issue, upgrade Git on the host.
+If you cannot upgrade Git, configure the group to use the
+[legacy token format](#use-legacy-format-for-cicd-tokens).
+
+#### Job token rejected after the instance token prefix changes
+
+If an administrator changes or removes a configured instance token prefix while jobs are
+running, GitLab rejects the JWT format job tokens of those jobs. Legacy format job tokens
+are not affected. For more information, see
+[issue 636985](https://gitlab.com/gitlab-org/gitlab/-/issues/636985).
+
+To avoid this issue, change the instance token prefix when no jobs are running.
 
 #### Error: `403 Forbidden` in long-running jobs
 

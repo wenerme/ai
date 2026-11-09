@@ -69,18 +69,38 @@ You can also set this limit by using the [Plan limits API](../../api/plan_limits
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6.
 
 You can limit the number of [pipeline variables](../../ci/variables/_index.md#pipeline-variable-limits)
-in a pipeline, and the size of each variable value.
-These limits are checked every time a pipeline is created.
+in a pipeline. This limit is checked every time a pipeline is created.
+
+The size of each value is limited by [Limit CI/CD variable values](#limit-cicd-variable-values).
+
+To configure the count limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Under **CI/CD limits**, set a value for **Maximum number of pipeline variables in a single pipeline**.
+1. Select **Save changes**.
+
+This limit is not set by default. Set it to `0` to disable it.
+
+You can also set this limit by using the [Plan limits API](../../api/plan_limits.md).
+
+## Limit CI/CD variable values
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6.
+
+You can limit the size of a CI/CD variable value.
+These limits are shared by every kind of CI/CD variable.
+File type values are written to a file instead of the environment, so they have their own limit.
 
 To configure these limits:
 
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **Settings** > **CI/CD**.
 1. Expand **Continuous Integration and Deployment**.
-1. Under **CI/CD limits**, set a value for any of:
-   - **Maximum number of pipeline variables in a single pipeline**.
-   - **Maximum size of a pipeline variable value in bytes**.
-   - **Maximum size of a file type pipeline variable value in bytes**.
+1. Under **CI/CD limits**, set a value for either of:
+   - **Maximum size of a CI/CD variable value in bytes**.
+   - **Maximum size of a file type CI/CD variable value in bytes**.
 1. Select **Save changes**.
 
 These limits are not set by default. Set a limit to `0` to disable it.
@@ -199,6 +219,27 @@ This limit cannot be disabled. Defaults to `50`.
 
 Set to `0` to block all needs dependencies. Pipelines with jobs configured to use `needs`
 then return the error `job can only need 0 others`.
+
+## Limit job variables
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254701) in GitLab 19.6.
+
+You can limit the number of [job variables](../../ci/jobs/job_control.md#job-variable-limits)
+in a job. This limit is checked every time a user runs or retries a manual job with variables.
+
+The size of each value is limited by [Limit CI/CD variable values](#limit-cicd-variable-values).
+
+To configure the count limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Under **CI/CD limits**, set a value for **Maximum number of job variables in a single job**.
+1. Select **Save changes**.
+
+This limit is not set by default. Set it to `0` to disable it.
+
+You can also set this limit by using the [Plan limits API](../../api/plan_limits.md).
 
 ## Number of registered runners for groups and projects
 
@@ -566,6 +607,8 @@ To configure the per user and project limit:
 ## Runner job list rate limits
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268206) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_rate_limit_runner_job_list_completed_statuses`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268904) for the REST API in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_rate_limit_rest_runner_job_list_completed_statuses`. Disabled by default.
+- Enforcement of the limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268904) in GitLab 19.6 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_runner_job_list_completed_statuses_limit`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the history.
@@ -573,8 +616,13 @@ To configure the per user and project limit:
 Repeated requests that list a runner's jobs filtered by a completed status can put significant load on your instance.
 To protect against this, you can limit how many of these requests each user can send.
 
-This rate limit applies to the `jobs` field of the [`CiRunner`](../../api/graphql/reference/objects.md#cirunner)
-GraphQL type when its `statuses` argument includes `SUCCESS`, `FAILED`, or `CANCELED`.
+This rate limit applies to:
+
+- The `jobs` field of the [`CiRunner`](../../api/graphql/reference/objects.md#cirunner)
+  GraphQL type when its `statuses` argument includes `SUCCESS`, `FAILED`, or `CANCELED`.
+- The [list all jobs processed by a runner](../../api/runners.md#list-all-jobs-processed-by-a-runner)
+  REST API endpoint when its `status` attribute is `success`, `failed`, or `canceled`.
+
 This limit does not apply to requests filtered only by other statuses, or not filtered by status.
 Statuses that a runner's jobs cannot have, such as pending, match no jobs.
 
@@ -582,7 +630,9 @@ GitLab enforces the following limit:
 
 - Per user: Configurable, with a default of `330` requests each minute.
 
-Set the limit to `0` to disable it. If the limit is exceeded, the request returns an error.
+Requests to both APIs count toward the same per-user limit. Set the limit to `0` to disable it.
+If the limit is exceeded, the REST API returns `429 Too Many Requests`, and GraphQL returns an
+error for the `jobs` field.
 
 To configure the limit:
 

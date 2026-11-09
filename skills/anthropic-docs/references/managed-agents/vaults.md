@@ -11,6 +11,8 @@ featureMetadata:
     eligibility: not-eligible
     note: Sessions are stateful resources; transcripts persist until you delete them. Applies to all Managed Agents sub-features, including Self-hosted sandboxes.
   supportedModels:
+    - claude-fable-5-2
+    - claude-mythos-5-2
     - claude-fable-5-1
     - claude-mythos-5-1
     - claude-fable-5
@@ -46,7 +48,7 @@ A vault is the collection of `credentials` associated with an end user. Give it 
   ```bash cURL
   curl --fail-with-body -sS https://api.anthropic.com/v1/vaults \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "content-type: application/json" \
     -d '{
@@ -176,7 +178,7 @@ To get the same behavior with a self-hosted sandbox, you can run your own proxy 
       ```bash cURL
       curl --fail-with-body -sS "https://api.anthropic.com/v1/vaults/$VAULT_ID/credentials" \
         -H "x-api-key: $ANTHROPIC_API_KEY" \
-        -H "anthropic-version: 2023-06-01" \
+        -H "anthropic-version: 2026-10-21" \
         -H "anthropic-beta: managed-agents-2026-04-01" \
         -H "content-type: application/json" \
         -d @- <<'EOF'
@@ -389,7 +391,7 @@ To get the same behavior with a self-hosted sandbox, you can run your own proxy 
       ```bash cURL
       curl --fail-with-body -sS "https://api.anthropic.com/v1/vaults/$VAULT_ID/credentials" \
         -H "x-api-key: $ANTHROPIC_API_KEY" \
-        -H "anthropic-version: 2023-06-01" \
+        -H "anthropic-version: 2026-10-21" \
         -H "anthropic-beta: managed-agents-2026-04-01" \
         -H "content-type: application/json" \
         -d @- <<'EOF'
@@ -517,7 +519,7 @@ To get the same behavior with a self-hosted sandbox, you can run your own proxy 
       ```bash cURL
       curl --fail-with-body -sS "https://api.anthropic.com/v1/vaults/$VAULT_ID/credentials" \
         -H "x-api-key: $ANTHROPIC_API_KEY" \
-        -H "anthropic-version: 2023-06-01" \
+        -H "anthropic-version: 2026-10-21" \
         -H "anthropic-beta: managed-agents-2026-04-01" \
         -H "content-type: application/json" \
         -d @- <<'EOF'
@@ -705,7 +707,7 @@ To get the same behavior with a self-hosted sandbox, you can run your own proxy 
 
     Request payloads are often assembled from content the agent is working with, so the request body is the broader exposure surface. Most services read an API key from a request header, so enabling only `header` (csharp, go: `Header`) is the narrower configuration. It scopes substitution to request header values for that credential.
 
-    The credential’s `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) controls which parts of an outbound request the secret is substituted into. It is an optional object, a sibling of `networking` (csharp, go: `Networking`), with two Boolean fields: `header` (csharp, go: `Header`) (request headers) and `body` (csharp, go: `Body`) (request body). `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) is independent of `allowed_hosts` (java, php: `allowedHosts`; csharp, go: `AllowedHosts`) in `networking` (csharp, go: `Networking`): `allowed_hosts` (java, php: `allowedHosts`; csharp, go: `AllowedHosts`) scopes which hosts the secret is substituted for, and `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) scopes which parts of the request it is substituted into.
+    The credential’s `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) controls which parts of an outbound request the secret is substituted into. It is an optional object, a sibling of `networking` (csharp, go: `Networking`), with two boolean fields: `header` (csharp, go: `Header`) (request headers) and `body` (csharp, go: `Body`) (request body). `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) is independent of `allowed_hosts` (java, php: `allowedHosts`; csharp, go: `AllowedHosts`) in `networking` (csharp, go: `Networking`): `allowed_hosts` (java, php: `allowedHosts`; csharp, go: `AllowedHosts`) scopes which hosts the secret is substituted for, and `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) scopes which parts of the request it is substituted into.
 
     `injection_location` (java, php: `injectionLocation`; csharp, go: `InjectionLocation`) behaves differently on create and on update:
 
@@ -748,7 +750,7 @@ Pass `vault_ids` (java: `vaultIds`; php: `vaultIDs`; csharp: `VaultIds`; go: `Va
   ```bash cURL
   curl --fail-with-body -sS https://api.anthropic.com/v1/sessions \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "content-type: application/json" \
     -d '{
@@ -852,7 +854,7 @@ Secret values, `display_name` (java, php: `displayName`; csharp, go: `DisplayNam
   curl --fail-with-body -sS \
     "https://api.anthropic.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-beta: managed-agents-2026-04-01" \
     -H "content-type: application/json" \
     -d @- <<'EOF'
@@ -1013,7 +1015,7 @@ The top-level `status` (csharp, go: `Status`) tells you what to do next:
   curl --fail-with-body -sS -X POST \
     "https://api.anthropic.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID/mcp_oauth_validate?beta=true" \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
-    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-version: 2026-10-21" \
     -H "anthropic-beta: managed-agents-2026-04-01"
   ```
 

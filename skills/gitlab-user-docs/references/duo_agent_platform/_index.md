@@ -112,5 +112,6 @@ but you require credits in your monthly commitment pool to access them.
 | [AI Governance Dashboard](../ai-governance/governance-dashboard.md)  Monitor AI agent sessions, audit logs, and developer exposure across a group. | No | No | Yes |
 | [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
+| [Generate Workplan Flow](../work_items/workplan.md)  Draft a workplan for a work item and add it to the **Workplan** widget. | No | Yes | Yes |
 | [Agentic Breaking Change Resolution Flow](flows/foundational_flows/agentic-breaking-change-resolution.md)  Analyze pipeline failures on dependency bump merge requests and create code fixes to resolve breaking changes introduced by the dependency update. | No | No | Yes |
 | [Support Assistant](agents/foundational_agents/support_assistant.md)  Diagnose and resolve GitLab product problems. | No | Yes | Yes |

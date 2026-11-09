@@ -384,6 +384,7 @@ such as:
 
 - [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/454550) to GitLab Duo and changed to [beta](../../policy/development_stages_support.md#beta) in GitLab 17.3 [with a feature flag](../../administration/feature_flags/_index.md) named `summarize_notes_with_duo`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162122) in GitLab 17.4.
+- Feature flag `summarize_notes_with_duo` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/477886) in GitLab 17.5.
 - Changed to require GitLab Duo add-on in GitLab 17.6 and later.
 - Changed to include Premium in GitLab 18.0.
 

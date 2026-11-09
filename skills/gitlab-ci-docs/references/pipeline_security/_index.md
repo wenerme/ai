@@ -95,12 +95,25 @@ docker pull node:18.17.1
 docker images --digests node:18.17.1
 ```
 
+A digest-pinned image is available only while the container registry retains its manifest.
+GitLab [rebuilds security analyzer images daily](../../development/sec/analyzer_development_guide.md#daily-rebuild-of-container-images)
+under `registry.gitlab.com/security-products/*`. Each rebuild overwrites the version tags
+and leaves the previous manifest untagged.
+[Online garbage collection](../../user/packages/container_registry/delete_container_registry_images.md#garbage-collection)
+can delete untagged manifests after 24 hours, so a pinned digest can fail with
+`manifest unknown`.
+
+To pin these images by digest, copy the analyzer image into a container registry you control,
+protect the copy with immutable tags, and pin the digest from that registry.
+
 Prefer to pull from container registries that protect image integrity:
 
 - Use [protected container repositories](../../user/packages/container_registry/container_repository_protection_rules.md)
   to restrict which users can make changes to container images in your container repository.
 - Use [protected tags](../../user/packages/container_registry/protected_container_tags.md)
   to control who can push and delete container tags.
+- Use [immutable tags](../../user/packages/container_registry/immutable_container_tags.md)
+  to prevent container tags from being updated or deleted.
 
 When possible, avoid using variables in container references as they can be modified to point to malicious images.
 For example:

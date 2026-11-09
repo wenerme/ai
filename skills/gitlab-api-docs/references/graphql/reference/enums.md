@@ -2691,6 +2691,7 @@ Where a Duo Workflow session was initiated from.
 | `MERGE_REQUEST_DEPENDENCY_BUMP` | Session initiated from bumping a dependency on a merge request. |
 | `MERGE_REQUEST_FIX_PIPELINE` | Session initiated from fixing a failed pipeline on a merge request. |
 | `MERGE_REQUEST_RESOLVE_DISCUSSION` | Session initiated from resolving a discussion on a merge request. |
+| `MOBILE_CHAT` | Session initiated from GitLab Duo Chat in the GitLab Mobile app. |
 | `SLACK` | Session initiated from Slack. |
 | `VULNERABILITY_LEAKED_TOKEN_ROTATION` | Session initiated from rotating a leaked token found by a vulnerability. |
 | `WEB_CHAT` | Session initiated from GitLab Duo Chat in the web UI. |
@@ -6068,7 +6069,9 @@ Name of the feature that the callout is for.
 | `REGISTRATION_ENABLED_CALLOUT` | Callout feature name for registration_enabled_callout. |
 | `SECRETS_MANAGER_NAV_BADGE` | Callout feature name for secrets_manager_nav_badge. |
 | `SECURITY_CONFIGURATION_DEVOPS_ALERT` | Callout feature name for security_configuration_devops_alert. |
+| `SECURITY_CONFIGURATION_NAV_INDICATOR` | Callout feature name for security_configuration_nav_indicator. |
 | `SECURITY_CONFIGURATION_UPGRADE_BANNER` | Callout feature name for security_configuration_upgrade_banner. |
+| `SECURITY_INVENTORY_NAV_INDICATOR` | Callout feature name for security_inventory_nav_indicator. |
 | `SECURITY_POLICY_PROTECTED_BRANCH_MODIFICATION` | Callout feature name for security_policy_protected_branch_modification. |
 | `SECURITY_SCANNER_PROFILES_ANNOUNCEMENT` | Callout feature name for security_scanner_profiles_announcement. |
 | `SINGLE_ORIGIN_FALLBACK_CALLOUT` | Callout feature name for single_origin_fallback_callout. |

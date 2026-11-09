@@ -480,9 +480,17 @@ curl --request PUT \
 ## List all jobs processed by a runner
 
 - Ascending keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/252032) in GitLab 19.4.
+- Rate limit and status filter changes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268904) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `ci_rate_limit_rest_runner_job_list_completed_statuses`. Disabled by default.
+- Enforcement of the rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/268904) in GitLab 19.6 [with a feature flag](../administration/feature_flags/_index.md) named `ci_enforce_runner_job_list_completed_statuses_limit`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
 
 Lists all jobs that are being processed or were processed by the specified runner. The list of jobs is limited
 to projects where the user has the Reporter, Developer, Maintainer, or Owner role.
+Requests filtered by the `success`, `failed`, or `canceled` status can be
+[rate limited](../administration/cicd/limits.md#runner-job-list-rate-limits).
+Statuses that a runner's jobs cannot have, such as pending, match no jobs.
 
 ```plaintext
 GET /runners/:id/jobs

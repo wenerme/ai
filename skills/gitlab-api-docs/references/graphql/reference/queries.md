@@ -366,7 +366,7 @@ List of MCP tools dynamically discovered from the GitLab MCP server. This field 
 
 - Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.4.
 
-Get available models for Duo Agentic Chat.
+Get available models for Duo Agentic Chat. This field can be resolved only once in any single request.
 
 **Returns:** [`AvailableModels`](objects.md#availablemodels)
 
@@ -2276,6 +2276,7 @@ Usage data of consumables under the subscription.
 | `endDate` | [`ISO8601Date`](scalars.md#iso8601date) | End date of the usage period to query. Defaults to the end of the current month. |
 | `flowTypes` | [`[String!]`](scalars.md#string) | Filter usage data by flow type identifiers (e.g. ["chat", "code_review"]). Only applies to event-backed fields (creditsUsed, dailyUsage, dailyAverage, totalActiveUsers, totalCreditsUsed). Wallet-backed fields (monthlyWaiver, monthlyCommitment, overage) are not affected by this filter. |
 | `namespacePath` | [`ID`](scalars.md#id) | Path of the top-level namespace. Leave it blank if querying the instance subscription. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of the organization billed through a nominated group. |
 | `startDate` | [`ISO8601Date`](scalars.md#iso8601date) | Start date of the usage period to query. Defaults to the beginning of the current month. |
 
 ## `syntheticNote`
@@ -2354,6 +2355,7 @@ Usage data for trial subscriptions.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `namespacePath` | [`ID`](scalars.md#id) | Path of the top-level namespace. Leave it blank if querying the instance subscription. |
+| `organizationId` | [`OrganizationsOrganizationID`](scalars.md#organizationsorganizationid) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Global ID of the organization billed through a nominated group. |
 
 ## `usageTrendsMeasurements`
 

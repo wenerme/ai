@@ -52,7 +52,7 @@ The MCP server endpoints, `/api/v4/mcp` and `/api/v4/orbit/mcp`, answer instead 
 they send when a request has no token.
 The challenge has the realm `GitLab`, the scope that an OAuth client requests for the endpoint
 (`mcp` or `mcp_orbit`), and the endpoint's protected resource metadata URL in `resource_metadata`.
-An expired or revoked token gets the same challenge with the `invalid_token` error.
+An expired, revoked, or unknown token gets the same challenge with the `invalid_token` error.
 For an `insufficient_scope` error, the challenge lists the same scopes as the response body.
 If the token has none of the scopes that the endpoint accepts:
 

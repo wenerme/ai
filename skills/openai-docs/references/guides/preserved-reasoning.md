@@ -1,90 +1,32 @@
-# Preserved reasoning
+# Keep the prefix unchanged
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-When you continue a conversation with the Responses API, a model can reuse
-reasoning items from an earlier response. To preserve that reasoning when you
-manage conversation history, keep the history that produced it intact and append
-new messages and tool results at the end. The selected model and
-[`reasoning.context` setting](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls)
-determine which available reasoning items the model can use.
+In agentic and multi-turn applications, our models work best when [thinking is preserved](https://developers.openai.com/api/docs/guides/reasoning?api-mode=responses#preserve-reasoning-across-calls) across API requests, where new actions and instructions are always appended to the model’s context. Keeping the prefix intact has long been a best practice for [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching). The cache matches requests from the beginning, so a change to the prefix can cut cache reuse from that point onward. Appending changes keeps more of the conversation eligible for cache reuse, which can substantially **lower input costs and speed up responses**.
 
-## How history changes affect reasoning
+Starting with newer frontier models, the API **will drop reasoning items** that follow a prefix change as part of our anti-distillation safeguards. When reasoning items are dropped, the model may have to redo some reasoning, which can increase token usage, cost, and latency. If the model can't recover the lost reasoning, output quality may also drop.
 
-For newer frontier models, the API checks the conversation history before each
-reasoning item you send back. This history is the item's _prefix_. If you edit,
-shorten, or insert a message in that prefix, the API drops the affected
-reasoning. The request can continue with the conversation you provide, and the
-model can generate new reasoning.
+To get the best performance from our models, we recommend avoiding changes to the prefix and adopting an append-only integration pattern as far as possible.
 
-For example, an agent calls a ledger tool and uses the returned rows to
-investigate a discrepancy. On the next request, your app replaces those rows
-with a subtotal. The model can still reuse reasoning it used to choose the tool,
-but the API drops reasoning that depended on the original rows, even if you send the
-reasoning item back unchanged.
+## What is a prefix change?
 
-## Append new instructions
+A reasoning item’s prefix is the conversation history that comes before it. A prefix change modifies that earlier history—for example, by shortening a tool result, rewriting a developer message, or replacing older turns with a summary.
 
-When you manage history yourself, keep the previous input and the response's
-output items in their original order. Add new instructions at the point where
-they take effect.
+## How to update integrations to avoid prefix changes
 
-This example uses the Python SDK in stateless mode with a model that supports
-`reasoning.context` set to `all_turns`. Stateless responses
-include encrypted reasoning content by default. See
-[Preserve reasoning without stored responses](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-without-stored-responses).
+You can change the prefix unintentionally by updating Responses API parameters such as `tools`, `instructions`, or `text.format`, or by editing earlier `input` items. Audit your integration for these changes.
 
-Append instructions to a conversation
+The table below shows common ways integrations change the prefix and how to achieve the same goals by appending to the context where possible.
 
-```python
-from openai import OpenAI
+| Common reason to change prefix                                 | How to avoid prefix change                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Changing reasoning effort                                      | Instead of changing the `reasoning.effort` parameter in the Responses API, append a [`configuration_update` item](https://developers.openai.com/api/docs/guides/reasoning#change-reasoning-mid-conversation) with the new reasoning effort to the input items list. Keep the original request-level setting the same.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Changing structured output schemas                             | Instead of changing the `text.format` parameter in the Responses API, append a [`configuration_update` item](https://developers.openai.com/api/docs/guides/structured-outputs#change-the-response-format-mid-conversation) with the new schema to the input items list. Keep the original request-level setting the same.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Changing the tools available to the agent                      | Instead of changing the `tools` parameter in the Responses API, use an [`additional_tools` item](https://developers.openai.com/api/docs/guides/prompt-caching#manage-tools-with-append-only-updates) to add tools, or `tool_choice` with `allowed_tools` to restrict which tools the model can call on a turn. Keep existing tool definitions in order. Append `additional_tools` with the `developer` role and a `tools` array, and replay it in its original position.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Updating developer instructions                                | Instead of editing the original developer message, append a new `developer` message asking the model to ignore older instructions and follow the new ones you provide. For instructions scoped to a single turn, place an [explicit cache breakpoint](https://developers.openai.com/api/docs/guides/prompt-caching#how-prefix-matching-works) immediately before the latest developer message so the reusable prefix ends before that message.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Compaction                                                     | Compaction changes the prefix, so cache misses are difficult to avoid in these cases.<br /><br />**OpenAI compaction:** If you use [OpenAI compaction](https://developers.openai.com/api/docs/guides/compaction) via `/responses/compact` or `context_management`, our systems retain subsequent reasoning items despite the prefix being changed. An OpenAI compaction item can appear anywhere in context. When calling `/responses/compact`, omit `instructions` and pass the returned window to the next request in its original order. If your history contains `configuration_update` items, follow the [configuration-update compaction requirements](https://developers.openai.com/api/docs/guides/reasoning#change-reasoning-mid-conversation).<br /><br />**Custom compaction:** If you use a different or home-grown compaction strategy, place the compacted item at the end of the model’s context, instead of before recent turns. Alternatively, you can accept the trade-off and have the reasoning items from the original history that follow it dropped. |
+| Shortening past tool outputs or downsizing past files / images | Some integrations truncate past items, such as tool outputs, files, or images, instead of using compaction. These modifications change the prefix. We strongly recommend either using compaction, or shortening long tool outputs and downsizing images or files before they’re sent to the model for the first time.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
-client = OpenAI()
-model = "gpt-6.1-sol"
-history = [{"role": "user", "content": "Compare invoice A ($80) and B ($95)."}]
+## Auditing your integration for prefix changes
 
-first = client.responses.create(
-    model=model,
-    reasoning={"context": "all_turns"},
-    input=history,
-    store=False,
-)
-
-next_input = [
-    *history,
-    *(item.to_dict() for item in first.output),
-    {
-        "role": "developer",
-        "content": "For the reconciliation report, use a Markdown table.",
-    },
-    {"role": "user", "content": "Add invoice C ($110) and show the total."},
-]
-report = client.responses.create(
-    model=model,
-    reasoning={"context": "all_turns"},
-    input=next_input,
-    store=False,
-)
-print(report.output_text)
-```
-
-
-If you use stored responses, you can continue from the prior response with
-`previous_response_id` and send only the new input items. See
-[Conversation state](https://developers.openai.com/api/docs/guides/conversation-state).
-
-## Migrate away from prefix edits
-
-Compare two consecutive requests in a workflow that reuses reasoning. Find the
-first place your app changes an item it already sent, then choose the migration
-that matches the edit.
-
-| If your app edits…                       | Migrate to…                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Older turns during compaction            | Use OpenAI compaction and continue from the returned context. If you create a portable text summary, let the model reason from it. Replacing the prefix can invalidate reasoning you replay after the summary. If the history includes `configuration_update` items, use an explicit `compaction_trigger`, then append a fresh update before the next user message. Restate every setting you changed, including the format if applicable. Automatic compaction, automatic truncation, and standalone `/responses/compact` don't support histories containing these updates. |
-| Developer instructions                   | Append a developer message when the instruction takes effect. If the response is already running, use mid-turn steering where supported.                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| The tool list when switching modes       | Keep known tool definitions stable. Restrict the next request with `tool_choice` of type `allowed_tools`. To introduce new tools, append an `additional_tools` input item with role `developer` and the definitions in `tools`. Replay it in its original position.                                                                                                                                                                                                                                                                                                          |
-| A tool result the model has already seen | Filter the result before sending `function_call_output` the first time. If the data changes, append a correction or return it from a new tool call.                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-For more on managing long conversations, see
-[Compaction](https://developers.openai.com/api/docs/guides/compaction).
+Use [Prompt Cache Diagnostics](https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics) to see when cache misses occur and investigate prefix changes. Compare a request with an earlier response by setting `prompt_cache_options.comparison_response_id` to the earlier response ID, then inspect the diagnostic reason and cached token count. Use this information to reduce prefix changes in your integration. Diagnostics report the first identified difference on a best-effort basis; they can’t verify whether the model reused reasoning.

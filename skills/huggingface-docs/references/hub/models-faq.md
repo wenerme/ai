@@ -34,13 +34,14 @@ By convention, each model repo should contain a single checkpoint. You should up
 
 ## Can I link my model to a paper on arXiv?
 
-If the model card includes a link to a paper on arXiv, the Hugging Face Hub will extract the arXiv ID  and include it in the model tags with the format `arxiv:<PAPER ID>`. Clicking on the tag will let you:
+If the model card includes a link to a paper on arXiv, the Hugging Face Hub will extract the arXiv ID and include it in the model tags with the format `arxiv:<PAPER ID>`. The Hub also lists the paper in the right sidebar of the model page. Clicking on the tag will let you:
 
-* Visit the paper page
+* Visit the Paper page.
 * Filter for other models on the Hub that cite the same paper.
 
 <div class="flex justify-center">
-
+[arxiv:2609.19969 tag on a model page, expanded to show the paper title, View paper page and List models citing this paper]
+[arxiv:2609.19969 tag on a model page, expanded to show the paper title, View paper page and List models citing this paper]
 </div>
 
 Read more about paper pages [here](./paper-pages).
