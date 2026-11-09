@@ -15,11 +15,11 @@ To receive (mostly) deterministic outputs across API calls, you can:
 
 Sometimes, determinism may be impacted due to necessary changes OpenAI makes to model configurations on our end. To help you keep track of these changes, we expose the [`system_fingerprint`](https://developers.openai.com/api/reference/resources/chat#chat/object-system_fingerprint) field. If this value is different, you may see different outputs due to changes we've made on our systems.
 
-[Deterministic outputs
+[Deterministic outputs](https://developers.openai.com/cookbook/examples/reproducible_outputs_with_the_seed_parameter)
+
+Explore the new seed parameter in the OpenAI cookbook
 
 
-
-      Explore the new seed parameter in the OpenAI cookbook](https://developers.openai.com/cookbook/examples/reproducible_outputs_with_the_seed_parameter)
 
 ## Managing tokens
 

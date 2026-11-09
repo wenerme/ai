@@ -42,26 +42,24 @@ Always evaluate and manually review optimized prompts before using them in produ
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and links to third-party resources, or learn more about our tools for evals:
 
-[Cookbook: Building resilient prompts with evals
+[Cookbook: Building resilient prompts with evals](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+
+Operate a flywheel of continuous improvement using evaluations.
 
 
 
-      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+[Working with evals](https://developers.openai.com/api/docs/guides/evals)
 
-[Working with evals
-
-
-
-      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
-
-[Graders
+Evaluate against external models, interact with evals via API, and more.
 
 
 
-      Build sophisticated graders to improve the effectiveness of your evals.](https://developers.openai.com/api/docs/guides/graders)
+[Graders](https://developers.openai.com/api/docs/guides/graders)
 
-[Fine-tuning
+Build sophisticated graders to improve the effectiveness of your evals.
 
 
 
-      Improve a model's ability to generate responses tailored to your use case.](https://developers.openai.com/api/docs/guides/model-optimization)
+[Fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)
+
+Improve a model's ability to generate responses tailored to your use case.

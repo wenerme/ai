@@ -34,11 +34,7 @@ Install the [OpenAI SDK](https://developers.openai.com/api/docs/libraries) and a
 
     
 
-      
-
-Download sample audio
-
-
+      Download sample audio
     
 
   

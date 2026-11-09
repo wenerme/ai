@@ -35,11 +35,11 @@ In the OpenAI platform, you can [build and run evals](https://developers.openai.
 
 Run your evals against test inputs like you expect to see in production. Using one of several available [graders](https://developers.openai.com/api/docs/guides/graders), measure the results of a prompt against your test data set.
 
-[Learn about evals
+[Learn about evals](https://developers.openai.com/api/docs/guides/evals)
+
+Run tests on your model outputs to ensure you're getting the right results.
 
 
-
-      Run tests on your model outputs to ensure you're getting the right results.](https://developers.openai.com/api/docs/guides/evals)
 
 ## Write effective prompts
 
@@ -49,11 +49,11 @@ With evals in place, you can effectively iterate on [prompts](https://developers
 - **Provide clear instructions** - your prompt should contain clear goals about what kind of output you want. Start with [`gpt-6-astra`](https://developers.openai.com/api/docs/models/gpt-6-astra) for new work, and use [reasoning model guidance](https://developers.openai.com/api/docs/guides/reasoning) to tune outcome-level instructions, reasoning effort, and verbosity.
 - **Provide example outputs** - give the model a few examples of correct output for a given prompt (a process called few-shot learning). The model can extrapolate from these examples how it should respond for other prompts.
 
-[Learn about prompt engineering
+[Learn about prompt engineering](https://developers.openai.com/api/docs/guides/text)
+
+Learn the basics of writing good prompts for the model.
 
 
-
-      Learn the basics of writing good prompts for the model.](https://developers.openai.com/api/docs/guides/text)
 
 ## Fine-tune a model
 

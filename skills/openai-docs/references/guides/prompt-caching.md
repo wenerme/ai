@@ -24,11 +24,7 @@ Prompt caching preserves that state for a reusable **prefix**: the unchanged tok
 
 The prompt cache stores key-value (KV) tensors, not the tokens themselves.
 
-
-
 Ask ChatGPT for a deeper explanation
-
-
 
 OpenAI caches the model's full rendered context including OpenAI-provided instructions, [developer messages](https://developers.openai.com/api/docs/guides/prompt-engineering#message-roles-and-instruction-following), [tool definitions](https://developers.openai.com/api/docs/guides/function-calling), and [conversation history](https://developers.openai.com/api/docs/guides/conversation-state) containing [text](https://developers.openai.com/api/docs/guides/text), [images](https://developers.openai.com/api/docs/guides/images-vision), [documents](https://developers.openai.com/api/docs/guides/file-inputs), and supported [audio](https://developers.openai.com/api/docs/guides/audio).
 
@@ -324,11 +320,7 @@ Using separate keys can make cached token usage and billing easier to explain fo
 
 For models before GPT-5.6, the minimum cacheable input length varies with request settings, including tools, images, output schemas, reasoning effort, and verbosity.
 
-
-
 Ask ChatGPT to find the cache minimum for my request
-
-
 
 <a id="best-practices"></a>
 
@@ -336,11 +328,7 @@ Ask ChatGPT to find the cache minimum for my request
 
 Focus on [preserving conversation history](#preserve-conversation-history), [keeping tool definitions stable](#manage-tools-with-append-only-updates), and choosing where caching occurs. On GPT-5.6 and later, use [`prompt_cache_options.mode` and `prompt_cache_breakpoint`](#choose-a-caching-mode) to control cache breakpoints. You can also use an optional [`prompt_cache_key`](#separate-prompts-with-cache-keys) if your application needs separate cache accounting for customers. On models before GPT-5.6, use a stable `prompt_cache_key` to optimize cache routing for requests that share a reusable prefix.
 
-
-
 Ask ChatGPT to optimize my prompt caching
-
-
 
 
 
@@ -986,6 +974,7 @@ Suppose request 1 uses implicit mode and caches a prefix through the end of a us
   [Developer message][User message][Follow-up] ▼
 ```
 
+
 To reuse the implicit prefix from request 1, place an explicit breakpoint at the matching content-block boundary in request 2, or keep implicit mode enabled so the earlier eligible message ending remains a lookup candidate.
 
 
@@ -1013,6 +1002,7 @@ Even when both requests use implicit mode, preserving the same initial tokens is
 - Request 2: implicit mode. Cannot reuse the prefix through Content A.
   [Developer message][User message: Content A + Content B] ▼
 ```
+
 
 When the conversation structure permits, preserve the original message and append a new message instead. Otherwise, keep the reusable text in a separate content block and place an explicit breakpoint after it in both requests.
 

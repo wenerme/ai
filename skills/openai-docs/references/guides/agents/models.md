@@ -118,18 +118,16 @@ Once the runtime contract is clear, continue with the guide that matches the res
 
 
 
-  [Agent definitions
+  [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)
+
+Keep model choices aligned with the responsibilities of each specialist.
 
 
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
 
-        Keep model choices aligned with the responsibilities of each specialist.](https://developers.openai.com/api/docs/guides/agents/define-agents)
-  [Running agents
-
-
-
-        See how transport and model choices affect the runtime loop.](https://developers.openai.com/api/docs/guides/agents/running-agents)
-  [External models
+See how transport and model choices affect the runtime loop.
 
 
+  [External models](https://developers.openai.com/api/docs/guides/external-models)
 
-        Compare broader provider options when a mixed-model stack matters.](https://developers.openai.com/api/docs/guides/external-models)
+Compare broader provider options when a mixed-model stack matters.

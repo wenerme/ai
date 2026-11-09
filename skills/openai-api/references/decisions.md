@@ -262,7 +262,7 @@ Content type: `application/json`
 
       - `namespace: optional string or null`
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 

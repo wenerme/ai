@@ -84,6 +84,7 @@ The data should be formatted in JSONL format, with each line [representing an ex
 }
 ```
 
+
 Currently, we only train on one-turn conversations for each example, where the preferred and non-preferred messages need to be the last assistant message.
 
 ## Create a DPO fine-tune job
@@ -273,14 +274,12 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of DPO, explore these other methods as well.
 
-[Supervised fine-tuning
+[Supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
+
+Fine-tune a model by providing correct outputs for sample inputs.
 
 
 
-      Fine-tune a model by providing correct outputs for sample inputs.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
+[Vision fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
 
-[Vision fine-tuning
-
-
-
-      Learn to fine-tune for computer vision with image inputs.](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
+Learn to fine-tune for computer vision with image inputs.

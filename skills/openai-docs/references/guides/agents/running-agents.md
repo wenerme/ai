@@ -31,7 +31,7 @@ In most applications, pick one strategy per conversation. Mixing local replay wi
 
 Persist multi-turn state with sessions
 
-```typescript
+```javascript
 import { Agent, MemorySession, run } from "@openai/agents";
 
 const agent = new Agent({
@@ -88,7 +88,7 @@ Sessions are the best default when you want durable memory, resumable approval f
 
 Continue with server-managed state
 
-```typescript
+```javascript
 import { Agent, run } from "@openai/agents";
 import OpenAI from "openai";
 
@@ -150,7 +150,7 @@ Streaming uses the same agent loop and the same state strategies. The only diffe
 
 Stream a run as text arrives
 
-```typescript
+```javascript
 import { Agent, run } from "@openai/agents";
 
 const agent = new Agent({
@@ -229,19 +229,16 @@ Once the runtime loop is clear, move to the guide that matches the next workflow
 
 
 
-  [Results and state
+  [Results and state](https://developers.openai.com/api/docs/guides/agents/results)
+
+Learn which result surfaces your application should carry into the next turn.
 
 
+  [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)
 
-        Learn which result surfaces your application should carry into the next
-      turn.](https://developers.openai.com/api/docs/guides/agents/results)
-  [Orchestration and handoffs
-
+Decide how multiple specialists behave inside the same runtime loop.
 
 
-        Decide how multiple specialists behave inside the same runtime loop.](https://developers.openai.com/api/docs/guides/agents/orchestration)
-  [Guardrails and human review
+  [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
 
-
-
-        Add validation and approval pauses without breaking turn continuity.](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
+Add validation and approval pauses without breaking turn continuity.

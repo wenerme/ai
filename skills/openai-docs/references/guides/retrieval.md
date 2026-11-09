@@ -2229,7 +2229,7 @@ def format_results(results):
     formatted_results = ""
     for result in results.data:
         formatted_result = (
-            f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+            f"<result file_id='{result.file_id}' file_name='{result.filename}'>"
         )
         for part in result.content:
             formatted_result += f"<content>{part.text}</content>"
@@ -2246,15 +2246,6 @@ import (
 
 	"github.com/openai/openai-go/v3"
 )
-
-func main() {
-	results := []openai.VectorStoreSearchResponse{{
-		FileID:   "file-12345",
-		Filename: "woodchuck_policy.txt",
-		Content:  []openai.VectorStoreSearchResponseContent{{Text: "Each passenger may carry up to two woodchucks."}},
-	}}
-	fmt.Println(formatResults(results))
-}
 
 func formatResults(results []openai.VectorStoreSearchResponse) string {
 	var sources strings.Builder
@@ -2275,8 +2266,6 @@ func formatResults(results []openai.VectorStoreSearchResponse) string {
 import com.openai.models.vectorstores.VectorStoreSearchResponse;
 import java.util.List;
 
-System.out.println(formatResults(results.data()));
-
 static String formatResults(List<VectorStoreSearchResponse> results) {
   var formatted = new StringBuilder("<sources>");
   for (var result : results) {
@@ -2296,18 +2285,12 @@ static String formatResults(List<VectorStoreSearchResponse> results) {
 ```
 
 ```ruby
-results = [
-  {
-    file_id: "file-12345",
-    filename: "woodchuck_policy.txt",
-    content: [{ text: "Each passenger may carry up to two woodchucks." }]
-  }
-]
+def format_results(results)
+  sources = results.map do |result|
+    content = result.content.map { |part| "<content>#{part.text}</content>" }.join
+    "<result file_id=\"#{result.file_id}\" file_name=\"#{result.filename}\">#{content}</result>"
+  end
 
-sources = results.map do |result|
-  content = result.fetch(:content).map { |part| "<content>#{part.fetch(:text)}</content>" }.join
-  "<result file_id=\"#{result.fetch(:file_id)}\" file_name=\"#{result.fetch(:filename)}\">#{content}</result>"
+  "<sources>#{sources.join}</sources>"
 end
-
-puts("<sources>#{sources.join}</sources>")
 ```

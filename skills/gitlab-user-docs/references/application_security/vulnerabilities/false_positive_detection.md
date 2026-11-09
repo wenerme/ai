@@ -79,9 +79,7 @@ The analysis happens in the background and results appear in the vulnerability r
 
 ### Tracked branches and tags
 
-- Offering: GitLab.com, GitLab Self-Managed
-
-- Support for tracked branches [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258183) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `fp_detection_non_default_branches`. Disabled by default.
+- Support for tracked branches [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258183) in GitLab 19.6 [with a feature flag](../../../administration/feature_flags/_index.md) named `fp_detection_non_default_branches`. Enabled by default.
 - Support for tracked tags [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/262141) in GitLab 19.6.
 
 > [!flag]

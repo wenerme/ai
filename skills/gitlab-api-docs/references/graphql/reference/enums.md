@@ -4735,6 +4735,7 @@ Values for sorting package.
 | `PYPI` | Packages from the PyPI package manager. |
 | `RPM` | Packages from the Rpm package manager. |
 | `RUBYGEMS` | Packages from the Rubygems package manager. |
+| `SWIFT` | Packages from the Swift package manager. |
 | `TERRAFORM_MODULE` | Packages from the Terraform Module package manager. |
 
 ## `PackagesCleanupKeepDuplicatedPackageFilesEnum`

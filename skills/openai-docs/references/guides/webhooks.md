@@ -10,11 +10,11 @@ To receive organization-level warning and deactivation notices for safety identi
 
 For Agents API sessions, see [Session webhooks](https://developers.openai.com/api/docs/guides/agents-api/sessions/webhooks) for session events and recovery patterns. Use the endpoint setup, signature verification, and delivery guidance on this page for the webhook receiver.
 
-[API reference for webhook events
+[API reference for webhook events](https://developers.openai.com/api/reference/resources/webhooks)
+
+View the full list of webhook events.
 
 
-
-      View the full list of webhook events.](https://developers.openai.com/api/reference/resources/webhooks)
 
 Below are examples of servers capable of ingesting webhooks from OpenAI, specifically for the [`response.completed`](https://developers.openai.com/api/reference/resources/webhooks) event.
 
@@ -313,6 +313,7 @@ webhook-signature: v1,K5oZfzN95Z9UVu1EsfQmfVNQhnkZ2pj9o9NDN/H/pI4=
 }
 ```
 
+
 Your endpoint should respond quickly to these incoming HTTP requests with a successful (`2xx`) status code, indicating successful receipt. To avoid timeouts, we recommend offloading any non-trivial processing to a background worker so that the endpoint can respond immediately.
 If the endpoint doesn't return a successful (`2xx`) status code, or doesn't respond within a few seconds, the webhook request will be retried. OpenAI will continue to attempt delivery for up to 72 hours with exponential backoff. Note that `3xx` redirects will not be followed; they are treated as failures and your endpoint should be updated to use the final destination URL.
 
@@ -334,6 +335,7 @@ When you create a webhook endpoint in the OpenAI dashboard, you'll be given a si
 ```bash
 export OPENAI_WEBHOOK_SECRET="<your secret here>"
 ```
+
 
 The simplest way to verify webhook signatures is by using the `unwrap()` method of the official OpenAI SDK helpers:
 

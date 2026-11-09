@@ -1460,7 +1460,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -13898,7 +13898,7 @@ Content type: `application/json`
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -24920,7 +24920,7 @@ Content type: `application/json`
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -32462,7 +32462,7 @@ Content type: `application/json`
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -45624,7 +45624,7 @@ Retrieves a model response with the given ID.
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -64160,7 +64160,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -76581,7 +76581,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -89467,7 +89467,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -101824,7 +101824,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -114434,7 +114434,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -126604,7 +126604,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -138610,7 +138610,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -144072,7 +144072,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -166675,7 +166675,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -178385,7 +178385,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -178780,7 +178780,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -179109,7 +179109,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -181129,7 +181129,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace of the tool that produced the output.
 
-              `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+              `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
             - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -195602,7 +195602,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -201913,7 +201913,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the tool that produced the output.
 
-            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+            `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
           - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -202482,7 +202482,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -207503,7 +207503,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace of the tool that produced the output.
 
-              `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+              `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
             - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -208731,7 +208731,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the tool that produced the output.
 
-          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+          `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
         - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
@@ -225238,7 +225238,7 @@ Content type: `application/json`
 
         The namespace of the tool that produced the output.
 
-        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 64`
+        `pattern: ^[a-zA-Z0-9_-]+$`, `minLength: 1`, `maxLength: 128`
 
       - `status: optional "in_progress" or "completed" or "incomplete" or null`
 

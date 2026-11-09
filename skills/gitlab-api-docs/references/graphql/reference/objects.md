@@ -10670,7 +10670,7 @@ GPG signature for a signed commit.
 | `lockMathRenderingLimitsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if math rendering limits are locked for all descendant groups. |
 | `lockToolApprovalForSessionEnabled` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Indicates if the tool approval for session setting is enforced for all subgroups. |
 | `markdownPaths` | [`MarkdownPaths`](interfaces.md#markdownpaths) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Namespace relevant paths to create markdown links on the UI. |
-| `markedForDeletion` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Indicates if group or any ancestor is scheduled to be deleted. |
+| `markedForDeletion` | [`Boolean!`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.2.Indicates if group or any ancestor is scheduled to be deleted, or if group deletion is in progress. |
 | `markedForDeletionOn` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.11.Date when group was scheduled to be deleted. |
 | `mathRenderingLimitsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if math rendering limits are used for the group. |
 | `maxAccessLevel` | [`AccessLevel!`](#accesslevel) | Maximum access level of the current user in the group. |
@@ -16618,7 +16618,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `lastActivityAt` | [`Time`](scalars.md#time) | Timestamp of the project last activity. |
 | `lfsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if the project has Large File Storage (LFS) enabled. |
 | `licensedFeatureAvailability` | [`LicensedFeatureAvailability!`](#licensedfeatureavailability) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.11.Check whether a licensed feature is available.  <strong>Arguments for `licensedFeatureAvailability`:</strong> <dl><dt>`feature` ([`LicensedFeature!`](enums.md#licensedfeature))</dt><dd>Feature to check availability for (for example, SECURITY_DASHBOARD).</dd></dl> |
-| `markedForDeletion` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Indicates if the project or any ancestor is scheduled for deletion. |
+| `markedForDeletion` | [`Boolean`](scalars.md#boolean) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 18.1.Indicates if the project or any ancestor is scheduled for deletion, or if project deletion is in progress. |
 | `markedForDeletionOn` | [`Time`](scalars.md#time) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.10.Date when project was scheduled to be deleted. |
 | `maxAccessLevel` | [`AccessLevel!`](#accesslevel) | Maximum access level of the current user in the project. |
 | `memberRoles` | [`MemberRoleConnection`](#memberroleconnection) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 16.5.Member roles available for the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `memberRoles`:</strong> <dl><dt>`assignable` ([`Boolean`](scalars.md#boolean))</dt><dd>Filter for member roles the current user can assign.</dd><dt>`id` ([`MemberRoleID`](scalars.md#memberroleid))</dt><dd>Global ID of the member role to look up.</dd><dt>`ids` ([`[MemberRoleID!]`](scalars.md#memberroleid))</dt><dd>Global IDs of the member role to look up.</dd><dt>`orderBy` ([`MemberRolesOrderBy`](enums.md#memberrolesorderby))</dt><dd>Ordering column. Default is NAME.</dd><dt>`sort` ([`SortDirectionEnum`](enums.md#sortdirectionenum))</dt><dd>Ordering column. Default is ASC.</dd></dl> |
@@ -19547,6 +19547,7 @@ Paginated collection of [`Suggestion`](#suggestion). See [Standard connection fi
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `action` | [`String`](scalars.md#string) | System note metadata action. |
+| `descriptionDiffAvailable` | [`Boolean!`](scalars.md#boolean) | Indicates if a diff with the previous description version is available. Use `descriptionVersion` to fetch its details. |
 | `descriptionVersion` | [`DescriptionVersion`](#descriptionversion) | Version of the changed description. |
 | `id` | [`SystemNoteMetadataID!`](scalars.md#systemnotemetadataid) | Global ID of the specific system note metadata. |
 

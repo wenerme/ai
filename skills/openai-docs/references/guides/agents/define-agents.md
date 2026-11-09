@@ -227,23 +227,21 @@ Once one specialist is defined cleanly, move to the guide that matches the next 
 
 
 
-  [Models and providers
+  [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)
+
+Choose models, defaults, and transport strategy for this agent.
 
 
+  [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
 
-        Choose models, defaults, and transport strategy for this agent.](https://developers.openai.com/api/docs/guides/agents/models)
-  [Using tools
-
-
-
-        Add capabilities the agent can call directly.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
-  [Orchestration and handoffs
+Add capabilities the agent can call directly.
 
 
+  [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)
 
-        Choose how specialists collaborate once one agent is no longer enough.](https://developers.openai.com/api/docs/guides/agents/orchestration)
-  [Running agents
+Choose how specialists collaborate once one agent is no longer enough.
 
 
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
 
-        Understand the runtime loop, state, and streaming behavior.](https://developers.openai.com/api/docs/guides/agents/running-agents)
+Understand the runtime loop, state, and streaming behavior.

@@ -44,14 +44,12 @@ If you already use prompt IDs or prompt versions in API requests, follow the [mi
 
 When you feel confident in your prompts, you might want to check out the following guides and resources.
 
-[Text generation
+[Text generation](https://developers.openai.com/api/docs/guides/text)
+
+Learn how to prompt a model to generate text.
 
 
 
-      Learn how to prompt a model to generate text.](https://developers.openai.com/api/docs/guides/text)
+[Engineer better prompts](https://developers.openai.com/api/docs/guides/prompt-engineering)
 
-[Engineer better prompts
-
-
-
-      Learn about OpenAI's prompt engineering tools and techniques.](https://developers.openai.com/api/docs/guides/prompt-engineering)
+Learn about OpenAI's prompt engineering tools and techniques.

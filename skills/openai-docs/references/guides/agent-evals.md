@@ -34,26 +34,24 @@ If you need advanced features such as evaluation against external models, evalua
 
 ## Related evaluation surfaces
 
-[Getting started with evals: Datasets
+[Getting started with evals: Datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
+
+Operate a flywheel of continuous improvement using evaluations.
 
 
 
-      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
+[Working with evals](https://developers.openai.com/api/docs/guides/evals)
 
-[Working with evals
-
-
-
-      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
-
-[Prompt optimizer
+Evaluate against external models, interact with evals via API, and more.
 
 
 
-      Use your dataset to automatically improve your prompts.](https://developers.openai.com/api/docs/guides/prompt-optimizer)
+[Prompt optimizer](https://developers.openai.com/api/docs/guides/prompt-optimizer)
 
-[Cookbook: Building resilient prompts with evals
+Use your dataset to automatically improve your prompts.
 
 
 
-      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+[Cookbook: Building resilient prompts with evals](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+
+Operate a flywheel of continuous improvement using evaluations.

@@ -93,6 +93,7 @@ A delta event contains newly available transcript text:
 }
 ```
 
+
 A completion event contains the final transcript for the committed item:
 
 ```json
@@ -103,6 +104,7 @@ A completion event contains the final transcript for the committed item:
   "transcript": "Hello, how are you?"
 }
 ```
+
 
 Ordering between completion events from different speech turns isn't guaranteed. Use `item_id` to match transcription events to committed input items.
 
@@ -241,6 +243,7 @@ Append audio and send `input_audio_buffer.commit`. The model can then emit trans
 }
 ```
 
+
 When `gpt-transcribe` can't make a reliable language prediction, `languages` is an empty array. `gpt-live-transcribe` doesn't return detected-language predictions.
 
 ## Tune latency and accuracy
@@ -276,26 +279,24 @@ Don't choose a setting from synthetic audio alone. Test with representative micr
 
 ## Related guides
 
-[Realtime and audio overview
+[Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime)
+
+Compare voice-agent, translation, and transcription sessions.
 
 
 
-      Compare voice-agent, translation, and transcription sessions.](https://developers.openai.com/api/docs/guides/realtime)
+[Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation)
 
-[Realtime translation
-
-
-
-      Translate live speech with a dedicated translation session.](https://developers.openai.com/api/docs/guides/realtime-translation)
-
-[WebSocket connection
+Translate live speech with a dedicated translation session.
 
 
 
-      Stream raw audio through a server-side media pipeline.](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime)
+[WebSocket connection](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime)
 
-[Voice activity detection
+Stream raw audio through a server-side media pipeline.
 
 
 
-      Configure turn detection for live audio streams.](https://developers.openai.com/api/docs/guides/realtime-vad)
+[Voice activity detection](https://developers.openai.com/api/docs/guides/realtime-vad)
+
+Configure turn detection for live audio streams.

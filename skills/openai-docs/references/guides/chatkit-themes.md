@@ -19,37 +19,37 @@ Visit [ChatKit Studio](https://chatkit.studio) to see working implementations of
 
 #### Explore ChatKit UI
 
-[chatkit.world
+[chatkit.world](https://chatkit.world)
+
+Play with an interactive demo of ChatKit.
 
 
 
-      Play with an interactive demo of ChatKit.](https://chatkit.world)
+[Widget builder](https://widgets.chatkit.studio)
 
-[Widget builder
-
-
-
-      Browse available widgets.](https://widgets.chatkit.studio)
-
-[ChatKit playground
+Browse available widgets.
 
 
 
-      Play with an interactive demo to learn by doing.](https://chatkit.studio/playground)
+[ChatKit playground](https://chatkit.studio/playground)
+
+Play with an interactive demo to learn by doing.
+
+
 
 #### See working examples
 
-[Samples on GitHub
+[Samples on GitHub](https://github.com/openai/openai-chatkit-advanced-samples)
+
+See working examples of ChatKit and get inspired.
 
 
 
-      See working examples of ChatKit and get inspired.](https://github.com/openai/openai-chatkit-advanced-samples)
+[Starter app repo](https://github.com/openai/openai-chatkit-starter-app)
 
-[Starter app repo
+Clone a repo to start with a fully working template.
 
 
-
-      Clone a repo to start with a fully working template.](https://github.com/openai/openai-chatkit-starter-app)
 
 ## Change the theme
 
@@ -197,11 +197,11 @@ const options = {
 
 You can customize the appearance of entity tags on mouseover using widgets. Show rich previews such as a business card, document summary, or image when the user hovers over an entity tag.
 
-[Widget builder
+[Widget builder](https://widgets.chatkit.studio)
+
+Browse available widgets.
 
 
-
-      Browse available widgets.](https://widgets.chatkit.studio)
 
 ```javascript
 const options = {

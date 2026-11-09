@@ -134,7 +134,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -710,7 +710,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -912,7 +912,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -1150,7 +1150,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -1426,7 +1426,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -1673,7 +1673,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -1900,7 +1900,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -2075,7 +2075,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -2442,7 +2442,7 @@ automation, err := client.Beta.Agents.Automations.New(ctx,
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java
@@ -2706,7 +2706,7 @@ automation, err := client.Beta.Agents.Automations.Update(ctx, "auto_123",
 if err != nil {
 	panic(err)
 }
-fmt.Println(automation)
+fmt.Println(automation.ID)
 ```
 
 ```java

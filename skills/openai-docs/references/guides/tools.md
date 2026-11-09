@@ -1002,70 +1002,65 @@ puts(response.output_text)
 
 Here's an overview of the tools available in the OpenAI platform—select one of them for further guidance on usage.
 
-[Function calling
+[Function calling](https://developers.openai.com/api/docs/guides/function-calling)
+
+Call custom code to give the model access to additional data and capabilities.
 
 
 
-      Call custom code to give the model access to additional data and
-    capabilities.](https://developers.openai.com/api/docs/guides/function-calling)
+[Web search](https://developers.openai.com/api/docs/guides/tools-web-search)
 
-[Web search
-
-
-
-      Include data from the Internet in model response generation.](https://developers.openai.com/api/docs/guides/tools-web-search)
-
-[Remote MCP servers
+Include data from the Internet in model response generation.
 
 
 
-      Give the model access to new capabilities via Model Context Protocol (MCP)
-    servers.](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)
+[Remote MCP servers](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)
 
-[Skills
-
-
-
-      Upload and reuse versioned skill bundles in hosted shell environments.](https://developers.openai.com/api/docs/guides/tools-skills)
-
-[Shell
+Give the model access to new capabilities via Model Context Protocol (MCP) servers.
 
 
 
-      Run shell commands in hosted containers or in your own local runtime.](https://developers.openai.com/api/docs/guides/tools-shell)
+[Skills](https://developers.openai.com/api/docs/guides/tools-skills)
 
-[Computer use
-
-
-
-      Create agentic workflows that enable a model to control a computer
-    interface.](https://developers.openai.com/api/docs/guides/tools-computer-use)
-
-[Image generation
+Upload and reuse versioned skill bundles in hosted shell environments.
 
 
 
-      Generate or edit images using GPT Image.](https://developers.openai.com/api/docs/guides/tools-image-generation)
+[Shell](https://developers.openai.com/api/docs/guides/tools-shell)
 
-[File search
-
-
-
-      Search the contents of uploaded files for context when generating a
-    response.](https://developers.openai.com/api/docs/guides/tools-file-search)
-
-[Tool search
+Run shell commands in hosted containers or in your own local runtime.
 
 
 
-      Dynamically load relevant tools into the model’s context to optimize token
-    usage.](https://developers.openai.com/api/docs/guides/tools-tool-search)
+[Computer use](https://developers.openai.com/api/docs/guides/tools-computer-use)
 
-[Programmatic Tool Calling
-
+Create agentic workflows that enable a model to control a computer interface.
 
 
-      Let models compose and run JavaScript that orchestrates tool calls.](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling)
+
+[Image generation](https://developers.openai.com/api/docs/guides/tools-image-generation)
+
+Generate or edit images using GPT Image.
+
+
+
+[File search](https://developers.openai.com/api/docs/guides/tools-file-search)
+
+Search the contents of uploaded files for context when generating a response.
+
+
+
+[Tool search](https://developers.openai.com/api/docs/guides/tools-tool-search)
+
+Dynamically load relevant tools into the model’s context to optimize token usage.
+
+
+
+[Programmatic Tool Calling](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling)
+
+Let models compose and run JavaScript that orchestrates tool calls.
+
+
 
 ## Usage in the API
 

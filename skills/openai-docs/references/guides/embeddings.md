@@ -153,6 +153,7 @@ The response contains the embedding vector (list of floating point numbers) alon
 }
 ```
 
+
 By default, the length of the embedding vector is `1536` for `text-embedding-3-small` or `3072` for `text-embedding-3-large`. To reduce the embedding's dimensions without losing its concept-representing properties, pass in the [dimensions parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). Find more detail on embedding dimensions in the [embedding use case section](#use-cases).
 
 ## Embedding models
@@ -187,7 +188,6 @@ The dataset contains a total of 568,454 food reviews left by Amazon users up to 
 
 
 Below, we combine the review summary and review text into a single combined text. The model encodes this combined text and output a single vector embedding.
-
 
 
 Get_embeddings_from_dataset.ipynb
@@ -545,10 +545,13 @@ Dynamically changing the dimensions enables very flexible usage. For example, wh
 
 
 
-  
-
+  [
 Question_answering_using_embeddings.ipynb
- There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
+ ](https://developers.openai.com/cookbook/examples/question_answering_using_embeddings)
+
+
+
+There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
 
 ```javascript
 import OpenAI from "openai";
@@ -720,10 +723,13 @@ puts(response.choices.fetch(0).message.content)
 
 
 
-  
-
+  [
 Semantic_text_search_using_embeddings.ipynb
- To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
+ ](https://developers.openai.com/cookbook/examples/semantic_text_search_using_embeddings)
+
+
+
+To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
 
 ```javascript
 import OpenAI from "openai";
@@ -977,10 +983,13 @@ puts(results)
 
 
 
-  
-
+  [
 Code_search.ipynb
- Code search works similarly to embedding-based text search. We provide a method to extract Python functions from all the Python files in a given repository. Each function is then indexed by the `text-embedding-3-small` model.
+ ](https://developers.openai.com/cookbook/examples/code_search_using_embeddings)
+
+
+
+Code search works similarly to embedding-based text search. We provide a method to extract Python functions from all the Python files in a given repository. Each function is then indexed by the `text-embedding-3-small` model.
 
 To perform a code search, we embed the query in natural language using the same model. Then we calculate cosine similarity between the resulting query embedding and each of the function embeddings. The highest cosine similarity results are most relevant.
 
@@ -1237,10 +1246,13 @@ puts(results)
 
 
 
-  
-
+  [
 Recommendation_using_embeddings.ipynb
- Because shorter distances between embedding vectors represent greater similarity, embeddings can be useful for recommendation.
+ ](https://developers.openai.com/cookbook/examples/recommendation_using_embeddings)
+
+
+
+Because shorter distances between embedding vectors represent greater similarity, embeddings can be useful for recommendation.
 
 Below, we illustrate a basic recommender. It takes in a list of strings and one 'source' string, computes their embeddings, and then returns a ranking of the strings, ranked from most similar to least similar. As a concrete example, the linked notebook below applies a version of this function to the [AG news dataset](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html) (sampled down to 2,000 news article descriptions) to return the top 5 most similar articles to any given source article.
 
@@ -1509,10 +1521,13 @@ puts(recommendations)
 
 
 
-  
-
+  [
 Visualizing_embeddings_in_2D.ipynb
- The size of the embeddings varies with the complexity of the underlying model. In order to visualize this high dimensional data we use the t-SNE algorithm to transform the data into two dimensions.
+ ](https://developers.openai.com/cookbook/examples/visualizing_embeddings_in_2d)
+
+
+
+The size of the embeddings varies with the complexity of the underlying model. In order to visualize this high dimensional data we use the t-SNE algorithm to transform the data into two dimensions.
 
 We color the individual reviews based on the star rating which the reviewer has given:
 
@@ -1564,10 +1579,13 @@ plt.title("Amazon ratings visualized in language using t-SNE")
 
 
 
-  
-
+  [
 Regression_using_embeddings.ipynb
- An embedding can be used as a general free-text feature encoder within a machine learning model. Incorporating embeddings will improve the performance of any machine learning model, if some of the relevant inputs are free text. An embedding can also be used as a categorical feature encoder within a ML model. This adds most value if the names of categorical variables are meaningful and numerous, such as job titles. Similarity embeddings generally perform better than search embeddings for this task.
+ ](https://developers.openai.com/cookbook/examples/regression_using_embeddings)
+
+
+
+An embedding can be used as a general free-text feature encoder within a machine learning model. Incorporating embeddings will improve the performance of any machine learning model, if some of the relevant inputs are free text. An embedding can also be used as a categorical feature encoder within a ML model. This adds most value if the names of categorical variables are meaningful and numerous, such as job titles. Similarity embeddings generally perform better than search embeddings for this task.
 
 We observed that generally the embedding representation is very rich and information dense. For example, reducing the dimensionality of the inputs using SVD or PCA, even by 10%, generally results in worse downstream performance on specific tasks.
 
@@ -1609,10 +1627,13 @@ preds = rfr.predict(X_test)
 
 
 
-  
-
+  [
 Classification_using_embeddings.ipynb
- This time, instead of having the algorithm predict a value anywhere between 1 and 5, we will attempt to classify the exact number of stars for a review into 5 buckets, ranging from 1 to 5 stars.
+ ](https://developers.openai.com/cookbook/examples/classification_using_embeddings)
+
+
+
+This time, instead of having the algorithm predict a value anywhere between 1 and 5, we will attempt to classify the exact number of stars for a review into 5 buckets, ranging from 1 to 5 stars.
 
 After the training, the model learns to predict 1 and 5-star reviews much better than the more nuanced reviews (2-4 stars), likely due to more extreme sentiment expression.
 
@@ -1638,10 +1659,13 @@ preds = clf.predict(X_test)
 
 
 
-  
-
+  [
 Zero-shot_classification_with_embeddings.ipynb
- We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
+ ](https://developers.openai.com/cookbook/examples/zero-shot_classification_with_embeddings)
+
+
+
+We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
 
 ```javascript
 import OpenAI from "openai";
@@ -1842,10 +1866,13 @@ puts((positive > negative) ? "positive" : "negative")
 
 
 
-  
-
+  [
 User_and_product_embeddings.ipynb
- We can obtain a user embedding by averaging over all of their reviews. Similarly, we can obtain a product embedding by averaging over all the reviews about that product. In order to showcase the usefulness of this approach we use a subset of 50k reviews to cover more reviews per user and per product.
+ ](https://developers.openai.com/cookbook/examples/user_and_product_embeddings)
+
+
+
+We can obtain a user embedding by averaging over all of their reviews. Similarly, we can obtain a product embedding by averaging over all the reviews about that product. In order to showcase the usefulness of this approach we use a subset of 50k reviews to cover more reviews per user and per product.
 
 We evaluate the usefulness of these embeddings on a separate test set, where we plot similarity of the user and product embedding as a function of the rating. Interestingly, based on this approach, even before the user receives the product we can predict better than random whether they would like the product.
 
@@ -1867,10 +1894,13 @@ prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
 
 
 
-  
-
+  [
 Clustering.ipynb
- Clustering is one way of making sense of a large volume of textual data. Embeddings are useful for this task, as they provide semantically meaningful vector representations of each text. Thus, in an unsupervised way, clustering will uncover hidden groupings in our dataset.
+ ](https://developers.openai.com/cookbook/examples/clustering)
+
+
+
+Clustering is one way of making sense of a large volume of textual data. Embeddings are useful for this task, as they provide semantically meaningful vector representations of each text. Thus, in an unsupervised way, clustering will uncover hidden groupings in our dataset.
 
 In this example, we discover four distinct clusters: one focusing on dog food, one on negative reviews, and two on positive reviews.
 

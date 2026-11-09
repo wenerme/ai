@@ -52,19 +52,16 @@ Once you know which result surfaces matter, continue with the guide that explain
 
 
 
-  [Running agents
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
+
+Connect result handling back to the runtime loop and continuation strategy.
 
 
+  [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
 
-        Connect result handling back to the runtime loop and continuation
-      strategy.](https://developers.openai.com/api/docs/guides/agents/running-agents)
-  [Guardrails and human review
-
+See how paused runs return interruptions and resumable state.
 
 
-        See how paused runs return interruptions and resumable state.](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
-  [Integrations and observability
+  [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability)
 
-
-
-        Use traces when you need to inspect the richer workflow record.](https://developers.openai.com/api/docs/guides/agents/integrations-observability)
+Use traces when you need to inspect the richer workflow record.
