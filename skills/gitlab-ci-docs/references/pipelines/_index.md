@@ -87,17 +87,17 @@ operation of the pipeline.
 
 To execute a pipeline manually:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipelines**.
-1. Select **New pipeline**.
-1. In the **Run for branch name or tag** field, select the branch or tag to run the pipeline for.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. In the  field, select the branch or tag to run the pipeline for.
 1. Optional. Enter any:
    - [Inputs](../inputs/_index.md) required for the pipeline to run. Default values for inputs are prefilled,
      but can be modified. Input values must follow the expected type.
    - [CI/CD variables](../variables/_index.md). You can configure variables to have their
      [values prefilled in the form](#prefill-variables-in-manual-pipelines). Using inputs to
      control pipeline behavior offers improved security and flexibility over CI/CD variables.
-1. Select **New pipeline**.
+1. Select .
 
 The pipeline now executes the jobs as configured.
 
@@ -125,11 +125,11 @@ The required role depends on what you want to do:
 
 To view manual pipeline variables:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Select **Display pipeline variables**.
-1. Go to **Build** > **Pipelines** and select a pipeline that was run manually.
-1. Select the **Manual Variables** tab.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Select .
+1. Go to  >  and select a pipeline that was run manually.
+1. Select the  tab.
 
 Variable values are masked by default. If you have the Developer, Maintainer, or Owner role,
 you can select the eye icon to reveal values.
@@ -146,7 +146,7 @@ You can use Markdown in the description.
 
 Job-level variables cannot be pre-filled.
 
-In manually-triggered pipelines, the **New pipeline** page displays all pipeline-level variables
+In manually-triggered pipelines, the  page displays all pipeline-level variables
 that have a `description` defined in the `.gitlab-ci.yml` file. The description displays
 below the variable.
 
@@ -169,9 +169,9 @@ variables:
 
 In this example:
 
-- `DEPLOY_CREDENTIALS` is listed in the **New pipeline** page, but with no value set.
+- `DEPLOY_CREDENTIALS` is listed in the  page, but with no value set.
   The user is expected to define the value each time the pipeline is run manually.
-- `DEPLOY_ENVIRONMENT` is pre-filled in the **New pipeline** page with `canary` as the default value,
+- `DEPLOY_ENVIRONMENT` is pre-filled in the  page with `canary` as the default value,
   and the message explains the other options.
 
 > [!note]
@@ -182,7 +182,7 @@ In this example:
 #### Configure a list of selectable prefilled variable values
 
 You can define an array of CI/CD variable values the user can select from when running a pipeline manually.
-These values are in a dropdown list in the **New pipeline** page. Add the list of
+These values are in a dropdown list in the  page. Add the list of
 value options to `options` and set the default value with `value`. The string in `value`
 must also be included in the `options` list.
 
@@ -201,12 +201,12 @@ variables:
 
 ### Run a pipeline by using a URL query string
 
-You can use a query string to pre-populate the **New pipeline** page. For example, the query string
+You can use a query string to pre-populate the  page. For example, the query string
 `.../pipelines/new?ref=my_branch&var[foo]=bar&file_var[file_foo]=file_bar` pre-populates the
-**New pipeline** page with:
+ page with:
 
-- **Run for** field: `my_branch`.
-- **Variables** section:
+-  field: `my_branch`.
+-  section:
   - Variable:
     - Key: `foo`
     - Value: `bar`
@@ -222,7 +222,7 @@ The format of the `pipelines/new` URL is:
 
 The following parameters are supported:
 
-- `ref`: specify the branch to populate the **Run for** field with.
+- `ref`: specify the branch to populate the  field with.
 - `var`: specify a `Variable` variable.
 - `file_var`: specify a `File` variable.
 
@@ -233,7 +233,7 @@ For each `var` or `file_var`, a key and value are required.
 [Manual jobs](../jobs/job_control.md#create-a-job-that-must-be-run-manually)
 allow you to require manual interaction before moving forward in the pipeline.
 
-You can do this straight from the pipeline graph. Select **Run** () to execute that particular job.
+You can do this straight from the pipeline graph. Select  () to execute that particular job.
 
 For example, your pipeline can start automatically, but require a manual action to
 [deploy to production](../environments/deployments.md#configure-manual-deployments).
@@ -244,7 +244,7 @@ In the following example, the `production` stage has a job with a manual action:
 #### Start all manual jobs in a stage
 
 If a stage contains only manual jobs, you can start all the jobs at the same time
-by selecting **Run all manual** () above the stage. If the stage contains
+by selecting  () above the stage. If the stage contains
 non-manual jobs, the option is not displayed.
 
 ### Skip a pipeline
@@ -294,7 +294,7 @@ If you add the directive while a merge request is on a merge train, GitLab remov
 request from the train because the skipped pipeline is not successful.
 
 Merge request pipelines remain skipped until you remove the directive from the title. To then run a
-pipeline, on the **Pipelines** tab of the merge request, select **Run pipeline**.
+pipeline, on the  tab of the merge request, select .
 
 For merged results pipelines, GitLab checks only the title. A directive that a
 [merge commit template](../../user/project/merge_requests/commit_templates.md) adds to the commit
@@ -310,11 +310,11 @@ Prerequisites:
 
 To delete a pipeline:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipelines**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 1. Select either the pipeline ID (for example `#123456789`) or the pipeline status icon
    (for example **Passed**) of the pipeline to delete.
-1. In the upper right of the pipeline details page, select **Delete**.
+1. In the upper right of the pipeline details page, select  ().
 
 Deleting a pipeline does not automatically delete its [child pipelines](downstream_pipelines.md#parent-child-pipelines).
 See [issue 39503](https://gitlab.com/gitlab-org/gitlab/-/issues/39503) for more details.
@@ -374,13 +374,13 @@ Prerequisites:
 
 To trigger the pipeline when the upstream project is rebuilt:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Pipeline subscriptions**.
-1. Select **Add project**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select .
 1. Enter the project you want to subscribe to, in the format `<namespace>/<project>`.
    For example, if the project is `https://gitlab.com/gitlab-org/gitlab`, use `gitlab-org/gitlab`.
-1. Select **Subscribe**.
+1. Select .
 
 The maximum number of upstream pipeline subscriptions is 2 by default, for both the upstream and
 downstream projects. On GitLab Self-Managed, an administrator can change this
@@ -437,10 +437,10 @@ running time is:
 
 To view all the pipelines that ran for your project:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Build** > **Pipelines**.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
 
-You can filter the **Pipelines** page by:
+You can filter the  page by:
 
 - Trigger author
 - Branch name
@@ -448,11 +448,11 @@ You can filter the **Pipelines** page by:
 - Tag
 - Source
 
-Select **Pipeline ID** in the dropdown list in the upper right to display the pipeline IDs
+Select  in the dropdown list in the upper right to display the pipeline IDs
 (unique ID across the instance).
-Select **pipeline IID** to display the pipeline IIDs (internal ID, unique across the project only).
+Select  to display the pipeline IIDs (internal ID, unique across the project only).
 
-To view the pipelines that relate to a specific merge request, go to the **Pipelines** tab
+To view the pipelines that relate to a specific merge request, go to the  tab
 in the merge request.
 
 ### Pipeline details
@@ -475,12 +475,12 @@ You can use a standard URL to access the details for specific pipelines:
 
 When you configure jobs with the [`needs`](../yaml/_index.md#needs) keyword, you have
 two options for how to group the jobs in the pipeline details page. To group the jobs
-by stage configuration, select **stage** in the **Group jobs by** section:
+by stage configuration, select  in the  section:
 
 [A pipeline graph showing jobs grouped under each stage]
 
-To group the jobs by [`needs`](../yaml/_index.md#needs) configuration, select **Job dependencies**.
-You can optionally select **Show dependencies** to render lines between dependent jobs.
+To group the jobs by [`needs`](../yaml/_index.md#needs) configuration, select .
+You can optionally select  to render lines between dependent jobs.
 
 [jobs grouped by job dependencies]
 
@@ -494,7 +494,7 @@ In this example:
 - Both `deploy` jobs depend on jobs in the second column (which themselves depend on other earlier jobs),
   so the deploy jobs display in the third column.
 
-When you hover over a job in the **Job dependencies** view, every job that must run
+When you hover over a job in the  view, every job that must run
 before the selected job is highlighted:
 
 [pipeline dependency view on hover]
@@ -529,7 +529,7 @@ status icon to go to the detail page of that downstream pipeline.
 
 ## Pipeline success and duration charts
 
-Pipeline analytics are available on the [**CI/CD Analytics** page](../../user/analytics/ci_cd_analytics.md).
+Pipeline analytics are available on the [ page](../../user/analytics/ci_cd_analytics.md).
 
 ## Pipeline badges
 
@@ -576,8 +576,8 @@ the deletion does not occur for seven days. During this period, any pipeline sub
 continue to run with the user's original permissions. To prevent unauthorized pipeline executions,
 immediately update pipeline subscription settings for the deleted user.
 
-### Pre-filled variables do not show up in **New Pipeline** page
+### Pre-filled variables do not show up in New Pipeline page
 
 If the predefined variables for a pipeline are [defined in a separate file](../yaml/includes.md),
-they might not display in the **New Pipeline** page. You must have permission to
+they might not display in the  page. You must have permission to
 access the separate file, or else the predefined variables cannot be displayed.

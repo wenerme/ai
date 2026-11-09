@@ -14,10 +14,10 @@ Code Suggestions helps you write code in GitLab more efficiently by using AI to 
 - [Changed](https://gitlab.com/gitlab-org/fulfillment/meta/-/issues/2031) to require the GitLab Duo Pro add-on on February 15, 2024. Previously, this feature was included with Premium and Ultimate subscriptions.
 - [Changed](https://gitlab.com/gitlab-org/fulfillment/meta/-/issues/2031) to require the GitLab Duo Pro or GitLab Duo Enterprise add-on for all supported GitLab versions starting October 17, 2024.
 - [Introduced support for Fireworks AI-hosted Qwen2.5 code completion model](https://gitlab.com/groups/gitlab-org/-/work_items/15850) in GitLab 17.6, with a flag named `fireworks_qwen_code_completion`.
-- [Removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/187397) support for Qwen2.5 code completion model in GitLab 17.11.
+- [Removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/525573) support for Qwen2.5 code completion model in GitLab 17.11. Feature flag `fireworks_qwen_code_completion` removed.
 - Enabled Fireworks hosted `Codestral` by default via the feature flag `use_fireworks_codestral_code_completion` in GitLab 17.11.
 - Changed to include GitLab Duo Core in GitLab 18.0.
-- Enabled Fireworks hosted `Codestral` as the default model in GitLab 18.1.
+- Enabled Fireworks hosted `Codestral` as the default model in GitLab 18.1. Feature flag `use_fireworks_codestral_code_completion` removed.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/545489) the default model for code generation to Claude Sonnet 4 in GitLab 18.2.
 - [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/462750) feature flag `code_suggestions_context` in GitLab 18.6.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.

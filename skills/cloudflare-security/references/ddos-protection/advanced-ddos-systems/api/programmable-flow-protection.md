@@ -1,5 +1,5 @@
 ---
-description: Configure Programmable Flow Protection programs and rules using the Cloudflare API.
+description: Configure Programmable Flow Protection programs, rules, and parameter maps using the Cloudflare API.
 title: Programmable Flow Protection
 image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/og.png?v=e687811cd6054974
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # Programmable Flow Protection
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/) to configure Programmable Flow Protection.
 
@@ -66,6 +66,21 @@ To move an existing rule to another successful version of its program, send a `P
 | --- | --- |
 | Debug with PCAP | `POST accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap` Runs a program against a PCAP file and returns an annotated PCAP with program verdicts. |
 
+### Parameter operations
+
+| Operation | Method and endpoint / Description |
+| --- | --- |
+| Get parameters | `GET accounts/{account_id}/magic/programmable_flow_protection/configs/parameters` Fetches the account's [parameter maps](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/#parameters). |
+| Replace parameters | `PUT accounts/{account_id}/magic/programmable_flow_protection/configs/parameters` Replaces all of the account's parameter maps. To remove all maps, send `{"params": {}}`. |
+
+A `PUT` request replaces all maps. To change a single entry, get the current maps, edit them, and send the complete document back. If any part of the document is invalid, the request fails and the existing maps stay active.
+
+#### Limits
+
+- Your account's allocation sets the maximum number of maps and the maximum document size. Contact your account team to change your allocation.
+- Request bodies cannot exceed 32 MiB.
+- You can replace the maps at most once per second. Faster requests return `429` with a `Retry-After` header.
+
 ## Pagination
 
 The API operations that return a list of items use pagination. For more information on the available pagination query parameters, refer to [Pagination](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#pagination).
@@ -79,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#page","headline":"Programmable Flow Protection","description":"Configure Programmable Flow Protection programs and rules using the Cloudflare API.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/og.png?v=e687811cd6054974","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#page","headline":"Programmable Flow Protection","description":"Configure Programmable Flow Protection programs, rules, and parameter maps using the Cloudflare API.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/og.png?v=e687811cd6054974","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

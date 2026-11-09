@@ -658,10 +658,10 @@
   "openai-docs/guides/compaction.md": {
     "url": "https://developers.openai.com/api/docs/guides/compaction.md",
     "skill": "openai-docs",
-    "etag": "W/\"a32f76a1fadcc0bfb4716f6981774a60\"",
-    "lastModified": "Sun, 08 Nov 2026 02:15:13 GMT",
-    "size": 14885,
-    "updatedAt": "2026-11-08T05:50:18.375Z"
+    "etag": "W/\"dcf07154f814879f6834e299a470ac1d\"",
+    "lastModified": "Mon, 09 Nov 2026 20:48:07 GMT",
+    "size": 14891,
+    "updatedAt": "2026-11-09T20:48:07.282Z"
   },
   "openai-docs/guides/completions.md": {
     "url": "https://developers.openai.com/api/docs/guides/completions.md",
@@ -682,10 +682,10 @@
   "openai-docs/guides/conversation-state.md": {
     "url": "https://developers.openai.com/api/docs/guides/conversation-state.md",
     "skill": "openai-docs",
-    "etag": "W/\"f56452d80f556f0605417888609ee72c\"",
-    "lastModified": "Sun, 08 Nov 2026 02:15:13 GMT",
-    "size": 25175,
-    "updatedAt": "2026-11-08T05:50:19.066Z"
+    "etag": "W/\"f65d36d2f9091c898da761ea2df3d4e4\"",
+    "lastModified": "Mon, 09 Nov 2026 20:46:20 GMT",
+    "size": 25181,
+    "updatedAt": "2026-11-09T20:48:07.914Z"
   },
   "openai-docs/guides/cost-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/cost-optimization.md",
@@ -858,10 +858,10 @@
   "openai-docs/guides/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/function-calling.md",
     "skill": "openai-docs",
-    "etag": "W/\"c3908a3d5bba3168dafd688df059ce1c\"",
-    "lastModified": "Sun, 08 Nov 2026 02:05:33 GMT",
-    "size": 77155,
-    "updatedAt": "2026-11-08T05:50:24.153Z"
+    "etag": "W/\"e0708d04ab8a24098f560374cd13ded1\"",
+    "lastModified": "Mon, 09 Nov 2026 20:48:07 GMT",
+    "size": 77171,
+    "updatedAt": "2026-11-09T20:48:12.875Z"
   },
   "openai-docs/guides/google-cloud.md": {
     "url": "https://developers.openai.com/api/docs/guides/google-cloud.md",
@@ -1074,10 +1074,10 @@
   "openai-docs/guides/preserved-reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/preserved-reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"b9927237960c0a1dba27a3836f5ec018\"",
-    "lastModified": "Sun, 08 Nov 2026 02:07:41 GMT",
-    "size": 6884,
-    "updatedAt": "2026-11-08T05:50:30.534Z"
+    "etag": "W/\"928f362aa9ab2657d263979875537476\"",
+    "lastModified": "Mon, 09 Nov 2026 20:48:18 GMT",
+    "size": 11226,
+    "updatedAt": "2026-11-09T20:48:18.869Z"
   },
   "openai-docs/guides/private-link.md": {
     "url": "https://developers.openai.com/api/docs/guides/private-link.md",
@@ -1266,10 +1266,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"c6da79feb93f341a9dbda4e34d7fb4f1\"",
-    "lastModified": "Mon, 09 Nov 2026 05:19:34 GMT",
-    "size": 70300,
-    "updatedAt": "2026-11-09T06:01:32.228Z"
+    "etag": "W/\"304a558bf9f0588fa669e5a6a076a1e1\"",
+    "lastModified": "Mon, 09 Nov 2026 20:41:35 GMT",
+    "size": 70306,
+    "updatedAt": "2026-11-09T20:48:24.138Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",
@@ -5948,10 +5948,10 @@
   "openai-api/webhooks.md": {
     "url": "https://developers.openai.com/api/reference/resources/webhooks/index.md",
     "skill": "openai-api",
-    "etag": "W/\"97307630577f634e31091e3285bc3fdc\"",
-    "lastModified": "Sat, 31 Oct 2026 00:43:59 GMT",
-    "size": 74594,
-    "updatedAt": "2026-10-31T00:43:59.568Z"
+    "etag": "W/\"490ff4c2d466660fdf033a1b01e4f97f\"",
+    "lastModified": "Mon, 09 Nov 2026 20:50:36 GMT",
+    "size": 76076,
+    "updatedAt": "2026-11-09T20:50:36.349Z"
   },
   "openai-api/webhooks/create.md": {
     "url": "https://developers.openai.com/api/reference/resources/webhooks/methods/create/index.md",

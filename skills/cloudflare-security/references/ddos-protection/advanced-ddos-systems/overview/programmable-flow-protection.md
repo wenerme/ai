@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/o
 
 # Programmable Flow Protection (Beta)
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
 
@@ -750,6 +750,95 @@ Both state tables are LRU (least recently used) caches. If a table reaches its m
 
 ---
 
+## Parameter maps
+
+Parameter maps let your program read values that you manage through the API, such as per-IP policies or thresholds. Parameter maps are:
+
+- **Account-scoped**: Every program in your account can read every map.
+- **Read-only**: Programs can read values but not change them.
+- **Exact match**: Each map is keyed by IPv4 or IPv6 addresses. Lookups match a single address, not a prefix.
+- **Typed**: Each map stores unsigned integers of one width: `u8`, `u16`, `u32`, or `u64`.
+- **Live**: When you update the maps, running programs use the new values. Programs are not recompiled, and their state is not reset.
+
+Parameter maps must be enabled for your account. To enable them, contact your account team.
+
+To manage parameter maps, refer to [Configure via the API](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/#parameter-operations) and [JSON objects](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/#parameters).
+
+### Map IDs
+
+Programs refer to maps by numeric ID, not by name. IDs start at `0` and must be contiguous. Keep each map's ID the same when you update the maps. Otherwise, your programs read from the wrong map.
+
+### Look up a value
+
+Use the [`param_lookup`](#param_lookup) helper function:
+
+- Pass the IP address in network byte order, as it appears in the packet header.
+- The value is returned in host byte order. Do not convert it with `ntohs`, `ntohl`, or `ntohll`.
+
+The following example reads a policy for the source IP from an IPv4 map with ID `0` and `u8` values:
+
+```c
+#define CF_EBPF_HELPER_V0
+
+#include <cf_ebpf_defs.h>
+#include <cf_ebpf_helper.h>
+
+#define PARAM_SOURCE_POLICY 0 // ipv4 keys, u8 values
+#define POLICY_BLOCK 2
+
+uint64_t cf_ebpf_main(void *state)
+{
+    struct cf_ebpf_generic_ctx *ctx = state;
+    struct cf_ebpf_parsed_headers headers;
+    struct cf_ebpf_packet_data *p;
+
+    if (parse_packet_data(ctx, &p, &headers) != 0) {
+        return CF_EBPF_DROP;
+    }
+    if (headers.ipv4 == NULL) {
+        return CF_EBPF_PASS;
+    }
+
+    uint32_t src_ip = headers.ipv4->saddr; // Network byte order
+    uint8_t policy;
+    int ret = param_lookup(PARAM_SOURCE_POLICY, &src_ip, sizeof(src_ip),
+                           &policy, sizeof(policy));
+
+    switch (ret) {
+    case sizeof(policy):
+        // Found: apply the policy.
+        return policy == POLICY_BLOCK ? CF_EBPF_DROP : CF_EBPF_PASS;
+    case -1:
+        // NoEntry: the address is not in the map.
+        return CF_EBPF_PASS;
+    case -5:
+        // FeatureNotEnabled: parameter maps are not enabled.
+    case -7:
+        // NoSuchParam: no map has this ID.
+        return CF_EBPF_PASS;
+    default:
+        // -3 or -4: the buffer or key does not match the map's types.
+        return CF_EBPF_PASS;
+    }
+}
+```
+
+For an IPv6 map, pass the 16-byte source address:
+
+```c
+uint64_t value;
+int ret = param_lookup(1, headers.ipv6->saddr, sizeof(headers.ipv6->saddr),
+                       &value, sizeof(value));
+```
+
+### Update behavior
+
+Updates reach Cloudflare's network asynchronously, so servers can briefly use different versions of the maps. If a server cannot apply an update, it keeps using the last version it applied.
+
+If you remove all maps, `param_lookup` returns `-7` (`NoSuchParam`). A map with no entries still exists, so lookups return `-1` (`NoEntry`).
+
+---
+
 ## BPF helper functions and structures
 
 A helper function is a function provided by the Cloudflare runtime that a customer program calls.
@@ -1110,6 +1199,33 @@ int set_flow_data(uint64_t data);
 - `-2` if no flow context is set for the current packet.
 - `-5` if the flow state table is not enabled.
 
+#### `param_lookup`
+
+Looks up an IP address in a [parameter map](#parameter-maps) and copies the value to the output buffer.
+
+```c
+int param_lookup(uint32_t param_id, const void *key, size_t key_len, void *value, size_t value_len);
+```
+
+**Arguments:**
+
+- `param_id` — The ID of the map.
+- `key` — Pointer to the IP address, in network byte order.
+- `key_len` — `4` for an IPv4 map or `16` for an IPv6 map.
+- `value` — Pointer to the output buffer. On success, receives the value in host byte order.
+- `value_len` — Size of the output buffer. Must be at least the map's value width in bytes.
+
+The output buffer is zeroed on every call, including when the call fails.
+
+**Returns:**
+
+- The number of bytes copied on success.
+- `-1` ( `NoEntry`) if the key is not in the map.
+- `-3` ( `BufferTooSmall`) if `value_len` is smaller than the map's value width.
+- `-4` ( `InvalidParameters`) if `key_len` is not `4` or `16`, or does not match the map's key type.
+- `-5` ( `FeatureNotEnabled`) if parameter maps are not enabled for the account.
+- `-7` ( `NoSuchParam`) if no map has the given `param_id`.
+
 #### `entropy`
 
 Calculates the Shannon entropy of the source buffer. The result is returned in millibits, ranging from `0` (all identical bytes) to `8000` (all 256 byte values equally distributed).
@@ -1464,5 +1580,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Programmable Flow Protection (Beta)","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/og.png?v=507a10264f2d42b8","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#page","headline":"Programmable Flow Protection (Beta)","description":"Create custom flow-based rules to detect and mitigate volumetric DDoS attacks.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/og.png?v=507a10264f2d42b8","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}
 ```

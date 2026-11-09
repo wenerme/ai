@@ -55,8 +55,8 @@ The following metrics are available:
 | `gitlab_application_rate_limiter_throttle_utilization_ratio`                   | Histogram |  17.6 | `throttle_key`, `peek`, `feature_category`                              | Utilization ratio of a throttle in GitLab Application Rate Limiter. |
 | `gitaly_circuit_breaker_requests_total`                                        | Counter   |  18.9 | `circuit_state`, `result`, `reason`                                     | Total Gitaly requests processed by circuit breaker. `result` can be `allowed`, `rejected`, or `error`. `reason` provides error detail (for example, `resource_exhausted`) |
 | `gitaly_circuit_breaker_transitions_total`                                     | Counter   |  18.9 | `from_state`, `to_state`                                                | Total circuit breaker state transitions. States are `closed`, `open`. Detailed endpoint and storage information is available in structured logs |
-| `gitlab_audit_event_streaming_deliveries_total`                                | Counter   |  19.6 | `feature_category`, `destination_category`, `outcome`, `error_category` | Deliveries to external streaming destinations, by outcome. Counted per audit event, per destination, and per attempt, so it does not represent unique audit events. On the NATS path an undelivered batch is redelivered to every destination, including those that already accepted it, and each redelivery counts again. HTTP and Google Cloud Logging destinations record a non-2xx response as `success`. `destination_category` is `http`, `aws`, or `gcp`. `outcome` is `success`, `internal_error` (a GitLab-side failure), or `destination_error`. `error_category` is `none` on success, `internal_error` on an internal error, otherwise one of `timeout`, `connection`, `auth`, `not_found`, `rate_limited`, `client_error`, `server_error`, or `invalid_config` |
-| `gitlab_audit_event_streaming_delivery_duration_seconds`                       | Histogram |  19.6 | `feature_category`, `destination_category`, `outcome`                   | Wall time of one delivery call to an external streaming destination, in seconds. Observed per destination and per attempt, so a redelivered NATS batch is observed again. HTTP and Google Cloud Logging destinations record a non-2xx response under `success`. `destination_category` is `http`, `aws`, or `gcp`. `outcome` is `success`, `internal_error` (a GitLab-side failure), or `destination_error` |
+| `gitlab_audit_event_streaming_deliveries_total`                                | Counter   |  19.6 | `feature_category`, `destination_category`, `outcome`, `error_category` | Deliveries to external streaming destinations, by outcome. Counted per audit event, per destination, and per attempt, so it does not represent unique audit events. On the NATS path an undelivered batch is redelivered to every destination, including those that already accepted it, and each redelivery counts again. HTTP and Google Cloud Logging destinations record a non-2xx response as `success` until the `audit_event_streaming_fail_on_non_2xx_response` feature flag is enabled. `destination_category` is `http`, `aws`, or `gcp`. `outcome` is `success`, `internal_error` (a GitLab-side failure), or `destination_error`. `error_category` is `none` on success, `internal_error` on an internal error, otherwise one of `timeout`, `connection`, `auth`, `not_found`, `rate_limited`, `client_error`, `server_error`, or `invalid_config` |
+| `gitlab_audit_event_streaming_delivery_duration_seconds`                       | Histogram |  19.6 | `feature_category`, `destination_category`, `outcome`                   | Wall time of one delivery call to an external streaming destination, in seconds. Observed per destination and per attempt, so a redelivered NATS batch is observed again. HTTP and Google Cloud Logging destinations record a non-2xx response under `success` until the `audit_event_streaming_fail_on_non_2xx_response` feature flag is enabled. `destination_category` is `http`, `aws`, or `gcp`. `outcome` is `success`, `internal_error` (a GitLab-side failure), or `destination_error` |
 | `gitlab_audit_event_streaming_nats_consumer_fetch_lag_seconds`                 | Histogram |  19.6 | `feature_category`, `redelivered`                                       | Age in seconds of each audit event streaming NATS message when the consumer fetches it, on every delivery. `redelivered` is `true` when the message was delivered before. Unlike `gitlab_audit_event_streaming_nats_consumer_lag_seconds`, it includes messages whose delivery keeps failing |
 | `gitlab_audit_event_streaming_nats_consumer_lag_seconds`                       | Histogram |  19.3 | `feature_category`                                                      | Audit event streaming NATS consumer lag (publish to dispatch) in seconds |
 | `gitlab_audit_event_streaming_nats_consumer_unreachable_total`                 | Counter   |  19.4 | `feature_category`                                                      | Audit event consumer drains aborted because NATS was unreachable |
@@ -398,6 +398,22 @@ produces a second permanent series for the same `zoekt_node_id`. Aggregate by
 
 Neither metric carries a per-project, per-namespace or per-index label, which
 keeps cardinality bounded.
+
+### Expected Zoekt version metric (from Sidekiq)
+
+Sidekiq emits this metric on the same `Search::Zoekt::MetricsUpdateCronWorker`
+cron path as the [index freshness metrics](#index-freshness-metrics-from-sidekiq),
+so it appears on the Sidekiq exporter endpoint.
+
+| Metric | Type | Since | Labels | Description |
+|:-------|:-----|------:|:-------|:------------|
+| `search_zoekt_expected_version_info` | Gauge | 19.6 | `version` | Zoekt version that this GitLab release expects, read from the `GITLAB_ZOEKT_VERSION` file. The value is always `1`. |
+
+The metric uses multiprocess mode `:max`, so Sidekiq worker processes that
+report the same version share one series. A series is never deleted from the
+Prometheus multiprocess files. If `GITLAB_ZOEKT_VERSION` changes while Sidekiq
+is running, the series for the previous version remains until the Sidekiq
+cluster restarts, and the metric reports both versions.
 
 ### Database-derived Zoekt metrics (from GitLab exporter)
 
@@ -1074,6 +1090,7 @@ configuration option in `gitlab.yml`. These metrics are served from the
 | `search_advanced_bulk_cron_initial_queue_size`           | Gauge     | 17.6  |                                                                                           | Number of initial database updates waiting to be synchronized to Elasticsearch |
 | `search_advanced_bulk_cron_queue_oldest_item_age_seconds` | Gauge    | 19.6  |                                                                                           | Age of the oldest incremental database update waiting to be synchronized to Elasticsearch |
 | `search_advanced_bulk_cron_queue_size`                   | Gauge     | 17.6  |                                                                                           | Number of incremental database updates waiting to be synchronized to Elasticsearch |
+| `search_zoekt_expected_version_info`                     | Gauge     | 19.6  | `version`                                                                                 | Zoekt version that this GitLab release expects, read from the `GITLAB_ZOEKT_VERSION` file. The value is always `1`. Premium and Ultimate only. |
 | `search_zoekt_indexing_lag_seconds`                      | Gauge     | 19.6  | `zoekt_node_id`, `zoekt_node_name`, `pid`                                                 | Age in seconds of the oldest Zoekt indexing task still waiting to be processed on a node. `0` means the queue is drained. Premium and Ultimate only. |
 | `search_zoekt_last_indexed_at_timestamp_seconds`         | Gauge     | 19.6  | `zoekt_node_id`, `zoekt_node_name`                                                        | Unix timestamp of the most recently completed Zoekt indexing run on a node. `0` means no index on the node has ever completed a run. Premium and Ultimate only. |
 | `sidekiq_concurrency_limit_current_concurrent_jobs`      | Gauge     | 17.6  | `worker`, `feature_category`                                                              | Current number of concurrent running jobs. |

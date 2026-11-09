@@ -1282,6 +1282,7 @@ Configuration for a dependency scanning scan profile.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `additionalCaCertBundle` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.CA certificate bundle to trust. The bundle is added to the system's certificates and used by other tools during the scan. |
+| `analyzerImageVersion` | [`String`](scalars.md#string) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Version tag of the dependency scanning analyzer image. |
 | `apiScanDownloadDelay` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Vulnerability scanning API initial delay in seconds before downloading scan results, from 1 to 120. |
 | `apiTimeout` | [`Int`](scalars.md#int) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Vulnerability scanning API request timeout in seconds, from 5 to 300. |
 | `disabledResolutionJobs` | [`[SecurityScanProfileDependencyResolutionJob!]`](enums.md#securityscanprofiledependencyresolutionjob) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.5.Resolution jobs to disable. By default, all available resolution jobs are enabled. |

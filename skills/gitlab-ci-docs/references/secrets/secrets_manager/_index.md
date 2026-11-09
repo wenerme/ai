@@ -373,7 +373,7 @@ To disable GitLab Secrets Manager:
 ## Related topics
 
 - [GitLab Secrets Manager credit usage](credit_usage.md)
-- [Rotate leaked tokens with GitLab Duo](rotate_leaked_tokens.md)
+- [Rotate leaked tokens with GitLab Duo](rotate-leaked-tokens.md)
 - [Secret Audit Tool for Variables](https://gitlab.com/guided-explorations/secrets-management/secret-audit-tool-for-variables):
   A community tool that scans a GitLab group hierarchy for CI/CD variables whose names suggest they may hold credentials
   (passwords, tokens, API keys, and similar). It generates an HTML report to help you identify

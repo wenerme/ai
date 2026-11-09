@@ -9197,7 +9197,7 @@ Triggers a re-evaluation of the security approval policies applicable to the mer
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `duoCodeReviewDepth` | [`DuoCodeReviewDepth`](enums.md#duocodereviewdepth) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Depth of the GitLab Duo Code Review to run when the user is the GitLab Duo Code Review bot. Ignored for other users, and unless the `duo_code_review_deep_flow` feature flag is enabled for the current user. |
+| `duoCodeReviewDepth` | [`DuoCodeReviewDepth`](enums.md#duocodereviewdepth) | Introduced as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.6.Depth of the GitLab Duo Code Review to run when the user is the GitLab Duo Code Review bot. Ignored for other users, and where deep reviews are not available for the project. |
 | `iid` | [`String!`](scalars.md#string) | IID of the merge request to mutate. |
 | `projectPath` | [`ID!`](scalars.md#id) | Project the merge request to mutate is in. |
 | `userId` | [`UserID!`](scalars.md#userid) | User ID for the user that has been requested for a new review. |
@@ -12267,6 +12267,25 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `securityCategory` | [`SecurityCategory`](objects.md#securitycategory) | Updated security category. |
 
+## `securityFindingConfirm`
+
+**Input type:** `SecurityFindingConfirmInput`
+
+### `securityFindingConfirm` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `comment` | [`String`](scalars.md#string) | Comment that explains why the finding was confirmed (maximum 50,000 characters). |
+| `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the finding belongs to. |
+| `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be confirmed. |
+
+### `securityFindingConfirm` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `securityFinding` | [`PipelineSecurityReportFinding`](objects.md#pipelinesecurityreportfinding) | Confirmed finding. |
+
 ## `securityFindingCreateIssue`
 
 **Input type:** `SecurityFindingCreateIssueInput`
@@ -12384,6 +12403,25 @@ Commits the `policy_yaml` content to the assigned security policy project for th
 | ---- | ---- | ----------- |
 | `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
 | `jiraIssueFormUrl` | [`String`](scalars.md#string) | URL to Jira issue creation form with pre-filled vulnerability data. |
+
+## `securityFindingResolve`
+
+**Input type:** `SecurityFindingResolveInput`
+
+### `securityFindingResolve` arguments {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `comment` | [`String`](scalars.md#string) | Comment that explains why the finding was resolved (maximum 50,000 characters). |
+| `projectPath` | [`ID!`](scalars.md#id) | Full path of the project the finding belongs to. |
+| `uuid` | [`String!`](scalars.md#string) | UUID of the finding to be resolved. |
+
+### `securityFindingResolve` fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `errors` | [`[String!]!`](scalars.md#string) | Errors encountered during the mutation. |
+| `securityFinding` | [`PipelineSecurityReportFinding`](objects.md#pipelinesecurityreportfinding) | Resolved finding. |
 
 ## `securityFindingRevertToDetected`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/a
 
 # JSON objects
 
-Last updated Oct 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page contains examples of the JSON objects used in the Programmable Flow Protection API.
 
@@ -99,6 +99,53 @@ If the expression is empty or omitted, the rule applies to all UDP packets withi
 
 For more information on rule settings, refer to [Rule settings](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/concepts/#rule-settings).
 
+## Parameters
+
+The `params` object contains all of the account's [parameter maps](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/programmable-flow-protection/#parameter-maps), keyed by name.
+
+```json
+{
+  "params": {
+    "source_policy": {
+      "id": 0,
+      "type": "map",
+      "key": "ipv4",
+      "value": "u8",
+      "entries": {
+        "192.0.2.1": 1,
+        "198.51.100.7": 2
+      }
+    },
+    "client_tokens": {
+      "id": 1,
+      "type": "map",
+      "key": "ipv6",
+      "value": "u64",
+      "entries": {
+        "2001:db8::1": 42,
+        "2001:db8::2": "18446744073709551615"
+      }
+    }
+  }
+}
+```
+
+| Field | Description |
+| --- | --- |
+| `id` | The ID that programs pass to `param_lookup`. IDs start at `0` and must be contiguous. |
+| `type` | Must be `map`. |
+| `key` | The key type: `ipv4` or `ipv6`. |
+| `value` | The value type: `u8`, `u16`, `u32`, or `u64`. |
+| `entries` | IP addresses and their values. Can be empty. |
+
+All fields are required.
+
+### Entries
+
+Each key must be a single IP address that matches the map's `key` type. Each value must be a non-negative integer that fits the map's `value` type.
+
+For `u64` maps, you can also write values as strings, such as `"18446744073709551615"`. Use strings for values above `9007199254740991`, because many JSON libraries round larger numbers.
+
 Was this helpful?
 
 YesNo
@@ -108,5 +155,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/#page","headline":"JSON objects","description":"JSON object structure for Programmable Flow Protection API requests and responses.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/og.png?v=ac75d61b21367c40","dateModified":"2026-10-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/#page","headline":"JSON objects","description":"JSON object structure for Programmable Flow Protection API requests and responses.","url":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/og.png?v=ac75d61b21367c40","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

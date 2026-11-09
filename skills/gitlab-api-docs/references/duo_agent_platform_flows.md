@@ -14,7 +14,7 @@ such as fixing bugs, writing code, or resolving vulnerabilities.
 
 - Requirement for a composite identity service account when `start_workflow` is `true` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/601901) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `enforce_composite_identity_for_api_started_workflows`. Disabled by default.
 - `callback_hook_id` and `client_reference` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249147) in GitLab 19.4 [with a feature flag](../administration/feature_flags/_index.md) named `duo_flow_callback_hooks`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/258242) in GitLab 19.5.
+- Endpoint [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/607860) in GitLab 19.5.
 
 > [!flag]
 > The requirement for a composite identity service account is controlled by a feature flag.

@@ -12,7 +12,7 @@ These pipelines run when you:
 
 - Create a new merge request from a source branch that has one or more commits.
 - Push a new commit to the source branch for a merge request.
-- Go to the **Pipelines** tab in a merge request and select **Run pipeline**.
+- Go to the  tab in a merge request and select .
 
 Merge request pipelines:
 
@@ -113,14 +113,14 @@ Prerequisites:
 
 To run a merge request pipeline with custom inputs:
 
-1. In the left sidebar, select **Search or go to** and find your project.
-1. Select **Code** > **Merge requests** and open your merge request.
-1. Select the **Pipelines** tab.
-1. Select the **Run pipeline** dropdown list () and
-   choose **Run pipeline with modified values**.
+1. In the top bar, select  and find your project.
+1. Select  >  and open your merge request.
+1. Select the  tab.
+1. Select the  dropdown list () and
+   choose .
 1. The new pipeline form opens and is pre-filled with the merge request's source branch.
    Modify the input values and set any CI/CD variables as needed.
-1. Select **Run pipeline**.
+1. Select .
 
 ## Use with forked projects
 
@@ -132,7 +132,7 @@ pipeline that:
 - Is created and runs in the fork (source) project, not the parent (target) project.
 - Uses the fork project's CI/CD configuration, resources, and project CI/CD variables.
 
-Pipelines for forks display with the **fork** badge in the parent project.
+Pipelines for forks display with the  badge in the parent project.
 
 If a user with the Owner role in the parent project [deletes the merge request](../../user/project/merge_requests/manage.md#delete-a-merge-request), GitLab also deletes its merge request pipelines in both the fork and the parent project.
 
@@ -164,13 +164,13 @@ Prerequisites:
 - You must be a member of the parent project with [permissions to run CI/CD pipelines](../../user/permissions.md#project-cicd).
   You might need additional permissions if the branch is protected.
 - The fork project must be [visible](../../user/public_access.md) to the
-  user running the pipeline. Otherwise, the **Pipelines** tab does not display
+  user running the pipeline. Otherwise, the  tab does not display
   in the merge request.
 
 To use the UI to run a pipeline in the parent project for a merge request from a fork project:
 
-1. In the merge request, go to the **Pipelines** tab.
-1. Select **Run pipeline**. You must read and accept the warning, or the pipeline does not run.
+1. In the merge request, go to the  tab.
+1. Select . You must read and accept the warning, or the pipeline does not run.
 
 ### Prevent pipelines from fork projects
 
@@ -214,11 +214,11 @@ Prerequisites:
 
 To control access to protected variables and runners:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Under **Access protected resources in merge request pipelines**, select or clear
-   the **Allow merge request pipelines to access protected variables and runners** checkbox.
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Under , select or clear
+   the  checkbox.
 
 ## Related topics
 

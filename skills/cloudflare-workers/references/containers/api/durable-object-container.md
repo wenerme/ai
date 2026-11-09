@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/api/durable-object-container
 
 # Durable Object Container API
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/api/durable-object-container/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/api/durable-object-container/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each [container](https://developers.cloudflare.com/containers/) is managed and proxied by a Durable Object. The Durable Object manages routing and persistent state. The container process runs your image inside a Linux VM.
 
@@ -20,7 +20,7 @@ The API documented on this page is available on `this.ctx.container` inside any 
 
 Note
 
-We recommend starting new applications with the Durable Object Container API. It lets you run container workloads alongside the Durable Object's persistent storage, alarms, and request handling. Use `ctx.container` to control when the container starts, receives traffic, and stops, while the Durable Object manages application state and coordination. For existing applications that use the `Container` class, refer to [Migrate to the Durable Object Container API](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api/).
+For existing applications that use the `Container` class, refer to [Migrate from the Container class to the Durable Object Container API](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api/).
 
 Your Durable Object also has access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) through `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs. Use storage to preserve configuration and state across container restarts. Use alarms to schedule work without keeping the container running.
 
@@ -764,8 +764,6 @@ await this.ctx.container.interceptOutboundHttps("*", worker);
 
 ## Related resources
 
-- [Containers APIs](https://developers.cloudflare.com/containers/api/): Compare direct runtime control with the `Container` class.
-- [Container class reference](https://developers.cloudflare.com/containers/api/container-class/): Reference for existing `Container` class applications.
 - [Containers overview](https://developers.cloudflare.com/containers/): Understand how Cloudflare Containers work.
 - [Get started with Containers](https://developers.cloudflare.com/containers/get-started/): Deploy your first container.
 - [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/): Persist state across container restarts.
@@ -781,5 +779,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/api/durable-object-container/#page","headline":"Durable Object Container API","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/containers/api/durable-object-container/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/api/durable-object-container/og.png?v=f13dbe1f95442c69","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/api/durable-object-container/#page","headline":"Durable Object Container API","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/containers/api/durable-object-container/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/api/durable-object-container/og.png?v=f13dbe1f95442c69","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -118,6 +118,7 @@ Additional details:
 ### `add_email`
 
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266746) in GitLab 19.6 for tasks.
 
 Add up to six email participants.
 
@@ -125,6 +126,8 @@ Availability:
 
 - Incident
 - Issue
+- Task
+- Ticket
 
 Parameters:
 
@@ -1611,6 +1614,7 @@ Additional details:
 ### `remove_email`
 
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266746) in GitLab 19.6 for tasks.
 
 Remove up to six email participants.
 
@@ -1618,6 +1622,8 @@ Availability:
 
 - Incident
 - Issue
+- Task
+- Ticket
 
 Parameters:
 

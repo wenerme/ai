@@ -996,6 +996,5 @@ Use thinking models efficiently by following these guidelines.
 
 - [Text generation](/docs/text-generation): Basic text responses
 - [Function calling](/docs/function-calling): Connect to tools
-- [Gemini 4 guide](/docs/latest-model): What's new in Gemini 4
-- [Gemini 3 guide](/docs/whats-new-gemini-3.8): Model-specific features
+- [Latest Gemini models](/docs/latest-model): Compare models and read What's new guides
 

@@ -10,18 +10,23 @@ CI/CD jobs read [GitLab Secrets Manager](_index.md) secrets through the GitLab R
 Other workloads read secrets through the [Secrets Manager API](../../../api/secrets_manager.md).
 Examples include Kubernetes applications and infrastructure as code tools.
 
-Reads go directly to the OpenBao backend, so secret availability does not depend on the GitLab application.
+After a client mints an access token, it reads secrets directly from the OpenBao backend,
+not through the GitLab application.
+Minting an access token requires the GitLab API.
 
 ## Access token flow
 
-1. A client authenticates to GitLab with a personal access token, a service account token,
-   or a project or group access token that has the `api` scope.
+1. A client authenticates to GitLab with a token that can call the Secrets Manager API.
+   For the supported token types, see [prerequisites](#prerequisites).
 1. The client calls the Secrets Manager API to mint a short-lived access token.
-   The response includes the token and the OpenBao connection details.
-1. The client presents the token to the OpenBao backend to read the secret value.
+   The access token is a JSON web token (JWT) for OpenBao, not a GitLab access token.
+   The response includes the JWT and the OpenBao connection details.
+1. The client exchanges the JWT for an OpenBao token, then uses the OpenBao token to read the secret value.
+   Alternatively, the client can send the JWT with each request by using
+   [inline authentication](https://openbao.org/docs/auth/#inline-authentication).
 
-The access token expires after five minutes.
-Because OpenBao implements the Vault API, you can present the token with any
+The JWT and the OpenBao token each expire after five minutes.
+Because OpenBao implements the Vault API, you can use any
 [HashiCorp Vault](https://developer.hashicorp.com/vault) compatible client.
 
 Every OpenBao connection detail comes from the mint response, so you do not
@@ -31,8 +36,12 @@ construct namespace, mount, or authentication paths yourself.
 
 - GitLab Secrets Manager is enabled.
 - The Secrets Manager was provisioned in GitLab 19.2 or later.
-- You authenticate with a personal access token, project or group access token, or
-  [service account](#authenticate-with-a-service-account) token that has the `api` scope.
+- You authenticate with one of:
+  - A personal access token, project or group access token, or
+    [service account](#authenticate-with-a-service-account) token that has the `api` scope.
+  - A [fine-grained personal access token](../../../auth/tokens/fine_grained_access_tokens.md)
+    with the [Secrets Manager API JWT](../../../auth/tokens/fine_grained_access_tokens_rest.md#secrets-manager-api-jwt)
+    permission.
 - Your role is at least Reporter.
 - You have the read value permission.
   A project Owner (or a group Owner, for group secrets) can grant this permission.

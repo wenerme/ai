@@ -945,7 +945,7 @@ When doing [function calling](https://developers.openai.com/api/docs/guides/func
 
 You can carry reasoning items forward using `previous_response_id`. If you manage conversation history yourself, include the original input and all [output](https://developers.openai.com/api/reference/resources/responses#responses/object-output) items from each response in the [input](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-input) of the next request. Keep those items in their original order and append new items.
 
-For newer frontier models, changes to the history preceding a reasoning item can cause the API to drop that reasoning. See [Preserved reasoning](https://developers.openai.com/api/docs/guides/preserved-reasoning) for guidance on changing instructions and tool outputs, and managing long conversations.
+For newer frontier models, changes to the history preceding a reasoning item can cause the API to drop that reasoning. See [Keep the prefix unchanged](https://developers.openai.com/api/docs/guides/preserved-reasoning) for guidance on changing instructions and tool outputs, and managing long conversations.
 
 ## Change reasoning mid-conversation
 

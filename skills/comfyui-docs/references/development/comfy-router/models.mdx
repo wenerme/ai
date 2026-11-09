@@ -184,6 +184,7 @@ Some of these models can also be served by an aggregator on the same route and t
 - [Edit Inpaint](/development/comfy-router/models/stability/edit-inpaint/code): `stability/edit-inpaint`
 - [Edit Outpaint](/development/comfy-router/models/stability/edit-outpaint/code): `stability/edit-outpaint`
 - [Edit Remove Background](/development/comfy-router/models/stability/edit-remove-background/code): `stability/edit-remove-background`
+- [Edit Replace Background And Relight](/development/comfy-router/models/stability/edit-replace-background-and-relight/code): `stability/edit-replace-background-and-relight`
 - [Edit Search And Recolor](/development/comfy-router/models/stability/edit-search-and-recolor/code): `stability/edit-search-and-recolor`
 - [Edit Search And Replace](/development/comfy-router/models/stability/edit-search-and-replace/code): `stability/edit-search-and-replace`
 - [Generate Core](/development/comfy-router/models/stability/generate-core/code): `stability/generate-core`
@@ -196,6 +197,7 @@ Some of these models can also be served by an aggregator on the same route and t
 - [Sdxl 1.0 Masking](/development/comfy-router/models/stability/sdxl-1-0-masking/code): `stability/sdxl-1.0-masking`
 - [Sdxl 1.0 Text To Image](/development/comfy-router/models/stability/sdxl-1-0-text-to-image/code): `stability/sdxl-1.0-text-to-image`
 - [Upscale Conservative](/development/comfy-router/models/stability/upscale-conservative/code): `stability/upscale-conservative`
+- [Upscale Creative](/development/comfy-router/models/stability/upscale-creative/code): `stability/upscale-creative`
 - [Upscale Fast](/development/comfy-router/models/stability/upscale-fast/code): `stability/upscale-fast`
 - [Wan 2.5 I2I Preview](/development/comfy-router/models/wan/wan2-5-i2i-preview/code): `wan/wan2.5-i2i-preview`
 - [Wan 2.5 T2I Preview](/development/comfy-router/models/wan/wan2-5-t2i-preview/code): `wan/wan2.5-t2i-preview`
@@ -482,12 +484,12 @@ Some of these models can also be served by an aggregator on the same route and t
 | Model | ID | Input | Output |
 | --- | --- | --- | --- |
 | [Kling 3.0 Turbo](/development/comfy-router/models/kling/kling-3-0-turbo/code) | `kling/kling-3.0-turbo` | Text | Video |
-| [Kling 4.0](/development/comfy-router/models/kling/kling-4-0/code) | `kling/kling-4.0` | Text | Video |
+| [Kling 4.0](/development/comfy-router/models/kling/kling-4-0/code) | `kling/kling-4.0` | Text, Image, Video | Video |
 | [Kling Image O1](/development/comfy-router/models/kling/kling-image-o1/code) | `kling/kling-image-o1` | Text, Image | Image |
-| [Kling V2.5 Turbo](/development/comfy-router/models/kling/kling-v2-5-turbo/code) | `kling/kling-v2-5-turbo` | Text | Video |
-| [Kling V2.6](/development/comfy-router/models/kling/kling-v2-6/code) | `kling/kling-v2-6` | Text | Video |
+| [Kling V2.5 Turbo](/development/comfy-router/models/kling/kling-v2-5-turbo/code) | `kling/kling-v2-5-turbo` | Image, Text | Video |
+| [Kling V2.6](/development/comfy-router/models/kling/kling-v2-6/code) | `kling/kling-v2-6` | Image, Text | Video |
 | [Kling V3 Omni](/development/comfy-router/models/kling/kling-v3-omni/code) | `kling/kling-v3-omni` | Text, Image, Video | Video |
-| [Kling V3](/development/comfy-router/models/kling/kling-v3/code) | `kling/kling-v3` | Text | Video |
+| [Kling V3](/development/comfy-router/models/kling/kling-v3/code) | `kling/kling-v3` | Image, Text | Video |
 | [Kling Video O1](/development/comfy-router/models/kling/kling-video-o1/code) | `kling/kling-video-o1` | Text, Image, Video | Video |
 | [Videos Avatar Image 2video](/development/comfy-router/models/kling/videos-avatar-image2video/code) | `kling/videos-avatar-image2video` | Image, Audio | Video |
 | [Videos Lip Sync](/development/comfy-router/models/kling/videos-lip-sync/code) | `kling/videos-lip-sync` | Video, Audio | Video |
@@ -650,6 +652,7 @@ Some of these models can also be served by an aggregator on the same route and t
 | [Edit Inpaint](/development/comfy-router/models/stability/edit-inpaint/code) | `stability/edit-inpaint` | Text, Image | Image |
 | [Edit Outpaint](/development/comfy-router/models/stability/edit-outpaint/code) | `stability/edit-outpaint` | Text, Image | Image |
 | [Edit Remove Background](/development/comfy-router/models/stability/edit-remove-background/code) | `stability/edit-remove-background` | Image | Image |
+| [Edit Replace Background And Relight](/development/comfy-router/models/stability/edit-replace-background-and-relight/code) | `stability/edit-replace-background-and-relight` | Text, Image | Image |
 | [Edit Search And Recolor](/development/comfy-router/models/stability/edit-search-and-recolor/code) | `stability/edit-search-and-recolor` | Text, Image | Image |
 | [Edit Search And Replace](/development/comfy-router/models/stability/edit-search-and-replace/code) | `stability/edit-search-and-replace` | Text, Image | Image |
 | [Generate Core](/development/comfy-router/models/stability/generate-core/code) | `stability/generate-core` | Text | Image |
@@ -664,6 +667,7 @@ Some of these models can also be served by an aggregator on the same route and t
 | [Stable Fast 3D](/development/comfy-router/models/stability/stable-fast-3d/code) | `stability/stable-fast-3d` | Image | 3D |
 | [Stable Point Aware 3D](/development/comfy-router/models/stability/stable-point-aware-3d/code) | `stability/stable-point-aware-3d` | Image | 3D |
 | [Upscale Conservative](/development/comfy-router/models/stability/upscale-conservative/code) | `stability/upscale-conservative` | Text, Image | Image |
+| [Upscale Creative](/development/comfy-router/models/stability/upscale-creative/code) | `stability/upscale-creative` | Text, Image | Image |
 | [Upscale Fast](/development/comfy-router/models/stability/upscale-fast/code) | `stability/upscale-fast` | Image | Image |
 
 ## Synclabs

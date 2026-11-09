@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/email-service/reference/headers/og.png?
 
 Which email headers you can set, which are auto-generated, and how they are validated
 
-Last updated Nov 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
@@ -77,7 +77,9 @@ Email Service rejects the entire send request if it contains a disallowed header
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Auto-Submitted` | [RFC 3834 ↗︎](https://datatracker.ietf.org/doc/html/rfc3834) | Values: `auto-generated`, `auto-replied`, `auto-notified` |
+| `Auto-Submitted` | [RFC 3834 ↗︎](https://datatracker.ietf.org/doc/html/rfc3834) | Values include `no`, `auto-generated`, `auto-replied`, and extension tokens. |
+
+[RFC 5436 ↗︎](https://datatracker.ietf.org/doc/html/rfc5436) defines `auto-notified` for Sieve notifications. This value requires an `owner-email` or `owner-token` parameter.
 
 ### Content and display
 
@@ -85,7 +87,7 @@ Email Service rejects the entire send request if it contains a disallowed header
 | --- | --- | --- |
 | `Content-Language` | [RFC 3282 ↗︎](https://datatracker.ietf.org/doc/html/rfc3282) | Language of content (for example, `en`, `fr`) |
 | `Keywords` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Message keywords (comma-separated for multiple values) |
-| `Comments` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Additional comments (comma-separated for multiple values) |
+| `Comments` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Free-form comments (unstructured text) |
 | `Importance` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `high`, `normal`, `low` |
 | `Priority` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `normal`, `non-urgent`, `urgent` |
 | `Sensitivity` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `personal`, `private`, `company-confidential` |
@@ -95,9 +97,9 @@ Email Service rejects the entire send request if it contains a disallowed header
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Require-Recipient-Valid-Since` | [RFC 7293 ↗︎](https://datatracker.ietf.org/doc/html/rfc7293) | Address reuse protection |
-| `Expires` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time after which the message is no longer valid |
-| `Reply-By` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time by which a reply is requested |
+| `Require-Recipient-Valid-Since` | [RFC 7293 ↗︎](https://datatracker.ietf.org/doc/html/rfc7293) | Recipient address followed by `;` and an RFC 5322 `date-time` |
+| `Expires` | [RFC 10080 ↗︎](https://datatracker.ietf.org/doc/html/rfc10080) | Expiration time in RFC 5322 `date-time` format |
+| `Reply-By` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Requested reply deadline in RFC 5322 `date-time` format |
 
 ### Modern standards
 
@@ -180,7 +182,7 @@ The total payload is calculated as `sum(len(name) + 2 + len(value) + 2)` for all
 2. **Header values** — UTF-8 allowed, maximum 2,048 bytes, no bare CR/LF. Empty values are rejected.
 3. **Case-insensitive matching** — Header names are matched case-insensitively per [RFC 5322 §2.2 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322#section-2.2). The canonical casing from the allowlist is used in the generated message.
 4. **Proper line folding** — Long headers are folded at 78 characters per RFC 5322 using CRLF+WSP, not MIME encoding.
-5. **Single occurrence** — The `headers` type is `{ [key]: string }`, so each header name can appear at most once. For headers that support multiple values (such as `Keywords` or `Comments`), use comma-separated values in a single string.
+5. **Single occurrence** — The `headers` type is `{ [key]: string }`, so each header name can appear at most once. For headers that support multiple values (such as `Keywords`), use comma-separated values in a single string.
 
 ## Error codes
 
@@ -203,5 +205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/headers/og.png?v=f7f5235f5e874a71","dateModified":"2026-11-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/email-service/reference/headers/og.png?v=f7f5235f5e874a71","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

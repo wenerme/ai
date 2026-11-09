@@ -8,6 +8,7 @@
 - Customizable rate limits [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/587887) in GitLab 19.3. Feature flags `web_hook_test_api_endpoint_rate_limit` and `web_hook_event_resend_api_endpoint_rate_limit` removed.
 - Rate limit for project webhook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605597) in GitLab 19.6.
 - Rate limits for group webhook and system hook creation [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/635281) in GitLab 19.6.
+- Rate limit for organization webhook testing [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/632598) in GitLab 19.6.
 
 Configure the per-minute rate limit for requests that:
 
@@ -25,8 +26,10 @@ Configure the per-minute rate limit for requests that:
 | Webhook test requests | 5 each minute |
 | Webhook event resend requests | 5 each minute |
 
-The project and group limits apply per user, for a given project or group. All webhooks in the same
-project or group share the limit. The system hook creation limit applies per user across the instance.
+The project and group limits apply per user, for a given project or group.
+The webhook test limit also applies per user, for a given organization when you test an organization webhook.
+All webhooks in the same project, group, or organization share the limit.
+The system hook creation limit applies per user across the instance.
 The test and event resend limits cover both the UI and the API. The webhook creation limits cover the
 API only.
 

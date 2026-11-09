@@ -1,15 +1,13 @@
 # Remote execution environment sandbox
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/578048) in GitLab 18.7 [with a flags](../../administration/feature_flags/_index.md) named `ai_duo_agent_platform_network_firewall` and `ai_dap_executor_connects_over_ws`
-- Feature flag `ai_duo_agent_platform_network_firewall` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215950) in GitLab 18.7.
-- Feature flag `ai_dap_executor_connects_over_ws` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/215774) in GitLab 18.7.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/578048) in GitLab 18.7 [with feature flags](../../administration/feature_flags/_index.md) named `ai_duo_agent_platform_network_firewall` and `ai_dap_executor_connects_over_ws`. Enabled by default.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8. Feature flags `ai_duo_agent_platform_network_firewall` and `ai_dap_executor_connects_over_ws` removed.
 - `network_policy` setting [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590021) in GitLab 18.10.
 - `allow_all_unix_sockets` network policy setting [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/590871) in GitLab 18.11.
 - Instance-level and group-level network access controls [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531) in GitLab 18.11 [with feature flags](../../administration/feature_flags/_index.md) named `dap_instance_network_access_controls` and `dap_group_network_access_controls`. Disabled by default.
 - Feature flags `dap_instance_network_access_controls` and `dap_group_network_access_controls` [enabled](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
-- Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243118) in 19.2.
-- Feature flag `dap_instance_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244957) in 19.3.
+- Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/595210) in GitLab 19.2.
+- Feature flag `dap_instance_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/595211) in GitLab 19.3.
 - Setting to require the sandbox [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607753) in GitLab 19.6.
 
 The execution environment sandbox provides application-level network and file system isolation
@@ -211,6 +209,9 @@ the host. This is disabled by default.
 ### Configure network access controls for your instance or group
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/229531) in GitLab 18.11 [with feature flags](../../administration/feature_flags/_index.md) named `dap_instance_network_access_controls` and `dap_group_network_access_controls`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235670) in GitLab 19.0.
+- Feature flag `dap_group_network_access_controls` [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/595210) in GitLab 19.2.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/595211) in GitLab 19.3. Feature flag `dap_instance_network_access_controls` removed.
 
 In addition to [project-level `agent-config.yml` settings](#configure-a-network-policy),
 administrators and top-level group owners can manage network access controls through the GitLab UI.

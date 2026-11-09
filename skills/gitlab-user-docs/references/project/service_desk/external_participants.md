@@ -105,9 +105,9 @@ Prerequisites:
 
 To see a list of all external participants:
 
-1. Go to the issue or ticket.
+1. Go to the incident, issue, ticket, or task.
 1. Scroll down to the comment editor.
-1. If the issue or ticket has external participants, you can see a warning under the comment editor
+1. If the work item has external participants, you can see a warning under the comment editor
    that lists all external participants.
 
 [Warning below the comment editor listing external participants.]
@@ -115,13 +115,14 @@ To see a list of all external participants:
 ### Add an external participant
 
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266746) in GitLab 19.6 for tasks.
 
 Add an external participant using the [`/add_email` quick action](../quick_actions.md#add_email) when you want
 to include them in the conversation at any time.
 
 When added, the external participant starts receiving notifications using Service Desk emails.
 
-New external participants receive the `new_participant` email to let them know they were added to the ticket.
+New external participants receive the `new_participant` email to let them know they were added to the work item.
 GitLab doesn't send a `thank_you` email for manually added external participants.
 
 You should add external participants in a dedicated comment because they don't receive a notification
@@ -131,9 +132,9 @@ Prerequisites:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project.
 
-To add an external participant to an issue or ticket:
+To add an external participant to an incident, issue, ticket, or task:
 
-1. Go to the issue or ticket.
+1. Go to the incident, issue, ticket, or task.
 1. Add a comment that contains only the quick action `/add_email user@example.com`.
    You can chain up to 6 email addresses. For example, `/add_email user@example.com user2@example.com`
 
@@ -142,22 +143,23 @@ You should see a success message and a new system note with the email address.
 ### Remove an external participant
 
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/350460) in GitLab 18.10. Feature flag `issue_email_participants` removed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/266746) in GitLab 19.6 for tasks.
 
-Remove an external participant from an issue or Service Desk ticket using the
+Remove an external participant from an incident, issue, ticket, or task using the
 [`/remove_email` quick action](../quick_actions.md#remove_email)
 when they should stop receiving notifications.
 
-After removing them from the issue or ticket they don't receive new notifications.
-But they can still reply to emails they received before and create a new comment on the issue or ticket.
+After you remove an external participant, they don't receive new notifications.
+But they can still reply to emails they received before and create a new comment on the work item.
 
 Prerequisites:
 
 - You must have the Planner, Reporter, Developer, Maintainer, or Owner role for the project.
-- There must be at least one external participant on the issue or ticket.
+- There must be at least one external participant on the work item.
 
-To remove an existing external participant from an issue or ticket:
+To remove an existing external participant from an incident, issue, ticket, or task:
 
-1. Go to the issue or ticket.
+1. Go to the incident, issue, ticket, or task.
 1. Add a comment that contains only the quick action `/remove_email user@example.com`.
    You can chain up to 6 email addresses. For example, `/remove_email user@example.com user2@example.com`
 

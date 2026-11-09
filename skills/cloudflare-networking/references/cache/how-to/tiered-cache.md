@@ -116,7 +116,7 @@ You can enable Tiered Cache in the dashboard or via API.
 
 To enable Tiered Cache via API use the following cURL example:
 
-*Patch Tiered Caching settingbash*
+*Update Tiered Cachebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \

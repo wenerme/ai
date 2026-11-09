@@ -398,7 +398,8 @@ When you use headless mode, the GitLab Duo CLI:
 
 ## Provide images as context
 
-- [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.27.0) in GitLab Duo CLI 9.27.0, during the GitLab 19.5 release, [with a feature flag](../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.27.0) in GitLab Duo CLI 9.27.0, during the GitLab 19.5 release, [with a feature flag](../../administration/feature_flags/_index.md) named `dap_tool_image_input`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/2806) in GitLab 19.6.
 - Support for self-hosted models [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/work_items/3335) in GitLab 19.6.
 
 > [!flag]

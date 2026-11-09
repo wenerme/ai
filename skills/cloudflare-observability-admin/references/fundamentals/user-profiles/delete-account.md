@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/user-profiles/delete-accou
 
 # Delete your Cloudflare account
 
-Last updated Nov 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -37,10 +37,14 @@ Before Cloudflare can cancel your account and delete your personal information, 
 - [Cancel your subscriptions or add-on services](https://developers.cloudflare.com/billing/manage/cancel-subscription/)
 - [Remove your domain from Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/)
 - [Remove Cloudflare nameservers at your domain registrar](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/)
-- [Disable auto-renew for your Registrar domain(s)](https://developers.cloudflare.com/registrar/account-options/renew-domains#set-up-automatic-renewals)
+- If you have domains registered with Cloudflare Registrar, [delete the domain registration](https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration) or let it expire. Disabling auto-renew alone does not remove the registration from your account.
 - If you are using a Cloudflare [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), [update your DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#edit-dns-records) at your DNS provider to point to your website IPs or hostnames instead of Cloudflare.
 - [Delete payment information](https://developers.cloudflare.com/billing/get-started/update-billing-info/#delete-a-payment-method)
 - (*Optional*) [Download a copy of your invoices](https://developers.cloudflare.com/billing/manage/invoices/#download-invoice). Once deleted, the invoices will no longer be accessible and cannot be re-sent to you.
+
+Note
+
+A deleted or expired Registrar domain remains on your account through the registry redemption period (up to 30 days, plus a five-day pending delete period) and blocks profile deletion until the registry releases the domain. If profile deletion fails with "Your profile cannot be deleted while you have active domains at Cloudflare Registrar" but you have no active registrations, wait for the domain to be released, then try again. Refer to [What happens when a domain expires?](https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires) for the full timeline.
 
 ## Delete your Cloudflare account
 
@@ -75,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/#page","headline":"Delete your Cloudflare account","description":"Permanently delete your Cloudflare user profile and remove all associated domains and billing information.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/og.png?v=24b5d2fa6f5294e7","dateModified":"2026-11-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/#page","headline":"Delete your Cloudflare account","description":"Permanently delete your Cloudflare user profile and remove all associated domains and billing information.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/user-profiles/delete-account/og.png?v=24b5d2fa6f5294e7","dateModified":"2026-11-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

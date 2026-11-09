@@ -54,6 +54,11 @@ You can also use advanced search in a project or group.
 - Searching comments on merge requests [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/573750) in GitLab 18.7. Feature flag `search_merge_request_queries_notes` removed.
 - Groups scope [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249760) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `elasticsearch_group_search`. Disabled by default.
 - Groups scope [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/607018) in GitLab 19.5. Feature flag `elasticsearch_group_search` removed.
+- Group milestones in milestone results [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/260603) in GitLab 19.6 [with a feature flag](../../administration/feature_flags/_index.md) named `advanced_search_group_milestones`. Disabled by default.
+
+> [!flag]
+> The availability of group milestones in milestone results is controlled by a feature flag.
+> For more information, see the history.
 
 Scopes describe the type of data you're searching.
 The following scopes are available for advanced search:
@@ -77,9 +82,15 @@ The following scopes are available for advanced search:
 [^global-search-saas]: On GitLab.com, global search is not enabled for code, commits, and wikis.
 [^search-work-items]: When you search work items and merge requests, results
     include comments that match your search term.
-[^advanced-search-returns]: Advanced search returns only project milestones because group milestones are not indexed
-    in Elasticsearch. For more information, see
-    [issue 428589](https://gitlab.com/gitlab-org/gitlab/-/issues/428589).
+[^advanced-search-returns]: When the `advanced_search_group_milestones` feature flag is enabled,
+    advanced search also returns group milestones that you can view.
+    Global search returns group milestones from all groups you can view, and project milestones.
+    Group search returns milestones of the group, its parent groups, and its subgroups,
+    and milestones of projects in the group and its subgroups.
+    Project search returns milestones of the project, its group, and the parent groups of that group.
+    When the feature flag is disabled, advanced search returns only project milestones.
+    Group milestones created before indexing was available appear after a
+    [backfill](https://gitlab.com/gitlab-org/gitlab/-/work_items/630857) runs.
 [^group-search-returns]: Group search returns the subgroups of the group you're searching in, not the group itself.
     The `backfill_groups_to_elasticsearch` advanced search migration must be complete before
     this scope returns results.

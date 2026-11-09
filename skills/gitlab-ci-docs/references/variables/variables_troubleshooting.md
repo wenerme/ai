@@ -215,7 +215,7 @@ A missing file has these effects:
 - Jobs in the pipeline fail with `pipeline_variables_file_missing`
   when a runner picks them up or when you retry them.
 - Automatic trigger jobs fail instead of creating downstream pipelines, and manual trigger jobs cannot be run.
-- The pipeline page loads, but the **Manual Variables** tab shows that the variables are unavailable.
+- The pipeline page loads, but the  tab shows that the variables are unavailable.
 - Only users with the Developer, Maintainer, or Owner role can view the logs of the pipeline's jobs.
 - The [retrieve pipeline variables](../../api/pipelines.md#retrieve-pipeline-variables) API
   endpoint returns a `404` status code.

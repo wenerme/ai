@@ -175,7 +175,7 @@ To manually share context across generated responses, include the model's previo
 
 For stateless reasoning-model requests, preserve every item in the response's `output` array. The Responses API returns encrypted reasoning items by default. Replaying the complete output keeps reasoning items and assistant `phase` values intact. Models that support persisted reasoning can use `reasoning.context: "all_turns"` to render the available reasoning from earlier turns into the next sample. See [preserve reasoning across calls](https://developers.openai.com/api/docs/guides/reasoning#preserve-reasoning-across-calls).
 
-When replaying reasoning items, preserve the history that produced them. See [Preserved reasoning](https://developers.openai.com/api/docs/guides/preserved-reasoning) for details on how edits to conversation history affect reasoning.
+When replaying reasoning items, preserve the history that produced them. See [Keep the prefix unchanged](https://developers.openai.com/api/docs/guides/preserved-reasoning) for details on how edits to conversation history affect reasoning.
 
 In the following example, we ask the model to tell a joke, followed by a request for another joke. Appending previous responses to new requests in this way helps ensure conversations feel natural and retain the context of previous interactions.
 

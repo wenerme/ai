@@ -60,7 +60,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (15)
+Previous version history (16)
 
 </summary>
 
@@ -205,6 +205,24 @@ This release introduces multiple features from our previous beta release into st
 - If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run <code>warp-cli registration delete</code> or <code>warp-cli registration delete-all</code>.
 
 </details>
+
+<details>
+
+<summary>
+
+Windows 2026.6.906.0
+
+</summary>
+
+**Version:** Windows 2026.6.906.0**Date:** 2026-11-09**Size:** 60.6 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.906.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 
@@ -598,7 +616,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (13)
+Previous version history (14)
 
 </summary>
 
@@ -737,6 +755,24 @@ This release introduces multiple features from our previous beta release into st
 - None
 
 </details>
+
+<details>
+
+<summary>
+
+macOS 2026.6.906.0
+
+</summary>
+
+**Version:** macOS 2026.6.906.0**Date:** 2026-11-09**Size:** 150 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.906.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 
@@ -1021,7 +1057,7 @@ This hotfix addresses an issue building trusted certificate chains.</details>
 
 <summary>
 
-Previous version history (14)
+Previous version history (15)
 
 </summary>
 
@@ -1167,6 +1203,26 @@ This release introduces multiple features from our previous beta release into st
 - When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
 
 </details>
+
+<details>
+
+<summary>
+
+Linux 2026.6.906.0
+
+</summary>
+
+**Version:** Linux 2026.6.906.0**Date:** 2026-11-09**Size:** 74.2 MB
+
+AlmaLinux / RHEL 10 (arm64) AlmaLinux / RHEL 10 (x86-64) AlmaLinux / RHEL 9 (arm64) AlmaLinux / RHEL 9 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 43 (arm64) Fedora 43 (x86-64) Fedora 44 (arm64) Fedora 44 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64) Ubuntu 26.04 (arm64) Ubuntu 26.04 (x86-64)
+
+<a href="https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.6.906.0">Download</a>
+
+#### Release notes
+
+This hotfix addresses an issue building trusted certificate chains.</details>
+
+
 
 <details>
 

@@ -114,7 +114,7 @@ all variables become available to the pipeline.
 
 ### For a project
 
-- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from **Visible** to **Masked** in GitLab 18.3.
+- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from  to  in GitLab 18.3.
 
 You can add CI/CD variables to a project's settings. Projects can have a maximum of 8000 CI/CD variables.
 
@@ -124,28 +124,28 @@ Prerequisites:
 
 To add or update variables in the project settings:
 
-1. In the top bar, select **Search or go to** and find your project.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Select **Add variable** and fill in the details:
-   - **Key**: Must be one line, with no spaces, using only letters, numbers, or `_`.
-   - **Value**: The value is limited to 10,000 characters, but also bounded by any limits in the
-     runner's operating system. The value has extra limitations if **Visibility** is set to **Masked**
-     or **Masked and hidden**.
-   - **Type**: `Variable` (default) or [`File`](#use-file-type-cicd-variables).
-   - **Environment scope**: Optional. **All (default)** (`*`), a specific [environment](../environments/_index.md),
+1. In the top bar, select  and find your project.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select  and fill in the details:
+   - : Must be one line, with no spaces, using only letters, numbers, or `_`.
+   - : The value is limited to 10,000 characters, but also bounded by any limits in the
+     runner's operating system. The value has extra limitations if  is set to
+     or .
+   - : `Variable` (default) or [`File`](#use-file-type-cicd-variables).
+   - : Optional.  (`*`), a specific [environment](../environments/_index.md),
      or a wildcard environment scope.
-   - **Protect variable** Optional. If selected, the variable is only available in pipelines
+   -  Optional. If selected, the variable is only available in pipelines
      that run on protected branches or protected tags.
-   - **Visibility**: Select **Visible**, **Masked** (default), or **Masked and hidden**.
-   - **Expand variable reference**: Optional. If selected, the variable can reference another variable.
-     It is not possible to reference another variable if **Visibility** is set to **Masked** or **Masked and hidden**.
+   - : Select ,  (default), or .
+   - : Optional. If selected, the variable can reference another variable.
+     It is not possible to reference another variable if  is set to  or .
 
 Alternatively, project variables can be added [by using the API](../../api/project_level_variables.md).
 
 ### For a group
 
-- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from **Visible** to **Masked** in GitLab 18.3.
+- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from  to  in GitLab 18.3.
 
 You can make a CI/CD variable available to all projects in a group. Groups can have a maximum of 30000 CI/CD variables.
 
@@ -155,23 +155,23 @@ Prerequisites:
 
 To add a group variable:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Select **Add variable** and fill in the details:
-   - **Key**: Must be one line, with no spaces, using only letters, numbers, or `_`.
-   - **Value**: The value is limited to 10,000 characters, but also bounded by any limits in the
-     runner's operating system. The value has extra limitations if **Visibility** is set to **Masked**
-     or **Masked and hidden**.
-   - **Type**: `Variable` (default) or [`File`](#use-file-type-cicd-variables).
-   - **Protect variable** Optional. If selected, the variable is only available in pipelines
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select  and fill in the details:
+   - : Must be one line, with no spaces, using only letters, numbers, or `_`.
+   - : The value is limited to 10,000 characters, but also bounded by any limits in the
+     runner's operating system. The value has extra limitations if  is set to
+     or .
+   - : `Variable` (default) or [`File`](#use-file-type-cicd-variables).
+   -  Optional. If selected, the variable is only available in pipelines
      that run on protected branches or protected tags.
-   - **Visibility**: Select **Visible**, **Masked** (default), **Masked and hidden**.
-   - **Expand variable reference**: Optional. If selected, the variable can reference another variable.
-     It is not possible to reference another variable if **Visibility** is set to **Masked** or **Masked and hidden**.
+   - : Select ,  (default), .
+   - : Optional. If selected, the variable can reference another variable.
+     It is not possible to reference another variable if  is set to  or .
 
 The group variables that are available in a project are listed in the project's
-**Settings** > **CI/CD** > **Variables** section. Variables from subgroups are recursively inherited.
+ >  >  section. Variables from subgroups are recursively inherited.
 
 Alternatively, group variables can be added [by using the API](../../api/group_level_variables.md).
 
@@ -181,11 +181,11 @@ Alternatively, group variables can be added [by using the API](../../api/group_l
 
 To set a group CI/CD variable to only be available for certain environments:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. To the right of the variable, select **Edit** ().
-1. For **Environment scope**, select **All (default)** (`*`), a specific [environment](../environments/_index.md),
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. To the right of the variable, select  ().
+1. For , select  (`*`), a specific [environment](../environments/_index.md),
    or a wildcard environment scope.
 
 ### For an instance
@@ -193,8 +193,8 @@ To set a group CI/CD variable to only be available for certain environments:
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from **Visible** to **Masked** in GitLab 18.3.
-- **Masked and hidden** option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/592708) in GitLab 19.0.
+- Default visibility [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195494) from  to  in GitLab 18.3.
+-  option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/592708) in GitLab 19.0.
 
 You can make a CI/CD variable available to all projects and groups in a GitLab instance.
 
@@ -204,19 +204,19 @@ Prerequisites:
 
 To add an instance variable:
 
-1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Select **Add variable** and fill in the details:
-   - **Key**: Must be one line, with no spaces, using only letters, numbers, or `_`.
-   - **Value**: The value is limited to 10,000 characters, but also bounded by any limits in the
-     runner's operating system. No other limitations if **Visibility** set to **Visible**.
-   - **Type**: `Variable` (default) or `File`.
-   - **Protect variable** Optional. If selected, the variable is only available in pipelines
+1. In the upper-right corner, select .
+1. In the left sidebar, select  > .
+1. Expand .
+1. Select  and fill in the details:
+   - : Must be one line, with no spaces, using only letters, numbers, or `_`.
+   - : The value is limited to 10,000 characters, but also bounded by any limits in the
+     runner's operating system. No other limitations if  set to .
+   - : `Variable` (default) or `File`.
+   -  Optional. If selected, the variable is only available in pipelines
      that run on protected branches or tags.
-   - **Visibility**: Select **Visible**, **Masked** (default), or **Masked and hidden**.
-   - **Expand variable reference**: Optional. If selected, the variable can reference another variable.
-     It is not possible to reference another variable if **Visibility** is set to **Masked** or **Masked and hidden**.
+   - : Select ,  (default), or .
+   - : Optional. If selected, the variable can reference another variable.
+     It is not possible to reference another variable if  is set to  or .
 
 Alternatively, instance variables can be added [by using the API](../../api/instance_level_ci_variables.md).
 
@@ -279,15 +279,15 @@ Prerequisites:
 
 To mask a variable:
 
-1. For the group, project, or in the **Admin** area, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Next to the variable you want to protect, select **Edit**.
-1. Under **Visibility**, select **Mask variable**.
-1. Recommended. Clear the [**Expand variable reference**](#allow-cicd-variable-expansion) checkbox.
+1. For the group, project, or in the  area, select  > .
+1. Expand .
+1. Next to the variable you want to protect, select .
+1. Under , select .
+1. Recommended. Clear the [](#allow-cicd-variable-expansion) checkbox.
    If variable expansion is enabled, the only non-alphanumeric characters you can use in
    the variable value are: `_`, `:`, `@`, `-`, `+`, `.`, `~`, `=`, `/`, and `~`.
    When the setting is disabled, all characters can be used.
-1. Select **Update variable**.
+1. Select .
 
 The value of the variable must:
 
@@ -310,7 +310,7 @@ When `CI_DEBUG_SERVICES` is enabled, the variable value might be revealed. For m
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/165843) in GitLab 17.6. Feature flag `ci_hidden_variables` removed.
 
 In addition to masking, you can also prevent the value of CI/CD variables from being revealed
-in the **CI/CD** settings page. Hiding a variable is only possible when creating a new variable,
+in the  settings page. Hiding a variable is only possible when creating a new variable,
 you cannot update an existing variable to be hidden.
 
 Prerequisites:
@@ -318,7 +318,7 @@ Prerequisites:
 - You must have the same role or access level as required to [add a CI/CD variable in the UI](#define-a-cicd-variable-in-the-ui).
 - The variable value must match the [requirements for masked variables](#mask-a-cicd-variable).
 
-To hide a variable, select **Masked and hidden** in the **Visibility** section when
+To hide a variable, select  in the  section when
 you [add a new CI/CD variable in the UI](#define-a-cicd-variable-in-the-ui).
 After you save the variable, the variable can be used in CI/CD pipelines, but cannot
 be revealed in the UI again.
@@ -337,11 +337,11 @@ Prerequisites:
 
 To set a variable as protected:
 
-1. For the project or group, go to **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Next to the variable you want to protect, select **Edit**.
-1. Select the **Protect variable** checkbox.
-1. Select **Update variable**.
+1. For the project or group, go to  > .
+1. Expand .
+1. Next to the variable you want to protect, select .
+1. Select the  checkbox.
+1. Select .
 
 The variable is available for all subsequent pipelines.
 
@@ -429,11 +429,11 @@ Prerequisites:
 
 To enable variable expansion for the variable:
 
-1. For the project or group, go to **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. Next to the variable you do not want expanded, select **Edit**.
-1. Select the **Expand variable reference** checkbox.
-1. Select **Update variable**.
+1. For the project or group, go to  > .
+1. Expand .
+1. Next to the variable you do not want expanded, select .
+1. Select the  checkbox.
+1. Select .
 
 > [!note]
 > Do not [mask](#mask-a-cicd-variable) a variable value if you want to use variable expansion.
@@ -455,7 +455,7 @@ From highest to lowest, the order of precedence is:
    pipeline.
 1. Manual job variables, set when you run a manual job.
 1. [Pipeline variables](#use-pipeline-variables), from:
-   - The **Run pipeline** page
+   - The  page
    - A pipeline schedule
    - The pipelines API
    - The triggers API
@@ -553,8 +553,8 @@ If the pipeline variables exceed this limit, the pipeline is not created and fai
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253433) in GitLab 19.6.
 
-Pipeline variables have [limits](../../administration/cicd/limits.md#limit-pipeline-variables),
-separate from project, group, and instance variable limits.
+Pipeline variables have a [count limit](../../administration/cicd/limits.md#limit-pipeline-variables),
+and values are bound by the [shared size limits](../../administration/cicd/limits.md#limit-cicd-variable-values).
 Variables defined in the `.gitlab-ci.yml` file are not checked, except when a trigger job passes them to a
 [downstream pipeline](../pipelines/downstream_pipelines.md#pass-cicd-variables-to-a-downstream-pipeline).
 All variables that a trigger job passes downstream count as pipeline variables of the downstream pipeline.
@@ -584,8 +584,8 @@ Prerequisites:
 
 To limit the use of pipeline variables to only the Maintainer role and higher:
 
-- Go to **Settings** > **CI/CD** > **Variables**.
-- Under **Minimum role to use pipeline variables**, select one of:
+- Go to  >  > .
+- Under , select one of:
   - `no_one_allowed`: No pipelines can run with pipeline variables.
     Default for new projects in new namespaces on GitLab.com.
     After the setting is at this value, only the Owner role can change it.
@@ -627,7 +627,7 @@ in the same project are not restricted by this setting.
 
 For groups with many projects, you can disable pipeline variables
 in all projects that don't use them. This option sets the
-**Minimum role to use pipeline variables** setting to `no_one_allowed` for projects
+ setting to `no_one_allowed` for projects
 that have never used pipeline variables.
 
 Prerequisites:
@@ -636,11 +636,11 @@ Prerequisites:
 
 To enable the pipeline variable restriction setting in projects in the group:
 
-1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **CI/CD**.
-1. Expand **Variables**.
-1. In the **Disable pipeline variables in projects that don't use them** section,
-   select **Start migration**.
+1. In the top bar, select  and find your group.
+1. In the left sidebar, select  > .
+1. Expand .
+1. In the  section,
+   select .
 
 The migration runs in the background. You receive an email notification
 when the migration is complete. Project maintainers can later change the setting

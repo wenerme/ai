@@ -21,7 +21,7 @@ check whether its toolset is enabled.
 | Toolset | Tools |
 |---------|-------|
 | `meta` | [`get_mcp_server_version`](#get_mcp_server_version) |
-| `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
+| `core` | [`get_project`](#get_project), [`save_project`](#save_project), [`get_user`](#get_user), [`list_groups`](#list_groups), [`list_projects`](#list_projects), [`list_project_members`](#list_project_members), [`list_todos`](#list_todos), [`list_user_events`](#list_user_events), [`save_note`](#save_note), [`search`](#search), [`search_labels`](#search_labels), [`semantic_search`](#semantic_search), [`get_pages_content`](#get_pages_content) |
 | `merge_requests` | [`save_merge_request`](#save_merge_request), [`get_merge_request`](#get_merge_request), [`list_merge_requests`](#list_merge_requests), [`get_merge_request_commits`](#get_merge_request_commits) (unlisted, superseded), [`get_merge_request_diffs`](#get_merge_request_diffs) (unlisted, superseded), [`get_merge_request_pipelines`](#get_merge_request_pipelines) (unlisted, superseded), [`get_merge_request_conflicts`](#get_merge_request_conflicts) (unlisted, superseded), [`get_merge_request_notes`](#get_merge_request_notes) (unlisted, superseded), [`save_merge_request_review`](#save_merge_request_review), [`accept_merge_request`](#accept_merge_request) |
 | `work_items` | [`get_work_item`](#get_work_item), [`get_workitem_notes`](#get_workitem_notes) (unlisted, superseded), [`get_work_item_types`](#get_work_item_types), [`link_work_items`](#link_work_items), [`get_saved_view_work_items`](#get_saved_view_work_items), [`list_work_item_saved_views`](#list_work_item_saved_views), [`save_work_item`](#save_work_item), [`list_work_items`](#list_work_items), [`create_issue`](#create_issue) (unlisted, superseded), [`get_issue`](#get_issue) (unlisted, superseded) |
 | `repository` | [`add_branch`](#add_branch), [`fork_repository`](#fork_repository), [`list_branches`](#list_branches), [`get_repository_file`](#get_repository_file), [`list_repository_tree`](#list_repository_tree), [`get_commit`](#get_commit), [`list_commits`](#list_commits), [`list_releases`](#list_releases), [`list_tags`](#list_tags), [`add_commit`](#add_commit) |
@@ -259,6 +259,7 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/605878) to accept `url` and return associated data facets in GitLab 19.3.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 
 This tool is part of the [`merge_requests`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -271,18 +272,18 @@ Only the base merge request is returned unless you request associated data with 
 | `url`               | string  | No       | GitLab URL of the merge request. Provide this, or `project_id` and `merge_request_iid`. |
 | `project_id`        | string  | No       | ID or full path of the project. Required if `url` is missing. |
 | `merge_request_iid` | integer | No       | Internal ID of the merge request. Required if `url` is missing. |
-| `include`           | array   | No       | Associated facets to return with the merge request. One of `diffs`, `commits`, `notes`, `pipelines`, `discussions`, `approvals`, or `conflicts`. Limited to one facet per call. |
-| `detail`            | string  | No       | Level of diff detail. One of `none` for summary counts only, `stats` for per-file additions and deletions, or `full_patch` for per-file patch text plus the per-file stats. Default is `stats`. Applies only when `include` is `["diffs"]`. |
-| `diffs_after`       | string  | No       | Cursor for forward pagination of files. Applies only when `include` is `["diffs"]` and `detail` is `full_patch`. |
-| `diffs_first`       | integer | No       | Number of files to return after the cursor, up to 100. Applies only when `include` is `["diffs"]` and `detail` is `full_patch`. |
-| `notes_after`       | string  | No       | Cursor for forward pagination of notes. Applies only when `include` is `["notes"]`. |
-| `notes_first`       | integer | No       | Number of notes to return after the cursor, up to 100. Applies only when `include` is `["notes"]`. |
-| `notes_before`      | string  | No       | Cursor for backward pagination of notes. Applies only when `include` is `["notes"]`. |
-| `notes_last`        | integer | No       | Number of notes to return before the cursor, up to 100. Applies only when `include` is `["notes"]`. |
-| `commits_after`     | string  | No       | Cursor for forward pagination of commits. Applies only when `include` is `["commits"]`. |
-| `commits_first`     | integer | No       | Number of commits to return after the cursor, up to 100. Applies only when `include` is `["commits"]`. |
-| `pipelines_after`   | string  | No       | Cursor for forward pagination of pipelines. Applies only when `include` is `["pipelines"]`. |
-| `pipelines_first`   | integer | No       | Number of pipelines to return after the cursor, up to 100. Applies only when `include` is `["pipelines"]`. |
+| `include`           | array   | No       | Associated facets to return with the merge request. Any of `diffs`, `commits`, `notes`, `pipelines`, `discussions`, `approvals`, or `conflicts`. You can request several facets in one call. |
+| `detail`            | string  | No       | Level of diff detail. One of `none` for summary counts only, `stats` for per-file additions and deletions, or `full_patch` for per-file patch text plus the per-file stats. Default is `stats`. Applies only when `include` contains `diffs`. Cannot be `full_patch` when `include` has other facets. |
+| `diffs_after`       | string  | No       | Cursor for forward pagination of files. Applies only when `include` contains `diffs` and `detail` is `full_patch`. |
+| `diffs_first`       | integer | No       | Number of files to return after the cursor, up to 100. Applies only when `include` contains `diffs` and `detail` is `full_patch`. |
+| `notes_after`       | string  | No       | Cursor for forward pagination of notes. Applies only when `include` contains `notes`. |
+| `notes_first`       | integer | No       | Number of notes to return after the cursor, up to 100. Applies only when `include` contains `notes`. |
+| `notes_before`      | string  | No       | Cursor for backward pagination of notes. Applies only when `include` contains `notes`. |
+| `notes_last`        | integer | No       | Number of notes to return before the cursor, up to 100. Applies only when `include` contains `notes`. |
+| `commits_after`     | string  | No       | Cursor for forward pagination of commits. Applies only when `include` contains `commits`. |
+| `commits_first`     | integer | No       | Number of commits to return after the cursor, up to 100. Applies only when `include` contains `commits`. |
+| `pipelines_after`   | string  | No       | Cursor for forward pagination of pipelines. Applies only when `include` contains `pipelines`. |
+| `pipelines_first`   | integer | No       | Number of pipelines to return after the cursor, up to 100. Applies only when `include` contains `pipelines`. |
 
 The `diffs` facet returns change statistics by default: overall totals and per-file additions and
 deletions. To get patch text, set `detail` to `full_patch`.
@@ -881,6 +882,33 @@ Example:
 Which merge requests am I asked to review?
 ```
 
+## `list_user_events`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/635916) in GitLab 19.6.
+
+This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
+
+Retrieves contribution events for a specified user. Does not return events
+associated with epics or merge requests. Returns bulk push events with
+limited commit details.
+
+| Parameter     | Type    | Required | Description |
+|---------------|---------|----------|-------------|
+| `id`          | string  | Yes      | ID or username of the user. |
+| `action`      | string  | No       | Filter events by action type. |
+| `target_type` | string  | No       | Filter events by target type. |
+| `before`      | string  | No       | Return events created before the specified date (`YYYY-MM-DD`). |
+| `after`       | string  | No       | Return events created after the specified date (`YYYY-MM-DD`). |
+| `sort`        | string  | No       | Sort results in ascending (`asc`) or descending (`desc`) order by creation date. |
+| `page`        | integer | No       | Page number for pagination. |
+| `per_page`    | integer | No       | Number of events to return per page. |
+
+Example:
+
+```plaintext
+List recent events for user john_doe
+```
+
 ## `accept_merge_request`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617968) in GitLab 19.4.
@@ -1060,6 +1088,7 @@ List the files under app/services in gitlab-org/gitlab on the default branch
 ## `get_commit`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/605874) in GitLab 19.3.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 
 This tool is part of the [`repository`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1070,7 +1099,7 @@ Retrieves a single commit's metadata, and optionally its diff or notes.
 | `url`         | string  | No       | URL of the GitLab commit. Required if `project_id` and `commit_sha` are not provided. |
 | `project_id`  | string  | No       | ID or full path of the project. Required if `url` is not provided. |
 | `commit_sha`  | string  | No       | Commit to look up. Accepts a full or short SHA, branch name, or tag name. Required if `url` is not provided. |
-| `include`     | array   | No       | Associated facet to fetch inline, one per call (`diff` or `notes`). Base metadata is always returned. |
+| `include`     | array   | No       | Associated facets to fetch inline. You can request `diff`, `notes`, or both in one call. Base metadata is always returned. |
 | `diff_detail` | string  | No       | Level of detail in the commit diff. Applies only when `include` contains `diff`. Can be either `stats` or `full_patch`. Default is `stats`. |
 | `notes_after` | string  | No       | Token to fetch the next page of notes. Applies only when `include` contains `notes`. |
 | `notes_first` | integer | No       | Number of notes to return per page (maximum 100). Applies only when `include` contains `notes`. |
@@ -1282,6 +1311,7 @@ Show me all jobs in pipeline 12345 for project gitlab-org/gitlab
 - [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605856) from `get_job_log` in GitLab 19.3. `get_job_log` continues to work as an alias and always returns the `log` facet, capped at `byte_limit`.
 - `artifacts` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/585022) in GitLab 19.5.
 - Opt-in log tail reads [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/633041) in GitLab 19.6.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 
 This tool is part of the [`ci`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1291,10 +1321,10 @@ Gets a CI/CD job's metadata, and optionally its trace/log or the artifacts it pr
 |---------------|---------|----------|-------------|
 | `id`          | string  | Yes      | ID or full path of the project. |
 | `job_id`      | integer | Yes      | ID of the job. |
-| `include`     | array   | No       | Facet to include alongside the job, one per call: `log` or `artifacts`. |
+| `include`     | array   | No       | Facets to include alongside the job: `log`, `artifacts`, or both. |
 | `from`        | string  | No       | Read from the `start` or `end` of the log. Default is `start`. Only applies to the `log` facet. Cannot combine `end` with `byte_offset`. |
-| `byte_offset` | integer | No       | Byte offset to start reading the job's log from. Only applies when `include` is `log` and `from` is `start`. Default is `0`. |
-| `byte_limit`  | integer | No       | Maximum number of bytes of the job's log to return. Only applies when `include` is `log`. Default and maximum is `512000`. |
+| `byte_offset` | integer | No       | Byte offset to start reading the job's log from. Only applies when `include` contains `log` and `from` is `start`. Default is `0`. |
+| `byte_limit`  | integer | No       | Maximum number of bytes of the job's log to return. Only applies when `include` contains `log`. Default and maximum is `512000`. |
 
 When the log is longer than `byte_limit`, the response reports the total size and tells you the
 `byte_offset` to use for the next window.
@@ -1559,6 +1589,7 @@ Examples:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605882) in GitLab 19.4.
 - `discussions` facet [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597686) in GitLab 19.5.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/630771) to accept more than one `include` facet per call in GitLab 19.6.
 
 This tool is part of the [`work_items`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -1573,7 +1604,7 @@ are omitted.
 | `group_id`                      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
 | `project_id`                    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
 | `work_item_iid`                 | integer | No       | Internal ID of the work item. Required if `url` is missing. |
-| `include`                       | array   | No       | Associated data to return. One of `notes`, `discussions`, or `related_merge_requests`, one facet per call. For the newest notes, use `notes_last` without `notes_first` or `notes_after`. |
+| `include`                       | array   | No       | Associated data to return. Any of `notes`, `discussions`, or `related_merge_requests`. You can request several facets in one call. For the newest notes, use `notes_last` without `notes_first` or `notes_after`. |
 | `notes_first`                   | integer | No       | Number of notes to return after the cursor (forward pagination). Default 100, maximum 100. |
 | `notes_after`                   | string  | No       | Cursor for forward pagination of notes. Use `pageInfo.endCursor` from a previous response. |
 | `notes_last`                    | integer | No       | Number of notes to return before the cursor (backward pagination). Default 100, maximum 100. |
