@@ -4,7 +4,7 @@
 
 This guide uses **webhook-managed provisioning** with Cloudflare's reference Worker.
 
-See the [application-managed](https://github.com/openai/openai-cookbook/tree/main/examples/agents_api/sandboxes/application_managed/cloudflare) and [webhook-managed](https://github.com/openai/openai-cookbook/tree/main/examples/agents_api/sandboxes/webhook_managed/cloudflare) examples in the OpenAI Cookbook.
+See the [application-managed](https://github.com/openai/openai-cookbook/tree/main/examples/agents_api/sandboxes/cloudflare/application_managed) and [webhook-managed](https://github.com/openai/openai-cookbook/tree/main/examples/agents_api/sandboxes/cloudflare/webhook_managed) examples in the OpenAI Cookbook.
 
 ## How it works
 
@@ -30,13 +30,10 @@ Generate a secret for the cleanup endpoint and save it as `EXECUTOR_CLIENT_SECRE
 openssl rand -hex 32
 ```
 
+
 Deploy the Worker in your Cloudflare account:
 
-
-
-Deploy to Cloudflare
-
-
+[Deploy to Cloudflare](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
 
 Enter these values when prompted:
 

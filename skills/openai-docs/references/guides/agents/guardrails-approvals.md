@@ -262,19 +262,16 @@ Once the control boundaries are clear, continue with the guide that covers the r
 
 
 
-  [Running agents
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
+
+See how interruptions and resumptions fit into the runtime loop.
 
 
+  [Results and state](https://developers.openai.com/api/docs/guides/agents/results)
 
-        See how interruptions and resumptions fit into the runtime loop.](https://developers.openai.com/api/docs/guides/agents/running-agents)
-  [Results and state
-
-
-
-        Learn which result surfaces paused runs return to your application.](https://developers.openai.com/api/docs/guides/agents/results)
-  [Using tools
+Learn which result surfaces paused runs return to your application.
 
 
+  [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
 
-        Decide which tool surfaces need validation or approval before side effects
-      happen.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
+Decide which tool surfaces need validation or approval before side effects happen.

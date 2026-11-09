@@ -49,6 +49,7 @@ What version of the GitLab MCP server am I connected to?
 ## `get_project`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250430) in GitLab 19.4.
+- `include` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/606643) in GitLab 19.6.
 
 This tool is part of the [`core`](mcp_server.md#select-tool-groups-toolsets) toolset.
 
@@ -58,9 +59,14 @@ Returns metadata for a single GitLab project: numeric ID, full path, default bra
 |--------------|--------|----------|-------------|
 | `url`        | string | No       | URL of the project. Provide exactly one of `url` or `project_id`. |
 | `project_id` | string | No       | ID or full path of the project. Provide exactly one of `url` or `project_id`. |
+| `include`    | array  | No       | Facet to include alongside the project, one per call: `work_item_types`. |
 
 `default_branch` is `null` when the project has no repository yet.
 To find a project you cannot name yet, use `search` with the `projects` scope.
+
+The `work_item_types` facet lists the work item types available in the project.
+Each type includes its global ID, name, icon, and the widget types enabled on it,
+so you can avoid setting fields the type does not support when calling `save_work_item`.
 
 Example:
 
@@ -1928,6 +1934,9 @@ Lists the work item types available in a namespace (group or project), including
 system-defined types (such as Issue, Epic, and Task) and custom types.
 Each returned type includes its global ID, name, icon, and the widget types enabled on it,
 so you can avoid setting fields the type does not support.
+
+For project-level types, `get_project` with `include: ["work_item_types"]` returns the same data
+alongside the project.
 
 | Parameter    | Type   | Required | Description |
 |--------------|--------|----------|-------------|

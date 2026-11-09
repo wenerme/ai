@@ -154,26 +154,24 @@ Datasets are great for rapid iteration. When you're ready to track performance o
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook/topic/evals), which contains example code and links to third-party resources, or learn more about our evaluation tools:
 
-[Cookbook: Building resilient prompts with evals
+[Cookbook: Building resilient prompts with evals](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+
+Operate a flywheel of continuous improvement using evaluations.
 
 
 
-      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
+[Working with evals](https://developers.openai.com/api/docs/guides/evals)
 
-[Working with evals
-
-
-
-      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
-
-[Prompt optimizer
+Evaluate against external models, interact with evals via API, and more.
 
 
 
-      Use your dataset to automatically improve your prompts.](https://developers.openai.com/api/docs/guides/prompt-optimizer)
+[Prompt optimizer](https://developers.openai.com/api/docs/guides/prompt-optimizer)
 
-[Graders
+Use your dataset to automatically improve your prompts.
 
 
 
-      Build sophisticated graders to improve the effectiveness of your evals.](https://developers.openai.com/api/docs/guides/graders)
+[Graders](https://developers.openai.com/api/docs/guides/graders)
+
+Build sophisticated graders to improve the effectiveness of your evals.

@@ -39352,6 +39352,7 @@ paths:
           - rpm
           - ml_model
           - cargo
+          - swift
           nullable: true
         in: query
       - name: package_name
@@ -61797,6 +61798,7 @@ paths:
           - rpm
           - ml_model
           - cargo
+          - swift
           nullable: true
         in: query
       - name: package_name
@@ -68140,6 +68142,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           minLength: 1
@@ -74325,6 +74328,8 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          description: Bad request
         '401':
           description: Unauthorized
         '403':
@@ -74333,8 +74338,6 @@ paths:
           description: Not found
         '412':
           description: Precondition Failed
-        '400':
-          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -83473,6 +83476,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           default: main
@@ -83987,6 +83991,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           default: main
@@ -84036,6 +84041,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           default: main
@@ -84153,6 +84159,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           default: main
@@ -84192,6 +84199,7 @@ paths:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           default: main
@@ -103603,6 +103611,9 @@ components:
         service_desk_outbound_emails_per_day:
           type: integer
           example: 700
+        swift_max_file_size:
+          type: integer
+          example: 104857600
         terraform_module_max_file_size:
           type: integer
           example: 1073741824
@@ -137263,6 +137274,11 @@ components:
             top-level namespace. Set to `0` for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253087)
             in GitLab 19.4.
           nullable: true
+        swift_max_file_size:
+          type: integer
+          description: Maximum Swift package file size in bytes. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/12233)
+            in GitLab 19.6.
+          nullable: true
         terraform_module_max_file_size:
           type: integer
           description: Maximum Terraform module package file size in bytes.
@@ -137320,6 +137336,7 @@ components:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           description: Database name for which the migration is skipped.
@@ -137678,6 +137695,7 @@ components:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           description: Name of the database.
@@ -137691,6 +137709,7 @@ components:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           description: Name of the database.
@@ -137704,6 +137723,7 @@ components:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           description: Name of the database.
@@ -137717,6 +137737,7 @@ components:
           - main
           - ci
           - sec
+          - mr_diff
           - embedding
           - geo
           description: Name of the database.

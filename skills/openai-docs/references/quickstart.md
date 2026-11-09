@@ -6,14 +6,7 @@ The OpenAI API provides a consistent interface to state-of-the-art AI [models](h
 
 ## Create and export an API key
 
-
-
-StatsigClient.logEvent("quickstart_create_api_key_click", null, null)
-  }
->
-  Create an API Key
-
-
+[Create an API Key](https://platform.openai.com/api-keys)
 
 
 
@@ -69,6 +62,7 @@ npm install openai
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.mjs` and copy the example code into it:
 
 Test a basic API request
@@ -86,13 +80,12 @@ console.log(response.output_text);
 ```
 
 
+
 Execute the code with `node example.mjs` (or the equivalent command for Deno or Bun). In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-node)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-node)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -113,6 +106,7 @@ pip install openai
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.py` and copy the example code into it:
 
 Test a basic API request
@@ -131,13 +125,12 @@ print(response.output_text)
 ```
 
 
+
 Execute the code with `python example.py`. In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-python)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-python)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -154,6 +147,7 @@ In collaboration with Microsoft, OpenAI provides an officially supported API cli
 ```bash
 dotnet add package OpenAI
 ```
+
 
 A simple API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
 
@@ -175,6 +169,7 @@ Console.WriteLine($"[ASSISTANT]: {response.GetOutputText()}");
 ```
 
 
+
   
 
   
@@ -190,9 +185,10 @@ OpenAI provides an API helper for the Java programming language, currently in be
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.100.0</version>
+  <version>4.101.0</version>
 </dependency>
 ```
+
 
 
 A simple API request to [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
@@ -223,13 +219,12 @@ public class Main {
 ```
 
 
+
 To learn more about using the OpenAI API in Java, check out the GitHub repo linked below!
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-java)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-java)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -248,6 +243,7 @@ import (
 	"github.com/openai/openai-go/v3" // imported as openai
 )
 ```
+
 
 
 A first API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
@@ -281,13 +277,12 @@ func main() {
 ```
 
 
+
 To learn more about using the OpenAI API in Go, check out the GitHub repo linked below!
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-go)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-go)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -308,6 +303,7 @@ gem "openai"
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.rb` and copy the example code into it:
 
 Test a basic API request
@@ -326,37 +322,29 @@ puts(response.output_text)
 ```
 
 
+
 Execute the code with `ruby example.rb`. In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-ruby)
+
+Discover more SDK capabilities and options on the library's GitHub README.
+
+
+[Responses starter app](https://github.com/openai/openai-responses-starter-app)
+
+Start building with the Responses API.
 
 
 
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-ruby)
+[Text generation and prompting](https://developers.openai.com/api/docs/guides/text)
+
+Learn more about prompting, message roles, and building conversational apps.
 
 
-[Responses starter app
-
-
-
-      Start building with the Responses API.](https://github.com/openai/openai-responses-starter-app)
-
-[Text generation and prompting
-
-
-
-      Learn more about prompting, message roles, and building conversational apps.](https://developers.openai.com/api/docs/guides/text)
 
 ## Add credits to keep building
 
-
-
-StatsigClient.logEvent("quickstart_add_credits_billing_click", null, null)
-  }
->
-  Go to billing
-
-
+[Go to billing](https://platform.openai.com/account/billing/overview)
 
 Congrats on running a free test API request! Start building real applications with higher limits and use [our models](https://developers.openai.com/api/docs/models) to generate text, audio, images, videos and more.
 
@@ -366,23 +354,16 @@ Congrats on running a free test API request! Start building real applications wi
   Explore tools and docs designed to help you ship faster:
 
 
-[StatsigClient.logEvent(
-      "quickstart_add_credits_chat_playground_click",
-      null,
-      null
-    )
-  }
->
-  Chat Playground
+[Chat Playground](https://platform.openai.com/chat)
+
+Build & test conversational prompts and embed them in your app.
 
 
+[Build agents](https://developers.openai.com/api/docs/guides/agents)
 
-      Build & test conversational prompts and embed them in your app.](https://platform.openai.com/chat)
-[Build agents
+Use the Agents SDK to build, run, and observe agent workflows.
 
 
-
-      Use the Agents SDK to build, run, and observe agent workflows.](https://developers.openai.com/api/docs/guides/agents)
 
 ## Analyze images and files
 
@@ -1094,17 +1075,17 @@ curl "https://api.openai.com/v1/responses" \
 
 
 
-[Image inputs guide
+[Image inputs guide](https://developers.openai.com/api/docs/guides/images-vision)
+
+Learn to use image inputs to the model and extract meaning from images.
 
 
 
-      Learn to use image inputs to the model and extract meaning from images.](https://developers.openai.com/api/docs/guides/images-vision)
+[File inputs guide](https://developers.openai.com/api/docs/guides/file-inputs)
 
-[File inputs guide
+Learn to use file inputs to the model and extract meaning from documents.
 
 
-
-      Learn to use file inputs to the model and extract meaning from documents.](https://developers.openai.com/api/docs/guides/file-inputs)
 
 ## Extend the model with tools
 
@@ -1993,17 +1974,17 @@ puts(response.output_text)
 
 
 
-[Use built-in tools
+[Use built-in tools](https://developers.openai.com/api/docs/guides/tools)
+
+Learn about powerful built-in tools like web search and file search.
 
 
 
-      Learn about powerful built-in tools like web search and file search.](https://developers.openai.com/api/docs/guides/tools)
+[Function calling guide](https://developers.openai.com/api/docs/guides/function-calling)
 
-[Function calling guide
+Learn to enable the model to call your own custom code.
 
 
-
-      Learn to enable the model to call your own custom code.](https://developers.openai.com/api/docs/guides/function-calling)
 
 ## Stream responses and build real-time apps
 
@@ -2137,17 +2118,17 @@ end
 ```
 
 
-[Use streaming events
+[Use streaming events](https://developers.openai.com/api/docs/guides/streaming-responses)
+
+Use server-sent events to stream model responses to users fast.
 
 
 
-      Use server-sent events to stream model responses to users fast.](https://developers.openai.com/api/docs/guides/streaming-responses)
+[Get started with the Realtime API](https://developers.openai.com/api/docs/guides/realtime)
 
-[Get started with the Realtime API
+Use WebRTC or WebSockets for super fast speech-to-speech AI apps.
 
 
-
-      Use WebRTC or WebSockets for super fast speech-to-speech AI apps.](https://developers.openai.com/api/docs/guides/realtime)
 
 ## Build agents
 
@@ -2210,8 +2191,6 @@ if __name__ == "__main__":
 ```
 
 
-[Build agents that can take action
+[Build agents that can take action](https://developers.openai.com/api/docs/guides/agents)
 
-
-
-      Learn how to use the OpenAI platform to build powerful, capable AI agents.](https://developers.openai.com/api/docs/guides/agents)
+Learn how to use the OpenAI platform to build powerful, capable AI agents.

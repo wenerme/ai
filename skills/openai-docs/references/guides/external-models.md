@@ -70,14 +70,12 @@ Once you have configured an external model, you can use it for evals on the by s
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and links to third-party resources, or learn more about our tools for evals:
 
-[Getting started with evals
+[Getting started with evals](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
+
+Uses Datasets to quickly build evals and iterate on prompts.
 
 
 
-      Uses Datasets to quickly build evals and iterate on prompts.](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
+[Working with evals](https://developers.openai.com/api/docs/guides/evals)
 
-[Working with evals
-
-
-
-      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
+Evaluate against external models, interact with evals via API, and more.

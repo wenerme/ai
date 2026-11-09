@@ -71,6 +71,7 @@ The final tool response should look like:
 }
 ```
 
+
 ### `fetch` tool
 
 The fetch tool is used to retrieve the full contents of a search result document or item.
@@ -113,6 +114,7 @@ The final tool response should look like:
 }
 ```
 
+
 ### Citation behavior
 
 For both `search` results and `fetch` responses, ChatGPT creates citation
@@ -125,6 +127,7 @@ For example, ChatGPT might call `search` with:
 ```json
 { "query": "What is the quarterly plan?" }
 ```
+
 
 The MCP server can respond with a URL-backed result:
 
@@ -148,6 +151,7 @@ The MCP server can respond with a URL-backed result:
 }
 ```
 
+
 In this response, the `url` field has a value, which makes the result eligible
 for citation metadata. The query itself does not trigger citation handling. If
 the result omits `url`, or provides an empty or non-string value, ChatGPT
@@ -157,11 +161,11 @@ preserves the result as ordinary tool output.
 
 You can try this example MCP server in a [browser-based development environment](https://replit.com/). Configure the sample with your own API credentials and vector store information.
 
-[Example MCP server on Replit
+[Example MCP server on Replit](https://replit.com/@kwhinnery-oai/DeepResearchServer?v=1#README.md)
+
+Remix the server example on Replit to test live.
 
 
-
-      Remix the server example on Replit to test live.](https://replit.com/@kwhinnery-oai/DeepResearchServer?v=1#README.md)
 
 A full implementation of both the `search` and `fetch` tools in FastMCP is below also for convenience.
 
@@ -407,6 +411,7 @@ In the long dev URL, ensure it ends with `/sse/`, which is the server-sent event
 ```text
 https://777xxx.janeway.replit.dev/sse/
 ```
+
 
 
 

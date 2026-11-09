@@ -17,7 +17,7 @@ Handoffs are the clearest fit when a specialist should own the next response rat
 
 Delegate with handoffs
 
-```typescript
+```javascript
 import { Agent, handoff } from "@openai/agents";
 
 const billingAgent = new Agent({ name: "Billing agent" });
@@ -56,7 +56,7 @@ Use `agent.asTool()` in TypeScript or `agent.as_tool()` in Python when the main 
 
 Call a specialist as a tool
 
-```typescript
+```javascript
 import { Agent } from "@openai/agents";
 
 const summarizer = new Agent({
@@ -113,20 +113,16 @@ Once the ownership pattern is clear, continue with the guide that covers the adj
 
 
 
-  [Agent definitions
+  [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)
+
+Refine each specialist's instructions, tools, and output contract.
 
 
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
 
-        Refine each specialist's instructions, tools, and output contract.](https://developers.openai.com/api/docs/guides/agents/define-agents)
-  [Running agents
-
-
-
-        Understand how handoffs and tools behave inside a run.](https://developers.openai.com/api/docs/guides/agents/running-agents)
-  [Results and state
+Understand how handoffs and tools behave inside a run.
 
 
+  [Results and state](https://developers.openai.com/api/docs/guides/agents/results)
 
-        See how 
-      `lastAgent` in TypeScript or `last_agent` in Python 
-      and resumable state affect the next turn.](https://developers.openai.com/api/docs/guides/agents/results)
+See how `lastAgent` in TypeScript or `last_agent` in Python and resumable state affect the next turn.

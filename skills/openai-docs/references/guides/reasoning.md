@@ -278,6 +278,7 @@ It's important to ensure there's enough space in the context window for reasonin
 }
 ```
 
+
 Context window lengths are found on the [model reference page](https://developers.openai.com/api/docs/models), and will differ across model snapshots.
 
 ### Allocating space for reasoning
@@ -964,6 +965,7 @@ Add the following item before the next user message in the `input` array of an H
 }
 ```
 
+
 For example, if the conversation starts with request-level effort `low`, this update selects `high` for the next response and subsequent responses until another update overrides it.
 
 Increase reasoning effort for a follow-up
@@ -1353,6 +1355,7 @@ This API request will return an output array with both an assistant message and 
 ]
 ```
 
+
 Before using summarizers with our latest reasoning models, you may need to
   complete [organization
   verification](https://help.openai.com/en/articles/10910291-api-organization-verification)
@@ -1604,6 +1607,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
+
 ```python
 from openai import OpenAI
 
@@ -1650,6 +1654,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+
 ```go
 package main
 
@@ -1688,6 +1693,7 @@ const books = [
 }
 ```
 
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -1717,6 +1723,7 @@ client.responses().create(params).output().stream()
     .flatMap(content -> content.outputText().stream())
     .forEach(text -> System.out.println(text.text()));
 ```
+
 
 ```csharp
 using OpenAI.Responses;
@@ -1759,6 +1766,7 @@ ResponseResult response = await client.CreateResponseAsync(
 Console.WriteLine(response.GetOutputText());
 ```
 
+
 ```ruby
 require "openai"
 
@@ -1783,6 +1791,7 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
 
 
   
@@ -1829,6 +1838,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
+
 ```python
 from openai import OpenAI
 
@@ -1856,6 +1866,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 
 ```go
 package main
@@ -1890,6 +1901,7 @@ directory structure you will need, then return each file in full.`
 }
 ```
 
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -1914,6 +1926,7 @@ client.responses().create(params).output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+
 ```csharp
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
@@ -1934,6 +1947,7 @@ ResponseResult response = await client.CreateResponseAsync("gpt-6-astra", prompt
 Console.WriteLine(response.GetOutputText());
 ```
 
+
 ```ruby
 require "openai"
 
@@ -1952,6 +1966,7 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
+
 
 
   
@@ -1994,6 +2009,7 @@ const response = await openai.responses.create({
 console.log(response.output_text);
 ```
 
+
 ```python
 from openai import OpenAI
 
@@ -2011,6 +2027,7 @@ response = client.responses.create(
 
 print(response.output_text)
 ```
+
 
 ```go
 package main
@@ -2042,6 +2059,7 @@ research into new antibiotics? Why should we consider them?`
 }
 ```
 
+
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -2064,6 +2082,7 @@ client.responses().create(params).output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+
 ```csharp
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
@@ -2082,6 +2101,7 @@ ResponseResult response = await client.CreateResponseAsync(
 );
 Console.WriteLine(response.GetOutputText());
 ```
+
 
 ```ruby
 require "openai"
@@ -2102,18 +2122,17 @@ puts(response.output_text)
 
 
 
+
 ## Use case examples
 
 Some examples of using reasoning models for real-world use cases can be found in [the cookbook](https://developers.openai.com/cookbook).
 
-[Using reasoning for data validation
+[Using reasoning for data validation](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_data_validation)
+
+Evaluate a synthetic medical data set for discrepancies.
 
 
 
-      Evaluate a synthetic medical data set for discrepancies.](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_data_validation)
+[Using reasoning for routine generation](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_routine_generation)
 
-[Using reasoning for routine generation
-
-
-
-      Use help center articles to generate actions that an agent could perform.](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_routine_generation)
+Use help center articles to generate actions that an agent could perform.

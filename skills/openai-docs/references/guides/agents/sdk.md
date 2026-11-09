@@ -14,16 +14,16 @@ Use the GitHub repositories for more examples, issues, and language-specific ref
 
 
 
-  [TypeScript SDK
+  [TypeScript SDK](https://github.com/openai/openai-agents-js)
+
+Open the TypeScript SDK repository on GitHub.
 
 
+  [Python SDK](https://github.com/openai/openai-agents-python)
 
-        Open the TypeScript SDK repository on GitHub.](https://github.com/openai/openai-agents-js)
-  [Python SDK
+Open the Python SDK repository on GitHub.
 
 
-
-        Open the Python SDK repository on GitHub.](https://github.com/openai/openai-agents-python)
 
 
 

@@ -79,6 +79,7 @@ A minimal Responses API request body with explicit high detail looks like this:
 }
 ```
 
+
 ## Accepted file types
 
 The following table lists common file types accepted by the Responses API as
@@ -864,40 +865,36 @@ Next, you might want to explore one of these resources:
 
 
 
-  [Experiment with file inputs in the Playground
+  [Experiment with file inputs in the Playground](https://platform.openai.com/chat/edit)
 
-
-
-        Use the Playground to develop and iterate on prompts with file inputs.](https://platform.openai.com/chat/edit)
-
-
-
-
-
-  [Full API reference
-
-
-
-        Check out the API reference for more options.](https://developers.openai.com/api/reference/resources/responses)
+Use the Playground to develop and iterate on prompts with file inputs.
 
 
 
 
 
-  [Use File Search for large corpora
+
+
+  [Full API reference](https://developers.openai.com/api/reference/resources/responses)
+
+Check out the API reference for more options.
 
 
 
-        Use retrieval over chunked files when you need scalable search instead of
-      sending whole files in a single context window.](https://developers.openai.com/api/docs/guides/tools-file-search)
+
+
+
+
+  [Use File Search for large corpora](https://developers.openai.com/api/docs/guides/tools-file-search)
+
+Use retrieval over chunked files when you need scalable search instead of sending whole files in a single context window.
 
 
 
 
 
-  [Use Hosted Shell for deep spreadsheet analysis
 
 
+  [Use Hosted Shell for deep spreadsheet analysis](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart)
 
-        Use Hosted Shell for advanced spreadsheet workflows such as joins,
-      aggregations, and charting.](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart)
+Use Hosted Shell for advanced spreadsheet workflows such as joins, aggregations, and charting.

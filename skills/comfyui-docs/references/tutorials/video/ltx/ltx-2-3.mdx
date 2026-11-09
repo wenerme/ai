@@ -31,19 +31,38 @@ LTX-2.3 is natively supported in ComfyUI. To get started:
 2. Go to **Template Library** > **Video** > choose any LTX-2.3 workflow
 3. Follow the pop-up to download models and run the workflow
 
+## Choosing a template workflow
+
+Six native LTX-2.3 templates ship in **Template Library** > **Video** (examples, not an exhaustive list).
+
+  
+    Text prompts with improved prompt understanding and text rendering.
+  
+  
+    Animate a still image with smoother motion.
+  
+  
+    Interpolate between a start image and an end image.
+  
+  
+    Lip-synced video from an image and audio clip.
+  
+  
+    Depth, pose, edge, or other control video guidance.
+  
+  
+    Personalized video with synchronized audio from reference image and voice.
+  
+
 ## ComfyUI Native Workflows
-
-### LTX-2.3 Text to Video (T2V)
-
-Generate videos from text prompts with improved prompt understanding and text rendering.
-
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_t2v.mp4"></video>
 
 ### LTX-2.3 Text to Video {#video_ltx2_3_t2v}
 
 Generate videos from text prompts with improved prompt understanding and text rendering.
 
-[LTX-2.3 Text to Video ( workflow preview]
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_t2v.mp4"></video>
+
+[LTX-2.3 Text to Video workflow preview]
 
   
     Open in Comfy Cloud
@@ -94,17 +113,13 @@ ComfyUI/
 
 ---
 
-### LTX-2.3 Image to Video (I2V)
-
-Generate videos from an input image with more consistent motion and smoother animations.
-
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_i2v.mp4"></video>
-
 ### LTX-2.3 Image to Video {#video_ltx2_3_i2v}
 
 Generate videos from an input image with improved motion consistency.
 
-[LTX-2.3 Image to Video ( workflow preview]
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_i2v.mp4"></video>
+
+[LTX-2.3 Image to Video workflow preview]
 
   
     Open in Comfy Cloud
@@ -155,17 +170,13 @@ ComfyUI/
 
 ---
 
-### LTX-2.3 FLF2V
+### LTX-2.3 First-Last Frame to Video {#video_ltx2_3_flf2v}
 
 Interpolate between a start image and an end image to generate a smooth video transition.
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_flf2v.mp4"></video>
 
-### LTX-2.3 First-Last Frame to Video {#video_ltx2_3_flf2v}
-
-Interpolate between a start and end image.
-
-[LTX-2.3 First-Last Frame to Video ( workflow preview]
+[LTX-2.3 First-Last Frame to Video workflow preview]
 
   
     Open in Comfy Cloud
@@ -205,17 +216,13 @@ ComfyUI/
 
 ---
 
-### LTX-2.3 Image Audio to Video (IA2V)
+### LTX-2.3 Image and Audio to Video {#video_ltx2_3_ia2v}
 
-Upload an image and an audio file to generate a high-quality video with synchronized lip movements.
+Upload an image and an audio file to generate lip-synced video with synchronized lip movements.
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_ia2v.mp4"></video>
 
-### LTX-2.3 Image and Audio to Video {#video_ltx2_3_ia2v}
-
-Generate lip-synced videos from an image and audio.
-
-[LTX-2.3 Image and Audio to Video ( workflow preview]
+[LTX-2.3 Image and Audio to Video workflow preview]
 
   
     Open in Comfy Cloud
@@ -269,7 +276,7 @@ ComfyUI/
 
 ---
 
-### LTX-2.3 IC-LoRA Union Control
+### LTX-2.3 IC-LoRA Union Control {#video_ltx2_3_ic_lora}
 
 Generate LTX-2.3 videos with IC-LoRA using aligned control inputs like depth, pose, or edges. IC-LoRA is an in-context LoRA trained on top of LTX-2.3 that applies structural guidance from a reference video. It accepts control signals from various preprocessors including depth maps, Canny edges, and pose skeletons. This workflow uses a subgraph for modular processing.
 
@@ -446,17 +453,13 @@ Remove subtitles, captions, and related text occlusions from the video, restorin
 
 ---
 
-### LTX-2.3 ID-LoRA
+### LTX-2.3 ID LoRA {#video_ltx2_3_id_lora}
 
 Generate personalized videos with synchronized audio from a text prompt, reference image, and short audio clip. Uses ID-LoRA to adapt a person's appearance and voice in a single generative model.
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_id_lora.mp4"></video>
 
-### LTX-2.3 ID LoRA {#video_ltx2_3_id_lora}
-
-Generate personalized videos with synchronized audio from a reference image and audio clip.
-
-[LTX-2.3 ID LoRA ( workflow preview]
+[LTX-2.3 ID LoRA workflow preview]
 
   
     Open in Comfy Cloud

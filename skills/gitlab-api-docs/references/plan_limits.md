@@ -62,6 +62,7 @@ Example response:
   "pypi_max_file_size": 3221225472,
   "service_desk_outbound_emails_per_hour": 0,
   "service_desk_outbound_emails_per_day": 0,
+  "swift_max_file_size": 104857600,
   "terraform_module_max_file_size": 1073741824,
   "storage_size_limit": 15000
 }
@@ -108,6 +109,7 @@ PUT /application/plan_limits
 | `pypi_max_file_size`              | integer | no       | Maximum PyPI package file size in bytes. |
 | `service_desk_outbound_emails_per_hour` | integer | no       | Maximum number of outbound Service Desk emails per hour per top-level namespace. 0 for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253087) in GitLab 19.4. |
 | `service_desk_outbound_emails_per_day`  | integer | no       | Maximum number of outbound Service Desk emails per day per top-level namespace. 0 for unlimited. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253087) in GitLab 19.4. |
+| `swift_max_file_size`             | integer | no       | Maximum Swift package file size in bytes. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/12233) in GitLab 19.6. |
 | `terraform_module_max_file_size`  | integer | no       | Maximum Terraform Module package file size in bytes. |
 | `storage_size_limit`              | integer | no       | Maximum storage size for the root namespace in MiB. |
 | `web_hook_calls`                  | integer | no       | Maximum number of times a webhook can be called per minute per top-level namespace. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/571738) in GitLab 18.5. |
@@ -148,6 +150,7 @@ Example response:
   "pypi_max_file_size": 3221225472,
   "service_desk_outbound_emails_per_hour": 0,
   "service_desk_outbound_emails_per_day": 0,
+  "swift_max_file_size": 104857600,
   "terraform_module_max_file_size": 1073741824
 }
 ```

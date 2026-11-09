@@ -18,11 +18,7 @@ Use this guide to learn the process and parts of building agents.
 
 To build useful agents, you create workflows for them. A **workflow** is a combination of agents, tools, and control-flow logic. A workflow encapsulates all steps and actions involved in handling your tasks or powering your chats, with working code you can deploy when you're ready.
 
-
-
 Open Agent Builder
-
-
 
 
 

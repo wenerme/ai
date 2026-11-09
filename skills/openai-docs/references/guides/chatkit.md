@@ -275,9 +275,10 @@ static String getChatKitSessionToken(OpenAIClient client, String authenticatedUs
 
 3. In your project directory, install the ChatKit React bindings:
 
-```bash
+   ```bash
    npm install @openai/chatkit-react
-```
+   ```
+
 
 4. Add the ChatKit JS script to your page. Drop this snippet into your page’s `<head>` or wherever you load scripts, and the browser will fetch and run ChatKit for you.
 
@@ -362,57 +363,56 @@ See the [custom theming](https://developers.openai.com/api/docs/guides/chatkit-t
 
 #### Build your implementation
 
-[ChatKit docs on GitHub
+[ChatKit docs on GitHub](https://openai.github.io/chatkit-python)
+
+Learn to handle authentication, add theming and customization, and more.
+
+
+[ChatKit Python SDK](https://github.com/openai/chatkit-python)
+
+Add server-side storage, access control, tools, and other backend functionality.
 
 
 
-      Learn to handle authentication, add theming and customization, and more.](https://openai.github.io/chatkit-python)
-[ChatKit Python SDK
+[ChatKit JS SDK](https://github.com/openai/chatkit-js)
+
+Check out the ChatKit JS repo.
 
 
-
-      Add server-side storage, access control, tools, and other backend
-    functionality.](https://github.com/openai/chatkit-python)
-
-[ChatKit JS SDK
-
-
-
-      Check out the ChatKit JS repo.](https://github.com/openai/chatkit-js)
 
 #### Explore ChatKit UI
 
-[chatkit.world
+[chatkit.world](https://chatkit.world)
+
+Play with an interactive demo of ChatKit.
 
 
 
-      Play with an interactive demo of ChatKit.](https://chatkit.world)
+[Widget builder](https://widgets.chatkit.studio)
 
-[Widget builder
-
-
-
-      Browse available widgets.](https://widgets.chatkit.studio)
-
-[ChatKit playground
+Browse available widgets.
 
 
 
-      Play with an interactive demo to learn by doing.](https://chatkit.studio/playground)
+[ChatKit playground](https://chatkit.studio/playground)
+
+Play with an interactive demo to learn by doing.
+
+
 
 #### See working examples
 
-[Samples on GitHub
+[Samples on GitHub](https://github.com/openai/openai-chatkit-advanced-samples)
+
+See working examples of ChatKit and get inspired.
 
 
 
-      See working examples of ChatKit and get inspired.](https://github.com/openai/openai-chatkit-advanced-samples)
+[Starter app repo](https://github.com/openai/openai-chatkit-starter-app)
 
-[Starter app repo
+Clone a repo to start with a fully working template.
 
 
-
-      Clone a repo to start with a fully working template.](https://github.com/openai/openai-chatkit-starter-app)
 
 ## Next steps
 

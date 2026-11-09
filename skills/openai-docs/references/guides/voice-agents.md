@@ -149,26 +149,24 @@ The practical rule is: choose the audio architecture first, then design the rest
 
 ## Next steps
 
-[Audio and voice overview
+[Audio and voice overview](https://developers.openai.com/api/docs/guides/audio)
+
+Choose the right realtime or audio guide for your use case.
 
 
 
-      Choose the right realtime or audio guide for your use case.](https://developers.openai.com/api/docs/guides/audio)
+[Managing conversations](https://developers.openai.com/api/docs/guides/realtime-conversations)
 
-[Managing conversations
-
-
-
-      Work with the Realtime session lifecycle and event model.](https://developers.openai.com/api/docs/guides/realtime-conversations)
-
-[WebRTC connection
+Work with the Realtime session lifecycle and event model.
 
 
 
-      Connect browser and mobile audio directly to a Realtime session.](https://developers.openai.com/api/docs/guides/voice-webrtc)
+[WebRTC connection](https://developers.openai.com/api/docs/guides/voice-webrtc)
 
-[Realtime prompting guide
+Connect browser and mobile audio directly to a Realtime session.
 
 
 
-      Tune reasoning, preambles, tools, entity capture, and voice behavior.](https://developers.openai.com/api/docs/guides/voice-prompting)
+[Realtime prompting guide](https://developers.openai.com/api/docs/guides/voice-prompting)
+
+Tune reasoning, preambles, tools, entity capture, and voice behavior.

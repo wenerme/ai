@@ -588,17 +588,17 @@ if __name__ == "__main__":
 
 You can find full working examples on GitHub.
 
-[Apply patch tool example - TypeScript
+[Apply patch tool example - TypeScript](https://github.com/openai/openai-agents-js/blob/main/examples/tools/applyPatch.ts)
+
+Example of how to use the apply patch tool with the Agents SDK in TypeScript
 
 
 
-      Example of how to use the apply patch tool with the Agents SDK in TypeScript](https://github.com/openai/openai-agents-js/blob/main/examples/tools/applyPatch.ts)
+[Apply patch tool example - Python](https://github.com/openai/openai-agents-python/blob/main/examples/tools/apply_patch.py)
 
-[Apply patch tool example - Python
+Example of how to use the apply patch tool with the Agents SDK in Python
 
 
-
-      Example of how to use the apply patch tool with the Agents SDK in Python](https://github.com/openai/openai-agents-python/blob/main/examples/tools/apply_patch.py)
 
 ## Handling common errors
 

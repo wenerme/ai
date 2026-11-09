@@ -420,6 +420,7 @@ Since we will be referencing a **sample** in our test criteria (the output gener
 
 
 
+
 ### Explanation: testing_criteria parameter
 
 
@@ -440,6 +441,7 @@ In the test configuration, we will introduce template syntax, represented by the
   "reference": "{{ item.category }}"
 }
 ```
+
 
 
 
@@ -471,6 +473,7 @@ After creating the eval, it will be assigned a UUID that you will need to addres
 }
 ```
 
+
 Now that we've created an eval that describes the desired behavior of our application, let's test a prompt with a set of test data.
 
 ## Test a prompt with your eval
@@ -486,6 +489,7 @@ You can provide test data for eval runs in several ways, but it may be convenien
 { "item": { "ticket_text": "I'm in vim and I can't quit!", "correct_label": "Software" } }
 { "item": { "ticket_text": "Best restaurants in Cleveland?", "correct_label": "Other" } }
 ```
+
 
 This data set contains both test inputs and ground truth labels to compare model outputs against.
 
@@ -598,6 +602,7 @@ When you upload the file, make note of the unique `id` property in the response 
   "status_details": null
 }
 ```
+
 
 ### Creating an eval run
 
@@ -831,6 +836,7 @@ If the eval run is successfully created, you'll receive an API response that loo
 
 
 
+
 Your eval run has now been queued, and it will execute asynchronously as it processes every row in your data set, generating responses for testing with the prompt and model we specified.
 
 ## Analyze the results
@@ -962,6 +968,7 @@ You'll need the UUID of both your eval and eval run to fetch its status. When yo
 
 
 
+
 The API response contains granular information about test criteria results, API usage for generating model responses, and a `report_url` property that takes you to a page in the dashboard where you can explore the results visually.
 
 In our test, the model reliably generated the content we wanted for a small test case sample. In reality, you will often have to run your eval with more criteria, different prompts, and different data sets. But the process above gives you all the tools you need to build robust evals for your LLM apps!
@@ -970,32 +977,29 @@ In our test, the model reliably generated the content we wanted for a small test
 
 Now you know how to create and run evals via API, and using the dashboard! Here are a few other resources that may be useful to you as you continue to improve your model results.
 
-[Cookbook: Detecting prompt regressions
+[Cookbook: Detecting prompt regressions](https://developers.openai.com/cookbook/examples/evaluation/use-cases/regression)
+
+Keep tabs on the performance of your prompts as you iterate on them.
 
 
 
-      Keep tabs on the performance of your prompts as you iterate on them.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/regression)
+[Cookbook: Bulk model and prompt experimentation](https://developers.openai.com/cookbook/examples/evaluation/use-cases/bulk-experimentation)
 
-[Cookbook: Bulk model and prompt experimentation
-
-
-
-      Compare the results of many different prompts and models at once.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/bulk-experimentation)
-
-[Cookbook: Monitoring stored completions
+Compare the results of many different prompts and models at once.
 
 
 
-      Examine stored completions to test for prompt regressions.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/completion-monitoring)
+[Cookbook: Monitoring stored completions](https://developers.openai.com/cookbook/examples/evaluation/use-cases/completion-monitoring)
 
-[Fine-tuning
-
-
-
-      Improve a model's ability to generate responses tailored to your use case.](https://developers.openai.com/api/docs/guides/model-optimization)
-[Model distillation
+Examine stored completions to test for prompt regressions.
 
 
 
-      Learn how to distill large model results to smaller, cheaper, and faster
-    models.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#distilling-from-a-larger-model)
+[Fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)
+
+Improve a model's ability to generate responses tailored to your use case.
+
+
+[Model distillation](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#distilling-from-a-larger-model)
+
+Learn how to distill large model results to smaller, cheaper, and faster models.

@@ -8,11 +8,7 @@ Use this page when you want the shortest path to a working SDK-based agent. The 
 
 Create a project, install the SDK, and set your API key.
 
-
-
-Create an API Key
-
-
+[Create an API Key](https://platform.openai.com/api-keys)
 
 
 
@@ -26,6 +22,7 @@ pip install openai-agents
 
 export OPENAI_API_KEY=sk-...
 ```
+
 
 ## Create and run your first agent
 
@@ -233,23 +230,21 @@ Once the first run works, continue with the guide that matches the next capabili
 
 
 
-  [Agent definitions
+  [Agent definitions](https://developers.openai.com/api/docs/guides/agents/define-agents)
+
+Shape one specialist cleanly before you scale the workflow.
 
 
+  [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
 
-        Shape one specialist cleanly before you scale the workflow.](https://developers.openai.com/api/docs/guides/agents/define-agents)
-  [Using tools
-
-
-
-        Add hosted tools, function tools, and agents-as-tools.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
-  [Running agents
+Add hosted tools, function tools, and agents-as-tools.
 
 
+  [Running agents](https://developers.openai.com/api/docs/guides/agents/running-agents)
 
-        Learn the agent loop, streaming, and continuation strategies.](https://developers.openai.com/api/docs/guides/agents/running-agents)
-  [Orchestration and handoffs
+Learn the agent loop, streaming, and continuation strategies.
 
 
+  [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)
 
-        Decide when specialists should take over the conversation.](https://developers.openai.com/api/docs/guides/agents/orchestration)
+Decide when specialists should take over the conversation.

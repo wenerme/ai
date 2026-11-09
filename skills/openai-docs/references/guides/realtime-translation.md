@@ -658,6 +658,7 @@ The typical architecture is:
 source audio -> translation session -> translated audio + subtitles
 ```
 
+
 Create one translation session for each target language. If the same English source needs Spanish and French output, create one English-to-Spanish session and one English-to-French session.
 
 For browser listen-along apps, capture tab audio with `getDisplayMedia()`, send it over WebRTC, and play the remote translated audio track. For production broadcasts, run translation in a server media worker and publish translated audio tracks or captions to listeners.
@@ -675,11 +676,13 @@ Caller A audio -> translate into Caller B language -> play to Caller B
 Caller B audio -> translate into Caller A language -> play to Caller A
 ```
 
+
 For group rooms, session count depends on active speakers and target languages:
 
 ```text
 translation sessions ~= active source speaker tracks x distinct target languages
 ```
+
 
 For small rooms, each listener can create browser-side translation sidecars for the remote speakers they want translated. For larger rooms, use a server-side participant or media worker that subscribes to each source speaker once, creates one translation session per target language, and republishes translated tracks.
 
@@ -717,26 +720,24 @@ If your use case depends on exact names or domain terms, build a golden set befo
 
 ## Related guides
 
-[Realtime and audio overview
+[Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime)
+
+Compare voice-agent, translation, and transcription sessions.
 
 
 
-      Compare voice-agent, translation, and transcription sessions.](https://developers.openai.com/api/docs/guides/realtime)
+[WebRTC connection](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime)
 
-[WebRTC connection
-
-
-
-      Connect browser media to a realtime session.](https://developers.openai.com/api/docs/guides/voice-webrtc?api=realtime)
-
-[WebSocket connection
+Connect browser media to a realtime session.
 
 
 
-      Stream raw audio through a server-side media pipeline.](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime)
+[WebSocket connection](https://developers.openai.com/api/docs/guides/voice-websockets?api=realtime)
 
-[Realtime transcription
+Stream raw audio through a server-side media pipeline.
 
 
 
-      Stream transcript deltas from live audio.](https://developers.openai.com/api/docs/guides/realtime-transcription)
+[Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)
+
+Stream transcript deltas from live audio.

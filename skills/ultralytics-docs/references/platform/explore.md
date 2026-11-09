@@ -70,6 +70,12 @@ click an image to open a side panel with its annotations, source dataset, class 
 24 similar images, including ones from the same dataset, when you are signed in; click one to open it in the panel. On
 narrow screens such as phones, the image opens full size instead.
 
+To search by a photo instead, click the search-by-image icon in the Datasets or Images search bar, or drop an image
+onto the page. The Images tab shows images like it, each with its similarity score, and the Datasets tab shows public
+datasets containing similar images, with those images on their cards. Filters, and sorting on the Datasets tab, still
+apply, and switching between the two tabs keeps the photo. The photo is searched, not saved, and stays out of the URL;
+the search bar shows it until you click **Close** or open the Projects tab.
+
 ### Sort and Filter
 
 The dropdown in the toolbar holds sort options on the Datasets and Projects tabs and filters on all three tabs:
@@ -104,10 +110,10 @@ On the Datasets and Projects tabs, toggle between three view modes for browsing:
 | ----------- | ------------------------------------------------ |
 | **Cards**   | Grid of preview cards with thumbnails            |
 | **Compact** | Smaller cards in a responsive grid (2-3 columns) |
-| **Table**   | Paginated table with sortable columns            |
+| **Table**   | Table with sortable columns                      |
 
-Cards and compact views load more results by infinite scroll. Table view moves sorting from the dropdown to sortable
-column headers, keeps the filters in the dropdown, and adds its own pagination controls.
+All three views load more results as you scroll. Table view moves sorting from the dropdown to sortable column headers
+and keeps the filters in the dropdown.
 
 ## Content Cards
 
@@ -209,7 +215,7 @@ Clone a public model to one of your projects:
 4. Optionally, rename the model
 5. Review the source model summary, then click `Clone Model` to confirm
 
-![Ultralytics Platform Explore Clone Model Dialog](https://cdn.ul.run/i/ea87fef6ef1ff9f2d6a00e3fbb46459d.avif)
+![Ultralytics Platform Explore Clone Model Dialog](https://cdn.ul.run/i/dc44c4c61e4d8276fd1829145c2e493b.avif)
 
 !!! note "Clone vs Download"
 

@@ -194,18 +194,16 @@ Once the external surfaces are wired in, continue with the guide that covers cap
 
 
 
-  [Using tools
+  [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
+
+See how hosted tools, function tools, and agents-as-tools fit beside MCP.
 
 
+  [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
 
-        See how hosted tools, function tools, and agents-as-tools fit beside MCP.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
-  [Guardrails and human review
-
-
-
-        Add approval or validation boundaries around sensitive capabilities.](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
-  [Agent workflow evaluation
+Add approval or validation boundaries around sensitive capabilities.
 
 
+  [Agent workflow evaluation](https://developers.openai.com/api/docs/guides/agent-evals)
 
-        Move from one-off traces into repeatable grading once behavior stabilizes.](https://developers.openai.com/api/docs/guides/agent-evals)
+Move from one-off traces into repeatable grading once behavior stabilizes.

@@ -52,6 +52,7 @@ npm install openai
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.mjs` and copy the example code into it:
 
 Test a basic API request
@@ -69,13 +70,12 @@ console.log(response.output_text);
 ```
 
 
+
 Execute the code with `node example.mjs` (or the equivalent command for Deno or Bun). In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-node)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-node)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -96,6 +96,7 @@ pip install openai
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.py` and copy the example code into it:
 
 Test a basic API request
@@ -114,13 +115,12 @@ print(response.output_text)
 ```
 
 
+
 Execute the code with `python example.py`. In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-python)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-python)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -137,6 +137,7 @@ In collaboration with Microsoft, OpenAI provides an officially supported API cli
 ```bash
 dotnet add package OpenAI
 ```
+
 
 A simple API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
 
@@ -158,6 +159,7 @@ Console.WriteLine($"[ASSISTANT]: {response.GetOutputText()}");
 ```
 
 
+
   
 
   
@@ -173,9 +175,10 @@ OpenAI provides an API helper for the Java programming language, currently in be
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.100.0</version>
+  <version>4.101.0</version>
 </dependency>
 ```
+
 
 
 A simple API request to [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
@@ -206,13 +209,12 @@ public class Main {
 ```
 
 
+
 To learn more about using the OpenAI API in Java, check out the GitHub repo linked below!
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-java)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-java)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -231,6 +233,7 @@ import (
 	"github.com/openai/openai-go/v3" // imported as openai
 )
 ```
+
 
 
 A first API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
@@ -264,13 +267,12 @@ func main() {
 ```
 
 
+
 To learn more about using the OpenAI API in Go, check out the GitHub repo linked below!
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-go)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-go)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -291,6 +293,7 @@ gem "openai"
 ```
 
 
+
 With the OpenAI SDK installed, create a file called `example.rb` and copy the example code into it:
 
 Test a basic API request
@@ -309,13 +312,12 @@ puts(response.output_text)
 ```
 
 
+
 Execute the code with `ruby example.rb`. In a few moments, you should see the output of your API request.
 
-[Learn more on GitHub
+[Learn more on GitHub](https://github.com/openai/openai-ruby)
 
-
-
-      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-ruby)
+Discover more SDK capabilities and options on the library's GitHub README.
 
 
   
@@ -336,6 +338,7 @@ brew install openai/tools/openai
 ```
 
 
+
 Then run a basic API request from your shell:
 
 Test a basic API request
@@ -349,13 +352,12 @@ openai responses create \
 ```
 
 
+
 Use the CLI for repeatable terminal workflows such as extracting structured data from files, generating images, creating speech, and composing API calls with shell tools like `jq`.
 
-[OpenAI CLI guide
+[OpenAI CLI guide](https://developers.openai.com/api/docs/libraries/openai-cli)
 
-
-
-      Learn more about CLI workflows and command patterns.](https://developers.openai.com/api/docs/libraries/openai-cli)
+Learn more about CLI workflows and command patterns.
 
 
 
@@ -368,11 +370,11 @@ handoffs, guardrails, tracing, or sandbox execution.
 If you are deciding between direct API requests and code-first orchestration,
 see [how the Responses API compares with the Agents SDK](https://developers.openai.com/api/docs/guides/agents#agents-sdk-vs-responses-api).
 
-[Agents SDK quickstart
+[Agents SDK quickstart](https://developers.openai.com/api/docs/guides/agents/quickstart)
+
+Build your first agent with the Agents SDK.
 
 
-
-      Build your first agent with the Agents SDK.](https://developers.openai.com/api/docs/guides/agents/quickstart)
 
 - [OpenAI Agents SDK for TypeScript](https://github.com/openai/openai-agents-js)
 - [OpenAI Agents SDK for Python](https://github.com/openai/openai-agents-python)

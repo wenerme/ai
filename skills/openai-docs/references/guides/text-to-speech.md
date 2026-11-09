@@ -421,15 +421,12 @@ Pass the created voice ID when generating speech. See the
 
 ## Related guides
 
-[Realtime and audio overview
+[Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime)
+
+Choose the right path for voice agents, translation, transcription, and speech generation.
 
 
 
-      Choose the right path for voice agents, translation, transcription, and
-    speech generation.](https://developers.openai.com/api/docs/guides/realtime)
+[Audio and speech concepts](https://developers.openai.com/api/docs/guides/audio)
 
-[Audio and speech concepts
-
-
-
-      Review audio modalities, speech tasks, streaming, and request-based APIs.](https://developers.openai.com/api/docs/guides/audio)
+Review audio modalities, speech tasks, streaming, and request-based APIs.

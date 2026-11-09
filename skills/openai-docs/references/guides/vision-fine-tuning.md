@@ -75,6 +75,7 @@ Here's an example of an image message on a line of your JSONL file. Below, the J
 }
 ```
 
+
 Uploading training data for vision fine-tuning follows the [same process described here](https://developers.openai.com/api/docs/guides/supervised-fine-tuning).
 
 ## Image data requirements
@@ -130,6 +131,7 @@ If you set the `detail` parameter for an image to `low`, the image is resized to
   }
 }
 ```
+
 
 #### Control image quality
 
@@ -187,14 +189,12 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of vision fine-tuning, explore these other methods as well.
 
-[Supervised fine-tuning
+[Supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
+
+Fine-tune a model by providing correct outputs for sample inputs.
 
 
 
-      Fine-tune a model by providing correct outputs for sample inputs.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
+[Direct preference optimization](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
 
-[Direct preference optimization
-
-
-
-      Fine-tune a model using direct preference optimization (DPO).](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
+Fine-tune a model using direct preference optimization (DPO).

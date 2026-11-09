@@ -2111,17 +2111,17 @@ if __name__ == "__main__":
 
 You can find working examples in the SDK repositories.
 
-[Shell tool example - TypeScript
+[Shell tool example - TypeScript](https://github.com/openai/openai-agents-js/blob/main/examples/tools/shell.ts)
+
+TypeScript example for the shell tool in the Agents SDK.
 
 
 
-      TypeScript example for the shell tool in the Agents SDK.](https://github.com/openai/openai-agents-js/blob/main/examples/tools/shell.ts)
+[Shell tool example - Python](https://github.com/openai/openai-agents-python/blob/main/examples/tools/shell.py)
 
-[Shell tool example - Python
+Python example for the shell tool in the Agents SDK.
 
 
-
-      Python example for the shell tool in the Agents SDK.](https://github.com/openai/openai-agents-python/blob/main/examples/tools/shell.py)
 
 ## Handling common errors
 

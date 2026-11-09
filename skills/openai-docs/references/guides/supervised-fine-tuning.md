@@ -115,6 +115,7 @@ An example of JSONL training data, where the model calls a `get_weather` functio
 ```
 
 
+
   
 
   
@@ -170,6 +171,7 @@ Each line of the training data file contains a JSON structure like the following
 
 
 
+
 ### Distilling from a larger model
 
 One way to build a training data set for a smaller model is to distill the results of a large model to create training data for supervised fine tuning. The general flow of this technique is:
@@ -217,6 +219,7 @@ curl https://api.openai.com/v1/files \
 ```
 
 
+
 Note the `id` of the file that is uploaded in the data returned from the API - you'll need that file identifier in subsequent API requests.
 
 ```json
@@ -232,6 +235,7 @@ Note the `id` of the file that is uploaded in the data returned from the API - y
   "status_details": null
 }
 ```
+
 
 
 
@@ -274,6 +278,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
     "model": "gpt-4.1-nano-2025-04-14"
   }'
 ```
+
 
 
 The API responds with information about the fine-tuning job in progress. Depending on the size of your training data, the training process may take several minutes or hours. You can [poll the API](https://developers.openai.com/api/reference/resources/fine_tuning) for updates on a specific job.
@@ -320,6 +325,7 @@ When the fine-tuning job finishes, your fine-tuned model is ready to use. A comp
 }
 ```
 
+
 Note the `fine_tuned_model` property. This is the model ID to use in [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) to make API requests using your fine-tuned model.
 
 Here's an example of calling the Responses API with your fine-tuned model ID:
@@ -351,6 +357,7 @@ curl https://api.openai.com/v1/responses \
     "tool_choice": "auto"
   }'
 ```
+
 
 
 
@@ -394,6 +401,7 @@ Use this curl command to get information about your fine-tuning job:
 curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-uL1VKpwx7maorHNbOiDwFIn6 \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
+
 
 
 The job contains a `fine_tuned_model` property, which is your new fine-tuned model's unique ID.
@@ -440,6 +448,7 @@ The job contains a `fine_tuned_model` property, which is your new fine-tuned mod
 
 
 
+
 ### Try using your fine-tuned model
 
 Evaluate your newly optimized model by using it! When the fine-tuned model finishes training, use its ID in either the [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) API, just as you would an OpenAI base model.
@@ -475,6 +484,7 @@ curl https://api.openai.com/v1/responses \
     "input": "What is 4+4?"
   }'
 ```
+
 
 
 
@@ -525,6 +535,7 @@ The checkpoint object contains `metrics` data to help you determine the usefulne
   "step_number": 2000
 }
 ```
+
 
 Each checkpoint specifies:
 
@@ -587,14 +598,12 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of supervised fine-tuning, explore these other methods as well.
 
-[Vision fine-tuning
+[Vision fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
+
+Learn to fine-tune for computer vision with image inputs.
 
 
 
-      Learn to fine-tune for computer vision with image inputs.](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
+[Direct preference optimization](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
 
-[Direct preference optimization
-
-
-
-      Fine-tune a model using direct preference optimization (DPO).](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
+Fine-tune a model using direct preference optimization (DPO).
